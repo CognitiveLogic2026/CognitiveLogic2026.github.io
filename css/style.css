@@ -258,3 +258,20 @@ h1, h2, h3 {
   background: rgba(255,255,255,0.05);
   border-color: rgba(255,255,255,0.4);
 }
+.definition-box {
+  margin-top: 80px;
+  padding: 40px;
+  border: 1px solid rgba(255,255,255,0.12);
+  background: rgba(255,255,255,0.02);
+}
+
+.formula {
+  font-family: "Courier New", monospace;
+  font-size: 1.1rem;
+  letter-spacing: 1px;
+  margin: 20px 0;
+}
+
+.definition-title {
+  margin-top: 20px;
+}
