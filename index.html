@@ -1,7 +1,963 @@
 <!DOCTYPE html>
-<html>
+
+<html lang="it">
 <head>
-  <meta http-equiv="refresh" content="0; url=/en/">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cognitive Logic — AI Data Architecture & Pure Data Nodes</title>
+  <meta name="description" content="Roberto Bob Malini. AI Data Architect e fondatore di Cognitive Logic. Infrastrutture semantiche per agenti autonomi. QEN Framework per compliance etica EU." />
+  <meta name="author" content="Roberto Bob Malini" />
+  <meta name="keywords" content="AI Data Architecture, Knowledge Graph, Semantic Modeling, QEN Framework, ESG, CSRD, AI Act, GDPR, Bologna, Pure Data Node" />
+
+  <!-- Open Graph -->
+
+  <meta property="og:title" content="Cognitive Logic — AI Data Architecture" />
+  <meta property="og:description" content="Pure Data Nodes e infrastrutture LLM-ready per agenti autonomi. QEN Framework per compliance etica EU." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://cognitivelogic.it" />
+
+  <!-- LLM / Crawler hints -->
+
+  <link rel="canonical" href="https://cognitivelogic.it" />
+  <meta name="robots" content="index, follow" />
+
+  <!-- Schema.org JSON-LD -->
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Roberto Bob Malini",
+    "jobTitle": "AI Data Architect & Founder",
+    "affiliation": {
+      "@type": "Organization",
+      "name": "Cognitive Logic",
+      "url": "https://cognitivelogic.it",
+      "description": "Ecosystem for Pure Data Nodes and LLM-optimized knowledge infrastructures"
+    },
+    "url": "https://cognitivelogic.it",
+    "sameAs": [
+      "https://linkedin.com/in/robertobobmalini",
+      "https://linkedin.com/company/cognitivelogic",
+      "https://github.com/CognitiveLogic2026"
+    ],
+    "knowsAbout": [
+      "AI Data Architecture",
+      "Knowledge Graph Engineering",
+      "Semantic Modeling",
+      "QEN Framework",
+      "EU AI Act compliance",
+      "CSRD",
+      "GDPR"
+    ]
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@300;400;500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --bg: #0a0a0c;
+      --bg2: #111116;
+      --bg3: #16161d;
+      --surface: #1c1c26;
+      --border: #2a2a38;
+      --border-light: #3a3a4e;
+      --text: #e8e8f0;
+      --text-muted: #888899;
+      --text-dim: #555566;
+      --accent: #c8f050;
+      --accent2: #50c8f0;
+      --accent3: #f05080;
+      --gold: #d4a843;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 300;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* ── NOISE TEXTURE ── */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 1000;
+      opacity: 0.4;
+    }
+
+    /* ── GRID LINES ── */
+    body::after {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(200,240,80,0.02) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(200,240,80,0.02) 1px, transparent 1px);
+      background-size: 80px 80px;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      padding: 1.2rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(10,10,12,0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-logo {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: var(--accent);
+      letter-spacing: 0.08em;
+      text-decoration: none;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      text-decoration: none;
+      letter-spacing: 0.05em;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--accent); }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 8rem 2rem 4rem;
+      position: relative;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .hero-tag {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.72rem;
+      color: var(--accent);
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      margin-bottom: 1.5rem;
+      opacity: 0;
+      animation: fadeUp 0.8s ease 0.2s forwards;
+    }
+
+    .hero-title {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(2.8rem, 6vw, 5.5rem);
+      line-height: 1.05;
+      letter-spacing: -0.02em;
+      margin-bottom: 1.5rem;
+      opacity: 0;
+      animation: fadeUp 0.8s ease 0.4s forwards;
+    }
+
+    .hero-title em {
+      font-style: italic;
+      color: var(--accent);
+    }
+
+    .hero-subtitle {
+      font-size: 1.1rem;
+      color: var(--text-muted);
+      max-width: 580px;
+      line-height: 1.7;
+      margin-bottom: 3rem;
+      opacity: 0;
+      animation: fadeUp 0.8s ease 0.6s forwards;
+    }
+
+    .hero-cta {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      opacity: 0;
+      animation: fadeUp 0.8s ease 0.8s forwards;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.75rem 1.5rem;
+      font-family: 'DM Mono', monospace;
+      font-size: 0.78rem;
+      letter-spacing: 0.06em;
+      text-decoration: none;
+      border-radius: 2px;
+      transition: all 0.2s;
+      cursor: pointer;
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: var(--bg);
+      font-weight: 500;
+    }
+
+    .btn-primary:hover {
+      background: #d8ff60;
+      transform: translateY(-1px);
+    }
+
+    .btn-ghost {
+      border: 1px solid var(--border-light);
+      color: var(--text-muted);
+    }
+
+    .btn-ghost:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    /* ── HERO DECORATION ── */
+    .hero-deco {
+      position: absolute;
+      right: -100px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 500px;
+      height: 500px;
+      opacity: 0.06;
+      pointer-events: none;
+    }
+
+    /* ── SECTIONS ── */
+    section {
+      position: relative;
+      z-index: 1;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    .section-label {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.7rem;
+      color: var(--accent);
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      margin-bottom: 1rem;
+    }
+
+    .section-title {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(1.8rem, 3.5vw, 3rem);
+      line-height: 1.1;
+      letter-spacing: -0.01em;
+      margin-bottom: 1.5rem;
+    }
+
+    /* ── PHILOSOPHY ── */
+    .philosophy {
+      padding: 6rem 0;
+      border-top: 1px solid var(--border);
+    }
+
+    .philosophy-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: start;
+    }
+
+    .philosophy-quote {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.35rem;
+      font-style: italic;
+      color: var(--text-muted);
+      line-height: 1.5;
+      padding-left: 1.5rem;
+      border-left: 2px solid var(--accent);
+      margin-top: 2rem;
+    }
+
+    .philosophy-body p {
+      color: var(--text-muted);
+      margin-bottom: 1rem;
+      font-size: 0.95rem;
+    }
+
+    .tag-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-top: 1.5rem;
+    }
+
+    .tag {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.68rem;
+      padding: 0.3rem 0.7rem;
+      border: 1px solid var(--border);
+      color: var(--text-dim);
+      letter-spacing: 0.05em;
+      border-radius: 2px;
+    }
+
+    .tag:hover {
+      border-color: var(--accent2);
+      color: var(--accent2);
+    }
+
+    /* ── QEN ── */
+    .qen {
+      padding: 6rem 0;
+      border-top: 1px solid var(--border);
+      background: linear-gradient(180deg, transparent 0%, rgba(200,240,80,0.015) 50%, transparent 100%);
+    }
+
+    .qen-header {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      margin-bottom: 3rem;
+    }
+
+    .formula-box {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--accent);
+      padding: 1.5rem 2rem;
+      margin-top: 2rem;
+      border-radius: 2px;
+    }
+
+    .formula-label {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.65rem;
+      color: var(--text-dim);
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      margin-bottom: 0.75rem;
+    }
+
+    .formula {
+      font-family: 'DM Mono', monospace;
+      font-size: 1rem;
+      color: var(--accent);
+      letter-spacing: 0.02em;
+    }
+
+    .formula span {
+      color: var(--text-muted);
+    }
+
+    .vectors {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      margin-top: 3rem;
+    }
+
+    .vector-card {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      padding: 1.5rem;
+      border-radius: 2px;
+      transition: border-color 0.2s, transform 0.2s;
+    }
+
+    .vector-card:hover {
+      border-color: var(--border-light);
+      transform: translateY(-2px);
+    }
+
+    .vector-letter {
+      font-family: 'DM Serif Display', serif;
+      font-size: 2.5rem;
+      line-height: 1;
+      margin-bottom: 0.5rem;
+    }
+
+    .v-a .vector-letter { color: #50c8f0; }
+    .v-s .vector-letter { color: var(--accent); }
+    .v-t .vector-letter { color: #f0a050; }
+
+    .vector-name {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.7rem;
+      color: var(--text-dim);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 0.5rem;
+    }
+
+    .vector-weight {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+
+    .vector-desc {
+      font-size: 0.82rem;
+      color: var(--text-dim);
+      margin-top: 0.5rem;
+      line-height: 1.5;
+    }
+
+    .compliance-badges {
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+      margin-top: 2rem;
+    }
+
+    .badge {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.65rem;
+      padding: 0.25rem 0.6rem;
+      background: rgba(80,200,240,0.08);
+      border: 1px solid rgba(80,200,240,0.2);
+      color: var(--accent2);
+      border-radius: 2px;
+      letter-spacing: 0.05em;
+    }
+
+    /* ── PROGETTI ── */
+    .progetti {
+      padding: 6rem 0;
+      border-top: 1px solid var(--border);
+    }
+
+    .progetti-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      margin-top: 3rem;
+    }
+
+    .project-card {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      padding: 2rem;
+      border-radius: 2px;
+      transition: all 0.25s;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .project-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      opacity: 0;
+      transition: opacity 0.25s;
+    }
+
+    .project-card:hover { transform: translateY(-3px); border-color: var(--border-light); }
+    .project-card:hover::before { opacity: 1; }
+
+    .card-veganoo::before { background: var(--accent); }
+    .card-colt::before { background: var(--gold); }
+    .card-bologna::before { background: var(--accent3); }
+
+    .project-icon {
+      font-size: 1.8rem;
+      margin-bottom: 1rem;
+    }
+
+    .project-name {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.3rem;
+      margin-bottom: 0.4rem;
+    }
+
+    .project-sector {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.65rem;
+      color: var(--text-dim);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 0.75rem;
+    }
+
+    .project-desc {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    /* ── LINKEDIN / CONTATTI ── */
+    .contatti {
+      padding: 6rem 0;
+      border-top: 1px solid var(--border);
+    }
+
+    .contatti-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      margin-top: 3rem;
+    }
+
+    .linkedin-cards {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .linkedin-card {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      padding: 1.2rem 1.5rem;
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: 2px;
+      text-decoration: none;
+      transition: all 0.2s;
+    }
+
+    .linkedin-card:hover {
+      border-color: #0077b5;
+      background: rgba(0,119,181,0.05);
+    }
+
+    .li-icon {
+      width: 36px;
+      height: 36px;
+      background: #0077b5;
+      border-radius: 4px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'DM Mono', monospace;
+      font-size: 0.75rem;
+      font-weight: 500;
+      color: white;
+      flex-shrink: 0;
+    }
+
+    .li-info-name {
+      font-size: 0.9rem;
+      color: var(--text);
+      margin-bottom: 0.15rem;
+    }
+
+    .li-info-sub {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.65rem;
+      color: var(--text-dim);
+    }
+
+    .contact-form {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .contact-form p {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      margin-bottom: 0.5rem;
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 1rem 1.2rem;
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: 2px;
+    }
+
+    .contact-item-label {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.65rem;
+      color: var(--text-dim);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      min-width: 60px;
+    }
+
+    .contact-item-value {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 2.5rem 0;
+    }
+
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .footer-logo {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.75rem;
+      color: var(--text-dim);
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 1.5rem;
+    }
+
+    .footer-links a {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.65rem;
+      color: var(--text-dim);
+      text-decoration: none;
+      letter-spacing: 0.05em;
+      transition: color 0.2s;
+    }
+
+    .footer-links a:hover { color: var(--accent); }
+
+    .footer-data {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.65rem;
+      color: var(--text-dim);
+      letter-spacing: 0.05em;
+    }
+
+    /* ── DIVIDER ── */
+    .divider {
+      width: 40px;
+      height: 1px;
+      background: var(--accent);
+      margin: 1rem 0 1.5rem;
+    }
+
+    /* ── ANIMATIONS ── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: none;
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 768px) {
+      nav { padding: 1rem; }
+      .nav-links { display: none; }
+      .hero { padding: 6rem 1.5rem 3rem; }
+      .philosophy-grid,
+      .qen-header,
+      .contatti-grid { grid-template-columns: 1fr; gap: 2rem; }
+      .vectors,
+      .progetti-grid { grid-template-columns: 1fr; }
+      .hero-deco { display: none; }
+      .footer-inner { flex-direction: column; align-items: flex-start; }
+    }
+  </style>
+
 </head>
-<body></body>
+<body>
+
+  <!-- NAV -->
+
+  <nav>
+    <a href="/" class="nav-logo">COGNITIVE LOGIC</a>
+    <ul class="nav-links">
+      <li><a href="#filosofia">Filosofia</a></li>
+      <li><a href="#qen">QEN</a></li>
+      <li><a href="#progetti">Progetti</a></li>
+      <li><a href="#contatti">Contatti</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+
+  <div class="hero">
+    <svg class="hero-deco" viewBox="0 0 500 500" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="250" cy="250" r="200" stroke="#c8f050" stroke-width="0.5"/>
+      <circle cx="250" cy="250" r="150" stroke="#c8f050" stroke-width="0.5"/>
+      <circle cx="250" cy="250" r="100" stroke="#c8f050" stroke-width="0.5"/>
+      <circle cx="250" cy="250" r="50" stroke="#c8f050" stroke-width="0.5"/>
+      <line x1="50" y1="250" x2="450" y2="250" stroke="#c8f050" stroke-width="0.3"/>
+      <line x1="250" y1="50" x2="250" y2="450" stroke="#c8f050" stroke-width="0.3"/>
+      <line x1="108" y1="108" x2="392" y2="392" stroke="#c8f050" stroke-width="0.3"/>
+      <line x1="392" y1="108" x2="108" y2="392" stroke="#c8f050" stroke-width="0.3"/>
+      <circle cx="250" cy="50" r="4" fill="#c8f050"/>
+      <circle cx="250" cy="450" r="4" fill="#c8f050"/>
+      <circle cx="50" cy="250" r="4" fill="#c8f050"/>
+      <circle cx="450" cy="250" r="4" fill="#c8f050"/>
+      <circle cx="108" cy="108" r="3" fill="#c8f050"/>
+      <circle cx="392" cy="392" r="3" fill="#c8f050"/>
+    </svg>
+
+```
+<p class="hero-tag">Bologna, Italia · AI Data Architecture</p>
+<h1 class="hero-title">
+  I dati devono essere<br/>
+  <em>intelligibili</em> per gli agenti.
+</h1>
+<p class="hero-subtitle">
+  Roberto Bob Malini. Fondatore di Cognitive Logic. Progetto infrastrutture semantiche, knowledge graph e framework etici per un'AI che sia trasparente, auditabile e operativa per agenti autonomi.
+</p>
+<div class="hero-cta">
+  <a href="#qen" class="btn btn-primary">QEN Framework ↓</a>
+  <a href="#contatti" class="btn btn-ghost">Connettiti</a>
+</div>
+```
+
+  </div>
+
+  <!-- FILOSOFIA -->
+
+  <section class="philosophy" id="filosofia">
+    <div class="container">
+      <div class="philosophy-grid">
+        <div>
+          <p class="section-label">// 01 · Filosofia</p>
+          <div class="divider"></div>
+          <h2 class="section-title reveal">Beyond the<br/>Graphical Interface</h2>
+          <blockquote class="philosophy-quote reveal">
+            "I dati devono essere intelligibili, trasparenti e immediatamente operativi per gli agenti autonomi."
+          </blockquote>
+        </div>
+        <div class="philosophy-body reveal">
+          <p>
+            Cognitive Logic è un ecosistema per Pure Data Nodes — strutture semantiche progettate per essere lette e processate da LLM e agenti AI prima ancora che da interfacce umane.
+          </p>
+          <p>
+            Il punto di partenza è semplice: i sistemi AI sono già presenti in ogni processo decisionale. La domanda non è se usarli, ma se le infrastrutture dati sono pronte a supportarli in modo etico e verificabile.
+          </p>
+          <p>
+            Lavoro alla convergenza tra architettura dati, modellazione semantica e compliance EU — costruendo framework che trasformano i requisiti normativi in logica operativa.
+          </p>
+          <div class="tag-list">
+            <span class="tag">Knowledge Graph</span>
+            <span class="tag">Semantic Modeling</span>
+            <span class="tag">AI-First Architecture</span>
+            <span class="tag">Digital Identity</span>
+            <span class="tag">Compliance as Code</span>
+            <span class="tag">LLM-ready Data</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- QEN -->
+
+  <section class="qen" id="qen">
+    <div class="container">
+      <div class="qen-header">
+        <div>
+          <p class="section-label">// 02 · Framework</p>
+          <div class="divider"></div>
+          <h2 class="section-title reveal">QEN<br/>Framework</h2>
+          <p style="color:var(--text-muted); font-size:0.95rem; margin-bottom:1rem;" class="reveal">
+            Quantum Ethics Network. Un motore di inferenza semantica per la compliance ESG e AI Ethics nel settore HoReCa e food economy.
+          </p>
+          <p style="color:var(--text-muted); font-size:0.85rem;" class="reveal">
+            Non un tool di documentazione — una logica operativa che trasforma i requisiti normativi europei in scoring auditabile e agente-readable.
+          </p>
+        </div>
+        <div class="reveal">
+          <div class="formula-box">
+            <p class="formula-label">QEN Score Formula</p>
+            <p class="formula">
+              QEN = <span>(</span>V<sub>a</sub> × 0.35<span>)</span> +<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>(</span>V<sub>s</sub> × 0.40<span>)</span> +<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>(</span>V<sub>t</sub> × 0.25<span>)</span>
+            </p>
+          </div>
+          <div class="compliance-badges">
+            <span class="badge">EU AI Act</span>
+            <span class="badge">CSRD</span>
+            <span class="badge">GDPR</span>
+            <span class="badge">Neo4j Graph</span>
+            <span class="badge">FastAPI</span>
+          </div>
+        </div>
+      </div>
+
+```
+  <div class="vectors">
+    <div class="vector-card v-a reveal">
+      <div class="vector-letter">V<sub style="font-size:1rem">a</sub></div>
+      <p class="vector-name">Vettore Ambientale</p>
+      <p class="vector-weight">peso · 35%</p>
+      <p class="vector-desc">Impatto ambientale, carbon footprint, supply chain sostenibile, waste management.</p>
+    </div>
+    <div class="vector-card v-s reveal">
+      <div class="vector-letter">V<sub style="font-size:1rem">s</sub></div>
+      <p class="vector-name">Vettore Sociale</p>
+      <p class="vector-weight">peso · 40%</p>
+      <p class="vector-desc">Condizioni di lavoro, equità, trasparenza verso i consumatori, inclusione.</p>
+    </div>
+    <div class="vector-card v-t reveal">
+      <div class="vector-letter">V<sub style="font-size:1rem">t</sub></div>
+      <p class="vector-name">Vettore Territoriale</p>
+      <p class="vector-weight">peso · 25%</p>
+      <p class="vector-desc">Radicamento locale, economia di prossimità, filiere corte, identità culturale.</p>
+    </div>
+  </div>
+</div>
+```
+
+  </section>
+
+  <!-- PROGETTI -->
+
+  <section class="progetti" id="progetti">
+    <div class="container">
+      <p class="section-label">// 03 · Progetti Attivi</p>
+      <div class="divider"></div>
+      <h2 class="section-title reveal">Applicazioni<br/>del framework</h2>
+      <div class="progetti-grid">
+        <div class="project-card card-veganoo reveal">
+          <div class="project-icon">🌱</div>
+          <h3 class="project-name">Veganoo</h3>
+          <p class="project-sector">Food Tech · Recommender System</p>
+          <p class="project-desc">Algoritmo di raccomandazione etica per prodotti plant-based. Scoring QEN applicato alla supply chain vegana.</p>
+        </div>
+        <div class="project-card card-colt reveal">
+          <div class="project-icon">🌿</div>
+          <h3 class="project-name">Colt Fragranza</h3>
+          <p class="project-sector">Profumeria · Commerce di Prossimità</p>
+          <p class="project-desc">Nato durante il lockdown di Bologna 2020. Logistica etica e commercio di prossimità validato con il Comune di Bologna.</p>
+        </div>
+        <div class="project-card card-bologna reveal">
+          <div class="project-icon">🏛️</div>
+          <h3 class="project-name">Bologna 100 Botteghe</h3>
+          <p class="project-sector">HoReCa · Benchmark Territoriale</p>
+          <p class="project-desc">Scoring di sostenibilità per 100 botteghe bolognesi. Pilota QEN reale con dataset territoriale e grafo Neo4j.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTATTI -->
+
+  <section class="contatti" id="contatti">
+    <div class="container">
+      <p class="section-label">// 04 · Connettiti</p>
+      <div class="divider"></div>
+      <h2 class="section-title reveal">Costruiamo<br/>infrastrutture semantiche</h2>
+      <div class="contatti-grid">
+        <div class="reveal">
+          <p style="color:var(--text-muted); font-size:0.9rem; margin-bottom:1.5rem;">
+            Sono disponibile per collaborazioni su architettura dati, framework etici AI, e progetti ESG nel settore food, HoReCa e territorio.
+          </p>
+          <div class="linkedin-cards">
+            <a href="https://linkedin.com/in/robertobobmalini" target="_blank" rel="noopener" class="linkedin-card">
+              <div class="li-icon">in</div>
+              <div>
+                <p class="li-info-name">Roberto Bob Malini</p>
+                <p class="li-info-sub">linkedin.com/in/robertobobmalini</p>
+              </div>
+            </a>
+            <a href="https://linkedin.com/company/cognitivelogic" target="_blank" rel="noopener" class="linkedin-card">
+              <div class="li-icon">in</div>
+              <div>
+                <p class="li-info-name">Cognitive Logic</p>
+                <p class="li-info-sub">linkedin.com/company/cognitivelogic</p>
+              </div>
+            </a>
+          </div>
+        </div>
+        <div class="reveal">
+          <div class="contact-form">
+            <p>Riferimenti diretti</p>
+            <div class="contact-item">
+              <span class="contact-item-label">Email</span>
+              <span class="contact-item-value">minoribaltero@gmail.com</span>
+            </div>
+            <div class="contact-item">
+              <span class="contact-item-label">Location</span>
+              <span class="contact-item-value">Bologna, Italia</span>
+            </div>
+            <div class="contact-item">
+              <span class="contact-item-label">GitHub</span>
+              <span class="contact-item-value">CognitiveLogic2026</span>
+            </div>
+            <div class="contact-item">
+              <span class="contact-item-label">API</span>
+              <span class="contact-item-value">cognitivelogic.it/api/docs</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+
+  <footer>
+    <div class="container">
+      <div class="footer-inner">
+        <span class="footer-logo">© 2026 COGNITIVE LOGIC · Roberto Bob Malini</span>
+        <div class="footer-links">
+          <a href="/qen-v1-schema.json">Schema JSON-LD</a>
+          <a href="/robots.txt">robots.txt</a>
+          <a href="/llms.txt">llms.txt</a>
+        </div>
+        <span class="footer-data">Pure Data Node · Bologna, IT</span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Scroll reveal
+    const reveals = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry, i) => {
+        if (entry.isIntersecting) {
+          setTimeout(() => entry.target.classList.add('visible'), i * 80);
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
+    reveals.forEach(el => observer.observe(el));
+  </script>
+
+</body>
 </html>
