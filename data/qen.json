@@ -1,0 +1,8 @@
+{
+ "formula":"QEN = Va*0.35 + Vs*0.40 + Vt*0.25",
+ "vectors":[
+   {"name":"Va","weight":0.35},
+   {"name":"Vs","weight":0.40},
+   {"name":"Vt","weight":0.25}
+ ]
+}
