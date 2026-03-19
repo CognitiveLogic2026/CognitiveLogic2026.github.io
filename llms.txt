@@ -1,0 +1,9 @@
+Cognitive Logic
+
+AI Data Architecture
+Knowledge Graph JSON
+QEN Framework
+
+API:
+/data/qen.json
+/data/graph.json
