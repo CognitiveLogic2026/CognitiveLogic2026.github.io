@@ -1,478 +1,511 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Cognitive Logic — AI Data Architecture</title>
+  <title>Cognitive Logic — AI Data Architecture</title>
 
-<meta name="description" content="AI Data Architecture, Knowledge Graph JSON e QEN Framework per agenti autonomi."/>
-<meta name="ai-readable" content="true">
-<meta name="llm-optimized" content="semantic-structured-data">
+  <meta name="description" content="AI Data Architecture, Knowledge Graph JSON e QEN Framework per agenti autonomi.">
+  <meta name="ai-readable" content="true">
+  <meta name="llm-optimized" content="semantic-structured-data">
+  <link rel="canonical" href="https://cognitivelogic.it/">
 
-<link rel="canonical" href="https://cognitivelogic.it"/>
-
-<!-- JSON-LD PERSON -->
-<script type="application/ld+json">
-{
- "@context": "https://schema.org",
- "@type": "Person",
- "name": "Roberto Bob Malini",
- "jobTitle": "AI Data Architect",
- "url": "https://cognitivelogic.it"
-}
-</script>
-
-<!-- JSON-LD GRAPH -->
-<script type="application/ld+json">
-{
- "@context": "https://schema.org",
- "@type": "Dataset",
- "name": "Cognitive Logic Graph",
- "description": "AI-ready semantic graph in JSON format",
- "url": "https://cognitivelogic.it/data/graph.json"
-}
-</script>
-
-<style>
-body{
- background:#0a0a0c;
- color:#e8e8f0;
- font-family: 'DM Sans', sans-serif;
- margin:0;
-}
-
-nav{
- position:fixed;
- top:0;
- width:100%;
- padding:15px;
- background:#0a0a0c;
-}
-
-nav a{
- margin-right:20px;
- color:#c8f050;
- text-decoration:none;
-}
-
-section{
- max-width:1100px;
- margin:auto;
- padding:80px 20px;
-}
-
-.hero h1{
- font-size:3rem;
-}
-
-.card{
- border:1px solid #2a2a38;
- padding:20px;
- margin-top:15px;
-}
-</style>
-</head>
-<script>
-async function loadGraph(){
-  const res = await fetch('/data/graph.json');
-  return await res.json();
-}
-
-async function getConnections(nodeId){
-  const graph = await loadGraph();
-  return graph.edges.filter(e => e.from === nodeId);
-}
-
-window.graphAPI = {
-  getConnections
-};
-</script>
- <section style="max-width:1100px;margin:60px auto;padding:0 20px;">
-  <h2 style="margin-bottom:10px;">Graph Visuale Pro</h2>
-  <p style="color:#888;margin-bottom:20px;">
-    Knowledge graph interattivo con nodi trascinabili
-  </p>
-
-  <div style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:16px;">
-    <button onclick="drawGraphPro()" style="
-      padding:10px 16px;
-      background:#c8f050;
-      color:#000;
-      border:none;
-      cursor:pointer;
-    ">Disegna Grafo</button>
-
-    <button onclick="resetGraphPro()" style="
-      padding:10px 16px;
-      background:#222;
-      color:#c8f050;
-      border:1px solid #444;
-      cursor:pointer;
-    ">Reset</button>
-  </div>
-
-  <svg id="graph-svg-pro" viewBox="0 0 900 460" style="
-    width:100%;
-    background:#111;
-    border:1px solid #2a2a38;
-    min-height:460px;
-    border-radius:6px;
-  "></svg>
-  <div id="node-info" style="
-  max-width:1100px;
-  margin:20px auto;
-  padding:20px;
-  border:1px solid #2a2a38;
-  background:#0d0d12;
-  display:none;
-">
-  <strong id="node-title"></strong>
-  <p id="node-desc" style="color:#aaa;margin-top:8px;"></p>
-</div>
-</section>
-
-<script>
-const GRAPH_DEFAULT_POSITIONS = {
-  "qen":    { x: 450, y: 100 },
-  "esg":    { x: 250, y: 300 },
-  "ai-act": { x: 650, y: 300 }
-};
-
-const GRAPH_COLORS = {
-  "framework": "#c8f050",
-  "concept": "#50c8f0",
-  "regulation": "#f0a050"
-};
-
-let graphState = {
-  data: null,
-  positions: {}
-};
-
-function clonePositions() {
-  return JSON.parse(JSON.stringify(GRAPH_DEFAULT_POSITIONS));
-}
-
-async function loadGraphDataPro() {
-  if (graphState.data) return graphState.data;
-  const res = await fetch("/data/graph.json");
-  if (!res.ok) throw new Error("HTTP " + res.status);
-  graphState.data = await res.json();
-  return graphState.data;
-}
-
-async function drawGraphPro() {
-  const svg = document.getElementById("graph-svg-pro");
-  svg.innerHTML = "";
-
-  try {
-    const graph = await loadGraphDataPro();
-
-    if (!Object.keys(graphState.positions).length) {
-      graphState.positions = clonePositions();
-    }
-
-    const defs = document.createElementNS("http://www.w3.org/2000/svg", "defs");
-    defs.innerHTML = `
-      <filter id="glow">
-        <feGaussianBlur stdDeviation="4" result="coloredBlur"></feGaussianBlur>
-        <feMerge>
-          <feMergeNode in="coloredBlur"></feMergeNode>
-          <feMergeNode in="SourceGraphic"></feMergeNode>
-        </feMerge>
-      </filter>
-    `;
-    svg.appendChild(defs);
-
-    (graph.edges || []).forEach(edge => {
-      const from = graphState.positions[edge.from];
-      const to = graphState.positions[edge.to];
-      if (!from || !to) return;
-
-      const line = document.createElementNS("http://www.w3.org/2000/svg", "line");
-      line.setAttribute("x1", from.x);
-      line.setAttribute("y1", from.y);
-      line.setAttribute("x2", to.x);
-      line.setAttribute("y2", to.y);
-      line.setAttribute("stroke", "#666");
-      line.setAttribute("stroke-width", "2");
-      line.setAttribute("opacity", "0.9");
-      svg.appendChild(line);
-
-      const midX = (from.x + to.x) / 2;
-      const midY = (from.y + to.y) / 2 - 10;
-
-      const edgeLabelBg = document.createElementNS("http://www.w3.org/2000/svg", "rect");
-      edgeLabelBg.setAttribute("x", midX - 44);
-      edgeLabelBg.setAttribute("y", midY - 16);
-      edgeLabelBg.setAttribute("width", "88");
-      edgeLabelBg.setAttribute("height", "24");
-      edgeLabelBg.setAttribute("rx", "4");
-      edgeLabelBg.setAttribute("fill", "#0d0d12");
-      edgeLabelBg.setAttribute("stroke", "#333");
-      svg.appendChild(edgeLabelBg);
-
-      const edgeLabel = document.createElementNS("http://www.w3.org/2000/svg", "text");
-      edgeLabel.setAttribute("x", midX);
-      edgeLabel.setAttribute("y", midY);
-      edgeLabel.setAttribute("fill", "#aaa");
-      edgeLabel.setAttribute("font-size", "13");
-      edgeLabel.setAttribute("font-family", "Arial, sans-serif");
-      edgeLabel.setAttribute("text-anchor", "middle");
-      edgeLabel.setAttribute("dominant-baseline", "middle");
-      edgeLabel.textContent = edge.type;
-      svg.appendChild(edgeLabel);
-    });
-
-    (graph.nodes || []).forEach(node => {
-      const pos = graphState.positions[node.id];
-      if (!pos) return;
-
-      const group = document.createElementNS("http://www.w3.org/2000/svg", "g");
-      group.style.cursor = "grab";
-      group.dataset.nodeId = node.id;
-
-      const glow = document.createElementNS("http://www.w3.org/2000/svg", "circle");
-      glow.setAttribute("cx", pos.x);
-      glow.setAttribute("cy", pos.y);
-      glow.setAttribute("r", "48");
-      glow.setAttribute("fill", GRAPH_COLORS[node.type] || "#999");
-      glow.setAttribute("opacity", "0.18");
-      glow.setAttribute("filter", "url(#glow)");
-      group.appendChild(glow);
-
-      const circle = document.createElementNS("http://www.w3.org/2000/svg", "circle");
-      circle.setAttribute("cx", pos.x);
-      circle.setAttribute("cy", pos.y);
-      circle.setAttribute("r", "40");
-      circle.setAttribute("fill", GRAPH_COLORS[node.type] || "#999");
-      circle.setAttribute("stroke", "#fff");
-      circle.setAttribute("stroke-width", "1.5");
-      group.appendChild(circle);
-
-      const label = document.createElementNS("http://www.w3.org/2000/svg", "text");
-      label.setAttribute("x", pos.x);
-      label.setAttribute("y", pos.y + 5);
-      label.setAttribute("fill", "#000");
-      label.setAttribute("font-size", "16");
-      label.setAttribute("font-weight", "700");
-      label.setAttribute("font-family", "Arial, sans-serif");
-      label.setAttribute("text-anchor", "middle");
-      label.textContent = node.id;
-      group.appendChild(label);
-
-      const type = document.createElementNS("http://www.w3.org/2000/svg", "text");
-      type.setAttribute("x", pos.x);
-      type.setAttribute("y", pos.y + 62);
-      type.setAttribute("fill", "#ccc");
-      type.setAttribute("font-size", "13");
-      type.setAttribute("font-family", "Arial, sans-serif");
-      type.setAttribute("text-anchor", "middle");
-      type.textContent = node.type;
-      group.appendChild(type);
-
-      enableDrag(group, node.id, svg);
-     group.addEventListener("click", () => {
-  showNodeInfo(node.id);
-});
-      svg.appendChild(group);
-    });
-
-  } catch (err) {
-    svg.innerHTML = '<text x="40" y="60" fill="#ff8080" font-size="18">Errore: ' + err.message + '</text>';
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Roberto Bob Malini",
+    "jobTitle": "AI Data Architect",
+    "url": "https://cognitivelogic.it"
   }
-}
+  </script>
 
-function resetGraphPro() {
-  graphState.positions = clonePositions();
-  drawGraphPro();
-}
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Dataset",
+    "name": "Cognitive Logic Graph",
+    "description": "AI-ready semantic graph in JSON format",
+    "url": "https://cognitivelogic.it/data/graph.json"
+  }
+  </script>
 
-function enableDrag(group, nodeId, svg) {
-  let dragging = false;
-
-  group.addEventListener("pointerdown", (event) => {
-    dragging = true;
-    group.style.cursor = "grabbing";
-    group.setPointerCapture(event.pointerId);
-  });
-
-  group.addEventListener("pointermove", (event) => {
-    if (!dragging) return;
-
-    const pt = svg.createSVGPoint();
-    pt.x = event.clientX;
-    pt.y = event.clientY;
-    const cursor = pt.matrixTransform(svg.getScreenCTM().inverse());
-
-    graphState.positions[nodeId] = {
-      x: Math.max(70, Math.min(830, cursor.x)),
-      y: Math.max(70, Math.min(390, cursor.y))
-    };
-
-    drawGraphPro();
-  });
-
-  group.addEventListener("pointerup", (event) => {
-    dragging = false;
-    group.style.cursor = "grab";
-    try { group.releasePointerCapture(event.pointerId); } catch(e) {}
-  });
-
-  group.addEventListener("pointerleave", () => {
-    if (dragging) {
-      group.style.cursor = "grabbing";
+  <style>
+    body {
+      background: #0a0a0c;
+      color: #e8e8f0;
+      font-family: Arial, sans-serif;
+      margin: 0;
     }
-  });
-}
 
-document.addEventListener("DOMContentLoaded", () => {
-  drawGraphPro();
-});
-</script>
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      padding: 15px 20px;
+      background: #0a0a0c;
+      border-bottom: 1px solid #2a2a38;
+      z-index: 1000;
+    }
+
+    nav a {
+      margin-right: 20px;
+      color: #c8f050;
+      text-decoration: none;
+      font-size: 14px;
+    }
+
+    section {
+      max-width: 1100px;
+      margin: auto;
+      padding: 80px 20px;
+    }
+
+    .hero {
+      padding-top: 120px;
+    }
+
+    .hero h1 {
+      font-size: 3rem;
+      line-height: 1.1;
+      margin-bottom: 12px;
+    }
+
+    .card {
+      border: 1px solid #2a2a38;
+      padding: 20px;
+      margin-top: 15px;
+      background: #111;
+    }
+
+    footer {
+      max-width: 1100px;
+      margin: auto;
+      padding: 40px 20px 60px;
+      color: #888;
+    }
+  </style>
+</head>
 <body>
 
-<nav>
-<a href="#filosofia">Filosofia</a>
-<a href="#qen">QEN</a>
-<a href="#articoli">Articoli</a>
-<a href="#api">API</a>
-</nav>
+  <nav>
+    <a href="#filosofia">Filosofia</a>
+    <a href="#qen">QEN</a>
+    <a href="#articoli">Articoli</a>
+    <a href="#api">API</a>
+  </nav>
 
-<section class="hero">
-<h1>I dati devono essere <em style="color:#c8f050">intelligibili</em> per gli agenti</h1>
-<p>AI Data Architecture · JSON Knowledge Graph · QEN Framework</p>
-</section>
+  <section class="hero">
+    <h1>I dati devono essere <em style="color:#c8f050">intelligibili</em> per gli agenti</h1>
+    <p>AI Data Architecture · JSON Knowledge Graph · QEN Framework</p>
+  </section>
 
-<!-- LLM BLOCK -->
-<section style="display:none;">
-<h1>Cognitive Logic</h1>
-<p>Framework for AI data architecture using JSON-based semantic graphs.</p>
-<ul>
-<li>JSON Graph instead of Neo4j</li>
-<li>LLM readable datasets</li>
-<li>QEN scoring system</li>
-</ul>
-</section>
+  <section style="display:none;">
+    <h1>Cognitive Logic</h1>
+    <p>Framework for AI data architecture using JSON-based semantic graphs.</p>
+    <ul>
+      <li>JSON Graph instead of Neo4j</li>
+      <li>LLM readable datasets</li>
+      <li>QEN scoring system</li>
+    </ul>
+  </section>
 
-<section id="filosofia">
-<h2>Filosofia</h2>
-<p>Costruisco infrastrutture dati pensate per agenti autonomi.</p>
-</section>
+  <section id="filosofia">
+    <h2>Filosofia</h2>
+    <p>Costruisco infrastrutture dati pensate per agenti autonomi.</p>
+  </section>
 
-<section id="qen">
-<h2>QEN Framework</h2>
-<p>QEN = Va*0.35 + Vs*0.40 + Vt*0.25</p>
-</section>
+  <section id="qen">
+    <h2>QEN Framework</h2>
+    <p>QEN = Va*0.35 + Vs*0.40 + Vt*0.25</p>
+  </section>
 
-<section id="articoli">
-<h2>Articoli</h2>
+  <section id="articoli">
+    <h2>Articoli</h2>
 
-<div class="card">
-<h3>AI Data Architecture</h3>
-<p>Strutturare dati per agenti autonomi</p>
-</div>
+    <div class="card">
+      <h3>AI Data Architecture</h3>
+      <p>Strutturare dati per agenti autonomi.</p>
+    </div>
 
-<div class="card">
-<h3>JSON Knowledge Graph</h3>
-<p>Alternativa a database grafi complessi</p>
-</div>
+    <div class="card">
+      <h3>JSON Knowledge Graph</h3>
+      <p>Alternativa a database grafi complessi.</p>
+    </div>
+  </section>
 
-</section>
+  <section id="api">
+    <h2>API</h2>
 
-<section id="api">
-<h2>API</h2>
+    <div class="card">GET /data/graph.json</div>
+    <div class="card">GET /data/qen.json</div>
+  </section>
 
-<div class="card">GET /data/graph.json</div>
-<div class="card">GET /data/qen.json</div>
+  <section style="max-width:1100px;margin:60px auto;padding:0 20px;">
+    <h2 style="margin-bottom:10px;">Graph Visuale Pro</h2>
+    <p style="color:#888;margin-bottom:20px;">
+      Knowledge graph interattivo con nodi trascinabili
+    </p>
 
-</section>
+    <div style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:16px;">
+      <button onclick="drawGraphPro()" style="
+        padding:10px 16px;
+        background:#c8f050;
+        color:#000;
+        border:none;
+        cursor:pointer;
+      ">Disegna Grafo</button>
 
-<footer>
-<p>© Cognitive Logic</p>
-</footer>
+      <button onclick="resetGraphPro()" style="
+        padding:10px 16px;
+        background:#222;
+        color:#c8f050;
+        border:1px solid #444;
+        cursor:pointer;
+      ">Reset</button>
+    </div>
 
-<!-- GRAPH JSON INLINE -->
-<script type="application/json" id="graph-data">
-{
- "nodes":[
-   {"id":"qen","type":"framework"},
-   {"id":"ai-act","type":"regulation"}
- ],
- "edges":[
-   {"from":"qen","to":"ai-act","type":"compliance"}
- ]
-}
-</script>
-<!-- GRAPH TEST UI + SCRIPT (ALL-IN-ONE) -->
-<section style="max-width:1100px;margin:60px auto;padding:0 20px;">
-  <h2 style="margin-bottom:10px;">Graph Console</h2>
-  <p style="color:#888;margin-bottom:20px;">
-    Test diretto del knowledge graph (LLM-ready)
-  </p>
+    <svg id="graph-svg-pro" viewBox="0 0 900 460" style="
+      width:100%;
+      background:#111;
+      border:1px solid #2a2a38;
+      min-height:460px;
+      border-radius:6px;
+    "></svg>
 
-  <div style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:15px;">
-    <button onclick="runGraph('all')" style="padding:10px 15px;background:#c8f050;color:#000;border:none;cursor:pointer;">
-      Full Graph
-    </button>
+    <div id="node-info" style="
+      max-width:1100px;
+      margin:20px auto;
+      padding:20px;
+      border:1px solid #2a2a38;
+      background:#0d0d12;
+      display:none;
+    ">
+      <strong id="node-title"></strong>
+      <p id="node-desc" style="color:#aaa;margin-top:8px;"></p>
+    </div>
+  </section>
 
-    <button onclick="runGraph('nodes')" style="padding:10px 15px;background:#222;color:#c8f050;border:1px solid #444;cursor:pointer;">
-      Nodes
-    </button>
+  <section style="max-width:1100px;margin:60px auto;padding:0 20px;">
+    <h2 style="margin-bottom:10px;">Graph Console</h2>
+    <p style="color:#888;margin-bottom:20px;">
+      Test diretto del knowledge graph (LLM-ready)
+    </p>
 
-    <button onclick="runGraph('edges')" style="padding:10px 15px;background:#222;color:#c8f050;border:1px solid #444;cursor:pointer;">
-      Edges
-    </button>
+    <div style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:15px;">
+      <button onclick="runGraph('all')" style="padding:10px 15px;background:#c8f050;color:#000;border:none;cursor:pointer;">
+        Full Graph
+      </button>
 
-    <button onclick="runGraph('qen')" style="padding:10px 15px;background:#222;color:#c8f050;border:1px solid #444;cursor:pointer;">
-      QEN Connections
-    </button>
-  </div>
+      <button onclick="runGraph('nodes')" style="padding:10px 15px;background:#222;color:#c8f050;border:1px solid #444;cursor:pointer;">
+        Nodes
+      </button>
 
-  <pre id="graph-box" style="
-    background:#111;
-    color:#e8e8f0;
-    padding:20px;
-    border:1px solid #2a2a38;
-    min-height:120px;
-    overflow:auto;
-  ">Ready.</pre>
-</section>
+      <button onclick="runGraph('edges')" style="padding:10px 15px;background:#222;color:#c8f050;border:1px solid #444;cursor:pointer;">
+        Edges
+      </button>
 
-<script>
-async function runGraph(mode){
-  const box = document.getElementById("graph-box");
-  box.textContent = "Loading...";
+      <button onclick="runGraph('qen')" style="padding:10px 15px;background:#222;color:#c8f050;border:1px solid #444;cursor:pointer;">
+        QEN Connections
+      </button>
+    </div>
 
-  try{
-    const res = await fetch("/data/graph.json");
-    const graph = await res.json();
+    <pre id="graph-box" style="
+      background:#111;
+      color:#e8e8f0;
+      padding:20px;
+      border:1px solid #2a2a38;
+      min-height:120px;
+      overflow:auto;
+    ">Ready.</pre>
+  </section>
 
-    let output;
+  <footer>
+    <p>© Cognitive Logic</p>
+  </footer>
 
-    if(mode === "nodes"){
-      output = graph.nodes;
-    }
-
-    else if(mode === "edges"){
-      output = graph.edges || [];
-    }
-
-    else if(mode === "qen"){
-      output = (graph.edges || []).filter(e => e.from === "qen");
-    }
-
-    else{
-      output = graph;
-    }
-
-    box.textContent = JSON.stringify(output, null, 2);
-
-  }catch(err){
-    box.textContent = "Error: " + err.message;
+  <script type="application/json" id="graph-data">
+  {
+    "nodes":[
+      {"id":"qen","type":"framework"},
+      {"id":"ai-act","type":"regulation"}
+    ],
+    "edges":[
+      {"from":"qen","to":"ai-act","type":"compliance"}
+    ]
   }
-}
-</script>
+  </script>
+
+  <script>
+    async function loadGraph() {
+      const res = await fetch('/data/graph.json');
+      return await res.json();
+    }
+
+    async function getConnections(nodeId) {
+      const graph = await loadGraph();
+      return (graph.edges || []).filter(e => e.from === nodeId);
+    }
+
+    window.graphAPI = {
+      getConnections
+    };
+
+    async function runGraph(mode) {
+      const box = document.getElementById("graph-box");
+      box.textContent = "Loading...";
+
+      try {
+        const res = await fetch("/data/graph.json");
+        const graph = await res.json();
+
+        let output;
+
+        if (mode === "nodes") {
+          output = graph.nodes;
+        } else if (mode === "edges") {
+          output = graph.edges || [];
+        } else if (mode === "qen") {
+          output = (graph.edges || []).filter(e => e.from === "qen");
+        } else {
+          output = graph;
+        }
+
+        box.textContent = JSON.stringify(output, null, 2);
+      } catch (err) {
+        box.textContent = "Error: " + err.message;
+      }
+    }
+
+    const GRAPH_DEFAULT_POSITIONS = {
+      "qen":    { x: 450, y: 100 },
+      "esg":    { x: 250, y: 300 },
+      "ai-act": { x: 650, y: 300 }
+    };
+
+    const GRAPH_COLORS = {
+      "framework": "#c8f050",
+      "concept": "#50c8f0",
+      "regulation": "#f0a050"
+    };
+
+    const NODE_INFO = {
+      "qen": {
+        title: "QEN Framework",
+        desc: "Sistema di scoring etico per ESG e AI governance."
+      },
+      "esg": {
+        title: "ESG Concept",
+        desc: "Environmental, Social, Governance metrics."
+      },
+      "ai-act": {
+        title: "EU AI Act",
+        desc: "Regolamentazione europea per sistemi di intelligenza artificiale."
+      }
+    };
+
+    let graphState = {
+      data: null,
+      positions: {}
+    };
+
+    function showNodeInfo(id) {
+      const box = document.getElementById("node-info");
+      const title = document.getElementById("node-title");
+      const desc = document.getElementById("node-desc");
+
+      if (!box || !title || !desc) return;
+
+      const data = NODE_INFO[id];
+      if (!data) return;
+
+      title.textContent = data.title;
+      desc.textContent = data.desc;
+      box.style.display = "block";
+    }
+
+    function clonePositions() {
+      return JSON.parse(JSON.stringify(GRAPH_DEFAULT_POSITIONS));
+    }
+
+    async function loadGraphDataPro() {
+      if (graphState.data) return graphState.data;
+      const res = await fetch("/data/graph.json");
+      if (!res.ok) throw new Error("HTTP " + res.status);
+      graphState.data = await res.json();
+      return graphState.data;
+    }
+
+    async function drawGraphPro() {
+      const svg = document.getElementById("graph-svg-pro");
+      svg.innerHTML = "";
+
+      try {
+        const graph = await loadGraphDataPro();
+
+        if (!Object.keys(graphState.positions).length) {
+          graphState.positions = clonePositions();
+        }
+
+        const defs = document.createElementNS("http://www.w3.org/2000/svg", "defs");
+        defs.innerHTML = `
+          <filter id="glow">
+            <feGaussianBlur stdDeviation="4" result="coloredBlur"></feGaussianBlur>
+            <feMerge>
+              <feMergeNode in="coloredBlur"></feMergeNode>
+              <feMergeNode in="SourceGraphic"></feMergeNode>
+            </feMerge>
+          </filter>
+        `;
+        svg.appendChild(defs);
+
+        (graph.edges || []).forEach(edge => {
+          const from = graphState.positions[edge.from];
+          const to = graphState.positions[edge.to];
+          if (!from || !to) return;
+
+          const line = document.createElementNS("http://www.w3.org/2000/svg", "line");
+          line.setAttribute("x1", from.x);
+          line.setAttribute("y1", from.y);
+          line.setAttribute("x2", to.x);
+          line.setAttribute("y2", to.y);
+          line.setAttribute("stroke", "#666");
+          line.setAttribute("stroke-width", "2");
+          line.setAttribute("opacity", "0.9");
+          svg.appendChild(line);
+
+          const midX = (from.x + to.x) / 2;
+          const midY = (from.y + to.y) / 2 - 10;
+
+          const edgeLabelBg = document.createElementNS("http://www.w3.org/2000/svg", "rect");
+          edgeLabelBg.setAttribute("x", midX - 44);
+          edgeLabelBg.setAttribute("y", midY - 16);
+          edgeLabelBg.setAttribute("width", "88");
+          edgeLabelBg.setAttribute("height", "24");
+          edgeLabelBg.setAttribute("rx", "4");
+          edgeLabelBg.setAttribute("fill", "#0d0d12");
+          edgeLabelBg.setAttribute("stroke", "#333");
+          svg.appendChild(edgeLabelBg);
+
+          const edgeLabel = document.createElementNS("http://www.w3.org/2000/svg", "text");
+          edgeLabel.setAttribute("x", midX);
+          edgeLabel.setAttribute("y", midY);
+          edgeLabel.setAttribute("fill", "#aaa");
+          edgeLabel.setAttribute("font-size", "13");
+          edgeLabel.setAttribute("font-family", "Arial, sans-serif");
+          edgeLabel.setAttribute("text-anchor", "middle");
+          edgeLabel.setAttribute("dominant-baseline", "middle");
+          edgeLabel.textContent = edge.type;
+          svg.appendChild(edgeLabel);
+        });
+
+        (graph.nodes || []).forEach(node => {
+          const pos = graphState.positions[node.id];
+          if (!pos) return;
+
+          const group = document.createElementNS("http://www.w3.org/2000/svg", "g");
+          group.style.cursor = "grab";
+          group.dataset.nodeId = node.id;
+
+          const glow = document.createElementNS("http://www.w3.org/2000/svg", "circle");
+          glow.setAttribute("cx", pos.x);
+          glow.setAttribute("cy", pos.y);
+          glow.setAttribute("r", "48");
+          glow.setAttribute("fill", GRAPH_COLORS[node.type] || "#999");
+          glow.setAttribute("opacity", "0.18");
+          glow.setAttribute("filter", "url(#glow)");
+          group.appendChild(glow);
+
+          const circle = document.createElementNS("http://www.w3.org/2000/svg", "circle");
+          circle.setAttribute("cx", pos.x);
+          circle.setAttribute("cy", pos.y);
+          circle.setAttribute("r", "40");
+          circle.setAttribute("fill", GRAPH_COLORS[node.type] || "#999");
+          circle.setAttribute("stroke", "#fff");
+          circle.setAttribute("stroke-width", "1.5");
+          group.appendChild(circle);
+
+          const label = document.createElementNS("http://www.w3.org/2000/svg", "text");
+          label.setAttribute("x", pos.x);
+          label.setAttribute("y", pos.y + 5);
+          label.setAttribute("fill", "#000");
+          label.setAttribute("font-size", "16");
+          label.setAttribute("font-weight", "700");
+          label.setAttribute("font-family", "Arial, sans-serif");
+          label.setAttribute("text-anchor", "middle");
+          label.textContent = node.id;
+          group.appendChild(label);
+
+          const type = document.createElementNS("http://www.w3.org/2000/svg", "text");
+          type.setAttribute("x", pos.x);
+          type.setAttribute("y", pos.y + 62);
+          type.setAttribute("fill", "#ccc");
+          type.setAttribute("font-size", "13");
+          type.setAttribute("font-family", "Arial, sans-serif");
+          type.setAttribute("text-anchor", "middle");
+          type.textContent = node.type;
+          group.appendChild(type);
+
+          enableDrag(group, node.id, svg);
+          group.addEventListener("click", () => {
+            showNodeInfo(node.id);
+          });
+
+          svg.appendChild(group);
+        });
+
+      } catch (err) {
+        svg.innerHTML = '<text x="40" y="60" fill="#ff8080" font-size="18">Errore: ' + err.message + '</text>';
+      }
+    }
+
+    function resetGraphPro() {
+      graphState.positions = clonePositions();
+      drawGraphPro();
+    }
+
+    function enableDrag(group, nodeId, svg) {
+      let dragging = false;
+
+      group.addEventListener("pointerdown", (event) => {
+        dragging = true;
+        group.style.cursor = "grabbing";
+        group.setPointerCapture(event.pointerId);
+      });
+
+      group.addEventListener("pointermove", (event) => {
+        if (!dragging) return;
+
+        const pt = svg.createSVGPoint();
+        pt.x = event.clientX;
+        pt.y = event.clientY;
+        const cursor = pt.matrixTransform(svg.getScreenCTM().inverse());
+
+        graphState.positions[nodeId] = {
+          x: Math.max(70, Math.min(830, cursor.x)),
+          y: Math.max(70, Math.min(390, cursor.y))
+        };
+
+        drawGraphPro();
+      });
+
+      group.addEventListener("pointerup", (event) => {
+        dragging = false;
+        group.style.cursor = "grab";
+        try { group.releasePointerCapture(event.pointerId); } catch (e) {}
+      });
+
+      group.addEventListener("pointerleave", () => {
+        if (dragging) {
+          group.style.cursor = "grabbing";
+        }
+      });
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+      drawGraphPro();
+    });
+  </script>
 </body>
 </html>
