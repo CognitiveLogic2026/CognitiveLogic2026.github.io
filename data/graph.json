@@ -1,0 +1,6 @@
+{
+ "nodes":[
+   {"id":"qen","type":"framework"},
+   {"id":"esg","type":"concept"}
+ ]
+}
