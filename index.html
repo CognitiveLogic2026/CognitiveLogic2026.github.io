@@ -88,6 +88,235 @@ window.graphAPI = {
   getConnections
 };
 </script>
+ <section style="max-width:1100px;margin:60px auto;padding:0 20px;">
+  <h2 style="margin-bottom:10px;">Graph Visuale Pro</h2>
+  <p style="color:#888;margin-bottom:20px;">
+    Knowledge graph interattivo con nodi trascinabili
+  </p>
+
+  <div style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:16px;">
+    <button onclick="drawGraphPro()" style="
+      padding:10px 16px;
+      background:#c8f050;
+      color:#000;
+      border:none;
+      cursor:pointer;
+    ">Disegna Grafo</button>
+
+    <button onclick="resetGraphPro()" style="
+      padding:10px 16px;
+      background:#222;
+      color:#c8f050;
+      border:1px solid #444;
+      cursor:pointer;
+    ">Reset</button>
+  </div>
+
+  <svg id="graph-svg-pro" viewBox="0 0 900 460" style="
+    width:100%;
+    background:#111;
+    border:1px solid #2a2a38;
+    min-height:460px;
+    border-radius:6px;
+  "></svg>
+</section>
+
+<script>
+const GRAPH_DEFAULT_POSITIONS = {
+  "qen":    { x: 450, y: 100 },
+  "esg":    { x: 250, y: 300 },
+  "ai-act": { x: 650, y: 300 }
+};
+
+const GRAPH_COLORS = {
+  "framework": "#c8f050",
+  "concept": "#50c8f0",
+  "regulation": "#f0a050"
+};
+
+let graphState = {
+  data: null,
+  positions: {}
+};
+
+function clonePositions() {
+  return JSON.parse(JSON.stringify(GRAPH_DEFAULT_POSITIONS));
+}
+
+async function loadGraphDataPro() {
+  if (graphState.data) return graphState.data;
+  const res = await fetch("/data/graph.json");
+  if (!res.ok) throw new Error("HTTP " + res.status);
+  graphState.data = await res.json();
+  return graphState.data;
+}
+
+async function drawGraphPro() {
+  const svg = document.getElementById("graph-svg-pro");
+  svg.innerHTML = "";
+
+  try {
+    const graph = await loadGraphDataPro();
+
+    if (!Object.keys(graphState.positions).length) {
+      graphState.positions = clonePositions();
+    }
+
+    const defs = document.createElementNS("http://www.w3.org/2000/svg", "defs");
+    defs.innerHTML = `
+      <filter id="glow">
+        <feGaussianBlur stdDeviation="4" result="coloredBlur"></feGaussianBlur>
+        <feMerge>
+          <feMergeNode in="coloredBlur"></feMergeNode>
+          <feMergeNode in="SourceGraphic"></feMergeNode>
+        </feMerge>
+      </filter>
+    `;
+    svg.appendChild(defs);
+
+    (graph.edges || []).forEach(edge => {
+      const from = graphState.positions[edge.from];
+      const to = graphState.positions[edge.to];
+      if (!from || !to) return;
+
+      const line = document.createElementNS("http://www.w3.org/2000/svg", "line");
+      line.setAttribute("x1", from.x);
+      line.setAttribute("y1", from.y);
+      line.setAttribute("x2", to.x);
+      line.setAttribute("y2", to.y);
+      line.setAttribute("stroke", "#666");
+      line.setAttribute("stroke-width", "2");
+      line.setAttribute("opacity", "0.9");
+      svg.appendChild(line);
+
+      const midX = (from.x + to.x) / 2;
+      const midY = (from.y + to.y) / 2 - 10;
+
+      const edgeLabelBg = document.createElementNS("http://www.w3.org/2000/svg", "rect");
+      edgeLabelBg.setAttribute("x", midX - 44);
+      edgeLabelBg.setAttribute("y", midY - 16);
+      edgeLabelBg.setAttribute("width", "88");
+      edgeLabelBg.setAttribute("height", "24");
+      edgeLabelBg.setAttribute("rx", "4");
+      edgeLabelBg.setAttribute("fill", "#0d0d12");
+      edgeLabelBg.setAttribute("stroke", "#333");
+      svg.appendChild(edgeLabelBg);
+
+      const edgeLabel = document.createElementNS("http://www.w3.org/2000/svg", "text");
+      edgeLabel.setAttribute("x", midX);
+      edgeLabel.setAttribute("y", midY);
+      edgeLabel.setAttribute("fill", "#aaa");
+      edgeLabel.setAttribute("font-size", "13");
+      edgeLabel.setAttribute("font-family", "Arial, sans-serif");
+      edgeLabel.setAttribute("text-anchor", "middle");
+      edgeLabel.setAttribute("dominant-baseline", "middle");
+      edgeLabel.textContent = edge.type;
+      svg.appendChild(edgeLabel);
+    });
+
+    (graph.nodes || []).forEach(node => {
+      const pos = graphState.positions[node.id];
+      if (!pos) return;
+
+      const group = document.createElementNS("http://www.w3.org/2000/svg", "g");
+      group.style.cursor = "grab";
+      group.dataset.nodeId = node.id;
+
+      const glow = document.createElementNS("http://www.w3.org/2000/svg", "circle");
+      glow.setAttribute("cx", pos.x);
+      glow.setAttribute("cy", pos.y);
+      glow.setAttribute("r", "48");
+      glow.setAttribute("fill", GRAPH_COLORS[node.type] || "#999");
+      glow.setAttribute("opacity", "0.18");
+      glow.setAttribute("filter", "url(#glow)");
+      group.appendChild(glow);
+
+      const circle = document.createElementNS("http://www.w3.org/2000/svg", "circle");
+      circle.setAttribute("cx", pos.x);
+      circle.setAttribute("cy", pos.y);
+      circle.setAttribute("r", "40");
+      circle.setAttribute("fill", GRAPH_COLORS[node.type] || "#999");
+      circle.setAttribute("stroke", "#fff");
+      circle.setAttribute("stroke-width", "1.5");
+      group.appendChild(circle);
+
+      const label = document.createElementNS("http://www.w3.org/2000/svg", "text");
+      label.setAttribute("x", pos.x);
+      label.setAttribute("y", pos.y + 5);
+      label.setAttribute("fill", "#000");
+      label.setAttribute("font-size", "16");
+      label.setAttribute("font-weight", "700");
+      label.setAttribute("font-family", "Arial, sans-serif");
+      label.setAttribute("text-anchor", "middle");
+      label.textContent = node.id;
+      group.appendChild(label);
+
+      const type = document.createElementNS("http://www.w3.org/2000/svg", "text");
+      type.setAttribute("x", pos.x);
+      type.setAttribute("y", pos.y + 62);
+      type.setAttribute("fill", "#ccc");
+      type.setAttribute("font-size", "13");
+      type.setAttribute("font-family", "Arial, sans-serif");
+      type.setAttribute("text-anchor", "middle");
+      type.textContent = node.type;
+      group.appendChild(type);
+
+      enableDrag(group, node.id, svg);
+      svg.appendChild(group);
+    });
+
+  } catch (err) {
+    svg.innerHTML = '<text x="40" y="60" fill="#ff8080" font-size="18">Errore: ' + err.message + '</text>';
+  }
+}
+
+function resetGraphPro() {
+  graphState.positions = clonePositions();
+  drawGraphPro();
+}
+
+function enableDrag(group, nodeId, svg) {
+  let dragging = false;
+
+  group.addEventListener("pointerdown", (event) => {
+    dragging = true;
+    group.style.cursor = "grabbing";
+    group.setPointerCapture(event.pointerId);
+  });
+
+  group.addEventListener("pointermove", (event) => {
+    if (!dragging) return;
+
+    const pt = svg.createSVGPoint();
+    pt.x = event.clientX;
+    pt.y = event.clientY;
+    const cursor = pt.matrixTransform(svg.getScreenCTM().inverse());
+
+    graphState.positions[nodeId] = {
+      x: Math.max(70, Math.min(830, cursor.x)),
+      y: Math.max(70, Math.min(390, cursor.y))
+    };
+
+    drawGraphPro();
+  });
+
+  group.addEventListener("pointerup", (event) => {
+    dragging = false;
+    group.style.cursor = "grab";
+    try { group.releasePointerCapture(event.pointerId); } catch(e) {}
+  });
+
+  group.addEventListener("pointerleave", () => {
+    if (dragging) {
+      group.style.cursor = "grabbing";
+    }
+  });
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+  drawGraphPro();
+});
+</script>
 <body>
 
 <nav>
