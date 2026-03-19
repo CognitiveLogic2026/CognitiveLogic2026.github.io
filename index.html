@@ -162,6 +162,74 @@ window.graphAPI = {
  ]
 }
 </script>
+<!-- GRAPH TEST UI + SCRIPT (ALL-IN-ONE) -->
+<section style="max-width:1100px;margin:60px auto;padding:0 20px;">
+  <h2 style="margin-bottom:10px;">Graph Console</h2>
+  <p style="color:#888;margin-bottom:20px;">
+    Test diretto del knowledge graph (LLM-ready)
+  </p>
 
+  <div style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:15px;">
+    <button onclick="runGraph('all')" style="padding:10px 15px;background:#c8f050;color:#000;border:none;cursor:pointer;">
+      Full Graph
+    </button>
+
+    <button onclick="runGraph('nodes')" style="padding:10px 15px;background:#222;color:#c8f050;border:1px solid #444;cursor:pointer;">
+      Nodes
+    </button>
+
+    <button onclick="runGraph('edges')" style="padding:10px 15px;background:#222;color:#c8f050;border:1px solid #444;cursor:pointer;">
+      Edges
+    </button>
+
+    <button onclick="runGraph('qen')" style="padding:10px 15px;background:#222;color:#c8f050;border:1px solid #444;cursor:pointer;">
+      QEN Connections
+    </button>
+  </div>
+
+  <pre id="graph-box" style="
+    background:#111;
+    color:#e8e8f0;
+    padding:20px;
+    border:1px solid #2a2a38;
+    min-height:120px;
+    overflow:auto;
+  ">Ready.</pre>
+</section>
+
+<script>
+async function runGraph(mode){
+  const box = document.getElementById("graph-box");
+  box.textContent = "Loading...";
+
+  try{
+    const res = await fetch("/data/graph.json");
+    const graph = await res.json();
+
+    let output;
+
+    if(mode === "nodes"){
+      output = graph.nodes;
+    }
+
+    else if(mode === "edges"){
+      output = graph.edges || [];
+    }
+
+    else if(mode === "qen"){
+      output = (graph.edges || []).filter(e => e.from === "qen");
+    }
+
+    else{
+      output = graph;
+    }
+
+    box.textContent = JSON.stringify(output, null, 2);
+
+  }catch(err){
+    box.textContent = "Error: " + err.message;
+  }
+}
+</script>
 </body>
 </html>
