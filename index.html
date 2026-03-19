@@ -1,212 +1,613 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cognitive Logic — AI Data Architecture</title>
+  <meta name="description" content="AI Data Architecture, Knowledge Graph JSON e QEN Framework per agenti autonomi." />
+  <meta name="ai-readable" content="true" />
+  <meta name="llm-optimized" content="semantic-structured-data" />
+  <link rel="canonical" href="https://cognitivelogic.it/" />
 
-<title>Cognitive Logic — AI Data Architecture</title>
+  <style>
+    :root{
+      --bg:#0a0a0c;
+      --bg2:#111116;
+      --panel:#12121a;
+      --border:#2a2a38;
+      --text:#e8e8f0;
+      --muted:#8b8b98;
+      --accent:#c8f050;
+      --accent2:#50c8f0;
+      --accent3:#f0a050;
+      --danger:#ff8080;
+    }
 
-<meta name="description" content="AI Data Architecture, Knowledge Graph JSON e QEN Framework per agenti autonomi.">
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      background:var(--bg);
+      color:var(--text);
+      font-family:Arial, sans-serif;
+    }
 
-<style>
-body{
-  background:#0a0a0c;
-  color:#e8e8f0;
-  font-family:Arial;
-  margin:0;
-}
+    nav{
+      position:fixed;
+      top:0;
+      left:0;
+      right:0;
+      z-index:1000;
+      padding:16px 20px;
+      background:rgba(10,10,12,.92);
+      border-bottom:1px solid var(--border);
+      backdrop-filter:blur(8px);
+    }
 
-nav{
-  position:fixed;
-  top:0;
-  width:100%;
-  padding:15px;
-  background:#0a0a0c;
-}
+    nav a{
+      margin-right:20px;
+      color:var(--accent);
+      text-decoration:none;
+      font-size:15px;
+    }
 
-nav a{
-  margin-right:20px;
-  color:#c8f050;
-  text-decoration:none;
-}
+    section{
+      max-width:1100px;
+      margin:auto;
+      padding:80px 20px;
+    }
 
-section{
-  max-width:1100px;
-  margin:auto;
-  padding:80px 20px;
-}
+    .hero{
+      padding-top:120px;
+    }
 
-.hero{
-  padding-top:120px;
-}
+    .hero h1{
+      margin:0 0 14px 0;
+      font-size:clamp(2.2rem, 6vw, 4.3rem);
+      line-height:1.05;
+      letter-spacing:-0.03em;
+    }
 
-.card{
-  border:1px solid #2a2a38;
-  padding:20px;
-  margin-top:15px;
-}
-</style>
+    .hero p{
+      color:var(--muted);
+      font-size:1.05rem;
+    }
+
+    h2{
+      margin:0 0 14px 0;
+      font-size:2rem;
+    }
+
+    .card{
+      background:var(--bg2);
+      border:1px solid var(--border);
+      padding:20px;
+      margin-top:15px;
+    }
+
+    .graph-wrap{
+      margin-top:20px;
+    }
+
+    .controls{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      margin-bottom:16px;
+    }
+
+    .btn{
+      padding:11px 16px;
+      border:1px solid var(--border);
+      cursor:pointer;
+      background:#222;
+      color:var(--text);
+      border-radius:6px;
+    }
+
+    .btn-primary{
+      background:var(--accent);
+      color:#000;
+      border-color:var(--accent);
+      font-weight:700;
+    }
+
+    .btn:hover{
+      opacity:.95;
+      transform:translateY(-1px);
+    }
+
+    .graph-shell{
+      background:linear-gradient(180deg, #0f0f15 0%, #0b0b10 100%);
+      border:1px solid var(--border);
+      border-radius:10px;
+      overflow:hidden;
+    }
+
+    #graph{
+      width:100%;
+      min-height:520px;
+      display:block;
+      background:
+        radial-gradient(circle at center, rgba(200,240,80,.04), transparent 35%),
+        linear-gradient(rgba(255,255,255,.02) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.02) 1px, transparent 1px);
+      background-size:auto, 40px 40px, 40px 40px;
+    }
+
+    .graph-meta{
+      display:grid;
+      grid-template-columns:1.2fr .8fr;
+      gap:18px;
+      margin-top:18px;
+    }
+
+    .panel{
+      background:var(--panel);
+      border:1px solid var(--border);
+      border-radius:10px;
+      padding:18px;
+    }
+
+    .panel h3{
+      margin:0 0 8px 0;
+      font-size:1.15rem;
+    }
+
+    .panel p{
+      margin:0;
+      color:var(--muted);
+      line-height:1.6;
+    }
+
+    .legend{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      margin-top:10px;
+    }
+
+    .tag{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:8px 10px;
+      border:1px solid var(--border);
+      border-radius:999px;
+      color:var(--muted);
+      font-size:.92rem;
+    }
+
+    .dot{
+      width:10px;
+      height:10px;
+      border-radius:50%;
+      display:inline-block;
+    }
+
+    .console-box{
+      margin-top:18px;
+      background:#0f0f14;
+      color:var(--text);
+      padding:18px;
+      border:1px solid var(--border);
+      border-radius:10px;
+      min-height:120px;
+      overflow:auto;
+      white-space:pre-wrap;
+    }
+
+    .small{
+      font-size:.92rem;
+      color:var(--muted);
+    }
+
+    footer{
+      max-width:1100px;
+      margin:auto;
+      padding:40px 20px 70px;
+      color:var(--muted);
+    }
+
+    @media (max-width: 840px){
+      .graph-meta{
+        grid-template-columns:1fr;
+      }
+    }
+  </style>
 </head>
-
 <body>
 
-<nav>
-<a href="#filosofia">Filosofia</a>
-<a href="#qen">QEN</a>
-<a href="#articoli">Articoli</a>
-<a href="#api">API</a>
-</nav>
+  <nav>
+    <a href="#filosofia">Filosofia</a>
+    <a href="#qen">QEN</a>
+    <a href="#articoli">Articoli</a>
+    <a href="#api">API</a>
+    <a href="#grafo">Grafo</a>
+  </nav>
 
-<section class="hero">
-<h1>I dati devono essere <span style="color:#c8f050">intelligibili</span> per gli agenti</h1>
-<p>AI Data Architecture · JSON Knowledge Graph · QEN Framework</p>
-</section>
+  <section class="hero">
+    <h1>I dati devono essere <span style="color:var(--accent)">intelligibili</span> per gli agenti</h1>
+    <p>AI Data Architecture · JSON Knowledge Graph · QEN Framework</p>
+  </section>
 
-<section id="filosofia">
-<h2>Filosofia</h2>
-<p>Costruisco infrastrutture dati pensate per agenti autonomi.</p>
-</section>
+  <section id="filosofia">
+    <h2>Filosofia</h2>
+    <p class="small">Costruisco infrastrutture dati pensate per agenti autonomi.</p>
+  </section>
 
-<section id="qen">
-<h2>QEN Framework</h2>
-<p>QEN = Va*0.35 + Vs*0.40 + Vt*0.25</p>
-</section>
+  <section id="qen">
+    <h2>QEN Framework</h2>
+    <p class="small">QEN = Va×0.35 + Vs×0.40 + Vt×0.25</p>
+  </section>
 
-<section id="articoli">
-<h2>Articoli</h2>
-<div class="card">AI Data Architecture</div>
-<div class="card">JSON Knowledge Graph</div>
-</section>
+  <section id="articoli">
+    <h2>Articoli</h2>
+    <div class="card">AI Data Architecture</div>
+    <div class="card">JSON Knowledge Graph</div>
+  </section>
 
-<section id="api">
-<h2>API</h2>
-<div class="card">GET /data/graph.json</div>
-</section>
+  <section id="api">
+    <h2>API</h2>
+    <div class="card">GET /data/graph.json</div>
+    <div class="card">GET /data/qen.json</div>
+  </section>
 
-<!-- GRAPH -->
-<section>
-<h2>Graph Visuale Pro</h2>
+  <section id="grafo">
+    <h2>Graph Visuale Pro</h2>
+    <p class="small">Knowledge graph interattivo con nodi trascinabili, info panel e query di base.</p>
 
-<button onclick="drawGraph()">Disegna</button>
-<button onclick="resetGraph()">Reset</button>
+    <div class="graph-wrap">
+      <div class="controls">
+        <button class="btn btn-primary" onclick="drawGraph()">Disegna grafo</button>
+        <button class="btn" onclick="resetGraph()">Reset</button>
+        <button class="btn" onclick="showAll()">Full graph</button>
+        <button class="btn" onclick="showOnlyNodes()">Nodes</button>
+        <button class="btn" onclick="showOnlyEdges()">Edges</button>
+        <button class="btn" onclick="showQenConnections()">QEN connections</button>
+      </div>
 
-<svg id="graph" viewBox="0 0 900 460" style="
-width:100%;
-background:#111;
-border:1px solid #2a2a38;
-min-height:460px;"></svg>
+      <div class="graph-shell">
+        <svg id="graph" viewBox="0 0 1000 520" aria-label="Knowledge graph"></svg>
+      </div>
 
-<div id="node-info" style="
-margin-top:20px;
-padding:20px;
-border:1px solid #2a2a38;
-display:none;">
-<strong id="node-title"></strong>
-<p id="node-desc"></p>
-</div>
-</section>
+      <div class="graph-meta">
+        <div class="panel" id="node-info">
+          <h3 id="node-title">Nodo selezionato</h3>
+          <p id="node-desc">Clicca un nodo per vedere dettagli e relazioni.</p>
+          <div class="legend">
+            <span class="tag"><span class="dot" style="background:var(--accent)"></span> framework</span>
+            <span class="tag"><span class="dot" style="background:var(--accent2)"></span> concept</span>
+            <span class="tag"><span class="dot" style="background:var(--accent3)"></span> regulation</span>
+          </div>
+        </div>
 
-<script>
+        <div class="panel">
+          <h3>Graph Console</h3>
+          <p class="small">Output diretto del knowledge graph per debug e test LLM-ready.</p>
+          <pre id="graph-box" class="console-box">Ready.</pre>
+        </div>
+      </div>
+    </div>
+  </section>
 
-const GRAPH = {
- nodes:[
-  {id:"qen",type:"framework"},
-  {id:"esg",type:"concept"},
-  {id:"ai-act",type:"regulation"}
- ],
- edges:[
-  {from:"qen",to:"esg",type:"scoring"},
-  {from:"qen",to:"ai-act",type:"compliance"}
- ]
-};
+  <footer>
+    © Cognitive Logic
+  </footer>
 
-const COLORS = {
- framework:"#c8f050",
- concept:"#50c8f0",
- regulation:"#f0a050"
-};
+  <script>
+    const GRAPH_COLORS = {
+      framework: "#c8f050",
+      concept: "#50c8f0",
+      regulation: "#f0a050"
+    };
 
-const INFO = {
- qen:{title:"QEN Framework",desc:"Sistema scoring etico"},
- esg:{title:"ESG",desc:"Environmental Social Governance"},
- "ai-act":{title:"AI Act",desc:"Regolazione EU AI"}
-};
+    const NODE_INFO_FALLBACK = {
+      "qen": {
+        title: "QEN Framework",
+        desc: "Sistema di scoring etico per ESG e AI governance."
+      },
+      "esg": {
+        title: "ESG Concept",
+        desc: "Environmental, Social and Governance metrics."
+      },
+      "ai-act": {
+        title: "EU AI Act",
+        desc: "Regolamentazione europea per sistemi di intelligenza artificiale."
+      }
+    };
 
-let pos = {
- qen:{x:450,y:100},
- esg:{x:250,y:300},
- "ai-act":{x:650,y:300}
-};
+    const DEFAULT_POSITIONS = {
+      "qen": { x: 500, y: 110 },
+      "esg": { x: 270, y: 340 },
+      "ai-act": { x: 730, y: 340 }
+    };
 
-function drawGraph(){
- const svg=document.getElementById("graph");
- svg.innerHTML="";
+    let graphData = null;
+    let graphPositions = {};
+    let activeNodeId = null;
+    let dragState = {
+      dragging: false,
+      nodeId: null,
+      moved: false
+    };
 
- GRAPH.edges.forEach(e=>{
-  let a=pos[e.from];
-  let b=pos[e.to];
+    async function loadGraph() {
+      if (graphData) return graphData;
+      const res = await fetch("/data/graph.json");
+      if (!res.ok) throw new Error("HTTP " + res.status);
+      graphData = await res.json();
+      return graphData;
+    }
 
-  let line=document.createElementNS("http://www.w3.org/2000/svg","line");
-  line.setAttribute("x1",a.x);
-  line.setAttribute("y1",a.y);
-  line.setAttribute("x2",b.x);
-  line.setAttribute("y2",b.y);
-  line.setAttribute("stroke","#666");
-  svg.appendChild(line);
- });
+    function resetPositions() {
+      graphPositions = JSON.parse(JSON.stringify(DEFAULT_POSITIONS));
+    }
 
- GRAPH.nodes.forEach(n=>{
-  let g=document.createElementNS("http://www.w3.org/2000/svg","g");
+    function ensurePositions(nodes) {
+      nodes.forEach(node => {
+        if (!graphPositions[node.id]) {
+          graphPositions[node.id] = { x: 500, y: 260 };
+        }
+      });
+    }
 
-  let circle=document.createElementNS("http://www.w3.org/2000/svg","circle");
-  circle.setAttribute("cx",pos[n.id].x);
-  circle.setAttribute("cy",pos[n.id].y);
-  circle.setAttribute("r",40);
-  circle.setAttribute("fill",COLORS[n.type]);
+    function getNodeInfo(node) {
+      const fallback = NODE_INFO_FALLBACK[node.id];
+      if (fallback) return fallback;
+      return {
+        title: node.id,
+        desc: "Nodo del knowledge graph."
+      };
+    }
 
-  let text=document.createElementNS("http://www.w3.org/2000/svg","text");
-  text.setAttribute("x",pos[n.id].x);
-  text.setAttribute("y",pos[n.id].y+5);
-  text.setAttribute("text-anchor","middle");
-  text.textContent=n.id;
+    function showNodeInfo(node) {
+      const title = document.getElementById("node-title");
+      const desc = document.getElementById("node-desc");
+      const edges = (graphData?.edges || []).filter(e => e.from === node.id || e.to === node.id);
 
-  g.appendChild(circle);
-  g.appendChild(text);
+      const base = getNodeInfo(node);
+      const relationText = edges.length
+        ? " Relazioni: " + edges.map(e => `${e.from} → ${e.to} (${e.type})`).join(" · ")
+        : "";
 
-  let moved=false;
+      title.textContent = base.title;
+      desc.textContent = base.desc + relationText;
+      activeNodeId = node.id;
+      drawGraph();
+    }
 
-  g.addEventListener("pointerdown",()=>moved=false);
+    function getSvg() {
+      return document.getElementById("graph");
+    }
 
-  g.addEventListener("pointermove",(e)=>{
-    moved=true;
-    pos[n.id]={x:e.offsetX,y:e.offsetY};
-    drawGraph();
-  });
+    function svgPoint(svg, clientX, clientY) {
+      const pt = svg.createSVGPoint();
+      pt.x = clientX;
+      pt.y = clientY;
+      return pt.matrixTransform(svg.getScreenCTM().inverse());
+    }
 
-  g.addEventListener("click",()=>{
-    if(moved) return;
+    function clamp(val, min, max) {
+      return Math.max(min, Math.min(max, val));
+    }
 
-    document.getElementById("node-title").textContent=INFO[n.id].title;
-    document.getElementById("node-desc").textContent=INFO[n.id].desc;
-    document.getElementById("node-info").style.display="block";
-  });
+    function createSvgEl(name, attrs = {}) {
+      const el = document.createElementNS("http://www.w3.org/2000/svg", name);
+      Object.entries(attrs).forEach(([k, v]) => el.setAttribute(k, v));
+      return el;
+    }
 
-  svg.appendChild(g);
- });
-}
+    function drawGraph() {
+      const svg = getSvg();
+      if (!svg || !graphData) return;
 
-function resetGraph(){
- pos={
-  qen:{x:450,y:100},
-  esg:{x:250,y:300},
-  "ai-act":{x:650,y:300}
- };
- drawGraph();
-}
+      svg.innerHTML = "";
 
-drawGraph();
+      const defs = createSvgEl("defs");
+      defs.innerHTML = `
+        <filter id="nodeGlow">
+          <feGaussianBlur stdDeviation="5" result="blur"></feGaussianBlur>
+          <feMerge>
+            <feMergeNode in="blur"></feMergeNode>
+            <feMergeNode in="SourceGraphic"></feMergeNode>
+          </feMerge>
+        </filter>
+      `;
+      svg.appendChild(defs);
 
-</script>
+      const edges = graphData.edges || [];
+      const nodes = graphData.nodes || [];
 
+      edges.forEach(edge => {
+        const from = graphPositions[edge.from];
+        const to = graphPositions[edge.to];
+        if (!from || !to) return;
+
+        const line = createSvgEl("line", {
+          x1: from.x,
+          y1: from.y,
+          x2: to.x,
+          y2: to.y,
+          stroke: "#666",
+          "stroke-width": "2.5"
+        });
+        svg.appendChild(line);
+
+        const mx = (from.x + to.x) / 2;
+        const my = (from.y + to.y) / 2 - 10;
+
+        const bg = createSvgEl("rect", {
+          x: mx - 48,
+          y: my - 14,
+          width: 96,
+          height: 24,
+          rx: 4,
+          fill: "#0d0d12",
+          stroke: "#333"
+        });
+        svg.appendChild(bg);
+
+        const text = createSvgEl("text", {
+          x: mx,
+          y: my + 1,
+          fill: "#aaa",
+          "font-size": "13",
+          "font-family": "Arial, sans-serif",
+          "text-anchor": "middle",
+          "dominant-baseline": "middle"
+        });
+        text.textContent = edge.type;
+        svg.appendChild(text);
+      });
+
+      nodes.forEach(node => {
+        const pos = graphPositions[node.id];
+        if (!pos) return;
+
+        const group = createSvgEl("g");
+        group.style.cursor = dragState.dragging && dragState.nodeId === node.id ? "grabbing" : "grab";
+
+        const isActive = activeNodeId === node.id;
+        const nodeColor = GRAPH_COLORS[node.type] || "#999";
+
+        const glow = createSvgEl("circle", {
+          cx: pos.x,
+          cy: pos.y,
+          r: isActive ? 56 : 50,
+          fill: nodeColor,
+          opacity: isActive ? "0.28" : "0.16",
+          filter: "url(#nodeGlow)"
+        });
+        group.appendChild(glow);
+
+        const circle = createSvgEl("circle", {
+          cx: pos.x,
+          cy: pos.y,
+          r: isActive ? 44 : 40,
+          fill: nodeColor,
+          stroke: isActive ? "#ffffff" : "#e8e8f0",
+          "stroke-width": isActive ? "3" : "2"
+        });
+        group.appendChild(circle);
+
+        const label = createSvgEl("text", {
+          x: pos.x,
+          y: pos.y + 5,
+          fill: "#000",
+          "font-size": "16",
+          "font-weight": "700",
+          "font-family": "Arial, sans-serif",
+          "text-anchor": "middle"
+        });
+        label.textContent = node.id;
+        group.appendChild(label);
+
+        const type = createSvgEl("text", {
+          x: pos.x,
+          y: pos.y + 67,
+          fill: isActive ? "#fff" : "#ccc",
+          "font-size": "13",
+          "font-family": "Arial, sans-serif",
+          "text-anchor": "middle"
+        });
+        type.textContent = node.type;
+        group.appendChild(type);
+
+        group.addEventListener("pointerdown", (event) => {
+          dragState.dragging = true;
+          dragState.nodeId = node.id;
+          dragState.moved = false;
+          group.setPointerCapture(event.pointerId);
+        });
+
+        group.addEventListener("pointermove", (event) => {
+          if (!dragState.dragging || dragState.nodeId !== node.id) return;
+          dragState.moved = true;
+          const p = svgPoint(svg, event.clientX, event.clientY);
+          graphPositions[node.id] = {
+            x: clamp(p.x, 70, 930),
+            y: clamp(p.y, 70, 450)
+          };
+          drawGraph();
+        });
+
+        group.addEventListener("pointerup", (event) => {
+          const wasMoved = dragState.moved;
+          dragState.dragging = false;
+          dragState.nodeId = null;
+          dragState.moved = false;
+          try { group.releasePointerCapture(event.pointerId); } catch(e) {}
+
+          if (!wasMoved) {
+            showNodeInfo(node);
+          }
+        });
+
+        group.addEventListener("pointerleave", () => {
+          if (!dragState.dragging) return;
+        });
+
+        svg.appendChild(group);
+      });
+    }
+
+    async function showAll() {
+      const graph = await loadGraph();
+      document.getElementById("graph-box").textContent = JSON.stringify(graph, null, 2);
+    }
+
+    async function showOnlyNodes() {
+      const graph = await loadGraph();
+      document.getElementById("graph-box").textContent = JSON.stringify(graph.nodes || [], null, 2);
+    }
+
+    async function showOnlyEdges() {
+      const graph = await loadGraph();
+      document.getElementById("graph-box").textContent = JSON.stringify(graph.edges || [], null, 2);
+    }
+
+    async function showQenConnections() {
+      const graph = await loadGraph();
+      const output = (graph.edges || []).filter(e => e.from === "qen" || e.to === "qen");
+      document.getElementById("graph-box").textContent = JSON.stringify(output, null, 2);
+    }
+
+    async function resetGraph() {
+      if (!graphData) {
+        await initGraph();
+        return;
+      }
+      resetPositions();
+      activeNodeId = null;
+      document.getElementById("node-title").textContent = "Nodo selezionato";
+      document.getElementById("node-desc").textContent = "Clicca un nodo per vedere dettagli e relazioni.";
+      drawGraph();
+    }
+
+    async function initGraph() {
+      try {
+        const graph = await loadGraph();
+        ensurePositions(graph.nodes || []);
+        resetPositions();
+        drawGraph();
+        document.getElementById("graph-box").textContent = "Ready.";
+      } catch (err) {
+        const svg = getSvg();
+        svg.innerHTML = "";
+        const text = createSvgEl("text", {
+          x: 40,
+          y: 60,
+          fill: "#ff8080",
+          "font-size": "18"
+        });
+        text.textContent = "Errore: " + err.message;
+        svg.appendChild(text);
+        document.getElementById("graph-box").textContent = "Errore: " + err.message;
+      }
+    }
+
+    document.addEventListener("DOMContentLoaded", initGraph);
+  </script>
 </body>
 </html>
