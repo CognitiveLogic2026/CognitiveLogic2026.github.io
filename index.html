@@ -3,611 +3,537 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Cognitive Logic — AI Data Architecture</title>
-  <meta name="description" content="AI Data Architecture, Knowledge Graph JSON e QEN Framework per agenti autonomi." />
-  <meta name="ai-readable" content="true" />
-  <meta name="llm-optimized" content="semantic-structured-data" />
-  <link rel="canonical" href="https://cognitivelogic.it/" />
+  <title>Cognitive Logic — QEN Framework</title>
+  <meta name="description" content="Cognitive Logic sviluppa QEN Framework: infrastruttura computabile per AI governance, compliance UE, explainability e auditabilità dei sistemi intelligenti." />
+  <meta name="keywords" content="AI governance, AI Act, compliance UE, knowledge graph, explainable AI, audit AI, QEN Framework, Cognitive Logic" />
+  <meta name="author" content="Cognitive Logic" />
+  <link rel="canonical" href="https://cognitivelogic.it" />
+
+  <meta property="og:title" content="Cognitive Logic — QEN Framework" />
+  <meta property="og:description" content="Infrastruttura computabile per AI governance, compliance e decisioni verificabili." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://cognitivelogic.it" />
 
   <style>
-    :root{
-      --bg:#0a0a0c;
-      --bg2:#111116;
-      --panel:#12121a;
-      --border:#2a2a38;
-      --text:#e8e8f0;
-      --muted:#8b8b98;
-      --accent:#c8f050;
-      --accent2:#50c8f0;
-      --accent3:#f0a050;
-      --danger:#ff8080;
+    :root {
+      --bg: #07070b;
+      --panel: #101018;
+      --panel-2: #14141f;
+      --text: #f3f4f6;
+      --muted: #b6b8c3;
+      --line: rgba(255,255,255,0.08);
+      --accent: #8b5cf6;
+      --accent-2: #22d3ee;
+      --success: #34d399;
+      --max: 1180px;
+      --radius: 18px;
+      --shadow: 0 20px 60px rgba(0,0,0,0.35);
     }
 
-    *{box-sizing:border-box}
-    html{scroll-behavior:smooth}
-    body{
-      margin:0;
-      background:var(--bg);
-      color:var(--text);
-      font-family:Arial, sans-serif;
-    }
-
-    nav{
-      position:fixed;
-      top:0;
-      left:0;
-      right:0;
-      z-index:1000;
-      padding:16px 20px;
-      background:rgba(10,10,12,.92);
-      border-bottom:1px solid var(--border);
-      backdrop-filter:blur(8px);
-    }
-
-    nav a{
-      margin-right:20px;
-      color:var(--accent);
-      text-decoration:none;
-      font-size:15px;
-    }
-
-    section{
-      max-width:1100px;
-      margin:auto;
-      padding:80px 20px;
-    }
-
-    .hero{
-      padding-top:120px;
-    }
-
-    .hero h1{
-      margin:0 0 14px 0;
-      font-size:clamp(2.2rem, 6vw, 4.3rem);
-      line-height:1.05;
-      letter-spacing:-0.03em;
-    }
-
-    .hero p{
-      color:var(--muted);
-      font-size:1.05rem;
-    }
-
-    h2{
-      margin:0 0 14px 0;
-      font-size:2rem;
-    }
-
-    .card{
-      background:var(--bg2);
-      border:1px solid var(--border);
-      padding:20px;
-      margin-top:15px;
-    }
-
-    .graph-wrap{
-      margin-top:20px;
-    }
-
-    .controls{
-      display:flex;
-      gap:10px;
-      flex-wrap:wrap;
-      margin-bottom:16px;
-    }
-
-    .btn{
-      padding:11px 16px;
-      border:1px solid var(--border);
-      cursor:pointer;
-      background:#222;
-      color:var(--text);
-      border-radius:6px;
-    }
-
-    .btn-primary{
-      background:var(--accent);
-      color:#000;
-      border-color:var(--accent);
-      font-weight:700;
-    }
-
-    .btn:hover{
-      opacity:.95;
-      transform:translateY(-1px);
-    }
-
-    .graph-shell{
-      background:linear-gradient(180deg, #0f0f15 0%, #0b0b10 100%);
-      border:1px solid var(--border);
-      border-radius:10px;
-      overflow:hidden;
-    }
-
-    #graph{
-      width:100%;
-      min-height:520px;
-      display:block;
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Inter, Roboto, Arial, sans-serif;
       background:
-        radial-gradient(circle at center, rgba(200,240,80,.04), transparent 35%),
-        linear-gradient(rgba(255,255,255,.02) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255,255,255,.02) 1px, transparent 1px);
-      background-size:auto, 40px 40px, 40px 40px;
+        radial-gradient(circle at top left, rgba(139,92,246,0.18), transparent 30%),
+        radial-gradient(circle at top right, rgba(34,211,238,0.12), transparent 28%),
+        linear-gradient(180deg, #05050a 0%, #0a0a12 100%);
+      color: var(--text);
+      line-height: 1.6;
     }
 
-    .graph-meta{
-      display:grid;
-      grid-template-columns:1.2fr .8fr;
-      gap:18px;
-      margin-top:18px;
+    a { color: inherit; text-decoration: none; }
+
+    .container {
+      width: min(92%, var(--max));
+      margin: 0 auto;
     }
 
-    .panel{
-      background:var(--panel);
-      border:1px solid var(--border);
-      border-radius:10px;
-      padding:18px;
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      backdrop-filter: blur(14px);
+      background: rgba(7,7,11,0.72);
+      border-bottom: 1px solid var(--line);
     }
 
-    .panel h3{
-      margin:0 0 8px 0;
-      font-size:1.15rem;
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 18px 0;
     }
 
-    .panel p{
-      margin:0;
-      color:var(--muted);
-      line-height:1.6;
+    .brand {
+      font-weight: 700;
+      letter-spacing: 0.2px;
+      font-size: 1.05rem;
     }
 
-    .legend{
-      display:flex;
-      gap:10px;
-      flex-wrap:wrap;
-      margin-top:10px;
+    .brand span {
+      color: var(--accent-2);
     }
 
-    .tag{
-      display:inline-flex;
-      align-items:center;
-      gap:8px;
-      padding:8px 10px;
-      border:1px solid var(--border);
-      border-radius:999px;
-      color:var(--muted);
-      font-size:.92rem;
+    .nav-links {
+      display: flex;
+      gap: 22px;
+      align-items: center;
+      color: var(--muted);
+      font-size: 0.95rem;
     }
 
-    .dot{
-      width:10px;
-      height:10px;
-      border-radius:50%;
-      display:inline-block;
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 13px 20px;
+      border-radius: 999px;
+      font-weight: 600;
+      transition: 0.25s ease;
+      border: 1px solid transparent;
     }
 
-    .console-box{
-      margin-top:18px;
-      background:#0f0f14;
-      color:var(--text);
-      padding:18px;
-      border:1px solid var(--border);
-      border-radius:10px;
-      min-height:120px;
-      overflow:auto;
-      white-space:pre-wrap;
+    .btn-primary {
+      background: linear-gradient(90deg, var(--accent), var(--accent-2));
+      color: white;
+      box-shadow: var(--shadow);
     }
 
-    .small{
-      font-size:.92rem;
-      color:var(--muted);
+    .btn-primary:hover {
+      transform: translateY(-1px);
+      opacity: 0.95;
     }
 
-    footer{
-      max-width:1100px;
-      margin:auto;
-      padding:40px 20px 70px;
-      color:var(--muted);
+    .btn-secondary {
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,0.02);
+      color: var(--text);
     }
 
-    @media (max-width: 840px){
-      .graph-meta{
-        grid-template-columns:1fr;
+    .hero {
+      padding: 90px 0 60px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 36px;
+      align-items: center;
+    }
+
+    .eyebrow {
+      display: inline-block;
+      padding: 8px 14px;
+      border: 1px solid rgba(139,92,246,0.28);
+      background: rgba(139,92,246,0.08);
+      border-radius: 999px;
+      color: #d6c7ff;
+      font-size: 0.85rem;
+      margin-bottom: 18px;
+    }
+
+    h1 {
+      font-size: clamp(2.4rem, 5vw, 4.4rem);
+      line-height: 1.05;
+      margin: 0 0 20px;
+      letter-spacing: -0.03em;
+    }
+
+    .hero p {
+      font-size: 1.12rem;
+      color: var(--muted);
+      max-width: 760px;
+      margin: 0 0 28px;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      margin-bottom: 28px;
+    }
+
+    .hero-points {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      color: #d7dae2;
+      font-size: 0.95rem;
+    }
+
+    .hero-points span {
+      padding: 8px 12px;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid var(--line);
+      border-radius: 999px;
+    }
+
+    .hero-card {
+      background: linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.02));
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      padding: 28px;
+      box-shadow: var(--shadow);
+    }
+
+    .hero-card h3 {
+      margin-top: 0;
+      font-size: 1.1rem;
+    }
+
+    .hero-card .mini {
+      color: var(--muted);
+      font-size: 0.95rem;
+      margin-bottom: 16px;
+    }
+
+    .stack {
+      display: grid;
+      gap: 12px;
+    }
+
+    .stack .item {
+      padding: 14px 16px;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      background: rgba(255,255,255,0.02);
+    }
+
+    .stack .item strong {
+      display: block;
+      margin-bottom: 4px;
+    }
+
+    section {
+      padding: 42px 0;
+    }
+
+    .section-title {
+      font-size: clamp(1.7rem, 3vw, 2.6rem);
+      margin: 0 0 12px;
+      letter-spacing: -0.02em;
+    }
+
+    .section-lead {
+      color: var(--muted);
+      max-width: 820px;
+      margin: 0 0 28px;
+      font-size: 1.04rem;
+    }
+
+    .grid-3, .grid-4, .grid-2 {
+      display: grid;
+      gap: 18px;
+    }
+
+    .grid-3 { grid-template-columns: repeat(3, 1fr); }
+    .grid-4 { grid-template-columns: repeat(4, 1fr); }
+    .grid-2 { grid-template-columns: repeat(2, 1fr); }
+
+    .card {
+      background: linear-gradient(180deg, rgba(255,255,255,0.035), rgba(255,255,255,0.02));
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 24px;
+    }
+
+    .card h3, .card h4 {
+      margin-top: 0;
+      margin-bottom: 10px;
+    }
+
+    .card p {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    .tag {
+      display: inline-block;
+      margin-bottom: 12px;
+      color: var(--success);
+      font-size: 0.85rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    .steps .card {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .steps .num {
+      font-size: 2rem;
+      font-weight: 800;
+      opacity: 0.16;
+      position: absolute;
+      top: 14px;
+      right: 18px;
+    }
+
+    .cta {
+      padding: 72px 0 90px;
+    }
+
+    .cta-box {
+      background: linear-gradient(135deg, rgba(139,92,246,0.16), rgba(34,211,238,0.1));
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 26px;
+      padding: 36px;
+      box-shadow: var(--shadow);
+    }
+
+    .cta-box p {
+      color: var(--muted);
+      max-width: 760px;
+    }
+
+    footer {
+      padding: 26px 0 40px;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    @media (max-width: 980px) {
+      .hero-grid, .grid-4, .grid-3, .grid-2 {
+        grid-template-columns: 1fr;
+      }
+
+      .nav-links {
+        display: none;
+      }
+
+      .hero {
+        padding-top: 64px;
       }
     }
   </style>
+
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"Organization",
+    "name":"Cognitive Logic",
+    "url":"https://cognitivelogic.it",
+    "description":"Cognitive Logic sviluppa infrastrutture computabili per AI governance, compliance e auditabilità dei sistemi intelligenti.",
+    "foundingArea":"AI Governance",
+    "brand":"QEN Framework"
+  }
+  </script>
 </head>
 <body>
 
-  <nav>
-    <a href="#filosofia">Filosofia</a>
-    <a href="#qen">QEN</a>
-    <a href="#articoli">Articoli</a>
-    <a href="#api">API</a>
-    <a href="#grafo">Grafo</a>
-  </nav>
+  <header>
+    <div class="container nav">
+      <div class="brand">Cognitive <span>Logic</span></div>
+      <nav class="nav-links">
+        <a href="#product">Prodotto</a>
+        <a href="#how">Come funziona</a>
+        <a href="#use-cases">Use case</a>
+        <a href="#contact">Contatto</a>
+      </nav>
+    </div>
+  </header>
 
-  <section class="hero">
-    <h1>I dati devono essere <span style="color:var(--accent)">intelligibili</span> per gli agenti</h1>
-    <p>AI Data Architecture · JSON Knowledge Graph · QEN Framework</p>
-  </section>
+  <main>
+    <section class="hero">
+      <div class="container hero-grid">
+        <div>
+          <div class="eyebrow">AI Governance Infrastructure</div>
+          <h1>Trasformiamo regole, rischi e controlli in logica computabile</h1>
+          <p>
+            Cognitive Logic sviluppa <strong>QEN Framework</strong>, un’infrastruttura per rappresentare
+            compliance, governance e decisioni AI in modo strutturato, verificabile e leggibile da sistemi software,
+            agenti intelligenti e workflow aziendali.
+          </p>
 
-  <section id="filosofia">
-    <h2>Filosofia</h2>
-    <p class="small">Costruisco infrastrutture dati pensate per agenti autonomi.</p>
-  </section>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#contact">Richiedi una demo</a>
+            <a class="btn btn-secondary" href="#product">Scopri il framework</a>
+          </div>
 
-  <section id="qen">
-    <h2>QEN Framework</h2>
-    <p class="small">QEN = Va×0.35 + Vs×0.40 + Vt×0.25</p>
-  </section>
-
-  <section id="articoli">
-    <h2>Articoli</h2>
-    <div class="card">AI Data Architecture</div>
-    <div class="card">JSON Knowledge Graph</div>
-  </section>
-
-  <section id="api">
-    <h2>API</h2>
-    <div class="card">GET /data/graph.json</div>
-    <div class="card">GET /data/qen.json</div>
-  </section>
-
-  <section id="grafo">
-    <h2>Graph Visuale Pro</h2>
-    <p class="small">Knowledge graph interattivo con nodi trascinabili, info panel e query di base.</p>
-
-    <div class="graph-wrap">
-      <div class="controls">
-        <button class="btn btn-primary" onclick="drawGraph()">Disegna grafo</button>
-        <button class="btn" onclick="resetGraph()">Reset</button>
-        <button class="btn" onclick="showAll()">Full graph</button>
-        <button class="btn" onclick="showOnlyNodes()">Nodes</button>
-        <button class="btn" onclick="showOnlyEdges()">Edges</button>
-        <button class="btn" onclick="showQenConnections()">QEN connections</button>
-      </div>
-
-      <div class="graph-shell">
-        <svg id="graph" viewBox="0 0 1000 520" aria-label="Knowledge graph"></svg>
-      </div>
-
-      <div class="graph-meta">
-        <div class="panel" id="node-info">
-          <h3 id="node-title">Nodo selezionato</h3>
-          <p id="node-desc">Clicca un nodo per vedere dettagli e relazioni.</p>
-          <div class="legend">
-            <span class="tag"><span class="dot" style="background:var(--accent)"></span> framework</span>
-            <span class="tag"><span class="dot" style="background:var(--accent2)"></span> concept</span>
-            <span class="tag"><span class="dot" style="background:var(--accent3)"></span> regulation</span>
+          <div class="hero-points">
+            <span>AI Act Ready</span>
+            <span>Explainable by Design</span>
+            <span>Auditabile</span>
+            <span>Knowledge Graph Native</span>
           </div>
         </div>
 
-        <div class="panel">
-          <h3>Graph Console</h3>
-          <p class="small">Output diretto del knowledge graph per debug e test LLM-ready.</p>
-          <pre id="graph-box" class="console-box">Ready.</pre>
+        <div class="hero-card">
+          <h3>QEN Framework</h3>
+          <div class="mini">Dal testo normativo alla decisione verificabile</div>
+          <div class="stack">
+            <div class="item">
+              <strong>Norme e policy</strong>
+              Regolamenti, controlli, requisiti, principi e regole operative.
+            </div>
+            <div class="item">
+              <strong>Motore logico</strong>
+              Collegamento tra rischio, obblighi, evidenze, dataset, modelli e decisioni.
+            </div>
+            <div class="item">
+              <strong>Output operativo</strong>
+              Compliance intelligence, audit trail, explainability e supporto alle decisioni.
+            </div>
+          </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
+
+    <section id="product">
+      <div class="container">
+        <h2 class="section-title">Un framework per rendere la compliance computabile</h2>
+        <p class="section-lead">
+          Oggi la governance AI è spesso dispersa tra documenti, policy, fogli di calcolo e interpretazioni manuali.
+          QEN Framework costruisce una base logica unica, dove ogni regola può essere collegata a rischi, controlli,
+          responsabilità, sistemi e decisioni.
+        </p>
+
+        <div class="grid-3">
+          <div class="card">
+            <div class="tag">Problema</div>
+            <h3>Compliance frammentata</h3>
+            <p>
+              Le organizzazioni non hanno una struttura unica che colleghi norme, processi, dataset, modelli e obblighi.
+            </p>
+          </div>
+          <div class="card">
+            <div class="tag">Soluzione</div>
+            <h3>Knowledge layer operativo</h3>
+            <p>
+              QEN organizza la governance come una rete logica interrogabile, leggibile e integrabile nei flussi digitali.
+            </p>
+          </div>
+          <div class="card">
+            <div class="tag">Valore</div>
+            <h3>Decisioni verificabili</h3>
+            <p>
+              Ogni valutazione può essere ricondotta a regole, controlli, evidenze e responsabilità esplicite.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="how">
+      <div class="container">
+        <h2 class="section-title">Come funziona</h2>
+        <p class="section-lead">
+          Il framework trasforma la governance da documentazione passiva a infrastruttura attiva.
+        </p>
+
+        <div class="grid-4 steps">
+          <div class="card">
+            <div class="num">01</div>
+            <h4>Mappatura</h4>
+            <p>Raccoglie principi, regolazioni, controlli, rischi, dataset, algoritmi e use case.</p>
+          </div>
+          <div class="card">
+            <div class="num">02</div>
+            <h4>Relazioni logiche</h4>
+            <p>Collega obblighi e requisiti alle componenti reali di un sistema AI o di un processo.</p>
+          </div>
+          <div class="card">
+            <div class="num">03</div>
+            <h4>Reasoning</h4>
+            <p>Permette interrogazioni semantiche, spiegazioni, gap analysis e supporto decisionale.</p>
+          </div>
+          <div class="card">
+            <div class="num">04</div>
+            <h4>Output di prodotto</h4>
+            <p>Genera dashboard, audit trail, report, API e layer per AI governance operativa.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="use-cases">
+      <div class="container">
+        <h2 class="section-title">Use case</h2>
+        <p class="section-lead">
+          QEN può diventare il nucleo logico di prodotti e servizi ad alto valore in ambito enterprise e regolato.
+        </p>
+
+        <div class="grid-2">
+          <div class="card">
+            <h3>AI Compliance Copilot</h3>
+            <p>
+              Assistente che risponde a domande su rischi, obblighi, controlli mancanti e requisiti normativi
+              basandosi su una struttura verificabile.
+            </p>
+          </div>
+          <div class="card">
+            <h3>Audit & Gap Analysis</h3>
+            <p>
+              Identificazione automatica di controlli assenti, dipendenze normative e punti critici di conformità.
+            </p>
+          </div>
+          <div class="card">
+            <h3>Explainable Decision Layer</h3>
+            <p>
+              Ogni output può essere accompagnato da una spiegazione fondata su relazioni logiche esplicite.
+            </p>
+          </div>
+          <div class="card">
+            <h3>Governance API</h3>
+            <p>
+              Integrazione del layer normativo e decisionale dentro piattaforme, dashboard, applicazioni e workflow.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <h2 class="section-title">Per chi è pensato</h2>
+        <p class="section-lead">
+          Il framework è pensato per organizzazioni che devono gestire sistemi intelligenti con standard più alti di trasparenza, controllo e responsabilità.
+        </p>
+
+        <div class="grid-3">
+          <div class="card">
+            <h3>PMI e startup AI</h3>
+            <p>Per trasformare governance e compliance in una base strutturata fin dall’inizio.</p>
+          </div>
+          <div class="card">
+            <h3>Consulenza e legal-tech</h3>
+            <p>Per offrire strumenti verificabili, non solo documenti statici e checklist.</p>
+          </div>
+          <div class="card">
+            <h3>Enterprise e settori regolati</h3>
+            <p>Per creare un livello unificato tra policy, rischio, explainability e auditabilità.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta" id="contact">
+      <div class="container">
+        <div class="cta-box">
+          <h2 class="section-title">Dalla governance teorica al prodotto operativo</h2>
+          <p>
+            Cognitive Logic costruisce infrastrutture AI-native per rendere norme, controlli e decisioni
+            tracciabili, interrogabili e integrabili nei sistemi reali.
+          </p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="mailto:info@cognitivelogic.it">Contatta Cognitive Logic</a>
+            <a class="btn btn-secondary" href="https://cognitivelogic.it">cognitivelogic.it</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
 
   <footer>
-    © Cognitive Logic
+    <div class="container">
+      © 2026 Cognitive Logic — QEN Framework · AI Governance Infrastructure
+    </div>
   </footer>
 
-  <script>
-    const GRAPH_COLORS = {
-      framework: "#c8f050",
-      concept: "#50c8f0",
-      regulation: "#f0a050"
-    };
-
-    const NODE_INFO_FALLBACK = {
-      "qen": {
-        title: "QEN Framework",
-        desc: "Sistema di scoring etico per ESG e AI governance."
-      },
-      "esg": {
-        title: "ESG Concept",
-        desc: "Environmental, Social and Governance metrics."
-      },
-      "ai-act": {
-        title: "EU AI Act",
-        desc: "Regolamentazione europea per sistemi di intelligenza artificiale."
-      }
-    };
-
-    const DEFAULT_POSITIONS = {
-      "qen": { x: 500, y: 110 },
-      "esg": { x: 270, y: 340 },
-      "ai-act": { x: 730, y: 340 }
-    };
-
-    let graphData = null;
-    let graphPositions = {};
-    let activeNodeId = null;
-    let dragState = {
-      dragging: false,
-      nodeId: null,
-      moved: false
-    };
-
-    async function loadGraph() {
-      if (graphData) return graphData;
-      const res = await fetch("/data/graph.json");
-      if (!res.ok) throw new Error("HTTP " + res.status);
-      graphData = await res.json();
-      return graphData;
-    }
-
-    function resetPositions() {
-      graphPositions = JSON.parse(JSON.stringify(DEFAULT_POSITIONS));
-    }
-
-    function ensurePositions(nodes) {
-      nodes.forEach(node => {
-        if (!graphPositions[node.id]) {
-          graphPositions[node.id] = { x: 500, y: 260 };
-        }
-      });
-    }
-
-    function getNodeInfo(node) {
-      const fallback = NODE_INFO_FALLBACK[node.id];
-      if (fallback) return fallback;
-      return {
-        title: node.id,
-        desc: "Nodo del knowledge graph."
-      };
-    }
-
-    function showNodeInfo(node) {
-      const title = document.getElementById("node-title");
-      const desc = document.getElementById("node-desc");
-      const edges = (graphData?.edges || []).filter(e => e.from === node.id || e.to === node.id);
-
-      const base = getNodeInfo(node);
-      const relationText = edges.length
-        ? " Relazioni: " + edges.map(e => `${e.from} → ${e.to} (${e.type})`).join(" · ")
-        : "";
-
-      title.textContent = base.title;
-      desc.textContent = base.desc + relationText;
-      activeNodeId = node.id;
-      drawGraph();
-    }
-
-    function getSvg() {
-      return document.getElementById("graph");
-    }
-
-    function svgPoint(svg, clientX, clientY) {
-      const pt = svg.createSVGPoint();
-      pt.x = clientX;
-      pt.y = clientY;
-      return pt.matrixTransform(svg.getScreenCTM().inverse());
-    }
-
-    function clamp(val, min, max) {
-      return Math.max(min, Math.min(max, val));
-    }
-
-    function createSvgEl(name, attrs = {}) {
-      const el = document.createElementNS("http://www.w3.org/2000/svg", name);
-      Object.entries(attrs).forEach(([k, v]) => el.setAttribute(k, v));
-      return el;
-    }
-
-    function drawGraph() {
-      const svg = getSvg();
-      if (!svg || !graphData) return;
-
-      svg.innerHTML = "";
-
-      const defs = createSvgEl("defs");
-      defs.innerHTML = `
-        <filter id="nodeGlow">
-          <feGaussianBlur stdDeviation="5" result="blur"></feGaussianBlur>
-          <feMerge>
-            <feMergeNode in="blur"></feMergeNode>
-            <feMergeNode in="SourceGraphic"></feMergeNode>
-          </feMerge>
-        </filter>
-      `;
-      svg.appendChild(defs);
-
-      const edges = graphData.edges || [];
-      const nodes = graphData.nodes || [];
-
-      edges.forEach(edge => {
-        const from = graphPositions[edge.from];
-        const to = graphPositions[edge.to];
-        if (!from || !to) return;
-
-        const line = createSvgEl("line", {
-          x1: from.x,
-          y1: from.y,
-          x2: to.x,
-          y2: to.y,
-          stroke: "#666",
-          "stroke-width": "2.5"
-        });
-        svg.appendChild(line);
-
-        const mx = (from.x + to.x) / 2;
-        const my = (from.y + to.y) / 2 - 10;
-
-        const bg = createSvgEl("rect", {
-          x: mx - 48,
-          y: my - 14,
-          width: 96,
-          height: 24,
-          rx: 4,
-          fill: "#0d0d12",
-          stroke: "#333"
-        });
-        svg.appendChild(bg);
-
-        const text = createSvgEl("text", {
-          x: mx,
-          y: my + 1,
-          fill: "#aaa",
-          "font-size": "13",
-          "font-family": "Arial, sans-serif",
-          "text-anchor": "middle",
-          "dominant-baseline": "middle"
-        });
-        text.textContent = edge.type;
-        svg.appendChild(text);
-      });
-
-      nodes.forEach(node => {
-        const pos = graphPositions[node.id];
-        if (!pos) return;
-
-        const group = createSvgEl("g");
-        group.style.cursor = dragState.dragging && dragState.nodeId === node.id ? "grabbing" : "grab";
-
-        const isActive = activeNodeId === node.id;
-        const nodeColor = GRAPH_COLORS[node.type] || "#999";
-
-        const glow = createSvgEl("circle", {
-          cx: pos.x,
-          cy: pos.y,
-          r: isActive ? 56 : 50,
-          fill: nodeColor,
-          opacity: isActive ? "0.28" : "0.16",
-          filter: "url(#nodeGlow)"
-        });
-        group.appendChild(glow);
-
-        const circle = createSvgEl("circle", {
-          cx: pos.x,
-          cy: pos.y,
-          r: isActive ? 44 : 40,
-          fill: nodeColor,
-          stroke: isActive ? "#ffffff" : "#e8e8f0",
-          "stroke-width": isActive ? "3" : "2"
-        });
-        group.appendChild(circle);
-
-        const label = createSvgEl("text", {
-          x: pos.x,
-          y: pos.y + 5,
-          fill: "#000",
-          "font-size": "16",
-          "font-weight": "700",
-          "font-family": "Arial, sans-serif",
-          "text-anchor": "middle"
-        });
-        label.textContent = node.id;
-        group.appendChild(label);
-
-        const type = createSvgEl("text", {
-          x: pos.x,
-          y: pos.y + 67,
-          fill: isActive ? "#fff" : "#ccc",
-          "font-size": "13",
-          "font-family": "Arial, sans-serif",
-          "text-anchor": "middle"
-        });
-        type.textContent = node.type;
-        group.appendChild(type);
-
-        group.addEventListener("pointerdown", (event) => {
-          dragState.dragging = true;
-          dragState.nodeId = node.id;
-          dragState.moved = false;
-          group.setPointerCapture(event.pointerId);
-        });
-
-        group.addEventListener("pointermove", (event) => {
-          if (!dragState.dragging || dragState.nodeId !== node.id) return;
-          dragState.moved = true;
-          const p = svgPoint(svg, event.clientX, event.clientY);
-          graphPositions[node.id] = {
-            x: clamp(p.x, 70, 930),
-            y: clamp(p.y, 70, 450)
-          };
-          drawGraph();
-        });
-
-        group.addEventListener("pointerup", (event) => {
-          const wasMoved = dragState.moved;
-          dragState.dragging = false;
-          dragState.nodeId = null;
-          dragState.moved = false;
-          try { group.releasePointerCapture(event.pointerId); } catch(e) {}
-
-          if (!wasMoved) {
-            showNodeInfo(node);
-          }
-        });
-
-        group.addEventListener("pointerleave", () => {
-          if (!dragState.dragging) return;
-        });
-
-        svg.appendChild(group);
-      });
-    }
-
-    async function showAll() {
-      const graph = await loadGraph();
-      document.getElementById("graph-box").textContent = JSON.stringify(graph, null, 2);
-    }
-
-    async function showOnlyNodes() {
-      const graph = await loadGraph();
-      document.getElementById("graph-box").textContent = JSON.stringify(graph.nodes || [], null, 2);
-    }
-
-    async function showOnlyEdges() {
-      const graph = await loadGraph();
-      document.getElementById("graph-box").textContent = JSON.stringify(graph.edges || [], null, 2);
-    }
-
-    async function showQenConnections() {
-      const graph = await loadGraph();
-      const output = (graph.edges || []).filter(e => e.from === "qen" || e.to === "qen");
-      document.getElementById("graph-box").textContent = JSON.stringify(output, null, 2);
-    }
-
-    async function resetGraph() {
-      if (!graphData) {
-        await initGraph();
-        return;
-      }
-      resetPositions();
-      activeNodeId = null;
-      document.getElementById("node-title").textContent = "Nodo selezionato";
-      document.getElementById("node-desc").textContent = "Clicca un nodo per vedere dettagli e relazioni.";
-      drawGraph();
-    }
-
-    async function initGraph() {
-      try {
-        const graph = await loadGraph();
-        ensurePositions(graph.nodes || []);
-        resetPositions();
-        drawGraph();
-        document.getElementById("graph-box").textContent = "Ready.";
-      } catch (err) {
-        const svg = getSvg();
-        svg.innerHTML = "";
-        const text = createSvgEl("text", {
-          x: 40,
-          y: 60,
-          fill: "#ff8080",
-          "font-size": "18"
-        });
-        text.textContent = "Errore: " + err.message;
-        svg.appendChild(text);
-        document.getElementById("graph-box").textContent = "Errore: " + err.message;
-      }
-    }
-
-    document.addEventListener("DOMContentLoaded", initGraph);
-  </script>
 </body>
 </html>
