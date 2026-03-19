@@ -73,7 +73,21 @@ section{
 }
 </style>
 </head>
+<script>
+async function loadGraph(){
+  const res = await fetch('/data/graph.json');
+  return await res.json();
+}
 
+async function getConnections(nodeId){
+  const graph = await loadGraph();
+  return graph.edges.filter(e => e.from === nodeId);
+}
+
+window.graphAPI = {
+  getConnections
+};
+</script>
 <body>
 
 <nav>
