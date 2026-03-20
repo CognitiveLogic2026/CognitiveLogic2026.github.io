@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cognitive Logic — AI Compliance Copilot</title>
+  <style>
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", sans-serif;
+      background:
+        radial-gradient(circle at top, rgba(0, 140, 255, 0.16), transparent 35%),
+        radial-gradient(circle at bottom, rgba(150, 0, 255, 0.16), transparent 35%),
+        #05070b;
+      color: #f5f7fb;
+      min-height: 100vh;
+    }
+
+    .wrap {
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 48px 20px 80px;
+    }
+
+    .hero {
+      text-align: center;
+      margin-bottom: 32px;
+    }
+
+    .eyebrow {
+      display: inline-block;
+      padding: 8px 14px;
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 999px;
+      background: rgba(255,255,255,0.04);
+      color: #c8d2e6;
+      font-size: 13px;
+      letter-spacing: 0.2px;
+      margin-bottom: 18px;
+    }
+
+    h1 {
+      margin: 0 0 14px;
+      font-size: clamp(34px, 6vw, 62px);
+      line-height: 1.02;
+      letter-spacing: -0.03em;
+    }
+
+    .lead {
+      max-width: 760px;
+      margin: 0 auto;
+      color: #aab4c8;
+      font-size: 18px;
+      line-height: 1.6;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 22px;
+      margin-top: 34px;
+    }
+
+    .panel {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.10);
+      border-radius: 24px;
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      box-shadow: 0 20px 50px rgba(0,0,0,0.28);
+      padding: 24px;
+    }
+
+    .panel h2 {
+      margin: 0 0 18px;
+      font-size: 20px;
+      letter-spacing: -0.02em;
+    }
+
+    label {
+      display: block;
+      margin: 14px 0 8px;
+      color: #d6deee;
+      font-size: 14px;
+    }
+
+    input[type="text"], select {
+      width: 100%;
+      border: 1px solid rgba(255,255,255,0.10);
+      background: rgba(7, 10, 16, 0.85);
+      color: #fff;
+      border-radius: 14px;
+      padding: 14px 14px;
+      font-size: 15px;
+      outline: none;
+    }
+
+    input[type="text"]:focus, select:focus {
+      border-color: rgba(110, 180, 255, 0.7);
+      box-shadow: 0 0 0 4px rgba(70, 130, 255, 0.12);
+    }
+
+    .checks {
+      display: grid;
+      gap: 12px;
+      margin-top: 18px;
+    }
+
+    .check {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 12px 14px;
+      border-radius: 14px;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.06);
+      color: #dce4f4;
+      font-size: 14px;
+    }
+
+    .check input {
+      transform: scale(1.15);
+    }
+
+    .cta {
+      margin-top: 20px;
+      width: 100%;
+      border: none;
+      border-radius: 16px;
+      padding: 15px 18px;
+      font-size: 16px;
+      font-weight: 700;
+      cursor: pointer;
+      color: #061018;
+      background: linear-gradient(180deg, #ffffff 0%, #dce9ff 100%);
+      transition: transform 0.12s ease, opacity 0.12s ease;
+    }
+
+    .cta:active {
+      transform: translateY(1px);
+    }
+
+    .cta:disabled {
+      opacity: 0.6;
+      cursor: wait;
+    }
+
+    .status {
+      margin-top: 14px;
+      color: #9cadc8;
+      font-size: 14px;
+      min-height: 20px;
+    }
+
+    .result-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 18px;
+      flex-wrap: wrap;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      border-radius: 999px;
+      padding: 10px 14px;
+      font-weight: 700;
+      font-size: 13px;
+      letter-spacing: 0.02em;
+      text-transform: uppercase;
+    }
+
+    .risk-high {
+      background: rgba(255, 59, 48, 0.16);
+      color: #ff8d86;
+      border: 1px solid rgba(255, 59, 48, 0.28);
+    }
+
+    .risk-limited {
+      background: rgba(255, 159, 10, 0.16);
+      color: #ffbf66;
+      border: 1px solid rgba(255, 159, 10, 0.28);
+    }
+
+    .risk-low {
+      background: rgba(52, 199, 89, 0.16);
+      color: #86e7a2;
+      border: 1px solid rgba(52, 199, 89, 0.28);
+    }
+
+    .score {
+      color: #b9c5dc;
+      font-size: 14px;
+    }
+
+    .summary {
+      color: #eef3ff;
+      line-height: 1.6;
+      margin: 0 0 20px;
+    }
+
+    .section-title {
+      margin: 18px 0 10px;
+      font-size: 15px;
+      color: #dce6f8;
+    }
+
+    ul {
+      margin: 0;
+      padding-left: 18px;
+      color: #aebad1;
+      line-height: 1.7;
+    }
+
+    .empty {
+      color: #8f9ab0;
+      line-height: 1.6;
+      padding-top: 8px;
+    }
+
+    .footer-note {
+      margin-top: 20px;
+      color: #7f8aa3;
+      font-size: 13px;
+    }
+
+    @media (max-width: 860px) {
+      .grid {
+        grid-template-columns: 1fr;
+      }
+
+      .wrap {
+        padding: 28px 16px 56px;
+      }
+
+      .panel {
+        border-radius: 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="hero">
+      <div class="eyebrow">Cognitive Logic • AI Compliance Copilot</div>
+      <h1>Analyze your AI system in seconds</h1>
+      <p class="lead">
+        Instant risk classification, compliance gap detection, and recommended actions
+        through a lightweight QEN-based reasoning engine.
+      </p>
+    </div>
+
+    <div class="grid">
+      <div class="panel">
+        <h2>System Input</h2>
+
+        <label for="name">System name</label>
+        <input id="name" type="text" placeholder="Recommendation Engine" />
+
+        <label for="use_case">Use case</label>
+        <select id="use_case">
+          <option value="recommendation">Recommendation</option>
+          <option value="profiling">Profiling</option>
+          <option value="classification">Classification</option>
+          <option value="employment">Employment</option>
+          <option value="credit_scoring">Credit Scoring</option>
+          <option value="education_admission">Education Admission</option>
+        </select>
+
+        <div class="checks">
+          <label class="check"><input type="checkbox" id="audit" /> Audit Trail enabled</label>
+          <label class="check"><input type="checkbox" id="human" /> Human Oversight enabled</label>
+          <label class="check"><input type="checkbox" id="data" /> Sensitive Data involved</label>
+          <label class="check"><input type="checkbox" id="consent" /> Consent Tracking enabled</label>
+        </div>
+
+        <button class="cta" id="analyzeBtn" onclick="analyze()">Analyze System</button>
+        <div class="status" id="status"></div>
+      </div>
+
+      <div class="panel">
+        <h2>Analysis Result</h2>
+
+        <div id="result">
+          <div class="empty">
+            Enter your system details and run the analysis.
+            The result will show risk level, detected gaps, and recommended actions.
+          </div>
+        </div>
+
+        <div class="footer-note">
+          Connected to live API endpoint on your server.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const API_URL = "http://46.225.86.235:8000/analyze";
+
+    function escapeHtml(value) {
+      return String(value)
+        .replaceAll("&", "&amp;")
+        .replaceAll("<", "&lt;")
+        .replaceAll(">", "&gt;")
+        .replaceAll('"', "&quot;")
+        .replaceAll("'", "&#039;");
+    }
+
+    function riskClass(risk) {
+      if (!risk) return "risk-low";
+      const r = risk.toLowerCase();
+      if (r.includes("high")) return "risk-high";
+      if (r.includes("limited") || r.includes("medium")) return "risk-limited";
+      return "risk-low";
+    }
+
+    async function analyze() {
+      const btn = document.getElementById("analyzeBtn");
+      const status = document.getElementById("status");
+      const result = document.getElementById("result");
+
+      const payload = {
+        system_name: document.getElementById("name").value || "Unnamed System",
+        use_case: document.getElementById("use_case").value,
+        has_audit_trail: document.getElementById("audit").checked,
+        has_human_oversight: document.getElementById("human").checked,
+        sensitive_data: document.getElementById("data").checked,
+        has_consent_tracking: document.getElementById("consent").checked
+      };
+
+      btn.disabled = true;
+      status.textContent = "Analyzing...";
+      result.innerHTML = '<div class="empty">Processing live compliance analysis...</div>';
+
+      try {
+        const res = await fetch(API_URL, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(payload)
+        });
+
+        if (!res.ok) {
+          throw new Error("API error: " + res.status);
+        }
+
+        const data = await res.json();
+        const badgeClass = riskClass(data.risk_level);
+        const gaps = Array.isArray(data.gaps) ? data.gaps : [];
+        const actions = Array.isArray(data.recommended_actions) ? data.recommended_actions : [];
+
+        result.innerHTML = `
+          <div class="result-top">
+            <div class="badge ${badgeClass}">${escapeHtml(data.risk_level || "Unknown Risk")}</div>
+            <div class="score">${gaps.length} gap${gaps.length === 1 ? "" : "s"} detected</div>
+          </div>
+
+          <p class="summary">${escapeHtml(data.summary || "No summary available.")}</p>
+
+          <div class="section-title">Detected Gaps</div>
+          ${
+            gaps.length
+              ? `<ul>${gaps.map(g => `<li>${escapeHtml(g)}</li>`).join("")}</ul>`
+              : `<div class="empty">No compliance gaps detected.</div>`
+          }
+
+          <div class="section-title">Recommended Actions</div>
+          ${
+            actions.length
+              ? `<ul>${actions.map(a => `<li>${escapeHtml(a)}</li>`).join("")}</ul>`
+              : `<div class="empty">No action required.</div>`
+          }
+        `;
+
+        status.textContent = "Analysis completed.";
+      } catch (error) {
+        result.innerHTML = `
+          <div class="empty">
+            Unable to contact the API.<br><br>
+            Check that the backend is running and reachable on port 8000.
+          </div>
+        `;
+        status.textContent = "Connection error.";
+      } finally {
+        btn.disabled = false;
+      }
+    }
+  </script>
+</body>
+</html>
