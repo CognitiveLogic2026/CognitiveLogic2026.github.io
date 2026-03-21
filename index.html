@@ -706,7 +706,7 @@ async function sendMessage() {
   output.innerHTML = "Analisi in corso...";
 
   try {
-    const response = await fetch("https://api.cognitivelogic.it/qen/valutare", {
+    const response = await fetch("https://api.cognitivelogic.it/qen/evaluate", {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
