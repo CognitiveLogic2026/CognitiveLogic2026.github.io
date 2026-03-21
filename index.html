@@ -684,39 +684,46 @@
     © 2026 Cognitive Logic<br />
     AI Governance System · QEN Engine · Europe
   </footer>
+<script>
+  async function sendMessage() {
+    const input = document.getElementById("chat-input").value;
+    const output = document.getElementById("chat-output");
 
-  <script>
-    async function sendMessage() {
-      const inputEl = document.getElementById("chat-input");
-      const outputEl = document.getElementById("chat-output");
-      const input = inputEl.value.trim();
+    output.innerHTML = "Analisi in corso...";
 
-      if (!input) {
-        outputEl.innerText = "Inserisci una descrizione del sistema AI prima di avviare l’analisi.";
-        return;
-      }
+    const res = await fetch("http://46.225.86.235:8000/api/chat", {
+      method: "POST",
+      headers: {"Content-Type": "application/json"},
+      body: JSON.stringify({
+        messages: [{ role: "user", content: input }]
+      })
+    });
 
-      outputEl.innerText = "Analisi in corso...";
+    const data = await res.json();
 
-      try {
-        const res = await fetch("http://46.225.86.235:8000/api/chat", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json"
-          },
-          body: JSON.stringify({
-            messages: [
-              { role: "user", content: input }
-            ]
-          })
-        });
+    output.innerHTML = `
+      <div class="result-card">
+        <h3>Risk: ${extract(data.reply, "Rischio")}</h3>
+        <p>${extract(data.reply, "Attenzione")}</p>
+        <p>Score: ${extract(data.reply, "Score")}</p>
 
-        const data = await res.json();
-        outputEl.innerText = data.reply || "Nessuna risposta disponibile.";
-      } catch (error) {
-        outputEl.innerText = "Errore di connessione al Copilot.";
-      }
-    }
-  </script>
+        <h4>Controlli</h4>
+        <ul>
+          ${listify(data.reply, "Controlli")}
+        </ul>
+      </div>
+    `;
+  }
+
+  function extract(text, key) {
+    const match = text.match(new RegExp(key + ": (.*)"));
+    return match ? match[1] : "";
+  }
+
+  function listify(text, section) {
+    const part = text.split(section + " consigliati:")[1] || "";
+    return part.split("- ").slice(1).map(i => `<li>${i}</li>`).join("");
+  }
+</script>
 </body>
 </html>
