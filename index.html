@@ -3,17 +3,16 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Cognitive Logic — AI Governance System</title>
+  <title>Cognitive Logic — AI Governance Pilot</title>
   <meta
     name="description"
-    content="Cognitive Logic trasforma la compliance AI in un sistema operativo auditabile, computabile e integrabile."
+    content="Cognitive Logic trasforma la compliance AI in un sistema operativo auditabile, computabile e pronto per pilot enterprise."
   />
   <style>
     :root {
       --bg: #050b14;
       --bg-2: #07101d;
       --panel: rgba(10, 18, 32, 0.88);
-      --panel-strong: rgba(9, 16, 30, 0.96);
       --text: #eaf2ff;
       --muted: #9fb0c7;
       --soft: #7f91a7;
@@ -28,13 +27,9 @@
       --max: 1180px;
     }
 
-    * {
-      box-sizing: border-box;
-    }
+    * { box-sizing: border-box; }
 
-    html {
-      scroll-behavior: smooth;
-    }
+    html { scroll-behavior: smooth; }
 
     body {
       margin: 0;
@@ -79,9 +74,7 @@
       letter-spacing: 0.2px;
     }
 
-    .brand span {
-      color: var(--accent);
-    }
+    .brand span { color: var(--accent); }
 
     nav {
       display: flex;
@@ -94,12 +87,12 @@
       font-size: 15px;
     }
 
-    nav a:hover {
-      color: var(--text);
-    }
+    nav a:hover { color: var(--text); }
+
+    section { padding: 36px 0; }
 
     .hero {
-      padding: 76px 0 28px;
+      padding: 78px 0 34px;
     }
 
     .hero-grid {
@@ -121,22 +114,58 @@
       font-size: clamp(42px, 7vw, 78px);
       line-height: 0.98;
       letter-spacing: -0.03em;
-      max-width: 920px;
+      max-width: 960px;
     }
 
     .hero p.lead {
       margin: 22px 0 0;
-      max-width: 860px;
+      max-width: 900px;
       font-size: 20px;
       line-height: 1.65;
       color: var(--muted);
     }
 
     .hero-cta {
-      margin-top: 28px;
+      margin-top: 30px;
       display: flex;
       gap: 14px;
       flex-wrap: wrap;
+    }
+
+    .hero-strip {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+      margin-top: 18px;
+    }
+
+    .hero-metric {
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,0.03);
+      border-radius: 18px;
+      padding: 18px;
+    }
+
+    .hero-metric-label {
+      color: var(--accent);
+      font-size: 12px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 8px;
+    }
+
+    .hero-metric-value {
+      font-size: 22px;
+      font-weight: 800;
+      color: var(--text);
+      margin-bottom: 6px;
+    }
+
+    .hero-metric-sub {
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.5;
     }
 
     .btn {
@@ -153,9 +182,7 @@
       font-size: 15px;
     }
 
-    .btn:hover {
-      transform: translateY(-1px);
-    }
+    .btn:hover { transform: translateY(-1px); }
 
     .btn-primary {
       background: linear-gradient(135deg, var(--accent), var(--accent-2));
@@ -169,10 +196,6 @@
       color: var(--text);
     }
 
-    section {
-      padding: 36px 0;
-    }
-
     .section-title {
       margin: 0 0 12px;
       font-size: clamp(28px, 4vw, 42px);
@@ -182,7 +205,7 @@
 
     .section-lead {
       margin: 0 0 28px;
-      max-width: 840px;
+      max-width: 860px;
       color: var(--muted);
       font-size: 18px;
       line-height: 1.7;
@@ -255,9 +278,7 @@
       outline: none;
     }
 
-    textarea::placeholder {
-      color: #6f8198;
-    }
+    textarea::placeholder { color: #6f8198; }
 
     textarea:focus {
       border-color: rgba(98, 216, 255, 0.45);
@@ -281,9 +302,7 @@
       line-height: 1.7;
     }
 
-    .loading {
-      color: var(--muted);
-    }
+    .loading { color: var(--muted); }
 
     .result-shell {
       display: grid;
@@ -343,21 +362,29 @@
       color: #d6ffe4;
     }
 
-    .result-grid {
+    .exec-bar {
       display: grid;
-      grid-template-columns: 1.2fr 0.8fr;
-      gap: 16px;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+      margin-bottom: 6px;
     }
 
-    .result-card {
+    .exec-card,
+    .kpi-card,
+    .result-card,
+    .pilot-card,
+    .card {
       background: rgba(255,255,255,0.025);
       border: 1px solid rgba(255,255,255,0.06);
       border-radius: 18px;
       padding: 18px;
     }
 
-    .result-label {
-      font-size: 13px;
+    .exec-label,
+    .kpi-label,
+    .result-label,
+    .pilot-label {
+      font-size: 12px;
       font-weight: 800;
       text-transform: uppercase;
       letter-spacing: 0.08em;
@@ -365,10 +392,63 @@
       margin-bottom: 10px;
     }
 
-    .result-text {
+    .exec-value {
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--text);
+      line-height: 1.4;
+    }
+
+    .kpi-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+      margin-top: 6px;
+    }
+
+    .kpi-value {
+      font-size: 28px;
+      font-weight: 800;
+      color: var(--text);
+      line-height: 1.1;
+    }
+
+    .kpi-sub {
+      margin-top: 8px;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.5;
+    }
+
+    .kpi-value.high { color: #ffd2d2; }
+    .kpi-value.limited { color: #ffe8a8; }
+    .kpi-value.minimal { color: #d6ffe4; }
+
+    .result-grid,
+    .pilot-grid,
+    .grid-2,
+    .grid-3,
+    .steps {
+      display: grid;
+      gap: 20px;
+    }
+
+    .result-grid {
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 16px;
+    }
+
+    .pilot-grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .result-text,
+    .card p,
+    .pilot-card p {
       color: var(--text);
       line-height: 1.7;
       font-size: 15px;
+      margin: 0;
     }
 
     .result-list {
@@ -377,43 +457,26 @@
       color: var(--text);
     }
 
-    .result-list li + li {
-      margin-top: 8px;
-    }
+    .result-list li + li { margin-top: 8px; }
 
-    .grid-2, .grid-3, .steps {
-      display: grid;
-      gap: 20px;
-    }
+    .grid-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .grid-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .steps { grid-template-columns: repeat(5, minmax(0, 1fr)); }
 
-    .grid-2 {
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-    }
-
-    .grid-3 {
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-    }
-
-    .steps {
-      grid-template-columns: repeat(5, minmax(0, 1fr));
-    }
-
-    .card {
+    .card,
+    .pilot-card {
       padding: 24px;
       border-radius: 20px;
-      border: 1px solid var(--line);
-      background: rgba(255,255,255,0.025);
     }
 
-    .card h3, .card h4 {
+    .card h3, .card h4, .pilot-card h3 {
       margin: 0 0 12px;
       font-size: 22px;
     }
 
-    .card p {
-      margin: 0;
+    .card p,
+    .pilot-card p {
       color: var(--muted);
-      line-height: 1.7;
       font-size: 16px;
     }
 
@@ -426,18 +489,37 @@
       margin-bottom: 10px;
     }
 
-    .demo-box {
+    .pilot-banner {
       padding: 28px;
     }
+
+    .pilot-banner-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 22px;
+      align-items: center;
+    }
+
+    .pilot-box {
+      background: #020a17;
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 20px;
+      padding: 22px;
+    }
+
+    .pilot-box ul {
+      margin: 0;
+      padding-left: 18px;
+      color: var(--text);
+      line-height: 1.8;
+    }
+
+    .demo-box { padding: 28px; }
 
     .demo-line {
       color: var(--muted);
       line-height: 1.8;
       margin: 8px 0;
-    }
-
-    .footer-cta {
-      margin-top: 18px;
     }
 
     footer {
@@ -448,13 +530,18 @@
     }
 
     @media (max-width: 1024px) {
-      .steps {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
+      .hero-strip,
+      .grid-3,
+      .result-grid,
+      .kpi-grid,
+      .exec-bar,
+      .pilot-grid,
+      .pilot-banner-grid {
+        grid-template-columns: 1fr;
       }
 
-      .grid-3,
-      .result-grid {
-        grid-template-columns: 1fr;
+      .steps {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
       }
     }
 
@@ -469,9 +556,7 @@
         flex-direction: column;
       }
 
-      nav {
-        gap: 14px 18px;
-      }
+      nav { gap: 14px 18px; }
 
       .grid-2,
       .steps {
@@ -479,17 +564,14 @@
       }
 
       .copilot-wrap,
-      .demo-box {
+      .demo-box,
+      .pilot-banner {
         padding: 18px;
       }
 
-      h1 {
-        font-size: 42px;
-      }
+      h1 { font-size: 42px; }
 
-      .hero p.lead {
-        font-size: 18px;
-      }
+      .hero p.lead { font-size: 18px; }
 
       textarea {
         font-size: 16px;
@@ -508,11 +590,10 @@
     <div class="container nav">
       <div class="brand">Cognitive <span>Logic</span></div>
       <nav>
+        <a href="#pilot">Pilot</a>
+        <a href="#demo">Demo</a>
         <a href="#soluzione">Soluzione</a>
         <a href="#come-funziona">Come funziona</a>
-        <a href="#applicazioni">Applicazioni</a>
-        <a href="#demo">Demo</a>
-        <a href="#pilot">Pilot</a>
         <a href="#framework">Framework</a>
       </nav>
     </div>
@@ -521,16 +602,89 @@
   <main>
     <section class="hero">
       <div class="container hero-grid">
-        <div class="eyebrow">AI Governance System</div>
-        <h1>AI Governance.<br />Computabile.<br />Auditabile.<br />Operativa.</h1>
+        <div class="eyebrow">Pilot Program · AI Governance Infrastructure</div>
+        <h1>Porta la governance AI da documentazione a infrastruttura operativa.</h1>
         <p class="lead">
-          Cognitive Logic trasforma la compliance AI da documentazione a sistema operativo.
-          Struttura norme, rischi e controlli in una logica eseguibile, pronta per audit,
-          classificazione del rischio e output verificabili.
+          Cognitive Logic struttura rischio, controlli e readiness governance in un layer eseguibile.
+          La demo mostra il modello. Il pilot lo porta in un contesto aziendale reale, con output leggibili,
+          verificabili e pronti per audit, governance interna e assessment iniziale.
         </p>
+
         <div class="hero-cta">
-          <a class="btn btn-primary" href="#demo">Vedi Demo</a>
-          <a class="btn btn-secondary" href="#pilot">Avvia Pilot</a>
+          <a class="btn btn-primary" href="#pilot">Richiedi Pilot</a>
+          <a class="btn btn-secondary" href="#demo">Prova la Demo</a>
+        </div>
+
+        <div class="hero-strip">
+          <div class="hero-metric">
+            <div class="hero-metric-label">Pilot Objective</div>
+            <div class="hero-metric-value">Governance Readiness</div>
+            <div class="hero-metric-sub">Valutare sistemi AI reali con logica di rischio e controlli strutturati.</div>
+          </div>
+          <div class="hero-metric">
+            <div class="hero-metric-label">Output</div>
+            <div class="hero-metric-value">Executive + Audit View</div>
+            <div class="hero-metric-sub">Output leggibili per decisione, allineamento e analisi preliminare.</div>
+          </div>
+          <div class="hero-metric">
+            <div class="hero-metric-label">Format</div>
+            <div class="hero-metric-value">Frontend Demo + Pilot Scope</div>
+            <div class="hero-metric-sub">Demo stabile oggi, estensione enterprise nei casi d’uso selezionati.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="pilot">
+      <div class="container">
+        <div class="panel pilot-banner">
+          <div class="pilot-banner-grid">
+            <div>
+              <h2 class="section-title">Pilot Program</h2>
+              <p class="section-lead" style="margin-bottom: 0;">
+                Stiamo attivando i primi pilot con organizzazioni che vogliono trattare la compliance AI
+                come infrastruttura operativa e non solo come documentazione.
+              </p>
+            </div>
+            <div class="pilot-box">
+              <div class="pilot-label">Pilot Scope</div>
+              <ul>
+                <li>Analisi di uno o più sistemi AI prioritari</li>
+                <li>Prima classificazione del rischio</li>
+                <li>Mappatura iniziale dei controlli richiesti</li>
+                <li>Executive output per stakeholder interni</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="pilot-grid" style="margin-top: 20px;">
+          <article class="pilot-card">
+            <div class="pilot-label">Per chi</div>
+            <h3>Fintech, assicurazioni, AI startup</h3>
+            <p>
+              Contesti in cui i sistemi AI influenzano processi operativi, decisioni sensibili
+              o percorsi che richiedono tracciabilità e chiarezza di controllo.
+            </p>
+          </article>
+
+          <article class="pilot-card">
+            <div class="pilot-label">Cosa ottieni</div>
+            <h3>Vista governance leggibile</h3>
+            <p>
+              Risk level, QEN score, readiness governance, controlli prioritari e punti di attenzione
+              organizzati in un formato leggibile e condivisibile.
+            </p>
+          </article>
+
+          <article class="pilot-card">
+            <div class="pilot-label">Obiettivo</div>
+            <h3>Decisione più veloce</h3>
+            <p>
+              Ridurre l’ambiguità iniziale e creare una base più solida per audit, compliance,
+              roadmap di controllo e posizionamento enterprise.
+            </p>
+          </article>
         </div>
       </div>
     </section>
@@ -538,27 +692,27 @@
     <section id="demo">
       <div class="container">
         <div class="panel copilot-wrap">
-          <h2 class="section-title" style="text-align:center;">Testa il tuo sistema AI</h2>
+          <h2 class="section-title" style="text-align:center;">Prova la demo</h2>
           <p class="section-lead" style="text-align:center; margin-inline:auto;">
-            Ricevi una valutazione immediata di rischio e controlli richiesti in una demo frontend pronta da mostrare.
+            Inserisci una descrizione del tuo sistema AI e visualizza una valutazione preliminare pronta da mostrare.
           </p>
 
           <div class="status-box">
             <div class="status-title">✅ Demo frontend attiva</div>
             <div class="status-sub">
-              Questa versione non usa API esterne. La valutazione viene generata localmente per presentare
-              il modello Cognitive Logic in modo stabile, immediato e senza errori tecnici.
+              Questa demo non usa API esterne. È pensata per mostrare in modo stabile la logica di
+              classificazione, readiness governance e mappatura iniziale dei controlli.
             </div>
             <div class="status-meta">
-              <span class="chip">No backend</span>
-              <span class="chip">No API</span>
-              <span class="chip">Demo pronta per pilot</span>
+              <span class="chip">Pilot-ready interface</span>
+              <span class="chip">Executive output</span>
+              <span class="chip">No backend dependency</span>
             </div>
           </div>
 
           <textarea
             id="chat-input"
-            placeholder="Esempio: Sistema fintech che analizza dati sensibili per ranking di offerte finanziarie con supervisione umana."
+            placeholder="Esempio: Sistema fintech che analizza dati sensibili per scoring e ranking di offerte con supervisione umana."
           ></textarea>
 
           <div class="action-row">
@@ -576,25 +730,23 @@
       <div class="container">
         <h2 class="section-title">La compliance AI oggi è troppo fragile</h2>
         <p class="section-lead">
-          Audit manuali, documentazione frammentata e controlli non strutturati non sono sufficienti
-          quando un sistema AI deve essere compreso, classificato e governato in modo coerente.
+          Audit manuali, policy statiche e controlli scollegati non bastano quando un sistema AI
+          deve essere compreso, valutato e governato in modo coerente.
         </p>
 
         <div class="grid-2">
           <article class="card">
             <h3>Il problema</h3>
             <p>
-              Oggi la governance AI è spesso distribuita tra policy statiche, fogli di controllo
-              e verifiche manuali. Questo rallenta il processo decisionale e rende la compliance
-              difficile da mantenere nel tempo.
+              Le organizzazioni spesso non hanno una vista unica su rischio, controllo, responsabilità
+              e readiness governance. Questo rallenta decisioni e allinea male stakeholder tecnici e business.
             </p>
           </article>
           <article class="card">
             <h3>La soluzione</h3>
             <p>
-              Cognitive Logic trasforma norme, rischi e controlli in una struttura computabile.
-              Il risultato non è solo documentazione: è un layer operativo che supporta analisi,
-              audit e decisioni coerenti.
+              Cognitive Logic struttura questi elementi in una logica computabile, così la governance
+              diventa leggibile, verificabile e utilizzabile come base operativa.
             </p>
           </article>
         </div>
@@ -605,124 +757,34 @@
       <div class="container">
         <h2 class="section-title">Come funziona</h2>
         <p class="section-lead">
-          Dal profilo del sistema AI fino all’output finale: classificazione del rischio,
-          mappatura dei controlli e risultati pronti da leggere o integrare.
+          Dal profilo del sistema AI fino a una vista executive e audit-ready.
         </p>
 
         <div class="steps">
           <article class="card">
             <div class="step-num">Step 1</div>
-            <h4>Input AI System</h4>
-            <p>Descrizione del sistema, use case, dataset, finalità e impatto operativo.</p>
+            <h4>System Intake</h4>
+            <p>Descrizione del sistema, use case, dati, finalità e contesto operativo.</p>
           </article>
           <article class="card">
             <div class="step-num">Step 2</div>
-            <h4>QEN Engine</h4>
-            <p>Il motore struttura gli elementi di governance in una logica coerente.</p>
+            <h4>QEN Logic</h4>
+            <p>Strutturazione di rischio, controllo e governance in una logica coerente.</p>
           </article>
           <article class="card">
             <div class="step-num">Step 3</div>
-            <h4>Risk Classification</h4>
-            <p>Il sistema produce una prima lettura del rischio applicabile.</p>
+            <h4>Risk View</h4>
+            <p>Classificazione preliminare del livello di rischio e dei punti critici.</p>
           </article>
           <article class="card">
             <div class="step-num">Step 4</div>
             <h4>Control Mapping</h4>
-            <p>Vengono associati i controlli e i punti di verifica richiesti.</p>
+            <p>Mappatura dei controlli iniziali e dei punti di attenzione prioritari.</p>
           </article>
           <article class="card">
             <div class="step-num">Step 5</div>
-            <h4>Audit Output</h4>
-            <p>Output leggibili via dashboard, report e workflow di governance.</p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section id="applicazioni">
-      <div class="container">
-        <h2 class="section-title">Applicazioni</h2>
-        <p class="section-lead">
-          Pensato per contesti in cui la governance AI deve essere concreta, verificabile
-          e integrabile in processi reali.
-        </p>
-
-        <div class="grid-3">
-          <article class="card">
-            <h3>Fintech</h3>
-            <p>
-              Supporto alla classificazione di sistemi decisionali, motori di scoring
-              e processi dove la compliance non può restare astratta.
-            </p>
-          </article>
-          <article class="card">
-            <h3>Assicurazioni</h3>
-            <p>
-              Struttura controlli e punti di verifica per modelli utilizzati in flussi operativi
-              e decisionali ad alta sensibilità.
-            </p>
-          </article>
-          <article class="card">
-            <h3>AI Startup</h3>
-            <p>
-              Inserisce governance e logica di controllo già nella fase di costruzione del prodotto,
-              non solo dopo il rilascio.
-            </p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section>
-      <div class="container">
-        <div class="panel demo-box">
-          <h2 class="section-title">Live Demo</h2>
-          <p class="section-lead">
-            Inserisci un sistema AI e ottieni una prima lettura strutturata: classificazione del rischio,
-            controlli richiesti e output pronti per audit.
-          </p>
-
-          <div class="demo-line"><strong>Input esempio</strong></div>
-          <div class="demo-line">System: Recommendation Engine</div>
-          <div class="demo-line">Domain: Fintech</div>
-          <div class="demo-line">Use case: Ranking di offerte finanziarie</div>
-          <div class="demo-line">Data: Profili utenti + comportamento storico</div>
-
-          <div style="height:16px;"></div>
-
-          <div class="demo-line"><strong>Output esempio</strong></div>
-          <div class="demo-line">Risk level: High Risk</div>
-          <div class="demo-line">Controls: logging, audit trail, human oversight</div>
-          <div class="demo-line">Format: interactive frontend output</div>
-          <div class="demo-line">Status: pronto per pilot</div>
-
-          <div class="footer-cta">
-            <a class="btn btn-primary" href="#demo">Apri Demo</a>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="pilot">
-      <div class="container">
-        <h2 class="section-title">Pilot Program</h2>
-        <p class="section-lead">
-          Stiamo attivando i primi pilot con aziende che vogliono trasformare la compliance AI
-          in infrastruttura operativa, non solo in documentazione.
-        </p>
-
-        <div class="grid-3">
-          <article class="card">
-            <h3>Analisi sistemi AI</h3>
-            <p>Valutazione di use case operativi e flussi decisionali reali.</p>
-          </article>
-          <article class="card">
-            <h3>Mappatura rischio</h3>
-            <p>Classificazione del rischio e controlli richiesti in modo strutturato.</p>
-          </article>
-          <article class="card">
-            <h3>Output per audit</h3>
-            <p>Risultati leggibili per audit, governance interna e proposta commerciale.</p>
+            <h4>Executive Output</h4>
+            <p>Vista leggibile per pilot, allineamento interno e readiness iniziale.</p>
           </article>
         </div>
       </div>
@@ -730,20 +792,31 @@
 
     <section id="framework">
       <div class="container">
-        <h2 class="section-title">Non è un tool. È un layer infrastrutturale.</h2>
-        <p class="section-lead">
-          Cognitive Logic non si limita a documentare la compliance AI.
-          La rende eseguibile, leggibile e integrabile in un sistema di governance.
-        </p>
+        <div class="panel demo-box">
+          <h2 class="section-title">Non è un tool. È un layer infrastrutturale.</h2>
+          <p class="section-lead">
+            Cognitive Logic non si limita a descrivere la compliance AI.
+            La organizza in un sistema di lettura, classificazione e controllo che può essere
+            esteso in contesti enterprise.
+          </p>
 
-        <a class="btn btn-secondary" href="mailto:info@cognitivelogic.it">Contattaci</a>
+          <div class="demo-line"><strong>Output atteso nel pilot</strong></div>
+          <div class="demo-line">Risk level e readiness governance</div>
+          <div class="demo-line">Vista executive condivisibile</div>
+          <div class="demo-line">Mappatura iniziale dei controlli</div>
+          <div class="demo-line">Base per governance roadmap</div>
+
+          <div style="height: 18px;"></div>
+
+          <a class="btn btn-secondary" href="mailto:info@cognitivelogic.it">Contattaci per il pilot</a>
+        </div>
       </div>
     </section>
   </main>
 
   <footer>
     <div class="container">
-      © 2026 Cognitive Logic — AI Governance System · Premium Frontend Demo
+      © 2026 Cognitive Logic — AI Governance Pilot Page
     </div>
   </footer>
 
@@ -772,16 +845,21 @@
       let riskLevel = "LIMITED RISK";
       let badgeClass = "limited";
       let qenScore = 55;
-      let summary = "Sistema con rischio limitato, con necessità di trasparenza, monitoraggio e documentazione di base.";
+      let readiness = "Moderate";
+      let readinessNote = "Controlli di base richiesti, con trasparenza e monitoraggio periodico.";
+      let summary = "Sistema con esposizione moderata, da governare con trasparenza verso l’utente, logging di base e controlli operativi periodici.";
       let controls = [
         "Trasparenza verso l’utente",
         "Logging base",
         "Monitoring"
       ];
       let attention = [
-        "Verificare la comunicazione del ruolo dell’AI verso gli utenti finali",
-        "Mantenere tracciabilità minima delle decisioni operative"
+        "Esplicitare il ruolo del sistema AI verso utenti o operatori",
+        "Prevedere revisioni periodiche dell’output"
       ];
+      let pilotStatus = "Ready for Pilot";
+      let complianceScope = "AI governance preliminary classification";
+      let action = "Proceed with structured assessment";
 
       if (
         text.includes("fintech") ||
@@ -799,7 +877,9 @@
         riskLevel = "HIGH RISK";
         badgeClass = "high";
         qenScore = 78;
-        summary = "Sistema con profilo ad alta sensibilità, con esigenza forte di controllo, auditabilità, supervisione umana e robustezza documentale.";
+        readiness = "Partial";
+        readinessNote = "Sono necessari controlli strutturati, supervisione umana e auditabilità esplicita.";
+        summary = "Sistema con esposizione regolatoria elevata. Richiede supervisione umana esplicita, tracciabilità delle decisioni, governance dei dati e documentazione tecnica verificabile.";
         controls = [
           "Risk management system",
           "Human oversight",
@@ -809,9 +889,12 @@
         ];
         attention = [
           "Definire chiaramente responsabilità e supervisione umana",
-          "Rafforzare tracciabilità, logging e base documentale",
+          "Formalizzare logging, audit trail e documentazione tecnica",
           "Gestire con attenzione dati sensibili e qualità dei dataset"
         ];
+        pilotStatus = "Pilot recommended with controls";
+        complianceScope = "Indicative high-sensitivity governance profile";
+        action = "Activate governance framework and priority controls";
       } else if (
         text.includes("chatbot") ||
         text.includes("marketing") ||
@@ -823,7 +906,9 @@
         riskLevel = "LIMITED RISK";
         badgeClass = "limited";
         qenScore = 55;
-        summary = "Sistema con esposizione moderata, da governare con trasparenza verso l’utente, logging di base e controlli operativi periodici.";
+        readiness = "Moderate";
+        readinessNote = "Il sistema appare gestibile, ma richiede disclosure e controlli operativi regolari.";
+        summary = "Sistema con rischio limitato ma con obblighi chiari di trasparenza, monitoraggio e documentazione di base.";
         controls = [
           "Trasparenza verso l’utente",
           "Logging base",
@@ -831,8 +916,11 @@
         ];
         attention = [
           "Esplicitare che l’utente interagisce con un sistema AI",
-          "Prevedere revisioni periodiche dell’output"
+          "Verificare la qualità e coerenza dell’output nel tempo"
         ];
+        pilotStatus = "Ready for Pilot";
+        complianceScope = "Preliminary governance review";
+        action = "Proceed with controlled pilot assessment";
       } else if (
         text.includes("spam") ||
         text.includes("filtro") ||
@@ -844,6 +932,8 @@
         riskLevel = "MINIMAL RISK";
         badgeClass = "minimal";
         qenScore = 20;
+        readiness = "Strong";
+        readinessNote = "Il perimetro appare stabile e gestibile con pratiche operative standard.";
         summary = "Sistema a rischio minimo, gestibile con pratiche operative standard e controlli leggeri di manutenzione.";
         controls = [
           "Buone pratiche operative"
@@ -851,6 +941,9 @@
         attention = [
           "Mantenere documentazione sintetica del perimetro d’uso"
         ];
+        pilotStatus = "Low priority";
+        complianceScope = "Minimal operational governance scope";
+        action = "Maintain basic documentation";
       }
 
       const safeInput = escapeHtml(rawText);
@@ -861,9 +954,44 @@
             <div class="result-head">
               <div>
                 <div class="result-title">Valutazione completata</div>
-                <div class="result-score">QEN Score: ${qenScore}/100</div>
+                <div class="result-score">Pilot assessment preview</div>
               </div>
               <div class="badge ${badgeClass}">${riskLevel}</div>
+            </div>
+
+            <div class="exec-bar">
+              <div class="exec-card">
+                <div class="exec-label">Pilot Status</div>
+                <div class="exec-value">${pilotStatus}</div>
+              </div>
+              <div class="exec-card">
+                <div class="exec-label">Compliance Scope</div>
+                <div class="exec-value">${complianceScope}</div>
+              </div>
+              <div class="exec-card">
+                <div class="exec-label">Recommended Action</div>
+                <div class="exec-value">${action}</div>
+              </div>
+            </div>
+
+            <div class="kpi-grid">
+              <div class="kpi-card">
+                <div class="kpi-label">Risk Level</div>
+                <div class="kpi-value ${badgeClass}">${riskLevel}</div>
+                <div class="kpi-sub">Classificazione preliminare del profilo di rischio.</div>
+              </div>
+
+              <div class="kpi-card">
+                <div class="kpi-label">QEN Score</div>
+                <div class="kpi-value">${qenScore}/100</div>
+                <div class="kpi-sub">Indicatore sintetico di esposizione e maturità dei controlli.</div>
+              </div>
+
+              <div class="kpi-card">
+                <div class="kpi-label">Governance Readiness</div>
+                <div class="kpi-value">${readiness}</div>
+                <div class="kpi-sub">${readinessNote}</div>
+              </div>
             </div>
 
             <div class="result-grid">
