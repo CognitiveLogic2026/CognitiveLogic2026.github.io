@@ -19,6 +19,8 @@
       --accent: #7cc6ff;
       --accent-2: #c4f07b;
       --warn: #ffd66b;
+      --good: #8fe388;
+      --bad: #ff8a8a;
       --max: 1180px;
       --radius: 18px;
       --shadow: 0 20px 50px rgba(0,0,0,0.28);
@@ -412,6 +414,32 @@
       max-width: 760px;
     }
 
+    .status-note {
+      margin-top: 10px;
+      color: var(--muted);
+      font-size: 0.93rem;
+    }
+
+    .list-block {
+      margin-top: 14px;
+      padding-top: 14px;
+      border-top: 1px solid var(--line);
+    }
+
+    .list-block strong {
+      display: block;
+      margin-bottom: 8px;
+    }
+
+    .list-block ul {
+      padding-left: 18px;
+      color: var(--muted);
+    }
+
+    .list-block li + li {
+      margin-top: 6px;
+    }
+
     footer {
       padding: 34px 0 54px;
       border-top: 1px solid var(--line);
@@ -512,7 +540,7 @@
         <h2 class="section-title">QEN Copilot</h2>
         <p class="section-lead">
           Inserisci una descrizione della tua attività o del caso da valutare.
-          Qui sotto trovi una versione pronta per demo, con risultato iniziale già visibile.
+          Il risultato viene ora letto dal backend reale del Copilot.
         </p>
 
         <div class="copilot-shell">
@@ -530,12 +558,12 @@
             <label for="copilot-input">Descrizione</label>
             <textarea
               id="copilot-input"
-              placeholder="Esempio: ristorante con filiera corta, attenzione agli sprechi, collaborazione con produttori locali, menù stagionale, politiche di accessibilità e inclusione."
+              placeholder="Esempio: ristorante con fornitori locali, menù stagionale, attenzione agli sprechi, identità territoriale e pratiche di accessibilità."
             ></textarea>
 
             <div class="check-grid">
               <label class="check-item">
-                <input type="checkbox" />
+                <input type="checkbox" id="flag-local" />
                 <div>
                   <strong>Filiera locale</strong>
                   <span>Presenza di produttori del territorio e relazioni stabili.</span>
@@ -543,7 +571,7 @@
               </label>
 
               <label class="check-item">
-                <input type="checkbox" />
+                <input type="checkbox" id="flag-waste" />
                 <div>
                   <strong>Riduzione sprechi</strong>
                   <span>Procedure o pratiche per controllo consumi e sprechi.</span>
@@ -551,7 +579,7 @@
               </label>
 
               <label class="check-item">
-                <input type="checkbox" />
+                <input type="checkbox" id="flag-accessibility" />
                 <div>
                   <strong>Accessibilità</strong>
                   <span>Attenzione concreta all’accessibilità fisica o comunicativa.</span>
@@ -559,7 +587,7 @@
               </label>
 
               <label class="check-item">
-                <input type="checkbox" />
+                <input type="checkbox" id="flag-territory" />
                 <div>
                   <strong>Identità territoriale</strong>
                   <span>Valorizzazione del luogo, della cultura e della filiera.</span>
@@ -568,8 +596,12 @@
             </div>
 
             <div class="actions">
-              <button class="btn btn-primary" onclick="runPreview()">Analizza</button>
+              <button class="btn btn-primary" onclick="sendMessage()">Analizza</button>
               <a class="btn btn-secondary" href="index.html#pilot">Richiedi pilot</a>
+            </div>
+
+            <div class="status-note" id="status-note">
+              Endpoint attivo: QEN evaluate API.
             </div>
           </div>
 
@@ -579,39 +611,60 @@
             <div class="result-top">
               <div class="metric-box">
                 <div class="metric-label">QEN Score</div>
-                <div id="score-value" class="metric-value">78/100</div>
+                <div id="score-value" class="metric-value">--</div>
               </div>
 
               <div class="metric-box">
-                <div class="metric-label">Benchmark</div>
-                <div id="benchmark-value" class="metric-value medium">Buono · migliorabile</div>
+                <div class="metric-label">Risk Level</div>
+                <div id="benchmark-value" class="metric-value medium">In attesa</div>
               </div>
             </div>
 
             <div class="result-grid">
               <div class="result-mini">
-                <h4>Vettore sociale</h4>
-                <p>Inclusione del personale, accessibilità, impatto sulla comunità.</p>
-                <strong id="social-score">82/100</strong>
+                <h4>Controlli richiesti</h4>
+                <p>Output del motore QEN per il caso analizzato.</p>
+                <strong id="social-score">--</strong>
               </div>
 
               <div class="result-mini">
-                <h4>Vettore ambientale</h4>
-                <p>Consumi, materiali, filiera e pratiche di riduzione sprechi.</p>
-                <strong id="env-score">74/100</strong>
+                <h4>Violazioni</h4>
+                <p>Eventuali criticità rilevate dal motore.</p>
+                <strong id="env-score">--</strong>
               </div>
 
               <div class="result-mini">
-                <h4>Vettore territoriale</h4>
-                <p>Relazione con produttori locali, identità del luogo e filiera corta.</p>
-                <strong id="territory-score">79/100</strong>
+                <h4>Motivazione</h4>
+                <p>Ragionamento restituito dall’engine.</p>
+                <strong id="territory-score">--</strong>
               </div>
             </div>
 
             <div class="result-footer">
               <p id="summary-text">
-                Output finale: score sintetico, benchmark, lettura per vettori e base pronta per report operativo.
+                Inserisci una descrizione e clicca Analizza per ottenere il risultato reale.
               </p>
+
+              <div class="list-block">
+                <strong>Controlli</strong>
+                <ul id="controls-list">
+                  <li>In attesa di analisi</li>
+                </ul>
+              </div>
+
+              <div class="list-block">
+                <strong>Violazioni</strong>
+                <ul id="violations-list">
+                  <li>In attesa di analisi</li>
+                </ul>
+              </div>
+
+              <div class="list-block">
+                <strong>Reasoning</strong>
+                <ul id="reasoning-list">
+                  <li>In attesa di analisi</li>
+                </ul>
+              </div>
             </div>
           </div>
         </div>
@@ -622,8 +675,8 @@
             <p>La demo è pensata per rendere immediatamente leggibile il posizionamento del locale.</p>
             <ul>
               <li>score sintetico facile da capire</li>
-              <li>lettura separata dei tre vettori</li>
-              <li>benchmark utile per confronto e miglioramento</li>
+              <li>lettura dei controlli richiesti</li>
+              <li>spiegazione minima del risultato</li>
             </ul>
           </div>
 
@@ -662,32 +715,115 @@
   </footer>
 
   <script>
-    function runPreview() {
-      const text = document.getElementById("copilot-input").value.trim();
+    async function sendMessage() {
       const name = document.getElementById("business-name").value.trim();
+      const input = document.getElementById("copilot-input");
+      const text = input.value.trim();
 
       const score = document.getElementById("score-value");
-      const benchmark = document.getElementById("benchmark-value");
-      const social = document.getElementById("social-score");
-      const env = document.getElementById("env-score");
-      const territory = document.getElementById("territory-score");
+      const risk = document.getElementById("benchmark-value");
+      const controlsMini = document.getElementById("social-score");
+      const violationsMini = document.getElementById("env-score");
+      const reasoningMini = document.getElementById("territory-score");
       const summary = document.getElementById("summary-text");
+      const statusNote = document.getElementById("status-note");
+
+      const controlsList = document.getElementById("controls-list");
+      const violationsList = document.getElementById("violations-list");
+      const reasoningList = document.getElementById("reasoning-list");
+
+      const local = document.getElementById("flag-local").checked;
+      const waste = document.getElementById("flag-waste").checked;
+      const accessibility = document.getElementById("flag-accessibility").checked;
+      const territory = document.getElementById("flag-territory").checked;
 
       if (!text) {
-        summary.textContent = "Inserisci una descrizione dell’attività per generare una preview più credibile del risultato.";
+        summary.textContent = "Inserisci una descrizione dell’attività per avviare l’analisi.";
         return;
       }
 
-      score.textContent = "81/100";
-      benchmark.textContent = "Molto buono · pronto per benchmark";
-      social.textContent = "84/100";
-      env.textContent = "78/100";
-      territory.textContent = "81/100";
+      let enrichedText = text;
 
-      summary.textContent =
-        "Preview generata per " +
-        (name || "la tua attività") +
-        ": buon equilibrio tra dimensione sociale, identità territoriale e pratiche ambientali, con margini di consolidamento operativo.";
+      if (name) enrichedText = `${name}. ${enrichedText}`;
+      if (local) enrichedText += ". filiera locale";
+      if (waste) enrichedText += ". riduzione sprechi";
+      if (accessibility) enrichedText += ". accessibilità";
+      if (territory) enrichedText += ". identità territoriale";
+
+      const payload = {
+        system: enrichedText,
+        context: "EU"
+      };
+
+      score.textContent = "...";
+      risk.textContent = "Analisi in corso";
+      controlsMini.textContent = "...";
+      violationsMini.textContent = "...";
+      reasoningMini.textContent = "...";
+      summary.textContent = "Il Copilot sta interrogando il backend QEN.";
+      statusNote.textContent = "Richiesta inviata all'endpoint /qen/evaluate.";
+
+      controlsList.innerHTML = "<li>Analisi in corso...</li>";
+      violationsList.innerHTML = "<li>Analisi in corso...</li>";
+      reasoningList.innerHTML = "<li>Analisi in corso...</li>";
+
+      try {
+        const response = await fetch("http://46.225.86.235:8000/qen/evaluate", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify(payload)
+        });
+
+        const data = await response.json();
+
+        score.textContent = data.qen_score;
+        risk.textContent = data.risk_level;
+
+        if (data.risk_level === "HIGH") {
+          risk.style.color = "var(--bad)";
+        } else if (data.risk_level === "LIMITED") {
+          risk.style.color = "var(--warn)";
+        } else {
+          risk.style.color = "var(--good)";
+        }
+
+        controlsMini.textContent = data.controls.length ? data.controls.length + " controlli" : "Nessuno";
+        violationsMini.textContent = data.violations.length ? data.violations.length + " rilievi" : "Nessuna";
+        reasoningMini.textContent = data.reasoning.length ? "Motore attivo" : "Base";
+
+        summary.textContent =
+          "Analisi completata per " +
+          (name || "la tua attività") +
+          ": il motore QEN ha restituito livello di rischio, score e indicazioni operative.";
+
+        controlsList.innerHTML = data.controls.length
+          ? data.controls.map(item => `<li>${item}</li>`).join("")
+          : "<li>Nessun controllo specifico restituito</li>";
+
+        violationsList.innerHTML = data.violations.length
+          ? data.violations.map(item => `<li>${item}</li>`).join("")
+          : "<li>Nessuna violazione rilevata</li>";
+
+        reasoningList.innerHTML = data.reasoning.length
+          ? data.reasoning.map(item => `<li>${item}</li>`).join("")
+          : "<li>Nessun reasoning disponibile</li>";
+
+        statusNote.textContent = "Analisi completata con successo.";
+      } catch (error) {
+        score.textContent = "--";
+        risk.textContent = "Errore";
+        controlsMini.textContent = "--";
+        violationsMini.textContent = "--";
+        reasoningMini.textContent = "--";
+        summary.textContent = "Errore di connessione con l'API QEN.";
+        controlsList.innerHTML = "<li>Connessione fallita</li>";
+        violationsList.innerHTML = "<li>Connessione fallita</li>";
+        reasoningList.innerHTML = "<li>Connessione fallita</li>";
+        statusNote.textContent = "Impossibile raggiungere il backend.";
+        risk.style.color = "var(--bad)";
+      }
     }
   </script>
 
