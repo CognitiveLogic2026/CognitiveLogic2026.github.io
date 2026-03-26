@@ -8,75 +8,63 @@ const pdfBtn = document.getElementById("pdf-btn");
 const statusLine = document.getElementById("status-line");
 
 const decisionBox = document.getElementById("decision-box");
-const riskLevelEl = document.getElementById("risk-level");
-const riskScoreEl = document.getElementById("risk-score");
-const whyEl = document.getElementById("why");
-const impactEl = document.getElementById("impact");
-const summaryEl = document.getElementById("summary");
-const euClassificationEl = document.getElementById("eu-classification");
-const gapsListEl = document.getElementById("gaps-list");
-const recommendationsListEl = document.getElementById("recommendations-list");
-const rawOutputEl = document.getElementById("raw-output");
+const riskLevelBox = document.getElementById("risk-level");
+const riskScoreBox = document.getElementById("risk-score");
+const whyBox = document.getElementById("why");
+const impactBox = document.getElementById("impact");
+const summaryBox = document.getElementById("summary");
+const gapsList = document.getElementById("gaps-list");
+const recommendationsList = document.getElementById("recommendations-list");
+const rawOutput = document.getElementById("raw-output");
 
-function escapeHtml(value) {
-  return String(value)
-    .replaceAll("&", "&amp;")
-    .replaceAll("<", "&lt;")
-    .replaceAll(">", "&gt;")
-    .replaceAll('"', "&quot;")
-    .replaceAll("'", "&#039;");
+function setLoadingState(isLoading) {
+  analyzeBtn.disabled = isLoading;
+  clearBtn.disabled = isLoading;
+  pdfBtn.disabled = isLoading;
 }
 
-function setList(element, items) {
-  if (!Array.isArray(items) || items.length === 0) {
-    element.innerHTML = "<li>Nessun elemento rilevato.</li>";
+function clearLists() {
+  gapsList.innerHTML = "";
+  recommendationsList.innerHTML = "";
+}
+
+function renderList(listEl, items) {
+  listEl.innerHTML = "";
+
+  if (!items || !Array.isArray(items) || items.length === 0) {
+    const li = document.createElement("li");
+    li.textContent = "—";
+    listEl.appendChild(li);
     return;
   }
 
-  element.innerHTML = items
-    .map(item => `<li>${escapeHtml(String(item))}</li>`)
-    .join("");
-}
-
-function setDecisionUI(level, fallbackText = "") {
-  decisionBox.classList.remove("decision-high", "decision-medium", "decision-low");
-
-  if (level === "HIGH") {
-    decisionBox.classList.add("decision-high");
-    decisionBox.innerText = fallbackText || "🔴 CRITICAL — intervento immediato richiesto";
-  } else if (level === "MEDIUM") {
-    decisionBox.classList.add("decision-medium");
-    decisionBox.innerText = fallbackText || "🟠 ACTION REQUIRED — controlli mancanti";
-  } else {
-    decisionBox.classList.add("decision-low");
-    decisionBox.innerText = fallbackText || "🟢 MONITOR — rischio contenuto";
-  }
+  items.forEach((item) => {
+    const li = document.createElement("li");
+    li.textContent = item;
+    listEl.appendChild(li);
+  });
 }
 
 function resetOutput() {
-  setDecisionUI("LOW", "In attesa di analisi");
-  riskLevelEl.textContent = "—";
-  riskScoreEl.textContent = "—";
-  whyEl.textContent = "—";
-  impactEl.textContent = "—";
-  summaryEl.textContent = "Nessuna analisi ancora eseguita.";
-  euClassificationEl.textContent = "—";
+  decisionBox.textContent = "—";
+  riskLevelBox.textContent = "—";
+  riskScoreBox.textContent = "—";
+  whyBox.textContent = "—";
+  impactBox.textContent = "—";
+  summaryBox.textContent = "—";
+  clearLists();
+  rawOutput.textContent = "In attesa di risposta backend.";
+}
 
-  gapsListEl.innerHTML = "<li>—</li>";
-  recommendationsListEl.innerHTML = "<li>—</li>";
-
-  const euObligations = document.getElementById("eu-obligations");
-  const euControls = document.getElementById("eu-controls");
-  const euRegulatoryObligations = document.getElementById("eu-regulatory-obligations");
-  const euArticles = document.getElementById("eu-articles");
-
-  if (euObligations) euObligations.innerHTML = "<li>—</li>";
-  if (euControls) euControls.innerHTML = "<li>—</li>";
-  if (euRegulatoryObligations) euRegulatoryObligations.innerHTML = "<li>—</li>";
-  if (euArticles) euArticles.innerHTML = "—";
-
-  rawOutputEl.textContent = "In attesa di risposta backend.";
-  statusLine.textContent = "Scrivi una descrizione e avvia l’analisi.";
+function showLoadingOutput() {
+  decisionBox.textContent = "Elaborazione...";
+  riskLevelBox.textContent = "...";
+  riskScoreBox.textContent = "...";
+  whyBox.textContent = "Il backend sta elaborando i segnali rilevati.";
+  impactBox.textContent = "Valutazione impatto in corso.";
+  summaryBox.textContent = "Il backend sta elaborando la richiesta.";
+  clearLists();
+  rawOutput.textContent = "Richiesta inviata al backend...";
 }
 
 async function sendMessage() {
@@ -88,21 +76,9 @@ async function sendMessage() {
     return;
   }
 
-  analyzeBtn.disabled = true;
-  clearBtn.disabled = true;
-  pdfBtn.disabled = true;
-
+  setLoadingState(true);
   statusLine.textContent = "Analisi in corso...";
-  decisionBox.textContent = "Elaborazione...";
-  riskLevelEl.textContent = "...";
-  riskScoreEl.textContent = "...";
-  whyEl.textContent = "Il backend sta elaborando i segnali rilevati.";
-  impactEl.textContent = "Valutazione impatto in corso.";
-  summaryEl.textContent = "Il backend sta elaborando la richiesta.";
-  euClassificationEl.textContent = "N/A";
-  gapsListEl.innerHTML = "<li>Analisi in corso...</li>";
-  recommendationsListEl.innerHTML = "<li>Analisi in corso...</li>";
-  rawOutputEl.textContent = "Richiesta inviata a " + API_URL;
+  showLoadingOutput();
 
   try {
     const response = await fetch(API_URL, {
@@ -116,79 +92,52 @@ async function sendMessage() {
       })
     });
 
-    const data = await response.json();
+    const contentType = response.headers.get("content-type") || "";
+    let data;
+
+    if (contentType.includes("application/json")) {
+      data = await response.json();
+    } else {
+      const textResponse = await response.text();
+      throw new Error(`Risposta non JSON: ${textResponse}`);
+    }
 
     if (!response.ok) {
-      throw new Error(data.detail || data.error || "Errore backend");
+      throw new Error(data?.detail || `HTTP ${response.status}`);
     }
 
-    const riskLevel = data.risk_level || "LOW";
-    const riskScore = data.risk_score ?? "—";
-    const summary = data.summary || "Analisi completata.";
-    const gaps = Array.isArray(data.gaps) ? data.gaps : [];
-    const recommendations = Array.isArray(data.recommendations) ? data.recommendations : [];
+    decisionBox.textContent = data.decision || "—";
+    riskLevelBox.textContent = data.risk_level || "—";
+    riskScoreBox.textContent = data.risk_score ?? "—";
+    whyBox.textContent = data.why || "—";
+    impactBox.textContent = data.impact || "—";
+    summaryBox.textContent = data.summary || "—";
 
-    let why = data.why;
-    if (!why) {
-      if (gaps.length > 0) {
-        why = "Il sistema presenta segnali di rischio legati ai controlli o ai dati indicati.";
-      } else {
-        why = "Non sono emersi gap significativi nella descrizione fornita.";
-      }
-    }
+    renderList(gapsList, data.gaps);
+    renderList(recommendationsList, data.recommendations);
 
-    let impact = data.impact;
-    if (!impact) {
-      if (riskLevel === "HIGH") {
-        impact = "Il sistema richiede interventi rapidi prima di essere presentato come iniziativa conforme.";
-      } else if (riskLevel === "MEDIUM") {
-        impact = "Il sistema può evolvere con controlli aggiuntivi e maggiore tracciabilità.";
-      } else {
-        impact = "Il sistema appare gestibile, con monitoraggio e controlli di base.";
-      }
-    }
-
-    let decision = data.decision;
-    if (!decision) {
-      if (riskLevel === "HIGH") {
-        decision = "🔴 CRITICAL — intervento immediato richiesto";
-      } else if (riskLevel === "MEDIUM") {
-        decision = "🟠 ACTION REQUIRED — controlli mancanti";
-      } else {
-        decision = "🟢 MONITOR — rischio contenuto";
-      }
-    }
-
-    setDecisionUI(riskLevel, decision);
-    riskLevelEl.textContent = String(riskLevel).toUpperCase();
-    riskScoreEl.textContent = String(riskScore);
-    whyEl.textContent = why;
-    impactEl.textContent = impact;
-    summaryEl.textContent = summary;
-    euClassificationEl.textContent = data.eu_classification || "Non disponibile";
-
-    setList(gapsListEl, gaps);
-    setList(recommendationsListEl, recommendations);
-
-    rawOutputEl.textContent = JSON.stringify(data, null, 2);
+    rawOutput.textContent = JSON.stringify(data, null, 2);
     statusLine.textContent = "Analisi completata.";
   } catch (error) {
-    setDecisionUI("HIGH", "Errore durante l’analisi");
-    riskLevelEl.textContent = "ERROR";
-    riskScoreEl.textContent = "—";
-    whyEl.textContent = "Non è stato possibile interpretare correttamente la richiesta.";
-    impactEl.textContent = "Analisi interrotta per errore backend o di rete.";
-    summaryEl.textContent = "Non è stato possibile ottenere una risposta valida dal backend.";
-    euClassificationEl.textContent = "—";
-    gapsListEl.innerHTML = "<li>Controlla endpoint, CORS o risposta API.</li>";
-    recommendationsListEl.innerHTML = "<li>Verifica che /analyze sia attivo e raggiungibile.</li>";
-    rawOutputEl.textContent = String(error);
-    statusLine.textContent = "Errore: " + error.message;
+    decisionBox.textContent = "Errore";
+    riskLevelBox.textContent = "—";
+    riskScoreBox.textContent = "—";
+    whyBox.textContent = "La richiesta non ha ricevuto una risposta valida.";
+    impactBox.textContent = "Verificare endpoint, backend e console.";
+    summaryBox.textContent = error.message || "Errore sconosciuto.";
+    clearLists();
+    rawOutput.textContent = String(error);
+    statusLine.textContent = `Errore: ${error.message}`;
   } finally {
-    analyzeBtn.disabled = false;
-    clearBtn.disabled = false;
-    pdfBtn.disabled = false;
+    setLoadingState(false);
   }
+}
+
+function clearForm() {
+  inputEl.value = "";
+  resetOutput();
+  statusLine.textContent = "Campi puliti.";
+  inputEl.focus();
 }
 
 async function exportPdf() {
@@ -200,9 +149,7 @@ async function exportPdf() {
     return;
   }
 
-  pdfBtn.disabled = true;
-  analyzeBtn.disabled = true;
-  clearBtn.disabled = true;
+  setLoadingState(true);
   statusLine.textContent = "Generazione PDF executive in corso...";
 
   try {
@@ -218,45 +165,32 @@ async function exportPdf() {
     });
 
     if (!response.ok) {
-      throw new Error("Errore nella generazione del PDF");
+      const errText = await response.text();
+      throw new Error(`Export PDF fallito: ${response.status} ${errText}`);
     }
 
     const blob = await response.blob();
     const url = window.URL.createObjectURL(blob);
-
     const a = document.createElement("a");
     a.href = url;
     a.download = "cognitive-logic-executive-report.pdf";
     document.body.appendChild(a);
     a.click();
     a.remove();
-
     window.URL.revokeObjectURL(url);
-    statusLine.textContent = "PDF executive generato correttamente.";
+
+    statusLine.textContent = "PDF esportato correttamente.";
   } catch (error) {
-    statusLine.textContent = "Errore PDF: " + error.message;
+    statusLine.textContent = `Errore PDF: ${error.message}`;
   } finally {
-    pdfBtn.disabled = false;
-    analyzeBtn.disabled = false;
-    clearBtn.disabled = false;
+    setLoadingState(false);
   }
 }
 
 analyzeBtn.addEventListener("click", sendMessage);
-
-clearBtn.addEventListener("click", () => {
-  inputEl.value = "";
-  resetOutput();
-  inputEl.focus();
-});
-
+clearBtn.addEventListener("click", clearForm);
 pdfBtn.addEventListener("click", exportPdf);
 
-inputEl.addEventListener("keydown", (event) => {
-  if ((event.ctrlKey || event.metaKey) && event.key === "Enter") {
-    sendMessage();
-  }
-});
+window.sendMessage = sendMessage;
 
 resetOutput();
-window.sendMessage = sendMessage;
