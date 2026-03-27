@@ -270,3 +270,9 @@ sendMessage();
 });
 
 resetOutput();
+
+// Fix: abilita analyzeBtn quando l'input ha contenuto
+inputEl.addEventListener("input", () => {
+  analyzeBtn.disabled = inputEl.value.trim() === "";
+});
+analyzeBtn.disabled = inputEl.value.trim() === "";
