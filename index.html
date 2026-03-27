@@ -5,441 +5,206 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <title>Cognitive Logic — AI Governance Infrastructure</title>
-  <meta
-    name="description"
-    content="Cognitive Logic costruisce infrastrutture semantiche AI-native per rendere i sistemi intelligibili, verificabili e governabili."
-  />
-  <meta name="theme-color" content="#0b0f14" />
-  <link rel="canonical" href="https://cognitivelogic.it/" />
 
-  <meta property="og:title" content="Cognitive Logic — AI Governance Infrastructure" />
-  <meta
-    property="og:description"
-    content="AI-native knowledge infrastructure for human-AI symbiosis, explainability, governance and compliance."
-  />
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://cognitivelogic.it/" />
+  <meta name="description" content="AI-native knowledge infrastructure for explainability, governance and compliance." />
 
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link
-    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
-    rel="stylesheet"
-  />
+  <style>
+    body {
+      margin: 0;
+      font-family: -apple-system, system-ui, sans-serif;
+      background: #0b0f14;
+      color: #e8edf2;
+    }
 
-  <link rel="stylesheet" href="css/style.css" />
+    .container {
+      max-width: 1100px;
+      margin: auto;
+      padding: 60px 20px;
+    }
 
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Organization",
-    "name": "Cognitive Logic",
-    "url": "https://cognitivelogic.it",
-    "description": "AI-native knowledge infrastructure for explainable governance, semantic architecture and compliance intelligence."
-  }
-  </script>
+    h1 {
+      font-size: 42px;
+      line-height: 1.2;
+    }
+
+    h2 {
+      font-size: 28px;
+      margin-bottom: 10px;
+    }
+
+    p {
+      color: #9aa6b2;
+      line-height: 1.6;
+    }
+
+    .hero {
+      padding: 100px 20px 60px;
+      text-align: center;
+    }
+
+    .copilot-section {
+      margin-top: 40px;
+    }
+
+    .chat-box {
+      background: #11161d;
+      padding: 30px;
+      border-radius: 16px;
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+
+    textarea {
+      width: 100%;
+      height: 120px;
+      margin-top: 15px;
+      padding: 12px;
+      border-radius: 8px;
+      border: none;
+      background: #0b0f14;
+      color: #fff;
+    }
+
+    button {
+      margin-top: 15px;
+      padding: 12px 20px;
+      background: #7cc6ff;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: 600;
+    }
+
+    #chat-output {
+      margin-bottom: 15px;
+      padding: 15px;
+      background: #0b0f14;
+      border-radius: 10px;
+      min-height: 80px;
+      border: 1px solid rgba(255,255,255,0.06);
+    }
+
+    footer {
+      text-align: center;
+      padding: 40px;
+      color: #6b7683;
+      font-size: 14px;
+    }
+  </style>
 </head>
+
 <body>
-  <div class="site-bg"></div>
 
-  <header class="site-header">
-    <div class="container header-inner">
-      <a href="#top" class="brand">
-        <span class="brand-mark">CL</span>
-        <span class="brand-text">Cognitive Logic</span>
-      </a>
-
-      <nav class="main-nav">
-        <a href="#architecture">Architecture</a>
-        <a href="#copilot">Copilot</a>
-        <a href="#use-cases">Use Cases</a>
-        <a href="#framework">Framework</a>
-        <a href="#contact">Contact</a>
-      </nav>
-
-      <a href="#copilot" class="btn btn-ghost">Open Copilot</a>
+  <!-- HERO -->
+  <section class="hero">
+    <div class="container">
+      <h1>AI Governance diventa infrastruttura operativa</h1>
+      <p>
+        Cognitive Logic costruisce sistemi AI leggibili, verificabili e governabili
+        attraverso architetture semantiche AI-native.
+      </p>
     </div>
-  </header>
+  </section>
 
-  <main id="top">
-    <section class="hero">
-      <div class="container hero-grid">
-        <div class="hero-copy">
-          <div class="eyebrow">Pilot Program · AI Governance Infrastructure</div>
+  <!-- COPILOT -->
+  <section class="copilot-section">
+    <div class="container">
+      <div class="chat-box">
+        <h2>AI Compliance Copilot</h2>
+        <p>Inserisci una descrizione del tuo sistema AI e ricevi una valutazione immediata.</p>
 
-          <h1>
-            Porta la governance AI da documentazione frammentata
-            a infrastruttura operativa.
-          </h1>
-
-          <p class="hero-lead">
-            Cognitive Logic costruisce un livello semantico AI-native per rendere i sistemi
-            più leggibili, verificabili e governabili. Non solo dashboard, ma una struttura
-            dati e logica pensata anche per agenti autonomi, auditabilità ed evoluzione continua.
-          </p>
-
-          <div class="hero-actions">
-            <a href="#copilot" class="btn btn-primary">Testa il Copilot</a>
-            <a href="#architecture" class="btn btn-secondary">Esplora l’architettura</a>
-          </div>
-
-          <div class="hero-metrics">
-            <div class="metric-card">
-              <span class="metric-value">AI-native</span>
-              <span class="metric-label">Data architecture for autonomous systems</span>
-            </div>
-            <div class="metric-card">
-              <span class="metric-value">Explainable</span>
-              <span class="metric-label">Reasoning, traceability and structural controls</span>
-            </div>
-            <div class="metric-card">
-              <span class="metric-value">Operational</span>
-              <span class="metric-label">From compliance narrative to reusable logic</span>
-            </div>
-          </div>
+        <div id="chat-output">
+          Scrivi una descrizione del sistema AI e avvia l’analisi.
         </div>
 
-        <div class="hero-panel">
-          <div class="hero-panel-head">
-            <span class="panel-dot"></span>
-            <span>Infrastructure Preview</span>
-          </div>
+        <textarea
+          id="chat-input"
+          placeholder="Esempio: sistema fintech di raccomandazione con dati sensibili e supervisione umana."
+        ></textarea>
 
-          <div class="hero-stack">
-            <div class="stack-layer">
-              <div>
-                <strong>Knowledge Graph Core</strong>
-                <p>Semantic backbone for AI systems, constraints, controls and traceability.</p>
-              </div>
-              <span class="tag">Core</span>
-            </div>
-
-            <div class="stack-layer">
-              <div>
-                <strong>AI Reasoning Engine</strong>
-                <p>Symbolic inference, structured analysis and explainable decision flows.</p>
-              </div>
-              <span class="tag">Logic</span>
-            </div>
-
-            <div class="stack-layer">
-              <div>
-                <strong>QEN Ethical Engine</strong>
-                <p>Quantifiable ethical nodes for verifiable governance constraints.</p>
-              </div>
-              <span class="tag">QEN</span>
-            </div>
-
-            <div class="stack-layer">
-              <div>
-                <strong>Identity & Trust Layer</strong>
-                <p>DID-ready trust architecture for provenance, ownership and verification.</p>
-              </div>
-              <span class="tag">Trust</span>
-            </div>
-
-            <div class="stack-layer">
-              <div>
-                <strong>Copilot Interface</strong>
-                <p>Operational access point for pilots, risk scans and actionable recommendations.</p>
-              </div>
-              <span class="tag">UX</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="trust-strip">
-      <div class="container trust-grid">
-        <div class="trust-item">Semantic Governance</div>
-        <div class="trust-item">Explainable Infrastructure</div>
-        <div class="trust-item">Risk Intelligence</div>
-        <div class="trust-item">Compliance by Design</div>
-      </div>
-    </section>
-
-    <section id="architecture" class="section">
-      <div class="container">
-        <div class="section-heading">
-          <div class="kicker">Architecture</div>
-          <h2>Un’architettura pensata per sistemi AI che devono restare leggibili nel tempo.</h2>
-          <p>
-            La logica non è un’aggiunta finale. È il cuore del sistema. Cognitive Logic separa
-            chiaramente il livello semantico, il motore di analisi e il punto di contatto operativo.
-          </p>
-        </div>
-
-        <div class="architecture-grid">
-          <article class="card feature-card">
-            <div class="feature-number">01</div>
-            <h3>Cognitive Logic</h3>
-            <p>
-              Il nucleo logico e semantico. Qui vivono i modelli, i vincoli, i concetti e la struttura
-              che rende i sistemi AI leggibili anche oltre l’interfaccia.
-            </p>
-          </article>
-
-          <article class="card feature-card">
-            <div class="feature-number">02</div>
-            <h3>Engine</h3>
-            <p>
-              Il motore riusabile che applica regole, scoring, controlli e inferenze. È indipendente
-              dal settore e può essere esteso a nuovi domini senza riscrivere la logica di base.
-            </p>
-          </article>
-
-          <article class="card feature-card">
-            <div class="feature-number">03</div>
-            <h3>Copilot</h3>
-            <p>
-              Il layer operativo e personalizzabile. Qui l’utente interagisce con il sistema,
-              riceve analisi, vede gap e ottiene raccomandazioni in una forma immediatamente utile.
-            </p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section class="section dashboard-preview">
-      <div class="container">
-        <div class="section-heading">
-          <div class="kicker">Dashboard Preview</div>
-          <h2>Una vista enterprise del risultato, non solo un output testuale.</h2>
-          <p>
-            Il Copilot può diventare una dashboard reale: analisi immediata, stato di rischio,
-            aree mancanti e indicazioni operative pronte per pilot, audit interni e demo enterprise.
-          </p>
-        </div>
-
-        <div class="dashboard-shell">
-          <div class="dashboard-topbar">
-            <div class="dashboard-title">
-              <span class="dot dot-green"></span>
-              <span>Live Governance Analysis</span>
-            </div>
-            <div class="dashboard-badge">Pilot Interface</div>
-          </div>
-
-          <div class="dashboard-grid">
-            <div class="dashboard-card">
-              <span class="dashboard-label">Risk Level</span>
-              <strong class="dashboard-value">MEDIUM</strong>
-              <p>Classificazione dinamica del sistema in base alla descrizione e ai controlli presenti.</p>
-            </div>
-
-            <div class="dashboard-card">
-              <span class="dashboard-label">Traceability</span>
-              <strong class="dashboard-value">72%</strong>
-              <p>Capacità del sistema di giustificare decisioni, fonti e punti di verifica.</p>
-            </div>
-
-            <div class="dashboard-card">
-              <span class="dashboard-label">Governance Readiness</span>
-              <strong class="dashboard-value">Pilot</strong>
-              <p>Stato di maturità per passare da test concettuale a infrastruttura operativa.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="copilot" class="section copilot-section">
-      <div class="container copilot-grid">
-        <div class="copilot-left">
-          <div class="section-heading left">
-            <div class="kicker">AI Compliance Copilot</div>
-            <h2>Analizza un sistema AI e ottieni una valutazione immediata.</h2>
-            <p>
-              Inserisci una descrizione del sistema. Il Copilot invierà la richiesta al backend
-              e restituirà un’analisi sintetica con livello di rischio, gap operativi,
-              raccomandazioni e una base di verificabilità.
-            </p>
-          </div>
-
-          <div class="copilot-form card">
-            <label for="chat-input" class="input-label">Descrizione del sistema AI</label>
-            <textarea
-              id="chat-input"
-              placeholder="Esempio: sistema di scoring automatico per credito con dati finanziari sensibili e supervisione umana limitata."
-            ></textarea>
-
-            <div class="copilot-actions">
-              <button id="analyze-btn" class="btn btn-primary" type="button" onclick="sendMessage()">
-  Analizza
-</button>
-              <button id="clear-btn" class="btn btn-secondary" type="button">
-                Pulisci
-              </button>
-              <button id="pdf-btn" class="btn btn-secondary" type="button">
-                Export PDF
-              </button>
-            </div>
-
-            <div id="status-line" class="status-line">
-              Scrivi una descrizione e avvia l’analisi.
-            </div>
-          </div>
-        </div>
-
-        <div class="copilot-right">
-          <div class="result-panel card">
-            <div class="result-head">
-              <h3>Result</h3>
-              <span class="result-pill">Live API</span>
-            </div>
-
-            <div class="result-grid">
-              <div class="result-box highlight">
-                <span class="result-label">Decision</span>
-                <div id="decision-box" class="decision-box">—</div>
-              </div>
-
-              <div class="result-box">
-                <span class="result-label">Risk Level</span>
-                <div id="risk-level" class="result-value">—</div>
-              </div>
-
-              <div class="result-box">
-                <span class="result-label">Risk Score</span>
-                <div id="risk-score" class="result-value">—</div>
-              </div>
-
-              <div class="result-box full">
-                <span class="result-label">Why</span>
-                <div id="why" class="result-text">—</div>
-              </div>
-
-              <div class="result-box full">
-                <span class="result-label">Impact</span>
-                <div id="impact" class="result-text">—</div>
-              </div>
-
-              <div class="result-box full">
-                <span class="result-label">Summary</span>
-                <div id="summary" class="result-text">—</div>
-              </div>
-
-              <div class="result-box half">
-                <span class="result-label">Detected Gaps</span>
-                <ul id="gaps-list" class="result-list"></ul>
-              </div>
-
-              <div class="result-box half">
-                <span class="result-label">Recommended Actions</span>
-                <ul id="recommendations-list" class="result-list"></ul>
-              </div>
-
-              <div class="result-box full">
-                <span class="result-label">Raw Output</span>
-                <pre id="raw-output" class="raw-output">In attesa di risposta backend.</pre>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="use-cases" class="section">
-      <div class="container">
-        <div class="section-heading">
-          <div class="kicker">Use Cases</div>
-          <h2>Dove questa infrastruttura crea valore subito.</h2>
-          <p>
-            Il punto non è il singolo settore, ma la necessità crescente di dare struttura,
-            verificabilità e continuità ai sistemi AI in contesti reali.
-          </p>
-        </div>
-
-        <div class="use-cases-grid">
-          <article class="card use-case-card">
-            <h3>AI Compliance</h3>
-            <p>
-              Trasformare policy, requisiti normativi e controlli interni in logica eseguibile,
-              verificabile e continuamente aggiornabile.
-            </p>
-          </article>
-
-          <article class="card use-case-card">
-            <h3>Knowledge Infrastructure</h3>
-            <p>
-              Costruire un backbone semantico leggibile anche per agenti, workflow automatizzati
-              e sistemi che devono cooperare nel tempo.
-            </p>
-          </article>
-
-          <article class="card use-case-card">
-            <h3>Vertical Copilots</h3>
-            <p>
-              Portare la stessa logica in settori specifici con interfacce dedicate, ma senza
-              duplicare l’architettura di base.
-            </p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section id="framework" class="section framework-section">
-      <div class="container framework-grid">
-        <div>
-          <div class="section-heading left">
-            <div class="kicker">QEN Framework</div>
-            <h2>Quantificare i vincoli etici come elementi strutturali del sistema.</h2>
-            <p>
-              QEN non è solo un’etichetta di compliance. È un modo per modellare vincoli, verifiche,
-              tracce e criteri decisionali come componenti computabili e osservabili.
-            </p>
-          </div>
-        </div>
-
-        <div class="card framework-card">
-          <div class="formula">QEN = (I, C, P, V, T)</div>
-          <ul class="framework-list">
-            <li><strong>I</strong> — Input space</li>
-            <li><strong>C</strong> — Constraint set</li>
-            <li><strong>P</strong> — Processing function</li>
-            <li><strong>V</strong> — Verification function</li>
-            <li><strong>T</strong> — Traceability layer</li>
-          </ul>
-        </div>
-      </div>
-    </section>
-
-    <section id="contact" class="section cta-section">
-      <div class="container cta-box">
-        <div>
-          <div class="kicker">Pilot Program</div>
-          <h2>Per aziende che vogliono compliance AI come infrastruttura, non solo documentazione.</h2>
-          <p>
-            Cognitive Logic è pensata per chi vuole trasformare la governance AI in una capacità
-            strutturale, riusabile e leggibile nel tempo.
-          </p>
-        </div>
-
-        <div class="cta-actions">
-          <a href="mailto:info@cognitivelogic.it" class="btn btn-primary">Contattaci</a>
-          <a href="#copilot" class="btn btn-secondary">Riapri il Copilot</a>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <footer class="site-footer">
-    <div class="container footer-inner">
-      <div>
-        <strong>Cognitive Logic</strong>
-        <p>AI-native knowledge infrastructure for explainable governance.</p>
-      </div>
-
-      <div class="footer-links">
-        <a href="#architecture">Architecture</a>
-        <a href="#copilot">Copilot</a>
-        <a href="#framework">Framework</a>
+        <button onclick="sendMessage()">Analizza</button>
       </div>
     </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    © 2026 Cognitive Logic — AI-native infrastructure
   </footer>
 
-  <script src="js/app.js?v=3"></script>
+  <!-- SCRIPT -->
+  <script>
+    async function sendMessage() {
+      const input = document.getElementById("chat-input");
+      const output = document.getElementById("chat-output");
+
+      const text = input.value.trim();
+
+      if (!text) {
+        output.innerHTML = "Inserisci una descrizione del sistema AI.";
+        return;
+      }
+
+      const payload = {
+        system: text,
+        context: "EU"
+      };
+
+      output.innerHTML = "Analisi in corso...";
+
+      try {
+        const response = await fetch("https://api.cognitivelogic.it/analyze", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify(payload)
+        });
+
+        const raw = await response.text();
+
+        let data;
+        try {
+          data = JSON.parse(raw);
+        } catch {
+          throw new Error("Risposta non JSON: " + raw);
+        }
+
+        if (!response.ok) {
+          throw new Error(data.detail || JSON.stringify(data));
+        }
+
+        let decision = "";
+
+        if (data.risk_level === "HIGH") {
+          decision = "🔴 CRITICAL — intervento immediato richiesto";
+        } else if (data.risk_level === "MEDIUM") {
+          decision = "🟠 ACTION REQUIRED — controlli mancanti";
+        } else {
+          decision = "🟢 MONITOR — sistema sotto controllo";
+        }
+
+        output.innerHTML = `
+          <div style="font-size:22px; font-weight:600;">${data.risk_level}</div>
+          <div><strong>Score:</strong> ${data.risk_score}</div>
+          <div><strong>Decision:</strong> ${decision}</div>
+          <br>
+          <div><strong>Summary:</strong> ${data.summary}</div>
+          <br>
+          <div><strong>Gaps:</strong><br>
+            ${(data.gaps || []).map(g => "• " + g).join("<br>")}
+          </div>
+          <br>
+          <div><strong>Recommendations:</strong><br>
+            ${(data.recommendations || []).map(r => "• " + r).join("<br>")}
+          </div>
+        `;
+
+      } catch (err) {
+        output.innerHTML = `<span style="color:#ff8a8a;">Errore: ${err.message}</span>`;
+        console.error(err);
+      }
+    }
+  </script>
 
 </body>
 </html>
