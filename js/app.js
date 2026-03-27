@@ -18,17 +18,19 @@ const recommendationsList = document.getElementById("recommendations-list");
 const rawOutput = document.getElementById("raw-output");
 
 function setLoadingState(isLoading) {
-  analyzeBtn.disabled = isLoading;
-  clearBtn.disabled = isLoading;
-  pdfBtn.disabled = isLoading;
+  if (analyzeBtn) analyzeBtn.disabled = isLoading;
+  if (clearBtn) clearBtn.disabled = isLoading;
+  if (pdfBtn) pdfBtn.disabled = isLoading;
 }
 
 function clearLists() {
-  gapsList.innerHTML = "";
-  recommendationsList.innerHTML = "";
+  if (gapsList) gapsList.innerHTML = "";
+  if (recommendationsList) recommendationsList.innerHTML = "";
 }
 
 function renderList(listEl, items) {
+  if (!listEl) return;
+
   listEl.innerHTML = "";
 
   if (!items || !Array.isArray(items) || items.length === 0) {
@@ -45,39 +47,80 @@ function renderList(listEl, items) {
   });
 }
 
+function getDecisionFromRisk(riskLevel) {
+  if (riskLevel === "HIGH") {
+    return "🔴 CRITICAL — intervento immediato richiesto";
+  }
+  if (riskLevel === "MEDIUM") {
+    return "🟠 ACTION REQUIRED — implementare controlli mancanti";
+  }
+  if (riskLevel === "LOW") {
+    return "🟢 MONITOR — sistema gestibile con controlli base";
+  }
+  return "—";
+}
+
+function getWhyFromData(data) {
+  if (data.why) return data.why;
+
+  if (Array.isArray(data.gaps) && data.gaps.length > 0) {
+    return `Segnali rilevati: ${data.gaps.join(", ")}.`;
+  }
+
+  return "Nessuna motivazione dettagliata restituita dal backend.";
+}
+
+function getImpactFromRisk(riskLevel) {
+  if (riskLevel === "HIGH") {
+    return "Impatto elevato: servono controlli formali, verifica normativa e supervisione immediata.";
+  }
+  if (riskLevel === "MEDIUM") {
+    return "Impatto medio: servono misure di trasparenza, tracciabilità e controllo operativo.";
+  }
+  if (riskLevel === "LOW") {
+    return "Impatto contenuto: sistema monitorabile con controlli base.";
+  }
+  return "Impatto non disponibile.";
+}
+
 function resetOutput() {
-  decisionBox.textContent = "—";
-  riskLevelBox.textContent = "—";
-  riskScoreBox.textContent = "—";
-  whyBox.textContent = "—";
-  impactBox.textContent = "—";
-  summaryBox.textContent = "—";
+  if (decisionBox) decisionBox.textContent = "—";
+  if (riskLevelBox) riskLevelBox.textContent = "—";
+  if (riskScoreBox) riskScoreBox.textContent = "—";
+  if (whyBox) whyBox.textContent = "—";
+  if (impactBox) impactBox.textContent = "—";
+  if (summaryBox) summaryBox.textContent = "—";
   clearLists();
-  rawOutput.textContent = "In attesa di risposta backend.";
+  if (rawOutput) rawOutput.textContent = "In attesa di risposta backend.";
 }
 
 function showLoadingOutput() {
-  decisionBox.textContent = "Elaborazione...";
-  riskLevelBox.textContent = "...";
-  riskScoreBox.textContent = "...";
-  whyBox.textContent = "Il backend sta elaborando i segnali rilevati.";
-  impactBox.textContent = "Valutazione impatto in corso.";
-  summaryBox.textContent = "Il backend sta elaborando la richiesta.";
+  if (decisionBox) decisionBox.textContent = "Elaborazione...";
+  if (riskLevelBox) riskLevelBox.textContent = "...";
+  if (riskScoreBox) riskScoreBox.textContent = "...";
+  if (whyBox) whyBox.textContent = "Il backend sta elaborando i segnali rilevati.";
+  if (impactBox) impactBox.textContent = "Valutazione impatto in corso.";
+  if (summaryBox) summaryBox.textContent = "Il backend sta elaborando la richiesta.";
   clearLists();
-  rawOutput.textContent = "Richiesta inviata al backend...";
+  if (rawOutput) rawOutput.textContent = "Richiesta inviata al backend...";
 }
 
 async function sendMessage() {
+  if (!inputEl) {
+    console.error("Elemento #chat-input non trovato");
+    return;
+  }
+
   const text = inputEl.value.trim();
 
   if (!text) {
-    statusLine.textContent = "Inserisci una descrizione del sistema AI.";
+    if (statusLine) statusLine.textContent = "Inserisci una descrizione del sistema AI.";
     inputEl.focus();
     return;
   }
 
   setLoadingState(true);
-  statusLine.textContent = "Analisi in corso...";
+  if (statusLine) statusLine.textContent = "Analisi in corso...";
   showLoadingOutput();
 
   try {
@@ -106,51 +149,59 @@ async function sendMessage() {
       throw new Error(data?.detail || `HTTP ${response.status}`);
     }
 
-    decisionBox.textContent = data.decision || "—";
-    riskLevelBox.textContent = data.risk_level || "—";
-    riskScoreBox.textContent = data.risk_score ?? "—";
-    whyBox.textContent = data.why || "—";
-    impactBox.textContent = data.impact || "—";
-    summaryBox.textContent = data.summary || "—";
+    const decision = data.decision || getDecisionFromRisk(data.risk_level);
+    const why = getWhyFromData(data);
+    const impact = data.impact || getImpactFromRisk(data.risk_level);
+
+    if (decisionBox) decisionBox.textContent = decision;
+    if (riskLevelBox) riskLevelBox.textContent = data.risk_level || "—";
+    if (riskScoreBox) riskScoreBox.textContent = data.risk_score ?? "—";
+    if (whyBox) whyBox.textContent = why;
+    if (impactBox) impactBox.textContent = impact;
+    if (summaryBox) summaryBox.textContent = data.summary || "—";
 
     renderList(gapsList, data.gaps);
     renderList(recommendationsList, data.recommendations);
 
-    rawOutput.textContent = JSON.stringify(data, null, 2);
-    statusLine.textContent = "Analisi completata.";
+    if (rawOutput) rawOutput.textContent = JSON.stringify(data, null, 2);
+    if (statusLine) statusLine.textContent = "Analisi completata.";
   } catch (error) {
-    decisionBox.textContent = "Errore";
-    riskLevelBox.textContent = "—";
-    riskScoreBox.textContent = "—";
-    whyBox.textContent = "La richiesta non ha ricevuto una risposta valida.";
-    impactBox.textContent = "Verificare endpoint, backend e console.";
-    summaryBox.textContent = error.message || "Errore sconosciuto.";
+    if (decisionBox) decisionBox.textContent = "Errore";
+    if (riskLevelBox) riskLevelBox.textContent = "—";
+    if (riskScoreBox) riskScoreBox.textContent = "—";
+    if (whyBox) whyBox.textContent = "La richiesta non ha ricevuto una risposta valida.";
+    if (impactBox) impactBox.textContent = "Verificare endpoint, backend e console.";
+    if (summaryBox) summaryBox.textContent = error.message || "Errore sconosciuto.";
     clearLists();
-    rawOutput.textContent = String(error);
-    statusLine.textContent = `Errore: ${error.message}`;
+    if (rawOutput) rawOutput.textContent = String(error);
+    if (statusLine) statusLine.textContent = `Errore: ${error.message}`;
+    console.error("sendMessage error:", error);
   } finally {
     setLoadingState(false);
   }
 }
 
 function clearForm() {
+  if (!inputEl) return;
   inputEl.value = "";
   resetOutput();
-  statusLine.textContent = "Campi puliti.";
+  if (statusLine) statusLine.textContent = "Campi puliti.";
   inputEl.focus();
 }
 
 async function exportPdf() {
+  if (!inputEl) return;
+
   const text = inputEl.value.trim();
 
   if (!text) {
-    statusLine.textContent = "Inserisci una descrizione prima di esportare il PDF.";
+    if (statusLine) statusLine.textContent = "Inserisci una descrizione prima di esportare il PDF.";
     inputEl.focus();
     return;
   }
 
   setLoadingState(true);
-  statusLine.textContent = "Generazione PDF executive in corso...";
+  if (statusLine) statusLine.textContent = "Generazione PDF executive in corso...";
 
   try {
     const response = await fetch(PDF_URL, {
@@ -179,17 +230,18 @@ async function exportPdf() {
     a.remove();
     window.URL.revokeObjectURL(url);
 
-    statusLine.textContent = "PDF esportato correttamente.";
+    if (statusLine) statusLine.textContent = "PDF esportato correttamente.";
   } catch (error) {
-    statusLine.textContent = `Errore PDF: ${error.message}`;
+    if (statusLine) statusLine.textContent = `Errore PDF: ${error.message}`;
+    console.error("exportPdf error:", error);
   } finally {
     setLoadingState(false);
   }
 }
 
-analyzeBtn.addEventListener("click", sendMessage);
-clearBtn.addEventListener("click", clearForm);
-pdfBtn.addEventListener("click", exportPdf);
+if (analyzeBtn) analyzeBtn.addEventListener("click", sendMessage);
+if (clearBtn) clearBtn.addEventListener("click", clearForm);
+if (pdfBtn) pdfBtn.addEventListener("click", exportPdf);
 
 window.sendMessage = sendMessage;
 
