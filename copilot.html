@@ -9,7 +9,7 @@
         placeholder="Descrivi il sistema AI..."></textarea>
 
       <div style="margin-top:15px;">
-        <button id="analyze-btn">Analizza</button>
+        <button id="analyze-btn" onclick="sendMessage()">Analizza</button>
         <button id="clear-btn" onclick="document.getElementById('chat-input').value=''; document.getElementById('chat-output').innerHTML=''; document.getElementById('status-text').textContent='In attesa di input.';">Reset</button>
         <button id="pdf-btn">Export PDF</button>
       </div>
