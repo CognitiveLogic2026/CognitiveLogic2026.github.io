@@ -3,477 +3,310 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-  <title>Demo — Cognitive Logic</title>
+  <title>Demo — AI Governance Assessment · Cognitive Logic</title>
   <meta name="description" content="Demo di classificazione AI Governance per sistemi AI: rischio, controlli e output auditabile." />
-
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
   <style>
-    :root {
-      --bg: #05060a;
-      --panel: #0d1018;
-      --panel-2: #121725;
-      --text: #f3f6ff;
-      --muted: #aab4d0;
-      --line: rgba(255,255,255,0.08);
-      --accent: #6ee7ff;
-      --accent-2: #ff4fd8;
-      --ok: #7dffb3;
-      --warn: #ffd36e;
-      --danger: #ff7d7d;
-      --max: 1100px;
-      --radius: 18px;
-      --shadow: 0 20px 60px rgba(0,0,0,0.35);
-    }
-
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    body {
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Inter, sans-serif;
-      background:
-        radial-gradient(circle at top left, rgba(110,231,255,0.10), transparent 28%),
-        radial-gradient(circle at top right, rgba(255,79,216,0.08), transparent 26%),
-        var(--bg);
+    input, select {
+      width: 100%;
+      padding: 10px 12px;
+      background: var(--navy-3);
+      border: 1px solid var(--line);
       color: var(--text);
-      line-height: 1.6;
+      font-family: var(--mono);
+      font-size: 0.82rem;
+      outline: none;
+      transition: border-color 0.2s;
     }
-
-    a {
-      color: inherit;
-      text-decoration: none;
+    input:focus, select:focus {
+      border-color: var(--gold-line);
     }
-
-    .container {
-      width: min(var(--max), calc(100% - 32px));
-      margin: 0 auto;
-      padding: 42px 0 60px;
+    select option {
+      background: var(--navy-2);
     }
-
-    .topbar {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 16px;
-      margin-bottom: 30px;
-      flex-wrap: wrap;
-    }
-
-    .brand {
-      font-size: 1.1rem;
-      font-weight: 700;
-      letter-spacing: 0.04em;
-    }
-
-    .brand span {
-      color: var(--accent);
-    }
-
-    .back-link {
-      color: var(--muted);
-      border: 1px solid var(--line);
-      padding: 10px 14px;
-      border-radius: 999px;
-      background: rgba(255,255,255,0.03);
-    }
-
-    .hero {
-      margin-bottom: 24px;
-    }
-
-    .eyebrow {
-      display: inline-block;
-      padding: 8px 12px;
-      border-radius: 999px;
-      color: var(--accent);
-      background: rgba(110,231,255,0.06);
-      border: 1px solid rgba(110,231,255,0.20);
-      font-size: 0.84rem;
-      margin-bottom: 14px;
-    }
-
-    h1 {
-      font-size: clamp(2.1rem, 5vw, 4rem);
-      line-height: 1.05;
-      letter-spacing: -0.04em;
-      margin-bottom: 14px;
-    }
-
-    .lead {
-      color: var(--muted);
-      max-width: 70ch;
-      font-size: 1.05rem;
-    }
-
-    .layout {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 22px;
-      margin-top: 28px;
-    }
-
-    .panel {
-      background: linear-gradient(180deg, var(--panel), var(--panel-2));
-      border: 1px solid var(--line);
-      border-radius: 24px;
-      padding: 26px;
-      box-shadow: var(--shadow);
-    }
-
-    .panel h2 {
-      font-size: 1.3rem;
-      margin-bottom: 8px;
-    }
-
-    .panel-intro {
-      color: var(--muted);
-      margin-bottom: 18px;
-      font-size: 0.98rem;
-    }
-
     .field {
-      margin-bottom: 16px;
+      margin-bottom: 14px;
     }
-
     .field label {
       display: block;
-      margin-bottom: 6px;
+      font-size: 0.62rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
       color: var(--muted);
-      font-size: 0.92rem;
+      margin-bottom: 6px;
     }
-
-    input, select, textarea {
-      width: 100%;
-      padding: 13px 14px;
-      border-radius: 12px;
-      border: 1px solid rgba(255,255,255,0.08);
-      background: rgba(255,255,255,0.04);
-      color: var(--text);
-      font: inherit;
-      outline: none;
-    }
-
-    textarea {
-      min-height: 96px;
-      resize: vertical;
-    }
-
-    .btn-row {
-      display: flex;
-      gap: 12px;
-      flex-wrap: wrap;
-      margin-top: 20px;
-    }
-
-    button {
-      border: none;
-      min-height: 48px;
-      padding: 0 20px;
-      border-radius: 999px;
-      font-weight: 700;
-      cursor: pointer;
-      font: inherit;
-    }
-
-    .btn-primary {
-      background: linear-gradient(90deg, var(--accent), #7cb8ff);
-      color: #051018;
-    }
-
-    .btn-secondary {
-      background: rgba(255,255,255,0.04);
-      color: var(--text);
-      border: 1px solid var(--line);
-    }
-
-    .result {
-      display: none;
-    }
-
-    .status-row {
-      display: flex;
-      gap: 12px;
-      flex-wrap: wrap;
-      margin: 16px 0 22px;
-    }
-
-    .pill {
+    .risk-chip {
       display: inline-flex;
       align-items: center;
-      min-height: 36px;
-      padding: 0 12px;
-      border-radius: 999px;
-      font-size: 0.88rem;
-      border: 1px solid var(--line);
-      background: rgba(255,255,255,0.03);
+      padding: 6px 14px;
+      border: 1px solid transparent;
+      font-family: var(--mono);
+      font-size: 0.7rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
     }
-
-    .risk-low {
-      color: var(--ok);
-      border-color: rgba(125,255,179,0.25);
-      background: rgba(125,255,179,0.08);
-    }
-
-    .risk-medium {
-      color: var(--warn);
-      border-color: rgba(255,211,110,0.25);
-      background: rgba(255,211,110,0.08);
-    }
-
-    .risk-high {
-      color: var(--danger);
-      border-color: rgba(255,125,125,0.25);
-      background: rgba(255,125,125,0.08);
-    }
-
-    .section {
-      margin-top: 20px;
-      padding-top: 18px;
-      border-top: 1px solid var(--line);
-    }
-
-    .section h3 {
-      font-size: 1rem;
-      margin-bottom: 10px;
-    }
-
-    .list {
-      list-style: none;
-      display: grid;
-      gap: 10px;
-    }
-
-    .list li {
-      padding: 12px 14px;
-      border: 1px solid var(--line);
-      border-radius: 12px;
-      background: rgba(255,255,255,0.03);
+    .risk-chip.low    { background: rgba(74,156,110,0.12); color: #5AB87A; border-color: rgba(74,156,110,0.3); }
+    .risk-chip.medium { background: rgba(201,168,76,0.12); color: var(--gold); border-color: var(--gold-line); }
+    .risk-chip.high   { background: rgba(192,74,66,0.12); color: #E05A52; border-color: rgba(192,74,66,0.3); }
+    .out-list li {
+      padding: 10px 12px;
+      border: 1px solid var(--line-2);
+      background: var(--navy-3);
+      font-size: 0.78rem;
       color: var(--muted);
+      position: relative;
+      padding-left: 22px;
     }
-
-    .summary-box {
-      margin-top: 14px;
-      padding: 16px;
-      border-radius: 14px;
-      background: rgba(255,255,255,0.03);
-      border: 1px solid var(--line);
-      color: var(--muted);
+    .out-list li::before {
+      content: '—';
+      position: absolute;
+      left: 10px;
+      color: var(--gold);
     }
-
-    .summary-box strong {
-      color: var(--text);
-    }
-
-    .legend {
-      margin-top: 18px;
-      color: var(--muted);
-      font-size: 0.92rem;
-    }
-
-    @media (max-width: 920px) {
-      .layout {
-        grid-template-columns: 1fr;
-      }
-    }
+    .out-list { display: grid; gap: 4px; list-style: none; padding: 0; }
   </style>
 </head>
 <body>
-  <div class="container">
-    <div class="topbar">
-      <div class="brand">Cognitive <span>Logic</span></div>
-      <a class="back-link" href="index.html">← Torna alla homepage</a>
-    </div>
+  <div class="site-bg"></div>
 
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="index.html" class="brand">
+        <span class="brand-mark">CL</span>
+        <span class="brand-text">Cognitive Logic</span>
+      </a>
+      <nav class="main-nav">
+        <a href="framework.html">Framework</a>
+        <a href="ecosystem.html">Ecosystem</a>
+        <a href="qen-live.html">QEN Live</a>
+        <a href="ai.html">AI Engine</a>
+        <a href="identity.html">Identity</a>
+        <a href="demo.html" class="active">Demo</a>
+      </nav>
+      <div class="header-end">
+        <a href="copilot.html" class="btn btn-ghost">Copilot</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
     <section class="hero">
-      <div class="eyebrow">QEN Demo</div>
-      <h1>AI Governance Assessment</h1>
-      <p class="lead">
-        Simula una prima valutazione di un sistema AI: profilo di rischio,
-        motivazione regolatoria, controlli richiesti e sintesi auditabile.
-      </p>
+      <div class="container">
+        <div class="eyebrow">QEN Demo · AI Governance Assessment</div>
+        <h1>
+          Simula una valutazione<br>
+          <em style="font-style:italic;color:var(--gold)">di governance AI.</em>
+        </h1>
+        <p class="hero-lead">
+          Inserisci un profilo essenziale del sistema AI per generare una valutazione strutturata:
+          profilo di rischio, motivazione regolatoria, controlli richiesti e sintesi auditabile.
+        </p>
+      </div>
     </section>
 
-    <div class="layout">
-      <section class="panel">
-        <h2>Input del sistema</h2>
-        <p class="panel-intro">
-          Inserisci un profilo essenziale del sistema AI per generare una valutazione strutturata.
-        </p>
+    <section class="section" style="padding-top:0">
+      <div class="container">
+        <div class="grid-2">
 
-        <div class="field">
-          <label for="systemName">Nome del sistema</label>
-          <input id="systemName" type="text" value="QEN Recommendation Engine" />
-        </div>
+          <!-- Input Panel -->
+          <div class="card" style="padding:32px">
+            <div class="eyebrow" style="margin-bottom:20px">Input del sistema</div>
 
-        <div class="field">
-          <label for="systemType">Tipo di sistema</label>
-          <select id="systemType">
-            <option>Recommendation System</option>
-            <option>Credit Scoring</option>
-            <option>Biometric Identification</option>
-            <option>Fraud Detection</option>
-            <option>Decision Support System</option>
-          </select>
-        </div>
+            <div class="field">
+              <label for="systemName">Nome del sistema</label>
+              <input id="systemName" type="text" value="QEN Recommendation Engine" />
+            </div>
 
-        <div class="field">
-          <label for="domain">Dominio applicativo</label>
-          <select id="domain">
-            <option>Fintech</option>
-            <option>Insurance</option>
-            <option>Healthcare</option>
-            <option>HR</option>
-            <option>Marketing</option>
-            <option>Public Sector</option>
-          </select>
-        </div>
+            <div class="field">
+              <label for="systemType">Tipo di sistema</label>
+              <select id="systemType">
+                <option>Recommendation System</option>
+                <option>Credit Scoring</option>
+                <option>Biometric Identification</option>
+                <option>Fraud Detection</option>
+                <option>Decision Support System</option>
+              </select>
+            </div>
 
-        <div class="field">
-          <label for="dataType">Uso di dati sensibili</label>
-          <select id="dataType">
-            <option>No</option>
-            <option>Sì</option>
-          </select>
-        </div>
+            <div class="field">
+              <label for="domain">Dominio applicativo</label>
+              <select id="domain">
+                <option>Fintech</option>
+                <option>Insurance</option>
+                <option>Healthcare</option>
+                <option>HR</option>
+                <option>Marketing</option>
+                <option>Public Sector</option>
+                <option>Food &amp; Artisan</option>
+              </select>
+            </div>
 
-        <div class="field">
-          <label for="decisionImpact">Impatto decisionale</label>
-          <select id="decisionImpact">
-            <option>Basso</option>
-            <option>Medio</option>
-            <option>Alto</option>
-          </select>
-        </div>
+            <div class="field">
+              <label for="dataType">Uso di dati sensibili</label>
+              <select id="dataType">
+                <option>No</option>
+                <option>Sì</option>
+              </select>
+            </div>
 
-        <div class="field">
-          <label for="humanOversight">Supervisione umana prevista</label>
-          <select id="humanOversight">
-            <option>Sì</option>
-            <option>No</option>
-          </select>
-        </div>
+            <div class="field">
+              <label for="decisionImpact">Impatto decisionale</label>
+              <select id="decisionImpact">
+                <option>Basso</option>
+                <option>Medio</option>
+                <option>Alto</option>
+              </select>
+            </div>
 
-        <div class="field">
-          <label for="description">Descrizione sintetica</label>
-          <textarea id="description">Sistema AI che ordina contenuti o suggerimenti sulla base di dati utente e logiche predittive.</textarea>
-        </div>
+            <div class="field">
+              <label for="humanOversight">Supervisione umana prevista</label>
+              <select id="humanOversight">
+                <option>Sì</option>
+                <option>No</option>
+              </select>
+            </div>
 
-        <div class="btn-row">
-  <button class="btn-primary" onclick="runAssessment()">Analizza sistema</button>
-  <button class="btn-secondary" onclick="loadExample()">Carica esempio high-risk</button>
-  <button class="btn-secondary" onclick="exportAudit()">Export Audit Summary</button>
-</div>
+            <div class="field">
+              <label for="description">Descrizione sintetica</label>
+              <textarea id="description" style="min-height:80px">Sistema AI che ordina contenuti o suggerimenti sulla base di dati utente e logiche predittive.</textarea>
+            </div>
 
-        <p class="legend">
-          Questa demo genera una valutazione simulata ma strutturata, utile per mostrare il funzionamento del layer di governance.
-        </p>
-      </section>
+            <div class="btn-row" style="margin-top:20px">
+              <button class="btn btn-primary" onclick="runAssessment()">Analizza sistema</button>
+              <button class="btn btn-ghost" onclick="loadExample()">Esempio high-risk</button>
+              <button class="btn btn-muted" onclick="exportAudit()">Export Audit</button>
+            </div>
 
-      <section class="panel">
-        <h2>Output di assessment</h2>
-        <p class="panel-intro">
-          Il risultato mostra una prima classificazione, i motivi principali e i controlli suggeriti.
-        </p>
-
-        <div id="result" class="result">
-          <div class="status-row">
-            <div id="riskPill" class="pill">Risk level</div>
-            <div id="attentionPill" class="pill">Regulatory attention</div>
+            <p class="mt-16" style="font-size:0.68rem;color:var(--muted);line-height:1.7">
+              Questa demo genera una valutazione simulata ma strutturata, utile per mostrare
+              il funzionamento del layer di governance QEN.
+            </p>
           </div>
 
-          <div class="summary-box">
-            <strong id="systemSummaryName"></strong><br />
-            <span id="summaryText"></span>
+          <!-- Output Panel -->
+          <div class="card" style="padding:32px">
+            <div class="eyebrow" style="margin-bottom:20px">Output di assessment</div>
+
+            <div id="empty-state">
+              <p style="color:var(--muted);font-size:0.82rem;line-height:1.8">
+                Compila i campi e avvia la valutazione per visualizzare il risultato strutturato.
+              </p>
+              <div style="margin-top:24px;padding:20px;border:1px solid var(--line-2);background:var(--navy-3)">
+                <div style="font-size:0.65rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--muted);margin-bottom:12px">Formula QEN</div>
+                <div style="font-family:var(--mono);color:var(--text-2);font-size:0.85rem">
+                  QEN = (<span style="color:var(--gold)">Vs</span> × 0.40) + (<span style="color:var(--gold)">Va</span> × 0.35) + (<span style="color:var(--gold)">Vt</span> × 0.25)
+                </div>
+              </div>
+            </div>
+
+            <div id="result" style="display:none">
+              <div style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:20px">
+                <div id="riskChip" class="risk-chip">—</div>
+                <div id="attentionChip" class="risk-chip" style="border-color:var(--line)">—</div>
+              </div>
+
+              <div style="padding:16px;border:1px solid var(--gold-line);background:rgba(201,168,76,0.05);margin-bottom:20px">
+                <div style="font-size:0.65rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--muted);margin-bottom:6px">Sistema valutato</div>
+                <strong id="systemSummaryName" style="font-family:var(--serif);font-size:1.1rem;color:var(--text-2)"></strong>
+                <p id="summaryText" style="font-size:0.78rem;color:var(--muted);margin-top:6px;line-height:1.7"></p>
+              </div>
+
+              <div style="margin-bottom:16px">
+                <div style="font-size:0.65rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--muted);margin-bottom:10px">Motivazione della classificazione</div>
+                <ul id="reasonsList" class="out-list"></ul>
+              </div>
+
+              <div style="margin-bottom:16px">
+                <div style="font-size:0.65rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--muted);margin-bottom:10px">Controlli richiesti</div>
+                <ul id="controlsList" class="out-list"></ul>
+              </div>
+
+              <div>
+                <div style="font-size:0.65rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--muted);margin-bottom:10px">Output operativo</div>
+                <ul id="outputsList" class="out-list"></ul>
+              </div>
+            </div>
           </div>
 
-          <div class="section">
-            <h3>Motivazione della classificazione</h3>
-            <ul id="reasonsList" class="list"></ul>
-          </div>
-
-          <div class="section">
-            <h3>Controlli richiesti / raccomandati</h3>
-            <ul id="controlsList" class="list"></ul>
-          </div>
-
-          <div class="section">
-            <h3>Output operativo</h3>
-            <ul id="outputsList" class="list"></ul>
-          </div>
         </div>
+      </div>
+    </section>
+  </main>
 
-        <div id="emptyState" class="summary-box" style="margin-top:16px;">
-          <strong>Nessuna analisi eseguita.</strong><br />
-          Compila i campi a sinistra e avvia la valutazione per visualizzare il risultato.
-        </div>
-      </section>
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div>
+        <div class="footer-brand">Cognitive Logic · Demo</div>
+        <div class="footer-sub">AI Governance Assessment — QEN Framework.</div>
+        <div class="footer-copy mt-8">© 2026 Roberto Bob Malini</div>
+      </div>
+      <div class="footer-links">
+        <a href="index.html">Home</a>
+        <a href="framework.html">Framework</a>
+        <a href="copilot.html">Copilot</a>
+      </div>
     </div>
-  </div>
+  </footer>
 
   <script>
     function runAssessment() {
-      const systemName = document.getElementById("systemName").value.trim() || "Sistema AI";
-      const systemType = document.getElementById("systemType").value;
-      const domain = document.getElementById("domain").value;
-      const dataType = document.getElementById("dataType").value;
+      const systemName    = document.getElementById("systemName").value.trim() || "Sistema AI";
+      const systemType    = document.getElementById("systemType").value;
+      const domain        = document.getElementById("domain").value;
+      const dataType      = document.getElementById("dataType").value;
       const decisionImpact = document.getElementById("decisionImpact").value;
       const humanOversight = document.getElementById("humanOversight").value;
 
       let score = 0;
-      const reasons = [];
+      const reasons  = [];
       const controls = [];
-      const outputs = [
+      const outputs  = [
         "Sintesi leggibile per stakeholder non tecnici",
         "Output strutturato per API / dashboard",
         "Base per report di audit e controllo interno"
       ];
 
-      if (systemType === "Biometric Identification") {
-        score += 5;
-        reasons.push("Il sistema rientra in una categoria con elevata attenzione regolatoria.");
-        controls.push("Valutazione legale approfondita");
-        controls.push("Audit trail completo");
-        controls.push("Controlli di accesso e accountability");
-      }
+      const typeMap = {
+        "Biometric Identification": {
+          score: 5,
+          reason: "Il sistema rientra in una categoria con elevata attenzione regolatoria.",
+          controls: ["Valutazione legale approfondita", "Audit trail completo", "Controlli di accesso e accountability"]
+        },
+        "Credit Scoring": {
+          score: 4,
+          reason: "Il sistema incide su decisioni potenzialmente rilevanti per l'utente.",
+          controls: ["Explainability del modello", "Human oversight formale", "Monitoraggio dei bias"]
+        },
+        "Fraud Detection": {
+          score: 3,
+          reason: "Il sistema supporta decisioni operative ad impatto elevato.",
+          controls: ["Logging strutturato", "Tracciabilità delle decisioni"]
+        },
+        "Decision Support System": {
+          score: 2,
+          reason: "Il sistema influenza processi decisionali che richiedono verificabilità.",
+          controls: ["Versioning del modello", "Controlli di validazione periodica"]
+        },
+        "Recommendation System": {
+          score: 1,
+          reason: "Il sistema utilizza logiche di ranking che richiedono trasparenza minima.",
+          controls: ["Documentazione del funzionamento", "Logging base"]
+        }
+      };
 
-      if (systemType === "Credit Scoring") {
-        score += 4;
-        reasons.push("Il sistema incide su decisioni potenzialmente rilevanti per l’utente.");
-        controls.push("Explainability del modello");
-        controls.push("Human oversight formale");
-        controls.push("Monitoraggio dei bias");
-      }
+      const tm = typeMap[systemType] || { score: 1, reason: "Tipo non classificato.", controls: [] };
+      score += tm.score;
+      reasons.push(tm.reason);
+      controls.push(...tm.controls);
 
-      if (systemType === "Fraud Detection") {
-        score += 3;
-        reasons.push("Il sistema supporta decisioni operative ad impatto elevato.");
-        controls.push("Logging strutturato");
-        controls.push("Tracciabilità delle decisioni");
-      }
-
-      if (systemType === "Decision Support System") {
-        score += 2;
-        reasons.push("Il sistema influenza processi decisionali che richiedono verificabilità.");
-        controls.push("Versioning del modello");
-        controls.push("Controlli di validazione periodica");
-      }
-
-      if (systemType === "Recommendation System") {
-        score += 1;
-        reasons.push("Il sistema utilizza logiche di ranking o suggerimento che richiedono trasparenza minima.");
-        controls.push("Documentazione del funzionamento");
-        controls.push("Logging base");
-      }
-
-      if (domain === "Healthcare" || domain === "HR" || domain === "Public Sector") {
+      if (["Healthcare", "HR", "Public Sector"].includes(domain)) {
         score += 3;
         reasons.push("Il dominio applicativo è sensibile e richiede maggiore cautela.");
-        controls.push("Valutazione d’impatto");
-      }
-
-      if (domain === "Fintech" || domain === "Insurance") {
+        controls.push("Valutazione d'impatto");
+      } else if (["Fintech", "Insurance"].includes(domain)) {
         score += 2;
         reasons.push("Il dominio è regolato e necessita maggiore robustezza documentale.");
         controls.push("Data governance");
@@ -481,69 +314,57 @@
 
       if (dataType === "Sì") {
         score += 3;
-        reasons.push("L’uso di dati sensibili aumenta il livello di attenzione e controllo.");
-        controls.push("Policy di minimizzazione dei dati");
-        controls.push("Controlli su qualità e provenienza dei dati");
+        reasons.push("L'uso di dati sensibili aumenta il livello di attenzione e controllo.");
+        controls.push("Policy di minimizzazione dei dati", "Controlli su qualità e provenienza dei dati");
       }
 
       if (decisionImpact === "Alto") {
         score += 3;
-        reasons.push("L’impatto decisionale alto rende necessario un presidio di governance più rigoroso.");
-        controls.push("Supervisione di secondo livello");
-        controls.push("Escalation e review periodica");
+        reasons.push("L'impatto decisionale alto rende necessario un presidio di governance rigoroso.");
+        controls.push("Supervisione di secondo livello", "Escalation e review periodica");
       } else if (decisionImpact === "Medio") {
         score += 2;
-        reasons.push("L’impatto decisionale medio richiede controlli strutturati ma proporzionati.");
+        reasons.push("L'impatto medio richiede controlli strutturati ma proporzionati.");
       }
 
       if (humanOversight === "No") {
         score += 2;
-        reasons.push("L’assenza di supervisione umana aumenta il rischio operativo.");
+        reasons.push("L'assenza di supervisione umana aumenta il rischio operativo.");
         controls.push("Introduzione di human oversight");
       } else {
-        reasons.push("È presente una forma di supervisione umana, elemento positivo di mitigazione.");
+        reasons.push("È presente supervisione umana, elemento positivo di mitigazione.");
       }
 
-      let riskLevel = "Limited Risk";
+      let riskLevel = "limited";
       let attention = "Standard attention";
-      let riskClass = "risk-low";
+      let riskClass = "low";
 
       if (score >= 10) {
-        riskLevel = "High Risk";
-        attention = "Elevated regulatory attention";
-        riskClass = "risk-high";
+        riskLevel = "High Risk"; attention = "Elevated regulatory attention"; riskClass = "high";
         outputs.push("Priorità alta per controlli, governance e verifiche periodiche");
       } else if (score >= 6) {
-        riskLevel = "Moderate Risk";
-        attention = "Targeted regulatory attention";
-        riskClass = "risk-medium";
+        riskLevel = "Moderate Risk"; attention = "Targeted regulatory attention"; riskClass = "medium";
         outputs.push("Controlli consigliati prima di scaling o go-live");
       } else {
+        riskLevel = "Limited Risk";
         outputs.push("Profilo gestibile con controlli base e documentazione coerente");
       }
 
-      const uniqueControls = [...new Set(controls)];
-      const uniqueReasons = [...new Set(reasons)];
-      const uniqueOutputs = [...new Set(outputs)];
+      const riskChip = document.getElementById("riskChip");
+      riskChip.className = `risk-chip ${riskClass}`;
+      riskChip.textContent = riskLevel;
 
-      const riskPill = document.getElementById("riskPill");
-      riskPill.className = "pill " + riskClass;
-      riskPill.textContent = riskLevel;
-
-      const attentionPill = document.getElementById("attentionPill");
-      attentionPill.textContent = attention;
-
+      document.getElementById("attentionChip").textContent = attention;
       document.getElementById("systemSummaryName").textContent = systemName;
       document.getElementById("summaryText").textContent =
-        " — " + systemType + " in ambito " + domain +
-        ", con impatto " + decisionImpact.toLowerCase() +
-        ". La valutazione iniziale suggerisce un profilo " + riskLevel.toLowerCase() + ".";
+        `${systemType} in ambito ${domain}, con impatto ${decisionImpact.toLowerCase()}. ` +
+        `Profilo valutato: ${riskLevel}.`;
 
-      renderList("reasonsList", uniqueReasons);
-      renderList("controlsList", uniqueControls);
-      renderList("outputsList", uniqueOutputs);
+      renderList("reasonsList",  [...new Set(reasons)]);
+      renderList("controlsList", [...new Set(controls)]);
+      renderList("outputsList",  [...new Set(outputs)]);
 
-      document.getElementById("emptyState").style.display = "none";
+      document.getElementById("empty-state").style.display = "none";
       document.getElementById("result").style.display = "block";
     }
 
@@ -558,15 +379,55 @@
     }
 
     function loadExample() {
-      document.getElementById("systemName").value = "Biometric Access Monitor";
-      document.getElementById("systemType").value = "Biometric Identification";
-      document.getElementById("domain").value = "Public Sector";
-      document.getElementById("dataType").value = "Sì";
-      document.getElementById("decisionImpact").value = "Alto";
-      document.getElementById("humanOversight").value = "No";
-      document.getElementById("description").value =
+      document.getElementById("systemName").value      = "Biometric Access Monitor";
+      document.getElementById("systemType").value      = "Biometric Identification";
+      document.getElementById("domain").value          = "Public Sector";
+      document.getElementById("dataType").value        = "Sì";
+      document.getElementById("decisionImpact").value  = "Alto";
+      document.getElementById("humanOversight").value  = "No";
+      document.getElementById("description").value     =
         "Sistema AI per identificazione biometrica e supporto a decisioni di accesso in contesto pubblico.";
       runAssessment();
+    }
+
+    function exportAudit() {
+      const result = document.getElementById("result");
+      if (result.style.display === "none") return;
+
+      const name   = document.getElementById("systemName").value.trim();
+      const risk   = document.getElementById("riskChip").textContent;
+      const type   = document.getElementById("systemType").value;
+      const domain = document.getElementById("domain").value;
+
+      const reasons  = Array.from(document.getElementById("reasonsList").children).map(li => li.textContent);
+      const controls = Array.from(document.getElementById("controlsList").children).map(li => li.textContent);
+
+      const content = [
+        `COGNITIVE LOGIC — AI GOVERNANCE ASSESSMENT`,
+        `QEN Framework v2.0`,
+        ``,
+        `Sistema: ${name}`,
+        `Tipo: ${type}`,
+        `Dominio: ${domain}`,
+        `Risk Level: ${risk}`,
+        `Data: ${new Date().toLocaleDateString('it-IT')}`,
+        ``,
+        `MOTIVAZIONE:`,
+        ...reasons.map(r => `  — ${r}`),
+        ``,
+        `CONTROLLI RICHIESTI:`,
+        ...controls.map(c => `  — ${c}`),
+        ``,
+        `cognitivelogic.it · QEN = (Vs × 0.40) + (Va × 0.35) + (Vt × 0.25)`,
+      ].join('\n');
+
+      const blob = new Blob([content], { type: 'text/plain' });
+      const url  = URL.createObjectURL(blob);
+      const a    = document.createElement('a');
+      a.href     = url;
+      a.download = `CL_Audit_${name.replace(/\s+/g,'_')}_${new Date().toISOString().slice(0,10)}.txt`;
+      a.click();
+      URL.revokeObjectURL(url);
     }
   </script>
 </body>

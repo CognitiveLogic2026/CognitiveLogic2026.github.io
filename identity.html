@@ -1,165 +1,244 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Digital Identity & DID — CognitiveLogic</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="CognitiveLogic Digital Identity Infrastructure — Decentralized Identifiers, Cryptographic Trust, Sovereign Data.">
-  <link rel="stylesheet" href="css/style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Digital Identity & DID — Cognitive Logic</title>
+  <meta name="description" content="CognitiveLogic Digital Identity Infrastructure — Decentralized Identifiers, Cryptographic Trust, Sovereign Data." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
 </head>
-
 <body>
+  <div class="site-bg"></div>
 
-<header class="navbar">
-  <div class="logo">CognitiveLogic</div>
-  <ul>
-    <li><a href="index.html">Home</a></li>
-    <li><a href="platform.html">Platform</a></li>
-    <li><a href="qen.html">QEN</a></li>
-    <li><a href="ai.html">AI Engine</a></li>
-    <li><a href="research.html">Research</a></li>
-  </ul>
-</header>
-
-<section class="hero">
-  <div class="hero-content">
-    <h1>Digital Identity & DID</h1>
-    <p>
-      Sovereign identity infrastructure for humans, data and artificial intelligence.
-    </p>
-    <a href="#did" class="cta">Explore DID Architecture</a>
-  </div>
-</section>
-
-<section id="did">
-  <h2>Decentralized Identity Architecture</h2>
-  <p>
-    CognitiveLogic implements a sovereign digital identity infrastructure based on 
-    W3C Decentralized Identifiers (DID) standards, enabling cryptographic trust, 
-    machine-verifiable identity and autonomous agent interoperability.
-  </p>
-  <p>
-    Identity becomes a native computational primitive, not an external service.
-  </p>
-</section>
-
-<section class="pillars">
-  <div class="pillar">
-    <h3>Cryptographic Anchoring</h3>
-    <p>
-      Every identity is bound to cryptographic keypairs ensuring authenticity, 
-      integrity and non-repudiation.
-    </p>
-  </div>
-
-  <div class="pillar">
-    <h3>Sovereign Control</h3>
-    <p>
-      Identity remains under full control of its owner, independent from 
-      centralized platforms or intermediaries.
-    </p>
-  </div>
-
-  <div class="pillar">
-    <h3>Machine Verifiability</h3>
-    <p>
-      Artificial agents can autonomously verify identities and trust policies 
-      without human mediation.
-    </p>
-  </div>
-
-  <div class="pillar">
-    <h3>Semantic Identity Graph</h3>
-    <p>
-      Identity becomes part of a semantic knowledge graph, enabling reasoning 
-      over trust and provenance.
-    </p>
-  </div>
-</section>
-
-<section>
-  <h2>DID:web Implementation</h2>
-  <p>
-    CognitiveLogic uses the <strong>did:web</strong> method to transform domain 
-    ownership into cryptographic identity resolution.
-  </p>
-
-  <div class="code-box">
-    did:web:cognitivelogic.it:robertomalini
-  </div>
-
-  <p>
-    This architecture allows:
-  </p>
-
-  <ul>
-    <li>Trust anchoring directly on sovereign web infrastructure</li>
-    <li>Elimination of centralized identity providers</li>
-    <li>AI-to-AI trust resolution</li>
-    <li>Cryptographic governance models</li>
-  </ul>
-</section>
-
-<section class="trust">
-  <h2>Cryptographic Trust Stack</h2>
-  <p>
-    CognitiveLogic integrates layered cryptographic verification:
-  </p>
-
-  <div class="pillars">
-    <div class="pillar">
-      <h3>PGP Signatures</h3>
-      <p>Authenticity of human-generated content and documents.</p>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="index.html" class="brand">
+        <span class="brand-mark">CL</span>
+        <span class="brand-text">Cognitive Logic</span>
+      </a>
+      <nav class="main-nav">
+        <a href="framework.html">Framework</a>
+        <a href="ecosystem.html">Ecosystem</a>
+        <a href="qen-live.html">QEN Live</a>
+        <a href="ai.html">AI Engine</a>
+        <a href="identity.html" class="active">Identity</a>
+        <a href="demo.html">Demo</a>
+      </nav>
+      <div class="header-end">
+        <a href="copilot.html" class="btn btn-ghost">Copilot</a>
+      </div>
     </div>
+  </header>
 
-    <div class="pillar">
-      <h3>Ed25519 Keys</h3>
-      <p>Modern elliptic curve cryptography for identity control.</p>
+  <main>
+
+    <!-- ── Hero ── -->
+    <section class="hero">
+      <div class="container">
+        <div class="eyebrow">Digital Identity · Decentralized Trust</div>
+        <h1>
+          Sovereign Identity<br>
+          <em style="font-style:italic;color:var(--gold)">for Humans & AI.</em>
+        </h1>
+        <p class="hero-lead">
+          Infrastruttura di identità sovrana per umani, dati e intelligenza artificiale.
+          L'identità non è un account. È verità crittografica, significato semantico
+          e controllo sovrano.
+        </p>
+      </div>
+    </section>
+
+    <!-- ── DID Architecture ── -->
+    <section class="section" style="padding-top:0">
+      <div class="container">
+        <div class="section-heading">
+          <div class="eyebrow">Decentralized Identity Architecture</div>
+          <h2>L'identità come primitiva computazionale nativa.</h2>
+          <p>
+            CognitiveLogic implementa un'infrastruttura di identità digitale sovrana
+            basata sugli standard W3C Decentralized Identifiers (DID), abilitando fiducia
+            crittografica, identità verificabile da macchina e interoperabilità agente autonomo.
+          </p>
+        </div>
+
+        <div class="grid-2">
+          <article class="card" style="padding:32px">
+            <span class="feature-number">Cryptographic Anchoring</span>
+            <h3>Ancoraggio crittografico</h3>
+            <p class="text-sm mt-16" style="color:var(--muted);line-height:1.8">
+              Ogni identità è legata a coppie di chiavi crittografiche che garantiscono
+              autenticità, integrità e non ripudio. Nessun intermediario, nessuna
+              piattaforma centralizzata.
+            </p>
+          </article>
+
+          <article class="card" style="padding:32px">
+            <span class="feature-number">Sovereign Control</span>
+            <h3>Controllo sovrano</h3>
+            <p class="text-sm mt-16" style="color:var(--muted);line-height:1.8">
+              L'identità rimane sotto il pieno controllo del suo proprietario, indipendente
+              da piattaforme centralizzate o intermediari. La sovranità digitale
+              come diritto fondamentale.
+            </p>
+          </article>
+
+          <article class="card" style="padding:32px">
+            <span class="feature-number">Machine Verifiability</span>
+            <h3>Verificabilità automatica</h3>
+            <p class="text-sm mt-16" style="color:var(--muted);line-height:1.8">
+              Gli agenti artificiali possono verificare autonomamente identità e policy
+              di fiducia senza mediazione umana. Governance AI autonoma per design.
+            </p>
+          </article>
+
+          <article class="card" style="padding:32px">
+            <span class="feature-number">Semantic Identity Graph</span>
+            <h3>Grafo d'identità semantica</h3>
+            <p class="text-sm mt-16" style="color:var(--muted);line-height:1.8">
+              L'identità diventa parte di un grafo semantico della conoscenza,
+              abilitando il reasoning su fiducia e provenienza attraverso
+              tutti i nodi dell'ecosistema.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── DID:web ── -->
+    <section class="section" style="padding-top:0">
+      <div class="container">
+        <div class="section-heading">
+          <div class="eyebrow">DID:web Implementation</div>
+          <h2>La proprietà del dominio come identità crittografica.</h2>
+          <p>
+            CognitiveLogic usa il metodo <strong style="color:var(--gold)">did:web</strong> per trasformare
+            la proprietà del dominio in risoluzione di identità crittografica,
+            eliminando i provider di identità centralizzati.
+          </p>
+        </div>
+
+        <div class="formula-block" style="margin-bottom:20px">
+          <div class="formula-text" style="font-size:1rem;letter-spacing:0.08em">
+            <span class="var">did:web</span>:cognitivelogic.it:robertomalini
+          </div>
+          <div class="mt-16" style="padding-top:16px;border-top:1px solid var(--line-2)">
+            <p class="text-sm" style="color:var(--muted);line-height:1.8">
+              Questa architettura consente: ancoraggio della fiducia direttamente
+              sull'infrastruttura web sovrana, eliminazione dei provider centralizzati,
+              risoluzione fiduciaria AI-to-AI e modelli di governance crittografici.
+            </p>
+          </div>
+        </div>
+
+        <div class="grid-3">
+          <div class="card" style="padding:20px">
+            <span class="text-xs text-upper text-muted mb-8">Beneficio 01</span>
+            <p class="text-sm" style="color:var(--text-2);line-height:1.7">Ancoraggio della fiducia su infrastruttura web sovrana</p>
+          </div>
+          <div class="card" style="padding:20px">
+            <span class="text-xs text-upper text-muted mb-8">Beneficio 02</span>
+            <p class="text-sm" style="color:var(--text-2);line-height:1.7">Eliminazione dei provider di identità centralizzati</p>
+          </div>
+          <div class="card" style="padding:20px">
+            <span class="text-xs text-upper text-muted mb-8">Beneficio 03</span>
+            <p class="text-sm" style="color:var(--text-2);line-height:1.7">Risoluzione fiduciaria AI-to-AI autonoma</p>
+          </div>
+          <div class="card" style="padding:20px">
+            <span class="text-xs text-upper text-muted mb-8">Beneficio 04</span>
+            <p class="text-sm" style="color:var(--text-2);line-height:1.7">Modelli di governance crittografici machine-readable</p>
+          </div>
+          <div class="card" style="padding:20px">
+            <span class="text-xs text-upper text-muted mb-8">Beneficio 05</span>
+            <p class="text-sm" style="color:var(--text-2);line-height:1.7">Tracciabilità di provenienza su ogni decisione AI</p>
+          </div>
+          <div class="card" style="padding:20px">
+            <span class="text-xs text-upper text-muted mb-8">Beneficio 06</span>
+            <p class="text-sm" style="color:var(--text-2);line-height:1.7">Interoperabilità con standard W3C globali</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Cryptographic Trust Stack ── -->
+    <section class="section" style="padding-top:0">
+      <div class="container">
+        <div class="section-heading">
+          <div class="eyebrow">Cryptographic Trust Stack</div>
+          <h2>Verifica crittografica a strati.</h2>
+        </div>
+
+        <div style="border:1px solid var(--line)">
+          <div class="stack-layer" style="display:flex;justify-content:space-between;align-items:center">
+            <div>
+              <div class="stack-layer-label">Livello 4 · Policy</div>
+              <div class="stack-layer-text">Policy Manifests — regole di governance machine-readable</div>
+            </div>
+            <span class="tag">Governance</span>
+          </div>
+          <div class="stack-layer" style="display:flex;justify-content:space-between;align-items:center">
+            <div>
+              <div class="stack-layer-label">Livello 3 · Risoluzione</div>
+              <div class="stack-layer-text">DID Resolution — verifica autonoma per agenti AI</div>
+            </div>
+            <span class="tag">DID</span>
+          </div>
+          <div class="stack-layer" style="display:flex;justify-content:space-between;align-items:center">
+            <div>
+              <div class="stack-layer-label">Livello 2 · Chiavi</div>
+              <div class="stack-layer-text">Ed25519 Keys — crittografia a curva ellittica moderna</div>
+            </div>
+            <span class="tag">Ed25519</span>
+          </div>
+          <div class="stack-layer" style="display:flex;justify-content:space-between;align-items:center;border-left-color:transparent">
+            <div>
+              <div class="stack-layer-label">Livello 1 · Firma</div>
+              <div class="stack-layer-text">PGP Signatures — autenticità di contenuti e documenti umani</div>
+            </div>
+            <span class="tag">PGP</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Manifesto ── -->
+    <section class="section" style="padding-top:0">
+      <div class="container">
+        <div class="cta-box" style="text-align:center">
+          <div style="max-width:600px;margin:0 auto">
+            <div class="eyebrow">Identity Manifesto</div>
+            <h2 style="font-style:italic;font-size:clamp(1.6rem,3vw,2.6rem)">
+              "L'identità non è un account.<br>
+              L'identità non è una piattaforma."
+            </h2>
+            <p class="mt-16" style="color:var(--muted);line-height:1.9;font-size:0.9rem">
+              L'identità è verità crittografica, significato semantico e controllo sovrano.
+              CognitiveLogic costruisce la convergenza tra identità umana e artificiale
+              in un unico tessuto di fiducia verificabile.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div>
+        <div class="footer-brand">Cognitive Logic · Digital Identity</div>
+        <div class="footer-sub">Decentralized Trust · Sovereign AI · Identity Infrastructure.</div>
+        <div class="footer-copy mt-8">© 2026 Roberto Bob Malini</div>
+      </div>
+      <div class="footer-links">
+        <a href="index.html">Home</a>
+        <a href="ai.html">AI Engine</a>
+        <a href="ecosystem.html">Ecosystem</a>
+        <a href="copilot.html">Copilot</a>
+      </div>
     </div>
-
-    <div class="pillar">
-      <h3>DID Resolution</h3>
-      <p>Autonomous identity verification for AI agents.</p>
-    </div>
-
-    <div class="pillar">
-      <h3>Policy Manifests</h3>
-      <p>Machine-readable governance and trust rules.</p>
-    </div>
-  </div>
-</section>
-
-<section>
-  <h2>Human + AI Identity Convergence</h2>
-  <p>
-    CognitiveLogic pioneers the convergence of human and artificial identities 
-    into a unified trust fabric.
-  </p>
-
-  <p>
-    This enables:
-  </p>
-
-  <ul>
-    <li>Autonomous AI governance</li>
-    <li>Trusted data ecosystems</li>
-    <li>Ethical algorithmic accountability</li>
-    <li>Next-generation digital civilization models</li>
-  </ul>
-</section>
-
-<section class="manifesto">
-  <h2>Identity Manifesto</h2>
-  <p>
-    Identity is not an account.<br>
-    Identity is not a platform.<br><br>
-    Identity is cryptographic truth, semantic meaning and sovereign control.
-  </p>
-</section>
-
-<footer>
-  © 2026 CognitiveLogic — Digital Identity Infrastructure · Decentralized Trust · Sovereign AI
-</footer>
-
+  </footer>
 </body>
 </html>

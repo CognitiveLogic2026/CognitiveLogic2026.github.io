@@ -4,184 +4,308 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>QEN Framework — Cognitive Logic</title>
-
   <meta name="description" content="QEN Framework è un'infrastruttura computabile che trasforma regolazioni, rischi e controlli in un sistema logico interrogabile per AI governance." />
-
-  <style>
-    body {
-      margin: 0;
-      font-family: -apple-system, Inter, sans-serif;
-      background: #06060a;
-      color: #f1f1f1;
-      line-height: 1.6;
-    }
-
-    .container {
-      width: 90%;
-      max-width: 1100px;
-      margin: auto;
-    }
-
-    header {
-      padding: 20px 0;
-      border-bottom: 1px solid rgba(255,255,255,0.08);
-    }
-
-    .brand {
-      font-weight: bold;
-      font-size: 18px;
-    }
-
-    .hero {
-      padding: 80px 0;
-    }
-
-    h1 {
-      font-size: 3rem;
-      margin-bottom: 20px;
-    }
-
-    p {
-      color: #b0b0b0;
-      font-size: 1.1rem;
-    }
-
-    .section {
-      padding: 60px 0;
-    }
-
-    .grid {
-      display: grid;
-      gap: 20px;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    }
-
-    .card {
-      background: #101018;
-      padding: 25px;
-      border-radius: 14px;
-      border: 1px solid rgba(255,255,255,0.06);
-    }
-
-    .flow {
-      background: #0d0d14;
-      padding: 30px;
-      border-radius: 16px;
-      text-align: center;
-      font-size: 1.2rem;
-      border: 1px solid rgba(255,255,255,0.08);
-    }
-
-    .flow span {
-      display: block;
-      margin: 10px 0;
-      color: #22d3ee;
-    }
-
-    .cta {
-      padding: 80px 0;
-      text-align: center;
-    }
-
-    .btn {
-      display: inline-block;
-      padding: 14px 22px;
-      background: linear-gradient(90deg,#8b5cf6,#22d3ee);
-      border-radius: 999px;
-      color: white;
-      text-decoration: none;
-      font-weight: bold;
-    }
-  </style>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
 </head>
-
 <body>
+  <div class="site-bg"></div>
 
-<header class="container">
-  <div class="brand">Cognitive Logic — QEN Framework</div>
-</header>
-
-<section class="hero container">
-  <h1>From Regulation to Computable Governance</h1>
-  <p>
-    QEN Framework trasforma norme, controlli e rischi in una struttura logica
-    interrogabile, utilizzabile da sistemi AI e processi decisionali reali.
-  </p>
-</section>
-
-<section class="section container">
-  <h2>Il problema</h2>
-  <p>
-    La compliance oggi è documentale: PDF, checklist, policy isolate.
-    Non è collegata ai sistemi reali e non è utilizzabile da AI.
-  </p>
-</section>
-
-<section class="section container">
-  <h2>La soluzione</h2>
-  <div class="grid">
-    <div class="card">
-      <h3>Struttura a grafo</h3>
-      <p>Collega algoritmi, dataset, rischi e controlli in una rete logica.</p>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="index.html" class="brand">
+        <span class="brand-mark">CL</span>
+        <span class="brand-text">Cognitive Logic</span>
+      </a>
+      <nav class="main-nav">
+        <a href="framework.html" class="active">Framework</a>
+        <a href="ecosystem.html">Ecosystem</a>
+        <a href="qen-live.html">QEN Live</a>
+        <a href="ai.html">AI Engine</a>
+        <a href="identity.html">Identity</a>
+        <a href="demo.html">Demo</a>
+      </nav>
+      <div class="header-end">
+        <a href="copilot.html" class="btn btn-ghost">Copilot</a>
+      </div>
     </div>
-    <div class="card">
-      <h3>Motore di reasoning</h3>
-      <p>Permette query, spiegazioni e analisi automatiche.</p>
+  </header>
+
+  <main>
+
+    <!-- ── Hero ── -->
+    <section class="hero">
+      <div class="container">
+        <div class="eyebrow">QEN Framework · Qualitative Ethical Network</div>
+        <h1>
+          From Regulation<br>
+          <em style="font-style:italic;color:var(--gold)">to Computable Governance.</em>
+        </h1>
+        <p class="hero-lead">
+          QEN Framework trasforma norme, controlli e valori in una struttura logica
+          interrogabile, utilizzabile da sistemi AI e processi decisionali reali.
+          Non documentazione — infrastruttura computabile.
+        </p>
+      </div>
+    </section>
+
+    <!-- ── Formula ── -->
+    <section class="section" style="padding-top:0">
+      <div class="container">
+        <div class="section-heading">
+          <div class="eyebrow">La Formula</div>
+          <h2>Un'equazione che misura la qualità in tre dimensioni.</h2>
+          <p>
+            Il punteggio QEN è il risultato di tre componenti pesate che catturano
+            le dimensioni fondamentali del valore: storico, artigianale e territoriale.
+          </p>
+        </div>
+
+        <div class="formula-block" style="margin-bottom:1px">
+          <div class="formula-text">
+            QEN = (<span class="var">Vs</span> × 0.40) + (<span class="var">Va</span> × 0.35) + (<span class="var">Vt</span> × 0.25)
+          </div>
+          <div class="formula-meta">
+            <div class="formula-var">
+              <span class="formula-var-key">Vs — Valore Storico</span>
+              <span class="formula-var-desc">Profondità della tradizione, continuità storica documentata, trasmissione generazionale del sapere.</span>
+              <span class="formula-var-weight">peso dominante · 40%</span>
+            </div>
+            <div class="formula-var">
+              <span class="formula-var-key">Va — Valore Artigianale</span>
+              <span class="formula-var-desc">Qualità del processo produttivo, maestria tecnica, autenticità del metodo e unicità dell'output.</span>
+              <span class="formula-var-weight">peso secondario · 35%</span>
+            </div>
+            <div class="formula-var">
+              <span class="formula-var-key">Vt — Valore Territoriale</span>
+              <span class="formula-var-desc">Radicamento nel contesto geografico, identità locale, filiera corta e appartenenza ecosistemica.</span>
+              <span class="formula-var-weight">peso complementare · 25%</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Range scale -->
+        <div class="card" style="padding:24px;display:flex;align-items:center;gap:24px">
+          <span class="text-xs text-upper text-muted" style="flex-shrink:0">Range</span>
+          <div style="flex:1;height:2px;background:linear-gradient(90deg,var(--danger),var(--warn),var(--good));position:relative">
+            <span style="position:absolute;left:0;top:8px;font-size:0.62rem;color:var(--muted);font-family:var(--mono)">0.00</span>
+            <span style="position:absolute;right:0;top:8px;font-size:0.62rem;color:var(--gold);font-family:var(--mono)">1.00</span>
+          </div>
+          <div style="display:flex;gap:16px;flex-shrink:0">
+            <span class="text-xs" style="color:var(--danger)">▪ 0.00–0.60 critico</span>
+            <span class="text-xs" style="color:var(--warn)">▪ 0.60–0.75 attenzionato</span>
+            <span class="text-xs" style="color:var(--good)">▪ 0.75–1.00 eccellente</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Botteghe Scores ── -->
+    <section class="section" style="padding-top:0">
+      <div class="container">
+        <div class="section-heading">
+          <div class="eyebrow">Leaderboard · Applicazione pratica</div>
+          <h2>Le botteghe dell'ecosistema classificate per score QEN.</h2>
+        </div>
+
+        <div class="grid-2">
+          <div class="card card-gold" style="padding:28px 32px">
+            <div class="mb-16" style="padding-bottom:14px;border-bottom:1px solid var(--line)">
+              <span class="text-xs text-upper text-muted">Top 5 · Punteggi verificati</span>
+            </div>
+            <div class="bottega-row">
+              <span class="bottega-rank">01</span>
+              <span class="bottega-name">Bottega Contadina</span>
+              <div class="bottega-bar-wrap"><div class="bottega-bar" data-w="91"></div></div>
+              <span class="bottega-score">0.91</span>
+            </div>
+            <div class="bottega-row">
+              <span class="bottega-rank">02</span>
+              <span class="bottega-name">Le Sfogline</span>
+              <div class="bottega-bar-wrap"><div class="bottega-bar" data-w="89"></div></div>
+              <span class="bottega-score">0.89</span>
+            </div>
+            <div class="bottega-row">
+              <span class="bottega-rank">03</span>
+              <span class="bottega-name">Ahimè</span>
+              <div class="bottega-bar-wrap"><div class="bottega-bar" data-w="88"></div></div>
+              <span class="bottega-score">0.88</span>
+            </div>
+            <div class="bottega-row">
+              <span class="bottega-rank">04</span>
+              <span class="bottega-name">Grani Antichi</span>
+              <div class="bottega-bar-wrap"><div class="bottega-bar" data-w="87"></div></div>
+              <span class="bottega-score">0.87</span>
+            </div>
+            <div class="bottega-row" style="border-bottom:none">
+              <span class="bottega-rank">05</span>
+              <span class="bottega-name">Bertozzi</span>
+              <div class="bottega-bar-wrap"><div class="bottega-bar" data-w="84"></div></div>
+              <span class="bottega-score">0.84</span>
+            </div>
+          </div>
+
+          <div style="display:grid;gap:1px;background:var(--line);border:1px solid var(--line)">
+            <div class="card" style="padding:24px">
+              <div class="dashboard-label">Nodi nel grafo</div>
+              <div class="dashboard-value">121</div>
+              <p class="text-xs text-muted">Entità semantiche connesse nell'ecosistema</p>
+            </div>
+            <div class="card" style="padding:24px">
+              <div class="dashboard-label">Relazioni semantiche</div>
+              <div class="dashboard-value">165</div>
+              <p class="text-xs text-muted">Archi bidirezionali tipizzati nel knowledge graph</p>
+            </div>
+            <div class="card" style="padding:24px">
+              <div class="dashboard-label">Score medio top-5</div>
+              <div class="dashboard-value">0.878</div>
+              <p class="text-xs text-muted">Media aritmetica delle cinque botteghe classificate</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Algoritmi ── -->
+    <section class="section" style="padding-top:0">
+      <div class="container">
+        <div class="section-heading">
+          <div class="eyebrow">Algoritmi</div>
+          <h2>I motori computazionali che alimentano il grafo QEN.</h2>
+          <p>
+            Ogni algoritmo opera su un sottoinsieme specifico del grafo,
+            producendo punteggi parziali che confluiscono nel QEN aggregato.
+          </p>
+        </div>
+
+        <div class="grid-3">
+          <article class="card" style="padding:28px">
+            <span class="feature-number">ALGO · 01</span>
+            <h3>ColtFragr</h3>
+            <p class="text-sm mt-16" style="color:var(--muted);line-height:1.8">
+              Coltivazione & Fragranza. Valuta la qualità sensoriale e agronomica
+              dei prodotti rispetto al territorio di origine e al metodo di coltivazione.
+            </p>
+            <div class="mt-16" style="padding-top:14px;border-top:1px solid var(--line-2)">
+              <span class="text-xs text-muted">Input: Vs · Vt</span>
+            </div>
+          </article>
+
+          <article class="card" style="padding:28px">
+            <span class="feature-number">ALGO · 02</span>
+            <h3>TradRad</h3>
+            <p class="text-sm mt-16" style="color:var(--muted);line-height:1.8">
+              Tradizione Radicata. Misura la profondità storica e la continuità
+              delle pratiche artigianali rispetto agli standard documentati di un territorio.
+            </p>
+            <div class="mt-16" style="padding-top:14px;border-top:1px solid var(--line-2)">
+              <span class="text-xs text-muted">Input: Vs · Va</span>
+            </div>
+          </article>
+
+          <article class="card" style="padding:28px">
+            <span class="feature-number">ALGO · 03</span>
+            <h3>EcoLocal</h3>
+            <p class="text-sm mt-16" style="color:var(--muted);line-height:1.8">
+              Ecosistema Locale. Quantifica l'integrazione nella rete territoriale:
+              filiera corta, relazioni con produttori, impatto sulla comunità locale.
+            </p>
+            <div class="mt-16" style="padding-top:14px;border-top:1px solid var(--line-2)">
+              <span class="text-xs text-muted">Input: Va · Vt</span>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Flow ── -->
+    <section class="section" style="padding-top:0">
+      <div class="container">
+        <div class="section-heading">
+          <div class="eyebrow">Architettura logica</div>
+          <h2>La catena di elaborazione dal dato al punteggio.</h2>
+        </div>
+
+        <div style="display:grid;grid-template-columns:1fr auto 1fr;gap:0;align-items:stretch;border:1px solid var(--line)">
+          <div>
+            <div class="stack-layer">
+              <div class="stack-layer-label">01 · Input</div>
+              <div class="stack-layer-text">Bottega / Artefatto / Algoritmo</div>
+            </div>
+            <div class="stack-layer">
+              <div class="stack-layer-label">02 · Parsing</div>
+              <div class="stack-layer-text">Estrazione attributi semantici</div>
+            </div>
+            <div class="stack-layer">
+              <div class="stack-layer-label">03 · Scoring</div>
+              <div class="stack-layer-text">Calcolo Vs, Va, Vt per nodo</div>
+            </div>
+          </div>
+          <div style="width:1px;background:var(--line)"></div>
+          <div>
+            <div class="stack-layer">
+              <div class="stack-layer-label">04 · Ponderazione</div>
+              <div class="stack-layer-text">Applicazione pesi formula QEN</div>
+            </div>
+            <div class="stack-layer">
+              <div class="stack-layer-label">05 · Aggregazione</div>
+              <div class="stack-layer-text">Score QEN ∈ [0.00, 1.00]</div>
+            </div>
+            <div class="stack-layer">
+              <div class="stack-layer-label">06 · Output</div>
+              <div class="stack-layer-text">Nodo classificato nel grafo semantico</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── CTA ── -->
+    <section class="section" style="padding-top:0">
+      <div class="container">
+        <div class="cta-box">
+          <div class="cta-box-inner">
+            <div>
+              <div class="eyebrow">Porta la governance nei sistemi AI</div>
+              <h2>Esplora il grafo QEN live o richiedi una demo.</h2>
+            </div>
+            <div class="cta-actions">
+              <a href="qen-live.html" class="btn btn-primary">Visualizza il Grafo</a>
+              <a href="demo.html" class="btn btn-ghost">Demo Assessment</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div>
+        <div class="footer-brand">Cognitive Logic · QEN Framework</div>
+        <div class="footer-sub">Qualitative Ethical Network — Knowledge Infrastructure.</div>
+        <div class="footer-copy mt-8">© 2026 Roberto Bob Malini</div>
+      </div>
+      <div class="footer-links">
+        <a href="index.html">Home</a>
+        <a href="ecosystem.html">Ecosystem</a>
+        <a href="qen-live.html">QEN Live</a>
+        <a href="copilot.html">Copilot</a>
+      </div>
     </div>
-    <div class="card">
-      <h3>Layer API</h3>
-      <p>Espone la governance come servizio integrabile nei sistemi.</p>
-    </div>
-  </div>
-</section>
+  </footer>
 
-<section class="section container">
-  <h2>Architettura logica QEN</h2>
-
-  <div class="flow">
-    Algorithm
-    <span>↓</span>
-    Dataset
-    <span>↓</span>
-    Risk Level
-    <span>↓</span>
-    Control
-    <span>↓</span>
-    Principle
-    <span>↓</span>
-    Regulation
-  </div>
-
-  <p style="margin-top:20px;">
-    Ogni decisione AI può essere ricondotta a una catena logica verificabile.
-  </p>
-</section>
-
-<section class="section container">
-  <h2>Cosa abilita</h2>
-
-  <div class="grid">
-    <div class="card">
-      <h3>Explainable AI reale</h3>
-      <p>Spiegazioni basate su relazioni logiche, non testo generico.</p>
-    </div>
-
-    <div class="card">
-      <h3>Audit automatico</h3>
-      <p>Identificazione dei gap di compliance in tempo reale.</p>
-    </div>
-
-    <div class="card">
-      <h3>AI Compliance Copilot</h3>
-      <p>Risposte basate su grafo, non su allucinazioni.</p>
-    </div>
-  </div>
-</section>
-
-<section class="cta container">
-  <h2>Porta la governance dentro i sistemi AI</h2>
-  <a class="btn" href="mailto:info@cognitivelogic.it">Richiedi demo</a>
-</section>
-
+  <script>
+    window.addEventListener('DOMContentLoaded', () => {
+      setTimeout(() => {
+        document.querySelectorAll('.bottega-bar').forEach(bar => {
+          bar.style.width = bar.dataset.w + '%';
+        });
+      }, 300);
+    });
+  </script>
 </body>
 </html>
