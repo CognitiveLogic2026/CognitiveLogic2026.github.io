@@ -26,8 +26,11 @@
   </script>
 </head>
 <body>
-  <div class="site-bg"></div>
+  <!-- Animated background -->
+  <div class="site-bg" aria-hidden="true"></div>
+  <div class="site-bg-grid" aria-hidden="true"></div>
 
+  <!-- Header -->
   <header class="site-header">
     <div class="container header-inner">
       <a href="index.html" class="brand">
@@ -85,7 +88,7 @@
           </div>
         </div>
 
-        <div class="hero-panel">
+        <div class="hero-panel reveal">
           <div class="hero-panel-head">
             <span class="panel-label">Infrastructure Preview</span>
             <span class="panel-dot"></span>
@@ -286,7 +289,7 @@
           </p>
         </div>
 
-        <div class="dashboard-shell">
+        <div class="dashboard-shell reveal">
           <div class="dashboard-topbar">
             <div class="dashboard-title">
               <span class="dot-live"></span>
@@ -298,17 +301,17 @@
             <div class="dashboard-card">
               <span class="dashboard-label">Risk Level</span>
               <strong class="dashboard-value">MEDIUM</strong>
-              <p>Classificazione dinamica del sistema in base alla descrizione e ai controlli presenti.</p>
+              <p style="color:var(--muted);font-size:.88rem">Classificazione dinamica in base alla descrizione e ai controlli presenti.</p>
             </div>
             <div class="dashboard-card">
               <span class="dashboard-label">Traceability</span>
               <strong class="dashboard-value">72%</strong>
-              <p>Capacità del sistema di giustificare decisioni, fonti e punti di verifica.</p>
+              <p style="color:var(--muted);font-size:.88rem">Capacità del sistema di giustificare decisioni, fonti e punti di verifica.</p>
             </div>
             <div class="dashboard-card">
               <span class="dashboard-label">Governance Readiness</span>
               <strong class="dashboard-value">Pilot</strong>
-              <p>Stato di maturità per passare da test concettuale a infrastruttura operativa.</p>
+              <p style="color:var(--muted);font-size:.88rem">Stato di maturità per passare da test concettuale a infrastruttura operativa.</p>
             </div>
           </div>
         </div>
@@ -380,6 +383,7 @@
 
   </main>
 
+  <!-- Footer -->
   <footer class="site-footer">
     <div class="container footer-inner">
       <div>
