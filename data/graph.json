@@ -1,4 +1,15 @@
 {
+  "meta": {
+    "version": "2.0",
+    "author": "Roberto Bob Malini",
+    "organization": "Cognitive Logic",
+    "domain": "https://www.cognitivelogic.it",
+    "linkedin": "https://www.linkedin.com/in/robertobobmalini",
+    "description": "QEN Knowledge Graph — Pure Data Nodes for autonomous agents",
+    "formula": "QEN = (Social × 0.40) + (Environmental × 0.35) + (Territorial × 0.25)",
+    "node_count": 130,
+    "edge_count": 209
+  },
   "nodes": [
     {
       "id": "business_horeca_001",
@@ -6,7 +17,6 @@
       "name": "HoReCa Business",
       "description": "Business unit under evaluation in the QEN Copilot for HoReCa."
     },
-
     {
       "id": "vector_social",
       "type": "Vector",
@@ -28,7 +38,6 @@
       "dimension": "territorial",
       "description": "Territorial identity and local ecosystem dimension."
     },
-
     {
       "id": "kpi_social_accessibility",
       "type": "KPI",
@@ -53,7 +62,6 @@
       "weight": 0.34,
       "description": "Measures active relationship with the local community."
     },
-
     {
       "id": "kpi_environmental_waste",
       "type": "KPI",
@@ -78,7 +86,6 @@
       "weight": 0.33,
       "description": "Measures adoption of sustainable, reusable, or low-impact materials."
     },
-
     {
       "id": "kpi_territorial_local_network",
       "type": "KPI",
@@ -103,7 +110,6 @@
       "weight": 0.33,
       "description": "Measures seasonal alignment of menu and sourcing."
     },
-
     {
       "id": "evidence_accessibility_policy",
       "type": "Evidence",
@@ -134,7 +140,6 @@
       "confidence": 0.8,
       "description": "Evidence of partnerships, events, or social contribution to the community."
     },
-
     {
       "id": "evidence_waste_reduction",
       "type": "Evidence",
@@ -165,7 +170,6 @@
       "confidence": 0.8,
       "description": "Evidence of sustainable packaging, materials, or low-impact supplies."
     },
-
     {
       "id": "evidence_local_producer_network",
       "type": "Evidence",
@@ -206,7 +210,6 @@
       "confidence": 0.8,
       "description": "Evidence of provenance and traceability in sourcing."
     },
-
     {
       "id": "output_qen_score",
       "type": "Output",
@@ -231,15 +234,23 @@
       "name": "TerritorialScore",
       "description": "Aggregated score for the territorial vector."
     },
-
     {
       "id": "benchmark_level",
       "type": "Benchmark",
       "name": "BenchmarkLevel",
       "levels": {
-        "high": { "min": 80, "label": "Advanced" },
-        "medium": { "min": 60, "label": "Structured" },
-        "low": { "min": 0, "label": "Early Stage" }
+        "high": {
+          "min": 80,
+          "label": "Advanced"
+        },
+        "medium": {
+          "min": 60,
+          "label": "Structured"
+        },
+        "low": {
+          "min": 0,
+          "label": "Early Stage"
+        }
       },
       "description": "Performance classification level of the business."
     },
@@ -247,8 +258,850 @@
       "id": "benchmark_improvement_priority",
       "type": "Benchmark",
       "name": "ImprovementPriority",
-      "levels": ["LOW", "MEDIUM", "HIGH"],
+      "levels": [
+        "LOW",
+        "MEDIUM",
+        "HIGH"
+      ],
       "description": "Priority areas for improvement suggested by the engine."
+    },
+    {
+      "id": "identity_cognitive_logic",
+      "type": "Identity",
+      "name": "CognitiveLogicFounder",
+      "owner": "Roberto Bob Malini",
+      "role": "AI Data Architect & Founder",
+      "domain": "https://www.cognitivelogic.it",
+      "linkedin": "https://www.linkedin.com/in/robertobobmalini",
+      "description": "Verified digital identity of the QEN framework author and Cognitive Logic founder."
+    },
+    {
+      "id": "kpi_social_gender_equity",
+      "type": "KPI",
+      "name": "GenderEquityScore",
+      "dimension": "social",
+      "weight": 0.3,
+      "description": "Measures gender equity in leadership and staff roles."
+    },
+    {
+      "id": "kpi_social_youth_employment",
+      "type": "KPI",
+      "name": "YouthEmploymentScore",
+      "dimension": "social",
+      "weight": 0.28,
+      "description": "Measures hiring and training of young workers under 30."
+    },
+    {
+      "id": "kpi_social_disability_inclusion",
+      "type": "KPI",
+      "name": "DisabilityInclusionScore",
+      "dimension": "social",
+      "weight": 0.28,
+      "description": "Measures inclusion of workers and customers with disabilities."
+    },
+    {
+      "id": "kpi_social_fair_wages",
+      "type": "KPI",
+      "name": "FairWagesScore",
+      "dimension": "social",
+      "weight": 0.3,
+      "description": "Measures wage equity and above-contract pay practices."
+    },
+    {
+      "id": "kpi_social_digital_access",
+      "type": "KPI",
+      "name": "DigitalAccessScore",
+      "dimension": "social",
+      "weight": 0.25,
+      "description": "Measures digital accessibility of services and communication."
+    },
+    {
+      "id": "kpi_social_food_safety",
+      "type": "KPI",
+      "name": "FoodSafetyScore",
+      "dimension": "social",
+      "weight": 0.35,
+      "description": "Measures HACCP compliance and food safety culture."
+    },
+    {
+      "id": "kpi_social_transparency",
+      "type": "KPI",
+      "name": "MenuTransparencyScore",
+      "dimension": "social",
+      "weight": 0.3,
+      "description": "Measures ingredient transparency and allergen disclosure."
+    },
+    {
+      "id": "kpi_social_cultural_identity",
+      "type": "KPI",
+      "name": "CulturalIdentityScore",
+      "dimension": "social",
+      "weight": 0.28,
+      "description": "Measures cultural preservation in gastronomy and hospitality."
+    },
+    {
+      "id": "kpi_social_volunteering",
+      "type": "KPI",
+      "name": "VolunteeringScore",
+      "dimension": "social",
+      "weight": 0.22,
+      "description": "Measures staff volunteering and community contribution hours."
+    },
+    {
+      "id": "kpi_social_anti_discrimination",
+      "type": "KPI",
+      "name": "AntiDiscriminationScore",
+      "dimension": "social",
+      "weight": 0.32,
+      "description": "Measures anti-discrimination policies and enforcement."
+    },
+    {
+      "id": "kpi_env_water_usage",
+      "type": "KPI",
+      "name": "WaterUsageScore",
+      "dimension": "environmental",
+      "weight": 0.3,
+      "description": "Measures water consumption reduction and monitoring."
+    },
+    {
+      "id": "kpi_env_carbon_footprint",
+      "type": "KPI",
+      "name": "CarbonFootprintScore",
+      "dimension": "environmental",
+      "weight": 0.35,
+      "description": "Measures CO2 equivalent emissions monitoring and reduction."
+    },
+    {
+      "id": "kpi_env_biodiversity",
+      "type": "KPI",
+      "name": "BiodiversityScore",
+      "dimension": "environmental",
+      "weight": 0.28,
+      "description": "Measures contribution to biodiversity preservation."
+    },
+    {
+      "id": "kpi_env_renewable_energy",
+      "type": "KPI",
+      "name": "RenewableEnergyScore",
+      "dimension": "environmental",
+      "weight": 0.33,
+      "description": "Measures share of renewable energy in consumption mix."
+    },
+    {
+      "id": "kpi_env_packaging",
+      "type": "KPI",
+      "name": "PackagingImpactScore",
+      "dimension": "environmental",
+      "weight": 0.3,
+      "description": "Measures reduction of single-use plastics and packaging."
+    },
+    {
+      "id": "kpi_env_food_waste_recovery",
+      "type": "KPI",
+      "name": "FoodWasteRecoveryScore",
+      "dimension": "environmental",
+      "weight": 0.32,
+      "description": "Measures food donation, composting, or surplus recovery."
+    },
+    {
+      "id": "kpi_env_mobility",
+      "type": "KPI",
+      "name": "GreenMobilityScore",
+      "dimension": "environmental",
+      "weight": 0.25,
+      "description": "Measures use of sustainable logistics and last-mile delivery."
+    },
+    {
+      "id": "kpi_env_csrd_alignment",
+      "type": "KPI",
+      "name": "CSRDAlignmentScore",
+      "dimension": "environmental",
+      "weight": 0.35,
+      "description": "Measures alignment with CSRD double materiality reporting."
+    },
+    {
+      "id": "kpi_terr_km0_sourcing",
+      "type": "KPI",
+      "name": "KM0SourcingScore",
+      "dimension": "territorial",
+      "weight": 0.35,
+      "description": "Measures percentage of ingredients sourced within 100km."
+    },
+    {
+      "id": "kpi_terr_cultural_heritage",
+      "type": "KPI",
+      "name": "CulturalHeritageScore",
+      "dimension": "territorial",
+      "weight": 0.3,
+      "description": "Measures promotion of UNESCO or local cultural heritage."
+    },
+    {
+      "id": "kpi_terr_artisan_network",
+      "type": "KPI",
+      "name": "ArtisanNetworkScore",
+      "dimension": "territorial",
+      "weight": 0.32,
+      "description": "Measures integration with local artisan and craft producers."
+    },
+    {
+      "id": "kpi_terr_tourism_synergy",
+      "type": "KPI",
+      "name": "TourismSynergyScore",
+      "dimension": "territorial",
+      "weight": 0.28,
+      "description": "Measures collaboration with local tourism and cultural bodies."
+    },
+    {
+      "id": "kpi_terr_geographic_labeling",
+      "type": "KPI",
+      "name": "GeographicLabelingScore",
+      "dimension": "territorial",
+      "weight": 0.3,
+      "description": "Measures use of DOP/IGP/STG certified products."
+    },
+    {
+      "id": "kpi_terr_urban_regeneration",
+      "type": "KPI",
+      "name": "UrbanRegenerationScore",
+      "dimension": "territorial",
+      "weight": 0.25,
+      "description": "Measures contribution to local urban regeneration and commerce."
+    },
+    {
+      "id": "evidence_gender_equity",
+      "type": "Evidence",
+      "name": "GenderEquityPolicy",
+      "dimension": "social",
+      "input_key": "gender_equity_policy",
+      "value": 0,
+      "confidence": 0.8,
+      "description": "Evidence of gender equity policies, pay gap reporting, or parity goals."
+    },
+    {
+      "id": "evidence_youth_employment",
+      "type": "Evidence",
+      "name": "YouthEmploymentPractice",
+      "dimension": "social",
+      "input_key": "youth_employment_practice",
+      "value": 0,
+      "confidence": 0.75,
+      "description": "Evidence of youth hiring programs, apprenticeships, or traineeship."
+    },
+    {
+      "id": "evidence_disability_inclusion",
+      "type": "Evidence",
+      "name": "DisabilityInclusionPractice",
+      "dimension": "social",
+      "input_key": "disability_inclusion_practice",
+      "value": 0,
+      "confidence": 0.8,
+      "description": "Evidence of accessible spaces, adapted tools, or disability hiring."
+    },
+    {
+      "id": "evidence_fair_wages",
+      "type": "Evidence",
+      "name": "FairWagesPractice",
+      "dimension": "social",
+      "input_key": "fair_wages_practice",
+      "value": 0,
+      "confidence": 0.8,
+      "description": "Evidence of above-CCNL wages, profit sharing, or welfare measures."
+    },
+    {
+      "id": "evidence_digital_access",
+      "type": "Evidence",
+      "name": "DigitalAccessPractice",
+      "dimension": "social",
+      "input_key": "digital_access_practice",
+      "value": 0,
+      "confidence": 0.7,
+      "description": "Evidence of digital menus, apps, or online accessibility compliance."
+    },
+    {
+      "id": "evidence_food_safety",
+      "type": "Evidence",
+      "name": "FoodSafetyCertification",
+      "dimension": "social",
+      "input_key": "food_safety_certification",
+      "value": 0,
+      "confidence": 0.9,
+      "description": "Evidence of HACCP plans, certifications, or food safety audits."
+    },
+    {
+      "id": "evidence_menu_transparency",
+      "type": "Evidence",
+      "name": "MenuTransparencyPractice",
+      "dimension": "social",
+      "input_key": "menu_transparency_practice",
+      "value": 0,
+      "confidence": 0.8,
+      "description": "Evidence of full ingredient lists, allergen menus, or origin labeling."
+    },
+    {
+      "id": "evidence_cultural_identity",
+      "type": "Evidence",
+      "name": "CulturalIdentityNarrative",
+      "dimension": "social",
+      "input_key": "cultural_identity_narrative",
+      "value": 0,
+      "confidence": 0.75,
+      "description": "Evidence of gastro-cultural storytelling, traditions, or heritage menus."
+    },
+    {
+      "id": "evidence_volunteering",
+      "type": "Evidence",
+      "name": "VolunteeringRecord",
+      "dimension": "social",
+      "input_key": "volunteering_record",
+      "value": 0,
+      "confidence": 0.7,
+      "description": "Evidence of documented staff volunteering hours or community programs."
+    },
+    {
+      "id": "evidence_anti_discrimination",
+      "type": "Evidence",
+      "name": "AntiDiscriminationPolicy",
+      "dimension": "social",
+      "input_key": "anti_discrimination_policy",
+      "value": 0,
+      "confidence": 0.85,
+      "description": "Evidence of anti-discrimination policies, training, or incident reporting."
+    },
+    {
+      "id": "evidence_water_monitoring",
+      "type": "Evidence",
+      "name": "WaterMonitoringPractice",
+      "dimension": "environmental",
+      "input_key": "water_monitoring_practice",
+      "value": 0,
+      "confidence": 0.8,
+      "description": "Evidence of water meters, reduction targets, or consumption reporting."
+    },
+    {
+      "id": "evidence_carbon_measurement",
+      "type": "Evidence",
+      "name": "CarbonMeasurementReport",
+      "dimension": "environmental",
+      "input_key": "carbon_measurement_report",
+      "value": 0,
+      "confidence": 0.85,
+      "description": "Evidence of GHG inventory, carbon accounting, or Scope 1/2/3 data."
+    },
+    {
+      "id": "evidence_biodiversity_action",
+      "type": "Evidence",
+      "name": "BiodiversityActionPlan",
+      "dimension": "environmental",
+      "input_key": "biodiversity_action_plan",
+      "value": 0,
+      "confidence": 0.7,
+      "description": "Evidence of biodiversity commitments, pollinator-friendly practices."
+    },
+    {
+      "id": "evidence_renewable_energy",
+      "type": "Evidence",
+      "name": "RenewableEnergyContract",
+      "dimension": "environmental",
+      "input_key": "renewable_energy_contract",
+      "value": 0,
+      "confidence": 0.85,
+      "description": "Evidence of green energy tariff, solar panels, or energy certificates."
+    },
+    {
+      "id": "evidence_packaging_reduction",
+      "type": "Evidence",
+      "name": "PackagingReductionPractice",
+      "dimension": "environmental",
+      "input_key": "packaging_reduction_practice",
+      "value": 0,
+      "confidence": 0.8,
+      "description": "Evidence of compostable packaging, zero-plastic policies, or bulk supply."
+    },
+    {
+      "id": "evidence_food_donation",
+      "type": "Evidence",
+      "name": "FoodDonationRecord",
+      "dimension": "environmental",
+      "input_key": "food_donation_record",
+      "value": 0,
+      "confidence": 0.8,
+      "description": "Evidence of food bank partnerships, surplus redistribution, or composting."
+    },
+    {
+      "id": "evidence_green_logistics",
+      "type": "Evidence",
+      "name": "GreenLogisticsPractice",
+      "dimension": "environmental",
+      "input_key": "green_logistics_practice",
+      "value": 0,
+      "confidence": 0.75,
+      "description": "Evidence of electric delivery, cargo bike, or proximity sourcing logistics."
+    },
+    {
+      "id": "evidence_csrd_report",
+      "type": "Evidence",
+      "name": "CSRDReport",
+      "dimension": "environmental",
+      "input_key": "csrd_report",
+      "value": 0,
+      "confidence": 0.85,
+      "description": "Evidence of CSRD-aligned sustainability disclosure or double materiality analysis."
+    },
+    {
+      "id": "evidence_km0_contracts",
+      "type": "Evidence",
+      "name": "KM0SupplierContracts",
+      "dimension": "territorial",
+      "input_key": "km0_supplier_contracts",
+      "value": 0,
+      "confidence": 0.85,
+      "description": "Evidence of contracts or invoices from suppliers within 100km."
+    },
+    {
+      "id": "evidence_cultural_heritage",
+      "type": "Evidence",
+      "name": "CulturalHeritagePartnership",
+      "dimension": "territorial",
+      "input_key": "cultural_heritage_partnership",
+      "value": 0,
+      "confidence": 0.75,
+      "description": "Evidence of collaboration with UNESCO sites, museums, or heritage bodies."
+    },
+    {
+      "id": "evidence_artisan_network",
+      "type": "Evidence",
+      "name": "ArtisanNetworkContracts",
+      "dimension": "territorial",
+      "input_key": "artisan_network_contracts",
+      "value": 0,
+      "confidence": 0.8,
+      "description": "Evidence of active supply relationships with local artisan producers."
+    },
+    {
+      "id": "evidence_tourism_partnership",
+      "type": "Evidence",
+      "name": "TourismPartnership",
+      "dimension": "territorial",
+      "input_key": "tourism_partnership",
+      "value": 0,
+      "confidence": 0.7,
+      "description": "Evidence of co-marketing, packages, or agreements with tourism bodies."
+    },
+    {
+      "id": "evidence_geographic_labels",
+      "type": "Evidence",
+      "name": "GeographicLabelUsage",
+      "dimension": "territorial",
+      "input_key": "geographic_label_usage",
+      "value": 0,
+      "confidence": 0.85,
+      "description": "Evidence of DOP/IGP/STG certified products on menu or procurement."
+    },
+    {
+      "id": "evidence_urban_regeneration",
+      "type": "Evidence",
+      "name": "UrbanRegenerationAction",
+      "dimension": "territorial",
+      "input_key": "urban_regeneration_action",
+      "value": 0,
+      "confidence": 0.7,
+      "description": "Evidence of participation in local urban or commerce revitalization programs."
+    },
+    {
+      "id": "reg_eu_ai_act_annex1",
+      "type": "Regulation",
+      "name": "EUAIAct_AnnexI",
+      "dimension": "compliance",
+      "description": "EU AI Act Annex I — AI techniques and approaches list."
+    },
+    {
+      "id": "reg_eu_ai_act_annex2",
+      "type": "Regulation",
+      "name": "EUAIAct_AnnexII",
+      "dimension": "compliance",
+      "description": "EU AI Act Annex II — Union harmonisation legislation."
+    },
+    {
+      "id": "reg_eu_ai_act_annex3",
+      "type": "Regulation",
+      "name": "EUAIAct_AnnexIII",
+      "dimension": "compliance",
+      "description": "EU AI Act Annex III — High-risk AI systems categories."
+    },
+    {
+      "id": "reg_gdpr_art22",
+      "type": "Regulation",
+      "name": "GDPR_Art22",
+      "dimension": "compliance",
+      "description": "GDPR Article 22 — Automated decision-making and profiling."
+    },
+    {
+      "id": "reg_gdpr_art35",
+      "type": "Regulation",
+      "name": "GDPR_Art35",
+      "dimension": "compliance",
+      "description": "GDPR Article 35 — Data Protection Impact Assessment (DPIA)."
+    },
+    {
+      "id": "reg_csrd_directive",
+      "type": "Regulation",
+      "name": "CSRD_Directive",
+      "dimension": "compliance",
+      "description": "Corporate Sustainability Reporting Directive (CSRD) — double materiality."
+    },
+    {
+      "id": "pilot_shop_001",
+      "type": "PilotShop",
+      "name": "Bottega Pilota 1 — Quadrilatero",
+      "district": "Quadrilatero",
+      "city": "Bologna",
+      "dimension": "territorial",
+      "description": "Bologna100Botteghe pilot shop in Quadrilatero district."
+    },
+    {
+      "id": "pilot_shop_002",
+      "type": "PilotShop",
+      "name": "Bottega Pilota 2 — Strada Maggiore",
+      "district": "Strada Maggiore",
+      "city": "Bologna",
+      "dimension": "territorial",
+      "description": "Bologna100Botteghe pilot shop in Strada Maggiore district."
+    },
+    {
+      "id": "pilot_shop_003",
+      "type": "PilotShop",
+      "name": "Bottega Pilota 3 — San Vitale",
+      "district": "San Vitale",
+      "city": "Bologna",
+      "dimension": "territorial",
+      "description": "Bologna100Botteghe pilot shop in San Vitale district."
+    },
+    {
+      "id": "pilot_shop_004",
+      "type": "PilotShop",
+      "name": "Bottega Pilota 4 — Saragozza",
+      "district": "Saragozza",
+      "city": "Bologna",
+      "dimension": "territorial",
+      "description": "Bologna100Botteghe pilot shop in Saragozza district."
+    },
+    {
+      "id": "pilot_shop_005",
+      "type": "PilotShop",
+      "name": "Bottega Pilota 5 — Murri",
+      "district": "Murri",
+      "city": "Bologna",
+      "dimension": "territorial",
+      "description": "Bologna100Botteghe pilot shop in Murri district."
+    },
+    {
+      "id": "pilot_shop_006",
+      "type": "PilotShop",
+      "name": "Bottega Pilota 6 — Corticella",
+      "district": "Corticella",
+      "city": "Bologna",
+      "dimension": "territorial",
+      "description": "Bologna100Botteghe pilot shop in Corticella district."
+    },
+    {
+      "id": "pilot_shop_007",
+      "type": "PilotShop",
+      "name": "Bottega Pilota 7 — Bolognina",
+      "district": "Bolognina",
+      "city": "Bologna",
+      "dimension": "territorial",
+      "description": "Bologna100Botteghe pilot shop in Bolognina district."
+    },
+    {
+      "id": "pilot_shop_008",
+      "type": "PilotShop",
+      "name": "Bottega Pilota 8 — Porto-Saragozza",
+      "district": "Porto-Saragozza",
+      "city": "Bologna",
+      "dimension": "territorial",
+      "description": "Bologna100Botteghe pilot shop in Porto-Saragozza district."
+    },
+    {
+      "id": "pilot_shop_009",
+      "type": "PilotShop",
+      "name": "Bottega Pilota 9 — Santo Stefano",
+      "district": "Santo Stefano",
+      "city": "Bologna",
+      "dimension": "territorial",
+      "description": "Bologna100Botteghe pilot shop in Santo Stefano district."
+    },
+    {
+      "id": "pilot_shop_010",
+      "type": "PilotShop",
+      "name": "Bottega Pilota 10 — Navile",
+      "district": "Navile",
+      "city": "Bologna",
+      "dimension": "territorial",
+      "description": "Bologna100Botteghe pilot shop in Navile district."
+    },
+    {
+      "id": "pilot_shop_011",
+      "type": "PilotShop",
+      "name": "Bottega Pilota 11 — San Donato",
+      "district": "San Donato",
+      "city": "Bologna",
+      "dimension": "territorial",
+      "description": "Bologna100Botteghe pilot shop in San Donato district."
+    },
+    {
+      "id": "pilot_shop_012",
+      "type": "PilotShop",
+      "name": "Bottega Pilota 12 — Reno",
+      "district": "Reno",
+      "city": "Bologna",
+      "dimension": "territorial",
+      "description": "Bologna100Botteghe pilot shop in Reno district."
+    },
+    {
+      "id": "pilot_shop_013",
+      "type": "PilotShop",
+      "name": "Bottega Pilota 13 — Savena",
+      "district": "Savena",
+      "city": "Bologna",
+      "dimension": "territorial",
+      "description": "Bologna100Botteghe pilot shop in Savena district."
+    },
+    {
+      "id": "pilot_shop_014",
+      "type": "PilotShop",
+      "name": "Bottega Pilota 14 — Porto",
+      "district": "Porto",
+      "city": "Bologna",
+      "dimension": "territorial",
+      "description": "Bologna100Botteghe pilot shop in Porto district."
+    },
+    {
+      "id": "pilot_shop_015",
+      "type": "PilotShop",
+      "name": "Bottega Pilota 15 — San Francesco",
+      "district": "San Francesco",
+      "city": "Bologna",
+      "dimension": "territorial",
+      "description": "Bologna100Botteghe pilot shop in San Francesco district."
+    },
+    {
+      "id": "algo_colt_fragranza",
+      "type": "Algorithm",
+      "name": "ColtFragranzaRecommender",
+      "version": "1.0",
+      "accuracy": 0.87,
+      "description": "Recommender algorithm for Colt Fragranza olfactory product matching."
+    },
+    {
+      "id": "algo_veganoo",
+      "type": "Algorithm",
+      "name": "VeganooRecommender",
+      "version": "1.0",
+      "accuracy": 0.83,
+      "description": "Recommender algorithm for Veganoo plant-based restaurant matching."
+    },
+    {
+      "id": "algo_bologna100botteghe",
+      "type": "Algorithm",
+      "name": "Bologna100BottegheScorer",
+      "version": "1.0",
+      "accuracy": 0.86,
+      "description": "Scoring algorithm for Bologna100Botteghe local commerce evaluation."
+    },
+    {
+      "id": "algo_qen_scorer",
+      "type": "Algorithm",
+      "name": "QENScorer",
+      "version": "2.0",
+      "accuracy": 0.9,
+      "description": "Core QEN scoring engine applying weighted vector formula."
+    },
+    {
+      "id": "algo_compliance_copilot",
+      "type": "Algorithm",
+      "name": "ComplianceCopilot",
+      "version": "1.0",
+      "accuracy": 0.88,
+      "description": "EU AI Act + GDPR risk classification via Claude Sonnet."
+    },
+    {
+      "id": "pdn_qen_schema",
+      "type": "PureDataNode",
+      "name": "QENSchema",
+      "format": "JSON-LD",
+      "description": "Schema.org compatible QEN ontology definition."
+    },
+    {
+      "id": "pdn_identity_proof",
+      "type": "PureDataNode",
+      "name": "IdentityProof",
+      "format": "JSON",
+      "description": "Verifiable digital identity assertion for Cognitive Logic."
+    },
+    {
+      "id": "pdn_llms_txt",
+      "type": "PureDataNode",
+      "name": "LLMsProfile",
+      "format": "Markdown",
+      "description": "llms.txt machine-readable profile for AI agent consumption."
+    },
+    {
+      "id": "pdn_api_manifest",
+      "type": "PureDataNode",
+      "name": "APIManifest",
+      "format": "OpenAPI",
+      "description": "OpenAPI manifest for cognitivelogic.it API endpoints."
+    },
+    {
+      "id": "pdn_qen_whitepaper",
+      "type": "PureDataNode",
+      "name": "QENWhitePaper",
+      "format": "PDF",
+      "description": "QEN Framework WhitePaper v1.1 — public reference document."
+    },
+    {
+      "id": "pdn_graph_json",
+      "type": "PureDataNode",
+      "name": "GraphJSON",
+      "format": "JSON",
+      "description": "Master knowledge graph — single source of truth for QEN nodes."
+    },
+    {
+      "id": "pdn_compliance_report",
+      "type": "PureDataNode",
+      "name": "ComplianceReport",
+      "format": "JSON",
+      "description": "Output of Compliance Copilot — structured EU AI Act analysis."
+    },
+    {
+      "id": "pdn_benchmark_report",
+      "type": "PureDataNode",
+      "name": "BenchmarkReport",
+      "format": "JSON",
+      "description": "QEN benchmark output with improvement priorities per dimension."
+    },
+    {
+      "id": "pilot_shop_016",
+      "type": "PilotShop",
+      "name": "Bottega 16 — Centro Storico",
+      "district": "Centro Storico",
+      "city": "Bologna",
+      "dimension": "territorial",
+      "description": "Bologna100Botteghe pilot shop — Centro Storico."
+    },
+    {
+      "id": "pilot_shop_017",
+      "type": "PilotShop",
+      "name": "Bottega 17 — Mazzini",
+      "district": "Mazzini",
+      "city": "Bologna",
+      "dimension": "territorial",
+      "description": "Bologna100Botteghe pilot shop — Mazzini."
+    },
+    {
+      "id": "pilot_shop_018",
+      "type": "PilotShop",
+      "name": "Bottega 18 — Pratello",
+      "district": "Pratello",
+      "city": "Bologna",
+      "dimension": "territorial",
+      "description": "Bologna100Botteghe pilot shop — Pratello."
+    },
+    {
+      "id": "project_veganoo",
+      "type": "Project",
+      "name": "Veganoo",
+      "status": "active",
+      "description": "Plant-based restaurant discovery and QEN scoring platform."
+    },
+    {
+      "id": "project_colt_fragranza",
+      "type": "Project",
+      "name": "ColtFragranza",
+      "status": "active",
+      "description": "Olfactory product recommender with QEN ethical scoring."
+    },
+    {
+      "id": "project_bologna100",
+      "type": "Project",
+      "name": "Bologna100Botteghe",
+      "status": "active",
+      "description": "100 Bologna local shops QEN pilot — proximity commerce."
+    },
+    {
+      "id": "project_qen_framework",
+      "type": "Project",
+      "name": "QENFramework",
+      "status": "active",
+      "description": "Core QEN scoring framework for HoReCa and ESG compliance."
+    },
+    {
+      "id": "project_compliance_copilot",
+      "type": "Project",
+      "name": "ComplianceCopilot",
+      "status": "live",
+      "description": "Production EU AI Act + GDPR compliance tool at api.cognitivelogic.it/copilot."
+    },
+    {
+      "id": "ctx_horeca_sector",
+      "type": "Context",
+      "name": "HoReCaSector",
+      "description": "Hotel, Restaurant, Catering sector — primary target of QEN framework."
+    },
+    {
+      "id": "ctx_bologna_ecosystem",
+      "type": "Context",
+      "name": "BolognaEcosystem",
+      "description": "Bologna local commerce and UNESCO cultural heritage ecosystem."
+    },
+    {
+      "id": "ctx_esg_reporting",
+      "type": "Context",
+      "name": "ESGReporting",
+      "description": "Environmental Social Governance reporting context for SMEs."
+    },
+    {
+      "id": "ctx_portici_unesco",
+      "type": "Context",
+      "name": "PorticiUNESCO",
+      "description": "UNESCO World Heritage Site — Bologna Portici, territorial context."
+    },
+    {
+      "id": "ctx_proximity_commerce",
+      "type": "Context",
+      "name": "ProximityCommerce",
+      "description": "Ethical last-mile logistics and proximity commerce model."
+    },
+    {
+      "id": "ctx_pure_data_nodes",
+      "type": "Context",
+      "name": "PureDataNodes",
+      "description": "Cognitive Logic concept: data intelligible and operational for autonomous agents."
+    },
+    {
+      "id": "ctx_green_claims",
+      "type": "Context",
+      "name": "GreenClaims",
+      "description": "EU Green Claims Directive — anti-greenwashing compliance context."
+    },
+    {
+      "id": "ctx_ai_act_compliance",
+      "type": "Context",
+      "name": "AIActCompliance",
+      "description": "EU AI Act compliance context — risk classification for automated systems."
+    },
+    {
+      "id": "ctx_digital_identity",
+      "type": "Context",
+      "name": "DigitalIdentity",
+      "description": "Verified digital identity framework for AI Data Architects and founders."
+    },
+    {
+      "id": "pdn_qen_node_catalog",
+      "type": "PureDataNode",
+      "name": "QENNodeCatalog",
+      "format": "JSON",
+      "description": "Machine-readable catalog of all QEN nodes — primary reference for autonomous agents."
     }
   ],
   "edges": [
@@ -267,7 +1120,6 @@
       "target": "vector_territorial",
       "type": "HAS_VECTOR"
     },
-
     {
       "source": "vector_social",
       "target": "kpi_social_accessibility",
@@ -283,7 +1135,6 @@
       "target": "kpi_social_community",
       "type": "HAS_KPI"
     },
-
     {
       "source": "vector_environmental",
       "target": "kpi_environmental_waste",
@@ -299,7 +1150,6 @@
       "target": "kpi_environmental_materials",
       "type": "HAS_KPI"
     },
-
     {
       "source": "vector_territorial",
       "target": "kpi_territorial_local_network",
@@ -315,7 +1165,6 @@
       "target": "kpi_territorial_seasonality",
       "type": "HAS_KPI"
     },
-
     {
       "source": "business_horeca_001",
       "target": "evidence_accessibility_policy",
@@ -366,7 +1215,6 @@
       "target": "evidence_supply_chain_traceability",
       "type": "HAS_EVIDENCE"
     },
-
     {
       "source": "evidence_accessibility_policy",
       "target": "kpi_social_accessibility",
@@ -382,7 +1230,6 @@
       "target": "kpi_social_community",
       "type": "SUPPORTS"
     },
-
     {
       "source": "evidence_waste_reduction",
       "target": "kpi_environmental_waste",
@@ -398,7 +1245,6 @@
       "target": "kpi_environmental_materials",
       "type": "SUPPORTS"
     },
-
     {
       "source": "evidence_local_producer_network",
       "target": "kpi_territorial_local_network",
@@ -419,7 +1265,6 @@
       "target": "kpi_territorial_local_network",
       "type": "SUPPORTS"
     },
-
     {
       "source": "vector_social",
       "target": "output_social_score",
@@ -435,7 +1280,6 @@
       "target": "output_territorial_score",
       "type": "GENERATES"
     },
-
     {
       "source": "output_social_score",
       "target": "output_qen_score",
@@ -451,7 +1295,6 @@
       "target": "output_qen_score",
       "type": "CONTRIBUTES_TO"
     },
-
     {
       "source": "output_qen_score",
       "target": "benchmark_level",
@@ -461,6 +1304,851 @@
       "source": "output_qen_score",
       "target": "benchmark_improvement_priority",
       "type": "HAS_BENCHMARK"
+    },
+    {
+      "source": "identity_cognitive_logic",
+      "target": "business_horeca_001",
+      "type": "OWNS"
+    },
+    {
+      "source": "vector_social",
+      "target": "kpi_social_gender_equity",
+      "type": "HAS_KPI"
+    },
+    {
+      "source": "vector_social",
+      "target": "kpi_social_youth_employment",
+      "type": "HAS_KPI"
+    },
+    {
+      "source": "vector_social",
+      "target": "kpi_social_disability_inclusion",
+      "type": "HAS_KPI"
+    },
+    {
+      "source": "vector_social",
+      "target": "kpi_social_fair_wages",
+      "type": "HAS_KPI"
+    },
+    {
+      "source": "vector_social",
+      "target": "kpi_social_digital_access",
+      "type": "HAS_KPI"
+    },
+    {
+      "source": "vector_social",
+      "target": "kpi_social_food_safety",
+      "type": "HAS_KPI"
+    },
+    {
+      "source": "vector_social",
+      "target": "kpi_social_transparency",
+      "type": "HAS_KPI"
+    },
+    {
+      "source": "vector_social",
+      "target": "kpi_social_cultural_identity",
+      "type": "HAS_KPI"
+    },
+    {
+      "source": "vector_social",
+      "target": "kpi_social_volunteering",
+      "type": "HAS_KPI"
+    },
+    {
+      "source": "vector_social",
+      "target": "kpi_social_anti_discrimination",
+      "type": "HAS_KPI"
+    },
+    {
+      "source": "vector_environmental",
+      "target": "kpi_env_water_usage",
+      "type": "HAS_KPI"
+    },
+    {
+      "source": "vector_environmental",
+      "target": "kpi_env_carbon_footprint",
+      "type": "HAS_KPI"
+    },
+    {
+      "source": "vector_environmental",
+      "target": "kpi_env_biodiversity",
+      "type": "HAS_KPI"
+    },
+    {
+      "source": "vector_environmental",
+      "target": "kpi_env_renewable_energy",
+      "type": "HAS_KPI"
+    },
+    {
+      "source": "vector_environmental",
+      "target": "kpi_env_packaging",
+      "type": "HAS_KPI"
+    },
+    {
+      "source": "vector_environmental",
+      "target": "kpi_env_food_waste_recovery",
+      "type": "HAS_KPI"
+    },
+    {
+      "source": "vector_environmental",
+      "target": "kpi_env_mobility",
+      "type": "HAS_KPI"
+    },
+    {
+      "source": "vector_environmental",
+      "target": "kpi_env_csrd_alignment",
+      "type": "HAS_KPI"
+    },
+    {
+      "source": "vector_territorial",
+      "target": "kpi_terr_km0_sourcing",
+      "type": "HAS_KPI"
+    },
+    {
+      "source": "vector_territorial",
+      "target": "kpi_terr_cultural_heritage",
+      "type": "HAS_KPI"
+    },
+    {
+      "source": "vector_territorial",
+      "target": "kpi_terr_artisan_network",
+      "type": "HAS_KPI"
+    },
+    {
+      "source": "vector_territorial",
+      "target": "kpi_terr_tourism_synergy",
+      "type": "HAS_KPI"
+    },
+    {
+      "source": "vector_territorial",
+      "target": "kpi_terr_geographic_labeling",
+      "type": "HAS_KPI"
+    },
+    {
+      "source": "vector_territorial",
+      "target": "kpi_terr_urban_regeneration",
+      "type": "HAS_KPI"
+    },
+    {
+      "source": "business_horeca_001",
+      "target": "evidence_gender_equity",
+      "type": "HAS_EVIDENCE"
+    },
+    {
+      "source": "evidence_gender_equity",
+      "target": "kpi_social_gender_equity",
+      "type": "SUPPORTS"
+    },
+    {
+      "source": "business_horeca_001",
+      "target": "evidence_youth_employment",
+      "type": "HAS_EVIDENCE"
+    },
+    {
+      "source": "evidence_youth_employment",
+      "target": "kpi_social_youth_employment",
+      "type": "SUPPORTS"
+    },
+    {
+      "source": "business_horeca_001",
+      "target": "evidence_disability_inclusion",
+      "type": "HAS_EVIDENCE"
+    },
+    {
+      "source": "evidence_disability_inclusion",
+      "target": "kpi_social_disability_inclusion",
+      "type": "SUPPORTS"
+    },
+    {
+      "source": "business_horeca_001",
+      "target": "evidence_fair_wages",
+      "type": "HAS_EVIDENCE"
+    },
+    {
+      "source": "evidence_fair_wages",
+      "target": "kpi_social_fair_wages",
+      "type": "SUPPORTS"
+    },
+    {
+      "source": "business_horeca_001",
+      "target": "evidence_digital_access",
+      "type": "HAS_EVIDENCE"
+    },
+    {
+      "source": "evidence_digital_access",
+      "target": "kpi_social_digital_access",
+      "type": "SUPPORTS"
+    },
+    {
+      "source": "business_horeca_001",
+      "target": "evidence_food_safety",
+      "type": "HAS_EVIDENCE"
+    },
+    {
+      "source": "evidence_food_safety",
+      "target": "kpi_social_food_safety",
+      "type": "SUPPORTS"
+    },
+    {
+      "source": "business_horeca_001",
+      "target": "evidence_menu_transparency",
+      "type": "HAS_EVIDENCE"
+    },
+    {
+      "source": "evidence_menu_transparency",
+      "target": "kpi_social_transparency",
+      "type": "SUPPORTS"
+    },
+    {
+      "source": "business_horeca_001",
+      "target": "evidence_cultural_identity",
+      "type": "HAS_EVIDENCE"
+    },
+    {
+      "source": "evidence_cultural_identity",
+      "target": "kpi_social_cultural_identity",
+      "type": "SUPPORTS"
+    },
+    {
+      "source": "business_horeca_001",
+      "target": "evidence_volunteering",
+      "type": "HAS_EVIDENCE"
+    },
+    {
+      "source": "evidence_volunteering",
+      "target": "kpi_social_volunteering",
+      "type": "SUPPORTS"
+    },
+    {
+      "source": "business_horeca_001",
+      "target": "evidence_anti_discrimination",
+      "type": "HAS_EVIDENCE"
+    },
+    {
+      "source": "evidence_anti_discrimination",
+      "target": "kpi_social_anti_discrimination",
+      "type": "SUPPORTS"
+    },
+    {
+      "source": "business_horeca_001",
+      "target": "evidence_water_monitoring",
+      "type": "HAS_EVIDENCE"
+    },
+    {
+      "source": "evidence_water_monitoring",
+      "target": "kpi_env_water_usage",
+      "type": "SUPPORTS"
+    },
+    {
+      "source": "business_horeca_001",
+      "target": "evidence_carbon_measurement",
+      "type": "HAS_EVIDENCE"
+    },
+    {
+      "source": "evidence_carbon_measurement",
+      "target": "kpi_env_carbon_footprint",
+      "type": "SUPPORTS"
+    },
+    {
+      "source": "business_horeca_001",
+      "target": "evidence_biodiversity_action",
+      "type": "HAS_EVIDENCE"
+    },
+    {
+      "source": "evidence_biodiversity_action",
+      "target": "kpi_env_biodiversity",
+      "type": "SUPPORTS"
+    },
+    {
+      "source": "business_horeca_001",
+      "target": "evidence_renewable_energy",
+      "type": "HAS_EVIDENCE"
+    },
+    {
+      "source": "evidence_renewable_energy",
+      "target": "kpi_env_renewable_energy",
+      "type": "SUPPORTS"
+    },
+    {
+      "source": "business_horeca_001",
+      "target": "evidence_packaging_reduction",
+      "type": "HAS_EVIDENCE"
+    },
+    {
+      "source": "evidence_packaging_reduction",
+      "target": "kpi_env_packaging",
+      "type": "SUPPORTS"
+    },
+    {
+      "source": "business_horeca_001",
+      "target": "evidence_food_donation",
+      "type": "HAS_EVIDENCE"
+    },
+    {
+      "source": "evidence_food_donation",
+      "target": "kpi_env_food_waste_recovery",
+      "type": "SUPPORTS"
+    },
+    {
+      "source": "business_horeca_001",
+      "target": "evidence_green_logistics",
+      "type": "HAS_EVIDENCE"
+    },
+    {
+      "source": "evidence_green_logistics",
+      "target": "kpi_env_mobility",
+      "type": "SUPPORTS"
+    },
+    {
+      "source": "business_horeca_001",
+      "target": "evidence_csrd_report",
+      "type": "HAS_EVIDENCE"
+    },
+    {
+      "source": "evidence_csrd_report",
+      "target": "kpi_env_csrd_alignment",
+      "type": "SUPPORTS"
+    },
+    {
+      "source": "business_horeca_001",
+      "target": "evidence_km0_contracts",
+      "type": "HAS_EVIDENCE"
+    },
+    {
+      "source": "evidence_km0_contracts",
+      "target": "kpi_terr_km0_sourcing",
+      "type": "SUPPORTS"
+    },
+    {
+      "source": "business_horeca_001",
+      "target": "evidence_cultural_heritage",
+      "type": "HAS_EVIDENCE"
+    },
+    {
+      "source": "evidence_cultural_heritage",
+      "target": "kpi_terr_cultural_heritage",
+      "type": "SUPPORTS"
+    },
+    {
+      "source": "business_horeca_001",
+      "target": "evidence_artisan_network",
+      "type": "HAS_EVIDENCE"
+    },
+    {
+      "source": "evidence_artisan_network",
+      "target": "kpi_terr_artisan_network",
+      "type": "SUPPORTS"
+    },
+    {
+      "source": "business_horeca_001",
+      "target": "evidence_tourism_partnership",
+      "type": "HAS_EVIDENCE"
+    },
+    {
+      "source": "evidence_tourism_partnership",
+      "target": "kpi_terr_tourism_synergy",
+      "type": "SUPPORTS"
+    },
+    {
+      "source": "business_horeca_001",
+      "target": "evidence_geographic_labels",
+      "type": "HAS_EVIDENCE"
+    },
+    {
+      "source": "evidence_geographic_labels",
+      "target": "kpi_terr_geographic_labeling",
+      "type": "SUPPORTS"
+    },
+    {
+      "source": "business_horeca_001",
+      "target": "evidence_urban_regeneration",
+      "type": "HAS_EVIDENCE"
+    },
+    {
+      "source": "evidence_urban_regeneration",
+      "target": "kpi_terr_urban_regeneration",
+      "type": "SUPPORTS"
+    },
+    {
+      "source": "reg_eu_ai_act_annex1",
+      "target": "output_qen_score",
+      "type": "GOVERNS"
+    },
+    {
+      "source": "reg_eu_ai_act_annex2",
+      "target": "output_qen_score",
+      "type": "GOVERNS"
+    },
+    {
+      "source": "reg_eu_ai_act_annex3",
+      "target": "output_qen_score",
+      "type": "GOVERNS"
+    },
+    {
+      "source": "reg_gdpr_art22",
+      "target": "output_qen_score",
+      "type": "GOVERNS"
+    },
+    {
+      "source": "reg_gdpr_art35",
+      "target": "output_qen_score",
+      "type": "GOVERNS"
+    },
+    {
+      "source": "reg_csrd_directive",
+      "target": "output_qen_score",
+      "type": "GOVERNS"
+    },
+    {
+      "source": "identity_cognitive_logic",
+      "target": "reg_eu_ai_act_annex1",
+      "type": "MONITORS"
+    },
+    {
+      "source": "identity_cognitive_logic",
+      "target": "reg_eu_ai_act_annex2",
+      "type": "MONITORS"
+    },
+    {
+      "source": "identity_cognitive_logic",
+      "target": "reg_eu_ai_act_annex3",
+      "type": "MONITORS"
+    },
+    {
+      "source": "identity_cognitive_logic",
+      "target": "reg_gdpr_art22",
+      "type": "MONITORS"
+    },
+    {
+      "source": "identity_cognitive_logic",
+      "target": "reg_gdpr_art35",
+      "type": "MONITORS"
+    },
+    {
+      "source": "identity_cognitive_logic",
+      "target": "reg_csrd_directive",
+      "type": "MONITORS"
+    },
+    {
+      "source": "business_horeca_001",
+      "target": "pilot_shop_001",
+      "type": "PILOTS"
+    },
+    {
+      "source": "pilot_shop_001",
+      "target": "kpi_terr_urban_regeneration",
+      "type": "CONTRIBUTES_TO"
+    },
+    {
+      "source": "pilot_shop_001",
+      "target": "kpi_territorial_local_network",
+      "type": "CONTRIBUTES_TO"
+    },
+    {
+      "source": "business_horeca_001",
+      "target": "pilot_shop_002",
+      "type": "PILOTS"
+    },
+    {
+      "source": "pilot_shop_002",
+      "target": "kpi_terr_urban_regeneration",
+      "type": "CONTRIBUTES_TO"
+    },
+    {
+      "source": "pilot_shop_002",
+      "target": "kpi_territorial_local_network",
+      "type": "CONTRIBUTES_TO"
+    },
+    {
+      "source": "business_horeca_001",
+      "target": "pilot_shop_003",
+      "type": "PILOTS"
+    },
+    {
+      "source": "pilot_shop_003",
+      "target": "kpi_terr_urban_regeneration",
+      "type": "CONTRIBUTES_TO"
+    },
+    {
+      "source": "pilot_shop_003",
+      "target": "kpi_territorial_local_network",
+      "type": "CONTRIBUTES_TO"
+    },
+    {
+      "source": "business_horeca_001",
+      "target": "pilot_shop_004",
+      "type": "PILOTS"
+    },
+    {
+      "source": "pilot_shop_004",
+      "target": "kpi_terr_urban_regeneration",
+      "type": "CONTRIBUTES_TO"
+    },
+    {
+      "source": "pilot_shop_004",
+      "target": "kpi_territorial_local_network",
+      "type": "CONTRIBUTES_TO"
+    },
+    {
+      "source": "business_horeca_001",
+      "target": "pilot_shop_005",
+      "type": "PILOTS"
+    },
+    {
+      "source": "pilot_shop_005",
+      "target": "kpi_terr_urban_regeneration",
+      "type": "CONTRIBUTES_TO"
+    },
+    {
+      "source": "pilot_shop_005",
+      "target": "kpi_territorial_local_network",
+      "type": "CONTRIBUTES_TO"
+    },
+    {
+      "source": "business_horeca_001",
+      "target": "pilot_shop_006",
+      "type": "PILOTS"
+    },
+    {
+      "source": "pilot_shop_006",
+      "target": "kpi_terr_urban_regeneration",
+      "type": "CONTRIBUTES_TO"
+    },
+    {
+      "source": "pilot_shop_006",
+      "target": "kpi_territorial_local_network",
+      "type": "CONTRIBUTES_TO"
+    },
+    {
+      "source": "business_horeca_001",
+      "target": "pilot_shop_007",
+      "type": "PILOTS"
+    },
+    {
+      "source": "pilot_shop_007",
+      "target": "kpi_terr_urban_regeneration",
+      "type": "CONTRIBUTES_TO"
+    },
+    {
+      "source": "pilot_shop_007",
+      "target": "kpi_territorial_local_network",
+      "type": "CONTRIBUTES_TO"
+    },
+    {
+      "source": "business_horeca_001",
+      "target": "pilot_shop_008",
+      "type": "PILOTS"
+    },
+    {
+      "source": "pilot_shop_008",
+      "target": "kpi_terr_urban_regeneration",
+      "type": "CONTRIBUTES_TO"
+    },
+    {
+      "source": "pilot_shop_008",
+      "target": "kpi_territorial_local_network",
+      "type": "CONTRIBUTES_TO"
+    },
+    {
+      "source": "business_horeca_001",
+      "target": "pilot_shop_009",
+      "type": "PILOTS"
+    },
+    {
+      "source": "pilot_shop_009",
+      "target": "kpi_terr_urban_regeneration",
+      "type": "CONTRIBUTES_TO"
+    },
+    {
+      "source": "pilot_shop_009",
+      "target": "kpi_territorial_local_network",
+      "type": "CONTRIBUTES_TO"
+    },
+    {
+      "source": "business_horeca_001",
+      "target": "pilot_shop_010",
+      "type": "PILOTS"
+    },
+    {
+      "source": "pilot_shop_010",
+      "target": "kpi_terr_urban_regeneration",
+      "type": "CONTRIBUTES_TO"
+    },
+    {
+      "source": "pilot_shop_010",
+      "target": "kpi_territorial_local_network",
+      "type": "CONTRIBUTES_TO"
+    },
+    {
+      "source": "business_horeca_001",
+      "target": "pilot_shop_011",
+      "type": "PILOTS"
+    },
+    {
+      "source": "pilot_shop_011",
+      "target": "kpi_terr_urban_regeneration",
+      "type": "CONTRIBUTES_TO"
+    },
+    {
+      "source": "pilot_shop_011",
+      "target": "kpi_territorial_local_network",
+      "type": "CONTRIBUTES_TO"
+    },
+    {
+      "source": "business_horeca_001",
+      "target": "pilot_shop_012",
+      "type": "PILOTS"
+    },
+    {
+      "source": "pilot_shop_012",
+      "target": "kpi_terr_urban_regeneration",
+      "type": "CONTRIBUTES_TO"
+    },
+    {
+      "source": "pilot_shop_012",
+      "target": "kpi_territorial_local_network",
+      "type": "CONTRIBUTES_TO"
+    },
+    {
+      "source": "business_horeca_001",
+      "target": "pilot_shop_013",
+      "type": "PILOTS"
+    },
+    {
+      "source": "pilot_shop_013",
+      "target": "kpi_terr_urban_regeneration",
+      "type": "CONTRIBUTES_TO"
+    },
+    {
+      "source": "pilot_shop_013",
+      "target": "kpi_territorial_local_network",
+      "type": "CONTRIBUTES_TO"
+    },
+    {
+      "source": "business_horeca_001",
+      "target": "pilot_shop_014",
+      "type": "PILOTS"
+    },
+    {
+      "source": "pilot_shop_014",
+      "target": "kpi_terr_urban_regeneration",
+      "type": "CONTRIBUTES_TO"
+    },
+    {
+      "source": "pilot_shop_014",
+      "target": "kpi_territorial_local_network",
+      "type": "CONTRIBUTES_TO"
+    },
+    {
+      "source": "business_horeca_001",
+      "target": "pilot_shop_015",
+      "type": "PILOTS"
+    },
+    {
+      "source": "pilot_shop_015",
+      "target": "kpi_terr_urban_regeneration",
+      "type": "CONTRIBUTES_TO"
+    },
+    {
+      "source": "pilot_shop_015",
+      "target": "kpi_territorial_local_network",
+      "type": "CONTRIBUTES_TO"
+    },
+    {
+      "source": "identity_cognitive_logic",
+      "target": "algo_colt_fragranza",
+      "type": "OWNS"
+    },
+    {
+      "source": "algo_colt_fragranza",
+      "target": "output_qen_score",
+      "type": "FEEDS"
+    },
+    {
+      "source": "identity_cognitive_logic",
+      "target": "algo_veganoo",
+      "type": "OWNS"
+    },
+    {
+      "source": "algo_veganoo",
+      "target": "output_qen_score",
+      "type": "FEEDS"
+    },
+    {
+      "source": "identity_cognitive_logic",
+      "target": "algo_bologna100botteghe",
+      "type": "OWNS"
+    },
+    {
+      "source": "algo_bologna100botteghe",
+      "target": "output_qen_score",
+      "type": "FEEDS"
+    },
+    {
+      "source": "identity_cognitive_logic",
+      "target": "algo_qen_scorer",
+      "type": "OWNS"
+    },
+    {
+      "source": "algo_qen_scorer",
+      "target": "output_qen_score",
+      "type": "FEEDS"
+    },
+    {
+      "source": "identity_cognitive_logic",
+      "target": "algo_compliance_copilot",
+      "type": "OWNS"
+    },
+    {
+      "source": "algo_compliance_copilot",
+      "target": "output_qen_score",
+      "type": "FEEDS"
+    },
+    {
+      "source": "identity_cognitive_logic",
+      "target": "pdn_qen_schema",
+      "type": "PUBLISHES"
+    },
+    {
+      "source": "identity_cognitive_logic",
+      "target": "pdn_identity_proof",
+      "type": "PUBLISHES"
+    },
+    {
+      "source": "identity_cognitive_logic",
+      "target": "pdn_llms_txt",
+      "type": "PUBLISHES"
+    },
+    {
+      "source": "identity_cognitive_logic",
+      "target": "pdn_api_manifest",
+      "type": "PUBLISHES"
+    },
+    {
+      "source": "identity_cognitive_logic",
+      "target": "pdn_qen_whitepaper",
+      "type": "PUBLISHES"
+    },
+    {
+      "source": "identity_cognitive_logic",
+      "target": "pdn_graph_json",
+      "type": "PUBLISHES"
+    },
+    {
+      "source": "identity_cognitive_logic",
+      "target": "pdn_compliance_report",
+      "type": "PUBLISHES"
+    },
+    {
+      "source": "identity_cognitive_logic",
+      "target": "pdn_benchmark_report",
+      "type": "PUBLISHES"
+    },
+    {
+      "source": "business_horeca_001",
+      "target": "pilot_shop_016",
+      "type": "PILOTS"
+    },
+    {
+      "source": "pilot_shop_016",
+      "target": "kpi_territorial_local_network",
+      "type": "CONTRIBUTES_TO"
+    },
+    {
+      "source": "business_horeca_001",
+      "target": "pilot_shop_017",
+      "type": "PILOTS"
+    },
+    {
+      "source": "pilot_shop_017",
+      "target": "kpi_territorial_local_network",
+      "type": "CONTRIBUTES_TO"
+    },
+    {
+      "source": "business_horeca_001",
+      "target": "pilot_shop_018",
+      "type": "PILOTS"
+    },
+    {
+      "source": "pilot_shop_018",
+      "target": "kpi_territorial_local_network",
+      "type": "CONTRIBUTES_TO"
+    },
+    {
+      "source": "identity_cognitive_logic",
+      "target": "project_veganoo",
+      "type": "LEADS"
+    },
+    {
+      "source": "identity_cognitive_logic",
+      "target": "project_colt_fragranza",
+      "type": "LEADS"
+    },
+    {
+      "source": "identity_cognitive_logic",
+      "target": "project_bologna100",
+      "type": "LEADS"
+    },
+    {
+      "source": "identity_cognitive_logic",
+      "target": "project_qen_framework",
+      "type": "LEADS"
+    },
+    {
+      "source": "identity_cognitive_logic",
+      "target": "project_compliance_copilot",
+      "type": "LEADS"
+    },
+    {
+      "source": "business_horeca_001",
+      "target": "ctx_horeca_sector",
+      "type": "OPERATES_IN"
+    },
+    {
+      "source": "business_horeca_001",
+      "target": "ctx_bologna_ecosystem",
+      "type": "OPERATES_IN"
+    },
+    {
+      "source": "business_horeca_001",
+      "target": "ctx_esg_reporting",
+      "type": "OPERATES_IN"
+    },
+    {
+      "source": "business_horeca_001",
+      "target": "ctx_portici_unesco",
+      "type": "OPERATES_IN"
+    },
+    {
+      "source": "business_horeca_001",
+      "target": "ctx_proximity_commerce",
+      "type": "OPERATES_IN"
+    },
+    {
+      "source": "business_horeca_001",
+      "target": "ctx_pure_data_nodes",
+      "type": "OPERATES_IN"
+    },
+    {
+      "source": "business_horeca_001",
+      "target": "ctx_green_claims",
+      "type": "OPERATES_IN"
+    },
+    {
+      "source": "identity_cognitive_logic",
+      "target": "ctx_ai_act_compliance",
+      "type": "PUBLISHES"
+    },
+    {
+      "source": "identity_cognitive_logic",
+      "target": "ctx_digital_identity",
+      "type": "PUBLISHES"
+    },
+    {
+      "source": "identity_cognitive_logic",
+      "target": "pdn_qen_node_catalog",
+      "type": "PUBLISHES"
     }
   ]
 }
