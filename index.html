@@ -53,24 +53,19 @@
           </h1>
 
           <p class="hero-lead">
-            Cognitive Logic is an AI-native governance infrastructure for organizations that need more than
-            generic automation. We design semantic architectures that make AI systems traceable, explainable,
-            policy-aware and operationally aligned with enterprise compliance requirements.
+            Cognitive Logic is an AI-native governance infrastructure for organizations. 
+            We design semantic architectures that make AI systems traceable and policy-aware.
           </p>
-
-          <p class="hero-text">
-            At the core of this infrastructure is <strong>QEN</strong>: the semantic framework and reasoning
-            engine that transforms governance constraints, ethical logic and compliance signals into
-            structured, auditable intelligence.
-          </p>
-
-          <div class="hero-actions">
-            <a class="btn btn-primary" href="https://api.cognitivelogic.it/copilot" target="_blank" rel="noopener">
-              Open AI Compliance Copilot
-            </a>
-            <a class="btn btn-secondary" href="#architecture">
-              Explore Architecture
-            </a>
+          
+          <div class="hero-panel mt-3">
+             <div class="panel-content">
+                <div class="form-label">Descrizione Sistema AI</div>
+                <textarea id="chat-input" placeholder="Descrivi il sistema o il workflow AI per l'analisi QEN..."></textarea>
+                <div class="action-row mt-2">
+                    <button id="analyze-btn" class="btn btn-primary">Avvia Analisi Semantica</button>
+                    <span id="status-line" class="helper-line" style="margin-left: 15px;">Pronto per l'analisi.</span>
+                </div>
+             </div>
           </div>
 
           <div class="hero-meta">
@@ -80,11 +75,7 @@
             </div>
             <div class="meta-card">
               <span class="meta-label">Core Layer</span>
-              <strong>QEN semantic framework & reasoning engine</strong>
-            </div>
-            <div class="meta-card">
-              <span class="meta-label">Outcome</span>
-              <strong>Explainability, traceability and compliance by design</strong>
+              <strong>QEN semantic framework</strong>
             </div>
           </div>
         </div>
@@ -92,73 +83,23 @@
         <div class="hero-panel">
           <div class="panel-shell">
             <div class="panel-topbar">
-              <span></span>
-              <span></span>
-              <span></span>
+              <span></span><span></span><span></span>
             </div>
-
             <div class="panel-content">
               <div class="panel-kicker">Governance Stack</div>
-              <h3>From policy requirements to machine-readable operational logic</h3>
-
+              <h3>From policy to machine-readable logic</h3>
               <div class="stack-list">
                 <div class="stack-item">
-                  <div class="stack-title">Governance Inputs</div>
-                  <p>EU AI Act, GDPR, internal controls, risk policies, sector rules</p>
+                  <div class="stack-title">Input</div>
+                  <p>EU AI Act, GDPR, Risk Policies</p>
                 </div>
-
                 <div class="stack-item">
-                  <div class="stack-title">QEN Semantic Engine</div>
-                  <p>Constraint encoding, semantic reasoning, explainability logic, compliance modeling</p>
+                  <div class="stack-title">QEN Engine</div>
+                  <p>Semantic reasoning, compliance modeling</p>
                 </div>
-
-                <div class="stack-item">
-                  <div class="stack-title">Operational Outputs</div>
-                  <p>Risk signals, decision rationale, remediation paths, auditable compliance intelligence</p>
-                </div>
-              </div>
-
-              <div class="panel-footer">
-                <span class="status-dot"></span>
-                <span>AI governance infrastructure for enterprise deployment</span>
               </div>
             </div>
           </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="architecture" class="section architecture">
-      <div class="container">
-        <div class="section-heading">
-          <div class="kicker">Architecture</div>
-          <h2>A semantic architecture for explainable and governable AI.</h2>
-          <p>
-            Cognitive Logic separates interface, reasoning and governance into a structured architecture.
-          </p>
-        </div>
-
-        <div class="architecture-grid">
-          <article class="architecture-card">
-            <div class="card-index">01</div>
-            <h3>Cognitive Logic Infrastructure</h3>
-            <p>The strategic architecture that frames how AI systems are represented and monitored.</p>
-          </article>
-          <article class="architecture-card">
-            <div class="card-index">02</div>
-            <h3>QEN Framework & Engine</h3>
-            <p>Core semantic model that verifies logic and structures compliance signals.</p>
-          </article>
-          <article class="architecture-card">
-            <div class="card-index">03</div>
-            <h3>AI Compliance Copilot</h3>
-            <p>Applied interface allowing teams to interact with governance logic.</p>
-          </article>
-          <article class="architecture-card">
-            <div class="card-index">04</div>
-            <h3>Decision Intelligence</h3>
-            <p>Narrative explanation and semantic evidence trails for reporting.</p>
-          </article>
         </div>
       </div>
     </section>
@@ -167,103 +108,52 @@
       <div class="container">
         <div class="section-heading">
           <div class="kicker">Dashboard Preview</div>
-          <h2>A product surface for governance intelligence.</h2>
+          <h2>Governance Intelligence Surface</h2>
         </div>
 
         <div class="dashboard-shell">
-          <div class="dashboard-top">
-            <div>
-              <div class="dashboard-kicker">AI Compliance Copilot</div>
-              <h3>Governance response layer</h3>
-            </div>
-            <a class="btn btn-secondary" href="https://api.cognitivelogic.it/copilot" target="_blank" rel="noopener">
-              Open Live Copilot
-            </a>
-          </div>
-
           <div class="dashboard-grid">
             <div class="dashboard-card dashboard-card-primary">
               <div class="mini-label">Decision Banner</div>
-              <h4>MEDIUM RISK</h4>
-              <p>System operable but requires stronger traceability.</p>
+              <h4 id="decision-box">IN ATTESA...</h4>
+              <p id="summary">Inserisci una descrizione sopra per iniziare l'analisi dei nodi.</p>
             </div>
             <div class="dashboard-card">
-              <div class="mini-label">Risk Score</div>
-              <h4>74 / 100</h4>
-              <div class="progress-line"><span style="width: 74%;"></span></div>
+              <div class="mini-label">Risk Level & Score</div>
+              <h4 id="risk-level">—</h4>
+              <div class="value" id="risk-score">0 / 100</div>
+              <div class="progress-line"><span id="risk-fill" style="width: 0%;"></span></div>
             </div>
             <div class="dashboard-card">
               <div class="mini-label">Explainability</div>
               <h4>Why this outcome</h4>
-              <p>Output explained through reasons and impacts.</p>
+              <p id="why">I segnali verranno estratti dal Pure Data Node.</p>
             </div>
           </div>
         </div>
       </div>
     </section>
 
-    <section id="use-cases" class="section use-cases">
-      <div class="container">
-        <div class="section-heading">
-          <div class="kicker">Use Cases</div>
-          <h2>One governance infrastructure, multiple vertical applications.</h2>
-        </div>
+    <section id="architecture" class="section architecture">
+        </section>
 
-        <div class="use-cases-grid">
-          <article class="use-case-card featured">
-            <div class="use-case-tag">Primary Focus</div>
-            <h3>Enterprise AI Compliance</h3>
-            <p>Evaluation for AI-enabled products and decision workflows.</p>
-          </article>
-          <article class="use-case-card">
-            <div class="use-case-tag">Framework Layer</div>
-            <h3>QEN Reasoning Core</h3>
-            <p>Reusable engine for scoring and interpretation across domains.</p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section class="section final-cta">
-      <div class="container">
-        <div class="cta-shell">
-          <div class="cta-copy">
-            <h2>From experimentation to governance infrastructure.</h2>
-            <p>Cognitive Logic provides the reasoning core for operational trust.</p>
-          </div>
-          <div class="cta-actions">
-            <a class="btn btn-primary" href="https://api.cognitivelogic.it/copilot" target="_blank" rel="noopener">
-              Launch AI Compliance Copilot
-            </a>
-          </div>
-        </div>
-      </div>
-    </section>
   </main>
 
   <footer class="site-footer">
     <div class="container footer-inner">
       <div class="footer-info">
         <strong>Cognitive Logic</strong>
-        <p>AI Governance Infrastructure · Semantic Architecture · Compliance by Design</p>
+        <p>AI Governance Infrastructure · Roberto Bob Malini</p>
         <div id="ai-status" style="font-size: 0.8rem; margin-top: 10px; color: #666;">
           <span class="status-dot" style="display:inline-block; width:8px; height:8px; background:#444; border-radius:50%; margin-right:5px;"></span>
-          AI Node: Disconnected
+          AI Node: Checking...
         </div>
-      </div>
-
-      <div class="footer-links">
-        <a href="#top">Home</a>
-        <a href="#architecture">Architecture</a>
-        <a href="#dashboard-preview">Dashboard</a>
-        <a href="#use-cases">Use Cases</a>
-        <a href="https://api.cognitivelogic.it/copilot" target="_blank" rel="noopener">Copilot</a>
       </div>
     </div>
   </footer>
 
   <script src="js/config.js"></script>
-  
+  <script src="js/app.js"></script>
   <script src="js/main.js"></script>
 
   <script>
@@ -272,11 +162,8 @@
       const statusText = document.querySelector('#ai-status');
 
       if (typeof CONFIG !== 'undefined' && CONFIG.API_KEY) {
-        statusIndicator.style.background = '#00ff00';
-        statusText.innerHTML = '<span class="status-dot" style="display:inline-block; width:8px; height:8px; background:#00ff00; border-radius:50%; margin-right:5px;"></span> AI Node: Active (Semantic Ready)';
-        console.log("Cognitive Logic: AI Infrastructure Loaded.");
-      } else {
-        console.warn("Cognitive Logic: Running in Secure/Manual Mode.");
+        statusIndicator.style.background = '#d4af37'; // Oro Cognitive Logic
+        statusText.innerHTML = '<span class="status-dot" style="display:inline-block; width:8px; height:8px; background:#d4af37; border-radius:50%; margin-right:5px;"></span> AI Node: Active (Pure Data Mode)';
       }
     });
   </script>
