@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>QEN Score — Cognitive Logic</title>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;600;700&family=Syne:wght@400;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #080c0a;
+    --surface: #0d1210;
+    --border: #1a2e22;
+    --border-bright: #2a4a32;
+    --green: #00ff6a;
+    --green-dim: #00cc54;
+    --green-muted: #004a20;
+    --amber: #ffb800;
+    --red: #ff3a3a;
+    --text: #c8e0cc;
+    --text-dim: #5a7a60;
+    --text-muted: #2a4a30;
+    --gold: #ffd700;
+    --silver: #c0c0c0;
+    --bronze: #cd7f32;
+  }
+
+- { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+background: var(–bg);
+font-family: ‘JetBrains Mono’, monospace;
+color: var(–text);
+min-height: 100vh;
+display: flex;
+align-items: center;
+justify-content: center;
+padding: 20px;
+}
+
+/* Scanline overlay */
+body::before {
+content: ‘’;
+position: fixed;
+inset: 0;
+background: repeating-linear-gradient(
+0deg,
+transparent,
+transparent 2px,
+rgba(0,255,106,0.015) 2px,
+rgba(0,255,106,0.015) 4px
+);
+pointer-events: none;
+z-index: 100;
+}
+
+.terminal {
+width: 100%;
+max-width: 640px;
+border: 1px solid var(–border-bright);
+border-radius: 4px;
+overflow: hidden;
+box-shadow:
+0 0 0 1px var(–border),
+0 0 40px rgba(0,255,106,0.08),
+0 20px 60px rgba(0,0,0,0.8);
+}
+
+.terminal-bar {
+background: #0a1510;
+border-bottom: 1px solid var(–border-bright);
+padding: 10px 16px;
+display: flex;
+align-items: center;
+gap: 12px;
+}
+
+.dots { display: flex; gap: 6px; }
+.dot {
+width: 10px; height: 10px;
+border-radius: 50%;
+}
+.dot-r { background: #ff5f57; }
+.dot-y { background: #febc2e; }
+.dot-g { background: #28c840; }
+
+.terminal-title {
+flex: 1;
+text-align: center;
+font-size: 10px;
+color: var(–text-dim);
+letter-spacing: 0.15em;
+text-transform: uppercase;
+}
+
+.terminal-body {
+background: var(–bg);
+padding: 28px;
+}
+
+/* Header */
+.header {
+margin-bottom: 24px;
+}
+
+.header-label {
+font-size: 9px;
+color: var(–text-muted);
+letter-spacing: 0.3em;
+text-transform: uppercase;
+margin-bottom: 6px;
+}
+
+.header-title {
+font-family: ‘Syne’, sans-serif;
+font-size: 13px;
+font-weight: 700;
+color: var(–green);
+letter-spacing: 0.08em;
+text-transform: uppercase;
+}
+
+/* Input section */
+.input-section { margin-bottom: 20px; }
+
+.prompt-line {
+display: flex;
+align-items: flex-start;
+gap: 8px;
+margin-bottom: 8px;
+}
+
+.prompt-symbol {
+color: var(–green);
+font-size: 12px;
+padding-top: 10px;
+flex-shrink: 0;
+}
+
+.input-wrap { flex: 1; }
+
+.field-label {
+font-size: 9px;
+color: var(–text-dim);
+letter-spacing: 0.2em;
+text-transform: uppercase;
+margin-bottom: 4px;
+}
+
+input[type=“text”], textarea {
+width: 100%;
+background: var(–surface);
+border: 1px solid var(–border-bright);
+border-radius: 2px;
+color: var(–text);
+font-family: ‘JetBrains Mono’, monospace;
+font-size: 12px;
+padding: 8px 10px;
+outline: none;
+transition: border-color 0.2s, box-shadow 0.2s;
+resize: none;
+}
+
+input[type=“text”]:focus, textarea:focus {
+border-color: var(–green);
+box-shadow: 0 0 0 1px rgba(0,255,106,0.15);
+}
+
+textarea { min-height: 72px; line-height: 1.5; }
+
+input::placeholder, textarea::placeholder {
+color: var(–text-muted);
+}
+
+/* Execute button */
+.exec-btn {
+width: 100%;
+background: transparent;
+border: 1px solid var(–green);
+color: var(–green);
+font-family: ‘JetBrains Mono’, monospace;
+font-size: 11px;
+font-weight: 600;
+letter-spacing: 0.2em;
+text-transform: uppercase;
+padding: 10px;
+cursor: pointer;
+transition: all 0.2s;
+margin-top: 4px;
+border-radius: 2px;
+position: relative;
+overflow: hidden;
+}
+
+.exec-btn:hover {
+background: rgba(0,255,106,0.08);
+box-shadow: 0 0 20px rgba(0,255,106,0.15);
+}
+
+.exec-btn:active { transform: scale(0.99); }
+
+.exec-btn:disabled {
+opacity: 0.4;
+cursor: not-allowed;
+}
+
+/* Loading */
+.loading {
+display: none;
+padding: 20px 0;
+text-align: center;
+}
+
+.loading.active { display: block; }
+
+.loading-text {
+font-size: 11px;
+color: var(–green-dim);
+letter-spacing: 0.15em;
+}
+
+.cursor {
+display: inline-block;
+width: 8px;
+height: 12px;
+background: var(–green);
+margin-left: 4px;
+vertical-align: middle;
+animation: blink 0.8s step-end infinite;
+}
+
+@keyframes blink {
+0%, 100% { opacity: 1; }
+50% { opacity: 0; }
+}
+
+/* Result */
+.result { display: none; }
+.result.active { display: block; }
+
+.divider {
+border: none;
+border-top: 1px solid var(–border);
+margin: 20px 0;
+}
+
+.result-header {
+font-size: 9px;
+color: var(–text-muted);
+letter-spacing: 0.25em;
+text-transform: uppercase;
+margin-bottom: 16px;
+}
+
+/* Score display */
+.score-main {
+display: flex;
+align-items: center;
+gap: 20px;
+margin-bottom: 20px;
+}
+
+.score-number {
+font-family: ‘Syne’, sans-serif;
+font-size: 56px;
+font-weight: 800;
+line-height: 1;
+color: var(–green);
+text-shadow: 0 0 30px rgba(0,255,106,0.4);
+min-width: 120px;
+}
+
+.score-right { flex: 1; }
+
+.badge-display {
+display: inline-block;
+font-size: 10px;
+font-weight: 700;
+letter-spacing: 0.2em;
+text-transform: uppercase;
+padding: 4px 10px;
+border-radius: 2px;
+margin-bottom: 8px;
+}
+
+.badge-gold {
+background: rgba(255,215,0,0.1);
+border: 1px solid var(–gold);
+color: var(–gold);
+text-shadow: 0 0 10px rgba(255,215,0,0.3);
+}
+
+.badge-silver {
+background: rgba(192,192,192,0.1);
+border: 1px solid var(–silver);
+color: var(–silver);
+}
+
+.badge-bronze {
+background: rgba(205,127,50,0.1);
+border: 1px solid var(–bronze);
+color: var(–bronze);
+}
+
+.badge-standard {
+background: rgba(0,255,106,0.08);
+border: 1px solid var(–green-muted);
+color: var(–green-dim);
+}
+
+.entity-name {
+font-size: 13px;
+color: var(–text);
+font-weight: 600;
+}
+
+/* Axes */
+.axes { margin-bottom: 16px; }
+
+.axis-row {
+display: flex;
+align-items: center;
+gap: 10px;
+margin-bottom: 8px;
+}
+
+.axis-label {
+font-size: 10px;
+color: var(–text-dim);
+width: 120px;
+flex-shrink: 0;
+}
+
+.axis-bar-wrap {
+flex: 1;
+height: 3px;
+background: var(–border);
+border-radius: 2px;
+overflow: hidden;
+}
+
+.axis-bar {
+height: 100%;
+background: var(–green);
+border-radius: 2px;
+transition: width 1s cubic-bezier(0.4, 0, 0.2, 1);
+width: 0%;
+}
+
+.axis-val {
+font-size: 11px;
+color: var(–green);
+width: 36px;
+text-align: right;
+flex-shrink: 0;
+}
+
+/* Sintesi */
+.sintesi-block {
+background: var(–surface);
+border: 1px solid var(–border);
+border-left: 2px solid var(–green-muted);
+padding: 12px 14px;
+border-radius: 2px;
+}
+
+.sintesi-label {
+font-size: 9px;
+color: var(–text-muted);
+letter-spacing: 0.2em;
+text-transform: uppercase;
+margin-bottom: 6px;
+}
+
+.sintesi-text {
+font-size: 11px;
+color: var(–text-dim);
+line-height: 1.6;
+}
+
+/* Error */
+.error-msg {
+display: none;
+padding: 12px;
+background: rgba(255,58,58,0.05);
+border: 1px solid rgba(255,58,58,0.3);
+border-radius: 2px;
+font-size: 11px;
+color: var(–red);
+margin-top: 12px;
+}
+
+.error-msg.active { display: block; }
+
+/* Footer */
+.footer {
+margin-top: 20px;
+padding-top: 14px;
+border-top: 1px solid var(–border);
+display: flex;
+justify-content: space-between;
+align-items: center;
+}
+
+.footer-left {
+font-size: 9px;
+color: var(–text-muted);
+letter-spacing: 0.15em;
+}
+
+.footer-link {
+font-size: 9px;
+color: var(–text-muted);
+text-decoration: none;
+letter-spacing: 0.1em;
+transition: color 0.2s;
+}
+
+.footer-link:hover { color: var(–green); }
+
+/* Embed note */
+.embed-note {
+margin-top: 10px;
+font-size: 9px;
+color: var(–text-muted);
+text-align: center;
+letter-spacing: 0.1em;
+}
+</style>
+
+</head>
+<body>
+
+<div class="terminal">
+  <div class="terminal-bar">
+    <div class="dots">
+      <div class="dot dot-r"></div>
+      <div class="dot dot-y"></div>
+      <div class="dot dot-g"></div>
+    </div>
+    <div class="terminal-title">cognitive-node-01 — qen-score</div>
+  </div>
+
+  <div class="terminal-body">
+    <div class="header">
+      <div class="header-label">Cognitive Logic / QEN Framework v1.0</div>
+      <div class="header-title">Quoziente Etico Naturale — Score Engine</div>
+    </div>
+
+```
+<div class="input-section">
+  <div class="prompt-line">
+    <span class="prompt-symbol">$</span>
+    <div class="input-wrap">
+      <div class="field-label">nome istituzione</div>
+      <input type="text" id="nome" placeholder="es. Casa Artusi, Osteria X…" />
+    </div>
+  </div>
+
+  <div class="prompt-line">
+    <span class="prompt-symbol">></span>
+    <div class="input-wrap">
+      <div class="field-label">descrizione</div>
+      <textarea id="description" placeholder="Descrivi l'istituzione: tipo di cucina, valori, pratiche, territorio, inclusione…"></textarea>
+    </div>
+  </div>
+
+  <button class="exec-btn" id="runBtn" onclick="runScore()">
+    ▶ esegui qen-score
+  </button>
+</div>
+
+<div class="loading" id="loading">
+  <div class="loading-text">
+    analisi in corso<span class="cursor"></span>
+  </div>
+</div>
+
+<div class="error-msg" id="errorMsg"></div>
+
+<div class="result" id="result">
+  <hr class="divider">
+  <div class="result-header">// output — qen_score</div>
+
+  <div class="score-main">
+    <div class="score-number" id="scoreNum">—</div>
+    <div class="score-right">
+      <div class="badge-display" id="badge">—</div>
+      <div class="entity-name" id="entityName"></div>
+    </div>
+  </div>
+
+  <div class="axes">
+    <div class="axis-row">
+      <span class="axis-label">Vs · Sociale</span>
+      <div class="axis-bar-wrap"><div class="axis-bar" id="barVs"></div></div>
+      <span class="axis-val" id="valVs">—</span>
+    </div>
+    <div class="axis-row">
+      <span class="axis-label">Vt · Territoriale</span>
+      <div class="axis-bar-wrap"><div class="axis-bar" id="barVt"></div></div>
+      <span class="axis-val" id="valVt">—</span>
+    </div>
+    <div class="axis-row">
+      <span class="axis-label">Va · Ambientale</span>
+      <div class="axis-bar-wrap"><div class="axis-bar" id="barVa"></div></div>
+      <span class="axis-val" id="valVa">—</span>
+    </div>
+  </div>
+
+  <div class="sintesi-block">
+    <div class="sintesi-label">// sintesi</div>
+    <div class="sintesi-text" id="sintesi">—</div>
+  </div>
+</div>
+
+<div class="footer">
+  <span class="footer-left">api.cognitivelogic.it/gemini</span>
+  <a href="https://fuorimenu.substack.com" target="_blank" class="footer-link">fuorimenu ↗</a>
+</div>
+```
+
+  </div>
+</div>
+
+<script>
+const API = 'https://api.cognitivelogic.it/gemini/qen-score';
+
+async function runScore() {
+  const nome = document.getElementById('nome').value.trim();
+  const description = document.getElementById('description').value.trim();
+  const btn = document.getElementById('runBtn');
+  const loading = document.getElementById('loading');
+  const result = document.getElementById('result');
+  const errorMsg = document.getElementById('errorMsg');
+
+  if (!description) {
+    showError('Campo descrizione obbligatorio.');
+    return;
+  }
+
+  // Reset
+  result.classList.remove('active');
+  errorMsg.classList.remove('active');
+  loading.classList.add('active');
+  btn.disabled = true;
+
+  // Reset bars
+  ['barVs','barVt','barVa'].forEach(id => {
+    document.getElementById(id).style.width = '0%';
+  });
+
+  try {
+    const res = await fetch(API, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ nome, description })
+    });
+
+    const data = await res.json();
+
+    if (!res.ok || data.error) {
+      throw new Error(data.error || 'Errore API');
+    }
+
+    const q = data.qen;
+    renderResult(nome, q);
+
+  } catch (err) {
+    showError('Errore: ' + err.message);
+  } finally {
+    loading.classList.remove('active');
+    btn.disabled = false;
+  }
+}
+
+function renderResult(nome, q) {
+  document.getElementById('scoreNum').textContent = q.qen_score.toFixed(1);
+  document.getElementById('entityName').textContent = nome || '—';
+  document.getElementById('sintesi').textContent = q.sintesi;
+
+  // Badge
+  const badgeEl = document.getElementById('badge');
+  badgeEl.textContent = q.badge;
+  badgeEl.className = 'badge-display';
+  if (q.badge.toLowerCase().includes('gold')) badgeEl.classList.add('badge-gold');
+  else if (q.badge.toLowerCase().includes('silver')) badgeEl.classList.add('badge-silver');
+  else if (q.badge.toLowerCase().includes('bronze')) badgeEl.classList.add('badge-bronze');
+  else badgeEl.classList.add('badge-standard');
+
+  // Axes
+  document.getElementById('valVs').textContent = q.vs.toFixed(1);
+  document.getElementById('valVt').textContent = q.vt.toFixed(1);
+  document.getElementById('valVa').textContent = q.va.toFixed(1);
+
+  document.getElementById('result').classList.add('active');
+
+  // Animate bars
+  setTimeout(() => {
+    document.getElementById('barVs').style.width = q.vs + '%';
+    document.getElementById('barVt').style.width = q.vt + '%';
+    document.getElementById('barVa').style.width = q.va + '%';
+  }, 50);
+}
+
+function showError(msg) {
+  const el = document.getElementById('errorMsg');
+  el.textContent = msg;
+  el.classList.add('active');
+}
+
+// Enter key on nome field
+document.getElementById('nome').addEventListener('keydown', e => {
+  if (e.key === 'Enter') document.getElementById('description').focus();
+});
+</script>
+
+</body>
+</html>
