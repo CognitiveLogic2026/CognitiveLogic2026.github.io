@@ -1198,3 +1198,104 @@ td {
     align-items: flex-start;
   }
 }
+/* ---------- QEN Framework page ---------- */
+
+.version {
+  font-family: "DM Mono", monospace;
+  font-size: 0.78rem;
+  letter-spacing: 0.10em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin: 0 0 12px;
+}
+
+.definition-box {
+  position: relative;
+  background:
+    linear-gradient(180deg, rgba(212, 175, 55, 0.06), rgba(212, 175, 55, 0.02)),
+    rgba(10, 20, 34, 0.92);
+  border: 1px solid rgba(212, 175, 55, 0.28);
+  border-radius: var(--radius-lg);
+  padding: 36px;
+  margin: 48px 0;
+  box-shadow: var(--shadow-soft);
+}
+
+.definition-box::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: radial-gradient(circle at top left, rgba(212, 175, 55, 0.08), transparent 40%);
+  pointer-events: none;
+}
+
+.definition-title {
+  font-family: "DM Mono", monospace;
+  font-size: 0.82rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--gold-soft);
+  margin-bottom: 18px;
+}
+
+.formula {
+  display: inline-block;
+  font-family: "DM Mono", monospace;
+  font-size: clamp(1.2rem, 2.5vw, 1.7rem);
+  letter-spacing: 0.04em;
+  color: var(--gold-soft);
+  background: rgba(212, 175, 55, 0.08);
+  border: 1px solid rgba(212, 175, 55, 0.22);
+  border-radius: var(--radius-sm);
+  padding: 14px 24px;
+  margin: 18px 0;
+}
+
+.nav {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  background: rgba(7, 17, 31, 0.70);
+  border-bottom: 1px solid var(--line-soft);
+  padding: 0 40px;
+  display: flex;
+  align-items: center;
+  min-height: var(--nav-height);
+  gap: 24px;
+}
+
+.nav a {
+  font-family: "DM Mono", monospace;
+  font-size: 0.82rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-soft);
+  margin-right: 22px;
+}
+
+.nav a:hover {
+  color: var(--gold-soft);
+}
+
+@media (max-width: 640px) {
+  .nav {
+    padding: 0 16px;
+    flex-wrap: wrap;
+    min-height: auto;
+    padding-top: 16px;
+    padding-bottom: 16px;
+  }
+
+  .formula {
+    font-size: 1rem;
+    padding: 10px 16px;
+  }
+
+  .definition-box {
+    padding: 24px;
+  }
+}
+
