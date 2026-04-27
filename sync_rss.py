@@ -1,7 +1,8 @@
 import urllib.request, xml.etree.ElementTree as ET, json, re
 
 url = "https://fuorimenu.substack.com/feed"
-with urllib.request.urlopen(url) as r:
+req = urllib.request.Request(url, headers={"User-Agent": "Mozilla/5.0"})
+with urllib.request.urlopen(req) as r:
     tree = ET.parse(r)
 
 articoli = []
