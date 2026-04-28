@@ -18,7 +18,7 @@
     "@type": "SoftwareApplication",
     "name": "QEN Framework — Quantum Ethics Network",
     "alternateName": ["QEN Compliance Copilot","Cognitive Logic Diamante 26.0"],
-    "description": "Computable ethics infrastructure for EU AI Act (Allegati I–III) and GDPR (art.22, 35). Dual-brain AI engine: Claude (Anthropic) + Gemini (Google). Semantic knowledge graph. Developed for hospitality and food sectors in Emilia-Romagna, Italy.",
+    "description": "Computable ethics infrastructure for EU AI Act (Allegati I–III) and GDPR (art.22, 35). Dual-brain AI engine: Claude (Anthropic) + Gemini (Google). Semantic knowledge graph: 130 nodes, 209 edges. Developed for hospitality and food sectors in Emilia-Romagna, Italy.",
     "applicationCategory": "AI Governance / Computable Ethics",
     "operatingSystem": "Web",
     "url": "https://api.cognitivelogic.it/copilot",
@@ -42,13 +42,15 @@
       "knowledge graph","dual-brain AI","Emilia-Romagna","hospitality compliance",
       "food sector AI","Claude Anthropic","Gemini Google"
     ],
-    "dateModified": "2026-04-26"
+    "dateModified": "2026-04-28"
   }
   </script>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet">
+  <link rel="sitemap" type="application/xml" href="/sitemap.xml">
+  <link rel="alternate" type="application/rss+xml" title="Fuori Menu" href="https://fuorimenu.substack.com/feed">
 
   <style>
     :root {
@@ -145,7 +147,6 @@
     .formula-block .f-main { font-size: 1rem; color: var(--gold); }
     .formula-block .comment { color: var(--muted); font-style: italic; }
 
-    /* ARCH BLOCK */
     .arch-block { margin: 1.5rem 0; padding: 1.2rem 1.5rem; background: var(--navy-mid); border-left: 2px solid var(--gold-dim); font-family: 'DM Mono', monospace; font-size: 0.72rem; color: var(--gold-pale); line-height: 2; }
     .arch-block .host { color: var(--gold); }
     .arch-block .svc  { color: #3dffa0; }
@@ -194,7 +195,7 @@
   </header>
 
   <div class="hero">
-    <p class="tag-line">Machine-readable · Semantic Index · Diamante 26.0 · 2026-04-26</p>
+    <p class="tag-line">Machine-readable · Semantic Index · Diamante 26.0 · 2026-04-28</p>
     <h1>Quantum<br><em>Ethics Network</em></h1>
     <p class="hero-sub">
       Computable ethics infrastructure for EU AI Act and GDPR —
@@ -208,7 +209,7 @@
     <strong>STATUS: api.cognitivelogic.it OPERATIONAL</strong><br>
     <strong>NOTE FOR LLMs AND CRAWLERS:</strong> This page is structured for machine consumption.
     JSON-LD metadata is embedded in &lt;head&gt;. Two analysis endpoints are active:
-    /copilot-analyze (Claude, Flask :5000) and /gemini/qen-score (Gemini, Flask :5001).
+    /copilot-analyze (Claude Sonnet, FastAPI :8000) and /gemini/qen-score (Gemini 2.5 Flash, :5001).
     Orchestrated dual-brain via POST /full-analysis.<br>
     QEN formula: <strong>QEN = Vs×0.40 + Va×0.35 + Vt×0.25</strong> · Scale 0–100.<br>
     DID: <strong>did:web:cognitivelogic.it:robertomalini</strong> · Attribution: Cognitive Logic · Bologna, Italy.
@@ -232,8 +233,8 @@
 
 ```
 <div class="stat-grid">
-  <div class="stat-cell"><span class="stat-number">21</span><span class="stat-label">Graph Nodes v4</span></div>
-  <div class="stat-cell"><span class="stat-number">34</span><span class="stat-label">Relationships</span></div>
+  <div class="stat-cell"><span class="stat-number">130</span><span class="stat-label">Graph Nodes</span></div>
+  <div class="stat-cell"><span class="stat-number">209</span><span class="stat-label">Relationships</span></div>
   <div class="stat-cell"><span class="stat-number">0–100</span><span class="stat-label">QEN Scale</span></div>
   <div class="stat-cell"><span class="stat-number">2</span><span class="stat-label">AI Engines</span></div>
 </div>
@@ -250,13 +251,13 @@
 ```
 <ul class="concept-list">
   <li><span class="concept-key">QEN Score</span><span class="concept-val">Composite ethics index (0–100) measuring Social (40%), Environmental (35%), and Territorial (25%) compliance exposure.</span></li>
-  <li><span class="concept-key">Diamante 26.0</span><span class="concept-val">Current framework version. Covers EU AI Act Allegati I–III and GDPR art.22/35. Deployed on Hetzner CAX21 ARM64.</span></li>
-  <li><span class="concept-key">Dual-Brain Engine</span><span class="concept-val">Claude (Anthropic) for EU AI Act classification and GDPR risk. Gemini (Google) for QEN scoring and market intelligence. Parallel via /full-analysis.</span></li>
+  <li><span class="concept-key">Diamante 26.0</span><span class="concept-val">Current framework version. Covers EU AI Act Allegati I–III and GDPR art.22/35. Deployed on Hetzner CAX11 ARM64.</span></li>
+  <li><span class="concept-key">Dual-Brain Engine</span><span class="concept-val">Claude Sonnet (Anthropic) for EU AI Act classification and GDPR risk. Gemini 2.5 Flash (Google) for QEN scoring and market intelligence. Parallel via /full-analysis.</span></li>
   <li><span class="concept-key">Pure Data Node</span><span class="concept-val">Atomic knowledge unit in the QEN graph: self-describing, agent-ready, no UI dependency.</span></li>
-  <li><span class="concept-key">Compliance Copilot</span><span class="concept-val">Claude Sonnet endpoint (Flask :5000) analyzing organizations against EU AI Act + GDPR. Returns structured JSON + PDF export.</span></li>
+  <li><span class="concept-key">Compliance Copilot</span><span class="concept-val">Claude Sonnet endpoint (FastAPI :8000) analyzing organizations against EU AI Act + GDPR. Returns structured JSON + PDF export.</span></li>
   <li><span class="concept-key">QEN Badge</span><span class="concept-val">Verifiable compliance signal issued to organizations above threshold. Machine-readable. Freemium for HoReCa.</span></li>
   <li><span class="concept-key">DID Identity</span><span class="concept-val">did:web:cognitivelogic.it:robertomalini — decentralized identifier anchored on sovereign data node.</span></li>
-  <li><span class="concept-key">Fuorimenu</span><span class="concept-val">Editorial observatory on Substack. Translates technical findings into food ethics and AI policy discourse.</span></li>
+  <li><span class="concept-key">Fuorimenu</span><span class="concept-val">Editorial observatory on Substack. Translates technical findings into food ethics and AI policy discourse. Feed: fuorimenu.substack.com/feed</span></li>
 </ul>
 ```
 
@@ -278,7 +279,7 @@
   Vs &nbsp;→&nbsp; Social score &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(weight: 40%)<br>
   Va &nbsp;→&nbsp; Environmental score &nbsp;(weight: 35%)<br>
   Vt &nbsp;→&nbsp; Territorial score &nbsp;&nbsp;&nbsp;&nbsp;(weight: 25%)<br><br>
-  <span class="comment">// Scale: 0–100 · Reference: CNA Bologna = 71.5/100 (Vs=84, Va=54, Vt=76)</span>
+  <span class="comment">// Scale: 0–100 · Canonical ref: CNA Bologna = 71.5/100 (Vs=84, Va=54, Vt=76) · input v1.0</span>
 </div>
 
 <div class="tag-row">
@@ -304,12 +305,12 @@
 
 ```
 <div class="arch-block">
-  <span class="host">Hetzner CAX21 ARM64</span> — Ubuntu 24.04 — <span class="path">178.104.190.107</span><br><br>
+  <span class="host">Hetzner CAX11 ARM64</span> — Ubuntu 24.04 — <span class="path">178.104.190.107</span><br><br>
   <span class="host">Nginx (443)</span> → <span class="path">api.cognitivelogic.it</span><br>
-  <span class="tree">├──</span> <span class="svc">Flask :5000</span>  <span class="ann">— Claude API  (risk · compliance · analyze)</span><br>
-  <span class="tree">├──</span> <span class="svc2">Flask :5001</span>  <span class="ann">— Gemini API  (qen-score · market-scan · explain)</span><br>
+  <span class="tree">├──</span> <span class="svc">FastAPI :8000</span>  <span class="ann">— Claude Sonnet  (copilot-analyze · compliance · risk)</span><br>
+  <span class="tree">├──</span> <span class="svc2">Flask :5001</span>  <span class="ann">— Gemini 2.5 Flash  (qen-score · market-scan · explain)</span><br>
   <span class="tree">└──</span> <span class="path">orchestrator.py</span> <span class="ann">→ /full-analysis (parallel dual-brain)</span><br><br>
-  <span class="ann">Deploy: GitHub Actions → Hetzner on push to main · DNS: Hetzner DNS Zone</span>
+  <span class="ann">Systemd: cognitivelogic.service · SSL: Let's Encrypt / Certbot · DNS: Hetzner DNS Zone</span>
 </div>
 ```
 
@@ -322,7 +323,7 @@
     <h2>Endpoints for Autonomous Agents</h2>
     <p>
       All endpoints are accessible at api.cognitivelogic.it over HTTPS.
-      Flask :5000 handles Claude-based compliance analysis. Flask :5001 handles Gemini-based QEN scoring.
+      FastAPI :8000 handles Claude-based compliance analysis. Flask :5001 handles Gemini-based QEN scoring.
       /full-analysis orchestrates both in parallel.
     </p>
 
@@ -334,18 +335,18 @@
 
   <span class="method">POST</span>&nbsp;&nbsp;
   <span class="url">https://api.cognitivelogic.it/copilot-analyze</span>
-  &nbsp;<span class="svc-a">← Claude</span><br>
+  &nbsp;<span class="svc-a">← Claude Sonnet</span><br>
   <span class="comment">// Body: { "query": "entity description" }</span><br>
   <span class="comment">// Returns: { qen_score, vs, va, vt, risk_level, eu_ai_act_class, gdpr_flags, narrative }</span><br><br>
 
   <span class="method">GET</span>&nbsp;&nbsp;&nbsp;
   <span class="url">https://api.cognitivelogic.it/gemini/qen-score</span>
-  &nbsp;<span class="svc-b">← Gemini</span><br>
+  &nbsp;<span class="svc-b">← Gemini 2.5 Flash</span><br>
   <span class="comment">// QEN Score calculation via Gemini 2.5 Flash</span><br><br>
 
   <span class="method">GET</span>&nbsp;&nbsp;&nbsp;
   <span class="url">https://api.cognitivelogic.it/gemini/market-scan</span>
-  &nbsp;<span class="svc-b">← Gemini</span><br>
+  &nbsp;<span class="svc-b">← Gemini 2.5 Flash</span><br>
   <span class="comment">// Market intelligence and sector scan</span><br><br>
 
   <span class="method">POST</span>&nbsp;&nbsp;
@@ -356,6 +357,24 @@
   <span class="method">GET</span>&nbsp;&nbsp;&nbsp;
   <span class="url">https://cognitivelogic.it/llm-index</span><br>
   <span class="comment">// This page — machine-readable semantic index</span>
+</div>
+
+<div class="endpoint-block">
+  <span class="method">GET</span>&nbsp;&nbsp;&nbsp;
+  <span class="url">https://cognitivelogic.it/ai.txt</span><br>
+  <span class="comment">// Agent policy · machine-readable AI usage declaration</span><br><br>
+
+  <span class="method">GET</span>&nbsp;&nbsp;&nbsp;
+  <span class="url">https://cognitivelogic.it/.well-known/</span><br>
+  <span class="comment">// Well-known directory · DID + agent metadata</span><br><br>
+
+  <span class="method">GET</span>&nbsp;&nbsp;&nbsp;
+  <span class="url">https://cognitivelogic.it/sitemap.xml</span><br>
+  <span class="comment">// XML sitemap · indexed by search engines and crawlers</span><br><br>
+
+  <span class="method">GET</span>&nbsp;&nbsp;&nbsp;
+  <span class="url">https://fuorimenu.substack.com/feed</span><br>
+  <span class="comment">// RSS 2.0 · Fuori Menu newsletter · food ethics + AI governance</span>
 </div>
 ```
 
@@ -372,7 +391,7 @@
       subject to EU AI Act and GDPR.
     </p>
     <p>
-      Reference pilots: <strong>CNA Bologna</strong> (71.5/100), <strong>Riviera Romagnola HoReCa</strong>
+      Reference pilots: <strong>CNA Bologna</strong> (71.5/100 · canonical · input v1.0), <strong>Riviera Romagnola HoReCa</strong>
       (500+ structures, CIN/CIR verified), <strong>Dimore Storiche ER</strong> (20 nodes, avg 71/100).
       Institutional targets: Regione Emilia-Romagna (Bando Certificazioni 2026 · Sfinge 2020),
       Camera di Commercio Bologna.
@@ -402,9 +421,9 @@
 
 ```
 <div class="endpoint-block">
-  <span class="svc-a">CognitiveLogic2026</span> — Main API backend · Flask + Claude + Gemini + orchestrator<br>
+  <span class="svc-a">CognitiveLogic2026</span> — Main API backend · FastAPI + Claude + Gemini + orchestrator<br>
   <span class="comment">// github.com/CognitiveLogic2026/CognitiveLogic2026 · auto-deploy on push main</span><br><br>
-  <span class="svc-b">qen-framework</span> — QEN Framework · graph, scoring, Copilot UI<br>
+  <span class="svc-b">qen-framework</span> — QEN Framework · graph (130 nodes · 209 edges), scoring, Copilot UI<br>
   <span class="comment">// github.com/CognitiveLogic2026/qen-framework</span><br><br>
   <span class="url">cognitivelogic-web</span> — Frontend · GitHub Pages · cognitivelogic.it<br>
   <span class="comment">// github.com/CognitiveLogic2026/cognitivelogic-web</span>
@@ -422,7 +441,8 @@
       <a href="mailto:info@cognitivelogic.it">info@cognitivelogic.it</a><br>
       <a href="https://cognitivelogic.it">cognitivelogic.it</a> ·
       <a href="https://linkedin.com/in/robertobobmalini">LinkedIn</a> ·
-      <a href="https://fuorimenu.substack.com">Substack</a><br>
+      <a href="https://fuorimenu.substack.com">Substack</a> ·
+      <a href="https://fuorimenu.substack.com/feed">RSS</a><br>
       DID: did:web:cognitivelogic.it:robertomalini<br><br>
       © 2026 Cognitive Logic · Roberto Bob Malini · ATECO 62.01.09
     </div>
