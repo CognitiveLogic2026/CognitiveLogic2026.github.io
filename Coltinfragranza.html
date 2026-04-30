@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Colt Fragranza — Proximity Commerce</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet"/>
+  <style>
+    :root{--noir:#08080F;--noir-lt:#0F0F1E;--amber:#C97A2A;--amber-lt:#E09A50;--amber-glow:rgba(201,122,42,.15);--cream:#F0EBE0;--muted:#7A7060;--border:rgba(201,122,42,.2);}
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+    html{scroll-behavior:smooth;}
+    body{background:var(--noir);color:var(--cream);font-family:'Cormorant Garamond',serif;overflow-x:hidden;cursor:none;}
+    /* Custom cursor */
+    .cursor{position:fixed;width:10px;height:10px;background:var(--amber);border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);transition:transform .1s,opacity .2s;mix-blend-mode:difference;}
+    .cursor-ring{position:fixed;width:32px;height:32px;border:1px solid rgba(201,122,42,.5);border-radius:50%;pointer-events:none;z-index:9998;transform:translate(-50%,-50%);transition:transform .18s ease-out,opacity .2s;}
+    a,button{cursor:none;}
+
+    nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:1.2rem 2.5rem;background:rgba(8,8,15,.85);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);}
+    .nav-logo{font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-weight:300;color:var(--cream);letter-spacing:.18em;text-transform:uppercase;}
+    .nav-logo em{color:var(--amber);font-style:italic;}
+    .nav-tag{font-family:'DM Mono',monospace;font-size:.56rem;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);}
+    .nav-badge{font-family:'DM Mono',monospace;font-size:.56rem;letter-spacing:.12em;text-transform:uppercase;border:1px solid var(--border);color:var(--amber);padding:.28em .7em;}
+
+    /* HERO — full noir with glow */
+    .hero{min-height:100vh;position:relative;display:grid;grid-template-columns:1fr 420px;align-items:center;padding:0 3.5rem;padding-top:60px;overflow:hidden;}
+    .hero-glow{position:absolute;top:50%;left:30%;width:600px;height:600px;background:radial-gradient(circle,rgba(201,122,42,.12) 0%,transparent 65%);transform:translate(-50%,-50%);pointer-events:none;}
+    .hero-glow2{position:absolute;bottom:-100px;right:10%;width:400px;height:400px;background:radial-gradient(circle,rgba(201,122,42,.07) 0%,transparent 65%);pointer-events:none;}
+    .hero-left{position:relative;z-index:2;}
+    .eyebrow{font-family:'DM Mono',monospace;font-size:.6rem;letter-spacing:.25em;text-transform:uppercase;color:var(--amber);margin-bottom:1.5rem;opacity:.8;}
+    .hero-left h1{font-size:clamp(3rem,5.5vw,5.5rem);font-weight:300;line-height:1.05;color:var(--cream);margin-bottom:.6rem;}
+    .hero-left h1 em{color:var(--amber);font-style:italic;font-weight:300;}
+    .hero-left h1 strong{font-weight:600;display:block;}
+    .hero-sub{font-size:1.15rem;font-weight:300;color:rgba(240,235,224,.5);line-height:1.8;max-width:440px;margin:1.5rem 0 3rem;}
+    .btn-amber{display:inline-block;background:transparent;color:var(--amber);font-family:'DM Mono',monospace;font-size:.66rem;letter-spacing:.18em;text-transform:uppercase;padding:.85em 2em;border:1px solid var(--border);text-decoration:none;transition:background .25s,color .25s;}
+    .btn-amber:hover{background:var(--amber);color:var(--noir);}
+
+    /* QEN VERTICAL PANEL */
+    .qen-vert{position:relative;z-index:2;background:rgba(201,122,42,.04);border:1px solid var(--border);padding:2.8rem 2rem;display:flex;flex-direction:column;gap:0;}
+    .qv-header{margin-bottom:2.5rem;}
+    .qv-lbl{font-family:'DM Mono',monospace;font-size:.54rem;letter-spacing:.22em;text-transform:uppercase;color:var(--muted);display:block;margin-bottom:.4rem;}
+    .qv-title{font-size:1.5rem;font-weight:300;color:var(--cream);font-style:italic;}
+    .qv-dims{display:flex;flex-direction:column;gap:1.8rem;margin-bottom:2.5rem;}
+    .qv-dim{}
+    .qv-dim-header{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:.6rem;}
+    .qv-dim-name{font-family:'DM Mono',monospace;font-size:.58rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(240,235,224,.6);}
+    .qv-dim-val{font-family:'DM Mono',monospace;font-size:.65rem;color:var(--amber-lt);}
+    .qv-track{height:6px;background:rgba(201,122,42,.1);border-radius:3px;overflow:hidden;}
+    .qv-fill{height:100%;border-radius:3px;background:linear-gradient(90deg,var(--amber),var(--amber-lt));width:0;transition:width 1.3s cubic-bezier(.4,0,.2,1);box-shadow:0 0 8px rgba(201,122,42,.4);}
+    .qv-total{border-top:1px solid var(--border);padding-top:1.8rem;text-align:center;}
+    .qv-total-lbl{font-family:'DM Mono',monospace;font-size:.54rem;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);display:block;margin-bottom:.5rem;}
+    .qv-total-num{font-size:3.5rem;font-weight:300;color:var(--amber);line-height:1;font-style:italic;}
+    .qv-total-num span{font-size:1rem;color:var(--muted);font-style:normal;}
+    .qv-formula{margin-top:1rem;font-family:'DM Mono',monospace;font-size:.5rem;letter-spacing:.07em;color:rgba(240,235,224,.2);text-align:center;line-height:1.7;}
+
+    /* SPLIT INFO */
+    .info{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--border);}
+    .info-block{padding:3.5rem 2.8rem;border-right:1px solid var(--border);position:relative;overflow:hidden;}
+    .info-block:last-child{border-right:none;}
+    .info-block::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 30% 80%,rgba(201,122,42,.04) 0%,transparent 70%);pointer-events:none;}
+    .ib-n{font-family:'DM Mono',monospace;font-size:.55rem;letter-spacing:.18em;color:rgba(201,122,42,.3);margin-bottom:1.5rem;display:block;}
+    .ib-title{font-size:1.5rem;font-weight:300;color:var(--cream);margin-bottom:.6rem;font-style:italic;}
+    .ib-text{font-size:.88rem;font-weight:300;color:rgba(240,235,224,.5);line-height:1.8;}
+
+    /* STORY */
+    .story{padding:6rem 3.5rem;display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center;border-top:1px solid var(--border);}
+    .story-left{border-left:1px solid var(--border);padding-left:2.5rem;}
+    .story-left blockquote{font-size:clamp(1.5rem,2.5vw,2.2rem);font-weight:300;font-style:italic;color:var(--cream);line-height:1.35;margin-bottom:1.5rem;}
+    .story-left blockquote em{color:var(--amber);}
+    .story-attr{font-family:'DM Mono',monospace;font-size:.6rem;letter-spacing:.15em;text-transform:uppercase;color:var(--muted);}
+    .story-right{display:flex;flex-direction:column;gap:1rem;}
+    .story-stat{border-bottom:1px solid var(--border);padding-bottom:1rem;}
+    .story-stat:last-child{border-bottom:none;}
+    .ss-val{font-size:2.5rem;font-weight:300;color:var(--amber-lt);line-height:1;font-style:italic;}
+    .ss-lbl{font-family:'DM Mono',monospace;font-size:.58rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);}
+
+    footer{background:var(--noir-lt);padding:2.2rem 3rem;display:flex;align-items:center;justify-content:space-between;border-top:1px solid var(--border);}
+    .fl{font-family:'Cormorant Garamond',serif;font-size:1rem;color:rgba(240,235,224,.6);letter-spacing:.12em;text-transform:uppercase;}
+    .fl em{color:var(--amber);font-style:italic;}
+    .fc{font-family:'DM Mono',monospace;font-size:.55rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);}
+    .fq{font-family:'DM Mono',monospace;font-size:.56rem;letter-spacing:.1em;color:var(--amber);opacity:.6;}
+
+    @media(max-width:1000px){.hero{grid-template-columns:1fr;padding:1.5rem 2rem;padding-top:80px;gap:2.5rem;}.info{grid-template-columns:1fr;}.info-block{border-right:none;border-bottom:1px solid var(--border);}.story{grid-template-columns:1fr;gap:2.5rem;}footer{flex-direction:column;gap:1rem;text-align:center;}}
+  </style>
+</head>
+<body>
+
+<!-- Custom cursor -->
+<div class="cursor" id="cur"></div>
+<div class="cursor-ring" id="cur-ring"></div>
+
+<nav>
+  <div class="nav-logo">Colt <em>Fragranza</em></div>
+  <div class="nav-tag">Proximity Commerce · Bologna</div>
+  <div class="nav-badge">QEN Verified</div>
+</nav>
+
+<section class="hero">
+  <div class="hero-glow"></div>
+  <div class="hero-glow2"></div>
+  <div class="hero-left">
+    <div class="eyebrow">Fondato 2020 · Bologna · Cognitive Logic</div>
+    <h1><em>Sentire</em><br><strong>il territorio.</strong></h1>
+    <p class="hero-sub">Colt Fragranza nasce nel lockdown del 2020 come atto di prossimità. Profumi artigianali, radici bolognesi, un'etica misurabile. Ogni flacone porta uno score QEN — perché la trasparenza è il lusso più raro.</p>
+    <a href="https://cognitivelogic.it" class="btn-amber">Scopri la collezione →</a>
+  </div>
+  <div class="qen-vert" id="qvp">
+    <div class="qv-header">
+      <span class="qv-lbl">QEN Score · Colt Fragranza</span>
+      <div class="qv-title">Quantum Ethics<br>Network</div>
+    </div>
+    <div class="qv-dims">
+      <div class="qv-dim">
+        <div class="qv-dim-header"><span class="qv-dim-name">Sociale · Vs</span><span class="qv-dim-val" id="cvs">—</span></div>
+        <div class="qv-track"><div class="qv-fill" id="cbs"></div></div>
+      </div>
+      <div class="qv-dim">
+        <div class="qv-dim-header"><span class="qv-dim-name">Ambientale · Va</span><span class="qv-dim-val" id="cva">—</span></div>
+        <div class="qv-track"><div class="qv-fill" id="cba"></div></div>
+      </div>
+      <div class="qv-dim">
+        <div class="qv-dim-header"><span class="qv-dim-name">Territoriale · Vt</span><span class="qv-dim-val" id="cvt">—</span></div>
+        <div class="qv-track"><div class="qv-fill" id="cbt"></div></div>
+      </div>
+    </div>
+    <div class="qv-total">
+      <span class="qv-total-lbl">QEN Score Complessivo</span>
+      <div class="qv-total-num" id="ctotal">—<span>/100</span></div>
+    </div>
+    <div class="qv-formula">Vs×0.40 + Va×0.35 + Vt×0.25<br>Cognitive Logic · cognitivelogic.it</div>
+  </div>
+</section>
+
+<section class="info">
+  <div class="info-block">
+    <span class="ib-n">01 · Origine</span>
+    <div class="ib-title">Nato nel lockdown</div>
+    <p class="ib-text">2020: Bologna si ferma. Colt Fragranza nasce come risposta artigianale — profumi che narrano il quartiere, le pietre, i mercati. La prossimità come filosofia di business.</p>
+  </div>
+  <div class="info-block">
+    <span class="ib-n">02 · Materia</span>
+    <div class="ib-title">Filiera corta</div>
+    <p class="ib-text">Materie prime da fornitori entro 300km. Laboratorio nel centro storico di Bologna. Ogni ingrediente tracciato nel Knowledge Graph QEN — impatto ambientale calcolato, non dichiarato.</p>
+  </div>
+  <div class="info-block">
+    <span class="ib-n">03 · Dati</span>
+    <div class="ib-title">Score aperto</div>
+    <p class="ib-text">Il QEN di Colt Fragranza è pubblico. Non è marketing: è obbligo di coerenza. Se il numero scende, la bottega cambia. La trasparenza non è opzionale.</p>
+  </div>
+</section>
+
+<section class="story">
+  <div class="story-left">
+    <blockquote>«La fragranza è <em>memoria</em> compressa. Il dato è la stessa cosa: odore di territorio, densificato in un numero.»</blockquote>
+    <div class="story-attr">Roberto Malini · Fondatore · Cognitive Logic</div>
+  </div>
+  <div class="story-right">
+    <div class="story-stat"><div class="ss-val">2020</div><div class="ss-lbl">Anno di fondazione · lockdown Bologna</div></div>
+    <div class="story-stat"><div class="ss-val">300km</div><div class="ss-lbl">Raggio massimo filiera materie prime</div></div>
+    <div class="story-stat"><div class="ss-val">QEN</div><div class="ss-lbl">Score pubblico · metodologia aperta · Cognitive Logic</div></div>
+  </div>
+</section>
+
+<footer>
+  <div class="fl">Colt <em>Fragranza</em></div>
+  <div class="fc">Bologna · Italia · 2026</div>
+  <div class="fq">QEN Framework · cognitivelogic.it</div>
+</footer>
+
+<script>
+  // Custom cursor
+  const cur=document.getElementById('cur'),ring=document.getElementById('cur-ring');
+  let mx=0,my=0,rx=0,ry=0;
+  document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;cur.style.left=mx+'px';cur.style.top=my+'px';});
+  function animRing(){rx+=(mx-rx)*.12;ry+=(my-ry)*.12;ring.style.left=rx+'px';ring.style.top=ry+'px';requestAnimationFrame(animRing);}
+  animRing();
+  document.addEventListener('mousedown',()=>cur.style.transform='translate(-50%,-50%) scale(1.8)');
+  document.addEventListener('mouseup',()=>cur.style.transform='translate(-50%,-50%) scale(1)');
+
+  // QEN scores — placeholder
+  const CS={s:75,a:82,t:90};
+  const CQEN=+(CS.s*.4+CS.a*.35+CS.t*.25).toFixed(1);
+  function runColt(){
+    [['cbs','cvs',CS.s],['cba','cva',CS.a],['cbt','cvt',CS.t]].forEach(([b,v,sc],i)=>{
+      setTimeout(()=>{document.getElementById(b).style.width=sc+'%';document.getElementById(v).textContent=sc+'/100';},300+i*180);
+    });
+    const el=document.getElementById('ctotal');let t0=null;
+    setTimeout(()=>{
+      function tick(t){if(!t0)t0=t;const p=Math.min((t-t0)/1400,1);const e=p<.5?2*p*p:-1+(4-2*p)*p;const v=(CQEN*e);el.innerHTML=v.toFixed(1)+'<span>/100</span>';if(p<1)requestAnimationFrame(tick);else el.innerHTML=CQEN+'<span>/100</span>';}
+      requestAnimationFrame(tick);
+    },500);
+  }
+  const obs=new IntersectionObserver(e=>{if(e[0].isIntersecting){runColt();obs.disconnect();}},{threshold:.3});
+  obs.observe(document.getElementById('qvp'));
+</script>
+</body>
+</html>
