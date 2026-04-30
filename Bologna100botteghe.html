@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Bologna 100 Botteghe — QEN Pilot</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet"/>
+  <style>
+    :root{--terra:#8B3A2A;--terra-lt:#B05A42;--clay:#D4856A;--warm:#F2E8DC;--warm-dk:#E8D8C4;--ink:#1A1208;--muted:#9A8070;--gold:#C9A84C;--border:rgba(139,58,42,.18);}
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+    body{background:var(--warm);color:var(--ink);font-family:'Cormorant Garamond',serif;overflow-x:hidden;}
+    nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:1.1rem 2.5rem;background:rgba(242,232,220,.92);backdrop-filter:blur(14px);border-bottom:1px solid var(--border);}
+    .nav-logo{font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-weight:600;color:var(--terra);letter-spacing:.04em;}
+    .nav-tag{font-family:'DM Mono',monospace;font-size:.58rem;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);}
+    .nav-badge{font-family:'DM Mono',monospace;font-size:.56rem;letter-spacing:.12em;text-transform:uppercase;background:var(--terra);color:var(--warm);padding:.3em .8em;border-radius:2px;}
+
+    /* HERO */
+    .hero{min-height:100vh;background:var(--terra);position:relative;display:flex;flex-direction:column;justify-content:flex-end;padding-top:60px;overflow:hidden;}
+    .hero-inner{padding:4rem 3.5rem 0;position:relative;z-index:2;}
+    .hero-eyebrow{font-family:'DM Mono',monospace;font-size:.62rem;letter-spacing:.22em;text-transform:uppercase;color:var(--clay);margin-bottom:1.4rem;}
+    .hero h1{font-size:clamp(2.8rem,5vw,5rem);font-weight:300;line-height:1.08;color:var(--warm);margin-bottom:1.5rem;}
+    .hero h1 em{color:var(--clay);font-style:italic;}
+    .hero p{font-size:1.1rem;font-weight:300;color:rgba(242,232,220,.65);line-height:1.8;max-width:520px;margin-bottom:3rem;}
+    .hero-cta{display:flex;gap:1.2rem;align-items:center;margin-bottom:4rem;}
+    .btn-terra{display:inline-block;background:var(--clay);color:var(--ink);font-family:'DM Mono',monospace;font-size:.66rem;letter-spacing:.15em;text-transform:uppercase;padding:.85em 1.8em;text-decoration:none;transition:background .2s,transform .15s;}
+    .btn-terra:hover{background:var(--warm);transform:translateY(-1px);}
+    .btn-ghost{font-family:'DM Mono',monospace;font-size:.62rem;letter-spacing:.15em;text-transform:uppercase;color:rgba(242,232,220,.5);text-decoration:none;border-bottom:1px solid rgba(242,232,220,.25);padding-bottom:.1em;transition:color .2s;}
+    .btn-ghost:hover{color:var(--warm);}
+
+    /* ARCH WAVE */
+    .arch-wave{display:block;width:100%;margin-bottom:-2px;position:relative;z-index:1;}
+
+    /* GRID SECTION */
+    .grid-section{background:var(--warm-dk);padding:5rem 3.5rem;}
+    .sec-label{font-family:'DM Mono',monospace;font-size:.6rem;letter-spacing:.22em;text-transform:uppercase;color:var(--terra);margin-bottom:.6rem;}
+    .sec-title{font-size:clamp(2rem,3vw,2.8rem);font-weight:300;color:var(--ink);margin-bottom:3rem;line-height:1.2;}
+    .sec-title em{color:var(--terra);font-style:italic;}
+    .shop-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;}
+    .shop-card{background:var(--warm);border:1px solid var(--border);padding:2rem 1.8rem;position:relative;transition:box-shadow .2s,transform .2s;}
+    .shop-card:hover{box-shadow:0 8px 30px rgba(139,58,42,.1);transform:translateY(-2px);}
+    .card-cat{font-family:'DM Mono',monospace;font-size:.56rem;letter-spacing:.18em;text-transform:uppercase;color:var(--clay);margin-bottom:.6rem;}
+    .card-name{font-size:1.4rem;font-weight:400;color:var(--ink);margin-bottom:.4rem;}
+    .card-addr{font-family:'DM Mono',monospace;font-size:.6rem;letter-spacing:.06em;color:var(--muted);margin-bottom:1.2rem;}
+    .mini-qen{display:flex;flex-direction:column;gap:.45rem;}
+    .mq-row{display:flex;align-items:center;gap:.7rem;}
+    .mq-label{font-family:'DM Mono',monospace;font-size:.52rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);width:14px;}
+    .mq-track{flex:1;height:3px;background:rgba(139,58,42,.12);border-radius:2px;overflow:hidden;}
+    .mq-fill{height:100%;border-radius:2px;background:linear-gradient(90deg,var(--terra),var(--clay));width:0;transition:width 1s cubic-bezier(.4,0,.2,1);}
+    .mq-val{font-family:'DM Mono',monospace;font-size:.52rem;color:var(--terra);width:28px;text-align:right;}
+    .card-score{position:absolute;top:1.5rem;right:1.5rem;font-family:'DM Mono',monospace;font-size:.72rem;font-weight:500;color:var(--terra);}
+    .card-score span{font-size:.5rem;color:var(--muted);}
+
+    /* QEN DARK PANEL */
+    .qen-section{background:var(--ink);padding:6rem 3.5rem;display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:start;}
+    .qen-left h2{font-size:clamp(1.8rem,3vw,2.8rem);font-weight:300;line-height:1.2;color:var(--warm);margin-bottom:1.5rem;}
+    .qen-left h2 em{color:var(--clay);font-style:italic;}
+    .qen-left p{font-size:.95rem;font-weight:300;color:rgba(242,232,220,.55);line-height:1.85;}
+    .qen-dark-panel{border:1px solid rgba(139,58,42,.3);padding:2.5rem 2.2rem;background:rgba(139,58,42,.06);}
+    .qdp-label{font-family:'DM Mono',monospace;font-size:.56rem;letter-spacing:.2em;text-transform:uppercase;color:var(--clay);margin-bottom:1.6rem;}
+    .qdp-metrics{display:flex;flex-direction:column;gap:1.4rem;}
+    .qdp-metric{}
+    .qdp-meta{display:flex;justify-content:space-between;margin-bottom:.5rem;}
+    .qdp-dim{font-family:'DM Mono',monospace;font-size:.6rem;letter-spacing:.1em;text-transform:uppercase;color:var(--warm);}
+    .qdp-score{font-family:'DM Mono',monospace;font-size:.6rem;color:var(--clay);}
+    .qdp-track{height:5px;background:rgba(242,232,220,.08);border-radius:3px;overflow:hidden;}
+    .qdp-fill{height:100%;border-radius:3px;background:linear-gradient(90deg,var(--terra-lt),var(--clay));width:0;transition:width 1.2s cubic-bezier(.4,0,.2,1);}
+    .qdp-total{margin-top:2rem;padding-top:1.5rem;border-top:1px solid rgba(139,58,42,.25);display:flex;justify-content:space-between;align-items:center;}
+    .qdp-total-label{font-family:'DM Mono',monospace;font-size:.6rem;letter-spacing:.15em;text-transform:uppercase;color:var(--muted);}
+    .qdp-total-score{font-family:'Cormorant Garamond',serif;font-size:2.5rem;font-weight:300;color:var(--clay);}
+    .qdp-formula{margin-top:1rem;font-family:'DM Mono',monospace;font-size:.52rem;letter-spacing:.06em;color:rgba(242,232,220,.3);text-align:center;}
+
+    footer{background:var(--terra);padding:2.2rem 3rem;display:flex;align-items:center;justify-content:space-between;}
+    .fl{font-family:'Cormorant Garamond',serif;font-size:1.1rem;color:var(--warm);letter-spacing:.04em;}
+    .fc{font-family:'DM Mono',monospace;font-size:.55rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(242,232,220,.5);}
+    .fq{font-family:'DM Mono',monospace;font-size:.56rem;letter-spacing:.1em;color:var(--clay);}
+    @media(max-width:900px){.shop-grid{grid-template-columns:1fr;}.qen-section{grid-template-columns:1fr;gap:2.5rem;}.hero-inner{padding:3rem 2rem 0;}footer{flex-direction:column;gap:1rem;text-align:center;}}
+  </style>
+</head>
+<body>
+<nav>
+  <div class="nav-logo">Bologna 100 Botteghe</div>
+  <div class="nav-tag">QEN Pilot · Prossimità</div>
+  <div class="nav-badge">QEN Active</div>
+</nav>
+
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-eyebrow">Cognitive Logic · Pilot Bologna · 2026</div>
+    <h1>Cento botteghe.<br><em>Un'etica misurabile.</em></h1>
+    <p>Il primo pilota QEN sul commercio di prossimità bolognese. Ogni bottega ha uno score trasparente: sociale, ambientale, territoriale. Scegli con cognizione di causa.</p>
+    <div class="hero-cta">
+      <a href="https://cognitivelogic.it" class="btn-terra">Esplora le Botteghe →</a>
+      <a href="#qen" class="btn-ghost">Come funziona il QEN</a>
+    </div>
+  </div>
+  <!-- Arch wave transition -->
+  <svg class="arch-wave" viewBox="0 0 1440 120" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+    <path d="M0 120 L0 60 Q180 0 360 50 Q540 100 720 40 Q900 -20 1080 50 Q1260 100 1440 30 L1440 120 Z" fill="#E8D8C4"/>
+  </svg>
+</section>
+
+<section class="grid-section">
+  <div class="sec-label">Botteghe in evidenza</div>
+  <div class="sec-title">Il <em>territorio</em> come valore</div>
+  <div class="shop-grid" id="shop-grid">
+    <!-- cards injected by JS -->
+  </div>
+</section>
+
+<section class="qen-section" id="qen">
+  <div class="qen-left">
+    <h2>Score <em>trasparente</em><br>per ogni bottega.</h2>
+    <p>Il QEN misura tre dimensioni: impatto sociale (occupazione, inclusione), impatto ambientale (filiera, rifiuti, energia), radicamento territoriale (storia, comunità, km-0). La formula è pubblica, la metodologia è aperta.</p>
+  </div>
+  <div class="qen-dark-panel" id="qdp">
+    <div class="qdp-label">QEN Score · Media Pilota Bologna100Botteghe</div>
+    <div class="qdp-metrics">
+      <div class="qdp-metric">
+        <div class="qdp-meta"><span class="qdp-dim">Sociale · Vs · peso 40%</span><span class="qdp-score" id="qds">—</span></div>
+        <div class="qdp-track"><div class="qdp-fill" id="qbs"></div></div>
+      </div>
+      <div class="qdp-metric">
+        <div class="qdp-meta"><span class="qdp-dim">Ambientale · Va · peso 35%</span><span class="qdp-score" id="qda">—</span></div>
+        <div class="qdp-track"><div class="qdp-fill" id="qba"></div></div>
+      </div>
+      <div class="qdp-metric">
+        <div class="qdp-meta"><span class="qdp-dim">Territoriale · Vt · peso 25%</span><span class="qdp-score" id="qdt">—</span></div>
+        <div class="qdp-track"><div class="qdp-fill" id="qbt"></div></div>
+      </div>
+    </div>
+    <div class="qdp-total">
+      <span class="qdp-total-label">QEN Score Medio</span>
+      <span class="qdp-total-score" id="qtotal">—</span>
+    </div>
+    <div class="qdp-formula">QEN = Vs×0.40 + Va×0.35 + Vt×0.25 · Cognitive Logic</div>
+  </div>
+</section>
+
+<footer>
+  <div class="fl">Bologna 100 Botteghe — Cognitive Logic</div>
+  <div class="fc">Bologna · Italia · 2026</div>
+  <div class="fq">QEN Framework · cognitivelogic.it</div>
+</footer>
+
+<script>
+  const shops=[
+    {name:'Erboristeria Zanotti',cat:'Erboristeria',addr:'Via Oberdan 14, Bologna',s:82,a:79,t:91},
+    {name:'Macelleria Ruggi',cat:'Alimentari',addr:'Via Castiglione 31, Bologna',s:74,a:65,t:88},
+    {name:'Libreria Ambasciatori',cat:'Cultura',addr:'Via degli Orefici 19, Bologna',s:88,a:72,t:94},
+    {name:'Laboratorio Pasticceria',cat:'Dolci artigianali',addr:'Via Ugo Bassi 7, Bologna',s:76,a:68,t:85},
+    {name:'Ottica del Corso',cat:'Artigianato',addr:'Strada Maggiore 22, Bologna',s:71,a:75,t:82},
+    {name:'Verdure di Stagione',cat:'Ortofrutta',addr:'Mercato di Mezzo, Bologna',s:85,a:90,t:89},
+  ];
+  const grid=document.getElementById('shop-grid');
+  shops.forEach(sh=>{
+    const qen=+(sh.s*.4+sh.a*.35+sh.t*.25).toFixed(1);
+    const card=document.createElement('div');card.className='shop-card';
+    card.innerHTML=`
+      <div class="card-score">${qen}<span>/100</span></div>
+      <div class="card-cat">${sh.cat}</div>
+      <div class="card-name">${sh.name}</div>
+      <div class="card-addr">${sh.addr}</div>
+      <div class="mini-qen">
+        <div class="mq-row"><span class="mq-label">Vs</span><div class="mq-track"><div class="mq-fill" data-w="${sh.s}"></div></div><span class="mq-val">${sh.s}</span></div>
+        <div class="mq-row"><span class="mq-label">Va</span><div class="mq-track"><div class="mq-fill" data-w="${sh.a}"></div></div><span class="mq-val">${sh.a}</span></div>
+        <div class="mq-row"><span class="mq-label">Vt</span><div class="mq-track"><div class="mq-fill" data-w="${sh.t}"></div></div><span class="mq-val">${sh.t}</span></div>
+      </div>`;
+    grid.appendChild(card);
+  });
+
+  // Animate mini bars on intersection
+  const cardObs=new IntersectionObserver(entries=>{
+    entries.forEach(e=>{if(e.isIntersecting){e.target.querySelectorAll('.mq-fill').forEach(b=>{b.style.width=b.dataset.w+'%';});cardObs.unobserve(e.target);}});
+  },{threshold:.4});
+  document.querySelectorAll('.shop-card').forEach(c=>cardObs.observe(c));
+
+  // QEN dark panel
+  const pilot={s:79,a:74,t:88};
+  const avg=+(pilot.s*.4+pilot.a*.35+pilot.t*.25).toFixed(1);
+  const qdpObs=new IntersectionObserver(entries=>{
+    if(entries[0].isIntersecting){
+      [['qbs','qds',pilot.s],['qba','qda',pilot.a],['qbt','qdt',pilot.t]].forEach(([b,v,sc],i)=>{
+        setTimeout(()=>{document.getElementById(b).style.width=sc+'%';document.getElementById(v).textContent=sc+'/100';},300+i*150);
+      });
+      const el=document.getElementById('qtotal');let t0=null;
+      setTimeout(()=>{
+        function tick(t){if(!t0)t0=t;const p=Math.min((t-t0)/1200,1);const e=p<.5?2*p*p:-1+(4-2*p)*p;el.textContent=(avg*e).toFixed(1);if(p<1)requestAnimationFrame(tick);else el.textContent=avg;}
+        requestAnimationFrame(tick);
+      },500);
+      qdpObs.disconnect();
+    }
+  },{threshold:.3});
+  qdpObs.observe(document.getElementById('qdp'));
+</script>
+</body>
+</html>
