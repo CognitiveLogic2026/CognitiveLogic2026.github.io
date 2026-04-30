@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Servizi — Cognitive Logic</title>
+<link rel="canonical" href="https://cognitivelogic.it/services.html">
+<meta name="description" content="Tre pacchetti per rendere i tuoi dati operativi per agenti AI autonomi. AI-Ready Audit, Semantic Core Implementation, Secure Identity Shield.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,300;0,400;0,500;1,300&family=Syne:wght@400;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #060a0f;
+    --bg2: #0c1117;
+    --bg3: #111820;
+    --green: #00e5a0;
+    --green-dim: rgba(0,229,160,0.08);
+    --green-border: rgba(0,229,160,0.2);
+    --white: #e8f0ec;
+    --dim: rgba(232,240,236,0.45);
+    --faint: rgba(232,240,236,0.08);
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--bg);
+    color: var(--white);
+    font-family: "Syne", sans-serif;
+    overflow-x: hidden;
+    line-height: 1.6;
+  }
+
+/* NAV */
+nav {
+position: sticky; top: 0; z-index: 100;
+display: flex; align-items: center; justify-content: space-between;
+padding: 0 3rem;
+height: 56px;
+background: rgba(6,10,15,0.92);
+backdrop-filter: blur(12px);
+border-bottom: 1px solid var(–faint);
+}
+.nav-logo {
+font-family: “IBM Plex Mono”, monospace;
+font-size: 0.75rem;
+letter-spacing: 0.15em;
+text-transform: uppercase;
+color: var(–green);
+text-decoration: none;
+}
+.nav-links { display: flex; gap: 2rem; list-style: none; }
+.nav-links a {
+font-family: “IBM Plex Mono”, monospace;
+font-size: 0.65rem;
+letter-spacing: 0.1em;
+text-transform: uppercase;
+color: var(–dim);
+text-decoration: none;
+transition: color 0.2s;
+}
+.nav-links a:hover, .nav-links a.active { color: var(–green); }
+.nav-right {
+display: flex; align-items: center; gap: 0.6rem;
+font-size: 0.62rem; color: var(–dim);
+font-family: “IBM Plex Mono”, monospace;
+}
+.status-dot {
+width: 6px; height: 6px;
+border-radius: 50%;
+background: var(–green);
+animation: blink 2s ease-in-out infinite;
+}
+@keyframes blink { 0%,100%{opacity:1} 50%{opacity:0.3} }
+@media (max-width: 768px) {
+nav { padding: 0 1rem; }
+.nav-links { display: none; }
+}
+
+/* HERO */
+.hero {
+min-height: 80vh;
+display: flex; flex-direction: column;
+justify-content: center;
+padding: clamp(4rem,10vw,10rem) clamp(1.5rem,6vw,6rem);
+position: relative; overflow: hidden;
+}
+.hero::before {
+content: “”;
+position: absolute; top: -200px; right: -200px;
+width: 600px; height: 600px;
+background: radial-gradient(circle, rgba(0,229,160,0.06) 0%, transparent 70%);
+pointer-events: none;
+}
+.hero-label {
+font-family: “IBM Plex Mono”, monospace;
+font-size: 0.65rem;
+letter-spacing: 0.3em;
+text-transform: uppercase;
+color: var(–green);
+margin-bottom: 2rem;
+opacity: 0;
+animation: fadeUp 0.8s 0.1s forwards;
+}
+.hero h1 {
+font-family: “Syne”, sans-serif;
+font-size: clamp(2.8rem, 7vw, 6rem);
+font-weight: 800;
+line-height: 1.0;
+letter-spacing: -0.03em;
+max-width: 900px;
+opacity: 0;
+animation: fadeUp 0.8s 0.25s forwards;
+}
+.hero h1 span { color: var(–green); }
+.hero-sub {
+margin-top: 2rem;
+font-family: “IBM Plex Mono”, monospace;
+font-size: 0.9rem;
+color: var(–dim);
+max-width: 540px;
+line-height: 1.8;
+opacity: 0;
+animation: fadeUp 0.8s 0.4s forwards;
+}
+.hero-cta {
+margin-top: 3rem; display: flex; gap: 1rem; flex-wrap: wrap;
+opacity: 0; animation: fadeUp 0.8s 0.55s forwards;
+}
+.btn {
+font-family: “IBM Plex Mono”, monospace;
+font-size: 0.68rem;
+letter-spacing: 0.15em;
+text-transform: uppercase;
+text-decoration: none;
+padding: 0.85rem 1.8rem;
+border: 1px solid var(–green-border);
+color: var(–green);
+background: var(–green-dim);
+cursor: pointer;
+transition: all 0.25s;
+display: inline-block;
+}
+.btn:hover { background: var(–green); color: var(–bg); }
+.btn-ghost {
+background: transparent;
+color: var(–dim);
+border-color: var(–faint);
+}
+.btn-ghost:hover { background: var(–faint); color: var(–white); }
+@keyframes fadeUp {
+from { opacity: 0; transform: translateY(18px); }
+to   { opacity: 1; transform: translateY(0); }
+}
+
+/* SECTION COMMON */
+section { padding: clamp(3rem,7vw,7rem) clamp(1.5rem,6vw,6rem); }
+.slabel {
+font-family: “IBM Plex Mono”, monospace;
+font-size: 0.62rem;
+letter-spacing: 0.3em;
+text-transform: uppercase;
+color: var(–green);
+margin-bottom: 3rem;
+display: flex; align-items: center; gap: 1rem;
+}
+.slabel::after {
+content: “”;
+flex: 1; height: 1px;
+background: linear-gradient(90deg, var(–green-border), transparent);
+}
+
+/* STATS */
+.stats-row {
+display: grid; grid-template-columns: repeat(3,1fr); gap: 1px;
+background: var(–green-border);
+margin-bottom: clamp(3rem,5vw,5rem);
+}
+@media (max-width: 600px) { .stats-row { grid-template-columns: 1fr; } }
+.stat-box {
+background: var(–bg2);
+padding: 2rem 2.5rem;
+}
+.stat-n {
+font-family: “Syne”, sans-serif;
+font-size: clamp(2.2rem,4vw,3.2rem);
+font-weight: 800;
+color: var(–green);
+letter-spacing: -0.03em;
+line-height: 1;
+}
+.stat-d {
+font-family: “IBM Plex Mono”, monospace;
+font-size: 0.62rem;
+letter-spacing: 0.2em;
+text-transform: uppercase;
+color: var(–dim);
+margin-top: 0.5rem;
+}
+
+/* CARDS */
+.cards {
+display: grid;
+grid-template-columns: repeat(3,1fr);
+gap: 1px;
+background: var(–green-border);
+}
+@media (max-width: 900px) { .cards { grid-template-columns: 1fr; } }
+
+.card {
+background: var(–bg2);
+padding: 2.5rem 2rem;
+position: relative; overflow: hidden;
+transition: background 0.3s;
+}
+.card::after {
+content: “”;
+position: absolute; top: 0; left: 0; right: 0;
+height: 1px;
+background: var(–green);
+transform: scaleX(0); transform-origin: left;
+transition: transform 0.4s ease;
+}
+.card:hover::after { transform: scaleX(1); }
+.card:hover { background: var(–bg3); }
+
+.card-num {
+font-family: “IBM Plex Mono”, monospace;
+font-size: 0.58rem; letter-spacing: 0.3em;
+color: var(–green); opacity: 0.5;
+margin-bottom: 1.5rem;
+}
+.card h3 {
+font-family: “Syne”, sans-serif;
+font-size: 1.5rem; font-weight: 700;
+letter-spacing: -0.02em;
+line-height: 1.2;
+margin-bottom: 0.4rem;
+}
+.card h3 span { color: var(–green); }
+.card-model {
+font-family: “IBM Plex Mono”, monospace;
+font-size: 0.58rem; letter-spacing: 0.2em;
+text-transform: uppercase;
+color: var(–green); opacity: 0.6;
+margin-bottom: 1.5rem;
+}
+.card-desc {
+font-family: “IBM Plex Mono”, monospace;
+font-size: 0.78rem;
+color: var(–dim);
+line-height: 1.9;
+margin-bottom: 2rem;
+}
+.deliverables { list-style: none; margin-bottom: 2rem; }
+.deliverables li {
+font-family: “IBM Plex Mono”, monospace;
+font-size: 0.68rem;
+color: var(–dim);
+padding: 0.6rem 0;
+border-bottom: 1px solid var(–faint);
+display: flex; gap: 0.8rem; align-items: flex-start;
+line-height: 1.5;
+}
+.deliverables li::before { content: “→”; color: var(–green); flex-shrink: 0; }
+.card-footer {
+border-top: 1px solid var(–green-border);
+padding-top: 1.2rem;
+display: flex; justify-content: space-between; align-items: center;
+}
+.card-tag {
+font-family: “IBM Plex Mono”, monospace;
+font-size: 0.58rem; letter-spacing: 0.15em;
+text-transform: uppercase; color: var(–dim);
+}
+.card-arrow { color: var(–green); font-size: 1rem; transition: transform 0.3s; }
+.card:hover .card-arrow { transform: translateX(5px); }
+
+/* PROCESS */
+.process-grid {
+display: grid; grid-template-columns: repeat(4,1fr);
+gap: 0; margin-top: 2rem;
+border: 1px solid var(–green-border);
+}
+@media (max-width: 900px) { .process-grid { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 500px) { .process-grid { grid-template-columns: 1fr; } }
+.pstep {
+padding: 2rem 1.8rem;
+border-right: 1px solid var(–faint);
+}
+.pstep:last-child { border-right: none; }
+.pstep-num {
+font-family: “IBM Plex Mono”, monospace;
+font-size: 0.58rem; letter-spacing: 0.25em;
+color: var(–green); margin-bottom: 1.2rem;
+}
+.pstep h4 {
+font-family: “Syne”, sans-serif;
+font-size: 1.1rem; font-weight: 700;
+letter-spacing: -0.01em;
+margin-bottom: 0.8rem;
+}
+.pstep h4 span { color: var(–green); }
+.pstep p {
+font-family: “IBM Plex Mono”, monospace;
+font-size: 0.72rem; color: var(–dim);
+line-height: 1.8;
+}
+
+/* METRICS */
+.metrics-band {
+background: var(–bg2);
+border-top: 1px solid var(–green-border);
+border-bottom: 1px solid var(–green-border);
+padding: clamp(3rem,6vw,6rem) clamp(1.5rem,6vw,6rem);
+display: grid;
+grid-template-columns: 1.5fr 1fr;
+gap: 5rem; align-items: center;
+}
+@media (max-width: 800px) { .metrics-band { grid-template-columns: 1fr; gap: 3rem; } }
+.mquote {
+font-family: “Syne”, sans-serif;
+font-size: clamp(1.4rem,2.5vw,2rem);
+font-weight: 400;
+line-height: 1.4;
+color: var(–white);
+padding-left: 2rem;
+border-left: 2px solid var(–green);
+}
+.mquote cite {
+display: block;
+font-family: “IBM Plex Mono”, monospace;
+font-size: 0.62rem; letter-spacing: 0.2em;
+text-transform: uppercase;
+color: var(–green); opacity: 0.6;
+margin-top: 1.2rem;
+font-style: normal;
+}
+.mnums { display: flex; flex-direction: column; gap: 1rem; }
+.mnum-item {
+padding: 1.2rem 1.5rem;
+border: 1px solid var(–green-border);
+background: var(–green-dim);
+display: flex; justify-content: space-between; align-items: center;
+}
+.mnum-val {
+font-family: “Syne”, sans-serif;
+font-size: 1.8rem; font-weight: 800;
+color: var(–green); letter-spacing: -0.03em;
+}
+.mnum-desc {
+font-family: “IBM Plex Mono”, monospace;
+font-size: 0.62rem; letter-spacing: 0.1em;
+text-transform: uppercase; color: var(–dim);
+text-align: right;
+}
+
+/* CTA */
+.cta-section {
+text-align: center;
+padding: clamp(4rem,8vw,8rem) clamp(1.5rem,6vw,6rem);
+position: relative; overflow: hidden;
+}
+.cta-section::before {
+content: “”;
+position: absolute; top: 50%; left: 50%;
+transform: translate(-50%,-50%);
+width: 500px; height: 300px;
+background: radial-gradient(ellipse, rgba(0,229,160,0.06) 0%, transparent 70%);
+pointer-events: none;
+}
+.cta-section h2 {
+font-family: “Syne”, sans-serif;
+font-size: clamp(2rem,5vw,3.5rem);
+font-weight: 800;
+letter-spacing: -0.03em;
+line-height: 1.1;
+margin-bottom: 1.2rem;
+position: relative;
+}
+.cta-section h2 span { color: var(–green); }
+.cta-section p {
+font-family: “IBM Plex Mono”, monospace;
+font-size: 0.85rem;
+color: var(–dim);
+max-width: 480px;
+margin: 0 auto 2.5rem;
+line-height: 1.9;
+position: relative;
+}
+.cta-btns { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; position: relative; }
+
+/* FOOTER */
+footer {
+padding: 2rem clamp(1.5rem,6vw,6rem);
+border-top: 1px solid var(–faint);
+display: flex; justify-content: space-between; align-items: center;
+flex-wrap: wrap; gap: 1rem;
+}
+.footer-brand {
+font-family: “IBM Plex Mono”, monospace;
+font-size: 0.62rem; letter-spacing: 0.2em;
+text-transform: uppercase; color: var(–green); opacity: 0.6;
+}
+.footer-links { display: flex; gap: 1.5rem; flex-wrap: wrap; }
+.footer-links a {
+font-family: “IBM Plex Mono”, monospace;
+font-size: 0.58rem; letter-spacing: 0.12em;
+text-transform: uppercase;
+color: var(–dim); text-decoration: none;
+opacity: 0.5; transition: opacity 0.2s;
+}
+.footer-links a:hover { opacity: 1; }
+
+/* REVEAL */
+.reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.7s ease, transform 0.7s ease; }
+.reveal.visible { opacity: 1; transform: translateY(0); }
+.d1 { transition-delay: 0.1s; }
+.d2 { transition-delay: 0.2s; }
+.d3 { transition-delay: 0.3s; }
+</style>
+
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="/">Cognitive Logic</a>
+  <ul class="nav-links">
+    <li><a href="/#architecture">Architecture</a></li>
+    <li><a href="/#qen">QEN Score</a></li>
+    <li><a href="/#api">API</a></li>
+    <li><a href="/services.html" class="active">Services</a></li>
+    <li><a href="/#fuorimenu">Fuorimenu</a></li>
+  </ul>
+  <div class="nav-right">
+    <div class="status-dot"></div>
+    api.cognitivelogic.it · live
+  </div>
+</nav>
+
+<section class="hero">
+  <p class="hero-label">Cognitive Logic · Offerta Servizi 2026</p>
+  <h1>I tuoi dati sono<br><span>invisibili</span><br>agli agenti AI.</h1>
+  <p class="hero-sub">
+    Non perché manchino. Perché sono strutturati per essere letti da esseri umani —
+    non da sistemi autonomi che decidono in millisecondi.
+  </p>
+  <div class="hero-cta">
+    <a href="#packages" class="btn">→ Esplora i pacchetti</a>
+    <a href="https://api.cognitivelogic.it/copilot" class="btn btn-ghost" target="_blank" rel="noopener">Compliance Copilot ↗</a>
+  </div>
+</section>
+
+<section style="padding-top:0">
+  <div class="stats-row reveal">
+    <div class="stat-box">
+      <div class="stat-n">130</div>
+      <div class="stat-d">Nodi QEN attivi</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-n">209</div>
+      <div class="stat-d">Relazioni semantiche</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-n">35+</div>
+      <div class="stat-d">Anni di dominio operativo</div>
+    </div>
+  </div>
+</section>
+
+<section id="packages">
+  <p class="slabel reveal">I Tre Pacchetti</p>
+  <div class="cards">
+
+```
+<div class="card reveal">
+  <div class="card-num">01 / 03</div>
+  <h3><span>AI-Ready</span> Audit</h3>
+  <p class="card-model">Assessment · Fee fissa · Deliverable chiuso</p>
+  <p class="card-desc">
+    Verifico se i tuoi dati sono pronti per agenti autonomi.
+    Produco il tuo indice llms.txt e il report di AI-Readiness
+    con piano di azione prioritizzato.
+  </p>
+  <ul class="deliverables">
+    <li>Analisi architettura dati esistente</li>
+    <li>Scoring AI-Readiness per dimensione</li>
+    <li>Generazione file llms.txt strutturato</li>
+    <li>Gap analysis vs EU AI Act Allegati I–III</li>
+    <li>Roadmap tecnica con effort stimato</li>
+  </ul>
+  <div class="card-footer">
+    <span class="card-tag">Progetto chiuso</span>
+    <span class="card-arrow">→</span>
+  </div>
+</div>
+
+<div class="card reveal d1">
+  <div class="card-num">02 / 03</div>
+  <h3><span>Semantic Core</span> Implementation</h3>
+  <p class="card-model">Architettura · Setup + Canone mensile</p>
+  <p class="card-desc">
+    Configuro l'infrastruttura GraphRAG e i Pure Data Nodes.
+    Gestisco sincronizzazione omnichannel e aggiornamento
+    continuo della conoscenza strutturata.
+  </p>
+  <ul class="deliverables">
+    <li>Progettazione Knowledge Graph su misura</li>
+    <li>Implementazione Pure Data Nodes</li>
+    <li>Markdown semantico ottimizzato per LLM</li>
+    <li>Cron jobs e sincronizzazione omnichannel</li>
+    <li>Dashboard QEN scoring (S/E/T)</li>
+  </ul>
+  <div class="card-footer">
+    <span class="card-tag">Ricorrente mensile</span>
+    <span class="card-arrow">→</span>
+  </div>
+</div>
+
+<div class="card reveal d2">
+  <div class="card-num">03 / 03</div>
+  <h3><span>Secure Identity</span> Shield</h3>
+  <p class="card-model">Compliance · Milestone · Value-based</p>
+  <p class="card-desc">
+    Implemento protocolli DID per garantire che i tuoi dati
+    siano protetti, verificabili e conformi. Ogni agente
+    autenticato e tracciabile.
+  </p>
+  <ul class="deliverables">
+    <li>Architettura DID per accesso agenti</li>
+    <li>Validazione identità digitale aziendale</li>
+    <li>GDPR art.22/35 — compliance documentata</li>
+    <li>Audit trail decisioni automatizzate</li>
+    <li>Report conformità EU AI Act ready</li>
+  </ul>
+  <div class="card-footer">
+    <span class="card-tag">Value-based pricing</span>
+    <span class="card-arrow">→</span>
+  </div>
+</div>
+```
+
+  </div>
+</section>
+
+<section>
+  <p class="slabel reveal">Come si lavora</p>
+  <div class="process-grid reveal">
+    <div class="pstep">
+      <div class="pstep-num">STEP 01</div>
+      <h4><span>Audit</span> iniziale</h4>
+      <p>60 minuti. Mappa dell'architettura esistente e identificazione nodi critici. Nessun impegno successivo.</p>
+    </div>
+    <div class="pstep">
+      <div class="pstep-num">STEP 02</div>
+      <h4><span>Modeling</span> semantico</h4>
+      <p>Progettazione del grafo e struttura Pure Data Nodes. Deliverable: schema approvato e documentato.</p>
+    </div>
+    <div class="pstep">
+      <div class="pstep-num">STEP 03</div>
+      <h4><span>Integration</span> e deploy</h4>
+      <p>Implementazione su infrastruttura cliente o VPS gestito. Testing end-to-end con agenti reali.</p>
+    </div>
+    <div class="pstep">
+      <div class="pstep-num">STEP 04</div>
+      <h4><span>Monitoring</span> continuo</h4>
+      <p>Report mensile, aggiornamento QEN scores e supervisione conformità normativa.</p>
+    </div>
+  </div>
+</section>
+
+<div class="metrics-band">
+  <div class="mquote reveal">
+    Beyond the graphical interface: il dato deve essere intelligibile, trasparente e immediatamente operativo per gli agenti autonomi.
+    <cite>— Roberto Bob Malini, Cognitive Logic</cite>
+  </div>
+  <div class="mnums reveal d1">
+    <div class="mnum-item">
+      <span class="mnum-val">−60%</span>
+      <span class="mnum-desc">Token consumati<br>per query</span>
+    </div>
+    <div class="mnum-item">
+      <span class="mnum-val">×3</span>
+      <span class="mnum-desc">Velocità<br>time-to-market</span>
+    </div>
+    <div class="mnum-item">
+      <span class="mnum-val">100%</span>
+      <span class="mnum-desc">Tracciabilità<br>EU AI Act</span>
+    </div>
+  </div>
+</div>
+
+<section class="cta-section">
+  <h2 class="reveal">Inizia con un<br><span>Audit gratuito.</span></h2>
+  <p class="reveal d1">30 minuti. Nessun impegno. Ti dico esattamente dove stanno i colli di bottiglia nella tua architettura dati.</p>
+  <div class="cta-btns reveal d2">
+    <a href="mailto:info@cognitivelogic.it?subject=AI-Ready Audit Request" class="btn">→ Prenota l'Audit</a>
+    <a href="https://api.cognitivelogic.it/copilot" class="btn btn-ghost" target="_blank" rel="noopener">Compliance Copilot ↗</a>
+  </div>
+</section>
+
+<footer>
+  <span class="footer-brand">Cognitive Logic © 2026 — Bologna</span>
+  <div class="footer-links">
+    <a href="/">Home</a>
+    <a href="https://api.cognitivelogic.it/" target="_blank" rel="noopener">API</a>
+    <a href="/llm-index.html">LLM Index</a>
+    <a href="https://fuorimenu.substack.com" target="_blank" rel="noopener">Fuorimenu</a>
+    <a href="https://linkedin.com/in/robertobobmalini" target="_blank" rel="noopener">LinkedIn</a>
+    <a href="mailto:info@cognitivelogic.it">info@cognitivelogic.it</a>
+  </div>
+</footer>
+
+<script>
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add("visible"); });
+  }, { threshold: 0.08, rootMargin: "0px 0px -40px 0px" });
+  document.querySelectorAll(".reveal").forEach(el => obs.observe(el));
+</script>
+
+</body>
+</html>
