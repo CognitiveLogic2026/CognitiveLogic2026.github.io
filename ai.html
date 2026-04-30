@@ -1,10 +1,11 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>AI Engine — Cognitive Logic</title>
-  <meta name="description" content="CognitiveLogic AI Engine — Pure Data Nodes, Cognitive Architectures, Ethical AI Systems." />
+  <meta name="description" content="CognitiveLogic Dual-Brain AI Engine — Claude + Gemini, Pure Data Nodes, QEN scoring, EU AI Act compliance infrastructure." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet" />
@@ -35,186 +36,297 @@
 
   <main>
 
-    <!-- ── Hero ── -->
-    <section class="hero">
-      <div class="container">
-        <div class="eyebrow">AI Engine · Cognitive Architectures</div>
-        <h1>
-          Architetture cognitive<br>
-          <em style="font-style:italic;color:var(--gold)">per AI etica e sovrana.</em>
-        </h1>
-        <p class="hero-lead">
-          Il motore AI di CognitiveLogic è un sistema modulare progettato per operare
-          su Pure Data Nodes, abilitando intelligenza artificiale trasparente, spiegabile
-          e sovrana. L'allineamento etico come parte del substrato computazionale.
+```
+<!-- ── Hero ── -->
+<section class="hero">
+  <div class="container">
+    <div class="eyebrow">AI Engine · Dual-Brain Architecture</div>
+    <h1>
+      Due cervelli.<br>
+      <em style="font-style:italic;color:var(--gold)">Un'unica etica computabile.</em>
+    </h1>
+    <p class="hero-lead">
+      Il motore AI di CognitiveLogic è un sistema dual-brain orchestrato:
+      Claude (Anthropic) per compliance EU AI Act + GDPR,
+      Gemini (Google) per QEN scoring e market intelligence.
+      Esecuzione parallela via <code style="font-family:var(--mono);font-size:0.85em">/full-analysis</code>.
+      L'allineamento etico come substrato computazionale, non post-hoc.
+    </p>
+  </div>
+</section>
+
+<!-- ── Dual-Brain Overview ── -->
+<section class="section" style="padding-top:0">
+  <div class="container">
+    <div class="section-heading">
+      <div class="eyebrow">Dual-Brain Engine</div>
+      <h2>Claude + Gemini — orchestrazione parallela.</h2>
+      <p>
+        Due LLM con specializzazioni distinte, orchestrati in parallelo da
+        <code style="font-family:var(--mono);font-size:0.85em">orchestrator.py</code>.
+        Ogni richiesta a <code style="font-family:var(--mono);font-size:0.85em">/full-analysis</code>
+        attiva entrambi i brain simultaneamente e restituisce un output unificato.
+      </p>
+    </div>
+
+    <div class="grid-2">
+      <article class="card" style="padding:32px">
+        <span class="feature-number">Brain A · Flask :5000</span>
+        <h3>Claude — Anthropic</h3>
+        <p class="text-sm mt-16" style="color:var(--muted);line-height:1.8">
+          EU AI Act Annex I / II / III classification.<br>
+          GDPR art. 22 — decisioni automatizzate.<br>
+          DPIA mapping art. 35.<br>
+          Compliance narrative + PDF report export.
         </p>
-      </div>
-    </section>
+      </article>
 
-    <!-- ── Architecture Overview ── -->
-    <section class="section" style="padding-top:0">
-      <div class="container">
-        <div class="section-heading">
-          <div class="eyebrow">Architecture Overview</div>
-          <h2>Pure Data Nodes — l'unità cognitiva atomica.</h2>
-          <p>
-            Ogni Pure Data Node è un'unità cognitiva autonoma che porta con sé
-            identità verificata, struttura semantica, metadati etici e layer di
-            spiegabilità. L'AI opera su questi nodi, non su dati grezzi.
-          </p>
+      <article class="card" style="padding:32px">
+        <span class="feature-number">Brain B · Flask :5001</span>
+        <h3>Gemini — Google</h3>
+        <p class="text-sm mt-16" style="color:var(--muted);line-height:1.8">
+          QEN scoring (Vs · Va · Vt).<br>
+          Market intelligence e sector scan.<br>
+          Territorial data analysis.<br>
+          Batch ETL scoring pipeline.
+        </p>
+      </article>
+    </div>
+
+    <!-- Orchestration layer -->
+    <div class="card" style="padding:28px;margin-top:0;font-family:var(--mono);font-size:0.78rem;color:var(--muted);line-height:2">
+      <div style="color:var(--gold);margin-bottom:8px;font-size:0.7rem;letter-spacing:0.12em;text-transform:uppercase">Orchestration Layer · api.cognitivelogic.it</div>
+      Nginx (443) → api.cognitivelogic.it<br>
+      ├── Flask :5000 — Claude API · risk · compliance · analyze<br>
+      ├── Flask :5001 — Gemini API · qen-score · market-scan · explain<br>
+      └── orchestrator.py → /full-analysis (parallel dual-brain)
+    </div>
+  </div>
+</section>
+
+<!-- ── Pure Data Nodes ── -->
+<section class="section" style="padding-top:0">
+  <div class="container">
+    <div class="section-heading">
+      <div class="eyebrow">Pure Data Nodes</div>
+      <h2>L'unità cognitiva atomica.</h2>
+      <p>
+        Ogni Pure Data Node porta identità verificata, struttura semantica,
+        metadati etici e layer di spiegabilità. L'AI opera su questi nodi,
+        non su dati grezzi.
+      </p>
+    </div>
+
+    <div class="grid-2">
+      <article class="card" style="padding:32px">
+        <span class="feature-number">PDN · 01</span>
+        <h3>Verified Identity</h3>
+        <p class="text-sm mt-16" style="color:var(--muted);line-height:1.8">
+          Ogni nodo è ancorato crittograficamente via Decentralized Identity (DID).
+          <code style="font-family:var(--mono);font-size:0.82em">did:web:cognitivelogic.it:robertomalini</code>.
+          Nessun dato senza provenienza verificabile.
+        </p>
+      </article>
+
+      <article class="card" style="padding:32px">
+        <span class="feature-number">PDN · 02</span>
+        <h3>Semantic Structure</h3>
+        <p class="text-sm mt-16" style="color:var(--muted);line-height:1.8">
+          130 nodi · 209 relazioni (graph v5). Node types: institutions,
+          algorithms, regulations, KPIs, territories. Source of truth
+          su Hetzner <code style="font-family:var(--mono);font-size:0.82em">/root</code>.
+        </p>
+      </article>
+
+      <article class="card" style="padding:32px">
+        <span class="feature-number">PDN · 03</span>
+        <h3>Ethical Metadata</h3>
+        <p class="text-sm mt-16" style="color:var(--muted);line-height:1.8">
+          Score QEN incorporati direttamente negli oggetti dati.<br>
+          <code style="font-family:var(--mono);font-size:0.82em">QEN = (Vs × 0.40) + (Va × 0.35) + (Vt × 0.25)</code>.<br>
+          Scala 0–100. Riferimento: CNA Bologna = 77.75.
+        </p>
+      </article>
+
+      <article class="card" style="padding:32px">
+        <span class="feature-number">PDN · 04</span>
+        <h3>Explainability Layer</h3>
+        <p class="text-sm mt-16" style="color:var(--muted);line-height:1.8">
+          Tutte le operazioni cognitive rimangono tracciabili e verificabili.
+          Ogni decisione produce una catena logica ricostruibile.
+          Report PDF export via jsPDF.
+        </p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ── Cognitive Processing Stack ── -->
+<section class="section" style="padding-top:0">
+  <div class="container">
+    <div class="section-heading">
+      <div class="eyebrow">Cognitive Processing Stack</div>
+      <h2>Il flusso di elaborazione cognitiva multi-strato.</h2>
+    </div>
+
+    <div class="grid-2" style="gap:0;border:1px solid var(--line)">
+      <div style="border-right:1px solid var(--line)">
+        <div class="stack-layer">
+          <div class="stack-layer-label">Fase 01</div>
+          <div class="stack-layer-text">Data Ingestion</div>
+          <p class="text-xs mt-8" style="color:var(--muted)">Parsing semantico, normalizzazione, validazione integrità. JSON-LD via <code style="font-family:var(--mono);font-size:0.82em">/validate</code>.</p>
         </div>
-
-        <div class="grid-2">
-          <article class="card" style="padding:32px">
-            <span class="feature-number">PDN · 01</span>
-            <h3>Verified Identity</h3>
-            <p class="text-sm mt-16" style="color:var(--muted);line-height:1.8">
-              Ogni nodo è ancorato crittograficamente via Decentralized Identity (DID).
-              Nessun dato senza provenienza verificabile.
-            </p>
-          </article>
-
-          <article class="card" style="padding:32px">
-            <span class="feature-number">PDN · 02</span>
-            <h3>Semantic Structure</h3>
-            <p class="text-sm mt-16" style="color:var(--muted);line-height:1.8">
-              I dati sono strutturati per l'interpretabilità diretta da macchina
-              e per il reasoning. Non input — conoscenza strutturata.
-            </p>
-          </article>
-
-          <article class="card" style="padding:32px">
-            <span class="feature-number">PDN · 03</span>
-            <h3>Ethical Metadata</h3>
-            <p class="text-sm mt-16" style="color:var(--muted);line-height:1.8">
-              I metriche QEN incorporano l'integrità etica direttamente negli oggetti dati.
-              Score QEN = (Vs × 0.40) + (Va × 0.35) + (Vt × 0.25).
-            </p>
-          </article>
-
-          <article class="card" style="padding:32px">
-            <span class="feature-number">PDN · 04</span>
-            <h3>Explainability Layer</h3>
-            <p class="text-sm mt-16" style="color:var(--muted);line-height:1.8">
-              Tutte le operazioni cognitive rimangono tracciabili e verificabili.
-              Ogni decisione produce una catena logica ricostruibile.
-            </p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <!-- ── Cognitive Processing Stack ── -->
-    <section class="section" style="padding-top:0">
-      <div class="container">
-        <div class="section-heading">
-          <div class="eyebrow">Cognitive Processing Stack</div>
-          <h2>Il flusso di elaborazione cognitiva multi-strato.</h2>
-        </div>
-
-        <div class="grid-2" style="gap:0;border:1px solid var(--line)">
-          <div style="border-right:1px solid var(--line)">
-            <div class="stack-layer">
-              <div class="stack-layer-label">Fase 01</div>
-              <div class="stack-layer-text">Data Ingestion</div>
-              <p class="text-xs mt-8" style="color:var(--muted)">Parsing semantico, normalizzazione, validazione integrità.</p>
-            </div>
-            <div class="stack-layer">
-              <div class="stack-layer-label">Fase 02</div>
-              <div class="stack-layer-text">Knowledge Graph Layer</div>
-              <p class="text-xs mt-8" style="color:var(--muted)">Modellazione relazionale dinamica attraverso domini cognitivi. 121 nodi, 165 relazioni.</p>
-            </div>
-          </div>
-          <div>
-            <div class="stack-layer">
-              <div class="stack-layer-label">Fase 03</div>
-              <div class="stack-layer-text">Reasoning Core</div>
-              <p class="text-xs mt-8" style="color:var(--muted)">Inferenza neuro-simbolica, modellazione logica e cognizione probabilistica.</p>
-            </div>
-            <div class="stack-layer" style="border-left-color:transparent">
-              <div class="stack-layer-label">Fase 04</div>
-              <div class="stack-layer-text">Ethical Governor</div>
-              <p class="text-xs mt-8" style="color:var(--muted)">Valutazione continua tramite QEN e policy engine etici. Score in tempo reale.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ── Ethical AI by Design ── -->
-    <section class="section" style="padding-top:0">
-      <div class="container">
-        <div class="section-heading">
-          <div class="eyebrow">Ethical AI by Design</div>
-          <h2>L'allineamento etico come substrato computazionale.</h2>
-          <p>
-            CognitiveLogic incorpora l'allineamento etico direttamente nel substrato
-            computazionale, eliminando la separazione tra performance e responsabilità.
-            Non post-hoc — strutturale.
-          </p>
-        </div>
-
-        <div class="grid-3">
-          <div class="card" style="padding:24px;text-align:center">
-            <div style="font-family:var(--serif);font-size:2.8rem;font-weight:300;color:var(--gold);line-height:1;margin-bottom:10px">T</div>
-            <div style="font-size:0.72rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--muted)">Transparency</div>
-          </div>
-          <div class="card" style="padding:24px;text-align:center">
-            <div style="font-family:var(--serif);font-size:2.8rem;font-weight:300;color:var(--gold);line-height:1;margin-bottom:10px">E</div>
-            <div style="font-size:0.72rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--muted)">Explainability</div>
-          </div>
-          <div class="card" style="padding:24px;text-align:center">
-            <div style="font-family:var(--serif);font-size:2.8rem;font-weight:300;color:var(--gold);line-height:1;margin-bottom:10px">S</div>
-            <div style="font-size:0.72rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--muted)">Sustainability</div>
-          </div>
+        <div class="stack-layer">
+          <div class="stack-layer-label">Fase 02</div>
+          <div class="stack-layer-text">Knowledge Graph Layer</div>
+          <p class="text-xs mt-8" style="color:var(--muted)">Modellazione relazionale dinamica attraverso domini cognitivi. 130 nodi · 209 relazioni (v5).</p>
         </div>
       </div>
-    </section>
-
-    <!-- ── Use Domains ── -->
-    <section class="section" style="padding-top:0">
-      <div class="container">
-        <div class="section-heading">
-          <div class="eyebrow">Use Domains</div>
-          <h2>I domini applicativi del motore cognitivo.</h2>
+      <div>
+        <div class="stack-layer">
+          <div class="stack-layer-label">Fase 03</div>
+          <div class="stack-layer-text">Dual-Brain Reasoning</div>
+          <p class="text-xs mt-8" style="color:var(--muted)">Claude + Gemini in parallelo. Inferenza neuro-simbolica, scoring QEN, compliance EU AI Act + GDPR.</p>
         </div>
-
-        <div class="grid-2">
-          <article class="card" style="padding:28px">
-            <span class="feature-number">Domain · 01</span>
-            <h3>Ethical AI Governance</h3>
-            <p class="text-sm mt-16" style="color:var(--muted);line-height:1.8">
-              Policy modeling, validazione compliance, auditing algoritmico.
-              Governance AI come infrastruttura operativa, non documentazione.
-            </p>
-          </article>
-          <article class="card" style="padding:28px">
-            <span class="feature-number">Domain · 02</span>
-            <h3>Food Systems Intelligence</h3>
-            <p class="text-sm mt-16" style="color:var(--muted);line-height:1.8">
-              Neurogastronomia, metriche di sostenibilità, cognizione comportamentale.
-              Score QEN per ecosistemi artigianali e filiere locali.
-            </p>
-          </article>
-          <article class="card" style="padding:28px">
-            <span class="feature-number">Domain · 03</span>
-            <h3>Knowledge Infrastructure</h3>
-            <p class="text-sm mt-16" style="color:var(--muted);line-height:1.8">
-              Web semantico di nuova generazione e reti di dati cognitivi.
-              121 nodi, 165 relazioni, 3 algoritmi attivi.
-            </p>
-          </article>
-          <article class="card" style="padding:28px">
-            <span class="feature-number">Domain · 04</span>
-            <h3>Smart Environments</h3>
-            <p class="text-sm mt-16" style="color:var(--muted);line-height:1.8">
-              Sostenibilità urbana, ecosistemi adattativi, governance intelligente.
-              Sistemi multi-agente per ambienti complessi.
-            </p>
-          </article>
+        <div class="stack-layer" style="border-left-color:transparent">
+          <div class="stack-layer-label">Fase 04</div>
+          <div class="stack-layer-text">Ethical Governor</div>
+          <p class="text-xs mt-8" style="color:var(--muted)">Valutazione continua tramite QEN. Score in tempo reale. Report PDF. Orchestrator output unificato.</p>
         </div>
       </div>
-    </section>
+    </div>
+  </div>
+</section>
+
+<!-- ── API Endpoints ── -->
+<section class="section" style="padding-top:0">
+  <div class="container">
+    <div class="section-heading">
+      <div class="eyebrow">API Endpoints</div>
+      <h2>Infrastruttura pubblica e verificabile.</h2>
+      <p>
+        <code style="font-family:var(--mono);font-size:0.85em">api.cognitivelogic.it</code> —
+        Nginx · Flask :5000/:5001 · SSL Let's Encrypt · Hetzner CAX21 ARM64.
+      </p>
+    </div>
+
+    <div class="grid-2">
+      <article class="card" style="padding:28px">
+        <span class="feature-number">POST · Flask :5000 · Claude</span>
+        <h3>/copilot-analyze</h3>
+        <p class="text-sm mt-16" style="color:var(--muted);line-height:1.8">
+          EU AI Act Annex I/II/III classification.<br>
+          GDPR art. 22 / art. 35 mapping.<br>
+          QEN Score integrato. Rate limit: 10 req/min.
+        </p>
+      </article>
+      <article class="card" style="padding:28px">
+        <span class="feature-number">POST · orchestrator.py · parallel</span>
+        <h3>/full-analysis</h3>
+        <p class="text-sm mt-16" style="color:var(--muted);line-height:1.8">
+          Dual-brain execution: Claude + Gemini simultanei.<br>
+          Output unificato: compliance + QEN score + market scan.<br>
+          Endpoint principale per analisi complete.
+        </p>
+      </article>
+      <article class="card" style="padding:28px">
+        <span class="feature-number">POST · Flask :5001 · Gemini</span>
+        <h3>/gemini/qen-score</h3>
+        <p class="text-sm mt-16" style="color:var(--muted);line-height:1.8">
+          QEN scoring su tre dimensioni (Vs · Va · Vt).<br>
+          Batch ETL pipeline. Territorial data analysis.<br>
+          Market intelligence e sector scan.
+        </p>
+      </article>
+      <article class="card" style="padding:28px">
+        <span class="feature-number">Roadmap Q3 2026</span>
+        <h3>/cross-data</h3>
+        <p class="text-sm mt-16" style="color:var(--muted);line-height:1.8">
+          Multi-istituzionale per zona e filiera.<br>
+          ETL open.er.it · CCIAA TelemacoPay.<br>
+          2000+ nodi · Enterprise scale.
+        </p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ── Ethical AI by Design ── -->
+<section class="section" style="padding-top:0">
+  <div class="container">
+    <div class="section-heading">
+      <div class="eyebrow">Ethical AI by Design</div>
+      <h2>L'allineamento etico come substrato computazionale.</h2>
+      <p>
+        Non post-hoc — strutturale. Incorporato nel knowledge graph,
+        nei pesi QEN, nella classificazione EU AI Act.
+        Ethics is not a narrative — it is a dataset.
+      </p>
+    </div>
+
+    <div class="grid-3">
+      <div class="card" style="padding:24px;text-align:center">
+        <div style="font-family:var(--serif);font-size:2.8rem;font-weight:300;color:var(--gold);line-height:1;margin-bottom:10px">T</div>
+        <div style="font-size:0.72rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--muted)">Transparency</div>
+      </div>
+      <div class="card" style="padding:24px;text-align:center">
+        <div style="font-family:var(--serif);font-size:2.8rem;font-weight:300;color:var(--gold);line-height:1;margin-bottom:10px">E</div>
+        <div style="font-size:0.72rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--muted)">Explainability</div>
+      </div>
+      <div class="card" style="padding:24px;text-align:center">
+        <div style="font-family:var(--serif);font-size:2.8rem;font-weight:300;color:var(--gold);line-height:1;margin-bottom:10px">S</div>
+        <div style="font-size:0.72rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--muted)">Sovereignty</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── Use Domains ── -->
+<section class="section" style="padding-top:0">
+  <div class="container">
+    <div class="section-heading">
+      <div class="eyebrow">Use Domains</div>
+      <h2>I domini applicativi del motore cognitivo.</h2>
+    </div>
+
+    <div class="grid-2">
+      <article class="card" style="padding:28px">
+        <span class="feature-number">Domain · 01</span>
+        <h3>Ethical AI Governance</h3>
+        <p class="text-sm mt-16" style="color:var(--muted);line-height:1.8">
+          EU AI Act classification, GDPR compliance, auditing algoritmico.
+          Governance AI come infrastruttura operativa, non documentazione.
+        </p>
+      </article>
+      <article class="card" style="padding:28px">
+        <span class="feature-number">Domain · 02</span>
+        <h3>Food Systems Intelligence</h3>
+        <p class="text-sm mt-16" style="color:var(--muted);line-height:1.8">
+          Neurogastronomia, metriche di sostenibilità, cognizione comportamentale.
+          Score QEN per ecosistemi artigianali e filiere locali — Bologna 100 Botteghe.
+        </p>
+      </article>
+      <article class="card" style="padding:28px">
+        <span class="feature-number">Domain · 03</span>
+        <h3>Knowledge Infrastructure</h3>
+        <p class="text-sm mt-16" style="color:var(--muted);line-height:1.8">
+          Semantic knowledge graph v5. Static JSON su Hetzner /root.
+          130 nodi · 209 relazioni. Node types: institutions, algorithms,
+          regulations, KPIs, territories.
+        </p>
+      </article>
+      <article class="card" style="padding:28px">
+        <span class="feature-number">Domain · 04</span>
+        <h3>B2G Data Intelligence</h3>
+        <p class="text-sm mt-16" style="color:var(--muted);line-height:1.8">
+          Dashboard istituzionale. ETL CCIAA TelemacoPay.
+          Enterprise CCIAA · Regione ER. Roadmap Q4 2026 – Q1 2027.
+        </p>
+      </article>
+    </div>
+  </div>
+</section>
+```
 
   </main>
 
@@ -222,8 +334,8 @@
     <div class="container footer-inner">
       <div>
         <div class="footer-brand">Cognitive Logic · AI Engine</div>
-        <div class="footer-sub">Cognitive Architectures · Ethical Intelligence · Sovereign AI.</div>
-        <div class="footer-copy mt-8">© 2026 Roberto Bob Malini</div>
+        <div class="footer-sub">Dual-Brain Architecture · Claude + Gemini · Ethical Intelligence · Sovereign AI.</div>
+        <div class="footer-copy mt-8">© 2026 Roberto Bob Malini · did:web:cognitivelogic.it:robertomalini</div>
       </div>
       <div class="footer-links">
         <a href="index.html">Home</a>
