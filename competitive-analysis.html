@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>QEN — Analisi Competitiva | Cognitive Logic</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --navy:    #0B1120;
+      --navy-mid:#111B2E;
+      --gold:    #C9A84C;
+      --gold-lt: #E2C97E;
+      --cream:   #F5F0E8;
+      --muted:   #8A93A8;
+      --border:  rgba(201,168,76,0.18);
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: var(--navy);
+      color: var(--cream);
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      line-height: 1.65;
+    }
+    .page-header {
+      border-bottom: 1px solid var(--border);
+      padding: 3.5rem 2rem 3rem;
+      text-align: center;
+      background: var(--navy-mid);
+    }
+    .label-tag {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.65rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1rem;
+      display: block;
+    }
+    .page-header h1 {
+      font-size: clamp(2rem, 5vw, 3.2rem);
+      font-weight: 300;
+      color: var(--cream);
+      letter-spacing: 0.02em;
+    }
+    .page-header h1 em { color: var(--gold-lt); font-style: italic; }
+    .page-header p {
+      margin-top: 1rem;
+      color: var(--muted);
+      font-size: 1.1rem;
+      font-weight: 300;
+      max-width: 620px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .container { max-width: 1100px; margin: 0 auto; padding: 4rem 2rem; }
+    section + section { margin-top: 4rem; }
+    .section-title {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.65rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1.8rem;
+      padding-bottom: 0.6rem;
+      border-bottom: 1px solid var(--border);
+    }
+    .quadrant-wrap { max-width: 680px; margin: 0 auto; }
+    .quadrant-svg { width: 100%; height: auto; display: block; }
+    .comp-table { width: 100%; border-collapse: collapse; font-size: 1rem; }
+    .comp-table thead tr { border-bottom: 1px solid var(--gold); }
+    .comp-table th {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.62rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--gold);
+      padding: 0.7rem 1rem;
+      text-align: left;
+      font-weight: 400;
+    }
+    .comp-table td {
+      padding: 0.85rem 1rem;
+      border-bottom: 1px solid var(--border);
+      font-weight: 300;
+      vertical-align: top;
+    }
+    .comp-table tr:last-child td { border-bottom: none; }
+    .comp-table tr.highlight-qen td {
+      background: rgba(201,168,76,0.07);
+      color: var(--gold-lt);
+    }
+    .comp-table tr.highlight-qen td:first-child { font-weight: 600; }
+    .badge {
+      display: inline-block;
+      font-family: 'DM Mono', monospace;
+      font-size: 0.58rem;
+      letter-spacing: 0.1em;
+      padding: 0.2em 0.55em;
+      border-radius: 2px;
+      text-transform: uppercase;
+      line-height: 1.6;
+    }
+    .badge-yes  { background: rgba(100,200,120,0.12); color: #7ED9A0; border: 1px solid rgba(100,200,120,0.25); }
+    .badge-no   { background: rgba(180,60,60,0.12);   color: #E08080; border: 1px solid rgba(180,60,60,0.2); }
+    .badge-part { background: rgba(201,168,76,0.12);  color: var(--gold-lt); border: 1px solid var(--border); }
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+    }
+    .card {
+      border: 1px solid var(--border);
+      background: var(--navy-mid);
+      padding: 1.8rem 1.6rem;
+      border-radius: 2px;
+    }
+    .card-icon { font-size: 1.4rem; margin-bottom: 0.9rem; }
+    .card h3 { font-size: 1.2rem; font-weight: 400; color: var(--gold-lt); margin-bottom: 0.5rem; }
+    .card p { font-size: 0.98rem; font-weight: 300; color: var(--muted); line-height: 1.7; }
+    .callout {
+      border-left: 2px solid var(--gold);
+      background: rgba(201,168,76,0.05);
+      padding: 1.8rem 2rem;
+    }
+    .callout p { font-size: 1.2rem; font-weight: 300; font-style: italic; color: var(--cream); line-height: 1.75; }
+    .callout p strong { color: var(--gold-lt); font-style: normal; font-weight: 600; }
+    .footnote {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.62rem;
+      color: var(--muted);
+      letter-spacing: 0.05em;
+      margin-top: 3rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--border);
+      text-align: center;
+    }
+    @media (max-width: 600px) {
+      .comp-table th, .comp-table td { padding: 0.6rem 0.5rem; font-size: 0.88rem; }
+      .callout p { font-size: 1.05rem; }
+    }
+  </style>
+</head>
+<body>
+
+<header class="page-header">
+  <span class="label-tag">Intelligence Report · Aprile 2026</span>
+  <h1>Analisi del <em>Posizionamento Competitivo</em><br>QEN Framework</h1>
+  <p>Mappatura del mercato ESG-like per PMI italiane e identificazione del gap strutturale non presidiato.</p>
+</header>
+
+<div class="container">
+
+  <section>
+    <div class="section-title">01 — Quadrante Strategico</div>
+    <div class="quadrant-wrap">
+      <svg class="quadrant-svg" viewBox="0 0 600 520" xmlns="http://www.w3.org/2000/svg">
+        <rect x="0"   y="0"   width="300" height="260" fill="rgba(180,60,60,0.04)" />
+        <rect x="300" y="0"   width="300" height="260" fill="rgba(100,200,120,0.06)" />
+        <rect x="0"   y="260" width="300" height="260" fill="rgba(60,100,180,0.04)" />
+        <rect x="300" y="260" width="300" height="260" fill="rgba(60,100,180,0.04)" />
+        <line x1="300" y1="10"  x2="300" y2="490" stroke="rgba(201,168,76,0.25)" stroke-width="1" stroke-dasharray="4 4"/>
+        <line x1="10"  y1="260" x2="590" y2="260" stroke="rgba(201,168,76,0.25)" stroke-width="1" stroke-dasharray="4 4"/>
+        <text x="300" y="510" text-anchor="middle" font-family="DM Mono, monospace" font-size="9" fill="#8A93A8" letter-spacing="1">ACCESSIBILITÀ PMI →</text>
+        <text x="12"  y="260" font-family="DM Mono, monospace" font-size="9" fill="#8A93A8" letter-spacing="1" transform="rotate(-90,12,260)">AI-NATIVITÀ →</text>
+        <text x="155" y="30" text-anchor="middle" font-family="DM Mono, monospace" font-size="8" fill="rgba(180,100,100,0.65)">ALTA AI / BASSA PMI</text>
+        <text x="445" y="30" text-anchor="middle" font-family="DM Mono, monospace" font-size="8" fill="rgba(100,200,120,0.55)">ALTA AI / ALTA PMI</text>
+        <text x="155" y="495" text-anchor="middle" font-family="DM Mono, monospace" font-size="8" fill="rgba(100,120,180,0.55)">BASSA AI / BASSA PMI</text>
+        <text x="445" y="495" text-anchor="middle" font-family="DM Mono, monospace" font-size="8" fill="rgba(100,120,180,0.55)">BASSA AI / ALTA PMI</text>
+        <!-- Competitors -->
+        <circle cx="145" cy="80"  r="22" fill="rgba(180,80,80,0.14)" stroke="rgba(180,80,80,0.4)" stroke-width="1"/>
+        <text x="145" y="84" text-anchor="middle" font-family="Cormorant Garamond, serif" font-size="10" fill="#E08080">Sustainalytics</text>
+        <circle cx="92"  cy="130" r="19" fill="rgba(180,80,80,0.12)" stroke="rgba(180,80,80,0.35)" stroke-width="1"/>
+        <text x="92"  y="134" text-anchor="middle" font-family="Cormorant Garamond, serif" font-size="10" fill="#E08080">MSCI ESG</text>
+        <circle cx="198" cy="105" r="16" fill="rgba(180,80,80,0.10)" stroke="rgba(180,80,80,0.30)" stroke-width="1"/>
+        <text x="198" y="109" text-anchor="middle" font-family="Cormorant Garamond, serif" font-size="10" fill="#E08080">ISS</text>
+        <circle cx="420" cy="358" r="21" fill="rgba(100,120,200,0.12)" stroke="rgba(100,120,200,0.35)" stroke-width="1"/>
+        <text x="420" y="362" text-anchor="middle" font-family="Cormorant Garamond, serif" font-size="10" fill="#A0A8E0">Cerved</text>
+        <circle cx="490" cy="392" r="18" fill="rgba(100,120,200,0.10)" stroke="rgba(100,120,200,0.30)" stroke-width="1"/>
+        <text x="490" y="396" text-anchor="middle" font-family="Cormorant Garamond, serif" font-size="10" fill="#A0A8E0">CRIF</text>
+        <circle cx="355" cy="292" r="17" fill="rgba(201,168,76,0.10)" stroke="rgba(201,168,76,0.35)" stroke-width="1"/>
+        <text x="355" y="296" text-anchor="middle" font-family="Cormorant Garamond, serif" font-size="10" fill="#C9A84C">Datrix</text>
+        <!-- QEN -->
+        <circle cx="478" cy="92" r="38" fill="none" stroke="rgba(201,168,76,0.18)" stroke-width="1"/>
+        <circle cx="478" cy="92" r="33" fill="rgba(100,200,120,0.09)" stroke="#C9A84C" stroke-width="1.5"/>
+        <text x="478" y="86" text-anchor="middle" font-family="Cormorant Garamond, serif" font-size="14" font-weight="600" fill="#E2C97E">QEN</text>
+        <text x="478" y="102" text-anchor="middle" font-family="DM Mono, monospace" font-size="7" fill="rgba(201,168,76,0.75)" letter-spacing="0.5">COGNITIVE LOGIC</text>
+        <!-- Gap box -->
+        <rect x="315" y="18" width="150" height="30" rx="2" fill="rgba(100,200,120,0.07)" stroke="rgba(100,200,120,0.28)" stroke-width="0.8"/>
+        <text x="390" y="30" text-anchor="middle" font-family="DM Mono, monospace" font-size="7.5" fill="rgba(100,200,120,0.8)" letter-spacing="0.4">GAP NON PRESIDIATO</text>
+        <text x="390" y="42" text-anchor="middle" font-family="DM Mono, monospace" font-size="7"   fill="rgba(100,200,120,0.55)" letter-spacing="0.3">QEN unico operatore</text>
+      </svg>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-title">02 — Matrice dei Player</div>
+    <table class="comp-table">
+      <thead>
+        <tr>
+          <th>Player</th>
+          <th>Segmento Target</th>
+          <th>AI-Nativo</th>
+          <th>PMI / Prossimità</th>
+          <th>Score Pubblico</th>
+          <th>Framework Etico Aperto</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Sustainalytics</td>
+          <td>Large cap quotate</td>
+          <td><span class="badge badge-part">Parziale</span></td>
+          <td><span class="badge badge-no">No</span></td>
+          <td><span class="badge badge-yes">Sì</span></td>
+          <td><span class="badge badge-no">No</span></td>
+        </tr>
+        <tr>
+          <td>MSCI ESG</td>
+          <td>Large cap quotate</td>
+          <td><span class="badge badge-part">Parziale</span></td>
+          <td><span class="badge badge-no">No</span></td>
+          <td><span class="badge badge-yes">Sì</span></td>
+          <td><span class="badge badge-no">No</span></td>
+        </tr>
+        <tr>
+          <td>ISS</td>
+          <td>Istituzionale / quotate</td>
+          <td><span class="badge badge-no">No</span></td>
+          <td><span class="badge badge-no">No</span></td>
+          <td><span class="badge badge-part">Parziale</span></td>
+          <td><span class="badge badge-no">No</span></td>
+        </tr>
+        <tr>
+          <td>Cerved</td>
+          <td>PMI italiane</td>
+          <td><span class="badge badge-no">No</span></td>
+          <td><span class="badge badge-yes">Sì</span></td>
+          <td><span class="badge badge-part">Credit-first</span></td>
+          <td><span class="badge badge-no">No</span></td>
+        </tr>
+        <tr>
+          <td>CRIF</td>
+          <td>PMI / credito</td>
+          <td><span class="badge badge-no">No</span></td>
+          <td><span class="badge badge-yes">Sì</span></td>
+          <td><span class="badge badge-part">Credit-first</span></td>
+          <td><span class="badge badge-no">No</span></td>
+        </tr>
+        <tr>
+          <td>Datrix</td>
+          <td>PMI / data analytics</td>
+          <td><span class="badge badge-part">Parziale</span></td>
+          <td><span class="badge badge-yes">Sì</span></td>
+          <td><span class="badge badge-no">No</span></td>
+          <td><span class="badge badge-no">No</span></td>
+        </tr>
+        <tr class="highlight-qen">
+          <td>QEN — Cognitive Logic</td>
+          <td>PMI · commercio di prossimità</td>
+          <td><span class="badge badge-yes">Nativo</span></td>
+          <td><span class="badge badge-yes">Sì</span></td>
+          <td><span class="badge badge-yes">Sì</span></td>
+          <td><span class="badge badge-yes">Sì</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section>
+    <div class="section-title">03 — Lettura del Gap</div>
+    <div class="cards">
+      <div class="card">
+        <div class="card-icon">◈</div>
+        <h3>Large Cap vs Prossimità</h3>
+        <p>Sustainalytics, MSCI e ISS operano esclusivamente su large cap quotate. Il mercato delle PMI italiane e del commercio di vicinato è strutturalmente fuori dal loro perimetro.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">◈</div>
+        <h3>Credit-First vs Ethics-First</h3>
+        <p>Cerved e CRIF presidiano le PMI ma con logica creditizia. Nessun framework etico aperto, nessuna integrazione AI nativa: i loro score misurano solvibilità, non responsabilità.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">◈</div>
+        <h3>Datrix: player prossimo, score assente</h3>
+        <p>Il competitor più vicino per segmento non pubblica metodologia né score. L'assenza di trasparenza è una debolezza strutturale che il QEN trasforma in vantaggio differenziale.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">◈</div>
+        <h3>AI-Natività come discriminante</h3>
+        <p>Il QEN è progettato dall'origine per agenti AI e LLM: dati strutturati, nodi semantici, output immediatamente operativi. Nessun altro player ha questa architettura sul segmento PMI.</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-title">04 — Conclusione Strategica</div>
+    <div class="callout">
+      <p>
+        Il quadrante <strong>alta AI-natività × alta accessibilità PMI</strong> è completamente non presidiato.
+        Non si tratta di una debolezza competitiva: è un <strong>mercato aperto</strong>.
+        Il QEN Framework è l'unico strumento ESG-like progettato nativamente per AI-first
+        e per il <strong>commercio di prossimità italiano</strong>.
+        Il gap non va colmato — va occupato.
+      </p>
+    </div>
+  </section>
+
+  <p class="footnote">
+    Cognitive Logic · cognitivelogic.it · QEN Framework · Analisi Competitiva Aprile 2026
+  </p>
+
+</div>
+</body>
+</html>
