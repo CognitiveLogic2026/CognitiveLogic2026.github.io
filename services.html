@@ -419,6 +419,66 @@ opacity: 0.5; transition: opacity 0.2s;
 .d1 { transition-delay: 0.1s; }
 .d2 { transition-delay: 0.2s; }
 .d3 { transition-delay: 0.3s; }
+
+  /* PRICING EXPAND */
+  .card-pricing {
+    margin-top: 1.5rem;
+    border-top: 1px solid var(--green-border);
+    padding-top: 1.2rem;
+  }
+  .pricing-toggle {
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 0.62rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--green);
+    background: none;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0;
+    transition: opacity 0.2s;
+  }
+  .pricing-toggle:hover { opacity: 0.7; }
+  .pricing-toggle .toggle-icon {
+    display: inline-block;
+    transition: transform 0.3s ease;
+    font-style: normal;
+  }
+  .pricing-toggle.open .toggle-icon { transform: rotate(45deg); }
+  .pricing-details {
+    display: none;
+    margin-top: 1.2rem;
+    padding: 1.2rem;
+    background: var(--green-dim);
+    border: 1px solid var(--green-border);
+  }
+  .pricing-details.open { display: block; }
+  .pricing-main {
+    font-family: "Syne", sans-serif;
+    font-size: 1.6rem;
+    font-weight: 800;
+    color: var(--green);
+    letter-spacing: -0.02em;
+    line-height: 1;
+    margin-bottom: 0.4rem;
+  }
+  .pricing-sub {
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 0.65rem;
+    color: var(--dim);
+    line-height: 1.7;
+    margin-bottom: 0.8rem;
+  }
+  .pricing-note {
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 0.6rem;
+    color: var(--green);
+    opacity: 0.6;
+    letter-spacing: 0.1em;
+  }
 </style>
 
 </head>
@@ -473,7 +533,7 @@ opacity: 0.5; transition: opacity 0.2s;
   <p class="slabel reveal">I Tre Pacchetti</p>
   <div class="cards">
 
-```
+
 <div class="card reveal">
   <div class="card-num">01 / 03</div>
   <h3><span>AI-Ready</span> Audit</h3>
@@ -539,7 +599,7 @@ opacity: 0.5; transition: opacity 0.2s;
     <span class="card-arrow">→</span>
   </div>
 </div>
-```
+
 
   </div>
 </section>
@@ -617,6 +677,12 @@ opacity: 0.5; transition: opacity 0.2s;
     entries.forEach(e => { if (e.isIntersecting) e.target.classList.add("visible"); });
   }, { threshold: 0.08, rootMargin: "0px 0px -40px 0px" });
   document.querySelectorAll(".reveal").forEach(el => obs.observe(el));
+
+  function togglePricing(btn) {
+    btn.classList.toggle('open');
+    const details = btn.nextElementSibling;
+    details.classList.toggle('open');
+  }
 </script>
 
 </body>
