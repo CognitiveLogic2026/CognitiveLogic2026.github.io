@@ -1362,8 +1362,9 @@ function toggleCheck(el, groupId) {
   el.classList.toggle('checked');
   const values = [];
   document.getElementById(groupId)?.querySelectorAll('.checkbox-item.checked .check-label')
-    .forEach(l => values.push(l.textContent));
+    .forEach(l => values.push(l.textContent.trim()));
   saveField(groupId, values);
+  if (currentStep === 5) buildReview();
 }
 
 function togglePrivacy(el) {
