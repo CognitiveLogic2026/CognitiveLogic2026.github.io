@@ -420,65 +420,114 @@ opacity: 0.5; transition: opacity 0.2s;
 .d2 { transition-delay: 0.2s; }
 .d3 { transition-delay: 0.3s; }
 
-  /* PRICING EXPAND */
-  .card-pricing {
-    margin-top: 1.5rem;
-    border-top: 1px solid var(--green-border);
-    padding-top: 1.2rem;
-  }
-  .pricing-toggle {
-    font-family: "IBM Plex Mono", monospace;
-    font-size: 0.62rem;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    color: var(--green);
-    background: none;
-    border: none;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    gap: 0.6rem;
-    padding: 0;
-    transition: opacity 0.2s;
-  }
-  .pricing-toggle:hover { opacity: 0.7; }
-  .pricing-toggle .toggle-icon {
-    display: inline-block;
-    transition: transform 0.3s ease;
-    font-style: normal;
-  }
-  .pricing-toggle.open .toggle-icon { transform: rotate(45deg); }
-  .pricing-details {
-    display: none;
-    margin-top: 1.2rem;
-    padding: 1.2rem;
-    background: var(--green-dim);
-    border: 1px solid var(--green-border);
-  }
-  .pricing-details.open { display: block; }
-  .pricing-main {
-    font-family: "Syne", sans-serif;
-    font-size: 1.6rem;
-    font-weight: 800;
-    color: var(--green);
-    letter-spacing: -0.02em;
-    line-height: 1;
-    margin-bottom: 0.4rem;
-  }
-  .pricing-sub {
-    font-family: "IBM Plex Mono", monospace;
-    font-size: 0.65rem;
-    color: var(--dim);
-    line-height: 1.7;
-    margin-bottom: 0.8rem;
-  }
-  .pricing-note {
-    font-family: "IBM Plex Mono", monospace;
-    font-size: 0.6rem;
-    color: var(--green);
-    opacity: 0.6;
-    letter-spacing: 0.1em;
-  }
+/* PRICING EXPAND */
+.card-pricing {
+margin-top: 1.5rem;
+border-top: 1px solid var(–green-border);
+padding-top: 1.2rem;
+}
+.pricing-toggle {
+font-family: “IBM Plex Mono”, monospace;
+font-size: 0.62rem;
+letter-spacing: 0.15em;
+text-transform: uppercase;
+color: var(–green);
+background: none;
+border: none;
+cursor: pointer;
+display: flex;
+align-items: center;
+gap: 0.6rem;
+padding: 0;
+transition: opacity 0.2s;
+}
+.pricing-toggle:hover { opacity: 0.7; }
+.pricing-toggle .toggle-icon {
+display: inline-block;
+transition: transform 0.3s ease;
+font-style: normal;
+}
+.pricing-toggle.open .toggle-icon { transform: rotate(45deg); }
+.pricing-details {
+display: none;
+margin-top: 1.2rem;
+padding: 1.2rem;
+background: var(–green-dim);
+border: 1px solid var(–green-border);
+}
+.pricing-details.open { display: block; }
+.pricing-main {
+font-family: “Syne”, sans-serif;
+font-size: 1.6rem;
+font-weight: 800;
+color: var(–green);
+letter-spacing: -0.02em;
+line-height: 1;
+margin-bottom: 0.4rem;
+}
+.pricing-sub {
+font-family: “IBM Plex Mono”, monospace;
+font-size: 0.65rem;
+color: var(–dim);
+line-height: 1.7;
+margin-bottom: 0.8rem;
+}
+.pricing-note {
+font-family: “IBM Plex Mono”, monospace;
+font-size: 0.6rem;
+color: var(–green);
+opacity: 0.6;
+letter-spacing: 0.1em;
+}
+
+/* ONBOARDING BAND */
+.onboarding-band {
+background: var(–bg2);
+border-top: 1px solid var(–green-border);
+border-bottom: 1px solid var(–green-border);
+padding: clamp(3rem,6vw,6rem) clamp(1.5rem,6vw,6rem);
+display: grid;
+grid-template-columns: 1fr 1fr;
+gap: 4rem;
+align-items: center;
+}
+@media (max-width: 800px) { .onboarding-band { grid-template-columns: 1fr; gap: 2.5rem; } }
+.onboarding-vettori { display: flex; flex-direction: column; gap: 0.75rem; }
+.vettore-row {
+padding: 1rem 1.5rem;
+border: 1px solid var(–green-border);
+background: var(–green-dim);
+display: flex; align-items: center; gap: 1.2rem;
+}
+.vettore-id {
+font-family: “IBM Plex Mono”, monospace;
+font-size: 1rem; font-weight: 500;
+color: var(–green); flex-shrink: 0; width: 2rem;
+}
+.vettore-name {
+font-family: “Syne”, sans-serif;
+font-size: 0.9rem; font-weight: 700;
+margin-bottom: 0.15rem;
+}
+.vettore-desc {
+font-family: “IBM Plex Mono”, monospace;
+font-size: 0.6rem; color: var(–dim);
+}
+.formula-row {
+padding: 0.8rem 1.5rem;
+border: 1px solid var(–green);
+display: flex; justify-content: space-between; align-items: center;
+flex-wrap: wrap; gap: 0.5rem;
+}
+.formula-label {
+font-family: “IBM Plex Mono”, monospace;
+font-size: 0.6rem; letter-spacing: 0.15em;
+text-transform: uppercase; color: var(–dim);
+}
+.formula-val {
+font-family: “IBM Plex Mono”, monospace;
+font-size: 0.72rem; color: var(–green);
+}
 </style>
 
 </head>
@@ -491,6 +540,7 @@ opacity: 0.5; transition: opacity 0.2s;
     <li><a href="/#qen">QEN Score</a></li>
     <li><a href="/#api">API</a></li>
     <li><a href="/services.html" class="active">Services</a></li>
+    <li><a href="/onboarding.html">HoReCa</a></li>
     <li><a href="/#fuorimenu">Fuorimenu</a></li>
   </ul>
   <div class="nav-right">
@@ -532,7 +582,6 @@ opacity: 0.5; transition: opacity 0.2s;
 <section id="packages">
   <p class="slabel reveal">I Tre Pacchetti</p>
   <div class="cards">
-
 
 <div class="card reveal">
   <div class="card-num">01 / 03</div>
@@ -630,7 +679,6 @@ opacity: 0.5; transition: opacity 0.2s;
   </div>
 </div>
 
-
   </div>
 </section>
 
@@ -659,6 +707,53 @@ opacity: 0.5; transition: opacity 0.2s;
     </div>
   </div>
 </section>
+
+<!-- ── ONBOARDING HORECA BAND ── -->
+
+<div class="onboarding-band reveal">
+  <div>
+    <p style="font-family:'IBM Plex Mono',monospace;font-size:0.62rem;letter-spacing:0.3em;text-transform:uppercase;color:var(--green);margin-bottom:1.5rem;">Filiera HoReCa · Fase 1</p>
+    <h2 style="font-family:'Syne',sans-serif;font-size:clamp(1.8rem,3.5vw,2.8rem);font-weight:800;letter-spacing:-0.03em;line-height:1.1;margin-bottom:1.2rem;">
+      Mappatura<br><span style="color:var(--green)">Etica Naturale</span>
+    </h2>
+    <p style="font-family:'IBM Plex Mono',monospace;font-size:0.78rem;color:var(--dim);line-height:1.9;margin-bottom:2rem;max-width:420px;">
+      Sei un operatore HoReCa? Compila il protocollo di raccolta dati per avviare
+      la certificazione scientifica della tua filiera. Il motore QEN trasforma i
+      tuoi dati operativi in un <strong style="color:var(--white)">Peso Scientifico certificabile</strong>.
+    </p>
+    <div style="display:flex;gap:1rem;flex-wrap:wrap;">
+      <a href="/onboarding.html" class="btn">→ Avvia il Protocollo</a>
+      <a href="#packages" class="btn btn-ghost">Scopri i servizi ↓</a>
+    </div>
+  </div>
+  <div class="onboarding-vettori">
+    <div class="vettore-row">
+      <span class="vettore-id">V_s</span>
+      <div>
+        <div class="vettore-name">Vettore Sociale</div>
+        <div class="vettore-desc">Capitale umano · Welfare · Inclusione · ×0.40</div>
+      </div>
+    </div>
+    <div class="vettore-row">
+      <span class="vettore-id">V_a</span>
+      <div>
+        <div class="vettore-name">Vettore Ambientale</div>
+        <div class="vettore-desc">Bio-circolarità · Energia · Scarti · ×0.35</div>
+      </div>
+    </div>
+    <div class="vettore-row">
+      <span class="vettore-id">V_t</span>
+      <div>
+        <div class="vettore-name">Vettore Territoriale</div>
+        <div class="vettore-desc">Prossimità · Filiera · Certificazioni · ×0.25</div>
+      </div>
+    </div>
+    <div class="formula-row">
+      <span class="formula-label">QEN Score Formula</span>
+      <span class="formula-val">V_s·0.40 + V_a·0.35 + V_t·0.25</span>
+    </div>
+  </div>
+</div>
 
 <div class="metrics-band">
   <div class="mquote reveal">
@@ -696,6 +791,7 @@ opacity: 0.5; transition: opacity 0.2s;
     <a href="/">Home</a>
     <a href="https://api.cognitivelogic.it/" target="_blank" rel="noopener">API</a>
     <a href="/llm-index.html">LLM Index</a>
+    <a href="/onboarding.html">HoReCa Onboarding</a>
     <a href="/qen/methodology">QEN Methodology</a>
     <a href="https://fuorimenu.substack.com" target="_blank" rel="noopener">Fuorimenu</a>
     <a href="https://linkedin.com/in/robertobobmalini" target="_blank" rel="noopener">LinkedIn</a>
