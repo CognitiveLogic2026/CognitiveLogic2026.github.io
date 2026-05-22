@@ -22,11 +22,22 @@ jobs:
           timeout:  60s
           script: |
             set -e
-            cd /app/cognitivelogic
+            REPO_URL="git@github.com:CognitiveLogic2026/CognitiveLogic2026.github.io.git"
+            REPO_DIR="/app/cognitivelogic"
+            GIT_SSH="GIT_SSH_COMMAND='ssh -i /root/.ssh/github_deploy -o StrictHostKeyChecking=no'"
 
-            # Pull aggiornamenti da main
-            git fetch origin main
-            git reset --hard origin/main
+            mkdir -p "$REPO_DIR"
+
+            if [ -d "$REPO_DIR/.git" ]; then
+              # Repo già esistente: pull
+              cd "$REPO_DIR"
+              eval "$GIT_SSH" git fetch origin main
+              git reset --hard origin/main
+            else
+              # Prima volta: clone
+              eval "$GIT_SSH" git clone "$REPO_URL" "$REPO_DIR"
+              cd "$REPO_DIR"
+            fi
 
             # Aggiorna dipendenze FastAPI reconciliation
             pip3 install -q -r qen-reconciliation/requirements.txt
