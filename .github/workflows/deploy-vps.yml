@@ -1,4 +1,4 @@
-name: Deploy QEN API → VPS
+name: Deploy QEN API to VPS
 
 on:
   push:
@@ -16,10 +16,10 @@ jobs:
       - name: Deploy su VPS Hetzner
         uses: appleboy/ssh-action@v1.0.3
         with:
-          host:     ${{ secrets.VPS_HOST }}
+          host: ${{ secrets.VPS_HOST }}
           username: root
-          key:      ${{ secrets.VPS_SSH_KEY }}
-          timeout:  60s
+          key: ${{ secrets.VPS_SSH_KEY }}
+          timeout: 60s
           script: |
             set -e
             export GIT_SSH_COMMAND="ssh -i /root/.ssh/github_deploy -o StrictHostKeyChecking=no"
@@ -28,7 +28,6 @@ jobs:
 
             if [ -d "$REPO_DIR/.git" ]; then
               cd "$REPO_DIR"
-              # Assicura che il remote sia corretto
               git remote set-url origin "$REPO_URL" 2>/dev/null || git remote add origin "$REPO_URL"
               git fetch origin main
               git reset --hard origin/main
@@ -38,34 +37,16 @@ jobs:
               cd "$REPO_DIR"
             fi
 
-            # Aggiorna dipendenze nel venv del progetto
             VENV="/app/cognitivelogic/venv"
             [ -d "$VENV" ] || python3 -m venv "$VENV"
             "$VENV/bin/pip" install -q -r qen-reconciliation/requirements.txt
 
-            # Aggiorna il servizio systemd per puntare al modulo FastAPI corretto
-            cat > /etc/systemd/system/cognitivelogic.service << 'UNIT'
-[Unit]
-Description=CognitiveLogic QEN Reconciliation API
-After=network.target
-
-[Service]
-Type=simple
-User=root
-WorkingDirectory=/app/cognitivelogic/qen-reconciliation
-ExecStart=/app/cognitivelogic/venv/bin/uvicorn main:app --host 0.0.0.0 --port 8001
-Restart=on-failure
-RestartSec=10
-
-[Install]
-WantedBy=multi-user.target
-UNIT
+            printf '[Unit]\nDescription=CognitiveLogic QEN Reconciliation API\nAfter=network.target\n\n[Service]\nType=simple\nUser=root\nWorkingDirectory=/app/cognitivelogic/qen-reconciliation\nExecStart=/app/cognitivelogic/venv/bin/uvicorn main:app --host 0.0.0.0 --port 8001\nRestart=on-failure\nRestartSec=10\n\n[Install]\nWantedBy=multi-user.target\n' > /etc/systemd/system/cognitivelogic.service
 
             systemctl daemon-reload
             systemctl restart cognitivelogic
 
-            # Health check (non bloccante)
             sleep 5
             HEALTH=$(curl -sf http://localhost:8001/health || echo "{}")
-            echo "Health check: $HEALTH"
-            echo "✅ Deploy completato"
+            echo "Health: $HEALTH"
+            echo "Deploy completato"
