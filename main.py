@@ -33,9 +33,8 @@ def save_pilot(name, score_data):
         pilots[key] = entry
     with open(PILOTS_PATH, "w") as f:
         json.dump(pilots, f, indent=2, ensure_ascii=False)
-    return send_file("/root/CognitiveLogic2026.github.io/index.html")
-    return send_file("/root/CognitiveLogic2026.github.io/index.html")
-    return send_file("/root/CognitiveLogic2026.github.io/index.html")
+
+def load_pilot(name):
     pilots = load_pilots()
     key = name.strip().lower()
     return pilots.get(key)
@@ -174,7 +173,7 @@ def copilot_analyze():
         vs = float(result.get("vs", 50))
         va = float(result.get("va", 50))
         vt = float(result.get("vt", 50))
-    return send_file("/root/CognitiveLogic2026.github.io/copilot.html")
+        qen_score = round((vs * 0.40) + (va * 0.35) + (vt * 0.25), 2)
         output = {
             "risk_level":        final_level,
             "risk_score":        final_score,
@@ -206,6 +205,13 @@ def gemini_qen_score():
     desc   = data.get("description", "")
     force_reanalyze = data.get("force", False)
     existing = check_duplicate(name)
+    prompt = (
+        "Analizza questa azienda e calcola il QEN Score.\n"
+        "Nome: " + name + "\nSettore: " + sector + "\nDescrizione: " + desc + "\n\n"
+        "Rispondi SOLO con JSON valido:\n"
+        '{"qen_score": 0.00, "badge": "QEN VERIFIED", '
+        '"vs": 0.00, "va": 0.00, "vt": 0.00, "sintesi": "testo"}'
+    )
     if existing and not force_reanalyze:
         return jsonify({
             "duplicate":   True,
@@ -214,13 +220,6 @@ def gemini_qen_score():
             "cached_data": existing.get("data"),
             "analyses":    1 + len(existing.get("history", []))
         }), 200
-        prompt = (
-        "Analizza questa azienda e calcola il QEN Score.\n"
-        "Nome: " + name + "\nSettore: " + sector + "\nDescrizione: " + desc + "\n\n"
-        "Rispondi SOLO con JSON valido:\n"
-        '{"qen_score": 0.00, "badge": "QEN VERIFIED", '
-        '"vs": 0.00, "va": 0.00, "vt": 0.00, "sintesi": "testo"}'
-    )
     SIMPLE_SYSTEM = (
         "Sei un esperto QEN Score. Rispondi SOLO con JSON valido, nessun testo aggiuntivo.\n"
         "Formula QEN: vs*0.40 + va*0.35 + vt*0.25\n"
@@ -251,6 +250,61 @@ def gemini_qen_score():
 @app.route("/copilot", methods=["GET"])
 def copilot_ui():
     return send_file("copilot.html")
+
+QEN_FORMULA_WEIGHTS = {"vs": 0.40, "va": 0.35, "vt": 0.25}
+QEN_DRIFT_THRESHOLD = 0.5
+
+@app.route("/reconcile/batch", methods=["POST"])
+def reconcile_batch():
+    provided_key = request.headers.get("X-API-Key")
+    if provided_key != os.getenv("COGNITIVE_API_KEY"):
+        return jsonify({"status": "error", "message": "Unauthorized"}), 403
+
+    pilots = load_pilots()
+    report = []
+    corrected = 0
+
+    for key, pilot in pilots.items():
+        data = pilot.get("data", {})
+        vs = data.get("vs")
+        va = data.get("va")
+        vt = data.get("vt")
+        stored_qen = data.get("qen_score") or data.get("risk_score")
+
+        if vs is None or va is None or vt is None or stored_qen is None:
+            report.append({"name": pilot.get("name", key), "status": "skipped",
+                           "reason": "vs/va/vt/qen_score mancanti"})
+            continue
+
+        expected_qen = round(float(vs) * 0.40 + float(va) * 0.35 + float(vt) * 0.25, 2)
+        drift = abs(float(stored_qen) - expected_qen)
+
+        if drift > QEN_DRIFT_THRESHOLD:
+            data["qen_score"] = expected_qen
+            pilot["data"] = data
+            corrected += 1
+            report.append({
+                "name": pilot.get("name", key), "status": "corrected",
+                "old_qen": stored_qen, "new_qen": expected_qen,
+                "delta": round(expected_qen - float(stored_qen), 2),
+                "reason": f"formula drift {drift:.2f}pts"
+            })
+        else:
+            report.append({"name": pilot.get("name", key), "status": "unchanged",
+                           "qen_score": stored_qen})
+
+    if corrected:
+        with open(PILOTS_PATH, "w") as f:
+            json.dump(pilots, f, indent=2, ensure_ascii=False)
+
+    return jsonify({
+        "status": "success",
+        "processed": len(report),
+        "corrected": corrected,
+        "unchanged": len(report) - corrected,
+        "report": report,
+        "timestamp": datetime.utcnow().strftime("%Y-%m-%dT%H:%M:%SZ"),
+    }), 200
 
 from orchestrator import register_orchestrator
 register_orchestrator(app)
