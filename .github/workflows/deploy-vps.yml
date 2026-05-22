@@ -22,20 +22,19 @@ jobs:
           timeout:  60s
           script: |
             set -e
+            export GIT_SSH_COMMAND="ssh -i /root/.ssh/github_deploy -o StrictHostKeyChecking=no"
             REPO_URL="git@github.com:CognitiveLogic2026/CognitiveLogic2026.github.io.git"
             REPO_DIR="/app/cognitivelogic"
-            GIT_SSH="GIT_SSH_COMMAND='ssh -i /root/.ssh/github_deploy -o StrictHostKeyChecking=no'"
-
-            mkdir -p "$REPO_DIR"
 
             if [ -d "$REPO_DIR/.git" ]; then
-              # Repo già esistente: pull
               cd "$REPO_DIR"
-              eval "$GIT_SSH" git fetch origin main
+              # Assicura che il remote sia corretto
+              git remote set-url origin "$REPO_URL" 2>/dev/null || git remote add origin "$REPO_URL"
+              git fetch origin main
               git reset --hard origin/main
             else
-              # Prima volta: clone
-              eval "$GIT_SSH" git clone "$REPO_URL" "$REPO_DIR"
+              mkdir -p "$REPO_DIR"
+              git clone "$REPO_URL" "$REPO_DIR"
               cd "$REPO_DIR"
             fi
 
