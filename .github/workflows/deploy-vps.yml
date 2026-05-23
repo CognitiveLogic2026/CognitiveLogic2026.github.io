@@ -56,14 +56,14 @@ jobs:
 
             # Write environment file (secrets never appear in service unit plaintext)
             mkdir -p /etc/cognitivelogic
-            python3 - << 'PYEOF'
-import os
-keys = ["ICEA_API_KEY","INFOCAMERE_API_KEY","SUPERVISOR_KEY","ANTHROPIC_API_KEY","COGNITIVE_API_KEY"]
-with open("/etc/cognitivelogic/env", "w") as f:
-    for k in keys:
-        f.write(f"{k}={os.environ.get(k,'')}\n")
-os.chmod("/etc/cognitivelogic/env", 0o600)
-PYEOF
+            printf '%s=%s\n' \
+              ICEA_API_KEY        "${ICEA_API_KEY}" \
+              INFOCAMERE_API_KEY  "${INFOCAMERE_API_KEY}" \
+              SUPERVISOR_KEY      "${SUPERVISOR_KEY}" \
+              ANTHROPIC_API_KEY   "${ANTHROPIC_API_KEY}" \
+              COGNITIVE_API_KEY   "${COGNITIVE_API_KEY}" \
+              > /etc/cognitivelogic/env
+            chmod 600 /etc/cognitivelogic/env
 
             # FastAPI service (porta 8001)
             cat > /etc/systemd/system/cognitivelogic.service << 'SVCEOF'
