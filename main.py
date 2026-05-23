@@ -7,8 +7,8 @@ from flask import Flask, request, jsonify, send_file
 
 app = Flask(__name__)
 
-GRAPH_PATH   = "/root/qen-framework/backend/public/data/graph.json"
-PILOTS_PATH  = "/root/qen-framework/backend/pilots.json"
+GRAPH_PATH   = "/app/cognitivelogic/graph.json"
+PILOTS_PATH  = "/app/cognitivelogic/pilots.json"
 ANTHROPIC_CLIENT = anthropic.Anthropic(api_key=os.getenv("ANTHROPIC_API_KEY"))
 
 def load_pilots():
