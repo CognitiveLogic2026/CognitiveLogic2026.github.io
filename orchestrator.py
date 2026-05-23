@@ -16,13 +16,39 @@ def _get_client():
     return _client
 
 
+def _repair_json(text):
+    text = re.sub(r",(\s*[}\]])", r"\1", text)  # trailing commas
+    # escape literal newlines/tabs inside string values
+    result = []
+    in_str = False
+    esc = False
+    for ch in text:
+        if esc:
+            result.append(ch)
+            esc = False
+        elif ch == "\\" and in_str:
+            result.append(ch)
+            esc = True
+        elif ch == '"':
+            in_str = not in_str
+            result.append(ch)
+        elif in_str and ch == "\n":
+            result.append("\\n")
+        elif in_str and ch == "\r":
+            result.append("\\r")
+        elif in_str and ch == "\t":
+            result.append("\\t")
+        else:
+            result.append(ch)
+    return "".join(result)
+
+
 def _extract_json(raw):
     raw = raw.replace("```json", "").replace("```", "").strip()
     m = re.search(r"\{.*\}", raw, re.DOTALL)
     if not m:
         return None, raw[:300]
-    text = m.group()
-    text = re.sub(r",(\s*[}\]])", r"\1", text)  # remove trailing commas
+    text = _repair_json(m.group())
     try:
         return json.loads(text), None
     except json.JSONDecodeError as e:
