@@ -79,37 +79,9 @@ jobs:
             systemctl daemon-reload
             systemctl restart cognitivelogic
 
-            # Write complete known-good nginx config (replaces any partial patch)
+            # Write complete known-good nginx config via base64 (avoids YAML indent issues)
             API_CONF="/etc/nginx/sites-available/api.cognitivelogic.it"
-            cat > "$API_CONF" << 'NGINXEOF'
-server {
-    listen 80;
-    server_name api.cognitivelogic.it;
-    return 301 https://$server_name$request_uri;
-}
-server {
-    listen 443 ssl http2;
-    server_name api.cognitivelogic.it;
-    ssl_certificate /etc/letsencrypt/live/api.cognitivelogic.it/fullchain.pem;
-    ssl_certificate_key /etc/letsencrypt/live/api.cognitivelogic.it/privkey.pem;
-    ssl_protocols TLSv1.2 TLSv1.3;
-    ssl_ciphers HIGH:!aNULL:!MD5;
-    add_header Strict-Transport-Security "max-age=31536000" always;
-    access_log /var/log/nginx/api_access.log;
-    error_log /var/log/nginx/api_error.log;
-    location / {
-        proxy_pass http://127.0.0.1:8001;
-        proxy_http_version 1.1;
-        proxy_set_header Connection "";
-        proxy_set_header Host $host;
-        proxy_set_header X-Real-IP $remote_addr;
-        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-        proxy_set_header X-Forwarded-Proto $scheme;
-        proxy_read_timeout 300s;
-        proxy_connect_timeout 60s;
-    }
-}
-NGINXEOF
+            echo 'c2VydmVyIHsKICAgIGxpc3RlbiA4MDsKICAgIHNlcnZlcl9uYW1lIGFwaS5jb2duaXRpdmVsb2dpYy5pdDsKICAgIHJldHVybiAzMDEgaHR0cHM6Ly8kc2VydmVyX25hbWUkcmVxdWVzdF91cmk7Cn0Kc2VydmVyIHsKICAgIGxpc3RlbiA0NDMgc3NsIGh0dHAyOwogICAgc2VydmVyX25hbWUgYXBpLmNvZ25pdGl2ZWxvZ2ljLml0OwogICAgc3NsX2NlcnRpZmljYXRlIC9ldGMvbGV0c2VuY3J5cHQvbGl2ZS9hcGkuY29nbml0aXZlbG9naWMuaXQvZnVsbGNoYWluLnBlbTsKICAgIHNzbF9jZXJ0aWZpY2F0ZV9rZXkgL2V0Yy9sZXRzZW5jcnlwdC9saXZlL2FwaS5jb2duaXRpdmVsb2dpYy5pdC9wcml2a2V5LnBlbTsKICAgIHNzbF9wcm90b2NvbHMgVExTdjEuMiBUTFN2MS4zOwogICAgc3NsX2NpcGhlcnMgSElHSDohYU5VTEw6IU1ENTsKICAgIGFkZF9oZWFkZXIgU3RyaWN0LVRyYW5zcG9ydC1TZWN1cml0eSAibWF4LWFnZT0zMTUzNjAwMCIgYWx3YXlzOwogICAgYWNjZXNzX2xvZyAvdmFyL2xvZy9uZ2lueC9hcGlfYWNjZXNzLmxvZzsKICAgIGVycm9yX2xvZyAvdmFyL2xvZy9uZ2lueC9hcGlfZXJyb3IubG9nOwogICAgbG9jYXRpb24gLyB7CiAgICAgICAgcHJveHlfcGFzcyBodHRwOi8vMTI3LjAuMC4xOjgwMDE7CiAgICAgICAgcHJveHlfaHR0cF92ZXJzaW9uIDEuMTsKICAgICAgICBwcm94eV9zZXRfaGVhZGVyIENvbm5lY3Rpb24gIiI7CiAgICAgICAgcHJveHlfc2V0X2hlYWRlciBIb3N0ICRob3N0OwogICAgICAgIHByb3h5X3NldF9oZWFkZXIgWC1SZWFsLUlQICRyZW1vdGVfYWRkcjsKICAgICAgICBwcm94eV9zZXRfaGVhZGVyIFgtRm9yd2FyZGVkLUZvciAkcHJveHlfYWRkX3hfZm9yd2FyZGVkX2ZvcjsKICAgICAgICBwcm94eV9zZXRfaGVhZGVyIFgtRm9yd2FyZGVkLVByb3RvICRzY2hlbWU7CiAgICAgICAgcHJveHlfcmVhZF90aW1lb3V0IDMwMHM7CiAgICAgICAgcHJveHlfY29ubmVjdF90aW1lb3V0IDYwczsKICAgIH0KfQo=' | base64 -d > "$API_CONF"
             ln -sf "$API_CONF" /etc/nginx/sites-enabled/api.cognitivelogic.it 2>/dev/null || true
             echo "=== sites-enabled ==="
             ls -la /etc/nginx/sites-enabled/
