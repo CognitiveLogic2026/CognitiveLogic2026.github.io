@@ -5,8 +5,9 @@ on:
     branches: [main]
     paths:
       - 'main.py'
-      - 'qen-reconciliation/**'
       - 'orchestrator.py'
+      - 'requirements-flask.txt'
+      - 'qen-reconciliation/**'
   workflow_dispatch:
 
 jobs:
@@ -19,12 +20,14 @@ jobs:
           ICEA_API_KEY: ${{ secrets.ICEA_API_KEY }}
           INFOCAMERE_API_KEY: ${{ secrets.INFOCAMERE_API_KEY }}
           SUPERVISOR_KEY: ${{ secrets.SUPERVISOR_KEY }}
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          COGNITIVE_API_KEY: ${{ secrets.COGNITIVE_API_KEY }}
         with:
           host: ${{ secrets.VPS_HOST }}
           username: root
           key: ${{ secrets.VPS_SSH_KEY }}
-          timeout: 60s
-          envs: ICEA_API_KEY,INFOCAMERE_API_KEY,SUPERVISOR_KEY
+          timeout: 120s
+          envs: ICEA_API_KEY,INFOCAMERE_API_KEY,SUPERVISOR_KEY,ANTHROPIC_API_KEY,COGNITIVE_API_KEY
           script: |
             set -e
             export GIT_SSH_COMMAND="ssh -i /root/.ssh/github_deploy -o StrictHostKeyChecking=no"
@@ -45,6 +48,11 @@ jobs:
             VENV="/app/cognitivelogic/venv"
             [ -d "$VENV" ] || python3 -m venv "$VENV"
             "$VENV/bin/pip" install -q -r qen-reconciliation/requirements.txt
+            "$VENV/bin/pip" install -q -r requirements-flask.txt
+
+            # Initialize data files if missing
+            [ -f /app/cognitivelogic/pilots.json ] || echo '{}' > /app/cognitivelogic/pilots.json
+            [ -f /app/cognitivelogic/graph.json ]  || echo '{"nodes":{},"edges":[]}' > /app/cognitivelogic/graph.json
 
             # Write environment file (secrets never appear in service unit plaintext)
             mkdir -p /etc/cognitivelogic
@@ -52,12 +60,17 @@ jobs:
             ICEA_API_KEY=ICEA_PLACEHOLDER
             INFOCAMERE_API_KEY=INFOCAMERE_PLACEHOLDER
             SUPERVISOR_KEY=SUPERVISOR_PLACEHOLDER
+            ANTHROPIC_API_KEY=ANTHROPIC_PLACEHOLDER
+            COGNITIVE_API_KEY=COGNITIVE_PLACEHOLDER
             ENVEOF
             sed -i "s|ICEA_PLACEHOLDER|${ICEA_API_KEY}|" /etc/cognitivelogic/env
             sed -i "s|INFOCAMERE_PLACEHOLDER|${INFOCAMERE_API_KEY}|" /etc/cognitivelogic/env
             sed -i "s|SUPERVISOR_PLACEHOLDER|${SUPERVISOR_KEY}|" /etc/cognitivelogic/env
+            sed -i "s|ANTHROPIC_PLACEHOLDER|${ANTHROPIC_API_KEY}|" /etc/cognitivelogic/env
+            sed -i "s|COGNITIVE_PLACEHOLDER|${COGNITIVE_API_KEY}|" /etc/cognitivelogic/env
             chmod 600 /etc/cognitivelogic/env
 
+            # FastAPI service (porta 8001)
             cat > /etc/systemd/system/cognitivelogic.service << 'SVCEOF'
             [Unit]
             Description=CognitiveLogic QEN Reconciliation API
@@ -68,7 +81,7 @@ jobs:
             User=root
             WorkingDirectory=/app/cognitivelogic/qen-reconciliation
             EnvironmentFile=/etc/cognitivelogic/env
-            ExecStart=/app/cognitivelogic/venv/bin/uvicorn main:app --host 0.0.0.0 --port 8001
+            ExecStart=/app/cognitivelogic/venv/bin/uvicorn main:app --host 127.0.0.1 --port 8001
             Restart=on-failure
             RestartSec=10
 
@@ -76,34 +89,52 @@ jobs:
             WantedBy=multi-user.target
             SVCEOF
 
+            # Flask service (porta 5000)
+            cat > /etc/systemd/system/cognitivelogic-flask.service << 'FLASKSVCEOF'
+            [Unit]
+            Description=CognitiveLogic QEN Flask API
+            After=network.target
+
+            [Service]
+            Type=simple
+            User=root
+            WorkingDirectory=/app/cognitivelogic
+            EnvironmentFile=/etc/cognitivelogic/env
+            ExecStart=/app/cognitivelogic/venv/bin/gunicorn main:app --bind 127.0.0.1:5000 --workers 2 --timeout 120
+            Restart=on-failure
+            RestartSec=10
+
+            [Install]
+            WantedBy=multi-user.target
+            FLASKSVCEOF
+
             systemctl daemon-reload
             systemctl restart cognitivelogic
+            systemctl enable cognitivelogic-flask
+            systemctl restart cognitivelogic-flask
 
-            # Write complete known-good nginx config via base64 (avoids YAML indent issues)
+            # Write nginx config via base64 (avoids YAML indent issues)
             API_CONF="/etc/nginx/sites-available/api.cognitivelogic.it"
-            echo 'c2VydmVyIHsKICAgIGxpc3RlbiA4MDsKICAgIHNlcnZlcl9uYW1lIGFwaS5jb2duaXRpdmVsb2dpYy5pdDsKICAgIHJldHVybiAzMDEgaHR0cHM6Ly8kc2VydmVyX25hbWUkcmVxdWVzdF91cmk7Cn0Kc2VydmVyIHsKICAgIGxpc3RlbiA0NDMgc3NsIGh0dHAyOwogICAgc2VydmVyX25hbWUgYXBpLmNvZ25pdGl2ZWxvZ2ljLml0OwogICAgc3NsX2NlcnRpZmljYXRlIC9ldGMvbGV0c2VuY3J5cHQvbGl2ZS9hcGkuY29nbml0aXZlbG9naWMuaXQvZnVsbGNoYWluLnBlbTsKICAgIHNzbF9jZXJ0aWZpY2F0ZV9rZXkgL2V0Yy9sZXRzZW5jcnlwdC9saXZlL2FwaS5jb2duaXRpdmVsb2dpYy5pdC9wcml2a2V5LnBlbTsKICAgIHNzbF9wcm90b2NvbHMgVExTdjEuMiBUTFN2MS4zOwogICAgc3NsX2NpcGhlcnMgSElHSDohYU5VTEw6IU1ENTsKICAgIGFkZF9oZWFkZXIgU3RyaWN0LVRyYW5zcG9ydC1TZWN1cml0eSAibWF4LWFnZT0zMTUzNjAwMCIgYWx3YXlzOwogICAgYWNjZXNzX2xvZyAvdmFyL2xvZy9uZ2lueC9hcGlfYWNjZXNzLmxvZzsKICAgIGVycm9yX2xvZyAvdmFyL2xvZy9uZ2lueC9hcGlfZXJyb3IubG9nOwogICAgbG9jYXRpb24gLyB7CiAgICAgICAgcHJveHlfcGFzcyBodHRwOi8vMTI3LjAuMC4xOjgwMDE7CiAgICAgICAgcHJveHlfaHR0cF92ZXJzaW9uIDEuMTsKICAgICAgICBwcm94eV9zZXRfaGVhZGVyIENvbm5lY3Rpb24gIiI7CiAgICAgICAgcHJveHlfc2V0X2hlYWRlciBIb3N0ICRob3N0OwogICAgICAgIHByb3h5X3NldF9oZWFkZXIgWC1SZWFsLUlQICRyZW1vdGVfYWRkcjsKICAgICAgICBwcm94eV9zZXRfaGVhZGVyIFgtRm9yd2FyZGVkLUZvciAkcHJveHlfYWRkX3hfZm9yd2FyZGVkX2ZvcjsKICAgICAgICBwcm94eV9zZXRfaGVhZGVyIFgtRm9yd2FyZGVkLVByb3RvICRzY2hlbWU7CiAgICAgICAgcHJveHlfcmVhZF90aW1lb3V0IDMwMHM7CiAgICAgICAgcHJveHlfY29ubmVjdF90aW1lb3V0IDYwczsKICAgIH0KfQo=' | base64 -d > "$API_CONF"
+            echo 'c2VydmVyIHsKICAgIGxpc3RlbiA4MDsKICAgIHNlcnZlcl9uYW1lIGFwaS5jb2duaXRpdmVsb2dpYy5pdDsKICAgIHJldHVybiAzMDEgaHR0cHM6Ly8kc2VydmVyX25hbWUkcmVxdWVzdF91cmk7Cn0Kc2VydmVyIHsKICAgIGxpc3RlbiA0NDMgc3NsIGh0dHAyOwogICAgc2VydmVyX25hbWUgYXBpLmNvZ25pdGl2ZWxvZ2ljLml0OwogICAgc3NsX2NlcnRpZmljYXRlIC9ldGMvbGV0c2VuY3J5cHQvbGl2ZS9hcGkuY29nbml0aXZlbG9naWMuaXQvZnVsbGNoYWluLnBlbTsKICAgIHNzbF9jZXJ0aWZpY2F0ZV9rZXkgL2V0Yy9sZXRzZW5jcnlwdC9saXZlL2FwaS5jb2duaXRpdmVsb2dpYy5pdC9wcml2a2V5LnBlbTsKICAgIHNzbF9wcm90b2NvbHMgVExTdjEuMiBUTFN2MS4zOwogICAgc3NsX2NpcGhlcnMgSElHSDohYU5VTEw6IU1ENTsKICAgIGFkZF9oZWFkZXIgU3RyaWN0LVRyYW5zcG9ydC1TZWN1cml0eSAibWF4LWFnZT0zMTUzNjAwMCIgYWx3YXlzOwogICAgYWNjZXNzX2xvZyAvdmFyL2xvZy9uZ2lueC9hcGlfYWNjZXNzLmxvZzsKICAgIGVycm9yX2xvZyAvdmFyL2xvZy9uZ2lueC9hcGlfZXJyb3IubG9nOwogICAgbG9jYXRpb24gL2FnZW50cy8gewogICAgICAgIHByb3h5X3Bhc3MgaHR0cDovLzEyNy4wLjAuMTo1MDAwOwogICAgICAgIHByb3h5X2h0dHBfdmVyc2lvbiAxLjE7CiAgICAgICAgcHJveHlfc2V0X2hlYWRlciBDb25uZWN0aW9uICIiOwogICAgICAgIHByb3h5X3NldF9oZWFkZXIgSG9zdCAkaG9zdDsKICAgICAgICBwcm94eV9zZXRfaGVhZGVyIFgtUmVhbC1JUCAkcmVtb3RlX2FkZHI7CiAgICAgICAgcHJveHlfc2V0X2hlYWRlciBYLUZvcndhcmRlZC1Gb3IgJHByb3h5X2FkZF94X2ZvcndhcmRlZF9mb3I7CiAgICAgICAgcHJveHlfc2V0X2hlYWRlciBYLUZvcndhcmRlZC1Qcm90byAkc2NoZW1lOwogICAgICAgIHByb3h5X3JlYWRfdGltZW91dCAzMDBzOwogICAgICAgIHByb3h5X2Nvbm5lY3RfdGltZW91dCA2MHM7CiAgICB9CiAgICBsb2NhdGlvbiAvZ2VtaW5pLyB7CiAgICAgICAgcHJveHlfcGFzcyBodHRwOi8vMTI3LjAuMC4xOjUwMDA7CiAgICAgICAgcHJveHlfaHR0cF92ZXJzaW9uIDEuMTsKICAgICAgICBwcm94eV9zZXRfaGVhZGVyIENvbm5lY3Rpb24gIiI7CiAgICAgICAgcHJveHlfc2V0X2hlYWRlciBIb3N0ICRob3N0OwogICAgICAgIHByb3h5X3NldF9oZWFkZXIgWC1SZWFsLUlQICRyZW1vdGVfYWRkcjsKICAgICAgICBwcm94eV9zZXRfaGVhZGVyIFgtRm9yd2FyZGVkLUZvciAkcHJveHlfYWRkX3hfZm9yd2FyZGVkX2ZvcjsKICAgICAgICBwcm94eV9zZXRfaGVhZGVyIFgtRm9yd2FyZGVkLVByb3RvICRzY2hlbWU7CiAgICAgICAgcHJveHlfcmVhZF90aW1lb3V0IDMwMHM7CiAgICAgICAgcHJveHlfY29ubmVjdF90aW1lb3V0IDYwczsKICAgIH0KICAgIGxvY2F0aW9uIC9yZWNvbmNpbGUvIHsKICAgICAgICBwcm94eV9wYXNzIGh0dHA6Ly8xMjcuMC4wLjE6NTAwMDsKICAgICAgICBwcm94eV9odHRwX3ZlcnNpb24gMS4xOwogICAgICAgIHByb3h5X3NldF9oZWFkZXIgQ29ubmVjdGlvbiAiIjsKICAgICAgICBwcm94eV9zZXRfaGVhZGVyIEhvc3QgJGhvc3Q7CiAgICAgICAgcHJveHlfc2V0X2hlYWRlciBYLVJlYWwtSVAgJHJlbW90ZV9hZGRyOwogICAgICAgIHByb3h5X3NldF9oZWFkZXIgWC1Gb3J3YXJkZWQtRm9yICRwcm94eV9hZGRfeF9mb3J3YXJkZWRfZm9yOwogICAgICAgIHByb3h5X3NldF9oZWFkZXIgWC1Gb3J3YXJkZWQtUHJvdG8gJHNjaGVtZTsKICAgICAgICBwcm94eV9yZWFkX3RpbWVvdXQgMzAwczsKICAgICAgICBwcm94eV9jb25uZWN0X3RpbWVvdXQgNjBzOwogICAgfQogICAgbG9jYXRpb24gfiBeLyhjbGFzc2lmeS1yaXNrfGNvcGlsb3QtYW5hbHl6ZXxjb3BpbG90fHBpbG90c3xhbmFseXplKSQgewogICAgICAgIHByb3h5X3Bhc3MgaHR0cDovLzEyNy4wLjAuMTo1MDAwOwogICAgICAgIHByb3h5X2h0dHBfdmVyc2lvbiAxLjE7CiAgICAgICAgcHJveHlfc2V0X2hlYWRlciBDb25uZWN0aW9uICIiOwogICAgICAgIHByb3h5X3NldF9oZWFkZXIgSG9zdCAkaG9zdDsKICAgICAgICBwcm94eV9zZXRfaGVhZGVyIFgtUmVhbC1JUCAkcmVtb3RlX2FkZHI7CiAgICAgICAgcHJveHlfc2V0X2hlYWRlciBYLUZvcndhcmRlZC1Gb3IgJHByb3h5X2FkZF94X2ZvcndhcmRlZF9mb3I7CiAgICAgICAgcHJveHlfc2V0X2hlYWRlciBYLUZvcndhcmRlZC1Qcm90byAkc2NoZW1lOwogICAgICAgIHByb3h5X3JlYWRfdGltZW91dCAzMDBzOwogICAgICAgIHByb3h5X2Nvbm5lY3RfdGltZW91dCA2MHM7CiAgICB9CiAgICBsb2NhdGlvbiAvIHsKICAgICAgICBwcm94eV9wYXNzIGh0dHA6Ly8xMjcuMC4wLjE6ODAwMTsKICAgICAgICBwcm94eV9odHRwX3ZlcnNpb24gMS4xOwogICAgICAgIHByb3h5X3NldF9oZWFkZXIgQ29ubmVjdGlvbiAiIjsKICAgICAgICBwcm94eV9zZXRfaGVhZGVyIEhvc3QgJGhvc3Q7CiAgICAgICAgcHJveHlfc2V0X2hlYWRlciBYLVJlYWwtSVAgJHJlbW90ZV9hZGRyOwogICAgICAgIHByb3h5X3NldF9oZWFkZXIgWC1Gb3J3YXJkZWQtRm9yICRwcm94eV9hZGRfeF9mb3J3YXJkZWRfZm9yOwogICAgICAgIHByb3h5X3NldF9oZWFkZXIgWC1Gb3J3YXJkZWQtUHJvdG8gJHNjaGVtZTsKICAgICAgICBwcm94eV9yZWFkX3RpbWVvdXQgMzAwczsKICAgICAgICBwcm94eV9jb25uZWN0X3RpbWVvdXQgNjBzOwogICAgfQp9Cg==' | base64 -d > "$API_CONF"
             ln -sf "$API_CONF" /etc/nginx/sites-enabled/api.cognitivelogic.it 2>/dev/null || true
-            echo "=== sites-enabled ==="
-            ls -la /etc/nginx/sites-enabled/
-            echo "=== ALL proxy_pass in nginx ==="
-            nginx -T 2>&1 | grep -E "(proxy_pass|server_name )"
-            nginx -t 2>&1 && systemctl reload nginx && echo "nginx reloaded OK" || echo "WARN: nginx not reloaded"
+            nginx -t 2>&1 && systemctl reload nginx && echo "nginx reloaded OK" || echo "WARN: nginx reload failed"
 
             sleep 5
-            HEALTH=$(curl -sf http://localhost:8001/health || echo "{}")
-            echo "Health: $HEALTH"
-            echo "=== direct nginx test (no DNS, -k) ==="
-            curl -sv -k https://127.0.0.1/health -H "Host: api.cognitivelogic.it" 2>&1 | tail -20 || echo "direct nginx test failed"
-            HEALTH_EXT=$(curl -sf https://api.cognitivelogic.it/health || echo "{}")
-            echo "Health external: $HEALTH_EXT"
+            echo "=== Health checks ==="
+            curl -sf http://localhost:8001/health && echo " FastAPI OK" || echo " WARN: FastAPI not responding"
+            curl -sf http://localhost:5000/health  && echo " Flask OK"  || echo " WARN: Flask not responding"
 
-            # Nginx error logs for debugging 500s
-            echo "=== nginx error log (last 30) ==="
-            tail -30 /var/log/nginx/api_error.log 2>/dev/null || tail -30 /var/log/nginx/error.log 2>/dev/null || echo "no nginx error log found"
-            echo "=== nginx access log (last 10) ==="
-            tail -10 /var/log/nginx/api_access.log 2>/dev/null || tail -10 /var/log/nginx/access.log 2>/dev/null || echo "no nginx access log found"
-            echo "=== systemd service status ==="
-            systemctl status cognitivelogic --no-pager -l 2>&1 | tail -20
-            echo "=== port 8001 listening ==="
-            ss -tlnp | grep 8001 || echo "WARN: nothing on 8001"
+            echo "=== nginx proxy_pass routes ==="
+            nginx -T 2>&1 | grep -E "(proxy_pass|location )"
+
+            echo "=== nginx error log (last 20) ==="
+            tail -20 /var/log/nginx/api_error.log 2>/dev/null || echo "no nginx error log"
+
+            echo "=== systemd cognitivelogic ==="
+            systemctl status cognitivelogic --no-pager -l 2>&1 | tail -10
+            echo "=== systemd cognitivelogic-flask ==="
+            systemctl status cognitivelogic-flask --no-pager -l 2>&1 | tail -10
+
+            echo "=== ports listening ==="
+            ss -tlnp | grep -E "(8001|5000)" || echo "WARN: ports not found"
             echo "Deploy completato"
