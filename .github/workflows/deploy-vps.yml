@@ -8,6 +8,7 @@ on:
       - 'orchestrator.py'
       - 'requirements-flask.txt'
       - 'qen-reconciliation/**'
+      - '.github/workflows/deploy-vps.yml'
   workflow_dispatch:
 
 jobs:
