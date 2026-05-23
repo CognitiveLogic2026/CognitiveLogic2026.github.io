@@ -2,7 +2,8 @@ import os
 import json
 import re
 import anthropic
-import google.generativeai as genai
+from google import genai as google_genai
+from google.genai import types as google_types
 from datetime import datetime
 from flask import Flask, request, jsonify, send_file
 
@@ -232,15 +233,17 @@ def gemini_qen_score():
     google_key = os.getenv("GOOGLE_API_KEY", "")
     try:
         if google_key:
-            genai.configure(api_key=google_key)
-            gmodel = genai.GenerativeModel(
-                "gemini-1.5-flash",
-                system_instruction=SIMPLE_SYSTEM,
-                generation_config={"response_mime_type": "application/json"},
+            gclient = google_genai.Client(api_key=google_key)
+            response = gclient.models.generate_content(
+                model="gemini-2.0-flash",
+                contents=prompt,
+                config=google_types.GenerateContentConfig(
+                    system_instruction=SIMPLE_SYSTEM,
+                    response_mime_type="application/json",
+                ),
             )
-            response = gmodel.generate_content(prompt)
             raw = response.text.strip()
-            provider = "gemini-1.5-flash"
+            provider = "gemini-2.0-flash"
         else:
             msg = ANTHROPIC_CLIENT.messages.create(
                 model="claude-haiku-4-5-20251001",
