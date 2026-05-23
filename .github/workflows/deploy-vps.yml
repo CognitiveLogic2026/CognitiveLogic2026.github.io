@@ -15,11 +15,16 @@ jobs:
     steps:
       - name: Deploy su VPS Hetzner
         uses: appleboy/ssh-action@v1.0.3
+        env:
+          ICEA_API_KEY: ${{ secrets.ICEA_API_KEY }}
+          INFOCAMERE_API_KEY: ${{ secrets.INFOCAMERE_API_KEY }}
+          SUPERVISOR_KEY: ${{ secrets.SUPERVISOR_KEY }}
         with:
           host: ${{ secrets.VPS_HOST }}
           username: root
           key: ${{ secrets.VPS_SSH_KEY }}
           timeout: 60s
+          envs: ICEA_API_KEY,INFOCAMERE_API_KEY,SUPERVISOR_KEY
           script: |
             set -e
             export GIT_SSH_COMMAND="ssh -i /root/.ssh/github_deploy -o StrictHostKeyChecking=no"
@@ -41,7 +46,35 @@ jobs:
             [ -d "$VENV" ] || python3 -m venv "$VENV"
             "$VENV/bin/pip" install -q -r qen-reconciliation/requirements.txt
 
-            printf '[Unit]\nDescription=CognitiveLogic QEN Reconciliation API\nAfter=network.target\n\n[Service]\nType=simple\nUser=root\nWorkingDirectory=/app/cognitivelogic/qen-reconciliation\nExecStart=/app/cognitivelogic/venv/bin/uvicorn main:app --host 0.0.0.0 --port 8001\nRestart=on-failure\nRestartSec=10\n\n[Install]\nWantedBy=multi-user.target\n' > /etc/systemd/system/cognitivelogic.service
+            # Write environment file (secrets never appear in service unit plaintext)
+            mkdir -p /etc/cognitivelogic
+            cat > /etc/cognitivelogic/env << 'ENVEOF'
+            ICEA_API_KEY=ICEA_PLACEHOLDER
+            INFOCAMERE_API_KEY=INFOCAMERE_PLACEHOLDER
+            SUPERVISOR_KEY=SUPERVISOR_PLACEHOLDER
+            ENVEOF
+            sed -i "s|ICEA_PLACEHOLDER|${ICEA_API_KEY}|" /etc/cognitivelogic/env
+            sed -i "s|INFOCAMERE_PLACEHOLDER|${INFOCAMERE_API_KEY}|" /etc/cognitivelogic/env
+            sed -i "s|SUPERVISOR_PLACEHOLDER|${SUPERVISOR_KEY}|" /etc/cognitivelogic/env
+            chmod 600 /etc/cognitivelogic/env
+
+            cat > /etc/systemd/system/cognitivelogic.service << 'SVCEOF'
+            [Unit]
+            Description=CognitiveLogic QEN Reconciliation API
+            After=network.target
+
+            [Service]
+            Type=simple
+            User=root
+            WorkingDirectory=/app/cognitivelogic/qen-reconciliation
+            EnvironmentFile=/etc/cognitivelogic/env
+            ExecStart=/app/cognitivelogic/venv/bin/uvicorn main:app --host 0.0.0.0 --port 8001
+            Restart=on-failure
+            RestartSec=10
+
+            [Install]
+            WantedBy=multi-user.target
+            SVCEOF
 
             systemctl daemon-reload
             systemctl restart cognitivelogic
