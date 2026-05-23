@@ -23,12 +23,14 @@ jobs:
           SUPERVISOR_KEY: ${{ secrets.SUPERVISOR_KEY }}
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
           COGNITIVE_API_KEY: ${{ secrets.COGNITIVE_API_KEY }}
+          GOOGLE_API_KEY: ${{ secrets.GOOGLE_API_KEY }}
+          GOOGLE_PLACES_API_KEY: ${{ secrets.GOOGLE_PLACES_API_KEY }}
         with:
           host: ${{ secrets.VPS_HOST }}
           username: root
           key: ${{ secrets.VPS_SSH_KEY }}
           timeout: 120s
-          envs: ICEA_API_KEY,INFOCAMERE_API_KEY,SUPERVISOR_KEY,ANTHROPIC_API_KEY,COGNITIVE_API_KEY
+          envs: ICEA_API_KEY,INFOCAMERE_API_KEY,SUPERVISOR_KEY,ANTHROPIC_API_KEY,COGNITIVE_API_KEY,GOOGLE_API_KEY,GOOGLE_PLACES_API_KEY
           script: |
             set -e
             export GIT_SSH_COMMAND="ssh -i /root/.ssh/github_deploy -o StrictHostKeyChecking=no"
@@ -58,11 +60,13 @@ jobs:
             # Write environment file (secrets never appear in service unit plaintext)
             mkdir -p /etc/cognitivelogic
             printf '%s=%s\n' \
-              ICEA_API_KEY        "${ICEA_API_KEY}" \
-              INFOCAMERE_API_KEY  "${INFOCAMERE_API_KEY}" \
-              SUPERVISOR_KEY      "${SUPERVISOR_KEY}" \
-              ANTHROPIC_API_KEY   "${ANTHROPIC_API_KEY}" \
-              COGNITIVE_API_KEY   "${COGNITIVE_API_KEY}" \
+              ICEA_API_KEY          "${ICEA_API_KEY}" \
+              INFOCAMERE_API_KEY    "${INFOCAMERE_API_KEY}" \
+              SUPERVISOR_KEY        "${SUPERVISOR_KEY}" \
+              ANTHROPIC_API_KEY     "${ANTHROPIC_API_KEY}" \
+              COGNITIVE_API_KEY     "${COGNITIVE_API_KEY}" \
+              GOOGLE_API_KEY        "${GOOGLE_API_KEY}" \
+              GOOGLE_PLACES_API_KEY "${GOOGLE_PLACES_API_KEY}" \
               > /etc/cognitivelogic/env
             chmod 600 /etc/cognitivelogic/env
 

@@ -2,6 +2,7 @@ import os
 import json
 import re
 import anthropic
+import google.generativeai as genai
 from datetime import datetime
 from flask import Flask, request, jsonify, send_file
 
@@ -228,14 +229,28 @@ def gemini_qen_score():
         "Formula QEN: vs*0.40 + va*0.35 + vt*0.25\n"
         "Campi obbligatori: qen_score, badge, vs, va, vt, sintesi"
     )
+    google_key = os.getenv("GOOGLE_API_KEY", "")
     try:
-        msg = ANTHROPIC_CLIENT.messages.create(
-            model="claude-haiku-4-5-20251001",
-            max_tokens=1024,
-            system=SIMPLE_SYSTEM,
-            messages=[{"role": "user", "content": prompt}]
-        )
-        raw = msg.content[0].text.strip()
+        if google_key:
+            genai.configure(api_key=google_key)
+            gmodel = genai.GenerativeModel(
+                "gemini-1.5-flash",
+                system_instruction=SIMPLE_SYSTEM,
+                generation_config={"response_mime_type": "application/json"},
+            )
+            response = gmodel.generate_content(prompt)
+            raw = response.text.strip()
+            provider = "gemini-1.5-flash"
+        else:
+            msg = ANTHROPIC_CLIENT.messages.create(
+                model="claude-haiku-4-5-20251001",
+                max_tokens=1024,
+                system=SIMPLE_SYSTEM,
+                messages=[{"role": "user", "content": prompt}]
+            )
+            raw = msg.content[0].text.strip()
+            provider = "claude-haiku-fallback"
+
         raw = raw.replace("```json", "").replace("```", "").strip()
         m = re.search(r"\{.*\}", raw, re.DOTALL)
         if m:
@@ -244,6 +259,7 @@ def gemini_qen_score():
             va = float(q.get("va", 50))
             vt = float(q.get("vt", 50))
             q["qen_score"] = round((vs * 0.40) + (va * 0.35) + (vt * 0.25), 2)
+            q["provider"] = provider
             save_pilot(name, q)
             return jsonify({"status": "success", "qen": q})
         return jsonify({"status": "error", "error": raw[:200]}), 500

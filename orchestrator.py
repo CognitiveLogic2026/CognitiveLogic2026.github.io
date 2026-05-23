@@ -5,9 +5,52 @@ from datetime import datetime
 
 import anthropic
 import json_repair
+import requests as _requests
 from flask import request, jsonify
 
 _client = None
+
+
+def _places_enrich(location: str) -> str:
+    """Return a text block with real local suppliers from Google Places, or ''."""
+    key = os.getenv("GOOGLE_PLACES_API_KEY", "")
+    if not key or not location:
+        return ""
+    try:
+        geo = _requests.get(
+            "https://maps.googleapis.com/maps/api/geocode/json",
+            params={"address": f"{location}, Italia", "key": key},
+            timeout=5,
+        ).json()
+        if not geo.get("results"):
+            return ""
+        loc = geo["results"][0]["geometry"]["location"]
+        lat, lng = loc["lat"], loc["lng"]
+    except Exception:
+        return ""
+
+    queries = [
+        f"produttori agricoli locali {location}",
+        f"cooperativa alimentare {location}",
+    ]
+    found = []
+    for q in queries:
+        try:
+            resp = _requests.get(
+                "https://maps.googleapis.com/maps/api/place/textsearch/json",
+                params={"query": q, "location": f"{lat},{lng}", "radius": 100000, "key": key},
+                timeout=5,
+            ).json()
+            for p in resp.get("results", [])[:4]:
+                name = p.get("name", "")
+                addr = p.get("formatted_address", "")
+                found.append(f"- {name} ({addr})")
+        except Exception:
+            pass
+
+    if not found:
+        return ""
+    return "\n\nFornitori/stakeholder reali (Google Places):\n" + "\n".join(found[:10])
 
 
 def _get_client():
@@ -103,8 +146,10 @@ def register_orchestrator(app):
         location = data.get("location", data.get("comune", "Bologna"))
         if not description:
             return jsonify({"error": "Campo description obbligatorio"}), 400
+        places_context = _places_enrich(location)
         prompt = (
             f"Azienda: {entity}\nLocalità: {location}\nDescrizione: {description}"
+            + places_context
         )
         try:
             msg = _get_client().messages.create(
