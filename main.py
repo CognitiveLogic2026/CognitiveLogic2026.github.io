@@ -1,3 +1,4 @@
+import hashlib
 import os
 import json
 import re
@@ -7,8 +8,9 @@ from flask import Flask, request, jsonify, send_file
 
 app = Flask(__name__)
 
-GRAPH_PATH   = "/root/qen-framework/backend/public/data/graph.json"
-PILOTS_PATH  = "/root/qen-framework/backend/pilots.json"
+GRAPH_PATH        = "/root/qen-framework/backend/public/data/graph.json"
+PILOTS_PATH       = "/root/qen-framework/backend/pilots.json"
+ESCALATIONS_PATH  = "/root/qen-framework/backend/escalations.json"
 ANTHROPIC_CLIENT = anthropic.Anthropic(api_key=os.getenv("ANTHROPIC_API_KEY"))
 
 def load_pilots():
@@ -308,6 +310,119 @@ def reconcile_batch():
 
 from orchestrator import register_orchestrator
 register_orchestrator(app)
+
+
+# ── CNA Escalation ────────────────────────────────────────────────────────────
+
+from datetime import timedelta
+
+SLA_DAYS = 7
+
+
+def load_escalations():
+    if not os.path.exists(ESCALATIONS_PATH):
+        return {}
+    with open(ESCALATIONS_PATH, "r") as f:
+        return json.load(f)
+
+
+def save_escalations(data):
+    with open(ESCALATIONS_PATH, "w") as f:
+        json.dump(data, f, indent=2, ensure_ascii=False)
+
+
+@app.route("/escalation/report", methods=["POST"])
+def escalation_report():
+    provided_key = request.headers.get("X-API-Key")
+    if provided_key != os.getenv("COGNITIVE_API_KEY"):
+        return jsonify({"status": "error", "message": "Unauthorized"}), 403
+
+    data = request.json or {}
+    operator_id   = data.get("operator_id", "")
+    operator_name = data.get("operator_name", "")
+    parameter     = data.get("parameter", "")
+    discrepancy   = data.get("discrepancy_pct", 0.0)
+    notes         = data.get("notes", "")
+
+    if not operator_id or not parameter:
+        return jsonify({"status": "error", "message": "operator_id e parameter obbligatori"}), 400
+
+    created_at   = datetime.utcnow()
+    sla_deadline = created_at + timedelta(days=SLA_DAYS)
+    esc_id = "ESC_" + hashlib.md5(
+        f"{operator_id}{parameter}{created_at.isoformat()}".encode()
+    ).hexdigest()[:8]
+
+    escalation = {
+        "escalation_id":  esc_id,
+        "operator_id":    operator_id,
+        "operator_name":  operator_name,
+        "parameter":      parameter,
+        "discrepancy_pct": discrepancy,
+        "status_flag":    "RED",
+        "created_at":     created_at.strftime("%Y-%m-%dT%H:%M:%SZ"),
+        "sla_deadline":   sla_deadline.strftime("%Y-%m-%dT%H:%M:%SZ"),
+        "resolved":       False,
+        "resolved_at":    None,
+        "notes":          notes,
+    }
+
+    escalations = load_escalations()
+    escalations[esc_id] = escalation
+    save_escalations(escalations)
+
+    return jsonify({"status": "created", "escalation": escalation}), 201
+
+
+@app.route("/escalation/list", methods=["GET"])
+def escalation_list():
+    provided_key = request.headers.get("X-API-Key")
+    if provided_key != os.getenv("COGNITIVE_API_KEY"):
+        return jsonify({"status": "error", "message": "Unauthorized"}), 403
+
+    escalations = load_escalations()
+    show_all = request.args.get("all", "false").lower() == "true"
+    now = datetime.utcnow().strftime("%Y-%m-%dT%H:%M:%SZ")
+
+    items = []
+    for esc in escalations.values():
+        if not show_all and esc.get("resolved"):
+            continue
+        item = dict(esc)
+        item["overdue"] = (not esc["resolved"]) and (esc["sla_deadline"] < now)
+        items.append(item)
+
+    items.sort(key=lambda x: x["created_at"], reverse=True)
+
+    open_count   = sum(1 for i in items if not i["resolved"])
+    overdue_count = sum(1 for i in items if i.get("overdue"))
+
+    return jsonify({
+        "total":   len(items),
+        "open":    open_count,
+        "overdue": overdue_count,
+        "escalations": items,
+    }), 200
+
+
+@app.route("/escalation/<escalation_id>/resolve", methods=["PATCH"])
+def escalation_resolve(escalation_id):
+    provided_key = request.headers.get("X-API-Key")
+    if provided_key != os.getenv("COGNITIVE_API_KEY"):
+        return jsonify({"status": "error", "message": "Unauthorized"}), 403
+
+    escalations = load_escalations()
+    if escalation_id not in escalations:
+        return jsonify({"status": "error", "message": "Escalation non trovata"}), 404
+
+    data = request.json or {}
+    escalations[escalation_id]["resolved"]    = True
+    escalations[escalation_id]["resolved_at"] = datetime.utcnow().strftime("%Y-%m-%dT%H:%M:%SZ")
+    escalations[escalation_id]["notes"]       = data.get("notes", escalations[escalation_id]["notes"])
+    save_escalations(escalations)
+
+    return jsonify({"status": "resolved", "escalation": escalations[escalation_id]}), 200
+
 
 if __name__ == "__main__":
     app.run(host="127.0.0.1", port=5000)

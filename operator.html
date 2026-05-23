@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Operator Portal — QEN Reconciliation · Cognitive Logic</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body { background: #080b0f; min-height: 100vh; }
+
+    @keyframes fadeSlideIn {
+      from { opacity: 0; transform: translateY(8px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    @keyframes barGrow { from { width: 0% } }
+
+    body {
+      color: #e8eaed;
+      font-family: 'Syne', sans-serif;
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
+      padding: 40px 20px 100px;
+      position: relative;
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 600px 400px at 15% 10%, rgba(0,200,150,0.04) 0%, transparent 70%),
+        radial-gradient(ellipse 400px 600px at 85% 80%, rgba(0,120,255,0.03) 0%, transparent 70%);
+      pointer-events: none;
+      z-index: 0;
+    }
+    .grid-bg {
+      position: fixed; inset: 0;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.018) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.018) 1px, transparent 1px);
+      background-size: 48px 48px;
+      pointer-events: none; z-index: 0;
+    }
+
+    .container { width: 100%; max-width: 760px; position: relative; z-index: 1; }
+
+    .header { margin-bottom: 40px; animation: fadeSlideIn 0.6s ease both; }
+    .eyebrow {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 10px; letter-spacing: 0.2em; color: #00c896;
+      text-transform: uppercase; margin-bottom: 12px;
+      display: flex; align-items: center; gap: 8px;
+    }
+    .eyebrow-line { display: inline-block; width: 24px; height: 1px; background: #00c896; }
+    h1 { font-size: clamp(26px, 5vw, 40px); font-weight: 800; line-height: 1.1; letter-spacing: -0.03em; color: #fff; margin-bottom: 8px; }
+    h1 span { color: #00c896; }
+    .subtitle { font-size: 13px; color: rgba(255,255,255,0.38); line-height: 1.6; }
+
+    .card {
+      background: rgba(255,255,255,0.028);
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 4px;
+      padding: 24px;
+      margin-bottom: 12px;
+      animation: fadeSlideIn 0.5s ease both;
+    }
+    .card-title {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 9px; letter-spacing: 0.22em; text-transform: uppercase;
+      color: rgba(255,255,255,0.25); margin-bottom: 20px;
+      display: flex; align-items: center; gap: 8px;
+    }
+    .card-title::after { content: ''; flex: 1; height: 1px; background: rgba(255,255,255,0.04); }
+
+    .field-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    @media (max-width: 540px) { .field-grid { grid-template-columns: 1fr; } }
+
+    .field { display: flex; flex-direction: column; gap: 8px; }
+    .field-label {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 9px; letter-spacing: 0.15em; text-transform: uppercase;
+      color: rgba(255,255,255,0.3);
+    }
+    .field-label .optional { color: rgba(255,255,255,0.15); font-size: 8px; margin-left: 4px; }
+
+    input[type="text"], input[type="number"] {
+      width: 100%;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 3px;
+      color: rgba(255,255,255,0.9);
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 13px;
+      padding: 10px 14px;
+      outline: none;
+      transition: border-color 0.2s, background 0.2s;
+      -moz-appearance: textfield;
+    }
+    input[type="number"]::-webkit-inner-spin-button { -webkit-appearance: none; }
+    input:focus { border-color: rgba(0,200,150,0.5); background: rgba(0,200,150,0.03); }
+    input::placeholder { color: rgba(255,255,255,0.18); }
+
+    .toggle-row { display: flex; align-items: center; justify-content: space-between; padding: 12px 0; border-bottom: 1px solid rgba(255,255,255,0.04); }
+    .toggle-row:last-child { border-bottom: none; padding-bottom: 0; }
+    .toggle-info { display: flex; flex-direction: column; gap: 3px; }
+    .toggle-name { font-size: 13px; color: rgba(255,255,255,0.8); }
+    .toggle-desc { font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: rgba(255,255,255,0.25); }
+    .toggle-switch {
+      position: relative; width: 38px; height: 20px; flex-shrink: 0;
+    }
+    .toggle-switch input { opacity: 0; width: 0; height: 0; }
+    .slider {
+      position: absolute; inset: 0;
+      background: rgba(255,255,255,0.1);
+      border-radius: 20px; cursor: pointer;
+      transition: background 0.2s;
+    }
+    .slider::before {
+      content: '';
+      position: absolute; width: 14px; height: 14px;
+      background: #fff; border-radius: 50%;
+      top: 3px; left: 3px;
+      transition: transform 0.2s;
+    }
+    .toggle-switch input:checked + .slider { background: #00c896; }
+    .toggle-switch input:checked + .slider::before { transform: translateX(18px); }
+
+    .actions { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
+    .btn-primary {
+      background: #00c896; color: #080b0f;
+      border: none; padding: 11px 32px;
+      font-family: 'IBM Plex Mono', monospace; font-size: 11px; font-weight: 600;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      cursor: pointer; border-radius: 2px;
+      display: flex; align-items: center; gap: 8px;
+      transition: background 0.2s, transform 0.15s;
+    }
+    .btn-primary:hover:not(:disabled) { background: #00dfa8; transform: translateY(-1px); }
+    .btn-primary:disabled { opacity: 0.4; cursor: not-allowed; }
+    .btn-secondary {
+      background: transparent; color: rgba(255,255,255,0.3);
+      border: 1px solid rgba(255,255,255,0.1);
+      padding: 11px 22px;
+      font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 0.1em;
+      text-transform: uppercase; cursor: pointer; border-radius: 2px;
+      transition: color 0.2s, border-color 0.2s;
+    }
+    .btn-secondary:hover { color: rgba(255,255,255,0.6); border-color: rgba(255,255,255,0.2); }
+    .spinner { width: 15px; height: 15px; border: 1.5px solid rgba(8,11,15,0.2); border-top-color: #080b0f; border-radius: 50%; animation: spin 0.7s linear infinite; }
+
+    .error-box {
+      background: rgba(255,59,59,0.06); border: 1px solid rgba(255,59,59,0.2);
+      border-radius: 4px; padding: 14px 18px;
+      color: #ff6b6b; font-size: 12px; font-family: 'IBM Plex Mono', monospace;
+      margin-bottom: 12px;
+    }
+
+    /* ── Results ── */
+    #results { display: none; }
+
+    .score-banner {
+      border-radius: 4px; padding: 22px 24px; margin-bottom: 12px;
+      animation: fadeSlideIn 0.4s ease both;
+    }
+    .score-top { display: flex; align-items: baseline; gap: 16px; margin-bottom: 14px; flex-wrap: wrap; }
+    .score-before { font-family: 'IBM Plex Mono', monospace; font-size: 12px; color: rgba(255,255,255,0.35); }
+    .score-after-label { font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(255,255,255,0.3); margin-bottom: 4px; }
+    .score-after-value { font-size: 48px; font-weight: 800; letter-spacing: -0.04em; line-height: 1; }
+    .score-delta { font-family: 'IBM Plex Mono', monospace; font-size: 13px; }
+    .score-bar-wrap { display: flex; align-items: center; gap: 10px; margin-top: 8px; }
+    .score-bar { flex: 1; height: 3px; background: rgba(255,255,255,0.06); border-radius: 2px; overflow: hidden; }
+    .score-bar-fill { height: 100%; border-radius: 2px; transition: width 1.2s cubic-bezier(0.16,1,0.3,1); }
+    .score-bar-label { font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: rgba(255,255,255,0.25); white-space: nowrap; }
+
+    .params-grid { display: flex; flex-direction: column; gap: 8px; }
+    .param-row {
+      display: grid;
+      grid-template-columns: 1fr auto auto auto;
+      gap: 12px; align-items: center;
+      padding: 12px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.04);
+      animation: fadeSlideIn 0.4s ease both;
+    }
+    .param-row:last-child { border-bottom: none; }
+    .param-name { font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: rgba(255,255,255,0.65); }
+    .param-source { font-family: 'IBM Plex Mono', monospace; font-size: 9px; letter-spacing: 0.1em; }
+    .source-live { color: #00c896; }
+    .source-mock { color: rgba(255,255,255,0.25); }
+    .param-disc { font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: rgba(255,255,255,0.4); text-align: right; }
+    .status-badge {
+      font-family: 'IBM Plex Mono', monospace; font-size: 9px; font-weight: 600;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      padding: 3px 8px; border-radius: 2px; border: 1px solid; white-space: nowrap;
+    }
+    .status-ALIGNED { color: #00c896; border-color: rgba(0,200,150,0.3); background: rgba(0,200,150,0.06); }
+    .status-GREEN   { color: #5dde9c; border-color: rgba(93,222,156,0.3); background: rgba(93,222,156,0.06); }
+    .status-YELLOW  { color: #ff8c00; border-color: rgba(255,140,0,0.35); background: rgba(255,140,0,0.06); }
+    .status-RED     { color: #ff3b3b; border-color: rgba(255,59,59,0.35); background: rgba(255,59,59,0.06); }
+
+    .escalation-notice {
+      background: rgba(255,59,59,0.06);
+      border: 1px solid rgba(255,59,59,0.25);
+      border-left: 3px solid #ff3b3b;
+      border-radius: 4px;
+      padding: 16px 20px;
+      margin-bottom: 12px;
+      animation: fadeSlideIn 0.4s ease 0.3s both;
+    }
+    .escalation-title { font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase; color: #ff3b3b; margin-bottom: 8px; }
+    .escalation-list { list-style: none; display: flex; flex-direction: column; gap: 4px; }
+    .escalation-list li { font-size: 12px; color: rgba(255,255,255,0.6); display: flex; gap: 8px; align-items: baseline; }
+    .escalation-list li::before { content: '›'; color: #ff3b3b; font-family: 'IBM Plex Mono', monospace; flex-shrink: 0; }
+    .escalation-sla { font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: rgba(255,59,59,0.7); margin-top: 10px; padding-top: 10px; border-top: 1px solid rgba(255,59,59,0.15); }
+
+    .footer-note {
+      font-family: 'IBM Plex Mono', monospace; font-size: 10px;
+      color: rgba(255,255,255,0.1); letter-spacing: 0.08em;
+      text-align: center; margin-top: 28px;
+    }
+    .nav-back {
+      display: inline-flex; align-items: center; gap: 6px;
+      font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: 0.12em;
+      text-transform: uppercase; color: rgba(255,255,255,0.25);
+      text-decoration: none; margin-bottom: 32px;
+      transition: color 0.2s;
+    }
+    .nav-back:hover { color: #00c896; }
+  </style>
+</head>
+<body>
+<div class="grid-bg"></div>
+<div class="container">
+
+  <a href="index.html" class="nav-back">← Cognitive Logic</a>
+
+  <div class="header">
+    <div class="eyebrow"><span class="eyebrow-line"></span>QEN Framework · CNA Bolkestein 2027</div>
+    <h1>Operator <span>Portal</span></h1>
+    <p class="subtitle">Ingest dati dichiarati — reconciliazione automatica con fonti esterne (ICEA, InfoCamere, OpenStreetMap, NANDO)</p>
+  </div>
+
+  <!-- Operator info -->
+  <div class="card" style="animation-delay:0.05s">
+    <div class="card-title">Dati operatore</div>
+    <div class="field-grid">
+      <div class="field">
+        <label class="field-label" for="op-name">Nome operatore</label>
+        <input type="text" id="op-name" placeholder="Es: Bottega Contadina" />
+      </div>
+      <div class="field">
+        <label class="field-label" for="op-id">Operator ID</label>
+        <input type="text" id="op-id" placeholder="Es: OP-2027-001" />
+      </div>
+      <div class="field">
+        <label class="field-label" for="op-cf">Codice Fiscale <span class="optional">(opzionale)</span></label>
+        <input type="text" id="op-cf" placeholder="Es: 12345678901" />
+      </div>
+      <div class="field">
+        <label class="field-label" for="op-comune">Comune <span class="optional">(per OSM)</span></label>
+        <input type="text" id="op-comune" placeholder="Es: Bologna" />
+      </div>
+    </div>
+  </div>
+
+  <!-- Numeric declared data -->
+  <div class="card" style="animation-delay:0.1s">
+    <div class="card-title">Dati dichiarati — numerici</div>
+    <div class="field-grid">
+      <div class="field">
+        <label class="field-label" for="d-km">Distanza media fornitori (km)</label>
+        <input type="number" id="d-km" placeholder="Es: 80" min="0" step="0.1" />
+      </div>
+      <div class="field">
+        <label class="field-label" for="d-scarti">Percentuale scarti (%)</label>
+        <input type="number" id="d-scarti" placeholder="Es: 9.5" min="0" max="100" step="0.1" />
+      </div>
+      <div class="field">
+        <label class="field-label" for="d-kwh">Consumo energia (kWh/anno)</label>
+        <input type="number" id="d-kwh" placeholder="Es: 42000" min="0" step="100" />
+      </div>
+    </div>
+  </div>
+
+  <!-- Toggle declared data -->
+  <div class="card" style="animation-delay:0.15s">
+    <div class="card-title">Dati dichiarati — certificazioni</div>
+    <div class="toggle-row">
+      <div class="toggle-info">
+        <span class="toggle-name">Certificazione biologica ICEA</span>
+        <span class="toggle-desc">biologico_certificato — verifica ICEA</span>
+      </div>
+      <label class="toggle-switch">
+        <input type="checkbox" id="d-bio" />
+        <span class="slider"></span>
+      </label>
+    </div>
+    <div class="toggle-row">
+      <div class="toggle-info">
+        <span class="toggle-name">EU AI Act compliant</span>
+        <span class="toggle-desc">eu_ai_compliant — verifica NANDO</span>
+      </div>
+      <label class="toggle-switch">
+        <input type="checkbox" id="d-ai" />
+        <span class="slider"></span>
+      </label>
+    </div>
+  </div>
+
+  <!-- Actions -->
+  <div class="card" style="animation-delay:0.2s">
+    <div class="actions">
+      <button class="btn-primary" id="btn-reconcile">▶ Avvia Reconciliazione</button>
+      <button class="btn-secondary" id="btn-reset">Reset</button>
+    </div>
+  </div>
+
+  <div class="error-box" id="error-box" style="display:none;"></div>
+
+  <!-- Results -->
+  <div id="results">
+
+    <div class="score-banner" id="score-banner">
+      <div class="score-after-label">QEN Score post-reconciliazione</div>
+      <div class="score-top">
+        <div class="score-after-value" id="score-after">—</div>
+        <div>
+          <div class="score-before">Base: <span id="score-before">—</span></div>
+          <div class="score-delta" id="score-delta"></div>
+        </div>
+      </div>
+      <div class="score-bar-wrap">
+        <div class="score-bar"><div class="score-bar-fill" id="score-fill" style="width:0%"></div></div>
+        <span class="score-bar-label">/ 100</span>
+      </div>
+    </div>
+
+    <div class="escalation-notice" id="escalation-notice" style="display:none;">
+      <div class="escalation-title">Escalation CNA — Parametri RED</div>
+      <ul class="escalation-list" id="escalation-list"></ul>
+      <div class="escalation-sla" id="escalation-sla"></div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Dettaglio parametri</div>
+      <div class="params-grid" id="params-grid"></div>
+    </div>
+
+    <div class="footer-note">Cognitive Logic · QEN Reconciliation v2.0 · CNA Bolkestein 2027</div>
+  </div>
+
+</div>
+
+<script>
+  const QEN_API     = 'https://api.cognitivelogic.it/api/reconcile';
+  const ESC_API     = 'https://api.cognitivelogic.it/escalation/report';
+  const ESC_API_KEY = '';  // Set via env / config if needed for auto-escalation
+
+  const $ = id => document.getElementById(id);
+  const btnReconcile = $('btn-reconcile');
+  const btnReset     = $('btn-reset');
+  const errorBox     = $('error-box');
+  const resultsEl    = $('results');
+
+  const STATUS_COLOR = {
+    ALIGNED: '#00c896',
+    GREEN:   '#5dde9c',
+    YELLOW:  '#ff8c00',
+    RED:     '#ff3b3b',
+  };
+
+  function setLoading(on) {
+    btnReconcile.disabled = on;
+    btnReconcile.innerHTML = on
+      ? '<div class="spinner"></div> Reconciliazione…'
+      : '▶ Avvia Reconciliazione';
+  }
+
+  function buildPayload() {
+    const declared = {};
+    const km    = parseFloat($('d-km').value);
+    const scarti = parseFloat($('d-scarti').value);
+    const kwh   = parseFloat($('d-kwh').value);
+    if (!isNaN(km))     declared['distanza_media_fornitori_km'] = km;
+    if (!isNaN(scarti)) declared['percentuale_scarti'] = scarti;
+    if (!isNaN(kwh))    declared['consumo_kwh_anno'] = kwh;
+    declared['biologico_certificato'] = $('d-bio').checked;
+    declared['eu_ai_compliant']       = $('d-ai').checked;
+
+    return {
+      operator_id:   $('op-id').value.trim()   || 'OP-PORTAL',
+      operator_name: $('op-name').value.trim() || 'Operatore',
+      declared_data: declared,
+      operator_context: {
+        codice_fiscale: $('op-cf').value.trim(),
+        comune:         $('op-comune').value.trim(),
+      },
+    };
+  }
+
+  async function sendEscalation(param, disc, opId, opName) {
+    if (!ESC_API_KEY) return;
+    try {
+      await fetch(ESC_API, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'X-API-Key': ESC_API_KEY },
+        body: JSON.stringify({ operator_id: opId, operator_name: opName, parameter: param, discrepancy_pct: disc }),
+      });
+    } catch (_) {}
+  }
+
+  async function reconcile() {
+    const payload = buildPayload();
+    if (Object.keys(payload.declared_data).length === 0) {
+      errorBox.textContent = '⚠ Inserisci almeno un parametro dichiarato.';
+      errorBox.style.display = 'block';
+      return;
+    }
+
+    setLoading(true);
+    errorBox.style.display = 'none';
+    resultsEl.style.display = 'none';
+
+    try {
+      const res = await fetch(QEN_API, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload),
+      });
+      if (!res.ok) {
+        const err = await res.json().catch(() => ({}));
+        throw new Error(err.detail || `HTTP ${res.status}`);
+      }
+      const d = await res.json();
+      renderResults(d, payload);
+    } catch (err) {
+      errorBox.textContent = '⚠ ' + (err.message || 'Errore di connessione al backend.');
+      errorBox.style.display = 'block';
+    } finally {
+      setLoading(false);
+    }
+  }
+
+  function renderResults(d, payload) {
+    const { before, after, adjustment } = d.qen_score;
+    const scoreColor = after >= 70 ? '#00c896' : after >= 50 ? '#ff8c00' : '#ff3b3b';
+
+    // Score banner
+    const banner = $('score-banner');
+    banner.style.cssText = `border-left: 3px solid ${scoreColor}; background: ${scoreColor}18; border: 1px solid ${scoreColor}28; border-left: 3px solid ${scoreColor}; border-radius: 4px; padding: 22px 24px; margin-bottom: 12px; animation: fadeSlideIn 0.4s ease both;`;
+    $('score-after').textContent  = after;
+    $('score-after').style.color  = scoreColor;
+    $('score-before').textContent = before;
+    const deltaSign = adjustment >= 0 ? '+' : '';
+    $('score-delta').textContent  = `Aggiustamento: ${deltaSign}${adjustment} pts`;
+    $('score-delta').style.color  = adjustment >= 0 ? '#5dde9c' : '#ff6b6b';
+
+    const fill = $('score-fill');
+    fill.style.background = scoreColor;
+    fill.style.width = '0%';
+    requestAnimationFrame(() => requestAnimationFrame(() => { fill.style.width = after + '%'; }));
+
+    // RED escalations
+    const reds = d.parameter_results.filter(r => r.status === 'RED');
+    if (reds.length > 0) {
+      const escNotice  = $('escalation-notice');
+      const escList    = $('escalation-list');
+      const slaDate    = new Date(Date.now() + 7 * 86400000);
+      escList.innerHTML = reds.map(r =>
+        `<li><strong>${r.parameter}</strong> — ${r.discrepancy_pct.toFixed(1)}% scostamento (dichiarato: ${r.declared}, verificato: ${r.verified})</li>`
+      ).join('');
+      $('escalation-sla').textContent = `SLA CNA: risoluzione entro ${slaDate.toLocaleDateString('it-IT', {day:'2-digit',month:'long',year:'numeric'})}`;
+      escNotice.style.display = 'block';
+      reds.forEach(r => sendEscalation(r.parameter, r.discrepancy_pct, payload.operator_id, payload.operator_name));
+    } else {
+      $('escalation-notice').style.display = 'none';
+    }
+
+    // Parameters grid
+    const grid = $('params-grid');
+    grid.innerHTML = d.parameter_results.map((r, i) => `
+      <div class="param-row" style="animation-delay:${i * 0.06}s">
+        <div>
+          <div class="param-name">${r.parameter}</div>
+          <div class="param-source ${r.source_type === 'live' ? 'source-live' : 'source-mock'}">${r.source}</div>
+        </div>
+        <div class="param-disc">${r.discrepancy_pct > 0 ? r.discrepancy_pct.toFixed(1) + '%' : '—'}</div>
+        <div class="param-disc" style="color:rgba(255,255,255,0.55)">${formatValue(r.declared)} → ${formatValue(r.verified)}</div>
+        <div class="status-badge status-${r.status}">${r.status}</div>
+      </div>`
+    ).join('');
+
+    resultsEl.style.display = 'block';
+    resultsEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+
+  function formatValue(v) {
+    if (v === null || v === undefined) return '—';
+    if (typeof v === 'boolean') return v ? 'Sì' : 'No';
+    return String(v);
+  }
+
+  btnReconcile.addEventListener('click', reconcile);
+  btnReset.addEventListener('click', () => {
+    ['op-name','op-id','op-cf','op-comune','d-km','d-scarti','d-kwh'].forEach(id => { $(id).value = ''; });
+    $('d-bio').checked = false;
+    $('d-ai').checked  = false;
+    errorBox.style.display  = 'none';
+    resultsEl.style.display = 'none';
+  });
+</script>
+</body>
+</html>
