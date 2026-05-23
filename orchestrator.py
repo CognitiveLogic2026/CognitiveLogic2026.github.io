@@ -16,6 +16,19 @@ def _get_client():
     return _client
 
 
+def _extract_json(raw):
+    raw = raw.replace("```json", "").replace("```", "").strip()
+    m = re.search(r"\{.*\}", raw, re.DOTALL)
+    if not m:
+        return None, raw[:300]
+    text = m.group()
+    text = re.sub(r",(\s*[}\]])", r"\1", text)  # remove trailing commas
+    try:
+        return json.loads(text), None
+    except json.JSONDecodeError as e:
+        return None, f"{e} | raw: {text[:300]}"
+
+
 _COMPLIANCE_SYSTEM = (
     "Sei il Compliance Auditor del framework QEN (Quantification of Ethical Naturalness).\n"
     "Analizza l'azienda o il sistema AI descritto applicando:\n"
@@ -71,11 +84,9 @@ def register_orchestrator(app):
                 system=_COMPLIANCE_SYSTEM,
                 messages=[{"role": "user", "content": prompt}],
             )
-            raw = msg.content[0].text.strip().replace("```json", "").replace("```", "").strip()
-            m = re.search(r"\{.*\}", raw, re.DOTALL)
-            if not m:
-                return jsonify({"error": "Parsing fallito", "raw": raw[:300]}), 500
-            result = json.loads(m.group())
+            result, err = _extract_json(msg.content[0].text)
+            if err:
+                return jsonify({"error": err}), 500
             result["entity_name"] = entity
             result["timestamp"] = datetime.utcnow().isoformat() + "Z"
             return jsonify({"status": "success", "audit": result}), 200
@@ -100,11 +111,9 @@ def register_orchestrator(app):
                 system=_TERRITORIAL_SYSTEM,
                 messages=[{"role": "user", "content": prompt}],
             )
-            raw = msg.content[0].text.strip().replace("```json", "").replace("```", "").strip()
-            m = re.search(r"\{.*\}", raw, re.DOTALL)
-            if not m:
-                return jsonify({"error": "Parsing fallito", "raw": raw[:300]}), 500
-            result = json.loads(m.group())
+            result, err = _extract_json(msg.content[0].text)
+            if err:
+                return jsonify({"error": err}), 500
             result["entity_name"] = entity
             result["timestamp"] = datetime.utcnow().isoformat() + "Z"
             return jsonify({"status": "success", "mapping": result}), 200
@@ -131,11 +140,9 @@ def register_orchestrator(app):
                 system=_ADVISORY_SYSTEM,
                 messages=[{"role": "user", "content": prompt}],
             )
-            raw = msg.content[0].text.strip().replace("```json", "").replace("```", "").strip()
-            m = re.search(r"\{.*\}", raw, re.DOTALL)
-            if not m:
-                return jsonify({"error": "Parsing fallito", "raw": raw[:300]}), 500
-            result = json.loads(m.group())
+            result, err = _extract_json(msg.content[0].text)
+            if err:
+                return jsonify({"error": err}), 500
             result["entity_name"] = entity
             result["timestamp"] = datetime.utcnow().isoformat() + "Z"
             return jsonify({"status": "success", "advisory": result}), 200
