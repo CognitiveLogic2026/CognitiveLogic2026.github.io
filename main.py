@@ -39,6 +39,9 @@ def load_pilot(name):
     key = name.strip().lower()
     return pilots.get(key)
 
+def check_duplicate(name):
+    return load_pilot(name)
+
 @app.route("/")
 def root_health():
     return jsonify({"status": "OPERATIONAL", "version": "1.0.0"})
