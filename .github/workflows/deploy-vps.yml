@@ -79,7 +79,23 @@ jobs:
             systemctl daemon-reload
             systemctl restart cognitivelogic
 
+            # Patch nginx proxy_pass to port 8001 (handles 127.0.0.1 and localhost)
+            echo "=== nginx proxy_pass before patch ==="
+            grep -rn "proxy_pass" /etc/nginx/sites-available/ /etc/nginx/sites-enabled/ /etc/nginx/conf.d/ 2>/dev/null || echo "no proxy_pass found"
+            for f in /etc/nginx/sites-available/* /etc/nginx/sites-enabled/* /etc/nginx/conf.d/*.conf; do
+              [ -f "$f" ] || continue
+              grep -q "proxy_pass" "$f" || continue
+              sed -i 's|proxy_pass http://127\.0\.0\.1:[0-9]\+|proxy_pass http://127.0.0.1:8001|g' "$f"
+              sed -i 's|proxy_pass http://localhost:[0-9]\+|proxy_pass http://127.0.0.1:8001|g' "$f"
+              echo "Patched: $f"
+            done
+            echo "=== nginx proxy_pass after patch ==="
+            grep -rn "proxy_pass" /etc/nginx/sites-available/ /etc/nginx/sites-enabled/ /etc/nginx/conf.d/ 2>/dev/null || echo "no proxy_pass found"
+            nginx -t 2>&1 && systemctl reload nginx && echo "nginx reloaded OK" || echo "WARN: nginx not reloaded"
+
             sleep 5
             HEALTH=$(curl -sf http://localhost:8001/health || echo "{}")
             echo "Health: $HEALTH"
+            HEALTH_EXT=$(curl -sf https://api.cognitivelogic.it/health || echo "{}")
+            echo "Health external: $HEALTH_EXT"
             echo "Deploy completato"
