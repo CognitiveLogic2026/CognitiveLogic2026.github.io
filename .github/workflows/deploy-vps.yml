@@ -101,4 +101,14 @@ jobs:
             echo "Health: $HEALTH"
             HEALTH_EXT=$(curl -sf https://api.cognitivelogic.it/health || echo "{}")
             echo "Health external: $HEALTH_EXT"
+
+            # Nginx error logs for debugging 500s
+            echo "=== nginx error log (last 30) ==="
+            tail -30 /var/log/nginx/api_error.log 2>/dev/null || tail -30 /var/log/nginx/error.log 2>/dev/null || echo "no nginx error log found"
+            echo "=== nginx access log (last 10) ==="
+            tail -10 /var/log/nginx/api_access.log 2>/dev/null || tail -10 /var/log/nginx/access.log 2>/dev/null || echo "no nginx access log found"
+            echo "=== systemd service status ==="
+            systemctl status cognitivelogic --no-pager -l 2>&1 | tail -20
+            echo "=== port 8001 listening ==="
+            ss -tlnp | grep 8001 || echo "WARN: nothing on 8001"
             echo "Deploy completato"
