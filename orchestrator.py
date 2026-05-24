@@ -13,8 +13,10 @@ _client = None
 
 def _places_enrich(location: str) -> str:
     """Return a text block with real local suppliers from Google Places, or ''."""
+    import sys
     key = os.getenv("GOOGLE_PLACES_API_KEY", "")
     if not key or not location:
+        print(f"[Places] skip: key={'set' if key else 'EMPTY'} location={location!r}", file=sys.stderr)
         return ""
     try:
         geo = _requests.get(
@@ -23,10 +25,13 @@ def _places_enrich(location: str) -> str:
             timeout=5,
         ).json()
         if not geo.get("results"):
+            print(f"[Places] geocode no results for {location!r}, status={geo.get('status')}", file=sys.stderr)
             return ""
         loc = geo["results"][0]["geometry"]["location"]
         lat, lng = loc["lat"], loc["lng"]
-    except Exception:
+        print(f"[Places] geocoded {location!r} → {lat},{lng}", file=sys.stderr)
+    except Exception as e:
+        print(f"[Places] geocode exception: {e}", file=sys.stderr)
         return ""
 
     queries = [
@@ -41,11 +46,14 @@ def _places_enrich(location: str) -> str:
                 params={"query": q, "location": f"{lat},{lng}", "radius": 100000, "key": key},
                 timeout=5,
             ).json()
-            for p in resp.get("results", [])[:4]:
+            hits = resp.get("results", [])
+            print(f"[Places] query={q!r} → {len(hits)} results, status={resp.get('status')}", file=sys.stderr)
+            for p in hits[:4]:
                 name = p.get("name", "")
                 addr = p.get("formatted_address", "")
                 found.append(f"- {name} ({addr})")
-        except Exception:
+        except Exception as e:
+            print(f"[Places] search exception: {e}", file=sys.stderr)
             pass
 
     if not found:
