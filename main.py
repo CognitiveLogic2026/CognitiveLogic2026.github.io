@@ -226,8 +226,10 @@ def gemini_qen_score():
         }), 200
     SIMPLE_SYSTEM = (
         "Sei un esperto QEN Score. Rispondi SOLO con JSON valido, nessun testo aggiuntivo.\n"
+        "IMPORTANTE: vs, va, vt sono valori da 0 a 100 (non 0-10).\n"
         "Formula QEN: vs*0.40 + va*0.35 + vt*0.25\n"
-        "Campi obbligatori: qen_score, badge, vs, va, vt, sintesi"
+        "Campi obbligatori: qen_score (0-100), badge (QEN VERIFIED o QEN UNVERIFIED), "
+        "vs (0-100), va (0-100), vt (0-100), sintesi"
     )
     google_key = os.getenv("GOOGLE_API_KEY", "")
     try:
@@ -273,6 +275,9 @@ def gemini_qen_score():
             vs = float(q.get("vs", 50))
             va = float(q.get("va", 50))
             vt = float(q.get("vt", 50))
+            if max(vs, va, vt) <= 10:  # normalize 0-10 scale to 0-100
+                vs, va, vt = vs * 10, va * 10, vt * 10
+            q["vs"], q["va"], q["vt"] = vs, va, vt
             q["qen_score"] = round((vs * 0.40) + (va * 0.35) + (vt * 0.25), 2)
             q["provider"] = provider
             save_pilot(name, q)
