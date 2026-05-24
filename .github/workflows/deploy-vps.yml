@@ -23,7 +23,7 @@ jobs:
           SUPERVISOR_KEY: ${{ secrets.SUPERVISOR_KEY }}
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
           COGNITIVE_API_KEY: ${{ secrets.COGNITIVE_API_KEY }}
-          GOOGLE_API_KEY: ${{ secrets.GOOGLE_API_KEY }}
+          GOOGLE_API_KEY: ${{ secrets.GEMINI_API_KEY }}
           GOOGLE_PLACES_API_KEY: ${{ secrets.GOOGLE_PLACES_API_KEY }}
         with:
           host: ${{ secrets.VPS_HOST }}
