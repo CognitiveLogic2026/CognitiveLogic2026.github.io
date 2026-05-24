@@ -26,16 +26,21 @@ def _places_enrich(location: str) -> str:
     found = []
     for q in queries:
         try:
-            resp = _requests.get(
-                "https://maps.googleapis.com/maps/api/place/textsearch/json",
-                params={"query": q, "key": key},
+            resp = _requests.post(
+                "https://places.googleapis.com/v1/places:searchText",
+                headers={
+                    "Content-Type": "application/json",
+                    "X-Goog-Api-Key": key,
+                    "X-Goog-FieldMask": "places.displayName,places.formattedAddress",
+                },
+                json={"textQuery": q},
                 timeout=5,
             ).json()
-            hits = resp.get("results", [])
-            print(f"[Places] query={q!r} → {len(hits)} results, status={resp.get('status')}", file=sys.stderr)
+            hits = resp.get("places", [])
+            print(f"[Places] query={q!r} → {len(hits)} results", file=sys.stderr)
             for p in hits[:4]:
-                name = p.get("name", "")
-                addr = p.get("formatted_address", "")
+                name = p.get("displayName", {}).get("text", "")
+                addr = p.get("formattedAddress", "")
                 found.append(f"- {name} ({addr})")
         except Exception as e:
             print(f"[Places] search exception: {e}", file=sys.stderr)
