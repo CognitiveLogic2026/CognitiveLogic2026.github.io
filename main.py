@@ -235,7 +235,7 @@ def gemini_qen_score():
         if google_key:
             gclient = google_genai.Client(api_key=google_key)
             response = gclient.models.generate_content(
-                model="gemini-2.0-flash",
+                model="gemini-1.5-flash",
                 contents=prompt,
                 config=google_types.GenerateContentConfig(
                     system_instruction=SIMPLE_SYSTEM,
@@ -243,7 +243,7 @@ def gemini_qen_score():
                 ),
             )
             raw = response.text.strip()
-            provider = "gemini-2.0-flash"
+            provider = "gemini-1.5-flash"
         else:
             msg = ANTHROPIC_CLIENT.messages.create(
                 model="claude-haiku-4-5-20251001",
