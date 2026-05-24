@@ -232,7 +232,7 @@ def gemini_qen_score():
     google_key = os.getenv("GOOGLE_API_KEY", "")
     try:
         if google_key:
-            _GEMINI_MODELS = ["gemini-1.5-flash-latest", "gemini-1.5-flash-8b", "gemini-1.5-pro-latest"]
+            _GEMINI_MODELS = ["gemini-2.0-flash-lite", "gemini-2.5-flash", "gemini-2.0-flash"]
             raw = None
             provider = None
             for _model in _GEMINI_MODELS:
@@ -251,10 +251,11 @@ def gemini_qen_score():
                     raw = _resp.json()["candidates"][0]["content"]["parts"][0]["text"].strip()
                     provider = _model
                     break
-                except Exception:
+                except Exception as _me:
+                    last_err = str(_me)
                     continue
             if raw is None:
-                raise RuntimeError("Nessun modello Gemini disponibile")
+                raise RuntimeError(f"Nessun modello Gemini disponibile: {last_err}")
         else:
             msg = ANTHROPIC_CLIENT.messages.create(
                 model="claude-haiku-4-5-20251001",
