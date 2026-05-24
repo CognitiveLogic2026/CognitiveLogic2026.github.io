@@ -248,6 +248,33 @@ def register_orchestrator(app):
             "timestamp": datetime.utcnow().isoformat() + "Z",
         }), 200
 
+    # ---------------------------------------------------------------------------
+    # Mistral endpoints (primary LLM — Mistral Large via REST, no SDK)
+    # MISTRAL_API_KEY injected from GitHub Secrets at deploy time
+    # Falls back to Claude Sonnet if Mistral is unavailable
+    # ---------------------------------------------------------------------------
+
+    def _mistral_chat(key: str, system: str, prompt: str) -> str:
+        """Call Mistral Large and return the raw content string."""
+        resp = _requests.post(
+            "https://api.mistral.ai/v1/chat/completions",
+            headers={
+                "Authorization": f"Bearer {key}",
+                "Content-Type": "application/json",
+            },
+            json={
+                "model": "mistral-large-latest",
+                "response_format": {"type": "json_object"},
+                "messages": [
+                    {"role": "system", "content": system},
+                    {"role": "user", "content": prompt},
+                ],
+            },
+            timeout=45,
+        )
+        resp.raise_for_status()
+        return resp.json()["choices"][0]["message"]["content"]
+
     @app.route("/agents/mistral-compliance", methods=["POST"])
     def mistral_compliance():
         data = request.get_json() or {}
@@ -260,34 +287,32 @@ def register_orchestrator(app):
         if not key:
             return jsonify({"error": "MISTRAL_API_KEY non configurata"}), 503
         prompt = f"Azienda: {entity}\nSettore: {sector}\nDescrizione: {description}"
+        provider = "mistral-large-latest"
         try:
-            resp = _requests.post(
-                "https://api.mistral.ai/v1/chat/completions",
-                headers={"Authorization": f"Bearer {key}", "Content-Type": "application/json"},
-                json={
-                    "model": "mistral-large-latest",
-                    "response_format": {"type": "json_object"},
-                    "messages": [
-                        {"role": "system", "content": _COMPLIANCE_SYSTEM},
-                        {"role": "user", "content": prompt},
-                    ],
-                },
-                timeout=60,
-            )
-            resp.raise_for_status()
-            raw = resp.json()["choices"][0]["message"]["content"]
-            result, err = _extract_json(raw)
-            if err:
-                return jsonify({"error": err}), 500
-            result["entity_name"] = entity
-            result["provider"] = "mistral-large-latest"
-            result["timestamp"] = datetime.utcnow().isoformat() + "Z"
-            return jsonify({"status": "success", "audit": result}), 200
-        except Exception as e:
-            return jsonify({"error": str(e)}), 500
+            raw = _mistral_chat(key, _COMPLIANCE_SYSTEM, prompt)
+        except Exception as mistral_err:
+            # Fallback: Claude Sonnet if Mistral fails
+            try:
+                msg = _get_client().messages.create(
+                    model="claude-sonnet-4-6",
+                    max_tokens=1500,
+                    system=_COMPLIANCE_SYSTEM,
+                    messages=[{"role": "user", "content": prompt}],
+                )
+                raw = msg.content[0].text
+                provider = "claude-sonnet-4-6-fallback"
+            except Exception as claude_err:
+                return jsonify({"error": f"Mistral: {mistral_err} | Claude fallback: {claude_err}"}), 500
+        result, err = _extract_json(raw)
+        if err:
+            return jsonify({"error": err}), 500
+        result["entity_name"] = entity
+        result["provider"] = provider
+        result["timestamp"] = datetime.utcnow().isoformat() + "Z"
+        return jsonify({"status": "success", "audit": result}), 200
 
-    @app.route("/agents/openai-advisor", methods=["POST"])
-    def openai_advisor():
+    @app.route("/agents/mistral-advisor", methods=["POST"])
+    def mistral_advisor():
         data = request.get_json() or {}
         entity = data.get("entity_name", data.get("name", ""))
         description = data.get("description", data.get("descrizione", ""))
@@ -295,35 +320,48 @@ def register_orchestrator(app):
         risk_level = data.get("risk_level", "")
         if not description:
             return jsonify({"error": "Campo description obbligatorio"}), 400
-        key = os.getenv("OPENAI_API_KEY", "")
+        key = os.getenv("MISTRAL_API_KEY", "")
         if not key:
-            return jsonify({"error": "OPENAI_API_KEY non configurata"}), 503
+            return jsonify({"error": "MISTRAL_API_KEY non configurata"}), 503
         prompt = (
             f"Azienda: {entity}\nSettore: {sector}\n"
             f"Livello rischio identificato: {risk_level}\nDescrizione: {description}"
         )
+        provider = "mistral-large-latest"
         try:
-            resp = _requests.post(
-                "https://api.openai.com/v1/chat/completions",
-                headers={"Authorization": f"Bearer {key}", "Content-Type": "application/json"},
-                json={
-                    "model": "gpt-4o-mini",
-                    "response_format": {"type": "json_object"},
-                    "messages": [
-                        {"role": "system", "content": _ADVISORY_SYSTEM},
-                        {"role": "user", "content": prompt},
-                    ],
-                },
-                timeout=60,
-            )
-            resp.raise_for_status()
-            raw = resp.json()["choices"][0]["message"]["content"]
-            result, err = _extract_json(raw)
-            if err:
-                return jsonify({"error": err}), 500
-            result["entity_name"] = entity
-            result["provider"] = "gpt-4o-mini"
-            result["timestamp"] = datetime.utcnow().isoformat() + "Z"
-            return jsonify({"status": "success", "advisory": result}), 200
-        except Exception as e:
-            return jsonify({"error": str(e)}), 500
+            raw = _mistral_chat(key, _ADVISORY_SYSTEM, prompt)
+        except Exception as mistral_err:
+            # Fallback: Claude Sonnet if Mistral fails
+            try:
+                msg = _get_client().messages.create(
+                    model="claude-sonnet-4-6",
+                    max_tokens=1200,
+                    system=_ADVISORY_SYSTEM,
+                    messages=[{"role": "user", "content": prompt}],
+                )
+                raw = msg.content[0].text
+                provider = "claude-sonnet-4-6-fallback"
+            except Exception as claude_err:
+                return jsonify({"error": f"Mistral: {mistral_err} | Claude fallback: {claude_err}"}), 500
+        result, err = _extract_json(raw)
+        if err:
+            return jsonify({"error": err}), 500
+        result["entity_name"] = entity
+        result["provider"] = provider
+        result["timestamp"] = datetime.utcnow().isoformat() + "Z"
+        return jsonify({"status": "success", "advisory": result}), 200
+
+    # ---------------------------------------------------------------------------
+    # OpenAI endpoint — DISABLED (payment pending, OPENAI_API_KEY non disponibile)
+    # ---------------------------------------------------------------------------
+    # @app.route("/agents/openai-advisor", methods=["POST"])
+    # def openai_advisor():
+    #     ...  # gpt-4o-mini via https://api.openai.com/v1/chat/completions
+    # ---------------------------------------------------------------------------
+
+    @app.route("/agents/openai-advisor", methods=["POST"])
+    def openai_advisor():
+        return jsonify({
+            "error": "OpenAI endpoint disabilitato (pagamento in sospeso). Usa /agents/mistral-advisor.",
+            "alternative": "/agents/mistral-advisor",
+        }), 503
