@@ -18,21 +18,6 @@ def _places_enrich(location: str) -> str:
     if not key or not location:
         print(f"[Places] skip: key={'set' if key else 'EMPTY'} location={location!r}", file=sys.stderr)
         return ""
-    try:
-        geo = _requests.get(
-            "https://maps.googleapis.com/maps/api/geocode/json",
-            params={"address": f"{location}, Italia", "key": key},
-            timeout=5,
-        ).json()
-        if not geo.get("results"):
-            print(f"[Places] geocode no results for {location!r}, status={geo.get('status')}", file=sys.stderr)
-            return ""
-        loc = geo["results"][0]["geometry"]["location"]
-        lat, lng = loc["lat"], loc["lng"]
-        print(f"[Places] geocoded {location!r} → {lat},{lng}", file=sys.stderr)
-    except Exception as e:
-        print(f"[Places] geocode exception: {e}", file=sys.stderr)
-        return ""
 
     queries = [
         f"produttori agricoli locali {location}",
@@ -43,7 +28,7 @@ def _places_enrich(location: str) -> str:
         try:
             resp = _requests.get(
                 "https://maps.googleapis.com/maps/api/place/textsearch/json",
-                params={"query": q, "location": f"{lat},{lng}", "radius": 100000, "key": key},
+                params={"query": q, "key": key},
                 timeout=5,
             ).json()
             hits = resp.get("results", [])
@@ -54,7 +39,6 @@ def _places_enrich(location: str) -> str:
                 found.append(f"- {name} ({addr})")
         except Exception as e:
             print(f"[Places] search exception: {e}", file=sys.stderr)
-            pass
 
     if not found:
         return ""
