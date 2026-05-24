@@ -1,9 +1,8 @@
 import os
 import json
 import re
+import requests as _requests
 import anthropic
-from google import genai as google_genai
-from google.genai import types as google_types
 from datetime import datetime
 from flask import Flask, request, jsonify, send_file
 
@@ -233,20 +232,29 @@ def gemini_qen_score():
     google_key = os.getenv("GOOGLE_API_KEY", "")
     try:
         if google_key:
-            gclient = google_genai.Client(
-                api_key=google_key,
-                http_options=google_types.HttpOptions(api_version="v1"),
-            )
-            response = gclient.models.generate_content(
-                model="gemini-1.5-flash",
-                contents=prompt,
-                config=google_types.GenerateContentConfig(
-                    system_instruction=SIMPLE_SYSTEM,
-                    response_mime_type="application/json",
-                ),
-            )
-            raw = response.text.strip()
-            provider = "gemini-1.5-flash"
+            _GEMINI_MODELS = ["gemini-1.5-flash-latest", "gemini-1.5-flash-8b", "gemini-1.5-pro-latest"]
+            raw = None
+            provider = None
+            for _model in _GEMINI_MODELS:
+                try:
+                    _resp = _requests.post(
+                        f"https://generativelanguage.googleapis.com/v1beta/models/{_model}:generateContent",
+                        params={"key": google_key},
+                        json={
+                            "system_instruction": {"parts": [{"text": SIMPLE_SYSTEM}]},
+                            "contents": [{"parts": [{"text": prompt}]}],
+                            "generationConfig": {"response_mime_type": "application/json"},
+                        },
+                        timeout=30,
+                    )
+                    _resp.raise_for_status()
+                    raw = _resp.json()["candidates"][0]["content"]["parts"][0]["text"].strip()
+                    provider = _model
+                    break
+                except Exception:
+                    continue
+            if raw is None:
+                raise RuntimeError("Nessun modello Gemini disponibile")
         else:
             msg = ANTHROPIC_CLIENT.messages.create(
                 model="claude-haiku-4-5-20251001",
