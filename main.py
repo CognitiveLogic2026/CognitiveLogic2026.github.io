@@ -233,7 +233,10 @@ def gemini_qen_score():
     google_key = os.getenv("GOOGLE_API_KEY", "")
     try:
         if google_key:
-            gclient = google_genai.Client(api_key=google_key)
+            gclient = google_genai.Client(
+                api_key=google_key,
+                http_options=google_types.HttpOptions(api_version="v1"),
+            )
             response = gclient.models.generate_content(
                 model="gemini-1.5-flash",
                 contents=prompt,
