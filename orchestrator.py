@@ -247,3 +247,83 @@ def register_orchestrator(app):
             },
             "timestamp": datetime.utcnow().isoformat() + "Z",
         }), 200
+
+    @app.route("/agents/mistral-compliance", methods=["POST"])
+    def mistral_compliance():
+        data = request.get_json() or {}
+        entity = data.get("entity_name", data.get("name", ""))
+        description = data.get("description", data.get("descrizione", ""))
+        sector = data.get("sector", data.get("settore", ""))
+        if not description:
+            return jsonify({"error": "Campo description obbligatorio"}), 400
+        key = os.getenv("MISTRAL_API_KEY", "")
+        if not key:
+            return jsonify({"error": "MISTRAL_API_KEY non configurata"}), 503
+        prompt = f"Azienda: {entity}\nSettore: {sector}\nDescrizione: {description}"
+        try:
+            resp = _requests.post(
+                "https://api.mistral.ai/v1/chat/completions",
+                headers={"Authorization": f"Bearer {key}", "Content-Type": "application/json"},
+                json={
+                    "model": "mistral-large-latest",
+                    "response_format": {"type": "json_object"},
+                    "messages": [
+                        {"role": "system", "content": _COMPLIANCE_SYSTEM},
+                        {"role": "user", "content": prompt},
+                    ],
+                },
+                timeout=60,
+            )
+            resp.raise_for_status()
+            raw = resp.json()["choices"][0]["message"]["content"]
+            result, err = _extract_json(raw)
+            if err:
+                return jsonify({"error": err}), 500
+            result["entity_name"] = entity
+            result["provider"] = "mistral-large-latest"
+            result["timestamp"] = datetime.utcnow().isoformat() + "Z"
+            return jsonify({"status": "success", "audit": result}), 200
+        except Exception as e:
+            return jsonify({"error": str(e)}), 500
+
+    @app.route("/agents/openai-advisor", methods=["POST"])
+    def openai_advisor():
+        data = request.get_json() or {}
+        entity = data.get("entity_name", data.get("name", ""))
+        description = data.get("description", data.get("descrizione", ""))
+        sector = data.get("sector", data.get("settore", ""))
+        risk_level = data.get("risk_level", "")
+        if not description:
+            return jsonify({"error": "Campo description obbligatorio"}), 400
+        key = os.getenv("OPENAI_API_KEY", "")
+        if not key:
+            return jsonify({"error": "OPENAI_API_KEY non configurata"}), 503
+        prompt = (
+            f"Azienda: {entity}\nSettore: {sector}\n"
+            f"Livello rischio identificato: {risk_level}\nDescrizione: {description}"
+        )
+        try:
+            resp = _requests.post(
+                "https://api.openai.com/v1/chat/completions",
+                headers={"Authorization": f"Bearer {key}", "Content-Type": "application/json"},
+                json={
+                    "model": "gpt-4o-mini",
+                    "response_format": {"type": "json_object"},
+                    "messages": [
+                        {"role": "system", "content": _ADVISORY_SYSTEM},
+                        {"role": "user", "content": prompt},
+                    ],
+                },
+                timeout=60,
+            )
+            resp.raise_for_status()
+            raw = resp.json()["choices"][0]["message"]["content"]
+            result, err = _extract_json(raw)
+            if err:
+                return jsonify({"error": err}), 500
+            result["entity_name"] = entity
+            result["provider"] = "gpt-4o-mini"
+            result["timestamp"] = datetime.utcnow().isoformat() + "Z"
+            return jsonify({"status": "success", "advisory": result}), 200
+        except Exception as e:
+            return jsonify({"error": str(e)}), 500
