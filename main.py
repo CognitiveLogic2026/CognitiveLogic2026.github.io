@@ -119,7 +119,7 @@ def classify_risk():
     user_message = "Sistema: " + descrizione + " Contesto: " + contesto + " Settore: " + settore
     try:
         response = ANTHROPIC_CLIENT.messages.create(
-            model="claude-sonnet-4-5",
+            model="claude-sonnet-4-6",
             max_tokens=1024,
             system=RISK_SYSTEM_PROMPT,
             messages=[{"role": "user", "content": user_message}]
@@ -154,7 +154,7 @@ def copilot_analyze():
     user_message = "Sistema AI da classificare: " + descrizione
     try:
         response = ANTHROPIC_CLIENT.messages.create(
-            model="claude-sonnet-4-5",
+            model="claude-sonnet-4-6",
             max_tokens=1024,
             system=RISK_SYSTEM_PROMPT,
             messages=[{"role": "user", "content": user_message}]
