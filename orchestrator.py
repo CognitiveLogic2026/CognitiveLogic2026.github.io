@@ -263,7 +263,7 @@ def register_orchestrator(app):
                 "Content-Type": "application/json",
             },
             json={
-                "model": "mistral-large-latest",
+                "model": "mistral-small-latest",
                 "response_format": {"type": "json_object"},
                 "messages": [
                     {"role": "system", "content": system},
