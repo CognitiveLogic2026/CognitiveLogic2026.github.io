@@ -107,6 +107,24 @@ _ADVISORY_SYSTEM = (
 )
 
 
+_BOLKESTEIN_SYSTEM = (
+    "Sei un esperto della Direttiva Servizi EU 2006/123/CE (Bolkestein) e del suo impatto sulle\n"
+    "concessioni italiane con scadenza 2027 (balneari, mercati, dehors, posteggi, taxi).\n"
+    "Applica il test di scarsità della risorsa, le ragioni imperative di interesse generale (RIGI),\n"
+    "la giurisprudenza CGUE (C-458/14, C-20/21) e il QEN Score per la valutazione d'impatto.\n\n"
+    "Rispondi SOLO con JSON valido:\n"
+    '{"risk_level": "ALTO|MEDIO|BASSO", '
+    '"concession_type": "", '
+    '"scarcity_test": {"result": "SCARSA|NON_SCARSA|INCERTA", "justification": ""}, '
+    '"imperative_reasons": [], '
+    '"compliance_actions": [], '
+    '"critical_deadlines": [{"date": "", "action": ""}], '
+    '"qen_preassessment": {"score": 0.0, "vs": 0.0, "va": 0.0, "vt": 0.0, "note": ""}, '
+    '"regulatory_refs": [], '
+    '"summary": ""}'
+)
+
+
 def register_orchestrator(app):
     @app.route("/agents/compliance-auditor", methods=["POST"])
     def compliance_auditor():
@@ -365,3 +383,51 @@ def register_orchestrator(app):
             "error": "OpenAI endpoint disabilitato (pagamento in sospeso). Usa /agents/mistral-advisor.",
             "alternative": "/agents/mistral-advisor",
         }), 503
+
+    @app.route("/agents/bolkestein-assessment", methods=["POST"])
+    def bolkestein_assessment():
+        data = request.get_json() or {}
+        entity = data.get("entity_name", data.get("name", ""))
+        description = data.get("description", data.get("descrizione", ""))
+        sector = data.get("sector", data.get("settore", ""))
+        location = data.get("location", data.get("comune", ""))
+        concessione = data.get("concessione_tipo", "")
+        scadenza = data.get("scadenza_attuale", "2027-12-31")
+        if not description:
+            return jsonify({"error": "Campo description obbligatorio"}), 400
+        prompt = (
+            f"Azienda: {entity}\n"
+            f"Settore: {sector}\n"
+            f"Tipo concessione: {concessione}\n"
+            f"Localita: {location}\n"
+            f"Scadenza concessione attuale: {scadenza}\n"
+            f"Descrizione attivita: {description}\n\n"
+            "Esegui il Bolkestein 2027 pre-assessment completo."
+        )
+        key = os.getenv("MISTRAL_API_KEY", "")
+        provider = "mistral-large-latest"
+        try:
+            if key:
+                raw = _mistral_chat(key, _BOLKESTEIN_SYSTEM, prompt)
+            else:
+                raise RuntimeError("MISTRAL_API_KEY non configurata")
+        except Exception as mistral_err:
+            try:
+                msg = _get_client().messages.create(
+                    model="claude-sonnet-4-6",
+                    max_tokens=1500,
+                    system=_BOLKESTEIN_SYSTEM,
+                    messages=[{"role": "user", "content": prompt}],
+                )
+                raw = msg.content[0].text
+                provider = "claude-sonnet-4-6-fallback"
+            except Exception as claude_err:
+                return jsonify({"error": f"Mistral: {mistral_err} | Claude fallback: {claude_err}"}), 500
+        result, err = _extract_json(raw)
+        if err:
+            return jsonify({"error": err}), 500
+        result["entity_name"] = entity
+        result["provider"] = provider
+        result["deadline_2027"] = "2027-01-01"
+        result["timestamp"] = datetime.utcnow().isoformat() + "Z"
+        return jsonify({"status": "success", "assessment": result}), 200

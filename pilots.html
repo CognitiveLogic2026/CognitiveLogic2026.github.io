@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>QEN Score Dashboard — Cognitive Logic</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body { height: 100%; background: #080b0f; }
+    @keyframes fadeSlideIn {
+      from { opacity: 0; transform: translateY(8px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes spin {
+      from { transform: rotate(0deg); }
+      to   { transform: rotate(360deg); }
+    }
+    body {
+      min-height: 100vh;
+      background: #080b0f;
+      color: #e8eaed;
+      font-family: 'Syne', sans-serif;
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
+      padding: 40px 20px 80px;
+      position: relative;
+      overflow-x: hidden;
+    }
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 600px 400px at 20% 10%, rgba(0,200,150,0.04) 0%, transparent 70%),
+        radial-gradient(ellipse 400px 600px at 80% 80%, rgba(0,120,255,0.04) 0%, transparent 70%);
+      pointer-events: none;
+      z-index: 0;
+    }
+    .grid-bg {
+      position: fixed;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
+      background-size: 48px 48px;
+      pointer-events: none;
+      z-index: 0;
+    }
+    .container { width: 100%; max-width: 860px; position: relative; z-index: 1; }
+
+    /* Header */
+    .header { margin-bottom: 40px; animation: fadeSlideIn 0.6s ease both; }
+    .eyebrow {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 10px;
+      letter-spacing: 0.2em;
+      color: #00c896;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .eyebrow-line { display: inline-block; width: 24px; height: 1px; background: #00c896; }
+    h1 { font-size: clamp(26px, 4vw, 38px); font-weight: 800; line-height: 1.1; letter-spacing: -0.03em; color: #fff; margin-bottom: 8px; }
+    h1 span { color: #00c896; }
+    .subtitle { font-size: 14px; color: rgba(255,255,255,0.4); line-height: 1.6; }
+    .header-row { display: flex; align-items: flex-start; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+
+    /* Buttons */
+    .btn-new {
+      background: #00c896; color: #080b0f; border: none;
+      padding: 10px 24px;
+      font-family: 'IBM Plex Mono', monospace; font-size: 11px; font-weight: 600;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      cursor: pointer; border-radius: 2px;
+      text-decoration: none;
+      display: inline-flex; align-items: center; gap: 8px;
+      transition: background 0.2s, transform 0.15s;
+      white-space: nowrap;
+      margin-top: 4px;
+    }
+    .btn-new:hover { background: #00dfa8; transform: translateY(-1px); }
+    .btn-refresh {
+      background: transparent; color: rgba(255,255,255,0.4);
+      border: 1px solid rgba(255,255,255,0.1);
+      padding: 10px 20px;
+      font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase;
+      cursor: pointer; border-radius: 2px;
+      transition: color 0.2s, border-color 0.2s;
+      display: inline-flex; align-items: center; gap: 8px;
+    }
+    .btn-refresh:hover { color: rgba(255,255,255,0.7); border-color: rgba(255,255,255,0.25); }
+    .btn-row { display: flex; gap: 8px; flex-wrap: wrap; }
+
+    /* Stat cards */
+    .stats-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-bottom: 20px; }
+    @media (max-width: 560px) { .stats-row { grid-template-columns: 1fr 1fr; } }
+    .stat-card {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 4px;
+      padding: 20px;
+      animation: fadeSlideIn 0.5s ease both;
+    }
+    .stat-label { font-family: 'IBM Plex Mono', monospace; font-size: 9px; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(255,255,255,0.25); margin-bottom: 10px; }
+    .stat-value { font-size: 28px; font-weight: 800; letter-spacing: -0.03em; color: #fff; }
+    .stat-value.green { color: #00c896; }
+    .stat-sub { font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: rgba(255,255,255,0.2); margin-top: 4px; }
+
+    /* Table card */
+    .table-card {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 4px;
+      overflow: hidden;
+      animation: fadeSlideIn 0.5s ease 0.15s both;
+    }
+    .section-label {
+      font-family: 'IBM Plex Mono', monospace; font-size: 9px; letter-spacing: 0.2em; text-transform: uppercase;
+      color: rgba(255,255,255,0.25);
+      padding: 16px 20px 12px;
+      border-bottom: 1px solid rgba(255,255,255,0.04);
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .section-count { color: #00c896; }
+    table { width: 100%; border-collapse: collapse; }
+    thead th {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 9px; letter-spacing: 0.15em; text-transform: uppercase;
+      color: rgba(255,255,255,0.2);
+      padding: 12px 20px;
+      text-align: left;
+      border-bottom: 1px solid rgba(255,255,255,0.04);
+      font-weight: 400;
+    }
+    thead th.right { text-align: right; }
+    tbody tr {
+      border-bottom: 1px solid rgba(255,255,255,0.03);
+      transition: background 0.15s;
+      animation: fadeSlideIn 0.4s ease both;
+    }
+    tbody tr:last-child { border-bottom: none; }
+    tbody tr:hover { background: rgba(255,255,255,0.02); }
+    td { padding: 14px 20px; vertical-align: middle; }
+    .td-name { font-size: 14px; font-weight: 600; color: rgba(255,255,255,0.85); letter-spacing: -0.01em; }
+    .td-date { font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: rgba(255,255,255,0.25); margin-top: 3px; }
+    .td-analyses { font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: rgba(255,255,255,0.3); text-align: center; }
+    .td-score { text-align: right; }
+    .score-wrap { display: flex; flex-direction: column; align-items: flex-end; gap: 5px; }
+    .score-num { font-family: 'IBM Plex Mono', monospace; font-size: 13px; font-weight: 600; }
+    .score-bar-bg { width: 80px; height: 3px; background: rgba(255,255,255,0.06); border-radius: 2px; overflow: hidden; }
+    .score-bar { height: 100%; border-radius: 2px; }
+    .badge {
+      font-family: 'IBM Plex Mono', monospace; font-size: 9px; font-weight: 600;
+      letter-spacing: 0.08em; padding: 2px 7px; border-radius: 2px;
+      border: 1px solid; text-transform: uppercase;
+    }
+
+    /* Empty / error / loading states */
+    .state-box {
+      padding: 48px 20px;
+      text-align: center;
+      color: rgba(255,255,255,0.25);
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 12px;
+      letter-spacing: 0.08em;
+    }
+    .state-box .spinner {
+      width: 20px; height: 20px;
+      border: 1.5px solid rgba(0,200,150,0.2);
+      border-top-color: #00c896;
+      border-radius: 50%;
+      animation: spin 0.8s linear infinite;
+      margin: 0 auto 16px;
+    }
+    .error-box {
+      background: rgba(255,59,59,0.06);
+      border: 1px solid rgba(255,59,59,0.2);
+      border-radius: 4px;
+      padding: 16px 20px;
+      color: #ff6b6b;
+      font-size: 13px;
+      font-family: 'IBM Plex Mono', monospace;
+      margin-bottom: 12px;
+      display: none;
+    }
+    .footer-note { font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: rgba(255,255,255,0.12); letter-spacing: 0.08em; text-align: center; margin-top: 24px; }
+  </style>
+</head>
+<body>
+  <div class="grid-bg"></div>
+  <div class="container">
+
+    <div class="header">
+      <div class="header-row">
+        <div>
+          <div class="eyebrow"><span class="eyebrow-line"></span>Cognitive Logic · QEN Framework</div>
+          <h1>QEN Score <span>Dashboard</span></h1>
+          <p class="subtitle">Storico analisi e score per tutti i pilot analizzati</p>
+        </div>
+        <div class="btn-row">
+          <button class="btn-refresh" id="btn-refresh">↻ Aggiorna</button>
+          <a class="btn-new" href="https://api.cognitivelogic.it/copilot">+ Nuova analisi</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="error-box" id="error-box"></div>
+
+    <div class="stats-row" id="stats-row">
+      <div class="stat-card" style="animation-delay:0s">
+        <div class="stat-label">Totale pilot</div>
+        <div class="stat-value" id="stat-total">—</div>
+        <div class="stat-sub">analizzati</div>
+      </div>
+      <div class="stat-card" style="animation-delay:0.05s">
+        <div class="stat-label">QEN Score medio</div>
+        <div class="stat-value green" id="stat-avg">—</div>
+        <div class="stat-sub">su scala 0–100</div>
+      </div>
+      <div class="stat-card" style="animation-delay:0.1s">
+        <div class="stat-label">Ultima analisi</div>
+        <div class="stat-value" id="stat-last" style="font-size:18px;padding-top:6px;">—</div>
+        <div class="stat-sub" id="stat-last-name">—</div>
+      </div>
+    </div>
+
+    <div class="table-card">
+      <div class="section-label">
+        <span>Pilot analizzati</span>
+        <span class="section-count" id="section-count"></span>
+      </div>
+      <div id="table-body">
+        <div class="state-box"><div class="spinner"></div>Caricamento...</div>
+      </div>
+    </div>
+
+    <div class="footer-note">Cognitive Logic · QEN Compliance Engine · EU AI Act 2024</div>
+  </div>
+
+  <script>
+    const API = "https://api.cognitivelogic.it/pilots";
+
+    function scoreColor(q) {
+      if (q === null || q === undefined) return "rgba(255,255,255,0.2)";
+      const n = normalizeScore(q);
+      if (n >= 60) return "#00c896";
+      if (n >= 35) return "#ff8c00";
+      return "#ff3b3b";
+    }
+
+    function normalizeScore(q) {
+      if (q === null || q === undefined) return null;
+      return q <= 1 ? Math.round(q * 100) : Math.round(q);
+    }
+
+    function badgeLabel(n) {
+      if (n === null) return null;
+      if (n >= 60) return "QEN OK";
+      if (n >= 35) return "ATTENZIONE";
+      return "CRITICO";
+    }
+
+    function formatDate(ts) {
+      if (!ts) return "—";
+      try {
+        return new Date(ts).toLocaleDateString("it-IT", { day: "2-digit", month: "short", year: "numeric" });
+      } catch { return ts.slice(0, 10); }
+    }
+
+    function renderTable(pilots) {
+      if (!pilots.length) {
+        document.getElementById("table-body").innerHTML =
+          '<div class="state-box">Nessun pilot analizzato ancora.<br>Usa <a href="https://api.cognitivelogic.it/copilot" style="color:#00c896">il copilot</a> per la prima analisi.</div>';
+        return;
+      }
+
+      const rows = pilots.map((p, i) => {
+        const q = p.qen_score;
+        const n = normalizeScore(q);
+        const col = scoreColor(q);
+        const label = badgeLabel(n);
+        const barPct = n !== null ? Math.min(100, n) : 0;
+        const scoreDisplay = n !== null ? n.toFixed(1) : "—";
+        return `
+          <tr style="animation-delay:${i * 0.04}s">
+            <td>
+              <div class="td-name">${escHtml(p.name || "—")}</div>
+              <div class="td-date">${formatDate(p.timestamp)}</div>
+            </td>
+            <td class="td-analyses">${p.analyses ?? 1}</td>
+            <td class="td-score">
+              <div class="score-wrap">
+                <span class="score-num" style="color:${col}">${scoreDisplay}</span>
+                <div class="score-bar-bg">
+                  <div class="score-bar" style="width:${barPct}%;background:${col}"></div>
+                </div>
+                ${label ? `<span class="badge" style="color:${col};border-color:${col}30">${label}</span>` : ""}
+              </div>
+            </td>
+          </tr>`;
+      }).join("");
+
+      document.getElementById("table-body").innerHTML = `
+        <table>
+          <thead>
+            <tr>
+              <th>Pilot / Azienda</th>
+              <th style="text-align:center">Analisi</th>
+              <th class="right">QEN Score</th>
+            </tr>
+          </thead>
+          <tbody>${rows}</tbody>
+        </table>`;
+    }
+
+    function renderStats(total, pilots) {
+      document.getElementById("stat-total").textContent = total;
+      document.getElementById("section-count").textContent = total + " record";
+
+      const scores = pilots.map(p => normalizeScore(p.qen_score)).filter(n => n !== null);
+      if (scores.length) {
+        const avg = scores.reduce((a, b) => a + b, 0) / scores.length;
+        document.getElementById("stat-avg").textContent = avg.toFixed(1);
+      } else {
+        document.getElementById("stat-avg").textContent = "—";
+      }
+
+      if (pilots.length) {
+        const last = pilots[0];
+        document.getElementById("stat-last").textContent = formatDate(last.timestamp);
+        document.getElementById("stat-last-name").textContent = last.name || "—";
+      }
+    }
+
+    function escHtml(s) {
+      return String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;");
+    }
+
+    async function load() {
+      document.getElementById("table-body").innerHTML =
+        '<div class="state-box"><div class="spinner"></div>Caricamento...</div>';
+      document.getElementById("error-box").style.display = "none";
+      document.getElementById("stat-total").textContent = "—";
+      document.getElementById("stat-avg").textContent = "—";
+      document.getElementById("stat-last").textContent = "—";
+      document.getElementById("stat-last-name").textContent = "—";
+      document.getElementById("section-count").textContent = "";
+
+      try {
+        const res = await fetch(API);
+        if (!res.ok) throw new Error(`HTTP ${res.status}`);
+        const d = await res.json();
+        const pilots = d.pilots || [];
+        renderStats(d.total || pilots.length, pilots);
+        renderTable(pilots);
+      } catch (err) {
+        document.getElementById("error-box").textContent = "⚠ " + err.message;
+        document.getElementById("error-box").style.display = "block";
+        document.getElementById("table-body").innerHTML =
+          '<div class="state-box">Impossibile caricare i dati dal backend.</div>';
+      }
+    }
+
+    document.getElementById("btn-refresh").addEventListener("click", load);
+    load();
+  </script>
+</body>
+</html>
