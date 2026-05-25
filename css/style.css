@@ -946,6 +946,73 @@ td {
   background: rgba(5, 12, 21, 0.55);
 }
 
+.footer-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 32px;
+  flex-wrap: wrap;
+}
+
+.footer-brand {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: 4px;
+}
+
+.footer-sub {
+  font-family: "DM Mono", monospace;
+  font-size: 0.72rem;
+  color: var(--muted);
+  letter-spacing: 0.04em;
+  max-width: 480px;
+  line-height: 1.6;
+}
+
+.footer-copy {
+  font-family: "DM Mono", monospace;
+  font-size: 0.68rem;
+  color: var(--muted);
+  letter-spacing: 0.04em;
+}
+
+.footer-social {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-top: 14px;
+}
+
+.footer-social-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 12px;
+  border: 1px solid var(--line-soft);
+  border-radius: 4px;
+  text-decoration: none;
+  transition: border-color var(--transition), color var(--transition);
+}
+
+.footer-social-link:hover { border-color: rgba(212,175,55,0.5); }
+.footer-social-link:hover .fsl-name { color: var(--gold-soft); }
+
+.fsl-net {
+  font-family: "DM Mono", monospace;
+  font-size: 0.58rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.fsl-name {
+  font-family: "DM Mono", monospace;
+  font-size: 0.68rem;
+  color: var(--text-soft);
+  transition: color var(--transition);
+}
+
 .footer-grid {
   display: grid;
   grid-template-columns: 1.2fr 0.8fr;

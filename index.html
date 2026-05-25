@@ -1,152 +1,243 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>QEN Ristorazione — HoReCa Bologna</title>
-  <meta name="description" content="QEN Score for Bologna restaurants. Supply chain transparency, Km0, CSRD compliance.">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,300;0,400;0,500;1,300&family=Syne:wght@400;700;800&display=swap" rel="stylesheet">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cognitive Logic — QEN Framework · AI Ethics · Bologna</title>
+  <meta name="description" content="Cognitive Logic: infrastruttura computabile per AI Ethics, QEN Score, compliance EU AI Act, CSRD e Bolkestein 2027. Roberto Bob Malini · Bologna." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css?v=3" />
   <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    :root { --bg: #05080f; --s1: #0a0d1a; --s2: #0f1323; --border: #181d30; --green: #3dffa0; --blue: #4db8ff; --gold: #c8a84b; --text: #ccd4ef; --mid: #8892b5; --dim: #4a5270; --mono: 'IBM Plex Mono', monospace; --sans: 'Syne', sans-serif; }
-    html { scroll-behavior: smooth; }
-    body { background: var(--bg); color: var(--text); font-family: var(--mono); line-height: 1.6; overflow-x: hidden; }
-    body::after { content: ''; position: fixed; inset: 0; background-image: linear-gradient(var(--border) 1px, transparent 1px), linear-gradient(90deg, var(--border) 1px, transparent 1px); background-size: 64px 64px; pointer-events: none; z-index: 0; opacity: 0.25; }
-    * { position: relative; z-index: 1; }
-    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; height: 52px; display: flex; align-items: center; justify-content: space-between; padding: 0 2rem; background: rgba(5,8,15,0.9); backdrop-filter: blur(16px); border-bottom: 1px solid var(--border); }
-    .nav-logo { font-family: var(--sans); font-weight: 800; font-size: 0.8rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--green); text-decoration: none; }
-    .nav-back { font-size: 0.65rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--dim); text-decoration: none; transition: color 0.2s; }
-    .nav-back:hover { color: var(--green); }
-    section { max-width: 1080px; margin: 0 auto; padding: 5rem 2rem; }
-    .hero { min-height: 100vh; display: flex; flex-direction: column; justify-content: center; padding: 6rem 2rem 4rem; max-width: 1080px; margin: 0 auto; }
-    .eyebrow { font-size: 0.6rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--green); margin-bottom: 2rem; }
-    h1 { font-family: var(--sans); font-weight: 800; font-size: clamp(2.6rem, 6.5vw, 5.5rem); line-height: 1; letter-spacing: -0.02em; margin-bottom: 1rem; }
-    h1 .g { color: var(--green); }
-    .hero-p { font-size: 0.82rem; color: var(--mid); max-width: 560px; line-height: 1.8; margin: 1.5rem 0 2.5rem; }
-    .grid-restaurants { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1px; background: var(--border); border: 1px solid var(--border); margin-bottom: 2.5rem; }
-    .restaurant-card { background: var(--s1); padding: 2rem; border-left: 3px solid var(--green); transition: background 0.2s; }
-    .restaurant-card:hover { background: var(--s2); }
-    .rest-name { font-family: var(--sans); font-weight: 700; font-size: 1.2rem; color: var(--text); margin-bottom: 0.3rem; }
-    .rest-addr { font-size: 0.65rem; color: var(--dim); margin-bottom: 1.2rem; }
-    .rest-placeholder { font-size: 0.75rem; color: var(--dim); background: rgba(77,184,255,0.05); padding: 0.8rem; border: 1px dashed var(--border); border-radius: 2px; margin-bottom: 1rem; }
-    .rest-score { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 0.5rem; margin-top: 1rem; }
-    .rs-item { background: var(--s2); padding: 0.6rem; text-align: center; border: 1px solid var(--border); }
-    .rs-val { font-family: var(--sans); font-weight: 700; font-size: 1.3rem; color: var(--green); }
-    .rs-label { font-size: 0.55rem; color: var(--dim); text-transform: uppercase; letter-spacing: 0.08em; }
-    .slabel { font-size: 0.58rem; letter-spacing: 0.28em; text-transform: uppercase; color: var(--green); margin-bottom: 0.8rem; display: flex; align-items: center; gap: 0.6rem; }
-    .slabel::before { content: ''; width: 20px; height: 1px; background: var(--green); }
-    h2 { font-family: var(--sans); font-weight: 700; font-size: clamp(1.6rem, 3.5vw, 2.6rem); letter-spacing: -0.02em; line-height: 1.1; margin-bottom: 0.8rem; }
-    .sdesc { font-size: 0.8rem; color: var(--mid); max-width: 520px; line-height: 1.8; margin-bottom: 2.5rem; }
-    hr.div { border: none; border-top: 1px solid var(--border); max-width: 1080px; margin: 0 auto; }
-    footer { border-top: 1px solid var(--border); padding: 2.5rem 2rem; max-width: 1080px; margin: 0 auto; }
-    .fb { font-family: var(--sans); font-weight: 800; font-size: 1.1rem; color: var(--green); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 0.4rem; }
-    .ft-tag { font-size: 0.68rem; color: var(--mid); font-style: italic; max-width: 380px; line-height: 1.6; }
-    .flinks { display: flex; flex-direction: column; gap: 0.4rem; margin-top: 1rem; }
-    .flinks a { font-size: 0.67rem; color: var(--dim); text-decoration: none; transition: color 0.2s; }
-    .flinks a:hover { color: var(--green); }
-    @media (max-width: 640px) { nav { padding: 0 1rem; } section { padding: 3rem 1rem; } .hero { padding: 5rem 1rem 3rem; } .grid-restaurants { grid-template-columns: 1fr; } }
+    .home-hero { padding: 140px 0 80px; }
+    .home-hero h1 { font-size: clamp(3rem, 7vw, 6.5rem); line-height: 0.93; letter-spacing: -0.03em; margin-bottom: 32px; }
+    .home-hero h1 em { font-style: italic; color: var(--gold-soft); }
+    .tagline { font-family: "DM Mono", monospace; font-size: 0.82rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--gold-soft); margin-bottom: 24px; }
+    .hero-desc { font-size: clamp(1.1rem, 1.8vw, 1.35rem); color: var(--text-soft); line-height: 1.65; max-width: 620px; margin-bottom: 40px; }
+    .hero-ctas { display: flex; gap: 12px; flex-wrap: wrap; }
+
+    .pages-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--line-soft); border: 1px solid var(--line-soft); }
+    .page-card { background: rgba(10,20,34,0.92); padding: 28px 24px; text-decoration: none; color: inherit; transition: background var(--transition), border-color var(--transition); display: flex; flex-direction: column; }
+    .page-card:hover { background: rgba(15,28,48,0.98); }
+    .page-card:hover .pc-title { color: var(--gold-soft); }
+    .pc-num { font-family: "DM Mono", monospace; font-size: 0.68rem; color: var(--muted); letter-spacing: 0.12em; margin-bottom: 16px; }
+    .pc-title { font-size: clamp(1.3rem, 2vw, 1.7rem); font-weight: 600; color: var(--text); line-height: 1.1; margin-bottom: 10px; transition: color var(--transition); }
+    .pc-desc { font-family: "DM Mono", monospace; font-size: 0.72rem; color: var(--muted); line-height: 1.7; margin: 0; flex: 1; }
+    .pc-tag { margin-top: 16px; font-family: "DM Mono", monospace; font-size: 0.6rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold-soft); }
+
+    .social-strip { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--line-soft); border: 1px solid var(--line-soft); margin-top: 2px; }
+    .social-link { display: flex; flex-direction: column; gap: 4px; padding: 20px 22px; background: rgba(10,20,34,0.92); text-decoration: none; transition: background var(--transition); }
+    .social-link:hover { background: rgba(15,28,48,0.98); }
+    .social-link:hover .sl-label { color: var(--gold-soft); }
+    .sl-platform { font-family: "DM Mono", monospace; font-size: 0.6rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); }
+    .sl-label { font-size: 1.05rem; color: var(--text-soft); line-height: 1.2; transition: color var(--transition); }
+    .sl-arrow { font-family: "DM Mono", monospace; font-size: 0.62rem; color: var(--muted); margin-top: auto; padding-top: 8px; }
+
+    .divider-label { display: flex; align-items: center; gap: 16px; margin-bottom: 28px; }
+    .divider-label span { font-family: "DM Mono", monospace; font-size: 0.72rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold-soft); white-space: nowrap; }
+    .divider-label::after { content: ''; flex: 1; height: 1px; background: var(--line); }
+
+    @media (max-width: 900px) { .pages-grid { grid-template-columns: repeat(2, 1fr); } .social-strip { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 580px) { .pages-grid { grid-template-columns: 1fr; } .social-strip { grid-template-columns: 1fr; } .home-hero { padding: 100px 0 60px; } }
   </style>
 </head>
 <body>
-<nav>
-  <a class="nav-logo" href="/">Cognitive Logic</a>
-  <a class="nav-back" href="/">← Back to Home</a>
-</nav>
-<div class="hero">
-  <p class="eyebrow">QEN Ristorazione · Bologna · 2026</p>
-  <h1>Supply Chain<br><span class="g">Transparency</span></h1>
-  <p class="hero-p">QEN scoring for Bologna restaurants. Measure: short supply chains, Km0 sourcing, worker welfare, environmental impact, territorial rootedness. Five pilot establishments.</p>
-</div>
-<hr class="div">
-<section id="restaurants">
-  <p class="slabel">Pilot Restaurants</p>
-  <h2>Bologna HoReCa<br><span class="g">Verified Ethics</span></h2>
-  <p class="sdesc">Five restaurants with transparent QEN scoring. Data collected and verified via on-site assessment.</p>
-  <div class="grid-restaurants">
-    <div class="restaurant-card">
-      <div class="rest-name">Le Sfogline</div>
-      <div class="rest-addr">Via [PLACEHOLDER] · Bologna</div>
-      <div class="rest-placeholder">📋 Status: Data collection pending<br>Supply chain: [ADD NOTES]<br>Partnership: [DATE]</div>
-      <div class="rest-score">
-        <div class="rs-item"><div class="rs-val">—</div><div class="rs-label">Vs Social</div></div>
-        <div class="rs-item"><div class="rs-val">—</div><div class="rs-label">Va Environmental</div></div>
-        <div class="rs-item"><div class="rs-val">—</div><div class="rs-label">Vt Territorial</div></div>
+  <div class="site-bg"></div>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="index.html" class="brand">
+        <span class="brand-mark"></span>
+        <div class="brand-copy">
+          <strong class="brand-name">Cognitive Logic</strong>
+          <span class="brand-tagline">QEN Framework · AI Ethics</span>
+        </div>
+      </a>
+      <nav class="main-nav">
+        <a href="framework.html">Framework</a>
+        <a href="ecosystem.html">Ecosystem</a>
+        <a href="qen-live.html">QEN Live</a>
+        <a href="ai.html">AI Engine</a>
+        <a href="identity.html">Identity</a>
+        <a href="demo.html">Demo</a>
+      </nav>
+      <div class="header-end">
+        <a href="copilot.html" class="btn btn-ghost">Copilot</a>
       </div>
-      <div style="margin-top:1.2rem;padding-top:1.2rem;border-top:1px solid var(--border);font-size:0.75rem;color:var(--mid);"><strong style="color:var(--text);">QEN Score:</strong> — / 100</div>
     </div>
-    <div class="restaurant-card">
-      <div class="rest-name">Bottega Contadina</div>
-      <div class="rest-addr">Via [PLACEHOLDER] · Bologna</div>
-      <div class="rest-placeholder">📋 Status: Data collection pending<br>Supply chain: [ADD NOTES]<br>Partnership: [DATE]</div>
-      <div class="rest-score">
-        <div class="rs-item"><div class="rs-val">—</div><div class="rs-label">Vs Social</div></div>
-        <div class="rs-item"><div class="rs-val">—</div><div class="rs-label">Va Environmental</div></div>
-        <div class="rs-item"><div class="rs-val">—</div><div class="rs-label">Vt Territorial</div></div>
+  </header>
+
+  <main>
+    <!-- ── Hero ── -->
+    <section class="home-hero">
+      <div class="container">
+        <div class="tagline">Bologna · 2026 · Qualitative Ethical Network</div>
+        <h1>
+          Intelligenza<br>
+          <em>artificiale</em><br>
+          misurabile.
+        </h1>
+        <p class="hero-desc">
+          Cognitive Logic trasforma norme, valori e controlli in infrastruttura
+          computabile. QEN Score, compliance EU AI Act e Bolkestein 2027,
+          knowledge graph semantico — strumenti operativi per PMI e istituzioni.
+        </p>
+        <div class="hero-ctas">
+          <a href="framework.html" class="btn btn-primary">QEN Framework</a>
+          <a href="demo.html" class="btn btn-ghost">Demo Assessment</a>
+          <a href="cna/" class="btn btn-ghost">Partnership CNA</a>
+        </div>
       </div>
-      <div style="margin-top:1.2rem;padding-top:1.2rem;border-top:1px solid var(--border);font-size:0.75rem;color:var(--mid);"><strong style="color:var(--text);">QEN Score:</strong> — / 100</div>
-    </div>
-    <div class="restaurant-card">
-      <div class="rest-name">Bottega dei Grani Antichi</div>
-      <div class="rest-addr">Via [PLACEHOLDER] · Bologna</div>
-      <div class="rest-placeholder">📋 Status: Data collection pending<br>Supply chain: [ADD NOTES]<br>Partnership: [DATE]</div>
-      <div class="rest-score">
-        <div class="rs-item"><div class="rs-val">—</div><div class="rs-label">Vs Social</div></div>
-        <div class="rs-item"><div class="rs-val">—</div><div class="rs-label">Va Environmental</div></div>
-        <div class="rs-item"><div class="rs-val">—</div><div class="rs-label">Vt Territorial</div></div>
+    </section>
+
+    <!-- ── Pages ── -->
+    <section class="section" style="padding-top:0">
+      <div class="container">
+        <div class="divider-label">
+          <span>Sezioni · Tutte le pagine</span>
+        </div>
+
+        <div class="pages-grid">
+          <a class="page-card" href="framework.html">
+            <div class="pc-num">01 · Core</div>
+            <div class="pc-title">QEN Framework</div>
+            <p class="pc-desc">Formula Vs · Va · Vt. Algoritmi ColtFragr, TradRad, EcoLocal. Leaderboard botteghe. Architettura logica dal dato al punteggio.</p>
+            <div class="pc-tag">framework.html →</div>
+          </a>
+          <a class="page-card" href="ecosystem.html">
+            <div class="pc-num">02 · Infrastruttura</div>
+            <div class="pc-title">Ecosystem</div>
+            <p class="pc-desc">Knowledge graph semantico · 121 nodi · 165 relazioni. Modellazione Human–AI Symbiosis. Identità digitale e governance distribuita.</p>
+            <div class="pc-tag">ecosystem.html →</div>
+          </a>
+          <a class="page-card" href="qen-live.html">
+            <div class="pc-num">03 · Visualizzazione</div>
+            <div class="pc-title">QEN Live</div>
+            <p class="pc-desc">Grafo QEN interattivo in tempo reale. Navigazione nodi, relazioni semantiche tipizzate, score per entità.</p>
+            <div class="pc-tag">qen-live.html →</div>
+          </a>
+          <a class="page-card" href="ai.html">
+            <div class="pc-num">04 · Motore</div>
+            <div class="pc-title">AI Engine</div>
+            <p class="pc-desc">Dual-Brain: Claude + Gemini in orchestrazione parallela. /full-analysis, /gemini/qen-score, /dati-incrociati. Endpoint operativi.</p>
+            <div class="pc-tag">ai.html →</div>
+          </a>
+          <a class="page-card" href="identity.html">
+            <div class="pc-num">05 · Fiducia</div>
+            <div class="pc-title">Identità Digitale</div>
+            <p class="pc-desc">DID · Decentralized Identifiers. Certificazione crittografica del QEN Score. Sovereign AI — verifica senza intermediari.</p>
+            <div class="pc-tag">identity.html →</div>
+          </a>
+          <a class="page-card" href="demo.html">
+            <div class="pc-num">06 · Prova</div>
+            <div class="pc-title">Demo Assessment</div>
+            <p class="pc-desc">Assessment AI governance in diretta. Inserisci un'azienda, ottieni classificazione EU AI Act, GDPR art.22, DPIA, QEN Score.</p>
+            <div class="pc-tag">demo.html →</div>
+          </a>
+          <a class="page-card" href="copilot.html">
+            <div class="pc-num">07 · Assistente</div>
+            <div class="pc-title">Copilot QEN</div>
+            <p class="pc-desc">Interfaccia conversazionale per compliance AI. Risponde su EU AI Act, Bolkestein, CSRD, QEN Score. Powered by Claude.</p>
+            <div class="pc-tag">copilot.html →</div>
+          </a>
+          <a class="page-card" href="ristorazione.html">
+            <div class="pc-num">08 · Verticale</div>
+            <div class="pc-title">QEN Ristorazione</div>
+            <p class="pc-desc">Score QEN per HoReCa Bologna. Filiera corta, Km0, benessere lavoratori, impatto ambientale. Cinque botteghe pilota.</p>
+            <div class="pc-tag">ristorazione.html →</div>
+          </a>
+          <a class="page-card" href="cna/">
+            <div class="pc-num">09 · Partnership</div>
+            <div class="pc-title">CNA Bologna</div>
+            <p class="pc-desc">Proposta partnership istituzionale. Balneari, ambulanti, ristorazione — Bolkestein 2027, EU AI Act, CSRD. Revenue sharing 15%.</p>
+            <div class="pc-tag">cna/ →</div>
+          </a>
+          <a class="page-card" href="methodology.html">
+            <div class="pc-num">10 · Metodo</div>
+            <div class="pc-title">Metodologia</div>
+            <p class="pc-desc">Fondamenti teorici del QEN. Pesi dinamici, normalizzazione, algoritmi di scoring. Documentazione open per verifica.</p>
+            <div class="pc-tag">methodology.html →</div>
+          </a>
+          <a class="page-card" href="research.html">
+            <div class="pc-num">11 · Accademia</div>
+            <div class="pc-title">Research</div>
+            <p class="pc-desc">Pubblicazioni e ricerca in corso. Neurogastronomia, AI alignment, metriche sostenibilità. Collaborazioni accademiche.</p>
+            <div class="pc-tag">research.html →</div>
+          </a>
+          <a class="page-card" href="services.html">
+            <div class="pc-num">12 · Servizi</div>
+            <div class="pc-title">Services</div>
+            <p class="pc-desc">Audit EU AI Act, QEN Score certificato, CSRD reporting, Bolkestein dossier. Pricing e modalità di ingaggio.</p>
+            <div class="pc-tag">services.html →</div>
+          </a>
+        </div>
       </div>
-      <div style="margin-top:1.2rem;padding-top:1.2rem;border-top:1px solid var(--border);font-size:0.75rem;color:var(--mid);"><strong style="color:var(--text);">QEN Score:</strong> — / 100</div>
-    </div>
-    <div class="restaurant-card">
-      <div class="rest-name">Trattoria Bertozzi</div>
-      <div class="rest-addr">Via [PLACEHOLDER] · Bologna</div>
-      <div class="rest-placeholder">📋 Status: Data collection pending<br>Supply chain: [ADD NOTES]<br>Partnership: [DATE]</div>
-      <div class="rest-score">
-        <div class="rs-item"><div class="rs-val">—</div><div class="rs-label">Vs Social</div></div>
-        <div class="rs-item"><div class="rs-val">—</div><div class="rs-label">Va Environmental</div></div>
-        <div class="rs-item"><div class="rs-val">—</div><div class="rs-label">Vt Territorial</div></div>
+    </section>
+
+    <!-- ── Contact / Social ── -->
+    <section class="section" style="padding-top:0">
+      <div class="container">
+        <div class="divider-label">
+          <span>Contatti · Social · Media</span>
+        </div>
+        <div class="social-strip">
+          <a class="social-link" href="https://www.linkedin.com/in/robertobobmali/" target="_blank" rel="noopener">
+            <span class="sl-platform">LinkedIn</span>
+            <span class="sl-label">Roberto Bob Malini</span>
+            <span class="sl-arrow">linkedin.com/in/robertobobmali →</span>
+          </a>
+          <a class="social-link" href="https://www.linkedin.com/company/cognitivelogic/" target="_blank" rel="noopener">
+            <span class="sl-platform">LinkedIn</span>
+            <span class="sl-label">Cognitive Logic</span>
+            <span class="sl-arrow">linkedin.com/company/cognitivelogic →</span>
+          </a>
+          <a class="social-link" href="https://fuorimenu.substack.com" target="_blank" rel="noopener">
+            <span class="sl-platform">Substack</span>
+            <span class="sl-label">Fuori Menu</span>
+            <span class="sl-arrow">fuorimenu.substack.com →</span>
+          </a>
+          <a class="social-link" href="mailto:info@cognitivelogic.it">
+            <span class="sl-platform">Email</span>
+            <span class="sl-label">info@cognitivelogic.it</span>
+            <span class="sl-arrow">Scrivi a Roberto →</span>
+          </a>
+        </div>
       </div>
-      <div style="margin-top:1.2rem;padding-top:1.2rem;border-top:1px solid var(--border);font-size:0.75rem;color:var(--mid);"><strong style="color:var(--text);">QEN Score:</strong> — / 100</div>
-    </div>
-    <div class="restaurant-card">
-      <div class="rest-name">Ahimè</div>
-      <div class="rest-addr">Via [PLACEHOLDER] · Bologna</div>
-      <div class="rest-placeholder">📋 Status: Data collection pending<br>Supply chain: [ADD NOTES]<br>Partnership: [DATE]</div>
-      <div class="rest-score">
-        <div class="rs-item"><div class="rs-val">—</div><div class="rs-label">Vs Social</div></div>
-        <div class="rs-item"><div class="rs-val">—</div><div class="rs-label">Va Environmental</div></div>
-        <div class="rs-item"><div class="rs-val">—</div><div class="rs-label">Vt Territorial</div></div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div>
+        <div class="footer-brand">Cognitive Logic</div>
+        <div class="footer-sub">Qualitative Ethical Network — Knowledge Infrastructure per AI Ethics, Compliance e Territorio.</div>
+        <div class="footer-copy mt-8">© 2026 Roberto Bob Malini · cognitivelogic.it</div>
+        <div class="footer-social">
+          <a class="footer-social-link" href="https://www.linkedin.com/in/robertobobmali/" target="_blank" rel="noopener">
+            <span class="fsl-net">LinkedIn</span><span class="fsl-name">Roberto Malini</span>
+          </a>
+          <a class="footer-social-link" href="https://www.linkedin.com/company/cognitivelogic/" target="_blank" rel="noopener">
+            <span class="fsl-net">LinkedIn</span><span class="fsl-name">Cognitive Logic</span>
+          </a>
+          <a class="footer-social-link" href="https://fuorimenu.substack.com" target="_blank" rel="noopener">
+            <span class="fsl-net">Substack</span><span class="fsl-name">Fuori Menu</span>
+          </a>
+          <a class="footer-social-link" href="mailto:info@cognitivelogic.it">
+            <span class="fsl-net">Email</span><span class="fsl-name">info@cognitivelogic.it</span>
+          </a>
+        </div>
       </div>
-      <div style="margin-top:1.2rem;padding-top:1.2rem;border-top:1px solid var(--border);font-size:0.75rem;color:var(--mid);"><strong style="color:var(--text);">QEN Score:</strong> — / 100</div>
+      <div class="footer-links">
+        <a href="framework.html">Framework</a>
+        <a href="ecosystem.html">Ecosystem</a>
+        <a href="ai.html">AI Engine</a>
+        <a href="demo.html">Demo</a>
+        <a href="copilot.html">Copilot</a>
+        <a href="cna/">CNA</a>
+      </div>
     </div>
-  </div>
-</section>
-<hr class="div">
-<section>
-  <p class="slabel">Methodology</p>
-  <h2>QEN Formula<br><span class="g">Transparent · Open</span></h2>
-  <p class="sdesc">Same formula applied to all sectors. Public weights, public calculation, fully verifiable.</p>
-  <div style="background:var(--s1);border:1px solid var(--border);border-left:3px solid var(--gold);padding:2rem;margin-bottom:2.5rem;">
-    <div style="font-size:0.95rem;color:var(--text);margin-bottom:1rem;"><span style="color:var(--green);">QEN Score</span> = (<span style="color:var(--blue);">Vs</span> × <span style="color:var(--gold);">0.40</span>) + (<span style="color:var(--blue);">Va</span> × <span style="color:var(--gold);">0.35</span>) + (<span style="color:var(--blue);">Vt</span> × <span style="color:var(--gold);">0.25</span>)</div>
-    <div style="font-size:0.72rem;color:var(--mid);line-height:1.8;">
-      <div style="margin-bottom:0.6rem;"><strong>Vs — Social (40%):</strong> Worker welfare, representation, inclusion, fair wages</div>
-      <div style="margin-bottom:0.6rem;"><strong>Va — Environmental (35%):</strong> Supply chain km0, waste, energy, circular economy</div>
-      <div style="margin-bottom:0.6rem;"><strong>Vt — Territorial (25%):</strong> Local rootedness, community presence, Bologna ecosystem</div>
-    </div>
-  </div>
-</section>
-<hr class="div">
-<footer>
-  <div>
-    <div class="fb">Cognitive Logic</div>
-    <div class="ft-tag">QEN Ristorazione · Bologna HoReCa Ethics Observable<br>Roberto Bob Malini · AI Ethics Architect</div>
-    <div class="flinks">
-      <a href="/">← Back to Home</a>
-      <a href="https://fuorimenu.substack.com" target="_blank" rel="noopener">Fuorimenu Editorial</a>
-      <a href="mailto:info@cognitivelogic.it">Contact</a>
-    </div>
-  </div>
-</footer>
+  </footer>
 </body>
 </html>
