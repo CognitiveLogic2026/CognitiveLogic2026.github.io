@@ -1,0 +1,637 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Proposta di Partnership — CNA Bologna · Cognitive Logic</title>
+  <meta name="description" content="Proposta di partnership istituzionale tra Cognitive Logic e CNA Bologna per la compliance Bolkestein 2027, CSRD e EU AI Act degli associati.">
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@300;400;500&family=Syne:wght@400;700;800&display=swap" rel="stylesheet">
+  <style>
+    /* ── TOKENS ── */
+    :root {
+      --bg:     #05080f;
+      --s1:     #0a0d1a;
+      --s2:     #0f1323;
+      --border: #181d30;
+      --green:  #00e5a0;
+      --gold:   #c8a84b;
+      --blue:   #4db8ff;
+      --text:   #ccd4ef;
+      --mid:    #8892b5;
+      --dim:    #4a5270;
+      --mono:   'IBM Plex Mono', monospace;
+      --sans:   'Syne', sans-serif;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--mono);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+    body::after {
+      content: '';
+      position: fixed; inset: 0;
+      background-image:
+        linear-gradient(var(--border) 1px, transparent 1px),
+        linear-gradient(90deg, var(--border) 1px, transparent 1px);
+      background-size: 64px 64px;
+      pointer-events: none; z-index: 0; opacity: 0.18;
+    }
+    * { position: relative; z-index: 1; }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      height: 52px;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 2.5rem;
+      background: rgba(5,8,15,0.94);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-logo { font-family: var(--sans); font-weight: 800; font-size: 0.78rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--green); text-decoration: none; }
+    .nav-right { font-size: 0.6rem; color: var(--dim); letter-spacing: 0.1em; text-transform: uppercase; }
+
+    /* ── COVER ── */
+    .cover {
+      min-height: 100vh;
+      display: flex; flex-direction: column; justify-content: flex-end;
+      max-width: 1080px; margin: 0 auto;
+      padding: 7rem 2.5rem 4rem;
+      border-right: 1px solid var(--border);
+    }
+    .cover-meta {
+      font-size: 0.6rem; letter-spacing: 0.25em; text-transform: uppercase;
+      color: var(--dim); margin-bottom: 3rem;
+      display: flex; gap: 2rem; flex-wrap: wrap;
+    }
+    .cover-meta span { color: var(--green); }
+    h1 {
+      font-family: var(--sans); font-weight: 800;
+      font-size: clamp(2.6rem, 7vw, 5.5rem);
+      line-height: 0.95; letter-spacing: -0.03em;
+      margin-bottom: 1.5rem;
+    }
+    h1 em { font-style: normal; color: var(--green); }
+    h1 .dim { color: var(--dim); }
+    .cover-sub {
+      font-size: 0.82rem; color: var(--mid);
+      max-width: 580px; line-height: 1.9; margin-bottom: 3rem;
+    }
+    .cover-to {
+      border: 1px solid var(--border); padding: 1.2rem 1.8rem;
+      display: inline-flex; flex-direction: column; gap: 0.3rem;
+      margin-bottom: 1rem;
+    }
+    .to-label { font-size: 0.55rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--dim); }
+    .to-val { font-family: var(--sans); font-weight: 700; font-size: 1rem; color: var(--text); }
+    .to-sub { font-size: 0.68rem; color: var(--mid); }
+    .cover-from { font-size: 0.65rem; color: var(--dim); margin-top: 1rem; }
+    .cover-from strong { color: var(--text); }
+
+    /* ── SECTIONS ── */
+    section { max-width: 1080px; margin: 0 auto; padding: 5rem 2.5rem; border-right: 1px solid var(--border); }
+    hr.div { border: none; border-top: 1px solid var(--border); max-width: 1080px; margin: 0 auto; }
+    .sec-label {
+      font-size: 0.55rem; letter-spacing: 0.28em; text-transform: uppercase;
+      color: var(--green); margin-bottom: 0.8rem;
+      display: flex; align-items: center; gap: 0.6rem;
+    }
+    .sec-label::before { content: ''; width: 20px; height: 1px; background: var(--green); }
+    h2 {
+      font-family: var(--sans); font-weight: 700;
+      font-size: clamp(1.5rem, 3vw, 2.4rem);
+      letter-spacing: -0.02em; line-height: 1.1; margin-bottom: 0.6rem;
+    }
+    .sec-desc { font-size: 0.8rem; color: var(--mid); max-width: 600px; line-height: 1.9; margin-bottom: 2.5rem; }
+
+    /* ── SCENARIO CARDS ── */
+    .scenario-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1px; background: var(--border); border: 1px solid var(--border);
+    }
+    .scenario {
+      background: var(--s1); padding: 2rem;
+      transition: background 0.2s;
+    }
+    .scenario:hover { background: var(--s2); }
+    .sc-tag {
+      font-size: 0.55rem; letter-spacing: 0.18em; text-transform: uppercase;
+      padding: 0.25rem 0.6rem; border: 1px solid;
+      display: inline-block; margin-bottom: 1rem;
+    }
+    .sc-tag.green { color: var(--green); border-color: rgba(0,229,160,0.3); }
+    .sc-tag.gold  { color: var(--gold);  border-color: rgba(200,168,75,0.3); }
+    .sc-tag.blue  { color: var(--blue);  border-color: rgba(77,184,255,0.3); }
+    .sc-title { font-family: var(--sans); font-weight: 700; font-size: 1.05rem; margin-bottom: 0.6rem; }
+    .sc-risk {
+      font-size: 0.7rem; color: var(--mid); line-height: 1.8; margin-bottom: 1.2rem;
+      padding: 0.8rem; background: rgba(200,168,75,0.04); border-left: 2px solid rgba(200,168,75,0.3);
+    }
+    .sc-risk-label { font-size: 0.55rem; color: var(--gold); text-transform: uppercase; letter-spacing: 0.12em; margin-bottom: 0.4rem; }
+    .sc-sol { font-size: 0.7rem; color: var(--mid); line-height: 1.8; }
+    .sc-sol-label { font-size: 0.55rem; color: var(--green); text-transform: uppercase; letter-spacing: 0.12em; margin-bottom: 0.4rem; }
+
+    /* ── NORMATIVA TABLE ── */
+    .norm-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 1px; background: var(--border); border: 1px solid var(--border); margin-bottom: 2rem;
+    }
+    .norm-item { background: var(--s1); padding: 1.5rem; }
+    .norm-name { font-family: var(--sans); font-weight: 700; font-size: 0.85rem; color: var(--text); margin-bottom: 0.4rem; }
+    .norm-scope { font-size: 0.65rem; color: var(--dim); margin-bottom: 0.8rem; text-transform: uppercase; letter-spacing: 0.08em; }
+    .norm-impact { font-size: 0.7rem; color: var(--mid); line-height: 1.7; }
+    .norm-deadline {
+      font-size: 0.6rem; color: var(--gold); margin-top: 0.8rem;
+      letter-spacing: 0.08em; text-transform: uppercase;
+    }
+
+    /* ── PARTNERSHIP MODEL ── */
+    .model-wrap {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 1px; background: var(--border); border: 1px solid var(--border); margin-bottom: 2rem;
+    }
+    .model-col { background: var(--s1); padding: 2rem; }
+    .model-who { font-size: 0.55rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--dim); margin-bottom: 1rem; }
+    .model-col h3 { font-family: var(--sans); font-weight: 700; font-size: 1rem; margin-bottom: 1.2rem; }
+    .model-list { list-style: none; display: flex; flex-direction: column; gap: 0.7rem; }
+    .model-list li { font-size: 0.72rem; color: var(--mid); padding-left: 1.1rem; line-height: 1.7; }
+    .model-list li::before { content: '→ '; color: var(--green); margin-left: -1.1rem; }
+    .model-list li strong { color: var(--text); }
+
+    /* ── OFFER TIERS ── */
+    .tiers {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 1px; background: var(--border); border: 1px solid var(--border); margin-bottom: 2rem;
+    }
+    .tier { background: var(--s1); padding: 2rem; }
+    .tier.featured { background: var(--s2); border-top: 2px solid var(--green); }
+    .tier-name { font-size: 0.55rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--dim); margin-bottom: 0.6rem; }
+    .tier-title { font-family: var(--sans); font-weight: 700; font-size: 1rem; color: var(--text); margin-bottom: 1rem; }
+    .tier-price { font-family: var(--sans); font-weight: 800; font-size: 1.6rem; color: var(--green); line-height: 1; margin-bottom: 0.3rem; }
+    .tier-price-sub { font-size: 0.62rem; color: var(--dim); margin-bottom: 1.2rem; }
+    .tier-includes { font-size: 0.55rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--dim); margin-bottom: 0.6rem; }
+    .tier-list { list-style: none; display: flex; flex-direction: column; gap: 0.5rem; }
+    .tier-list li { font-size: 0.68rem; color: var(--mid); padding-left: 1rem; line-height: 1.6; }
+    .tier-list li::before { content: '✓  '; color: var(--green); }
+    .tier-cna { margin-top: 1.2rem; padding-top: 1rem; border-top: 1px solid var(--border); }
+    .tier-cna-label { font-size: 0.55rem; color: var(--gold); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 0.3rem; }
+    .tier-cna-val { font-size: 0.72rem; color: var(--mid); }
+
+    /* ── TIMELINE ── */
+    .timeline { display: flex; flex-direction: column; gap: 1px; background: var(--border); border: 1px solid var(--border); margin-bottom: 2rem; }
+    .tl-row {
+      background: var(--s1); padding: 1.2rem 2rem;
+      display: grid; grid-template-columns: 120px 1fr;
+      gap: 1.5rem; align-items: start;
+      transition: background 0.2s;
+    }
+    .tl-row:hover { background: var(--s2); }
+    .tl-date { font-size: 0.65rem; color: var(--green); letter-spacing: 0.08em; text-transform: uppercase; padding-top: 0.1rem; }
+    .tl-action { font-size: 0.75rem; color: var(--text); line-height: 1.6; }
+    .tl-action .sub { font-size: 0.65rem; color: var(--dim); margin-top: 0.2rem; }
+
+    /* ── CTA ── */
+    .cta-block {
+      background: var(--s1); border: 1px solid var(--border);
+      padding: 3rem 2.5rem;
+      display: grid; grid-template-columns: 1fr auto;
+      gap: 2rem; align-items: center;
+    }
+    .cta-title { font-family: var(--sans); font-weight: 800; font-size: clamp(1.3rem, 2.5vw, 1.9rem); line-height: 1.1; margin-bottom: 0.5rem; }
+    .cta-desc { font-size: 0.76rem; color: var(--mid); line-height: 1.8; max-width: 500px; }
+    .cta-actions { display: flex; flex-direction: column; gap: 0.8rem; }
+    .btn-primary {
+      display: inline-block; font-family: var(--mono); font-size: 0.62rem;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      color: var(--bg); background: var(--green);
+      padding: 0.85rem 1.8rem; text-decoration: none;
+      transition: opacity 0.2s; white-space: nowrap; text-align: center;
+    }
+    .btn-primary:hover { opacity: 0.85; }
+    .btn-secondary {
+      display: inline-block; font-family: var(--mono); font-size: 0.62rem;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      color: var(--green); border: 1px solid rgba(0,229,160,0.35);
+      padding: 0.85rem 1.8rem; text-decoration: none;
+      transition: background 0.2s; white-space: nowrap; text-align: center;
+    }
+    .btn-secondary:hover { background: rgba(0,229,160,0.08); }
+
+    /* ── FOOTER ── */
+    footer {
+      border-top: 1px solid var(--border);
+      max-width: 1080px; margin: 0 auto;
+      padding: 2rem 2.5rem;
+      display: flex; justify-content: space-between; align-items: center;
+      flex-wrap: wrap; gap: 1rem;
+    }
+    .f-brand { font-family: var(--sans); font-weight: 800; font-size: 0.85rem; color: var(--green); text-transform: uppercase; letter-spacing: 0.06em; }
+    .f-meta { font-size: 0.62rem; color: var(--dim); }
+
+    /* ── PRINT ── */
+    @media print {
+      @page { size: A4; margin: 20mm 18mm; }
+      * { position: static !important; }
+      body { background: #fff !important; color: #111 !important; font-size: 9pt; line-height: 1.5; }
+      body::after { display: none; }
+      nav { display: none; }
+      .cover { min-height: auto; padding: 0 0 2cm; border: none; page-break-after: always; }
+      section { padding: 1.2cm 0; border: none; page-break-inside: avoid; }
+      hr.div { border-top: 0.5pt solid #ccc; margin: 0; }
+      h1 { font-size: 28pt; color: #111 !important; }
+      h1 em { color: #007a55 !important; }
+      h1 .dim { color: #888 !important; }
+      h2 { font-size: 14pt; color: #111 !important; }
+      .cover-meta { color: #666 !important; }
+      .cover-meta span { color: #007a55 !important; }
+      .cover-sub { color: #444 !important; }
+      .cover-to { border-color: #ccc !important; }
+      .to-val { color: #111 !important; }
+      .to-sub, .to-label { color: #666 !important; }
+      .cover-from { color: #666 !important; }
+      .cover-from strong { color: #111 !important; }
+      .sec-label { color: #007a55 !important; }
+      .sec-label::before { background: #007a55 !important; }
+      .sec-desc, .sc-sol, .norm-impact, .model-list li, .tier-list li, .tl-action { color: #333 !important; }
+      .scenario, .norm-item, .model-col, .tier, .tier.featured, .tl-row, .cta-block {
+        background: #f8f8f8 !important;
+        border-color: #ddd !important;
+      }
+      .scenario-grid, .norm-grid, .model-wrap, .tiers, .timeline { background: #ddd !important; }
+      .sc-tag.green { color: #007a55 !important; border-color: #007a55 !important; }
+      .sc-tag.gold  { color: #8b6800 !important; border-color: #8b6800 !important; }
+      .sc-tag.blue  { color: #1a6fa8 !important; border-color: #1a6fa8 !important; }
+      .sc-risk { border-left-color: #8b6800 !important; background: #fffbf0 !important; }
+      .sc-risk-label { color: #8b6800 !important; }
+      .sc-sol-label, .tier-cna-label { color: #007a55 !important; }
+      .sc-title, .model-col h3, .tier-title, .tl-action { color: #111 !important; }
+      .norm-name { color: #111 !important; }
+      .norm-deadline { color: #8b6800 !important; }
+      .tier-price { color: #007a55 !important; }
+      .tier.featured { border-top-color: #007a55 !important; }
+      .tl-date { color: #007a55 !important; }
+      .tl-action .sub, .norm-scope, .model-who, .tier-name, .tier-includes, .tier-price-sub, .tier-cna-val, .f-meta { color: #666 !important; }
+      .cta-title { color: #111 !important; font-size: 14pt; }
+      .cta-desc { color: #444 !important; }
+      .btn-primary { background: #007a55 !important; color: #fff !important; }
+      .btn-secondary { color: #007a55 !important; border-color: #007a55 !important; }
+      .f-brand { color: #007a55 !important; }
+      footer { border-top-color: #ccc !important; }
+      @media (max-width: 640px) { .tiers { grid-template-columns: 1fr !important; } .norm-grid { grid-template-columns: 1fr !important; } .model-wrap { grid-template-columns: 1fr !important; } }
+    }
+
+    @media (max-width: 640px) {
+      nav { padding: 0 1rem; }
+      section, .cover { padding-left: 1.2rem; padding-right: 1.2rem; }
+      .norm-grid { grid-template-columns: 1fr; }
+      .tiers { grid-template-columns: 1fr; }
+      .model-wrap { grid-template-columns: 1fr; }
+      .cta-block { grid-template-columns: 1fr; }
+      .tl-row { grid-template-columns: 80px 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="/">Cognitive Logic</a>
+  <span class="nav-right">Uso riservato — CNA Bologna</span>
+</nav>
+
+<!-- COVER -->
+<div class="cover">
+  <div class="cover-meta">
+    Proposta di partnership &nbsp;·&nbsp; <span>Riservata</span> &nbsp;·&nbsp; Bologna, maggio 2026 &nbsp;·&nbsp; ref. CNA-BO-2026
+  </div>
+  <h1>
+    I tuoi associati<br>
+    <em>devono adeguarsi.</em><br>
+    <span class="dim">Noi li aiutiamo.</span>
+  </h1>
+  <p class="cover-sub">
+    Bolkestein 2027, EU AI Act, CSRD: tre normative europee che impattano
+    ristorazione, balneari e ambulanti entro i prossimi 18 mesi.
+    Cognitive Logic propone a CNA Bologna una partnership per portare
+    strumenti concreti di compliance ai tuoi associati — prima che le scadenze li colgano impreparati.
+  </p>
+  <div class="cover-to">
+    <span class="to-label">A</span>
+    <span class="to-val">CNA Bologna</span>
+    <span class="to-sub">Confederazione Nazionale dell'Artigianato e della Piccola e Media Impresa</span>
+  </div>
+  <div class="cover-from">
+    Da: <strong>Roberto Malini</strong> — Founder, Cognitive Logic &nbsp;·&nbsp; roberto@cognitivelogic.it &nbsp;·&nbsp; +39 ...
+  </div>
+</div>
+
+<hr class="div">
+
+<!-- CONTESTO NORMATIVO -->
+<section id="normativa">
+  <p class="sec-label">Contesto normativo</p>
+  <h2>Tre normative. Tre scadenze.<br>Una finestra di preparazione.</h2>
+  <p class="sec-desc">
+    I tuoi associati operano in settori direttamente investiti da tre grandi framework regolatori europei.
+    La compliance non e' piu' opzionale — e le sanzioni sono operative.
+  </p>
+  <div class="norm-grid">
+    <div class="norm-item">
+      <div class="norm-name">Direttiva Bolkestein</div>
+      <div class="norm-scope">Balneari · Ambulanti</div>
+      <div class="norm-impact">
+        La direttiva servizi UE 2006/123/CE impone la messa a gara delle concessioni
+        pubbliche. In Italia la scadenza e' fissata al <strong>2027</strong>.
+        Gli operatori senza documentazione strutturata del valore territoriale
+        rischiano di perdere la concessione alle gare europee.
+      </div>
+      <div class="norm-deadline">Scadenza: 31/12/2027</div>
+    </div>
+    <div class="norm-item">
+      <div class="norm-name">EU AI Act</div>
+      <div class="norm-scope">Tutti i settori</div>
+      <div class="norm-impact">
+        In vigore da agosto 2024, pienamente applicabile dal 2026.
+        Obblighi di trasparenza, registrazione e valutazione d'impatto per
+        chi usa sistemi AI nei processi aziendali — inclusi chatbot, sistemi
+        di prenotazione, gestione del personale, scoring creditizio.
+      </div>
+      <div class="norm-deadline">Applicazione piena: agosto 2026</div>
+    </div>
+    <div class="norm-item">
+      <div class="norm-name">CSRD / Green Claims</div>
+      <div class="norm-scope">Ristorazione · Supply chain</div>
+      <div class="norm-impact">
+        La Corporate Sustainability Reporting Directive estende gli obblighi
+        di rendicontazione non finanziaria anche alle PMI fornitori di grandi
+        aziende. Green Claims Directive vieta dichiarazioni ambientali
+        non documentate — Km0, biologico, filiera corta inclusi.
+      </div>
+      <div class="norm-deadline">PMI: da 2026–2027</div>
+    </div>
+  </div>
+</section>
+
+<hr class="div">
+
+<!-- SCENARIO PER VERTICALE -->
+<section id="verticali">
+  <p class="sec-label">I tuoi associati · Tre verticali</p>
+  <h2>Il rischio concreto,<br>settore per settore</h2>
+  <p class="sec-desc">
+    Per ogni verticale: il rischio specifico che i tuoi associati si trovano ad affrontare
+    e la risposta operativa che Cognitive Logic puo' fornire.
+  </p>
+  <div class="scenario-grid">
+    <div class="scenario">
+      <span class="sc-tag gold">Balneari</span>
+      <div class="sc-title">Concessioni demaniali 2027</div>
+      <div class="sc-risk">
+        <div class="sc-risk-label">Rischio</div>
+        Un operatore balneare senza documentazione strutturata del valore
+        territoriale — anni di attivita', investimenti locali, occupazione
+        generata, impatto ambientale — non ha strumenti per competere in
+        una gara europea aperta. Perde la concessione.
+      </div>
+      <div class="sc-sol">
+        <div class="sc-sol-label">Soluzione QEN</div>
+        Il QEN Score Territoriale (Vt) quantifica e documenta il radicamento
+        territoriale dell'operatore in formato machine-readable e leggibile
+        da commissioni di gara. Diventa un fascicolo di evidenza strutturato.
+      </div>
+    </div>
+    <div class="scenario">
+      <span class="sc-tag blue">Ambulanti</span>
+      <div class="sc-title">Posteggi e rinnovi di concessione</div>
+      <div class="sc-risk">
+        <div class="sc-risk-label">Rischio</div>
+        La liberalizzazione dei mercati ambulanti segue la stessa logica
+        Bolkestein. Gli operatori storici dei mercati bolognesi che non
+        riescono a dimostrare il contributo economico e sociale rischiano
+        di perdere i posteggi storici a favore di nuovi entranti europei.
+      </div>
+      <div class="sc-sol">
+        <div class="sc-sol-label">Soluzione QEN</div>
+        Scoring sociale (Vs) e territoriale (Vt) documentano il valore
+        degli ambulanti storici: anni di attivita', indotto locale,
+        prodotti a filiera corta. Supporto alla redazione della
+        documentazione per i procedimenti di rinnovo.
+      </div>
+    </div>
+    <div class="scenario">
+      <span class="sc-tag green">Ristorazione</span>
+      <div class="sc-title">CSRD, Green Claims e supply chain</div>
+      <div class="sc-risk">
+        <div class="sc-risk-label">Rischio</div>
+        Un ristorante che dichiara "Km0", "biologico" o "filiera corta"
+        senza documentazione verificabile e' esposto a sanzioni Green Claims
+        e perde la fiducia dei clienti B2B. La grande distribuzione chiede
+        gia' report ESG ai propri fornitori.
+      </div>
+      <div class="sc-sol">
+        <div class="sc-sol-label">Soluzione QEN</div>
+        Il QEN Score Ambientale (Va) e Sociale (Vs) produce reportistica
+        CSRD-ready automaticamente. Le dichiarazioni green diventano
+        misurabili, tracciabili e difendibili davanti a controlli.
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="div">
+
+<!-- MODELLO PARTNERSHIP -->
+<section id="partnership">
+  <p class="sec-label">Modello di partnership</p>
+  <h2>Come funziona<br>la collaborazione</h2>
+  <p class="sec-desc">
+    CNA Bologna non e' un cliente — e' un canale distributivo istituzionale.
+    La partnership si struttura su due ruoli complementari.
+  </p>
+  <div class="model-wrap">
+    <div class="model-col">
+      <div class="model-who">Cognitive Logic porta</div>
+      <h3>Tecnologia e competenza normativa</h3>
+      <ul class="model-list">
+        <li><strong>QEN Score</strong> — sistema di scoring etico multi-dimensionale per PMI</li>
+        <li><strong>AI Compliance Audit</strong> — verifica EU AI Act, GDPR Art.22 e CSRD per ogni operatore</li>
+        <li><strong>Bolkestein Assessment</strong> — fascicolo di evidenza territoriale per le gare 2027</li>
+        <li><strong>Agenti AI autonomi</strong> — 7 agenti specializzati per compliance, advisory e risk assessment</li>
+        <li><strong>Reporting automatizzato</strong> — output strutturati pronti per enti, banche, gare</li>
+        <li><strong>Supporto tecnico continuo</strong> — aggiornamento normativo incluso</li>
+      </ul>
+    </div>
+    <div class="model-col">
+      <div class="model-who">CNA Bologna porta</div>
+      <h3>Accesso e fiducia istituzionale</h3>
+      <ul class="model-list">
+        <li><strong>Base associati</strong> — accesso diretto agli operatori dei tre verticali</li>
+        <li><strong>Canale comunicazione</strong> — newsletter, sportelli, assemblee di categoria</li>
+        <li><strong>Endorsement istituzionale</strong> — il servizio viene presentato come strumento CNA</li>
+        <li><strong>Co-branding</strong> — materiali e portale brandizzati CNA + Cognitive Logic</li>
+        <li><strong>Referral strutturato</strong> — CNA presenta gli associati, CL gestisce il servizio</li>
+        <li><strong>Revenue sharing</strong> — commissione su ogni associato attivato</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<hr class="div">
+
+<!-- OFFERTA -->
+<section id="offerta">
+  <p class="sec-label">Offerta per gli associati CNA</p>
+  <h2>Tre pacchetti,<br>condizioni riservate CNA</h2>
+  <p class="sec-desc">
+    Pricing dedicato per gli associati CNA Bologna. Revenue sharing del <strong>15%</strong>
+    su ogni contratto attivato tramite il canale CNA.
+  </p>
+  <div class="tiers">
+    <div class="tier">
+      <div class="tier-name">Entry</div>
+      <div class="tier-title">QEN Bolkestein Check</div>
+      <div class="tier-price">€ 490</div>
+      <div class="tier-price-sub">una tantum · per operatore</div>
+      <div class="tier-includes">Include</div>
+      <ul class="tier-list">
+        <li>QEN Score completo (Vs + Va + Vt)</li>
+        <li>Assessment Bolkestein 2027</li>
+        <li>Fascicolo PDF per gare</li>
+        <li>Report EU AI Act basic</li>
+        <li>1 sessione di advisory (60 min)</li>
+      </ul>
+      <div class="tier-cna">
+        <div class="tier-cna-label">Revenue CNA</div>
+        <div class="tier-cna-val">€ 73 per operatore attivato</div>
+      </div>
+    </div>
+    <div class="tier featured">
+      <div class="tier-name">Consigliato</div>
+      <div class="tier-title">AI-Ready Audit</div>
+      <div class="tier-price">€ 1.200</div>
+      <div class="tier-price-sub">una tantum · prezzo CNA (–20%)</div>
+      <div class="tier-includes">Include</div>
+      <ul class="tier-list">
+        <li>QEN Score + certificazione annuale</li>
+        <li>EU AI Act full compliance audit</li>
+        <li>CSRD readiness assessment</li>
+        <li>Green Claims documentation kit</li>
+        <li>Bolkestein evidence dossier</li>
+        <li>3 sessioni di advisory</li>
+        <li>Dashboard operatore 12 mesi</li>
+      </ul>
+      <div class="tier-cna">
+        <div class="tier-cna-label">Revenue CNA</div>
+        <div class="tier-cna-val">€ 180 per operatore attivato</div>
+      </div>
+    </div>
+    <div class="tier">
+      <div class="tier-name">Full service</div>
+      <div class="tier-title">Semantic Core</div>
+      <div class="tier-price">€ 1.800</div>
+      <div class="tier-price-sub">setup + € 650/mese · prezzo CNA</div>
+      <div class="tier-includes">Include</div>
+      <ul class="tier-list">
+        <li>Tutto di AI-Ready Audit</li>
+        <li>Agenti AI attivi (compliance + advisory)</li>
+        <li>Monitoraggio normativo continuo</li>
+        <li>Aggiornamento QEN Score trimestrale</li>
+        <li>Priorita' su nuove normative</li>
+        <li>Account manager dedicato</li>
+      </ul>
+      <div class="tier-cna">
+        <div class="tier-cna-label">Revenue CNA</div>
+        <div class="tier-cna-val">€ 270 setup + € 97/mese ricorrente</div>
+      </div>
+    </div>
+  </div>
+  <p style="font-size:0.68rem; color:var(--dim); line-height:1.7;">
+    I prezzi includono IVA. Revenue sharing liquidato trimestralmente su fattura CNA.
+    Pricing bloccato per 24 mesi dall'accordo di partnership.
+  </p>
+</section>
+
+<hr class="div">
+
+<!-- TIMELINE -->
+<section id="timeline">
+  <p class="sec-label">Piano operativo</p>
+  <h2>Da accordo a primi<br>associati attivati in 30 giorni</h2>
+  <p class="sec-desc">Roadmap proposta dalla firma dell'accordo.</p>
+  <div class="timeline">
+    <div class="tl-row">
+      <div class="tl-date">Settimana 1</div>
+      <div class="tl-action">
+        Firma accordo di partnership e NDA
+        <div class="sub">Definizione canali comunicazione, template co-branded, materiali di presentazione per sportelli CNA</div>
+      </div>
+    </div>
+    <div class="tl-row">
+      <div class="tl-date">Settimana 2</div>
+      <div class="tl-action">
+        Formazione staff CNA (2 ore)
+        <div class="sub">Briefing tecnico per i consulenti degli sportelli: come presentare il servizio, quali domande aspettarsi</div>
+      </div>
+    </div>
+    <div class="tl-row">
+      <div class="tl-date">Settimana 3–4</div>
+      <div class="tl-action">
+        Lancio pilota: 5 operatori CNA Bologna
+        <div class="sub">Selezione dei primi 5 associati nei tre verticali. Onboarding guidato, produzione QEN Score e dossier Bolkestein</div>
+      </div>
+    </div>
+    <div class="tl-row">
+      <div class="tl-date">Mese 2</div>
+      <div class="tl-action">
+        Review risultati pilota + rollout categoria
+        <div class="sub">Presentazione risultati alle categorie interessate. Attivazione campagna comunicazione verso la base associativa</div>
+      </div>
+    </div>
+    <div class="tl-row">
+      <div class="tl-date">Fine 2026</div>
+      <div class="tl-action">
+        Target: 30 associati attivati
+        <div class="sub">Obiettivo congiunto con revisione trimestrale. Revenue CNA stimata: € 5.400–9.000 annui a regime</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="div">
+
+<!-- CTA -->
+<section id="contatti">
+  <div class="cta-block">
+    <div>
+      <div class="cta-title">Prossimo passo:<br>un incontro di 45 minuti</div>
+      <p class="cta-desc">
+        Proponiamo una demo operativa con un caso reale su un associato CNA
+        (balneari o ristorazione). Nessun impegno — in 45 minuti vedete
+        il QEN Score e il dossier Bolkestein su un operatore concreto.
+      </p>
+    </div>
+    <div class="cta-actions">
+      <a href="mailto:roberto@cognitivelogic.it?subject=CNA%20Bologna%20-%20Richiesta%20incontro&body=Gentile%20Roberto%2C%0A%0ASiamo%20interessati%20a%20valutare%20la%20partnership%20proposta." class="btn-primary">Richiedi incontro</a>
+      <a href="https://www.cognitivelogic.it/framework.html" class="btn-secondary">Leggi il framework</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div>
+    <div class="f-brand">Cognitive Logic</div>
+    <div class="f-meta">Roberto Malini · roberto@cognitivelogic.it · Bologna 2026 · Uso riservato CNA Bologna</div>
+  </div>
+  <div class="f-meta">www.cognitivelogic.it</div>
+</footer>
+
+</body>
+</html>
