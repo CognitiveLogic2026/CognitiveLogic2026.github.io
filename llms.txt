@@ -14,10 +14,11 @@ architectures that make compliance structural rather than declarative.
   Semantic graph + numerical ethics scoring for institutions, restaurants,
   and hotels. Formula: `QEN = (Vs × 0.40) + (Va × 0.35) + (Vt × 0.25)`
   Scale: 0–100. Graph v4: 21 nodes · 34 relations.
-- **Dual-Brain AI Engine**
-  Claude (Anthropic) for EU AI Act classification and GDPR risk analysis.
-  Gemini (Google) for QEN scoring and market intelligence.
-  Orchestrated in parallel via `/full-analysis`.
+- **Multi-Brain AI Engine**
+  Claude Sonnet 4.6 (Anthropic) for EU AI Act classification and GDPR risk analysis.
+  Mistral Large (Mistral AI) as primary LLM for compliance agents and Bolkestein 2027 assessment.
+  Gemini 2.5 Flash (Google) for QEN scoring and market intelligence.
+  Orchestrated in parallel via `/full-analysis`. Fallback chain: Mistral → Claude.
 - **Semantic Knowledge Graph**
   Static JSON graph — 21 nodes · 34 relations (v4).
   Node types: institutions, algorithms, regulations, KPIs, territories.
@@ -52,9 +53,9 @@ architectures that make compliance structural rather than declarative.
 Hetzner CAX21 ARM64 — Ubuntu 24.04 — 178.104.190.107
 
 Nginx (443) → api.cognitivelogic.it
-├── Flask :5000  — Claude API  (risk, compliance, analyze)
-├── Flask :5001  — Gemini API  (qen-score, market-scan, explain)
-└── orchestrator.py → /full-analysis (parallel dual-brain)
+├── Flask :5000  — Claude Sonnet 4.6 + Mistral Large  (risk, compliance, agents, bolkestein)
+├── Flask :5001  — Gemini 2.5 Flash  (qen-score, market-scan, explain)
+└── orchestrator.py → /full-analysis (parallel multi-brain)
 ```
 
 Deploy: GitHub Actions → Hetzner on push to `main`
@@ -64,18 +65,23 @@ DNS: Hetzner DNS Zone
 
 ## API Endpoints
 
-|Endpoint                    |Method|Engine         |Function                         |
-|----------------------------|------|---------------|---------------------------------|
-|`/`                         |GET   |Flask :5000    |Health check · OPERATIONAL       |
-|`/copilot`                  |GET   |Flask :5000    |Frontend Compliance Copilot      |
-|`/copilot-analyze`          |POST  |Claude Sonnet 4|EU AI Act + GDPR + QEN Score     |
-|`/validate`                 |POST  |Flask :5000    |QEN node validation · JSON-LD    |
-|`/gemini/health`            |GET   |Flask :5001    |Gemini backend health check      |
-|`/gemini/qen-score`         |GET   |Gemini 2.5     |QEN Score calculation            |
-|`/gemini/market-scan`       |GET   |Gemini 2.5     |Market intelligence              |
-|`/gemini/explain`           |GET   |Gemini 2.5     |Score explanation                |
-|`/full-analysis`            |POST  |Dual-brain     |Parallel Claude + Gemini analysis|
-|`/cross-data` *(roadmap Q3)*|GET   |—              |Multi-institutional zone/sector  |
+|Endpoint                         |Method|Engine               |Function                              |
+|---------------------------------|------|---------------------|--------------------------------------|
+|`/`                              |GET   |Flask :5000          |Health check · OPERATIONAL            |
+|`/copilot`                       |GET   |Flask :5000          |Frontend Compliance Copilot (toggle)  |
+|`/copilot-analyze`               |POST  |Claude Sonnet 4.6    |EU AI Act + GDPR + QEN Score          |
+|`/agents/mistral-compliance`     |POST  |Mistral Large        |EU AI Act + GDPR compliance audit     |
+|`/agents/mistral-advisor`        |POST  |Mistral Large        |Compliance pathway advisory           |
+|`/agents/bolkestein-assessment`  |POST  |Mistral Large        |Bolkestein 2027 concession assessment |
+|`/agents/compliance-auditor`     |POST  |Claude Sonnet 4.6    |Full compliance audit (QEN framework) |
+|`/agents/territorial-mapper`     |POST  |Claude Sonnet 4.6    |Territorial ecosystem mapping         |
+|`/agents/advisory-council`       |POST  |Claude Sonnet 4.6    |EU regulatory advisory                |
+|`/agents/intelligence-feed`      |GET   |Static               |Regulatory updates feed               |
+|`/pilots`                        |GET   |Flask :5000          |QEN Score historical register         |
+|`/gemini/qen-score`              |POST  |Gemini 2.5 Flash     |QEN Score calculation                 |
+|`/gemini/market-scan`            |GET   |Gemini 2.5 Flash     |Market intelligence                   |
+|`/full-analysis`                 |POST  |Multi-brain          |Parallel Claude + Mistral + Gemini    |
+|`/cross-data` *(roadmap Q3)*     |GET   |—                    |Multi-institutional zone/sector       |
 
 -----
 
@@ -154,4 +160,4 @@ Bologna, Italy — 2026
 -----
 
 *© Cognitive Logic — Knowledge Infrastructure for Human & Artificial Intelligence*
-*Last updated: 2026-04-26 · Version: Diamante 26.0*
+*Last updated: 2026-05-25 · Version: Diamante 26.1*
