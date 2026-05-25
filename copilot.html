@@ -141,6 +141,20 @@
     .list-text { font-size: 13px; color: rgba(255,255,255,0.75); line-height: 1.6; }
     .error-box { background: rgba(255,59,59,0.06); border: 1px solid rgba(255,59,59,0.2); border-radius: 4px; padding: 16px 20px; color: #ff6b6b; font-size: 13px; font-family: 'IBM Plex Mono', monospace; margin-bottom: 12px; }
     .footer-note { font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: rgba(255,255,255,0.12); letter-spacing: 0.08em; text-align: center; margin-top: 24px; }
+    .llm-toggle { display: flex; gap: 4px; margin-bottom: 16px; }
+    .llm-btn {
+      font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase;
+      padding: 6px 14px; border-radius: 2px; border: 1px solid rgba(255,255,255,0.1);
+      background: transparent; color: rgba(255,255,255,0.3); cursor: pointer;
+      transition: all 0.15s;
+    }
+    .llm-btn:hover { color: rgba(255,255,255,0.6); border-color: rgba(255,255,255,0.2); }
+    .llm-btn.active { background: rgba(0,200,150,0.1); border-color: rgba(0,200,150,0.4); color: #00c896; }
+    .provider-badge {
+      font-family: 'IBM Plex Mono', monospace; font-size: 9px; letter-spacing: 0.12em; text-transform: uppercase;
+      color: rgba(255,255,255,0.25); border: 1px solid rgba(255,255,255,0.08);
+      padding: 3px 8px; border-radius: 2px; display: inline-block; margin-top: 10px;
+    }
   </style>
 </head>
 <body>
@@ -150,10 +164,14 @@
 <div class="header">
   <div class="eyebrow"><span class="eyebrow-line"></span>Cognitive Logic · QEN Framework</div>
   <h1>AI Compliance <span>Copilot</span></h1>
-  <p class="subtitle">Analisi regolatoria EU AI Act 2024 + GDPR — powered by Claude</p>
+  <p class="subtitle">Analisi regolatoria EU AI Act 2024 + GDPR — Claude Sonnet · Mistral Large</p>
 </div>
 
 <div class="card" style="animation: fadeSlideIn 0.6s ease 0.1s both;">
+  <div class="llm-toggle">
+    <button class="llm-btn active" id="btn-claude" data-provider="claude">Claude Sonnet 4.6</button>
+    <button class="llm-btn" id="btn-mistral" data-provider="mistral">Mistral Large</button>
+  </div>
   <div class="input-label">Descrizione sistema AI</div>
   <textarea id="input" placeholder="Es: sistema di scoring creditizio automatizzato che elabora dati reddituali e comportamentali, con supervisione umana solo su casi edge..."></textarea>
   <div class="input-footer">
@@ -174,6 +192,7 @@
       <span class="decision-tag" id="decision-tag"></span>
     </div>
     <div class="decision-message" id="decision-message"></div>
+    <div class="provider-badge" id="provider-badge"></div>
   </div>
 
   <div class="card">
@@ -210,7 +229,41 @@
 
   <script>
     const { jsPDF } = window.jspdf;
-    const API_URL = "https://api.cognitivelogic.it/copilot-analyze";
+    const ENDPOINTS = {
+      claude:  "https://api.cognitivelogic.it/copilot-analyze",
+      mistral: "https://api.cognitivelogic.it/agents/mistral-compliance",
+    };
+    let activeProvider = "claude";
+
+    document.getElementById("btn-claude").addEventListener("click", () => setProvider("claude"));
+    document.getElementById("btn-mistral").addEventListener("click", () => setProvider("mistral"));
+    function setProvider(p) {
+      activeProvider = p;
+      document.getElementById("btn-claude").classList.toggle("active", p === "claude");
+      document.getElementById("btn-mistral").classList.toggle("active", p === "mistral");
+    }
+
+    function normalizeMistral(raw) {
+      const a = raw.audit;
+      const livello = a.eu_ai_act?.livello_rischio || "Minimo";
+      const scoreMap = { Vietato: 0.95, Alto: 0.75, Sorveglianza: 0.45, Minimo: 0.15 };
+      const gdprMap  = { CRITICO: 0.90, ALTO: 0.70, MEDIO: 0.45, BASSO: 0.15 };
+      const gdprRisk  = a.gdpr?.risk || "BASSO";
+      const riskScore = Math.max(scoreMap[livello] ?? 0.15, gdprMap[gdprRisk] ?? 0.15);
+      return {
+        risk_level:      riskScore >= 0.70 ? "HIGH" : riskScore >= 0.45 ? "MEDIUM" : "LOW",
+        risk_score:      riskScore,
+        qen_score:       a.qen_score,
+        summary:         a.summary,
+        why:             a.eu_ai_act?.motivazione || "",
+        impact:          a.eu_ai_act?.allegato ? `Allegato ${a.eu_ai_act.allegato} — ${livello}` : livello,
+        eu_classification: `${livello} — Allegato ${a.eu_ai_act?.allegato || "N/A"}`,
+        gdpr_risk:       gdprRisk,
+        gaps:            a.gaps || [],
+        recommendations: a.remediation || [],
+        provider:        a.provider || "mistral-large-latest",
+      };
+    }
 
     const riskConfig = {
       HIGH:   { label: "CRITICAL",        color: "#ff3b3b", bg: "rgba(255,59,59,0.08)",  border: "rgba(255,59,59,0.3)",  message: "Intervento immediato richiesto — obblighi normativi avanzati" },
@@ -370,16 +423,17 @@
       resultsEl.style.display = "none";
 
       try {
-        const res = await fetch(API_URL, {
+        const res = await fetch(ENDPOINTS[activeProvider], {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ description: text })
         });
         if (!res.ok) {
           const err = await res.json().catch(() => ({}));
-          throw new Error(err.detail || `HTTP ${res.status}`);
+          throw new Error(err.error || err.detail || `HTTP ${res.status}`);
         }
-        const d = await res.json();
+        const raw = await res.json();
+        const d = activeProvider === "mistral" ? normalizeMistral(raw) : raw;
         lastResult = d;
         const cfg = riskConfig[d.risk_level] || riskConfig.LOW;
         const scoreColor = d.risk_score > 0.7 ? "#ff3b3b" : d.risk_score > 0.45 ? "#ff8c00" : "#00c896";
@@ -393,6 +447,8 @@
         tag.style.color = cfg.color;
         tag.style.borderColor = cfg.color;
         document.getElementById("decision-message").textContent = cfg.message;
+        const providerLabel = d.provider || (activeProvider === "mistral" ? "mistral-large-latest" : "claude-sonnet-4-6");
+        document.getElementById("provider-badge").textContent = "powered by " + providerLabel;
 
         const fill = document.getElementById("score-fill");
         const sv = document.getElementById("score-value");
