@@ -1,0 +1,622 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>QEN GTM Plan 90 Giorni — Cognitive Logic</title>
+  <meta name="description" content="Piano Go-To-Market 90 giorni per QEN Framework: Bolkestein 2027, EU AI Act, target balneari e HoReCa. Confidenziale — uso interno.">
+  <meta name="robots" content="noindex, nofollow">
+  <style>
+    :root {
+      --bg: #0a0d14;
+      --surface: #111827;
+      --surface2: #1a2236;
+      --border: #1e2d4a;
+      --accent: #3b82f6;
+      --accent2: #06b6d4;
+      --green: #10b981;
+      --yellow: #f59e0b;
+      --red: #ef4444;
+      --text: #e2e8f0;
+      --muted: #64748b;
+      --font: 'Inter', 'Segoe UI', system-ui, sans-serif;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--font);
+      font-size: 15px;
+      line-height: 1.7;
+      padding: 2rem 1rem;
+    }
+    .container { max-width: 900px; margin: 0 auto; }
+
+    /* Header */
+    .header {
+      border-bottom: 2px solid var(--accent);
+      padding-bottom: 2rem;
+      margin-bottom: 3rem;
+    }
+    .badge {
+      display: inline-block;
+      background: rgba(59,130,246,0.15);
+      border: 1px solid var(--accent);
+      color: var(--accent);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 4px 12px;
+      border-radius: 4px;
+      margin-bottom: 1rem;
+    }
+    .badge.red { background: rgba(239,68,68,0.15); border-color: var(--red); color: var(--red); }
+    h1 { font-size: 2rem; font-weight: 800; line-height: 1.2; margin-bottom: 0.5rem; }
+    h1 span { color: var(--accent); }
+    .subtitle { color: var(--muted); font-size: 0.9rem; }
+    .meta { display: flex; gap: 2rem; margin-top: 1rem; flex-wrap: wrap; }
+    .meta-item { font-size: 0.8rem; color: var(--muted); }
+    .meta-item strong { color: var(--text); }
+
+    /* Sections */
+    .section { margin-bottom: 3.5rem; }
+    h2 {
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: var(--accent2);
+      margin-bottom: 1.5rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    h2 .num {
+      background: var(--accent);
+      color: #fff;
+      width: 28px; height: 28px;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.8rem;
+      font-weight: 800;
+      flex-shrink: 0;
+    }
+    h3 { font-size: 1rem; font-weight: 700; color: var(--text); margin: 1.5rem 0 0.75rem; }
+
+    /* Blockers */
+    .blocker {
+      background: rgba(239,68,68,0.08);
+      border: 1px solid rgba(239,68,68,0.3);
+      border-left: 4px solid var(--red);
+      border-radius: 8px;
+      padding: 1.25rem 1.5rem;
+      margin-bottom: 1rem;
+    }
+    .blocker-title {
+      font-weight: 700;
+      color: var(--red);
+      margin-bottom: 0.4rem;
+      font-size: 0.95rem;
+    }
+    .blocker p { color: var(--text); font-size: 0.88rem; line-height: 1.6; }
+    .blocker .fix {
+      margin-top: 0.75rem;
+      background: rgba(16,185,129,0.1);
+      border: 1px solid rgba(16,185,129,0.2);
+      border-radius: 4px;
+      padding: 0.5rem 0.75rem;
+      font-size: 0.82rem;
+      color: var(--green);
+    }
+    .blocker .fix strong { color: var(--green); }
+
+    /* Pitch cards */
+    .pitch-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1rem;
+    }
+    .pitch-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 1.25rem;
+    }
+    .pitch-card .target {
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 0.5rem;
+    }
+    .pitch-card .pitch {
+      font-size: 0.9rem;
+      line-height: 1.5;
+      color: var(--text);
+      font-style: italic;
+    }
+
+    /* Pricing */
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
+    }
+    .price-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 1.25rem;
+    }
+    .price-card.featured {
+      border-color: var(--accent);
+      background: linear-gradient(135deg, rgba(59,130,246,0.1) 0%, var(--surface) 100%);
+    }
+    .price-card .product { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); margin-bottom: 0.4rem; }
+    .price-card .price { font-size: 1.6rem; font-weight: 800; color: var(--accent); }
+    .price-card .price span { font-size: 0.8rem; font-weight: 400; color: var(--muted); }
+    .price-card .desc { font-size: 0.82rem; color: var(--muted); margin-top: 0.5rem; line-height: 1.5; }
+    .price-card .feature-list { margin-top: 0.75rem; list-style: none; }
+    .price-card .feature-list li { font-size: 0.8rem; color: var(--text); padding: 0.2rem 0; }
+    .price-card .feature-list li::before { content: "→ "; color: var(--accent); }
+
+    /* Timeline */
+    .phase {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+    .phase-header {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 1.25rem;
+    }
+    .phase-badge {
+      background: var(--accent);
+      color: #fff;
+      font-size: 0.72rem;
+      font-weight: 700;
+      padding: 4px 10px;
+      border-radius: 4px;
+      white-space: nowrap;
+    }
+    .phase-badge.p2 { background: var(--accent2); }
+    .phase-badge.p3 { background: var(--green); }
+    .phase-title { font-weight: 700; font-size: 1rem; }
+    .checklist { list-style: none; }
+    .checklist li {
+      font-size: 0.88rem;
+      padding: 0.35rem 0;
+      padding-left: 1.5rem;
+      position: relative;
+      color: var(--text);
+    }
+    .checklist li::before {
+      content: "☐";
+      position: absolute;
+      left: 0;
+      color: var(--accent);
+    }
+    .channel-block {
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 0.75rem 1rem;
+      margin: 0.75rem 0;
+    }
+    .channel-block .ch-title { font-weight: 700; color: var(--accent2); font-size: 0.88rem; margin-bottom: 0.4rem; }
+
+    /* KPI box */
+    .kpi-box {
+      background: rgba(16,185,129,0.06);
+      border: 1px solid rgba(16,185,129,0.2);
+      border-radius: 6px;
+      padding: 0.75rem 1rem;
+      margin-top: 1rem;
+    }
+    .kpi-box .kpi-title { font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--green); margin-bottom: 0.5rem; }
+    .kpi-grid { display: flex; flex-wrap: wrap; gap: 1rem; }
+    .kpi-item { font-size: 0.82rem; color: var(--text); }
+    .kpi-item strong { color: var(--green); }
+
+    /* Table */
+    table { width: 100%; border-collapse: collapse; font-size: 0.88rem; }
+    th { background: var(--surface2); color: var(--accent); font-weight: 700; text-align: left; padding: 0.6rem 1rem; border-bottom: 2px solid var(--border); }
+    td { padding: 0.6rem 1rem; border-bottom: 1px solid var(--border); vertical-align: top; }
+    tr:last-child td { border-bottom: none; }
+    td:nth-child(2) { color: var(--accent); font-weight: 700; }
+
+    /* Budget */
+    .budget-table td:nth-child(2) { color: var(--text); font-weight: 400; }
+    .budget-total td { font-weight: 700; color: var(--green); border-top: 2px solid var(--border); }
+    .budget-total td:first-child { color: var(--text); }
+
+    /* ARR projection */
+    .arr-row td:nth-child(3) { color: var(--muted); font-size: 0.82rem; }
+
+    p { margin-bottom: 0.75rem; }
+    .note {
+      background: rgba(245,158,11,0.08);
+      border-left: 3px solid var(--yellow);
+      padding: 0.75rem 1rem;
+      border-radius: 4px;
+      font-size: 0.85rem;
+      margin: 1rem 0;
+      color: var(--text);
+    }
+
+    @media (max-width: 600px) {
+      h1 { font-size: 1.5rem; }
+      .pitch-grid, .pricing-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+
+  <div class="header">
+    <div class="badge red">CONFIDENZIALE — USO INTERNO</div>
+    <h1>QEN Framework — Piano GTM <span>90 Giorni</span></h1>
+    <p class="subtitle">Cognitive Logic · Bologna · Maggio 2026</p>
+    <div class="meta">
+      <div class="meta-item"><strong>Finestra critica:</strong> Bolkestein scade marzo 2027</div>
+      <div class="meta-item"><strong>Obiettivo ARR:</strong> €1.000.000 in 18 mesi</div>
+      <div class="meta-item"><strong>Budget GTM 90gg:</strong> €9.540</div>
+      <div class="meta-item"><strong>Break-even:</strong> 16 report venduti</div>
+    </div>
+  </div>
+
+  <!-- BLOCCHI -->
+  <div class="section">
+    <h2><span class="num">!</span> I 3 Blocchi da Rimuovere Subito</h2>
+    <p style="color:var(--muted);margin-bottom:1.5rem;font-size:0.88rem;">Questi tre problemi strutturali azzerano il timing Bolkestein se non risolti entro giugno 2026.</p>
+
+    <div class="blocker">
+      <div class="blocker-title">BLOCCO 1 — Nessun canale di distribuzione capillare verso balneari/HoReCa</div>
+      <p>I tuoi target non leggono ProductHunt. Non bussano a porte dirette. Vivono dentro le associazioni di categoria. Senza un accordo white-label con CNA o Confcommercio entro giugno 2026, stai vendendo porta a porta a 30.000 micro-imprenditori. La finestra si chiude prima che tu arrivi al 10° cliente.</p>
+      <div class="fix"><strong>Fix immediato:</strong> firma un pilota con una associazione regionale (inizia da CNA Emilia-Romagna — credibilità geografica) entro 30 giorni. Offri i primi 3 mesi white-label gratis.</div>
+    </div>
+
+    <div class="blocker">
+      <div class="blocker-title">BLOCCO 2 — Pricing ambiguo / mancanza di lead magnet con output concreto</div>
+      <p>Il balneare di Rimini non capisce "QEN Score €49/mese". Capisce: <em>"Scopri se la tua concessione è a rischio — gratis in 3 minuti."</em> Senza un freemium con output tangibile, il ciclo di vendita si allunga a 6+ settimane. Non hai quei mesi da perdere.</p>
+      <div class="fix"><strong>Fix immediato:</strong> lancia il Risk Check gratuito (5 domande → semaforo rosso/giallo/verde + CTA a report completo) entro settimana 2. Obiettivo: 200 lead qualificati in 60 giorni.</div>
+    </div>
+
+    <div class="blocker">
+      <div class="blocker-title">BLOCCO 3 — Credibilità tecnico-legale non dimostrata pubblicamente</div>
+      <p>Stai chiedendo a PMI di affidarti la compliance su pratiche che valgono la loro attività. Senza una opinion legale pubblica (avvocato amministrativista che co-firma il metodo) e almeno 3 case study nominativi, il tasso di conversione rimane sotto il 2%.</p>
+      <div class="fix"><strong>Fix immediato:</strong> trova un partner legale (studio amministrativo/tributario bolognese) disposto a co-brandare il report. Proposta: royalty €50 per report firmato. Target: accordo firmato entro fine giugno.</div>
+    </div>
+  </div>
+
+  <!-- PITCH -->
+  <div class="section">
+    <h2><span class="num">2</span> Pitch di una Frase per Target</h2>
+    <div class="pitch-grid">
+      <div class="pitch-card">
+        <div class="target">Balneari</div>
+        <div class="pitch">"Il tuo ombrellone vale €300k — scopri in 5 minuti se la tua concessione sopravvive al 2027 o la perdi senza rimborso."</div>
+      </div>
+      <div class="pitch-card">
+        <div class="target">Dehors / Pubblici Esercizi</div>
+        <div class="pitch">"La tua licenza suolo pubblico è a rischio Bolkestein: ottieni il certificato di conformità prima che lo chieda il Comune."</div>
+      </div>
+      <div class="pitch-card">
+        <div class="target">HoReCa / AI Act</div>
+        <div class="pitch">"Il tuo gestionale fa pricing dinamico? Dal 2026 è un AI system sotto EU AI Act — noi ti certificiamo in 48 ore."</div>
+      </div>
+      <div class="pitch-card">
+        <div class="target">Commercialisti / Avvocati</div>
+        <div class="pitch">"Aggiungi il QEN Compliance Report al tuo studio: €500 per pratica, zero lavoro operativo, margine netto 60%."</div>
+      </div>
+      <div class="pitch-card">
+        <div class="target">Associazioni di Categoria</div>
+        <div class="pitch">"Offri ai tuoi 5.000 associati lo strumento Bolkestein che nessun altro ha ancora — white-label, brand tuo, revenue share."</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PRICING -->
+  <div class="section">
+    <h2><span class="num">3</span> Pricing Definitivo</h2>
+
+    <h3>Prodotto 0 — Risk Check (Freemium / Lead Gen)</h3>
+    <div class="pricing-grid">
+      <div class="price-card">
+        <div class="product">Risk Check Gratuito</div>
+        <div class="price">€0</div>
+        <div class="desc">5 domande → semaforo + 1 raccomandazione. Lead capture obbligatoria. CTA a report completo.</div>
+        <ul class="feature-list">
+          <li>Semaforo rosso/giallo/verde</li>
+          <li>1 criticità identificata</li>
+          <li>CTA personalizzata per tipo concessione</li>
+        </ul>
+      </div>
+    </div>
+
+    <h3>Prodotto 1 — QEN Score Subscription (B2B SaaS)</h3>
+    <div class="pricing-grid">
+      <div class="price-card">
+        <div class="product">Starter</div>
+        <div class="price">€49<span>/mese</span></div>
+        <div class="desc">1 sede. Monitoraggio AI Act + alert normativi automatici.</div>
+        <ul class="feature-list">
+          <li>Dashboard QEN Score</li>
+          <li>Alert normative mensili</li>
+          <li>Report PDF trimestrale</li>
+        </ul>
+      </div>
+      <div class="price-card featured">
+        <div class="product">Business ★ Consigliato</div>
+        <div class="price">€149<span>/mese</span></div>
+        <div class="desc">Fino a 5 sedi. Bolkestein dashboard completa + report PDF mensile.</div>
+        <ul class="feature-list">
+          <li>Dashboard Bolkestein</li>
+          <li>Report PDF mensile</li>
+          <li>Alert in tempo reale</li>
+          <li>Priority support</li>
+        </ul>
+      </div>
+      <div class="price-card">
+        <div class="product">Premium</div>
+        <div class="price">€299<span>/mese</span></div>
+        <div class="desc">Multi-sede illimitata. API access. White-label light.</div>
+        <ul class="feature-list">
+          <li>Tutto Business +</li>
+          <li>API QEN access</li>
+          <li>White-label light</li>
+          <li>Annual prepay -20%</li>
+        </ul>
+      </div>
+    </div>
+
+    <h3>Prodotto 2 — Bolkestein Full Assessment (One-Shot)</h3>
+    <div class="pricing-grid">
+      <div class="price-card">
+        <div class="product">Assessment Base</div>
+        <div class="price">€590</div>
+        <div class="desc">Report completo, semaforo dettagliato, checklist azioni correttive.</div>
+      </div>
+      <div class="price-card featured">
+        <div class="product">Assessment + Legal</div>
+        <div class="price">€1.490</div>
+        <div class="desc">Report + opinion legale co-firmata da studio partner.</div>
+      </div>
+      <div class="price-card">
+        <div class="product">Pacchetto Completo</div>
+        <div class="price">€2.490</div>
+        <div class="desc">Assessment + legal opinion + assistenza pratica + monitoring 12 mesi.</div>
+      </div>
+    </div>
+    <div class="note">Canale di vendita: commercialisti e studi legali con margin 40%. Il canale si incentiva da solo.</div>
+
+    <h3>Prodotto 3 — White-Label Associazioni</h3>
+    <div class="pricing-grid">
+      <div class="price-card">
+        <div class="product">Setup Una Tantum</div>
+        <div class="price">€2.500</div>
+        <div class="desc">Personalizzazione brand completa.</div>
+      </div>
+      <div class="price-card">
+        <div class="product">Licenza Flat</div>
+        <div class="price">€500<span>/mese</span></div>
+        <div class="desc">Fino a 500 assessment/anno inclusi.</div>
+      </div>
+      <div class="price-card">
+        <div class="product">Revenue Share</div>
+        <div class="price">15%</div>
+        <div class="desc">Su ogni report venduto oltre la soglia annuale di 500.</div>
+      </div>
+    </div>
+
+    <h3>Prodotto 4 — AI Act Compliance (HoReCa/PMI)</h3>
+    <div class="pricing-grid">
+      <div class="price-card">
+        <div class="product">One-Shot</div>
+        <div class="price">€390</div>
+        <div class="desc">Per sistema singolo: cassa, prenotazione, pricing dinamico.</div>
+      </div>
+      <div class="price-card">
+        <div class="product">Subscription</div>
+        <div class="price">€890<span>/anno</span></div>
+        <div class="desc">Monitoring continuo + aggiornamenti normativi automatici.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PIANO 90 GIORNI -->
+  <div class="section">
+    <h2><span class="num">4</span> Piano GTM — 90 Giorni</h2>
+
+    <div class="phase">
+      <div class="phase-header">
+        <span class="phase-badge">FASE 1 · Giorni 1-30</span>
+        <span class="phase-title">Fondamenta: Prodotto & Credibilità</span>
+      </div>
+
+      <h3>Settimana 1-2 — Prodotto</h3>
+      <ul class="checklist">
+        <li>Deploy Risk Check gratuito su <code>/bolkestein-check</code> — form 5 domande, output semaforo, lead capture email obbligatoria</li>
+        <li>Landing page dedicata <code>/balneari</code> e <code>/horeca</code> con pitch specifico per segmento (non una pagina generica)</li>
+        <li>Crea 3 case study anonimi (testa il tool su concessioni reali di conoscenti) per costruire credibilità con dati reali</li>
+      </ul>
+
+      <h3>Settimana 1-2 — Credibilità legale</h3>
+      <ul class="checklist">
+        <li>Contatto avvocato amministrativista (Bologna / Rimini). Proposta: co-brand sul report, royalty €50/report firmato</li>
+        <li>Identifica 2 studi legali alternativi come backup</li>
+      </ul>
+
+      <h3>Settimana 3-4 — Canali</h3>
+      <ul class="checklist">
+        <li>Outreach CNA Emilia-Romagna — proposta pilota 90 giorni: white-label gratuito, poi accordo revenue share</li>
+        <li>Partnership 5 commercialisti Bologna/Rimini — accesso gratuito 60 giorni + 40% margin su ogni report</li>
+        <li>Profilo LinkedIn aziendale con post settimanale su Bolkestein (no jargon AI, solo "concessione a rischio")</li>
+        <li>Comunicato stampa per Corriere Romagna / Il Resto del Carlino — primo tool AI per Bolkestein balneare</li>
+      </ul>
+
+      <div class="kpi-box">
+        <div class="kpi-title">KPI Fine Fase 1</div>
+        <div class="kpi-grid">
+          <div class="kpi-item"><strong>50</strong> Risk Check completati</div>
+          <div class="kpi-item"><strong>5</strong> commercialisti partner</div>
+          <div class="kpi-item"><strong>1</strong> pilota associazione avviato</div>
+          <div class="kpi-item"><strong>1</strong> partner legale identificato</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="phase">
+      <div class="phase-header">
+        <span class="phase-badge p2">FASE 2 · Giorni 31-60</span>
+        <span class="phase-title">Acquisizione: Canali & Revenue</span>
+      </div>
+
+      <div class="channel-block">
+        <div class="ch-title">Canale 1 — Fiere e Convegni (PRIORITARIO)</div>
+        <ul class="checklist">
+          <li>SIA Guest Rimini (settembre 2026) — prenota stand o speaker slot. Budget €3.000-8.000. ROI atteso: 50+ lead qualificati in 3 giorni</li>
+          <li>TTG Rimini (ottobre 2026) — presenza obbligatoria per HoReCa</li>
+          <li>Convegni CNA/Confcommercio locali — proponi intervento 15 minuti su "Bolkestein e AI: cosa deve sapere ogni titolare"</li>
+        </ul>
+      </div>
+
+      <div class="channel-block">
+        <div class="ch-title">Canale 2 — LinkedIn Ads (targeting chirurgico)</div>
+        <ul class="checklist">
+          <li>Job title: "titolare", "proprietario", "socio" + settore balneari/bar/ristoranti</li>
+          <li>Geo: Romagna, Versilia, Salento, Napoli — le 4 coste più dense di concessioni</li>
+          <li>Budget: €500/mese, obiettivo €15 CPL</li>
+          <li>Creativo: video 60 secondi "Fai il check gratuito" — niente AI jargon, solo "la tua concessione è al sicuro?"</li>
+        </ul>
+      </div>
+
+      <div class="channel-block">
+        <div class="ch-title">Canale 3 — Commercialisti come forza vendita</div>
+        <ul class="checklist">
+          <li>Crea "Kit Commercialista": landing dedicata, script di vendita, template email clienti, dashboard tracking pratiche</li>
+          <li>Lancia webinar mensile gratuito: "Come aggiungere €15k/anno al tuo studio con il QEN Report"</li>
+          <li>Target: 20 commercialisti attivi entro giorno 60</li>
+        </ul>
+      </div>
+
+      <div class="channel-block">
+        <div class="ch-title">Canale 4 — SEO/Content (semina ora, raccoglie in 60-90 giorni)</div>
+        <ul class="checklist">
+          <li>Target keyword: "Bolkestein 2027 balneari cosa fare", "concessione balneare rischio", "AI Act PMI Italia"</li>
+          <li>1 articolo pilastro 3.000 parole + 4 articoli satellite 800 parole</li>
+          <li>Obiettivo: top-5 su "Bolkestein 2027" entro agosto 2026</li>
+        </ul>
+      </div>
+
+      <div class="kpi-box">
+        <div class="kpi-title">KPI Fine Fase 2</div>
+        <div class="kpi-grid">
+          <div class="kpi-item"><strong>200</strong> Risk Check totali</div>
+          <div class="kpi-item"><strong>20</strong> report venduti = <strong>€11.800</strong></div>
+          <div class="kpi-item"><strong>20</strong> commercialisti nel programma</div>
+          <div class="kpi-item"><strong>1</strong> accordo associazione firmato</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="phase">
+      <div class="phase-header">
+        <span class="phase-badge p3">FASE 3 · Giorni 61-90</span>
+        <span class="phase-title">Scala & Ricorrenza</span>
+      </div>
+
+      <h3>Conversione Freemium → Paid</h3>
+      <ul class="checklist">
+        <li>Email sequence automatica post-Risk Check: giorno 1 (risultati), giorno 3 (caso studio), giorno 7 ("scadenza si avvicina"), giorno 14 (offerta -15%)</li>
+        <li>Target conversione: 8% dei Risk Check → report paid</li>
+      </ul>
+
+      <h3>Attivazione Canale Associazioni</h3>
+      <ul class="checklist">
+        <li>Presenta risultati pilota CNA al board nazionale</li>
+        <li>Proposta replicazione su 3 regioni: Toscana, Puglia, Sicilia</li>
+        <li>Obiettivo: 1 accordo nazionale o 3 regionali → accesso a 15.000+ associati</li>
+      </ul>
+
+      <h3>Lancio AI Act per HoReCa</h3>
+      <ul class="checklist">
+        <li>Campagna "Il tuo POS fa AI? Dal 2026 devi saperlo" — targeting gestori catene, bar con app, hotel con revenue management</li>
+        <li>Entry point: report €390 one-shot, upsell subscription €149/mese</li>
+      </ul>
+
+      <h3>Partnership Media</h3>
+      <ul class="checklist">
+        <li>Accordo con Italia a Tavola, Ristorazione Italiana, Il Sole 24 Ore PMI — rubrica mensile "Compliance Corner"</li>
+        <li>Non pagare per pubblicità: offri contenuto editoriale esclusivo + citazione tool</li>
+      </ul>
+
+      <div class="kpi-box">
+        <div class="kpi-title">KPI Fine Giorno 90</div>
+        <div class="kpi-grid">
+          <div class="kpi-item"><strong>€8.000-12.000</strong> MRR</div>
+          <div class="kpi-item"><strong>50+</strong> report venduti</div>
+          <div class="kpi-item"><strong>30+</strong> commercialisti attivi</div>
+          <div class="kpi-item"><strong>2+</strong> accordi associazioni in negoziazione</div>
+          <div class="kpi-item"><strong>€100-150k</strong> ARR run-rate</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ARR PROJECTION -->
+  <div class="section">
+    <h2><span class="num">5</span> Proiezione ARR — Percorso a €1M</h2>
+    <table>
+      <thead>
+        <tr><th>Periodo</th><th>MRR Target</th><th>Driver Principale</th></tr>
+      </thead>
+      <tbody class="arr-row">
+        <tr><td>Giorno 90</td><td>€10k</td><td>30 subscription + 20 one-shot</td></tr>
+        <tr><td>Mese 6</td><td>€35k</td><td>1 accordo associazione + 50 subscription</td></tr>
+        <tr><td>Mese 12</td><td>€70k</td><td>3 accordi associazioni + 150 subscription + HoReCa</td></tr>
+        <tr><td>Mese 18</td><td>€85k+</td><td>Scale canale commercialisti + espansione Spagna/Grecia</td></tr>
+      </tbody>
+    </table>
+    <div class="note" style="margin-top:1rem;">
+      <strong>La mossa da €1M:</strong> un accordo con Confcommercio nazionale (700k associati) vale da solo €200-500k ARR. Tutto il GTM dei primi 90 giorni serve a costruire la credibilità per quella conversazione. Spagna e Grecia hanno la stessa direttiva con le stesse scadenze — il playbook è esportabile dal mese 9.
+    </div>
+  </div>
+
+  <!-- BUDGET -->
+  <div class="section">
+    <h2><span class="num">6</span> Budget GTM 90 Giorni</h2>
+    <table class="budget-table">
+      <thead>
+        <tr><th>Voce</th><th>Budget</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Landing pages + Risk Check (dev)</td><td>€2.000</td></tr>
+        <tr><td>LinkedIn Ads (3 mesi)</td><td>€1.500</td></tr>
+        <tr><td>Fiera / evento (speaker o stand piccolo)</td><td>€3.000</td></tr>
+        <tr><td>Content / SEO (copywriter esterno)</td><td>€1.500</td></tr>
+        <tr><td>Legal partner setup</td><td>€500</td></tr>
+        <tr><td>CRM + email automation (HubSpot Starter)</td><td>€540</td></tr>
+        <tr><td>Stampa materiali (brochure commercialisti)</td><td>€500</td></tr>
+      </tbody>
+      <tfoot>
+        <tr class="budget-total"><td>TOTALE</td><td>€9.540</td></tr>
+      </tfoot>
+    </table>
+    <div class="note" style="margin-top:1rem;">Break-even: <strong>16 report Bolkestein al tier €590</strong>. Raggiungibile in settimana 6 con 5 commercialisti partner attivi.</div>
+  </div>
+
+  <div style="text-align:center;padding:2rem 0;border-top:1px solid var(--border);margin-top:2rem;color:var(--muted);font-size:0.8rem;">
+    Cognitive Logic · QEN Framework · cognitivelogic.it · api.cognitivelogic.it<br>
+    Piano GTM generato: maggio 2026 · Documento riservato — non distribuire
+  </div>
+
+</div>
+</body>
+</html>
