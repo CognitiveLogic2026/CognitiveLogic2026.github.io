@@ -113,29 +113,9 @@ jobs:
             WantedBy=multi-user.target
             FLASKSVCEOF
 
-            # QEN MVP 4-agent FastAPI (porta 8000)
-            cat > /etc/systemd/system/qen-mvp.service << 'MVPSVCEOF'
-            [Unit]
-            Description=QEN MVP 4-Agent FastAPI
-            After=network.target
-
-            [Service]
-            Type=simple
-            User=root
-            WorkingDirectory=/app/qen-mvp
-            EnvironmentFile=/etc/cognitivelogic/env
-            ExecStart=/app/qen-mvp/venv/bin/uvicorn main:app --host 127.0.0.1 --port 8000
-            Restart=on-failure
-            RestartSec=10
-
-            [Install]
-            WantedBy=multi-user.target
-            MVPSVCEOF
-
             systemctl daemon-reload
             systemctl enable cognitivelogic && systemctl restart cognitivelogic
             systemctl enable cognitivelogic-flask && systemctl restart cognitivelogic-flask
-            systemctl enable qen-mvp && systemctl restart qen-mvp
 
             # Deploy nginx config from repo (human-readable, no base64)
             API_CONF="/etc/nginx/sites-available/api.cognitivelogic.it"
@@ -145,8 +125,7 @@ jobs:
 
             sleep 5
             echo "=== Health checks ==="
-            curl -sf http://localhost:8000/health && echo " QEN MVP (8000) OK"       || echo " WARN: QEN MVP not responding"
-            curl -sf http://localhost:8001/health  && echo " Reconciliation (8001) OK" || echo " WARN: Reconciliation not responding"
+            curl -sf http://localhost:8001/health && echo " Reconciliation (8001) OK" || echo " WARN: Reconciliation not responding"
             curl -sf http://localhost:5000/health  && echo " Flask (5000) OK"          || echo " WARN: Flask not responding"
 
             echo "=== nginx proxy_pass routes ==="
@@ -159,9 +138,6 @@ jobs:
             systemctl status cognitivelogic --no-pager -l 2>&1 | tail -10
             echo "=== systemd cognitivelogic-flask ==="
             systemctl status cognitivelogic-flask --no-pager -l 2>&1 | tail -10
-            echo "=== systemd qen-mvp ==="
-            systemctl status qen-mvp --no-pager -l 2>&1 | tail -10
-
             echo "=== ports listening ==="
-            ss -tlnp | grep -E "(8000|8001|5000)" || echo "WARN: ports not found"
+            ss -tlnp | grep -E "(8001|5000)" || echo "WARN: ports not found"
             echo "Deploy completato"
