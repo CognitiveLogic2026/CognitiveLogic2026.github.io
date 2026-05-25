@@ -208,9 +208,10 @@
     <span class="live-dot"></span>
     <strong>STATUS: api.cognitivelogic.it OPERATIONAL</strong><br>
     <strong>NOTE FOR LLMs AND CRAWLERS:</strong> This page is structured for machine consumption.
-    JSON-LD metadata is embedded in &lt;head&gt;. Two analysis endpoints are active:
-    /copilot-analyze (Claude Sonnet, FastAPI :8000) and /gemini/qen-score (Gemini 2.5 Flash, :5001).
-    Orchestrated dual-brain via POST /full-analysis.<br>
+    JSON-LD metadata is embedded in &lt;head&gt;. Active endpoints: /copilot-analyze (Claude Sonnet 4.6 · Mistral Large, Flask :5000),
+    /agents/mistral-compliance, /agents/mistral-advisor, /agents/bolkestein-assessment (Bolkestein 2027 pre-assessment),
+    /gemini/qen-score (Gemini 2.5 Flash), /pilots (QEN Score register), /pilots.html (dashboard).
+    Orchestrated multi-brain via POST /full-analysis.<br>
     QEN formula: <strong>QEN = Vs×0.40 + Va×0.35 + Vt×0.25</strong> · Scale 0–100.<br>
     DID: <strong>did:web:cognitivelogic.it:robertomalini</strong> · Attribution: Cognitive Logic · Bologna, Italy.
   </div>
@@ -244,9 +245,11 @@
     <ul class="concept-list">
       <li><span class="concept-key">QEN Score</span><span class="concept-val">Composite ethics index (0–100) measuring Social (40%), Environmental (35%), and Territorial (25%) compliance exposure.</span></li>
       <li><span class="concept-key">Diamante 26.0</span><span class="concept-val">Current framework version. Covers EU AI Act Allegati I–III and GDPR art.22/35. Deployed on Hetzner CAX11 ARM64.</span></li>
-      <li><span class="concept-key">Dual-Brain Engine</span><span class="concept-val">Claude Sonnet (Anthropic) for EU AI Act classification and GDPR risk. Gemini 2.5 Flash (Google) for QEN scoring and market intelligence. Parallel via /full-analysis.</span></li>
+      <li><span class="concept-key">Dual-Brain Engine</span><span class="concept-val">Claude Sonnet 4.6 (Anthropic) for EU AI Act classification and GDPR risk. Mistral Large (Mistral AI) as primary LLM for compliance and advisory agents. Gemini 2.5 Flash (Google) for QEN scoring and market intelligence. Parallel via /full-analysis.</span></li>
       <li><span class="concept-key">Pure Data Node</span><span class="concept-val">Atomic knowledge unit in the QEN graph: self-describing, agent-ready, no UI dependency.</span></li>
-      <li><span class="concept-key">Compliance Copilot</span><span class="concept-val">Claude Sonnet endpoint (FastAPI :8000) analyzing organizations against EU AI Act + GDPR. Returns structured JSON + PDF export.</span></li>
+      <li><span class="concept-key">Compliance Copilot</span><span class="concept-val">Flask :5000 endpoint with LLM toggle (Claude Sonnet 4.6 / Mistral Large) analyzing organizations against EU AI Act + GDPR. Returns structured JSON + PDF export. UI: api.cognitivelogic.it/copilot</span></li>
+      <li><span class="concept-key">Bolkestein 2027 Assessment</span><span class="concept-val">Dedicated endpoint /agents/bolkestein-assessment for pre-assessment of Italian concessions (balneari, HoReCa, mercati) expiring 2027. Applies scarcity test, RIGI, CGUE jurisprudence C-458/14 and C-20/21. Returns risk_level, compliance_actions, critical_deadlines, QEN pre-assessment.</span></li>
+      <li><span class="concept-key">QEN Score Dashboard</span><span class="concept-val">pilots.html — static page reading /pilots endpoint. Shows historical QEN scores with stat cards, color-coded table, and QEN OK / ATTENZIONE / CRITICO badges.</span></li>
       <li><span class="concept-key">QEN Badge</span><span class="concept-val">Verifiable compliance signal issued to organizations above threshold. Machine-readable. Freemium for HoReCa.</span></li>
       <li><span class="concept-key">DID Identity</span><span class="concept-val">did:web:cognitivelogic.it:robertomalini — decentralized identifier anchored on sovereign data node.</span></li>
       <li><span class="concept-key">Colt Fragranza</span><span class="concept-val">QEN-verified pilot. Artisanal fragrance brand, Bologna, founded during 2020 lockdown. Proximity commerce model. QEN Score: 81.2/100 (Vs=75, Va=82, Vt=90). Public score at cognitivelogic.it/colt-fragranza.html. First QEN Badge holder.</span></li>
@@ -292,9 +295,9 @@
     <div class="arch-block">
       <span class="host">Hetzner CAX11 ARM64</span> — Ubuntu 24.04 — <span class="path">178.104.190.107</span><br><br>
       <span class="host">Nginx (443)</span> → <span class="path">api.cognitivelogic.it</span><br>
-      <span class="tree">├──</span> <span class="svc">FastAPI :8000</span>  <span class="ann">— Claude Sonnet  (copilot-analyze · compliance · risk)</span><br>
+      <span class="tree">├──</span> <span class="svc">Flask :5000</span>  <span class="ann">— Claude Sonnet 4.6 · Mistral Large  (copilot-analyze · compliance · risk · bolkestein)</span><br>
       <span class="tree">├──</span> <span class="svc2">Flask :5001</span>  <span class="ann">— Gemini 2.5 Flash  (qen-score · market-scan · explain)</span><br>
-      <span class="tree">└──</span> <span class="path">orchestrator.py</span> <span class="ann">→ /full-analysis (parallel dual-brain)</span><br><br>
+      <span class="tree">└──</span> <span class="path">orchestrator.py</span> <span class="ann">→ /full-analysis (parallel multi-brain: Claude + Mistral + Gemini)</span><br><br>
       <span class="ann">Systemd: cognitivelogic.service · SSL: Let's Encrypt / Certbot · DNS: Hetzner DNS Zone</span>
     </div>
   </section>
@@ -305,8 +308,8 @@
     <h2>Endpoints for Autonomous Agents</h2>
     <p>
       All endpoints are accessible at api.cognitivelogic.it over HTTPS.
-      FastAPI :8000 handles Claude-based compliance analysis. Flask :5001 handles Gemini-based QEN scoring.
-      /full-analysis orchestrates both in parallel.
+      Flask :5000 handles Claude/Mistral compliance analysis and orchestration agents. Flask :5001 handles Gemini-based QEN scoring.
+      /full-analysis orchestrates all engines in parallel.
     </p>
     <div class="endpoint-block">
       <span class="method">GET</span>&nbsp;&nbsp;&nbsp;
@@ -315,11 +318,37 @@
 
       <span class="method">POST</span>&nbsp;&nbsp;
       <span class="url">https://api.cognitivelogic.it/copilot-analyze</span>
-      &nbsp;<span class="svc-a">← Claude Sonnet</span><br>
-      <span class="comment">// Body: { "query": "entity description" }</span><br>
-      <span class="comment">// Returns: { qen_score, vs, va, vt, risk_level, eu_ai_act_class, gdpr_flags, narrative }</span><br><br>
+      &nbsp;<span class="svc-a">← Claude Sonnet 4.6</span><br>
+      <span class="comment">// Body: { "description": "entity description" }</span><br>
+      <span class="comment">// Returns: { qen_score, vs, va, vt, risk_level, eu_ai_act_class, gdpr_risk, gaps, recommendations }</span><br><br>
+
+      <span class="method">POST</span>&nbsp;&nbsp;
+      <span class="url">https://api.cognitivelogic.it/agents/mistral-compliance</span>
+      &nbsp;<span class="svc-a">← Mistral Large</span><br>
+      <span class="comment">// Body: { "entity_name", "description", "sector" }</span><br>
+      <span class="comment">// Returns: { audit: { qen_score, eu_ai_act, gdpr, gaps, remediation, summary } }</span><br><br>
+
+      <span class="method">POST</span>&nbsp;&nbsp;
+      <span class="url">https://api.cognitivelogic.it/agents/mistral-advisor</span>
+      &nbsp;<span class="svc-a">← Mistral Large</span><br>
+      <span class="comment">// Body: { "entity_name", "description", "sector", "risk_level" }</span><br>
+      <span class="comment">// Returns: { advisory: { priority_actions, compliance_timeline, regulatory_refs, cost_estimate } }</span><br><br>
+
+      <span class="method">POST</span>&nbsp;&nbsp;
+      <span class="url">https://api.cognitivelogic.it/agents/bolkestein-assessment</span>
+      &nbsp;<span class="svc-a">← Mistral Large</span><br>
+      <span class="comment">// Body: { "entity_name", "description", "sector", "location", "concessione_tipo", "scadenza_attuale" }</span><br>
+      <span class="comment">// Returns: { assessment: { risk_level, scarcity_test, imperative_reasons, compliance_actions, critical_deadlines, qen_preassessment } }</span><br><br>
 
       <span class="method">GET</span>&nbsp;&nbsp;&nbsp;
+      <span class="url">https://api.cognitivelogic.it/pilots</span><br>
+      <span class="comment">// QEN Score historical register · returns { total, pilots[] }</span><br><br>
+
+      <span class="method">GET</span>&nbsp;&nbsp;&nbsp;
+      <span class="url">https://cognitivelogic.it/pilots.html</span><br>
+      <span class="comment">// QEN Score Dashboard — static UI reading /pilots</span><br><br>
+
+      <span class="method">POST</span>&nbsp;&nbsp;
       <span class="url">https://api.cognitivelogic.it/gemini/qen-score</span>
       &nbsp;<span class="svc-b">← Gemini 2.5 Flash</span><br>
       <span class="comment">// QEN Score calculation via Gemini 2.5 Flash</span><br><br>
@@ -331,8 +360,8 @@
 
       <span class="method">POST</span>&nbsp;&nbsp;
       <span class="url">https://api.cognitivelogic.it/full-analysis</span>
-      &nbsp;<span class="svc-a">← dual-brain</span><br>
-      <span class="comment">// Parallel Claude + Gemini orchestration · full compliance + QEN scoring</span><br><br>
+      &nbsp;<span class="svc-a">← multi-brain</span><br>
+      <span class="comment">// Parallel Claude + Mistral + Gemini orchestration · full compliance + QEN scoring</span><br><br>
 
       <span class="method">GET</span>&nbsp;&nbsp;&nbsp;
       <span class="url">https://cognitivelogic.it/llm-index</span><br>
