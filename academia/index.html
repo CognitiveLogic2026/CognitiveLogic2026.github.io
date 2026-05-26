@@ -60,10 +60,16 @@
       border-bottom: 1px solid var(--border);
     }
     .nav-logo {
-      font-family: var(--sans); font-weight: 800;
-      font-size: 0.78rem; letter-spacing: 0.12em; text-transform: uppercase;
-      color: var(--green); text-decoration: none;
+      text-decoration: none;
+      display: flex; align-items: center;
+      flex-shrink: 0;
     }
+    .nav-logo img {
+      width: 200px; height: auto; display: block;
+      transition: transform 0.2s ease, opacity 0.2s ease;
+    }
+    .nav-logo:hover img { transform: scale(1.04); opacity: 0.9; }
+    @media (max-width: 768px) { .nav-logo img { width: 140px; max-width: 150px; } }
     .nav-links {
       display: flex; gap: 2rem; list-style: none;
     }
@@ -339,7 +345,7 @@
       display: flex; justify-content: space-between; align-items: flex-end;
       flex-wrap: wrap; gap: 1.5rem;
     }
-    .fb { font-family: var(--sans); font-weight: 800; font-size: 1rem; color: var(--green); text-transform: uppercase; letter-spacing: 0.06em; }
+    .fb img { width: 80px; height: auto; display: block; margin-bottom: 0.5rem; opacity: 0.85; }
     .ft-tag { font-size: 0.65rem; color: var(--mid); font-style: italic; max-width: 340px; line-height: 1.6; margin-top: 0.3rem; }
     .flinks { display: flex; flex-direction: column; gap: 0.35rem; text-align: right; }
     .flinks a { font-size: 0.62rem; color: var(--dim); text-decoration: none; transition: color 0.2s; }
@@ -350,7 +356,9 @@
 
 <!-- NAV -->
 <nav>
-  <a class="nav-logo" href="/">Cognitive Logic</a>
+  <a class="nav-logo" href="/">
+    <img src="../img/logo-cognitivelogic.svg" alt="Cognitive Logic">
+  </a>
   <ul class="nav-links">
     <li><a href="/methodology.html">Methodology</a></li>
     <li><a href="/qen.html">QEN</a></li>
@@ -712,7 +720,9 @@
 <!-- FOOTER -->
 <footer>
   <div>
-    <div class="fb">Cognitive Logic</div>
+    <div class="fb">
+      <img src="../img/logo-cognitivelogic.svg" alt="Cognitive Logic">
+    </div>
     <div class="ft-tag">QEN Framework · Ethical AI Infrastructure · Bologna, Italy<br>Roberto Malini · Founder</div>
   </div>
   <div class="flinks">
