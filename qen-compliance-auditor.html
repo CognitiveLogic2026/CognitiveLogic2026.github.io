@@ -1,0 +1,1214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>QEN Compliance Auditor — AI Governance Assessment · Cognitive Logic</title>
+  <meta name="description" content="QEN Compliance Auditor v1.0 — AI governance assessment under EU AI Act and GDPR. Score Vs, Va, Vt vectors and generate structured compliance findings." />
+  <meta property="og:title" content="QEN Compliance Auditor — Cognitive Logic" />
+  <meta property="og:description" content="Quantum Ethics Network compliance framework for AI/biometric systems. EU AI Act · GDPR · QEN Score." />
+  <meta property="og:image" content="img/qen-methodology-og.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css?v=2" />
+
+  <style>
+    /* ── Local vars ── */
+    :root {
+      --navy:      #070D1A;
+      --navy-2:    #0D1628;
+      --navy-3:    #122035;
+      --gold:      #C9A84C;
+      --gold-line: rgba(201,168,76,0.22);
+      --gold-dim:  rgba(201,168,76,0.08);
+      --serif:     'Cormorant Garamond', serif;
+      --mono:      'DM Mono', monospace;
+      --text:      #CFC9B8;
+      --text-2:    #E8E2D4;
+      --muted:     #6A6254;
+      --line:      rgba(201,168,76,0.12);
+      --line-2:    rgba(255,255,255,0.06);
+      --c-crit:    #E05A52;
+      --c-high:    #D4874A;
+      --c-med:     #C9A84C;
+      --c-low:     #5AB87A;
+    }
+
+    /* ── Form inputs ── */
+    input[type="text"],
+    select,
+    textarea {
+      width: 100%;
+      padding: 10px 14px;
+      background: var(--navy-3);
+      border: 1px solid var(--line);
+      color: var(--text-2);
+      font-family: var(--mono);
+      font-size: 0.8rem;
+      outline: none;
+      transition: border-color 0.2s;
+      resize: vertical;
+    }
+    input[type="text"]:focus,
+    select:focus,
+    textarea:focus { border-color: var(--gold-line); }
+    select option  { background: var(--navy-2); }
+
+    .field { margin-bottom: 16px; }
+    .field label {
+      display: block;
+      font-size: 0.6rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 6px;
+      font-family: var(--mono);
+    }
+
+    /* ── Section label ── */
+    .sec-label {
+      font-size: 0.58rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--muted);
+      padding-bottom: 10px;
+      border-bottom: 1px solid var(--line);
+      margin-bottom: 16px;
+      font-family: var(--mono);
+    }
+
+    /* ── Score bars ── */
+    .score-bar-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 10px;
+    }
+    .score-bar-label {
+      font-family: var(--mono);
+      font-size: 0.65rem;
+      color: var(--muted);
+      width: 22px;
+      flex-shrink: 0;
+    }
+    .score-bar-track {
+      flex: 1;
+      height: 4px;
+      background: var(--line-2);
+      position: relative;
+      overflow: visible;
+    }
+    .score-bar-fill {
+      height: 100%;
+      background: var(--gold);
+      transition: width 1.2s cubic-bezier(0.16,1,0.3,1);
+      width: 0%;
+      position: relative;
+    }
+    .score-bar-fill.critical { background: var(--c-crit); }
+    .score-bar-fill.high     { background: var(--c-high); }
+    .score-bar-fill.medium   { background: var(--c-med);  }
+    .score-bar-fill.good     { background: var(--c-low);  }
+    .score-bar-val {
+      font-family: var(--mono);
+      font-size: 0.65rem;
+      width: 30px;
+      text-align: right;
+      color: var(--text);
+      flex-shrink: 0;
+    }
+
+    /* ── QEN composite ── */
+    .qen-composite {
+      padding: 20px 24px;
+      border: 1px solid var(--gold-line);
+      background: var(--gold-dim);
+      margin-bottom: 20px;
+      display: flex;
+      align-items: baseline;
+      gap: 14px;
+    }
+    .qen-composite-score {
+      font-family: var(--serif);
+      font-size: 3.2rem;
+      font-weight: 300;
+      line-height: 1;
+      color: var(--text-2);
+    }
+    .qen-composite-score .frac { color: var(--gold); font-size: 1.4rem; }
+    .qen-composite-meta { font-family: var(--mono); font-size: 0.65rem; color: var(--muted); line-height: 1.8; }
+
+    /* ── Risk / recommendation chips ── */
+    .risk-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 5px 14px;
+      font-family: var(--mono);
+      font-size: 0.65rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      border: 1px solid transparent;
+    }
+    .risk-chip::before { content: ''; width: 5px; height: 5px; border-radius: 50%; background: currentColor; }
+    .chip-prohibited  { background: rgba(224,90,82,0.12);  color: var(--c-crit); border-color: rgba(224,90,82,0.3); }
+    .chip-high        { background: rgba(212,135,74,0.12); color: var(--c-high); border-color: rgba(212,135,74,0.3); }
+    .chip-limited     { background: rgba(201,168,76,0.12); color: var(--c-med);  border-color: var(--gold-line); }
+    .chip-minimal     { background: rgba(90,184,122,0.12); color: var(--c-low);  border-color: rgba(90,184,122,0.3); }
+
+    /* ── Findings ── */
+    .finding-item {
+      padding: 14px 16px;
+      border: 1px solid var(--line-2);
+      background: var(--navy-3);
+      margin-bottom: 6px;
+    }
+    .finding-header {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .sev-badge {
+      font-family: var(--mono);
+      font-size: 0.58rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 2px 7px;
+      border: 1px solid;
+    }
+    .sev-critical { color: var(--c-crit); border-color: rgba(224,90,82,0.35); background: rgba(224,90,82,0.08); }
+    .sev-high     { color: var(--c-high); border-color: rgba(212,135,74,0.35); background: rgba(212,135,74,0.08); }
+    .sev-medium   { color: var(--c-med);  border-color: rgba(201,168,76,0.35); background: rgba(201,168,76,0.08); }
+    .sev-low      { color: var(--c-low);  border-color: rgba(90,184,122,0.35); background: rgba(90,184,122,0.08); }
+    .finding-cat {
+      font-family: var(--mono);
+      font-size: 0.62rem;
+      color: var(--muted);
+      letter-spacing: 0.08em;
+    }
+    .finding-issue {
+      font-size: 0.82rem;
+      color: var(--text-2);
+      font-family: var(--serif);
+      font-weight: 600;
+      margin-bottom: 6px;
+    }
+    .finding-evidence {
+      font-family: var(--mono);
+      font-size: 0.68rem;
+      color: var(--muted);
+      line-height: 1.6;
+      margin-bottom: 8px;
+    }
+    .finding-remediation {
+      font-family: var(--mono);
+      font-size: 0.68rem;
+      color: var(--gold);
+      line-height: 1.6;
+      padding-left: 10px;
+      border-left: 2px solid var(--gold-line);
+    }
+
+    /* ── Mandatory controls ── */
+    .control-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      padding: 9px 12px;
+      border: 1px solid var(--line-2);
+      background: var(--navy-3);
+      margin-bottom: 4px;
+      font-family: var(--mono);
+      font-size: 0.72rem;
+      color: var(--muted);
+    }
+    .control-check {
+      width: 13px;
+      height: 13px;
+      border: 1px solid var(--line);
+      flex-shrink: 0;
+      margin-top: 1px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 8px;
+      color: var(--gold);
+    }
+
+    /* ── Next steps ── */
+    .step-item {
+      display: flex;
+      gap: 12px;
+      padding: 10px 12px;
+      border: 1px solid var(--line-2);
+      background: var(--navy-3);
+      margin-bottom: 4px;
+      font-family: var(--mono);
+      font-size: 0.72rem;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+    .step-num {
+      font-family: var(--serif);
+      font-size: 1rem;
+      color: var(--gold);
+      flex-shrink: 0;
+      line-height: 1;
+      padding-top: 1px;
+    }
+
+    /* ── Escalation alert ── */
+    .escalation-alert {
+      padding: 14px 16px;
+      border: 1px solid rgba(224,90,82,0.4);
+      background: rgba(224,90,82,0.07);
+      margin-bottom: 20px;
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+    }
+    .escalation-icon {
+      font-size: 0.7rem;
+      color: var(--c-crit);
+      font-family: var(--mono);
+      letter-spacing: 0.1em;
+      flex-shrink: 0;
+      padding-top: 2px;
+    }
+    .escalation-text { font-family: var(--mono); font-size: 0.72rem; color: var(--c-crit); line-height: 1.6; }
+
+    /* ── Recommendation banner ── */
+    .rec-banner {
+      padding: 16px 20px;
+      border: 1px solid;
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+    .rec-banner .rec-label {
+      font-family: var(--mono);
+      font-size: 0.58rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      opacity: 0.7;
+    }
+    .rec-banner .rec-value {
+      font-family: var(--serif);
+      font-size: 1.3rem;
+      font-weight: 600;
+    }
+    .rec-approve    { border-color: rgba(90,184,122,0.35); background: rgba(90,184,122,0.07); color: var(--c-low); }
+    .rec-conditional { border-color: rgba(201,168,76,0.35); background: rgba(201,168,76,0.07); color: var(--c-med); }
+    .rec-remediate  { border-color: rgba(212,135,74,0.35); background: rgba(212,135,74,0.07); color: var(--c-high); }
+    .rec-prohibit   { border-color: rgba(224,90,82,0.35); background: rgba(224,90,82,0.07); color: var(--c-crit); }
+
+    /* ── Governance footer ── */
+    .gov-meta {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+      margin-top: 16px;
+    }
+    .gov-meta-item {
+      padding: 10px 12px;
+      border: 1px solid var(--line-2);
+      background: var(--navy-3);
+    }
+    .gov-meta-label {
+      font-family: var(--mono);
+      font-size: 0.58rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 4px;
+    }
+    .gov-meta-val {
+      font-family: var(--mono);
+      font-size: 0.72rem;
+      color: var(--text);
+    }
+
+    /* ── Loading spinner ── */
+    .loading-wrap {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 14px;
+      padding: 40px 0;
+    }
+    .loading-ring {
+      width: 30px;
+      height: 30px;
+      border: 1px solid var(--line);
+      border-top-color: var(--gold);
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    .loading-text {
+      font-family: var(--mono);
+      font-size: 0.62rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    /* ── JSON export panel ── */
+    .json-panel {
+      margin-top: 16px;
+      border: 1px solid var(--line-2);
+      background: var(--navy-3);
+    }
+    .json-panel-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px 14px;
+      border-bottom: 1px solid var(--line-2);
+      cursor: pointer;
+    }
+    .json-panel-title {
+      font-family: var(--mono);
+      font-size: 0.62rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+    .json-panel-toggle {
+      font-family: var(--mono);
+      font-size: 0.6rem;
+      color: var(--gold);
+      cursor: pointer;
+      border: none;
+      background: none;
+      padding: 0;
+    }
+    .json-raw {
+      padding: 14px;
+      font-family: var(--mono);
+      font-size: 0.68rem;
+      color: var(--muted);
+      line-height: 1.7;
+      white-space: pre-wrap;
+      overflow-x: auto;
+      max-height: 320px;
+      overflow-y: auto;
+      display: none;
+    }
+    .json-raw.open { display: block; }
+
+    /* ── Btn override ── */
+    .btn-audit {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 11px 22px;
+      background: var(--gold);
+      color: var(--navy);
+      font-family: var(--mono);
+      font-size: 0.72rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      border: none;
+      cursor: pointer;
+      transition: opacity 0.2s;
+      font-weight: 500;
+    }
+    .btn-audit:hover    { opacity: 0.85; }
+    .btn-audit:disabled { opacity: 0.45; cursor: not-allowed; }
+
+    .btn-ghost-sm {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 9px 16px;
+      background: transparent;
+      color: var(--muted);
+      font-family: var(--mono);
+      font-size: 0.68rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      border: 1px solid var(--line-2);
+      cursor: pointer;
+      transition: border-color 0.2s, color 0.2s;
+    }
+    .btn-ghost-sm:hover { border-color: var(--gold-line); color: var(--text); }
+
+    /* ── Layout grid ── */
+    .auditor-grid {
+      display: grid;
+      grid-template-columns: 420px 1fr;
+      gap: 24px;
+      align-items: start;
+    }
+    @media (max-width: 900px) {
+      .auditor-grid { grid-template-columns: 1fr; }
+    }
+
+    .panel {
+      background: var(--navy-2);
+      border: 1px solid var(--line);
+      padding: 28px;
+    }
+
+    /* ── Formula display ── */
+    .formula-box {
+      padding: 16px 20px;
+      border: 1px solid var(--line-2);
+      background: var(--navy-3);
+      margin-top: 20px;
+    }
+    .formula-text {
+      font-family: var(--mono);
+      font-size: 0.8rem;
+      color: var(--text-2);
+    }
+    .formula-text span { color: var(--gold); }
+
+    /* ── Empty state ── */
+    .empty-state {
+      padding: 32px 0;
+      text-align: center;
+    }
+    .empty-state p {
+      font-family: var(--mono);
+      font-size: 0.72rem;
+      color: var(--muted);
+      line-height: 1.8;
+    }
+
+    /* ── Error state ── */
+    .error-state {
+      padding: 16px;
+      border: 1px solid rgba(224,90,82,0.3);
+      background: rgba(224,90,82,0.06);
+      font-family: var(--mono);
+      font-size: 0.72rem;
+      color: var(--c-crit);
+      line-height: 1.7;
+    }
+
+    /* ── Sticky output header ── */
+    .output-sticky-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 20px;
+    }
+  </style>
+</head>
+<body>
+  <div class="site-bg"></div>
+
+  <!-- ── Header ── -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="index.html" class="brand">
+        <img src="img/logo-cognitivelogic.png" alt="Cognitive Logic" style="height:28px;width:auto;display:block;">
+      </a>
+      <nav class="main-nav">
+        <a href="framework.html">Framework</a>
+        <a href="ecosystem.html">Ecosystem</a>
+        <a href="qen-live.html">QEN Live</a>
+        <a href="ai.html">AI Engine</a>
+        <a href="methodology.html">Methodology</a>
+        <a href="qen-compliance-auditor.html" class="active">Auditor</a>
+      </nav>
+      <div class="header-end">
+        <a href="demo.html" class="btn btn-ghost">Demo</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- ── Hero ── -->
+    <section class="hero">
+      <div class="container">
+        <div class="eyebrow">QEN Compliance Auditor v1.0 · Quantum Ethics Network</div>
+        <h1>
+          AI Governance<br>
+          <em style="font-style:italic;color:var(--gold)">Assessment Engine.</em>
+        </h1>
+        <p class="hero-lead">
+          Assess any AI or biometric system under the QEN framework — EU AI Act, GDPR, and
+          Annex risk classification. Generates structured compliance findings, vector scores,
+          and an auditable governance report.
+        </p>
+      </div>
+    </section>
+
+    <!-- ── Auditor ── -->
+    <section class="section" style="padding-top:0">
+      <div class="container">
+        <div class="auditor-grid">
+
+          <!-- ── Input panel ── -->
+          <div class="panel">
+            <div class="sec-label">System Profile</div>
+
+            <div class="field">
+              <label for="sysName">System Name</label>
+              <input type="text" id="sysName" placeholder="e.g. Biometric Access Monitor" />
+            </div>
+
+            <div class="field">
+              <label for="sysType">System Type</label>
+              <select id="sysType">
+                <option value="Biometric Identification">Biometric Identification</option>
+                <option value="Classification" selected>Classification</option>
+                <option value="Autonomous Decision">Autonomous Decision</option>
+                <option value="Recommendation System">Recommendation System</option>
+                <option value="Credit Scoring">Credit Scoring</option>
+                <option value="Fraud Detection">Fraud Detection</option>
+                <option value="Other">Other</option>
+              </select>
+            </div>
+
+            <div class="field">
+              <label for="sysDomain">Domain</label>
+              <select id="sysDomain">
+                <option value="Public Sector">Public Sector</option>
+                <option value="Private" selected>Private</option>
+                <option value="Finance">Finance</option>
+                <option value="Health">Health</option>
+                <option value="HR">HR</option>
+                <option value="Education">Education</option>
+                <option value="Other">Other</option>
+              </select>
+            </div>
+
+            <div class="field">
+              <label for="sysDesc">Description</label>
+              <textarea id="sysDesc" rows="5" placeholder="Describe how the system works, what data it processes, what decisions it makes, and what populations it affects."></textarea>
+            </div>
+
+            <div class="field">
+              <label for="sysControls">Current Controls</label>
+              <textarea id="sysControls" rows="3" placeholder="List any existing oversight mechanisms, audit trails, human review steps, legal assessments, DPIAs, etc."></textarea>
+            </div>
+
+            <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:20px">
+              <button class="btn-audit" id="btnAssess" onclick="runQENAssessment()">
+                <span id="btnLabel">Run Assessment</span>
+              </button>
+              <button class="btn-ghost-sm" onclick="loadBiometricExample()">Example: Biometric</button>
+              <button class="btn-ghost-sm" onclick="loadHRExample()">Example: HR Scoring</button>
+            </div>
+
+            <div class="formula-box">
+              <div style="font-size:0.58rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--muted);margin-bottom:8px;font-family:var(--mono)">QEN Formula</div>
+              <div class="formula-text">
+                QEN = (<span>Vs</span> × 0.40) + (<span>Va</span> × 0.35) + (<span>Vt</span> × 0.25)
+              </div>
+              <div style="margin-top:10px;font-family:var(--mono);font-size:0.62rem;color:var(--muted);line-height:1.7">
+                Vs — Semantic Legality (EU AI Act + GDPR)<br>
+                Va — Accountability (audit trail, human oversight)<br>
+                Vt — Trust &amp; Control (data quality, consent)
+              </div>
+            </div>
+
+            <div style="margin-top:16px;font-family:var(--mono);font-size:0.62rem;color:var(--muted);line-height:1.7">
+              Framework: QEN v2.0 · Author: Roberto Bob Malini, AI Data Architect<br>
+              Assessment powered by Cognitive Logic AI Engine
+            </div>
+          </div>
+
+          <!-- ── Output panel ── -->
+          <div class="panel" id="outputPanel">
+            <div class="output-sticky-header">
+              <div class="sec-label" style="margin-bottom:0;border:none;padding:0">Assessment Output</div>
+              <div id="exportBtns" style="display:none;gap:8px;display:none">
+                <button class="btn-ghost-sm" onclick="exportJSON()">Export JSON</button>
+                <button class="btn-ghost-sm" onclick="exportAuditTxt()">Export TXT</button>
+              </div>
+            </div>
+
+            <!-- Empty state -->
+            <div id="emptyState" class="empty-state">
+              <p>
+                Complete the system profile and run the assessment<br>
+                to generate a structured QEN compliance report.
+              </p>
+              <div style="margin-top:28px;padding:20px 24px;border:1px solid var(--line-2);background:var(--navy-3);text-align:left">
+                <div class="sec-label" style="margin-bottom:12px">Escalation triggers</div>
+                <div style="font-family:var(--mono);font-size:0.68rem;color:var(--muted);line-height:1.9">
+                  · Any vector score &lt; 30<br>
+                  · EU AI Act Annex I (prohibited) match<br>
+                  · Biometric ID in public sector without exemption<br>
+                  · Art. 22 GDPR automated decision without human review<br>
+                  · Data subject rights cannot be exercised
+                </div>
+              </div>
+            </div>
+
+            <!-- Loading state -->
+            <div id="loadingState" style="display:none">
+              <div class="loading-wrap">
+                <div class="loading-ring"></div>
+                <div class="loading-text">Analysing system under QEN v1.0…</div>
+              </div>
+            </div>
+
+            <!-- Error state -->
+            <div id="errorState" style="display:none" class="error-state"></div>
+
+            <!-- Result state -->
+            <div id="resultState" style="display:none">
+
+              <!-- Chips row -->
+              <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:20px">
+                <div id="riskChip" class="risk-chip chip-high">—</div>
+                <div id="recChip"  class="risk-chip chip-high">—</div>
+              </div>
+
+              <!-- Escalation alert -->
+              <div id="escalationAlert" class="escalation-alert" style="display:none">
+                <div class="escalation-icon">⚠ ESCALATION</div>
+                <div class="escalation-text" id="escalationReason"></div>
+              </div>
+
+              <!-- Recommendation banner -->
+              <div id="recBanner" class="rec-banner rec-prohibit">
+                <div>
+                  <div class="rec-label">Recommendation</div>
+                  <div class="rec-value" id="recValue">—</div>
+                </div>
+              </div>
+
+              <!-- QEN composite score -->
+              <div class="qen-composite">
+                <div class="qen-composite-score">
+                  <span id="qenScore">—</span><span class="frac">/100</span>
+                </div>
+                <div class="qen-composite-meta">
+                  QEN Score<br>
+                  <span id="qenFormula" style="color:var(--text)">—</span>
+                </div>
+              </div>
+
+              <!-- Vector score bars -->
+              <div style="margin-bottom:20px">
+                <div class="sec-label">Vector Scores</div>
+                <div class="score-bar-row">
+                  <div class="score-bar-label">Vs</div>
+                  <div class="score-bar-track"><div class="score-bar-fill" id="barVs"></div></div>
+                  <div class="score-bar-val" id="valVs">—</div>
+                </div>
+                <div class="score-bar-row">
+                  <div class="score-bar-label">Va</div>
+                  <div class="score-bar-track"><div class="score-bar-fill" id="barVa"></div></div>
+                  <div class="score-bar-val" id="valVa">—</div>
+                </div>
+                <div class="score-bar-row">
+                  <div class="score-bar-label">Vt</div>
+                  <div class="score-bar-track"><div class="score-bar-fill" id="barVt"></div></div>
+                  <div class="score-bar-val" id="valVt">—</div>
+                </div>
+              </div>
+
+              <!-- Findings -->
+              <div style="margin-bottom:20px">
+                <div class="sec-label">Compliance Findings</div>
+                <div id="findingsList"></div>
+              </div>
+
+              <!-- Mandatory controls -->
+              <div style="margin-bottom:20px">
+                <div class="sec-label">Mandatory Controls</div>
+                <div id="controlsList"></div>
+              </div>
+
+              <!-- Next steps -->
+              <div style="margin-bottom:20px">
+                <div class="sec-label">Next Steps</div>
+                <div id="nextStepsList"></div>
+              </div>
+
+              <!-- Governance metadata -->
+              <div class="gov-meta" id="govMeta"></div>
+
+              <!-- Raw JSON toggle -->
+              <div class="json-panel" id="jsonPanel">
+                <div class="json-panel-header" onclick="toggleJSON()">
+                  <span class="json-panel-title">Raw JSON Output</span>
+                  <span class="json-panel-toggle" id="jsonToggle">show ▾</span>
+                </div>
+                <pre class="json-raw" id="jsonRaw"></pre>
+              </div>
+
+              <!-- Export buttons (bottom) -->
+              <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:16px">
+                <button class="btn-ghost-sm" onclick="exportJSON()">Export JSON</button>
+                <button class="btn-ghost-sm" onclick="exportAuditTxt()">Export Audit TXT</button>
+              </div>
+
+            </div><!-- /resultState -->
+          </div><!-- /output panel -->
+
+        </div><!-- /grid -->
+      </div>
+    </section>
+  </main>
+
+  <!-- ── Footer ── -->
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div>
+        <div class="footer-brand">Cognitive Logic · QEN Compliance Auditor</div>
+        <div class="footer-sub">AI Governance Assessment — QEN Framework v1.0 · EU AI Act · GDPR.</div>
+        <div class="footer-copy mt-8">© 2026 Roberto Bob Malini</div>
+        <div class="footer-social">
+          <a class="footer-social-link" href="https://www.linkedin.com/in/robertobobmalini/" target="_blank" rel="noopener"><span class="fsl-net">LinkedIn</span><span class="fsl-name">Roberto Malini</span></a>
+          <a class="footer-social-link" href="https://www.linkedin.com/company/cognitivelogic/" target="_blank" rel="noopener"><span class="fsl-net">LinkedIn</span><span class="fsl-name">Cognitive Logic</span></a>
+          <a class="footer-social-link" href="mailto:info@cognitivelogic.it"><span class="fsl-net">Email</span><span class="fsl-name">info@cognitivelogic.it</span></a>
+        </div>
+      </div>
+      <div class="footer-links">
+        <a href="index.html">Home</a>
+        <a href="framework.html">Framework</a>
+        <a href="methodology.html">Methodology</a>
+        <a href="demo.html">Demo</a>
+        <a href="/privacy.html">Privacy</a>
+        <a href="/cookie.html">Cookie</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/config.js"></script>
+  <script>
+    /* ── QEN System Prompt v1.0 ── */
+    const QEN_SYSTEM_PROMPT = `You are QEN Compliance Auditor — an AI governance specialist operating under the Quantum Ethics Network (QEN) framework. Your role is to assess AI/biometric systems for regulatory risk, generate compliance findings, and produce governance recommendations.
+
+Core Framework:
+QEN Score = (Vs × 0.40) + (Va × 0.35) + (Vt × 0.25)
+
+Where:
+- Vs (Semantic Legality): Alignment with EU AI Act, GDPR, regulatory legitimacy [0–100]
+- Va (Accountability): Audit trail, human oversight, redress mechanisms [0–100]
+- Vt (Trust & Control): Data quality, transparency, reversibility, consent [0–100]
+
+Assessment Methodology:
+1. Risk Classification: Categorize system by EU AI Act Annex (Prohibited / High-Risk / Limited Risk / Minimal Risk)
+2. Vector Scoring: Evaluate each dimension independently using the scoring rubric
+3. Control Requirements: Map findings to mandatory controls
+4. Escalation Logic: Flag for immediate escalation if any vector < 30 OR system is Prohibited
+5. Recommendation: Produce actionable governance decisions (approve, conditional-approve, remediate, prohibit)
+
+Scoring Rubric:
+Vs (Semantic Legality) [0–100]:
+- 90–100: Legal basis explicit (art. 6 GDPR), EU AI Act compliance documented, no Annex I/III conflicts
+- 70–89: Legal basis presumed, EU AI Act category clear, minor gaps in documentation
+- 50–69: Legal basis unclear, EU AI Act category requires clarification, DPIA not completed
+- 30–49: Serious legal doubts, EU AI Act Annex III (high-risk) without governance, data minimization absent
+- 0–29: No legal basis identified, Annex I (prohibited) category suspected, fundamental GDPR violations
+
+Va (Accountability) [0–100]:
+- 90–100: Complete audit trail, human-in-the-loop mandatory, escalation procedures documented, right to redress operational
+- 70–89: Audit trail exists, human oversight for critical decisions, escalation path defined
+- 50–69: Partial audit trail, human oversight optional, escalation unclear
+- 30–49: Minimal audit trail, human oversight absent, no redress mechanism
+- 0–29: No audit trail, fully autonomous decisions, no human override capability
+
+Vt (Trust & Control) [0–100]:
+- 90–100: Data source documented, quality assurance ongoing, consent explicit, template/model reversibility clear
+- 70–89: Data source known, quality controls in place, consent mechanism present
+- 50–69: Data provenance unclear, quality assurance partial, consent implicit
+- 30–49: Data quality concerns, consent minimal, model opacity high
+- 0–29: Data source unknown, no quality controls, consent absent, model completely opaque
+
+You MUST output ONLY valid JSON with no additional text, following this exact schema:
+{
+  "system_name": "string",
+  "risk_classification": "Prohibited | High-Risk | Limited-Risk | Minimal-Risk",
+  "domain": "string",
+  "assessment_date": "ISO 8601 date",
+  "scores": {
+    "Vs": number,
+    "Va": number,
+    "Vt": number,
+    "QEN_SCORE": number
+  },
+  "findings": [
+    {
+      "category": "Semantic Legality | Accountability | Trust & Control",
+      "severity": "Critical | High | Medium | Low",
+      "issue": "string",
+      "evidence": "string",
+      "remediation": "string"
+    }
+  ],
+  "mandatory_controls": ["array of required controls"],
+  "escalation_flag": boolean,
+  "escalation_reason": "string or null",
+  "recommendation": "Approve | Conditional Approval | Remediation Required | Prohibit",
+  "next_steps": ["array of actionable steps"],
+  "governance_owner": "role/team",
+  "review_date": "ISO 8601 date (90 days from assessment)"
+}`;
+
+    /* ── State ── */
+    let lastResult = null;
+    let lastInput  = null;
+
+    /* ── Main assessment function ── */
+    async function runQENAssessment() {
+      const name     = document.getElementById('sysName').value.trim()     || 'Unnamed System';
+      const type     = document.getElementById('sysType').value;
+      const domain   = document.getElementById('sysDomain').value;
+      const desc     = document.getElementById('sysDesc').value.trim()     || '(no description provided)';
+      const controls = document.getElementById('sysControls').value.trim() || '(no controls documented)';
+
+      lastInput = { name, type, domain, desc, controls };
+
+      const userPrompt = `Assess the following system under QEN framework v1.0:
+
+System Name: ${name}
+Type: ${type}
+Domain: ${domain}
+Description: ${desc}
+Current Controls: ${controls}
+
+Today's date: ${new Date().toISOString().slice(0, 10)}
+
+Provide:
+1. Risk classification (EU AI Act Annex)
+2. QEN scores (Vs, Va, Vt) — calculate QEN_SCORE as (Vs×0.40)+(Va×0.35)+(Vt×0.25)
+3. Findings (critical gaps)
+4. Mandatory controls checklist
+5. Recommendation + next steps
+6. Output as JSON only — no other text`;
+
+      setState('loading');
+
+      try {
+        const apiKey = (typeof CONFIG !== 'undefined') ? CONFIG.API_KEY : null;
+        if (!apiKey) throw new Error('API key not configured. Add your Gemini key to js/config.js.');
+
+        const url = `https://generativelanguage.googleapis.com/v1beta/models/${CONFIG.MODEL}:generateContent?key=${apiKey}`;
+
+        const response = await fetch(url, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            system_instruction: { parts: [{ text: QEN_SYSTEM_PROMPT }] },
+            contents: [{ role: 'user', parts: [{ text: userPrompt }] }],
+            generationConfig: {
+              responseMimeType: 'application/json',
+              temperature: 0.1
+            }
+          })
+        });
+
+        if (!response.ok) {
+          const err = await response.json().catch(() => ({}));
+          throw new Error(`API error ${response.status}: ${err.error?.message || response.statusText}`);
+        }
+
+        const data = await response.json();
+        const raw  = data.candidates?.[0]?.content?.parts?.[0]?.text;
+        if (!raw) throw new Error('Empty response from AI engine.');
+
+        const parsed = JSON.parse(raw);
+
+        // Recalculate QEN score server-side for safety
+        const vs = Number(parsed.scores?.Vs) || 0;
+        const va = Number(parsed.scores?.Va) || 0;
+        const vt = Number(parsed.scores?.Vt) || 0;
+        parsed.scores.QEN_SCORE = Math.round(((vs * 0.40) + (va * 0.35) + (vt * 0.25)) * 10) / 10;
+
+        lastResult = parsed;
+        renderResult(parsed);
+        setState('result');
+
+      } catch (err) {
+        showError(err.message);
+        setState('error');
+      }
+    }
+
+    /* ── Render result ── */
+    function renderResult(r) {
+      const scores = r.scores || {};
+      const vs = scores.Vs ?? 0;
+      const va = scores.Va ?? 0;
+      const vt = scores.Vt ?? 0;
+      const qen = scores.QEN_SCORE ?? 0;
+
+      /* Risk chip */
+      const rc = document.getElementById('riskChip');
+      const classification = (r.risk_classification || '').toLowerCase();
+      rc.className = 'risk-chip ' + getRiskChipClass(r.risk_classification);
+      rc.textContent = r.risk_classification || '—';
+
+      /* Recommendation chip */
+      const rec = r.recommendation || '—';
+      document.getElementById('recChip').className = 'risk-chip ' + getRecChipClass(rec);
+      document.getElementById('recChip').textContent = rec;
+
+      /* Recommendation banner */
+      const banner = document.getElementById('recBanner');
+      banner.className = 'rec-banner ' + getRecBannerClass(rec);
+      document.getElementById('recValue').textContent = rec;
+
+      /* Escalation */
+      const esc = document.getElementById('escalationAlert');
+      if (r.escalation_flag) {
+        esc.style.display = 'flex';
+        document.getElementById('escalationReason').textContent = r.escalation_reason || 'Immediate governance board review required.';
+      } else {
+        esc.style.display = 'none';
+      }
+
+      /* QEN score */
+      document.getElementById('qenScore').textContent = qen;
+      document.getElementById('qenFormula').textContent =
+        `(${vs} × 0.40) + (${va} × 0.35) + (${vt} × 0.25)`;
+
+      /* Score bars */
+      setTimeout(() => {
+        setBar('barVs', 'valVs', vs);
+        setBar('barVa', 'valVa', va);
+        setBar('barVt', 'valVt', vt);
+      }, 80);
+
+      /* Findings */
+      const fl = document.getElementById('findingsList');
+      fl.innerHTML = '';
+      (r.findings || []).forEach(f => {
+        fl.innerHTML += `
+          <div class="finding-item">
+            <div class="finding-header">
+              <span class="sev-badge sev-${(f.severity||'medium').toLowerCase()}">${f.severity || '—'}</span>
+              <span class="finding-cat">${f.category || '—'}</span>
+            </div>
+            <div class="finding-issue">${escHtml(f.issue || '—')}</div>
+            <div class="finding-evidence">${escHtml(f.evidence || '—')}</div>
+            <div class="finding-remediation">↳ ${escHtml(f.remediation || '—')}</div>
+          </div>`;
+      });
+      if (!r.findings || r.findings.length === 0) {
+        fl.innerHTML = '<div style="font-family:var(--mono);font-size:0.72rem;color:var(--muted);padding:10px 0">No findings identified.</div>';
+      }
+
+      /* Mandatory controls */
+      const cl = document.getElementById('controlsList');
+      cl.innerHTML = '';
+      (r.mandatory_controls || []).forEach(c => {
+        cl.innerHTML += `
+          <div class="control-item">
+            <div class="control-check">□</div>
+            <span>${escHtml(c)}</span>
+          </div>`;
+      });
+
+      /* Next steps */
+      const nl = document.getElementById('nextStepsList');
+      nl.innerHTML = '';
+      (r.next_steps || []).forEach((s, i) => {
+        nl.innerHTML += `
+          <div class="step-item">
+            <div class="step-num">${i + 1}</div>
+            <span>${escHtml(s)}</span>
+          </div>`;
+      });
+
+      /* Governance metadata */
+      document.getElementById('govMeta').innerHTML = `
+        <div class="gov-meta-item">
+          <div class="gov-meta-label">Governance Owner</div>
+          <div class="gov-meta-val">${escHtml(r.governance_owner || '—')}</div>
+        </div>
+        <div class="gov-meta-item">
+          <div class="gov-meta-label">Review Date</div>
+          <div class="gov-meta-val">${escHtml(r.review_date || '—')}</div>
+        </div>
+        <div class="gov-meta-item">
+          <div class="gov-meta-label">Assessment Date</div>
+          <div class="gov-meta-val">${escHtml(r.assessment_date || new Date().toISOString().slice(0,10))}</div>
+        </div>
+        <div class="gov-meta-item">
+          <div class="gov-meta-label">Domain</div>
+          <div class="gov-meta-val">${escHtml(r.domain || '—')}</div>
+        </div>`;
+
+      /* Raw JSON */
+      document.getElementById('jsonRaw').textContent = JSON.stringify(r, null, 2);
+    }
+
+    /* ── Helpers ── */
+    function setBar(barId, valId, score) {
+      const fill = document.getElementById(barId);
+      const label = document.getElementById(valId);
+      const pct = Math.max(0, Math.min(100, score));
+      fill.style.width = pct + '%';
+      fill.className = 'score-bar-fill ' + scoreClass(score);
+      label.textContent = score;
+    }
+
+    function scoreClass(v) {
+      if (v < 30) return 'critical';
+      if (v < 50) return 'high';
+      if (v < 70) return 'medium';
+      return 'good';
+    }
+
+    function getRiskChipClass(rc) {
+      if (!rc) return 'chip-high';
+      const r = rc.toLowerCase();
+      if (r.includes('prohibit'))      return 'chip-prohibited';
+      if (r.includes('high'))          return 'chip-high';
+      if (r.includes('limited'))       return 'chip-limited';
+      if (r.includes('minimal'))       return 'chip-minimal';
+      return 'chip-high';
+    }
+
+    function getRecChipClass(rec) {
+      if (!rec) return 'chip-high';
+      const r = rec.toLowerCase();
+      if (r.includes('prohibit'))      return 'chip-prohibited';
+      if (r.includes('remediat'))      return 'chip-high';
+      if (r.includes('conditional'))   return 'chip-limited';
+      if (r.includes('approve'))       return 'chip-minimal';
+      return 'chip-high';
+    }
+
+    function getRecBannerClass(rec) {
+      if (!rec) return 'rec-prohibit';
+      const r = rec.toLowerCase();
+      if (r.includes('prohibit'))      return 'rec-prohibit';
+      if (r.includes('remediat'))      return 'rec-remediate';
+      if (r.includes('conditional'))   return 'rec-conditional';
+      if (r.includes('approve'))       return 'rec-approve';
+      return 'rec-prohibit';
+    }
+
+    function escHtml(str) {
+      return String(str)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;');
+    }
+
+    function setState(state) {
+      document.getElementById('emptyState').style.display   = state === 'empty'   ? 'block' : 'none';
+      document.getElementById('loadingState').style.display = state === 'loading' ? 'block' : 'none';
+      document.getElementById('errorState').style.display   = state === 'error'   ? 'block' : 'none';
+      document.getElementById('resultState').style.display  = state === 'result'  ? 'block' : 'none';
+
+      const btn = document.getElementById('btnAssess');
+      const lbl = document.getElementById('btnLabel');
+      btn.disabled = state === 'loading';
+      lbl.textContent = state === 'loading' ? 'Assessing…' : 'Run Assessment';
+    }
+
+    function showError(msg) {
+      const el = document.getElementById('errorState');
+      el.textContent = '⚠ Assessment failed: ' + msg;
+    }
+
+    function toggleJSON() {
+      const raw  = document.getElementById('jsonRaw');
+      const btn  = document.getElementById('jsonToggle');
+      const open = raw.classList.toggle('open');
+      btn.textContent = open ? 'hide ▴' : 'show ▾';
+    }
+
+    /* ── Export JSON ── */
+    function exportJSON() {
+      if (!lastResult) return;
+      const blob = new Blob([JSON.stringify(lastResult, null, 2)], { type: 'application/json' });
+      const url  = URL.createObjectURL(blob);
+      const a    = document.createElement('a');
+      a.href     = url;
+      a.download = `QEN_Audit_${(lastResult.system_name || 'system').replace(/\s+/g,'_')}_${new Date().toISOString().slice(0,10)}.json`;
+      a.click();
+      URL.revokeObjectURL(url);
+    }
+
+    /* ── Export Audit TXT ── */
+    function exportAuditTxt() {
+      if (!lastResult) return;
+      const r = lastResult;
+      const s = r.scores || {};
+      const lines = [
+        'COGNITIVE LOGIC — QEN COMPLIANCE AUDITOR v1.0',
+        'Framework: Quantum Ethics Network (QEN) v2.0',
+        '═'.repeat(60),
+        '',
+        `System:           ${r.system_name}`,
+        `Domain:           ${r.domain}`,
+        `Risk Class:       ${r.risk_classification}`,
+        `Recommendation:   ${r.recommendation}`,
+        `Assessment Date:  ${r.assessment_date}`,
+        `Review Date:      ${r.review_date}`,
+        `Governance Owner: ${r.governance_owner}`,
+        '',
+        '── QEN SCORES ──────────────────────────────────────────',
+        `  Vs (Semantic Legality):  ${s.Vs}`,
+        `  Va (Accountability):     ${s.Va}`,
+        `  Vt (Trust & Control):    ${s.Vt}`,
+        `  QEN Score:               ${s.QEN_SCORE}  ← (Vs×0.40)+(Va×0.35)+(Vt×0.25)`,
+        '',
+        r.escalation_flag ? `⚠ ESCALATION: ${r.escalation_reason}` : '✓ No immediate escalation required',
+        '',
+        '── FINDINGS ─────────────────────────────────────────────',
+        ...(r.findings || []).flatMap(f => [
+          `[${f.severity}] ${f.category}`,
+          `  Issue:       ${f.issue}`,
+          `  Evidence:    ${f.evidence}`,
+          `  Remediation: ${f.remediation}`,
+          ''
+        ]),
+        '── MANDATORY CONTROLS ───────────────────────────────────',
+        ...(r.mandatory_controls || []).map(c => `  □ ${c}`),
+        '',
+        '── NEXT STEPS ───────────────────────────────────────────',
+        ...(r.next_steps || []).map((s, i) => `  ${i+1}. ${s}`),
+        '',
+        '═'.repeat(60),
+        'cognitivelogic.it · QEN = (Vs×0.40) + (Va×0.35) + (Vt×0.25)',
+        'Author: Roberto Bob Malini, AI Data Architect'
+      ];
+      const blob = new Blob([lines.join('\n')], { type: 'text/plain' });
+      const url  = URL.createObjectURL(blob);
+      const a    = document.createElement('a');
+      a.href     = url;
+      a.download = `QEN_Audit_${(r.system_name || 'system').replace(/\s+/g,'_')}_${new Date().toISOString().slice(0,10)}.txt`;
+      a.click();
+      URL.revokeObjectURL(url);
+    }
+
+    /* ── Example: Biometric Access Monitor ── */
+    function loadBiometricExample() {
+      document.getElementById('sysName').value     = 'Biometric Access Monitor';
+      document.getElementById('sysType').value     = 'Biometric Identification';
+      document.getElementById('sysDomain').value   = 'Public Sector';
+      document.getElementById('sysDesc').value     =
+        'Automated facial recognition system for border and government facility access. ' +
+        'No human review for 90%+ of matches. Biometric template retention: indefinite. ' +
+        'Deployed in public spaces. Data subjects are not specifically notified.';
+      document.getElementById('sysControls').value =
+        'Minimal audit logging. No DPIA completed. No legal basis documented. No bias testing. No redress mechanism.';
+    }
+
+    /* ── Example: HR Scoring ── */
+    function loadHRExample() {
+      document.getElementById('sysName').value     = 'Automated CV Screening Engine';
+      document.getElementById('sysType').value     = 'Classification';
+      document.getElementById('sysDomain').value   = 'HR';
+      document.getElementById('sysDesc').value     =
+        'ML model that scores and ranks job applicants based on CV text, social profiles, and historical hiring data. ' +
+        'Scores below 60/100 result in automatic rejection without human review. ' +
+        'Training data spans 10 years of historical decisions without bias audit.';
+      document.getElementById('sysControls').value =
+        'Basic audit log of decisions. HR manager can request manual review post-rejection. No transparency notice to candidates. No DPIA. Legal basis: legitimate interest (undocumented).';
+    }
+  </script>
+
+  <script src="js/cookie-banner.js"></script>
+</body>
+</html>
