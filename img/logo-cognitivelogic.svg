@@ -1,10 +1,11 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 420" role="img" aria-label="Cognitive Logic">
   <title>Cognitive Logic</title>
   <defs>
-    <linearGradient id="cl-gear-g" x1="20%" y1="5%" x2="80%" y2="95%">
-      <stop offset="0%" stop-color="#4A7BD4"/>
-      <stop offset="50%" stop-color="#6B35C8"/>
-      <stop offset="100%" stop-color="#7B2BBE"/>
+    <linearGradient id="cl-gear-g" x1="15%" y1="5%" x2="85%" y2="95%">
+      <stop offset="0%"   stop-color="#3D4B8C"/>
+      <stop offset="33%"  stop-color="#5A3FB0"/>
+      <stop offset="66%"  stop-color="#8A5CC0"/>
+      <stop offset="100%" stop-color="#B47CC4"/>
     </linearGradient>
   </defs>
 
@@ -26,10 +27,10 @@
   "/>
 
   <!-- Left pill: COGNITIVE -->
-  <rect x="30"  y="160" width="480" height="100" rx="50" fill="#6B2DAE"/>
+  <rect x="30"  y="160" width="480" height="100" rx="50" fill="#8035D8"/>
 
   <!-- Right pill: LOGIC (layered on top, lighter lavender) -->
-  <rect x="250" y="160" width="480" height="100" rx="50" fill="#EDE5FA"/>
+  <rect x="250" y="160" width="480" height="100" rx="50" fill="#EEE8FF"/>
 
   <!-- Text — always on top -->
   <text x="220" y="222"
@@ -39,6 +40,6 @@
 
   <text x="530" y="222"
         font-family="'Syne','Arial Black',Arial,sans-serif"
-        font-weight="800" font-size="40" fill="#6B2DAE"
+        font-weight="800" font-size="40" fill="#8035D8"
         text-anchor="middle" letter-spacing="3">LOGIC</text>
 </svg>
