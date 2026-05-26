@@ -1,55 +1,44 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 460 150" role="img" aria-label="Cognitive Logic">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 420" role="img" aria-label="Cognitive Logic">
   <title>Cognitive Logic</title>
   <defs>
-    <linearGradient id="cl-gear-g" x1="15%" y1="0%" x2="85%" y2="100%">
-      <stop offset="0%" stop-color="#4db8ff"/>
-      <stop offset="50%" stop-color="#7733ee"/>
-      <stop offset="100%" stop-color="#9922ff"/>
-    </linearGradient>
-    <linearGradient id="cl-pill1-g" x1="0%" y1="0%" x2="100%" y2="0%">
-      <stop offset="0%" stop-color="#3a1a8c"/>
-      <stop offset="100%" stop-color="#6e35c8"/>
-    </linearGradient>
-    <linearGradient id="cl-pill2-g" x1="0%" y1="0%" x2="100%" y2="0%">
-      <stop offset="0%" stop-color="#7c42d4"/>
-      <stop offset="100%" stop-color="#c8aaf5"/>
+    <linearGradient id="cl-gear-g" x1="20%" y1="5%" x2="80%" y2="95%">
+      <stop offset="0%" stop-color="#4A7BD4"/>
+      <stop offset="50%" stop-color="#6B35C8"/>
+      <stop offset="100%" stop-color="#7B2BBE"/>
     </linearGradient>
   </defs>
 
-  <!-- Pill 1: COGNITIVE -->
-  <rect x="32" y="47" width="248" height="56" rx="28" fill="url(#cl-pill1-g)"/>
-  <!-- Pill 2: LOGIC -->
-  <rect x="265" y="47" width="175" height="56" rx="28" fill="url(#cl-pill2-g)"/>
-
-  <!-- Gear — 8 teeth, centered at (65,75), r_tip=52, r_root=38 -->
-  <path fill="url(#cl-gear-g)" d="
-    M58.7,37.5 L57.8,23.5 L72.2,23.5 L71.3,37.5
-    A38,38,0,0,1,87.1,44.1
-    L96.3,33.5 L106.5,43.7 L95.9,52.9
-    A38,38,0,0,1,102.5,68.7
-    L116.5,67.8 L116.5,82.2 L102.5,81.3
-    A38,38,0,0,1,95.9,97.1
-    L106.5,106.3 L96.3,116.5 L87.1,105.9
-    A38,38,0,0,1,71.3,112.5
-    L72.2,126.5 L57.8,126.5 L58.7,112.5
-    A38,38,0,0,1,42.9,105.9
-    L33.7,116.5 L23.5,106.3 L34.1,97.1
-    A38,38,0,0,1,27.5,81.3
-    L13.5,82.2 L13.5,67.8 L27.5,68.7
-    A38,38,0,0,1,34.1,52.9
-    L23.5,43.7 L33.7,33.5 L42.9,44.1
-    A38,38,0,0,1,58.7,37.5Z
+  <!-- Gear (12 teeth, cx=380, cy=210, outer_r=155, root_r=123, hole_r=62) — drawn behind pills -->
+  <path fill="url(#cl-gear-g)" fill-rule="evenodd" d="
+    M 360.8,88.5  L 363.8,55.8  L 396.2,55.8  L 399.2,88.5
+    L 424.1,95.2  L 443.0,68.4  L 471.1,84.6  L 457.4,114.4
+    L 475.6,132.6 L 505.4,118.9 L 521.6,147.0 L 494.8,165.9
+    L 501.5,190.8 L 534.2,193.8 L 534.2,226.2 L 501.5,229.2
+    L 494.8,254.1 L 521.6,273.0 L 505.4,301.1 L 475.6,287.4
+    L 457.4,305.6 L 471.1,335.4 L 443.0,351.6 L 424.1,324.8
+    L 399.2,331.5 L 396.2,364.2 L 363.8,364.2 L 360.8,331.5
+    L 335.9,324.8 L 317.0,351.6 L 288.9,335.4 L 302.6,305.6
+    L 284.4,287.4 L 254.6,301.1 L 238.4,273.0 L 265.2,254.1
+    L 258.5,229.2 L 225.8,226.2 L 225.8,193.8 L 258.5,190.8
+    L 265.2,165.9 L 238.4,147.0 L 254.6,118.9 L 284.4,132.6
+    L 302.6,114.4 L 288.9,84.6  L 317.0,68.4  L 335.9,95.2 Z
+    M 442,210 A 62,62 0 1,0 318,210 A 62,62 0 1,0 442,210 Z
   "/>
-  <!-- Hub hole -->
-  <circle cx="65" cy="75" r="15" fill="#07111f"/>
 
-  <!-- Text — drawn last so always on top -->
-  <text x="205" y="84"
-        font-family="'Syne','Arial Black','Arial',sans-serif"
-        font-weight="800" font-size="22" fill="#ffffff"
-        text-anchor="middle" letter-spacing="2">COGNITIVE</text>
-  <text x="352" y="84"
-        font-family="'Syne','Arial Black','Arial',sans-serif"
-        font-weight="800" font-size="22" fill="#ffffff"
-        text-anchor="middle" letter-spacing="2">LOGIC</text>
+  <!-- Left pill: COGNITIVE -->
+  <rect x="30"  y="160" width="480" height="100" rx="50" fill="#6B2DAE"/>
+
+  <!-- Right pill: LOGIC (layered on top, lighter lavender) -->
+  <rect x="250" y="160" width="480" height="100" rx="50" fill="#EDE5FA"/>
+
+  <!-- Text — always on top -->
+  <text x="220" y="222"
+        font-family="'Syne','Arial Black',Arial,sans-serif"
+        font-weight="800" font-size="40" fill="#FFFFFF"
+        text-anchor="middle" letter-spacing="3">COGNITIVE</text>
+
+  <text x="530" y="222"
+        font-family="'Syne','Arial Black',Arial,sans-serif"
+        font-weight="800" font-size="40" fill="#6B2DAE"
+        text-anchor="middle" letter-spacing="3">LOGIC</text>
 </svg>
