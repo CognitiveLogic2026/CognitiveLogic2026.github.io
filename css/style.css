@@ -217,6 +217,24 @@ hr {
   color: var(--gold-soft);
 }
 
+.brand img,
+.logo-lockup img {
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+.brand:hover img,
+.logo-lockup:hover img { transform: scale(1.04); opacity: 0.88; }
+
+.site-footer img[alt="Cognitive Logic"] {
+  width: 80px; height: auto; display: block;
+  margin-bottom: 10px; opacity: 0.85;
+  transition: opacity 0.2s ease;
+}
+.site-footer img[alt="Cognitive Logic"]:hover { opacity: 1; }
+
+@media (max-width: 580px) {
+  .brand img { max-width: 140px; }
+}
+
 .brand,
 .logo-lockup {
   display: inline-flex;
