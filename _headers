@@ -1,3 +1,6 @@
+/opensearchdescription.xml
+  Content-Type: application/opensearchdescription+xml; charset=UTF-8
+
 /*
   Cache-Control: no-cache, no-store, must-revalidate
   X-Content-Type-Options: nosniff
