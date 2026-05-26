@@ -6,10 +6,10 @@
 
 const CONFIG = {
     // Sostituisci con la tua chiave API valida da Google AI Studio
-    API_KEY: "CL-qen-2026-xK9mPvZ3nRwQ7tYbDjF", 
+    API_KEY: "AIzaSyAmZvDpLDbNaNqsM4J0ItTKxS1Jyz201gw",
     
     // Parametri del Modello
-    MODEL: "gemini-1.5-flash",
+    MODEL: "gemini-2.0-flash",
     
     // Metadata di Identità Digitale (Roberto Bob Malini)
     IDENTITY: {
