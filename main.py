@@ -49,7 +49,7 @@ def root_health():
 
 @app.route("/health", methods=["GET"])
 def health():
-    return jsonify({"status": "ok", "service": "CognitiveLogic QEN API", "version": "3.1"}), 200
+    return jsonify({"status": "ok", "service": "CognitiveLogic QEN API", "version": "3.2"}), 200
 
 @app.route("/pilots", methods=["GET"])
 def list_pilots():
