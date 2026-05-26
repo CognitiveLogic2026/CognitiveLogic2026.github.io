@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 460 150" role="img" aria-label="Cognitive Logic">
+  <title>Cognitive Logic</title>
+  <defs>
+    <linearGradient id="cl-gear-g" x1="15%" y1="0%" x2="85%" y2="100%">
+      <stop offset="0%" stop-color="#4db8ff"/>
+      <stop offset="50%" stop-color="#7733ee"/>
+      <stop offset="100%" stop-color="#9922ff"/>
+    </linearGradient>
+    <linearGradient id="cl-pill1-g" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#3a1a8c"/>
+      <stop offset="100%" stop-color="#6e35c8"/>
+    </linearGradient>
+    <linearGradient id="cl-pill2-g" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#7c42d4"/>
+      <stop offset="100%" stop-color="#c8aaf5"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Pill 1: COGNITIVE -->
+  <rect x="32" y="47" width="248" height="56" rx="28" fill="url(#cl-pill1-g)"/>
+  <!-- Pill 2: LOGIC -->
+  <rect x="265" y="47" width="175" height="56" rx="28" fill="url(#cl-pill2-g)"/>
+
+  <!-- Gear — 8 teeth, centered at (65,75), r_tip=52, r_root=38 -->
+  <path fill="url(#cl-gear-g)" d="
+    M58.7,37.5 L57.8,23.5 L72.2,23.5 L71.3,37.5
+    A38,38,0,0,1,87.1,44.1
+    L96.3,33.5 L106.5,43.7 L95.9,52.9
+    A38,38,0,0,1,102.5,68.7
+    L116.5,67.8 L116.5,82.2 L102.5,81.3
+    A38,38,0,0,1,95.9,97.1
+    L106.5,106.3 L96.3,116.5 L87.1,105.9
+    A38,38,0,0,1,71.3,112.5
+    L72.2,126.5 L57.8,126.5 L58.7,112.5
+    A38,38,0,0,1,42.9,105.9
+    L33.7,116.5 L23.5,106.3 L34.1,97.1
+    A38,38,0,0,1,27.5,81.3
+    L13.5,82.2 L13.5,67.8 L27.5,68.7
+    A38,38,0,0,1,34.1,52.9
+    L23.5,43.7 L33.7,33.5 L42.9,44.1
+    A38,38,0,0,1,58.7,37.5Z
+  "/>
+  <!-- Hub hole -->
+  <circle cx="65" cy="75" r="15" fill="#07111f"/>
+
+  <!-- Text — drawn last so always on top -->
+  <text x="205" y="84"
+        font-family="'Syne','Arial Black','Arial',sans-serif"
+        font-weight="800" font-size="22" fill="#ffffff"
+        text-anchor="middle" letter-spacing="2">COGNITIVE</text>
+  <text x="352" y="84"
+        font-family="'Syne','Arial Black','Arial',sans-serif"
+        font-weight="800" font-size="22" fill="#ffffff"
+        text-anchor="middle" letter-spacing="2">LOGIC</text>
+</svg>
