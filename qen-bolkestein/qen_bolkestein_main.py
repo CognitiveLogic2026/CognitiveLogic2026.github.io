@@ -1,3 +1,6 @@
+# Copyright (c) 2026 Roberto Bob Malini - Cognitive Logic
+# https://www.cognitivelogic.it
+# Licensed under CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/)
 import asyncio, sys
 from neo4j import GraphDatabase
 from qen_multi_agent_router import BatchProcessor

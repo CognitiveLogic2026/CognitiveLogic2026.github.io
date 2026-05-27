@@ -1,3 +1,6 @@
+# Copyright (c) 2026 Roberto Bob Malini - Cognitive Logic
+# https://www.cognitivelogic.it
+# Licensed under CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/)
 import urllib.request, json, re, os
 
 url = "https://api.rss2json.com/v1/api.json?rss_url=https%3A%2F%2Ffuorimenu.substack.com%2Ffeed&count=10"

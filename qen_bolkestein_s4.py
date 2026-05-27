@@ -1,4 +1,7 @@
 #!/usr/bin/env python3
+# Copyright (c) 2026 Roberto Bob Malini - Cognitive Logic
+# https://www.cognitivelogic.it
+# Licensed under CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/)
 """QEN Bolkestein S4 - Nginx Deployment"""
 import os, sys, json, logging, subprocess
 from pathlib import Path

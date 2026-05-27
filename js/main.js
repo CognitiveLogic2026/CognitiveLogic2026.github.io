@@ -1,3 +1,8 @@
+/*
+ * Copyright (c) 2026 Roberto Bob Malini - Cognitive Logic
+ * https://www.cognitivelogic.it
+ * Licensed under CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/)
+ */
 /**
  * COGNITIVE LOGIC — UI Controller
  * Gestisce l'interazione tra l'utente e la dashboard QEN.
