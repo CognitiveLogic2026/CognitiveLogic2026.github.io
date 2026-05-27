@@ -1,0 +1,34 @@
+# Copyright (c) 2026 Roberto Bob Malini - Cognitive Logic
+# https://www.cognitivelogic.it
+# Licensed under CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/)
+name: Deploy Static Files to VPS
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '**/*.html'
+      - 'css/**'
+      - 'js/**'
+      - 'img/**'
+      - 'data/**'
+  workflow_dispatch:
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Pull latest static files on VPS
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.VPS_HOST }}
+          username: root
+          key: ${{ secrets.VPS_SSH_KEY }}
+          timeout: 60s
+          script: |
+            set -e
+            export GIT_SSH_COMMAND="ssh -i /root/.ssh/github_deploy -o StrictHostKeyChecking=no"
+            cd /app/cognitivelogic
+            git fetch origin main
+            git reset --hard origin/main
+            echo "Static files updated OK"
