@@ -1,0 +1,1257 @@
+<!DOCTYPE html>
+<!--
+  Copyright (c) 2026 Roberto Bob Malini - Cognitive Logic
+  https://www.cognitivelogic.it
+  Licensed under CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/)
+-->
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ECI Assessment Toolkit — Ethical Compliance Index · Cognitive Logic</title>
+  <meta name="description" content="Questionario ECI — Ethical Compliance Index per PMI Agroalimentari e Cooperative. Compliance Green UE 2030." />
+  <meta name="robots" content="noindex, nofollow" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css?v=3" />
+  <style>
+    /* ── Wizard Shell ── */
+    .wiz-outer { max-width: 820px; margin: 0 auto; padding: 48px 20px 80px; }
+
+    /* ── Step Header ── */
+    .wiz-topbar {
+      display: flex; align-items: center; justify-content: space-between;
+      gap: 16px; margin-bottom: 32px;
+    }
+    .wiz-step-id {
+      font-family: "DM Mono", monospace; font-size: 0.6rem;
+      letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted);
+      white-space: nowrap;
+    }
+    .wiz-progress-bar {
+      flex: 1; height: 3px; background: rgba(255,255,255,0.06);
+      border-radius: 999px; overflow: hidden;
+    }
+    .wiz-progress-fill {
+      height: 100%; border-radius: 999px;
+      background: linear-gradient(90deg, rgba(212,175,55,0.5), var(--gold-soft));
+      transition: width 0.5s cubic-bezier(.4,0,.2,1);
+    }
+    .wiz-mini-score {
+      font-family: "DM Mono", monospace; font-size: 0.68rem;
+      color: var(--gold-soft); white-space: nowrap;
+      padding: 5px 12px; border: 1px solid rgba(212,175,55,0.25);
+      border-radius: 999px; background: rgba(212,175,55,0.07);
+      transition: all 0.4s;
+    }
+    .wiz-mini-score.nd { color: var(--muted); border-color: var(--line-soft); background: transparent; }
+
+    /* ── Step card ── */
+    .wiz-card {
+      background: linear-gradient(180deg, rgba(255,255,255,0.035), rgba(255,255,255,0.015)), rgba(10,20,34,0.92);
+      border: 1px solid var(--line-soft); border-radius: var(--radius-lg);
+      padding: 40px 36px; box-shadow: var(--shadow-soft);
+      animation: stepIn 0.3s ease;
+    }
+    @media (max-width: 600px) { .wiz-card { padding: 24px 18px; } }
+    @keyframes stepIn { from { opacity:0; transform: translateY(10px); } to { opacity:1; transform: translateY(0); } }
+
+    .step { display: none; }
+    .step.active { display: block; }
+
+    .step-eyebrow {
+      font-family: "DM Mono", monospace; font-size: 0.62rem;
+      letter-spacing: 0.15em; text-transform: uppercase; color: var(--gold-soft);
+      margin-bottom: 6px;
+    }
+    .step-title { font-size: clamp(1.6rem,3vw,2.4rem); margin: 0 0 8px; line-height: 1.1; }
+    .step-desc { font-family: "DM Mono", monospace; font-size: 0.72rem; color: var(--muted); line-height: 1.7; margin: 0 0 28px; }
+    .step-divider { height: 1px; background: var(--line-soft); margin: 24px 0; }
+    .sub-title {
+      font-family: "DM Mono", monospace; font-size: 0.64rem; letter-spacing: 0.14em;
+      text-transform: uppercase; color: var(--gold-soft); margin: 24px 0 14px;
+      padding-bottom: 8px; border-bottom: 1px solid rgba(212,175,55,0.14);
+    }
+
+    /* ── Fields ── */
+    .f { margin-bottom: 22px; }
+    .f-label {
+      font-family: "DM Mono", monospace; font-size: 0.62rem;
+      letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted);
+      display: block; margin-bottom: 6px;
+    }
+    .f-q { font-size: 1.05rem; color: var(--text); line-height: 1.5; margin-bottom: 4px; }
+    .f-hint { font-family: "DM Mono", monospace; font-size: 0.64rem; color: var(--muted); line-height: 1.6; margin-bottom: 10px; }
+    .f-input {
+      width: 100%; padding: 10px 14px;
+      background: rgba(8,16,28,0.9); border: 1px solid var(--line-soft);
+      border-radius: var(--radius-xs); color: var(--text);
+      font-family: "DM Mono", monospace; font-size: 0.82rem;
+      outline: none; transition: border-color var(--transition);
+    }
+    .f-input:focus { border-color: rgba(212,175,55,0.5); }
+    .f-input::placeholder { color: var(--muted); }
+    .f-input:disabled { opacity: 0.35; }
+    .f-select {
+      width: 100%; padding: 10px 14px;
+      background: rgba(8,16,28,0.9); border: 1px solid var(--line-soft);
+      border-radius: var(--radius-xs); color: var(--text);
+      font-family: "DM Mono", monospace; font-size: 0.78rem;
+      outline: none; transition: border-color var(--transition);
+      -webkit-appearance: none;
+    }
+    .f-select:focus { border-color: rgba(212,175,55,0.5); }
+    .f-select option { background: #07111f; }
+    .row2 { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    .row3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; }
+    @media (max-width: 560px) { .row2, .row3 { grid-template-columns: 1fr; } }
+
+    /* ── Radio pills ── */
+    .rg { display: flex; flex-wrap: wrap; gap: 8px; }
+    .rg label {
+      padding: 8px 16px; background: rgba(8,16,28,0.9);
+      border: 1px solid var(--line-soft); border-radius: 999px;
+      font-family: "DM Mono", monospace; font-size: 0.72rem;
+      color: var(--text-soft); cursor: pointer; transition: all var(--transition);
+      user-select: none;
+    }
+    .rg label:hover { border-color: rgba(212,175,55,0.4); color: var(--gold-soft); }
+    .rg label.sel { border-color: rgba(212,175,55,0.6); background: rgba(212,175,55,0.1); color: var(--gold-soft); }
+    .rg input { display: none; }
+
+    /* ── Likert ── */
+    .lk { display: flex; gap: 6px; }
+    .lk label {
+      flex: 1; display: flex; flex-direction: column; align-items: center; gap: 4px;
+      padding: 10px 4px; background: rgba(8,16,28,0.9); border: 1px solid var(--line-soft);
+      border-radius: var(--radius-xs); font-family: "DM Mono", monospace; font-size: 0.6rem;
+      color: var(--muted); cursor: pointer; transition: all var(--transition); text-align: center;
+      user-select: none;
+    }
+    .lk label:hover { border-color: rgba(212,175,55,0.4); color: var(--gold-soft); }
+    .lk label.sel { border-color: rgba(212,175,55,0.6); background: rgba(212,175,55,0.1); color: var(--gold-soft); }
+    .lk-n { font-family: "Cormorant Garamond", serif; font-size: 1.2rem; font-weight: 600; color: var(--text); }
+    .lk label.sel .lk-n { color: var(--gold-soft); }
+    .lk input { display: none; }
+
+    /* ── Checkboxes ── */
+    .ckg { display: flex; flex-wrap: wrap; gap: 8px; }
+    .ckg label {
+      display: flex; align-items: center; gap: 8px;
+      padding: 8px 14px; background: rgba(8,16,28,0.9);
+      border: 1px solid var(--line-soft); border-radius: var(--radius-xs);
+      font-family: "DM Mono", monospace; font-size: 0.72rem; color: var(--text-soft);
+      cursor: pointer; transition: all var(--transition);
+    }
+    .ckg label:hover { border-color: rgba(212,175,55,0.3); }
+    .ckg input[type=checkbox] { accent-color: var(--gold); }
+
+    /* ── N/D toggle ── */
+    .nd-label {
+      display: inline-flex; align-items: center; gap: 6px; margin-top: 6px;
+      font-family: "DM Mono", monospace; font-size: 0.62rem; color: var(--muted); cursor: pointer;
+    }
+    .nd-label input { accent-color: var(--gold); }
+
+    /* ── Skip module ── */
+    .skip-box {
+      display: flex; align-items: flex-start; gap: 12px; padding: 14px 18px;
+      background: rgba(212,175,55,0.04); border: 1px dashed rgba(212,175,55,0.22);
+      border-radius: var(--radius-sm); margin-bottom: 24px;
+    }
+    .skip-box input { accent-color: var(--gold); margin-top: 2px; }
+    .skip-box label { font-family: "DM Mono", monospace; font-size: 0.72rem; color: var(--muted); cursor: pointer; line-height: 1.6; }
+    .skip-content.hidden { opacity: 0.2; pointer-events: none; user-select: none; }
+
+    /* ── Wizard nav ── */
+    .wiz-nav {
+      display: flex; align-items: center; justify-content: space-between;
+      gap: 16px; margin-top: 24px;
+    }
+    .wiz-dots { display: flex; gap: 6px; }
+    .wiz-dot {
+      width: 8px; height: 8px; border-radius: 50%;
+      background: rgba(255,255,255,0.1); transition: all 0.3s;
+      cursor: pointer;
+    }
+    .wiz-dot.active { background: var(--gold-soft); width: 20px; border-radius: 4px; }
+    .wiz-dot.done { background: rgba(133,201,141,0.5); }
+
+    /* ── Results step ── */
+    .res-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-top: 24px; }
+    @media (max-width: 660px) { .res-grid { grid-template-columns: 1fr; } }
+
+    /* Gauge */
+    .gauge-block { text-align: center; }
+    .gauge-svg { width: 200px; height: 110px; display: block; margin: 0 auto; overflow: visible; }
+    .gauge-track { fill: none; stroke: rgba(255,255,255,0.06); stroke-width: 14; stroke-linecap: round; }
+    .gauge-fill { fill: none; stroke-width: 14; stroke-linecap: round; transition: stroke-dashoffset 0.8s cubic-bezier(.4,0,.2,1), stroke 0.5s; }
+    .gauge-val { font-family: "Cormorant Garamond", serif; font-size: 3.2rem; font-weight: 600; color: var(--gold-soft); line-height: 1; margin-top: 6px; }
+    .gauge-lbl { font-family: "DM Mono", monospace; font-size: 0.6rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); margin-top: 4px; }
+
+    /* Radar */
+    .radar-block { display: flex; flex-direction: column; align-items: center; }
+    .radar-svg { width: 200px; height: 200px; }
+    .radar-bg { fill: none; stroke: rgba(255,255,255,0.06); stroke-width: 1; }
+    .radar-axis { stroke: rgba(255,255,255,0.08); stroke-width: 1; }
+    .radar-data { fill: rgba(212,175,55,0.18); stroke: var(--gold-soft); stroke-width: 1.5; transition: all 0.6s; }
+    .radar-dot { fill: var(--gold-soft); }
+    .radar-label { font-family: "DM Mono", monospace; font-size: 8px; fill: var(--muted); }
+
+    /* Dimension table */
+    .dim-table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+    .dim-table td { padding: 10px 12px; border-bottom: 1px solid var(--line-soft); font-family: "DM Mono", monospace; font-size: 0.72rem; }
+    .dim-table tr:last-child td { border-bottom: none; }
+    .dim-name { color: var(--muted); }
+    .dim-score { color: var(--gold-soft); font-weight: 500; text-align: right; }
+    .dim-bar-inline { display: flex; align-items: center; gap: 8px; }
+    .dim-track { flex: 1; height: 4px; background: rgba(255,255,255,0.06); border-radius: 999px; overflow: hidden; }
+    .dim-fill { height: 100%; border-radius: 999px; background: linear-gradient(90deg, rgba(212,175,55,0.5), var(--gold-soft)); transition: width 0.5s ease; }
+
+    /* Epsilon display */
+    .eps-row {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 12px 16px; background: rgba(212,175,55,0.06);
+      border: 1px solid rgba(212,175,55,0.18); border-radius: var(--radius-xs); margin-top: 16px;
+    }
+    .eps-lbl { font-family: "DM Mono", monospace; font-size: 0.68rem; color: var(--muted); }
+    .eps-val { font-family: "DM Mono", monospace; font-size: 0.9rem; color: var(--gold-soft); }
+
+    /* Interpretation */
+    .interp-panel {
+      padding: 18px 20px; border-radius: var(--radius-sm); margin-top: 16px;
+      transition: all 0.4s;
+    }
+    .interp-panel.nd  { background: rgba(255,255,255,0.03); border: 1px solid var(--line-soft); }
+    .interp-panel.crit { background: rgba(215,133,127,0.1); border: 1px solid rgba(215,133,127,0.3); }
+    .interp-panel.part { background: rgba(216,177,90,0.08); border: 1px solid rgba(216,177,90,0.28); }
+    .interp-panel.good { background: rgba(133,201,141,0.08); border: 1px solid rgba(133,201,141,0.28); }
+    .interp-panel.exc  { background: rgba(212,175,55,0.1); border: 1px solid rgba(212,175,55,0.38); }
+    .interp-tag { font-family: "DM Mono", monospace; font-size: 0.58rem; letter-spacing: 0.15em; text-transform: uppercase; opacity: 0.7; display: block; margin-bottom: 6px; }
+    .interp-panel.crit .interp-tag { color: var(--danger); }
+    .interp-panel.part .interp-tag { color: var(--warn); }
+    .interp-panel.good .interp-tag { color: var(--success); }
+    .interp-panel.exc  .interp-tag { color: var(--gold-soft); }
+    .interp-text { font-family: "DM Mono", monospace; font-size: 0.72rem; color: var(--text-soft); line-height: 1.7; }
+
+    /* Formula box */
+    .formula-box {
+      font-family: "DM Mono", monospace; font-size: 0.78rem; color: var(--text-soft);
+      padding: 16px 18px; background: rgba(8,16,28,0.8); border: 1px solid var(--line-soft);
+      border-radius: var(--radius-xs); line-height: 2; margin-top: 16px;
+    }
+    .fv { color: var(--gold-soft); }
+
+    /* Notes */
+    .notes-ta {
+      width: 100%; min-height: 100px; padding: 12px 14px;
+      background: rgba(8,16,28,0.9); border: 1px solid var(--line-soft);
+      border-radius: var(--radius-sm); color: var(--text);
+      font-family: "DM Mono", monospace; font-size: 0.78rem; line-height: 1.7;
+      outline: none; resize: vertical; transition: border-color var(--transition);
+    }
+    .notes-ta:focus { border-color: rgba(212,175,55,0.5); }
+    .notes-ta::placeholder { color: var(--muted); }
+
+    /* Intro step */
+    .intro-chips { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 28px; }
+    .intro-chip {
+      padding: 5px 13px; border: 1px solid var(--line-soft); border-radius: 999px;
+      font-family: "DM Mono", monospace; font-size: 0.6rem; letter-spacing: 0.08em;
+      text-transform: uppercase; color: var(--muted);
+    }
+    .howto {
+      padding: 16px 18px; background: rgba(212,175,55,0.04);
+      border: 1px solid rgba(212,175,55,0.15); border-radius: var(--radius-sm);
+      font-family: "DM Mono", monospace; font-size: 0.7rem; color: var(--muted);
+      line-height: 1.9; margin-bottom: 28px;
+    }
+    .howto strong { color: var(--text); }
+
+    /* Print */
+    @media print {
+      .site-header, .wiz-nav, .wiz-topbar, .score-actions,
+      .btn, button, .step:not(.active) { display: none !important; }
+      .wiz-card { border: none; box-shadow: none; padding: 0; background: white; }
+      body { background: white; color: black; }
+      .f-q, .step-title { color: black; }
+      .dim-table td, .interp-text { color: #333; }
+    }
+  </style>
+</head>
+<body>
+  <div class="site-bg"></div>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="index.html" class="brand">
+        <img src="img/logo-cognitivelogic.png" alt="Cognitive Logic" style="height:28px;width:auto;display:block;">
+      </a>
+      <nav class="main-nav">
+        <a href="framework.html">Framework</a>
+        <a href="ecosystem.html">Ecosystem</a>
+        <a href="qen-live.html">QEN Live</a>
+        <a href="ai.html">AI Engine</a>
+        <a href="demo.html">Demo</a>
+        <a href="eci-assessment.html" class="active">ECI</a>
+      </nav>
+      <div class="header-end">
+        <a href="copilot.html" class="btn btn-ghost">Copilot</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <div class="wiz-outer">
+
+      <!-- Top bar -->
+      <div class="wiz-topbar">
+        <span class="wiz-step-id" id="stepId">Passo 0 di 6</span>
+        <div class="wiz-progress-bar"><div class="wiz-progress-fill" id="progFill" style="width:0%"></div></div>
+        <span class="wiz-mini-score nd" id="miniScore">ECI —</span>
+      </div>
+
+      <!-- Steps -->
+      <div class="wiz-card">
+
+        <!-- ══ STEP 0: Intro + Anagrafica ══ -->
+        <div class="step active" id="step0">
+          <div class="step-eyebrow">ECI Assessment Toolkit · Percorso 3</div>
+          <h1 class="step-title">Ethical Compliance<br><em style="color:var(--gold);font-style:italic;">Index</em></h1>
+          <div class="intro-chips">
+            <span class="intro-chip">PMI Agroalimentari</span>
+            <span class="intro-chip">Cooperative</span>
+            <span class="intro-chip">Farm to Fork 2030</span>
+            <span class="intro-chip">Green Deal UE</span>
+            <span class="intro-chip">Reg. UE 178/2002</span>
+          </div>
+          <div class="howto">
+            <strong>Come compilare —</strong> Una scheda per ogni stabilimento o a livello aziendale aggregato.
+            Per dati numerici indicare l'anno di riferimento. Se il dato non è disponibile spuntare <em>N/D</em>.
+            Il punteggio ECI si calcola automaticamente nell'ultimo passo.
+            <br>Tempo stimato: <strong>45–60 minuti</strong> con il referente qualità / sostenibilità.
+            I dati vengono salvati automaticamente nel browser.
+          </div>
+
+          <div class="step-divider"></div>
+          <div class="sub-title">Sezione A — Anagrafica Aziendale</div>
+
+          <div class="row2">
+            <div class="f" style="grid-column:1/-1">
+              <span class="f-label">Ragione sociale</span>
+              <input class="f-input" id="ana_rag" type="text" placeholder="Denominazione azienda / cooperativa">
+            </div>
+            <div class="f">
+              <span class="f-label">Tipologia</span>
+              <select class="f-select" id="ana_tipo">
+                <option value="">Selezionare…</option>
+                <option>PMI</option><option>Cooperativa</option><option>Consorzio</option><option>Altro</option>
+              </select>
+            </div>
+            <div class="f">
+              <span class="f-label">Settore principale</span>
+              <select class="f-select" id="ana_sett">
+                <option value="">Selezionare…</option>
+                <option>Cereali</option><option>Lattiero-caseario</option><option>Ortofrutta</option>
+                <option>Carne</option><option>Vino / Olio</option><option>Trasformati</option><option>Altro</option>
+              </select>
+            </div>
+            <div class="f">
+              <span class="f-label">N° dipendenti / soci</span>
+              <input class="f-input" id="ana_dip" type="number" placeholder="Es. 45">
+            </div>
+            <div class="f">
+              <span class="f-label">Fatturato annuo</span>
+              <select class="f-select" id="ana_fatt">
+                <option value="">Selezionare…</option>
+                <option>&lt; 2M€</option><option>2–10M€</option><option>10–50M€</option><option>&gt; 50M€</option>
+              </select>
+            </div>
+            <div class="f">
+              <span class="f-label">Anno bilancio di riferimento</span>
+              <input class="f-input" id="ana_anno" type="number" placeholder="Es. 2025" min="2018" max="2030">
+            </div>
+            <div class="f">
+              <span class="f-label">Referente — Nome</span>
+              <input class="f-input" id="ana_nome" type="text" placeholder="Nome e cognome">
+            </div>
+            <div class="f">
+              <span class="f-label">Referente — Ruolo</span>
+              <input class="f-input" id="ana_ruolo" type="text" placeholder="Es. Responsabile qualità">
+            </div>
+            <div class="f" style="grid-column:1/-1">
+              <span class="f-label">Data compilazione</span>
+              <input class="f-input" id="ana_data" type="date" style="max-width:200px;">
+            </div>
+          </div>
+        </div>
+
+        <!-- ══ STEP 1: Sostenibilità ══ -->
+        <div class="step" id="step1">
+          <div class="step-eyebrow">Modulo 1 · Dimensioni φ₁ e φ₂</div>
+          <h2 class="step-title">Sostenibilità Ambientale<br>e Gestione degli Sprechi</h2>
+          <p class="step-desc">Target Farm to Fork: −50% sprechi · −50% pesticidi · −20% fertilizzanti · obiettivi climatici Green Deal.</p>
+
+          <div class="sub-title">1.1 — Sprechi Alimentari</div>
+
+          <div class="f">
+            <div class="f-q">S1. Percentuale di prodotto non venduto / non commercializzato sul totale prodotto?</div>
+            <div class="f-hint">Includere: scarti lavorazione, resi, invenduti. Escludere: sottoprodotti valorizzati.</div>
+            <div class="row3">
+              <input class="f-input" id="s1_att" type="number" placeholder="% attuale" min="0" max="100" step="0.1">
+              <input class="f-input" id="s1_prec" type="number" placeholder="% anno prec." min="0" max="100" step="0.1">
+              <input class="f-input" id="s1_base" type="number" placeholder="Anno baseline" min="2018" max="2030">
+            </div>
+            <label class="nd-label"><input type="checkbox" id="s1_nd" onchange="ndToggle('s1_att','s1_nd')"> N/D — dato non disponibile</label>
+          </div>
+
+          <div class="f">
+            <div class="f-q">S2. Disponete di un sistema di tracciamento interno degli sprechi alimentari?</div>
+            <div class="f-hint">Es. registri digitali, software gestionale, report mensili.</div>
+            <div class="rg" id="rg_s2">
+              <label onclick="pickR('s2','si',this)"><input type="radio" name="s2" value="si">Sì</label>
+              <label onclick="pickR('s2','no',this)"><input type="radio" name="s2" value="no">No</label>
+              <label onclick="pickR('s2','wip',this)"><input type="radio" name="s2" value="wip">In corso</label>
+            </div>
+          </div>
+
+          <div class="f">
+            <div class="f-q">S3. Variazione dello spreco alimentare negli ultimi 3 anni?</div>
+            <div class="rg" id="rg_s3">
+              <label onclick="pickR('s3','dim',this)"><input type="radio" name="s3" value="dim">In diminuzione</label>
+              <label onclick="pickR('s3','stab',this)"><input type="radio" name="s3" value="stab">Stabile</label>
+              <label onclick="pickR('s3','aum',this)"><input type="radio" name="s3" value="aum">In aumento</label>
+            </div>
+            <input class="f-input" id="s3_nota" type="text" placeholder="% variazione stimata (facoltativo)" style="margin-top:8px;">
+          </div>
+
+          <div class="f">
+            <div class="f-q">S4. Iniziative specifiche per la riduzione degli sprechi?</div>
+            <div class="f-hint">1 = nessuna iniziativa · 5 = piano strutturato con KPI e budget dedicato</div>
+            <div class="lk" id="lk_s4">
+              <label onclick="pickL('s4',1,this)"><input type="radio" name="s4" value="1"><span class="lk-n">1</span>Per niente</label>
+              <label onclick="pickL('s4',2,this)"><input type="radio" name="s4" value="2"><span class="lk-n">2</span>Poco</label>
+              <label onclick="pickL('s4',3,this)"><input type="radio" name="s4" value="3"><span class="lk-n">3</span>Parzialmente</label>
+              <label onclick="pickL('s4',4,this)"><input type="radio" name="s4" value="4"><span class="lk-n">4</span>Molto</label>
+              <label onclick="pickL('s4',5,this)"><input type="radio" name="s4" value="5"><span class="lk-n">5</span>Completamente</label>
+            </div>
+          </div>
+
+          <div class="sub-title">1.2 — Pesticidi e Fertilizzanti</div>
+
+          <div class="f">
+            <div class="f-q">S5. Quantità totale di pesticidi chimici (kg/ha/anno)?</div>
+            <div class="f-hint">Dato da registro trattamenti o DAF.</div>
+            <div class="row2">
+              <input class="f-input" id="s5_val" type="number" placeholder="kg/ha" min="0" step="0.01">
+              <input class="f-input" id="s5_anno" type="number" placeholder="Anno rif." min="2018" max="2030">
+            </div>
+            <label class="nd-label"><input type="checkbox" id="s5_nd" onchange="ndToggle('s5_val','s5_nd')"> N/D</label>
+          </div>
+
+          <div class="f">
+            <div class="f-q">S6. Quantità totale di fertilizzanti azotati sintetici (kg N/ha/anno)?</div>
+            <div class="row2">
+              <input class="f-input" id="s6_val" type="number" placeholder="kg N/ha" min="0" step="0.01">
+              <input class="f-input" id="s6_anno" type="number" placeholder="Anno rif." min="2018" max="2030">
+            </div>
+            <label class="nd-label"><input type="checkbox" id="s6_nd" onchange="ndToggle('s6_val','s6_nd')"> N/D</label>
+          </div>
+
+          <div class="f">
+            <div class="f-q">S7. Avete ridotto l'uso di pesticidi rispetto a 5 anni fa?</div>
+            <div class="rg" id="rg_s7">
+              <label onclick="pickR('s7','si',this)"><input type="radio" name="s7" value="si">Sì</label>
+              <label onclick="pickR('s7','no',this)"><input type="radio" name="s7" value="no">No</label>
+              <label onclick="pickR('s7','wip',this)"><input type="radio" name="s7" value="wip">In corso</label>
+            </div>
+            <input class="f-input" id="s7_nota" type="text" placeholder="% riduzione stimata (facoltativo)" style="margin-top:8px;">
+          </div>
+
+          <div class="f">
+            <div class="f-q">S8. Adottate pratiche di agricoltura biologica o integrata (IPM)?</div>
+            <div class="f-hint">1 = nessuna · 5 = certificazione Bio su tutta la superficie</div>
+            <div class="lk" id="lk_s8">
+              <label onclick="pickL('s8',1,this)"><input type="radio" name="s8" value="1"><span class="lk-n">1</span>Per niente</label>
+              <label onclick="pickL('s8',2,this)"><input type="radio" name="s8" value="2"><span class="lk-n">2</span>Poco</label>
+              <label onclick="pickL('s8',3,this)"><input type="radio" name="s8" value="3"><span class="lk-n">3</span>Parzialmente</label>
+              <label onclick="pickL('s8',4,this)"><input type="radio" name="s8" value="4"><span class="lk-n">4</span>Molto</label>
+              <label onclick="pickL('s8',5,this)"><input type="radio" name="s8" value="5"><span class="lk-n">5</span>Cert. Bio</label>
+            </div>
+          </div>
+
+          <div class="sub-title">1.3 — Emissioni e Impronta Carbonio</div>
+
+          <div class="f">
+            <div class="f-q">S9. Avete calcolato l'impronta carbonica (CO₂eq) delle vostre attività?</div>
+            <div class="rg" id="rg_s9">
+              <label onclick="pickR('s9','si',this)"><input type="radio" name="s9" value="si">Sì</label>
+              <label onclick="pickR('s9','no',this)"><input type="radio" name="s9" value="no">No</label>
+              <label onclick="pickR('s9','wip',this)"><input type="radio" name="s9" value="wip">In corso</label>
+            </div>
+          </div>
+
+          <div class="f">
+            <div class="f-q">S10. Obiettivo di riduzione emissioni al 2030?</div>
+            <div class="f-hint">Target UE di riferimento: −55% rispetto al 1990.</div>
+            <input class="f-input" id="s10_val" type="text" placeholder="Es. −40% rispetto al 2020, oppure N/D">
+          </div>
+        </div>
+
+        <!-- ══ STEP 2: Tracciabilità ══ -->
+        <div class="step" id="step2">
+          <div class="step-eyebrow">Modulo 2 · Dimensione φ₄</div>
+          <h2 class="step-title">Tracciabilità e Trasparenza<br>della Filiera</h2>
+          <p class="step-desc">Capacità di seguire il prodotto lungo tutta la filiera e rendere disponibili queste informazioni.</p>
+
+          <div class="sub-title">2.1 — Sistemi di Tracciabilità</div>
+
+          <div class="f">
+            <div class="f-q">T1. Il vostro sistema di tracciabilità è digitale o cartaceo?</div>
+            <div class="rg" id="rg_t1">
+              <label onclick="pickR('t1','digitale',this)"><input type="radio" name="t1" value="digitale">Completamente digitale</label>
+              <label onclick="pickR('t1','parziale',this)"><input type="radio" name="t1" value="parziale">Parzialmente digitale</label>
+              <label onclick="pickR('t1','cartaceo',this)"><input type="radio" name="t1" value="cartaceo">Solo cartaceo</label>
+              <label onclick="pickR('t1','assente',this)"><input type="radio" name="t1" value="assente">Assente</label>
+            </div>
+          </div>
+
+          <div class="f">
+            <div class="f-q">T2. Tempo per ricostruire la filiera completa di un lotto in caso di anomalia?</div>
+            <div class="f-hint">Benchmark UE (Food Trust): &lt; 2 secondi per sistemi blockchain.</div>
+            <div class="rg" id="rg_t2">
+              <label onclick="pickR('t2','ore',this)"><input type="radio" name="t2" value="ore">&lt; 2 ore</label>
+              <label onclick="pickR('t2','giorno',this)"><input type="radio" name="t2" value="giorno">Entro 24 ore</label>
+              <label onclick="pickR('t2','giorni',this)"><input type="radio" name="t2" value="giorni">2–7 giorni</label>
+              <label onclick="pickR('t2','settimane',this)"><input type="radio" name="t2" value="settimane">&gt; 1 settimana</label>
+              <label onclick="pickR('t2','nd',this)"><input type="radio" name="t2" value="nd">N/D</label>
+            </div>
+          </div>
+
+          <div class="f">
+            <div class="f-q">T3. La tracciabilità copre tutti i fornitori di primo livello (materie prime)?</div>
+            <div class="f-hint">Per le cooperative: include anche i soci produttori?</div>
+            <div class="rg" id="rg_t3">
+              <label onclick="pickR('t3','si',this)"><input type="radio" name="t3" value="si">Sì</label>
+              <label onclick="pickR('t3','no',this)"><input type="radio" name="t3" value="no">No</label>
+              <label onclick="pickR('t3','wip',this)"><input type="radio" name="t3" value="wip">In corso</label>
+            </div>
+          </div>
+
+          <div class="f">
+            <div class="f-q">T4. I consumatori possono accedere a informazioni sulla filiera del vostro prodotto?</div>
+            <div class="f-hint">1 = nessuna informazione pubblica · 5 = QR code con storia completa del prodotto</div>
+            <div class="lk" id="lk_t4">
+              <label onclick="pickL('t4',1,this)"><input type="radio" name="t4" value="1"><span class="lk-n">1</span>Per niente</label>
+              <label onclick="pickL('t4',2,this)"><input type="radio" name="t4" value="2"><span class="lk-n">2</span>Poco</label>
+              <label onclick="pickL('t4',3,this)"><input type="radio" name="t4" value="3"><span class="lk-n">3</span>Parzialmente</label>
+              <label onclick="pickL('t4',4,this)"><input type="radio" name="t4" value="4"><span class="lk-n">4</span>Molto</label>
+              <label onclick="pickL('t4',5,this)"><input type="radio" name="t4" value="5"><span class="lk-n">5</span>QR Code</label>
+            </div>
+          </div>
+
+          <div class="sub-title">2.2 — Digitalizzazione e Integrazione</div>
+
+          <div class="f">
+            <div class="f-q">T5. Utilizzate strumenti digitali per la gestione degli ordini e della supply chain?</div>
+            <div class="f-hint">Es. ERP, WMS, piattaforme EDI con i clienti GDO.</div>
+            <div class="rg" id="rg_t5">
+              <label onclick="pickR('t5','si',this)"><input type="radio" name="t5" value="si">Sì</label>
+              <label onclick="pickR('t5','no',this)"><input type="radio" name="t5" value="no">No</label>
+              <label onclick="pickR('t5','wip',this)"><input type="radio" name="t5" value="wip">In corso</label>
+            </div>
+          </div>
+
+          <div class="f">
+            <div class="f-q">T6. I dati di tracciabilità sono condivisi con i vostri principali clienti o partner di filiera?</div>
+            <div class="f-hint">1 = nessuna condivisione · 5 = integrazione automatica API in tempo reale</div>
+            <div class="lk" id="lk_t6">
+              <label onclick="pickL('t6',1,this)"><input type="radio" name="t6" value="1"><span class="lk-n">1</span>Per niente</label>
+              <label onclick="pickL('t6',2,this)"><input type="radio" name="t6" value="2"><span class="lk-n">2</span>Poco</label>
+              <label onclick="pickL('t6',3,this)"><input type="radio" name="t6" value="3"><span class="lk-n">3</span>Parzialmente</label>
+              <label onclick="pickL('t6',4,this)"><input type="radio" name="t6" value="4"><span class="lk-n">4</span>Molto</label>
+              <label onclick="pickL('t6',5,this)"><input type="radio" name="t6" value="5"><span class="lk-n">5</span>API real-time</label>
+            </div>
+          </div>
+
+          <div class="f">
+            <div class="f-q">T7. Avete adottato o state valutando tecnologie blockchain / DLT per la filiera?</div>
+            <div class="rg" id="rg_t7">
+              <label onclick="pickR('t7','op',this)"><input type="radio" name="t7" value="op">Sì, già operativo</label>
+              <label onclick="pickR('t7','val',this)"><input type="radio" name="t7" value="val">In valutazione</label>
+              <label onclick="pickR('t7','no_n',this)"><input type="radio" name="t7" value="no_n">No — non necessario</label>
+              <label onclick="pickR('t7','no_c',this)"><input type="radio" name="t7" value="no_c">No — troppo costoso</label>
+            </div>
+          </div>
+        </div>
+
+        <!-- ══ STEP 3: Benessere Animale ══ -->
+        <div class="step" id="step3">
+          <div class="step-eyebrow">Modulo 3 · Dimensione φ₅</div>
+          <h2 class="step-title">Benessere Animale</h2>
+          <p class="step-desc">Five Freedoms OIE · normative UE. Compilare solo se l'azienda gestisce direttamente o indirettamente allevamenti.</p>
+
+          <div class="skip-box">
+            <input type="checkbox" id="m3_skip" onchange="toggleMod3()">
+            <label for="m3_skip">Questo modulo <strong>non è applicabile</strong> — l'azienda non gestisce direttamente né indirettamente allevamenti</label>
+          </div>
+
+          <div id="m3_body" class="skip-content">
+            <div class="f">
+              <div class="f-q">B1. Quanti capi / animali gestite direttamente o tramite soci conferenti?</div>
+              <div class="f-hint">Specificare specie: bovini, suini, pollame, ovini.</div>
+              <input class="f-input" id="b1_val" type="text" placeholder="Es. 250 bovini, 500 suini — anno 2025">
+            </div>
+
+            <div class="f">
+              <div class="f-q">B2. Sistema di monitoraggio automatico delle condizioni degli animali?</div>
+              <div class="f-hint">Es. sensori ambientali, telecamere, sensori indossabili, software comportamentale.</div>
+              <div class="rg" id="rg_b2">
+                <label onclick="pickR('b2','si',this)"><input type="radio" name="b2" value="si">Sì</label>
+                <label onclick="pickR('b2','no',this)"><input type="radio" name="b2" value="no">No</label>
+                <label onclick="pickR('b2','wip',this)"><input type="radio" name="b2" value="wip">In corso</label>
+              </div>
+            </div>
+
+            <div class="f">
+              <div class="f-q">B3. Frequenza controlli veterinari documentati?</div>
+              <div class="rg" id="rg_b3">
+                <label onclick="pickR('b3','giorn',this)"><input type="radio" name="b3" value="giorn">Giornaliera</label>
+                <label onclick="pickR('b3','sett',this)"><input type="radio" name="b3" value="sett">Settimanale</label>
+                <label onclick="pickR('b3','mens',this)"><input type="radio" name="b3" value="mens">Mensile</label>
+                <label onclick="pickR('b3','emer',this)"><input type="radio" name="b3" value="emer">Solo emergenza</label>
+              </div>
+            </div>
+
+            <div class="f">
+              <div class="f-q">B4. Piano di miglioramento del benessere animale formalizzato?</div>
+              <div class="f-hint">Includere: obiettivi scritti, responsabile designato, budget allocato.</div>
+              <div class="rg" id="rg_b4">
+                <label onclick="pickR('b4','si',this)"><input type="radio" name="b4" value="si">Sì</label>
+                <label onclick="pickR('b4','no',this)"><input type="radio" name="b4" value="no">No</label>
+                <label onclick="pickR('b4','wip',this)"><input type="radio" name="b4" value="wip">In corso</label>
+              </div>
+            </div>
+
+            <div class="f">
+              <div class="f-q">B5. Certificazioni di benessere animale ricevute?</div>
+              <input class="f-input" id="b5_val" type="text" placeholder="Es. SQNBA — ultima verifica 2024, oppure Nessuna">
+            </div>
+
+            <div class="f">
+              <div class="f-q">B6. Valutazione del livello attuale di benessere animale?</div>
+              <div class="f-hint">1 = standard minimi di legge · 5 = monitoraggio continuo AI-based</div>
+              <div class="lk" id="lk_b6">
+                <label onclick="pickL('b6',1,this)"><input type="radio" name="b6" value="1"><span class="lk-n">1</span>Minimi</label>
+                <label onclick="pickL('b6',2,this)"><input type="radio" name="b6" value="2"><span class="lk-n">2</span>Base</label>
+                <label onclick="pickL('b6',3,this)"><input type="radio" name="b6" value="3"><span class="lk-n">3</span>Medio</label>
+                <label onclick="pickL('b6',4,this)"><input type="radio" name="b6" value="4"><span class="lk-n">4</span>Avanzato</label>
+                <label onclick="pickL('b6',5,this)"><input type="radio" name="b6" value="5"><span class="lk-n">5</span>Leader</label>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ══ STEP 4: Equità Sociale ══ -->
+        <div class="step" id="step4">
+          <div class="step-eyebrow">Modulo 4 · Correttore ε</div>
+          <h2 class="step-title">Equità Sociale e<br>Accesso alla Tecnologia</h2>
+          <p class="step-desc">Calcola il correttore ε del modello ECI — misura quanto le pratiche etiche siano distribuite equamente.</p>
+
+          <div class="sub-title">4.1 — Inclusione e Accesso</div>
+
+          <div class="f">
+            <div class="f-q">E1. Percentuale di fornitori / soci con accesso agli stessi strumenti digitali dell'azienda capofila?</div>
+            <div class="f-hint">Stima accettabile. Es. portale fornitori, app di conferimento, piattaforma dati.</div>
+            <div class="row2">
+              <input class="f-input" id="e1_att" type="number" placeholder="% attuale" min="0" max="100">
+              <input class="f-input" id="e1_prec" type="number" placeholder="% anno prec." min="0" max="100">
+            </div>
+            <label class="nd-label"><input type="checkbox" id="e1_nd" onchange="ndToggle('e1_att','e1_nd')"> N/D</label>
+          </div>
+
+          <div class="f">
+            <div class="f-q">E2. L'azienda offre formazione o supporto ai soci / fornitori per pratiche sostenibili?</div>
+            <div class="f-hint">1 = nessun supporto · 5 = programma strutturato con budget e KPI misurati</div>
+            <div class="lk" id="lk_e2">
+              <label onclick="pickL('e2',1,this)"><input type="radio" name="e2" value="1"><span class="lk-n">1</span>Per niente</label>
+              <label onclick="pickL('e2',2,this)"><input type="radio" name="e2" value="2"><span class="lk-n">2</span>Poco</label>
+              <label onclick="pickL('e2',3,this)"><input type="radio" name="e2" value="3"><span class="lk-n">3</span>Parzialmente</label>
+              <label onclick="pickL('e2',4,this)"><input type="radio" name="e2" value="4"><span class="lk-n">4</span>Molto</label>
+              <label onclick="pickL('e2',5,this)"><input type="radio" name="e2" value="5"><span class="lk-n">5</span>Strutturato</label>
+            </div>
+          </div>
+
+          <div class="f">
+            <div class="f-q">E3. Esiste un meccanismo di prezzo minimo garantito o premio di sostenibilità per i conferitori?</div>
+            <div class="f-hint">Includere: contratti pluriennali, premi qualità, indicizzazione ai costi di produzione.</div>
+            <div class="rg" id="rg_e3">
+              <label onclick="pickR('e3','si',this)"><input type="radio" name="e3" value="si">Sì</label>
+              <label onclick="pickR('e3','no',this)"><input type="radio" name="e3" value="no">No</label>
+              <label onclick="pickR('e3','wip',this)"><input type="radio" name="e3" value="wip">In corso</label>
+            </div>
+          </div>
+
+          <div class="f">
+            <div class="f-q">E4. I lavoratori stagionali o migranti sono inclusi nelle tutele contrattuali standard?</div>
+            <div class="f-hint">1 = solo minimi di legge · 5 = politiche attive di inclusione certificate (es. SA8000)</div>
+            <div class="lk" id="lk_e4">
+              <label onclick="pickL('e4',1,this)"><input type="radio" name="e4" value="1"><span class="lk-n">1</span>Minimi</label>
+              <label onclick="pickL('e4',2,this)"><input type="radio" name="e4" value="2"><span class="lk-n">2</span>Base</label>
+              <label onclick="pickL('e4',3,this)"><input type="radio" name="e4" value="3"><span class="lk-n">3</span>Medio</label>
+              <label onclick="pickL('e4',4,this)"><input type="radio" name="e4" value="4"><span class="lk-n">4</span>Molto</label>
+              <label onclick="pickL('e4',5,this)"><input type="radio" name="e4" value="5"><span class="lk-n">5</span>SA8000</label>
+            </div>
+          </div>
+
+          <div class="sub-title">4.2 — Governance e Partecipazione</div>
+
+          <div class="f">
+            <div class="f-q">E5. I soci / dipendenti partecipano alle decisioni strategiche sulla sostenibilità?</div>
+            <div class="f-hint">1 = nessuna partecipazione · 5 = assemblee dedicate con potere deliberativo</div>
+            <div class="lk" id="lk_e5">
+              <label onclick="pickL('e5',1,this)"><input type="radio" name="e5" value="1"><span class="lk-n">1</span>Per niente</label>
+              <label onclick="pickL('e5',2,this)"><input type="radio" name="e5" value="2"><span class="lk-n">2</span>Poco</label>
+              <label onclick="pickL('e5',3,this)"><input type="radio" name="e5" value="3"><span class="lk-n">3</span>Parzialmente</label>
+              <label onclick="pickL('e5',4,this)"><input type="radio" name="e5" value="4"><span class="lk-n">4</span>Molto</label>
+              <label onclick="pickL('e5',5,this)"><input type="radio" name="e5" value="5"><span class="lk-n">5</span>Deliberativa</label>
+            </div>
+          </div>
+
+          <div class="f">
+            <div class="f-q">E6. L'azienda pubblica un report di sostenibilità o bilancio sociale?</div>
+            <div class="rg" id="rg_e6">
+              <label onclick="pickR('e6','si',this)"><input type="radio" name="e6" value="si">Sì</label>
+              <label onclick="pickR('e6','no',this)"><input type="radio" name="e6" value="no">No</label>
+              <label onclick="pickR('e6','wip',this)"><input type="radio" name="e6" value="wip">In corso</label>
+            </div>
+            <input class="f-input" id="e6_anno" type="text" placeholder="Anno ultima pubblicazione (facoltativo)" style="margin-top:8px;">
+          </div>
+
+          <div class="f">
+            <div class="f-q">E7. Quanto è accessibile economicamente l'adozione delle tecnologie AI/digitali per la vostra realtà?</div>
+            <div class="f-hint">1 = del tutto inaccessibile · 5 = già adottate e pienamente integrate</div>
+            <div class="lk" id="lk_e7">
+              <label onclick="pickL('e7',1,this)"><input type="radio" name="e7" value="1"><span class="lk-n">1</span>Inaccessibile</label>
+              <label onclick="pickL('e7',2,this)"><input type="radio" name="e7" value="2"><span class="lk-n">2</span>Difficile</label>
+              <label onclick="pickL('e7',3,this)"><input type="radio" name="e7" value="3"><span class="lk-n">3</span>Parziale</label>
+              <label onclick="pickL('e7',4,this)"><input type="radio" name="e7" value="4"><span class="lk-n">4</span>Accessibile</label>
+              <label onclick="pickL('e7',5,this)"><input type="radio" name="e7" value="5"><span class="lk-n">5</span>Integrata</label>
+            </div>
+          </div>
+        </div>
+
+        <!-- ══ STEP 5: Qualità ══ -->
+        <div class="step" id="step5">
+          <div class="step-eyebrow">Modulo 5 · Dimensione φ₃</div>
+          <h2 class="step-title">Qualità, Sicurezza<br>e Controllo</h2>
+          <p class="step-desc">Sistemi di controllo qualità e sicurezza alimentare · Reg. UE 178/2002 · BRC · IFS · FSSC 22000.</p>
+
+          <div class="f">
+            <div class="f-q">Q1. L'azienda è certificata per la sicurezza alimentare?</div>
+            <div class="ckg">
+              <label><input type="checkbox" name="q1" value="haccp" onchange="recalc()"> HACCP</label>
+              <label><input type="checkbox" name="q1" value="brc" onchange="recalc()"> BRC</label>
+              <label><input type="checkbox" name="q1" value="ifs" onchange="recalc()"> IFS</label>
+              <label><input type="checkbox" name="q1" value="fssc" onchange="recalc()"> FSSC 22000</label>
+              <label><input type="checkbox" name="q1" value="iso" onchange="recalc()"> ISO 22000</label>
+              <label><input type="checkbox" name="q1" value="altro" onchange="recalc()"> Altro</label>
+            </div>
+            <input class="f-input" id="q1_altro" type="text" placeholder="Se Altro, specificare…" style="margin-top:8px;">
+          </div>
+
+          <div class="f">
+            <div class="f-q">Q2. Tasso di difetti / non conformità sul totale dei lotti prodotti?</div>
+            <div class="f-hint">Includere: reclami clienti, resi, ritiri di mercato.</div>
+            <div class="row2">
+              <input class="f-input" id="q2_att" type="number" placeholder="% attuale" min="0" max="100" step="0.01">
+              <input class="f-input" id="q2_prec" type="number" placeholder="% anno prec." min="0" max="100" step="0.01">
+            </div>
+            <label class="nd-label"><input type="checkbox" id="q2_nd" onchange="ndToggle('q2_att','q2_nd')"> N/D</label>
+          </div>
+
+          <div class="f">
+            <div class="f-q">Q3. Avete subito ritiri di mercato o allerte RASFF negli ultimi 3 anni?</div>
+            <div class="rg" id="rg_q3">
+              <label onclick="pickR('q3','no',this)"><input type="radio" name="q3" value="no">No</label>
+              <label onclick="pickR('q3','si',this)"><input type="radio" name="q3" value="si">Sì</label>
+            </div>
+            <input class="f-input" id="q3_det" type="text" placeholder="Se sì: n° episodi e causa principale" style="margin-top:8px;">
+          </div>
+
+          <div class="f">
+            <div class="f-q">Q4. Utilizzate sistemi automatici (AI, visione artificiale) per il controllo qualità?</div>
+            <div class="rg" id="rg_q4">
+              <label onclick="pickR('q4','si',this)"><input type="radio" name="q4" value="si">Sì</label>
+              <label onclick="pickR('q4','no',this)"><input type="radio" name="q4" value="no">No</label>
+              <label onclick="pickR('q4','wip',this)"><input type="radio" name="q4" value="wip">In corso</label>
+            </div>
+          </div>
+
+          <div class="f">
+            <div class="f-q">Q5. Livello complessivo del sistema qualità rispetto al settore?</div>
+            <div class="f-hint">1 = minimi di legge · 5 = leader settoriale con zero difetti su 12 mesi</div>
+            <div class="lk" id="lk_q5">
+              <label onclick="pickL('q5',1,this)"><input type="radio" name="q5" value="1"><span class="lk-n">1</span>Minimi</label>
+              <label onclick="pickL('q5',2,this)"><input type="radio" name="q5" value="2"><span class="lk-n">2</span>Base</label>
+              <label onclick="pickL('q5',3,this)"><input type="radio" name="q5" value="3"><span class="lk-n">3</span>Buono</label>
+              <label onclick="pickL('q5',4,this)"><input type="radio" name="q5" value="4"><span class="lk-n">4</span>Avanzato</label>
+              <label onclick="pickL('q5',5,this)"><input type="radio" name="q5" value="5"><span class="lk-n">5</span>Leader</label>
+            </div>
+          </div>
+
+          <div class="f">
+            <span class="f-label">Note del consulente</span>
+            <textarea class="notes-ta" id="note_cons" placeholder="Osservazioni, priorità di intervento, elementi di contesto…"></textarea>
+          </div>
+        </div>
+
+        <!-- ══ STEP 6: Risultati ══ -->
+        <div class="step" id="step6">
+          <div class="step-eyebrow">Risultati · ECI Assessment Toolkit</div>
+          <h2 class="step-title" id="res_azienda">Punteggio ECI</h2>
+          <p class="step-desc" id="res_meta">—</p>
+
+          <div class="res-grid">
+            <!-- Gauge -->
+            <div class="gauge-block">
+              <svg class="gauge-svg" viewBox="0 0 200 110">
+                <path class="gauge-track" d="M 20 108 A 80 80 0 0 1 180 108" />
+                <path class="gauge-fill" id="gaugeFill" d="M 20 108 A 80 80 0 0 1 180 108"
+                  stroke="rgba(212,175,55,0.25)" stroke-dasharray="251.33" stroke-dashoffset="251.33" />
+              </svg>
+              <div class="gauge-val" id="gaugeVal">—</div>
+              <div class="gauge-lbl">ECI Corretto</div>
+
+              <div class="eps-row" style="margin-top:16px;">
+                <span class="eps-lbl">ε (correttore equità)</span>
+                <span class="eps-val" id="res_eps">—</span>
+              </div>
+            </div>
+
+            <!-- Radar -->
+            <div class="radar-block">
+              <svg class="radar-svg" viewBox="0 0 200 200" id="radarSvg">
+                <!-- bg rings -->
+                <polygon class="radar-bg" id="rr4" points="100,20 162,57 162,143 100,180 38,143 38,57"/>
+                <polygon class="radar-bg" id="rr3" points="100,35 149,64 149,136 100,165 51,136 51,64"/>
+                <polygon class="radar-bg" id="rr2" points="100,50 136,71 136,129 100,150 64,129 64,71"/>
+                <polygon class="radar-bg" id="rr1" points="100,65 123,78 123,122 100,135 77,122 77,78"/>
+                <!-- axes -->
+                <line class="radar-axis" x1="100" y1="100" x2="100" y2="20"/>
+                <line class="radar-axis" x1="100" y1="100" x2="162" y2="57"/>
+                <line class="radar-axis" x1="100" y1="100" x2="162" y2="143"/>
+                <line class="radar-axis" x1="100" y1="100" x2="100" y2="180"/>
+                <line class="radar-axis" x1="100" y1="100" x2="38" y2="143"/>
+                <!-- data -->
+                <polygon class="radar-data" id="radarData" points="100,100 100,100 100,100 100,100 100,100"/>
+                <!-- dots -->
+                <circle class="radar-dot" id="rd0" cx="100" cy="100" r="3"/>
+                <circle class="radar-dot" id="rd1" cx="100" cy="100" r="3"/>
+                <circle class="radar-dot" id="rd2" cx="100" cy="100" r="3"/>
+                <circle class="radar-dot" id="rd3" cx="100" cy="100" r="3"/>
+                <circle class="radar-dot" id="rd4" cx="100" cy="100" r="3"/>
+                <!-- labels -->
+                <text class="radar-label" x="94" y="14" text-anchor="middle">φ₁ Sprechi</text>
+                <text class="radar-label" x="170" y="56" text-anchor="start">φ₂ Pestic.</text>
+                <text class="radar-label" x="170" y="148" text-anchor="start">φ₃ Qualità</text>
+                <text class="radar-label" x="100" y="192" text-anchor="middle">φ₄ Tracciab.</text>
+                <text class="radar-label" x="30" y="148" text-anchor="end">φ₅ Beness.</text>
+              </svg>
+            </div>
+          </div>
+
+          <!-- Dimension table -->
+          <table class="dim-table">
+            <tbody id="dimTableBody"></tbody>
+          </table>
+
+          <!-- Interpretation -->
+          <div class="interp-panel nd" id="interpPanel">
+            <span class="interp-tag" id="interpTag">In attesa</span>
+            <span class="interp-text" id="interpText">Compilare il questionario per ottenere la valutazione ECI.</span>
+          </div>
+
+          <!-- Formula -->
+          <div class="formula-box">
+            <span class="fv">ECI_corretto</span> = [φ₁·0.20 + φ₂·0.20 + φ₃·0.20 + φ₄·0.20 + φ₅·0.20] × ε<br>
+            <span style="color:var(--muted);font-size:0.68rem;">ε ∈ [0.70, 1.00] · Pesi calibrabili con AHP (Percorso 1) · © 2026 Cognitive Logic</span>
+          </div>
+
+          <div style="display:flex;gap:10px;margin-top:20px;flex-wrap:wrap;">
+            <button class="btn btn-primary" onclick="window.print()" style="min-height:44px;padding:0 20px;font-size:0.75rem;">Stampa / Esporta PDF</button>
+            <button class="btn btn-ghost" onclick="goTo(0)" style="min-height:44px;padding:0 20px;font-size:0.75rem;">← Modifica risposte</button>
+            <button class="btn btn-ghost" onclick="clearAll()" style="min-height:44px;padding:0 20px;font-size:0.75rem;">Azzera tutto</button>
+          </div>
+
+          <p style="font-family:'DM Mono',monospace;font-size:0.58rem;color:var(--muted);margin-top:24px;padding-top:16px;border-top:1px solid var(--line-soft);">
+            Documento riservato — uso esclusivo del consulente e dell'azienda cliente. Non distribuire a terzi senza autorizzazione scritta.
+          </p>
+        </div>
+
+      </div><!-- /wiz-card -->
+
+      <!-- Wizard nav -->
+      <div class="wiz-nav">
+        <button class="btn btn-ghost" id="btnBack" onclick="stepBack()" style="min-height:44px;padding:0 20px;font-size:0.75rem;">← Indietro</button>
+        <div class="wiz-dots" id="wizDots"></div>
+        <button class="btn btn-primary" id="btnNext" onclick="stepNext()" style="min-height:44px;padding:0 24px;font-size:0.75rem;">Avanti →</button>
+      </div>
+
+    </div><!-- /wiz-outer -->
+  </main>
+
+  <script>
+  // ── State ──────────────────────────────────────────────────────────────────
+  const R = {};  // radio: name → value
+  const L = {};  // likert: name → 1..5
+  let curStep = 0;
+  const TOTAL = 7; // steps 0..6
+  let mod3Skip = false;
+
+  // Radar geometry (hexagon, 5 axes — center 100,100, r=80)
+  const AXES = [
+    [100, 20],   // top      φ₁
+    [162, 57],   // top-right φ₂  (actually top-right of pentagon)
+    [162, 143],  // bottom-right φ₃
+    [100, 180],  // bottom φ₄
+    [38, 143],   // bottom-left φ₅
+  ];
+
+  // ── UI helpers ─────────────────────────────────────────────────────────────
+  function pickR(name, val, lbl) {
+    R[name] = val;
+    lbl.closest('.rg').querySelectorAll('label').forEach(l => l.classList.remove('sel'));
+    lbl.classList.add('sel');
+    recalc();
+  }
+
+  function pickL(name, val, lbl) {
+    L[name] = val;
+    lbl.closest('.lk').querySelectorAll('label').forEach(l => l.classList.remove('sel'));
+    lbl.classList.add('sel');
+    recalc();
+  }
+
+  function ndToggle(inputId, cbId) {
+    const inp = document.getElementById(inputId);
+    const cb  = document.getElementById(cbId);
+    if (!inp || !cb) return;
+    inp.disabled = cb.checked;
+    inp.style.opacity = cb.checked ? '0.3' : '1';
+    recalc();
+  }
+
+  function toggleMod3() {
+    mod3Skip = document.getElementById('m3_skip').checked;
+    document.getElementById('m3_body').classList.toggle('hidden', mod3Skip);
+    recalc();
+  }
+
+  function getN(id) {
+    const el = document.getElementById(id);
+    if (!el || el.disabled) return null;
+    const v = parseFloat(el.value);
+    return isNaN(v) ? null : v;
+  }
+
+  function clamp(v) { return Math.max(0, Math.min(1, v)); }
+  function lk(name) { const v = L[name]; return v ? (v-1)/4 : null; }
+  function ynw(name) {
+    const v = R[name];
+    if (!v) return null;
+    return v === 'si' ? 1 : v === 'wip' ? 0.5 : 0;
+  }
+
+  // ── Score calculation ──────────────────────────────────────────────────────
+  function phi1() {
+    const s1 = getN('s1_att');
+    const s4 = lk('s4');
+    const s3b = R.s3 === 'dim' ? 0.05 : R.s3 === 'aum' ? -0.05 : 0;
+    const a = s1 !== null ? clamp(1 - s1/50) : null;
+    if (a !== null && s4 !== null) return clamp(a*0.6 + s4*0.4 + s3b);
+    if (a !== null) return clamp(a + s3b);
+    if (s4 !== null) return clamp(s4 + s3b);
+    return null;
+  }
+
+  function phi2() {
+    const s7 = ynw('s7');
+    const s8 = lk('s8');
+    const s2b = R.s2 === 'si' ? 0.04 : R.s2 === 'wip' ? 0.02 : 0;
+    let v;
+    if (s7 !== null && s8 !== null) v = s7*0.5 + s8*0.5;
+    else if (s7 !== null) v = s7;
+    else if (s8 !== null) v = s8;
+    else return null;
+    return clamp(v + s2b);
+  }
+
+  function phi3() {
+    const q2 = getN('q2_att');
+    const q5 = lk('q5');
+    const q3m = R.q3 === 'si' ? -0.08 : 0;
+    const q4b = R.q4 === 'si' ? 0.05 : R.q4 === 'wip' ? 0.02 : 0;
+    const certs = document.querySelectorAll('input[name="q1"]:checked');
+    let certB = 0;
+    certs.forEach(c => { if (c.value !== 'haccp') certB += 0.03; });
+    certB = Math.min(certB, 0.10);
+    const a = q2 !== null ? clamp(1 - q2/5) : null;
+    let v;
+    if (a !== null && q5 !== null) v = a*0.5 + q5*0.5;
+    else if (a !== null) v = a;
+    else if (q5 !== null) v = q5;
+    else return null;
+    return clamp(v + q3m + q4b + certB);
+  }
+
+  function phi4() {
+    const t1m = {digitale:1, parziale:0.75, cartaceo:0.25, assente:0};
+    const t2m = {ore:1, giorno:0.8, giorni:0.4, settimane:0.1, nd:0.2};
+    const t1 = t1m[R.t1];
+    const t2 = t2m[R.t2];
+    const t4 = lk('t4');
+    const t6 = lk('t6');
+    const t3b = ynw('t3') !== null ? ynw('t3')*0.04 : 0;
+    const t5b = R.t5 === 'si' ? 0.05 : R.t5 === 'wip' ? 0.02 : 0;
+    const t7b = R.t7 === 'op' ? 0.08 : R.t7 === 'val' ? 0.03 : 0;
+    const parts=[], ws=[];
+    if (t1!==undefined){parts.push(t1*0.35);ws.push(0.35);}
+    if (t2!==undefined){parts.push(t2*0.25);ws.push(0.25);}
+    if (t4!==null){parts.push(t4*0.20);ws.push(0.20);}
+    if (t6!==null){parts.push(t6*0.20);ws.push(0.20);}
+    if (!parts.length) return null;
+    const ws_ = ws.reduce((a,b)=>a+b,0);
+    return clamp(parts.reduce((a,b)=>a+b,0)/ws_ + t3b + t5b + t7b);
+  }
+
+  function phi5() {
+    if (mod3Skip) return null;
+    const b6 = lk('b6');
+    if (b6 === null) return null;
+    let v = b6*0.6;
+    if (R.b2==='si') v+=0.20; else if (R.b2==='wip') v+=0.10;
+    if (R.b4==='si') v+=0.20; else if (R.b4==='wip') v+=0.10;
+    const b3m={giorn:0.05,sett:0.03,mens:0.01,emer:0};
+    if (R.b3 && b3m[R.b3]!==undefined) v+=b3m[R.b3];
+    return clamp(v);
+  }
+
+  function epsilon() {
+    const e1 = getN('e1_att');
+    const e2 = lk('e2'), e3 = ynw('e3'), e4 = lk('e4'), e5 = lk('e5'), e7 = lk('e7');
+    const e6b = R.e6==='si' ? 0.05 : R.e6==='wip' ? 0.02 : 0;
+    const parts=[], ws=[];
+    if (e1!==null){parts.push((e1/100)*0.25);ws.push(0.25);}
+    if (e2!==null){parts.push(e2*0.20);ws.push(0.20);}
+    if (e3!==null){parts.push(e3*0.15);ws.push(0.15);}
+    if (e4!==null){parts.push(e4*0.15);ws.push(0.15);}
+    if (e5!==null){parts.push(e5*0.10);ws.push(0.10);}
+    if (e7!==null){parts.push(e7*0.15);ws.push(0.15);}
+    if (!parts.length) return null;
+    const ws_ = ws.reduce((a,b)=>a+b,0);
+    const eScore = Math.min(1, parts.reduce((a,b)=>a+b,0)/ws_ + e6b);
+    return 0.70 + eScore*0.30;
+  }
+
+  // ── Recalc & render ────────────────────────────────────────────────────────
+  function recalc() {
+    const p1=phi1(), p2=phi2(), p3=phi3(), p4=phi4(), p5=phi5(), eps=epsilon();
+    const dims=[p1,p2,p3,p4];
+    if (!mod3Skip && p5!==null) dims.push(p5);
+    const avail = dims.filter(d=>d!==null);
+    const eci = avail.length ? clamp((avail.reduce((a,b)=>a+b,0)/avail.length)*(eps??0.85)) : null;
+
+    // Mini score
+    const ms = document.getElementById('miniScore');
+    if (eci!==null) { ms.textContent='ECI '+eci.toFixed(3); ms.classList.remove('nd'); }
+    else { ms.textContent='ECI —'; ms.classList.add('nd'); }
+
+    // Results step
+    if (curStep === 6) renderResults(p1,p2,p3,p4,p5,eps,eci);
+
+    persist();
+  }
+
+  function renderResults(p1,p2,p3,p4,p5,eps,eci) {
+    // Header
+    const rag = document.getElementById('ana_rag').value || 'Azienda non specificata';
+    const dt = document.getElementById('ana_data').value || '—';
+    document.getElementById('res_azienda').textContent = rag;
+    const sett = document.getElementById('ana_sett').value;
+    document.getElementById('res_meta').textContent =
+      (sett ? sett + ' · ' : '') + 'Assessment ECI · ' + dt;
+
+    // Gauge (arc length 251.33 for r=80 semicircle)
+    const arcLen = 251.33;
+    const gf = document.getElementById('gaugeFill');
+    const gv = document.getElementById('gaugeVal');
+    if (eci!==null) {
+      gf.style.strokeDashoffset = arcLen*(1-eci);
+      gv.textContent = eci.toFixed(3);
+      if (eci>=0.85) gf.style.stroke='#f1df9b';
+      else if (eci>=0.65) gf.style.stroke='#85c98d';
+      else if (eci>=0.40) gf.style.stroke='#d8b15a';
+      else gf.style.stroke='#d7857f';
+    } else {
+      gf.style.strokeDashoffset = arcLen;
+      gv.textContent = '—';
+      gf.style.stroke='rgba(212,175,55,0.2)';
+    }
+
+    // Epsilon
+    document.getElementById('res_eps').textContent = eps!==null ? eps.toFixed(3) : '—';
+
+    // Radar
+    const scores=[p1,p2,p3,p4,p5];
+    const pts = AXES.map(([ax,ay],i) => {
+      const v = scores[i] ?? 0;
+      return [100+v*(ax-100), 100+v*(ay-100)];
+    });
+    document.getElementById('radarData').setAttribute('points', pts.map(p=>p.join(',')).join(' '));
+    pts.forEach(([x,y],i) => {
+      const dot = document.getElementById('rd'+i);
+      if (dot) { dot.setAttribute('cx',x); dot.setAttribute('cy',y); }
+    });
+
+    // Dimension table
+    const labels=['φ₁ Sprechi','φ₂ Pesticidi','φ₃ Qualità','φ₄ Tracciabilità','φ₅ Benessere'];
+    const tbody = document.getElementById('dimTableBody');
+    tbody.innerHTML = [p1,p2,p3,p4,mod3Skip?null:p5].map((v,i) => {
+      const disp = v!==null ? v.toFixed(3) : (i===4&&mod3Skip ? 'N/A' : '—');
+      const pct = v!==null ? (v*100).toFixed(1)+'%' : '0%';
+      return `<tr>
+        <td class="dim-name">${labels[i]}</td>
+        <td><div class="dim-bar-inline"><div class="dim-track"><div class="dim-fill" style="width:${pct}"></div></div></div></td>
+        <td class="dim-score">${disp}</td>
+      </tr>`;
+    }).join('');
+
+    // Interpretation
+    const panel=document.getElementById('interpPanel');
+    const tag=document.getElementById('interpTag');
+    const txt=document.getElementById('interpText');
+    if (eci===null) {
+      panel.className='interp-panel nd'; tag.textContent='In attesa';
+      txt.textContent='Compilare il questionario per ottenere la valutazione ECI.';
+    } else if (eci>=0.85) {
+      panel.className='interp-panel exc'; tag.textContent='Eccellente — Leader etico';
+      txt.textContent='Candidare a certificazione ECI Gold. Valorizzare nella comunicazione B2B e B2C. Avviare Percorso 2 per monitoraggio traiettoria.';
+    } else if (eci>=0.65) {
+      panel.className='interp-panel good'; tag.textContent='Buono — In traiettoria';
+      txt.textContent='Identificare le 1–2 dimensioni con φᵢ < 0.60 e costruire piano di miglioramento biennale. Integrare AHP (Percorso 1) per calibrare le priorità.';
+    } else if (eci>=0.40) {
+      panel.className='interp-panel part'; tag.textContent='Parziale — Gap significativi';
+      txt.textContent='Avviare assessment approfondito per dimensioni critiche. Valutare accesso a fondi PNRR / PSR per digitalizzazione e sostenibilità. Piano triennale obbligatorio.';
+    } else {
+      panel.className='interp-panel crit'; tag.textContent='Critico — Intervento urgente';
+      txt.textContent='Rischio di non-conformità normativa al 2030. Priorità assoluta alle dimensioni sotto 0.30. Coinvolgere Confcooperative / Legacoop.';
+    }
+  }
+
+  // ── Navigation ─────────────────────────────────────────────────────────────
+  function goTo(n) {
+    document.getElementById('step'+curStep).classList.remove('active');
+    curStep = n;
+    document.getElementById('step'+curStep).classList.add('active');
+    window.scrollTo({top:0, behavior:'smooth'});
+    updateNav();
+    if (curStep===6) recalc();
+  }
+
+  function stepNext() { if (curStep<TOTAL-1) goTo(curStep+1); }
+  function stepBack() { if (curStep>0) goTo(curStep-1); }
+
+  function updateNav() {
+    const pct = (curStep/(TOTAL-1))*100;
+    document.getElementById('progFill').style.width = pct+'%';
+    document.getElementById('stepId').textContent = 'Passo '+curStep+' di '+(TOTAL-1);
+    document.getElementById('btnBack').style.visibility = curStep>0 ? 'visible' : 'hidden';
+    const btn = document.getElementById('btnNext');
+    if (curStep===TOTAL-1) { btn.textContent='Stampa →'; btn.onclick=()=>window.print(); }
+    else if (curStep===TOTAL-2) { btn.textContent='Vedi Risultati →'; btn.onclick=stepNext; }
+    else { btn.textContent='Avanti →'; btn.onclick=stepNext; }
+
+    // dots
+    const dots = document.getElementById('wizDots');
+    dots.innerHTML='';
+    for (let i=0;i<TOTAL;i++) {
+      const d=document.createElement('div');
+      d.className='wiz-dot'+(i===curStep?' active':i<curStep?' done':'');
+      d.onclick=()=>goTo(i);
+      dots.appendChild(d);
+    }
+  }
+
+  // ── Persistence ────────────────────────────────────────────────────────────
+  function persist() {
+    try {
+      const data = { R, L, mod3Skip, fields:{}, checks:{} };
+      document.querySelectorAll('.f-input, .f-select, .notes-ta').forEach(el => {
+        if (el.id) data.fields[el.id] = el.value;
+      });
+      document.querySelectorAll('input[type=checkbox]').forEach(el => {
+        if (el.id) data.checks[el.id] = el.checked;
+      });
+      localStorage.setItem('eci_v2', JSON.stringify(data));
+    } catch(e) {}
+  }
+
+  function restore() {
+    try {
+      const raw = localStorage.getItem('eci_v2');
+      if (!raw) return;
+      const data = JSON.parse(raw);
+      // fields
+      Object.entries(data.fields||{}).forEach(([id,v]) => {
+        const el=document.getElementById(id); if(el) el.value=v;
+      });
+      // checkboxes
+      Object.entries(data.checks||{}).forEach(([id,v]) => {
+        const el=document.getElementById(id); if(el&&el.type==='checkbox') el.checked=v;
+      });
+      // radios
+      Object.entries(data.R||{}).forEach(([name,val]) => {
+        const lbl=document.querySelector(`#rg_${name} input[value="${val}"]`);
+        if(lbl) { R[name]=val; lbl.closest('label').classList.add('sel'); }
+      });
+      // likerts
+      Object.entries(data.L||{}).forEach(([name,val]) => {
+        const lbl=document.querySelector(`#lk_${name} input[value="${val}"]`);
+        if(lbl) { L[name]=parseInt(val); lbl.closest('label').classList.add('sel'); }
+      });
+      // mod3
+      if (data.mod3Skip) {
+        document.getElementById('m3_skip').checked=true;
+        toggleMod3();
+      }
+      // ND toggles
+      ['s1','s5','s6','e1','q2'].forEach(id => {
+        const cb=document.getElementById(id+'_nd');
+        if(cb&&cb.checked) ndToggle(id+'_att'||id+'_val', id+'_nd');
+      });
+    } catch(e) {}
+  }
+
+  function clearAll() {
+    if(!confirm('Azzerare tutto? I dati non potranno essere recuperati.')) return;
+    localStorage.removeItem('eci_v2');
+    location.reload();
+  }
+
+  // Input listeners for recalc
+  document.addEventListener('input', e => { if (e.target.matches('.f-input,.f-select,.notes-ta')) recalc(); });
+  document.addEventListener('change', e => { if (e.target.matches('input[type=checkbox],input[type=radio],.f-select')) recalc(); });
+
+  // ── Init ───────────────────────────────────────────────────────────────────
+  document.addEventListener('DOMContentLoaded', () => {
+    const d=document.getElementById('ana_data');
+    if(d&&!d.value) d.value=new Date().toISOString().split('T')[0];
+    restore();
+    updateNav();
+    recalc();
+  });
+  </script>
+</body>
+</html>
