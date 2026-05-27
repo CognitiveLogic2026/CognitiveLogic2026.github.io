@@ -460,6 +460,203 @@ p {
   font-weight: 500;
 }
 
+/* ── V_EN FORMULA BLOCK ── */
+.ven-formula-display {
+  border: 1px solid var(--rule);
+  padding: 2.5rem;
+  background: var(--ink);
+  position: relative;
+  margin-top: 1.5rem;
+}
+
+.ven-formula-display::before {
+  content: 'V\5F EN(A) — VALORE ETICO NATURALE';
+  font-family: 'DM Mono', monospace;
+  font-size: 0.6rem;
+  letter-spacing: 0.2em;
+  color: var(--gold-light);
+  position: absolute;
+  top: -0.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--ink);
+  padding: 0 1rem;
+  white-space: nowrap;
+}
+
+.ven-formula-eq {
+  font-family: 'DM Mono', monospace;
+  font-size: clamp(0.85rem, 2vw, 1.15rem);
+  color: #e8e3da;
+  letter-spacing: 0.03em;
+  text-align: center;
+  line-height: 1.8;
+}
+
+.ven-formula-eq .coeff { color: var(--gold-light); font-weight: 500; }
+.ven-formula-eq .penalty { color: #ff7b7b; }
+
+.ven-vars {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  flex-wrap: wrap;
+  margin-top: 1.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid rgba(255,255,255,0.1);
+}
+
+.ven-var-item { text-align: center; }
+
+.ven-var-sym {
+  font-family: 'DM Mono', monospace;
+  font-size: 1rem;
+  color: var(--gold-light);
+  font-weight: 500;
+  display: block;
+}
+
+.ven-var-label {
+  font-size: 0.65rem;
+  color: #8a8480;
+  letter-spacing: 0.04em;
+  margin-top: 0.2rem;
+}
+
+/* ── ALGORITHM PHASES ── */
+.phase-grid {
+  display: grid;
+  gap: 1px;
+  background: var(--rule);
+  border: 1px solid var(--rule);
+  margin-top: 2rem;
+}
+
+.phase-card {
+  background: white;
+  padding: 2rem;
+}
+
+.phase-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.2rem;
+}
+
+.phase-num {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.65rem;
+  letter-spacing: 0.15em;
+  color: white;
+  background: var(--gold);
+  padding: 0.3rem 0.7rem;
+  white-space: nowrap;
+}
+
+.phase-title {
+  font-family: 'DM Serif Display', serif;
+  font-size: 1.1rem;
+  font-weight: 400;
+}
+
+.phase-card p {
+  font-size: 0.88rem;
+  color: var(--muted);
+  margin-bottom: 0.6rem;
+}
+
+.phase-formula {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.82rem;
+  background: #f5f2ec;
+  border-left: 3px solid var(--gold);
+  padding: 0.8rem 1rem;
+  margin: 0.8rem 0;
+  color: var(--ink);
+  overflow-x: auto;
+}
+
+.phase-formula .coeff { color: var(--gold); }
+.phase-formula .penalty { color: var(--rust); }
+
+/* ── IO TABLE ── */
+.io-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1px;
+  background: var(--rule);
+  border: 1px solid var(--rule);
+  margin-top: 1.5rem;
+}
+
+.io-cell {
+  background: white;
+  padding: 1.5rem;
+}
+
+.io-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.6rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--gold);
+  display: block;
+  margin-bottom: 0.8rem;
+}
+
+.io-list {
+  list-style: none;
+  font-size: 0.85rem;
+  color: var(--muted);
+  line-height: 1.9;
+  font-weight: 300;
+}
+
+.io-list li { padding-left: 1rem; border-left: 2px solid var(--rule); margin-bottom: 0.35rem; }
+.io-list li strong { color: var(--ink); font-weight: 500; }
+
+/* ── ARGMAX BLOCK ── */
+.argmax-block {
+  background: var(--ink);
+  color: var(--code-fg);
+  padding: 2rem 2.5rem;
+  margin-top: 2rem;
+  border-left: 4px solid var(--gold);
+}
+
+.argmax-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.6rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gold-light);
+  display: block;
+  margin-bottom: 1rem;
+}
+
+.argmax-eq {
+  font-family: 'DM Mono', monospace;
+  font-size: clamp(0.9rem, 2vw, 1.2rem);
+  color: #e8e3da;
+  text-align: center;
+  padding: 1rem 0;
+}
+
+.argmax-eq .coeff { color: var(--gold-light); }
+
+.argmax-desc {
+  font-size: 0.85rem;
+  color: #8a8480;
+  margin-top: 1rem;
+  font-weight: 300;
+  line-height: 1.7;
+}
+
+@media (max-width: 600px) {
+  .io-grid { grid-template-columns: 1fr; }
+}
+
 /* ── FOOTER ── */
 footer {
   border-top: 1px solid var(--rule);
@@ -564,6 +761,34 @@ footer a {
   </div>
 </div>
 
+<!-- V_EN FORMULA -->
+
+<div class="formula-block">
+  <div class="ven-formula-display">
+    <div class="ven-formula-eq">
+      V<sub>EN</sub>(A) = [<span class="coeff">w₁</span>·f₁(I<sub>Amb</sub>) + <span class="coeff">w₂</span>·f₂(I<sub>Soc</sub>) + <span class="coeff">w₃</span>·f₃(I<sub>Econ</sub>)] <span class="penalty">− C<sub>Violazione</sub></span>
+    </div>
+    <div class="ven-vars">
+      <div class="ven-var-item">
+        <span class="ven-var-sym">f₁(I<sub>Amb</sub>)</span>
+        <div class="ven-var-label">Environmental<br>Function</div>
+      </div>
+      <div class="ven-var-item">
+        <span class="ven-var-sym">f₂(I<sub>Soc</sub>)</span>
+        <div class="ven-var-label">Social<br>Function</div>
+      </div>
+      <div class="ven-var-item">
+        <span class="ven-var-sym">f₃(I<sub>Econ</sub>)</span>
+        <div class="ven-var-label">Economic<br>Function</div>
+      </div>
+      <div class="ven-var-item">
+        <span class="ven-var-sym" style="color:#ff9a9a;">C<sub>Viol</sub></span>
+        <div class="ven-var-label">Deontic<br>Penalty</div>
+      </div>
+    </div>
+  </div>
+</div>
+
 <!-- MAIN CONTENT -->
 
 <div class="content">
@@ -575,6 +800,140 @@ footer a {
     <h2>The QEN Framework</h2>
     <p>The QEN Score is a multidimensional ethical assessment tool designed to operate natively in AI-first environments. The framework comprises three fundamental dimensions, each weighted with a coefficient reflecting the impact hierarchy identified in the context of Italian local commerce and AI governance in the European regulatory environment.</p>
     <p>The formula is intentionally transparent and revisable. QEN is not a black-box system. All weights are documented and open to methodological challenge.</p>
+  </div>
+
+  <!-- SECTION 2: V_EN ALGORITHM -->
+
+  <div class="section">
+    <span class="section-label">§ 2 · Formal Algorithm</span>
+    <h2>Valore Etico Naturale — V<sub>EN</sub>(A)</h2>
+    <p>The Natural Ethical Value of an Action, V<sub>EN</sub>(A), is the core computational output of the CognitiveLogic framework. It quantifies the degree of ethical-sustainable alignment of any action or system state by integrating three weighted sustainability functions, net of deontic violation penalties.</p>
+
+    <h3>Variables</h3>
+    <table class="summary-table">
+      <thead>
+        <tr>
+          <th>Symbol</th>
+          <th>Name</th>
+          <th>Function</th>
+          <th>Category</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>V<sub>EN</sub>(A)</td>
+          <td>Natural Ethical Value</td>
+          <td>Final ethical-natural alignment score</td>
+          <td>Metaethics / Normative Ethics</td>
+        </tr>
+        <tr>
+          <td>f₁(I<sub>Amb</sub>)</td>
+          <td>Environmental Function</td>
+          <td>Measures impact on natural capital, biodiversity and ecological stability</td>
+          <td>Environmental Sustainability</td>
+        </tr>
+        <tr>
+          <td>f₂(I<sub>Soc</sub>)</td>
+          <td>Social Function</td>
+          <td>Measures impact on equity, community wellbeing and intergenerational rights</td>
+          <td>Social Sustainability</td>
+        </tr>
+        <tr>
+          <td>f₃(I<sub>Econ</sub>)</td>
+          <td>Economic Function</td>
+          <td>Measures resource efficiency and long-term economic resilience</td>
+          <td>Economic Sustainability</td>
+        </tr>
+        <tr>
+          <td>w₁, w₂, w₃</td>
+          <td>Priority Weights</td>
+          <td>Coefficients determining relative importance of each pillar (Σwᵢ = 1)</td>
+          <td>Value Theory</td>
+        </tr>
+        <tr>
+          <td>C<sub>Violazione</sub></td>
+          <td>Ethical Violation Cost</td>
+          <td>Penalty subtracted for violation of fundamental ethical rules (Deontic Logic)</td>
+          <td>Deontic Logic / Applied Ethics</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h3>Inputs &amp; Output</h3>
+    <div class="io-grid">
+      <div class="io-cell">
+        <span class="io-label">Inputs</span>
+        <ul class="io-list">
+          <li><strong>A</strong> — Action or state to evaluate</li>
+          <li><strong>D<sub>Amb</sub></strong> — Quantifiable environmental data<br><em style="font-size:0.78rem;">(carbon footprint, water use, biodiversity)</em></li>
+          <li><strong>D<sub>Soc</sub></strong> — Quantifiable social data<br><em style="font-size:0.78rem;">(equity index, community impact, rights)</em></li>
+          <li><strong>D<sub>Econ</sub></strong> — Quantifiable economic data<br><em style="font-size:0.78rem;">(resource efficiency, long-term resilience)</em></li>
+          <li><strong>w₁, w₂, w₃</strong> — Priority weights</li>
+          <li><strong>ℛ<sub>Viol</sub></strong> — Set of deontic violation rules</li>
+        </ul>
+      </div>
+      <div class="io-cell">
+        <span class="io-label">Output</span>
+        <ul class="io-list">
+          <li><strong>V<sub>EN</sub></strong> — Natural Ethical Value</li>
+          <li>Numerical score, scale 0–100</li>
+          <li>Higher value = greater ethical sustainability</li>
+          <li>Comparable across actions A₁, A₂, A₃…</li>
+        </ul>
+      </div>
+    </div>
+
+    <h3>Algorithmic Procedure</h3>
+    <div class="phase-grid">
+
+      <div class="phase-card">
+        <div class="phase-header">
+          <span class="phase-num">PHASE 1</span>
+          <span class="phase-title">Sustainability Index Calculation</span>
+        </div>
+        <p><strong>Environmental Inference:</strong> Apply Computational Logic rules to analyse D<sub>Amb</sub> in relation to action A. Map impact to scale 0–10.</p>
+        <div class="phase-formula">I<sub>Amb</sub> = ComputationalLogic(D<sub>Amb</sub>, A) → [0, 10]</div>
+        <p><strong>Social Inference:</strong> Apply Computational Logic to analyse D<sub>Soc</sub> and calculate the Social Index.</p>
+        <div class="phase-formula">I<sub>Soc</sub> = ComputationalLogic(D<sub>Soc</sub>, A) → [0, 10]</div>
+        <p><strong>Economic Inference:</strong> Apply Computational Logic to analyse D<sub>Econ</sub> and calculate the Economic Index.</p>
+        <div class="phase-formula">I<sub>Econ</sub> = ComputationalLogic(D<sub>Econ</sub>, A) → [0, 10]</div>
+      </div>
+
+      <div class="phase-card">
+        <div class="phase-header">
+          <span class="phase-num">PHASE 2</span>
+          <span class="phase-title">Ethical Violation Cost</span>
+        </div>
+        <p><strong>Deontic Verification:</strong> For each rule Rⱼ in ℛ<sub>Viol</sub>:</p>
+        <div class="phase-formula"><span class="penalty">IF</span> action A violates rule Rⱼ <span class="penalty">THEN</span><br>  Lⱼ = SeverityFunction(D<sub>Amb</sub>, D<sub>Soc</sub>)<br>  Pⱼ = Penalty(Lⱼ)</div>
+        <p><strong>Total Violation Cost:</strong> Sum all penalties weighted by severity level.</p>
+        <div class="phase-formula"><span class="penalty">C<sub>Violazione</sub></span> = Σⱼ (Lⱼ × Pⱼ)</div>
+        <p style="font-size:0.82rem;font-style:italic;">This value must be on a scale comparable to the sustainability indices I_x. A critical deontic failure prevents a high V<sub>EN</sub> score even with strong performance in other dimensions.</p>
+      </div>
+
+      <div class="phase-card">
+        <div class="phase-header">
+          <span class="phase-num">PHASE 3</span>
+          <span class="phase-title">V<sub>EN</sub> Calculation</span>
+        </div>
+        <p><strong>Raw Value:</strong> Apply weights to sustainability indices.</p>
+        <div class="phase-formula">V<sub>Grezzo</sub> = <span class="coeff">w₁</span>·f₁(I<sub>Amb</sub>) + <span class="coeff">w₂</span>·f₂(I<sub>Soc</sub>) + <span class="coeff">w₃</span>·f₃(I<sub>Econ</sub>)</div>
+        <p><strong>Apply Penalties:</strong> Subtract deontic violation cost.</p>
+        <div class="phase-formula">V<sub>EN</sub>(A) = V<sub>Grezzo</sub> <span class="penalty">− C<sub>Violazione</sub></span></div>
+        <p><strong>Normalisation (optional):</strong> Map result to standard interval [0, 100].</p>
+        <div class="phase-formula">V<sub>EN</sub> = Normalise(V<sub>EN</sub>(A)) → [0, 100]</div>
+      </div>
+
+    </div>
+
+    <div class="argmax-block">
+      <span class="argmax-label">AI Decision Rule — Autonomous Agent Usage</span>
+      <div class="argmax-eq">
+        Decisione Finale = <span class="coeff">argmax</span><sub>Aᵢ</sub> V<sub>EN</sub>(Aᵢ)
+      </div>
+      <p class="argmax-desc">When an AI agent must choose among options A₁, A₂, A₃ …, the algorithm is executed for each option. The agent selects the action that maximises V<sub>EN</sub>. This mechanism makes CognitiveLogic natively suitable for autonomous ethical decision-making systems operating under EU AI Act compliance requirements.</p>
+    </div>
+
   </div>
 
   <!-- SECTION 3: COEFFICIENTS -->
