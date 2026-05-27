@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<!--
+  Copyright (c) 2026 Roberto Bob Malini - Cognitive Logic
+  https://www.cognitivelogic.it
+  Licensed under CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/)
+-->
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Copyright &amp; Proprietà Intellettuale · Cognitive Logic</title>
+  <meta name="description" content="Avviso di copyright e proprietà intellettuale del framework QEN — CognitiveLogic 2026. Roberto Bob Malini.">
+  <meta name="author" content="Roberto Malini — Cognitive Logic">
+  <meta name="copyright" content="© 2026 Roberto Bob Malini — Cognitive Logic. Tutti i diritti riservati.">
+  <meta name="robots" content="index, follow">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@300;400;500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --ink: #0f0e0c;
+      --paper: #f5f2ec;
+      --gold: #b8922a;
+      --gold-light: #d4a84b;
+      --rust: #8b3a2a;
+      --muted: #7a7469;
+      --rule: #d4cfc6;
+      --red: #c0392b;
+      --red-bg: #fdf0ee;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { font-size: 16px; scroll-behavior: smooth; }
+    body { font-family: 'DM Sans', sans-serif; background: var(--paper); color: var(--ink); line-height: 1.7; -webkit-font-smoothing: antialiased; }
+
+    header {
+      border-bottom: 1px solid var(--rule);
+      padding: 1.5rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      background: var(--paper);
+      z-index: 100;
+    }
+
+    .wordmark { font-family: 'DM Mono', monospace; font-size: 0.75rem; font-weight: 400; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gold); text-decoration: none; }
+    .doc-meta { font-family: 'DM Mono', monospace; font-size: 0.65rem; color: var(--muted); letter-spacing: 0.08em; }
+
+    /* ALERT BANNER */
+    .alert-banner {
+      background: var(--red);
+      color: white;
+      padding: 1rem 2rem;
+      text-align: center;
+      font-family: 'DM Mono', monospace;
+      font-size: 0.72rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    /* HERO */
+    .hero {
+      max-width: 820px;
+      margin: 0 auto;
+      padding: 5rem 2rem 3rem;
+      border-bottom: 1px solid var(--rule);
+    }
+
+    .doc-label { font-family: 'DM Mono', monospace; font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); margin-bottom: 1.5rem; display: block; }
+
+    h1 { font-family: 'DM Serif Display', serif; font-size: clamp(2rem, 5vw, 3.2rem); line-height: 1.1; font-weight: 400; margin-bottom: 0.5rem; letter-spacing: -0.02em; }
+    h1 em { font-style: italic; color: var(--red); }
+
+    .subtitle { font-size: 1rem; color: var(--muted); font-weight: 300; margin-top: 1rem; margin-bottom: 2rem; }
+
+    .meta-row { display: flex; flex-wrap: wrap; gap: 2rem; font-family: 'DM Mono', monospace; font-size: 0.7rem; color: var(--muted); letter-spacing: 0.05em; }
+    .meta-row span strong { color: var(--ink); font-weight: 500; }
+
+    /* CONTENT */
+    .content { max-width: 820px; margin: 0 auto; padding: 0 2rem 6rem; }
+
+    .section { margin-top: 4rem; padding-top: 2rem; border-top: 1px solid var(--rule); }
+
+    .section-label { font-family: 'DM Mono', monospace; font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); display: block; margin-bottom: 1rem; }
+
+    h2 { font-family: 'DM Serif Display', serif; font-size: 1.8rem; font-weight: 400; margin-bottom: 1.2rem; letter-spacing: -0.01em; }
+    h3 { font-family: 'DM Serif Display', serif; font-size: 1.2rem; font-weight: 400; margin: 2rem 0 0.8rem; }
+
+    p { margin-bottom: 1rem; font-size: 0.97rem; color: #2a2824; font-weight: 300; line-height: 1.75; }
+    p strong { color: var(--ink); font-weight: 500; }
+
+    /* OWNERSHIP BOX */
+    .ownership-grid {
+      display: grid;
+      gap: 1px;
+      background: var(--rule);
+      border: 1px solid var(--rule);
+      margin-top: 2rem;
+    }
+
+    .ownership-card {
+      background: white;
+      padding: 1.8rem 2rem;
+    }
+
+    .ownership-card h3 { margin-top: 0; font-size: 1rem; }
+
+    .asset-tag {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.6rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--gold);
+      display: block;
+      margin-bottom: 0.5rem;
+    }
+
+    .priority-date {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.68rem;
+      color: var(--muted);
+      margin-top: 0.5rem;
+      padding: 0.3rem 0.6rem;
+      background: var(--paper);
+      display: inline-block;
+    }
+
+    /* WARNING BOX */
+    .warning-box {
+      background: var(--red-bg);
+      border: 2px solid var(--red);
+      padding: 2rem;
+      margin-top: 2rem;
+    }
+
+    .warning-box .warning-title {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.65rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--red);
+      display: block;
+      margin-bottom: 1rem;
+      font-weight: 500;
+    }
+
+    .warning-box p { color: #5a1a12; font-size: 0.92rem; margin-bottom: 0.5rem; }
+
+    /* REMEDIES LIST */
+    .remedies-list {
+      list-style: none;
+      margin-top: 1.2rem;
+    }
+
+    .remedies-list li {
+      padding: 0.9rem 1rem 0.9rem 2.5rem;
+      border-bottom: 1px solid var(--rule);
+      font-size: 0.92rem;
+      font-weight: 300;
+      position: relative;
+      color: #2a2824;
+    }
+
+    .remedies-list li::before {
+      content: '→';
+      position: absolute;
+      left: 0.8rem;
+      color: var(--red);
+      font-family: 'DM Mono', monospace;
+    }
+
+    .remedies-list li:last-child { border-bottom: none; }
+    .remedies-list li strong { font-weight: 500; color: var(--ink); }
+
+    /* LICENSE BLOCK */
+    .license-block {
+      background: white;
+      border: 1px solid var(--rule);
+      padding: 2rem;
+      margin-top: 2rem;
+    }
+
+    .license-formula {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.82rem;
+      background: var(--paper);
+      border-left: 3px solid var(--gold);
+      padding: 0.8rem 1rem;
+      margin: 1rem 0;
+      color: var(--ink);
+      line-height: 1.7;
+    }
+
+    /* CHECKLIST */
+    .legal-checklist {
+      list-style: none;
+      margin-top: 1.5rem;
+    }
+
+    .legal-checklist li {
+      display: grid;
+      grid-template-columns: 1.5rem 1fr auto;
+      gap: 0.8rem;
+      padding: 1rem 0;
+      border-bottom: 1px solid var(--rule);
+      align-items: start;
+      font-size: 0.9rem;
+    }
+
+    .legal-checklist li:last-child { border-bottom: none; }
+
+    .step-num {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.65rem;
+      color: white;
+      background: var(--gold);
+      width: 1.4rem;
+      height: 1.4rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      margin-top: 0.1rem;
+    }
+
+    .step-body strong { color: var(--ink); font-weight: 500; display: block; margin-bottom: 0.2rem; }
+    .step-body span { color: var(--muted); font-size: 0.82rem; line-height: 1.5; }
+
+    .step-status {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.58rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 0.2rem 0.5rem;
+      white-space: nowrap;
+      margin-top: 0.1rem;
+    }
+
+    .status-todo { background: #fff3cd; color: #856404; }
+    .status-done { background: #d4edda; color: #155724; }
+    .status-progress { background: #cce5ff; color: #004085; }
+
+    /* CONTACT */
+    .contact-block {
+      background: var(--ink);
+      color: #e8e3da;
+      padding: 2.5rem;
+      margin-top: 2rem;
+    }
+
+    .contact-block .contact-label {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.6rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold-light);
+      display: block;
+      margin-bottom: 1rem;
+    }
+
+    .contact-block p { color: #8a8480; font-size: 0.9rem; margin-bottom: 0.8rem; }
+
+    .contact-block a {
+      color: var(--gold-light);
+      text-decoration: none;
+      font-family: 'DM Mono', monospace;
+      font-size: 0.85rem;
+    }
+
+    /* FOOTER */
+    footer {
+      border-top: 2px solid var(--ink);
+      padding: 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+      font-family: 'DM Mono', monospace;
+      font-size: 0.65rem;
+      color: var(--muted);
+      letter-spacing: 0.05em;
+      background: var(--paper);
+    }
+
+    footer a { color: var(--gold); text-decoration: none; }
+
+    @media (max-width: 600px) {
+      .meta-row { gap: 1rem; }
+      .legal-checklist li { grid-template-columns: 1.5rem 1fr; }
+      .step-status { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="alert-banner">
+  Proprietà intellettuale protetta — Tutti i diritti riservati · © 2026 Roberto Bob Malini — Cognitive Logic
+</div>
+
+<header>
+  <a href="https://cognitivelogic.it" class="wordmark"><img src="img/logo-cognitivelogic.png" alt="Cognitive Logic" style="height:28px;width:auto;display:block;"></a>
+  <span class="doc-meta">LEGAL NOTICE · IP PROTECTION · v1.0 · 2026</span>
+</header>
+
+<section class="hero">
+  <span class="doc-label">Avviso Legale · Proprietà Intellettuale · Diritti Riservati</span>
+  <h1>Copyright &amp;<br><em>Proprietà Intellettuale</em></h1>
+  <p class="subtitle">Tutti i contenuti, algoritmi, metodologie e framework pubblicati su questo sito sono di proprietà esclusiva di Roberto Bob Malini — Cognitive Logic e sono protetti dalla normativa italiana ed europea sul diritto d'autore.</p>
+  <div class="meta-row">
+    <span><strong>Titolare</strong> Roberto Bob Malini</span>
+    <span><strong>Entità</strong> Cognitive Logic</span>
+    <span><strong>Sede</strong> Bologna, Italia</span>
+    <span><strong>Prima pubblicazione</strong> 2026</span>
+  </div>
+</section>
+
+<div class="content">
+
+  <!-- SEZIONE 1: ASSET PROTETTI -->
+  <div class="section">
+    <span class="section-label">§ 1 · Asset Protetti</span>
+    <h2>Opere e Proprietà Intellettuale</h2>
+    <p>I seguenti asset sono di proprietà esclusiva di Roberto Bob Malini — Cognitive Logic. Qualsiasi utilizzo non autorizzato costituisce violazione del diritto d'autore ai sensi della Legge 633/1941 (Legge sul Diritto d'Autore) e del Regolamento (UE) 2017/1001 sul marchio dell'Unione europea.</p>
+
+    <div class="ownership-grid">
+      <div class="ownership-card">
+        <span class="asset-tag">Algoritmo · Proprietà Esclusiva</span>
+        <h3>Framework QEN — Quantificazione Etica Naturale</h3>
+        <p>Il framework completo per la valutazione etica sostenibile applicata a imprese, prodotti e progetti. Include architettura, metodologia, knowledge graph (130 nodi, 209 archi) e sistema di scoring.</p>
+        <span class="priority-date">Data di priorità: 2026 · GitHub commit certificato</span>
+      </div>
+
+      <div class="ownership-card">
+        <span class="asset-tag">Formula · Proprietà Esclusiva</span>
+        <h3>Funzione V<sub>EN</sub>(A) — Valore Etico Naturale dell'Azione</h3>
+        <p>L'algoritmo formale V<sub>EN</sub>(A) = [w₁·f₁(I<sub>Amb</sub>) + w₂·f₂(I<sub>Soc</sub>) + w₃·f₃(I<sub>Econ</sub>)] − C<sub>Violazione</sub>, incluse le funzioni di sostenibilità, i pesi di priorità, il meccanismo di costo di violazione deontica e la regola argmax per agenti IA.</p>
+        <span class="priority-date">Pubblicato: 27 maggio 2026 · methodology.html · SHA certificato</span>
+      </div>
+
+      <div class="ownership-card">
+        <span class="asset-tag">Metodologia · Proprietà Esclusiva</span>
+        <h3>Nota Metodologica QEN v1.0</h3>
+        <p>La nota metodologica sui coefficienti di ponderazione (Vs×0.40 + Va×0.35 + Vt×0.25), la loro giustificazione normativa (EU AI Act, GDPR, EU Taxonomy) e il processo di revisione semantica.</p>
+        <span class="priority-date">Pubblicato: aprile 2026 · methodology.html</span>
+      </div>
+
+      <div class="ownership-card">
+        <span class="asset-tag">Brand · Proprietà Esclusiva</span>
+        <h3>Nome e Marchio "QEN" · "CognitiveLogic"</h3>
+        <p>I nomi commerciali QEN, Qualitative Ethical Network, Quantificazione Etica Naturale, CognitiveLogic e Cognitive Logic, i relativi loghi e l'identità visiva sono di proprietà esclusiva dell'autore. L'uso non autorizzato del marchio costituisce concorrenza sleale ai sensi degli artt. 2598 ss. c.c.</p>
+        <span class="priority-date">In corso di registrazione: EUIPO (marchio UE)</span>
+      </div>
+
+      <div class="ownership-card">
+        <span class="asset-tag">Codice Sorgente · Proprietà Esclusiva</span>
+        <h3>Implementazione Software — API &amp; Agenti IA</h3>
+        <p>Tutto il codice sorgente pubblicato in questo repository, inclusi gli agenti QEN (compliance-auditor, territorial-mapper, advisory-council, intelligence-feed), il motore di scoring FastAPI e i knowledge graph JSON.</p>
+        <span class="priority-date">Repository: github.com/CognitiveLogic2026 · Commit certificati</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- SEZIONE 2: AVVISO DI VIOLAZIONE -->
+  <div class="section">
+    <span class="section-label">§ 2 · Avviso di Violazione</span>
+    <h2>Usi Vietati e Conseguenze Legali</h2>
+
+    <div class="warning-box">
+      <span class="warning-title">⚠ Avviso Formale — Violazioni Perseguite Legalmente</span>
+      <p><strong>Sono espressamente vietati, senza previa autorizzazione scritta del titolare:</strong></p>
+      <p>— La riproduzione totale o parziale della formula V<sub>EN</sub>(A) e del framework QEN a fini commerciali</p>
+      <p>— L'utilizzo dell'algoritmo in prodotti, servizi o pubblicazioni senza attribuzione esplicita</p>
+      <p>— La registrazione del marchio "QEN", "CognitiveLogic" o varianti in qualsiasi giurisdizione</p>
+      <p>— L'addestramento di modelli di intelligenza artificiale su contenuti di questo sito senza licenza</p>
+      <p>— Il reverse engineering o la decompilazione del codice sorgente proprietario</p>
+    </div>
+
+    <h3>Rimedi Legali Applicabili</h3>
+    <p>In caso di violazione accertata, il titolare si riserva di azionare i seguenti strumenti legali:</p>
+    <ul class="remedies-list">
+      <li><strong>Azione civile per risarcimento danni</strong> — art. 158 Legge 633/1941: il titolare può richiedere il risarcimento del danno emergente e del lucro cessante derivanti dalla violazione.</li>
+      <li><strong>Azione inibitoria</strong> — art. 156 Legge 633/1941: cessazione immediata dell'uso non autorizzato con ingiunzione del Tribunale.</li>
+      <li><strong>Sequestro e distruzione</strong> — art. 160 Legge 633/1941: sequestro delle copie non autorizzate e distruzione del materiale illecito.</li>
+      <li><strong>Sanzioni penali</strong> — artt. 171 ss. Legge 633/1941: la violazione del diritto d'autore a fini di lucro è reato perseguibile penalmente fino a 4 anni di reclusione.</li>
+      <li><strong>Violazione del marchio UE</strong> — Reg. (UE) 2017/1001: uso non autorizzato del marchio registrato è perseguibile in tutti i 27 Stati membri UE.</li>
+      <li><strong>Concorrenza sleale</strong> — artt. 2598 ss. c.c.: imitazione servile e appropriazione di pregi altrui sono atti di concorrenza sleale azionabili davanti al Tribunale delle Imprese.</li>
+    </ul>
+  </div>
+
+  <!-- SEZIONE 3: LICENZA -->
+  <div class="section">
+    <span class="section-label">§ 3 · Licenza</span>
+    <h2>Termini di Utilizzo Autorizzato</h2>
+    <p>La documentazione pubblicata è rilasciata sotto licenza <strong>Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)</strong> esclusivamente per usi non commerciali, di ricerca e didattici, con le seguenti condizioni obbligatorie:</p>
+
+    <div class="license-block">
+      <div class="license-formula">
+        Attribuzione obbligatoria:<br>
+        "Roberto Bob Malini — Cognitive Logic, Framework QEN v1.0,<br>
+        cognitivelogic.it/methodology, 2026"
+      </div>
+      <p style="margin-top:1rem;">Per <strong>usi commerciali</strong>, integrazione in prodotti software, pubblicazioni accademiche con ricadute economiche o addestramento di modelli IA, è richiesta una <strong>licenza commerciale esplicita</strong> ottenibile contattando il titolare.</p>
+      <p>Qualsiasi opera derivata deve essere distribuita con la stessa licenza CC BY-SA 4.0 e deve indicare chiaramente le modifiche apportate rispetto all'originale.</p>
+    </div>
+  </div>
+
+  <!-- SEZIONE 4: PERCORSO LEGALE -->
+  <div class="section">
+    <span class="section-label">§ 4 · Percorso di Protezione</span>
+    <h2>Stato della Protezione Legale</h2>
+    <p>Il titolare sta percorrendo un percorso strutturato di tutela della proprietà intellettuale. Di seguito lo stato aggiornato:</p>
+
+    <ul class="legal-checklist">
+      <li>
+        <span class="step-num">1</span>
+        <div class="step-body">
+          <strong>Prova di anteriorità — Repository GitHub</strong>
+          <span>Commit certificati con timestamp su github.com/CognitiveLogic2026. Ogni modifica è tracciata e datata con SHA immutabile. Costituisce prova di paternità riconosciuta nei procedimenti legali.</span>
+        </div>
+        <span class="step-status status-done">Completato</span>
+      </li>
+      <li>
+        <span class="step-num">2</span>
+        <div class="step-body">
+          <strong>Deposito SIAE — Registro Pubblico Speciale</strong>
+          <span>Deposito del framework QEN (documentazione + codice) presso il Registro Pubblico Speciale della SIAE per ottenere data certa legalmente riconosciuta. Costo: circa €150–300. Procedura: siae.it.</span>
+        </div>
+        <span class="step-status status-todo">Da avviare</span>
+      </li>
+      <li>
+        <span class="step-num">3</span>
+        <div class="step-body">
+          <strong>Notaio — Atto di Notorietà</strong>
+          <span>Deposito presso notaio del documento integrale del framework con data certa notarile. Rafforza la posizione in caso di contenzioso. Costo: circa €200–500.</span>
+        </div>
+        <span class="step-status status-todo">Da avviare</span>
+      </li>
+      <li>
+        <span class="step-num">4</span>
+        <div class="step-body">
+          <strong>Marchio UE "QEN" — EUIPO</strong>
+          <span>Registrazione del marchio "QEN" e "CognitiveLogic" presso l'Ufficio dell'Unione Europea per la Proprietà Intellettuale (EUIPO). Valido in tutti i 27 Stati UE. Costo: €850 (prima classe) + €50 per classe aggiuntiva. Procedura: euipo.europa.eu.</span>
+        </div>
+        <span class="step-status status-todo">Da avviare</span>
+      </li>
+      <li>
+        <span class="step-num">5</span>
+        <div class="step-body">
+          <strong>Pubblicazione Accademica</strong>
+          <span>Sottomissione del framework QEN a una rivista peer-reviewed (es. Journal of AI Ethics, Sustainability) per fissare la paternità scientifica in modo internazionalmente riconosciuto e inattaccabile.</span>
+        </div>
+        <span class="step-status status-todo">Da avviare</span>
+      </li>
+      <li>
+        <span class="step-num">6</span>
+        <div class="step-body">
+          <strong>Brevetto Software — UIBM / EPO</strong>
+          <span>Valutazione della brevettabilità del sistema QEN come metodo computazionale applicato (non formula astratta). Consulenza con un consulente brevettuario per la strategia ottimale. UIBM: uibm.gov.it. EPO: epo.org.</span>
+        </div>
+        <span class="step-status status-todo">Da valutare</span>
+      </li>
+    </ul>
+  </div>
+
+  <!-- SEZIONE 5: CONTATTI -->
+  <div class="section">
+    <span class="section-label">§ 5 · Licenze e Contatti</span>
+    <h2>Richieste di Licenza</h2>
+    <p>Per richieste di licenza commerciale, collaborazioni accademiche, integrazioni API o segnalazioni di violazione, contattare direttamente il titolare:</p>
+
+    <div class="contact-block">
+      <span class="contact-label">Contatto Legale &amp; Licenze</span>
+      <p>Roberto Bob Malini — Cognitive Logic<br>Bologna, Italia</p>
+      <p>Email: <a href="mailto:info@cognitivelogic.it">info@cognitivelogic.it</a></p>
+      <p>LinkedIn: <a href="https://linkedin.com/in/robertobobmalini" target="_blank" rel="noopener">linkedin.com/in/robertobobmalini</a></p>
+      <p style="margin-top:1.2rem;font-size:0.82rem;color:#666;">Indicare nell'oggetto: "Richiesta Licenza QEN" o "Segnalazione Violazione IP". Le richieste vengono esaminate entro 10 giorni lavorativi.</p>
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  <span>© 2026 Roberto Bob Malini — Cognitive Logic · Bologna, Italia · Tutti i diritti riservati</span>
+  <span><a href="mailto:info@cognitivelogic.it">info@cognitivelogic.it</a> · <a href="https://cognitivelogic.it">cognitivelogic.it</a></span>
+  <span>Legge 633/1941 · GDPR 2016/679 · Reg. UE 2017/1001</span>
+</footer>
+
+</body>
+</html>
