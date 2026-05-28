@@ -1,0 +1,943 @@
+<!DOCTYPE html>
+<!--
+  Copyright (c) 2026 Roberto Malini - Cognitive Logic
+  https://www.cognitivelogic.it
+  Licensed under CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/)
+-->
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>QEN Balneare & Ambulanti Auditor v1.0 — Riviera · Cognitive Logic</title>
+  <meta name="description" content="QEN Auditor per stabilimenti balneari, beach club, ambulanti, posteggi mercato e dehors. 6 moduli: concessione Bolkestein 2027, sostenibilità marina, servizi, filiera, capitale umano, identità digitale." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css?v=2" />
+  <link rel="search" type="application/opensearchdescription+xml" title="Cognitive Logic" href="https://cognitivelogic.it/opensearchdescription.xml" />
+
+  <style>
+    :root {
+      --navy:      #070D1A;
+      --navy-2:    #0D1628;
+      --navy-3:    #122035;
+      --gold:      #C9A84C;
+      --gold-line: rgba(201,168,76,0.22);
+      --gold-dim:  rgba(201,168,76,0.08);
+      --serif:     'Cormorant Garamond', serif;
+      --mono:      'DM Mono', monospace;
+      --text:      #CFC9B8;
+      --text-2:    #E8E2D4;
+      --muted:     #6A6254;
+      --line:      rgba(201,168,76,0.12);
+      --line-2:    rgba(255,255,255,0.06);
+      --c-crit:    #E05A52;
+      --c-high:    #D4874A;
+      --c-med:     #C9A84C;
+      --c-low:     #5AB87A;
+      --sea:       #3AB8D4;
+      --sea-dim:   rgba(58,184,212,0.08);
+      --sea-line:  rgba(58,184,212,0.22);
+    }
+
+    input[type="text"], input[type="number"], select, textarea {
+      width: 100%; padding: 9px 12px;
+      background: var(--navy-3); border: 1px solid var(--line);
+      color: var(--text-2); font-family: var(--mono); font-size: 0.78rem;
+      outline: none; transition: border-color 0.2s; resize: vertical; box-sizing: border-box;
+    }
+    input:focus, select:focus, textarea:focus { border-color: var(--gold-line); }
+    select option { background: var(--navy-2); }
+
+    input[type="checkbox"] {
+      width: 14px; height: 14px; accent-color: var(--gold); cursor: pointer; flex-shrink: 0;
+    }
+    .check-row {
+      display: flex; align-items: center; gap: 10px; padding: 8px 0;
+      font-family: var(--mono); font-size: 0.74rem; color: var(--text); cursor: pointer;
+    }
+    .check-row:hover { color: var(--text-2); }
+
+    .field { margin-bottom: 14px; }
+    .field label {
+      display: block; font-size: 0.58rem; letter-spacing: 0.18em; text-transform: uppercase;
+      color: var(--muted); margin-bottom: 5px; font-family: var(--mono);
+    }
+    .field-hint { font-family: var(--mono); font-size: 0.6rem; color: var(--muted); margin-top: 3px; opacity: 0.7; }
+
+    .mod-tabs {
+      display: flex; flex-wrap: wrap; gap: 4px; margin-bottom: 20px;
+    }
+    .mod-tab {
+      padding: 5px 11px; font-family: var(--mono); font-size: 0.6rem; letter-spacing: 0.1em;
+      text-transform: uppercase; color: var(--muted); border: 1px solid var(--line-2);
+      background: transparent; cursor: pointer; transition: all 0.15s; white-space: nowrap;
+    }
+    .mod-tab:hover { border-color: var(--gold-line); color: var(--text); }
+    .mod-tab.active { border-color: var(--gold-line); background: var(--gold-dim); color: var(--gold); }
+
+    .mod-section { display: none; }
+    .mod-section.visible { display: block; }
+    .mod-header {
+      display: flex; align-items: baseline; gap: 10px;
+      margin-bottom: 16px; padding-bottom: 10px; border-bottom: 1px solid var(--line);
+    }
+    .mod-title { font-family: var(--serif); font-size: 1rem; font-weight: 600; color: var(--text-2); }
+    .mod-weight { font-family: var(--mono); font-size: 0.58rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--muted); }
+    .mod-desc {
+      font-family: var(--mono); font-size: 0.64rem; color: var(--muted); line-height: 1.6;
+      margin-bottom: 16px; padding: 10px 12px; border: 1px solid var(--line-2); background: var(--navy-3);
+    }
+
+    /* Tipologia selector */
+    .tipo-bar {
+      display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 20px;
+    }
+    .tipo-btn {
+      padding: 6px 14px; font-family: var(--mono); font-size: 0.62rem; letter-spacing: 0.08em;
+      text-transform: uppercase; border: 1px solid var(--line-2); background: transparent;
+      color: var(--muted); cursor: pointer; transition: all 0.15s;
+    }
+    .tipo-btn:hover { border-color: var(--sea-line); color: var(--text); }
+    .tipo-btn.active { border-color: var(--sea-line); background: var(--sea-dim); color: var(--sea); }
+
+    .general-info {
+      padding: 16px; border: 1px solid var(--gold-line);
+      background: var(--gold-dim); margin-bottom: 20px;
+    }
+    .general-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    @media (max-width: 640px) { .general-grid { grid-template-columns: 1fr; } }
+
+    .btn-audit {
+      display: inline-flex; align-items: center; gap: 8px; padding: 11px 24px;
+      background: var(--gold); color: var(--navy); font-family: var(--mono); font-size: 0.72rem;
+      letter-spacing: 0.1em; text-transform: uppercase; border: none; cursor: pointer;
+      font-weight: 500; transition: opacity 0.2s;
+    }
+    .btn-audit:hover { opacity: 0.85; }
+    .btn-ghost-sm {
+      display: inline-flex; align-items: center; gap: 6px; padding: 9px 14px;
+      background: transparent; color: var(--muted); font-family: var(--mono); font-size: 0.65rem;
+      letter-spacing: 0.08em; text-transform: uppercase; border: 1px solid var(--line-2);
+      cursor: pointer; transition: border-color 0.2s, color 0.2s;
+    }
+    .btn-ghost-sm:hover { border-color: var(--gold-line); color: var(--text); }
+
+    .auditor-grid {
+      display: grid; grid-template-columns: 440px 1fr; gap: 24px; align-items: start;
+    }
+    @media (max-width: 960px) { .auditor-grid { grid-template-columns: 1fr; } }
+    .panel { background: var(--navy-2); border: 1px solid var(--line); padding: 26px; }
+
+    .qen-composite {
+      padding: 22px 26px; border: 1px solid var(--gold-line); background: var(--gold-dim);
+      margin-bottom: 20px; display: flex; align-items: baseline; gap: 16px;
+    }
+    .qen-score-big { font-family: var(--serif); font-size: 4rem; font-weight: 300; line-height: 1; color: var(--text-2); }
+    .qen-score-big .frac { color: var(--gold); font-size: 1.6rem; }
+    .qen-score-meta { font-family: var(--mono); font-size: 0.64rem; color: var(--muted); line-height: 2; }
+
+    .status-badge {
+      display: inline-flex; align-items: center; gap: 8px; padding: 7px 16px;
+      font-family: var(--mono); font-size: 0.65rem; letter-spacing: 0.12em;
+      text-transform: uppercase; border: 1px solid;
+    }
+    .status-badge::before { content:''; width:6px; height:6px; border-radius:50%; background:currentColor; }
+    .status-green  { color:var(--c-low);  border-color:rgba(90,184,122,0.35);  background:rgba(90,184,122,0.07); }
+    .status-yellow { color:var(--c-med);  border-color:rgba(201,168,76,0.35);  background:rgba(201,168,76,0.07); }
+    .status-red    { color:var(--c-crit); border-color:rgba(224,90,82,0.35);   background:rgba(224,90,82,0.07); }
+
+    .module-row { margin-bottom: 14px; }
+    .module-row-header { display: flex; align-items: baseline; gap: 8px; margin-bottom: 5px; }
+    .module-row-label { font-family: var(--mono); font-size: 0.62rem; color: var(--text); flex: 1; }
+    .module-row-weight { font-family: var(--mono); font-size: 0.58rem; color: var(--muted); letter-spacing: 0.1em; }
+    .module-row-score { font-family: var(--mono); font-size: 0.72rem; color: var(--text-2); width: 32px; text-align: right; }
+    .score-track { height: 3px; background: var(--line-2); margin-bottom: 4px; }
+    .score-fill { height: 100%; width: 0%; transition: width 1.2s cubic-bezier(0.16,1,0.3,1); }
+    .score-fill.fill-good { background: var(--c-low); }
+    .score-fill.fill-med  { background: var(--c-med); }
+    .score-fill.fill-high { background: var(--c-high); }
+    .score-fill.fill-crit { background: var(--c-crit); }
+    .module-row-note { font-family: var(--mono); font-size: 0.6rem; color: var(--muted); line-height: 1.5; padding-left: 2px; }
+
+    .claim-denied-item {
+      padding: 10px 14px; border: 1px solid rgba(224,90,82,0.3); background: rgba(224,90,82,0.06);
+      font-family: var(--mono); font-size: 0.68rem; color: var(--c-crit); margin-bottom: 4px;
+      display: flex; align-items: center; gap: 10px;
+    }
+    .rec-item {
+      display: flex; gap: 12px; padding: 10px 12px; border: 1px solid var(--line-2);
+      background: var(--navy-3); margin-bottom: 4px; font-family: var(--mono);
+      font-size: 0.70rem; color: var(--muted); line-height: 1.6;
+    }
+    .rec-num { font-family: var(--serif); font-size: 1.1rem; color: var(--gold); flex-shrink: 0; line-height: 1.1; }
+
+    .meta-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; margin-top: 16px; }
+    .meta-item { padding: 9px 12px; border: 1px solid var(--line-2); background: var(--navy-3); }
+    .meta-label { font-family: var(--mono); font-size: 0.55rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--muted); margin-bottom: 3px; }
+    .meta-val { font-family: var(--mono); font-size: 0.70rem; color: var(--text); }
+
+    .json-panel { margin-top: 16px; border: 1px solid var(--line-2); background: var(--navy-3); }
+    .json-panel-header { display: flex; align-items: center; justify-content: space-between; padding: 9px 14px; border-bottom: 1px solid var(--line-2); cursor: pointer; }
+    .json-panel-title { font-family:var(--mono); font-size:0.6rem; letter-spacing:0.15em; text-transform:uppercase; color:var(--muted); }
+    .json-toggle { font-family:var(--mono); font-size:0.6rem; color:var(--gold); background:none; border:none; cursor:pointer; }
+    .json-raw { padding: 14px; font-family: var(--mono); font-size: 0.66rem; color: var(--muted); line-height: 1.7; white-space: pre-wrap; overflow-x: auto; max-height: 300px; overflow-y: auto; display: none; }
+    .json-raw.open { display: block; }
+
+    .empty-state { padding: 32px 0; text-align: center; }
+    .empty-state p { font-family:var(--mono); font-size:0.72rem; color:var(--muted); line-height:1.9; }
+    .sec-label { font-size: 0.57rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--muted); padding-bottom: 10px; border-bottom: 1px solid var(--line); margin-bottom: 16px; font-family: var(--mono); }
+    .section-divider { border: none; border-top: 1px solid var(--line-2); margin: 20px 0; }
+    .no-claims { font-family: var(--mono); font-size: 0.68rem; color: var(--c-low); padding: 10px 14px; border: 1px solid rgba(90,184,122,0.3); background: rgba(90,184,122,0.05); }
+
+    .formula-box { padding: 14px 18px; border: 1px solid var(--line-2); background: var(--navy-3); margin-top: 20px; }
+    .formula-text { font-family:var(--mono); font-size:0.74rem; color:var(--text-2); line-height:1.9; }
+    .formula-text .hi { color:var(--gold); }
+
+    /* Bolkestein alert box */
+    .bolkestein-alert {
+      padding: 10px 14px; border: 1px solid var(--sea-line); background: var(--sea-dim);
+      font-family: var(--mono); font-size: 0.64rem; color: var(--sea); margin-bottom: 14px; line-height: 1.6;
+    }
+  </style>
+</head>
+<body>
+  <div class="site-bg"></div>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="index.html" class="brand">
+        <img src="img/logo-cognitivelogic.png" alt="Cognitive Logic" style="height:28px;width:auto;display:block;">
+      </a>
+      <nav class="main-nav">
+        <a href="framework.html">Framework</a>
+        <a href="ecosystem.html">Ecosystem</a>
+        <a href="qen-live.html">QEN Live</a>
+        <a href="methodology.html">Methodology</a>
+        <a href="qen-compliance-auditor.html">Auditor AI</a>
+        <a href="qen-horeca-auditor.html">HoReCa</a>
+        <a href="qen-balneare-auditor.html" class="active">Balneare</a>
+      </nav>
+      <div class="header-end">
+        <a href="demo.html" class="btn btn-ghost">Demo</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container">
+        <div class="eyebrow">QEN Balneare &amp; Ambulanti Auditor v1.0 · Riviera Adriatica · Bolkestein 2027</div>
+        <h1>
+          Compliance<br>
+          <em style="font-style:italic;color:var(--gold)">Spiagge &amp; Concessioni.</em>
+        </h1>
+        <p class="hero-lead">
+          Score QEN certificato in 6 moduli per stabilimenti balneari, beach club, ambulanti alimentari,
+          posteggi mercato e dehors. Conformità Green Claim EU · Direttiva Bolkestein 2027 · CCNL Turismo.
+        </p>
+      </div>
+    </section>
+
+    <section class="section" style="padding-top:0">
+      <div class="container">
+        <div class="auditor-grid">
+
+          <!-- INPUT PANEL -->
+          <div class="panel">
+
+            <!-- Tipologia selector -->
+            <div class="sec-label" style="margin-bottom:10px">Tipologia Operatore</div>
+            <div class="tipo-bar" id="tipoBar">
+              <button class="tipo-btn active" onclick="setTipo('balneare',this)">Stabilimento Balneare</button>
+              <button class="tipo-btn" onclick="setTipo('beach_club',this)">Beach Club</button>
+              <button class="tipo-btn" onclick="setTipo('chiosco',this)">Chiosco Spiaggia</button>
+              <button class="tipo-btn" onclick="setTipo('ambulante_food',this)">Ambulante Alimentare</button>
+              <button class="tipo-btn" onclick="setTipo('ambulante_nonfood',this)">Ambulante Non Alim.</button>
+              <button class="tipo-btn" onclick="setTipo('mercato',this)">Posteggio Mercato</button>
+              <button class="tipo-btn" onclick="setTipo('dehors',this)">Dehors</button>
+            </div>
+
+            <!-- General info -->
+            <div class="general-info">
+              <div class="sec-label" style="margin-bottom:12px">Dati Operatore</div>
+              <div class="general-grid">
+                <div class="field" style="margin-bottom:0">
+                  <label for="azienda_nome">Nome / Ragione Sociale</label>
+                  <input type="text" id="azienda_nome" placeholder="es. Stabilimento Bagno 55" />
+                </div>
+                <div class="field" style="margin-bottom:0">
+                  <label for="comune">Comune</label>
+                  <input type="text" id="comune" placeholder="es. Rimini" />
+                </div>
+              </div>
+            </div>
+
+            <!-- Module tabs -->
+            <div class="mod-tabs">
+              <button class="mod-tab active" onclick="showTab('m1')">M1 Concessione</button>
+              <button class="mod-tab" onclick="showTab('m2')">M2 Sostenibilità</button>
+              <button class="mod-tab" onclick="showTab('m3')" id="tab-m3">M3 Servizi</button>
+              <button class="mod-tab" onclick="showTab('m4')">M4 Filiera</button>
+              <button class="mod-tab" onclick="showTab('m5')">M5 Lavoro</button>
+              <button class="mod-tab" onclick="showTab('m6')">M6 Digitale</button>
+            </div>
+
+            <!-- M1: Concessione & Bolkestein -->
+            <div class="mod-section visible" id="mod-m1">
+              <div class="mod-header">
+                <div class="mod-title">Concessione &amp; Bolkestein 2027</div>
+                <div class="mod-weight">Peso 25%</div>
+              </div>
+              <div class="mod-desc">
+                Verifica della regolarità autorizzativa e della readiness alla Direttiva Bolkestein (scadenza concessioni 2027).
+                È il modulo con il peso maggiore: una concessione non regolare invalida tutti i Green Claims.
+              </div>
+              <div class="bolkestein-alert">
+                ⚠ Direttiva Bolkestein (2006/123/CE) · Scadenza concessioni italiane: 31/12/2027 —
+                preparare documentazione per gara pubblica o proroga tecnica entro Q4 2026.
+              </div>
+              <label class="check-row">
+                <input type="checkbox" id="m1_concessione_regolare" />
+                Concessione / Licenza in regola e aggiornata (+50pt)
+              </label>
+              <label class="check-row">
+                <input type="checkbox" id="m1_bolkestein_ready" />
+                Piano di adeguamento Bolkestein 2027 predisposto (+30pt)
+              </label>
+              <label class="check-row">
+                <input type="checkbox" id="m1_no_sanzioni" />
+                Nessuna sanzione amministrativa negli ultimi 2 anni (+20pt)
+              </label>
+              <div class="field" style="margin-top:10px">
+                <label for="m1_num_concessione">N° Concessione / Licenza</label>
+                <input type="text" id="m1_num_concessione" placeholder="es. 2024/RM/0145 (informativo)" />
+                <div class="field-hint">Non incide sul punteggio — utile per export JSON</div>
+              </div>
+              <div class="field">
+                <label for="m1_scadenza">Anno scadenza autorizzazione</label>
+                <input type="number" id="m1_scadenza" placeholder="es. 2027" min="2024" max="2040" />
+                <div class="field-hint">Informativo — scadenza pre-2027 senza piano → alert</div>
+              </div>
+            </div>
+
+            <!-- M2: Sostenibilità Marina/Ambientale -->
+            <div class="mod-section" id="mod-m2">
+              <div class="mod-header">
+                <div class="mod-title">Sostenibilità Marina &amp; Ambientale</div>
+                <div class="mod-weight">Peso 20%</div>
+              </div>
+              <div class="mod-desc">
+                Impatto ambientale dell'area di concessione. Riduzione plastica monouso,
+                raccolta differenziata, certificazioni ambientali (Bandiera Blu, Blue Flag) e rispetto biodiversità marina.
+              </div>
+              <div class="field">
+                <label for="m2_plastica">Plastica Monouso (kg/mese)</label>
+                <input type="number" id="m2_plastica" placeholder="es. 5" min="0" />
+                <div class="field-hint">Penalità −4pt/kg (max −60pt)</div>
+              </div>
+              <div class="field">
+                <label for="m2_differenziata">Raccolta Differenziata (%)</label>
+                <input type="number" id="m2_differenziata" placeholder="es. 80" min="0" max="100" />
+                <div class="field-hint">Score base = % differenziata · ≥ 90% → bonus +10pt</div>
+              </div>
+              <label class="check-row">
+                <input type="checkbox" id="m2_bandiera_blu" />
+                Certificazione Bandiera Blu / Blue Flag (+20pt)
+              </label>
+              <label class="check-row">
+                <input type="checkbox" id="m2_no_plastica_monouso" />
+                Zero plastica monouso dichiarata (+10pt)
+              </label>
+              <label class="check-row">
+                <input type="checkbox" id="m2_pulizia_spiaggia" />
+                Protocollo pulizia spiaggia certificato (+10pt)
+              </label>
+            </div>
+
+            <!-- M3: Servizi & Accessibilità (dinamico per tipologia) -->
+            <div class="mod-section" id="mod-m3">
+              <div class="mod-header">
+                <div class="mod-title" id="m3-title">Servizi, Sicurezza &amp; Accessibilità</div>
+                <div class="mod-weight">Peso 15%</div>
+              </div>
+              <div class="mod-desc" id="m3-desc">
+                Qualità dell'offerta, sicurezza (bagnini certificati per balneari) e accessibilità
+                per persone con disabilità (L.104/1992 + DM 236/1989).
+              </div>
+
+              <!-- Sezione balneare/beach_club/chiosco -->
+              <div id="m3-balneare">
+                <div class="field">
+                  <label for="m3_bagnini">N° Bagnini Certificati in Servizio</label>
+                  <input type="number" id="m3_bagnini" placeholder="es. 2" min="0" />
+                  <div class="field-hint">≥ 2 → +25pt | 1 → +10pt | 0 → score azzerato per claim sicurezza</div>
+                </div>
+                <div class="field">
+                  <label for="m3_ombrelloni">N° Ombrelloni / Postazioni</label>
+                  <input type="number" id="m3_ombrelloni" placeholder="es. 120" min="0" />
+                  <div class="field-hint">Informativo — usato per benchmark densità/mq</div>
+                </div>
+                <label class="check-row">
+                  <input type="checkbox" id="m3_accessibile_balneare" />
+                  Accesso disabili certificato L.104 (passerelle, WC, area mare) (+30pt)
+                </label>
+                <label class="check-row">
+                  <input type="checkbox" id="m3_defibrillatore" />
+                  Defibrillatore (DAE) presente e personale formato (+15pt)
+                </label>
+                <label class="check-row">
+                  <input type="checkbox" id="m3_servizi_extra" />
+                  Servizi accessori (bar, noleggio attrezzatura, sport acquatici) (+10pt)
+                </label>
+              </div>
+
+              <!-- Sezione ambulante/mercato/dehors -->
+              <div id="m3-ambulante" style="display:none">
+                <div class="field">
+                  <label for="m3_anni_attivita">Anni di Attività nel Posteggio</label>
+                  <input type="number" id="m3_anni_attivita" placeholder="es. 8" min="0" />
+                  <div class="field-hint">+5pt/anno (max +30pt) — continuità = affidabilità</div>
+                </div>
+                <div class="field">
+                  <label for="m3_soddisfazione">Soddisfazione Clienti (0–5 stelle)</label>
+                  <input type="number" id="m3_soddisfazione" placeholder="es. 4.2" min="0" max="5" step="0.1" />
+                  <div class="field-hint">Score = stelle × 10 (max 50pt)</div>
+                </div>
+                <label class="check-row">
+                  <input type="checkbox" id="m3_accessibile_amb" />
+                  Postazione accessibile a persone con disabilità (+20pt)
+                </label>
+                <label class="check-row">
+                  <input type="checkbox" id="m3_prezzi_fissi" />
+                  Listino prezzi esposto e fisso (+10pt)
+                </label>
+              </div>
+            </div>
+
+            <!-- M4: Filiera & Km-Zero -->
+            <div class="mod-section" id="mod-m4">
+              <div class="mod-header">
+                <div class="mod-title">Filiera &amp; Km-Zero</div>
+                <div class="mod-weight">Peso 15%</div>
+              </div>
+              <div class="mod-desc">
+                Tracciabilità e prossimità dei fornitori. Per operatori alimentari:
+                HACCP obbligatorio, provenienza prodotti, bonus filiera corta adriatica.
+                Per non alimentari: provenienza e certificazione materiali.
+              </div>
+              <div class="field">
+                <label for="m4_fornitori_locali">Fornitori entro 100km (%)</label>
+                <input type="number" id="m4_fornitori_locali" placeholder="es. 65" min="0" max="100" />
+                <div class="field-hint">Score base = % × 0.6 (max 60pt)</div>
+              </div>
+              <label class="check-row">
+                <input type="checkbox" id="m4_haccp" />
+                Certificazione HACCP in regola (alimentare) (+30pt)
+              </label>
+              <label class="check-row">
+                <input type="checkbox" id="m4_tracciabilita" />
+                Sistema di tracciabilità documentata fornitori (+10pt)
+              </label>
+              <label class="check-row">
+                <input type="checkbox" id="m4_bio" />
+                Prodotti biologici certificati (parziale o totale) (+10pt)
+              </label>
+              <div class="field" style="margin-top:8px">
+                <label for="m4_prodotti">Prodotti tipici / locali offerti (lista, separati da virgola)</label>
+                <textarea id="m4_prodotti" rows="2" placeholder="es. Piadina romagnola, Sangiovese Riviera, Pesce adriatico"></textarea>
+                <div class="field-hint">Informativo — compare nel Report QEN</div>
+              </div>
+            </div>
+
+            <!-- M5: Capitale Umano -->
+            <div class="mod-section" id="mod-m5">
+              <div class="mod-header">
+                <div class="mod-title">Capitale Umano &amp; Lavoro Stagionale</div>
+                <div class="mod-weight">Peso 15%</div>
+              </div>
+              <div class="mod-desc">
+                Tutela del lavoro stagionale — categoria storicamente esposta a precarietà.
+                CCNL Turismo/Commercio applicato correttamente, formazione, turnover, welfare.
+              </div>
+              <div class="field">
+                <label for="m5_ccnl">CCNL Applicato</label>
+                <select id="m5_ccnl">
+                  <option value="turismo">CCNL Turismo/Ristorazione (Confcommercio)</option>
+                  <option value="commercio">CCNL Commercio (Confcommercio)</option>
+                  <option value="artigianato">CCNL Artigianato (CNA/Confartigianato)</option>
+                  <option value="individuale">Contratto individuale</option>
+                  <option value="nessuno">Nessun contratto / autonomo solo</option>
+                </select>
+              </div>
+              <div class="field">
+                <label for="m5_stagionali">N° Dipendenti / Collaboratori Stagionali</label>
+                <input type="number" id="m5_stagionali" placeholder="es. 6" min="0" />
+                <div class="field-hint">Informativo — contestualizza la dimensione</div>
+              </div>
+              <div class="field">
+                <label for="m5_formazione">Ore Formazione / Dipendente / Anno</label>
+                <input type="number" id="m5_formazione" placeholder="es. 16" min="0" />
+                <div class="field-hint">> 20h → +20pt | > 40h → +30pt</div>
+              </div>
+              <div class="field">
+                <label for="m5_turnover">Tasso Turnover Stagionale (%)</label>
+                <input type="number" id="m5_turnover" placeholder="es. 25" min="0" max="100" />
+                <div class="field-hint">&lt; 30% → +15pt | &gt; 60% → −20pt</div>
+              </div>
+              <label class="check-row">
+                <input type="checkbox" id="m5_alloggio" />
+                Alloggio/trasporto fornito ai lavoratori (+10pt)
+              </label>
+              <label class="check-row">
+                <input type="checkbox" id="m5_cat_protette" />
+                Assunzione categorie protette / svantaggiate (+15pt)
+              </label>
+            </div>
+
+            <!-- M6: Identità Digitale & Governance -->
+            <div class="mod-section" id="mod-m6">
+              <div class="mod-header">
+                <div class="mod-title">Identità Digitale &amp; Governance</div>
+                <div class="mod-weight">Peso 10%</div>
+              </div>
+              <div class="mod-desc">
+                Presenza web, reputazione online e trasparenza. Il badge QEN dinamico
+                richiede un sito web attivo per la pubblicazione certificata.
+              </div>
+              <label class="check-row">
+                <input type="checkbox" id="m6_sito_web" />
+                Sito web aziendale attivo (+25pt)
+              </label>
+              <label class="check-row">
+                <input type="checkbox" id="m6_social" />
+                Presenza social media aggiornata (+20pt)
+              </label>
+              <div class="field" style="margin-top:8px">
+                <label for="m6_recensioni">Valutazione media (Google/TripAdvisor — 0–5)</label>
+                <input type="number" id="m6_recensioni" placeholder="es. 4.1" min="0" max="5" step="0.1" />
+                <div class="field-hint">Score = stelle × 7 (max 35pt)</div>
+              </div>
+              <label class="check-row">
+                <input type="checkbox" id="m6_qr_code" />
+                Badge QEN / QR Code dati sostenibilità esposto (+20pt)
+              </label>
+            </div>
+
+            <hr class="section-divider" />
+            <div style="display:flex;gap:10px;flex-wrap:wrap;align-items:center">
+              <button class="btn-audit" onclick="runAudit()">▶ Calcola Score QEN</button>
+              <button class="btn-ghost-sm" onclick="loadExample()">Esempio Demo</button>
+              <button class="btn-ghost-sm" onclick="resetForm()">Reset</button>
+            </div>
+
+            <div class="formula-box">
+              <div style="font-size:0.55rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--muted);margin-bottom:8px;font-family:var(--mono)">Formula QEN Balneare v1.0</div>
+              <div class="formula-text">
+                <span class="hi">QEN</span> =
+                (M1×<span class="hi">0.25</span>) + (M2×<span class="hi">0.20</span>) + (M3×<span class="hi">0.15</span>) +<br>
+                (M4×<span class="hi">0.15</span>) + (M5×<span class="hi">0.15</span>) + (M6×<span class="hi">0.10</span>)
+              </div>
+              <div style="margin-top:10px;font-family:var(--mono);font-size:0.6rem;color:var(--muted);line-height:1.8">
+                ≥ 75 → <span style="color:var(--c-low)">CONFORME CERTIFICATO</span> ·
+                55–74 → <span style="color:var(--c-med)">CONDIZIONATO</span> ·
+                &lt; 55 → <span style="color:var(--c-crit)">NON CONFORME</span>
+              </div>
+            </div>
+
+            <div style="margin-top:14px;font-family:var(--mono);font-size:0.6rem;color:var(--muted);line-height:1.7">
+              Motore QEN Balneare v1.0 · Proprietà Intellettuale CognitiveLogic Intelligence<br>
+              Autore: Roberto Malini · Calcolo deterministico client-side · Riviera Adriatica
+            </div>
+          </div><!-- /input panel -->
+
+          <!-- OUTPUT PANEL -->
+          <div class="panel" id="outputPanel">
+            <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:20px">
+              <div class="sec-label" style="margin:0;border:none;padding:0">Report QEN Audit</div>
+              <div id="exportRow" style="display:none;gap:8px">
+                <button class="btn-ghost-sm" onclick="exportJSON()">Export JSON</button>
+              </div>
+            </div>
+
+            <div id="emptyState" class="empty-state">
+              <p>
+                Seleziona tipologia, inserisci i dati<br>
+                e premi <strong style="color:var(--text)">"Calcola Score QEN"</strong><br>
+                per generare il report certificato.
+              </p>
+              <div style="margin-top:28px;padding:18px 22px;border:1px solid var(--line-2);background:var(--navy-3);text-align:left">
+                <div class="sec-label" style="margin-bottom:12px">Blocchi claim automatici</div>
+                <div style="font-family:var(--mono);font-size:0.66rem;color:var(--muted);line-height:2.0">
+                  · M1 &lt; 70 → nega claim <em>"Concessione Regolare 2027"</em><br>
+                  · M2 &lt; 70 → nega claim <em>"Spiaggia Plastic-Free"</em><br>
+                  · M3 &lt; 65 → nega claim <em>"Spiaggia Accessibile / Inclusive Beach"</em><br>
+                  · M4 &lt; 70 → nega claim <em>"Km-Zero / Filiera Adriatica"</em><br>
+                  · M5 &lt; 65 → nega claim <em>"Lavoro Etico / Stagionale Tutelato"</em>
+                </div>
+              </div>
+            </div>
+
+            <div id="resultState" style="display:none">
+
+              <div class="qen-composite">
+                <div class="qen-score-big">
+                  <span id="qenScore">—</span><span class="frac">/100</span>
+                </div>
+                <div class="qen-score-meta">
+                  QEN Score Finale<br>
+                  <span id="statusBadgeWrap"></span>
+                </div>
+              </div>
+
+              <div style="margin-bottom:20px">
+                <div class="sec-label">Moduli Dettagliati</div>
+                <div id="moduleBars"></div>
+              </div>
+
+              <div id="claimsSection" style="margin-bottom:20px">
+                <div class="sec-label">Claim Bloccati</div>
+                <div id="claimsList"></div>
+              </div>
+
+              <div id="recsSection" style="margin-bottom:20px">
+                <div class="sec-label">Raccomandazioni Prioritarie</div>
+                <div id="recsList"></div>
+              </div>
+
+              <div class="meta-grid" id="metaGrid"></div>
+
+              <div class="json-panel" id="jsonPanel">
+                <div class="json-panel-header" onclick="toggleJSON()">
+                  <div class="json-panel-title">Raw JSON Export</div>
+                  <button class="json-toggle" id="jsonToggleBtn">+ Mostra</button>
+                </div>
+                <pre class="json-raw" id="jsonRaw"></pre>
+              </div>
+
+            </div>
+          </div><!-- /output panel -->
+
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div class="footer-brand">© 2026 Roberto Malini · Cognitive Logic</div>
+      <nav class="footer-nav">
+        <a href="qen-horeca-auditor.html">HoReCa Auditor</a>
+        <a href="alert-engine.html">Alert Engine</a>
+        <a href="methodology.html">Metodologia</a>
+        <a href="legal.html">Legal</a>
+      </nav>
+    </div>
+  </footer>
+
+<script>
+// ── State ──────────────────────────────────────────────
+let currentTipo = 'balneare';
+let lastResult  = null;
+
+// ── Tipologia ─────────────────────────────────────────
+function setTipo(tipo, btn) {
+  currentTipo = tipo;
+  document.querySelectorAll('.tipo-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+
+  const isAmb = ['ambulante_food','ambulante_nonfood','mercato','dehors'].includes(tipo);
+  document.getElementById('m3-balneare').style.display = isAmb ? 'none' : 'block';
+  document.getElementById('m3-ambulante').style.display = isAmb ? 'block' : 'none';
+
+  const t = document.getElementById('m3-title');
+  const d = document.getElementById('m3-desc');
+  if (isAmb) {
+    t.textContent = 'Qualità Offerta & Accessibilità';
+    d.textContent = 'Continuità nel posteggio, soddisfazione clienti, accessibilità e prezzi trasparenti.';
+  } else {
+    t.textContent = 'Servizi, Sicurezza & Accessibilità';
+    d.textContent = 'Qualità dell\'offerta, sicurezza (bagnini certificati) e accessibilità per persone con disabilità (L.104/1992 + DM 236/1989).';
+  }
+
+  // M4 HACCP label
+  const haccpLabel = document.querySelector('label[for="m4_haccp"] + .check-row') || document.querySelector('#m4_haccp').closest('.check-row');
+  if (haccpLabel) {
+    const span = haccpLabel.querySelector('span') || haccpLabel.childNodes[1];
+  }
+}
+
+// ── Tab navigation ─────────────────────────────────────
+function showTab(id) {
+  document.querySelectorAll('.mod-section').forEach(s => s.classList.remove('visible'));
+  document.querySelectorAll('.mod-tab').forEach(t => t.classList.remove('active'));
+  document.getElementById('mod-' + id).classList.add('visible');
+  const tabs = ['m1','m2','m3','m4','m5','m6'];
+  const idx = tabs.indexOf(id);
+  document.querySelectorAll('.mod-tab')[idx].classList.add('active');
+}
+
+// ── Scoring engine ─────────────────────────────────────
+function scoreM1() {
+  const conc   = document.getElementById('m1_concessione_regolare').checked;
+  const bolt   = document.getElementById('m1_bolkestein_ready').checked;
+  const nosanz = document.getElementById('m1_no_sanzioni').checked;
+  return Math.min(
+    (conc ? 50 : 0) + (bolt ? 30 : 0) + (nosanz ? 20 : 0),
+    100
+  );
+}
+
+function scoreM2() {
+  const plastica   = parseFloat(document.getElementById('m2_plastica').value) || 0;
+  const diff       = parseFloat(document.getElementById('m2_differenziata').value) || 0;
+  const bandiera   = document.getElementById('m2_bandiera_blu').checked;
+  const zeroplast  = document.getElementById('m2_no_plastica_monouso').checked;
+  const pulizia    = document.getElementById('m2_pulizia_spiaggia').checked;
+  let s = Math.min(diff, 100);
+  s -= Math.min(plastica * 4, 60);
+  if (diff >= 90) s += 10;
+  s += (bandiera ? 20 : 0) + (zeroplast ? 10 : 0) + (pulizia ? 10 : 0);
+  return Math.max(0, Math.min(s, 100));
+}
+
+function scoreM3() {
+  const isAmb = ['ambulante_food','ambulante_nonfood','mercato','dehors'].includes(currentTipo);
+  if (!isAmb) {
+    const bagnini  = parseInt(document.getElementById('m3_bagnini').value) || 0;
+    const access   = document.getElementById('m3_accessibile_balneare').checked;
+    const dae      = document.getElementById('m3_defibrillatore').checked;
+    const extra    = document.getElementById('m3_servizi_extra').checked;
+    let s = 0;
+    if (bagnini >= 2) s += 25; else if (bagnini === 1) s += 10;
+    s += (access ? 30 : 0) + (dae ? 15 : 0) + (extra ? 10 : 0);
+    return Math.min(s, 100);
+  } else {
+    const anni     = Math.min(parseInt(document.getElementById('m3_anni_attivita').value) || 0, 6);
+    const sodd     = parseFloat(document.getElementById('m3_soddisfazione').value) || 0;
+    const access   = document.getElementById('m3_accessibile_amb').checked;
+    const prezzi   = document.getElementById('m3_prezzi_fissi').checked;
+    let s = Math.min(anni * 5, 30) + Math.min(sodd * 10, 50);
+    s += (access ? 20 : 0) + (prezzi ? 10 : 0);
+    return Math.min(s, 100);
+  }
+}
+
+function scoreM4() {
+  const locali  = parseFloat(document.getElementById('m4_fornitori_locali').value) || 0;
+  const haccp   = document.getElementById('m4_haccp').checked;
+  const tracc   = document.getElementById('m4_tracciabilita').checked;
+  const bio     = document.getElementById('m4_bio').checked;
+  let s = Math.min(locali * 0.6, 60);
+  s += (haccp ? 30 : 0) + (tracc ? 10 : 0) + (bio ? 10 : 0);
+  return Math.min(s, 100);
+}
+
+function scoreM5() {
+  const ccnl    = document.getElementById('m5_ccnl').value;
+  const form    = parseFloat(document.getElementById('m5_formazione').value) || 0;
+  const turn    = parseFloat(document.getElementById('m5_turnover').value) || 0;
+  const allogg  = document.getElementById('m5_alloggio').checked;
+  const catprot = document.getElementById('m5_cat_protette').checked;
+  let s = ccnl === 'nessuno' ? 0 : 50;
+  if (form > 40) s += 30; else if (form > 20) s += 20; else if (form > 0) s += 10;
+  if (turn < 30) s += 15; else if (turn > 60) s -= 20;
+  s += (allogg ? 10 : 0) + (catprot ? 15 : 0);
+  return Math.max(0, Math.min(s, 100));
+}
+
+function scoreM6() {
+  const sito   = document.getElementById('m6_sito_web').checked;
+  const social = document.getElementById('m6_social').checked;
+  const rec    = parseFloat(document.getElementById('m6_recensioni').value) || 0;
+  const qr     = document.getElementById('m6_qr_code').checked;
+  let s = (sito ? 25 : 0) + (social ? 20 : 0);
+  s += Math.min(rec * 7, 35);
+  s += (qr ? 20 : 0);
+  return Math.min(s, 100);
+}
+
+// ── Run audit ──────────────────────────────────────────
+function runAudit() {
+  const scores = {
+    m1: scoreM1(), m2: scoreM2(), m3: scoreM3(),
+    m4: scoreM4(), m5: scoreM5(), m6: scoreM6()
+  };
+  const weights = { m1:0.25, m2:0.20, m3:0.15, m4:0.15, m5:0.15, m6:0.10 };
+  const qen = Object.keys(scores).reduce((acc,k) => acc + scores[k] * weights[k], 0);
+
+  lastResult = { scores, qen: Math.round(qen * 10) / 10 };
+  renderResult(lastResult);
+}
+
+function fillClass(s) {
+  if (s >= 75) return 'fill-good';
+  if (s >= 55) return 'fill-med';
+  if (s >= 35) return 'fill-high';
+  return 'fill-crit';
+}
+
+function renderResult(r) {
+  document.getElementById('emptyState').style.display = 'none';
+  document.getElementById('resultState').style.display = 'block';
+  document.getElementById('exportRow').style.display = 'flex';
+
+  // QEN score
+  document.getElementById('qenScore').textContent = r.qen.toFixed(1);
+
+  // Status badge
+  let badge, cls;
+  if (r.qen >= 75)      { badge = 'CONFORME CERTIFICATO'; cls = 'status-green'; }
+  else if (r.qen >= 55) { badge = 'CONFORME CONDIZIONATO'; cls = 'status-yellow'; }
+  else                   { badge = 'NON CONFORME'; cls = 'status-red'; }
+  document.getElementById('statusBadgeWrap').innerHTML =
+    `<span class="status-badge ${cls}">${badge}</span>`;
+
+  // Module bars
+  const modules = [
+    { id:'m1', label:'M1 · Concessione & Bolkestein', w:'25%' },
+    { id:'m2', label:'M2 · Sostenibilità Marina',     w:'20%' },
+    { id:'m3', label:'M3 · Servizi & Accessibilità',  w:'15%' },
+    { id:'m4', label:'M4 · Filiera & Km-Zero',        w:'15%' },
+    { id:'m5', label:'M5 · Lavoro Stagionale',        w:'15%' },
+    { id:'m6', label:'M6 · Identità Digitale',        w:'10%' }
+  ];
+  document.getElementById('moduleBars').innerHTML = modules.map(m => {
+    const s = Math.round(r.scores[m.id]);
+    const fc = fillClass(s);
+    const note = s < 55
+      ? '<div class="module-row-note">⚠ Modulo sotto soglia — intervento prioritario</div>'
+      : '';
+    return `<div class="module-row">
+      <div class="module-row-header">
+        <span class="module-row-label">${m.label}</span>
+        <span class="module-row-weight">${m.w}</span>
+        <span class="module-row-score">${s}</span>
+      </div>
+      <div class="score-track"><div class="score-fill ${fc}" style="width:${s}%"></div></div>
+      ${note}
+    </div>`;
+  }).join('');
+
+  // Claims
+  const claims = [];
+  if (r.scores.m1 < 70) claims.push('Concessione Regolare 2027');
+  if (r.scores.m2 < 70) claims.push('Spiaggia Plastic-Free');
+  if (r.scores.m3 < 65) claims.push('Spiaggia Accessibile / Inclusive Beach');
+  if (r.scores.m4 < 70) claims.push('Km-Zero / Filiera Adriatica');
+  if (r.scores.m5 < 65) claims.push('Lavoro Etico / Stagionale Tutelato');
+
+  const cl = document.getElementById('claimsList');
+  cl.innerHTML = claims.length
+    ? claims.map(c => `<div class="claim-denied-item">✕ ${c}</div>`).join('')
+    : '<div class="no-claims">Nessun claim bloccato — tutti i moduli sopra soglia</div>';
+
+  // Recommendations
+  const recs = [];
+  if (r.scores.m1 < 70) recs.push('Regolarizzare la concessione e predisporre il piano di adeguamento Bolkestein 2027 con studio legale specializzato.');
+  if (r.scores.m2 < 70) recs.push('Eliminare la plastica monouso (DL 116/2020) e avviare iter per Bandiera Blu — incrementa il valore percepito del 18% sul mercato tedesco-austriaco.');
+  if (r.scores.m3 < 65) recs.push('Investire in accessibilità L.104: passerelle su spiaggia, WC accessibile e formazione bagnini — obbligatorio entro 2027 per bandi pubblici.');
+  if (r.scores.m4 < 70) recs.push('Aumentare quota fornitori locali (≤ 100km) e completare la certificazione HACCP se presente attività somministrazione.');
+  if (r.scores.m5 < 65) recs.push('Verificare correttezza applicazione CCNL Turismo per stagionali e aumentare ore di formazione (target > 20h/anno per Green Claim EU).');
+  if (r.scores.m6 < 55) recs.push('Creare presenza web minima e attivare il badge QEN dinamico per rendere la conformità visibile ai clienti.');
+
+  const rl = document.getElementById('recsList');
+  rl.innerHTML = recs.length
+    ? recs.slice(0,4).map((rec, i) => `<div class="rec-item"><div class="rec-num">${i+1}</div><div>${rec}</div></div>`).join('')
+    : '<div class="no-claims">Score ottimale — nessuna raccomandazione critica</div>';
+
+  // Metadata
+  const tipo = currentTipo.replace('_',' ');
+  const nome = document.getElementById('azienda_nome').value || '—';
+  const comune = document.getElementById('comune').value || '—';
+  document.getElementById('metaGrid').innerHTML = `
+    <div class="meta-item"><div class="meta-label">Operatore</div><div class="meta-val">${nome}</div></div>
+    <div class="meta-item"><div class="meta-label">Tipologia</div><div class="meta-val">${tipo}</div></div>
+    <div class="meta-item"><div class="meta-label">Comune</div><div class="meta-val">${comune}</div></div>
+    <div class="meta-item"><div class="meta-label">Benchmark Riviera</div><div class="meta-val">60.75 / 100</div></div>
+    <div class="meta-item"><div class="meta-label">Stato</div><div class="meta-val">${badge}</div></div>
+    <div class="meta-item"><div class="meta-label">Timestamp</div><div class="meta-val">${new Date().toLocaleDateString('it-IT')}</div></div>
+  `;
+
+  // JSON
+  const payload = {
+    engine: 'QEN Balneare Auditor v1.0',
+    operator: nome, tipologia: tipo, comune,
+    qen_score: r.qen, stato: badge,
+    modules: r.scores,
+    claims_blocked: claims,
+    benchmark_riviera: 60.75,
+    timestamp: new Date().toISOString(),
+    source: 'cognitivelogic.it/qen-balneare-auditor'
+  };
+  document.getElementById('jsonRaw').textContent = JSON.stringify(payload, null, 2);
+}
+
+// ── Export JSON ────────────────────────────────────────
+function exportJSON() {
+  if (!lastResult) return;
+  const nome = document.getElementById('azienda_nome').value || 'qen-balneare';
+  const blob = new Blob([document.getElementById('jsonRaw').textContent], { type: 'application/json' });
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = `qen-${nome.replace(/\s+/g,'_').toLowerCase()}-${Date.now()}.json`;
+  a.click();
+}
+
+// ── JSON toggle ────────────────────────────────────────
+function toggleJSON() {
+  const raw = document.getElementById('jsonRaw');
+  const btn = document.getElementById('jsonToggleBtn');
+  raw.classList.toggle('open');
+  btn.textContent = raw.classList.contains('open') ? '− Nascondi' : '+ Mostra';
+}
+
+// ── Demo data ──────────────────────────────────────────
+function loadExample() {
+  document.getElementById('azienda_nome').value   = 'Bagno Adriatico 55';
+  document.getElementById('comune').value          = 'Rimini';
+  document.getElementById('m1_concessione_regolare').checked = true;
+  document.getElementById('m1_bolkestein_ready').checked     = true;
+  document.getElementById('m1_no_sanzioni').checked          = true;
+  document.getElementById('m1_num_concessione').value        = '2024/RM/0145';
+  document.getElementById('m1_scadenza').value               = '2027';
+  document.getElementById('m2_plastica').value               = '3';
+  document.getElementById('m2_differenziata').value          = '85';
+  document.getElementById('m2_bandiera_blu').checked         = false;
+  document.getElementById('m2_no_plastica_monouso').checked  = false;
+  document.getElementById('m2_pulizia_spiaggia').checked     = true;
+  document.getElementById('m3_bagnini').value                = '2';
+  document.getElementById('m3_ombrelloni').value             = '130';
+  document.getElementById('m3_accessibile_balneare').checked = true;
+  document.getElementById('m3_defibrillatore').checked       = true;
+  document.getElementById('m3_servizi_extra').checked        = true;
+  document.getElementById('m4_fornitori_locali').value       = '60';
+  document.getElementById('m4_haccp').checked                = true;
+  document.getElementById('m4_tracciabilita').checked        = false;
+  document.getElementById('m4_bio').checked                  = false;
+  document.getElementById('m4_prodotti').value               = 'Piadina romagnola, Vongole adriatiche, Sangiovese Romagna';
+  document.getElementById('m5_ccnl').value                   = 'turismo';
+  document.getElementById('m5_stagionali').value             = '8';
+  document.getElementById('m5_formazione').value             = '18';
+  document.getElementById('m5_turnover').value               = '35';
+  document.getElementById('m5_alloggio').checked             = false;
+  document.getElementById('m5_cat_protette').checked         = false;
+  document.getElementById('m6_sito_web').checked             = true;
+  document.getElementById('m6_social').checked               = true;
+  document.getElementById('m6_recensioni').value             = '4.1';
+  document.getElementById('m6_qr_code').checked              = false;
+  runAudit();
+}
+
+// ── Reset ──────────────────────────────────────────────
+function resetForm() {
+  document.querySelectorAll('input[type="number"], input[type="text"], textarea').forEach(el => el.value = '');
+  document.querySelectorAll('input[type="checkbox"]').forEach(el => el.checked = false);
+  document.getElementById('emptyState').style.display = 'block';
+  document.getElementById('resultState').style.display = 'none';
+  document.getElementById('exportRow').style.display = 'none';
+  lastResult = null;
+}
+</script>
+</body>
+</html>
