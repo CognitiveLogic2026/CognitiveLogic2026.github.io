@@ -1,0 +1,1373 @@
+<!DOCTYPE html>
+<!--
+  Copyright (c) 2026 Roberto Bob Malini - Cognitive Logic
+  https://www.cognitivelogic.it
+  Licensed under CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/)
+-->
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>QEN HoReCa Auditor — Sostenibilità HoReCa · Cognitive Logic</title>
+  <meta name="description" content="QEN HoReCa Compliance Auditor v1.0 — Score di sostenibilità certificato per aziende HoReCa. 8 moduli: logistica, imballaggi, risorse, qualità, sociale, rifiuti, governance, territorio." />
+  <meta property="og:title" content="QEN HoReCa Auditor — Cognitive Logic" />
+  <meta property="og:description" content="Motore QEN v1.0 per HoReCa — Quantificazione Etica Naturale. Green Claim EU Compliance. Score certificato in 8 moduli." />
+  <meta property="og:image" content="img/qen-methodology-og.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css?v=2" />
+  <link rel="search" type="application/opensearchdescription+xml" title="Cognitive Logic" href="https://cognitivelogic.it/opensearchdescription.xml" />
+
+  <style>
+    :root {
+      --navy:      #070D1A;
+      --navy-2:    #0D1628;
+      --navy-3:    #122035;
+      --gold:      #C9A84C;
+      --gold-line: rgba(201,168,76,0.22);
+      --gold-dim:  rgba(201,168,76,0.08);
+      --serif:     'Cormorant Garamond', serif;
+      --mono:      'DM Mono', monospace;
+      --text:      #CFC9B8;
+      --text-2:    #E8E2D4;
+      --muted:     #6A6254;
+      --line:      rgba(201,168,76,0.12);
+      --line-2:    rgba(255,255,255,0.06);
+      --c-crit:    #E05A52;
+      --c-high:    #D4874A;
+      --c-med:     #C9A84C;
+      --c-low:     #5AB87A;
+    }
+
+    /* ── Form elements ── */
+    input[type="text"], input[type="number"], select, textarea {
+      width: 100%;
+      padding: 9px 12px;
+      background: var(--navy-3);
+      border: 1px solid var(--line);
+      color: var(--text-2);
+      font-family: var(--mono);
+      font-size: 0.78rem;
+      outline: none;
+      transition: border-color 0.2s;
+      resize: vertical;
+      box-sizing: border-box;
+    }
+    input:focus, select:focus, textarea:focus { border-color: var(--gold-line); }
+    select option { background: var(--navy-2); }
+
+    input[type="checkbox"] {
+      width: 14px; height: 14px;
+      accent-color: var(--gold);
+      cursor: pointer;
+      flex-shrink: 0;
+    }
+    .check-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 8px 0;
+      font-family: var(--mono);
+      font-size: 0.74rem;
+      color: var(--text);
+      cursor: pointer;
+    }
+    .check-row:hover { color: var(--text-2); }
+
+    .field { margin-bottom: 14px; }
+    .field label {
+      display: block;
+      font-size: 0.58rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 5px;
+      font-family: var(--mono);
+    }
+    .field-hint {
+      font-family: var(--mono);
+      font-size: 0.6rem;
+      color: var(--muted);
+      margin-top: 3px;
+      opacity: 0.7;
+    }
+
+    /* ── Module tabs ── */
+    .mod-tabs {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 4px;
+      margin-bottom: 20px;
+    }
+    .mod-tab {
+      padding: 5px 11px;
+      font-family: var(--mono);
+      font-size: 0.6rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+      border: 1px solid var(--line-2);
+      background: transparent;
+      cursor: pointer;
+      transition: all 0.15s;
+      white-space: nowrap;
+    }
+    .mod-tab:hover { border-color: var(--gold-line); color: var(--text); }
+    .mod-tab.active { border-color: var(--gold-line); background: var(--gold-dim); color: var(--gold); }
+
+    /* ── Module section ── */
+    .mod-section { display: none; }
+    .mod-section.visible { display: block; }
+    .mod-header {
+      display: flex;
+      align-items: baseline;
+      gap: 10px;
+      margin-bottom: 16px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid var(--line);
+    }
+    .mod-title {
+      font-family: var(--serif);
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--text-2);
+    }
+    .mod-weight {
+      font-family: var(--mono);
+      font-size: 0.58rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+    .mod-desc {
+      font-family: var(--mono);
+      font-size: 0.64rem;
+      color: var(--muted);
+      line-height: 1.6;
+      margin-bottom: 16px;
+      padding: 10px 12px;
+      border: 1px solid var(--line-2);
+      background: var(--navy-3);
+    }
+
+    /* ── General info panel ── */
+    .general-info {
+      padding: 16px;
+      border: 1px solid var(--gold-line);
+      background: var(--gold-dim);
+      margin-bottom: 20px;
+    }
+    .general-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+    @media (max-width: 640px) { .general-grid { grid-template-columns: 1fr; } }
+
+    /* ── Buttons ── */
+    .btn-audit {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 11px 24px;
+      background: var(--gold);
+      color: var(--navy);
+      font-family: var(--mono);
+      font-size: 0.72rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      border: none;
+      cursor: pointer;
+      font-weight: 500;
+      transition: opacity 0.2s;
+    }
+    .btn-audit:hover { opacity: 0.85; }
+
+    .btn-ghost-sm {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 9px 14px;
+      background: transparent;
+      color: var(--muted);
+      font-family: var(--mono);
+      font-size: 0.65rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      border: 1px solid var(--line-2);
+      cursor: pointer;
+      transition: border-color 0.2s, color 0.2s;
+    }
+    .btn-ghost-sm:hover { border-color: var(--gold-line); color: var(--text); }
+
+    /* ── Layout ── */
+    .auditor-grid {
+      display: grid;
+      grid-template-columns: 440px 1fr;
+      gap: 24px;
+      align-items: start;
+    }
+    @media (max-width: 960px) { .auditor-grid { grid-template-columns: 1fr; } }
+    .panel {
+      background: var(--navy-2);
+      border: 1px solid var(--line);
+      padding: 26px;
+    }
+
+    /* ── Results ── */
+    .qen-composite {
+      padding: 22px 26px;
+      border: 1px solid var(--gold-line);
+      background: var(--gold-dim);
+      margin-bottom: 20px;
+      display: flex;
+      align-items: baseline;
+      gap: 16px;
+    }
+    .qen-score-big {
+      font-family: var(--serif);
+      font-size: 4rem;
+      font-weight: 300;
+      line-height: 1;
+      color: var(--text-2);
+    }
+    .qen-score-big .frac { color: var(--gold); font-size: 1.6rem; }
+    .qen-score-meta { font-family: var(--mono); font-size: 0.64rem; color: var(--muted); line-height: 2; }
+
+    .status-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 7px 16px;
+      font-family: var(--mono);
+      font-size: 0.65rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      border: 1px solid;
+    }
+    .status-badge::before { content:''; width:6px; height:6px; border-radius:50%; background:currentColor; }
+    .status-green  { color:var(--c-low);  border-color:rgba(90,184,122,0.35); background:rgba(90,184,122,0.07); }
+    .status-yellow { color:var(--c-med);  border-color:rgba(201,168,76,0.35); background:rgba(201,168,76,0.07); }
+    .status-red    { color:var(--c-crit); border-color:rgba(224,90,82,0.35);  background:rgba(224,90,82,0.07); }
+
+    /* ── Module score rows ── */
+    .module-row { margin-bottom: 14px; }
+    .module-row-header {
+      display: flex;
+      align-items: baseline;
+      gap: 8px;
+      margin-bottom: 5px;
+    }
+    .module-row-label {
+      font-family: var(--mono);
+      font-size: 0.62rem;
+      color: var(--text);
+      flex: 1;
+    }
+    .module-row-weight {
+      font-family: var(--mono);
+      font-size: 0.58rem;
+      color: var(--muted);
+      letter-spacing: 0.1em;
+    }
+    .module-row-score {
+      font-family: var(--mono);
+      font-size: 0.72rem;
+      color: var(--text-2);
+      width: 32px;
+      text-align: right;
+    }
+    .score-track {
+      height: 3px;
+      background: var(--line-2);
+      margin-bottom: 4px;
+    }
+    .score-fill {
+      height: 100%;
+      width: 0%;
+      transition: width 1.2s cubic-bezier(0.16,1,0.3,1);
+    }
+    .score-fill.fill-good { background: var(--c-low); }
+    .score-fill.fill-med  { background: var(--c-med); }
+    .score-fill.fill-high { background: var(--c-high); }
+    .score-fill.fill-crit { background: var(--c-crit); }
+    .module-row-note {
+      font-family: var(--mono);
+      font-size: 0.6rem;
+      color: var(--muted);
+      line-height: 1.5;
+      padding-left: 2px;
+    }
+
+    /* ── Claims denied ── */
+    .claim-denied-item {
+      padding: 10px 14px;
+      border: 1px solid rgba(224,90,82,0.3);
+      background: rgba(224,90,82,0.06);
+      font-family: var(--mono);
+      font-size: 0.68rem;
+      color: var(--c-crit);
+      margin-bottom: 4px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    /* ── Recommendations ── */
+    .rec-item {
+      display: flex;
+      gap: 12px;
+      padding: 10px 12px;
+      border: 1px solid var(--line-2);
+      background: var(--navy-3);
+      margin-bottom: 4px;
+      font-family: var(--mono);
+      font-size: 0.70rem;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+    .rec-num {
+      font-family: var(--serif);
+      font-size: 1.1rem;
+      color: var(--gold);
+      flex-shrink: 0;
+      line-height: 1.1;
+    }
+
+    /* ── Metadata grid ── */
+    .meta-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 6px;
+      margin-top: 16px;
+    }
+    .meta-item {
+      padding: 9px 12px;
+      border: 1px solid var(--line-2);
+      background: var(--navy-3);
+    }
+    .meta-label {
+      font-family: var(--mono);
+      font-size: 0.55rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 3px;
+    }
+    .meta-val { font-family: var(--mono); font-size: 0.70rem; color: var(--text); }
+
+    /* ── JSON panel ── */
+    .json-panel { margin-top: 16px; border: 1px solid var(--line-2); background: var(--navy-3); }
+    .json-panel-header {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 9px 14px; border-bottom: 1px solid var(--line-2); cursor: pointer;
+    }
+    .json-panel-title { font-family:var(--mono); font-size:0.6rem; letter-spacing:0.15em; text-transform:uppercase; color:var(--muted); }
+    .json-toggle { font-family:var(--mono); font-size:0.6rem; color:var(--gold); background:none; border:none; cursor:pointer; }
+    .json-raw {
+      padding: 14px; font-family: var(--mono); font-size: 0.66rem; color: var(--muted);
+      line-height: 1.7; white-space: pre-wrap; overflow-x: auto;
+      max-height: 300px; overflow-y: auto; display: none;
+    }
+    .json-raw.open { display: block; }
+
+    /* ── States ── */
+    .empty-state { padding: 32px 0; text-align: center; }
+    .empty-state p { font-family:var(--mono); font-size:0.72rem; color:var(--muted); line-height:1.9; }
+    .sec-label {
+      font-size: 0.57rem; letter-spacing: 0.25em; text-transform: uppercase;
+      color: var(--muted); padding-bottom: 10px; border-bottom: 1px solid var(--line);
+      margin-bottom: 16px; font-family: var(--mono);
+    }
+    .section-divider { border: none; border-top: 1px solid var(--line-2); margin: 20px 0; }
+
+    /* ── Formula box ── */
+    .formula-box {
+      padding: 14px 18px; border: 1px solid var(--line-2); background: var(--navy-3); margin-top: 20px;
+    }
+    .formula-text { font-family:var(--mono); font-size:0.74rem; color:var(--text-2); line-height:1.9; }
+    .formula-text .hi { color:var(--gold); }
+
+    /* ── No-claims state ── */
+    .no-claims {
+      font-family: var(--mono); font-size: 0.68rem; color: var(--c-low);
+      padding: 10px 14px; border: 1px solid rgba(90,184,122,0.3);
+      background: rgba(90,184,122,0.05);
+    }
+  </style>
+</head>
+<body>
+  <div class="site-bg"></div>
+
+  <!-- ── Header ── -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="index.html" class="brand">
+        <img src="img/logo-cognitivelogic.png" alt="Cognitive Logic" style="height:28px;width:auto;display:block;">
+      </a>
+      <nav class="main-nav">
+        <a href="framework.html">Framework</a>
+        <a href="ecosystem.html">Ecosystem</a>
+        <a href="qen-live.html">QEN Live</a>
+        <a href="ai.html">AI Engine</a>
+        <a href="methodology.html">Methodology</a>
+        <a href="qen-compliance-auditor.html">Auditor AI</a>
+        <a href="qen-horeca-auditor.html" class="active">HoReCa</a>
+      </nav>
+      <div class="header-end">
+        <a href="demo.html" class="btn btn-ghost">Demo</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- ── Hero ── -->
+    <section class="hero">
+      <div class="container">
+        <div class="eyebrow">QEN HoReCa Auditor v1.0 · Motore QEN — Quantificazione Etica Naturale</div>
+        <h1>
+          Compliance<br>
+          <em style="font-style:italic;color:var(--gold)">Sostenibilità HoReCa.</em>
+        </h1>
+        <p class="hero-lead">
+          Score QEN certificato in 8 moduli operativi — logistica, imballaggi, risorse, qualità,
+          sostenibilità sociale, ciclo rifiuti, governance e impatto territoriale.
+          Conforme Green Claim EU · PPWR 2026 · ESG.
+        </p>
+      </div>
+    </section>
+
+    <!-- ── Auditor ── -->
+    <section class="section" style="padding-top:0">
+      <div class="container">
+        <div class="auditor-grid">
+
+          <!-- ── Input panel ── -->
+          <div class="panel">
+
+            <!-- General info -->
+            <div class="general-info">
+              <div class="sec-label" style="margin-bottom:12px">Dati Azienda</div>
+              <div class="general-grid">
+                <div class="field" style="margin-bottom:0">
+                  <label for="azienda_nome">Nome Azienda</label>
+                  <input type="text" id="azienda_nome" placeholder="es. Ristorante da Luigi" />
+                </div>
+                <div class="field" style="margin-bottom:0">
+                  <label for="numero_coperti_mese">Coperti / Mese</label>
+                  <input type="number" id="numero_coperti_mese" placeholder="es. 1500" min="1" />
+                  <div class="field-hint">Condiviso tra Moduli 3 e 6</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Module tabs -->
+            <div class="mod-tabs" id="modTabs">
+              <button class="mod-tab active" onclick="showTab('m1')">M1 Logistica</button>
+              <button class="mod-tab" onclick="showTab('m2')">M2 Imballaggi</button>
+              <button class="mod-tab" onclick="showTab('m3')">M3 Risorse</button>
+              <button class="mod-tab" onclick="showTab('m4')">M4 Qualità</button>
+              <button class="mod-tab" onclick="showTab('m5')">M5 Sociale</button>
+              <button class="mod-tab" onclick="showTab('m6')">M6 Rifiuti</button>
+              <button class="mod-tab" onclick="showTab('m7')">M7 Governance</button>
+              <button class="mod-tab" onclick="showTab('m8')">M8 Territorio</button>
+            </div>
+
+            <!-- M1: Logistica -->
+            <div class="mod-section visible" id="mod-m1">
+              <div class="mod-header">
+                <div class="mod-title">Logistica e Km-Zero</div>
+                <div class="mod-weight">Peso 20%</div>
+              </div>
+              <div class="mod-desc">
+                Misura impatto trasporto e premia filiera corta. Score base da distanza fornitore,
+                bonus per certificazione etica e per alta percentuale di fornitori locali.
+              </div>
+              <div class="field">
+                <label for="m1_distanza">Distanza Fornitore Principale (km)</label>
+                <input type="number" id="m1_distanza" placeholder="es. 85" min="0" />
+                <div class="field-hint">< 70km → score base 100 | ogni 10km sopra −1pt</div>
+              </div>
+              <div class="field">
+                <label for="m1_mezzo">Tipologia Mezzo di Trasporto</label>
+                <select id="m1_mezzo">
+                  <option value="camion">Camion</option>
+                  <option value="auto">Auto</option>
+                  <option value="bici">Bici / Cargo-bike</option>
+                  <option value="a_piedi">A piedi</option>
+                </select>
+                <div class="field-hint">Campo informativo (non incide sul punteggio v1.0)</div>
+              </div>
+              <div class="field">
+                <label for="m1_fornitori_localizzati">Fornitori entro 100km (%)</label>
+                <input type="number" id="m1_fornitori_localizzati" placeholder="es. 75" min="0" max="100" />
+                <div class="field-hint">≥ 80% → bonus filiera +15pt</div>
+              </div>
+              <label class="check-row">
+                <input type="checkbox" id="m1_certificazione" />
+                Fornitore con certificazione etica (+20pt)
+              </label>
+            </div>
+
+            <!-- M2: Imballaggi -->
+            <div class="mod-section" id="mod-m2">
+              <div class="mod-header">
+                <div class="mod-title">Economia Circolare — Imballaggi</div>
+                <div class="mod-weight">Peso 20%</div>
+              </div>
+              <div class="mod-desc">
+                Riduzione rifiuti e conformità PPWR 2026. Penalità sulla plastica monouso,
+                bonus per riciclato e compostabilità EN13432.
+              </div>
+              <div class="field">
+                <label for="m2_plastica">Plastica Monouso (kg/mese)</label>
+                <input type="number" id="m2_plastica" placeholder="es. 10" min="0" />
+                <div class="field-hint">Penalità −2pt/kg (max −40pt)</div>
+              </div>
+              <div class="field">
+                <label for="m2_riciclato">Materiale Riciclato (%)</label>
+                <input type="number" id="m2_riciclato" placeholder="es. 40" min="0" max="100" />
+                <div class="field-hint">> 30% → bonus riciclo +40pt</div>
+              </div>
+              <div class="field">
+                <label for="m2_contenitori">Volume Contenitori Eco (unità/mese)</label>
+                <input type="number" id="m2_contenitori" placeholder="es. 200" min="0" />
+                <div class="field-hint">Campo informativo (non incide sul punteggio v1.0)</div>
+              </div>
+              <label class="check-row">
+                <input type="checkbox" id="m2_compostabilita" />
+                Certificazione compostabilità EN13432 (+20pt)
+              </label>
+            </div>
+
+            <!-- M3: Risorse -->
+            <div class="mod-section" id="mod-m3">
+              <div class="mod-header">
+                <div class="mod-title">Efficienza Risorse — Acqua ed Energia</div>
+                <div class="mod-weight">Peso 20%</div>
+              </div>
+              <div class="mod-desc">
+                Impronta ambientale operativa. Benchmark energetico 2 kWh/coperto,
+                idrico 25 L/coperto. Bonus Green per energie rinnovabili.
+              </div>
+              <div class="field">
+                <label for="m3_kwh">Energia Consumata (kWh/mese)</label>
+                <input type="number" id="m3_kwh" placeholder="es. 3600" min="0" />
+                <div class="field-hint">Target ≤ 2 kWh/coperto</div>
+              </div>
+              <div class="field">
+                <label for="m3_rinnovabile">Energia da Fonti Rinnovabili (%)</label>
+                <input type="number" id="m3_rinnovabile" placeholder="es. 60" min="0" max="100" />
+                <div class="field-hint">≥ 50% → +15pt | 100% → +30pt</div>
+              </div>
+              <div class="field">
+                <label for="m3_litri">Acqua Consumata (litri/mese)</label>
+                <input type="number" id="m3_litri" placeholder="es. 40000" min="0" />
+                <div class="field-hint">Target ≤ 25 L/coperto</div>
+              </div>
+            </div>
+
+            <!-- M4: Qualità -->
+            <div class="mod-section" id="mod-m4">
+              <div class="mod-header">
+                <div class="mod-title">Qualità e Biodiversità</div>
+                <div class="mod-weight">Peso 10%</div>
+              </div>
+              <div class="mod-desc">
+                Validazione scientifica prodotti e tutela specie. Certificazioni ISO/Ecolabel,
+                ingredienti protetti e stagionalità del menu.
+              </div>
+              <div class="field">
+                <label for="m4_certificazioni">Certificazioni ISO / Ecolabel (numero)</label>
+                <input type="number" id="m4_certificazioni" placeholder="es. 2" min="0" />
+                <div class="field-hint">+5pt per certificazione (max +50pt)</div>
+              </div>
+              <div class="field">
+                <label for="m4_specie">Indice Specie Autoctone (0–100)</label>
+                <input type="number" id="m4_specie" placeholder="es. 65" min="0" max="100" />
+                <div class="field-hint">Campo informativo (non incide sul punteggio v1.0)</div>
+              </div>
+              <div class="field">
+                <label for="m4_stagionalita">Coefficiente Stagionalità</label>
+                <select id="m4_stagionalita">
+                  <option value="in_stagione">In stagione (×1.0)</option>
+                  <option value="fuori_stagione">Fuori stagione (×0.5)</option>
+                  <option value="serra">Serra (×0.6)</option>
+                </select>
+              </div>
+              <div class="field">
+                <label for="m4_ingredienti">Ingredienti Protetti / Autoctoni (lista, separati da virgola)</label>
+                <textarea id="m4_ingredienti" rows="3" placeholder="es. Bottarga di Muggine, Farro Monococco, Lardo di Colonnata"></textarea>
+                <div class="field-hint">+10pt per ingrediente (nessun limite massimo pre-moltiplicatore)</div>
+              </div>
+            </div>
+
+            <!-- M5: Sociale -->
+            <div class="mod-section" id="mod-m5">
+              <div class="mod-header">
+                <div class="mod-title">Dignità del Lavoro e Sociale</div>
+                <div class="mod-weight">Peso 10%</div>
+              </div>
+              <div class="mod-desc">
+                Etica umana e benessere team secondo criteri ESG.
+                Penalità per sfruttamento e gender pay gap; bonus per formazione, basso turnover e inclusione.
+              </div>
+              <div class="field">
+                <label for="m5_ore_extra">Ore Straordinarie (%)</label>
+                <input type="number" id="m5_ore_extra" placeholder="es. 15" min="0" max="100" />
+                <div class="field-hint">> 20% → penalità sfruttamento −50pt</div>
+              </div>
+              <div class="field">
+                <label for="m5_pay_gap">Gender Pay Gap (%)</label>
+                <input type="number" id="m5_pay_gap" placeholder="es. 8" min="0" max="100" />
+                <div class="field-hint">Penalità = pay_gap × 0.5 (max −50pt)</div>
+              </div>
+              <div class="field">
+                <label for="m5_formazione">Ore Formazione / Dipendente / Anno</label>
+                <input type="number" id="m5_formazione" placeholder="es. 45" min="0" />
+                <div class="field-hint">> 40h → bonus formazione +20pt</div>
+              </div>
+              <div class="field">
+                <label for="m5_turnover">Tasso Turnover Annuale (%)</label>
+                <input type="number" id="m5_turnover" placeholder="es. 18" min="0" max="100" />
+                <div class="field-hint">< 15% → +15pt | > 30% → −25pt</div>
+              </div>
+              <div class="field">
+                <label for="m5_cat_protette">Dipendenti Categorie Protette (numero)</label>
+                <input type="number" id="m5_cat_protette" placeholder="es. 2" min="0" />
+                <div class="field-hint">+10pt per persona (max +30pt)</div>
+              </div>
+            </div>
+
+            <!-- M6: Rifiuti -->
+            <div class="mod-section" id="mod-m6">
+              <div class="mod-header">
+                <div class="mod-title">Ciclo Rifiuti e Recupero</div>
+                <div class="mod-weight">Peso 10%</div>
+              </div>
+              <div class="mod-desc">
+                Riduzione spreco alimentare e circolarità massima.
+                Benchmark scarto organico 0.15 kg/coperto. Bonus per donazioni, zero waste e tracciabilità oli.
+              </div>
+              <div class="field">
+                <label for="m6_scarto">Scarto Organico (kg/mese)</label>
+                <input type="number" id="m6_scarto" placeholder="es. 200" min="0" />
+                <div class="field-hint">Target < 0.15 kg/coperto</div>
+              </div>
+              <div class="field">
+                <label for="m6_donato">Cibo Donato (%)</label>
+                <input type="number" id="m6_donato" placeholder="es. 8" min="0" max="100" />
+                <div class="field-hint">> 5% → bonus recupero +30pt</div>
+              </div>
+              <div class="field">
+                <label for="m6_differenziata">Raccolta Differenziata (%)</label>
+                <input type="number" id="m6_differenziata" placeholder="es. 85" min="0" max="100" />
+                <div class="field-hint">≥ 90% → bonus zero waste +25pt</div>
+              </div>
+              <label class="check-row">
+                <input type="checkbox" id="m6_oli" />
+                Tracciabilità oli esausti certificata (+15pt)
+              </label>
+            </div>
+
+            <!-- M7: Governance -->
+            <div class="mod-section" id="mod-m7">
+              <div class="mod-header">
+                <div class="mod-title">Trasparenza e Governance</div>
+                <div class="mod-weight">Peso 5%</div>
+              </div>
+              <div class="mod-desc">
+                Accesso dati e integrità amministrativa. Score base 10,
+                bonus trasparenza per QR code, audit e codice etico. Max 100 con tutti i bonus.
+              </div>
+              <div class="field">
+                <label for="m7_giorni">Giorni dall'Ultimo Aggiornamento Dati</label>
+                <input type="number" id="m7_giorni" placeholder="es. 15" min="0" />
+                <div class="field-hint">> 30 giorni → penalità −20pt</div>
+              </div>
+              <label class="check-row">
+                <input type="checkbox" id="m7_qrcode" />
+                Dati QEN pubblici via QR code (+40pt)
+              </label>
+              <label class="check-row">
+                <input type="checkbox" id="m7_audit" />
+                Audit esterni presenti (+30pt)
+              </label>
+              <label class="check-row">
+                <input type="checkbox" id="m7_codice" />
+                Codice etico firmato (+20pt)
+              </label>
+            </div>
+
+            <!-- M8: Territorio -->
+            <div class="mod-section" id="mod-m8">
+              <div class="mod-header">
+                <div class="mod-title">Impatto Sociale e Territorio</div>
+                <div class="mod-weight">Peso 5%</div>
+              </div>
+              <div class="mod-desc">
+                Valore generato per la comunità locale. Bonus per acquisti locali,
+                volontariato, progetti inclusione e valorizzazione biodiversità culturale.
+              </div>
+              <div class="field">
+                <label for="m8_acquisti_locali">Acquisti Locali (%)</label>
+                <input type="number" id="m8_acquisti_locali" placeholder="es. 65" min="0" max="100" />
+                <div class="field-hint">> 60% → bonus locale +40pt</div>
+              </div>
+              <div class="field">
+                <label for="m8_volontariato">Ore Volontariato Aziendale / Anno</label>
+                <input type="number" id="m8_volontariato" placeholder="es. 120" min="0" />
+                <div class="field-hint">> 100h → bonus +20pt</div>
+              </div>
+              <div class="field">
+                <label for="m8_progetti">Progetti Inclusione Attivi (numero)</label>
+                <input type="number" id="m8_progetti" placeholder="es. 2" min="0" />
+                <div class="field-hint">+10pt per progetto (max +30pt)</div>
+              </div>
+              <div class="field">
+                <label for="m8_ingredienti_cultura">Ingredienti Biodiversità Culturale (lista, separati da virgola)</label>
+                <textarea id="m8_ingredienti_cultura" rows="3" placeholder="es. Pane di Altamura, Prosciutto San Daniele, Aceto Balsamico di Modena"></textarea>
+                <div class="field-hint">+5pt per ingrediente (max +25pt)</div>
+              </div>
+            </div>
+
+            <!-- ── Run button ── -->
+            <hr class="section-divider" />
+            <div style="display:flex;gap:10px;flex-wrap:wrap;align-items:center">
+              <button class="btn-audit" onclick="runAudit()">▶ Calcola Score QEN</button>
+              <button class="btn-ghost-sm" onclick="loadExample()">Esempio Demo</button>
+              <button class="btn-ghost-sm" onclick="resetForm()">Reset</button>
+            </div>
+
+            <!-- Formula reference -->
+            <div class="formula-box">
+              <div style="font-size:0.55rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--muted);margin-bottom:8px;font-family:var(--mono)">Formula Maestra QEN v1.0</div>
+              <div class="formula-text">
+                <span class="hi">QEN</span> =
+                (M1×<span class="hi">0.20</span>) + (M2×<span class="hi">0.20</span>) + (M3×<span class="hi">0.20</span>) +<br>
+                (M4×<span class="hi">0.10</span>) + (M5×<span class="hi">0.10</span>) + (M6×<span class="hi">0.10</span>) +<br>
+                (M7×<span class="hi">0.05</span>) + (M8×<span class="hi">0.05</span>)
+              </div>
+              <div style="margin-top:10px;font-family:var(--mono);font-size:0.6rem;color:var(--muted);line-height:1.8">
+                ≥ 75 → <span style="color:var(--c-low)">CONFORME CERTIFICATO</span> ·
+                60–74 → <span style="color:var(--c-med)">CONFORME CONDIZIONATO</span> ·
+                &lt; 60 → <span style="color:var(--c-crit)">NON CONFORME</span>
+              </div>
+            </div>
+
+            <div style="margin-top:14px;font-family:var(--mono);font-size:0.6rem;color:var(--muted);line-height:1.7">
+              Motore QEN v1.0 · Proprietà Intellettuale CognitiveLogic Intelligence<br>
+              Autore e Visionario: Roberto Bob Malini · Calcolo deterministico client-side
+            </div>
+          </div><!-- /input panel -->
+
+          <!-- ── Output panel ── -->
+          <div class="panel" id="outputPanel">
+            <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:20px">
+              <div class="sec-label" style="margin:0;border:none;padding:0">Report QEN Audit</div>
+              <div id="exportRow" style="display:none;gap:8px">
+                <button class="btn-ghost-sm" onclick="exportJSON()">Export JSON</button>
+              </div>
+            </div>
+
+            <!-- Empty state -->
+            <div id="emptyState" class="empty-state">
+              <p>
+                Inserisci i dati operativi e premi<br>
+                <strong style="color:var(--text)">"Calcola Score QEN"</strong><br>
+                per generare il report certificato.
+              </p>
+              <div style="margin-top:28px;padding:18px 22px;border:1px solid var(--line-2);background:var(--navy-3);text-align:left">
+                <div class="sec-label" style="margin-bottom:12px">Blocchi claim automatici</div>
+                <div style="font-family:var(--mono);font-size:0.66rem;color:var(--muted);line-height:2.0">
+                  · M1 &lt; 80 → nega claim <em>"Km-Zero"</em><br>
+                  · M2 &lt; 70 → nega claim <em>"100% Eco-friendly"</em><br>
+                  · M3 &lt; 75 → nega claim <em>"Carbon Neutral"</em><br>
+                  · M4 &lt; 80 → nega claim <em>"Biologico/Certificato"</em><br>
+                  · M5 &lt; 75 → nega claim <em>"Socialmente Responsabile"</em>
+                </div>
+              </div>
+            </div>
+
+            <!-- Result state -->
+            <div id="resultState" style="display:none">
+
+              <!-- QEN composite score -->
+              <div class="qen-composite">
+                <div class="qen-score-big">
+                  <span id="qenScore">—</span><span class="frac">/100</span>
+                </div>
+                <div class="qen-score-meta">
+                  QEN Score Finale<br>
+                  <span id="statusBadgeWrap"></span>
+                </div>
+              </div>
+
+              <!-- Module scores -->
+              <div style="margin-bottom:20px">
+                <div class="sec-label">Moduli Dettagliati</div>
+                <div id="moduleBars"></div>
+              </div>
+
+              <!-- Blocked claims -->
+              <div id="claimsSection" style="margin-bottom:20px">
+                <div class="sec-label">Claim Bloccati</div>
+                <div id="claimsList"></div>
+              </div>
+
+              <!-- Recommendations -->
+              <div style="margin-bottom:20px">
+                <div class="sec-label">Raccomandazioni di Miglioramento</div>
+                <div id="recList"></div>
+              </div>
+
+              <!-- Metadata -->
+              <div class="meta-grid" id="auditMeta"></div>
+
+              <!-- JSON export -->
+              <div class="json-panel" id="jsonPanel">
+                <div class="json-panel-header" onclick="toggleJSON()">
+                  <span class="json-panel-title">Output JSON</span>
+                  <button class="json-toggle" id="jsonToggle">mostra ▾</button>
+                </div>
+                <pre class="json-raw" id="jsonRaw"></pre>
+              </div>
+
+              <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:16px">
+                <button class="btn-ghost-sm" onclick="exportJSON()">Export JSON</button>
+              </div>
+
+            </div><!-- /resultState -->
+          </div><!-- /output panel -->
+
+        </div><!-- /auditor-grid -->
+      </div>
+    </section>
+  </main>
+
+  <!-- ── Footer ── -->
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div>
+        <div class="footer-brand">Cognitive Logic · QEN HoReCa Auditor v1.0</div>
+        <div class="footer-sub">Motore QEN — Quantificazione dell'Etica Naturale · Green Claim EU · PPWR 2026 · ESG.</div>
+        <div class="footer-copy mt-8">© 2026 Roberto Bob Malini — CognitiveLogic Intelligence</div>
+        <div class="footer-social">
+          <a class="footer-social-link" href="https://www.linkedin.com/in/robertobobmalini/" target="_blank" rel="noopener"><span class="fsl-net">LinkedIn</span><span class="fsl-name">Roberto Malini</span></a>
+          <a class="footer-social-link" href="https://www.linkedin.com/company/cognitivelogic/" target="_blank" rel="noopener"><span class="fsl-net">LinkedIn</span><span class="fsl-name">Cognitive Logic</span></a>
+          <a class="footer-social-link" href="mailto:info@cognitivelogic.it"><span class="fsl-net">Email</span><span class="fsl-name">info@cognitivelogic.it</span></a>
+        </div>
+      </div>
+      <div class="footer-links">
+        <a href="index.html">Home</a>
+        <a href="framework.html">Framework</a>
+        <a href="qen-compliance-auditor.html">Auditor AI</a>
+        <a href="methodology.html">Methodology</a>
+        <a href="demo.html">Demo</a>
+        <a href="/privacy.html">Privacy</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+  /* ================================================================
+     QEN Motore v1.0 — JavaScript Scoring Engine
+     Proprietà CognitiveLogic Intelligence · Roberto Bob Malini
+     ================================================================ */
+
+  let lastResult = null;
+
+  // ── DOM helpers ──────────────────────────────────────────────────
+  const gv  = id => document.getElementById(id).value;
+  const gn  = id => parseFloat(document.getElementById(id).value) || 0;
+  const gi  = id => parseInt(document.getElementById(id).value)   || 0;
+  const gb  = id => document.getElementById(id).checked;
+  const gls = id => {
+    const v = document.getElementById(id).value.trim();
+    return v ? v.split(',').map(s => s.trim()).filter(Boolean) : [];
+  };
+  const r2  = v  => Math.round(v * 100) / 100;
+
+  // ── Tab navigation ───────────────────────────────────────────────
+  function showTab(id) {
+    document.querySelectorAll('.mod-section').forEach(s => s.classList.remove('visible'));
+    document.querySelectorAll('.mod-tab').forEach(t => t.classList.remove('active'));
+    document.getElementById('mod-' + id).classList.add('visible');
+    const tabs = document.querySelectorAll('.mod-tab');
+    const map = {m1:0, m2:1, m3:2, m4:3, m5:4, m6:5, m7:6, m8:7};
+    if (map[id] !== undefined) tabs[map[id]].classList.add('active');
+  }
+
+  // ── Module 1: Logistica (20%) ────────────────────────────────────
+  function calcLogistica() {
+    const dist   = gn('m1_distanza');
+    const cert   = gb('m1_certificazione');
+    const locali = gn('m1_fornitori_localizzati');
+
+    const base        = dist < 70 ? 100 : Math.max(0, 100 - (dist - 70) / 10);
+    const bonusEtico  = cert    ? 20 : 0;
+    const bonusFiliera= locali >= 80 ? 15 : 0;
+    const score       = Math.min(100, base + bonusEtico + bonusFiliera);
+
+    const notes = [];
+    if (dist >= 70) notes.push(`Distanza ${dist}km (soglia km-zero: 70km)`);
+    if (!cert)      notes.push('Fornitore non certificato (−20pt perso)');
+    if (locali < 80) notes.push(`${locali}% fornitori locali (soglia bonus: 80%)`);
+
+    return { score: r2(score), claimNegato: score < 80, claimLabel: 'Km-Zero',
+             note: notes.join('; ') || 'Filiera corta conforme' };
+  }
+
+  // ── Module 2: Imballaggi (20%) ───────────────────────────────────
+  function calcImballaggi() {
+    const plastica  = gn('m2_plastica');
+    const riciclato = gn('m2_riciclato');
+    const compost   = gb('m2_compostabilita');
+
+    const penalita   = Math.min(40, 2 * plastica);
+    const bonusRic   = riciclato > 30 ? 40 : 0;
+    const bonusComp  = compost ? 20 : 0;
+    const score      = Math.min(100, Math.max(0, 100 - penalita + bonusRic + bonusComp));
+
+    const notes = [];
+    if (plastica > 0)    notes.push(`Plastica ${plastica}kg/mese → −${penalita}pt`);
+    if (riciclato <= 30) notes.push(`Riciclato ${riciclato}% (soglia >30%)`);
+    if (!compost)        notes.push('Certificazione EN13432 assente');
+
+    return { score: r2(score), claimNegato: score < 70, claimLabel: '100% Eco-friendly',
+             note: notes.join('; ') || 'Imballaggi conformi PPWR 2026' };
+  }
+
+  // ── Module 3: Risorse (20%) ──────────────────────────────────────
+  function calcRisorse(coperti) {
+    const kwh  = gn('m3_kwh');
+    const rinn = gn('m3_rinnovabile');
+    const litri= gn('m3_litri');
+
+    const kwhPro   = coperti > 0 ? kwh   / coperti : 0;
+    const litriPro = coperti > 0 ? litri / coperti : 0;
+
+    const sEn = kwhPro   <= 2  ? 100 : Math.max(0, 100 - (kwhPro   - 2)  * 10);
+    const sAc = litriPro <= 25 ? 100 : Math.max(0, 100 - (litriPro - 25) / 0.25);
+
+    const bonusGreen = rinn === 100 ? 30 : (rinn >= 50 ? 15 : 0);
+    const score      = Math.min(100, (sEn + sAc) / 2 + bonusGreen);
+
+    const notes = [];
+    if (kwhPro   > 2)  notes.push(`${kwhPro.toFixed(2)} kWh/coperto (target ≤2)`);
+    if (litriPro > 25) notes.push(`${litriPro.toFixed(1)} L/coperto (target ≤25)`);
+    if (rinn     < 50) notes.push(`Rinnovabile ${rinn}% (bonus ≥50%)`);
+
+    return { score: r2(score), claimNegato: score < 75, claimLabel: 'Carbon Neutral',
+             note: notes.join('; ') || 'Efficienza risorse nella norma' };
+  }
+
+  // ── Module 4: Qualità (10%) ──────────────────────────────────────
+  function calcQualita() {
+    const certs    = gi('m4_certificazioni');
+    const stagione = gv('m4_stagionalita');
+    const ingr     = gls('m4_ingredienti');
+
+    const molt      = stagione === 'in_stagione' ? 1.0 : (stagione === 'serra' ? 0.6 : 0.5);
+    const scoreBase = (certs * 5) + (ingr.length * 10);
+    const score     = Math.min(100, scoreBase * molt);
+
+    const notes = [];
+    if (molt < 1)         notes.push(`Moltiplicatore stagionale ×${molt} (${stagione})`);
+    if (certs === 0)      notes.push('Nessuna certificazione ISO/Ecolabel');
+    if (ingr.length === 0)notes.push('Nessun ingrediente protetto dichiarato');
+
+    return { score: r2(score), claimNegato: score < 80, claimLabel: 'Biologico/Certificato',
+             note: notes.join('; ') || `${certs} cert., ${ingr.length} ingredienti protetti` };
+  }
+
+  // ── Module 5: Sociale (10%) ──────────────────────────────────────
+  function calcSociale() {
+    const oreExtra   = gn('m5_ore_extra');
+    const payGap     = gn('m5_pay_gap');
+    const formazione = gn('m5_formazione');
+    const turnover   = gn('m5_turnover');
+    const catProt    = gi('m5_cat_protette');
+
+    const penSfrutt  = oreExtra > 20 ? 50 : 0;
+    const penEquita  = Math.min(50, payGap * 0.5);
+    const bonusForm  = formazione > 40 ? 20 : 0;
+    const bonusTurn  = turnover < 15 ? 15 : (turnover > 30 ? -25 : 0);
+    const bonusIncl  = Math.min(30, catProt * 10);
+    const score      = Math.min(100, Math.max(0, 100 - penSfrutt - penEquita + bonusForm + bonusTurn + bonusIncl));
+
+    const notes = [];
+    if (oreExtra > 20)    notes.push(`Straordinari ${oreExtra}% > 20% (−50pt)`);
+    if (payGap > 0)       notes.push(`Pay gap ${payGap}% (−${Math.min(50, payGap*0.5)}pt)`);
+    if (formazione <= 40) notes.push(`Formazione ${formazione}h/anno (soglia >40h)`);
+    if (turnover > 30)    notes.push(`Turnover ${turnover}% > 30% (−25pt)`);
+
+    return { score: r2(score), claimNegato: score < 75, claimLabel: 'Socialmente Responsabile',
+             note: notes.join('; ') || 'Indicatori sociali nella norma' };
+  }
+
+  // ── Module 6: Rifiuti (10%) ──────────────────────────────────────
+  function calcRifiuti(coperti) {
+    const scarto  = gn('m6_scarto');
+    const donato  = gn('m6_donato');
+    const diffz   = gn('m6_differenziata');
+    const oli     = gb('m6_oli');
+
+    const scartoPro = coperti > 0 ? scarto / coperti : 0;
+    const sEff      = scartoPro < 0.15 ? 100 : Math.max(0, 100 - (scartoPro - 0.15) * 200);
+    const bonusRec  = donato > 5   ? 30 : 0;
+    const bonusZW   = diffz  >= 90 ? 25 : 0;
+    const bonusOli  = oli          ? 15 : 0;
+    const score     = Math.min(100, sEff + bonusRec + bonusZW + bonusOli);
+
+    const notes = [];
+    if (scartoPro >= 0.15) notes.push(`${scartoPro.toFixed(3)} kg scarto/coperto (target <0.15)`);
+    if (donato <= 5)       notes.push(`Food donation ${donato}% (soglia >5%)`);
+    if (diffz  < 90)       notes.push(`Raccolta diff. ${diffz}% (soglia ≥90%)`);
+    if (!oli)              notes.push('Tracciabilità oli esausti assente');
+
+    return { score: r2(score), claimNegato: false, claimLabel: null,
+             note: notes.join('; ') || 'Gestione rifiuti virtuosa' };
+  }
+
+  // ── Module 7: Governance (5%) ────────────────────────────────────
+  function calcGovernance() {
+    const qrcode = gb('m7_qrcode');
+    const audit  = gb('m7_audit');
+    const codice = gb('m7_codice');
+    const giorni = gi('m7_giorni');
+
+    const bonusTr   = qrcode ? 40 : 0;
+    const bonusAu   = audit  ? 30 : 0;
+    const bonusCo   = codice ? 20 : 0;
+    const penFr     = giorni > 30 ? 20 : 0;
+    const score     = Math.min(100, Math.max(0, 10 + bonusTr + bonusAu + bonusCo - penFr));
+
+    const notes = [];
+    if (!qrcode)     notes.push('Dati QEN non pubblicati via QR code');
+    if (!audit)      notes.push('Audit esterni assenti');
+    if (!codice)     notes.push('Codice etico non firmato');
+    if (giorni > 30) notes.push(`Dati aggiornati ${giorni}gg fa (−20pt)`);
+
+    return { score: r2(score), claimNegato: false, claimLabel: null,
+             note: notes.join('; ') || 'Governance trasparente e aggiornata' };
+  }
+
+  // ── Module 8: Territorio (5%) ────────────────────────────────────
+  function calcTerritorio() {
+    const locali  = gn('m8_acquisti_locali');
+    const volont  = gn('m8_volontariato');
+    const progetti= gi('m8_progetti');
+    const ingr    = gls('m8_ingredienti_cultura');
+
+    const bonusLoc  = locali > 60   ? 40 : 0;
+    const bonusVol  = volont > 100   ? 20 : 0;
+    const bonusIncl = Math.min(30, progetti * 10);
+    const bonusCult = Math.min(25, ingr.length * 5);
+    const score     = Math.min(100, bonusLoc + bonusVol + bonusIncl + bonusCult);
+
+    const notes = [];
+    if (locali  <= 60)       notes.push(`Acquisti locali ${locali}% (soglia >60%)`);
+    if (volont  <= 100)      notes.push(`Volontariato ${volont}h/anno (soglia >100h)`);
+    if (progetti === 0)      notes.push('Nessun progetto inclusione attivo');
+    if (ingr.length === 0)   notes.push('Nessun ingrediente di biodiversità culturale');
+
+    return { score: r2(score), claimNegato: false, claimLabel: null,
+             note: notes.join('; ') || 'Buon impatto territoriale' };
+  }
+
+  // ── Main audit orchestrator ──────────────────────────────────────
+  function runAudit() {
+    const nome    = gv('azienda_nome').trim() || 'Azienda HoReCa';
+    const coperti = gi('numero_coperti_mese');
+
+    if (!coperti || coperti <= 0) {
+      alert('Inserire il numero di coperti al mese (campo obbligatorio).');
+      return;
+    }
+
+    const mods = {
+      logistica:  calcLogistica(),
+      imballaggi: calcImballaggi(),
+      risorse:    calcRisorse(coperti),
+      qualita:    calcQualita(),
+      sociale:    calcSociale(),
+      rifiuti:    calcRifiuti(coperti),
+      governance: calcGovernance(),
+      territorio: calcTerritorio(),
+    };
+
+    const qen = r2(
+      mods.logistica.score  * 0.20 +
+      mods.imballaggi.score * 0.20 +
+      mods.risorse.score    * 0.20 +
+      mods.qualita.score    * 0.10 +
+      mods.sociale.score    * 0.10 +
+      mods.rifiuti.score    * 0.10 +
+      mods.governance.score * 0.05 +
+      mods.territorio.score * 0.05
+    );
+
+    const status = qen >= 75 ? 'CONFORME CERTIFICATO' :
+                   qen >= 60 ? 'CONFORME CONDIZIONATO' : 'NON CONFORME';
+
+    const blocchiClaim = Object.values(mods)
+      .filter(m => m.claimNegato && m.claimLabel)
+      .map(m => m.claimLabel);
+
+    const recs = [];
+    if (mods.logistica.score  < 80) recs.push('Privilegiare fornitori entro 70km e ottenere certificazioni etiche di filiera');
+    if (mods.imballaggi.score < 70) recs.push('Eliminare plastica monouso e adottare imballaggi compostabili certificati EN13432');
+    if (mods.risorse.score    < 75) recs.push('Installare pannelli fotovoltaici e sistemi di recupero acqua piovana');
+    if (mods.qualita.score    < 80) recs.push('Ottenere certificazioni ISO/Ecolabel e strutturare menu con prodotti stagionali');
+    if (mods.sociale.score    < 75) recs.push('Azzerare gender pay gap, ridurre straordinari e aumentare ore di formazione');
+    if (mods.rifiuti.score    < 50) recs.push('Attivare donazioni alimentari a food bank locali e portare raccolta differenziata al 90%');
+    if (mods.governance.score < 90) recs.push('Pubblicare dati QEN via QR code esposto e programmare audit esterni annuali');
+    if (mods.territorio.score < 40) recs.push('Portare acquisti locali oltre 60% e attivare almeno un progetto inclusione sociale');
+
+    const now     = new Date();
+    const nextEv  = new Date(now.getTime() + 30 * 86400000);
+
+    const auditId = typeof crypto !== 'undefined' && crypto.randomUUID
+      ? crypto.randomUUID()
+      : 'qen-' + Date.now();
+
+    lastResult = {
+      qen_audit_id:    auditId,
+      timestamp:       now.toISOString(),
+      azienda_nome:    nome,
+      qen_score_finale: qen,
+      status_conformita: status,
+      moduli_dettagliati: {
+        logistica:  { score: mods.logistica.score,  note: mods.logistica.note  },
+        imballaggi: { score: mods.imballaggi.score, note: mods.imballaggi.note },
+        risorse:    { score: mods.risorse.score,    note: mods.risorse.note    },
+        qualita:    { score: mods.qualita.score,    note: mods.qualita.note    },
+        sociale:    { score: mods.sociale.score,    note: mods.sociale.note    },
+        rifiuti:    { score: mods.rifiuti.score,    note: mods.rifiuti.note    },
+        governance: { score: mods.governance.score, note: mods.governance.note },
+        territorio: { score: mods.territorio.score, note: mods.territorio.note },
+      },
+      blocchi_claim:    blocchiClaim,
+      raccomandazioni_miglioria: recs,
+      prossima_valutazione_consigliata: nextEv.toISOString().slice(0, 10),
+      proprietario_certificato: 'CognitiveLogic Intelligence',
+    };
+
+    renderResults(lastResult);
+  }
+
+  // ── Result renderer ──────────────────────────────────────────────
+  function renderResults(r) {
+    document.getElementById('emptyState').style.display   = 'none';
+    document.getElementById('resultState').style.display  = 'block';
+    document.getElementById('exportRow').style.display    = 'flex';
+
+    // QEN score
+    document.getElementById('qenScore').textContent = r.qen_score_finale;
+
+    // Status badge
+    const cls   = r.qen_score_finale >= 75 ? 'status-green' :
+                  r.qen_score_finale >= 60 ? 'status-yellow' : 'status-red';
+    document.getElementById('statusBadgeWrap').innerHTML =
+      `<span class="status-badge ${cls}">${r.status_conformita}</span>`;
+
+    // Module bars
+    const moduleDefs = [
+      { key:'logistica',  label:'M1 — Logistica e Km-Zero',        weight:'20%' },
+      { key:'imballaggi', label:'M2 — Economia Circolare',          weight:'20%' },
+      { key:'risorse',    label:'M3 — Risorse Acqua &amp; Energia', weight:'20%' },
+      { key:'qualita',    label:'M4 — Qualità e Biodiversità',      weight:'10%' },
+      { key:'sociale',    label:'M5 — Dignità del Lavoro',          weight:'10%' },
+      { key:'rifiuti',    label:'M6 — Ciclo Rifiuti',               weight:'10%' },
+      { key:'governance', label:'M7 — Governance',                  weight:'5%'  },
+      { key:'territorio', label:'M8 — Territorio',                  weight:'5%'  },
+    ];
+
+    const barsHtml = moduleDefs.map(m => {
+      const s    = r.moduli_dettagliati[m.key].score;
+      const note = r.moduli_dettagliati[m.key].note;
+      const fc   = s >= 75 ? 'fill-good' : s >= 60 ? 'fill-med' : s >= 40 ? 'fill-high' : 'fill-crit';
+      return `<div class="module-row">
+        <div class="module-row-header">
+          <div class="module-row-label">${m.label}</div>
+          <div class="module-row-weight">${m.weight}</div>
+          <div class="module-row-score">${s}</div>
+        </div>
+        <div class="score-track">
+          <div class="score-fill ${fc}" id="fill-${m.key}" style="width:0%"></div>
+        </div>
+        <div class="module-row-note">${note}</div>
+      </div>`;
+    }).join('');
+    document.getElementById('moduleBars').innerHTML = barsHtml;
+
+    // Animate bars after render
+    setTimeout(() => {
+      moduleDefs.forEach(m => {
+        const el = document.getElementById('fill-' + m.key);
+        if (el) el.style.width = r.moduli_dettagliati[m.key].score + '%';
+      });
+    }, 80);
+
+    // Blocked claims
+    const clSec = document.getElementById('claimsSection');
+    if (r.blocchi_claim.length > 0) {
+      clSec.style.display = 'block';
+      document.getElementById('claimsList').innerHTML = r.blocchi_claim
+        .map(c => `<div class="claim-denied-item">⊘ <strong>Claim negato:</strong> "${c}"</div>`)
+        .join('');
+    } else {
+      clSec.style.display = 'block';
+      document.getElementById('claimsList').innerHTML =
+        '<div class="no-claims">✓ Nessun green claim bloccato — tutti i moduli sopra soglia.</div>';
+    }
+
+    // Recommendations
+    document.getElementById('recList').innerHTML = r.raccomandazioni_miglioria.length > 0
+      ? r.raccomandazioni_miglioria.map((rec, i) =>
+          `<div class="rec-item"><div class="rec-num">${i+1}</div><div>${rec}</div></div>`
+        ).join('')
+      : '<div class="no-claims">✓ Nessuna raccomandazione critica — azienda in ottima forma ESG.</div>';
+
+    // Metadata
+    const dt = new Date(r.timestamp);
+    document.getElementById('auditMeta').innerHTML = `
+      <div class="meta-item">
+        <div class="meta-label">Audit ID</div>
+        <div class="meta-val">${r.qen_audit_id.slice(0,20)}…</div>
+      </div>
+      <div class="meta-item">
+        <div class="meta-label">Data Valutazione</div>
+        <div class="meta-val">${dt.toLocaleDateString('it-IT')} ${dt.toLocaleTimeString('it-IT')}</div>
+      </div>
+      <div class="meta-item">
+        <div class="meta-label">Prossima Valutazione</div>
+        <div class="meta-val">${r.prossima_valutazione_consigliata}</div>
+      </div>
+      <div class="meta-item">
+        <div class="meta-label">Proprietario</div>
+        <div class="meta-val">${r.proprietario_certificato}</div>
+      </div>`;
+
+    // JSON
+    document.getElementById('jsonRaw').textContent = JSON.stringify(r, null, 2);
+
+    // Scroll to results on mobile
+    if (window.innerWidth <= 960) {
+      document.getElementById('outputPanel').scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  }
+
+  // ── JSON toggle ──────────────────────────────────────────────────
+  function toggleJSON() {
+    const raw = document.getElementById('jsonRaw');
+    const tog = document.getElementById('jsonToggle');
+    raw.classList.toggle('open');
+    tog.textContent = raw.classList.contains('open') ? 'nascondi ▴' : 'mostra ▾';
+  }
+
+  // ── Export JSON ──────────────────────────────────────────────────
+  function exportJSON() {
+    if (!lastResult) return;
+    const blob = new Blob([JSON.stringify(lastResult, null, 2)], { type: 'application/json' });
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = `qen-horeca-audit-${lastResult.azienda_nome.replace(/\s+/g,'_').toLowerCase()}-${new Date().toISOString().slice(0,10)}.json`;
+    a.click();
+  }
+
+  // ── Reset form ───────────────────────────────────────────────────
+  function resetForm() {
+    document.querySelectorAll('input[type="text"], input[type="number"], textarea').forEach(el => { el.value = ''; });
+    document.querySelectorAll('input[type="checkbox"]').forEach(el => { el.checked = false; });
+    document.querySelectorAll('select').forEach(el => { el.selectedIndex = 0; });
+    document.getElementById('emptyState').style.display  = 'block';
+    document.getElementById('resultState').style.display = 'none';
+    document.getElementById('exportRow').style.display   = 'none';
+    lastResult = null;
+  }
+
+  // ── Demo example ─────────────────────────────────────────────────
+  // Expected approximate score ~71 (CONFORME CONDIZIONATO)
+  function loadExample() {
+    const sv = (id, v) => { document.getElementById(id).value = v; };
+    const sc = (id, v) => { document.getElementById(id).checked = v; };
+    const ss = (id, v) => { document.getElementById(id).value = v; };
+
+    // General
+    sv('azienda_nome', 'Osteria del Borgo');
+    sv('numero_coperti_mese', '1400');
+
+    // M1 - Logistica: dist 140km, cert false, 65% local → base=93, score=93 (<80: claim Km-Zero negato)
+    sv('m1_distanza', '140');
+    ss('m1_mezzo', 'camion');
+    sv('m1_fornitori_localizzati', '65');
+    sc('m1_certificazione', false);
+
+    // M2 - Imballaggi: 6kg plastica, 45% riciclato, senza EN13432 → 100-12+40=128→100? No: 100-12+40+0=128→100
+    // Actually: 100 - min(40,12) + 40 = 100 - 12 + 40 = 128 → but max cap not in formula, only min(0)
+    // Formula: max(0, 100 - penalita + bonus_riciclo + bonus_compost) = max(0, 100 - 12 + 40 + 0) = 128
+    // So score = 128 (no upper cap in formula for imballaggi)... but logically it shouldn't exceed 100
+    // Let me use: 15kg plastica, 25% riciclato, no EN13432 → 100-30+0+0=70
+    sv('m2_plastica', '15');
+    sv('m2_riciclato', '25');
+    sv('m2_contenitori', '150');
+    sc('m2_compostabilita', false);
+
+    // M3 - Risorse: 4200 kWh (3 kWh/coperto), 55% rinnovabile, 56000L (40L/coperto)
+    // energy: 100 - (3-2)*10 = 90; water: 100 - (40-25)/0.25 = 100-60 = 40; bonus=15
+    // score = (90+40)/2 + 15 = 65+15 = 80
+    sv('m3_kwh', '4200');
+    sv('m3_rinnovabile', '55');
+    sv('m3_litri', '56000');
+
+    // M4 - Qualità: 2 certs, in stagione, 3 ingredienti protetti → (10+30)*1.0 = 40
+    sv('m4_certificazioni', '2');
+    sv('m4_specie', '60');
+    ss('m4_stagionalita', 'in_stagione');
+    sv('m4_ingredienti', 'Bottarga di Muggine, Farro Monococco, Pecorino Sardo DOP');
+
+    // M5 - Sociale: 18% extra, 6% pay gap, 50h formazione, 22% turnover, 1 cat. protetta
+    // pen=0+3, bonus=20+0+10 → 100-0-3+20+0+10=127→? max(0, 127)=127. Hmm, score goes above 100 too
+    // Actually: max(0, 100 - 0 - 3 + 20 + 0 + 10) = max(0, 127) = 127. Spec doesn't cap sociale at 100
+    // For demo, use values that give ~75: 25% extra(-50), 12% payGap(-6), 30h form(0), 20% turnover(0), 0 cat(0)
+    // = max(0, 100-50-6+0+0+0) = 44 → too low
+    // Better: 18% extra(0), 10% payGap(-5), 50h form(+20), 18% turnover(0), 2 cat(+20) = 100-0-5+20+0+20=135→capped at...
+    // Actually sociale has no explicit cap either. Let's use values that give ~65-75:
+    // 15% extra(0), 8% payGap(-4), 35h form(0), 20% turnover(0), 1 cat(+10) = 100-0-4+0+0+10 = 106
+    // Let me pick: 22% extra(-50), 5% payGap(-2.5), 48h form(+20), 10% turn(+15), 2 cat(+20) = 100-50-2.5+20+15+20 = 102.5→102.5
+    // For claim to be denied (score < 75):
+    // 28% extra(-50), 20% payGap(-10), 30h form(0), 10% turn(+15), 0 cat(0) = 100-50-10+0+15+0 = 55
+    sv('m5_ore_extra', '22');
+    sv('m5_pay_gap', '8');
+    sv('m5_formazione', '45');
+    sv('m5_turnover', '12');
+    sv('m5_cat_protette', '1');
+
+    // M6 - Rifiuti: 196kg scarto (0.14 kg/coperto → < 0.15 → score 100), donated 7%, 80% diff, no oli
+    // score: 100 + 30 + 0 + 0 = 130 → 100 capped
+    sv('m6_scarto', '196');
+    sv('m6_donato', '7');
+    sv('m6_differenziata', '80');
+    sc('m6_oli', false);
+
+    // M7 - Governance: no QR, no audit, codice signed, 20 giorni → score = min(100, max(0, 10+0+0+20-0)) = 30
+    sv('m7_giorni', '20');
+    sc('m7_qrcode', false);
+    sc('m7_audit', false);
+    sc('m7_codice', true);
+
+    // M8 - Territorio: 55% local(0), 80h volontariato(0), 2 progetti(+20), 3 ingredienti(+15) = 35
+    sv('m8_acquisti_locali', '55');
+    sv('m8_volontariato', '80');
+    sv('m8_progetti', '2');
+    sv('m8_ingredienti_cultura', 'Pane di Altamura, Prosciutto San Daniele, Aceto Balsamico');
+
+    showTab('m1');
+  }
+
+  </script>
+</body>
+</html>
