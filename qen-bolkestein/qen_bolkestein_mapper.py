@@ -34,7 +34,7 @@ class Neo4jManager:
     def __init__(self, config):
         self.uri = config.NEO4J_URI
         self.username = config.NEO4J_USERNAME
-        self.password = 'qen_password_2026'
+        self.password = config.NEO4J_PASSWORD
         self.driver = None
     def connect(self) -> bool:
         try:

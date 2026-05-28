@@ -5,13 +5,15 @@ import asyncio, sys
 from neo4j import GraphDatabase
 from qen_multi_agent_router import BatchProcessor
 from qen_scoring_engine import get_prompt_fn
+from qen_config import QENBolkesteinConfig
 from loguru import logger
 
 logger.add("logs/main.log", rotation="500 MB")
 
 class QENOrchestrator:
     def __init__(self):
-        self.driver = GraphDatabase.driver("bolt://localhost:7687", auth=("neo4j", "qen_password_2026"))
+        _cfg = QENBolkesteinConfig()
+        self.driver = GraphDatabase.driver(_cfg.NEO4J_URI, auth=(_cfg.NEO4J_USERNAME, _cfg.NEO4J_PASSWORD))
         self.processor = BatchProcessor(max_workers=10)
     
     def get_businesses(self):

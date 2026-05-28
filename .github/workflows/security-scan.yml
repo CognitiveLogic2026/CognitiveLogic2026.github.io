@@ -1,0 +1,63 @@
+name: Security Scan
+
+on:
+  push:
+    branches: ["**"]
+  pull_request:
+    branches: [main]
+
+jobs:
+  secrets-scan:
+    name: Scan for secrets
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      # Cerca pattern di credenziali hardcodate nei file sorgente
+      - name: Check for hardcoded secrets
+        run: |
+          FAIL=0
+
+          # Pattern pericolosi nei file Python e JS
+          patterns=(
+            "password\s*=\s*['\"][^'\"]{6,}"
+            "api_key\s*=\s*['\"][^'\"]{10,}"
+            "secret\s*=\s*['\"][^'\"]{6,}"
+            "AIza[0-9A-Za-z_-]{35}"
+            "sk-[a-zA-Z0-9]{32,}"
+            "ghp_[a-zA-Z0-9]{36}"
+            "AKIA[0-9A-Z]{16}"
+          )
+
+          for pattern in "${patterns[@]}"; do
+            matches=$(grep -rniE "$pattern" \
+              --include="*.py" --include="*.js" --include="*.ts" --include="*.sh" \
+              --exclude-dir=".git" \
+              --exclude-dir="node_modules" \
+              . 2>/dev/null || true)
+
+            if [ -n "$matches" ]; then
+              echo "❌ Possibile secret trovato (pattern: $pattern):"
+              echo "$matches"
+              FAIL=1
+            fi
+          done
+
+          if [ $FAIL -eq 1 ]; then
+            echo ""
+            echo "STOP: credenziali hardcodate rilevate. Usa variabili d'ambiente."
+            exit 1
+          fi
+
+          echo "✅ Nessun secret hardcodato trovato."
+
+      # Verifica che i file .env non vengano committati per sbaglio
+      - name: Check no .env files committed
+        run: |
+          if git ls-files | grep -E '\.env$|\.env\.[a-z]+$'; then
+            echo "❌ File .env trovato nel repository. Aggiungilo a .gitignore."
+            exit 1
+          fi
+          echo "✅ Nessun file .env presente."
