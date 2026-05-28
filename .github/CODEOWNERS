@@ -1,0 +1,20 @@
+# File critici che richiedono approvazione esplicita del proprietario
+# https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-code-owners
+
+# Default: tutto richiede review di Roberto
+* @CognitiveLogic2026
+
+# Backend — script che girano sul server
+main.py                     @CognitiveLogic2026
+orchestrator.py             @CognitiveLogic2026
+deploy_s4.sh                @CognitiveLogic2026
+qen_bolkestein_s4.py        @CognitiveLogic2026
+requirements-flask.txt      @CognitiveLogic2026
+
+# Configurazione server e CI/CD
+nginx/                      @CognitiveLogic2026
+.github/                    @CognitiveLogic2026
+
+# Moduli qen-bolkestein con accesso database
+qen-bolkestein/             @CognitiveLogic2026
+qen-reconciliation/         @CognitiveLogic2026
