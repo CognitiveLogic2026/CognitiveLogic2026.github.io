@@ -1,0 +1,944 @@
+<!DOCTYPE html>
+<!--
+  Copyright (c) 2026 Roberto Bob Malini - Cognitive Logic
+  https://www.cognitivelogic.it
+  Licensed under CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/)
+-->
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>QEN Alert Engine — Specifiche Tecniche | CognitiveLogic</title>
+<meta name="description" content="Specifiche tecniche del motore di allerta QEN: soglie di criticità, drift detection e protocollo di reazione automatica per la conformità Green Claim 2026.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=IBM+Plex+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --green: #00e5a0;
+  --green-dim: rgba(0,229,160,0.12);
+  --green-mid: rgba(0,229,160,0.35);
+  --yellow: #ffb830;
+  --yellow-dim: rgba(255,184,48,0.12);
+  --orange: #ff7a30;
+  --orange-dim: rgba(255,122,48,0.12);
+  --red: #ff4d6d;
+  --red-dim: rgba(255,77,109,0.12);
+  --navy: #060d1a;
+  --navy-2: #0a1628;
+  --navy-3: #0f1f38;
+  --navy-4: #162847;
+  --text: #e8eef7;
+  --text-dim: #6b8aad;
+  --border: rgba(0,229,160,0.18);
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--navy);
+  color: var(--text);
+  font-family: 'IBM Plex Mono', monospace;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(0,229,160,0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0,229,160,0.03) 1px, transparent 1px);
+  background-size: 40px 40px;
+  pointer-events: none;
+  z-index: 0;
+}
+
+body::after {
+  content: '';
+  position: fixed;
+  top: -200px;
+  right: -200px;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(0,229,160,0.06) 0%, transparent 70%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+header {
+  position: relative;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.5rem 3rem;
+  border-bottom: 1px solid var(--border);
+  background: rgba(6,13,26,0.85);
+  backdrop-filter: blur(12px);
+}
+
+.logo {
+  font-family: 'Syne', sans-serif;
+  font-weight: 800;
+  font-size: 1.1rem;
+  letter-spacing: 0.08em;
+  color: var(--text);
+  text-decoration: none;
+}
+.logo span { color: var(--green); }
+
+.header-tag {
+  font-size: 0.65rem;
+  letter-spacing: 0.15em;
+  color: var(--green);
+  text-transform: uppercase;
+  border: 1px solid var(--border);
+  padding: 0.3rem 0.8rem;
+  border-radius: 2px;
+}
+
+.hero {
+  position: relative;
+  z-index: 1;
+  padding: 5rem 3rem 3rem;
+  max-width: 960px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.hero-eyebrow {
+  font-size: 0.65rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--green);
+  margin-bottom: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+}
+.hero-eyebrow::before, .hero-eyebrow::after {
+  content: '';
+  height: 1px;
+  width: 60px;
+  background: var(--green-mid);
+}
+
+.hero h1 {
+  font-family: 'Syne', sans-serif;
+  font-weight: 800;
+  font-size: clamp(2rem, 5vw, 3.2rem);
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  margin-bottom: 1.5rem;
+  color: var(--text);
+}
+.hero h1 em { font-style: normal; color: var(--green); }
+
+.hero-sub {
+  font-size: 0.85rem;
+  line-height: 1.8;
+  color: var(--text-dim);
+  max-width: 640px;
+  margin: 0 auto 1rem;
+}
+
+.live-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.65rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--green);
+  border: 1px solid var(--green);
+  background: var(--green-dim);
+  padding: 0.4rem 1rem;
+  border-radius: 2px;
+  margin-bottom: 4rem;
+}
+.pulse {
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  background: var(--green);
+  animation: pulse-anim 1.5s ease-in-out infinite;
+}
+@keyframes pulse-anim {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.4; transform: scale(0.7); }
+}
+
+.content {
+  position: relative;
+  z-index: 1;
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 0 3rem 6rem;
+}
+
+.section-title {
+  font-family: 'Syne', sans-serif;
+  font-weight: 700;
+  font-size: 1.3rem;
+  color: var(--text);
+  margin-bottom: 0.5rem;
+}
+.section-label {
+  font-size: 0.6rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--green);
+  margin-bottom: 0.75rem;
+}
+.section-desc {
+  font-size: 0.78rem;
+  line-height: 1.7;
+  color: var(--text-dim);
+  margin-bottom: 2.5rem;
+}
+
+.divider {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin: 3rem 0 2rem;
+  font-size: 0.6rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+}
+.divider::before, .divider::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--border);
+}
+
+/* THRESHOLD CARDS */
+.threshold-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  margin-bottom: 3rem;
+}
+
+.threshold-card {
+  background: var(--navy-2);
+  border-radius: 6px;
+  overflow: hidden;
+  position: relative;
+}
+
+.threshold-header {
+  padding: 1.5rem 1.5rem 1rem;
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+
+.threshold-dot {
+  width: 12px; height: 12px;
+  border-radius: 50%;
+  margin-bottom: 1rem;
+  box-shadow: 0 0 12px currentColor;
+}
+.threshold-dot.yellow { background: var(--yellow); color: var(--yellow); }
+.threshold-dot.orange { background: var(--orange); color: var(--orange); }
+.threshold-dot.red { background: var(--red); color: var(--red); animation: pulse-anim 1.5s ease-in-out infinite; }
+
+.threshold-level {
+  font-family: 'Syne', sans-serif;
+  font-weight: 800;
+  font-size: 1.1rem;
+  margin-bottom: 0.25rem;
+}
+.threshold-level.yellow { color: var(--yellow); }
+.threshold-level.orange { color: var(--orange); }
+.threshold-level.red { color: var(--red); }
+
+.threshold-range {
+  font-size: 0.65rem;
+  letter-spacing: 0.12em;
+  color: var(--text-dim);
+  text-transform: uppercase;
+}
+
+.threshold-body {
+  padding: 1.25rem 1.5rem 1.5rem;
+}
+
+.threshold-name {
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: 0.75rem;
+}
+
+.threshold-desc {
+  font-size: 0.68rem;
+  line-height: 1.7;
+  color: var(--text-dim);
+  margin-bottom: 1rem;
+}
+
+.threshold-action {
+  font-size: 0.65rem;
+  line-height: 1.6;
+  padding: 0.75rem 1rem;
+  border-radius: 3px;
+}
+.threshold-action.yellow { background: var(--yellow-dim); color: var(--yellow); border: 1px solid rgba(255,184,48,0.25); }
+.threshold-action.orange { background: var(--orange-dim); color: var(--orange); border: 1px solid rgba(255,122,48,0.25); }
+.threshold-action.red { background: var(--red-dim); color: var(--red); border: 1px solid rgba(255,77,109,0.25); }
+
+.threshold-bar {
+  height: 3px;
+  width: 100%;
+}
+.threshold-bar.yellow { background: linear-gradient(90deg, var(--yellow-dim), var(--yellow)); }
+.threshold-bar.orange { background: linear-gradient(90deg, var(--orange-dim), var(--orange)); }
+.threshold-bar.red { background: linear-gradient(90deg, var(--red-dim), var(--red)); }
+
+/* DRIFT DETECTION */
+.drift-box {
+  background: var(--navy-2);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 2rem;
+  margin-bottom: 3rem;
+  position: relative;
+  overflow: hidden;
+}
+.drift-box::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 3px;
+  background: linear-gradient(90deg, var(--green), transparent);
+}
+
+.drift-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  align-items: start;
+}
+
+.drift-title {
+  font-family: 'Syne', sans-serif;
+  font-weight: 700;
+  font-size: 1.1rem;
+  color: var(--text);
+  margin-bottom: 0.5rem;
+}
+
+.drift-sub {
+  font-size: 0.72rem;
+  line-height: 1.7;
+  color: var(--text-dim);
+  margin-bottom: 1.5rem;
+}
+
+.drift-highlight {
+  background: var(--green-dim);
+  border: 1px solid var(--green);
+  border-radius: 4px;
+  padding: 1rem 1.25rem;
+  font-size: 0.72rem;
+  line-height: 1.7;
+  color: var(--text);
+}
+.drift-highlight strong { color: var(--green); }
+
+.drift-chart {
+  background: var(--navy-3);
+  border-radius: 4px;
+  padding: 1.5rem;
+  height: 160px;
+  position: relative;
+  overflow: hidden;
+}
+
+.drift-chart-label {
+  font-size: 0.58rem;
+  letter-spacing: 0.1em;
+  color: var(--text-dim);
+  text-transform: uppercase;
+  margin-bottom: 0.75rem;
+}
+
+.chart-bars {
+  display: flex;
+  align-items: flex-end;
+  gap: 6px;
+  height: 100px;
+}
+
+.chart-bar {
+  flex: 1;
+  border-radius: 2px 2px 0 0;
+  transition: all 0.3s;
+  position: relative;
+}
+
+.chart-month {
+  position: absolute;
+  bottom: -18px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 0.55rem;
+  color: var(--text-dim);
+  white-space: nowrap;
+}
+
+.drift-arrow {
+  position: absolute;
+  bottom: 1.5rem;
+  right: 1.5rem;
+  font-size: 0.6rem;
+  color: var(--red);
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+/* REACTION PROTOCOL */
+.reaction-steps {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  margin-bottom: 3rem;
+  position: relative;
+}
+
+.reaction-steps::before {
+  content: '';
+  position: absolute;
+  left: 24px;
+  top: 0; bottom: 0;
+  width: 1px;
+  background: var(--border);
+}
+
+.reaction-step {
+  display: grid;
+  grid-template-columns: 48px 1fr;
+  gap: 1.5rem;
+  align-items: start;
+  padding: 1.5rem 0;
+  position: relative;
+}
+.reaction-step:not(:last-child) {
+  border-bottom: 1px solid rgba(255,255,255,0.04);
+}
+
+.reaction-num {
+  width: 48px; height: 48px;
+  border-radius: 50%;
+  background: var(--navy-3);
+  border: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Syne', sans-serif;
+  font-weight: 700;
+  font-size: 0.85rem;
+  color: var(--green);
+  flex-shrink: 0;
+  position: relative;
+  z-index: 1;
+}
+
+.reaction-content {}
+.reaction-step-label {
+  font-size: 0.58rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--green);
+  margin-bottom: 0.4rem;
+}
+.reaction-step-title {
+  font-family: 'Syne', sans-serif;
+  font-weight: 700;
+  font-size: 1rem;
+  color: var(--text);
+  margin-bottom: 0.5rem;
+}
+.reaction-step-desc {
+  font-size: 0.72rem;
+  line-height: 1.7;
+  color: var(--text-dim);
+}
+.reaction-step-desc strong { color: var(--text); }
+
+/* CVO ALERT */
+.cvo-box {
+  background: var(--navy-2);
+  border: 1px solid var(--red);
+  border-radius: 6px;
+  padding: 2rem;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 2rem;
+  align-items: center;
+  margin-bottom: 3rem;
+  position: relative;
+  overflow: hidden;
+}
+.cvo-box::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at left, rgba(255,77,109,0.05) 0%, transparent 60%);
+  pointer-events: none;
+}
+
+.cvo-icon {
+  width: 64px; height: 64px;
+  border-radius: 50%;
+  background: var(--red-dim);
+  border: 2px solid var(--red);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  flex-shrink: 0;
+  box-shadow: 0 0 24px rgba(255,77,109,0.3);
+}
+
+.cvo-title {
+  font-family: 'Syne', sans-serif;
+  font-weight: 700;
+  font-size: 1.1rem;
+  color: var(--text);
+  margin-bottom: 0.4rem;
+}
+.cvo-label { font-size: 0.58rem; letter-spacing: 0.15em; color: var(--red); text-transform: uppercase; margin-bottom: 0.6rem; }
+.cvo-desc { font-size: 0.72rem; line-height: 1.7; color: var(--text-dim); }
+.cvo-quote {
+  margin-top: 1rem;
+  background: var(--red-dim);
+  border-left: 3px solid var(--red);
+  padding: 0.75rem 1rem;
+  font-size: 0.75rem;
+  color: var(--text);
+  font-style: italic;
+  border-radius: 0 3px 3px 0;
+}
+
+/* UNIQUE SECTION */
+.unique-box {
+  background: var(--navy-2);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 2.5rem;
+  position: relative;
+  overflow: hidden;
+  text-align: center;
+}
+.unique-box::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at center, rgba(0,229,160,0.04) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.unique-title {
+  font-family: 'Syne', sans-serif;
+  font-weight: 800;
+  font-size: 1.4rem;
+  color: var(--text);
+  margin-bottom: 1rem;
+}
+.unique-title em { color: var(--green); font-style: normal; }
+
+.unique-desc {
+  font-size: 0.8rem;
+  line-height: 1.8;
+  color: var(--text-dim);
+  max-width: 600px;
+  margin: 0 auto 2rem;
+}
+
+.comparison-row {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  gap: 1.5rem;
+  align-items: center;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.comparison-card {
+  background: var(--navy-3);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 1.25rem;
+  text-align: left;
+}
+
+.comparison-tag {
+  font-size: 0.58rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-bottom: 0.5rem;
+}
+.comparison-tag.old { color: var(--text-dim); }
+.comparison-tag.new { color: var(--green); }
+
+.comparison-desc {
+  font-size: 0.72rem;
+  line-height: 1.6;
+  color: var(--text-dim);
+}
+.comparison-desc strong { color: var(--text); }
+
+.vs-label {
+  font-family: 'Syne', sans-serif;
+  font-weight: 800;
+  font-size: 1rem;
+  color: var(--text-dim);
+}
+
+/* FOOTER ACTIONS */
+.footer-actions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  padding: 2rem 3rem 3rem;
+  position: relative;
+  z-index: 1;
+}
+
+.btn {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.72rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 0.8rem 2rem;
+  border-radius: 3px;
+  cursor: pointer;
+  transition: all 0.2s;
+  border: 1px solid transparent;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.btn-primary {
+  background: var(--green);
+  color: var(--navy);
+  font-weight: 600;
+  border-color: var(--green);
+}
+.btn-primary:hover {
+  background: #00ffc4;
+  box-shadow: 0 0 20px rgba(0,229,160,0.4);
+}
+.btn-ghost {
+  background: transparent;
+  color: var(--text-dim);
+  border-color: var(--border);
+}
+.btn-ghost:hover {
+  color: var(--text);
+  border-color: var(--text-dim);
+}
+
+.privacy-note {
+  text-align: center;
+  font-size: 0.62rem;
+  color: var(--text-dim);
+  padding: 1.5rem 3rem;
+  border-top: 1px solid var(--border);
+  position: relative;
+  z-index: 1;
+  line-height: 1.7;
+}
+.privacy-note a { color: var(--green); text-decoration: none; }
+
+@media (max-width: 768px) {
+  header { padding: 1rem 1.5rem; }
+  .hero, .content { padding-left: 1.5rem; padding-right: 1.5rem; }
+  .threshold-grid { grid-template-columns: 1fr; }
+  .drift-grid { grid-template-columns: 1fr; }
+  .cvo-box { grid-template-columns: 1fr; text-align: center; }
+  .comparison-row { grid-template-columns: 1fr; }
+  .vs-label { display: none; }
+  .reaction-steps::before { display: none; }
+}
+</style>
+  <link rel="search" type="application/opensearchdescription+xml" title="Cognitive Logic" href="https://cognitivelogic.it/opensearchdescription.xml" />
+</head>
+<body>
+
+<header>
+  <a href="https://cognitivelogic.it" class="logo" style="line-height:0;"><img src="img/logo-cognitivelogic.png" alt="Cognitive Logic" style="height:28px;width:auto;display:block;"></a>
+  <span class="header-tag">QEN · Alert Engine</span>
+</header>
+
+<div class="hero">
+  <div class="hero-eyebrow">Specifiche Tecniche · v2026</div>
+  <h1>QEN<br><em>Alert Engine</em></h1>
+  <p class="hero-sub">
+    Il motore di sorveglianza continua che trasforma il Rating QEN da una fotografia statica annuale
+    in un <strong style="color:var(--text)">filmato in diretta</strong> sulla salute etica della tua filiera.
+  </p>
+  <div class="live-badge">
+    <div class="pulse"></div>
+    Monitoraggio attivo · 24/7 · 365 giorni
+  </div>
+</div>
+
+<div class="content">
+
+  <!-- SECTION 1: SOGLIE -->
+  <div class="section-label">01 · Soglie di Criticità</div>
+  <div class="section-title">I Tre Livelli di Allerta</div>
+  <div class="section-desc">
+    L'algoritmo monitora costantemente la media ponderata dei vettori V_s, V_a e V_t.
+    Le allerte si attivano in base allo scostamento (Delta) rispetto alla baseline certificata.
+  </div>
+
+  <div class="threshold-grid">
+
+    <div class="threshold-card">
+      <div class="threshold-bar yellow"></div>
+      <div class="threshold-header">
+        <div class="threshold-dot yellow"></div>
+        <div class="threshold-level yellow">YELLOW</div>
+        <div class="threshold-range">Rating &gt; 75%</div>
+      </div>
+      <div class="threshold-body">
+        <div class="threshold-name">Livello Attenzione</div>
+        <div class="threshold-desc">
+          Scostamento lieve in un pilastro non critico. Il sistema rileva un segnale debole
+          che non compromette ancora la conformità dichiarata.
+        </div>
+        <div class="threshold-action yellow">
+          Notifica nella dashboard. Nessuna azione immediata richiesta. Monitoraggio intensificato.
+        </div>
+      </div>
+    </div>
+
+    <div class="threshold-card">
+      <div class="threshold-bar orange"></div>
+      <div class="threshold-header">
+        <div class="threshold-dot orange"></div>
+        <div class="threshold-level orange">ORANGE</div>
+        <div class="threshold-range">Rating 60% – 75%</div>
+      </div>
+      <div class="threshold-body">
+        <div class="threshold-name">Rischio Greenwashing</div>
+        <div class="threshold-desc">
+          Scostamento significativo nei pilastri chiave: Tracciabilità o Coerenza Normativa.
+          I Green Claims dichiarati sono a rischio di non conformità.
+        </div>
+        <div class="threshold-action orange">
+          Attivazione Protocollo di Reazione Automatica. Freeze Badge + Root Cause Analysis + Action Plan entro 30gg.
+        </div>
+      </div>
+    </div>
+
+    <div class="threshold-card">
+      <div class="threshold-bar red"></div>
+      <div class="threshold-header">
+        <div class="threshold-dot red"></div>
+        <div class="threshold-level red">RED</div>
+        <div class="threshold-range">Rating &lt; 60%</div>
+      </div>
+      <div class="threshold-body">
+        <div class="threshold-name">Emergenza Compliance</div>
+        <div class="threshold-desc">
+          Il rating non è più conforme ai Green Claims dichiarati. Esposizione a rischio legale
+          ai sensi della Direttiva Green Claim 2026.
+        </div>
+        <div class="threshold-action red">
+          Allerta Rossa persistente → CVO Alert prioritario. Intervento strategico d'urgenza obbligatorio.
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- SECTION 2: DRIFT DETECTION -->
+  <div class="divider">02 · Drift Detection</div>
+
+  <div class="drift-box">
+    <div class="drift-grid">
+      <div>
+        <div class="drift-title">Rilevamento della Deriva</div>
+        <div class="drift-sub">
+          QEN non guarda solo il numero fisso — misura la <strong style="color:var(--text)">velocità di caduta</strong>.
+          Un rating ancora alto ma in discesa costante è più pericoloso di un rating basso ma stabile.
+        </div>
+        <div class="drift-highlight">
+          <strong>Allerta Predittiva:</strong> Se il pilastro "Impronta di Risorsa" scende del 5% ogni mese
+          per tre mesi consecutivi, il sistema genera un'allerta anche se il rating totale è ancora sopra soglia.
+          <br><br>
+          <strong>Preveniamo la crisi prima che avvenga.</strong>
+        </div>
+      </div>
+
+      <div>
+        <div class="drift-chart">
+          <div class="drift-chart-label">Pilastro: Impronta di Risorsa · Trend 6 mesi</div>
+          <div class="chart-bars" id="drift-bars"></div>
+          <div class="drift-arrow">
+            <span>▼ −5%/mese</span>
+            <span style="color:var(--red);font-weight:600">⚠ ALLERTA PREDITTIVA</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION 3: REACTION PROTOCOL -->
+  <div class="divider">03 · Protocollo di Reazione</div>
+
+  <div class="section-desc">
+    Quando scatta un'allerta Orange o Red, il sistema attiva automaticamente questa sequenza in parallelo — nessun intervento manuale richiesto per le prime tre fasi.
+  </div>
+
+  <div class="reaction-steps">
+
+    <div class="reaction-step">
+      <div class="reaction-num">01</div>
+      <div class="reaction-content">
+        <div class="reaction-step-label">Azione Immediata</div>
+        <div class="reaction-step-title">Freeze del Badge Dinamico</div>
+        <div class="reaction-step-desc">
+          Il badge dinamico QEN sul sito web del cliente passa automaticamente allo stato
+          <strong>"In Aggiornamento"</strong> per evitare la diffusione di comunicazioni potenzialmente
+          mendaci ai sensi della Direttiva 2026/0099. Il freeze è reversibile solo dopo il ripristino della conformità.
+        </div>
+      </div>
+    </div>
+
+    <div class="reaction-step">
+      <div class="reaction-num">02</div>
+      <div class="reaction-content">
+        <div class="reaction-step-label">Analisi AI · &lt; 60 secondi</div>
+        <div class="reaction-step-title">Root Cause Analysis</div>
+        <div class="reaction-step-desc">
+          L'AI genera un report istantaneo che identifica con precisione il dato responsabile del calo.
+          Esempio: <strong>"Il fornitore X ha una certificazione BIO scaduta il [data]. Impatto sul vettore V_t: −8.3 punti."</strong>
+          Il report è consultabile direttamente in dashboard con traccia temporale.
+        </div>
+      </div>
+    </div>
+
+    <div class="reaction-step">
+      <div class="reaction-num">03</div>
+      <div class="reaction-content">
+        <div class="reaction-step-label">Piano Correttivo Generato</div>
+        <div class="reaction-step-title">Action Plan Suggerito</div>
+        <div class="reaction-step-desc">
+          Il sistema propone <strong>tre mosse correttive prioritizzate</strong> per riportare il rating sopra la soglia di guardia
+          entro 30 giorni, con stima dell'impatto sul punteggio per ciascuna azione.
+          Il piano è esportabile in PDF per uso interno o verso i fornitori.
+        </div>
+      </div>
+    </div>
+
+    <div class="reaction-step">
+      <div class="reaction-num">04</div>
+      <div class="reaction-content">
+        <div class="reaction-step-label">Escalation · Solo Allerta Rossa</div>
+        <div class="reaction-step-title">CVO Alert — Notifica Prioritaria</div>
+        <div class="reaction-step-desc">
+          In caso di Allerta Rossa persistente (oltre 48h), il sistema attiva una notifica prioritaria
+          diretta al CVO. Questo permette l'intervento strategico d'urgenza sulla filiera
+          <strong>prima che l'esposizione legale diventi concreta</strong>.
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- SECTION 4: CVO ALERT -->
+  <div class="divider">04 · CVO Alert</div>
+
+  <div class="cvo-box">
+    <div class="cvo-icon">🔴</div>
+    <div>
+      <div class="cvo-label">Notifica Prioritaria · Allerta Rossa Persistente</div>
+      <div class="cvo-title">Intervento Strategico d'Urgenza</div>
+      <div class="cvo-desc">
+        In caso di Allerta Rossa persistente, Roberto Bob Malini — CVO di CognitiveLogic —
+        riceve una notifica diretta e prioritaria. L'intervento è immediato: consulenza strategica
+        sulla filiera con analisi della causa radice e piano di ripristino.
+      </div>
+      <div class="cvo-quote">
+        "Il vostro Rating QEN è a rischio legale — dobbiamo agire sulla filiera immediatamente."
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION 5: UNIQUE -->
+  <div class="divider">05 · Perché è Unico</div>
+
+  <div class="unique-box">
+    <div class="unique-title">Da <em>fotografia</em> a <em>filmato in diretta</em></div>
+    <div class="unique-desc">
+      La maggior parte dei report di sostenibilità sono scattati una volta all'anno.
+      Il QEN Alert Engine monitora ogni vettore in tempo reale — se un fornitore tradisce
+      l'etica dichiarata, il tuo cliente lo sa entro 24 ore, non dopo 12 mesi.
+    </div>
+
+    <div class="comparison-row">
+      <div class="comparison-card">
+        <div class="comparison-tag old">Report Tradizionale</div>
+        <div class="comparison-desc">
+          <strong>1 snapshot / anno.</strong> Il rischio di greenwashing rimane invisibile
+          per mesi. Nessuna allerta predittiva.
+        </div>
+      </div>
+      <div class="vs-label">VS</div>
+      <div class="comparison-card" style="border-color:var(--green)">
+        <div class="comparison-tag new">QEN Alert Engine</div>
+        <div class="comparison-desc" style="color:var(--text)">
+          <strong style="color:var(--green)">Monitoraggio continuo.</strong> Drift detection,
+          allerta in 24h, Root Cause Analysis automatica e Action Plan in 60 secondi.
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<div class="footer-actions">
+  <a href="onboarding.html" class="btn btn-primary">Avvia Onboarding QEN →</a>
+  <a href="qen.html" class="btn btn-ghost">← Framework QEN</a>
+</div>
+
+<div class="privacy-note">
+  QEN Alert Engine è un componente proprietario di CognitiveLogic (info@cognitivelogic.it) ·
+  <a href="methodology.html">Metodologia</a> · <a href="privacy.html">Privacy</a> ·
+  <a href="https://cognitivelogic.it">cognitivelogic.it</a>
+</div>
+
+<script>
+// Render drift chart bars
+(function() {
+  const bars = document.getElementById('drift-bars');
+  if (!bars) return;
+  const months = ['Gen','Feb','Mar','Apr','Mag','Giu'];
+  const heights = [88, 83, 78, 73, 68, 63];
+  const colors = ['var(--green)','var(--green)','var(--yellow)','var(--yellow)','var(--orange)','var(--red)'];
+
+  months.forEach((m, i) => {
+    const bar = document.createElement('div');
+    bar.className = 'chart-bar';
+    bar.style.cssText = `height:${heights[i]}%;background:${colors[i]};opacity:0.8;`;
+    bar.innerHTML = `<span class="chart-month">${m}</span>`;
+    bars.appendChild(bar);
+  });
+})();
+</script>
+
+</body>
+</html>
