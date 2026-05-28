@@ -753,6 +753,10 @@ header { padding: 1rem 1.5rem; }
     </div>
     <div class="step-node" data-step="5" onclick="goToStep(5)">
       <div class="step-dot">05</div>
+      <span class="step-label">Fortress</span>
+    </div>
+    <div class="step-node" data-step="6" onclick="goToStep(6)">
+      <div class="step-dot">06</div>
       <span class="step-label">Revisione</span>
     </div>
   </div>
@@ -1155,20 +1159,105 @@ header { padding: 1rem 1.5rem; }
   </div>
 </div>
 
+<div class="section-divider">Identità Digitale</div>
+
+<div class="field-grid single">
+  <div class="field">
+    <label>URL Siti Web &amp; Canali Social <span style="font-size:0.6rem;color:var(--text-dim)">(uno per riga · Audit di Integrità Digitale)</span></label>
+    <textarea id="url_social" rows="3" placeholder="https://www.azienda.it&#10;https://www.instagram.com/azienda&#10;https://www.facebook.com/azienda"
+      oninput="saveField('url_social', this.value)"></textarea>
+  </div>
+</div>
+
+<div class="field" style="margin-top:1rem">
+  <label>Brand Identity — Logo aziendale (alta risoluzione)</label>
+  <div class="file-drop" id="drop-logo"
+    ondragover="dragOver(event,'drop-logo')" ondragleave="dragLeave('drop-logo')"
+    ondrop="fileDrop(event,'drop-logo','logo-files')">
+    <input type="file" accept=".png,.svg,.jpg,.pdf,.ai,.eps" onchange="fileSelect(this,'logo-files')">
+    <div class="file-icon">🖼</div>
+    <div class="file-drop-text">Trascina o clicca per caricare il logo (PNG, SVG, PDF · min 300 dpi per personalizzazione Report QEN)</div>
+  </div>
+  <div class="file-list" id="logo-files"></div>
+</div>
+
 <div class="nav-row">
   <button class="btn btn-ghost" onclick="prevStep(4)">← Indietro</button>
-  <button class="btn btn-primary" onclick="nextStep(4)">Avanti — Revisione →</button>
+  <button class="btn btn-primary" onclick="nextStep(4)">Avanti — Fortress →</button>
 </div>
 
 
   </div>
 
-  <!-- STEP 5: REVISIONE -->
+  <!-- STEP 5: FORTRESS PROTOCOL -->
 
   <div class="step-panel" id="step-5">
     <div class="panel-header">
-      <div class="panel-number">Step 05 / 05</div>
-      <div class="panel-title">Revisione & Invio</div>
+      <div class="panel-number">Step 05 / 06</div>
+      <div class="panel-title">Protocollo Fortress™</div>
+      <div class="panel-desc">Privacy &amp; Sicurezza dei dati industriali. Leggi e conferma ogni impegno prima di procedere.</div>
+    </div>
+
+  <div class="info-box">
+    <strong>Perché questo protocollo?</strong> I dati di filiera e i segreti industriali condivisi con QEN sono beni strategici aziendali.
+    Fortress garantisce protezione con standard di sicurezza militare, piena conformità GDPR e sovranità dei dati UE.
+  </div>
+
+  <div class="section-divider">Impegni contrattuali — tutte e quattro le conferme sono obbligatorie</div>
+
+  <div style="display:flex;flex-direction:column;gap:1rem;margin-bottom:1.5rem">
+
+    <div class="checkbox-item" onclick="toggleFortress(this,'fortress_nda')" style="max-width:100%;padding:1.25rem;align-items:flex-start">
+      <div class="check-box" style="margin-top:0.15rem;flex-shrink:0">✓</div>
+      <div>
+        <div class="check-label" style="font-weight:600;font-size:0.78rem;margin-bottom:0.3rem">Accordo di Riservatezza (NDA)</div>
+        <div style="font-size:0.65rem;color:var(--text-dim);line-height:1.6">Prendo atto che verrà sottoscritto un patto di non divulgazione reciproca per proteggere i segreti industriali e i flussi della filiera di entrambe le parti.</div>
+      </div>
+    </div>
+
+    <div class="checkbox-item" onclick="toggleFortress(this,'fortress_aes')" style="max-width:100%;padding:1.25rem;align-items:flex-start">
+      <div class="check-box" style="margin-top:0.15rem;flex-shrink:0">✓</div>
+      <div>
+        <div class="check-label" style="font-weight:600;font-size:0.78rem;margin-bottom:0.3rem">Data Storage Cifrato AES-256</div>
+        <div style="font-size:0.65rem;color:var(--text-dim);line-height:1.6">Confermo che tutti i dati caricati vengono archiviati su server con crittografia AES-256 (standard militare), in conformità al GDPR e alle normative UE sulla sovranità dei dati.</div>
+      </div>
+    </div>
+
+    <div class="checkbox-item" onclick="toggleFortress(this,'fortress_access')" style="max-width:100%;padding:1.25rem;align-items:flex-start">
+      <div class="check-box" style="margin-top:0.15rem;flex-shrink:0">✓</div>
+      <div>
+        <div class="check-label" style="font-weight:600;font-size:0.78rem;margin-bottom:0.3rem">Accesso Granulare alla Dashboard QEN</div>
+        <div style="font-size:0.65rem;color:var(--text-dim);line-height:1.6">Accetto di definire quali membri del mio team avranno accesso alla dashboard QEN, per prevenire fughe di informazioni interne. I permessi sono configurabili dopo l'attivazione del contratto.</div>
+      </div>
+    </div>
+
+    <div class="checkbox-item" onclick="toggleFortress(this,'fortress_rtbf')" style="max-width:100%;padding:1.25rem;align-items:flex-start">
+      <div class="check-box" style="margin-top:0.15rem;flex-shrink:0">✓</div>
+      <div>
+        <div class="check-label" style="font-weight:600;font-size:0.78rem;margin-bottom:0.3rem">Diritto alla Cancellazione (Right to be Forgotten)</div>
+        <div style="font-size:0.65rem;color:var(--text-dim);line-height:1.6">Prendo atto del diritto di richiedere la cancellazione integrale di tutti i dati al termine del contratto, con rilascio di certificazione di avvenuta distruzione dei dati grezzi.</div>
+      </div>
+    </div>
+
+  </div>
+
+  <div id="fortress-error" style="display:none;font-size:0.7rem;color:var(--error);margin-bottom:1rem;padding:0.75rem 1rem;border:1px solid var(--error);border-radius:3px;background:rgba(255,77,109,0.08)">
+    ⚠ Conferma tutti e quattro gli impegni del Protocollo Fortress per procedere.
+  </div>
+
+  <div class="nav-row">
+    <button class="btn btn-ghost" onclick="prevStep(5)">← Indietro</button>
+    <button class="btn btn-primary" onclick="nextStep(5)">Avanti — Revisione →</button>
+  </div>
+
+  </div>
+
+  <!-- STEP 6: REVISIONE -->
+
+  <div class="step-panel" id="step-6">
+    <div class="panel-header">
+      <div class="panel-number">Step 06 / 06</div>
+      <div class="panel-title">Revisione &amp; Invio</div>
       <div class="panel-desc">Verifica i dati raccolti e invia al motore QEN per l'analisi di Fase 1.</div>
     </div>
 
@@ -1201,7 +1290,7 @@ header { padding: 1rem 1.5rem; }
 </div>
 
 <div class="nav-row">
-  <button class="btn btn-ghost" onclick="prevStep(5)">← Indietro</button>
+  <button class="btn btn-ghost" onclick="prevStep(6)">← Indietro</button>
   <button class="btn btn-primary" id="submit-btn" onclick="submitForm()" disabled style="opacity:0.5;cursor:not-allowed">
     Avvia Analisi QEN →
   </button>
@@ -1302,7 +1391,7 @@ function initFromURL() {
 // ─── PERSISTENCE ───
 function saveField(key, val) {
   state[key] = val;
-  if (currentStep === 5) buildReview();
+  if (currentStep === 6) buildReview();
 }
 
 // ─── NAVIGATION ───
@@ -1329,7 +1418,7 @@ function setStep(n) {
   });
   currentStep = n;
   document.getElementById('step-' + n).classList.add('active');
-  if (n === 5) buildReview();
+  if (n === 6) buildReview();
   window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
@@ -1341,7 +1430,20 @@ function validateStep(step) {
     valid = required('tipologia', 'f-tipologia') && valid;
     valid = validEmail('email') && valid;
   }
+  if (step === 5) {
+    const all4 = state.fortress_nda && state.fortress_aes && state.fortress_access && state.fortress_rtbf;
+    const err = document.getElementById('fortress-error');
+    if (!all4) { if (err) err.style.display = 'block'; valid = false; }
+    else if (err) { err.style.display = 'none'; }
+  }
   return valid;
+}
+
+function toggleFortress(el, key) {
+  el.classList.toggle('checked');
+  state[key] = el.classList.contains('checked');
+  const err = document.getElementById('fortress-error');
+  if (err) err.style.display = 'none';
 }
 
 function required(id, fieldId) {
@@ -1369,7 +1471,7 @@ function toggleCheck(el, groupId) {
   document.getElementById(groupId)?.querySelectorAll('.checkbox-item.checked .check-label')
     .forEach(l => values.push(l.textContent.trim()));
   saveField(groupId, values);
-  if (currentStep === 5) buildReview();
+  if (currentStep === 6) buildReview();
 }
 
 function togglePrivacy(el) {
@@ -1404,11 +1506,15 @@ function addFornitore() {
   const n = fornitoreCount;
   const wrap = document.createElement('div');
   wrap.id = 'forn-' + n;
-  wrap.style.cssText = 'display:grid;grid-template-columns:2fr 1.5fr 1fr auto;gap:0.75rem;align-items:end;border:1px solid var(--border);border-radius:4px;padding:1rem;margin-bottom:1rem';
+  wrap.style.cssText = 'display:grid;grid-template-columns:2fr 1fr 1.5fr 1fr auto;gap:0.75rem;align-items:end;border:1px solid var(--border);border-radius:4px;padding:1rem;margin-bottom:1rem';
   wrap.innerHTML = `
     <div class="field">
       <label>Ragione Sociale Fornitore</label>
       <input type="text" placeholder="es. Cooperativa Agricola Valle Bura" oninput="saveFornitore(${n},'nome',this.value)">
+    </div>
+    <div class="field">
+      <label>P.IVA</label>
+      <input type="text" placeholder="IT12345678901" maxlength="13" oninput="saveFornitore(${n},'piva',this.value)">
     </div>
     <div class="field">
       <label>Sede / Città</label>
@@ -1479,6 +1585,10 @@ function buildReview() {
       ${rv('Welfare attivo', s.welfare?.length ? s.welfare.length+' iniziative' : 'Nessuna')}
       ${rv('Gap salariale M/F', (s.gap_salariale||0)+'%')}
     </div>
+    <div class="review-card" style="grid-column:1/-1">
+      <div class="review-card-title">Protocollo Fortress™</div>
+      ${[['NDA Reciproco',s.fortress_nda],['AES-256 Storage',s.fortress_aes],['Accesso Granulare',s.fortress_access],['Right to be Forgotten',s.fortress_rtbf]].map(([l,v])=>`<div class="review-item"><span class="review-key">${l}</span><span class="review-value" style="color:${v?'var(--green)':'var(--error)'};">${v?'✓ Confermato':'✗ Non confermato'}</span></div>`).join('')}
+    </div>
   `;
 
   document.getElementById('preview-score').textContent = calcPreviewScore().toFixed(0) + ' / 100';
@@ -1539,7 +1649,7 @@ function submitForm() {
   .catch(() => {})
   .finally(() => {
     setTimeout(() => {
-      document.getElementById('step-5').classList.remove('active');
+      document.getElementById('step-6').classList.remove('active');
       document.getElementById('success').classList.add('active');
       document.querySelectorAll('.step-node').forEach(n => n.classList.add('completed'));
       window.scrollTo({ top: 0, behavior: 'smooth' });
