@@ -8,12 +8,17 @@
 ## 1. INTESTAZIONE FORMALE
 
 ```
-Richiedente: Roberto Bob Malini
-Domicilio: Bologna, Italia
-P.IVA/CF: [inserire dopo apertura]
+Richiedente: Roberto Malini
+Codice Fiscale: MLNRRT62H06A944U
+Residenza: Via Della Costituzione 11 — 40033 Casalecchio di Reno (BO)
 Finalità: Certificazione di data certa e autenticità di opera intellettuale originale
-Studio notarile consigliato: [TBD — preferibilmente Bologna centro/San Vitale]
+Studio notarile consigliato: [TBD — preferibilmente Bologna / Casalecchio di Reno]
 ```
+
+> **Nota identificativa:** Il richiedente è conosciuto professionalmente anche come "Roberto Bob Malini"
+> ("Bob" è soprannome d'uso). Ai fini del presente atto notarile si utilizza esclusivamente il nome
+> anagrafico **Roberto Malini** (CF: MLNRRT62H06A944U), al fine di distinguersi univocamente
+> dall'omonimo scrittore e autore Roberto Malini attivo in ambito letterario.
 
 ---
 
@@ -90,13 +95,13 @@ Studio notarile consigliato: [TBD — preferibilmente Bologna centro/San Vitale]
 ## 4. ALLEGATI FISICI (da stampare e consegnare al notaio)
 
 ### 4.1 Codice Sorgente Stampato
-- [ ] `orchestrator.py` (con intestazione: "Roberto Bob Malini — Cognitive Logic — QEN Framework")
+- [ ] `orchestrator.py` (con intestazione: "Roberto Malini — Cognitive Logic — QEN Framework")
 - [ ] `qen_context.py` (modulo di contesto)
 - [ ] `graph_expanded.json` (estratto)
 
 **Formato:** Stampa con footer contenente:
 ```
-© 2026 Roberto Bob Malini | Cognitive Logic | Quantificazione Etica Naturale (QEN)
+© 2026 Roberto Malini | Cognitive Logic | Quantificazione Etica Naturale (QEN)
 Data di creazione: 25–26 maggio 2026
 Ubicazione deployment: Hetzner VPS `cognitive-node-01` (178.104.190.107)
 ```
@@ -126,7 +131,7 @@ Ubicazione deployment: Hetzner VPS `cognitive-node-01` (178.104.190.107)
 
 ## 5. DICHIARAZIONI SOTTOSCRITTORE (da redigere con notaio)
 
-Il sottoscritto, **Roberto Bob Malini**, dichiara:
+Il sottoscritto, **Roberto Malini**, dichiara:
 
 1. Di essere il creatore originale e unico autore del framework QEN in tutte le sue componenti (codice, metodologia, documentazione, infrastruttura)
 
@@ -153,7 +158,7 @@ Il sottoscritto, **Roberto Bob Malini**, dichiara:
 **Atto richiesto:** Autenticazione di documento e certificazione di data certa
 
 **Specifiche:**
-- [ ] Sottoscrizione del presente dossier (o sommario descrittivo) da parte di Roberto Bob Malini
+- [ ] Sottoscrizione del presente dossier (o sommario descrittivo) da parte di Roberto Malini
 - [ ] Timbro e firma del notaio con data autentica
 - [ ] Rilascio di copia autentica su carta (minimo 3 copie)
 - [ ] Eventuale copia digitale (PDF autenticato)
@@ -226,6 +231,7 @@ Prossimi step:
 
 ---
 
-**Documento preparato:** 27 maggio 2026  
-**Per:** Roberto Bob Malini, Founder Cognitive Logic  
-**Versione:** 1.0 Draft
+**Documento preparato:** 27 maggio 2026 — aggiornato 28 maggio 2026  
+**Per:** Roberto Malini (CF: MLNRRT62H06A944U), Founder & CVO — Cognitive Logic  
+**Residenza:** Via Della Costituzione 11, 40033 Casalecchio di Reno (BO)  
+**Versione:** 1.1
