@@ -1,0 +1,629 @@
+<!DOCTYPE html>
+<!--
+  Copyright (c) 2026 Roberto Bob Malini - Cognitive Logic
+  https://www.cognitivelogic.it
+  Licensed under CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/)
+-->
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cognitive Logic — Presentazione per Clienti, CNA e Associazioni</title>
+  <meta name="description" content="Spiegazione semplice di Cognitive Logic: come funziona, a cosa serve, quali vantaggi porta a PMI, CNA, studi professionali e associazioni di categoria." />
+  <meta name="robots" content="noindex, nofollow" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css?v=3" />
+
+  <style>
+    /* ── Layout principale ── */
+    .pres-hero { padding: 120px 0 60px; border-bottom: 1px solid var(--line-soft); }
+    .pres-hero .kicker { margin-bottom: 18px; }
+    .pres-hero h1 { font-size: clamp(2.6rem, 5vw, 5rem); line-height: 1.0; letter-spacing: -0.025em; margin-bottom: 28px; }
+    .pres-hero h1 em { font-style: italic; color: var(--gold-soft); }
+    .pres-hero .lead { max-width: 680px; font-size: clamp(1.1rem, 1.8vw, 1.3rem); margin-bottom: 36px; }
+
+    /* ── Sezioni ── */
+    .pres-section { padding: 72px 0; border-bottom: 1px solid var(--line-soft); }
+    .pres-section:last-child { border-bottom: none; }
+    .section-label { font-family: "DM Mono", monospace; font-size: 0.72rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold-soft); margin-bottom: 20px; display: flex; align-items: center; gap: 12px; }
+    .section-label::after { content: ''; flex: 1; max-width: 60px; height: 1px; background: var(--line); }
+    .pres-section h2 { font-size: clamp(1.9rem, 3.5vw, 3rem); line-height: 1.05; letter-spacing: -0.02em; margin-bottom: 20px; }
+    .pres-section h2 em { font-style: italic; color: var(--gold-soft); }
+    .pres-section > .container > p { font-size: clamp(1.05rem, 1.6vw, 1.22rem); max-width: 740px; }
+
+    /* ── Grid a 3 colonne ── */
+    .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--line-soft); border: 1px solid var(--line-soft); margin-top: 40px; }
+    .grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1px; background: var(--line-soft); border: 1px solid var(--line-soft); margin-top: 40px; }
+    .grid-card { background: rgba(10,20,34,0.92); padding: 32px 28px; }
+    .grid-card .card-num { font-family: "DM Mono", monospace; font-size: 0.6rem; letter-spacing: 0.14em; color: var(--muted); margin-bottom: 14px; }
+    .grid-card h3 { font-size: 1.35rem; font-weight: 600; margin-bottom: 10px; color: var(--text); line-height: 1.2; }
+    .grid-card h3 em { font-style: italic; color: var(--gold-soft); }
+    .grid-card p { font-family: "DM Mono", monospace; font-size: 0.74rem; color: var(--muted); line-height: 1.75; margin: 0; }
+    .grid-card .card-tag { margin-top: 18px; font-family: "DM Mono", monospace; font-size: 0.6rem; letter-spacing: 0.1em; text-transform: uppercase; }
+    .tag-green { color: var(--success); }
+    .tag-gold { color: var(--gold-soft); }
+    .tag-warn { color: var(--warn); }
+
+    /* ── Blocco analogia visiva ── */
+    .analogy-box { margin-top: 40px; background: rgba(212,175,55,0.06); border: 1px solid rgba(212,175,55,0.20); border-radius: var(--radius-sm); padding: 36px 32px; display: grid; grid-template-columns: 1fr 1fr; gap: 32px; }
+    .analogy-col .a-label { font-family: "DM Mono", monospace; font-size: 0.65rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); margin-bottom: 10px; }
+    .analogy-col .a-title { font-size: 1.4rem; font-weight: 600; margin-bottom: 10px; }
+    .analogy-col .a-title.green { color: var(--success); }
+    .analogy-col .a-title.gold { color: var(--gold-soft); }
+    .analogy-col ul { padding-left: 1.1rem; }
+    .analogy-col ul li { font-family: "DM Mono", monospace; font-size: 0.74rem; color: var(--muted); line-height: 1.8; }
+
+    /* ── Tabella audience ── */
+    .audience-table { margin-top: 40px; width: 100%; border-collapse: collapse; }
+    .audience-table thead th { font-family: "DM Mono", monospace; font-size: 0.65rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold-soft); padding: 14px 16px; text-align: left; border-bottom: 1px solid var(--line); }
+    .audience-table tbody tr { border-bottom: 1px solid var(--line-soft); transition: background var(--transition); }
+    .audience-table tbody tr:hover { background: var(--surface); }
+    .audience-table tbody td { font-family: "DM Mono", monospace; font-size: 0.75rem; color: var(--text-soft); padding: 16px 16px; line-height: 1.6; vertical-align: top; }
+    .audience-table tbody td:first-child { color: var(--text); font-weight: 500; }
+    .badge { display: inline-block; padding: 3px 9px; border-radius: 4px; font-size: 0.6rem; letter-spacing: 0.1em; text-transform: uppercase; font-family: "DM Mono", monospace; }
+    .badge-green { background: rgba(133,201,141,0.15); color: var(--success); border: 1px solid rgba(133,201,141,0.25); }
+    .badge-gold { background: rgba(212,175,55,0.12); color: var(--gold-soft); border: 1px solid rgba(212,175,55,0.25); }
+    .badge-warn { background: rgba(216,177,90,0.12); color: var(--warn); border: 1px solid rgba(216,177,90,0.25); }
+
+    /* ── Accordion FAQ ── */
+    .faq-list { margin-top: 36px; display: flex; flex-direction: column; gap: 2px; }
+    .faq-item { background: rgba(10,20,34,0.92); border: 1px solid var(--line-soft); border-radius: var(--radius-xs); overflow: hidden; }
+    .faq-q { padding: 22px 26px; cursor: pointer; font-size: 1.1rem; font-weight: 600; color: var(--text); display: flex; justify-content: space-between; align-items: center; gap: 16px; user-select: none; }
+    .faq-q::after { content: '+'; font-family: "DM Mono", monospace; font-size: 1.1rem; color: var(--gold-soft); flex-shrink: 0; transition: transform var(--transition); }
+    .faq-item.open .faq-q::after { transform: rotate(45deg); }
+    .faq-a { padding: 0 26px; max-height: 0; overflow: hidden; transition: max-height 350ms ease, padding 350ms ease; }
+    .faq-item.open .faq-a { max-height: 400px; padding: 0 26px 24px; }
+    .faq-a p { font-family: "DM Mono", monospace; font-size: 0.78rem; color: var(--muted); line-height: 1.8; margin: 0; }
+
+    /* ── Roadmap timeline ── */
+    .timeline { margin-top: 40px; display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--line-soft); border: 1px solid var(--line-soft); }
+    .tl-item { background: rgba(10,20,34,0.92); padding: 28px 24px; }
+    .tl-quarter { font-family: "DM Mono", monospace; font-size: 0.65rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold-soft); margin-bottom: 10px; }
+    .tl-title { font-size: 1.1rem; font-weight: 600; color: var(--text); margin-bottom: 10px; }
+    .tl-items { list-style: none; padding: 0; }
+    .tl-items li { font-family: "DM Mono", monospace; font-size: 0.68rem; color: var(--muted); line-height: 1.8; padding-left: 12px; position: relative; }
+    .tl-items li::before { content: '›'; position: absolute; left: 0; color: var(--gold-deep); }
+
+    /* ── CTA finale ── */
+    .cta-block { margin-top: 60px; background: rgba(212,175,55,0.06); border: 1px solid rgba(212,175,55,0.20); border-radius: var(--radius-md); padding: 48px 40px; display: flex; align-items: flex-start; justify-content: space-between; gap: 32px; flex-wrap: wrap; }
+    .cta-block h3 { font-size: clamp(1.6rem, 2.5vw, 2.4rem); line-height: 1.1; max-width: 520px; }
+    .cta-block p { font-family: "DM Mono", monospace; font-size: 0.78rem; color: var(--muted); margin-top: 14px; max-width: 480px; }
+    .cta-actions { display: flex; flex-direction: column; gap: 12px; align-items: flex-start; flex-shrink: 0; }
+
+    /* ── Pulsanti ── */
+    .btn { display: inline-block; padding: 12px 26px; font-family: "DM Mono", monospace; font-size: 0.78rem; letter-spacing: 0.08em; text-transform: uppercase; border-radius: var(--radius-xs); text-decoration: none; transition: all var(--transition); cursor: pointer; border: none; }
+    .btn-gold { background: var(--gold); color: #05080f; font-weight: 500; }
+    .btn-gold:hover { background: var(--gold-soft); }
+    .btn-outline { background: transparent; color: var(--text-soft); border: 1px solid var(--line); }
+    .btn-outline:hover { border-color: var(--gold-soft); color: var(--gold-soft); }
+
+    /* ── Formula QEN ── */
+    .formula-box { margin-top: 36px; background: rgba(10,20,34,0.92); border: 1px solid var(--line-soft); border-radius: var(--radius-sm); padding: 36px 32px; }
+    .formula-display { font-family: "DM Mono", monospace; font-size: clamp(1rem, 2vw, 1.5rem); color: var(--gold-soft); text-align: center; margin-bottom: 28px; letter-spacing: 0.05em; }
+    .formula-legend { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+    .legend-item .l-var { font-family: "DM Mono", monospace; font-size: 0.68rem; color: var(--gold-soft); letter-spacing: 0.14em; text-transform: uppercase; margin-bottom: 6px; }
+    .legend-item .l-name { font-size: 1.05rem; font-weight: 600; color: var(--text); margin-bottom: 4px; }
+    .legend-item .l-desc { font-family: "DM Mono", monospace; font-size: 0.7rem; color: var(--muted); line-height: 1.65; }
+    .legend-item .l-pct { font-family: "DM Mono", monospace; font-size: 0.65rem; color: var(--success); margin-top: 6px; }
+
+    /* ── Responsive ── */
+    @media (max-width: 900px) {
+      .grid-3 { grid-template-columns: repeat(2, 1fr); }
+      .timeline { grid-template-columns: repeat(2, 1fr); }
+      .analogy-box { grid-template-columns: 1fr; gap: 24px; }
+      .formula-legend { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 640px) {
+      .grid-3 { grid-template-columns: 1fr; }
+      .grid-2 { grid-template-columns: 1fr; }
+      .timeline { grid-template-columns: 1fr; }
+      .cta-block { flex-direction: column; }
+      .audience-table { font-size: 0.68rem; }
+      .audience-table thead th, .audience-table tbody td { padding: 10px 10px; }
+    }
+
+    /* ── Print ── */
+    @media print {
+      .site-header, .site-footer, .pres-hero .hero-ctas { display: none; }
+      .pres-section { page-break-inside: avoid; }
+    }
+  </style>
+</head>
+<body>
+  <div class="site-bg"></div>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="index.html" class="brand">
+        <img src="img/logo-cognitivelogic.png" alt="Cognitive Logic" style="height:32px;width:auto;display:block;">
+      </a>
+      <nav class="main-nav">
+        <a href="framework.html">Framework</a>
+        <a href="services.html">Servizi</a>
+        <a href="demo.html">Demo</a>
+        <a href="cna/">CNA</a>
+      </nav>
+      <div class="header-end">
+        <a href="copilot.html" class="btn btn-ghost">Copilot</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- ── 0. Hero ── -->
+    <section class="pres-hero">
+      <div class="container">
+        <div class="kicker">Presentazione · Clienti · Associazioni · Studi Professionali</div>
+        <h1>Cognitive Logic:<br><em>cosa fa, come funziona,<br>perché conviene</em></h1>
+        <p class="lead">
+          Una guida in linguaggio semplice per capire la piattaforma e valutare come può essere utile alla tua impresa, alla tua associazione o al tuo studio.
+        </p>
+        <div style="display:flex;gap:12px;flex-wrap:wrap;">
+          <a href="#cos-e" class="btn btn-gold">Inizia a leggere</a>
+          <a href="demo.html" class="btn btn-outline">Prova la Demo</a>
+          <a href="copilot.html" class="btn btn-outline">Parla col Copilot</a>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ── 1. Cos'è ── -->
+    <section class="pres-section" id="cos-e">
+      <div class="container">
+        <div class="section-label">01 — Cos'è</div>
+        <h2>Il problema che <em>risolve</em></h2>
+        <p>
+          Dal 2026 le imprese europee devono rispettare norme sempre più complesse: l'<strong>EU AI Act</strong> (che regola i sistemi di intelligenza artificiale), il <strong>GDPR</strong> (dati personali), la <strong>Direttiva Bolkestein</strong> (concessioni balneari e ambulanti), il <strong>CSRD</strong> (rendicontazione di sostenibilità). Capire cosa si applica alla propria attività, cosa bisogna fare, entro quando e con quali rischi, è diventato complicato anche per un consulente esperto.
+        </p>
+        <p style="margin-top:16px;">
+          <strong>Cognitive Logic</strong> è una piattaforma italiana nata a Bologna nel 2026 che trasforma queste normative in strumenti digitali pratici: ti dice esattamente a cosa sei soggetto, qual è il tuo rischio, cosa devi fare, e lo fa in pochi minuti usando l'intelligenza artificiale.
+        </p>
+
+        <div class="analogy-box">
+          <div class="analogy-col">
+            <div class="a-label">Senza Cognitive Logic</div>
+            <div class="a-title gold">Il problema</div>
+            <ul>
+              <li>Normative europee difficili da leggere</li>
+              <li>Consulenze costose e lente</li>
+              <li>Non sai se sei a rischio finché non arriva la sanzione</li>
+              <li>Ogni legge è un silo separato</li>
+              <li>PMI e artigiani non hanno risorse per stare al passo</li>
+            </ul>
+          </div>
+          <div class="analogy-col">
+            <div class="a-label">Con Cognitive Logic</div>
+            <div class="a-title green">La soluzione</div>
+            <ul>
+              <li>Normative tradotte in domande semplici</li>
+              <li>Analisi automatica in pochi minuti</li>
+              <li>Report di rischio chiaro e scaricabile in PDF</li>
+              <li>EU AI Act + GDPR + Bolkestein + CSRD in un unico posto</li>
+              <li>Accessibile anche alle PMI, freemium per iniziare</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ── 2. Come funziona ── -->
+    <section class="pres-section" id="come-funziona">
+      <div class="container">
+        <div class="section-label">02 — Come funziona</div>
+        <h2>Tre passi <em>semplici</em></h2>
+        <p>Non serve essere esperti di tecnologia. La piattaforma guida l'utente passo per passo.</p>
+
+        <div class="grid-3" style="margin-top:36px;">
+          <div class="grid-card">
+            <div class="card-num">PASSO 01</div>
+            <h3>Descrivi la tua attività</h3>
+            <p>Inserisci le informazioni di base: che tipo di impresa hai, se usi sistemi informatici o IA, in quale settore operi (ristorazione, commercio, artigianato, servizi…). Ci vogliono 5-10 minuti.</p>
+            <div class="card-tag tag-gold">Nessuna competenza tecnica richiesta</div>
+          </div>
+          <div class="grid-card">
+            <div class="card-num">PASSO 02</div>
+            <h3>L'IA analizza la situazione</h3>
+            <p>Due motori di intelligenza artificiale (Claude di Anthropic e Gemini di Google) lavorano in parallelo: uno verifica la compliance normativa, l'altro calcola il punteggio etico della tua attività. L'analisi è pronta in 30-60 secondi.</p>
+            <div class="card-tag tag-green">Automatico, veloce, verificabile</div>
+          </div>
+          <div class="grid-card">
+            <div class="card-num">PASSO 03</div>
+            <h3>Ricevi il report</h3>
+            <p>Un documento PDF con: il tuo livello di rischio, le norme che si applicano, le azioni da intraprendere, le scadenze. Puoi condividerlo con il tuo commercialista, avvocato o associazione di categoria.</p>
+            <div class="card-tag tag-gold">PDF esportabile, condivisibile</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ── 3. Il QEN Score ── -->
+    <section class="pres-section" id="qen">
+      <div class="container">
+        <div class="section-label">03 — QEN Score</div>
+        <h2>Il "voto etico" <em>della tua impresa</em></h2>
+        <p>
+          Il <strong>QEN Score</strong> (Qualitative Ethical Network) è un punteggio da 0 a 100 che misura quanto un'impresa locale — un ristorante, una bottega artigianale, un esercizio commerciale — è radicata nel territorio, nella tradizione e nella qualità. Non è una classifica: è uno strumento di valorizzazione che diventa un <strong>certificato digitale</strong> condivisibile online.
+        </p>
+
+        <div class="formula-box">
+          <div class="formula-display">QEN Score = (Vs × 0,40) + (Va × 0,35) + (Vt × 0,25)</div>
+          <div class="formula-legend">
+            <div class="legend-item">
+              <div class="l-var">Vs — 40%</div>
+              <div class="l-name">Valore Storico</div>
+              <div class="l-desc">Tradizione documentata, anni di attività, sapere tramandato, ricette di famiglia, tecniche artigianali storiche.</div>
+              <div class="l-pct">Peso: 40 / 100</div>
+            </div>
+            <div class="legend-item">
+              <div class="l-var">Va — 35%</div>
+              <div class="l-name">Valore Artigianale</div>
+              <div class="l-desc">Qualità del processo produttivo, lavorazione a mano, unicità del prodotto, certificazioni di qualità (DOP, IGP, biologico…).</div>
+              <div class="l-pct">Peso: 35 / 100</div>
+            </div>
+            <div class="legend-item">
+              <div class="l-var">Vt — 25%</div>
+              <div class="l-name">Valore Territoriale</div>
+              <div class="l-desc">Radicamento geografico, filiera corta, fornitori locali, contributo all'economia del quartiere o della città.</div>
+              <div class="l-pct">Peso: 25 / 100</div>
+            </div>
+          </div>
+        </div>
+
+        <p style="margin-top:28px;">
+          Il QEN Badge può essere esposto nel sito web, sui social, in vetrina. Le prime 10 strutture pilota a Bologna ricevono la valutazione <strong>gratuita</strong>.
+        </p>
+      </div>
+    </section>
+
+
+    <!-- ── 4. A chi serve ── -->
+    <section class="pres-section" id="a-chi-serve">
+      <div class="container">
+        <div class="section-label">04 — A chi serve</div>
+        <h2>La piattaforma è pensata <em>per te</em></h2>
+        <p>Quattro categorie di utenti, quattro vantaggi diversi.</p>
+
+        <table class="audience-table">
+          <thead>
+            <tr>
+              <th>Chi sei</th>
+              <th>Il tuo problema</th>
+              <th>Cosa ottieni</th>
+              <th>Quando</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                PMI · Artigiani<br>Ristoratori · HoReCa<br>Commercianti
+                <br><br><span class="badge badge-green">Freemium disponibile</span>
+              </td>
+              <td>Non so se uso l'IA in modo legale. Non so se sono a rischio GDPR. Non so cosa devo fare per il 2027.</td>
+              <td>
+                — QEN Badge certificato<br>
+                — Report rischio normativo<br>
+                — Checklist azioni concrete<br>
+                — PDF da consegnare al consulente
+              </td>
+              <td>Risultati in &lt; 2 minuti.<br>Badge in 24 ore.</td>
+            </tr>
+            <tr>
+              <td>
+                CNA · Confcommercio<br>Confindustria · CNA<br>Associazioni datoriali
+                <br><br><span class="badge badge-gold">Partnership</span>
+              </td>
+              <td>Devo informare migliaia di associati su norme complesse. Non ho strumenti digitali per farlo in modo scalabile.</td>
+              <td>
+                — Piattaforma white label<br>
+                — Assessment massivo per associati<br>
+                — Dashboard di monitoraggio<br>
+                — Revenue share 15%<br>
+                — Materiali formativi
+              </td>
+              <td>Accordo quadro.<br>Integrazione in 30 giorni.</td>
+            </tr>
+            <tr>
+              <td>
+                Commercialisti<br>Avvocati · Consulenti<br>Studi professionali
+                <br><br><span class="badge badge-warn">Pro tier</span>
+              </td>
+              <td>I clienti mi chiedono del AI Act, della Bolkestein, del CSRD. Devo aggiornarmi su tutto e in fretta.</td>
+              <td>
+                — Audit completo da rivendere al cliente<br>
+                — Report professionale brandizzato<br>
+                — DPIA pre-compilata (GDPR art.35)<br>
+                — Dossier Bolkestein 2027<br>
+                — API per integrazione nel gestionale
+              </td>
+              <td>Account pro.<br>Fatturazione mensile.</td>
+            </tr>
+            <tr>
+              <td>
+                Balneari · Ambulanti<br>Cooperative sociali<br>Enti del terzo settore
+                <br><br><span class="badge badge-warn">Verticale dedicato</span>
+              </td>
+              <td>La Direttiva Bolkestein 2027 mi spaventa. Non so cosa devo preparare, entro quando, e se perderò la concessione.</td>
+              <td>
+                — Pre-assessment Bolkestein personalizzato<br>
+                — Dossier documentale per gara<br>
+                — Analisi territoriale e competitiva<br>
+                — Piano di adeguamento
+              </td>
+              <td>Dossier completo<br>in 3-5 giorni lavorativi.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+
+    <!-- ── 5. Normative coperte ── -->
+    <section class="pres-section" id="normative">
+      <div class="container">
+        <div class="section-label">05 — Normative</div>
+        <h2>Le leggi che <em>gestiamo per te</em></h2>
+        <p>Non devi sapere cosa dice ogni norma. Ti basta sapere che Cognitive Logic le conosce tutte e le applica automaticamente al tuo caso.</p>
+
+        <div class="grid-3" style="margin-top:36px;">
+          <div class="grid-card">
+            <div class="card-num">REGOLAMENTO UE 2024/1689</div>
+            <h3>EU AI Act</h3>
+            <p>Il primo regolamento mondiale sull'intelligenza artificiale. In vigore dal 2025. Classifica i sistemi IA in 4 livelli di rischio. Sanzioni fino al 7% del fatturato globale. La piattaforma ti dice se usi sistemi IA e in quale categoria rientri.</p>
+            <div class="card-tag tag-warn">Obbligatorio · Sanzioni pesanti</div>
+          </div>
+          <div class="grid-card">
+            <div class="card-num">REG. UE 2016/679</div>
+            <h3>GDPR</h3>
+            <p>La normativa europea sulla protezione dei dati personali. In vigore dal 2018 ma ancora poco applicata dalle PMI. La piattaforma analizza i rischi specifici della tua attività e produce una pre-valutazione d'impatto (DPIA).</p>
+            <div class="card-tag tag-warn">In vigore · Sanzioni fino a €20M</div>
+          </div>
+          <div class="grid-card">
+            <div class="card-num">DIR. 2006/123/CE</div>
+            <h3>Bolkestein 2027</h3>
+            <p>La direttiva che obbliga alla gara pubblica le concessioni (spiagge, posteggi mercato). Il termine si avvicina. La piattaforma produce il dossier tecnico necessario per partecipare alla gara e dimostrare il valore della tua attività.</p>
+            <div class="card-tag tag-warn">Scadenza 2027 · Urgente</div>
+          </div>
+          <div class="grid-card">
+            <div class="card-num">DIR. UE 2022/2464</div>
+            <h3>CSRD · ESG</h3>
+            <p>La rendicontazione di sostenibilità non finanziaria. Dal 2026 obbligatoria per le grandi imprese, dal 2027 si estende. La piattaforma misura e documenta le performance ambientali, sociali e di governance della tua attività.</p>
+            <div class="card-tag tag-gold">Prossima scadenza · 2027</div>
+          </div>
+          <div class="grid-card">
+            <div class="card-num">REG. UE 2022/2065</div>
+            <h3>DSA · Digital Services Act</h3>
+            <p>Il Regolamento sui Servizi Digitali. Riguarda chi gestisce piattaforme online, marketplace, social. Nuovi obblighi di trasparenza e moderazione. La piattaforma verifica se e come ti si applica.</p>
+            <div class="card-tag tag-gold">Per chi vende online</div>
+          </div>
+          <div class="grid-card">
+            <div class="card-num">QEN FRAMEWORK</div>
+            <h3>Etica Quantificabile</h3>
+            <p>Non è solo compliance. Il QEN Framework misura il valore culturale e territoriale dell'impresa: storia, artigianalità, legame col territorio. Un asset che si può comunicare, certificare, usare nelle gare e nei bandi.</p>
+            <div class="card-tag tag-green">Valore competitivo</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ── 6. Domande frequenti ── -->
+    <section class="pres-section" id="faq">
+      <div class="container">
+        <div class="section-label">06 — FAQ</div>
+        <h2>Le domande <em>più frequenti</em></h2>
+
+        <div class="faq-list">
+          <div class="faq-item">
+            <div class="faq-q">Devo essere esperto di informatica o di legge per usarlo?</div>
+            <div class="faq-a"><p>No. La piattaforma è progettata per imprenditori, artigiani e commercianti che non hanno competenze tecniche o giuridiche. Le domande sono semplici, le risposte sono in linguaggio chiaro. Se hai dubbi, il Copilot (assistente virtuale) risponde in italiano a qualsiasi domanda.</p></div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-q">I miei dati sono al sicuro?</div>
+            <div class="faq-a"><p>Sì. I dati inseriti vengono usati esclusivamente per generare l'analisi richiesta e non vengono venduti a terzi. L'infrastruttura è ospitata su server europei (Hetzner, Germania). La piattaforma stessa è costruita nel rispetto del GDPR e dell'EU AI Act.</p></div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-q">Quanto costa?</div>
+            <div class="faq-a"><p>Esiste un livello gratuito (freemium) per ottenere il QEN Badge base e un'analisi orientativa. I servizi professionali completi (audit normativo, DPIA, dossier Bolkestein, report PDF firmato) partono da €800 l'anno per una singola struttura. Per le associazioni di categoria esistono accordi su misura con prezzi per volume. Contatta direttamente per un preventivo.</p></div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-q">Che differenza c'è rispetto a una consulenza tradizionale?</div>
+            <div class="faq-a"><p>La consulenza tradizionale è lenta, costosa e spesso generica. Cognitive Logic analizza la tua situazione specifica in pochi minuti, produce documentazione verificabile e aggiornata, ed è disponibile 24/7. Non sostituisce il commercialista o l'avvocato: li affianca, fornendo loro documentazione già strutturata su cui lavorare — riducendo le ore fatturate e i costi.</p></div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-q">Come funziona la partnership con le associazioni di categoria?</div>
+            <div class="faq-a"><p>L'associazione ottiene una versione personalizzata (white label) della piattaforma, con il proprio logo e dominio. Gli associati accedono ai servizi a condizioni agevolate. L'associazione riceve il 15% dei ricavi generati dagli associati. Cognitive Logic gestisce la tecnologia; l'associazione gestisce la relazione con gli iscritti.</p></div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-q">Cosa succede se la normativa cambia?</div>
+            <div class="faq-a"><p>La piattaforma viene aggiornata continuamente. La knowledge base (il database di norme e regolamenti) è aggiornata in tempo reale. Gli utenti abbonati ricevono notifiche automatiche quando cambiano le norme che li riguardano.</p></div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-q">Ho un piccolo ristorante. La Bolkestein mi riguarda?</div>
+            <div class="faq-a"><p>Se hai un ristorante normale (in un locale privato o in affitto), la Bolkestein probabilmente non si applica a te. Se invece hai un'attività su suolo pubblico (chiosco, dehors permanente, posteggio mercato) o una concessione demaniale (spiaggia, porto), allora sì — e vale la pena fare subito una verifica. Il check iniziale è gratuito.</p></div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-q">Posso integrare Cognitive Logic nel mio software gestionale?</div>
+            <div class="faq-a"><p>Sì. La piattaforma espone API standard (REST, JSON) che permettono l'integrazione con qualsiasi software gestionale, CRM o portale associativo. Esiste un piano white label API dedicato agli studi professionali e alle software house.</p></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ── 7. Roadmap ── -->
+    <section class="pres-section" id="roadmap">
+      <div class="container">
+        <div class="section-label">07 — Roadmap</div>
+        <h2>Cosa sta arrivando <em>nei prossimi mesi</em></h2>
+        <p>La piattaforma è in crescita. Questi sono i traguardi pianificati.</p>
+
+        <div class="timeline">
+          <div class="tl-item">
+            <div class="tl-quarter">Q2 2026 · Ora</div>
+            <div class="tl-title">Validazione</div>
+            <ul class="tl-items">
+              <li>QEN Badge freemium</li>
+              <li>10 strutture pilota Bologna</li>
+              <li>Accordo CNA Bologna</li>
+              <li>Copilot compliance live</li>
+            </ul>
+          </div>
+          <div class="tl-item">
+            <div class="tl-quarter">Q3 2026</div>
+            <div class="tl-title">Espansione</div>
+            <ul class="tl-items">
+              <li>Dati open.er.it integrati</li>
+              <li>5 clienti hospitality pro</li>
+              <li>White label hotel consortia</li>
+              <li>API billing attivo</li>
+            </ul>
+          </div>
+          <div class="tl-item">
+            <div class="tl-quarter">Q4 2026</div>
+            <div class="tl-title">Istituzionale</div>
+            <ul class="tl-items">
+              <li>Dashboard B2G per PA</li>
+              <li>Regione Emilia-Romagna</li>
+              <li>CSRD reporting automatico</li>
+              <li>White label API enterprise</li>
+            </ul>
+          </div>
+          <div class="tl-item">
+            <div class="tl-quarter">Q1 2027</div>
+            <div class="tl-title">Enterprise</div>
+            <ul class="tl-items">
+              <li>CCIAA TelemacoPay (2000+ nodi)</li>
+              <li>Adriatico Nord (balneari)</li>
+              <li>Contratti PA €30K–100K/anno</li>
+              <li>Internazionalizzazione EU</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ── 8. Perché Bologna ── -->
+    <section class="pres-section" id="perche-bologna">
+      <div class="container">
+        <div class="section-label">08 — Identità</div>
+        <h2>Una piattaforma <em>italiana, europea</em></h2>
+        <p>
+          Cognitive Logic è nata a Bologna perché Bologna è il laboratorio ideale: una città con una tradizione artigianale e gastronomica fortissima, un ecosistema di PMI e cooperative, istituzioni solide (CNA, Camera di Commercio, Università), e una cultura del fare che si sposa bene con l'innovazione responsabile.
+        </p>
+        <p style="margin-top:16px;">
+          Il fondatore <strong>Roberto Bob Malini</strong> ha costruito la piattaforma su un principio semplice: <em>l'etica non è uno slogan, è un dato misurabile.</em> Ogni score, ogni analisi, ogni certificato prodotto dalla piattaforma è verificabile, trasparente, fondato su fonti normative pubbliche. Niente scatole nere.
+        </p>
+
+        <div class="grid-2" style="margin-top:36px;">
+          <div class="grid-card">
+            <div class="card-num">Principio fondante</div>
+            <h3>"Ethics is not a narrative.<br><em>It is a dataset."</em></h3>
+            <p>I principi etici non sono dichiarazioni di intenti. Sono dati verificabili, algoritmi trasparenti, formule pubblicate. Ogni output della piattaforma può essere controllato, contestato, migliorato. La trasparenza non è un optional: è il prodotto.</p>
+            <div class="card-tag tag-gold">Roberto Bob Malini · Cognitive Logic</div>
+          </div>
+          <div class="grid-card">
+            <div class="card-num">Tecnologia aperta</div>
+            <h3>Infrastruttura <em>verificabile</em></h3>
+            <p>La knowledge base (il grafo semantico con 130 nodi normativi) è pubblica. Le formule del QEN Score sono documentate. I modelli di IA usati (Claude, Gemini) sono tra i più affidabili sul mercato. L'output è sempre esportabile, mai vincolante, sempre auditabile.</p>
+            <div class="card-tag tag-green">Open knowledge · Audit trail</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ── 9. CTA ── -->
+    <section class="pres-section" id="contatti" style="border-bottom:none;">
+      <div class="container">
+        <div class="section-label">09 — Prossimi passi</div>
+        <h2>Cosa fare <em>adesso</em></h2>
+
+        <div class="grid-3" style="margin-top:36px;">
+          <div class="grid-card">
+            <div class="card-num">SE SEI UNA PMI / ARTIGIANO</div>
+            <h3>Inizia <em>gratis</em></h3>
+            <p>Prova il Compliance Copilot: fai la tua domanda in italiano, ottieni una risposta immediata su EU AI Act, GDPR o Bolkestein. Zero registrazione. Zero costo.</p>
+            <div style="margin-top:20px;">
+              <a href="copilot.html" class="btn btn-gold">Apri il Copilot</a>
+            </div>
+          </div>
+          <div class="grid-card">
+            <div class="card-num">SE SEI UN'ASSOCIAZIONE / CNA</div>
+            <h3>Proposta di <em>partnership</em></h3>
+            <p>Esiste già una proposta strutturata per CNA Bologna con revenue share, white label e supporto agli associati. Leggi il documento o richiedi un incontro diretto.</p>
+            <div style="margin-top:20px;">
+              <a href="cna/" class="btn btn-gold">Leggi la proposta CNA</a>
+            </div>
+          </div>
+          <div class="grid-card">
+            <div class="card-num">SE SEI UNO STUDIO PROFESSIONALE</div>
+            <h3>Richiedi una <em>demo</em></h3>
+            <p>Il simulatore interattivo mostra come funziona un'analisi completa: dall'input del cliente al report PDF finale. Dura 3 minuti e non richiede dati reali.</p>
+            <div style="margin-top:20px;">
+              <a href="demo.html" class="btn btn-gold">Avvia la Demo</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="cta-block" style="margin-top:40px;">
+          <div>
+            <h3>Hai domande specifiche?<br><em>Il Copilot risponde subito.</em></h3>
+            <p>Chiedi in linguaggio naturale. "Sono un ristoratore, il GDPR mi riguarda?" — "Ho uno stabilimento balneare, cosa devo fare per il 2027?" — "Uso una cassa automatica con IA, sono a rischio?" Il Copilot ha risposto a centinaia di questi casi.</p>
+          </div>
+          <div class="cta-actions">
+            <a href="copilot.html" class="btn btn-gold">Parla col Copilot →</a>
+            <a href="services.html" class="btn btn-outline">Vedi tutti i servizi</a>
+            <a href="framework.html" class="btn btn-outline">Approfondisci il Framework</a>
+          </div>
+        </div>
+
+        <div style="margin-top:40px; padding:24px; background:var(--surface); border:1px solid var(--line-soft); border-radius:var(--radius-sm);">
+          <p style="font-family:'DM Mono',monospace; font-size:0.72rem; color:var(--muted); margin:0;">
+            <strong style="color:var(--text-soft);">Contatto diretto:</strong>
+            Cognitive Logic · Roberto Bob Malini · Bologna ·
+            <a href="https://cognitivelogic.it" style="color:var(--gold-soft);">cognitivelogic.it</a>
+            · Licenza CC BY-SA 4.0 · Documento aggiornato al 28 maggio 2026
+          </p>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div>
+        <a href="index.html"><img src="img/logo-cognitivelogic.png" alt="Cognitive Logic" style="height:28px;opacity:0.75;"></a>
+        <p style="margin-top:10px;font-family:'DM Mono',monospace;font-size:0.68rem;color:var(--muted);">
+          AI Ethics · QEN Framework · Bologna 2026
+        </p>
+      </div>
+      <nav style="display:flex;gap:20px;flex-wrap:wrap;align-items:flex-start;">
+        <a href="framework.html" style="font-family:'DM Mono',monospace;font-size:0.68rem;color:var(--muted);letter-spacing:0.1em;text-transform:uppercase;">Framework</a>
+        <a href="services.html" style="font-family:'DM Mono',monospace;font-size:0.68rem;color:var(--muted);letter-spacing:0.1em;text-transform:uppercase;">Servizi</a>
+        <a href="copilot.html" style="font-family:'DM Mono',monospace;font-size:0.68rem;color:var(--muted);letter-spacing:0.1em;text-transform:uppercase;">Copilot</a>
+        <a href="cna/" style="font-family:'DM Mono',monospace;font-size:0.68rem;color:var(--muted);letter-spacing:0.1em;text-transform:uppercase;">CNA</a>
+        <a href="privacy.html" style="font-family:'DM Mono',monospace;font-size:0.68rem;color:var(--muted);letter-spacing:0.1em;text-transform:uppercase;">Privacy</a>
+      </nav>
+    </div>
+  </footer>
+
+  <script>
+    // Accordion FAQ
+    document.querySelectorAll('.faq-q').forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        var item = this.closest('.faq-item');
+        var isOpen = item.classList.contains('open');
+        document.querySelectorAll('.faq-item.open').forEach(function(el) { el.classList.remove('open'); });
+        if (!isOpen) item.classList.add('open');
+      });
+    });
+  </script>
+</body>
+</html>
