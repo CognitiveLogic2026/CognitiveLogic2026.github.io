@@ -33,6 +33,7 @@
 | 13 | `/qen-live.html` | Dashboard monitoraggio QEN Score in tempo reale |
 | 14 | `/qen-compliance-auditor.html` | Auditor di conformità normativa QEN (EU AI Act, GDPR, Green Claim 2026) |
 | 15 | `/qen-horeca-auditor.html` | Auditor QEN specifico settore HoReCa — 8 moduli, 35+ campi, formula maestra v1.0 |
+| 15b | `/qen-balneare-auditor.html` | Auditor QEN settore balneare — stabilimenti, beach club, chioschi, ambulanti, posteggi mercato, dehors — 6 moduli, conformità Bolkestein 2027 |
 | 16 | `/qen-prompt-generator.html` | Generatore di prompt QEN per audit AI |
 | 17 | `/qen-widget.html` | Widget / badge dinamico QEN per integrazione su siti clienti |
 | 18 | `/eci-assessment.html` | ECI Assessment Toolkit — Ethical Compliance Index, wizard 7 passi con radar chart SVG |
@@ -118,11 +119,11 @@
 
 | Categoria | Conteggio |
 |-----------|-----------|
-| Pagine HTML principali (root) | 33 |
+| Pagine HTML principali (root) | 34 |
 | Sezioni in sottocartella | 2 |
 | File di sistema | 6 |
 | Documenti Markdown | 3 |
-| **Totale asset web documentati** | **44** |
+| **Totale asset web documentati** | **45** |
 
 ---
 
