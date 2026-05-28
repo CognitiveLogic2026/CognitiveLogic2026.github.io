@@ -10,8 +10,8 @@
    ============================================================ */
 
 const CONFIG = {
-    // Sostituisci con la tua chiave API valida da Google AI Studio
-    API_KEY: "AIzaSyAmZvDpLDbNaNqsM4J0ItTKxS1Jyz201gw",
+    // Inserisci la tua chiave API da Google AI Studio (non committare nel repo)
+    API_KEY: "",
     
     // Parametri del Modello
     MODEL: "gemini-2.0-flash",
