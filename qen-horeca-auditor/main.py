@@ -128,7 +128,7 @@ def calc_imballaggi(d: ImballaggiInput) -> dict:
     penalita = min(40.0, 2.0 * d.peso_plastica_monouso_kg)
     bonus_riciclo = 40.0 if d.percentuale_materiale_riciclato > 30 else 0.0
     bonus_compost = 20.0 if d.certificazione_compostabilita_en13432 else 0.0
-    score = max(0.0, 100.0 - penalita + bonus_riciclo + bonus_compost)
+    score = min(100.0, max(0.0, 100.0 - penalita + bonus_riciclo + bonus_compost))
 
     notes = []
     if d.peso_plastica_monouso_kg > 0:
@@ -209,9 +209,9 @@ def calc_sociale(d: SocialeInput) -> dict:
         (-25.0 if d.tasso_turnover_annuale > 30 else 0.0)
     )
     bonus_inclusione = min(30.0, d.numero_dipendenti_categorie_protette * 10.0)
-    score = max(
-        0.0,
-        100.0 - pen_sfruttamento - pen_equita + bonus_formazione + bonus_turnover + bonus_inclusione,
+    score = min(
+        100.0,
+        max(0.0, 100.0 - pen_sfruttamento - pen_equita + bonus_formazione + bonus_turnover + bonus_inclusione),
     )
 
     notes = []
@@ -259,12 +259,12 @@ def calc_rifiuti(d: RifiutiInput) -> dict:
 
 
 def calc_governance(d: GovernanceInput) -> dict:
-    score_base = 100.0
     bonus_trasparenza = 40.0 if d.dati_qen_pubblici_qrcode else 0.0
     bonus_audit = 30.0 if d.audit_esterni_presenti else 0.0
     bonus_codice = 20.0 if d.firma_codice_etico else 0.0
     pen_freschezza = 20.0 if d.giorni_da_ultimo_aggiornamento > 30 else 0.0
-    score = min(100.0, score_base + bonus_trasparenza + bonus_audit + bonus_codice - pen_freschezza)
+    # Base 10: chi non fa nulla ottiene 10, chi ha tutti i bonus ottiene 100
+    score = min(100.0, max(0.0, 10.0 + bonus_trasparenza + bonus_audit + bonus_codice - pen_freschezza))
 
     notes = []
     if not d.dati_qen_pubblici_qrcode:

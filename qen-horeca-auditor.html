@@ -678,8 +678,8 @@
                 <div class="mod-weight">Peso 5%</div>
               </div>
               <div class="mod-desc">
-                Accesso dati e integrità amministrativa. Score base 100,
-                bonus trasparenza per QR code, audit e codice etico.
+                Accesso dati e integrità amministrativa. Score base 10,
+                bonus trasparenza per QR code, audit e codice etico. Max 100 con tutti i bonus.
               </div>
               <div class="field">
                 <label for="m7_giorni">Giorni dall'Ultimo Aggiornamento Dati</label>
@@ -928,7 +928,7 @@
     const penalita   = Math.min(40, 2 * plastica);
     const bonusRic   = riciclato > 30 ? 40 : 0;
     const bonusComp  = compost ? 20 : 0;
-    const score      = Math.max(0, 100 - penalita + bonusRic + bonusComp);
+    const score      = Math.min(100, Math.max(0, 100 - penalita + bonusRic + bonusComp));
 
     const notes = [];
     if (plastica > 0)    notes.push(`Plastica ${plastica}kg/mese → −${penalita}pt`);
@@ -995,7 +995,7 @@
     const bonusForm  = formazione > 40 ? 20 : 0;
     const bonusTurn  = turnover < 15 ? 15 : (turnover > 30 ? -25 : 0);
     const bonusIncl  = Math.min(30, catProt * 10);
-    const score      = Math.max(0, 100 - penSfrutt - penEquita + bonusForm + bonusTurn + bonusIncl);
+    const score      = Math.min(100, Math.max(0, 100 - penSfrutt - penEquita + bonusForm + bonusTurn + bonusIncl));
 
     const notes = [];
     if (oreExtra > 20)    notes.push(`Straordinari ${oreExtra}% > 20% (−50pt)`);
@@ -1042,7 +1042,7 @@
     const bonusAu   = audit  ? 30 : 0;
     const bonusCo   = codice ? 20 : 0;
     const penFr     = giorni > 30 ? 20 : 0;
-    const score     = Math.min(100, 100 + bonusTr + bonusAu + bonusCo - penFr);
+    const score     = Math.min(100, Math.max(0, 10 + bonusTr + bonusAu + bonusCo - penFr));
 
     const notes = [];
     if (!qrcode)     notes.push('Dati QEN non pubblicati via QR code');
@@ -1353,8 +1353,7 @@
     sv('m6_differenziata', '80');
     sc('m6_oli', false);
 
-    // M7 - Governance: no QR, no audit, codice signed, 20 giorni
-    // score = min(100, 100 + 0 + 0 + 20 - 0) = 100
+    // M7 - Governance: no QR, no audit, codice signed, 20 giorni → score = min(100, max(0, 10+0+0+20-0)) = 30
     sv('m7_giorni', '20');
     sc('m7_qrcode', false);
     sc('m7_audit', false);
