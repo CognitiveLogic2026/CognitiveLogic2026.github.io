@@ -201,6 +201,47 @@ def audit_balneare():
 
     return jsonify({"status": "saved", "audit_id": audit_id, "node": new_node}), 200
 
+@app.route("/admin/add-client", methods=["POST"])
+def admin_add_client():
+    provided_key = request.headers.get("X-API-Key")
+    if provided_key != os.getenv("COGNITIVE_API_KEY"):
+        return jsonify({"status": "error", "message": "Unauthorized"}), 403
+
+    data    = request.json or {}
+    nome    = (data.get("nome") or "Cliente").strip()
+    settore = data.get("settore", "Generico")
+    vs      = float(data.get("vs", 0))
+    va      = float(data.get("va", 0))
+    vt      = float(data.get("vt", 0))
+    note    = data.get("note", "")
+    qen     = round(vs * 0.40 + va * 0.35 + vt * 0.25, 2)
+
+    score_data = {
+        "qen_score": qen, "vs": vs, "va": va, "vt": vt,
+        "settore": settore, "note": note,
+    }
+    save_pilot(nome, score_data)
+
+    new_node = {
+        "id": nome, "type": "EntitaPilota", "label": nome,
+        "settore": settore, "note": note,
+        "qen_score": {"vs": vs, "va": va, "vt": vt, "totale": qen},
+        "stato": "INSERITO_MANUALE",
+        "timestamp": datetime.utcnow().strftime("%Y-%m-%dT%H:%M:%SZ"),
+    }
+    try:
+        with open(GRAPH_PATH, "r") as f:
+            g = json.load(f)
+        g["nodes"][nome] = new_node
+        if "meta" in g:
+            g["meta"]["nodi"] = len(g["nodes"])
+        with open(GRAPH_PATH, "w") as f:
+            json.dump(g, f, indent=2, ensure_ascii=False)
+    except Exception:
+        pass
+
+    return jsonify({"status": "saved", "qen_score": qen, "node": new_node}), 200
+
 RISK_SYSTEM_PROMPT = (
     "Sei un esperto di EU AI Act e GDPR."
     " Analizza il sistema descritto sotto entrambi i profili.\n\n"

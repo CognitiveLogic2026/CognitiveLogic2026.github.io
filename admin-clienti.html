@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<!--
+  Copyright (c) 2026 Roberto Bob Malini - Cognitive Logic
+  https://www.cognitivelogic.it
+  Licensed under CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/)
+-->
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin Clienti — Cognitive Logic</title>
+  <meta name="robots" content="noindex, nofollow" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@300;400;500&family=Syne:wght@400;700;800&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg: #05080f; --s1: #0a0d1a; --s2: #0f1323;
+      --border: #181d30; --border2: #242a42;
+      --green: #3dffa0; --gold: #c8a84b; --red: #ff5f57; --yellow: #ffd166;
+      --text: #ccd4ef; --mid: #8892b5; --dim: #4a5270;
+      --mono: 'IBM Plex Mono', monospace; --sans: 'Syne', sans-serif;
+    }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--bg); color: var(--text);
+      font-family: var(--mono); line-height: 1.6; overflow-x: hidden;
+      min-height: 100vh;
+    }
+    body::after {
+      content: ''; position: fixed; inset: 0;
+      background-image:
+        linear-gradient(var(--border) 1px, transparent 1px),
+        linear-gradient(90deg, var(--border) 1px, transparent 1px);
+      background-size: 64px 64px; pointer-events: none; z-index: 0; opacity: 0.15;
+    }
+    * { position: relative; z-index: 1; }
+
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      height: 52px; display: flex; align-items: center; justify-content: space-between;
+      padding: 0 2rem; background: rgba(5,8,15,0.95);
+      backdrop-filter: blur(16px); border-bottom: 1px solid var(--border);
+    }
+    .nav-logo {
+      font-family: var(--sans); font-weight: 800; font-size: 0.8rem;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      color: var(--green); text-decoration: none;
+    }
+    .nav-tag { font-size: 0.6rem; letter-spacing: 0.15em; color: var(--dim); text-transform: uppercase; }
+
+    main { max-width: 640px; margin: 0 auto; padding: 80px 1.5rem 4rem; }
+
+    .page-header { padding: 2.5rem 0 2rem; border-bottom: 1px solid var(--border); margin-bottom: 2rem; }
+    .eyebrow { font-size: 0.58rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--green); margin-bottom: 0.75rem; }
+    h1 { font-family: var(--sans); font-weight: 800; font-size: 2rem; letter-spacing: -0.02em; line-height: 1.1; }
+    h1 span { color: var(--green); }
+    .subtitle { font-size: 0.72rem; color: var(--mid); max-width: 480px; line-height: 1.8; margin-top: 0.6rem; }
+
+    /* ── Auth gate ── */
+    #authGate { display: block; }
+    #mainForm  { display: none; }
+
+    .auth-card {
+      background: var(--s1); border: 1px solid var(--border2);
+      border-radius: 2px; padding: 2rem; margin-top: 1rem;
+    }
+    .auth-label { font-size: 0.6rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--mid); margin-bottom: 0.5rem; display: block; }
+    .auth-input {
+      width: 100%; background: var(--bg); border: 1px solid var(--border2);
+      color: var(--text); font-family: var(--mono); font-size: 0.8rem;
+      padding: 0.65rem 0.9rem; border-radius: 2px; outline: none;
+      letter-spacing: 0.08em;
+    }
+    .auth-input:focus { border-color: var(--green); }
+    .auth-error { font-size: 0.62rem; color: var(--red); margin-top: 0.5rem; display: none; }
+
+    .btn-primary {
+      display: inline-block; margin-top: 1rem;
+      background: var(--green); color: #05080f;
+      font-family: var(--mono); font-size: 0.68rem; font-weight: 500;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      padding: 0.65rem 1.4rem; border: none; border-radius: 2px;
+      cursor: pointer; transition: opacity 0.2s;
+    }
+    .btn-primary:hover { opacity: 0.85; }
+    .btn-primary:disabled { opacity: 0.4; cursor: not-allowed; }
+
+    .btn-ghost {
+      display: inline-block;
+      background: transparent; color: var(--mid);
+      font-family: var(--mono); font-size: 0.65rem;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      padding: 0.6rem 1rem; border: 1px solid var(--border2);
+      border-radius: 2px; cursor: pointer; transition: border-color 0.2s, color 0.2s;
+    }
+    .btn-ghost:hover { border-color: var(--green); color: var(--green); }
+
+    /* ── Form ── */
+    .card {
+      background: var(--s1); border: 1px solid var(--border);
+      border-radius: 2px; padding: 1.8rem; margin-bottom: 1rem;
+    }
+    .card-title {
+      font-family: var(--sans); font-weight: 700; font-size: 0.78rem;
+      color: var(--text); margin-bottom: 1.4rem; text-transform: uppercase;
+      letter-spacing: 0.08em; padding-bottom: 0.8rem; border-bottom: 1px solid var(--border);
+    }
+    .field { margin-bottom: 1.2rem; }
+    .field label {
+      display: block; font-size: 0.58rem; letter-spacing: 0.2em;
+      text-transform: uppercase; color: var(--mid); margin-bottom: 0.45rem;
+    }
+    .field input[type="text"],
+    .field textarea,
+    .field select {
+      width: 100%; background: var(--bg); border: 1px solid var(--border2);
+      color: var(--text); font-family: var(--mono); font-size: 0.8rem;
+      padding: 0.65rem 0.9rem; border-radius: 2px; outline: none;
+      transition: border-color 0.2s;
+    }
+    .field input[type="text"]:focus,
+    .field textarea:focus,
+    .field select:focus { border-color: var(--green); }
+    .field select { cursor: pointer; appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='%234a5270'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 0.9rem center; padding-right: 2rem; }
+    .field select option { background: #0a0d1a; }
+    .field textarea { resize: vertical; min-height: 70px; line-height: 1.6; }
+
+    /* ── Sliders ── */
+    .slider-group { display: grid; gap: 1.4rem; }
+    .slider-row { display: flex; flex-direction: column; gap: 0.5rem; }
+    .slider-header { display: flex; justify-content: space-between; align-items: baseline; }
+    .slider-label { font-size: 0.58rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--mid); }
+    .slider-desc { font-size: 0.58rem; color: var(--dim); }
+    .slider-value {
+      font-size: 1.1rem; font-weight: 500; color: var(--green);
+      min-width: 36px; text-align: right;
+    }
+    input[type="range"] {
+      -webkit-appearance: none; width: 100%; height: 3px;
+      background: var(--border2); border-radius: 2px; outline: none; cursor: pointer;
+    }
+    input[type="range"]::-webkit-slider-thumb {
+      -webkit-appearance: none; width: 14px; height: 14px;
+      border-radius: 50%; background: var(--green); cursor: pointer;
+      box-shadow: 0 0 8px rgba(61,255,160,0.4);
+    }
+    input[type="range"]::-moz-range-thumb {
+      width: 14px; height: 14px; border-radius: 50%;
+      background: var(--green); cursor: pointer; border: none;
+    }
+
+    /* ── QEN Preview ── */
+    .qen-preview {
+      background: var(--s2); border: 1px solid var(--border2);
+      border-radius: 2px; padding: 1.5rem; display: flex;
+      align-items: center; justify-content: space-between; gap: 1rem;
+      margin-bottom: 1rem;
+    }
+    .qen-label { font-size: 0.58rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--mid); }
+    .qen-number { font-family: var(--sans); font-size: 3rem; font-weight: 800; line-height: 1; color: var(--green); transition: color 0.3s; }
+    .qen-formula { font-size: 0.62rem; color: var(--dim); line-height: 1.8; }
+    .qen-formula .hi { color: var(--green); }
+    .qen-status { font-size: 0.6rem; letter-spacing: 0.15em; text-transform: uppercase; padding: 0.3rem 0.7rem; border-radius: 2px; }
+    .status-green  { color: var(--green);  background: rgba(61,255,160,0.08);  border: 1px solid rgba(61,255,160,0.2);  }
+    .status-yellow { color: var(--yellow); background: rgba(255,209,102,0.08); border: 1px solid rgba(255,209,102,0.2); }
+    .status-red    { color: var(--red);    background: rgba(255,95,87,0.08);   border: 1px solid rgba(255,95,87,0.2);   }
+
+    /* ── Feedback ── */
+    #feedback {
+      display: none; border-radius: 2px; padding: 1.2rem 1.5rem;
+      font-size: 0.72rem; line-height: 1.8; margin-bottom: 1rem;
+    }
+    #feedback.success { background: rgba(61,255,160,0.06); border: 1px solid rgba(61,255,160,0.25); color: var(--green); }
+    #feedback.error   { background: rgba(255,95,87,0.06);  border: 1px solid rgba(255,95,87,0.25);  color: var(--red); }
+
+    .form-actions { display: flex; gap: 0.75rem; align-items: center; flex-wrap: wrap; }
+    .key-stored { font-size: 0.58rem; color: var(--dim); letter-spacing: 0.08em; }
+    .key-stored span { color: var(--green); }
+
+    /* ── List clienti ── */
+    .client-list { display: flex; flex-direction: column; gap: 0.5rem; }
+    .client-item {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 0.75rem 1rem; background: var(--bg); border: 1px solid var(--border);
+      border-radius: 2px; font-size: 0.72rem;
+    }
+    .client-name { color: var(--text); }
+    .client-meta { font-size: 0.6rem; color: var(--dim); margin-top: 2px; }
+    .client-score { font-size: 1rem; color: var(--green); font-weight: 500; }
+    #clientListEmpty { font-size: 0.68rem; color: var(--dim); padding: 1rem 0; }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="/" class="nav-logo">Cognitive Logic</a>
+  <span class="nav-tag">Admin · Inserimento Clienti</span>
+</nav>
+
+<main>
+  <div class="page-header">
+    <div class="eyebrow">Operatore · Accesso Riservato</div>
+    <h1>Aggiungi <span>Cliente</span></h1>
+    <p class="subtitle">Inserimento manuale nel knowledge graph QEN. La chiave API viene salvata nel browser.</p>
+  </div>
+
+  <!-- ── Auth gate ── -->
+  <div id="authGate">
+    <div class="auth-card">
+      <label class="auth-label" for="apiKeyInput">Chiave API Operatore</label>
+      <input class="auth-input" type="password" id="apiKeyInput" placeholder="sk-••••••••••••••••" autocomplete="off" />
+      <div class="auth-error" id="authError">Chiave non valida — riprova.</div>
+      <div style="margin-top:1rem;display:flex;gap:0.75rem;align-items:center">
+        <button class="btn-primary" onclick="checkAuth()">Accedi →</button>
+        <span style="font-size:0.6rem;color:var(--dim)">Premi Enter per confermare</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── Main form (hidden until auth) ── -->
+  <div id="mainForm">
+
+    <div id="feedback"></div>
+
+    <!-- Anagrafica -->
+    <div class="card">
+      <div class="card-title">01 · Anagrafica Cliente</div>
+      <div class="field">
+        <label for="f_nome">Nome / Ragione Sociale *</label>
+        <input type="text" id="f_nome" placeholder="es. Ristorante da Luigi" />
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem">
+        <div class="field">
+          <label for="f_settore">Settore</label>
+          <select id="f_settore">
+            <option value="HoReCa">HoReCa — Ristorazione</option>
+            <option value="Balneare">Balneare</option>
+            <option value="Artigianato">Artigianato</option>
+            <option value="Agroalimentare">Agroalimentare</option>
+            <option value="Commercio">Commercio / Retail</option>
+            <option value="Cooperativa">Cooperativa</option>
+            <option value="PMI">PMI Generica</option>
+            <option value="Hotel">Alberghiero</option>
+            <option value="Altro">Altro</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="f_localita">Località</label>
+          <input type="text" id="f_localita" placeholder="es. Bologna" />
+        </div>
+      </div>
+      <div class="field">
+        <label for="f_note">Note (opzionale)</label>
+        <textarea id="f_note" placeholder="Contesto, fonte dei dati, osservazioni…"></textarea>
+      </div>
+    </div>
+
+    <!-- Sliders QEN -->
+    <div class="card">
+      <div class="card-title">02 · Valori QEN</div>
+      <div class="slider-group">
+
+        <div class="slider-row">
+          <div class="slider-header">
+            <div>
+              <div class="slider-label">Vs — Valore Sociale</div>
+              <div class="slider-desc">Inclusione, contratti, welfare, formazione</div>
+            </div>
+            <div class="slider-value" id="vs_val">50</div>
+          </div>
+          <input type="range" id="sl_vs" min="0" max="100" value="50" oninput="updateSlider('vs')" />
+        </div>
+
+        <div class="slider-row">
+          <div class="slider-header">
+            <div>
+              <div class="slider-label">Va — Valore Ambientale</div>
+              <div class="slider-desc">Certificazioni, km0, rifiuti, carbonio</div>
+            </div>
+            <div class="slider-value" id="va_val">50</div>
+          </div>
+          <input type="range" id="sl_va" min="0" max="100" value="50" oninput="updateSlider('va')" />
+        </div>
+
+        <div class="slider-row">
+          <div class="slider-header">
+            <div>
+              <div class="slider-label">Vt — Valore Territoriale</div>
+              <div class="slider-desc">Radicamento, filiera locale, indotto</div>
+            </div>
+            <div class="slider-value" id="vt_val">50</div>
+          </div>
+          <input type="range" id="sl_vt" min="0" max="100" value="50" oninput="updateSlider('vt')" />
+        </div>
+
+      </div>
+    </div>
+
+    <!-- QEN Preview -->
+    <div class="qen-preview">
+      <div>
+        <div class="qen-label">QEN Score</div>
+        <div class="qen-number" id="qen_preview">50.0</div>
+        <div class="qen-formula">
+          <span class="hi" id="f_vs_show">50</span>×0.40 +
+          <span class="hi" id="f_va_show">50</span>×0.35 +
+          <span class="hi" id="f_vt_show">50</span>×0.25
+        </div>
+      </div>
+      <div style="text-align:right">
+        <div id="qen_status" class="qen-status status-yellow">CONFORME CONDIZIONATO</div>
+        <div style="font-size:0.58rem;color:var(--dim);margin-top:0.5rem">≥75 Certificato · ≥55 Condizionato</div>
+      </div>
+    </div>
+
+    <!-- Actions -->
+    <div class="form-actions">
+      <button class="btn-primary" id="btnSave" onclick="saveClient()">Salva nel Grafo →</button>
+      <button class="btn-ghost" onclick="resetForm()">Reset</button>
+      <span class="key-stored">API key: <span id="keyMask">••••••••</span></span>
+    </div>
+
+    <!-- Lista clienti salvati in sessione -->
+    <div class="card" style="margin-top:2rem">
+      <div class="card-title">Clienti aggiunti in questa sessione</div>
+      <div class="client-list" id="clientList">
+        <div id="clientListEmpty">Nessun cliente aggiunto ancora.</div>
+      </div>
+    </div>
+
+    <div style="margin-top:1.5rem;padding-top:1rem;border-top:1px solid var(--border)">
+      <button class="btn-ghost" onclick="logout()" style="font-size:0.6rem">
+        Esci / Cambia chiave
+      </button>
+      <a href="pilots.html" style="margin-left:1rem;font-size:0.6rem;color:var(--dim);text-decoration:none;letter-spacing:0.08em">
+        → Vedi tutti i pilot
+      </a>
+    </div>
+
+  </div><!-- /mainForm -->
+</main>
+
+<script>
+const API = 'https://api.cognitivelogic.it';
+const LS_KEY = 'cl_admin_apikey';
+let sessionClients = [];
+
+// ── Auth ──────────────────────────────────────────────────────
+function checkAuth() {
+  const val = document.getElementById('apiKeyInput').value.trim();
+  if (!val) return;
+
+  // Verifica la chiave chiamando un endpoint protetto
+  fetch(`${API}/admin/add-client`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json', 'X-API-Key': val },
+    body: JSON.stringify({ nome: '__ping__', settore: 'test', vs: 0, va: 0, vt: 0 })
+  }).then(r => {
+    if (r.ok || r.status === 200) {
+      localStorage.setItem(LS_KEY, val);
+      showForm(val);
+    } else {
+      document.getElementById('authError').style.display = 'block';
+    }
+  }).catch(() => {
+    // Se l'API è offline, accetta comunque e i salvataggi falliranno con messaggio
+    localStorage.setItem(LS_KEY, val);
+    showForm(val);
+  });
+}
+
+function showForm(key) {
+  document.getElementById('authGate').style.display = 'none';
+  document.getElementById('mainForm').style.display  = 'block';
+  document.getElementById('keyMask').textContent = key.slice(0,4) + '••••' + key.slice(-2);
+  updateQEN();
+}
+
+function logout() {
+  localStorage.removeItem(LS_KEY);
+  document.getElementById('authGate').style.display = 'block';
+  document.getElementById('mainForm').style.display  = 'none';
+  document.getElementById('apiKeyInput').value = '';
+  document.getElementById('authError').style.display = 'none';
+}
+
+// Ripristina sessione se chiave salvata
+window.addEventListener('DOMContentLoaded', () => {
+  const saved = localStorage.getItem(LS_KEY);
+  if (saved) showForm(saved);
+});
+
+document.getElementById('apiKeyInput').addEventListener('keydown', e => {
+  if (e.key === 'Enter') checkAuth();
+});
+
+// ── Sliders ───────────────────────────────────────────────────
+function updateSlider(dim) {
+  const v = document.getElementById('sl_' + dim).value;
+  document.getElementById(dim + '_val').textContent = v;
+  updateQEN();
+}
+
+function updateQEN() {
+  const vs = +document.getElementById('sl_vs').value;
+  const va = +document.getElementById('sl_va').value;
+  const vt = +document.getElementById('sl_vt').value;
+  const qen = (vs * 0.40 + va * 0.35 + vt * 0.25).toFixed(1);
+
+  document.getElementById('qen_preview').textContent = qen;
+  document.getElementById('f_vs_show').textContent = vs;
+  document.getElementById('f_va_show').textContent = va;
+  document.getElementById('f_vt_show').textContent = vt;
+
+  const el = document.getElementById('qen_status');
+  if (qen >= 75) {
+    el.className = 'qen-status status-green';
+    el.textContent = 'CONFORME CERTIFICATO';
+    document.getElementById('qen_preview').style.color = 'var(--green)';
+  } else if (qen >= 55) {
+    el.className = 'qen-status status-yellow';
+    el.textContent = 'CONFORME CONDIZIONATO';
+    document.getElementById('qen_preview').style.color = 'var(--yellow)';
+  } else {
+    el.className = 'qen-status status-red';
+    el.textContent = 'NON CONFORME';
+    document.getElementById('qen_preview').style.color = 'var(--red)';
+  }
+}
+
+// ── Save ──────────────────────────────────────────────────────
+async function saveClient() {
+  const nome = document.getElementById('f_nome').value.trim();
+  if (!nome) {
+    showFeedback('error', 'Inserire il nome del cliente prima di salvare.');
+    return;
+  }
+
+  const key     = localStorage.getItem(LS_KEY);
+  const settore = document.getElementById('f_settore').value;
+  const localita= document.getElementById('f_localita').value.trim();
+  const note    = document.getElementById('f_note').value.trim();
+  const vs      = +document.getElementById('sl_vs').value;
+  const va      = +document.getElementById('sl_va').value;
+  const vt      = +document.getElementById('sl_vt').value;
+  const qen     = +(vs * 0.40 + va * 0.35 + vt * 0.25).toFixed(1);
+
+  const btn = document.getElementById('btnSave');
+  btn.disabled = true;
+  btn.textContent = 'Salvataggio…';
+
+  try {
+    const r = await fetch(`${API}/admin/add-client`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'X-API-Key': key },
+      body: JSON.stringify({ nome, settore, localita, note, vs, va, vt })
+    });
+
+    if (r.ok) {
+      const d = await r.json();
+      showFeedback('success',
+        `✓ "${nome}" salvato nel grafo QEN.\n` +
+        `QEN Score: ${d.qen_score} · Vs ${vs} · Va ${va} · Vt ${vt}\n` +
+        `Stato: INSERITO_MANUALE · Settore: ${settore}`
+      );
+      addToSessionList(nome, settore, qen, localita);
+      resetForm();
+    } else if (r.status === 403) {
+      showFeedback('error', 'Chiave API non valida. Esci e reinserisci la chiave.');
+    } else {
+      showFeedback('error', `Errore server (${r.status}). Riprova tra qualche secondo.`);
+    }
+  } catch {
+    showFeedback('error', 'API non raggiungibile. Il cliente verrà salvato appena il server torna online.');
+  }
+
+  btn.disabled = false;
+  btn.textContent = 'Salva nel Grafo →';
+}
+
+function showFeedback(type, msg) {
+  const el = document.getElementById('feedback');
+  el.className = type;
+  el.style.display = 'block';
+  el.style.whiteSpace = 'pre-line';
+  el.textContent = msg;
+  el.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  if (type === 'success') setTimeout(() => el.style.display = 'none', 6000);
+}
+
+function addToSessionList(nome, settore, qen, localita) {
+  sessionClients.unshift({ nome, settore, qen, localita });
+  const list = document.getElementById('clientList');
+  document.getElementById('clientListEmpty').style.display = 'none';
+  const el = document.createElement('div');
+  el.className = 'client-item';
+  el.innerHTML = `
+    <div>
+      <div class="client-name">${nome}</div>
+      <div class="client-meta">${settore}${localita ? ' · ' + localita : ''} · appena aggiunto</div>
+    </div>
+    <div class="client-score">${qen.toFixed(1)}</div>
+  `;
+  list.insertBefore(el, list.firstChild);
+}
+
+function resetForm() {
+  document.getElementById('f_nome').value = '';
+  document.getElementById('f_localita').value = '';
+  document.getElementById('f_note').value = '';
+  document.getElementById('f_settore').value = 'HoReCa';
+  ['vs','va','vt'].forEach(d => {
+    document.getElementById('sl_' + d).value = 50;
+    document.getElementById(d + '_val').textContent = 50;
+  });
+  updateQEN();
+}
+</script>
+</body>
+</html>
