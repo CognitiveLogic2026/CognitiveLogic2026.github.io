@@ -9,7 +9,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>QEN Live — Cognitive Logic</title>
-  <meta name="description" content="QEN Framework grafo semantico live — 121 nodi, 165 relazioni." />
+  <meta name="description" content="QEN Framework grafo semantico live — 67 nodi, 105 relazioni." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet" />
@@ -522,7 +522,7 @@ async function fetchValidate() {
     if (!r.ok) throw new Error();
     return await r.json();
   } catch(e) {
-    return { nodes: 121, edges: 165, status: 'static' };
+    return { nodes: 67, edges: 105, status: 'static' };
   }
 }
 
@@ -532,7 +532,7 @@ async function init() {
   const isLive = data.status !== 'static';
 
   document.getElementById('status-text').textContent =
-    isLive ? 'live · ' + new Date().toLocaleTimeString('it-IT') : 'static · 121 nodi';
+    isLive ? 'live · ' + new Date().toLocaleTimeString('it-IT') : 'static · 67 nodi';
 
   document.getElementById('last-updated').textContent =
     'Last sync: ' + new Date().toLocaleString('it-IT');
@@ -549,8 +549,8 @@ async function init() {
   setTimeout(() => edgeEl.classList.add('loaded'), 200);
 
   setTimeout(() => {
-    document.getElementById('node-bar').style.width = Math.min(nodes / 150 * 100, 100) + '%';
-    document.getElementById('edge-bar').style.width = Math.min(edges / 200 * 100, 100) + '%';
+    document.getElementById('node-bar').style.width = Math.min(nodes / 100 * 100, 100) + '%';
+    document.getElementById('edge-bar').style.width = Math.min(edges / 150 * 100, 100) + '%';
   }, 400);
 
   const apiResp = document.getElementById('api-response');
@@ -583,23 +583,19 @@ function buildGraph(stats) {
   document.getElementById('reset').onclick    = () => svg.transition().duration(400).call(zoom.transform, d3.zoomIdentity);
 
   const nodeTypes = [
-    { type: 'SYSTEM',             count: 1  },
-    { type: 'BOTTEGA',            count: 5  },
-    { type: 'TRUST_ANCHOR',       count: 7  },
-    { type: 'CONTROL',            count: 11 },
-    { type: 'REGULATION',         count: 5  },
-    { type: 'ALGORITHM',          count: 8  },
-    { type: 'DATASET',            count: 10 },
-    { type: 'VALIDATOR',          count: 7  },
-    { type: 'METRIC',             count: 10 },
-    { type: 'PROCESSING',         count: 6  },
-    { type: 'PROJECT',            count: 6  },
-    { type: 'TECHNOLOGY',         count: 7  },
-    { type: 'ACTOR',              count: 6  },
-    { type: 'RISK',               count: 6  },
-    { type: 'OUTPUT',             count: 5  },
-    { type: 'ARTICLE',            count: 7  },
-    { type: 'EXTERNAL_REFERENCE', count: 3  },
+    { type: 'SYSTEM',       count: 1  },
+    { type: 'BOTTEGA',      count: 8  },
+    { type: 'TRUST_ANCHOR', count: 8  },
+    { type: 'CONTROL',      count: 10 },
+    { type: 'REGULATION',   count: 4  },
+    { type: 'ALGORITHM',    count: 5  },
+    { type: 'DATASET',      count: 6  },
+    { type: 'VALIDATOR',    count: 3  },
+    { type: 'METRIC',       count: 3  },
+    { type: 'PROCESSING',   count: 3  },
+    { type: 'PROJECT',      count: 6  },
+    { type: 'TECHNOLOGY',   count: 5  },
+    { type: 'ACTOR',        count: 5  },
   ];
 
   // Render legend
