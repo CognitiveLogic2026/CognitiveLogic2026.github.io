@@ -738,6 +738,7 @@
               <button class="btn-audit" onclick="runAudit()">▶ Calcola Score QEN</button>
               <button class="btn-ghost-sm" onclick="loadExample()">Esempio Demo</button>
               <button class="btn-ghost-sm" onclick="resetForm()">Reset</button>
+              <span id="graphSavedBadge" style="display:none;font-family:var(--mono);font-size:0.6rem;letter-spacing:0.12em;color:var(--gold);text-transform:uppercase;padding:4px 10px;border:1px solid var(--gold-line);border-radius:2px;">Nodo nel grafo ✓</span>
             </div>
 
             <!-- Formula reference -->
@@ -1156,6 +1157,25 @@
     };
 
     renderResults(lastResult);
+
+    // Salva nodo nel knowledge graph QEN
+    fetch('https://api.cognitivelogic.it/audit/horeca', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        azienda_nome:       lastResult.azienda_nome,
+        coperti:            coperti,
+        qen_score_finale:   lastResult.qen_score_finale,
+        status_conformita:  lastResult.status_conformita,
+        moduli_dettagliati: lastResult.moduli_dettagliati,
+        qen_audit_id:       lastResult.qen_audit_id,
+      })
+    }).then(r => {
+      if (r.ok) {
+        const badge = document.getElementById('graphSavedBadge');
+        if (badge) badge.style.display = 'inline-block';
+      }
+    }).catch(() => {});
   }
 
   // ── Result renderer ──────────────────────────────────────────────

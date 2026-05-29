@@ -11,6 +11,22 @@ from flask import Flask, request, jsonify, send_file
 
 app = Flask(__name__)
 
+@app.before_request
+def handle_preflight():
+    if request.method == 'OPTIONS':
+        resp = app.make_response('')
+        resp.status_code = 204
+        return resp
+
+@app.after_request
+def add_cors(response):
+    origin = request.headers.get('Origin', '')
+    if 'cognitivelogic.it' in origin or not origin:
+        response.headers['Access-Control-Allow-Origin'] = origin or '*'
+        response.headers['Access-Control-Allow-Methods'] = 'GET, POST, OPTIONS'
+        response.headers['Access-Control-Allow-Headers'] = 'Content-Type, X-API-Key'
+    return response
+
 GRAPH_PATH   = "/app/cognitivelogic/graph.json"
 PILOTS_PATH  = "/app/cognitivelogic/pilots.json"
 ANTHROPIC_CLIENT = anthropic.Anthropic(api_key=os.getenv("ANTHROPIC_API_KEY"))
@@ -94,6 +110,50 @@ def analyze():
     except Exception:
         pass
     return jsonify({"status": "success", "qen_score": qen_score, "node": new_node}), 200
+
+@app.route("/audit/horeca", methods=["POST"])
+def audit_horeca():
+    data = request.json or {}
+    nome     = (data.get("azienda_nome") or "Azienda HoReCa").strip()
+    coperti  = data.get("coperti", 0)
+    qen      = data.get("qen_score_finale", 0)
+    mods     = data.get("moduli_dettagliati", {})
+    status   = data.get("status_conformita", "")
+    audit_id = data.get("qen_audit_id") or "qen-" + datetime.utcnow().strftime("%Y%m%d%H%M%S")
+
+    def ms(key):
+        return mods.get(key, {}).get("score", 0) or 0
+
+    vs = round((ms("sociale") + ms("governance")) / 2, 1)
+    va = round((ms("imballaggi") + ms("risorse") + ms("qualita") + ms("rifiuti")) / 4, 1)
+    vt = round((ms("logistica") + ms("territorio")) / 2, 1)
+
+    score_data = {
+        "qen_score": qen, "vs": vs, "va": va, "vt": vt,
+        "status": status, "settore": "HoReCa",
+        "coperti": coperti, "moduli": mods, "audit_id": audit_id,
+    }
+    save_pilot(nome, score_data)
+
+    new_node = {
+        "id": nome, "type": "EntitaPilota", "label": nome,
+        "settore": "HoReCa",
+        "qen_score": {"vs": vs, "va": va, "vt": vt, "totale": qen},
+        "stato": "AUDIT_COMPLETATO",
+        "timestamp": datetime.utcnow().strftime("%Y-%m-%dT%H:%M:%SZ"),
+    }
+    try:
+        with open(GRAPH_PATH, "r") as f:
+            g = json.load(f)
+        g["nodes"][nome] = new_node
+        if "meta" in g:
+            g["meta"]["nodi"] = len(g["nodes"])
+        with open(GRAPH_PATH, "w") as f:
+            json.dump(g, f, indent=2, ensure_ascii=False)
+    except Exception:
+        pass
+
+    return jsonify({"status": "saved", "audit_id": audit_id, "node": new_node}), 200
 
 RISK_SYSTEM_PROMPT = (
     "Sei un esperto di EU AI Act e GDPR."
