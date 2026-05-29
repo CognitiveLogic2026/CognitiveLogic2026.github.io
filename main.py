@@ -155,6 +155,52 @@ def audit_horeca():
 
     return jsonify({"status": "saved", "audit_id": audit_id, "node": new_node}), 200
 
+@app.route("/audit/balneare", methods=["POST"])
+def audit_balneare():
+    data     = request.json or {}
+    nome     = (data.get("azienda_nome") or "Operatore Balneare").strip()
+    tipo     = data.get("tipo", "balneare")
+    qen      = data.get("qen_score_finale", 0)
+    scores   = data.get("scores", {})
+    audit_id = data.get("qen_audit_id") or "qen-bal-" + datetime.utcnow().strftime("%Y%m%d%H%M%S")
+
+    def sc(key):
+        return scores.get(key, 0) or 0
+
+    # M1 Concessione/Bolkestein + M4 Filiera + M6 Digitale → Territoriale
+    vt = round((sc("m1") + sc("m4") + sc("m6")) / 3, 1)
+    # M2 Sostenibilità → Ambientale
+    va = round(sc("m2"), 1)
+    # M5 Lavoro + M3 Servizi/Accessibilità → Sociale
+    vs = round((sc("m5") + sc("m3")) / 2, 1)
+
+    score_data = {
+        "qen_score": qen, "vs": vs, "va": va, "vt": vt,
+        "settore": "Balneare", "tipo": tipo,
+        "scores": scores, "audit_id": audit_id,
+    }
+    save_pilot(nome, score_data)
+
+    new_node = {
+        "id": nome, "type": "EntitaPilota", "label": nome,
+        "settore": "Balneare", "tipo": tipo,
+        "qen_score": {"vs": vs, "va": va, "vt": vt, "totale": qen},
+        "stato": "AUDIT_COMPLETATO",
+        "timestamp": datetime.utcnow().strftime("%Y-%m-%dT%H:%M:%SZ"),
+    }
+    try:
+        with open(GRAPH_PATH, "r") as f:
+            g = json.load(f)
+        g["nodes"][nome] = new_node
+        if "meta" in g:
+            g["meta"]["nodi"] = len(g["nodes"])
+        with open(GRAPH_PATH, "w") as f:
+            json.dump(g, f, indent=2, ensure_ascii=False)
+    except Exception:
+        pass
+
+    return jsonify({"status": "saved", "audit_id": audit_id, "node": new_node}), 200
+
 RISK_SYSTEM_PROMPT = (
     "Sei un esperto di EU AI Act e GDPR."
     " Analizza il sistema descritto sotto entrambi i profili.\n\n"
