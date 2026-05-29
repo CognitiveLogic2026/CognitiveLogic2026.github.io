@@ -47,7 +47,8 @@ jobs:
             if [ -d "$REPO_DIR/.git" ]; then
               cd "$REPO_DIR"
               git remote set-url origin "$REPO_URL" 2>/dev/null || git remote add origin "$REPO_URL"
-              git fetch origin main
+              git remote prune origin 2>/dev/null || true
+              git fetch --prune origin
               git reset --hard origin/main
             else
               mkdir -p "$REPO_DIR"
