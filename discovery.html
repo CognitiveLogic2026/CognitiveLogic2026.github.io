@@ -4,6 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Discovery Automatica — Cognitive Logic · QEN Framework</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.8.2/jspdf.plugin.autotable.min.js"></script>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     :root {
@@ -153,6 +155,21 @@
     <div class="status-bar" id="status"></div>
   </div>
 
+  <div class="panel" id="export-panel" style="display:none;">
+    <div class="panel-title">Lista contatti — QEN basso</div>
+    <div class="form-row" style="align-items:flex-end;">
+      <div class="form-group" style="max-width:160px;">
+        <label>Soglia QEN (sotto =&nbsp;priorità)</label>
+        <input id="qen-threshold" type="number" min="0" max="100" value="72">
+      </div>
+      <div style="display:flex;gap:.6rem;flex-wrap:wrap;">
+        <button class="btn primary" id="btn-export-pdf">↓ Esporta PDF contatti</button>
+        <button class="btn" id="btn-export-csv">↓ Esporta CSV</button>
+      </div>
+    </div>
+    <div class="status-bar" id="export-status"></div>
+  </div>
+
   <div class="panel" id="results-panel" style="display:none;">
     <div class="results-header">
       <div class="panel-title" style="margin:0;">Risultati</div>
@@ -246,10 +263,110 @@
 
   function renderAll() {
     resultsBody.innerHTML = discovered.map((b, i) => renderRow(b, i)).join("");
-    resultsCount.textContent = `${discovered.length} trovati · ${Object.keys(scored).length} scored`;
+    const scoredCount = Object.keys(scored).length;
+    resultsCount.textContent = `${discovered.length} trovati · ${scoredCount} scored`;
     resultsPanel.style.display = "block";
-    btnBatchSave.disabled = Object.keys(scored).length === 0;
+    btnBatchSave.disabled = scoredCount === 0;
+    document.getElementById("export-panel").style.display = scoredCount > 0 ? "block" : "none";
   }
+
+  function getLeadList() {
+    const threshold = parseFloat(document.getElementById("qen-threshold").value) || 72;
+    return discovered
+      .map(b => ({ biz: b, s: scored[b.name] || {} }))
+      .filter(({ s }) => s.qen_score != null && s.qen_score < threshold)
+      .sort((a, b) => a.s.qen_score - b.s.qen_score);
+  }
+
+  document.getElementById("btn-export-pdf").addEventListener("click", () => {
+    const leads = getLeadList();
+    const threshold = document.getElementById("qen-threshold").value;
+    const comune = document.getElementById("comune").value;
+    const settore = document.getElementById("settore").value;
+    if (!leads.length) {
+      document.getElementById("export-status").textContent = `Nessun business con QEN < ${threshold}.`;
+      return;
+    }
+    const { jsPDF } = window.jspdf;
+    const doc = new jsPDF({ orientation: "landscape", unit: "mm", format: "a4" });
+
+    doc.setFontSize(14);
+    doc.setTextColor(0, 200, 150);
+    doc.text("COGNITIVE LOGIC · QEN FRAMEWORK", 14, 14);
+    doc.setTextColor(30, 30, 30);
+    doc.setFontSize(11);
+    doc.text(`Lista Contatti Prioritari — QEN < ${threshold}`, 14, 22);
+    doc.setFontSize(8);
+    doc.setTextColor(100);
+    doc.text(`Comune: ${comune} | Settore: ${settore} | ${leads.length} attività | Generato: ${new Date().toLocaleDateString("it-IT")}`, 14, 28);
+    doc.setFontSize(7);
+    doc.text("Pre-assessment da dati pubblici (Google Places + LLM). Audit completo consigliato prima di certificazione.", 14, 33);
+
+    doc.autoTable({
+      startY: 38,
+      head: [["Nome", "Telefono", "Indirizzo", "QEN", "Vs / Va / Vt", "Bolkestein", "Note priorità"]],
+      body: leads.map(({ biz, s }) => [
+        biz.name,
+        biz.phone || "—",
+        (biz.address || "").replace(", Italy", "").replace(", Italia", ""),
+        s.qen_score?.toFixed(1) ?? "—",
+        s.vs != null ? `${s.vs} / ${s.va} / ${s.vt}` : "—",
+        s.bolkestein_applicable ? "SÌ" : "No",
+        (s.summary || "").slice(0, 90),
+      ]),
+      styles: { fontSize: 7, cellPadding: 2, overflow: "linebreak" },
+      headStyles: { fillColor: [0, 200, 150], textColor: 0, fontStyle: "bold" },
+      alternateRowStyles: { fillColor: [245, 245, 245] },
+      columnStyles: {
+        0: { cellWidth: 38 },
+        1: { cellWidth: 24 },
+        2: { cellWidth: 46 },
+        3: { cellWidth: 14, halign: "center" },
+        4: { cellWidth: 22, halign: "center" },
+        5: { cellWidth: 18, halign: "center" },
+        6: { cellWidth: "auto" },
+      },
+    });
+
+    const fname = `qen-contatti-${comune.toLowerCase()}-${settore}-${new Date().toISOString().slice(0,10)}.pdf`;
+    doc.save(fname);
+    document.getElementById("export-status").textContent = `PDF generato: ${leads.length} contatti prioritari.`;
+  });
+
+  document.getElementById("btn-export-csv").addEventListener("click", () => {
+    const leads = getLeadList();
+    const threshold = document.getElementById("qen-threshold").value;
+    if (!leads.length) {
+      document.getElementById("export-status").textContent = `Nessun business con QEN < ${threshold}.`;
+      return;
+    }
+    const rows = [
+      ["Nome", "Telefono", "Indirizzo", "Sito", "Rating", "QEN", "Vs", "Va", "Vt", "Confidence", "Bolkestein", "Note"],
+      ...leads.map(({ biz, s }) => [
+        `"${biz.name}"`,
+        biz.phone || "",
+        `"${(biz.address || "").replace(/"/g, "'")}"`,
+        biz.website || "",
+        biz.rating || "",
+        s.qen_score?.toFixed(1) ?? "",
+        s.vs ?? "", s.va ?? "", s.vt ?? "",
+        s.confidence || "",
+        s.bolkestein_applicable ? "SI" : "No",
+        `"${(s.summary || "").replace(/"/g, "'").slice(0, 120)}"`,
+      ])
+    ];
+    const csv = rows.map(r => r.join(";")).join("\n");
+    const blob = new Blob(["﻿" + csv], { type: "text/csv;charset=utf-8;" });
+    const url  = URL.createObjectURL(blob);
+    const a    = document.createElement("a");
+    const comune = document.getElementById("comune").value;
+    const settore = document.getElementById("settore").value;
+    a.href = url;
+    a.download = `qen-contatti-${comune.toLowerCase()}-${settore}-${new Date().toISOString().slice(0,10)}.csv`;
+    a.click();
+    URL.revokeObjectURL(url);
+    document.getElementById("export-status").textContent = `CSV generato: ${leads.length} contatti prioritari.`;
+  });
 
   btnDiscover.addEventListener("click", async () => {
     clearError();
