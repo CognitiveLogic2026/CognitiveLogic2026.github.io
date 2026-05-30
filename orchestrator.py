@@ -571,6 +571,82 @@ def register_orchestrator(app):
             "timestamp":  datetime.utcnow().isoformat() + "Z",
         }), 200
 
+    @app.route("/agents/score-businesses", methods=["POST"])
+    def score_businesses():
+        """Score a pre-discovered list of businesses (max 5 per call, no re-discovery)."""
+        data       = request.get_json() or {}
+        businesses = data.get("businesses", [])[:5]
+        provider   = (data.get("provider") or "mistral").lower()
+        auto_save  = bool(data.get("auto_save", False))
+        settore    = (data.get("settore") or "").strip()
+
+        results = []
+        for biz in businesses:
+            name = biz.get("name", "")
+            if not name:
+                continue
+            desc = (
+                f"Attività: {name}. "
+                f"Tipologia: {biz.get('type', settore)}. "
+                f"Indirizzo: {biz.get('address', '')}."
+            )
+            if biz.get("rating"):
+                desc += f" Valutazione clienti: {biz['rating']}/5 ({biz.get('reviews', 0)} recensioni)."
+            prompt = (
+                f"Azienda: {name}\nSettore: {biz.get('settore', settore)}\n"
+                f"Comune: {biz.get('comune', '')}\nDescrizione: {desc}"
+            )
+            scored = dict(biz)
+            raw = None
+            try:
+                if provider == "mistral":
+                    mk = os.getenv("MISTRAL_API_KEY", "")
+                    if mk:
+                        raw = _mistral_chat(mk, _DISCOVERY_QEN_SYSTEM, prompt)
+                    else:
+                        raise RuntimeError("no mistral key")
+                else:
+                    raise RuntimeError("use claude")
+            except Exception:
+                try:
+                    msg = _get_client().messages.create(
+                        model="claude-sonnet-4-6",
+                        max_tokens=600,
+                        system=_DISCOVERY_QEN_SYSTEM,
+                        messages=[{"role": "user", "content": prompt}],
+                    )
+                    raw = msg.content[0].text
+                except Exception as e:
+                    scored["error"] = str(e)
+                    results.append(scored)
+                    continue
+            audit, err = _extract_json(raw)
+            if audit:
+                scored.update({
+                    "qen_score":             audit.get("qen_score"),
+                    "vs":                    audit.get("vs"),
+                    "va":                    audit.get("va"),
+                    "vt":                    audit.get("vt"),
+                    "confidence":            audit.get("confidence", "LOW"),
+                    "risk_flags":            audit.get("risk_flags", []),
+                    "bolkestein_applicable": audit.get("bolkestein_applicable", False),
+                    "summary":               audit.get("summary", ""),
+                    "note":                  audit.get("note", ""),
+                    "status":                "PRE_ASSESSMENT",
+                })
+                if auto_save and audit.get("qen_score") is not None:
+                    _discovery_save_pilot(name, scored)
+            else:
+                scored["error"] = err
+            results.append(scored)
+
+        return jsonify({
+            "status":  "success",
+            "total":   len(results),
+            "scored":  results,
+            "timestamp": datetime.utcnow().isoformat() + "Z",
+        }), 200
+
     @app.route("/agents/places-batch-qen", methods=["POST"])
     def places_batch_qen():
         import sys
