@@ -140,7 +140,7 @@
       </div>
       <div class="form-group">
         <label>API Key (per salvataggio)</label>
-        <input id="api_key" type="password" placeholder="COGNITIVE_API_KEY">
+        <input id="api_key" type="password" placeholder="COGNITIVE_API_KEY" oninput="localStorage.setItem('cog_api_key', this.value)">
       </div>
     </div>
     <div class="actions">
@@ -198,6 +198,10 @@
   const API = "https://api.cognitivelogic.it";
   let discovered = [];
   let scored = {};
+
+  // Ripristina API key salvata
+  const savedKey = localStorage.getItem("cog_api_key");
+  if (savedKey) document.getElementById("api_key").value = savedKey;
 
   const statusEl   = document.getElementById("status");
   const progressEl = document.getElementById("progress");
