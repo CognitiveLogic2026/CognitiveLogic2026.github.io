@@ -612,7 +612,7 @@ def register_orchestrator(app):
                 try:
                     msg = _get_client().messages.create(
                         model="claude-sonnet-4-6",
-                        max_tokens=600,
+                        max_tokens=900,
                         system=_DISCOVERY_QEN_SYSTEM,
                         messages=[{"role": "user", "content": prompt}],
                     )
@@ -700,7 +700,7 @@ def register_orchestrator(app):
                 try:
                     msg = _get_client().messages.create(
                         model="claude-sonnet-4-6",
-                        max_tokens=600,
+                        max_tokens=900,
                         system=_DISCOVERY_QEN_SYSTEM,
                         messages=[{"role": "user", "content": prompt}],
                     )
