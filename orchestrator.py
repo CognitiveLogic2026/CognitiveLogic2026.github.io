@@ -574,6 +574,7 @@ def register_orchestrator(app):
     @app.route("/agents/score-businesses", methods=["POST"])
     def score_businesses():
         """Score a pre-discovered list of businesses (max 5 per call, no re-discovery)."""
+        import time
         data       = request.get_json() or {}
         businesses = data.get("businesses", [])[:5]
         provider   = (data.get("provider") or "mistral").lower()
@@ -639,6 +640,9 @@ def register_orchestrator(app):
             else:
                 scored["error"] = err
             results.append(scored)
+            # small delay to avoid Mistral rate-limit on consecutive calls
+            if len(results) < len(businesses):
+                time.sleep(0.5)
 
         return jsonify({
             "status":  "success",
