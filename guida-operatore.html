@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<!--
+  Copyright (c) 2026 Roberto Bob Malini - Cognitive Logic
+  https://www.cognitivelogic.it
+  Licensed under CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/)
+-->
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Guida Operatore QEN — Cognitive Logic</title>
+  <meta name="robots" content="noindex, nofollow" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@300;400;500&family=Syne:wght@400;700;800&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg: #05080f; --s1: #0a0d1a; --s2: #0f1323;
+      --border: #181d30; --border2: #242a42;
+      --green: #3dffa0; --gold: #c8a84b; --red: #ff5f57; --yellow: #ffd166; --blue: #4db8ff;
+      --text: #ccd4ef; --mid: #8892b5; --dim: #4a5270;
+      --mono: 'IBM Plex Mono', monospace; --sans: 'Syne', sans-serif;
+    }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--bg); color: var(--text);
+      font-family: var(--mono); line-height: 1.7; overflow-x: hidden;
+    }
+    body::after {
+      content: ''; position: fixed; inset: 0;
+      background-image:
+        linear-gradient(var(--border) 1px, transparent 1px),
+        linear-gradient(90deg, var(--border) 1px, transparent 1px);
+      background-size: 64px 64px; pointer-events: none; z-index: 0; opacity: 0.12;
+    }
+    * { position: relative; z-index: 1; }
+
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      height: 52px; display: flex; align-items: center; justify-content: space-between;
+      padding: 0 2rem; background: rgba(5,8,15,0.96);
+      backdrop-filter: blur(16px); border-bottom: 1px solid var(--border);
+    }
+    .nav-logo { font-family: var(--sans); font-weight: 800; font-size: 0.8rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--green); text-decoration: none; }
+    .nav-tag { font-size: 0.6rem; letter-spacing: 0.15em; color: var(--dim); text-transform: uppercase; }
+    .nav-print { font-size: 0.6rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--mid); background: none; border: 1px solid var(--border2); padding: 0.3rem 0.8rem; cursor: pointer; border-radius: 2px; font-family: var(--mono); transition: border-color 0.2s, color 0.2s; }
+    .nav-print:hover { border-color: var(--green); color: var(--green); }
+
+    main { max-width: 780px; margin: 0 auto; padding: 80px 1.5rem 5rem; }
+
+    .page-header { padding: 2.5rem 0 2rem; border-bottom: 1px solid var(--border); margin-bottom: 2.5rem; }
+    .eyebrow { font-size: 0.58rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--green); margin-bottom: 0.75rem; }
+    h1 { font-family: var(--sans); font-weight: 800; font-size: clamp(1.8rem, 4vw, 2.6rem); letter-spacing: -0.02em; line-height: 1.1; }
+    h1 span { color: var(--green); }
+    .subtitle { font-size: 0.75rem; color: var(--mid); max-width: 560px; line-height: 1.9; margin-top: 0.75rem; }
+
+    /* ── Phase blocks ── */
+    .phase { margin-bottom: 2.5rem; }
+    .phase-header {
+      display: flex; align-items: center; gap: 1rem;
+      padding: 1rem 1.4rem; margin-bottom: 1px;
+      border-radius: 2px 2px 0 0;
+    }
+    .phase-header.pre  { background: rgba(61,255,160,0.06);  border: 1px solid rgba(61,255,160,0.2); }
+    .phase-header.meet { background: rgba(77,184,255,0.06);  border: 1px solid rgba(77,184,255,0.2); }
+    .phase-header.audit{ background: rgba(200,168,75,0.06);  border: 1px solid rgba(200,168,75,0.2); }
+    .phase-header.post { background: rgba(255,209,102,0.06); border: 1px solid rgba(255,209,102,0.2); }
+
+    .phase-num {
+      font-family: var(--sans); font-weight: 800; font-size: 2rem; line-height: 1;
+      min-width: 2.5rem;
+    }
+    .phase-header.pre  .phase-num { color: var(--green); }
+    .phase-header.meet .phase-num { color: var(--blue); }
+    .phase-header.audit .phase-num { color: var(--gold); }
+    .phase-header.post .phase-num { color: var(--yellow); }
+
+    .phase-title { font-family: var(--sans); font-weight: 700; font-size: 1rem; letter-spacing: 0.02em; }
+    .phase-subtitle { font-size: 0.62rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--mid); margin-top: 2px; }
+
+    .phase-body {
+      background: var(--s1); border: 1px solid var(--border);
+      border-top: none; border-radius: 0 0 2px 2px; padding: 1.6rem;
+    }
+
+    /* ── Steps ── */
+    .steps { display: flex; flex-direction: column; gap: 1rem; }
+    .step { display: flex; gap: 1rem; }
+    .step-dot {
+      width: 22px; height: 22px; border-radius: 50%; flex-shrink: 0;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.6rem; font-weight: 500; margin-top: 1px;
+    }
+    .phase-pre  .step-dot { background: rgba(61,255,160,0.15);  color: var(--green); border: 1px solid rgba(61,255,160,0.3); }
+    .phase-meet .step-dot { background: rgba(77,184,255,0.15);  color: var(--blue);  border: 1px solid rgba(77,184,255,0.3); }
+    .phase-audit .step-dot { background: rgba(200,168,75,0.15); color: var(--gold);  border: 1px solid rgba(200,168,75,0.3); }
+    .phase-post .step-dot { background: rgba(255,209,102,0.15); color: var(--yellow);border: 1px solid rgba(255,209,102,0.3); }
+
+    .step-content { flex: 1; }
+    .step-title { font-size: 0.82rem; font-weight: 500; color: var(--text); margin-bottom: 0.3rem; }
+    .step-desc { font-size: 0.7rem; color: var(--mid); line-height: 1.7; }
+    .step-desc strong { color: var(--text); }
+    .step-desc a { color: var(--green); text-decoration: none; }
+    .step-desc a:hover { text-decoration: underline; }
+
+    .tag {
+      display: inline-block; font-size: 0.55rem; letter-spacing: 0.12em;
+      text-transform: uppercase; padding: 0.2rem 0.5rem; border-radius: 2px; margin-right: 0.3rem; margin-top: 0.4rem;
+    }
+    .tag-green  { color: var(--green);  background: rgba(61,255,160,0.08);  border: 1px solid rgba(61,255,160,0.2); }
+    .tag-gold   { color: var(--gold);   background: rgba(200,168,75,0.08);  border: 1px solid rgba(200,168,75,0.2); }
+    .tag-blue   { color: var(--blue);   background: rgba(77,184,255,0.08);  border: 1px solid rgba(77,184,255,0.2); }
+    .tag-yellow { color: var(--yellow); background: rgba(255,209,102,0.08); border: 1px solid rgba(255,209,102,0.2); }
+    .tag-red    { color: var(--red);    background: rgba(255,95,87,0.08);   border: 1px solid rgba(255,95,87,0.2); }
+
+    /* ── Sector table ── */
+    .sector-table { width: 100%; border-collapse: collapse; font-size: 0.72rem; }
+    .sector-table th {
+      text-align: left; font-size: 0.58rem; letter-spacing: 0.18em;
+      text-transform: uppercase; color: var(--dim); padding: 0.6rem 1rem;
+      border-bottom: 1px solid var(--border2); font-weight: 400;
+    }
+    .sector-table td { padding: 0.75rem 1rem; border-bottom: 1px solid var(--border); vertical-align: middle; }
+    .sector-table tr:last-child td { border-bottom: none; }
+    .sector-table tr:hover td { background: rgba(255,255,255,0.02); }
+    .sector-name { font-weight: 500; color: var(--text); }
+    .sector-tool { color: var(--green); }
+    .sector-note { color: var(--mid); font-size: 0.65rem; }
+
+    /* ── QEN Reference ── */
+    .qen-ref { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--border); margin-top: 1rem; }
+    .qen-dim { background: var(--s1); padding: 1.2rem; }
+    .qen-dim-label { font-size: 0.58rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--mid); margin-bottom: 0.5rem; }
+    .qen-dim-name { font-family: var(--sans); font-weight: 700; font-size: 0.9rem; margin-bottom: 0.5rem; }
+    .qen-dim-name.vs { color: var(--blue); }
+    .qen-dim-name.va { color: var(--green); }
+    .qen-dim-name.vt { color: var(--gold); }
+    .qen-dim-items { font-size: 0.65rem; color: var(--mid); line-height: 2; }
+
+    .score-scale { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-top: 0.75rem; }
+    .score-badge { font-size: 0.6rem; padding: 0.25rem 0.6rem; border-radius: 2px; letter-spacing: 0.08em; }
+
+    /* ── Checklist ── */
+    .checklist { display: flex; flex-direction: column; gap: 0.5rem; }
+    .check-item { display: flex; align-items: flex-start; gap: 0.75rem; font-size: 0.72rem; color: var(--mid); }
+    .check-box { width: 14px; height: 14px; border: 1px solid var(--border2); border-radius: 2px; flex-shrink: 0; margin-top: 3px; }
+
+    /* ── Divider ── */
+    .divider { display: flex; align-items: center; gap: 1rem; margin: 2rem 0; }
+    .divider span { font-size: 0.58rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--dim); white-space: nowrap; }
+    .divider::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+
+    /* ── Print ── */
+    @media print {
+      nav, .nav-print { display: none !important; }
+      body { background: white; color: #111; font-size: 11pt; }
+      body::after { display: none; }
+      main { padding: 1rem; max-width: 100%; }
+      .phase-body { border: 1px solid #ccc; }
+      .phase-header.pre  { background: #f0fff8; border-color: #aaa; }
+      .phase-header.meet { background: #f0f8ff; border-color: #aaa; }
+      .phase-header.audit { background: #fffbf0; border-color: #aaa; }
+      .phase-header.post { background: #fffff0; border-color: #aaa; }
+      .phase-num, .phase-title, .step-title { color: #111 !important; }
+      .step-desc, .sector-note { color: #444 !important; }
+      .tag { border: 1px solid #999 !important; color: #333 !important; background: #f5f5f5 !important; }
+      .qen-dim { background: #fafafa; border: 1px solid #ddd; }
+      .qen-dim-name.vs, .qen-dim-name.va, .qen-dim-name.vt { color: #111 !important; }
+      a { color: #111 !important; }
+      .sector-tool { color: #333 !important; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="/" class="nav-logo">Cognitive Logic</a>
+  <span class="nav-tag">Guida Operatore — Riservato</span>
+  <button class="nav-print" onclick="window.print()">⎙ Stampa</button>
+</nav>
+
+<main>
+  <div class="page-header">
+    <div class="eyebrow">Protocollo Operativo · Tutti i Settori</div>
+    <h1>Guida <span>Cliente</span> QEN</h1>
+    <p class="subtitle">Flusso completo dall'acquisizione alla certificazione. Valido per HoReCa, balneare, artigianato, agroalimentare, commercio ambulante. Uso interno — non distribuire.</p>
+  </div>
+
+  <!-- ── FASE 1: PRE-INCONTRO ── -->
+  <div class="phase phase-pre">
+    <div class="phase-header pre">
+      <div class="phase-num">1</div>
+      <div>
+        <div class="phase-title">Prima dell'incontro</div>
+        <div class="phase-subtitle">Preparazione · 10 minuti</div>
+      </div>
+    </div>
+    <div class="phase-body">
+      <div class="steps">
+        <div class="step">
+          <div class="step-dot">A</div>
+          <div class="step-content">
+            <div class="step-title">Identifica il settore e lo strumento corretto</div>
+            <div class="step-desc">Guarda la tabella "Settori e strumenti" in fondo a questa guida. Tieni aperto sul telefono o tablet l'auditor giusto prima di entrare.</div>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-dot">B</div>
+          <div class="step-content">
+            <div class="step-title">Cerca il cliente online</div>
+            <div class="step-desc">Google Maps, sito web, Tripadvisor. Note su: anni di attività, filiera, certificazioni visibili, presenza social. Questi dati alimentano <strong>Vt e Va</strong>.</div>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-dot">C</div>
+          <div class="step-content">
+            <div class="step-title">Verifica urgenze normative</div>
+            <div class="step-desc">
+              <span class="tag tag-red">Balneare / Ambulante</span> Scadenza Bolkestein 2027 — urgenza alta.<br>
+              <span class="tag tag-gold">HoReCa</span> Green Claim EU settembre 2026 — verifica claim ambientali esposti.<br>
+              <span class="tag tag-blue">Tutti</span> EU AI Act — se usano PMS, chatbot o sistemi di raccomandazione.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── FASE 2: DURANTE L'INCONTRO ── -->
+  <div class="phase phase-meet">
+    <div class="phase-header meet">
+      <div class="phase-num">2</div>
+      <div>
+        <div class="phase-title">Durante l'incontro</div>
+        <div class="phase-subtitle">Apertura e contesto · 15–20 minuti</div>
+      </div>
+    </div>
+    <div class="phase-body">
+      <div class="steps">
+        <div class="step">
+          <div class="step-dot">1</div>
+          <div class="step-content">
+            <div class="step-title">Spiega il QEN Score in una frase</div>
+            <div class="step-desc">
+              <em>"Il QEN Score è un punteggio da 0 a 100 che misura quanto la tua attività è sostenibile, etica e radicata nel territorio. Serve per dimostrarlo a banche, istituzioni, gare come Bolkestein — e per capire dove migliorare."</em>
+            </div>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-dot">2</div>
+          <div class="step-content">
+            <div class="step-title">Mostra la formula — trasparenza totale</div>
+            <div class="step-desc">
+              Apri <a href="/methodology.html" target="_blank">cognitivelogic.it/methodology.html</a> e mostra:<br>
+              <strong>QEN = Vs × 0,40 + Va × 0,35 + Vt × 0,25</strong><br>
+              Spiega che non è una black box — ogni punto è spiegato e verificabile.
+            </div>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-dot">3</div>
+          <div class="step-content">
+            <div class="step-title">Presenta l'urgenza normativa specifica</div>
+            <div class="step-desc">Usa la leva giusta per il settore. Balneare: <em>"Hai la concessione in scadenza 2027 — il QEN Score documenta il valore storico dell'attività per la gara."</em> HoReCa: <em>"Dal settembre 2026 non puoi più scrivere 'eco-friendly' senza dati verificabili."</em></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── FASE 3: AUDIT ── -->
+  <div class="phase phase-audit">
+    <div class="phase-header audit">
+      <div class="phase-num">3</div>
+      <div>
+        <div class="phase-title">Esegui l'audit insieme</div>
+        <div class="phase-subtitle">Compilazione live · 10–20 minuti</div>
+      </div>
+    </div>
+    <div class="phase-body">
+      <div class="steps">
+        <div class="step">
+          <div class="step-dot">1</div>
+          <div class="step-content">
+            <div class="step-title">Apri l'auditor corretto sul tuo dispositivo</div>
+            <div class="step-desc">
+              <span class="tag tag-gold">Ristorazione / Hotel / Bar</span> <a href="/qen-horeca-auditor.html" target="_blank">qen-horeca-auditor.html</a><br>
+              <span class="tag tag-blue">Balneare / Chiosco / Ambulante / Dehors</span> <a href="/qen-balneare-auditor.html" target="_blank">qen-balneare-auditor.html</a><br>
+              <span class="tag tag-green">Agroalimentare / Cooperativa / PMI</span> <a href="/eci-assessment.html" target="_blank">eci-assessment.html</a>
+            </div>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-dot">2</div>
+          <div class="step-content">
+            <div class="step-title">Compila modulo per modulo con il cliente</div>
+            <div class="step-desc">Fai le domande ad alta voce — è un dialogo, non un questionario. Se il cliente non sa rispondere a un campo, segnalo come "da verificare" e vai avanti. Meglio uno score con qualche stima che nessuno score.</div>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-dot">3</div>
+          <div class="step-content">
+            <div class="step-title">Clicca "Calcola Score QEN"</div>
+            <div class="step-desc">Lo score appare in tempo reale. Compare il badge <strong style="color:var(--green)">"Nodo nel grafo ✓"</strong> — significa che il cliente è stato registrato automaticamente nel knowledge graph QEN. Mostralo al cliente come conferma concreta.</div>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-dot">4</div>
+          <div class="step-content">
+            <div class="step-title">Leggi i risultati insieme</div>
+            <div class="step-desc">
+              <span class="tag tag-green">≥ 75 — Conforme Certificato</span> Ottimo punto di partenza per la certificazione.<br>
+              <span class="tag tag-yellow">55–74 — Conforme Condizionato</span> Piano di miglioramento su 2–3 moduli.<br>
+              <span class="tag tag-red">&lt; 55 — Non Conforme</span> Audit urgente, intervento strutturato necessario.<br><br>
+              Mostra i <strong>moduli con score basso</strong> — sono le aree di intervento e quindi i servizi che puoi offrire.
+            </div>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-dot">5</div>
+          <div class="step-content">
+            <div class="step-title">Esporta il JSON (opzionale)</div>
+            <div class="step-desc">Clicca <strong>Export JSON</strong> nell'auditor per salvare tutti i dati dell'audit. Utile per documentazione, invio al cliente, o archiviazione.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── FASE 4: POST-INCONTRO ── -->
+  <div class="phase phase-post">
+    <div class="phase-header post">
+      <div class="phase-num">4</div>
+      <div>
+        <div class="phase-title">Dopo l'incontro</div>
+        <div class="phase-subtitle">Follow-up e attivazione · entro 24–48h</div>
+      </div>
+    </div>
+    <div class="phase-body">
+      <div class="steps">
+        <div class="step">
+          <div class="step-dot">A</div>
+          <div class="step-content">
+            <div class="step-title">Verifica che il nodo sia nel grafo</div>
+            <div class="step-desc">Vai su <a href="/pilots.html" target="_blank">cognitivelogic.it/pilots.html</a> — il cliente deve apparire nella lista con il suo QEN Score. Se non compare, aggiungilo manualmente da <a href="/admin-clienti.html" target="_blank">admin-clienti.html</a>.</div>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-dot">B</div>
+          <div class="step-content">
+            <div class="step-title">Invia il riepilogo al cliente</div>
+            <div class="step-desc">Email con: QEN Score ottenuto, i 2–3 punti di forza, i 2–3 aree di miglioramento, e la proposta di servizio concreta (audit completo, dossier Bolkestein, certificazione, ecc.).</div>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-dot">C</div>
+          <div class="step-content">
+            <div class="step-title">Proponi il passo successivo in base allo score</div>
+            <div class="step-desc">
+              <strong>Score ≥ 75</strong> → Certificazione QEN + badge per il sito web (<a href="/qen-widget.html" target="_blank">qen-widget.html</a>)<br>
+              <strong>Score 55–74</strong> → Piano di miglioramento + audit di follow-up a 6 mesi<br>
+              <strong>Score &lt; 55</strong> → Intervento strutturato + priorità sui moduli critici<br>
+              <strong>Balneare qualsiasi score</strong> → Dossier Bolkestein 2027 — urgente
+            </div>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-dot">D</div>
+          <div class="step-content">
+            <div class="step-title">Programma la rivalutazione</div>
+            <div class="step-desc">L'auditor indica già la <strong>prossima valutazione consigliata</strong> (30 giorni). Inserisci il promemoria e proponi il secondo audit come parte del contratto continuativo.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"><span>Riferimenti rapidi</span></div>
+
+  <!-- ── SETTORI E STRUMENTI ── -->
+  <div style="background:var(--s1);border:1px solid var(--border);border-radius:2px;padding:1.6rem;margin-bottom:1.5rem">
+    <div style="font-family:var(--sans);font-weight:700;font-size:0.82rem;text-transform:uppercase;letter-spacing:0.08em;margin-bottom:1.2rem;padding-bottom:0.8rem;border-bottom:1px solid var(--border)">Settori e strumenti</div>
+    <table class="sector-table">
+      <thead>
+        <tr>
+          <th>Settore / Tipologia</th>
+          <th>Strumento</th>
+          <th>Leva normativa</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><span class="sector-name">Ristorante / Trattoria / Bar</span></td>
+          <td><span class="sector-tool">HoReCa Auditor</span></td>
+          <td><span class="sector-note">Green Claim 2026 · EU AI Act III</span></td>
+        </tr>
+        <tr>
+          <td><span class="sector-name">Hotel / B&B / Affittacamere</span></td>
+          <td><span class="sector-tool">HoReCa Auditor</span></td>
+          <td><span class="sector-note">EU AI Act III (PMS) · GDPR art.22</span></td>
+        </tr>
+        <tr>
+          <td><span class="sector-name">Stabilimento balneare / Beach club</span></td>
+          <td><span class="sector-tool">Balneare Auditor</span></td>
+          <td><span class="sector-note">Bolkestein 2027 — urgenza critica</span></td>
+        </tr>
+        <tr>
+          <td><span class="sector-name">Chiosco spiaggia / Dehors</span></td>
+          <td><span class="sector-tool">Balneare Auditor</span></td>
+          <td><span class="sector-note">Bolkestein 2027</span></td>
+        </tr>
+        <tr>
+          <td><span class="sector-name">Ambulante alimentare / Posteggio mercato</span></td>
+          <td><span class="sector-tool">Balneare Auditor</span></td>
+          <td><span class="sector-note">Bolkestein 2027 · Green Claim 2026</span></td>
+        </tr>
+        <tr>
+          <td><span class="sector-name">Bottega artigiana / Laboratorio</span></td>
+          <td><span class="sector-tool">Admin Clienti (stima)</span></td>
+          <td><span class="sector-note">CSRD · Bologna 100 Botteghe</span></td>
+        </tr>
+        <tr>
+          <td><span class="sector-name">Cooperativa / Azienda agricola</span></td>
+          <td><span class="sector-tool">ECI Assessment</span></td>
+          <td><span class="sector-note">CSRD 2026 · Green Deal · Km0</span></td>
+        </tr>
+        <tr>
+          <td><span class="sector-name">PMI generica / Studio professionale</span></td>
+          <td><span class="sector-tool">Admin Clienti + Demo QEN</span></td>
+          <td><span class="sector-note">EU AI Act · GDPR art.35 DPIA</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- ── VALORI QEN REFERENCE ── -->
+  <div style="background:var(--s1);border:1px solid var(--border);border-radius:2px;padding:1.6rem;margin-bottom:1.5rem">
+    <div style="font-family:var(--sans);font-weight:700;font-size:0.82rem;text-transform:uppercase;letter-spacing:0.08em;margin-bottom:1rem;padding-bottom:0.8rem;border-bottom:1px solid var(--border)">Guida rapida ai valori Vs / Va / Vt</div>
+    <div class="qen-ref">
+      <div class="qen-dim">
+        <div class="qen-dim-label">Peso 40%</div>
+        <div class="qen-dim-name vs">Vs — Sociale</div>
+        <div class="qen-dim-items">
+          Contratti regolari<br>
+          Nessun gender pay gap<br>
+          Formazione dipendenti<br>
+          Welfare aziendale<br>
+          Accessibilità servizi
+        </div>
+      </div>
+      <div class="qen-dim">
+        <div class="qen-dim-label">Peso 35%</div>
+        <div class="qen-dim-name va">Va — Ambientale</div>
+        <div class="qen-dim-items">
+          Certificazioni (ISO, Ecolabel)<br>
+          Approvvigionamenti Km0<br>
+          Energia rinnovabile<br>
+          Rifiuti differenziati<br>
+          Nessuna plastica monouso
+        </div>
+      </div>
+      <div class="qen-dim">
+        <div class="qen-dim-label">Peso 25%</div>
+        <div class="qen-dim-name vt">Vt — Territoriale</div>
+        <div class="qen-dim-items">
+          Anni di attività locale<br>
+          Fornitori locali verificati<br>
+          Associazioni di categoria<br>
+          Indotto occupazionale<br>
+          Identità digitale attiva
+        </div>
+      </div>
+    </div>
+    <div class="score-scale" style="margin-top:1rem">
+      <span class="score-badge tag-green">90–100 · Eccellente</span>
+      <span class="score-badge tag-green">75–89 · Conforme Certificato</span>
+      <span class="score-badge tag-yellow">55–74 · Conforme Condizionato</span>
+      <span class="score-badge tag-red">&lt; 55 · Non Conforme</span>
+    </div>
+  </div>
+
+  <!-- ── CHECKLIST RAPIDA ── -->
+  <div style="background:var(--s1);border:1px solid var(--border);border-radius:2px;padding:1.6rem">
+    <div style="font-family:var(--sans);font-weight:700;font-size:0.82rem;text-transform:uppercase;letter-spacing:0.08em;margin-bottom:1rem;padding-bottom:0.8rem;border-bottom:1px solid var(--border)">Checklist incontro — stampa e porta con te</div>
+    <div class="checklist">
+      <div class="check-item"><div class="check-box"></div><span>Settore identificato e auditor corretto aperto sul dispositivo</span></div>
+      <div class="check-item"><div class="check-box"></div><span>Ricerca online del cliente completata (anni attività, certificazioni, social)</span></div>
+      <div class="check-item"><div class="check-box"></div><span>Urgenza normativa specifica individuata (Bolkestein / Green Claim / EU AI Act)</span></div>
+      <div class="check-item"><div class="check-box"></div><span>Formula QEN spiegata al cliente (Vs · Va · Vt)</span></div>
+      <div class="check-item"><div class="check-box"></div><span>Audit compilato insieme modulo per modulo</span></div>
+      <div class="check-item"><div class="check-box"></div><span>Score calcolato e badge "Nodo nel grafo ✓" apparso</span></div>
+      <div class="check-item"><div class="check-box"></div><span>Risultati letti insieme — punti di forza e aree di miglioramento</span></div>
+      <div class="check-item"><div class="check-box"></div><span>Proposta concreta formulata in base allo score</span></div>
+      <div class="check-item"><div class="check-box"></div><span>Data prossima rivalutazione concordata</span></div>
+      <div class="check-item"><div class="check-box"></div><span>Email riepilogativa inviata entro 24 ore</span></div>
+    </div>
+  </div>
+
+  <div style="margin-top:2rem;padding-top:1rem;border-top:1px solid var(--border);font-size:0.6rem;color:var(--dim);line-height:2">
+    © 2026 Roberto Bob Malini — Cognitive Logic · www.cognitivelogic.it<br>
+    Documento riservato — uso interno operatore · Non distribuire ai clienti
+  </div>
+
+</main>
+</body>
+</html>
