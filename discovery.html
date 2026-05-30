@@ -296,15 +296,17 @@
     const CHUNK = 5;
 
     btnBatchScore.disabled = true;
+    clearError();
     let done = 0;
+    let errors = 0;
     const total = discovered.length;
 
-    try {
-      for (let i = 0; i < total; i += CHUNK) {
-        const chunk = discovered.slice(i, i + CHUNK);
-        setProgress(Math.round((done / total) * 100));
-        setStatus(`Scoring QEN: ${done}/${total} — attendere…`);
+    for (let i = 0; i < total; i += CHUNK) {
+      const chunk = discovered.slice(i, i + CHUNK);
+      setProgress(Math.round((done / total) * 100));
+      setStatus(`Scoring QEN: ${done}/${total}…`);
 
+      try {
         const res = await fetch(`${API}/agents/score-businesses`, {
           method: "POST",
           headers: { "Content-Type": "application/json" },
@@ -312,23 +314,25 @@
         });
         const data = await res.json();
         if (!res.ok) throw new Error(data.error || res.statusText);
-
         (data.scored || []).forEach(b => { scored[b.name] = b; });
-        done += chunk.length;
-        renderAll();
+      } catch (e) {
+        errors++;
+        console.warn(`Chunk ${i}-${i+CHUNK} error:`, e.message);
       }
-      setProgress(100);
-      const savedCount = Object.values(scored).filter(b => b.qen_score != null).length;
-      const savedNote  = auto_save ? ` · ${savedCount} auto-salvati` : "";
-      setStatus(`QEN scoring completato: ${done} processati${savedNote}`, "ok");
-      btnBatchSave.disabled = false;
-    } catch (e) {
-      showError("Errore batch score: " + e.message);
-      setStatus("Errore.", "err");
-    } finally {
-      btnBatchScore.disabled = false;
-      setTimeout(() => setProgress(0), 800);
+
+      done += chunk.length;
+      renderAll();
+      // pausa tra chunk per evitare rate-limit Mistral
+      if (i + CHUNK < total) await new Promise(r => setTimeout(r, 1500));
     }
+
+    setProgress(100);
+    const scoredCount = Object.values(scored).filter(b => b.qen_score != null).length;
+    const errNote = errors > 0 ? ` · ${errors} chunk falliti` : "";
+    setStatus(`QEN scoring: ${scoredCount}/${total} completati${errNote}`, errors ? "" : "ok");
+    if (scoredCount > 0) btnBatchSave.disabled = false;
+    btnBatchScore.disabled = false;
+    setTimeout(() => setProgress(0), 800);
   });
 
   btnBatchSave.addEventListener("click", async () => {
