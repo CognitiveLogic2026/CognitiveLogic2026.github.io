@@ -289,43 +289,45 @@
 
   btnBatchScore.addEventListener("click", async () => {
     clearError();
-    const comune    = document.getElementById("comune").value.trim();
-    const settore   = document.getElementById("settore").value;
-    const max       = document.getElementById("max_results").value;
+    if (!discovered.length) return;
     const provider  = document.getElementById("provider").value;
     const auto_save = document.getElementById("auto_save").checked;
+    const settore   = document.getElementById("settore").value;
+    const CHUNK = 5;
 
     btnBatchScore.disabled = true;
-    setProgress(10);
-    setStatus(`Scoring QEN con ${provider === "mistral" ? "Mistral Large" : "Claude Sonnet"} — attendere…`);
+    let done = 0;
+    const total = discovered.length;
 
     try {
-      const res = await fetch(`${API}/agents/places-batch-qen`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          comune, settore,
-          max_results: parseInt(max),
-          provider, auto_save,
-        }),
-      });
-      const data = await res.json();
-      if (!res.ok) throw new Error(data.error || res.statusText);
+      for (let i = 0; i < total; i += CHUNK) {
+        const chunk = discovered.slice(i, i + CHUNK);
+        setProgress(Math.round((done / total) * 100));
+        setStatus(`Scoring QEN: ${done}/${total} — attendere…`);
 
-      (data.scored || []).forEach(b => {
-        scored[b.name] = b;
-      });
+        const res = await fetch(`${API}/agents/score-businesses`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ businesses: chunk, provider, auto_save, settore }),
+        });
+        const data = await res.json();
+        if (!res.ok) throw new Error(data.error || res.statusText);
+
+        (data.scored || []).forEach(b => { scored[b.name] = b; });
+        done += chunk.length;
+        renderAll();
+      }
       setProgress(100);
-      const saved = auto_save ? ` · ${data.scored.filter(b => b.qen_score != null).length} auto-salvati` : "";
-      setStatus(`QEN scoring completato: ${data.total} processati${saved}`, "ok");
+      const savedCount = Object.values(scored).filter(b => b.qen_score != null).length;
+      const savedNote  = auto_save ? ` · ${savedCount} auto-salvati` : "";
+      setStatus(`QEN scoring completato: ${done} processati${savedNote}`, "ok");
       btnBatchSave.disabled = false;
-      renderAll();
     } catch (e) {
       showError("Errore batch score: " + e.message);
       setStatus("Errore.", "err");
     } finally {
       btnBatchScore.disabled = false;
-      setTimeout(() => setProgress(0), 600);
+      setTimeout(() => setProgress(0), 800);
     }
   });
 
