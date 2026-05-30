@@ -14,6 +14,100 @@ from flask import request, jsonify
 _client = None
 
 
+_PLACES_QUERIES = {
+    "balneare":    [
+        "stabilimento balneare {comune}",
+        "lido balneare {comune}",
+        "beach club {comune}",
+    ],
+    "horeca":      [
+        "ristorante trattoria {comune}",
+        "pizzeria {comune}",
+        "osteria {comune}",
+    ],
+    "alberghiero": [
+        "hotel {comune}",
+        "albergo bed and breakfast {comune}",
+    ],
+    "commercio":   [
+        "negozio mercato {comune}",
+        "bottega artigiana {comune}",
+    ],
+}
+
+
+def _places_discover(key: str, settore: str, comune: str, max_results: int = 20) -> list:
+    """Discover businesses via Google Places Text Search by settore and comune."""
+    import sys
+    templates = _PLACES_QUERIES.get(settore, [f"{settore} {comune}"])
+    found: dict = {}
+    for tpl in templates:
+        q = tpl.format(comune=comune)
+        try:
+            resp = _requests.post(
+                "https://places.googleapis.com/v1/places:searchText",
+                headers={
+                    "Content-Type": "application/json",
+                    "X-Goog-Api-Key": key,
+                    "X-Goog-FieldMask": (
+                        "places.displayName,places.formattedAddress,"
+                        "places.nationalPhoneNumber,places.websiteUri,"
+                        "places.rating,places.userRatingCount,places.primaryType"
+                    ),
+                },
+                json={"textQuery": q, "maxResultCount": min(max_results, 20)},
+                timeout=8,
+            ).json()
+            for p in resp.get("places", []):
+                name = p.get("displayName", {}).get("text", "")
+                if not name or name in found:
+                    continue
+                found[name] = {
+                    "name":    name,
+                    "address": p.get("formattedAddress", ""),
+                    "phone":   p.get("nationalPhoneNumber", ""),
+                    "website": p.get("websiteUri", ""),
+                    "rating":  p.get("rating"),
+                    "reviews": p.get("userRatingCount"),
+                    "type":    p.get("primaryType", ""),
+                    "settore": settore,
+                    "comune":  comune,
+                }
+                if len(found) >= max_results:
+                    break
+            print(f"[Places] discover q={q!r} → {len(resp.get('places', []))} hits", file=sys.stderr)
+        except Exception as e:
+            print(f"[Places] discover exception: {e}", file=sys.stderr)
+        if len(found) >= max_results:
+            break
+    return list(found.values())
+
+
+def _discovery_save_pilot(name: str, score_data: dict):
+    """Save a discovered business to pilots.json (minimal inline write)."""
+    import sys
+    pilots_path = "/app/cognitivelogic/pilots.json"
+    try:
+        try:
+            with open(pilots_path, "r") as f:
+                pilots = json.load(f)
+        except Exception:
+            pilots = {}
+        k = name.strip().lower()
+        entry = {
+            "name": name,
+            "timestamp": datetime.utcnow().strftime("%Y-%m-%dT%H:%M:%SZ"),
+            "data": score_data,
+        }
+        if k in pilots:
+            pilots[k].setdefault("history", []).append(pilots[k].get("data", {}))
+        pilots[k] = entry
+        with open(pilots_path, "w") as f:
+            json.dump(pilots, f, indent=2, ensure_ascii=False)
+    except Exception as e:
+        print(f"[Discovery] save_pilot error: {e}", file=sys.stderr)
+
+
 def _places_enrich(location: str) -> str:
     """Return a text block with real local suppliers from Google Places, or ''."""
     import sys
@@ -107,6 +201,25 @@ _ADVISORY_SYSTEM = (
     "Rispondi SOLO con JSON valido:\n"
     '{"priority_actions": [], "compliance_timeline": [], '
     '"regulatory_refs": [], "cost_estimate": "", "summary": ""}'
+)
+
+
+_DISCOVERY_QEN_SYSTEM = (
+    "Sei il Discovery Pre-Assessor del framework QEN (Quantification of Ethical Naturalness).\n"
+    "Ricevi dati pubblici minimi su un'attività commerciale (nome, tipologia, indirizzo, valutazioni).\n"
+    "Stima un QEN pre-assessment per il settore HoReCa / balneare / commercio:\n"
+    "- Vs (Semantic Legality): conformità regolatoria presunta per il settore (0-100)\n"
+    "- Va (Accountability): trasparenza e responsabilità presunta (0-100)\n"
+    "- Vt (Territorial Trust): radicamento territoriale e impatto locale presunto (0-100)\n"
+    "Formula: qen_score = Vs*0.40 + Va*0.35 + Vt*0.25\n\n"
+    "IMPORTANTE: Questa è una stima basata su dati pubblici limitati, non un audit completo.\n\n"
+    "Rispondi SOLO con JSON valido:\n"
+    '{"qen_score": 0.0, "vs": 0.0, "va": 0.0, "vt": 0.0, '
+    '"confidence": "LOW|MEDIUM", '
+    '"risk_flags": [], '
+    '"bolkestein_applicable": false, '
+    '"summary": "", '
+    '"note": "Pre-assessment da dati pubblici — audit completo consigliato"}'
 )
 
 
@@ -434,3 +547,114 @@ def register_orchestrator(app):
         result["deadline_2027"] = "2027-01-01"
         result["timestamp"] = datetime.utcnow().isoformat() + "Z"
         return jsonify({"status": "success", "assessment": result}), 200
+
+    # -----------------------------------------------------------------------
+    # Google Places discovery endpoints
+    # -----------------------------------------------------------------------
+
+    @app.route("/agents/places-discovery", methods=["POST"])
+    def places_discovery():
+        data = request.get_json() or {}
+        comune      = (data.get("comune") or "Bologna").strip()
+        settore     = (data.get("settore") or "horeca").strip().lower()
+        max_results = min(int(data.get("max_results", 20)), 50)
+        key = os.getenv("GOOGLE_PLACES_API_KEY", "")
+        if not key:
+            return jsonify({"error": "GOOGLE_PLACES_API_KEY non configurata"}), 503
+        businesses = _places_discover(key, settore, comune, max_results)
+        return jsonify({
+            "status":     "success",
+            "comune":     comune,
+            "settore":    settore,
+            "total":      len(businesses),
+            "businesses": businesses,
+            "timestamp":  datetime.utcnow().isoformat() + "Z",
+        }), 200
+
+    @app.route("/agents/places-batch-qen", methods=["POST"])
+    def places_batch_qen():
+        import sys
+        data        = request.get_json() or {}
+        comune      = (data.get("comune") or "Bologna").strip()
+        settore     = (data.get("settore") or "horeca").strip().lower()
+        max_results = min(int(data.get("max_results", 10)), 20)
+        provider    = (data.get("provider") or "mistral").lower()
+        auto_save   = bool(data.get("auto_save", False))
+
+        key_places = os.getenv("GOOGLE_PLACES_API_KEY", "")
+        if not key_places:
+            return jsonify({"error": "GOOGLE_PLACES_API_KEY non configurata"}), 503
+
+        businesses = _places_discover(key_places, settore, comune, max_results)
+        if not businesses:
+            return jsonify({
+                "status": "success", "scored": [], "total": 0,
+                "comune": comune, "settore": settore,
+            }), 200
+
+        results = []
+        for biz in businesses:
+            desc = (
+                f"Attività: {biz['name']}. "
+                f"Tipologia: {biz.get('type', settore)}. "
+                f"Indirizzo: {biz['address']}."
+            )
+            if biz.get("rating"):
+                desc += f" Valutazione clienti: {biz['rating']}/5 ({biz.get('reviews', 0)} recensioni)."
+            prompt = (
+                f"Azienda: {biz['name']}\nSettore: {settore}\n"
+                f"Comune: {comune}\nDescrizione: {desc}"
+            )
+            scored = dict(biz)
+            raw = None
+            try:
+                if provider == "mistral":
+                    mk = os.getenv("MISTRAL_API_KEY", "")
+                    if mk:
+                        raw = _mistral_chat(mk, _DISCOVERY_QEN_SYSTEM, prompt)
+                    else:
+                        raise RuntimeError("no mistral key")
+                else:
+                    raise RuntimeError("use claude")
+            except Exception:
+                try:
+                    msg = _get_client().messages.create(
+                        model="claude-sonnet-4-6",
+                        max_tokens=600,
+                        system=_DISCOVERY_QEN_SYSTEM,
+                        messages=[{"role": "user", "content": prompt}],
+                    )
+                    raw = msg.content[0].text
+                except Exception as e:
+                    scored["error"] = str(e)
+                    results.append(scored)
+                    continue
+            audit, err = _extract_json(raw)
+            if audit:
+                scored.update({
+                    "qen_score":            audit.get("qen_score"),
+                    "vs":                   audit.get("vs"),
+                    "va":                   audit.get("va"),
+                    "vt":                   audit.get("vt"),
+                    "confidence":           audit.get("confidence", "LOW"),
+                    "risk_flags":           audit.get("risk_flags", []),
+                    "bolkestein_applicable": audit.get("bolkestein_applicable", False),
+                    "summary":              audit.get("summary", ""),
+                    "note":                 audit.get("note", ""),
+                    "status":               "PRE_ASSESSMENT",
+                })
+                if auto_save and audit.get("qen_score") is not None:
+                    _discovery_save_pilot(biz["name"], scored)
+            else:
+                scored["error"] = err
+            results.append(scored)
+
+        return jsonify({
+            "status":     "success",
+            "comune":     comune,
+            "settore":    settore,
+            "total":      len(results),
+            "auto_saved": auto_save,
+            "scored":     results,
+            "timestamp":  datetime.utcnow().isoformat() + "Z",
+        }), 200

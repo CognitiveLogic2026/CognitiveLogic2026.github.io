@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Discovery Automatica — Cognitive Logic · QEN Framework</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg: #0a0a0a; --surface: #111; --border: #222;
+      --accent: #00c896; --accent2: #00a87e;
+      --text: #e8e8e8; --muted: #666; --danger: #ff4444; --warn: #ff8c00;
+    }
+    body { background: var(--bg); color: var(--text); font-family: 'Courier New', monospace; min-height: 100vh; }
+    header { border-bottom: 1px solid var(--border); padding: 1.2rem 2rem; display: flex; align-items: center; gap: 1rem; }
+    .logo-tag { font-size: .65rem; letter-spacing: .12em; color: var(--accent); text-transform: uppercase; }
+    .logo-sep { color: var(--muted); margin: 0 .4rem; }
+    h1 { font-size: 1.6rem; font-weight: 900; }
+    h1 span { color: var(--accent); }
+    .subtitle { font-size: .8rem; color: var(--muted); margin-top: .2rem; }
+
+    main { max-width: 960px; margin: 0 auto; padding: 2rem 1.5rem; }
+
+    .panel { background: var(--surface); border: 1px solid var(--border); border-radius: 4px; padding: 1.5rem; margin-bottom: 1.5rem; }
+    .panel-title { font-size: .65rem; letter-spacing: .12em; color: var(--muted); text-transform: uppercase; margin-bottom: 1rem; }
+
+    .form-row { display: flex; gap: 1rem; flex-wrap: wrap; }
+    .form-group { display: flex; flex-direction: column; gap: .4rem; flex: 1; min-width: 140px; }
+    label { font-size: .65rem; letter-spacing: .1em; color: var(--muted); text-transform: uppercase; }
+    input, select {
+      background: #0d0d0d; border: 1px solid var(--border); color: var(--text);
+      font-family: inherit; font-size: .85rem; padding: .6rem .8rem; border-radius: 2px;
+      outline: none; transition: border-color .15s;
+    }
+    input:focus, select:focus { border-color: var(--accent); }
+
+    .actions { display: flex; gap: .8rem; margin-top: 1.2rem; flex-wrap: wrap; align-items: center; }
+    .btn {
+      background: transparent; border: 1px solid var(--accent); color: var(--accent);
+      font-family: inherit; font-size: .75rem; letter-spacing: .1em; text-transform: uppercase;
+      padding: .6rem 1.4rem; cursor: pointer; border-radius: 2px; transition: all .15s;
+    }
+    .btn:hover { background: var(--accent); color: #000; }
+    .btn.primary { background: var(--accent); color: #000; font-weight: 700; }
+    .btn.primary:hover { background: var(--accent2); }
+    .btn:disabled { opacity: .4; cursor: not-allowed; }
+    .btn.danger { border-color: var(--danger); color: var(--danger); }
+    .btn.danger:hover { background: var(--danger); color: #fff; }
+
+    .status-bar { font-size: .75rem; color: var(--muted); margin-top: .6rem; min-height: 1.2em; }
+    .status-bar.ok  { color: var(--accent); }
+    .status-bar.err { color: var(--danger); }
+
+    .progress { display: none; height: 2px; background: var(--border); border-radius: 1px; margin-top: .8rem; overflow: hidden; }
+    .progress.active { display: block; }
+    .progress-fill { height: 100%; background: var(--accent); width: 0; transition: width .3s; }
+
+    /* Results table */
+    .results-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: .8rem; flex-wrap: wrap; gap: .5rem; }
+    .results-count { font-size: .75rem; color: var(--muted); }
+    table { width: 100%; border-collapse: collapse; font-size: .8rem; }
+    th { font-size: .6rem; letter-spacing: .1em; color: var(--muted); text-transform: uppercase; text-align: left; padding: .5rem .6rem; border-bottom: 1px solid var(--border); white-space: nowrap; }
+    td { padding: .55rem .6rem; border-bottom: 1px solid #1a1a1a; vertical-align: top; }
+    tr:last-child td { border-bottom: none; }
+    tr:hover td { background: #141414; }
+
+    .qen-badge {
+      display: inline-block; padding: .15rem .5rem; border-radius: 2px;
+      font-size: .7rem; font-weight: 700; letter-spacing: .05em;
+    }
+    .qen-high  { background: rgba(255,68,68,.15);  color: #ff4444; border: 1px solid rgba(255,68,68,.3); }
+    .qen-mid   { background: rgba(255,140,0,.12);  color: #ff8c00; border: 1px solid rgba(255,140,0,.3); }
+    .qen-low   { background: rgba(0,200,150,.1);   color: var(--accent); border: 1px solid rgba(0,200,150,.3); }
+    .qen-none  { background: #1a1a1a; color: var(--muted); border: 1px solid var(--border); }
+
+    .conf-low  { color: var(--warn); font-size: .65rem; }
+    .conf-med  { color: var(--accent); font-size: .65rem; }
+
+    .bol-yes   { color: var(--warn); font-size: .65rem; }
+    .bol-no    { color: var(--muted); font-size: .65rem; }
+
+    .cell-name  { max-width: 180px; }
+    .cell-addr  { max-width: 160px; color: var(--muted); font-size: .75rem; }
+    .cell-sum   { max-width: 200px; color: var(--muted); font-size: .72rem; }
+    .score-row  { font-size: .65rem; color: var(--muted); margin-top: .2rem; }
+
+    .save-btn { font-size: .65rem; padding: .25rem .6rem; }
+    .saved-tag { font-size: .65rem; color: var(--accent); }
+
+    .star { color: #f5c518; }
+
+    #error-box { display:none; background: rgba(255,68,68,.08); border: 1px solid rgba(255,68,68,.3); color: var(--danger); font-size: .8rem; padding: .8rem 1rem; border-radius: 2px; margin-bottom: 1rem; }
+  </style>
+</head>
+<body>
+<header>
+  <div>
+    <div class="logo-tag">Cognitive Logic <span class="logo-sep">·</span> QEN Framework</div>
+    <h1>Discovery <span>Automatica</span></h1>
+    <div class="subtitle">Mappa stabilimenti via Google Places + QEN pre-assessment</div>
+  </div>
+</header>
+
+<main>
+  <div id="error-box"></div>
+
+  <div class="panel">
+    <div class="panel-title">Parametri ricerca</div>
+    <div class="form-row">
+      <div class="form-group">
+        <label>Comune</label>
+        <input id="comune" type="text" placeholder="es. Rimini, Bologna, Milano" value="Rimini">
+      </div>
+      <div class="form-group">
+        <label>Settore</label>
+        <select id="settore">
+          <option value="balneare">Balneare</option>
+          <option value="horeca">HoReCa / Ristorazione</option>
+          <option value="alberghiero">Alberghiero</option>
+          <option value="commercio">Commercio / Artigianato</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Max risultati</label>
+        <select id="max_results">
+          <option value="10">10</option>
+          <option value="20" selected>20</option>
+          <option value="30">30</option>
+          <option value="50">50</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Modello scoring</label>
+        <select id="provider">
+          <option value="mistral">Mistral Large</option>
+          <option value="claude">Claude Sonnet</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>API Key (per salvataggio)</label>
+        <input id="api_key" type="password" placeholder="COGNITIVE_API_KEY">
+      </div>
+    </div>
+    <div class="actions">
+      <button class="btn primary" id="btn-discover">▶ Scopri stabilimenti</button>
+      <button class="btn" id="btn-batch-score" disabled>⚡ Batch Score QEN</button>
+      <button class="btn" id="btn-batch-save" disabled>↓ Salva tutti</button>
+      <label style="display:flex;align-items:center;gap:.4rem;font-size:.75rem;color:var(--muted);cursor:pointer;">
+        <input type="checkbox" id="auto_save" style="width:auto;padding:0;"> Auto-salva in pilots
+      </label>
+    </div>
+    <div class="progress" id="progress"><div class="progress-fill" id="progress-fill"></div></div>
+    <div class="status-bar" id="status"></div>
+  </div>
+
+  <div class="panel" id="results-panel" style="display:none;">
+    <div class="results-header">
+      <div class="panel-title" style="margin:0;">Risultati</div>
+      <div class="results-count" id="results-count"></div>
+    </div>
+    <table id="results-table">
+      <thead>
+        <tr>
+          <th>Nome</th>
+          <th>Indirizzo</th>
+          <th>Rating</th>
+          <th>QEN</th>
+          <th>Vs / Va / Vt</th>
+          <th>Conf.</th>
+          <th>Bolkestein</th>
+          <th>Note</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody id="results-body"></tbody>
+    </table>
+  </div>
+</main>
+
+<script>
+  const API = "https://api.cognitivelogic.it";
+  let discovered = [];
+  let scored = {};
+
+  const statusEl   = document.getElementById("status");
+  const progressEl = document.getElementById("progress");
+  const fillEl     = document.getElementById("progress-fill");
+  const errorBox   = document.getElementById("error-box");
+  const btnDiscover   = document.getElementById("btn-discover");
+  const btnBatchScore = document.getElementById("btn-batch-score");
+  const btnBatchSave  = document.getElementById("btn-batch-save");
+  const resultsPanel  = document.getElementById("results-panel");
+  const resultsBody   = document.getElementById("results-body");
+  const resultsCount  = document.getElementById("results-count");
+
+  function setStatus(msg, type = "") {
+    statusEl.textContent = msg;
+    statusEl.className = "status-bar" + (type ? " " + type : "");
+  }
+  function showError(msg) {
+    errorBox.textContent = msg;
+    errorBox.style.display = "block";
+  }
+  function clearError() { errorBox.style.display = "none"; }
+  function setProgress(pct) {
+    progressEl.classList.toggle("active", pct > 0 && pct < 100);
+    fillEl.style.width = pct + "%";
+  }
+
+  function qenBadge(score) {
+    if (score == null) return '<span class="qen-badge qen-none">—</span>';
+    const v = parseFloat(score).toFixed(1);
+    const cls = score >= 70 ? "qen-low" : score >= 45 ? "qen-mid" : "qen-high";
+    return `<span class="qen-badge ${cls}">${v}</span>`;
+  }
+  function stars(rating) {
+    if (!rating) return '<span style="color:var(--muted)">—</span>';
+    return `<span class="star">★</span> ${rating}`;
+  }
+
+  function renderRow(biz, idx) {
+    const s = scored[biz.name] || {};
+    const saveId = `save-${idx}`;
+    const savedId = `saved-${idx}`;
+    return `
+      <tr id="row-${idx}">
+        <td class="cell-name">
+          ${biz.website ? `<a href="${biz.website}" target="_blank" style="color:var(--accent);text-decoration:none;">${biz.name}</a>` : biz.name}
+          ${biz.phone ? `<div style="font-size:.65rem;color:var(--muted);margin-top:.15rem;">${biz.phone}</div>` : ""}
+        </td>
+        <td class="cell-addr">${biz.address || "—"}</td>
+        <td>${stars(biz.rating)}${biz.reviews ? `<div style="font-size:.65rem;color:var(--muted)">${biz.reviews} rec.</div>` : ""}</td>
+        <td>${qenBadge(s.qen_score)}</td>
+        <td>
+          ${s.vs != null ? `<div class="score-row">Vs ${s.vs} · Va ${s.va} · Vt ${s.vt}</div>` : '<span style="color:var(--muted)">—</span>'}
+        </td>
+        <td>${s.confidence ? `<span class="${s.confidence === "MEDIUM" ? "conf-med" : "conf-low"}">${s.confidence}</span>` : "—"}</td>
+        <td>${s.bolkestein_applicable != null ? `<span class="${s.bolkestein_applicable ? "bol-yes" : "bol-no"}">${s.bolkestein_applicable ? "SÌ" : "No"}</span>` : "—"}</td>
+        <td class="cell-sum">${s.summary || (s.error ? `<span style="color:var(--danger)">${s.error.slice(0,60)}</span>` : "—")}</td>
+        <td>
+          <span id="${savedId}" style="display:none;" class="saved-tag">✓ Salvato</span>
+          <button id="${saveId}" class="btn save-btn" onclick="saveSingle(${idx})" ${!s.qen_score ? "disabled" : ""}>Salva</button>
+        </td>
+      </tr>`;
+  }
+
+  function renderAll() {
+    resultsBody.innerHTML = discovered.map((b, i) => renderRow(b, i)).join("");
+    resultsCount.textContent = `${discovered.length} trovati · ${Object.keys(scored).length} scored`;
+    resultsPanel.style.display = "block";
+    btnBatchSave.disabled = Object.keys(scored).length === 0;
+  }
+
+  btnDiscover.addEventListener("click", async () => {
+    clearError();
+    scored = {};
+    discovered = [];
+    const comune  = document.getElementById("comune").value.trim();
+    const settore = document.getElementById("settore").value;
+    const max     = document.getElementById("max_results").value;
+    if (!comune) { showError("Inserisci un comune."); return; }
+
+    btnDiscover.disabled = true;
+    setProgress(20);
+    setStatus("Ricerca in corso su Google Places…");
+
+    try {
+      const res = await fetch(`${API}/agents/places-discovery`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ comune, settore, max_results: parseInt(max) }),
+      });
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.error || res.statusText);
+
+      discovered = data.businesses || [];
+      setProgress(100);
+      setStatus(`${discovered.length} stabilimenti trovati a ${comune} (${settore})`, "ok");
+      btnBatchScore.disabled = discovered.length === 0;
+      renderAll();
+    } catch (e) {
+      showError("Errore discovery: " + e.message);
+      setStatus("Errore.", "err");
+    } finally {
+      btnDiscover.disabled = false;
+      setTimeout(() => setProgress(0), 600);
+    }
+  });
+
+  btnBatchScore.addEventListener("click", async () => {
+    clearError();
+    const comune    = document.getElementById("comune").value.trim();
+    const settore   = document.getElementById("settore").value;
+    const max       = document.getElementById("max_results").value;
+    const provider  = document.getElementById("provider").value;
+    const auto_save = document.getElementById("auto_save").checked;
+
+    btnBatchScore.disabled = true;
+    setProgress(10);
+    setStatus(`Scoring QEN con ${provider === "mistral" ? "Mistral Large" : "Claude Sonnet"} — attendere…`);
+
+    try {
+      const res = await fetch(`${API}/agents/places-batch-qen`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          comune, settore,
+          max_results: parseInt(max),
+          provider, auto_save,
+        }),
+      });
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.error || res.statusText);
+
+      (data.scored || []).forEach(b => {
+        scored[b.name] = b;
+      });
+      setProgress(100);
+      const saved = auto_save ? ` · ${data.scored.filter(b => b.qen_score != null).length} auto-salvati` : "";
+      setStatus(`QEN scoring completato: ${data.total} processati${saved}`, "ok");
+      btnBatchSave.disabled = false;
+      renderAll();
+    } catch (e) {
+      showError("Errore batch score: " + e.message);
+      setStatus("Errore.", "err");
+    } finally {
+      btnBatchScore.disabled = false;
+      setTimeout(() => setProgress(0), 600);
+    }
+  });
+
+  btnBatchSave.addEventListener("click", async () => {
+    const toSave = Object.values(scored).filter(s => s.qen_score != null);
+    if (!toSave.length) return;
+    setStatus(`Salvataggio ${toSave.length} record…`);
+    let ok = 0;
+    for (const s of toSave) {
+      try {
+        await fetch(`${API}/admin/add-client`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json", "X-API-Key": document.getElementById("api_key").value },
+          body: JSON.stringify({
+            nome: s.name, settore: s.settore,
+            vs: s.vs || 0, va: s.va || 0, vt: s.vt || 0,
+            note: `Discovery automatica ${s.comune} — ${s.address || ""}`,
+          }),
+        });
+        ok++;
+      } catch (_) { /* skip */ }
+    }
+    setStatus(`${ok}/${toSave.length} record salvati in pilots`, "ok");
+  });
+
+  async function saveSingle(idx) {
+    const biz = discovered[idx];
+    const s   = scored[biz.name] || {};
+    if (!s.qen_score) return;
+    const btnEl   = document.getElementById(`save-${idx}`);
+    const savedEl = document.getElementById(`saved-${idx}`);
+    btnEl.disabled = true;
+    try {
+      await fetch(`${API}/admin/add-client`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json", "X-API-Key": document.getElementById("api_key").value },
+        body: JSON.stringify({
+          nome: biz.name, settore: biz.settore,
+          vs: s.vs || 0, va: s.va || 0, vt: s.vt || 0,
+          note: `Discovery automatica ${biz.comune} — ${biz.address || ""}`,
+        }),
+      });
+      savedEl.style.display = "inline";
+    } catch (e) {
+      btnEl.disabled = false;
+      showError("Errore salvataggio: " + e.message);
+    }
+  }
+</script>
+</body>
+</html>
