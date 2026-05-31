@@ -130,8 +130,8 @@ jobs:
 
             sleep 5
             echo "=== Health checks ==="
-            curl -sf http://localhost:8001/health && echo " Reconciliation (8001) OK" || echo " WARN: Reconciliation not responding"
-            curl -sf http://localhost:5000/health  && echo " Flask (5000) OK"          || echo " WARN: Flask not responding"
+            curl -sf http://localhost:8001/health && echo "Reconciliation (8001) OK" || { echo "ERRORE: Reconciliation (8001) non risponde"; exit 1; }
+            curl -sf http://localhost:5000/health  && echo "Flask (5000) OK"          || { echo "ERRORE: Flask (5000) non risponde"; exit 1; }
 
             echo "=== nginx proxy_pass routes ==="
             nginx -T 2>&1 | grep -E "(proxy_pass|location )"
