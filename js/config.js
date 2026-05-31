@@ -10,26 +10,12 @@
    ============================================================ */
 
 const CONFIG = {
-    // Inserisci la tua chiave API da Google AI Studio (non committare nel repo)
-    API_KEY: "",
-    
-    // Parametri del Modello
-    MODEL: "gemini-2.0-flash",
-    
-    // Metadata di Identità Digitale (Roberto Bob Malini)
     IDENTITY: {
         founder: "Roberto Bob Malini",
         organization: "Cognitive Logic",
         domain: "https://www.cognitivelogic.it",
         framework: "QEN Semantic Engine",
         status: "Verified AI Architect"
-    },
-
-    // Configurazione Analisi EU AI Act
-    ANALYSIS_SETTINGS: {
-        context: "EU_AI_ACT_2026",
-        format: "JSON_STRUCTURED",
-        temperature: 0.1 // Bassa per massimizzare il determinismo tecnico
     }
 };
 
