@@ -157,7 +157,7 @@
       </div>
       <div class="form-group">
         <label>API Key (per salvataggio)</label>
-        <input id="api_key" type="password" placeholder="COGNITIVE_API_KEY" oninput="localStorage.setItem('cog_api_key', this.value)">
+        <input id="api_key" type="password" placeholder="COGNITIVE_API_KEY" oninput="sessionStorage.setItem('cog_api_key', this.value)">
       </div>
     </div>
     <div class="actions">
@@ -224,13 +224,13 @@
       if (r.status === 403) {
         document.getElementById("gate-err").textContent = "Chiave non valida.";
       } else {
-        localStorage.setItem("cog_api_key", k);
+        sessionStorage.setItem("cog_api_key", k);
         document.getElementById("api_key").value = k;
         document.getElementById("gate").style.display = "none";
       }
     }).catch(() => {
       // Se offline accetta la chiave già salvata
-      if (localStorage.getItem("cog_api_key") === k) {
+      if (sessionStorage.getItem("cog_api_key") === k) {
         document.getElementById("gate").style.display = "none";
       } else {
         document.getElementById("gate-err").textContent = "Errore di connessione.";
@@ -240,7 +240,7 @@
   document.getElementById("gate-key").addEventListener("keydown", e => { if (e.key === "Enter") gateSubmit(); });
 
   // Ripristina API key salvata — se presente salta il gate
-  const savedKey = localStorage.getItem("cog_api_key");
+  const savedKey = sessionStorage.getItem("cog_api_key");
   if (savedKey) {
     document.getElementById("api_key").value = savedKey;
     document.getElementById("gate").style.display = "none";

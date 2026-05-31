@@ -329,9 +329,9 @@ def classify_risk():
         result = json.loads(raw)
         return jsonify({"status": "success", "sistema": descrizione[:80], "classificazione": result}), 200
     except json.JSONDecodeError:
-        return jsonify({"status": "error", "message": "Parsing fallito", "raw": raw}), 500
-    except Exception as e:
-        return jsonify({"status": "error", "message": str(e)}), 500
+        return jsonify({"status": "error", "message": "Parsing fallito"}), 500
+    except Exception:
+        return jsonify({"status": "error", "message": "Errore interno del server"}), 500
 
 @app.route("/copilot-analyze", methods=["POST"])
 @limiter.limit("10 per minute;100 per day")
@@ -366,7 +366,7 @@ def copilot_analyze():
         raw = raw.replace("```json", "").replace("```", "").strip()
         m = re.search(r"\{.*\}", raw, re.DOTALL)
         if not m:
-            return jsonify({"error": "Nessun JSON trovato", "raw": raw[:200]}), 500
+            return jsonify({"error": "Risposta non valida dal modello"}), 500
         result = json.loads(m.group())
         allegato = result.get("allegato", "Nessuno")
         livello  = result.get("livello_rischio", "Minimo")
@@ -400,9 +400,9 @@ def copilot_analyze():
         save_pilot(entity_name, output)
         return jsonify(output), 200
     except json.JSONDecodeError:
-        return jsonify({"error": "Parsing fallito", "raw": raw}), 500
-    except Exception as e:
-        return jsonify({"error": str(e)}), 500
+        return jsonify({"error": "Parsing fallito"}), 500
+    except Exception:
+        return jsonify({"error": "Errore interno del server"}), 500
 
 @app.route("/gemini/qen-score", methods=["POST"])
 @limiter.limit("10 per minute;100 per day")
@@ -489,9 +489,9 @@ def gemini_qen_score():
             q["provider"] = provider
             save_pilot(name, q)
             return jsonify({"status": "success", "qen": q})
-        return jsonify({"status": "error", "error": raw[:200]}), 500
-    except Exception as e:
-        return jsonify({"status": "error", "error": str(e)}), 500
+        return jsonify({"status": "error", "error": "Risposta non valida dal modello"}), 500
+    except Exception:
+        return jsonify({"status": "error", "error": "Errore interno del server"}), 500
 
 _COMPLIANCE_AUDIT_SYSTEM = (
     "You are QEN Compliance Auditor — an AI governance specialist operating under the "
@@ -588,9 +588,9 @@ def gemini_compliance_audit():
             q.setdefault("scores", {})["QEN_SCORE"] = round((vs * 0.40) + (va * 0.35) + (vt * 0.25), 1)
             q["provider"] = provider
             return jsonify({"status": "success", "audit": q})
-        return jsonify({"status": "error", "error": raw[:200]}), 500
-    except Exception as e:
-        return jsonify({"status": "error", "error": str(e)}), 500
+        return jsonify({"status": "error", "error": "Risposta non valida dal modello"}), 500
+    except Exception:
+        return jsonify({"status": "error", "error": "Errore interno del server"}), 500
 
 
 _QEN_DRIFT_THRESHOLD = 0.5
