@@ -33,7 +33,7 @@ jobs:
 
           for pattern in "${patterns[@]}"; do
             matches=$(grep -rniE "$pattern" \
-              --include="*.py" --include="*.js" --include="*.ts" --include="*.sh" \
+              --include="*.py" --include="*.js" --include="*.ts" --include="*.sh" --include="*.html" \
               --exclude-dir=".git" \
               --exclude-dir="node_modules" \
               . 2>/dev/null || true)

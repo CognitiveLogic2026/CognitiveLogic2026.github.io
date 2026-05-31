@@ -21,7 +21,7 @@ app = FastAPI(title="QEN Reconciliation API", version="1.0.0")
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],
+    allow_origins=["https://cognitivelogic.it", "https://www.cognitivelogic.it", "https://api.cognitivelogic.it"],
     allow_methods=["GET", "POST", "OPTIONS"],
     allow_headers=["*"],
 )
