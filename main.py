@@ -7,7 +7,7 @@ import re
 import requests as _requests
 import anthropic
 from datetime import datetime
-from flask import Flask, request, jsonify, send_file
+from flask import Flask, request, jsonify
 from flask_limiter import Limiter
 from flask_limiter.util import get_remote_address
 
@@ -451,10 +451,6 @@ def gemini_qen_score():
         return jsonify({"status": "error", "error": raw[:200]}), 500
     except Exception as e:
         return jsonify({"status": "error", "error": str(e)}), 500
-
-@app.route("/copilot", methods=["GET"])
-def copilot_ui():
-    return send_file("copilot.html")
 
 QEN_FORMULA_WEIGHTS = {"vs": 0.40, "va": 0.35, "vt": 0.25}
 QEN_DRIFT_THRESHOLD = 0.5
