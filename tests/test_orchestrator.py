@@ -10,7 +10,7 @@ import json
 import os
 import sys
 from pathlib import Path
-from unittest.mock import MagicMock, patch
+from unittest.mock import MagicMock, patch, mock_open
 
 import pytest
 
@@ -328,3 +328,116 @@ class TestPlacesBatchQen:
         assert data["status"] == "success"
         assert data["total"] == 1
         assert data["comune"] == "Bologna"
+
+
+# ── audit/horeca & audit/balneare — auth ─────────────────────────────────────
+
+class TestAuditAuth:
+    _horeca_payload = {
+        "azienda_nome": "Trattoria Test",
+        "coperti": 60,
+        "qen_score_finale": 72.5,
+        "moduli_dettagliati": {
+            "sociale": {"score": 70}, "governance": {"score": 75},
+            "imballaggi": {"score": 80}, "risorse": {"score": 65},
+            "qualita": {"score": 70}, "rifiuti": {"score": 60},
+            "logistica": {"score": 75}, "territorio": {"score": 80},
+        },
+        "status_conformita": "CONFORME",
+    }
+    _balneare_payload = {
+        "azienda_nome": "Lido Test",
+        "tipo": "balneare",
+        "qen_score_finale": 68.0,
+        "scores": {"m1": 70, "m2": 65, "m3": 75, "m4": 60, "m5": 80, "m6": 55},
+    }
+
+    def test_horeca_no_key_returns_403(self):
+        resp = client.post("/audit/horeca", json=self._horeca_payload)
+        assert resp.status_code == 403
+
+    def test_horeca_wrong_key_returns_403(self):
+        resp = client.post("/audit/horeca", json=self._horeca_payload,
+                           headers={"X-API-Key": "wrong"})
+        assert resp.status_code == 403
+
+    def test_horeca_correct_key_returns_200(self):
+        with patch("main.save_pilot"), patch("main.open", create=True), \
+             patch("builtins.open", mock_open(read_data='{"nodes":{}}')):
+            resp = client.post("/audit/horeca", json=self._horeca_payload,
+                               headers={"X-API-Key": "test-key-ci"})
+        assert resp.status_code == 200
+        assert resp.get_json()["status"] == "saved"
+
+    def test_balneare_no_key_returns_403(self):
+        resp = client.post("/audit/balneare", json=self._balneare_payload)
+        assert resp.status_code == 403
+
+    def test_balneare_correct_key_returns_200(self):
+        with patch("main.save_pilot"), \
+             patch("builtins.open", mock_open(read_data='{"nodes":{}}')):
+            resp = client.post("/audit/balneare", json=self._balneare_payload,
+                               headers={"X-API-Key": "test-key-ci"})
+        assert resp.status_code == 200
+        assert resp.get_json()["status"] == "saved"
+
+
+# ── gemini/compliance-audit ───────────────────────────────────────────────────
+
+_VALID_COMPLIANCE_AUDIT = json.dumps({
+    "system_name": "Test System",
+    "risk_classification": "High-Risk",
+    "domain": "HR",
+    "assessment_date": "2026-05-31",
+    "scores": {"Vs": 70, "Va": 65, "Vt": 75, "QEN_SCORE": 70.0},
+    "findings": [],
+    "mandatory_controls": [],
+    "escalation_flag": False,
+    "escalation_reason": None,
+    "recommendation": "Conditional Approval",
+    "next_steps": [],
+    "governance_owner": "Legal",
+    "review_date": "2026-08-29",
+})
+
+class TestComplianceAuditEndpoint:
+    _payload = {
+        "system_name": "AI Hiring Tool",
+        "system_type": "ML classifier",
+        "domain": "HR",
+        "description": "Filtra i CV automaticamente per posizioni aperte.",
+        "controls": "Nessuno",
+    }
+
+    def test_missing_description_returns_400(self):
+        resp = client.post("/gemini/compliance-audit", json={"system_name": "X"})
+        assert resp.status_code == 400
+
+    def test_success_via_claude_fallback(self):
+        mock_msg = MagicMock()
+        mock_msg.content = [MagicMock(text=_VALID_COMPLIANCE_AUDIT)]
+        env = {k: v for k, v in os.environ.items() if k != "GOOGLE_API_KEY"}
+        with patch.dict(os.environ, env, clear=True):
+            with patch("main.ANTHROPIC_CLIENT") as mock_client:
+                mock_client.messages.create.return_value = mock_msg
+                resp = client.post("/gemini/compliance-audit", json=self._payload)
+        assert resp.status_code == 200
+        data = resp.get_json()
+        assert data["status"] == "success"
+        assert "audit" in data
+        assert data["audit"]["risk_classification"] == "High-Risk"
+        assert "QEN_SCORE" in data["audit"]["scores"]
+
+    def test_success_via_gemini(self):
+        mock_requests = MagicMock()
+        gemini_resp = MagicMock()
+        gemini_resp.raise_for_status = MagicMock()
+        gemini_resp.json.return_value = {
+            "candidates": [{"content": {"parts": [{"text": _VALID_COMPLIANCE_AUDIT}]}}]
+        }
+        mock_requests.post.return_value = gemini_resp
+        with patch.dict(os.environ, {"GOOGLE_API_KEY": "fake"}):
+            with patch("main._requests", mock_requests):
+                resp = client.post("/gemini/compliance-audit", json=self._payload)
+        assert resp.status_code == 200
+        assert resp.get_json()["status"] == "success"

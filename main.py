@@ -126,6 +126,9 @@ def analyze():
 
 @app.route("/audit/horeca", methods=["POST"])
 def audit_horeca():
+    provided_key = request.headers.get("X-API-Key")
+    if provided_key != os.getenv("COGNITIVE_API_KEY"):
+        return jsonify({"error": "Unauthorized"}), 403
     data = request.json or {}
     nome     = (data.get("azienda_nome") or "Azienda HoReCa").strip()
     coperti  = data.get("coperti", 0)
@@ -170,6 +173,9 @@ def audit_horeca():
 
 @app.route("/audit/balneare", methods=["POST"])
 def audit_balneare():
+    provided_key = request.headers.get("X-API-Key")
+    if provided_key != os.getenv("COGNITIVE_API_KEY"):
+        return jsonify({"error": "Unauthorized"}), 403
     data     = request.json or {}
     nome     = (data.get("azienda_nome") or "Operatore Balneare").strip()
     tipo     = data.get("tipo", "balneare")
@@ -451,6 +457,103 @@ def gemini_qen_score():
         return jsonify({"status": "error", "error": raw[:200]}), 500
     except Exception as e:
         return jsonify({"status": "error", "error": str(e)}), 500
+
+_COMPLIANCE_AUDIT_SYSTEM = (
+    "You are QEN Compliance Auditor — an AI governance specialist operating under the "
+    "Quantum Ethics Network (QEN) framework. Your role is to assess AI/biometric systems "
+    "for regulatory risk, generate compliance findings, and produce governance recommendations.\n\n"
+    "Core Framework:\n"
+    "QEN Score = (Vs × 0.40) + (Va × 0.35) + (Vt × 0.25)\n"
+    "Where:\n"
+    "- Vs (Semantic Legality): Alignment with EU AI Act, GDPR, regulatory legitimacy [0–100]\n"
+    "- Va (Accountability): Audit trail, human oversight, redress mechanisms [0–100]\n"
+    "- Vt (Trust & Control): Data quality, transparency, reversibility, consent [0–100]\n\n"
+    "Assessment Methodology:\n"
+    "1. Risk Classification: Categorize system by EU AI Act Annex "
+    "(Prohibited / High-Risk / Limited Risk / Minimal Risk)\n"
+    "2. Vector Scoring: Evaluate each dimension independently using the scoring rubric\n"
+    "3. Control Requirements: Map findings to mandatory controls\n"
+    "4. Escalation Logic: Flag for immediate escalation if any vector < 30 OR system is Prohibited\n"
+    "5. Recommendation: Produce actionable governance decisions "
+    "(approve, conditional-approve, remediate, prohibit)\n\n"
+    "You MUST output ONLY valid JSON with no additional text, following this exact schema:\n"
+    '{"system_name":"string","risk_classification":"Prohibited|High-Risk|Limited-Risk|Minimal-Risk",'
+    '"domain":"string","assessment_date":"ISO 8601 date",'
+    '"scores":{"Vs":number,"Va":number,"Vt":number,"QEN_SCORE":number},'
+    '"findings":[{"category":"string","severity":"Critical|High|Medium|Low",'
+    '"issue":"string","evidence":"string","remediation":"string"}],'
+    '"mandatory_controls":["string"],"escalation_flag":false,"escalation_reason":"string or null",'
+    '"recommendation":"Approve|Conditional Approval|Remediation Required|Prohibit",'
+    '"next_steps":["string"],"governance_owner":"string","review_date":"ISO 8601 date"}'
+)
+
+@app.route("/gemini/compliance-audit", methods=["POST"])
+@limiter.limit("20 per minute")
+def gemini_compliance_audit():
+    data     = request.get_json() or {}
+    name     = data.get("system_name", "Unnamed System")
+    sys_type = data.get("system_type", "")
+    domain   = data.get("domain", "")
+    desc     = data.get("description", "")
+    controls = data.get("controls", "(no controls documented)")
+    if not desc:
+        return jsonify({"error": "Campo description obbligatorio"}), 400
+    today = datetime.utcnow().strftime("%Y-%m-%d")
+    prompt = (
+        f"Assess the following system under QEN framework v1.0:\n\n"
+        f"System Name: {name}\nType: {sys_type}\nDomain: {domain}\n"
+        f"Description: {desc}\nCurrent Controls: {controls}\n"
+        f"Today's date: {today}\n\n"
+        "Provide: 1) Risk classification (EU AI Act Annex) 2) QEN scores (Vs, Va, Vt) "
+        "3) Findings (critical gaps) 4) Mandatory controls checklist "
+        "5) Recommendation + next steps 6) Output as JSON only — no other text"
+    )
+    google_key = os.getenv("GOOGLE_API_KEY", "")
+    try:
+        raw = None
+        provider = None
+        if google_key:
+            for _model in ["gemini-2.0-flash-lite", "gemini-2.5-flash", "gemini-2.0-flash"]:
+                try:
+                    _resp = _requests.post(
+                        f"https://generativelanguage.googleapis.com/v1beta/models/{_model}:generateContent",
+                        params={"key": google_key},
+                        json={
+                            "system_instruction": {"parts": [{"text": _COMPLIANCE_AUDIT_SYSTEM}]},
+                            "contents": [{"parts": [{"text": prompt}]}],
+                            "generationConfig": {"response_mime_type": "application/json"},
+                        },
+                        timeout=30,
+                    )
+                    _resp.raise_for_status()
+                    raw = _resp.json()["candidates"][0]["content"]["parts"][0]["text"].strip()
+                    provider = _model
+                    break
+                except Exception:
+                    continue
+        if raw is None:
+            msg = ANTHROPIC_CLIENT.messages.create(
+                model="claude-sonnet-4-6",
+                max_tokens=2048,
+                system=_COMPLIANCE_AUDIT_SYSTEM,
+                messages=[{"role": "user", "content": prompt}],
+            )
+            raw = msg.content[0].text.strip()
+            provider = "claude-sonnet-4-6-fallback"
+        raw = raw.replace("```json", "").replace("```", "").strip()
+        m = re.search(r"\{.*\}", raw, re.DOTALL)
+        if m:
+            q = json.loads(m.group())
+            vs = float(q.get("scores", {}).get("Vs", 50))
+            va = float(q.get("scores", {}).get("Va", 50))
+            vt = float(q.get("scores", {}).get("Vt", 50))
+            q.setdefault("scores", {})["QEN_SCORE"] = round((vs * 0.40) + (va * 0.35) + (vt * 0.25), 1)
+            q["provider"] = provider
+            return jsonify({"status": "success", "audit": q})
+        return jsonify({"status": "error", "error": raw[:200]}), 500
+    except Exception as e:
+        return jsonify({"status": "error", "error": str(e)}), 500
+
 
 _QEN_DRIFT_THRESHOLD = 0.5
 
