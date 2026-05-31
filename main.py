@@ -21,6 +21,35 @@ _CORS_ORIGINS = frozenset({
     "https://api.cognitivelogic.it",
 })
 
+_TRUSTED_HOSTS = frozenset({
+    "cognitivelogic.it",
+    "www.cognitivelogic.it",
+    "api.cognitivelogic.it",
+})
+
+def _require_trusted_origin():
+    """Return a 403 response if the call doesn't come from a trusted origin/referer
+    AND doesn't carry a valid X-API-Key. Protects cost-bearing public endpoints."""
+    api_key = request.headers.get("X-API-Key", "")
+    if api_key == os.getenv("COGNITIVE_API_KEY", ""):
+        return None  # authenticated call — always allowed
+
+    origin   = request.headers.get("Origin", "")
+    referer  = request.headers.get("Referer", "")
+
+    def _trusted(url: str) -> bool:
+        from urllib.parse import urlparse
+        host = urlparse(url).hostname or ""
+        return host in _TRUSTED_HOSTS
+
+    if origin and _trusted(origin):
+        return None
+    if referer and _trusted(referer):
+        return None
+
+    return jsonify({"error": "Forbidden", "detail": "Untrusted origin"}), 403
+
+
 @app.before_request
 def handle_preflight():
     if request.method == 'OPTIONS':
@@ -305,8 +334,11 @@ def classify_risk():
         return jsonify({"status": "error", "message": str(e)}), 500
 
 @app.route("/copilot-analyze", methods=["POST"])
-@limiter.limit("30 per minute")
+@limiter.limit("10 per minute;100 per day")
 def copilot_analyze():
+    blocked = _require_trusted_origin()
+    if blocked:
+        return blocked
     data = request.json
     if not data or "description" not in data:
         return jsonify({"error": "Campo description obbligatorio"}), 400
@@ -373,8 +405,11 @@ def copilot_analyze():
         return jsonify({"error": str(e)}), 500
 
 @app.route("/gemini/qen-score", methods=["POST"])
-@limiter.limit("30 per minute")
+@limiter.limit("10 per minute;100 per day")
 def gemini_qen_score():
+    blocked = _require_trusted_origin()
+    if blocked:
+        return blocked
     data   = request.get_json()
     name   = data.get("business_name", "")
     sector = data.get("sector", "")
@@ -488,8 +523,11 @@ _COMPLIANCE_AUDIT_SYSTEM = (
 )
 
 @app.route("/gemini/compliance-audit", methods=["POST"])
-@limiter.limit("20 per minute")
+@limiter.limit("10 per minute;100 per day")
 def gemini_compliance_audit():
+    blocked = _require_trusted_origin()
+    if blocked:
+        return blocked
     data     = request.get_json() or {}
     name     = data.get("system_name", "Unnamed System")
     sys_type = data.get("system_type", "")

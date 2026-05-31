@@ -409,8 +409,11 @@ class TestComplianceAuditEndpoint:
         "controls": "Nessuno",
     }
 
+    _trusted = {"Origin": "https://www.cognitivelogic.it"}
+
     def test_missing_description_returns_400(self):
-        resp = client.post("/gemini/compliance-audit", json={"system_name": "X"})
+        resp = client.post("/gemini/compliance-audit", json={"system_name": "X"},
+                           headers=self._trusted)
         assert resp.status_code == 400
 
     def test_success_via_claude_fallback(self):
@@ -420,7 +423,8 @@ class TestComplianceAuditEndpoint:
         with patch.dict(os.environ, env, clear=True):
             with patch("main.ANTHROPIC_CLIENT") as mock_client:
                 mock_client.messages.create.return_value = mock_msg
-                resp = client.post("/gemini/compliance-audit", json=self._payload)
+                resp = client.post("/gemini/compliance-audit", json=self._payload,
+                                   headers=self._trusted)
         assert resp.status_code == 200
         data = resp.get_json()
         assert data["status"] == "success"
@@ -438,6 +442,74 @@ class TestComplianceAuditEndpoint:
         mock_requests.post.return_value = gemini_resp
         with patch.dict(os.environ, {"GOOGLE_API_KEY": "fake"}):
             with patch("main._requests", mock_requests):
-                resp = client.post("/gemini/compliance-audit", json=self._payload)
+                resp = client.post("/gemini/compliance-audit", json=self._payload,
+                                   headers=self._trusted)
         assert resp.status_code == 200
         assert resp.get_json()["status"] == "success"
+
+
+# ── origin check su endpoint cost-bearing ────────────────────────────────────
+
+class TestTrustedOrigin:
+    """_require_trusted_origin deve bloccare chiamate senza Origin/Referer noti
+    a meno che non venga fornito X-API-Key valido."""
+
+    def test_copilot_analyze_blocked_without_origin(self):
+        resp = client.post("/copilot-analyze",
+                           json={"description": "test"},
+                           headers={})
+        assert resp.status_code == 403
+
+    _copilot_mock_text = ('{"allegato":"III","livello_rischio":"Minimo","gdpr_risk":"BASSO",'
+                          '"motivazione":"ok","gdpr_motivazione":"ok","qen_impact":"low",'
+                          '"articoli_rilevanti":[],"azioni_richieste":[],"vs":70,"va":65,"vt":75}')
+
+    def test_copilot_analyze_allowed_with_trusted_origin(self):
+        mock_msg = MagicMock()
+        mock_msg.content = [MagicMock(text=self._copilot_mock_text)]
+        with patch("main.ANTHROPIC_CLIENT") as mock_client, \
+             patch("main.check_duplicate", return_value=None), \
+             patch("main.save_pilot"):
+            mock_client.messages.create.return_value = mock_msg
+            resp = client.post("/copilot-analyze",
+                               json={"description": "test"},
+                               headers={"Origin": "https://www.cognitivelogic.it"})
+        assert resp.status_code == 200
+
+    def test_copilot_analyze_allowed_with_api_key(self):
+        mock_msg = MagicMock()
+        mock_msg.content = [MagicMock(text=self._copilot_mock_text)]
+        with patch("main.ANTHROPIC_CLIENT") as mock_client, \
+             patch("main.check_duplicate", return_value=None), \
+             patch("main.save_pilot"):
+            mock_client.messages.create.return_value = mock_msg
+            resp = client.post("/copilot-analyze",
+                               json={"description": "test"},
+                               headers={"X-API-Key": "test-key-ci"})
+        assert resp.status_code == 200
+
+    def test_gemini_qen_score_blocked_without_origin(self):
+        resp = client.post("/gemini/qen-score",
+                           json={"description": "test"},
+                           headers={})
+        assert resp.status_code == 403
+
+    def test_gemini_qen_score_allowed_with_referer(self):
+        env = {k: v for k, v in os.environ.items() if k != "GOOGLE_API_KEY"}
+        mock_msg = MagicMock()
+        mock_msg.content = [MagicMock(text='{"qen_score":72,"badge":"QEN VERIFIED","vs":70,"va":72,"vt":75,"sintesi":"ok"}')]
+        with patch.dict(os.environ, env, clear=True):
+            with patch("main.ANTHROPIC_CLIENT") as mock_client, \
+                 patch("main.check_duplicate", return_value=None), \
+                 patch("main.save_pilot"):
+                mock_client.messages.create.return_value = mock_msg
+                resp = client.post("/gemini/qen-score",
+                                   json={"business_name": "Test", "description": "test"},
+                                   headers={"Referer": "https://cognitivelogic.it/qen.html"})
+        assert resp.status_code == 200
+
+    def test_compliance_audit_blocked_without_origin(self):
+        resp = client.post("/gemini/compliance-audit",
+                           json={"description": "test"},
+                           headers={})
+        assert resp.status_code == 403
