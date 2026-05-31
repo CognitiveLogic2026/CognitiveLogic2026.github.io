@@ -348,6 +348,15 @@
       return String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;");
     }
 
+    function getApiKey() {
+      let key = sessionStorage.getItem("cq_api_key");
+      if (!key) {
+        key = prompt("Inserisci la chiave API per accedere alla dashboard:");
+        if (key) sessionStorage.setItem("cq_api_key", key);
+      }
+      return key || "";
+    }
+
     async function load() {
       document.getElementById("table-body").innerHTML =
         '<div class="state-box"><div class="spinner"></div>Caricamento...</div>';
@@ -358,8 +367,19 @@
       document.getElementById("stat-last-name").textContent = "—";
       document.getElementById("section-count").textContent = "";
 
+      const apiKey = getApiKey();
+      if (!apiKey) {
+        document.getElementById("table-body").innerHTML =
+          '<div class="state-box">Chiave API necessaria per accedere alla dashboard.</div>';
+        return;
+      }
+
       try {
-        const res = await fetch(API);
+        const res = await fetch(API, { headers: { "X-API-Key": apiKey } });
+        if (res.status === 403) {
+          sessionStorage.removeItem("cq_api_key");
+          throw new Error("HTTP 403 — chiave non valida, riprova.");
+        }
         if (!res.ok) throw new Error(`HTTP ${res.status}`);
         const d = await res.json();
         const pilots = d.pilots || [];
