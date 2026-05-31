@@ -241,8 +241,10 @@ _BOLKESTEIN_SYSTEM = (
 )
 
 
-def register_orchestrator(app):
+def register_orchestrator(app, limiter=None):
+    _lim = limiter.limit if limiter else lambda _: (lambda f: f)
     @app.route("/agents/compliance-auditor", methods=["POST"])
+    @_lim("30 per minute")
     def compliance_auditor():
         data = request.get_json() or {}
         entity = data.get("entity_name", data.get("name", ""))
@@ -270,6 +272,7 @@ def register_orchestrator(app):
             return jsonify({"error": str(e)}), 500
 
     @app.route("/agents/territorial-mapper", methods=["POST"])
+    @_lim("30 per minute")
     def territorial_mapper():
         data = request.get_json() or {}
         entity = data.get("entity_name", data.get("name", ""))
@@ -299,6 +302,7 @@ def register_orchestrator(app):
             return jsonify({"error": str(e)}), 500
 
     @app.route("/agents/advisory-council", methods=["POST"])
+    @_lim("30 per minute")
     def advisory_council():
         data = request.get_json() or {}
         entity = data.get("entity_name", data.get("name", ""))
@@ -410,6 +414,7 @@ def register_orchestrator(app):
         return resp.json()["choices"][0]["message"]["content"]
 
     @app.route("/agents/mistral-compliance", methods=["POST"])
+    @_lim("30 per minute")
     def mistral_compliance():
         data = request.get_json() or {}
         entity = data.get("entity_name", data.get("name", ""))
@@ -446,6 +451,7 @@ def register_orchestrator(app):
         return jsonify({"status": "success", "audit": result}), 200
 
     @app.route("/agents/mistral-advisor", methods=["POST"])
+    @_lim("30 per minute")
     def mistral_advisor():
         data = request.get_json() or {}
         entity = data.get("entity_name", data.get("name", ""))
@@ -501,6 +507,7 @@ def register_orchestrator(app):
         }), 503
 
     @app.route("/agents/bolkestein-assessment", methods=["POST"])
+    @_lim("30 per minute")
     def bolkestein_assessment():
         data = request.get_json() or {}
         entity = data.get("entity_name", data.get("name", ""))
@@ -572,6 +579,7 @@ def register_orchestrator(app):
         }), 200
 
     @app.route("/agents/score-businesses", methods=["POST"])
+    @_lim("20 per minute")
     def score_businesses():
         """Score a pre-discovered list of businesses (max 5 per call, no re-discovery)."""
         import time
@@ -652,6 +660,7 @@ def register_orchestrator(app):
         }), 200
 
     @app.route("/agents/places-batch-qen", methods=["POST"])
+    @_lim("20 per minute")
     def places_batch_qen():
         import sys
         data        = request.get_json() or {}
