@@ -496,8 +496,8 @@ def register_orchestrator(app):
     @app.route("/agents/openai-advisor", methods=["POST"])
     def openai_advisor():
         return jsonify({
-            "error": "OpenAI endpoint disabilitato (pagamento in sospeso). Usa /agents/mistral-advisor.",
-            "alternative": "/agents/mistral-advisor",
+            "error": "endpoint_disabled",
+            "message": "OpenAI advisor temporaneamente non disponibile.",
         }), 503
 
     @app.route("/agents/bolkestein-assessment", methods=["POST"])
