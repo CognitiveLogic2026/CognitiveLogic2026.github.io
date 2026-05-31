@@ -88,7 +88,7 @@ jobs:
 
             [Service]
             Type=simple
-            User=root
+            User=www-data
             WorkingDirectory=/app/cognitivelogic/qen-reconciliation
             EnvironmentFile=/etc/cognitivelogic/env
             ExecStart=/app/cognitivelogic/venv/bin/uvicorn main:app --host 127.0.0.1 --port 8001
@@ -107,7 +107,7 @@ jobs:
 
             [Service]
             Type=simple
-            User=root
+            User=www-data
             WorkingDirectory=/app/cognitivelogic
             EnvironmentFile=/etc/cognitivelogic/env
             ExecStart=/app/cognitivelogic/venv/bin/gunicorn main:app --bind 127.0.0.1:5000 --workers 2 --timeout 120
@@ -117,6 +117,10 @@ jobs:
             [Install]
             WantedBy=multi-user.target
             FLASKSVCEOF
+
+            # Assicura che www-data abbia accesso alle directory necessarie
+            chown -R www-data:www-data /app/cognitivelogic
+            chown www-data:www-data /etc/cognitivelogic/env
 
             systemctl daemon-reload
             systemctl enable cognitivelogic && systemctl restart cognitivelogic
