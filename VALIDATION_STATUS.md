@@ -87,3 +87,14 @@ tramite `qen_bolkestein_s4.py` per sviluppo e validazione del modello.
 | Mistral advisor | — | Operativo |
 | OpenAI advisor | — | Disabilitato (503) |
 | qen-bolkestein | — | Solo locale |
+
+---
+
+## Rate Limiting (Flask-Limiter 4.1)
+
+| Campo | Valore |
+|-------|--------|
+| Storage | In-memory (`memory://`) |
+| Limite endpoint LLM singolo | 30 req/min per IP |
+| Limite endpoint batch LLM | 20 req/min per IP |
+| Nota multi-worker | Gunicorn avvia `--workers 2`: ogni worker ha il proprio contatore separato. Il limite effettivo per IP è fino a **2× quello configurato** (es. 60 invece di 30/min). Per un VPS B2B a traffico controllato è accettabile. Soluzione definitiva: configurare Redis come storage backend (`RATELIMIT_STORAGE_URI=redis://localhost:6379`). |
