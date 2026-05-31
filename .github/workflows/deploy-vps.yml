@@ -41,7 +41,8 @@ jobs:
           envs: ICEA_API_KEY,INFOCAMERE_API_KEY,SUPERVISOR_KEY,ANTHROPIC_API_KEY,COGNITIVE_API_KEY,GOOGLE_API_KEY,GOOGLE_PLACES_API_KEY,MISTRAL_API_KEY,OPENAI_API_KEY
           script: |
             set -e
-            export GIT_SSH_COMMAND="ssh -i /root/.ssh/github_deploy -o StrictHostKeyChecking=no"
+            # accept-new: trusts first connection, rejects changed keys (blocks MITM)
+            export GIT_SSH_COMMAND="ssh -i /root/.ssh/github_deploy -o StrictHostKeyChecking=accept-new"
             REPO_URL="git@github.com:CognitiveLogic2026/CognitiveLogic2026.github.io.git"
             REPO_DIR="/app/cognitivelogic"
 
