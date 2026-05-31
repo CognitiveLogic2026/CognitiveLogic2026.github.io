@@ -72,6 +72,9 @@ def health():
 
 @app.route("/pilots", methods=["GET"])
 def list_pilots():
+    provided_key = request.headers.get("X-API-Key")
+    if provided_key != os.getenv("COGNITIVE_API_KEY"):
+        return jsonify({"status": "error", "message": "Unauthorized"}), 403
     pilots = load_pilots()
     summary = []
     for key, v in pilots.items():
