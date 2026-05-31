@@ -29,6 +29,9 @@ def _key_ok(provided: str | None, env_var: str = "COGNITIVE_API_KEY") -> bool:
     expected = os.getenv(env_var, "")
     return bool(expected) and hmac.compare_digest(provided or "", expected)
 
+def _qen(vs: float, va: float, vt: float) -> float:
+    return round(vs * 0.40 + va * 0.35 + vt * 0.25, 2)
+
 
 _TRUSTED_HOSTS = frozenset({
     "cognitivelogic.it",
@@ -155,7 +158,7 @@ def analyze():
     social = data.get("social_impact", 0)
     env    = data.get("environmental_impact", 0)
     terr   = data.get("territorial_impact", 0)
-    qen_score = round((social * 0.40) + (env * 0.35) + (terr * 0.25), 2)
+    qen_score = _qen(social, env, terr)
     new_node = {"id": name, "type": "System", "qen": qen_score,
                 "status": "Analyzed", "timestamp": datetime.utcnow().strftime("%Y-%m-%dT%H:%M:%SZ")}
     try:
@@ -274,7 +277,7 @@ def admin_add_client():
     va      = float(data.get("va", 0))
     vt      = float(data.get("vt", 0))
     note    = data.get("note", "")
-    qen     = round(vs * 0.40 + va * 0.35 + vt * 0.25, 2)
+    qen     = _qen(vs, va, vt)
 
     score_data = {
         "qen_score": qen, "vs": vs, "va": va, "vt": vt,
@@ -391,7 +394,7 @@ def copilot_analyze():
         vs = float(result.get("vs", 50))
         va = float(result.get("va", 50))
         vt = float(result.get("vt", 50))
-        qen_score = round((vs * 0.40) + (va * 0.35) + (vt * 0.25), 2)
+        qen_score = _qen(vs, va, vt)
         output = {
             "risk_level":        final_level,
             "risk_score":        final_score,
@@ -496,7 +499,7 @@ def gemini_qen_score():
             if max(vs, va, vt) <= 10:  # normalize 0-10 scale to 0-100
                 vs, va, vt = vs * 10, va * 10, vt * 10
             q["vs"], q["va"], q["vt"] = vs, va, vt
-            q["qen_score"] = round((vs * 0.40) + (va * 0.35) + (vt * 0.25), 2)
+            q["qen_score"] = _qen(vs, va, vt)
             q["provider"] = provider
             save_pilot(name, q)
             return jsonify({"status": "success", "qen": q})
@@ -596,7 +599,7 @@ def gemini_compliance_audit():
             vs = float(q.get("scores", {}).get("Vs", 50))
             va = float(q.get("scores", {}).get("Va", 50))
             vt = float(q.get("scores", {}).get("Vt", 50))
-            q.setdefault("scores", {})["QEN_SCORE"] = round((vs * 0.40) + (va * 0.35) + (vt * 0.25), 1)
+            q.setdefault("scores", {})["QEN_SCORE"] = _qen(vs, va, vt)
             q["provider"] = provider
             return jsonify({"status": "success", "audit": q})
         return jsonify({"status": "error", "error": "Risposta non valida dal modello"}), 500
@@ -627,7 +630,7 @@ def reconcile_batch():
                            "reason": "vs/va/vt/qen_score mancanti"})
             continue
 
-        expected_qen = round(float(vs) * 0.40 + float(va) * 0.35 + float(vt) * 0.25, 2)
+        expected_qen = _qen(float(vs), float(va), float(vt))
         drift = abs(float(stored_qen) - expected_qen)
 
         if drift > _QEN_DRIFT_THRESHOLD:
