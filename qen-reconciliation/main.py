@@ -2,6 +2,7 @@
 # https://www.cognitivelogic.it
 # Licensed under CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/)
 import hashlib
+import hmac
 import json
 import logging
 import os
@@ -327,7 +328,7 @@ def resolve_escalation(
     req: ResolveRequest,
     x_supervisor_key: Optional[str] = Header(None),
 ):
-    if x_supervisor_key != SUPERVISOR_KEY:
+    if not (x_supervisor_key and hmac.compare_digest(x_supervisor_key, SUPERVISOR_KEY)):
         raise HTTPException(status_code=403, detail="Chiave supervisore non valida")
     store = _load_escalations()
     if esc_id not in store:
