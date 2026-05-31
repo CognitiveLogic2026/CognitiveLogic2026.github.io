@@ -2,6 +2,7 @@
 # https://www.cognitivelogic.it
 # Licensed under CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/)
 import os
+import hmac
 import json
 import re
 import requests as _requests
@@ -21,6 +22,12 @@ _CORS_ORIGINS = frozenset({
     "https://api.cognitivelogic.it",
 })
 
+def _key_ok(provided: str | None, env_var: str = "COGNITIVE_API_KEY") -> bool:
+    """Timing-safe API key comparison."""
+    expected = os.getenv(env_var, "")
+    return bool(expected) and hmac.compare_digest(provided or "", expected)
+
+
 _TRUSTED_HOSTS = frozenset({
     "cognitivelogic.it",
     "www.cognitivelogic.it",
@@ -31,7 +38,7 @@ def _require_trusted_origin():
     """Return a 403 response if the call doesn't come from a trusted origin/referer
     AND doesn't carry a valid X-API-Key. Protects cost-bearing public endpoints."""
     api_key = request.headers.get("X-API-Key", "")
-    if api_key == os.getenv("COGNITIVE_API_KEY", ""):
+    if _key_ok(api_key):
         return None  # authenticated call — always allowed
 
     origin   = request.headers.get("Origin", "")
@@ -111,8 +118,7 @@ def health():
 
 @app.route("/pilots", methods=["GET"])
 def list_pilots():
-    provided_key = request.headers.get("X-API-Key")
-    if provided_key != os.getenv("COGNITIVE_API_KEY"):
+    if not _key_ok(request.headers.get("X-API-Key")):
         return jsonify({"status": "error", "message": "Unauthorized"}), 403
     pilots = load_pilots()
     summary = []
@@ -132,8 +138,7 @@ def list_pilots():
 
 @app.route("/analyze", methods=["POST"])
 def analyze():
-    provided_key = request.headers.get("X-API-Key")
-    if provided_key != os.getenv("COGNITIVE_API_KEY"):
+    if not _key_ok(request.headers.get("X-API-Key")):
         return jsonify({"status": "error", "message": "Unauthorized"}), 403
     data = request.json
     name   = data.get("system_name", "Unknown")
@@ -155,8 +160,7 @@ def analyze():
 
 @app.route("/audit/horeca", methods=["POST"])
 def audit_horeca():
-    provided_key = request.headers.get("X-API-Key")
-    if provided_key != os.getenv("COGNITIVE_API_KEY"):
+    if not _key_ok(request.headers.get("X-API-Key")):
         return jsonify({"error": "Unauthorized"}), 403
     data = request.json or {}
     nome     = (data.get("azienda_nome") or "Azienda HoReCa").strip()
@@ -202,8 +206,7 @@ def audit_horeca():
 
 @app.route("/audit/balneare", methods=["POST"])
 def audit_balneare():
-    provided_key = request.headers.get("X-API-Key")
-    if provided_key != os.getenv("COGNITIVE_API_KEY"):
+    if not _key_ok(request.headers.get("X-API-Key")):
         return jsonify({"error": "Unauthorized"}), 403
     data     = request.json or {}
     nome     = (data.get("azienda_nome") or "Operatore Balneare").strip()
@@ -251,8 +254,7 @@ def audit_balneare():
 
 @app.route("/admin/add-client", methods=["POST"])
 def admin_add_client():
-    provided_key = request.headers.get("X-API-Key")
-    if provided_key != os.getenv("COGNITIVE_API_KEY"):
+    if not _key_ok(request.headers.get("X-API-Key")):
         return jsonify({"status": "error", "message": "Unauthorized"}), 403
 
     data    = request.json or {}
@@ -306,8 +308,7 @@ RISK_SYSTEM_PROMPT = (
 @app.route("/classify-risk", methods=["POST"])
 @limiter.limit("30 per minute")
 def classify_risk():
-    provided_key = request.headers.get("X-API-Key")
-    if provided_key != os.getenv("COGNITIVE_API_KEY"):
+    if not _key_ok(request.headers.get("X-API-Key")):
         return jsonify({"status": "error", "message": "Unauthorized"}), 403
     data = request.json
     if not data or "descrizione" not in data:
@@ -597,8 +598,7 @@ _QEN_DRIFT_THRESHOLD = 0.5
 
 @app.route("/admin/reconcile-batch", methods=["POST"])
 def reconcile_batch():
-    provided_key = request.headers.get("X-API-Key")
-    if provided_key != os.getenv("COGNITIVE_API_KEY"):
+    if not _key_ok(request.headers.get("X-API-Key")):
         return jsonify({"status": "error", "message": "Unauthorized"}), 403
 
     pilots = load_pilots()

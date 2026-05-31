@@ -5,13 +5,14 @@
 # QEN HoReCa Compliance Auditor — FastAPI Backend
 # Motore QEN v1.0 — Quantificazione dell'Etica Naturale
 # Endpoint: POST /api/qen/audit
+import hmac
 import os
 import uuid
 from datetime import datetime, timedelta
 from typing import List, Optional
 
 import anthropic
-from fastapi import FastAPI, HTTPException
+from fastapi import Depends, FastAPI, Header, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel, Field
 
@@ -33,6 +34,13 @@ app.add_middleware(
 )
 
 _anthropic = anthropic.Anthropic(api_key=os.getenv("ANTHROPIC_API_KEY"))
+
+_HORECA_API_KEY = os.getenv("COGNITIVE_API_KEY", "")
+
+
+def _require_api_key(x_api_key: Optional[str] = Header(None)):
+    if not (_HORECA_API_KEY and x_api_key and hmac.compare_digest(x_api_key, _HORECA_API_KEY)):
+        raise HTTPException(status_code=401, detail="Chiave API non valida o assente")
 
 
 # ── Pydantic input models ─────────────────────────────────────────────────────
@@ -403,14 +411,14 @@ def health():
     }
 
 
-@app.post("/api/qen/audit")
+@app.post("/api/qen/audit", dependencies=[Depends(_require_api_key)])
 def qen_audit(req: QENAuditRequest):
     try:
         return compute_qen_audit(req)
     except ZeroDivisionError:
         raise HTTPException(status_code=400, detail="numero_coperti_mese non può essere zero")
-    except Exception as exc:
-        raise HTTPException(status_code=500, detail=str(exc))
+    except Exception:
+        raise HTTPException(status_code=500, detail="Errore interno del server")
 
 
 if __name__ == "__main__":
