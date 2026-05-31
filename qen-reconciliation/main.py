@@ -35,7 +35,9 @@ ESCALATIONS_PATH = Path("/app/cognitivelogic/escalations.json")
 
 ICEA_API_KEY = os.getenv("ICEA_API_KEY", "")
 INFOCAMERE_API_KEY = os.getenv("INFOCAMERE_API_KEY", "")
-SUPERVISOR_KEY = os.getenv("SUPERVISOR_KEY", "cna-supervisor-2026")
+SUPERVISOR_KEY = os.getenv("SUPERVISOR_KEY")
+if not SUPERVISOR_KEY:
+    raise RuntimeError("SUPERVISOR_KEY environment variable is required")
 
 if not ICEA_API_KEY:
     logger.warning("ICEA_API_KEY not set — using mock data for biologico_certificato")

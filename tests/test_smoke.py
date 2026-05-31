@@ -15,6 +15,10 @@ import pytest
 _mock_anthropic = MagicMock()
 sys.modules["anthropic"] = _mock_anthropic
 
+# Set required env vars before importing modules that validate them at startup
+os.environ.setdefault("COGNITIVE_API_KEY", "test-key-ci")
+os.environ.setdefault("SUPERVISOR_KEY", "test-supervisor-ci")
+
 # ── Flask app ────────────────────────────────────────────────────────────────────────
 _repo_root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.insert(0, _repo_root)
@@ -40,8 +44,13 @@ def test_flask_health():
     assert resp.status_code == 200
 
 
-def test_flask_pilots():
+def test_flask_pilots_unauthorized():
     resp = flask_client.get("/pilots")
+    assert resp.status_code == 403
+
+
+def test_flask_pilots_authorized():
+    resp = flask_client.get("/pilots", headers={"X-API-Key": "test-key-ci"})
     assert resp.status_code == 200
 
 

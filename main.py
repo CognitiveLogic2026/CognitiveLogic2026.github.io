@@ -7,9 +7,19 @@ import re
 import requests as _requests
 import anthropic
 from datetime import datetime
-from flask import Flask, request, jsonify, send_file
+from flask import Flask, request, jsonify
+from flask_limiter import Limiter
+from flask_limiter.util import get_remote_address
 
 app = Flask(__name__)
+
+limiter = Limiter(app=app, key_func=get_remote_address, default_limits=[], storage_uri="memory://")
+
+_CORS_ORIGINS = frozenset({
+    "https://cognitivelogic.it",
+    "https://www.cognitivelogic.it",
+    "https://api.cognitivelogic.it",
+})
 
 @app.before_request
 def handle_preflight():
@@ -21,8 +31,8 @@ def handle_preflight():
 @app.after_request
 def add_cors(response):
     origin = request.headers.get('Origin', '')
-    if 'cognitivelogic.it' in origin or not origin:
-        response.headers['Access-Control-Allow-Origin'] = origin or '*'
+    if origin in _CORS_ORIGINS:
+        response.headers['Access-Control-Allow-Origin'] = origin
         response.headers['Access-Control-Allow-Methods'] = 'GET, POST, OPTIONS'
         response.headers['Access-Control-Allow-Headers'] = 'Content-Type, X-API-Key'
     return response
@@ -72,6 +82,9 @@ def health():
 
 @app.route("/pilots", methods=["GET"])
 def list_pilots():
+    provided_key = request.headers.get("X-API-Key")
+    if provided_key != os.getenv("COGNITIVE_API_KEY"):
+        return jsonify({"status": "error", "message": "Unauthorized"}), 403
     pilots = load_pilots()
     summary = []
     for key, v in pilots.items():
@@ -256,6 +269,7 @@ RISK_SYSTEM_PROMPT = (
 )
 
 @app.route("/classify-risk", methods=["POST"])
+@limiter.limit("30 per minute")
 def classify_risk():
     provided_key = request.headers.get("X-API-Key")
     if provided_key != os.getenv("COGNITIVE_API_KEY"):
@@ -285,6 +299,7 @@ def classify_risk():
         return jsonify({"status": "error", "message": str(e)}), 500
 
 @app.route("/copilot-analyze", methods=["POST"])
+@limiter.limit("30 per minute")
 def copilot_analyze():
     data = request.json
     if not data or "description" not in data:
@@ -352,6 +367,7 @@ def copilot_analyze():
         return jsonify({"error": str(e)}), 500
 
 @app.route("/gemini/qen-score", methods=["POST"])
+@limiter.limit("30 per minute")
 def gemini_qen_score():
     data   = request.get_json()
     name   = data.get("business_name", "")
@@ -436,10 +452,6 @@ def gemini_qen_score():
     except Exception as e:
         return jsonify({"status": "error", "error": str(e)}), 500
 
-@app.route("/copilot", methods=["GET"])
-def copilot_ui():
-    return send_file("copilot.html")
-
 QEN_FORMULA_WEIGHTS = {"vs": 0.40, "va": 0.35, "vt": 0.25}
 QEN_DRIFT_THRESHOLD = 0.5
 
@@ -496,7 +508,7 @@ def reconcile_batch():
     }), 200
 
 from orchestrator import register_orchestrator
-register_orchestrator(app)
+register_orchestrator(app, limiter)
 
 if __name__ == "__main__":
     app.run(host="127.0.0.1", port=5000)
