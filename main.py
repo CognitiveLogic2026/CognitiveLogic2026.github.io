@@ -1,10 +1,12 @@
 # Copyright (c) 2026 Roberto Bob Malini - Cognitive Logic
 # https://www.cognitivelogic.it
 # Licensed under CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/)
+import fcntl
 import os
 import hmac
 import json
 import re
+from pathlib import Path
 import requests as _requests
 import anthropic
 from datetime import datetime
@@ -83,22 +85,30 @@ def load_pilots():
     with open(PILOTS_PATH, "r") as f:
         return json.load(f)
 
+_PILOTS_LOCK_PATH = PILOTS_PATH + ".lock"
+
 def save_pilot(name, score_data):
-    pilots = load_pilots()
-    key = name.strip().lower()
-    entry = {
-        "name":      name,
-        "timestamp": datetime.utcnow().strftime("%Y-%m-%dT%H:%M:%SZ"),
-        "data":      score_data
-    }
-    if key in pilots:
-        pilots[key]["history"] = pilots[key].get("history", [])
-        pilots[key]["history"].append(pilots[key].get("data", {}))
-        pilots[key].update(entry)
-    else:
-        pilots[key] = entry
-    with open(PILOTS_PATH, "w") as f:
-        json.dump(pilots, f, indent=2, ensure_ascii=False)
+    Path(_PILOTS_LOCK_PATH).touch(exist_ok=True)
+    with open(_PILOTS_LOCK_PATH, "r") as _lf:
+        fcntl.flock(_lf, fcntl.LOCK_EX)
+        try:
+            pilots = load_pilots()
+            key = name.strip().lower()
+            entry = {
+                "name":      name,
+                "timestamp": datetime.utcnow().strftime("%Y-%m-%dT%H:%M:%SZ"),
+                "data":      score_data
+            }
+            if key in pilots:
+                pilots[key]["history"] = pilots[key].get("history", [])
+                pilots[key]["history"].append(pilots[key].get("data", {}))
+                pilots[key].update(entry)
+            else:
+                pilots[key] = entry
+            with open(PILOTS_PATH, "w") as f:
+                json.dump(pilots, f, indent=2, ensure_ascii=False)
+        finally:
+            fcntl.flock(_lf, fcntl.LOCK_UN)
 
 def load_pilot(name):
     pilots = load_pilots()

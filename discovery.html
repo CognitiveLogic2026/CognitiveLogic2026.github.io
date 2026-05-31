@@ -275,6 +275,15 @@
     fillEl.style.width = pct + "%";
   }
 
+  function escHtml(str) {
+    if (str == null) return "";
+    return String(str).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;").replace(/'/g,"&#39;");
+  }
+  function safeUrl(url) {
+    try { const u = new URL(url); return (u.protocol==="https:"||u.protocol==="http:") ? escHtml(url) : "#"; }
+    catch { return "#"; }
+  }
+
   function qenBadge(score) {
     if (score == null) return '<span class="qen-badge qen-none">—</span>';
     const v = parseFloat(score).toFixed(1);
@@ -283,28 +292,29 @@
   }
   function stars(rating) {
     if (!rating) return '<span style="color:var(--muted)">—</span>';
-    return `<span class="star">★</span> ${rating}`;
+    return `<span class="star">★</span> ${escHtml(String(rating))}`;
   }
 
   function renderRow(biz, idx) {
     const s = scored[biz.name] || {};
     const saveId = `save-${idx}`;
     const savedId = `saved-${idx}`;
+    const conf = s.confidence === "MEDIUM" ? "MEDIUM" : s.confidence === "LOW" ? "LOW" : null;
     return `
       <tr id="row-${idx}">
         <td class="cell-name">
-          ${biz.website ? `<a href="${biz.website}" target="_blank" style="color:var(--accent);text-decoration:none;">${biz.name}</a>` : biz.name}
-          ${biz.phone ? `<div style="font-size:.65rem;color:var(--muted);margin-top:.15rem;">${biz.phone}</div>` : ""}
+          ${biz.website ? `<a href="${safeUrl(biz.website)}" target="_blank" rel="noopener noreferrer" style="color:var(--accent);text-decoration:none;">${escHtml(biz.name)}</a>` : escHtml(biz.name)}
+          ${biz.phone ? `<div style="font-size:.65rem;color:var(--muted);margin-top:.15rem;">${escHtml(biz.phone)}</div>` : ""}
         </td>
-        <td class="cell-addr">${biz.address || "—"}</td>
-        <td>${stars(biz.rating)}${biz.reviews ? `<div style="font-size:.65rem;color:var(--muted)">${biz.reviews} rec.</div>` : ""}</td>
+        <td class="cell-addr">${escHtml(biz.address) || "—"}</td>
+        <td>${stars(biz.rating)}${biz.reviews ? `<div style="font-size:.65rem;color:var(--muted)">${escHtml(String(biz.reviews))} rec.</div>` : ""}</td>
         <td>${qenBadge(s.qen_score)}</td>
         <td>
           ${s.vs != null ? `<div class="score-row">Vs ${s.vs} · Va ${s.va} · Vt ${s.vt}</div>` : '<span style="color:var(--muted)">—</span>'}
         </td>
-        <td>${s.confidence ? `<span class="${s.confidence === "MEDIUM" ? "conf-med" : "conf-low"}">${s.confidence}</span>` : "—"}</td>
+        <td>${conf ? `<span class="${conf === "MEDIUM" ? "conf-med" : "conf-low"}">${conf}</span>` : "—"}</td>
         <td>${s.bolkestein_applicable != null ? `<span class="${s.bolkestein_applicable ? "bol-yes" : "bol-no"}">${s.bolkestein_applicable ? "SÌ" : "No"}</span>` : "—"}</td>
-        <td class="cell-sum">${s.summary || (s.error ? `<span style="color:var(--danger)">${s.error.slice(0,60)}</span>` : "—")}</td>
+        <td class="cell-sum">${s.summary ? escHtml(s.summary) : (s.error ? `<span style="color:var(--danger)">${escHtml(s.error.slice(0,60))}</span>` : "—")}</td>
         <td>
           <span id="${savedId}" style="display:none;" class="saved-tag">✓ Salvato</span>
           <button id="${saveId}" class="btn save-btn" onclick="saveSingle(${idx})" ${!s.qen_score ? "disabled" : ""}>Salva</button>
