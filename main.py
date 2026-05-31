@@ -452,10 +452,9 @@ def gemini_qen_score():
     except Exception as e:
         return jsonify({"status": "error", "error": str(e)}), 500
 
-QEN_FORMULA_WEIGHTS = {"vs": 0.40, "va": 0.35, "vt": 0.25}
-QEN_DRIFT_THRESHOLD = 0.5
+_QEN_DRIFT_THRESHOLD = 0.5
 
-@app.route("/reconcile/batch", methods=["POST"])
+@app.route("/admin/reconcile-batch", methods=["POST"])
 def reconcile_batch():
     provided_key = request.headers.get("X-API-Key")
     if provided_key != os.getenv("COGNITIVE_API_KEY"):
@@ -480,7 +479,7 @@ def reconcile_batch():
         expected_qen = round(float(vs) * 0.40 + float(va) * 0.35 + float(vt) * 0.25, 2)
         drift = abs(float(stored_qen) - expected_qen)
 
-        if drift > QEN_DRIFT_THRESHOLD:
+        if drift > _QEN_DRIFT_THRESHOLD:
             data["qen_score"] = expected_qen
             pilot["data"] = data
             corrected += 1

@@ -9,7 +9,10 @@ from datetime import datetime
 import anthropic
 import json_repair
 import requests as _requests
+from pathlib import Path
 from flask import request, jsonify
+
+_FEED_PATH = Path(__file__).parent / "data" / "intelligence_feed.json"
 
 _client = None
 
@@ -403,58 +406,13 @@ def register_orchestrator(app, limiter=None):
 
     @app.route("/agents/intelligence-feed", methods=["GET"])
     def intelligence_feed():
-        return jsonify({
-            "status": "ok",
-            "feed": [
-                {
-                    "id": "EUAIACT-2025-001",
-                    "type": "regulatory_update",
-                    "title": "EU AI Act — Obligations for high-risk AI systems in force",
-                    "date": "2025-08-01",
-                    "impact": "HIGH",
-                    "sectors": ["all"],
-                    "action_required": "Self-assessment + conformity declaration",
-                    "deadline": "2026-08-02",
-                },
-                {
-                    "id": "CSRD-2026-001",
-                    "type": "regulatory_update",
-                    "title": "CSRD — Double materiality assessment deadline",
-                    "date": "2026-01-01",
-                    "impact": "HIGH",
-                    "sectors": ["all_with_employees_gt_250"],
-                    "action_required": "ESRS reporting + double materiality",
-                    "deadline": "2026-06-30",
-                },
-                {
-                    "id": "BOLKESTEIN-2027-001",
-                    "type": "deadline_alert",
-                    "title": "Bolkestein Directive 2027 — Service authorizations renewal",
-                    "date": "2026-01-01",
-                    "impact": "HIGH",
-                    "sectors": ["horeca", "balneare", "alberghiero"],
-                    "action_required": "QEN pre-assessment + compliance documentation",
-                    "deadline": "2027-01-01",
-                },
-                {
-                    "id": "GREENCLAIMS-2026-001",
-                    "type": "regulatory_update",
-                    "title": "Green Claims Directive — Substantiation requirements",
-                    "date": "2026-03-01",
-                    "impact": "MEDIUM",
-                    "sectors": ["retail", "horeca", "manufacturing"],
-                    "action_required": "Third-party verification of environmental claims",
-                    "deadline": "2026-12-31",
-                },
-            ],
-            "benchmarks": {
-                "horeca_avg_qen": 43.5,
-                "alberghiero_avg_qen": 51.2,
-                "balneare_avg_qen": 38.7,
-                "emilia_romagna_total_mapped": 328,
-            },
-            "timestamp": datetime.utcnow().isoformat() + "Z",
-        }), 200
+        try:
+            payload = json.loads(_FEED_PATH.read_text(encoding="utf-8"))
+        except Exception:
+            payload = {"feed": [], "benchmarks": {}}
+        payload["status"] = "ok"
+        payload["timestamp"] = datetime.utcnow().isoformat() + "Z"
+        return jsonify(payload), 200
 
     # ---------------------------------------------------------------------------
     # Mistral endpoints (primary LLM — Mistral Large via REST, no SDK)

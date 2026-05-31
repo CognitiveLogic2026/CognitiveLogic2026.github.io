@@ -13,6 +13,7 @@ on:
       - 'requirements-flask.txt'
       - 'qen-reconciliation/**'
       - 'nginx/**'
+      - 'data/intelligence_feed.json'
       - '.github/workflows/deploy-vps.yml'
   workflow_dispatch:
 
@@ -43,6 +44,9 @@ jobs:
             export GIT_SSH_COMMAND="ssh -i /root/.ssh/github_deploy -o StrictHostKeyChecking=no"
             REPO_URL="git@github.com:CognitiveLogic2026/CognitiveLogic2026.github.io.git"
             REPO_DIR="/app/cognitivelogic"
+
+            # Allow root to operate on a www-data-owned repo (set by systemd User=www-data)
+            git config --global --add safe.directory "$REPO_DIR"
 
             if [ -d "$REPO_DIR/.git" ]; then
               cd "$REPO_DIR"
