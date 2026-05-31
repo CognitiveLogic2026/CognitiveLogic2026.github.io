@@ -95,6 +95,23 @@
   </style>
 </head>
 <body>
+
+<!-- Accesso privato -->
+<div id="gate" style="display:none;position:fixed;inset:0;background:#0a0a0a;z-index:9999;display:flex;align-items:center;justify-content:center;">
+  <div style="background:#111;border:1px solid #222;border-radius:4px;padding:2.5rem;width:340px;max-width:90vw;">
+    <div style="font-size:.65rem;letter-spacing:.12em;color:#00c896;text-transform:uppercase;margin-bottom:.5rem;">Cognitive Logic · QEN Framework</div>
+    <div style="font-size:1.3rem;font-weight:900;margin-bottom:.3rem;">Discovery <span style="color:#00c896;">Automatica</span></div>
+    <div style="font-size:.75rem;color:#666;margin-bottom:1.5rem;">Accesso riservato agli operatori autorizzati</div>
+    <label style="font-size:.65rem;letter-spacing:.1em;color:#666;text-transform:uppercase;">API Key</label>
+    <input id="gate-key" type="password" placeholder="••••••••••••" autofocus
+      style="width:100%;margin:.4rem 0 1rem;background:#0d0d0d;border:1px solid #222;color:#e8e8e8;font-family:'Courier New',monospace;font-size:.85rem;padding:.6rem .8rem;border-radius:2px;outline:none;">
+    <button onclick="gateSubmit()"
+      style="width:100%;background:#00c896;border:none;color:#000;font-family:'Courier New',monospace;font-size:.75rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:.7rem;border-radius:2px;cursor:pointer;">
+      ▶ ENTRA
+    </button>
+    <div id="gate-err" style="color:#ff4444;font-size:.72rem;margin-top:.6rem;min-height:1em;"></div>
+  </div>
+</div>
 <header>
   <div>
     <div class="logo-tag">Cognitive Logic <span class="logo-sep">·</span> QEN Framework</div>
@@ -195,13 +212,43 @@
 </main>
 
 <script>
+  // Gate accesso
+  function gateSubmit() {
+    const k = document.getElementById("gate-key").value.trim();
+    if (!k) return;
+    fetch("https://api.cognitivelogic.it/admin/add-client", {
+      method: "POST",
+      headers: { "Content-Type": "application/json", "X-API-Key": k },
+      body: JSON.stringify({ nome: "__ping__", settore: "test", vs: 0, va: 0, vt: 0 }),
+    }).then(r => {
+      if (r.status === 403) {
+        document.getElementById("gate-err").textContent = "Chiave non valida.";
+      } else {
+        localStorage.setItem("cog_api_key", k);
+        document.getElementById("api_key").value = k;
+        document.getElementById("gate").style.display = "none";
+      }
+    }).catch(() => {
+      // Se offline accetta la chiave già salvata
+      if (localStorage.getItem("cog_api_key") === k) {
+        document.getElementById("gate").style.display = "none";
+      } else {
+        document.getElementById("gate-err").textContent = "Errore di connessione.";
+      }
+    });
+  }
+  document.getElementById("gate-key").addEventListener("keydown", e => { if (e.key === "Enter") gateSubmit(); });
+
+  // Ripristina API key salvata — se presente salta il gate
+  const savedKey = localStorage.getItem("cog_api_key");
+  if (savedKey) {
+    document.getElementById("api_key").value = savedKey;
+    document.getElementById("gate").style.display = "none";
+  }
+
   const API = "https://api.cognitivelogic.it";
   let discovered = [];
   let scored = {};
-
-  // Ripristina API key salvata
-  const savedKey = localStorage.getItem("cog_api_key");
-  if (savedKey) document.getElementById("api_key").value = savedKey;
 
   const statusEl   = document.getElementById("status");
   const progressEl = document.getElementById("progress");
