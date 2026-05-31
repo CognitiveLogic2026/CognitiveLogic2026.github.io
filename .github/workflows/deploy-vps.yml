@@ -69,6 +69,13 @@ jobs:
             [ -f /app/cognitivelogic/pilots.json ] || echo '{}' > /app/cognitivelogic/pilots.json
             [ -f /app/cognitivelogic/graph.json ]  || echo '{"nodes":{},"edges":[]}' > /app/cognitivelogic/graph.json
 
+            # Ensure Redis is installed and running (needed for rate limiter)
+            if ! command -v redis-server &>/dev/null; then
+              apt-get install -y redis-server
+            fi
+            systemctl enable redis-server
+            systemctl start redis-server || true
+
             # Write environment file (secrets never appear in service unit plaintext)
             mkdir -p /etc/cognitivelogic
             printf '%s=%s\n' \
@@ -81,6 +88,7 @@ jobs:
               GOOGLE_PLACES_API_KEY "${GOOGLE_PLACES_API_KEY}" \
               MISTRAL_API_KEY       "${MISTRAL_API_KEY}" \
               OPENAI_API_KEY        "${OPENAI_API_KEY}" \
+              REDIS_URL             "redis://localhost:6379" \
               > /etc/cognitivelogic/env
             chmod 600 /etc/cognitivelogic/env
 
