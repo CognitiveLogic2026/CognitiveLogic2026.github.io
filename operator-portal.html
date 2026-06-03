@@ -1,0 +1,717 @@
+<!DOCTYPE html>
+<!--
+  Copyright (c) 2026 Roberto Bob Malini - Cognitive Logic
+  https://www.cognitivelogic.it
+  Licensed under CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/)
+-->
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Portale Operatore — QEN Reconciliation · Cognitive Logic</title>
+  <meta name="description" content="Dichiara i parametri di sostenibilità e avvia la riconciliazione QEN con ICEA, InfoCamere e OpenStreetMap." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css?v=2" />
+  <style>
+    /* ── Form ── */
+    .field { margin-bottom: 14px; }
+    .field label {
+      display: block;
+      font-size: 0.62rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 6px;
+    }
+    .field input[type="text"],
+    .field input[type="number"] {
+      width: 100%;
+      padding: 10px 12px;
+      background: var(--navy-3);
+      border: 1px solid var(--line);
+      color: var(--text);
+      font-family: var(--mono);
+      font-size: 0.82rem;
+      outline: none;
+      border-radius: 12px;
+      transition: border-color 0.22s;
+      box-sizing: border-box;
+    }
+    .field input:focus {
+      border-color: var(--gold-line);
+      box-shadow: 0 0 0 3px rgba(212,175,55,0.06);
+    }
+
+    /* ── Section divider ── */
+    .section-label {
+      font-size: 0.60rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 14px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid var(--line-soft);
+    }
+
+    /* ── Parameter rows ── */
+    .param-row {
+      padding: 14px 0;
+      border-bottom: 1px solid var(--line-soft);
+    }
+    .param-row:last-of-type { border-bottom: none; }
+    .param-label {
+      font-size: 0.62rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 8px;
+    }
+    .param-unit {
+      font-size: 0.68rem;
+      color: var(--muted);
+      font-style: normal;
+      opacity: 0.7;
+    }
+    .param-input-sm {
+      padding: 8px 10px;
+      background: var(--navy-3);
+      border: 1px solid var(--line);
+      color: var(--text);
+      font-family: var(--mono);
+      font-size: 0.82rem;
+      outline: none;
+      border-radius: 10px;
+      transition: border-color 0.22s;
+    }
+    .param-input-sm:focus {
+      border-color: var(--gold-line);
+    }
+
+    /* ── Toggle switch ── */
+    .toggle-wrap { display: flex; align-items: center; gap: 10px; }
+    .toggle {
+      position: relative;
+      display: inline-block;
+      width: 44px;
+      height: 24px;
+      flex-shrink: 0;
+    }
+    .toggle input { opacity: 0; width: 0; height: 0; }
+    .slider {
+      position: absolute;
+      cursor: pointer;
+      inset: 0;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid var(--line-soft);
+      border-radius: 999px;
+      transition: 0.22s;
+    }
+    .slider::before {
+      content: '';
+      position: absolute;
+      height: 16px; width: 16px;
+      left: 3px; bottom: 3px;
+      background: var(--muted);
+      border-radius: 50%;
+      transition: 0.22s;
+    }
+    .toggle input:checked + .slider {
+      background: rgba(133,201,141,0.15);
+      border-color: rgba(133,201,141,0.4);
+    }
+    .toggle input:checked + .slider::before {
+      transform: translateX(20px);
+      background: #85c98d;
+    }
+    .toggle-val {
+      font-family: var(--mono);
+      font-size: 0.72rem;
+      color: var(--muted);
+      min-width: 20px;
+      transition: color 0.22s;
+    }
+
+    /* ── Status chips ── */
+    .status-chip {
+      display: inline-flex;
+      align-items: center;
+      padding: 3px 10px;
+      font-family: var(--mono);
+      font-size: 0.62rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      border-radius: 999px;
+      border: 1px solid transparent;
+    }
+    .chip-aligned { background: rgba(133,201,141,0.10); color: #85c98d; border-color: rgba(133,201,141,0.3); }
+    .chip-green   { background: rgba(74,156,110,0.10);  color: #5AB87A; border-color: rgba(74,156,110,0.3); }
+    .chip-yellow  { background: rgba(216,177,90,0.12);  color: #d8b15a; border-color: rgba(216,177,90,0.35); }
+    .chip-red     { background: rgba(215,133,127,0.12); color: #d7857f; border-color: rgba(215,133,127,0.35); }
+
+    /* ── Score display ── */
+    .score-display {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 10px;
+      margin-bottom: 22px;
+    }
+    .score-cell {
+      padding: 14px 12px;
+      border: 1px solid var(--line-soft);
+      background: var(--navy-3);
+      text-align: center;
+      border-radius: 12px;
+    }
+    .sc-label {
+      font-size: 0.58rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 6px;
+    }
+    .sc-val {
+      font-family: var(--mono);
+      font-size: 1.5rem;
+      color: var(--text);
+      line-height: 1;
+    }
+    .sc-val.gold   { color: var(--gold); }
+    .sc-val.green  { color: #85c98d; }
+    .sc-val.danger { color: #d7857f; }
+
+    /* ── Parameter result rows ── */
+    .param-result {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 10px;
+      align-items: start;
+      padding: 12px 0;
+      border-bottom: 1px solid var(--line-soft);
+    }
+    .param-result:last-child { border-bottom: none; }
+    .pr-name  { font-family: var(--mono); font-size: 0.72rem; color: var(--text-2); margin-bottom: 3px; }
+    .pr-vals  { font-size: 0.68rem; color: var(--muted); margin-bottom: 2px; }
+    .pr-msg   { font-size: 0.7rem; color: var(--muted); line-height: 1.5; }
+    .pr-src   { font-size: 0.58rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); opacity: 0.65; margin-top: 2px; }
+    .pr-pct   { font-size: 0.62rem; font-family: var(--mono); color: var(--muted); margin-top: 3px; text-align: right; }
+
+    /* ── Escalation table ── */
+    .esc-table { width: 100%; border-collapse: collapse; }
+    .esc-table th, .esc-table td {
+      padding: 10px 12px;
+      text-align: left;
+      border-bottom: 1px solid var(--line-soft);
+      font-size: 0.72rem;
+    }
+    .esc-table th {
+      font-family: var(--mono);
+      font-size: 0.58rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+      background: var(--navy-3);
+    }
+    .esc-table td { color: var(--text-2); }
+    .esc-table tr:last-child td { border-bottom: none; }
+    .esc-table tr:hover td { background: rgba(255,255,255,0.015); }
+
+    /* ── Loader ── */
+    .loader {
+      display: inline-block;
+      width: 16px; height: 16px;
+      border: 2px solid var(--line-soft);
+      border-top-color: var(--gold);
+      border-radius: 50%;
+      animation: spin 0.7s linear infinite;
+      vertical-align: middle;
+      margin-right: 8px;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    /* ── Error box ── */
+    .err-box {
+      padding: 14px 16px;
+      border: 1px solid rgba(215,133,127,0.35);
+      background: rgba(215,133,127,0.06);
+      border-radius: 10px;
+      font-size: 0.76rem;
+      color: #d7857f;
+      font-family: var(--mono);
+    }
+
+    /* ── Threshold legend ── */
+    .threshold-legend {
+      padding: 18px;
+      border: 1px solid var(--line-soft);
+      background: var(--navy-3);
+      border-radius: 12px;
+    }
+    .tl-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 4px 0;
+      font-family: var(--mono);
+      font-size: 0.72rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="site-bg"></div>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="index.html" class="brand">
+        <img src="img/logo-cognitivelogic.png" alt="Cognitive Logic" style="height:28px;width:auto;display:block;">
+      </a>
+      <nav class="main-nav">
+        <a href="framework.html">Framework</a>
+        <a href="ecosystem.html">Ecosystem</a>
+        <a href="qen-live.html">QEN Live</a>
+        <a href="ai.html">AI Engine</a>
+        <a href="identity.html">Identity</a>
+        <a href="demo.html">Demo</a>
+      </nav>
+      <div class="header-end">
+        <a href="operator-portal.html" class="btn btn-ghost" style="border-color:var(--gold-line);color:var(--gold)">Portale Operatore</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- ── HERO ── -->
+    <section class="hero">
+      <div class="container">
+        <div class="eyebrow">QEN Reconciliation · Portale Operatore</div>
+        <h1>
+          Dichiara i tuoi dati,<br>
+          <em style="color:var(--gold)">verifica le fonti.</em>
+        </h1>
+        <p class="hero-lead">
+          Inserisci i parametri di sostenibilità del tuo operatore e avvia la riconciliazione
+          automatica con ICEA, InfoCamere e OpenStreetMap. Il motore QEN calcola gli scostamenti
+          e genera escalation per i valori fuori soglia.
+        </p>
+      </div>
+    </section>
+
+    <!-- ── FORM + RESULTS ── -->
+    <section class="section" style="padding-top:0">
+      <div class="container">
+        <div class="grid-2">
+
+          <!-- INPUT PANEL -->
+          <div class="card" style="padding:32px">
+            <div class="eyebrow" style="margin-bottom:20px">Dati operatore</div>
+
+            <div class="field">
+              <label for="operatorId">P.IVA / Codice Fiscale</label>
+              <input id="operatorId" type="text" placeholder="IT01234567890" autocomplete="off" />
+            </div>
+            <div class="field">
+              <label for="operatorName">Nome operatore / ragione sociale</label>
+              <input id="operatorName" type="text" placeholder="Ristorante da Mario S.r.l." autocomplete="off" />
+            </div>
+
+            <div class="section-label" style="margin-top:24px">Parametri dichiarati</div>
+
+            <!-- biologico_certificato -->
+            <div class="param-row">
+              <div class="param-label">Certificazione biologica <span class="param-unit">· ICEA</span></div>
+              <div class="toggle-wrap">
+                <label class="toggle">
+                  <input type="checkbox" id="p_biologico" checked />
+                  <span class="slider"></span>
+                </label>
+                <span class="toggle-val" id="lbl_biologico">Sì</span>
+              </div>
+            </div>
+
+            <!-- eu_ai_compliant -->
+            <div class="param-row">
+              <div class="param-label">Conformità EU AI Act <span class="param-unit">· NANDO</span></div>
+              <div class="toggle-wrap">
+                <label class="toggle">
+                  <input type="checkbox" id="p_euai" checked />
+                  <span class="slider"></span>
+                </label>
+                <span class="toggle-val" id="lbl_euai">Sì</span>
+              </div>
+            </div>
+
+            <!-- percentuale_scarti -->
+            <div class="param-row">
+              <div class="param-label">Percentuale scarti <span class="param-unit">% · InfoCamere</span></div>
+              <input type="number" id="p_scarti" class="param-input-sm" style="width:110px"
+                     min="0" max="100" step="0.1" value="8.0" />
+            </div>
+
+            <!-- consumo_kwh_anno -->
+            <div class="param-row">
+              <div class="param-label">Consumo energetico <span class="param-unit">kWh/anno · InfoCamere</span></div>
+              <input type="number" id="p_kwh" class="param-input-sm" style="width:130px"
+                     min="0" step="100" value="44000" />
+            </div>
+
+            <!-- distanza_media_fornitori_km -->
+            <div class="param-row">
+              <div class="param-label">Distanza media fornitori <span class="param-unit">km · OpenStreetMap</span></div>
+              <input type="number" id="p_dist" class="param-input-sm" style="width:110px"
+                     min="0" step="0.5" value="95.0" />
+            </div>
+
+            <div class="btn-row" style="margin-top:24px">
+              <button class="btn btn-primary" id="reconcileBtn" onclick="runReconcile()">
+                Avvia riconciliazione
+              </button>
+              <button class="btn btn-ghost" onclick="loadExample()">Carica esempio</button>
+            </div>
+
+            <p style="font-size:0.65rem;color:var(--muted);line-height:1.75;margin-top:14px">
+              I parametri numerici vengono confrontati con tolleranza percentuale.
+              Scostamenti oltre il 30% generano escalation RED; oltre il 15% generano YELLOW.
+            </p>
+          </div>
+
+          <!-- OUTPUT PANEL -->
+          <div class="card" style="padding:32px">
+            <div class="eyebrow" style="margin-bottom:20px">Risultati riconciliazione</div>
+
+            <!-- Empty state -->
+            <div id="outputEmpty">
+              <p style="color:var(--muted);font-size:0.82rem;line-height:1.8;margin-bottom:20px">
+                Compila i dati operatore e avvia la riconciliazione per visualizzare i risultati.
+              </p>
+              <div class="threshold-legend">
+                <div style="font-size:0.58rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--muted);margin-bottom:12px">Soglie QEN</div>
+                <div class="tl-row"><span class="status-chip chip-aligned">ALIGNED</span><span style="color:var(--muted)">0%</span></div>
+                <div class="tl-row"><span class="status-chip chip-green">GREEN</span><span style="color:var(--muted)">≤ 15%</span></div>
+                <div class="tl-row"><span class="status-chip chip-yellow">YELLOW</span><span style="color:var(--muted)">≤ 30%</span></div>
+                <div class="tl-row"><span class="status-chip chip-red">RED</span><span style="color:var(--muted)">&gt; 30%</span></div>
+              </div>
+            </div>
+
+            <!-- Loading state -->
+            <div id="outputLoading" style="display:none;text-align:center;padding:48px 0">
+              <span class="loader"></span>
+              <span style="font-family:var(--mono);font-size:0.78rem;color:var(--muted)">Verifica in corso…</span>
+              <p style="font-size:0.66rem;color:var(--muted);margin-top:12px;opacity:0.7">
+                OpenStreetMap può richiedere fino a 30 s per il geocoding
+              </p>
+            </div>
+
+            <!-- Results -->
+            <div id="outputResult" style="display:none">
+
+              <!-- QEN score -->
+              <div class="score-display">
+                <div class="score-cell">
+                  <div class="sc-label">Score prima</div>
+                  <div class="sc-val" id="scoreBefore">—</div>
+                </div>
+                <div class="score-cell">
+                  <div class="sc-label">Aggiustamento</div>
+                  <div class="sc-val gold" id="scoreDelta">—</div>
+                </div>
+                <div class="score-cell">
+                  <div class="sc-label">Score finale</div>
+                  <div class="sc-val green" id="scoreAfter">—</div>
+                </div>
+              </div>
+
+              <!-- Reconciliation ID -->
+              <div style="font-size:0.60rem;font-family:var(--mono);color:var(--muted);margin-bottom:20px">
+                ID: <span id="reconcId" style="color:var(--gold)"></span>
+              </div>
+
+              <!-- Parameter results -->
+              <div class="section-label">Dettaglio parametri</div>
+              <div id="paramResults"></div>
+
+              <!-- API error -->
+              <div id="outputError" class="err-box" style="display:none;margin-top:14px"></div>
+
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ── ESCALATIONS ── -->
+    <section class="section" style="padding-top:0">
+      <div class="container">
+
+        <div style="display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:28px;flex-wrap:wrap;gap:16px">
+          <div>
+            <div class="eyebrow">Monitor escalation</div>
+            <h2 style="margin:8px 0 6px;font-size:clamp(1.6rem,3vw,2.6rem)">Escalation aperte</h2>
+            <p style="color:var(--muted);font-size:0.88rem;margin:0;max-width:520px;line-height:1.7">
+              Parametri con scostamento YELLOW o RED in attesa di revisione supervisore.
+            </p>
+          </div>
+          <button class="btn btn-ghost" style="font-size:0.72rem;padding:8px 18px" onclick="loadEscalations()">
+            ↻ Aggiorna
+          </button>
+        </div>
+
+        <!-- Empty state -->
+        <div id="escEmpty" style="padding:32px;border:1px solid var(--line-soft);background:var(--navy-3);border-radius:16px;text-align:center">
+          <p style="color:var(--muted);font-size:0.8rem;margin:0;line-height:1.8">
+            Nessuna escalation aperta — avvia una riconciliazione per popolare questa sezione.
+          </p>
+        </div>
+
+        <!-- Table -->
+        <div id="escTableWrap" style="display:none">
+          <div style="display:flex;gap:20px;align-items:center;margin-bottom:14px;flex-wrap:wrap">
+            <span style="font-family:var(--mono);font-size:0.68rem;color:var(--muted)">
+              <span id="escStatOpen" style="color:var(--gold);font-size:0.8rem">0</span> aperte
+            </span>
+            <span style="font-family:var(--mono);font-size:0.68rem;color:var(--muted)">
+              <span id="escStatRed" style="color:#d7857f;font-size:0.8rem">0</span> RED
+            </span>
+            <span style="font-family:var(--mono);font-size:0.68rem;color:var(--muted)">
+              <span id="escStatYellow" style="color:#d8b15a;font-size:0.8rem">0</span> YELLOW
+            </span>
+          </div>
+          <div class="table-wrap">
+            <table class="esc-table">
+              <thead>
+                <tr>
+                  <th>ID escalation</th>
+                  <th>Operatore</th>
+                  <th>Parametro</th>
+                  <th>Dichiarato</th>
+                  <th>Verificato</th>
+                  <th>Scostamento</th>
+                  <th>Stato</th>
+                  <th>Fonte</th>
+                  <th>Data</th>
+                </tr>
+              </thead>
+              <tbody id="escTableBody"></tbody>
+            </table>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div>
+        <div class="footer-brand">Cognitive Logic · Portale Operatore</div>
+        <div class="footer-sub">QEN Reconciliation — ICEA · InfoCamere · OpenStreetMap.</div>
+        <div class="footer-copy mt-8">© 2026 Roberto Bob Malini</div>
+        <div class="footer-social">
+          <a class="footer-social-link" href="https://www.linkedin.com/in/robertobobmalini/" target="_blank" rel="noopener"><span class="fsl-net">LinkedIn</span><span class="fsl-name">Roberto Malini</span></a>
+          <a class="footer-social-link" href="https://www.linkedin.com/company/cognitivelogic/" target="_blank" rel="noopener"><span class="fsl-net">LinkedIn</span><span class="fsl-name">Cognitive Logic</span></a>
+          <a class="footer-social-link" href="https://fuorimenu.substack.com" target="_blank" rel="noopener"><span class="fsl-net">Substack</span><span class="fsl-name">Fuori Menu</span></a>
+          <a class="footer-social-link" href="mailto:info@cognitivelogic.it"><span class="fsl-net">Email</span><span class="fsl-name">info@cognitivelogic.it</span></a>
+        </div>
+      </div>
+      <div class="footer-links">
+        <a href="index.html">Home</a>
+        <a href="framework.html">Framework</a>
+        <a href="demo.html">Demo</a>
+        <a href="copilot.html">Copilot</a>
+        <a href="/privacy.html">Privacy</a>
+        <a href="/cookie.html">Cookie</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const API_BASE = 'https://api.cognitivelogic.it';
+
+    // ── Toggle labels ──────────────────────────────────────────────────────────
+    document.getElementById('p_biologico').addEventListener('change', function () {
+      document.getElementById('lbl_biologico').textContent = this.checked ? 'Sì' : 'No';
+    });
+    document.getElementById('p_euai').addEventListener('change', function () {
+      document.getElementById('lbl_euai').textContent = this.checked ? 'Sì' : 'No';
+    });
+
+    // ── Example preset ────────────────────────────────────────────────────────
+    function loadExample() {
+      document.getElementById('operatorId').value    = 'IT02345678901';
+      document.getElementById('operatorName').value  = 'Trattoria Colline Verdi S.r.l.';
+      document.getElementById('p_biologico').checked = true;
+      document.getElementById('lbl_biologico').textContent = 'Sì';
+      document.getElementById('p_euai').checked      = true;
+      document.getElementById('lbl_euai').textContent = 'Sì';
+      document.getElementById('p_scarti').value      = '12.5';
+      document.getElementById('p_kwh').value         = '51000';
+      document.getElementById('p_dist').value        = '142.0';
+    }
+
+    // ── Helpers ───────────────────────────────────────────────────────────────
+    function statusClass(s) {
+      return { ALIGNED: 'chip-aligned', GREEN: 'chip-green', YELLOW: 'chip-yellow', RED: 'chip-red' }[s] || 'chip-aligned';
+    }
+
+    function fmtVal(v) {
+      if (v === null || v === undefined) return '—';
+      if (typeof v === 'boolean') return v ? 'Sì' : 'No';
+      return typeof v === 'number' ? v.toLocaleString('it-IT') : String(v);
+    }
+
+    function buildPayload() {
+      const operator_id   = document.getElementById('operatorId').value.trim();
+      const operator_name = document.getElementById('operatorName').value.trim();
+      if (!operator_id || !operator_name) {
+        alert('Inserisci P.IVA e nome operatore prima di procedere.');
+        return null;
+      }
+      return {
+        operator_id,
+        operator_name,
+        declared_data: {
+          biologico_certificato:        document.getElementById('p_biologico').checked,
+          eu_ai_compliant:              document.getElementById('p_euai').checked,
+          percentuale_scarti:           parseFloat(document.getElementById('p_scarti').value) || 0,
+          consumo_kwh_anno:             parseFloat(document.getElementById('p_kwh').value) || 0,
+          distanza_media_fornitori_km:  parseFloat(document.getElementById('p_dist').value) || 0,
+        },
+      };
+    }
+
+    // ── Render reconciliation results ─────────────────────────────────────────
+    function renderResults(data) {
+      const qen = data.qen_score;
+
+      document.getElementById('scoreBefore').textContent = qen.before;
+      document.getElementById('scoreAfter').textContent  = qen.after;
+
+      const deltaEl = document.getElementById('scoreDelta');
+      deltaEl.textContent = (qen.adjustment >= 0 ? '+' : '') + qen.adjustment;
+      deltaEl.className = 'sc-val ' + (qen.adjustment < 0 ? 'danger' : qen.adjustment === 0 ? 'green' : 'gold');
+
+      const afterEl = document.getElementById('scoreAfter');
+      afterEl.className = 'sc-val ' + (qen.after < 50 ? 'danger' : qen.after < 65 ? 'gold' : 'green');
+
+      document.getElementById('reconcId').textContent = data.reconciliation_id;
+
+      const container = document.getElementById('paramResults');
+      container.innerHTML = '';
+      (data.parameter_results || []).forEach(r => {
+        const div = document.createElement('div');
+        div.className = 'param-result';
+        div.innerHTML = `
+          <div>
+            <div class="pr-name">${r.parameter}</div>
+            <div class="pr-vals">
+              Dichiarato: <strong style="color:var(--text-2)">${fmtVal(r.declared)}</strong>
+              &nbsp;·&nbsp;
+              Verificato: <strong style="color:var(--text-2)">${fmtVal(r.verified)}</strong>
+            </div>
+            <div class="pr-msg">${r.message}</div>
+            <div class="pr-src">Fonte: ${r.source} · Affidabilità ${(r.reliability * 100).toFixed(0)}%</div>
+          </div>
+          <div style="text-align:right;padding-top:2px">
+            <span class="status-chip ${statusClass(r.status)}">${r.status}</span>
+            ${r.discrepancy_pct > 0
+              ? `<div class="pr-pct">${r.discrepancy_pct}%</div>`
+              : ''}
+          </div>
+        `;
+        container.appendChild(div);
+      });
+
+      document.getElementById('outputEmpty').style.display   = 'none';
+      document.getElementById('outputLoading').style.display = 'none';
+      document.getElementById('outputError').style.display   = 'none';
+      document.getElementById('outputResult').style.display  = 'block';
+    }
+
+    // ── Run reconciliation ────────────────────────────────────────────────────
+    async function runReconcile() {
+      const payload = buildPayload();
+      if (!payload) return;
+
+      document.getElementById('outputEmpty').style.display   = 'none';
+      document.getElementById('outputResult').style.display  = 'none';
+      document.getElementById('outputLoading').style.display = 'block';
+      document.getElementById('reconcileBtn').disabled = true;
+
+      try {
+        const res = await fetch(`${API_BASE}/api/reconcile`, {
+          method:  'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body:    JSON.stringify(payload),
+        });
+        if (!res.ok) {
+          const errBody = await res.text().catch(() => '');
+          throw new Error(`HTTP ${res.status}${errBody ? ' — ' + errBody : ''}`);
+        }
+        const data = await res.json();
+        renderResults(data);
+        loadEscalations();
+      } catch (err) {
+        document.getElementById('outputLoading').style.display = 'none';
+        document.getElementById('outputResult').style.display  = 'block';
+        document.getElementById('outputEmpty').style.display   = 'none';
+        document.getElementById('outputError').style.display   = 'block';
+        document.getElementById('outputError').textContent =
+          `Errore: ${err.message}. Verifica che l'API di riconciliazione sia raggiungibile.`;
+      } finally {
+        document.getElementById('reconcileBtn').disabled = false;
+      }
+    }
+
+    // ── Load open escalations ─────────────────────────────────────────────────
+    async function loadEscalations() {
+      try {
+        const res = await fetch(`${API_BASE}/api/escalations?status=OPEN`);
+        if (!res.ok) return;
+        const data = await res.json();
+
+        if (!data.escalations || data.escalations.length === 0) {
+          document.getElementById('escEmpty').style.display     = 'block';
+          document.getElementById('escTableWrap').style.display = 'none';
+          return;
+        }
+
+        document.getElementById('escStatOpen').textContent   = data.stats.open   || 0;
+        document.getElementById('escStatRed').textContent    = data.stats.red    || 0;
+        document.getElementById('escStatYellow').textContent = data.stats.yellow || 0;
+
+        const tbody = document.getElementById('escTableBody');
+        tbody.innerHTML = '';
+        data.escalations.forEach(e => {
+          const date = e.timestamp
+            ? new Date(e.timestamp).toLocaleDateString('it-IT', { day: '2-digit', month: '2-digit', year: 'numeric' })
+            : '—';
+          const tr = document.createElement('tr');
+          tr.innerHTML = `
+            <td style="font-family:var(--mono);font-size:0.64rem;color:var(--gold)">${e.id}</td>
+            <td>${e.operator_name || e.operator_id}</td>
+            <td style="font-family:var(--mono);font-size:0.68rem">${e.parameter}</td>
+            <td style="font-family:var(--mono);font-size:0.68rem">${fmtVal(e.declared)}</td>
+            <td style="font-family:var(--mono);font-size:0.68rem">${fmtVal(e.verified)}</td>
+            <td style="font-family:var(--mono);font-size:0.68rem">${e.discrepancy_pct}%</td>
+            <td><span class="status-chip ${statusClass(e.status)}">${e.status}</span></td>
+            <td style="font-size:0.64rem;color:var(--muted)">${e.source}</td>
+            <td style="font-size:0.64rem;color:var(--muted)">${date}</td>
+          `;
+          tbody.appendChild(tr);
+        });
+
+        document.getElementById('escEmpty').style.display     = 'none';
+        document.getElementById('escTableWrap').style.display = 'block';
+      } catch (_) {
+        // escalation section is optional — silent fail
+      }
+    }
+
+    // Load on page init
+    loadEscalations();
+  </script>
+</body>
+</html>
