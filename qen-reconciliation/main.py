@@ -7,13 +7,16 @@ import json
 import logging
 import math
 import os
+import smtplib
 import threading
 import time
 import urllib.error
 import urllib.parse
 import urllib.request
 from dataclasses import dataclass
-from datetime import datetime
+from datetime import datetime, timezone, timedelta
+from email.mime.multipart import MIMEMultipart
+from email.mime.text import MIMEText
 from pathlib import Path
 from typing import Any, Optional
 
@@ -46,6 +49,21 @@ SUPERVISOR_KEY = os.getenv("SUPERVISOR_KEY")
 if not SUPERVISOR_KEY:
     raise RuntimeError("SUPERVISOR_KEY environment variable is required")
 
+# ── SMTP / email config ───────────────────────────────────────────────────────
+SMTP_HOST = os.getenv("SMTP_HOST", "")
+SMTP_PORT = int(os.getenv("SMTP_PORT", "465"))
+SMTP_USER = os.getenv("SMTP_USER", "")
+SMTP_PASS = os.getenv("SMTP_PASS", "")
+ALERT_EMAIL_FROM = os.getenv("ALERT_EMAIL_FROM", SMTP_USER)
+ALERT_EMAIL_TO = os.getenv("ALERT_EMAIL_TO", "")
+
+_EMAIL_ENABLED = bool(SMTP_HOST and SMTP_USER and SMTP_PASS and ALERT_EMAIL_TO)
+if not _EMAIL_ENABLED:
+    logger.warning("SMTP not fully configured — email alerts disabled (set SMTP_HOST, SMTP_USER, SMTP_PASS, ALERT_EMAIL_TO)")
+
+# ── SLA config ────────────────────────────────────────────────────────────────
+SLA_HOURS: dict[str, int] = {"RED": 24, "YELLOW": 72}
+
 if not ICEA_API_KEY:
     logger.warning("ICEA_API_KEY not set — mock fallback active for biologico_certificato")
 if not INFOCAMERE_API_KEY:
@@ -57,6 +75,98 @@ _NOMINATIM_LOCK = threading.Lock()
 _NOMINATIM_LAST: float = 0.0
 
 _INFOCAMERE_DEFAULTS: dict = {"percentuale_scarti": 8.5, "consumo_kwh_anno": 45000.0}
+
+
+# ── Email notifications ───────────────────────────────────────────────────────
+
+def _build_red_alert_email(esc: dict) -> MIMEMultipart:
+    msg = MIMEMultipart("alternative")
+    msg["Subject"] = f"[CNA ALERT] Escalation RED — {esc['operator_name']} / {esc['parameter']}"
+    msg["From"] = ALERT_EMAIL_FROM
+    msg["To"] = ALERT_EMAIL_TO
+
+    deadline = esc.get("sla_deadline", "N/A")
+    plain = (
+        f"ESCALATION RED APERTA\n\n"
+        f"ID:           {esc['id']}\n"
+        f"Operatore:    {esc['operator_name']} ({esc['operator_id']})\n"
+        f"Parametro:    {esc['parameter']}\n"
+        f"Dichiarato:   {esc['declared']}\n"
+        f"Verificato:   {esc['verified']}\n"
+        f"Scostamento:  {esc['discrepancy_pct']}%\n"
+        f"Fonte:        {esc['source']}\n"
+        f"Timestamp:    {esc['timestamp']}\n"
+        f"SLA Deadline: {deadline} (entro 24h)\n\n"
+        f"Accedi alla dashboard supervisore per risolvere questa escalation.\n"
+        f"https://cognitivelogic.it/escalation.html\n"
+    )
+    html = f"""<!DOCTYPE html>
+<html lang="it"><head><meta charset="UTF-8"></head>
+<body style="font-family:monospace;background:#05080f;color:#ccd4ef;padding:2rem;">
+  <div style="max-width:560px;margin:0 auto;border:1px solid #181d30;padding:2rem;">
+    <p style="font-size:0.65rem;letter-spacing:0.3em;text-transform:uppercase;color:#c8a84b;margin-bottom:1rem;">
+      CNA Bolkestein 2027 · QEN Reconciliation
+    </p>
+    <h1 style="color:#ff5f57;font-size:1.4rem;margin-bottom:1.5rem;">
+      &#x1F6D1; Escalation RED Aperta
+    </h1>
+    <table style="width:100%;border-collapse:collapse;font-size:0.85rem;">
+      <tr><td style="color:#8892b5;padding:0.35rem 0;width:140px;">ID</td>
+          <td style="color:#ccd4ef;">{esc['id']}</td></tr>
+      <tr><td style="color:#8892b5;padding:0.35rem 0;">Operatore</td>
+          <td style="color:#ccd4ef;font-weight:bold;">{esc['operator_name']}</td></tr>
+      <tr><td style="color:#8892b5;padding:0.35rem 0;">Parametro</td>
+          <td style="color:#ccd4ef;">{esc['parameter']}</td></tr>
+      <tr><td style="color:#8892b5;padding:0.35rem 0;">Dichiarato</td>
+          <td style="color:#ccd4ef;">{esc['declared']}</td></tr>
+      <tr><td style="color:#8892b5;padding:0.35rem 0;">Verificato</td>
+          <td style="color:#ccd4ef;">{esc['verified']}</td></tr>
+      <tr><td style="color:#8892b5;padding:0.35rem 0;">Scostamento</td>
+          <td style="color:#ff5f57;font-weight:bold;">{esc['discrepancy_pct']}%</td></tr>
+      <tr><td style="color:#8892b5;padding:0.35rem 0;">Fonte</td>
+          <td style="color:#ccd4ef;">{esc['source']}</td></tr>
+      <tr><td style="color:#8892b5;padding:0.35rem 0;">SLA Deadline</td>
+          <td style="color:#ffd166;font-weight:bold;">{deadline}</td></tr>
+    </table>
+    <div style="margin-top:1.5rem;padding:1rem;background:#0a0d1a;border-left:3px solid #ff5f57;">
+      <p style="font-size:0.8rem;color:#8892b5;margin-bottom:0.5rem;">
+        Questa escalation deve essere risolta entro 24 ore dalla creazione.
+      </p>
+      <a href="https://cognitivelogic.it/escalation.html"
+         style="color:#3dffa0;font-size:0.85rem;">
+        → Apri Dashboard Supervisore
+      </a>
+    </div>
+  </div>
+</body></html>"""
+
+    msg.attach(MIMEText(plain, "plain"))
+    msg.attach(MIMEText(html, "html"))
+    return msg
+
+
+def _send_red_alert_email(esc: dict) -> None:
+    if not _EMAIL_ENABLED:
+        return
+
+    def _send():
+        try:
+            msg = _build_red_alert_email(esc)
+            if SMTP_PORT == 465:
+                with smtplib.SMTP_SSL(SMTP_HOST, SMTP_PORT, timeout=15) as srv:
+                    srv.login(SMTP_USER, SMTP_PASS)
+                    srv.sendmail(ALERT_EMAIL_FROM, ALERT_EMAIL_TO.split(","), msg.as_string())
+            else:
+                with smtplib.SMTP(SMTP_HOST, SMTP_PORT, timeout=15) as srv:
+                    srv.ehlo()
+                    srv.starttls()
+                    srv.login(SMTP_USER, SMTP_PASS)
+                    srv.sendmail(ALERT_EMAIL_FROM, ALERT_EMAIL_TO.split(","), msg.as_string())
+            logger.info("RED alert email sent for %s (%s)", esc["id"], esc["operator_name"])
+        except Exception as exc:
+            logger.error("Failed to send RED alert email for %s: %s", esc["id"], exc)
+
+    threading.Thread(target=_send, daemon=True).start()
 
 
 # ── HTTP helpers ──────────────────────────────────────────────────────────────
@@ -398,11 +508,15 @@ def _save_escalations_from_reconcile(
     results: list,
 ) -> None:
     store = _load_escalations()
+    new_red: list[dict] = []
+
     for r in results:
         if r["status"] not in ("RED", "YELLOW"):
             continue
         esc_id = _make_escalation_id(operator_id, r["parameter"])
-        store[esc_id] = {
+        now = datetime.now(timezone.utc)
+        sla_h = SLA_HOURS[r["status"]]
+        esc = {
             "id": esc_id,
             "reconciliation_id": reconciliation_id,
             "operator_id": operator_id,
@@ -417,9 +531,24 @@ def _save_escalations_from_reconcile(
             "resolved_at": None,
             "resolved_by": None,
             "resolution_notes": None,
-            "timestamp": datetime.utcnow().isoformat() + "Z",
+            "timestamp": now.isoformat(),
+            "sla_hours": sla_h,
+            "sla_deadline": (now + timedelta(hours=sla_h)).isoformat(),
+            "email_sent": False,
         }
+        store[esc_id] = esc
+        if r["status"] == "RED":
+            new_red.append(esc)
+
     _save_escalations(store)
+
+    # Fire emails after saving so IDs are already persisted
+    for esc in new_red:
+        _send_red_alert_email(esc)
+        # Mark email_sent without re-reading the full store
+        store[esc["id"]]["email_sent"] = True
+    if new_red:
+        _save_escalations(store)
 
 
 # ── Pydantic models ───────────────────────────────────────────────────────────
@@ -456,6 +585,11 @@ def health():
             "openstreetmap": {"configured": True, "fallback": "115.0_km"},
             "nando": {"configured": True, "fallback": "mock_true"},
         },
+        "notifications": {
+            "email_alerts": _EMAIL_ENABLED,
+            "smtp_host": SMTP_HOST or None,
+        },
+        "sla": {"RED_hours": SLA_HOURS["RED"], "YELLOW_hours": SLA_HOURS["YELLOW"]},
         "timestamp": datetime.utcnow().isoformat() + "Z",
     }
 
@@ -515,10 +649,31 @@ def reconcile(req: ReconcileRequest):
     }
 
 
+def _enrich_sla(esc: dict) -> dict:
+    """Add computed sla_breached / sla_hours_elapsed fields without mutating the store."""
+    e = dict(esc)
+    if e.get("escalation_status") == "RESOLVED" or not e.get("sla_deadline"):
+        e["sla_breached"] = False
+        e["sla_hours_elapsed"] = None
+        return e
+    try:
+        deadline = datetime.fromisoformat(e["sla_deadline"])
+        now = datetime.now(timezone.utc)
+        if deadline.tzinfo is None:
+            deadline = deadline.replace(tzinfo=timezone.utc)
+        elapsed_h = round((now - datetime.fromisoformat(e["timestamp"].replace("Z", "+00:00"))).total_seconds() / 3600, 1)
+        e["sla_breached"] = now > deadline
+        e["sla_hours_elapsed"] = elapsed_h
+    except Exception:
+        e["sla_breached"] = False
+        e["sla_hours_elapsed"] = None
+    return e
+
+
 @app.get("/api/escalations")
 def list_escalations(status: Optional[str] = None):
     store = _load_escalations()
-    items = list(store.values())
+    items = [_enrich_sla(e) for e in store.values()]
     if status:
         items = [e for e in items if e.get("escalation_status") == status.upper()]
     items.sort(key=lambda e: e.get("timestamp", ""), reverse=True)
@@ -526,6 +681,7 @@ def list_escalations(status: Optional[str] = None):
     resolved_count = len(store) - open_count
     red_count = sum(1 for e in items if e.get("status") == "RED")
     yellow_count = sum(1 for e in items if e.get("status") == "YELLOW")
+    sla_breach_count = sum(1 for e in items if e.get("sla_breached"))
     return {
         "total": len(items),
         "stats": {
@@ -533,6 +689,7 @@ def list_escalations(status: Optional[str] = None):
             "resolved": resolved_count,
             "red": red_count,
             "yellow": yellow_count,
+            "sla_breached": sla_breach_count,
         },
         "escalations": items,
     }
@@ -552,13 +709,25 @@ def resolve_escalation(
     esc = store[esc_id]
     if esc["escalation_status"] == "RESOLVED":
         raise HTTPException(status_code=409, detail="Escalation già risolta")
+    resolved_at = datetime.now(timezone.utc).isoformat()
     esc["escalation_status"] = "RESOLVED"
-    esc["resolved_at"] = datetime.utcnow().isoformat() + "Z"
+    esc["resolved_at"] = resolved_at
     esc["resolved_by"] = req.resolved_by
     esc["resolution_notes"] = req.resolution_notes
+    if esc.get("timestamp") and esc.get("sla_deadline"):
+        try:
+            created = datetime.fromisoformat(esc["timestamp"].replace("Z", "+00:00"))
+            deadline = datetime.fromisoformat(esc["sla_deadline"])
+            if deadline.tzinfo is None:
+                deadline = deadline.replace(tzinfo=timezone.utc)
+            now = datetime.now(timezone.utc)
+            esc["resolution_time_hours"] = round((now - created).total_seconds() / 3600, 1)
+            esc["resolved_within_sla"] = now <= deadline
+        except Exception:
+            pass
     store[esc_id] = esc
     _save_escalations(store)
-    return {"status": "resolved", "escalation": esc}
+    return {"status": "resolved", "escalation": _enrich_sla(esc)}
 
 
 if __name__ == "__main__":
