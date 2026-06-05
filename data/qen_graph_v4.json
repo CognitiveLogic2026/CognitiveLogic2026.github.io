@@ -1,17 +1,16 @@
 {
   "meta": {
     "name": "QEN - Qualitative Ethical Network",
-    "version": "5.0",
+    "version": "6.0",
     "author": "Roberto Bob Malini | Cognitive Logic",
     "created": "2026-04-25",
-    "updated": "2026-05-29",
-    "description": "Knowledge Graph — 67 nodi | 105 relazioni | Cognitive Logic Observatory",
+    "updated": "2026-06-05",
+    "description": "Knowledge Graph — 97 nodi | 182 relazioni | Cognitive Logic Observatory",
     "formula": "QEN Score = Vs*0.40 + Va*0.35 + Vt*0.25",
-    "nodi": 67,
-    "relazioni": 105
+    "nodi": 97,
+    "relazioni": 182
   },
   "nodes": {
-
     "COGNITIVE_LOGIC": {
       "id": "COGNITIVE_LOGIC",
       "type": "Progetto",
@@ -38,14 +37,34 @@
         "notaio": "IN CORSO maggio 2026"
       },
       "roadmap": {
-        "Q2_2026": ["P.IVA + NASpI", "QEN Badge freemium", "10 strutture pilota"],
-        "Q3_2026": ["ETL open.er.it", "Accordo CNA", "5 clienti Pro"],
-        "Q4_2026": ["White label consorzio", "Dashboard B2G", "Bologna100Botteghe"],
-        "Q1_2027": ["ETL TelemacoPay", "Enterprise CCIAA", "2000+ nodi"]
+        "Q2_2026": [
+          "P.IVA + NASpI",
+          "QEN Badge freemium",
+          "10 strutture pilota"
+        ],
+        "Q3_2026": [
+          "ETL open.er.it",
+          "Accordo CNA",
+          "5 clienti Pro"
+        ],
+        "Q4_2026": [
+          "White label consorzio",
+          "Dashboard B2G",
+          "Bologna100Botteghe"
+        ],
+        "Q1_2027": [
+          "ETL TelemacoPay",
+          "Enterprise CCIAA",
+          "2000+ nodi"
+        ]
       },
-      "qen_score": { "vs": 80, "va": 70, "vt": 90, "totale": 79.5 }
+      "qen_score": {
+        "vs": 80,
+        "va": 70,
+        "vt": 90,
+        "totale": 79.5
+      }
     },
-
     "QEN_COMPLIANCE_ENGINE": {
       "id": "QEN_COMPLIANCE_ENGINE",
       "type": "Framework",
@@ -53,64 +72,104 @@
       "versione": "Diamante 26.0",
       "formula": "Vs*0.40 + Va*0.35 + Vt*0.25",
       "stato": "LIVE",
-      "qen_score": { "vs": 90, "va": 85, "vt": 95, "totale": 89.75 }
+      "qen_score": {
+        "vs": 90,
+        "va": 85,
+        "vt": 95,
+        "totale": 89.75
+      }
     },
-
     "COLT_IN_FRAGRANZA": {
       "id": "COLT_IN_FRAGRANZA",
       "type": "Algoritmo",
       "label": "Colt in Fragranza",
       "descrizione": "Algoritmo di scoring etico per la ristorazione indipendente italiana.",
-      "input": ["Vs", "Vt"],
+      "input": [
+        "Vs",
+        "Vt"
+      ],
       "settore": "Ristorazione",
       "stato": "ATTIVO",
-      "qen_score": { "vs": 85, "va": 80, "vt": 85, "totale": 83.25 }
+      "qen_score": {
+        "vs": 85,
+        "va": 80,
+        "vt": 85,
+        "totale": 83.25
+      }
     },
-
     "TRAD_RAD": {
       "id": "TRAD_RAD",
       "type": "Algoritmo",
       "label": "TradRad — Tradizione Radicata",
       "descrizione": "Misura la profondità storica e la continuità delle pratiche artigianali rispetto agli standard documentati di un territorio.",
-      "input": ["Vs", "Va"],
+      "input": [
+        "Vs",
+        "Va"
+      ],
       "settore": "Artigianato",
       "stato": "ATTIVO",
-      "qen_score": { "vs": 88, "va": 82, "vt": 80, "totale": 84.1 }
+      "qen_score": {
+        "vs": 88,
+        "va": 82,
+        "vt": 80,
+        "totale": 84.1
+      }
     },
-
     "ECO_LOCAL": {
       "id": "ECO_LOCAL",
       "type": "Algoritmo",
       "label": "EcoLocal — Ecosistema Locale",
       "descrizione": "Quantifica l'integrazione nella rete territoriale: filiera corta, relazioni con produttori, impatto sulla comunità locale.",
-      "input": ["Va", "Vt"],
+      "input": [
+        "Va",
+        "Vt"
+      ],
       "settore": "Territorio",
       "stato": "ATTIVO",
-      "qen_score": { "vs": 78, "va": 88, "vt": 92, "totale": 85.1 }
+      "qen_score": {
+        "vs": 78,
+        "va": 88,
+        "vt": 92,
+        "totale": 85.1
+      }
     },
-
     "BOLOGNA_100_BOTTEGHE": {
       "id": "BOLOGNA_100_BOTTEGHE",
       "type": "Algoritmo",
       "label": "Bologna 100 Botteghe",
       "descrizione": "Mappatura e scoring QEN di 100 botteghe artigiane bolognesi.",
-      "input": ["Vs", "Va", "Vt"],
+      "input": [
+        "Vs",
+        "Va",
+        "Vt"
+      ],
       "settore": "Artigianato urbano",
       "stato": "Q4_2026",
-      "qen_score": { "vs": 80, "va": 65, "vt": 95, "totale": 79.75 }
+      "qen_score": {
+        "vs": 80,
+        "va": 65,
+        "vt": 95,
+        "totale": 79.75
+      }
     },
-
     "VEGANOO": {
       "id": "VEGANOO",
       "type": "Algoritmo",
       "label": "Veganoo",
       "descrizione": "Algoritmo di verifica e scoring per offerta plant-based nella ristorazione.",
-      "input": ["Va", "Vt"],
+      "input": [
+        "Va",
+        "Vt"
+      ],
       "settore": "Ristorazione plant-based",
       "stato": "ATTIVO",
-      "qen_score": { "vs": 75, "va": 90, "vt": 70, "totale": 79.0 }
+      "qen_score": {
+        "vs": 75,
+        "va": 90,
+        "vt": 70,
+        "totale": 79.0
+      }
     },
-
     "CNA_BOLOGNA": {
       "id": "CNA_BOLOGNA",
       "type": "Territorio",
@@ -118,50 +177,86 @@
       "imprese_associate": 16000,
       "sede": "Viale Aldo Moro 22, 40127 Bologna",
       "stato": "PARTNERSHIP_PROPOSTA",
-      "qen_score": { "vs": 84, "va": 54, "vt": 76, "totale": 71.5 }
+      "qen_score": {
+        "vs": 84,
+        "va": 54,
+        "vt": 76,
+        "totale": 71.5
+      }
     },
-
     "HOTELLERIE_RIVIERA": {
       "id": "HOTELLERIE_RIVIERA",
       "type": "Territorio",
       "label": "Hotellerie Riviera Adriatica Romagnola",
       "strutture_mappate": 507,
-      "province": ["Rimini", "Forli-Cesena", "Ravenna"],
+      "province": [
+        "Rimini",
+        "Forli-Cesena",
+        "Ravenna"
+      ],
       "stato": "MAPPATURA_IN_CORSO",
-      "qen_score": { "vs": 65, "va": 50, "vt": 70, "totale": 60.75 }
+      "qen_score": {
+        "vs": 65,
+        "va": 50,
+        "vt": 70,
+        "totale": 60.75
+      }
     },
-
     "ACADEMIA_BOLOGNA": {
       "id": "ACADEMIA_BOLOGNA",
       "type": "Territorio",
       "label": "Academia — Università e Ricerca Bologna",
       "ateneo": "Alma Mater Studiorum — Università di Bologna",
-      "dipartimenti_target": ["DISI", "DEI", "Scienze Giuridiche"],
+      "dipartimenti_target": [
+        "DISI",
+        "DEI",
+        "Scienze Giuridiche"
+      ],
       "stato": "PROPOSTA_ISTITUZIONALE",
-      "qen_score": { "vs": 92, "va": 70, "vt": 85, "totale": 83.3 }
+      "qen_score": {
+        "vs": 92,
+        "va": 70,
+        "vt": 85,
+        "totale": 83.3
+      }
     },
-
     "RIVIERA_ADRIATICA_BALNEARI": {
       "id": "RIVIERA_ADRIATICA_BALNEARI",
       "type": "Territorio",
       "label": "Riviera Adriatica — Settore Balneare",
       "stabilimenti": 1850,
-      "province": ["Rimini", "Forli-Cesena", "Ravenna", "Ferrara"],
+      "province": [
+        "Rimini",
+        "Forli-Cesena",
+        "Ravenna",
+        "Ferrara"
+      ],
       "scadenza_bolkestein": "2027-12-31",
       "stato": "MAPPATURA_URGENTE",
-      "qen_score": { "vs": 70, "va": 55, "vt": 78, "totale": 67.25 }
+      "qen_score": {
+        "vs": 70,
+        "va": 55,
+        "vt": 78,
+        "totale": 67.25
+      }
     },
-
     "FUORIMENU": {
       "id": "FUORIMENU",
       "type": "Osservatorio",
       "label": "Fuorimenu — Osservatorio Editoriale",
-      "canale": { "piattaforma": "Substack", "url": "fuorimenu.substack.com" },
+      "canale": {
+        "piattaforma": "Substack",
+        "url": "fuorimenu.substack.com"
+      },
       "autore": "Roberto Bob Malini",
       "stato": "ATTIVO",
-      "qen_score": { "vs": 90, "va": 75, "vt": 85, "totale": 83.75 }
+      "qen_score": {
+        "vs": 90,
+        "va": 75,
+        "vt": 85,
+        "totale": 83.75
+      }
     },
-
     "ATLANTIC_HOTELS": {
       "id": "ATLANTIC_HOTELS",
       "type": "GruppoAlberghiero",
@@ -169,13 +264,20 @@
       "strutture": 6,
       "area": "Riviera Romagnola",
       "compliance": {
-        "cin": true, "cir": true, "alloggiati_web": true,
-        "eu_ai_act_III": "DA_VERIFICARE", "gdpr_art22_35": "DA_VERIFICARE"
+        "cin": true,
+        "cir": true,
+        "alloggiati_web": true,
+        "eu_ai_act_III": "DA_VERIFICARE",
+        "gdpr_art22_35": "DA_VERIFICARE"
       },
       "stato": "MAPPATO",
-      "qen_score": { "vs": 70, "va": 55, "vt": 72, "totale": 64.45 }
+      "qen_score": {
+        "vs": 70,
+        "va": 55,
+        "vt": 72,
+        "totale": 64.45
+      }
     },
-
     "MAXIMILIANS": {
       "id": "MAXIMILIANS",
       "type": "GruppoAlberghiero",
@@ -183,13 +285,20 @@
       "strutture": 5,
       "area": "Riviera Romagnola",
       "compliance": {
-        "cin": false, "cir": false, "alloggiati_web": true,
-        "eu_ai_act_III": "DA_VERIFICARE", "gdpr_art22_35": "DA_VERIFICARE"
+        "cin": false,
+        "cir": false,
+        "alloggiati_web": true,
+        "eu_ai_act_III": "DA_VERIFICARE",
+        "gdpr_art22_35": "DA_VERIFICARE"
       },
       "stato": "PRIORITA_1",
-      "qen_score": { "vs": 68, "va": 52, "vt": 70, "totale": 62.2 }
+      "qen_score": {
+        "vs": 68,
+        "va": 52,
+        "vt": 70,
+        "totale": 62.2
+      }
     },
-
     "DV_HOTELS": {
       "id": "DV_HOTELS",
       "type": "GruppoAlberghiero",
@@ -197,13 +306,20 @@
       "strutture": 6,
       "area": "Riviera Romagnola",
       "compliance": {
-        "cin": false, "cir": false, "alloggiati_web": true,
-        "eu_ai_act_III": "DA_VERIFICARE", "gdpr_art22_35": "DA_VERIFICARE"
+        "cin": false,
+        "cir": false,
+        "alloggiati_web": true,
+        "eu_ai_act_III": "DA_VERIFICARE",
+        "gdpr_art22_35": "DA_VERIFICARE"
       },
       "stato": "PRIORITA_1",
-      "qen_score": { "vs": 67, "va": 50, "vt": 71, "totale": 61.85 }
+      "qen_score": {
+        "vs": 67,
+        "va": 50,
+        "vt": 71,
+        "totale": 61.85
+      }
     },
-
     "DEVIRA": {
       "id": "DEVIRA",
       "type": "GruppoAlberghiero",
@@ -211,13 +327,20 @@
       "strutture": 6,
       "area": "Riviera Romagnola",
       "compliance": {
-        "cin": false, "cir": false,
-        "alloggiati_web": "DA_VERIFICARE", "eu_ai_act_III": "DA_VERIFICARE", "gdpr_art22_35": "DA_VERIFICARE"
+        "cin": false,
+        "cir": false,
+        "alloggiati_web": "DA_VERIFICARE",
+        "eu_ai_act_III": "DA_VERIFICARE",
+        "gdpr_art22_35": "DA_VERIFICARE"
       },
       "stato": "DA_MAPPARE",
-      "qen_score": { "vs": 65, "va": 50, "vt": 68, "totale": 60.3 }
+      "qen_score": {
+        "vs": 65,
+        "va": 50,
+        "vt": 68,
+        "totale": 60.3
+      }
     },
-
     "COSTA_HOTELS": {
       "id": "COSTA_HOTELS",
       "type": "GruppoAlberghiero",
@@ -225,13 +348,20 @@
       "strutture": 30,
       "area": "Riviera Romagnola",
       "compliance": {
-        "cin": false, "cir": false,
-        "alloggiati_web": "DA_VERIFICARE", "eu_ai_act_III": "DA_VERIFICARE", "gdpr_art22_35": "DA_VERIFICARE"
+        "cin": false,
+        "cir": false,
+        "alloggiati_web": "DA_VERIFICARE",
+        "eu_ai_act_III": "DA_VERIFICARE",
+        "gdpr_art22_35": "DA_VERIFICARE"
       },
       "stato": "DA_MAPPARE",
-      "qen_score": { "vs": 64, "va": 48, "vt": 70, "totale": 59.8 }
+      "qen_score": {
+        "vs": 64,
+        "va": 48,
+        "vt": 70,
+        "totale": 59.8
+      }
     },
-
     "REG_EU_AI_ACT_I": {
       "id": "REG_EU_AI_ACT_I",
       "type": "Regolamento",
@@ -239,11 +369,15 @@
       "fonte": "Regolamento UE 2024/1689",
       "vigenza": "2025-08-02",
       "scope": "Pratiche AI vietate",
-      "esempi": ["Manipolazione subliminale", "Sfruttamento vulnerabilità", "Social scoring governativo", "Identificazione biometrica real-time spazi pubblici"],
+      "esempi": [
+        "Manipolazione subliminale",
+        "Sfruttamento vulnerabilità",
+        "Social scoring governativo",
+        "Identificazione biometrica real-time spazi pubblici"
+      ],
       "conseguenze": "Divieto assoluto — sanzione fino al 7% fatturato globale",
       "qen_impatto": "BLOCCO — nodo azienda non riceve QEN Score se rientra in Allegato I"
     },
-
     "REG_EU_AI_ACT_II": {
       "id": "REG_EU_AI_ACT_II",
       "type": "Regolamento",
@@ -251,11 +385,20 @@
       "fonte": "Regolamento UE 2024/1689",
       "vigenza": "2025-08-02",
       "scope": "Sistemi AI ad alto rischio",
-      "esempi": ["Infrastrutture critiche", "Istruzione e formazione", "Occupazione e gestione HR", "Servizi pubblici essenziali"],
-      "obblighi": ["Registrazione EU database", "DPIA obbligatoria", "Supervisione umana", "Documentazione tecnica"],
+      "esempi": [
+        "Infrastrutture critiche",
+        "Istruzione e formazione",
+        "Occupazione e gestione HR",
+        "Servizi pubblici essenziali"
+      ],
+      "obblighi": [
+        "Registrazione EU database",
+        "DPIA obbligatoria",
+        "Supervisione umana",
+        "Documentazione tecnica"
+      ],
       "sanzione": "Fino al 3% fatturato globale"
     },
-
     "REG_EU_AI_ACT_III": {
       "id": "REG_EU_AI_ACT_III",
       "type": "Regolamento",
@@ -263,11 +406,19 @@
       "fonte": "Regolamento UE 2024/1689",
       "vigenza": "2025-08-02",
       "scope": "Sistemi AI a rischio limitato — obblighi trasparenza",
-      "esempi": ["Chatbot", "Sistemi di raccomandazione", "PMS con profilazione ospiti", "Deepfake", "AI generativa"],
-      "obblighi": ["Obbligo informativo verso utenti", "Dichiarazione AI-generated content"],
+      "esempi": [
+        "Chatbot",
+        "Sistemi di raccomandazione",
+        "PMS con profilazione ospiti",
+        "Deepfake",
+        "AI generativa"
+      ],
+      "obblighi": [
+        "Obbligo informativo verso utenti",
+        "Dichiarazione AI-generated content"
+      ],
       "nota_horeca": "PMS con profilazione ospiti rientra in Allegato III — rilevante per tutti i gruppi Riviera"
     },
-
     "REG_GDPR_ART22": {
       "id": "REG_GDPR_ART22",
       "type": "Regolamento",
@@ -275,10 +426,14 @@
       "fonte": "Regolamento UE 2016/679",
       "vigenza": "2018-05-25",
       "scope": "Diritto di non essere sottoposto a decisioni automatizzate",
-      "obblighi": ["Informare l'interessato", "Garantire intervento umano su richiesta", "Diritto di contestazione", "Spiegazione della logica decisionale"],
+      "obblighi": [
+        "Informare l'interessato",
+        "Garantire intervento umano su richiesta",
+        "Diritto di contestazione",
+        "Spiegazione della logica decisionale"
+      ],
       "rilevanza_qen": "Ogni algoritmo di scoring QEN che produce decisioni su persone fisiche è soggetto ad art.22"
     },
-
     "REG_GDPR_ART35": {
       "id": "REG_GDPR_ART35",
       "type": "Regolamento",
@@ -286,11 +441,14 @@
       "fonte": "Regolamento UE 2016/679",
       "vigenza": "2018-05-25",
       "scope": "Valutazione d'impatto sulla protezione dei dati",
-      "trigger": ["Trattamento sistematico e su larga scala", "Profilazione di persone fisiche", "Dati sensibili su larga scala"],
+      "trigger": [
+        "Trattamento sistematico e su larga scala",
+        "Profilazione di persone fisiche",
+        "Dati sensibili su larga scala"
+      ],
       "output": "DPIA report strutturato — obbligatorio prima del trattamento",
       "rilevanza_qen": "ETL CCIAA + scoring batch su 16.000 imprese richiede DPIA preventiva"
     },
-
     "REG_BOLKESTEIN_2027": {
       "id": "REG_BOLKESTEIN_2027",
       "type": "Regolamento",
@@ -298,11 +456,20 @@
       "fonte": "Direttiva 2006/123/CE + Legge Delega 2023",
       "scadenza": "2027-12-31",
       "scope": "Messa a gara delle concessioni demaniali marittime, lacuali e fluviali",
-      "categorie": ["Stabilimenti balneari", "Beach club", "Chioschi demaniali", "Ambulanti su suolo pubblico", "Dehors permanenti"],
-      "obblighi": ["Gara pubblica per rinnovo concessione", "Documentazione trasparente del valore aziendale", "Compliance EU entro scadenza"],
+      "categorie": [
+        "Stabilimenti balneari",
+        "Beach club",
+        "Chioschi demaniali",
+        "Ambulanti su suolo pubblico",
+        "Dehors permanenti"
+      ],
+      "obblighi": [
+        "Gara pubblica per rinnovo concessione",
+        "Documentazione trasparente del valore aziendale",
+        "Compliance EU entro scadenza"
+      ],
       "rilevanza_qen": "Il QEN Score è strumento di valorizzazione dell'azienda ai fini della gara Bolkestein"
     },
-
     "REG_CSRD_2026": {
       "id": "REG_CSRD_2026",
       "type": "Regolamento",
@@ -310,10 +477,14 @@
       "fonte": "Direttiva UE 2022/2464",
       "vigenza": "2026-01-01",
       "scope": "Rendicontazione di sostenibilità per imprese PMI quotate e grandi imprese",
-      "obblighi": ["Doppia materialità", "Reporting ESG standardizzato ESRS", "Assurance esterna", "Piano di transizione climatica"],
+      "obblighi": [
+        "Doppia materialità",
+        "Reporting ESG standardizzato ESRS",
+        "Assurance esterna",
+        "Piano di transizione climatica"
+      ],
       "rilevanza_qen": "QEN alimenta il reporting CSRD con KPI ambientali, sociali e governance verificabili"
     },
-
     "REG_GREEN_CLAIM_2026": {
       "id": "REG_GREEN_CLAIM_2026",
       "type": "Regolamento",
@@ -321,25 +492,42 @@
       "fonte": "Direttiva UE 2024/825 + PPWR 2026",
       "vigenza": "2026-09-01",
       "scope": "Sostanzialità e verificabilità delle affermazioni ambientali nelle comunicazioni commerciali",
-      "obblighi": ["Claim ambientali verificati da terzi", "Vietate espressioni generiche non provate (es. 'eco-friendly')", "Certificazione di sistema"],
+      "obblighi": [
+        "Claim ambientali verificati da terzi",
+        "Vietate espressioni generiche non provate (es. 'eco-friendly')",
+        "Certificazione di sistema"
+      ],
       "rilevanza_qen": "QEN Score fornisce la base computabile per certificare i green claim in modo difendibile"
     },
-
     "KPI_SOCIALE": {
       "id": "KPI_SOCIALE",
       "type": "KPI",
       "label": "KPI Dimensione Sociale (Vs)",
-      "peso_formula": 0.40,
+      "peso_formula": 0.4,
       "scala": "0–100",
       "indicatori": {
-        "inclusione": { "descrizione": "Rappresentanza genere, disabilità, nazionalità nella forza lavoro", "peso": 0.25 },
-        "contratti": { "descrizione": "Percentuale contratti a tempo indeterminato sul totale", "peso": 0.25 },
-        "formazione": { "descrizione": "Ore formazione annua pro capite", "peso": 0.20 },
-        "welfare": { "descrizione": "Presenza benefit aziendali oltre minimi contrattuali", "peso": 0.20 },
-        "accessibilita": { "descrizione": "Accessibilità prodotti/servizi per fasce deboli", "peso": 0.10 }
+        "inclusione": {
+          "descrizione": "Rappresentanza genere, disabilità, nazionalità nella forza lavoro",
+          "peso": 0.25
+        },
+        "contratti": {
+          "descrizione": "Percentuale contratti a tempo indeterminato sul totale",
+          "peso": 0.25
+        },
+        "formazione": {
+          "descrizione": "Ore formazione annua pro capite",
+          "peso": 0.2
+        },
+        "welfare": {
+          "descrizione": "Presenza benefit aziendali oltre minimi contrattuali",
+          "peso": 0.2
+        },
+        "accessibilita": {
+          "descrizione": "Accessibilità prodotti/servizi per fasce deboli",
+          "peso": 0.1
+        }
       }
     },
-
     "KPI_AMBIENTALE": {
       "id": "KPI_AMBIENTALE",
       "type": "KPI",
@@ -347,14 +535,28 @@
       "peso_formula": 0.35,
       "scala": "0–100",
       "indicatori": {
-        "cert_green": { "descrizione": "Certificazioni ambientali attive (ISO 14001, Ecolabel, EMAS)", "peso": 0.25 },
-        "consumi": { "descrizione": "Consumi energetici per unità di fatturato — trend YoY", "peso": 0.25 },
-        "km0": { "descrizione": "Percentuale approvvigionamenti entro 100km", "peso": 0.20 },
-        "rifiuti": { "descrizione": "Percentuale scarti riciclati o valorizzati", "peso": 0.20 },
-        "carbonio": { "descrizione": "Carbon footprint dichiarata e verificabile", "peso": 0.10 }
+        "cert_green": {
+          "descrizione": "Certificazioni ambientali attive (ISO 14001, Ecolabel, EMAS)",
+          "peso": 0.25
+        },
+        "consumi": {
+          "descrizione": "Consumi energetici per unità di fatturato — trend YoY",
+          "peso": 0.25
+        },
+        "km0": {
+          "descrizione": "Percentuale approvvigionamenti entro 100km",
+          "peso": 0.2
+        },
+        "rifiuti": {
+          "descrizione": "Percentuale scarti riciclati o valorizzati",
+          "peso": 0.2
+        },
+        "carbonio": {
+          "descrizione": "Carbon footprint dichiarata e verificabile",
+          "peso": 0.1
+        }
       }
     },
-
     "KPI_TERRITORIALE": {
       "id": "KPI_TERRITORIALE",
       "type": "KPI",
@@ -362,14 +564,28 @@
       "peso_formula": 0.25,
       "scala": "0–100",
       "indicatori": {
-        "radicamento": { "descrizione": "Anni di presenza nel territorio e sede locale stabile", "peso": 0.25 },
-        "filiera": { "descrizione": "Percentuale fornitori locali verificati", "peso": 0.25 },
-        "indotto": { "descrizione": "Impatto occupazionale indiretto sul territorio", "peso": 0.20 },
-        "ecosistema": { "descrizione": "Partecipazione ad associazioni, consorzi, reti territoriali", "peso": 0.20 },
-        "digitale": { "descrizione": "Livello di innovazione digitale e identità online verificabile", "peso": 0.10 }
+        "radicamento": {
+          "descrizione": "Anni di presenza nel territorio e sede locale stabile",
+          "peso": 0.25
+        },
+        "filiera": {
+          "descrizione": "Percentuale fornitori locali verificati",
+          "peso": 0.25
+        },
+        "indotto": {
+          "descrizione": "Impatto occupazionale indiretto sul territorio",
+          "peso": 0.2
+        },
+        "ecosistema": {
+          "descrizione": "Partecipazione ad associazioni, consorzi, reti territoriali",
+          "peso": 0.2
+        },
+        "digitale": {
+          "descrizione": "Livello di innovazione digitale e identità online verificabile",
+          "peso": 0.1
+        }
       }
     },
-
     "KPI_COMPLIANCE_AI": {
       "id": "KPI_COMPLIANCE_AI",
       "type": "KPI",
@@ -378,12 +594,20 @@
       "scala": "0–100",
       "dimensione": "Governance",
       "indicatori": {
-        "eu_ai_act": { "descrizione": "Allegato applicabile classificato e obblighi soddisfatti", "peso": 0.40 },
-        "gdpr_decisioni": { "descrizione": "Conformità art.22 su decisioni automatizzate", "peso": 0.35 },
-        "trasparenza": { "descrizione": "Documentazione algoritmica accessibile e verificabile", "peso": 0.25 }
+        "eu_ai_act": {
+          "descrizione": "Allegato applicabile classificato e obblighi soddisfatti",
+          "peso": 0.4
+        },
+        "gdpr_decisioni": {
+          "descrizione": "Conformità art.22 su decisioni automatizzate",
+          "peso": 0.35
+        },
+        "trasparenza": {
+          "descrizione": "Documentazione algoritmica accessibile e verificabile",
+          "peso": 0.25
+        }
       }
     },
-
     "KPI_BOLKESTEIN_COMPLIANCE": {
       "id": "KPI_BOLKESTEIN_COMPLIANCE",
       "type": "KPI",
@@ -392,12 +616,20 @@
       "scala": "0–100",
       "scadenza_target": "2027-12-31",
       "indicatori": {
-        "documentazione": { "descrizione": "Completezza dossier concessione", "peso": 0.35 },
-        "valore_aziendale": { "descrizione": "QEN Score come prova del valore storico/etico", "peso": 0.35 },
-        "conformita_normativa": { "descrizione": "Assenza violazioni pregresse", "peso": 0.30 }
+        "documentazione": {
+          "descrizione": "Completezza dossier concessione",
+          "peso": 0.35
+        },
+        "valore_aziendale": {
+          "descrizione": "QEN Score come prova del valore storico/etico",
+          "peso": 0.35
+        },
+        "conformita_normativa": {
+          "descrizione": "Assenza violazioni pregresse",
+          "peso": 0.3
+        }
       }
     },
-
     "KPI_FILIERA_CORTA": {
       "id": "KPI_FILIERA_CORTA",
       "type": "KPI",
@@ -410,7 +642,6 @@
         "rosso": "< 30% km0"
       }
     },
-
     "QEN_HORECA_AUDITOR": {
       "id": "QEN_HORECA_AUDITOR",
       "type": "Strumento",
@@ -418,40 +649,70 @@
       "versione": "1.0",
       "moduli": 8,
       "campi": 35,
-      "settori": ["Ristoranti", "Hotel", "Bar", "Catering"],
+      "settori": [
+        "Ristoranti",
+        "Hotel",
+        "Bar",
+        "Catering"
+      ],
       "formula": "Formula Maestra HoReCa v1.0",
       "stato": "LIVE",
       "url": "/qen-horeca-auditor.html",
-      "qen_score": { "vs": 82, "va": 80, "vt": 78, "totale": 80.5 }
+      "qen_score": {
+        "vs": 82,
+        "va": 80,
+        "vt": 78,
+        "totale": 80.5
+      }
     },
-
     "QEN_BALNEARE_AUDITOR": {
       "id": "QEN_BALNEARE_AUDITOR",
       "type": "Strumento",
       "label": "QEN Balneare Auditor",
       "versione": "1.0",
       "moduli": 6,
-      "settori": ["Stabilimenti balneari", "Beach club", "Chioschi", "Ambulanti", "Posteggi mercato", "Dehors"],
+      "settori": [
+        "Stabilimenti balneari",
+        "Beach club",
+        "Chioschi",
+        "Ambulanti",
+        "Posteggi mercato",
+        "Dehors"
+      ],
       "compliance_bolkestein": true,
       "stato": "LIVE",
       "url": "/qen-balneare-auditor.html",
-      "qen_score": { "vs": 78, "va": 75, "vt": 85, "totale": 79.05 }
+      "qen_score": {
+        "vs": 78,
+        "va": 75,
+        "vt": 85,
+        "totale": 79.05
+      }
     },
-
     "ECI_ASSESSMENT_TOOLKIT": {
       "id": "ECI_ASSESSMENT_TOOLKIT",
       "type": "Strumento",
       "label": "ECI Assessment Toolkit",
       "nome_esteso": "Ethical Compliance Index",
       "dimensioni": 5,
-      "target": ["PMI Agroalimentari", "Cooperative"],
-      "compliance": ["Green UE 2030", "CSRD"],
+      "target": [
+        "PMI Agroalimentari",
+        "Cooperative"
+      ],
+      "compliance": [
+        "Green UE 2030",
+        "CSRD"
+      ],
       "output": "ECI Score con radar chart SVG",
       "stato": "LIVE",
       "url": "/eci-assessment.html",
-      "qen_score": { "vs": 80, "va": 85, "vt": 75, "totale": 80.25 }
+      "qen_score": {
+        "vs": 80,
+        "va": 85,
+        "vt": 75,
+        "totale": 80.25
+      }
     },
-
     "QEN_ALERT_ENGINE": {
       "id": "QEN_ALERT_ENGINE",
       "type": "Strumento",
@@ -465,21 +726,36 @@
       "protocollo_reazione": "Automatico → notifica operatore → escalation CVO",
       "stato": "LIVE",
       "url": "/alert-engine.html",
-      "qen_score": { "vs": 85, "va": 80, "vt": 82, "totale": 82.7 }
+      "qen_score": {
+        "vs": 85,
+        "va": 80,
+        "vt": 82,
+        "totale": 82.7
+      }
     },
-
     "QEN_ONBOARDING_WIZARD": {
       "id": "QEN_ONBOARDING_WIZARD",
       "type": "Strumento",
       "label": "QEN Onboarding Wizard",
       "step": 6,
-      "fasi": ["Anagrafica", "Sostenibilità", "Filiera", "Capitale Umano", "Protocollo Fortress™", "Revisione"],
+      "fasi": [
+        "Anagrafica",
+        "Sostenibilità",
+        "Filiera",
+        "Capitale Umano",
+        "Protocollo Fortress™",
+        "Revisione"
+      ],
       "target": "Nuovi partner QEN",
       "stato": "LIVE",
       "url": "/onboarding.html",
-      "qen_score": { "vs": 75, "va": 70, "vt": 80, "totale": 74.75 }
+      "qen_score": {
+        "vs": 75,
+        "va": 70,
+        "vt": 80,
+        "totale": 74.75
+      }
     },
-
     "QEN_COPILOT_AI": {
       "id": "QEN_COPILOT_AI",
       "type": "Strumento",
@@ -489,9 +765,13 @@
       "endpoint": "api.cognitivelogic.it/copilot",
       "stato": "LIVE",
       "url": "/copilot.html",
-      "qen_score": { "vs": 88, "va": 82, "vt": 80, "totale": 84.2 }
+      "qen_score": {
+        "vs": 88,
+        "va": 82,
+        "vt": 80,
+        "totale": 84.2
+      }
     },
-
     "IDENTITY_DID": {
       "id": "IDENTITY_DID",
       "type": "Strumento",
@@ -501,20 +781,33 @@
       "funzione": "Certificazione crittografica del QEN Score — sovereign AI, verifica senza intermediari",
       "stato": "LIVE",
       "url": "/identity.html",
-      "qen_score": { "vs": 90, "va": 88, "vt": 85, "totale": 88.05 }
+      "qen_score": {
+        "vs": 90,
+        "va": 88,
+        "vt": 85,
+        "totale": 88.05
+      }
     },
-
     "QEN_PROMPT_GENERATOR": {
       "id": "QEN_PROMPT_GENERATOR",
       "type": "Strumento",
       "label": "QEN Prompt Generator",
       "descrizione": "Generatore di prompt strutturati per audit AI, utilizzabili con Claude, Gemini o GPT.",
-      "output": ["Prompt audit EU AI Act", "Prompt DPIA", "Prompt QEN Score", "Prompt Bolkestein dossier"],
+      "output": [
+        "Prompt audit EU AI Act",
+        "Prompt DPIA",
+        "Prompt QEN Score",
+        "Prompt Bolkestein dossier"
+      ],
       "stato": "LIVE",
       "url": "/qen-prompt-generator.html",
-      "qen_score": { "vs": 75, "va": 78, "vt": 70, "totale": 74.55 }
+      "qen_score": {
+        "vs": 75,
+        "va": 78,
+        "vt": 70,
+        "totale": 74.55
+      }
     },
-
     "QEN_WIDGET_BADGE": {
       "id": "QEN_WIDGET_BADGE",
       "type": "Strumento",
@@ -523,20 +816,33 @@
       "integrazione": "Embed iframe o JS snippet",
       "stato": "LIVE",
       "url": "/qen-widget.html",
-      "qen_score": { "vs": 72, "va": 75, "vt": 70, "totale": 72.5 }
+      "qen_score": {
+        "vs": 72,
+        "va": 75,
+        "vt": 70,
+        "totale": 72.5
+      }
     },
-
     "FORTRESS_PROTOCOL": {
       "id": "FORTRESS_PROTOCOL",
       "type": "Protocollo",
       "label": "Protocollo Fortress™",
       "descrizione": "Protocollo di sicurezza e integrità QEN — step 5 del wizard onboarding. Verifica l'assenza di conflitti etici nel profilo partner.",
-      "livelli": ["Bronze", "Silver", "Gold", "Diamond"],
+      "livelli": [
+        "Bronze",
+        "Silver",
+        "Gold",
+        "Diamond"
+      ],
       "livello_attuale": "Diamond 26.0",
       "stato": "ATTIVO",
-      "qen_score": { "vs": 92, "va": 88, "vt": 90, "totale": 90.3 }
+      "qen_score": {
+        "vs": 92,
+        "va": 88,
+        "vt": 90,
+        "totale": 90.3
+      }
     },
-
     "SETTORE_BALNEARE": {
       "id": "SETTORE_BALNEARE",
       "type": "Settore",
@@ -544,82 +850,151 @@
       "operatori": 12000,
       "fatturato_stimato_mld": 3.2,
       "urgenza": "CRITICA — scadenza Bolkestein 2027",
-      "regolamenti_applicabili": ["REG_BOLKESTEIN_2027", "REG_GREEN_CLAIM_2026", "REG_EU_AI_ACT_III"],
-      "qen_score": { "vs": 72, "va": 60, "vt": 80, "totale": 70.3 }
+      "regolamenti_applicabili": [
+        "REG_BOLKESTEIN_2027",
+        "REG_GREEN_CLAIM_2026",
+        "REG_EU_AI_ACT_III"
+      ],
+      "qen_score": {
+        "vs": 72,
+        "va": 60,
+        "vt": 80,
+        "totale": 70.3
+      }
     },
-
     "SETTORE_HORECA_BOLOGNA": {
       "id": "SETTORE_HORECA_BOLOGNA",
       "type": "Settore",
       "label": "HoReCa Bologna — Settore Locale",
       "operatori_stimati": 2400,
-      "caratteristiche": ["Alta concentrazione artigianale", "Tradizione culinaria DOP", "Filiera corta Emilia-Romagna"],
+      "caratteristiche": [
+        "Alta concentrazione artigianale",
+        "Tradizione culinaria DOP",
+        "Filiera corta Emilia-Romagna"
+      ],
       "stato": "MAPPATURA_ATTIVA",
-      "qen_score": { "vs": 82, "va": 72, "vt": 88, "totale": 80.6 }
+      "qen_score": {
+        "vs": 82,
+        "va": 72,
+        "vt": 88,
+        "totale": 80.6
+      }
     },
-
     "SETTORE_RISTORAZIONE": {
       "id": "SETTORE_RISTORAZIONE",
       "type": "Settore",
       "label": "Ristorazione Indipendente Italiana",
       "operatori_nazionali": 180000,
       "focus_qen": "Ristoranti non-catena, botteghe, trattorie tradizionali",
-      "algoritmi_applicabili": ["COLT_IN_FRAGRANZA", "VEGANOO", "ECO_LOCAL"],
-      "qen_score": { "vs": 78, "va": 70, "vt": 82, "totale": 76.1 }
+      "algoritmi_applicabili": [
+        "COLT_IN_FRAGRANZA",
+        "VEGANOO",
+        "ECO_LOCAL"
+      ],
+      "qen_score": {
+        "vs": 78,
+        "va": 70,
+        "vt": 82,
+        "totale": 76.1
+      }
     },
-
     "SETTORE_ARTIGIANATO_BOLOGNA": {
       "id": "SETTORE_ARTIGIANATO_BOLOGNA",
       "type": "Settore",
       "label": "Artigianato Bologna — Botteghe Storiche",
       "botteghe_censite": 3200,
       "obiettivo": "Bologna 100 Botteghe — mappatura QEN completa entro Q4 2026",
-      "algoritmi_applicabili": ["TRAD_RAD", "ECO_LOCAL", "BOLOGNA_100_BOTTEGHE"],
-      "qen_score": { "vs": 88, "va": 76, "vt": 92, "totale": 85.4 }
+      "algoritmi_applicabili": [
+        "TRAD_RAD",
+        "ECO_LOCAL",
+        "BOLOGNA_100_BOTTEGHE"
+      ],
+      "qen_score": {
+        "vs": 88,
+        "va": 76,
+        "vt": 92,
+        "totale": 85.4
+      }
     },
-
     "SETTORE_COMMERCIO_AMBULANTE": {
       "id": "SETTORE_COMMERCIO_AMBULANTE",
       "type": "Settore",
       "label": "Commercio Ambulante e Posteggi",
       "operatori_stimati": 160000,
       "urgenza": "ALTA — Bolkestein si applica anche ai posteggi mercato",
-      "regolamenti_applicabili": ["REG_BOLKESTEIN_2027"],
-      "qen_score": { "vs": 68, "va": 58, "vt": 76, "totale": 67.2 }
+      "regolamenti_applicabili": [
+        "REG_BOLKESTEIN_2027"
+      ],
+      "qen_score": {
+        "vs": 68,
+        "va": 58,
+        "vt": 76,
+        "totale": 67.2
+      }
     },
-
     "DUAL_BRAIN_AI": {
       "id": "DUAL_BRAIN_AI",
       "type": "Tecnologia",
       "label": "Dual-Brain AI — Claude + Gemini",
       "architettura": "Orchestrazione parallela Claude (Anthropic) e Gemini (Google)",
-      "endpoint": ["/full-analysis", "/gemini/qen-score", "/dati-incrociati"],
+      "endpoint": [
+        "/full-analysis",
+        "/gemini/qen-score",
+        "/dati-incrociati"
+      ],
       "stato": "LIVE",
-      "qen_score": { "vs": 85, "va": 90, "vt": 80, "totale": 85.25 }
+      "qen_score": {
+        "vs": 85,
+        "va": 90,
+        "vt": 80,
+        "totale": 85.25
+      }
     },
-
     "KNOWLEDGE_GRAPH_SEMANTICO": {
       "id": "KNOWLEDGE_GRAPH_SEMANTICO",
       "type": "Tecnologia",
       "label": "Knowledge Graph Semantico QEN",
       "nodi": 67,
       "relazioni": 110,
-      "tipologie_relazione": ["SCORING_APPLICATO", "APPLICA_REGOLAMENTO", "VINCOLA", "ALIMENTA", "CONTIENE", "APPARTIENE", "PRODUCE", "OSSERVA"],
+      "tipologie_relazione": [
+        "SCORING_APPLICATO",
+        "APPLICA_REGOLAMENTO",
+        "VINCOLA",
+        "ALIMENTA",
+        "CONTIENE",
+        "APPARTIENE",
+        "PRODUCE",
+        "OSSERVA"
+      ],
       "stato": "LIVE",
-      "qen_score": { "vs": 88, "va": 85, "vt": 90, "totale": 87.75 }
+      "qen_score": {
+        "vs": 88,
+        "va": 85,
+        "vt": 90,
+        "totale": 87.75
+      }
     },
-
     "API_COGNITIVELOGIC": {
       "id": "API_COGNITIVELOGIC",
       "type": "Tecnologia",
       "label": "API Cognitive Logic",
       "base_url": "api.cognitivelogic.it",
-      "endpoint_principali": ["/copilot", "/validate", "/pilots", "/qen-score", "/full-analysis"],
+      "endpoint_principali": [
+        "/copilot",
+        "/validate",
+        "/pilots",
+        "/qen-score",
+        "/full-analysis"
+      ],
       "stack": "Flask + Nginx + Let's Encrypt — Hetzner CAX21",
       "stato": "LIVE",
-      "qen_score": { "vs": 82, "va": 80, "vt": 85, "totale": 82.25 }
+      "qen_score": {
+        "vs": 82,
+        "va": 80,
+        "vt": 85,
+        "totale": 82.25
+      }
     },
-
     "BOTTEGA_CONTADINA": {
       "id": "BOTTEGA_CONTADINA",
       "type": "EntitaPilota",
@@ -627,9 +1002,13 @@
       "settore": "Ristorazione / Prodotti locali",
       "localita": "Bologna",
       "stato": "PILOTA_ATTIVO",
-      "qen_score": { "vs": 91, "va": 89, "vt": 93, "totale": 91.0 }
+      "qen_score": {
+        "vs": 91,
+        "va": 89,
+        "vt": 93,
+        "totale": 91.0
+      }
     },
-
     "LE_SFOGLINE": {
       "id": "LE_SFOGLINE",
       "type": "EntitaPilota",
@@ -637,9 +1016,13 @@
       "settore": "Pasta fresca artigianale",
       "localita": "Bologna — mercati rionali",
       "stato": "PILOTA_ATTIVO",
-      "qen_score": { "vs": 93, "va": 88, "vt": 86, "totale": 89.05 }
+      "qen_score": {
+        "vs": 93,
+        "va": 88,
+        "vt": 86,
+        "totale": 89.05
+      }
     },
-
     "AHIME": {
       "id": "AHIME",
       "type": "EntitaPilota",
@@ -647,9 +1030,13 @@
       "settore": "Ristorazione plant-based",
       "localita": "Bologna",
       "stato": "PILOTA_ATTIVO",
-      "qen_score": { "vs": 80, "va": 95, "vt": 82, "totale": 85.25 }
+      "qen_score": {
+        "vs": 80,
+        "va": 95,
+        "vt": 82,
+        "totale": 85.25
+      }
     },
-
     "GRANI_ANTICHI": {
       "id": "GRANI_ANTICHI",
       "type": "EntitaPilota",
@@ -657,9 +1044,13 @@
       "settore": "Panificazione — grani storici emiliani",
       "localita": "Provincia Bologna",
       "stato": "PILOTA_ATTIVO",
-      "qen_score": { "vs": 92, "va": 85, "vt": 84, "totale": 87.35 }
+      "qen_score": {
+        "vs": 92,
+        "va": 85,
+        "vt": 84,
+        "totale": 87.35
+      }
     },
-
     "BERTOZZI": {
       "id": "BERTOZZI",
       "type": "EntitaPilota",
@@ -667,9 +1058,13 @@
       "settore": "Parmigiano Reggiano DOP — artigianale",
       "localita": "Emilia-Romagna",
       "stato": "PILOTA_ATTIVO",
-      "qen_score": { "vs": 88, "va": 82, "vt": 82, "totale": 84.4 }
+      "qen_score": {
+        "vs": 88,
+        "va": 82,
+        "vt": 82,
+        "totale": 84.4
+      }
     },
-
     "STABILIMENTO_LIDO_RAVENNA": {
       "id": "STABILIMENTO_LIDO_RAVENNA",
       "type": "EntitaPilota",
@@ -678,9 +1073,13 @@
       "localita": "Lido di Ravenna",
       "scadenza_concessione": "2027-12-31",
       "stato": "AUDIT_IN_CORSO",
-      "qen_score": { "vs": 72, "va": 62, "vt": 78, "totale": 70.6 }
+      "qen_score": {
+        "vs": 72,
+        "va": 62,
+        "vt": 78,
+        "totale": 70.6
+      }
     },
-
     "COOPERATIVA_AGRO_EMILIA": {
       "id": "COOPERATIVA_AGRO_EMILIA",
       "type": "EntitaPilota",
@@ -689,9 +1088,13 @@
       "localita": "Pianura Padana — Emilia",
       "soci": 45,
       "stato": "PILOTA_ATTIVO",
-      "qen_score": { "vs": 82, "va": 78, "vt": 90, "totale": 83.0 }
+      "qen_score": {
+        "vs": 82,
+        "va": 78,
+        "vt": 90,
+        "totale": 83.0
+      }
     },
-
     "PMI_HORECA_PILOT": {
       "id": "PMI_HORECA_PILOT",
       "type": "EntitaPilota",
@@ -699,29 +1102,43 @@
       "settore": "HoReCa — ristorante indipendente",
       "localita": "Bologna centro storico",
       "stato": "AUDIT_IN_CORSO",
-      "qen_score": { "vs": 76, "va": 72, "vt": 80, "totale": 75.6 }
+      "qen_score": {
+        "vs": 76,
+        "va": 72,
+        "vt": 80,
+        "totale": 75.6
+      }
     },
-
     "AGENT_QEN_SCORER": {
       "id": "AGENT_QEN_SCORER",
       "type": "AgenteAI",
       "label": "Agent — QEN Scorer",
       "funzione": "Calcola il QEN Score a partire dai KPI raccolti, applicando la formula Vs*0.40 + Va*0.35 + Vt*0.25",
-      "input": ["KPI_SOCIALE", "KPI_AMBIENTALE", "KPI_TERRITORIALE"],
+      "input": [
+        "KPI_SOCIALE",
+        "KPI_AMBIENTALE",
+        "KPI_TERRITORIALE"
+      ],
       "output": "QEN_SCORE_CERTIFICATO",
       "stato": "ATTIVO"
     },
-
     "AGENT_COMPLIANCE_CHECKER": {
       "id": "AGENT_COMPLIANCE_CHECKER",
       "type": "AgenteAI",
       "label": "Agent — Compliance Checker",
       "funzione": "Verifica la conformità dell'entità ai regolamenti applicabili: EU AI Act, GDPR, Bolkestein, CSRD, Green Claim",
-      "input": ["REG_EU_AI_ACT_I", "REG_EU_AI_ACT_II", "REG_EU_AI_ACT_III", "REG_GDPR_ART22", "REG_GDPR_ART35", "REG_BOLKESTEIN_2027", "REG_CSRD_2026"],
+      "input": [
+        "REG_EU_AI_ACT_I",
+        "REG_EU_AI_ACT_II",
+        "REG_EU_AI_ACT_III",
+        "REG_GDPR_ART22",
+        "REG_GDPR_ART35",
+        "REG_BOLKESTEIN_2027",
+        "REG_CSRD_2026"
+      ],
       "output": "DOSSIER_BOLKESTEIN",
       "stato": "ATTIVO"
     },
-
     "AGENT_REPORT_GENERATOR": {
       "id": "AGENT_REPORT_GENERATOR",
       "type": "AgenteAI",
@@ -730,7 +1147,6 @@
       "output": "CSRD_REPORT_QEN",
       "stato": "ATTIVO"
     },
-
     "QEN_SCORE_CERTIFICATO": {
       "id": "QEN_SCORE_CERTIFICATO",
       "type": "Output",
@@ -740,16 +1156,20 @@
       "validita": "12 mesi dalla data di emissione",
       "stato": "PRODOTTO"
     },
-
     "DOSSIER_BOLKESTEIN": {
       "id": "DOSSIER_BOLKESTEIN",
       "type": "Output",
       "label": "Dossier Bolkestein",
       "descrizione": "Documentazione completa per partecipazione alla gara Bolkestein 2027: storico concessione, QEN Score, compliance normativa.",
-      "sezioni": ["Anagrafica e storico", "QEN Score certificato", "Compliance EU AI Act", "Green Claim verificati", "Piano di continuità"],
+      "sezioni": [
+        "Anagrafica e storico",
+        "QEN Score certificato",
+        "Compliance EU AI Act",
+        "Green Claim verificati",
+        "Piano di continuità"
+      ],
       "stato": "PRODOTTO"
     },
-
     "CSRD_REPORT_QEN": {
       "id": "CSRD_REPORT_QEN",
       "type": "Output",
@@ -758,7 +1178,6 @@
       "standard": "ESRS E1–E5, S1–S4, G1",
       "stato": "PRODOTTO"
     },
-
     "ISO_14001": {
       "id": "ISO_14001",
       "type": "Standard",
@@ -767,7 +1186,6 @@
       "scope": "Certificazione sistema di gestione ambientale aziendale",
       "rilevanza_qen": "Alimenta KPI_AMBIENTALE con peso 0.25 su cert_green"
     },
-
     "ECOLABEL_EU": {
       "id": "ECOLABEL_EU",
       "type": "Standard",
@@ -776,7 +1194,6 @@
       "scope": "Marchio ecologico per prodotti e servizi — bassa impronta ambientale",
       "rilevanza_qen": "Riconoscimento diretto in KPI_AMBIENTALE — forte impatto su Va"
     },
-
     "PPWR_2026": {
       "id": "PPWR_2026",
       "type": "Standard",
@@ -786,133 +1203,1489 @@
       "scope": "Requisiti di sostenibilità degli imballaggi — reuse, recycle, design for recycling",
       "rilevanza_qen": "Impatta KPI_AMBIENTALE (rifiuti) e vincola i Green Claim su packaging"
     },
-
     "GREEN_DEAL_EU": {
       "id": "GREEN_DEAL_EU",
       "type": "Standard",
       "label": "European Green Deal — Farm to Fork",
       "fonte": "Comunicazione CE 2019/640",
-      "obiettivi_2030": ["50% riduzione pesticidi", "25% superfici bio", "30% riduzione perdite alimentari"],
+      "obiettivi_2030": [
+        "50% riduzione pesticidi",
+        "25% superfici bio",
+        "30% riduzione perdite alimentari"
+      ],
       "rilevanza_qen": "Quadro strategico di riferimento per KPI_AMBIENTALE e KPI_FILIERA_CORTA"
+    },
+    "bagno-roma-rimini": {
+      "id": "bagno-roma-rimini",
+      "type": "@Gruppo",
+      "label": "Bagno Roma",
+      "territorio": "Rimini",
+      "cluster": "bolkestein",
+      "settore": "balneare",
+      "stato_qen": "da_mappare",
+      "priorita": 1,
+      "bolkestein_flag": true,
+      "compliance": {
+        "cin_cir": "N/V",
+        "gdpr": "N/V",
+        "eu_ai_act": "N/V",
+        "bolkestein": "soggetto"
+      },
+      "score_qen": null,
+      "edge": []
+    },
+    "lido-adriatico-riccione": {
+      "id": "lido-adriatico-riccione",
+      "type": "@Gruppo",
+      "label": "Lido Adriatico",
+      "territorio": "Riccione",
+      "cluster": "bolkestein",
+      "settore": "balneare",
+      "stato_qen": "da_mappare",
+      "priorita": 1,
+      "bolkestein_flag": true,
+      "compliance": {
+        "cin_cir": "N/V",
+        "gdpr": "N/V",
+        "eu_ai_act": "N/V",
+        "bolkestein": "soggetto"
+      },
+      "score_qen": null,
+      "edge": []
+    },
+    "bagno-delfino-cervia": {
+      "id": "bagno-delfino-cervia",
+      "type": "@Gruppo",
+      "label": "Bagno Delfino",
+      "territorio": "Cervia",
+      "cluster": "bolkestein",
+      "settore": "balneare",
+      "stato_qen": "da_mappare",
+      "priorita": 1,
+      "bolkestein_flag": true,
+      "compliance": {
+        "cin_cir": "N/V",
+        "gdpr": "N/V",
+        "eu_ai_act": "N/V",
+        "bolkestein": "soggetto"
+      },
+      "score_qen": null,
+      "edge": []
+    },
+    "lido-la-perla-cesenatico": {
+      "id": "lido-la-perla-cesenatico",
+      "type": "@Gruppo",
+      "label": "Lido La Perla",
+      "territorio": "Cesenatico",
+      "cluster": "bolkestein",
+      "settore": "balneare",
+      "stato_qen": "da_mappare",
+      "priorita": 1,
+      "bolkestein_flag": true,
+      "compliance": {
+        "cin_cir": "N/V",
+        "gdpr": "N/V",
+        "eu_ai_act": "N/V",
+        "bolkestein": "soggetto"
+      },
+      "score_qen": null,
+      "edge": []
+    },
+    "bagno-riviera-rimini": {
+      "id": "bagno-riviera-rimini",
+      "type": "@Gruppo",
+      "label": "Bagno Riviera",
+      "territorio": "Rimini",
+      "cluster": "bolkestein",
+      "settore": "balneare",
+      "stato_qen": "da_mappare",
+      "priorita": 1,
+      "bolkestein_flag": true,
+      "compliance": {
+        "cin_cir": "N/V",
+        "gdpr": "N/V",
+        "eu_ai_act": "N/V",
+        "bolkestein": "soggetto"
+      },
+      "score_qen": null,
+      "edge": []
+    },
+    "lido-san-martino-cattolica": {
+      "id": "lido-san-martino-cattolica",
+      "type": "@Gruppo",
+      "label": "Lido San Martino",
+      "territorio": "Cattolica",
+      "cluster": "bolkestein",
+      "settore": "balneare",
+      "stato_qen": "da_mappare",
+      "priorita": 1,
+      "bolkestein_flag": true,
+      "compliance": {
+        "cin_cir": "N/V",
+        "gdpr": "N/V",
+        "eu_ai_act": "N/V",
+        "bolkestein": "soggetto"
+      },
+      "score_qen": null,
+      "edge": []
+    },
+    "bagno-azzurro-cesenatico": {
+      "id": "bagno-azzurro-cesenatico",
+      "type": "@Gruppo",
+      "label": "Bagno Azzurro",
+      "territorio": "Cesenatico",
+      "cluster": "bolkestein",
+      "settore": "balneare",
+      "stato_qen": "da_mappare",
+      "priorita": 1,
+      "bolkestein_flag": true,
+      "compliance": {
+        "cin_cir": "N/V",
+        "gdpr": "N/V",
+        "eu_ai_act": "N/V",
+        "bolkestein": "soggetto"
+      },
+      "score_qen": null,
+      "edge": []
+    },
+    "rotonda-beach-riccione": {
+      "id": "rotonda-beach-riccione",
+      "type": "@Gruppo",
+      "label": "Rotonda Beach Club",
+      "territorio": "Riccione",
+      "cluster": "bolkestein",
+      "settore": "balneare",
+      "stato_qen": "da_mappare",
+      "priorita": 1,
+      "bolkestein_flag": true,
+      "compliance": {
+        "cin_cir": "N/V",
+        "gdpr": "N/V",
+        "eu_ai_act": "N/V",
+        "bolkestein": "soggetto"
+      },
+      "score_qen": null,
+      "edge": []
+    },
+    "bagno-mirta-cervia": {
+      "id": "bagno-mirta-cervia",
+      "type": "@Gruppo",
+      "label": "Bagno Mirta",
+      "territorio": "Cervia",
+      "cluster": "bolkestein",
+      "settore": "balneare",
+      "stato_qen": "da_mappare",
+      "priorita": 1,
+      "bolkestein_flag": true,
+      "compliance": {
+        "cin_cir": "N/V",
+        "gdpr": "N/V",
+        "eu_ai_act": "N/V",
+        "bolkestein": "soggetto"
+      },
+      "score_qen": null,
+      "edge": []
+    },
+    "stabilimento-paradiso-cattolica": {
+      "id": "stabilimento-paradiso-cattolica",
+      "type": "@Gruppo",
+      "label": "Stabilimento Paradiso",
+      "territorio": "Cattolica",
+      "cluster": "bolkestein",
+      "settore": "balneare",
+      "stato_qen": "da_mappare",
+      "priorita": 1,
+      "bolkestein_flag": true,
+      "compliance": {
+        "cin_cir": "N/V",
+        "gdpr": "N/V",
+        "eu_ai_act": "N/V",
+        "bolkestein": "soggetto"
+      },
+      "score_qen": null,
+      "edge": []
+    },
+    "osteria-del-pratello-bo": {
+      "id": "osteria-del-pratello-bo",
+      "type": "@Gruppo",
+      "label": "Osteria del Pratello",
+      "territorio": "Bologna",
+      "cluster": "horeca_bologna",
+      "settore": "ristorativo",
+      "stato_qen": "da_mappare",
+      "priorita": 1,
+      "compliance": {
+        "cin_cir": "N/V",
+        "gdpr": "N/V",
+        "eu_ai_act": "N/V",
+        "bolkestein": "non_soggetto"
+      },
+      "score_qen": null,
+      "edge": []
+    },
+    "trattoria-san-felice-bo": {
+      "id": "trattoria-san-felice-bo",
+      "type": "@Gruppo",
+      "label": "Trattoria San Felice",
+      "territorio": "Bologna",
+      "cluster": "horeca_bologna",
+      "settore": "ristorativo",
+      "stato_qen": "da_mappare",
+      "priorita": 1,
+      "compliance": {
+        "cin_cir": "N/V",
+        "gdpr": "N/V",
+        "eu_ai_act": "N/V",
+        "bolkestein": "non_soggetto"
+      },
+      "score_qen": null,
+      "edge": []
+    },
+    "ristorante-la-quercia-casalecchio": {
+      "id": "ristorante-la-quercia-casalecchio",
+      "type": "@Gruppo",
+      "label": "Ristorante La Quercia",
+      "territorio": "Casalecchio di Reno",
+      "cluster": "horeca_bologna",
+      "settore": "ristorativo",
+      "stato_qen": "da_mappare",
+      "priorita": 1,
+      "compliance": {
+        "cin_cir": "N/V",
+        "gdpr": "N/V",
+        "eu_ai_act": "N/V",
+        "bolkestein": "non_soggetto"
+      },
+      "score_qen": null,
+      "edge": []
+    },
+    "da-gianni-trattoria-bologna": {
+      "id": "da-gianni-trattoria-bologna",
+      "type": "@Gruppo",
+      "label": "Da Gianni Trattoria",
+      "territorio": "Bologna",
+      "cluster": "horeca_bologna",
+      "settore": "ristorativo",
+      "stato_qen": "da_mappare",
+      "priorita": 1,
+      "compliance": {
+        "cin_cir": "N/V",
+        "gdpr": "N/V",
+        "eu_ai_act": "N/V",
+        "bolkestein": "non_soggetto"
+      },
+      "score_qen": null,
+      "edge": []
+    },
+    "il-portico-zola-predosa": {
+      "id": "il-portico-zola-predosa",
+      "type": "@Gruppo",
+      "label": "Il Portico",
+      "territorio": "Zola Predosa",
+      "cluster": "horeca_bologna",
+      "settore": "ristorativo",
+      "stato_qen": "da_mappare",
+      "priorita": 1,
+      "compliance": {
+        "cin_cir": "N/V",
+        "gdpr": "N/V",
+        "eu_ai_act": "N/V",
+        "bolkestein": "non_soggetto"
+      },
+      "score_qen": null,
+      "edge": []
+    },
+    "trattoria-del-navile-bologna": {
+      "id": "trattoria-del-navile-bologna",
+      "type": "@Gruppo",
+      "label": "Trattoria del Navile",
+      "territorio": "Bologna",
+      "cluster": "horeca_bologna",
+      "settore": "ristorativo",
+      "stato_qen": "da_mappare",
+      "priorita": 2,
+      "compliance": {
+        "cin_cir": "N/V",
+        "gdpr": "N/V",
+        "eu_ai_act": "N/V",
+        "bolkestein": "non_soggetto"
+      },
+      "score_qen": null,
+      "edge": []
+    },
+    "osteria-dell-orsa-bologna": {
+      "id": "osteria-dell-orsa-bologna",
+      "type": "@Gruppo",
+      "label": "Osteria dell'Orsa",
+      "territorio": "Bologna",
+      "cluster": "horeca_bologna",
+      "settore": "ristorativo",
+      "stato_qen": "da_mappare",
+      "priorita": 2,
+      "compliance": {
+        "cin_cir": "N/V",
+        "gdpr": "N/V",
+        "eu_ai_act": "N/V",
+        "bolkestein": "non_soggetto"
+      },
+      "score_qen": null,
+      "edge": []
+    },
+    "hotel-majestic-bologna": {
+      "id": "hotel-majestic-bologna",
+      "type": "@Gruppo",
+      "label": "Hotel Majestic",
+      "territorio": "Bologna",
+      "cluster": "horeca_bologna",
+      "settore": "alberghiero",
+      "stato_qen": "da_mappare",
+      "priorita": 1,
+      "compliance": {
+        "cin_cir": "N/V",
+        "gdpr": "N/V",
+        "eu_ai_act": "N/V",
+        "bolkestein": "non_soggetto"
+      },
+      "score_qen": null,
+      "edge": []
+    },
+    "albergo-san-luca-bologna": {
+      "id": "albergo-san-luca-bologna",
+      "type": "@Gruppo",
+      "label": "Albergo San Luca",
+      "territorio": "Bologna",
+      "cluster": "horeca_bologna",
+      "settore": "alberghiero",
+      "stato_qen": "da_mappare",
+      "priorita": 1,
+      "compliance": {
+        "cin_cir": "N/V",
+        "gdpr": "N/V",
+        "eu_ai_act": "N/V",
+        "bolkestein": "non_soggetto"
+      },
+      "score_qen": null,
+      "edge": []
+    },
+    "hotel-zola-zola-predosa": {
+      "id": "hotel-zola-zola-predosa",
+      "type": "@Gruppo",
+      "label": "Hotel Zola",
+      "territorio": "Zola Predosa",
+      "cluster": "horeca_bologna",
+      "settore": "alberghiero",
+      "stato_qen": "da_mappare",
+      "priorita": 2,
+      "compliance": {
+        "cin_cir": "N/V",
+        "gdpr": "N/V",
+        "eu_ai_act": "N/V",
+        "bolkestein": "non_soggetto"
+      },
+      "score_qen": null,
+      "edge": []
+    },
+    "pasta-fresca-gentilini-cspt": {
+      "id": "pasta-fresca-gentilini-cspt",
+      "type": "@Gruppo",
+      "label": "Pasta Fresca Gentilini",
+      "territorio": "Castel San Pietro Terme",
+      "cluster": "cna_bologna",
+      "settore": "misto",
+      "stato_qen": "da_mappare",
+      "priorita": 2,
+      "cna_potenziale": true,
+      "compliance": {
+        "cin_cir": "N/V",
+        "gdpr": "N/V",
+        "eu_ai_act": "N/V",
+        "bolkestein": "non_soggetto"
+      },
+      "score_qen": null,
+      "edge": []
+    },
+    "forno-artigianale-melloni-imola": {
+      "id": "forno-artigianale-melloni-imola",
+      "type": "@Gruppo",
+      "label": "Forno Artigianale Melloni",
+      "territorio": "Imola",
+      "cluster": "cna_bologna",
+      "settore": "misto",
+      "stato_qen": "da_mappare",
+      "priorita": 2,
+      "cna_potenziale": true,
+      "compliance": {
+        "cin_cir": "N/V",
+        "gdpr": "N/V",
+        "eu_ai_act": "N/V",
+        "bolkestein": "non_soggetto"
+      },
+      "score_qen": null,
+      "edge": []
+    },
+    "caseificio-artigianale-rossi-porretta": {
+      "id": "caseificio-artigianale-rossi-porretta",
+      "type": "@Gruppo",
+      "label": "Caseificio Artigianale Rossi",
+      "territorio": "Porretta Terme",
+      "cluster": "cna_bologna",
+      "settore": "misto",
+      "stato_qen": "da_mappare",
+      "priorita": 2,
+      "cna_potenziale": true,
+      "compliance": {
+        "cin_cir": "N/V",
+        "gdpr": "N/V",
+        "eu_ai_act": "N/V",
+        "bolkestein": "non_soggetto"
+      },
+      "score_qen": null,
+      "edge": []
+    },
+    "trattoria-appennino-grizzana": {
+      "id": "trattoria-appennino-grizzana",
+      "type": "@Gruppo",
+      "label": "Trattoria dell'Appennino",
+      "territorio": "Grizzana Morandi",
+      "cluster": "cna_bologna",
+      "settore": "ristorativo",
+      "stato_qen": "da_mappare",
+      "priorita": 2,
+      "cna_potenziale": true,
+      "compliance": {
+        "cin_cir": "N/V",
+        "gdpr": "N/V",
+        "eu_ai_act": "N/V",
+        "bolkestein": "non_soggetto"
+      },
+      "score_qen": null,
+      "edge": []
+    },
+    "osteria-del-borgo-sgip": {
+      "id": "osteria-del-borgo-sgip",
+      "type": "@Gruppo",
+      "label": "Osteria del Borgo",
+      "territorio": "San Giovanni in Persiceto",
+      "cluster": "cna_bologna",
+      "settore": "ristorativo",
+      "stato_qen": "da_mappare",
+      "priorita": 2,
+      "cna_potenziale": true,
+      "compliance": {
+        "cin_cir": "N/V",
+        "gdpr": "N/V",
+        "eu_ai_act": "N/V",
+        "bolkestein": "non_soggetto"
+      },
+      "score_qen": null,
+      "edge": []
+    },
+    "ristorante-la-pineta-marzabotto": {
+      "id": "ristorante-la-pineta-marzabotto",
+      "type": "@Gruppo",
+      "label": "Ristorante La Pineta",
+      "territorio": "Marzabotto",
+      "cluster": "cna_bologna",
+      "settore": "ristorativo",
+      "stato_qen": "da_mappare",
+      "priorita": 2,
+      "cna_potenziale": true,
+      "compliance": {
+        "cin_cir": "N/V",
+        "gdpr": "N/V",
+        "eu_ai_act": "N/V",
+        "bolkestein": "non_soggetto"
+      },
+      "score_qen": null,
+      "edge": []
+    },
+    "pizzeria-artistica-tonino-budrio": {
+      "id": "pizzeria-artistica-tonino-budrio",
+      "type": "@Gruppo",
+      "label": "Pizzeria Artistica da Tonino",
+      "territorio": "Budrio",
+      "cluster": "cna_bologna",
+      "settore": "ristorativo",
+      "stato_qen": "da_mappare",
+      "priorita": 2,
+      "cna_potenziale": true,
+      "compliance": {
+        "cin_cir": "N/V",
+        "gdpr": "N/V",
+        "eu_ai_act": "N/V",
+        "bolkestein": "non_soggetto"
+      },
+      "score_qen": null,
+      "edge": []
+    },
+    "hotel-appennino-vergato": {
+      "id": "hotel-appennino-vergato",
+      "type": "@Gruppo",
+      "label": "Hotel Appennino",
+      "territorio": "Vergato",
+      "cluster": "cna_bologna",
+      "settore": "alberghiero",
+      "stato_qen": "da_mappare",
+      "priorita": 2,
+      "cna_potenziale": true,
+      "compliance": {
+        "cin_cir": "N/V",
+        "gdpr": "N/V",
+        "eu_ai_act": "N/V",
+        "bolkestein": "non_soggetto"
+      },
+      "score_qen": null,
+      "edge": []
+    },
+    "locanda-della-valle-castiglione": {
+      "id": "locanda-della-valle-castiglione",
+      "type": "@Gruppo",
+      "label": "Locanda della Valle",
+      "territorio": "Castiglione dei Pepoli",
+      "cluster": "cna_bologna",
+      "settore": "alberghiero",
+      "stato_qen": "da_mappare",
+      "priorita": 2,
+      "cna_potenziale": true,
+      "compliance": {
+        "cin_cir": "N/V",
+        "gdpr": "N/V",
+        "eu_ai_act": "N/V",
+        "bolkestein": "non_soggetto"
+      },
+      "score_qen": null,
+      "edge": []
+    },
+    "albergo-emilia-pianoro": {
+      "id": "albergo-emilia-pianoro",
+      "type": "@Gruppo",
+      "label": "Albergo Emilia",
+      "territorio": "Pianoro",
+      "cluster": "cna_bologna",
+      "settore": "alberghiero",
+      "stato_qen": "da_mappare",
+      "priorita": 2,
+      "cna_potenziale": true,
+      "compliance": {
+        "cin_cir": "N/V",
+        "gdpr": "N/V",
+        "eu_ai_act": "N/V",
+        "bolkestein": "non_soggetto"
+      },
+      "score_qen": null,
+      "edge": []
     }
-
   },
   "edges": [
-    {"from": "COGNITIVE_LOGIC", "to": "QEN_COMPLIANCE_ENGINE", "type": "OPERA_CON"},
-    {"from": "COGNITIVE_LOGIC", "to": "FUORIMENU", "type": "PUBBLICA"},
-    {"from": "COGNITIVE_LOGIC", "to": "CNA_BOLOGNA", "type": "PARTNERSHIP_PROPOSTA"},
-    {"from": "COGNITIVE_LOGIC", "to": "HOTELLERIE_RIVIERA", "type": "MAPPATURA_IN_CORSO"},
-    {"from": "COGNITIVE_LOGIC", "to": "DUAL_BRAIN_AI", "type": "UTILIZZA"},
-    {"from": "COGNITIVE_LOGIC", "to": "KNOWLEDGE_GRAPH_SEMANTICO", "type": "GESTISCE"},
-    {"from": "COGNITIVE_LOGIC", "to": "API_COGNITIVELOGIC", "type": "GESTISCE"},
-    {"from": "COGNITIVE_LOGIC", "to": "AGENT_QEN_SCORER", "type": "OPERA_CON"},
-    {"from": "COGNITIVE_LOGIC", "to": "AGENT_COMPLIANCE_CHECKER", "type": "OPERA_CON"},
-    {"from": "COGNITIVE_LOGIC", "to": "AGENT_REPORT_GENERATOR", "type": "OPERA_CON"},
-    {"from": "COGNITIVE_LOGIC", "to": "ACADEMIA_BOLOGNA", "type": "PARTNERSHIP_PROPOSTA"},
-
-    {"from": "QEN_COMPLIANCE_ENGINE", "to": "COLT_IN_FRAGRANZA", "type": "SCORING_APPLICATO"},
-    {"from": "QEN_COMPLIANCE_ENGINE", "to": "TRAD_RAD", "type": "SCORING_APPLICATO"},
-    {"from": "QEN_COMPLIANCE_ENGINE", "to": "ECO_LOCAL", "type": "SCORING_APPLICATO"},
-    {"from": "QEN_COMPLIANCE_ENGINE", "to": "BOLOGNA_100_BOTTEGHE", "type": "SCORING_APPLICATO"},
-    {"from": "QEN_COMPLIANCE_ENGINE", "to": "VEGANOO", "type": "SCORING_APPLICATO"},
-    {"from": "QEN_COMPLIANCE_ENGINE", "to": "CNA_BOLOGNA", "type": "SCORING_APPLICATO"},
-    {"from": "QEN_COMPLIANCE_ENGINE", "to": "HOTELLERIE_RIVIERA", "type": "SCORING_APPLICATO"},
-    {"from": "QEN_COMPLIANCE_ENGINE", "to": "ATLANTIC_HOTELS", "type": "SCORING_APPLICATO"},
-    {"from": "QEN_COMPLIANCE_ENGINE", "to": "MAXIMILIANS", "type": "SCORING_APPLICATO"},
-    {"from": "QEN_COMPLIANCE_ENGINE", "to": "DV_HOTELS", "type": "SCORING_APPLICATO"},
-    {"from": "QEN_COMPLIANCE_ENGINE", "to": "REG_EU_AI_ACT_I", "type": "APPLICA_REGOLAMENTO"},
-    {"from": "QEN_COMPLIANCE_ENGINE", "to": "REG_EU_AI_ACT_II", "type": "APPLICA_REGOLAMENTO"},
-    {"from": "QEN_COMPLIANCE_ENGINE", "to": "REG_EU_AI_ACT_III", "type": "APPLICA_REGOLAMENTO"},
-    {"from": "QEN_COMPLIANCE_ENGINE", "to": "REG_GDPR_ART22", "type": "APPLICA_REGOLAMENTO"},
-    {"from": "QEN_COMPLIANCE_ENGINE", "to": "REG_GDPR_ART35", "type": "APPLICA_REGOLAMENTO"},
-    {"from": "QEN_COMPLIANCE_ENGINE", "to": "REG_BOLKESTEIN_2027", "type": "APPLICA_REGOLAMENTO"},
-    {"from": "QEN_COMPLIANCE_ENGINE", "to": "REG_CSRD_2026", "type": "APPLICA_REGOLAMENTO"},
-    {"from": "QEN_COMPLIANCE_ENGINE", "to": "REG_GREEN_CLAIM_2026", "type": "APPLICA_REGOLAMENTO"},
-    {"from": "QEN_COMPLIANCE_ENGINE", "to": "QEN_HORECA_AUDITOR", "type": "ALIMENTA"},
-    {"from": "QEN_COMPLIANCE_ENGINE", "to": "QEN_BALNEARE_AUDITOR", "type": "ALIMENTA"},
-    {"from": "QEN_COMPLIANCE_ENGINE", "to": "ECI_ASSESSMENT_TOOLKIT", "type": "ALIMENTA"},
-    {"from": "QEN_COMPLIANCE_ENGINE", "to": "QEN_ALERT_ENGINE", "type": "ALIMENTA"},
-    {"from": "QEN_COMPLIANCE_ENGINE", "to": "FORTRESS_PROTOCOL", "type": "INCLUDE"},
-
-    {"from": "FUORIMENU", "to": "COLT_IN_FRAGRANZA", "type": "OSSERVA"},
-    {"from": "FUORIMENU", "to": "VEGANOO", "type": "OSSERVA"},
-    {"from": "FUORIMENU", "to": "SETTORE_RISTORAZIONE", "type": "OSSERVA"},
-
-    {"from": "CNA_BOLOGNA", "to": "BOLOGNA_100_BOTTEGHE", "type": "TERRITORIO_DI"},
-    {"from": "CNA_BOLOGNA", "to": "SETTORE_ARTIGIANATO_BOLOGNA", "type": "RAPPRESENTA"},
-    {"from": "CNA_BOLOGNA", "to": "SETTORE_COMMERCIO_AMBULANTE", "type": "RAPPRESENTA"},
-
-    {"from": "HOTELLERIE_RIVIERA", "to": "ATLANTIC_HOTELS", "type": "CONTIENE"},
-    {"from": "HOTELLERIE_RIVIERA", "to": "MAXIMILIANS", "type": "CONTIENE"},
-    {"from": "HOTELLERIE_RIVIERA", "to": "DV_HOTELS", "type": "CONTIENE"},
-    {"from": "HOTELLERIE_RIVIERA", "to": "DEVIRA", "type": "CONTIENE"},
-    {"from": "HOTELLERIE_RIVIERA", "to": "COSTA_HOTELS", "type": "CONTIENE"},
-
-    {"from": "RIVIERA_ADRIATICA_BALNEARI", "to": "SETTORE_BALNEARE", "type": "CONTIENE"},
-    {"from": "RIVIERA_ADRIATICA_BALNEARI", "to": "STABILIMENTO_LIDO_RAVENNA", "type": "CONTIENE"},
-    {"from": "RIVIERA_ADRIATICA_BALNEARI", "to": "REG_BOLKESTEIN_2027", "type": "SOGGETTO_A"},
-
-    {"from": "REG_EU_AI_ACT_III", "to": "ATLANTIC_HOTELS", "type": "NORMATIVA_APPLICABILE"},
-    {"from": "REG_EU_AI_ACT_III", "to": "MAXIMILIANS", "type": "NORMATIVA_APPLICABILE"},
-    {"from": "REG_EU_AI_ACT_III", "to": "DV_HOTELS", "type": "NORMATIVA_APPLICABILE"},
-    {"from": "REG_EU_AI_ACT_III", "to": "DEVIRA", "type": "NORMATIVA_APPLICABILE"},
-    {"from": "REG_EU_AI_ACT_III", "to": "COSTA_HOTELS", "type": "NORMATIVA_APPLICABILE"},
-    {"from": "REG_EU_AI_ACT_III", "to": "QEN_COPILOT_AI", "type": "NORMATIVA_APPLICABILE"},
-    {"from": "REG_GDPR_ART22", "to": "QEN_COMPLIANCE_ENGINE", "type": "VINCOLA"},
-    {"from": "REG_GDPR_ART35", "to": "QEN_COMPLIANCE_ENGINE", "type": "VINCOLA"},
-    {"from": "REG_BOLKESTEIN_2027", "to": "SETTORE_BALNEARE", "type": "NORMATIVA_APPLICABILE"},
-    {"from": "REG_BOLKESTEIN_2027", "to": "SETTORE_COMMERCIO_AMBULANTE", "type": "NORMATIVA_APPLICABILE"},
-    {"from": "REG_BOLKESTEIN_2027", "to": "STABILIMENTO_LIDO_RAVENNA", "type": "NORMATIVA_APPLICABILE"},
-    {"from": "REG_CSRD_2026", "to": "COOPERATIVA_AGRO_EMILIA", "type": "NORMATIVA_APPLICABILE"},
-    {"from": "REG_GREEN_CLAIM_2026", "to": "SETTORE_RISTORAZIONE", "type": "NORMATIVA_APPLICABILE"},
-    {"from": "REG_GREEN_CLAIM_2026", "to": "SETTORE_BALNEARE", "type": "NORMATIVA_APPLICABILE"},
-
-    {"from": "KPI_SOCIALE", "to": "QEN_COMPLIANCE_ENGINE", "type": "ALIMENTA"},
-    {"from": "KPI_AMBIENTALE", "to": "QEN_COMPLIANCE_ENGINE", "type": "ALIMENTA"},
-    {"from": "KPI_TERRITORIALE", "to": "QEN_COMPLIANCE_ENGINE", "type": "ALIMENTA"},
-    {"from": "KPI_COMPLIANCE_AI", "to": "QEN_COMPLIANCE_ENGINE", "type": "ALIMENTA"},
-    {"from": "KPI_BOLKESTEIN_COMPLIANCE", "to": "QEN_BALNEARE_AUDITOR", "type": "ALIMENTA"},
-    {"from": "KPI_FILIERA_CORTA", "to": "ECO_LOCAL", "type": "ALIMENTA"},
-
-    {"from": "ISO_14001", "to": "KPI_AMBIENTALE", "type": "CERTIFICA"},
-    {"from": "ECOLABEL_EU", "to": "KPI_AMBIENTALE", "type": "CERTIFICA"},
-    {"from": "PPWR_2026", "to": "REG_GREEN_CLAIM_2026", "type": "INTEGRA"},
-    {"from": "GREEN_DEAL_EU", "to": "KPI_AMBIENTALE", "type": "ORIENTA"},
-    {"from": "GREEN_DEAL_EU", "to": "KPI_FILIERA_CORTA", "type": "ORIENTA"},
-
-    {"from": "QEN_HORECA_AUDITOR", "to": "SETTORE_HORECA_BOLOGNA", "type": "SERVE"},
-    {"from": "QEN_HORECA_AUDITOR", "to": "PMI_HORECA_PILOT", "type": "SCORING_APPLICATO"},
-    {"from": "QEN_BALNEARE_AUDITOR", "to": "SETTORE_BALNEARE", "type": "SERVE"},
-    {"from": "QEN_BALNEARE_AUDITOR", "to": "STABILIMENTO_LIDO_RAVENNA", "type": "SCORING_APPLICATO"},
-    {"from": "ECI_ASSESSMENT_TOOLKIT", "to": "COOPERATIVA_AGRO_EMILIA", "type": "SCORING_APPLICATO"},
-    {"from": "QEN_ONBOARDING_WIZARD", "to": "FORTRESS_PROTOCOL", "type": "INCLUDE"},
-    {"from": "QEN_COPILOT_AI", "to": "DUAL_BRAIN_AI", "type": "UTILIZZA"},
-    {"from": "IDENTITY_DID", "to": "QEN_SCORE_CERTIFICATO", "type": "FIRMA"},
-
-    {"from": "BOTTEGA_CONTADINA", "to": "SETTORE_RISTORAZIONE", "type": "APPARTIENE"},
-    {"from": "LE_SFOGLINE", "to": "SETTORE_ARTIGIANATO_BOLOGNA", "type": "APPARTIENE"},
-    {"from": "AHIME", "to": "SETTORE_RISTORAZIONE", "type": "APPARTIENE"},
-    {"from": "GRANI_ANTICHI", "to": "SETTORE_ARTIGIANATO_BOLOGNA", "type": "APPARTIENE"},
-    {"from": "BERTOZZI", "to": "SETTORE_ARTIGIANATO_BOLOGNA", "type": "APPARTIENE"},
-    {"from": "COOPERATIVA_AGRO_EMILIA", "to": "SETTORE_ARTIGIANATO_BOLOGNA", "type": "APPARTIENE"},
-    {"from": "PMI_HORECA_PILOT", "to": "SETTORE_HORECA_BOLOGNA", "type": "APPARTIENE"},
-    {"from": "QEN_COMPLIANCE_ENGINE", "to": "BOTTEGA_CONTADINA", "type": "SCORING_APPLICATO"},
-    {"from": "QEN_COMPLIANCE_ENGINE", "to": "LE_SFOGLINE", "type": "SCORING_APPLICATO"},
-    {"from": "QEN_COMPLIANCE_ENGINE", "to": "AHIME", "type": "SCORING_APPLICATO"},
-    {"from": "QEN_COMPLIANCE_ENGINE", "to": "GRANI_ANTICHI", "type": "SCORING_APPLICATO"},
-    {"from": "QEN_COMPLIANCE_ENGINE", "to": "BERTOZZI", "type": "SCORING_APPLICATO"},
-
-    {"from": "AGENT_QEN_SCORER", "to": "QEN_SCORE_CERTIFICATO", "type": "PRODUCE"},
-    {"from": "AGENT_COMPLIANCE_CHECKER", "to": "DOSSIER_BOLKESTEIN", "type": "PRODUCE"},
-    {"from": "AGENT_REPORT_GENERATOR", "to": "CSRD_REPORT_QEN", "type": "PRODUCE"},
-    {"from": "DUAL_BRAIN_AI", "to": "AGENT_QEN_SCORER", "type": "ALIMENTA"},
-    {"from": "DUAL_BRAIN_AI", "to": "AGENT_COMPLIANCE_CHECKER", "type": "ALIMENTA"},
-    {"from": "DUAL_BRAIN_AI", "to": "AGENT_REPORT_GENERATOR", "type": "ALIMENTA"},
-    {"from": "API_COGNITIVELOGIC", "to": "KNOWLEDGE_GRAPH_SEMANTICO", "type": "ESPONE"},
-    {"from": "ACADEMIA_BOLOGNA", "to": "QEN_COMPLIANCE_ENGINE", "type": "VALIDA"},
-    {"from": "COLT_IN_FRAGRANZA", "to": "SETTORE_RISTORAZIONE", "type": "SERVE"},
-    {"from": "TRAD_RAD", "to": "SETTORE_ARTIGIANATO_BOLOGNA", "type": "SERVE"},
-    {"from": "ECO_LOCAL", "to": "SETTORE_BALNEARE", "type": "SERVE"},
-    {"from": "FORTRESS_PROTOCOL", "to": "QEN_ONBOARDING_WIZARD", "type": "INTEGRA"}
+    {
+      "from": "COGNITIVE_LOGIC",
+      "to": "QEN_COMPLIANCE_ENGINE",
+      "type": "OPERA_CON"
+    },
+    {
+      "from": "COGNITIVE_LOGIC",
+      "to": "FUORIMENU",
+      "type": "PUBBLICA"
+    },
+    {
+      "from": "COGNITIVE_LOGIC",
+      "to": "CNA_BOLOGNA",
+      "type": "PARTNERSHIP_PROPOSTA"
+    },
+    {
+      "from": "COGNITIVE_LOGIC",
+      "to": "HOTELLERIE_RIVIERA",
+      "type": "MAPPATURA_IN_CORSO"
+    },
+    {
+      "from": "COGNITIVE_LOGIC",
+      "to": "DUAL_BRAIN_AI",
+      "type": "UTILIZZA"
+    },
+    {
+      "from": "COGNITIVE_LOGIC",
+      "to": "KNOWLEDGE_GRAPH_SEMANTICO",
+      "type": "GESTISCE"
+    },
+    {
+      "from": "COGNITIVE_LOGIC",
+      "to": "API_COGNITIVELOGIC",
+      "type": "GESTISCE"
+    },
+    {
+      "from": "COGNITIVE_LOGIC",
+      "to": "AGENT_QEN_SCORER",
+      "type": "OPERA_CON"
+    },
+    {
+      "from": "COGNITIVE_LOGIC",
+      "to": "AGENT_COMPLIANCE_CHECKER",
+      "type": "OPERA_CON"
+    },
+    {
+      "from": "COGNITIVE_LOGIC",
+      "to": "AGENT_REPORT_GENERATOR",
+      "type": "OPERA_CON"
+    },
+    {
+      "from": "COGNITIVE_LOGIC",
+      "to": "ACADEMIA_BOLOGNA",
+      "type": "PARTNERSHIP_PROPOSTA"
+    },
+    {
+      "from": "QEN_COMPLIANCE_ENGINE",
+      "to": "COLT_IN_FRAGRANZA",
+      "type": "SCORING_APPLICATO"
+    },
+    {
+      "from": "QEN_COMPLIANCE_ENGINE",
+      "to": "TRAD_RAD",
+      "type": "SCORING_APPLICATO"
+    },
+    {
+      "from": "QEN_COMPLIANCE_ENGINE",
+      "to": "ECO_LOCAL",
+      "type": "SCORING_APPLICATO"
+    },
+    {
+      "from": "QEN_COMPLIANCE_ENGINE",
+      "to": "BOLOGNA_100_BOTTEGHE",
+      "type": "SCORING_APPLICATO"
+    },
+    {
+      "from": "QEN_COMPLIANCE_ENGINE",
+      "to": "VEGANOO",
+      "type": "SCORING_APPLICATO"
+    },
+    {
+      "from": "QEN_COMPLIANCE_ENGINE",
+      "to": "CNA_BOLOGNA",
+      "type": "SCORING_APPLICATO"
+    },
+    {
+      "from": "QEN_COMPLIANCE_ENGINE",
+      "to": "HOTELLERIE_RIVIERA",
+      "type": "SCORING_APPLICATO"
+    },
+    {
+      "from": "QEN_COMPLIANCE_ENGINE",
+      "to": "ATLANTIC_HOTELS",
+      "type": "SCORING_APPLICATO"
+    },
+    {
+      "from": "QEN_COMPLIANCE_ENGINE",
+      "to": "MAXIMILIANS",
+      "type": "SCORING_APPLICATO"
+    },
+    {
+      "from": "QEN_COMPLIANCE_ENGINE",
+      "to": "DV_HOTELS",
+      "type": "SCORING_APPLICATO"
+    },
+    {
+      "from": "QEN_COMPLIANCE_ENGINE",
+      "to": "REG_EU_AI_ACT_I",
+      "type": "APPLICA_REGOLAMENTO"
+    },
+    {
+      "from": "QEN_COMPLIANCE_ENGINE",
+      "to": "REG_EU_AI_ACT_II",
+      "type": "APPLICA_REGOLAMENTO"
+    },
+    {
+      "from": "QEN_COMPLIANCE_ENGINE",
+      "to": "REG_EU_AI_ACT_III",
+      "type": "APPLICA_REGOLAMENTO"
+    },
+    {
+      "from": "QEN_COMPLIANCE_ENGINE",
+      "to": "REG_GDPR_ART22",
+      "type": "APPLICA_REGOLAMENTO"
+    },
+    {
+      "from": "QEN_COMPLIANCE_ENGINE",
+      "to": "REG_GDPR_ART35",
+      "type": "APPLICA_REGOLAMENTO"
+    },
+    {
+      "from": "QEN_COMPLIANCE_ENGINE",
+      "to": "REG_BOLKESTEIN_2027",
+      "type": "APPLICA_REGOLAMENTO"
+    },
+    {
+      "from": "QEN_COMPLIANCE_ENGINE",
+      "to": "REG_CSRD_2026",
+      "type": "APPLICA_REGOLAMENTO"
+    },
+    {
+      "from": "QEN_COMPLIANCE_ENGINE",
+      "to": "REG_GREEN_CLAIM_2026",
+      "type": "APPLICA_REGOLAMENTO"
+    },
+    {
+      "from": "QEN_COMPLIANCE_ENGINE",
+      "to": "QEN_HORECA_AUDITOR",
+      "type": "ALIMENTA"
+    },
+    {
+      "from": "QEN_COMPLIANCE_ENGINE",
+      "to": "QEN_BALNEARE_AUDITOR",
+      "type": "ALIMENTA"
+    },
+    {
+      "from": "QEN_COMPLIANCE_ENGINE",
+      "to": "ECI_ASSESSMENT_TOOLKIT",
+      "type": "ALIMENTA"
+    },
+    {
+      "from": "QEN_COMPLIANCE_ENGINE",
+      "to": "QEN_ALERT_ENGINE",
+      "type": "ALIMENTA"
+    },
+    {
+      "from": "QEN_COMPLIANCE_ENGINE",
+      "to": "FORTRESS_PROTOCOL",
+      "type": "INCLUDE"
+    },
+    {
+      "from": "FUORIMENU",
+      "to": "COLT_IN_FRAGRANZA",
+      "type": "OSSERVA"
+    },
+    {
+      "from": "FUORIMENU",
+      "to": "VEGANOO",
+      "type": "OSSERVA"
+    },
+    {
+      "from": "FUORIMENU",
+      "to": "SETTORE_RISTORAZIONE",
+      "type": "OSSERVA"
+    },
+    {
+      "from": "CNA_BOLOGNA",
+      "to": "BOLOGNA_100_BOTTEGHE",
+      "type": "TERRITORIO_DI"
+    },
+    {
+      "from": "CNA_BOLOGNA",
+      "to": "SETTORE_ARTIGIANATO_BOLOGNA",
+      "type": "RAPPRESENTA"
+    },
+    {
+      "from": "CNA_BOLOGNA",
+      "to": "SETTORE_COMMERCIO_AMBULANTE",
+      "type": "RAPPRESENTA"
+    },
+    {
+      "from": "HOTELLERIE_RIVIERA",
+      "to": "ATLANTIC_HOTELS",
+      "type": "CONTIENE"
+    },
+    {
+      "from": "HOTELLERIE_RIVIERA",
+      "to": "MAXIMILIANS",
+      "type": "CONTIENE"
+    },
+    {
+      "from": "HOTELLERIE_RIVIERA",
+      "to": "DV_HOTELS",
+      "type": "CONTIENE"
+    },
+    {
+      "from": "HOTELLERIE_RIVIERA",
+      "to": "DEVIRA",
+      "type": "CONTIENE"
+    },
+    {
+      "from": "HOTELLERIE_RIVIERA",
+      "to": "COSTA_HOTELS",
+      "type": "CONTIENE"
+    },
+    {
+      "from": "RIVIERA_ADRIATICA_BALNEARI",
+      "to": "SETTORE_BALNEARE",
+      "type": "CONTIENE"
+    },
+    {
+      "from": "RIVIERA_ADRIATICA_BALNEARI",
+      "to": "STABILIMENTO_LIDO_RAVENNA",
+      "type": "CONTIENE"
+    },
+    {
+      "from": "RIVIERA_ADRIATICA_BALNEARI",
+      "to": "REG_BOLKESTEIN_2027",
+      "type": "SOGGETTO_A"
+    },
+    {
+      "from": "REG_EU_AI_ACT_III",
+      "to": "ATLANTIC_HOTELS",
+      "type": "NORMATIVA_APPLICABILE"
+    },
+    {
+      "from": "REG_EU_AI_ACT_III",
+      "to": "MAXIMILIANS",
+      "type": "NORMATIVA_APPLICABILE"
+    },
+    {
+      "from": "REG_EU_AI_ACT_III",
+      "to": "DV_HOTELS",
+      "type": "NORMATIVA_APPLICABILE"
+    },
+    {
+      "from": "REG_EU_AI_ACT_III",
+      "to": "DEVIRA",
+      "type": "NORMATIVA_APPLICABILE"
+    },
+    {
+      "from": "REG_EU_AI_ACT_III",
+      "to": "COSTA_HOTELS",
+      "type": "NORMATIVA_APPLICABILE"
+    },
+    {
+      "from": "REG_EU_AI_ACT_III",
+      "to": "QEN_COPILOT_AI",
+      "type": "NORMATIVA_APPLICABILE"
+    },
+    {
+      "from": "REG_GDPR_ART22",
+      "to": "QEN_COMPLIANCE_ENGINE",
+      "type": "VINCOLA"
+    },
+    {
+      "from": "REG_GDPR_ART35",
+      "to": "QEN_COMPLIANCE_ENGINE",
+      "type": "VINCOLA"
+    },
+    {
+      "from": "REG_BOLKESTEIN_2027",
+      "to": "SETTORE_BALNEARE",
+      "type": "NORMATIVA_APPLICABILE"
+    },
+    {
+      "from": "REG_BOLKESTEIN_2027",
+      "to": "SETTORE_COMMERCIO_AMBULANTE",
+      "type": "NORMATIVA_APPLICABILE"
+    },
+    {
+      "from": "REG_BOLKESTEIN_2027",
+      "to": "STABILIMENTO_LIDO_RAVENNA",
+      "type": "NORMATIVA_APPLICABILE"
+    },
+    {
+      "from": "REG_CSRD_2026",
+      "to": "COOPERATIVA_AGRO_EMILIA",
+      "type": "NORMATIVA_APPLICABILE"
+    },
+    {
+      "from": "REG_GREEN_CLAIM_2026",
+      "to": "SETTORE_RISTORAZIONE",
+      "type": "NORMATIVA_APPLICABILE"
+    },
+    {
+      "from": "REG_GREEN_CLAIM_2026",
+      "to": "SETTORE_BALNEARE",
+      "type": "NORMATIVA_APPLICABILE"
+    },
+    {
+      "from": "KPI_SOCIALE",
+      "to": "QEN_COMPLIANCE_ENGINE",
+      "type": "ALIMENTA"
+    },
+    {
+      "from": "KPI_AMBIENTALE",
+      "to": "QEN_COMPLIANCE_ENGINE",
+      "type": "ALIMENTA"
+    },
+    {
+      "from": "KPI_TERRITORIALE",
+      "to": "QEN_COMPLIANCE_ENGINE",
+      "type": "ALIMENTA"
+    },
+    {
+      "from": "KPI_COMPLIANCE_AI",
+      "to": "QEN_COMPLIANCE_ENGINE",
+      "type": "ALIMENTA"
+    },
+    {
+      "from": "KPI_BOLKESTEIN_COMPLIANCE",
+      "to": "QEN_BALNEARE_AUDITOR",
+      "type": "ALIMENTA"
+    },
+    {
+      "from": "KPI_FILIERA_CORTA",
+      "to": "ECO_LOCAL",
+      "type": "ALIMENTA"
+    },
+    {
+      "from": "ISO_14001",
+      "to": "KPI_AMBIENTALE",
+      "type": "CERTIFICA"
+    },
+    {
+      "from": "ECOLABEL_EU",
+      "to": "KPI_AMBIENTALE",
+      "type": "CERTIFICA"
+    },
+    {
+      "from": "PPWR_2026",
+      "to": "REG_GREEN_CLAIM_2026",
+      "type": "INTEGRA"
+    },
+    {
+      "from": "GREEN_DEAL_EU",
+      "to": "KPI_AMBIENTALE",
+      "type": "ORIENTA"
+    },
+    {
+      "from": "GREEN_DEAL_EU",
+      "to": "KPI_FILIERA_CORTA",
+      "type": "ORIENTA"
+    },
+    {
+      "from": "QEN_HORECA_AUDITOR",
+      "to": "SETTORE_HORECA_BOLOGNA",
+      "type": "SERVE"
+    },
+    {
+      "from": "QEN_HORECA_AUDITOR",
+      "to": "PMI_HORECA_PILOT",
+      "type": "SCORING_APPLICATO"
+    },
+    {
+      "from": "QEN_BALNEARE_AUDITOR",
+      "to": "SETTORE_BALNEARE",
+      "type": "SERVE"
+    },
+    {
+      "from": "QEN_BALNEARE_AUDITOR",
+      "to": "STABILIMENTO_LIDO_RAVENNA",
+      "type": "SCORING_APPLICATO"
+    },
+    {
+      "from": "ECI_ASSESSMENT_TOOLKIT",
+      "to": "COOPERATIVA_AGRO_EMILIA",
+      "type": "SCORING_APPLICATO"
+    },
+    {
+      "from": "QEN_ONBOARDING_WIZARD",
+      "to": "FORTRESS_PROTOCOL",
+      "type": "INCLUDE"
+    },
+    {
+      "from": "QEN_COPILOT_AI",
+      "to": "DUAL_BRAIN_AI",
+      "type": "UTILIZZA"
+    },
+    {
+      "from": "IDENTITY_DID",
+      "to": "QEN_SCORE_CERTIFICATO",
+      "type": "FIRMA"
+    },
+    {
+      "from": "BOTTEGA_CONTADINA",
+      "to": "SETTORE_RISTORAZIONE",
+      "type": "APPARTIENE"
+    },
+    {
+      "from": "LE_SFOGLINE",
+      "to": "SETTORE_ARTIGIANATO_BOLOGNA",
+      "type": "APPARTIENE"
+    },
+    {
+      "from": "AHIME",
+      "to": "SETTORE_RISTORAZIONE",
+      "type": "APPARTIENE"
+    },
+    {
+      "from": "GRANI_ANTICHI",
+      "to": "SETTORE_ARTIGIANATO_BOLOGNA",
+      "type": "APPARTIENE"
+    },
+    {
+      "from": "BERTOZZI",
+      "to": "SETTORE_ARTIGIANATO_BOLOGNA",
+      "type": "APPARTIENE"
+    },
+    {
+      "from": "COOPERATIVA_AGRO_EMILIA",
+      "to": "SETTORE_ARTIGIANATO_BOLOGNA",
+      "type": "APPARTIENE"
+    },
+    {
+      "from": "PMI_HORECA_PILOT",
+      "to": "SETTORE_HORECA_BOLOGNA",
+      "type": "APPARTIENE"
+    },
+    {
+      "from": "QEN_COMPLIANCE_ENGINE",
+      "to": "BOTTEGA_CONTADINA",
+      "type": "SCORING_APPLICATO"
+    },
+    {
+      "from": "QEN_COMPLIANCE_ENGINE",
+      "to": "LE_SFOGLINE",
+      "type": "SCORING_APPLICATO"
+    },
+    {
+      "from": "QEN_COMPLIANCE_ENGINE",
+      "to": "AHIME",
+      "type": "SCORING_APPLICATO"
+    },
+    {
+      "from": "QEN_COMPLIANCE_ENGINE",
+      "to": "GRANI_ANTICHI",
+      "type": "SCORING_APPLICATO"
+    },
+    {
+      "from": "QEN_COMPLIANCE_ENGINE",
+      "to": "BERTOZZI",
+      "type": "SCORING_APPLICATO"
+    },
+    {
+      "from": "AGENT_QEN_SCORER",
+      "to": "QEN_SCORE_CERTIFICATO",
+      "type": "PRODUCE"
+    },
+    {
+      "from": "AGENT_COMPLIANCE_CHECKER",
+      "to": "DOSSIER_BOLKESTEIN",
+      "type": "PRODUCE"
+    },
+    {
+      "from": "AGENT_REPORT_GENERATOR",
+      "to": "CSRD_REPORT_QEN",
+      "type": "PRODUCE"
+    },
+    {
+      "from": "DUAL_BRAIN_AI",
+      "to": "AGENT_QEN_SCORER",
+      "type": "ALIMENTA"
+    },
+    {
+      "from": "DUAL_BRAIN_AI",
+      "to": "AGENT_COMPLIANCE_CHECKER",
+      "type": "ALIMENTA"
+    },
+    {
+      "from": "DUAL_BRAIN_AI",
+      "to": "AGENT_REPORT_GENERATOR",
+      "type": "ALIMENTA"
+    },
+    {
+      "from": "API_COGNITIVELOGIC",
+      "to": "KNOWLEDGE_GRAPH_SEMANTICO",
+      "type": "ESPONE"
+    },
+    {
+      "from": "ACADEMIA_BOLOGNA",
+      "to": "QEN_COMPLIANCE_ENGINE",
+      "type": "VALIDA"
+    },
+    {
+      "from": "COLT_IN_FRAGRANZA",
+      "to": "SETTORE_RISTORAZIONE",
+      "type": "SERVE"
+    },
+    {
+      "from": "TRAD_RAD",
+      "to": "SETTORE_ARTIGIANATO_BOLOGNA",
+      "type": "SERVE"
+    },
+    {
+      "from": "ECO_LOCAL",
+      "to": "SETTORE_BALNEARE",
+      "type": "SERVE"
+    },
+    {
+      "from": "FORTRESS_PROTOCOL",
+      "to": "QEN_ONBOARDING_WIZARD",
+      "type": "INTEGRA"
+    },
+    {
+      "from": "bagno-roma-rimini",
+      "to": "RIVIERA_ADRIATICA_BALNEARI",
+      "type": "APPARTIENE"
+    },
+    {
+      "from": "bagno-roma-rimini",
+      "to": "REG_BOLKESTEIN_2027",
+      "type": "SOGGETTO_A"
+    },
+    {
+      "from": "QEN_BALNEARE_AUDITOR",
+      "to": "bagno-roma-rimini",
+      "type": "CANDIDATO_AUDIT"
+    },
+    {
+      "from": "lido-adriatico-riccione",
+      "to": "RIVIERA_ADRIATICA_BALNEARI",
+      "type": "APPARTIENE"
+    },
+    {
+      "from": "lido-adriatico-riccione",
+      "to": "REG_BOLKESTEIN_2027",
+      "type": "SOGGETTO_A"
+    },
+    {
+      "from": "QEN_BALNEARE_AUDITOR",
+      "to": "lido-adriatico-riccione",
+      "type": "CANDIDATO_AUDIT"
+    },
+    {
+      "from": "bagno-delfino-cervia",
+      "to": "RIVIERA_ADRIATICA_BALNEARI",
+      "type": "APPARTIENE"
+    },
+    {
+      "from": "bagno-delfino-cervia",
+      "to": "REG_BOLKESTEIN_2027",
+      "type": "SOGGETTO_A"
+    },
+    {
+      "from": "QEN_BALNEARE_AUDITOR",
+      "to": "bagno-delfino-cervia",
+      "type": "CANDIDATO_AUDIT"
+    },
+    {
+      "from": "lido-la-perla-cesenatico",
+      "to": "RIVIERA_ADRIATICA_BALNEARI",
+      "type": "APPARTIENE"
+    },
+    {
+      "from": "lido-la-perla-cesenatico",
+      "to": "REG_BOLKESTEIN_2027",
+      "type": "SOGGETTO_A"
+    },
+    {
+      "from": "QEN_BALNEARE_AUDITOR",
+      "to": "lido-la-perla-cesenatico",
+      "type": "CANDIDATO_AUDIT"
+    },
+    {
+      "from": "bagno-riviera-rimini",
+      "to": "RIVIERA_ADRIATICA_BALNEARI",
+      "type": "APPARTIENE"
+    },
+    {
+      "from": "bagno-riviera-rimini",
+      "to": "REG_BOLKESTEIN_2027",
+      "type": "SOGGETTO_A"
+    },
+    {
+      "from": "QEN_BALNEARE_AUDITOR",
+      "to": "bagno-riviera-rimini",
+      "type": "CANDIDATO_AUDIT"
+    },
+    {
+      "from": "lido-san-martino-cattolica",
+      "to": "RIVIERA_ADRIATICA_BALNEARI",
+      "type": "APPARTIENE"
+    },
+    {
+      "from": "lido-san-martino-cattolica",
+      "to": "REG_BOLKESTEIN_2027",
+      "type": "SOGGETTO_A"
+    },
+    {
+      "from": "QEN_BALNEARE_AUDITOR",
+      "to": "lido-san-martino-cattolica",
+      "type": "CANDIDATO_AUDIT"
+    },
+    {
+      "from": "bagno-azzurro-cesenatico",
+      "to": "RIVIERA_ADRIATICA_BALNEARI",
+      "type": "APPARTIENE"
+    },
+    {
+      "from": "bagno-azzurro-cesenatico",
+      "to": "REG_BOLKESTEIN_2027",
+      "type": "SOGGETTO_A"
+    },
+    {
+      "from": "QEN_BALNEARE_AUDITOR",
+      "to": "bagno-azzurro-cesenatico",
+      "type": "CANDIDATO_AUDIT"
+    },
+    {
+      "from": "rotonda-beach-riccione",
+      "to": "RIVIERA_ADRIATICA_BALNEARI",
+      "type": "APPARTIENE"
+    },
+    {
+      "from": "rotonda-beach-riccione",
+      "to": "REG_BOLKESTEIN_2027",
+      "type": "SOGGETTO_A"
+    },
+    {
+      "from": "QEN_BALNEARE_AUDITOR",
+      "to": "rotonda-beach-riccione",
+      "type": "CANDIDATO_AUDIT"
+    },
+    {
+      "from": "bagno-mirta-cervia",
+      "to": "RIVIERA_ADRIATICA_BALNEARI",
+      "type": "APPARTIENE"
+    },
+    {
+      "from": "bagno-mirta-cervia",
+      "to": "REG_BOLKESTEIN_2027",
+      "type": "SOGGETTO_A"
+    },
+    {
+      "from": "QEN_BALNEARE_AUDITOR",
+      "to": "bagno-mirta-cervia",
+      "type": "CANDIDATO_AUDIT"
+    },
+    {
+      "from": "stabilimento-paradiso-cattolica",
+      "to": "RIVIERA_ADRIATICA_BALNEARI",
+      "type": "APPARTIENE"
+    },
+    {
+      "from": "stabilimento-paradiso-cattolica",
+      "to": "REG_BOLKESTEIN_2027",
+      "type": "SOGGETTO_A"
+    },
+    {
+      "from": "QEN_BALNEARE_AUDITOR",
+      "to": "stabilimento-paradiso-cattolica",
+      "type": "CANDIDATO_AUDIT"
+    },
+    {
+      "from": "osteria-del-pratello-bo",
+      "to": "SETTORE_HORECA_BOLOGNA",
+      "type": "APPARTIENE"
+    },
+    {
+      "from": "QEN_HORECA_AUDITOR",
+      "to": "osteria-del-pratello-bo",
+      "type": "CANDIDATO_AUDIT"
+    },
+    {
+      "from": "osteria-del-pratello-bo",
+      "to": "SETTORE_RISTORAZIONE",
+      "type": "APPARTIENE"
+    },
+    {
+      "from": "trattoria-san-felice-bo",
+      "to": "SETTORE_HORECA_BOLOGNA",
+      "type": "APPARTIENE"
+    },
+    {
+      "from": "QEN_HORECA_AUDITOR",
+      "to": "trattoria-san-felice-bo",
+      "type": "CANDIDATO_AUDIT"
+    },
+    {
+      "from": "trattoria-san-felice-bo",
+      "to": "SETTORE_RISTORAZIONE",
+      "type": "APPARTIENE"
+    },
+    {
+      "from": "ristorante-la-quercia-casalecchio",
+      "to": "SETTORE_HORECA_BOLOGNA",
+      "type": "APPARTIENE"
+    },
+    {
+      "from": "QEN_HORECA_AUDITOR",
+      "to": "ristorante-la-quercia-casalecchio",
+      "type": "CANDIDATO_AUDIT"
+    },
+    {
+      "from": "ristorante-la-quercia-casalecchio",
+      "to": "SETTORE_RISTORAZIONE",
+      "type": "APPARTIENE"
+    },
+    {
+      "from": "da-gianni-trattoria-bologna",
+      "to": "SETTORE_HORECA_BOLOGNA",
+      "type": "APPARTIENE"
+    },
+    {
+      "from": "QEN_HORECA_AUDITOR",
+      "to": "da-gianni-trattoria-bologna",
+      "type": "CANDIDATO_AUDIT"
+    },
+    {
+      "from": "da-gianni-trattoria-bologna",
+      "to": "SETTORE_RISTORAZIONE",
+      "type": "APPARTIENE"
+    },
+    {
+      "from": "il-portico-zola-predosa",
+      "to": "SETTORE_HORECA_BOLOGNA",
+      "type": "APPARTIENE"
+    },
+    {
+      "from": "QEN_HORECA_AUDITOR",
+      "to": "il-portico-zola-predosa",
+      "type": "CANDIDATO_AUDIT"
+    },
+    {
+      "from": "il-portico-zola-predosa",
+      "to": "SETTORE_RISTORAZIONE",
+      "type": "APPARTIENE"
+    },
+    {
+      "from": "trattoria-del-navile-bologna",
+      "to": "SETTORE_HORECA_BOLOGNA",
+      "type": "APPARTIENE"
+    },
+    {
+      "from": "QEN_HORECA_AUDITOR",
+      "to": "trattoria-del-navile-bologna",
+      "type": "CANDIDATO_AUDIT"
+    },
+    {
+      "from": "trattoria-del-navile-bologna",
+      "to": "SETTORE_RISTORAZIONE",
+      "type": "APPARTIENE"
+    },
+    {
+      "from": "osteria-dell-orsa-bologna",
+      "to": "SETTORE_HORECA_BOLOGNA",
+      "type": "APPARTIENE"
+    },
+    {
+      "from": "QEN_HORECA_AUDITOR",
+      "to": "osteria-dell-orsa-bologna",
+      "type": "CANDIDATO_AUDIT"
+    },
+    {
+      "from": "osteria-dell-orsa-bologna",
+      "to": "SETTORE_RISTORAZIONE",
+      "type": "APPARTIENE"
+    },
+    {
+      "from": "hotel-majestic-bologna",
+      "to": "SETTORE_HORECA_BOLOGNA",
+      "type": "APPARTIENE"
+    },
+    {
+      "from": "QEN_HORECA_AUDITOR",
+      "to": "hotel-majestic-bologna",
+      "type": "CANDIDATO_AUDIT"
+    },
+    {
+      "from": "albergo-san-luca-bologna",
+      "to": "SETTORE_HORECA_BOLOGNA",
+      "type": "APPARTIENE"
+    },
+    {
+      "from": "QEN_HORECA_AUDITOR",
+      "to": "albergo-san-luca-bologna",
+      "type": "CANDIDATO_AUDIT"
+    },
+    {
+      "from": "hotel-zola-zola-predosa",
+      "to": "SETTORE_HORECA_BOLOGNA",
+      "type": "APPARTIENE"
+    },
+    {
+      "from": "QEN_HORECA_AUDITOR",
+      "to": "hotel-zola-zola-predosa",
+      "type": "CANDIDATO_AUDIT"
+    },
+    {
+      "from": "pasta-fresca-gentilini-cspt",
+      "to": "CNA_BOLOGNA",
+      "type": "POTENZIALE_CNA"
+    },
+    {
+      "from": "pasta-fresca-gentilini-cspt",
+      "to": "SETTORE_ARTIGIANATO_BOLOGNA",
+      "type": "APPARTIENE"
+    },
+    {
+      "from": "forno-artigianale-melloni-imola",
+      "to": "CNA_BOLOGNA",
+      "type": "POTENZIALE_CNA"
+    },
+    {
+      "from": "forno-artigianale-melloni-imola",
+      "to": "SETTORE_ARTIGIANATO_BOLOGNA",
+      "type": "APPARTIENE"
+    },
+    {
+      "from": "caseificio-artigianale-rossi-porretta",
+      "to": "CNA_BOLOGNA",
+      "type": "POTENZIALE_CNA"
+    },
+    {
+      "from": "caseificio-artigianale-rossi-porretta",
+      "to": "SETTORE_ARTIGIANATO_BOLOGNA",
+      "type": "APPARTIENE"
+    },
+    {
+      "from": "trattoria-appennino-grizzana",
+      "to": "CNA_BOLOGNA",
+      "type": "POTENZIALE_CNA"
+    },
+    {
+      "from": "trattoria-appennino-grizzana",
+      "to": "SETTORE_RISTORAZIONE",
+      "type": "APPARTIENE"
+    },
+    {
+      "from": "osteria-del-borgo-sgip",
+      "to": "CNA_BOLOGNA",
+      "type": "POTENZIALE_CNA"
+    },
+    {
+      "from": "osteria-del-borgo-sgip",
+      "to": "SETTORE_RISTORAZIONE",
+      "type": "APPARTIENE"
+    },
+    {
+      "from": "ristorante-la-pineta-marzabotto",
+      "to": "CNA_BOLOGNA",
+      "type": "POTENZIALE_CNA"
+    },
+    {
+      "from": "ristorante-la-pineta-marzabotto",
+      "to": "SETTORE_RISTORAZIONE",
+      "type": "APPARTIENE"
+    },
+    {
+      "from": "pizzeria-artistica-tonino-budrio",
+      "to": "CNA_BOLOGNA",
+      "type": "POTENZIALE_CNA"
+    },
+    {
+      "from": "pizzeria-artistica-tonino-budrio",
+      "to": "SETTORE_RISTORAZIONE",
+      "type": "APPARTIENE"
+    },
+    {
+      "from": "hotel-appennino-vergato",
+      "to": "CNA_BOLOGNA",
+      "type": "POTENZIALE_CNA"
+    },
+    {
+      "from": "hotel-appennino-vergato",
+      "to": "SETTORE_HORECA_BOLOGNA",
+      "type": "APPARTIENE"
+    },
+    {
+      "from": "locanda-della-valle-castiglione",
+      "to": "CNA_BOLOGNA",
+      "type": "POTENZIALE_CNA"
+    },
+    {
+      "from": "locanda-della-valle-castiglione",
+      "to": "SETTORE_HORECA_BOLOGNA",
+      "type": "APPARTIENE"
+    },
+    {
+      "from": "albergo-emilia-pianoro",
+      "to": "CNA_BOLOGNA",
+      "type": "POTENZIALE_CNA"
+    },
+    {
+      "from": "albergo-emilia-pianoro",
+      "to": "SETTORE_HORECA_BOLOGNA",
+      "type": "APPARTIENE"
+    }
   ]
 }
