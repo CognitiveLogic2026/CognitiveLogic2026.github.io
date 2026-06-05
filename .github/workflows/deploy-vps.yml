@@ -14,6 +14,7 @@ on:
       - 'qen-reconciliation/**'
       - 'nginx/**'
       - 'data/intelligence_feed.json'
+      - 'data/qen_graph_v4.json'
       - '.github/workflows/deploy-vps.yml'
   workflow_dispatch:
 
@@ -74,7 +75,8 @@ jobs:
 
             # Initialize data files if missing
             [ -f /app/cognitivelogic/pilots.json ] || echo '{}' > /app/cognitivelogic/pilots.json
-            [ -f /app/cognitivelogic/graph.json ]  || echo '{"nodes":{},"edges":[]}' > /app/cognitivelogic/graph.json
+            # Sync knowledge graph from repo (always overwrite — repo is source of truth)
+            cp "$REPO_DIR/data/qen_graph_v4.json" /app/cognitivelogic/graph.json
 
             # Ensure Redis is installed and running (needed for rate limiter)
             if ! command -v redis-server &>/dev/null; then
