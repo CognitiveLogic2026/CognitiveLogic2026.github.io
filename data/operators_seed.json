@@ -1,0 +1,562 @@
+[
+  {
+    "id": "bagno-roma-rimini",
+    "type": "@Gruppo",
+    "label": "Bagno Roma",
+    "territorio": "Rimini",
+    "cluster": "bolkestein",
+    "settore": "balneare",
+    "stato_qen": "da_mappare",
+    "priorita": 1,
+    "bolkestein_flag": true,
+    "compliance": {
+      "cin_cir": "N/V",
+      "gdpr": "N/V",
+      "eu_ai_act": "N/V",
+      "bolkestein": "soggetto"
+    },
+    "score_qen": null,
+    "edge": []
+  },
+  {
+    "id": "lido-adriatico-riccione",
+    "type": "@Gruppo",
+    "label": "Lido Adriatico",
+    "territorio": "Riccione",
+    "cluster": "bolkestein",
+    "settore": "balneare",
+    "stato_qen": "da_mappare",
+    "priorita": 1,
+    "bolkestein_flag": true,
+    "compliance": {
+      "cin_cir": "N/V",
+      "gdpr": "N/V",
+      "eu_ai_act": "N/V",
+      "bolkestein": "soggetto"
+    },
+    "score_qen": null,
+    "edge": []
+  },
+  {
+    "id": "bagno-delfino-cervia",
+    "type": "@Gruppo",
+    "label": "Bagno Delfino",
+    "territorio": "Cervia",
+    "cluster": "bolkestein",
+    "settore": "balneare",
+    "stato_qen": "da_mappare",
+    "priorita": 1,
+    "bolkestein_flag": true,
+    "compliance": {
+      "cin_cir": "N/V",
+      "gdpr": "N/V",
+      "eu_ai_act": "N/V",
+      "bolkestein": "soggetto"
+    },
+    "score_qen": null,
+    "edge": []
+  },
+  {
+    "id": "lido-la-perla-cesenatico",
+    "type": "@Gruppo",
+    "label": "Lido La Perla",
+    "territorio": "Cesenatico",
+    "cluster": "bolkestein",
+    "settore": "balneare",
+    "stato_qen": "da_mappare",
+    "priorita": 1,
+    "bolkestein_flag": true,
+    "compliance": {
+      "cin_cir": "N/V",
+      "gdpr": "N/V",
+      "eu_ai_act": "N/V",
+      "bolkestein": "soggetto"
+    },
+    "score_qen": null,
+    "edge": []
+  },
+  {
+    "id": "bagno-riviera-rimini",
+    "type": "@Gruppo",
+    "label": "Bagno Riviera",
+    "territorio": "Rimini",
+    "cluster": "bolkestein",
+    "settore": "balneare",
+    "stato_qen": "da_mappare",
+    "priorita": 1,
+    "bolkestein_flag": true,
+    "compliance": {
+      "cin_cir": "N/V",
+      "gdpr": "N/V",
+      "eu_ai_act": "N/V",
+      "bolkestein": "soggetto"
+    },
+    "score_qen": null,
+    "edge": []
+  },
+  {
+    "id": "lido-san-martino-cattolica",
+    "type": "@Gruppo",
+    "label": "Lido San Martino",
+    "territorio": "Cattolica",
+    "cluster": "bolkestein",
+    "settore": "balneare",
+    "stato_qen": "da_mappare",
+    "priorita": 1,
+    "bolkestein_flag": true,
+    "compliance": {
+      "cin_cir": "N/V",
+      "gdpr": "N/V",
+      "eu_ai_act": "N/V",
+      "bolkestein": "soggetto"
+    },
+    "score_qen": null,
+    "edge": []
+  },
+  {
+    "id": "bagno-azzurro-cesenatico",
+    "type": "@Gruppo",
+    "label": "Bagno Azzurro",
+    "territorio": "Cesenatico",
+    "cluster": "bolkestein",
+    "settore": "balneare",
+    "stato_qen": "da_mappare",
+    "priorita": 1,
+    "bolkestein_flag": true,
+    "compliance": {
+      "cin_cir": "N/V",
+      "gdpr": "N/V",
+      "eu_ai_act": "N/V",
+      "bolkestein": "soggetto"
+    },
+    "score_qen": null,
+    "edge": []
+  },
+  {
+    "id": "rotonda-beach-riccione",
+    "type": "@Gruppo",
+    "label": "Rotonda Beach Club",
+    "territorio": "Riccione",
+    "cluster": "bolkestein",
+    "settore": "balneare",
+    "stato_qen": "da_mappare",
+    "priorita": 1,
+    "bolkestein_flag": true,
+    "compliance": {
+      "cin_cir": "N/V",
+      "gdpr": "N/V",
+      "eu_ai_act": "N/V",
+      "bolkestein": "soggetto"
+    },
+    "score_qen": null,
+    "edge": []
+  },
+  {
+    "id": "bagno-mirta-cervia",
+    "type": "@Gruppo",
+    "label": "Bagno Mirta",
+    "territorio": "Cervia",
+    "cluster": "bolkestein",
+    "settore": "balneare",
+    "stato_qen": "da_mappare",
+    "priorita": 1,
+    "bolkestein_flag": true,
+    "compliance": {
+      "cin_cir": "N/V",
+      "gdpr": "N/V",
+      "eu_ai_act": "N/V",
+      "bolkestein": "soggetto"
+    },
+    "score_qen": null,
+    "edge": []
+  },
+  {
+    "id": "stabilimento-paradiso-cattolica",
+    "type": "@Gruppo",
+    "label": "Stabilimento Paradiso",
+    "territorio": "Cattolica",
+    "cluster": "bolkestein",
+    "settore": "balneare",
+    "stato_qen": "da_mappare",
+    "priorita": 1,
+    "bolkestein_flag": true,
+    "compliance": {
+      "cin_cir": "N/V",
+      "gdpr": "N/V",
+      "eu_ai_act": "N/V",
+      "bolkestein": "soggetto"
+    },
+    "score_qen": null,
+    "edge": []
+  },
+  {
+    "id": "osteria-del-pratello-bo",
+    "type": "@Gruppo",
+    "label": "Osteria del Pratello",
+    "territorio": "Bologna",
+    "cluster": "horeca_bologna",
+    "settore": "ristorativo",
+    "stato_qen": "da_mappare",
+    "priorita": 1,
+    "compliance": {
+      "cin_cir": "N/V",
+      "gdpr": "N/V",
+      "eu_ai_act": "N/V",
+      "bolkestein": "non_soggetto"
+    },
+    "score_qen": null,
+    "edge": []
+  },
+  {
+    "id": "trattoria-san-felice-bo",
+    "type": "@Gruppo",
+    "label": "Trattoria San Felice",
+    "territorio": "Bologna",
+    "cluster": "horeca_bologna",
+    "settore": "ristorativo",
+    "stato_qen": "da_mappare",
+    "priorita": 1,
+    "compliance": {
+      "cin_cir": "N/V",
+      "gdpr": "N/V",
+      "eu_ai_act": "N/V",
+      "bolkestein": "non_soggetto"
+    },
+    "score_qen": null,
+    "edge": []
+  },
+  {
+    "id": "ristorante-la-quercia-casalecchio",
+    "type": "@Gruppo",
+    "label": "Ristorante La Quercia",
+    "territorio": "Casalecchio di Reno",
+    "cluster": "horeca_bologna",
+    "settore": "ristorativo",
+    "stato_qen": "da_mappare",
+    "priorita": 1,
+    "compliance": {
+      "cin_cir": "N/V",
+      "gdpr": "N/V",
+      "eu_ai_act": "N/V",
+      "bolkestein": "non_soggetto"
+    },
+    "score_qen": null,
+    "edge": []
+  },
+  {
+    "id": "da-gianni-trattoria-bologna",
+    "type": "@Gruppo",
+    "label": "Da Gianni Trattoria",
+    "territorio": "Bologna",
+    "cluster": "horeca_bologna",
+    "settore": "ristorativo",
+    "stato_qen": "da_mappare",
+    "priorita": 1,
+    "compliance": {
+      "cin_cir": "N/V",
+      "gdpr": "N/V",
+      "eu_ai_act": "N/V",
+      "bolkestein": "non_soggetto"
+    },
+    "score_qen": null,
+    "edge": []
+  },
+  {
+    "id": "il-portico-zola-predosa",
+    "type": "@Gruppo",
+    "label": "Il Portico",
+    "territorio": "Zola Predosa",
+    "cluster": "horeca_bologna",
+    "settore": "ristorativo",
+    "stato_qen": "da_mappare",
+    "priorita": 1,
+    "compliance": {
+      "cin_cir": "N/V",
+      "gdpr": "N/V",
+      "eu_ai_act": "N/V",
+      "bolkestein": "non_soggetto"
+    },
+    "score_qen": null,
+    "edge": []
+  },
+  {
+    "id": "trattoria-del-navile-bologna",
+    "type": "@Gruppo",
+    "label": "Trattoria del Navile",
+    "territorio": "Bologna",
+    "cluster": "horeca_bologna",
+    "settore": "ristorativo",
+    "stato_qen": "da_mappare",
+    "priorita": 2,
+    "compliance": {
+      "cin_cir": "N/V",
+      "gdpr": "N/V",
+      "eu_ai_act": "N/V",
+      "bolkestein": "non_soggetto"
+    },
+    "score_qen": null,
+    "edge": []
+  },
+  {
+    "id": "osteria-dell-orsa-bologna",
+    "type": "@Gruppo",
+    "label": "Osteria dell'Orsa",
+    "territorio": "Bologna",
+    "cluster": "horeca_bologna",
+    "settore": "ristorativo",
+    "stato_qen": "da_mappare",
+    "priorita": 2,
+    "compliance": {
+      "cin_cir": "N/V",
+      "gdpr": "N/V",
+      "eu_ai_act": "N/V",
+      "bolkestein": "non_soggetto"
+    },
+    "score_qen": null,
+    "edge": []
+  },
+  {
+    "id": "hotel-majestic-bologna",
+    "type": "@Gruppo",
+    "label": "Hotel Majestic",
+    "territorio": "Bologna",
+    "cluster": "horeca_bologna",
+    "settore": "alberghiero",
+    "stato_qen": "da_mappare",
+    "priorita": 1,
+    "compliance": {
+      "cin_cir": "N/V",
+      "gdpr": "N/V",
+      "eu_ai_act": "N/V",
+      "bolkestein": "non_soggetto"
+    },
+    "score_qen": null,
+    "edge": []
+  },
+  {
+    "id": "albergo-san-luca-bologna",
+    "type": "@Gruppo",
+    "label": "Albergo San Luca",
+    "territorio": "Bologna",
+    "cluster": "horeca_bologna",
+    "settore": "alberghiero",
+    "stato_qen": "da_mappare",
+    "priorita": 1,
+    "compliance": {
+      "cin_cir": "N/V",
+      "gdpr": "N/V",
+      "eu_ai_act": "N/V",
+      "bolkestein": "non_soggetto"
+    },
+    "score_qen": null,
+    "edge": []
+  },
+  {
+    "id": "hotel-zola-zola-predosa",
+    "type": "@Gruppo",
+    "label": "Hotel Zola",
+    "territorio": "Zola Predosa",
+    "cluster": "horeca_bologna",
+    "settore": "alberghiero",
+    "stato_qen": "da_mappare",
+    "priorita": 2,
+    "compliance": {
+      "cin_cir": "N/V",
+      "gdpr": "N/V",
+      "eu_ai_act": "N/V",
+      "bolkestein": "non_soggetto"
+    },
+    "score_qen": null,
+    "edge": []
+  },
+  {
+    "id": "pasta-fresca-gentilini-cspt",
+    "type": "@Gruppo",
+    "label": "Pasta Fresca Gentilini",
+    "territorio": "Castel San Pietro Terme",
+    "cluster": "cna_bologna",
+    "settore": "misto",
+    "stato_qen": "da_mappare",
+    "priorita": 2,
+    "cna_potenziale": true,
+    "compliance": {
+      "cin_cir": "N/V",
+      "gdpr": "N/V",
+      "eu_ai_act": "N/V",
+      "bolkestein": "non_soggetto"
+    },
+    "score_qen": null,
+    "edge": []
+  },
+  {
+    "id": "forno-artigianale-melloni-imola",
+    "type": "@Gruppo",
+    "label": "Forno Artigianale Melloni",
+    "territorio": "Imola",
+    "cluster": "cna_bologna",
+    "settore": "misto",
+    "stato_qen": "da_mappare",
+    "priorita": 2,
+    "cna_potenziale": true,
+    "compliance": {
+      "cin_cir": "N/V",
+      "gdpr": "N/V",
+      "eu_ai_act": "N/V",
+      "bolkestein": "non_soggetto"
+    },
+    "score_qen": null,
+    "edge": []
+  },
+  {
+    "id": "caseificio-artigianale-rossi-porretta",
+    "type": "@Gruppo",
+    "label": "Caseificio Artigianale Rossi",
+    "territorio": "Porretta Terme",
+    "cluster": "cna_bologna",
+    "settore": "misto",
+    "stato_qen": "da_mappare",
+    "priorita": 2,
+    "cna_potenziale": true,
+    "compliance": {
+      "cin_cir": "N/V",
+      "gdpr": "N/V",
+      "eu_ai_act": "N/V",
+      "bolkestein": "non_soggetto"
+    },
+    "score_qen": null,
+    "edge": []
+  },
+  {
+    "id": "trattoria-appennino-grizzana",
+    "type": "@Gruppo",
+    "label": "Trattoria dell'Appennino",
+    "territorio": "Grizzana Morandi",
+    "cluster": "cna_bologna",
+    "settore": "ristorativo",
+    "stato_qen": "da_mappare",
+    "priorita": 2,
+    "cna_potenziale": true,
+    "compliance": {
+      "cin_cir": "N/V",
+      "gdpr": "N/V",
+      "eu_ai_act": "N/V",
+      "bolkestein": "non_soggetto"
+    },
+    "score_qen": null,
+    "edge": []
+  },
+  {
+    "id": "osteria-del-borgo-sgip",
+    "type": "@Gruppo",
+    "label": "Osteria del Borgo",
+    "territorio": "San Giovanni in Persiceto",
+    "cluster": "cna_bologna",
+    "settore": "ristorativo",
+    "stato_qen": "da_mappare",
+    "priorita": 2,
+    "cna_potenziale": true,
+    "compliance": {
+      "cin_cir": "N/V",
+      "gdpr": "N/V",
+      "eu_ai_act": "N/V",
+      "bolkestein": "non_soggetto"
+    },
+    "score_qen": null,
+    "edge": []
+  },
+  {
+    "id": "ristorante-la-pineta-marzabotto",
+    "type": "@Gruppo",
+    "label": "Ristorante La Pineta",
+    "territorio": "Marzabotto",
+    "cluster": "cna_bologna",
+    "settore": "ristorativo",
+    "stato_qen": "da_mappare",
+    "priorita": 2,
+    "cna_potenziale": true,
+    "compliance": {
+      "cin_cir": "N/V",
+      "gdpr": "N/V",
+      "eu_ai_act": "N/V",
+      "bolkestein": "non_soggetto"
+    },
+    "score_qen": null,
+    "edge": []
+  },
+  {
+    "id": "pizzeria-artistica-tonino-budrio",
+    "type": "@Gruppo",
+    "label": "Pizzeria Artistica da Tonino",
+    "territorio": "Budrio",
+    "cluster": "cna_bologna",
+    "settore": "ristorativo",
+    "stato_qen": "da_mappare",
+    "priorita": 2,
+    "cna_potenziale": true,
+    "compliance": {
+      "cin_cir": "N/V",
+      "gdpr": "N/V",
+      "eu_ai_act": "N/V",
+      "bolkestein": "non_soggetto"
+    },
+    "score_qen": null,
+    "edge": []
+  },
+  {
+    "id": "hotel-appennino-vergato",
+    "type": "@Gruppo",
+    "label": "Hotel Appennino",
+    "territorio": "Vergato",
+    "cluster": "cna_bologna",
+    "settore": "alberghiero",
+    "stato_qen": "da_mappare",
+    "priorita": 2,
+    "cna_potenziale": true,
+    "compliance": {
+      "cin_cir": "N/V",
+      "gdpr": "N/V",
+      "eu_ai_act": "N/V",
+      "bolkestein": "non_soggetto"
+    },
+    "score_qen": null,
+    "edge": []
+  },
+  {
+    "id": "locanda-della-valle-castiglione",
+    "type": "@Gruppo",
+    "label": "Locanda della Valle",
+    "territorio": "Castiglione dei Pepoli",
+    "cluster": "cna_bologna",
+    "settore": "alberghiero",
+    "stato_qen": "da_mappare",
+    "priorita": 2,
+    "cna_potenziale": true,
+    "compliance": {
+      "cin_cir": "N/V",
+      "gdpr": "N/V",
+      "eu_ai_act": "N/V",
+      "bolkestein": "non_soggetto"
+    },
+    "score_qen": null,
+    "edge": []
+  },
+  {
+    "id": "albergo-emilia-pianoro",
+    "type": "@Gruppo",
+    "label": "Albergo Emilia",
+    "territorio": "Pianoro",
+    "cluster": "cna_bologna",
+    "settore": "alberghiero",
+    "stato_qen": "da_mappare",
+    "priorita": 2,
+    "cna_potenziale": true,
+    "compliance": {
+      "cin_cir": "N/V",
+      "gdpr": "N/V",
+      "eu_ai_act": "N/V",
+      "bolkestein": "non_soggetto"
+    },
+    "score_qen": null,
+    "edge": []
+  }
+]
