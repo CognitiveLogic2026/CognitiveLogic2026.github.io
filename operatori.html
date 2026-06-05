@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<!--
+  Copyright (c) 2026 Roberto Bob Malini - Cognitive Logic
+  https://www.cognitivelogic.it
+  Licensed under CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/)
+-->
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Operatori QEN — Cognitive Logic</title>
+  <meta name="description" content="Directory operatori QEN — 30 nodi seed: Bolkestein 2027, HoReCa Bologna, CNA Bologna." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --navy:      #070D1A;
+      --navy-2:    #0D1628;
+      --navy-3:    #122035;
+      --gold:      #C9A84C;
+      --gold-dim:  rgba(201,168,76,0.10);
+      --gold-line: rgba(201,168,76,0.22);
+      --gold-soft: rgba(201,168,76,0.55);
+      --text:      #CFC9B8;
+      --text-2:    #E8E2D4;
+      --muted:     #5A5448;
+      --muted-2:   #7A7268;
+      --line:      rgba(201,168,76,0.12);
+      --serif:     'Cormorant Garamond', serif;
+      --mono:      'DM Mono', monospace;
+      --red-dim:   rgba(180,60,60,0.18);
+      --red-text:  #C87070;
+    }
+
+    html, body {
+      background: var(--navy);
+      color: var(--text);
+      font-family: var(--mono);
+      font-size: 13px;
+      min-height: 100vh;
+    }
+
+    /* ── Report Header ── */
+    .report-header {
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      align-items: start;
+      padding: 36px 48px 28px;
+      border-bottom: 1px solid var(--line);
+      gap: 24px;
+    }
+
+    .rh-left { font-size: 0.58rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--muted-2); line-height: 1.9; }
+    .rh-left strong { color: var(--gold); display: block; font-weight: 400; margin-bottom: 2px; }
+
+    .rh-center { text-align: center; font-size: 0.55rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--muted); white-space: nowrap; }
+
+    .rh-right { text-align: right; font-size: 0.58rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted-2); line-height: 1.9; }
+
+    /* ── Nav ── */
+    .main-nav {
+      display: flex;
+      align-items: center;
+      gap: 0;
+      padding: 0 48px;
+      border-bottom: 1px solid var(--line);
+      background: rgba(7,13,26,0.97);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      min-height: 48px;
+    }
+
+    .main-nav a {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 0.6rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      padding: 0 16px;
+      border-left: 1px solid var(--line);
+      line-height: 48px;
+      transition: color 0.2s;
+    }
+    .main-nav a:first-child { border-left: none; padding-left: 0; }
+    .main-nav a:hover, .main-nav a.active { color: var(--gold); }
+    .nav-spacer { flex: 1; }
+    .nav-count {
+      font-size: 0.58rem;
+      color: var(--muted);
+      letter-spacing: 0.1em;
+      padding: 4px 12px;
+      border: 1px solid var(--line);
+    }
+    .nav-count span { color: var(--gold); }
+
+    /* ── Cover section ── */
+    .cover {
+      padding: 80px 48px 64px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .cover-label {
+      font-size: 0.58rem;
+      letter-spacing: 0.4em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 28px;
+    }
+
+    .cover h1 {
+      font-family: var(--serif);
+      font-size: clamp(3rem, 6vw, 5.5rem);
+      font-weight: 300;
+      line-height: 0.95;
+      color: var(--text-2);
+      margin-bottom: 8px;
+    }
+
+    .cover h1 em {
+      font-style: italic;
+      color: var(--gold-soft);
+    }
+
+    .cover-sub {
+      font-family: var(--serif);
+      font-style: italic;
+      font-size: clamp(1rem, 1.6vw, 1.3rem);
+      color: var(--muted-2);
+      margin-top: 16px;
+      max-width: 640px;
+    }
+
+    /* ── Filters ── */
+    .filters {
+      display: flex;
+      gap: 0;
+      padding: 0 48px;
+      border-bottom: 1px solid var(--line);
+      background: var(--navy-2);
+      overflow-x: auto;
+    }
+
+    .filter-btn {
+      font-family: var(--mono);
+      font-size: 0.6rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--muted);
+      background: none;
+      border: none;
+      border-bottom: 2px solid transparent;
+      padding: 14px 20px;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: all 0.2s;
+    }
+
+    .filter-btn:hover { color: var(--text); }
+    .filter-btn.active { color: var(--gold); border-bottom-color: var(--gold); }
+
+    /* ── Cluster section ── */
+    .cluster-section {
+      padding: 48px 48px 0;
+      border-bottom: 1px solid var(--line);
+      margin-bottom: 0;
+    }
+
+    .cluster-section:last-of-type { border-bottom: none; }
+
+    .cluster-header {
+      display: flex;
+      align-items: baseline;
+      gap: 20px;
+      margin-bottom: 36px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .cluster-label {
+      font-size: 0.55rem;
+      letter-spacing: 0.4em;
+      text-transform: uppercase;
+      color: var(--gold);
+    }
+
+    .cluster-title {
+      font-family: var(--serif);
+      font-size: clamp(1.6rem, 2.5vw, 2.2rem);
+      font-weight: 300;
+      color: var(--text-2);
+    }
+
+    .cluster-meta {
+      margin-left: auto;
+      font-size: 0.58rem;
+      color: var(--muted);
+      letter-spacing: 0.1em;
+      text-align: right;
+      line-height: 1.7;
+    }
+
+    /* ── Alert Bolkestein ── */
+    .alert-bolkestein {
+      margin-bottom: 32px;
+      padding: 16px 20px;
+      border-left: 2px solid var(--gold);
+      background: var(--gold-dim);
+      font-size: 0.72rem;
+      color: var(--text);
+      line-height: 1.7;
+    }
+
+    .alert-bolkestein strong {
+      color: var(--gold);
+      font-weight: 500;
+      display: block;
+      margin-bottom: 4px;
+      font-size: 0.6rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+    }
+
+    .countdown {
+      display: inline-block;
+      margin-top: 8px;
+      font-family: var(--serif);
+      font-size: 1.4rem;
+      color: var(--gold);
+    }
+
+    /* ── Operator grid ── */
+    .operator-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+      gap: 1px;
+      background: var(--line);
+      margin-bottom: 48px;
+    }
+
+    .operator-card {
+      background: var(--navy);
+      padding: 24px 28px;
+      position: relative;
+      transition: background 0.2s;
+    }
+
+    .operator-card:hover { background: var(--navy-2); }
+
+    .op-index {
+      font-size: 0.52rem;
+      letter-spacing: 0.3em;
+      color: var(--muted);
+      margin-bottom: 12px;
+    }
+
+    .op-label {
+      font-family: var(--serif);
+      font-size: 1.4rem;
+      font-weight: 300;
+      color: var(--text-2);
+      line-height: 1.15;
+      margin-bottom: 6px;
+    }
+
+    .op-territorio {
+      font-size: 0.65rem;
+      color: var(--gold-soft);
+      letter-spacing: 0.08em;
+      margin-bottom: 16px;
+    }
+
+    .op-meta {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px 16px;
+      margin-bottom: 16px;
+    }
+
+    .op-meta-item { }
+
+    .op-meta-key {
+      font-size: 0.52rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 2px;
+    }
+
+    .op-meta-val {
+      font-size: 0.68rem;
+      color: var(--text);
+    }
+
+    .op-compliance {
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
+      margin-bottom: 16px;
+    }
+
+    .compliance-tag {
+      font-size: 0.52rem;
+      letter-spacing: 0.15em;
+      padding: 3px 8px;
+      border: 1px solid;
+    }
+
+    .compliance-tag.nv {
+      border-color: var(--muted);
+      color: var(--muted);
+    }
+
+    .compliance-tag.soggetto {
+      border-color: var(--gold-line);
+      color: var(--gold);
+      background: var(--gold-dim);
+    }
+
+    .compliance-tag.ok {
+      border-color: rgba(100,180,100,0.3);
+      color: rgba(120,200,120,0.8);
+    }
+
+    .op-stato {
+      font-size: 0.55rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      padding: 4px 10px;
+      border: 1px solid var(--line);
+      color: var(--muted);
+      display: inline-block;
+    }
+
+    .op-cna {
+      position: absolute;
+      top: 16px;
+      right: 16px;
+      font-size: 0.48rem;
+      letter-spacing: 0.2em;
+      padding: 2px 7px;
+      border: 1px solid var(--gold-line);
+      color: var(--gold);
+    }
+
+    .op-priorita-1 .op-stato {
+      border-color: var(--gold-line);
+      color: var(--gold-soft);
+    }
+
+    /* ── Footer ── */
+    footer {
+      padding: 32px 48px;
+      border-top: 1px solid var(--line);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.58rem;
+      color: var(--muted);
+      letter-spacing: 0.1em;
+    }
+
+    footer a { color: var(--muted); text-decoration: none; transition: color 0.2s; }
+    footer a:hover { color: var(--gold); }
+
+    /* ── Hidden ── */
+    .hidden { display: none !important; }
+
+    /* ── Responsive ── */
+    @media (max-width: 768px) {
+      .report-header { grid-template-columns: 1fr; gap: 8px; padding: 24px; }
+      .rh-center, .rh-right { text-align: left; }
+      .cover, .cluster-section, .main-nav, .filters, footer { padding-left: 24px; padding-right: 24px; }
+      .cluster-header { flex-wrap: wrap; }
+      .cluster-meta { margin-left: 0; text-align: left; }
+      .operator-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- Report Header -->
+<header class="report-header">
+  <div class="rh-left">
+    <strong>QEN — Quantum Ethics Network</strong>
+    Directory Operatori · Seed v1.0
+  </div>
+  <div class="rh-center">
+    Cognitive Logic · cognitivelogic.it
+  </div>
+  <div class="rh-right">
+    Giugno 2026<br>
+    30 Nodi · 3 Cluster
+  </div>
+</header>
+
+<!-- Sticky nav -->
+<nav class="main-nav">
+  <a href="index.html">Home</a>
+  <a href="framework.html">Framework</a>
+  <a href="qen-live.html">QEN Live</a>
+  <a href="operatori.html" class="active">Operatori</a>
+  <a href="copilot.html">Copilot</a>
+  <div class="nav-spacer"></div>
+  <div class="nav-count">Nodi attivi: <span id="count-display">30</span></div>
+</nav>
+
+<!-- Cover -->
+<section class="cover">
+  <div class="cover-label">Directory Operatori · QEN Framework v6.0</div>
+  <h1>Operatori<br><em>Mappati</em></h1>
+  <p class="cover-sub">30 entità nei 3 cluster QEN — stato: <em>da_mappare</em>. Pronti per audit Vs × 0.40 + Va × 0.35 + Vt × 0.25.</p>
+</section>
+
+<!-- Filters -->
+<div class="filters">
+  <button class="filter-btn active" data-filter="all" onclick="filterCluster('all', this)">Tutti (30)</button>
+  <button class="filter-btn" data-filter="bolkestein" onclick="filterCluster('bolkestein', this)">Bolkestein 2027 (10)</button>
+  <button class="filter-btn" data-filter="horeca_bologna" onclick="filterCluster('horeca_bologna', this)">HoReCa Bologna (10)</button>
+  <button class="filter-btn" data-filter="cna_bologna" onclick="filterCluster('cna_bologna', this)">CNA Bologna (10)</button>
+</div>
+
+<!-- Clusters will be injected here -->
+<main id="main-content"></main>
+
+<footer>
+  <span>© 2026 Roberto Bob Malini — Cognitive Logic · QEN Framework v6.0</span>
+  <span><a href="qen-live.html">Grafo Live</a> · <a href="framework.html">Framework</a> · <a href="privacy.html">Privacy</a></span>
+</footer>
+
+<script>
+const SEED_URL = 'data/operators_seed.json';
+
+const CLUSTER_META = {
+  bolkestein: {
+    label: 'Cluster I · Bolkestein 2027',
+    title: 'Riviera Romagnola',
+    subtitle: 'Stabilimenti balneari soggetti a direttiva Bolkestein — scadenza concessioni 2027',
+    territori: 'Rimini · Riccione · Cattolica · Cervia · Cesenatico',
+    urgenza: true
+  },
+  horeca_bologna: {
+    label: 'Cluster II · HoReCa',
+    title: 'Bologna Metropolitana',
+    subtitle: 'Ristoranti, hotel, catering area metropolitana Bologna',
+    territori: 'Bologna · Casalecchio di Reno · Zola Predosa',
+    urgenza: false
+  },
+  cna_bologna: {
+    label: 'Cluster III · CNA',
+    title: 'Provincia Bologna',
+    subtitle: 'Artigianato alimentare, ristorazione e alberghiero — potenziali associati CNA',
+    territori: 'Imola · Budrio · Vergato · Porretta Terme · San Giovanni in Persiceto · altri',
+    urgenza: false
+  }
+};
+
+const SETTORE_LABEL = {
+  balneare:    'Balneare',
+  ristorativo: 'Ristorativo',
+  alberghiero: 'Alberghiero',
+  misto:       'Artigianato / Misto'
+};
+
+function daysToDeadline(dateStr) {
+  const now  = new Date();
+  const end  = new Date(dateStr);
+  return Math.ceil((end - now) / (1000 * 60 * 60 * 24));
+}
+
+function renderCompliance(c) {
+  const tags = [];
+  if (c.bolkestein === 'soggetto')
+    tags.push(`<span class="compliance-tag soggetto">Bolkestein</span>`);
+  if (c.cin_cir === 'N/V')
+    tags.push(`<span class="compliance-tag nv">CIN/CIR N/V</span>`);
+  if (c.gdpr === 'N/V')
+    tags.push(`<span class="compliance-tag nv">GDPR N/V</span>`);
+  if (c.eu_ai_act === 'N/V')
+    tags.push(`<span class="compliance-tag nv">EU AI Act N/V</span>`);
+  return tags.join('');
+}
+
+function renderCard(op, index) {
+  const priorita1 = op.priorita === 1 ? ' op-priorita-1' : '';
+  const cnaTag    = op.cna_potenziale
+    ? `<span class="op-cna">CNA potential</span>` : '';
+  return `
+    <div class="operator-card${priorita1}" data-cluster="${op.cluster}" data-id="${op.id}">
+      ${cnaTag}
+      <div class="op-index">Q.3.${String(index).padStart(2,'0')} · ${op.cluster.toUpperCase()}</div>
+      <div class="op-label">${op.label}</div>
+      <div class="op-territorio">${op.territorio}</div>
+      <div class="op-meta">
+        <div class="op-meta-item">
+          <div class="op-meta-key">Settore</div>
+          <div class="op-meta-val">${SETTORE_LABEL[op.settore] || op.settore}</div>
+        </div>
+        <div class="op-meta-item">
+          <div class="op-meta-key">Priorita</div>
+          <div class="op-meta-val">${op.priorita === 1 ? 'Alta' : 'Media'}</div>
+        </div>
+        <div class="op-meta-item">
+          <div class="op-meta-key">QEN Score</div>
+          <div class="op-meta-val">pending audit</div>
+        </div>
+        <div class="op-meta-item">
+          <div class="op-meta-key">Nodo</div>
+          <div class="op-meta-val" style="font-size:0.58rem;color:var(--muted)">${op.id}</div>
+        </div>
+      </div>
+      <div class="op-compliance">${renderCompliance(op.compliance)}</div>
+      <span class="op-stato">${op.stato_qen.replace(/_/g,' ')}</span>
+    </div>
+  `;
+}
+
+function renderCluster(key, operators) {
+  const meta  = CLUSTER_META[key];
+  const count = operators.length;
+
+  const bolkestein_alert = meta.urgenza ? (() => {
+    const days = daysToDeadline('2027-12-31');
+    return `
+      <div class="alert-bolkestein">
+        <strong>Urgenza Normativa · Direttiva Bolkestein</strong>
+        Scadenza concessioni demaniali: <strong>31 dicembre 2027</strong>.
+        Il QEN Score e il Dossier Bolkestein sono strumenti di valorizzazione aziendale
+        per la partecipazione alla gara di rinnovo concessione.
+        <br><span class="countdown">${days} giorni</span>
+      </div>
+    `;
+  })() : '';
+
+  const cards = operators.map((op, i) => renderCard(op, i + 1)).join('');
+
+  return `
+    <section class="cluster-section" data-cluster="${key}" id="cluster-${key}">
+      <div class="cluster-header">
+        <div>
+          <div class="cluster-label">${meta.label}</div>
+          <div class="cluster-title">${meta.title}</div>
+        </div>
+        <div class="cluster-meta">
+          ${meta.territori}<br>
+          <span style="color:var(--gold)">${count} operatori</span>
+        </div>
+      </div>
+      <p style="font-size:0.72rem;color:var(--muted-2);margin-bottom:28px;line-height:1.7;max-width:680px">${meta.subtitle}</p>
+      ${bolkestein_alert}
+      <div class="operator-grid">${cards}</div>
+    </section>
+  `;
+}
+
+function filterCluster(key, btn) {
+  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+
+  const sections = document.querySelectorAll('.cluster-section');
+  sections.forEach(s => {
+    s.classList.toggle('hidden', key !== 'all' && s.dataset.cluster !== key);
+  });
+
+  const visible = key === 'all'
+    ? document.querySelectorAll('.operator-card').length
+    : document.querySelectorAll(`.operator-card[data-cluster="${key}"]`).length;
+  document.getElementById('count-display').textContent = visible;
+}
+
+async function init() {
+  const resp = await fetch(SEED_URL);
+  const ops  = await resp.json();
+
+  const clusters = {};
+  ops.forEach(op => {
+    if (!clusters[op.cluster]) clusters[op.cluster] = [];
+    clusters[op.cluster].push(op);
+  });
+
+  const order  = ['bolkestein', 'horeca_bologna', 'cna_bologna'];
+  const html   = order.map(k => renderCluster(k, clusters[k] || [])).join('');
+  document.getElementById('main-content').innerHTML = html;
+}
+
+init();
+</script>
+
+<script src="/js/cookie-banner.js"></script>
+</body>
+</html>
