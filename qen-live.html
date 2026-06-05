@@ -9,7 +9,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>QEN Live — Cognitive Logic</title>
-  <meta name="description" content="QEN Framework grafo semantico live — 67 nodi, 105 relazioni." />
+  <meta name="description" content="QEN Framework grafo semantico live — 97 nodi, 182 relazioni." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet" />
@@ -409,34 +409,8 @@
     <div class="section-label">Node Types</div>
     <div id="node-types" style="display:flex;flex-direction:column;gap:6px"></div>
 
-    <div class="section-label">Top Botteghe · QEN</div>
-    <div style="display:flex;flex-direction:column;gap:6px">
-      <div class="type-row loaded">
-        <div class="type-dot" style="background:var(--gold)"></div>
-        <span class="type-name">Bottega Contadina</span>
-        <span class="type-count" style="color:var(--gold)">0.91</span>
-      </div>
-      <div class="type-row loaded">
-        <div class="type-dot" style="background:var(--gold)"></div>
-        <span class="type-name">Le Sfogline</span>
-        <span class="type-count" style="color:var(--gold)">0.89</span>
-      </div>
-      <div class="type-row loaded">
-        <div class="type-dot" style="background:var(--gold)"></div>
-        <span class="type-name">Ahimè</span>
-        <span class="type-count" style="color:var(--gold)">0.88</span>
-      </div>
-      <div class="type-row loaded">
-        <div class="type-dot" style="background:var(--gold)"></div>
-        <span class="type-name">Grani Antichi</span>
-        <span class="type-count" style="color:var(--gold)">0.87</span>
-      </div>
-      <div class="type-row loaded">
-        <div class="type-dot" style="background:rgba(201,168,76,0.5)"></div>
-        <span class="type-name">Bertozzi</span>
-        <span class="type-count" style="color:var(--gold)">0.84</span>
-      </div>
-    </div>
+    <div class="section-label">Top Entità · QEN Score</div>
+    <div id="top-pilots" style="display:flex;flex-direction:column;gap:6px"></div>
 
     <div class="section-label">API</div>
     <div class="api-block">
@@ -486,199 +460,198 @@
 </div>
 
 <div class="bottom-bar">
-  <span>QEN Framework v2.0 · Roberto Bob Malini ·
+  <span>QEN Framework v6.0 · Roberto Bob Malini ·
     <a href="https://fuorimenu.substack.com" target="_blank" rel="noopener">Fuorimenu</a>
   </span>
   <span id="last-updated">—</span>
 </div>
 
 <script>
-const API = 'https://api.cognitivelogic.it';
+const API       = 'https://api.cognitivelogic.it';
+const GRAPH_URL = 'data/qen_graph_v4.json';
 
 const TYPE_COLORS = {
-  SYSTEM:             '#C9A84C',
-  TRUST_ANCHOR:       '#C9A84C',
-  BOTTEGA:            '#E2C06A',
-  CONTROL:            '#8A7A5A',
-  REGULATION:         '#7A6A4A',
-  ALGORITHM:          '#A89060',
-  DATASET:            '#9A8A6A',
-  VALIDATOR:          '#B8A070',
-  METRIC:             '#C09850',
-  PROCESSING:         '#887060',
-  PROJECT:            '#A08060',
-  TECHNOLOGY:         '#907860',
-  ACTOR:              '#B09870',
-  RISK:               '#806050',
-  OUTPUT:             '#988070',
-  ARTICLE:            '#A89060',
-  EXTERNAL_REFERENCE: '#706050',
-  DEFAULT:            '#4A3A2A'
+  'Progetto':           '#C9A84C',
+  'Framework':          '#D4B460',
+  'Algoritmo':          '#A89060',
+  'Territorio':         '#7A9A6A',
+  'GruppoAlberghiero':  '#8A7A5A',
+  'Regolamento':        '#6A6A8A',
+  'KPI':                '#B8A070',
+  'Strumento':          '#907860',
+  'Protocollo':         '#C09850',
+  'Settore':            '#9A8060',
+  'Tecnologia':         '#887060',
+  'EntitaPilota':       '#E2C06A',
+  'AgenteAI':           '#B09870',
+  'Output':             '#988070',
+  'Standard':           '#706050',
+  'Osservatorio':       '#A08060',
+  '@Gruppo':            '#5A8AAA',
+  'DEFAULT':            '#4A3A2A'
 };
+
+function nodeRadius(type) {
+  if (['Progetto', 'Framework'].includes(type)) return 14;
+  if (['Algoritmo', 'Territorio', 'Regolamento'].includes(type)) return 9;
+  if (['KPI', 'EntitaPilota', 'AgenteAI'].includes(type)) return 8;
+  if (['Strumento', 'Tecnologia', 'Settore', 'Osservatorio'].includes(type)) return 7;
+  if (type === '@Gruppo') return 6;
+  return 5;
+}
+
+async function loadGraph() {
+  try {
+    const r = await fetch(GRAPH_URL);
+    if (!r.ok) throw new Error();
+    return await r.json();
+  } catch(e) { return null; }
+}
 
 async function fetchValidate() {
   try {
     const r = await fetch(`${API}/validate`);
     if (!r.ok) throw new Error();
     return await r.json();
-  } catch(e) {
-    return { nodes: 67, edges: 105, status: 'static' };
-  }
+  } catch(e) { return null; }
 }
 
 async function init() {
-  const data = await fetchValidate();
+  const [graphData, apiData] = await Promise.all([loadGraph(), fetchValidate()]);
 
-  const isLive = data.status !== 'static';
+  const meta      = graphData?.meta || {};
+  const nodesObj  = graphData?.nodes || {};
+  const edgesArr  = graphData?.edges || [];
+  const nodeCount = meta.nodi      || Object.keys(nodesObj).length || apiData?.nodes || 97;
+  const edgeCount = meta.relazioni || edgesArr.length              || apiData?.edges || 182;
 
   document.getElementById('status-text').textContent =
-    isLive ? 'live · ' + new Date().toLocaleTimeString('it-IT') : 'static · 67 nodi';
-
+    graphData ? `v${meta.version || '6.0'} · ${new Date().toLocaleTimeString('it-IT')}` : 'static fallback';
   document.getElementById('last-updated').textContent =
-    'Last sync: ' + new Date().toLocaleString('it-IT');
+    'Updated: ' + (meta.updated || new Date().toLocaleDateString('it-IT'));
 
   const nodeEl = document.getElementById('node-count');
   const edgeEl = document.getElementById('edge-count');
-
-  const nodes = data.nodes || 121;
-  const edges = data.edges || 165;
-
-  nodeEl.innerHTML = `<span>${nodes}</span>`;
-  edgeEl.innerHTML = `<span>${edges}</span>`;
+  nodeEl.innerHTML = `<span>${nodeCount}</span>`;
+  edgeEl.innerHTML = `<span>${edgeCount}</span>`;
   nodeEl.classList.add('loaded');
   setTimeout(() => edgeEl.classList.add('loaded'), 200);
-
   setTimeout(() => {
-    document.getElementById('node-bar').style.width = Math.min(nodes / 100 * 100, 100) + '%';
-    document.getElementById('edge-bar').style.width = Math.min(edges / 150 * 100, 100) + '%';
+    document.getElementById('node-bar').style.width = Math.min(nodeCount / 150 * 100, 100) + '%';
+    document.getElementById('edge-bar').style.width = Math.min(edgeCount / 250 * 100, 100) + '%';
   }, 400);
 
   const apiResp = document.getElementById('api-response');
-  apiResp.textContent = JSON.stringify({ status: isLive ? 'live' : 'static', nodes, edges });
+  apiResp.textContent = JSON.stringify({ status: graphData ? 'live' : 'static', nodes: nodeCount, edges: edgeCount, version: meta.version || '6.0' });
   apiResp.classList.add('live');
 
-  buildGraph({ nodes, edges });
+  // Node type breakdown — real counts
+  const nodesArr   = Object.values(nodesObj);
+  const typeCounts = {};
+  nodesArr.forEach(n => { typeCounts[n.type] = (typeCounts[n.type] || 0) + 1; });
+  const sortedTypes = Object.entries(typeCounts).sort((a, b) => b[1] - a[1]);
+
+  const typesContainer = document.getElementById('node-types');
+  typesContainer.innerHTML = '';
+  sortedTypes.slice(0, 8).forEach(([type, count], i) => {
+    const row = document.createElement('div');
+    row.className = 'type-row';
+    row.innerHTML = `
+      <div class="type-dot" style="background:${TYPE_COLORS[type] || TYPE_COLORS.DEFAULT}"></div>
+      <span class="type-name">${type.replace('@', '')}</span>
+      <span class="type-count">${count}</span>
+    `;
+    typesContainer.appendChild(row);
+    setTimeout(() => row.classList.add('loaded'), i * 60);
+  });
+
+  // Top entities by QEN score
+  const pilotsContainer = document.getElementById('top-pilots');
+  const topNodes = nodesArr
+    .filter(n => n.qen_score?.totale != null)
+    .sort((a, b) => b.qen_score.totale - a.qen_score.totale)
+    .slice(0, 5);
+  topNodes.forEach(n => {
+    const score = (n.qen_score.totale / 100).toFixed(2);
+    const row   = document.createElement('div');
+    row.className = 'type-row loaded';
+    row.innerHTML = `
+      <div class="type-dot" style="background:${TYPE_COLORS[n.type] || TYPE_COLORS.DEFAULT}"></div>
+      <span class="type-name">${n.label}</span>
+      <span class="type-count" style="color:var(--gold)">${score}</span>
+    `;
+    pilotsContainer.appendChild(row);
+  });
+
+  buildGraph(nodesObj, edgesArr);
 }
 
-function buildGraph(stats) {
+function buildGraph(nodesObj, edgesArr) {
   document.getElementById('graph-loading').style.display = 'none';
 
-  const svg = d3.select('#graph-svg');
+  const svg       = d3.select('#graph-svg');
   const container = document.querySelector('.graph-area');
-  const W = container.clientWidth || 800;
+  const W = container.clientWidth  || 800;
   const H = container.clientHeight || 600;
 
   svg.attr('viewBox', `0 0 ${W} ${H}`);
-
   const g = svg.append('g');
 
   const zoom = d3.zoom()
-    .scaleExtent([0.15, 5])
+    .scaleExtent([0.1, 5])
     .on('zoom', e => g.attr('transform', e.transform));
-
   svg.call(zoom);
 
   document.getElementById('zoom-in').onclick  = () => svg.transition().duration(300).call(zoom.scaleBy, 1.4);
   document.getElementById('zoom-out').onclick = () => svg.transition().duration(300).call(zoom.scaleBy, 0.7);
   document.getElementById('reset').onclick    = () => svg.transition().duration(400).call(zoom.transform, d3.zoomIdentity);
 
-  const nodeTypes = [
-    { type: 'SYSTEM',       count: 1  },
-    { type: 'BOTTEGA',      count: 8  },
-    { type: 'TRUST_ANCHOR', count: 8  },
-    { type: 'CONTROL',      count: 10 },
-    { type: 'REGULATION',   count: 4  },
-    { type: 'ALGORITHM',    count: 5  },
-    { type: 'DATASET',      count: 6  },
-    { type: 'VALIDATOR',    count: 3  },
-    { type: 'METRIC',       count: 3  },
-    { type: 'PROCESSING',   count: 3  },
-    { type: 'PROJECT',      count: 6  },
-    { type: 'TECHNOLOGY',   count: 5  },
-    { type: 'ACTOR',        count: 5  },
-  ];
+  const nodes = Object.values(nodesObj).map(n => ({
+    id:    n.id,
+    label: n.label || n.id,
+    type:  n.type  || 'DEFAULT',
+    r:     nodeRadius(n.type)
+  }));
 
-  // Render legend
-  const typesContainer = document.getElementById('node-types');
-  typesContainer.innerHTML = '';
-  nodeTypes.slice(0, 8).forEach((t, i) => {
-    const row = document.createElement('div');
-    row.className = 'type-row';
-    row.innerHTML = `
-      <div class="type-dot" style="background:${TYPE_COLORS[t.type] || TYPE_COLORS.DEFAULT}"></div>
-      <span class="type-name">${t.type.replace(/_/g, ' ')}</span>
-      <span class="type-count">${t.count}</span>
-    `;
-    typesContainer.appendChild(row);
-    setTimeout(() => row.classList.add('loaded'), i * 60);
-  });
+  const nodeIds = new Set(nodes.map(n => n.id));
+  const edges   = edgesArr
+    .filter(e => nodeIds.has(e.from) && nodeIds.has(e.to))
+    .map(e => ({ source: e.from, target: e.to }));
 
-  // Build nodes
-  const nodes = [];
-  nodeTypes.forEach(t => {
-    for (let i = 0; i < t.count; i++) {
-      nodes.push({
-        id: `${t.type}_${i}`,
-        type: t.type,
-        label: t.type,
-        r: t.type === 'SYSTEM' ? 14
-          : t.type === 'BOTTEGA' ? 10
-          : t.type === 'TRUST_ANCHOR' ? 8
-          : 5
-      });
-    }
-  });
-
-  // Build edges
-  const edges = [];
-  const systemNode = nodes[0];
-  nodes.slice(1, 22).forEach(n => {
-    edges.push({ source: systemNode.id, target: n.id });
-  });
-  for (let i = 0; i < Math.min(stats.edges - 22, nodes.length * 2); i++) {
-    const s = nodes[Math.floor(Math.random() * nodes.length)];
-    const t = nodes[Math.floor(Math.random() * nodes.length)];
-    if (s.id !== t.id) edges.push({ source: s.id, target: t.id });
-  }
-
-  // D3 simulation
-  const sim = d3.forceSimulation(nodes)
-    .force('link', d3.forceLink(edges).id(d => d.id).distance(70).strength(0.25))
-    .force('charge', d3.forceManyBody().strength(-130))
-    .force('center', d3.forceCenter(W / 2, H / 2))
-    .force('collision', d3.forceCollide(d => d.r + 5));
-
-  // Defs: glow filter
-  const defs = svg.append('defs');
+  // Glow filter
+  const defs   = svg.append('defs');
   const filter = defs.append('filter').attr('id', 'glow-gold');
   filter.append('feGaussianBlur').attr('stdDeviation', '3').attr('result', 'coloredBlur');
   const feMerge = filter.append('feMerge');
   feMerge.append('feMergeNode').attr('in', 'coloredBlur');
   feMerge.append('feMergeNode').attr('in', 'SourceGraphic');
 
-  // Links
+  const sim = d3.forceSimulation(nodes)
+    .force('link', d3.forceLink(edges).id(d => d.id).distance(60).strength(0.2))
+    .force('charge', d3.forceManyBody().strength(-120))
+    .force('center', d3.forceCenter(W / 2, H / 2))
+    .force('collision', d3.forceCollide(d => d.r + 4));
+
   const link = g.append('g')
     .selectAll('line')
     .data(edges)
     .join('line')
-    .attr('stroke', 'rgba(201,168,76,0.08)')
-    .attr('stroke-width', 0.8);
+    .attr('stroke', 'rgba(201,168,76,0.07)')
+    .attr('stroke-width', 0.7);
 
-  // Nodes
   const node = g.append('g')
     .selectAll('circle')
     .data(nodes)
     .join('circle')
     .attr('r', d => d.r)
     .attr('fill', d => TYPE_COLORS[d.type] || TYPE_COLORS.DEFAULT)
-    .attr('fill-opacity', d => d.type === 'SYSTEM' || d.type === 'BOTTEGA' ? 0.9 : 0.6)
+    .attr('fill-opacity', d => ['Progetto', 'Framework', 'EntitaPilota'].includes(d.type) ? 0.9 : 0.6)
     .attr('stroke', d => TYPE_COLORS[d.type] || TYPE_COLORS.DEFAULT)
     .attr('stroke-width', 1)
     .attr('stroke-opacity', 0.5)
     .style('cursor', 'pointer')
     .style('filter', d =>
-      d.type === 'SYSTEM' || d.type === 'BOTTEGA' || d.type === 'TRUST_ANCHOR'
-        ? 'url(#glow-gold)' : 'none'
+      ['Progetto', 'Framework', 'EntitaPilota'].includes(d.type) ? 'url(#glow-gold)' : 'none'
     )
     .call(d3.drag()
       .on('start', (e, d) => { if (!e.active) sim.alphaTarget(0.3).restart(); d.fx = d.x; d.fy = d.y; })
@@ -693,8 +666,8 @@ function buildGraph(stats) {
   node
     .on('mouseover', (e, d) => {
       tooltip.classList.add('visible');
-      tooltipId.textContent   = d.id.replace(/_\d+$/, '').replace(/_/g, ' ');
-      tooltipType.textContent = d.type.replace(/_/g, ' ');
+      tooltipId.textContent   = d.label;
+      tooltipType.textContent = d.type;
       tooltip.style.left = (e.offsetX + 14) + 'px';
       tooltip.style.top  = (e.offsetY - 14) + 'px';
     })
@@ -706,10 +679,8 @@ function buildGraph(stats) {
 
   sim.on('tick', () => {
     link
-      .attr('x1', d => d.source.x)
-      .attr('y1', d => d.source.y)
-      .attr('x2', d => d.target.x)
-      .attr('y2', d => d.target.y);
+      .attr('x1', d => d.source.x).attr('y1', d => d.source.y)
+      .attr('x2', d => d.target.x).attr('y2', d => d.target.y);
     node
       .attr('cx', d => d.x)
       .attr('cy', d => d.y);
