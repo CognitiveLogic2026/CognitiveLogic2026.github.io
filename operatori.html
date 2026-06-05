@@ -489,7 +489,8 @@ function renderCard(op, index) {
   const cnaTag    = op.cna_potenziale
     ? `<span class="op-cna">CNA potential</span>` : '';
   return `
-    <div class="operator-card${priorita1}" data-cluster="${op.cluster}" data-id="${op.id}">
+    <a class="operator-card${priorita1}" data-cluster="${op.cluster}" data-id="${op.id}"
+       href="operatore.html?id=${op.id}" style="text-decoration:none;color:inherit;display:block;">
       ${cnaTag}
       <div class="op-index">Q.3.${String(index).padStart(2,'0')} · ${op.cluster.toUpperCase()}</div>
       <div class="op-label">${op.label}</div>
@@ -514,7 +515,7 @@ function renderCard(op, index) {
       </div>
       <div class="op-compliance">${renderCompliance(op.compliance)}</div>
       <span class="op-stato">${op.stato_qen.replace(/_/g,' ')}</span>
-    </div>
+    </a>
   `;
 }
 
