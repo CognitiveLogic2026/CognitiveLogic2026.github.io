@@ -508,6 +508,10 @@ function renderOperatore(op) {
   const nodi    = buildNodiQEN(op);
   const edges   = buildEdgeAttesi(op);
   const synth   = buildSynthesis(op);
+  const vsVal   = op.vs_score  != null ? op.vs_score  : 'N/V';
+  const vaVal   = op.va_score  != null ? op.va_score  : 'N/V';
+  const vtVal   = op.vt_score  != null ? op.vt_score  : ((op.cluster === 'bolkestein' || op.priorita === 1) ? 'stima alta' : 'N/V');
+  const scoreVal = op.score_qen != null ? op.score_qen.toFixed(1) : null;
 
   document.title = `${op.label} — QEN · Cognitive Logic`;
 
@@ -522,7 +526,7 @@ function renderOperatore(op) {
         Scheda Operatore · ${cLabel}
       </div>
       <div class="rh-center">Cognitive Logic · cognitivelogic.it</div>
-      <div class="rh-right">${today()}<br>Seed v1.0 · da mappare</div>
+      <div class="rh-right">${today()}<br>Seed v1.0 · ${op.stato_qen.replace(/_/g,' ')}</div>
     </header>
 
     <nav>
@@ -559,9 +563,9 @@ function renderOperatore(op) {
             <div><div class="meta-key">Denominazione</div><div class="meta-val">${op.label}</div></div>
             <div><div class="meta-key">Territorio</div><div class="meta-val">${op.territorio}</div></div>
             <div><div class="meta-key">Settore</div><div class="meta-val">${sLabel}</div></div>
-            <div><div class="meta-key">Anno fondazione</div><div class="meta-val" style="color:var(--muted-2)">— In fase di mappatura —</div></div>
-            <div><div class="meta-key">Forma giuridica</div><div class="meta-val" style="color:var(--muted-2)">— In fase di mappatura —</div></div>
-            <div><div class="meta-key">Titolare / Gruppo</div><div class="meta-val" style="color:var(--muted-2)">— In fase di mappatura —</div></div>
+            <div><div class="meta-key">Anno fondazione</div><div class="meta-val" ${!op.anno_fondazione?'style="color:var(--muted-2)"':''}>${op.anno_fondazione||'— In fase di mappatura —'}</div></div>
+            <div><div class="meta-key">Forma giuridica</div><div class="meta-val" ${!op.forma_giuridica?'style="color:var(--muted-2)"':''}>${op.forma_giuridica||'— In fase di mappatura —'}</div></div>
+            <div><div class="meta-key">Titolare / Gruppo</div><div class="meta-val" ${!op.titolare?'style="color:var(--muted-2)"':''}>${op.titolare||'— In fase di mappatura —'}</div></div>
             <div><div class="meta-key">Nodo QEN</div><div class="meta-val" style="font-size:0.62rem;color:var(--muted)">${op.id}</div></div>
             <div><div class="meta-key">Tipo nodo</div><div class="meta-val" style="color:var(--muted-2)">${op.type}</div></div>
           </div>
@@ -581,15 +585,15 @@ function renderOperatore(op) {
             <div><div class="meta-key">Cluster</div><div class="meta-val">${cLabel}</div></div>
             <div><div class="meta-key">Settore</div><div class="meta-val">${sLabel}</div></div>
             <div><div class="meta-key">Priorità</div><div class="meta-val" style="${op.priorita===1?'color:var(--gold)':''}">${pLabel}</div></div>
-            <div><div class="meta-key">Segmento target</div><div class="meta-val" style="color:var(--muted-2)">— In fase di mappatura —</div></div>
-            <div><div class="meta-key">Fascia prezzo</div><div class="meta-val" style="color:var(--muted-2)">— In fase di mappatura —</div></div>
-            <div><div class="meta-key">Cliente tipo</div><div class="meta-val" style="color:var(--muted-2)">— In fase di mappatura —</div></div>
+            <div><div class="meta-key">Segmento target</div><div class="meta-val" ${!op.segmento_target?'style="color:var(--muted-2)"':''}>${op.segmento_target||'— In fase di mappatura —'}</div></div>
+            <div><div class="meta-key">Fascia prezzo</div><div class="meta-val" ${!op.fascia_prezzo?'style="color:var(--muted-2)"':''}>${op.fascia_prezzo||'— In fase di mappatura —'}</div></div>
+            <div><div class="meta-key">Cliente tipo</div><div class="meta-val" ${!op.cliente_tipo?'style="color:var(--muted-2)"':''}>${op.cliente_tipo||'— In fase di mappatura —'}</div></div>
             ${op.bolkestein_flag ? `<div><div class="meta-key">Bolkestein</div><div class="meta-val" style="color:var(--gold)">Soggetto · scad. 31/12/2027</div></div>
             <div><div class="meta-key">Giorni alla scadenza</div><div class="meta-val" style="color:var(--gold)">${daysTo('2027-12-31')}</div></div>` : ''}
             ${op.cna_potenziale ? `<div><div class="meta-key">CNA Bologna</div><div class="meta-val" style="color:rgba(140,200,140,0.85)">Potenziale associato</div></div>` : ''}
           </div>
           <p class="q-body">Il posizionamento di mercato dell'operatore, la fascia di clientela servita e la strategia competitiva non sono ancora stati rilevati. Il segmento price e il profilo del cliente tipo costituiranno elementi chiave del vettore Va nel calcolo QEN Score.</p>
-          ${ph()}
+          ${!op.segmento_target ? ph() : ''}
         </div>
       </div>
 
@@ -601,15 +605,15 @@ function renderOperatore(op) {
         </button>
         <div class="acc-body">
           <div class="meta-grid">
-            <div><div class="meta-key">Presenza online</div><div class="meta-val" style="color:var(--muted-2)">— In fase di mappatura —</div></div>
-            <div><div class="meta-key">Recensioni (Google / TripAdvisor)</div><div class="meta-val" style="color:var(--muted-2)">— In fase di mappatura —</div></div>
-            <div><div class="meta-key">Social media</div><div class="meta-val" style="color:var(--muted-2)">— In fase di mappatura —</div></div>
-            <div><div class="meta-key">Premi / riconoscimenti</div><div class="meta-val" style="color:var(--muted-2)">— In fase di mappatura —</div></div>
-            <div><div class="meta-key">Certificazioni qualità</div><div class="meta-val" style="color:var(--muted-2)">— In fase di mappatura —</div></div>
-            <div><div class="meta-key">Brand awareness locale</div><div class="meta-val" style="color:var(--muted-2)">— In fase di mappatura —</div></div>
+            <div><div class="meta-key">Presenza online</div><div class="meta-val" ${!(op.brand_equity&&op.brand_equity.presenza_online)?'style="color:var(--muted-2)"':''}>${(op.brand_equity&&op.brand_equity.presenza_online)||'— In fase di mappatura —'}</div></div>
+            <div><div class="meta-key">Recensioni (Google / TripAdvisor)</div><div class="meta-val" ${!(op.brand_equity&&op.brand_equity.recensioni)?'style="color:var(--muted-2)"':''}>${(op.brand_equity&&op.brand_equity.recensioni)||'— In fase di mappatura —'}</div></div>
+            <div><div class="meta-key">Social media</div><div class="meta-val" ${!(op.brand_equity&&op.brand_equity.social_media&&op.brand_equity.social_media!=='N/V')?'style="color:var(--muted-2)"':''}>${(op.brand_equity&&op.brand_equity.social_media&&op.brand_equity.social_media!=='N/V')?op.brand_equity.social_media:'— In fase di mappatura —'}</div></div>
+            <div><div class="meta-key">Premi / riconoscimenti</div><div class="meta-val" ${!(op.brand_equity&&op.brand_equity.premi&&op.brand_equity.premi!=='N/V')?'style="color:var(--muted-2)"':''}>${(op.brand_equity&&op.brand_equity.premi&&op.brand_equity.premi!=='N/V')?op.brand_equity.premi:'— In fase di mappatura —'}</div></div>
+            <div><div class="meta-key">Certificazioni qualità</div><div class="meta-val" ${!(op.brand_equity&&op.brand_equity.certificazioni&&op.brand_equity.certificazioni!=='N/V')?'style="color:var(--muted-2)"':''}>${(op.brand_equity&&op.brand_equity.certificazioni&&op.brand_equity.certificazioni!=='N/V')?op.brand_equity.certificazioni:'— In fase di mappatura —'}</div></div>
+            <div><div class="meta-key">Brand awareness locale</div><div class="meta-val" ${!(op.brand_equity&&op.brand_equity.brand_awareness)?'style="color:var(--muted-2)"':''}>${(op.brand_equity&&op.brand_equity.brand_awareness)||'— In fase di mappatura —'}</div></div>
           </div>
           <p class="q-body">Gli asset intangibili — reputazione online, brand equity territoriale, riconoscimenti di categoria e presenza certificata — alimentano il vettore Va (Ambientale/Reputazionale, peso × 0.35) nel calcolo del QEN Score. La fase di mappatura prevede crawling del profilo digitale e analisi delle menzioni pubbliche.</p>
-          ${ph()}
+          ${!op.brand_equity ? ph() : ''}
         </div>
       </div>
 
@@ -631,8 +635,8 @@ function renderOperatore(op) {
             <tbody>
               <tr>
                 <td><strong>PMS</strong><br><span style="color:var(--muted);font-size:0.6rem">Property Management System</span></td>
-                <td class="s-nv">N/V</td>
-                <td style="color:var(--muted)">da identificare in fase di audit</td>
+                <td class="${op.pms&&op.pms!=='N/V'?'s-ok':'s-nv'}">${op.pms||'N/V'}</td>
+                <td style="color:var(--muted)">${op.pms&&op.pms!=='N/V'?'sistema identificato':'da identificare in fase di audit'}</td>
               </tr>
               <tr>
                 <td><strong>CIN / CIR</strong><br><span style="color:var(--muted);font-size:0.6rem">Codice Identificativo Nazionale / Regionale</span></td>
@@ -668,14 +672,14 @@ function renderOperatore(op) {
         <div class="acc-body">
           <div class="meta-grid">
             <div><div class="meta-key">Comune / Area</div><div class="meta-val">${op.territorio}</div></div>
-            <div><div class="meta-key">Anni di presenza</div><div class="meta-val" style="color:var(--muted-2)">— In fase di mappatura —</div></div>
-            <div><div class="meta-key">Fornitori locali km0</div><div class="meta-val" style="color:var(--muted-2)">— In fase di mappatura —</div></div>
+            <div><div class="meta-key">Anni di presenza</div><div class="meta-val" ${!op.anni_presenza?'style="color:var(--muted-2)"':''}>${op.anni_presenza?(op.anni_presenza+' anni'+(op.anno_fondazione?' (dal '+op.anno_fondazione+')':'')):'— In fase di mappatura —'}</div></div>
+            <div><div class="meta-key">Fornitori locali km0</div><div class="meta-val" ${(!op.fornitori_km0||op.fornitori_km0==='N/V')?'style="color:var(--muted-2)"':''}>${(op.fornitori_km0&&op.fornitori_km0!=='N/V')?op.fornitori_km0:'— In fase di mappatura —'}</div></div>
             <div><div class="meta-key">Reti associative</div><div class="meta-val" style="${op.cna_potenziale ? 'color:rgba(140,200,140,0.85)' : 'color:var(--muted-2)'}">${op.cna_potenziale ? 'CNA Bologna (potenziale)' : '— In fase di mappatura —'}</div></div>
-            <div><div class="meta-key">Impatto occupazionale</div><div class="meta-val" style="color:var(--muted-2)">— In fase di mappatura —</div></div>
+            <div><div class="meta-key">Impatto occupazionale</div><div class="meta-val" ${!op.impatto_occupazionale?'style="color:var(--muted-2)"':''}>${op.impatto_occupazionale||'— In fase di mappatura —'}</div></div>
             <div><div class="meta-key">Partecipazione eventi locali</div><div class="meta-val" style="color:var(--muted-2)">— In fase di mappatura —</div></div>
           </div>
           <p class="q-body">Il radicamento territoriale alimenta il vettore Vt (Territoriale, peso × 0.25) nel calcolo del QEN Score. Gli indicatori rilevanti — anni di presenza nel territorio, percentuale fornitori locali verificati, partecipazione a reti e impatto occupazionale — richiederanno raccolta dati diretta nella fase di audit.</p>
-          ${ph()}
+          ${!op.anni_presenza ? ph() : ''}
         </div>
       </div>
 
@@ -707,20 +711,32 @@ function renderOperatore(op) {
           <div class="score-panel">
             <div class="score-cell">
               <div class="score-cell-label">VS · Sociale</div>
-              <div class="score-cell-val">N/V</div>
+              <div class="score-cell-val" ${op.vs_score==null?'style="color:var(--muted-2)"':''}>${vsVal}</div>
               <div class="score-cell-weight">peso × 0.40</div>
             </div>
             <div class="score-cell">
               <div class="score-cell-label">VA · Ambientale</div>
-              <div class="score-cell-val">N/V</div>
+              <div class="score-cell-val" ${op.va_score==null?'style="color:var(--muted-2)"':''}>${vaVal}</div>
               <div class="score-cell-weight">peso × 0.35</div>
             </div>
             <div class="score-cell">
               <div class="score-cell-label">VT · Territoriale</div>
-              <div class="score-cell-val">${(op.cluster === 'bolkestein' || op.priorita === 1) ? 'stima alta' : 'N/V'}</div>
+              <div class="score-cell-val" ${op.vt_score==null?'style="color:var(--muted-2)"':''}>${vtVal}</div>
               <div class="score-cell-weight">peso × 0.25</div>
             </div>
           </div>
+          ${scoreVal ? `
+          <div style="display:flex;align-items:center;gap:28px;padding:16px 20px;border:1px solid var(--gold-line);background:var(--gold-dim);margin-bottom:24px;">
+            <div>
+              <div class="score-cell-label" style="margin-bottom:4px">QEN Score Stimato</div>
+              <div style="font-family:var(--serif);font-size:2.8rem;font-weight:300;color:var(--gold);line-height:1">${scoreVal}</div>
+            </div>
+            <div style="font-size:0.62rem;color:var(--muted-2);line-height:2;border-left:1px solid var(--gold-line);padding-left:24px">
+              <span style="color:var(--muted)">Formula · QEN = Va×0.35 + Vs×0.40 + Vt×0.25</span><br>
+              Va ${vaVal} × 0.35 &nbsp;+&nbsp; Vs ${vsVal} × 0.40 &nbsp;+&nbsp; Vt ${vtVal} × 0.25<br>
+              <span style="color:var(--muted);font-size:0.55rem;letter-spacing:0.05em">Stima preliminare — non certificata · richiede audit QEN completo</span>
+            </div>
+          </div>` : ''}
           <div class="q-synthesis">${synth}</div>
           <div class="next-grid">
             <div class="next-col">
