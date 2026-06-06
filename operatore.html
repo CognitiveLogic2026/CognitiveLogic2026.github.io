@@ -8,8 +8,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Report QEN — Cognitive Logic</title>
-  <meta name="description" content="Report QEN — Analisi Qualitativa degli Asset · QEN Framework" />
+  <title>Operatore QEN — Cognitive Logic</title>
+  <meta name="description" content="Scheda operatore QEN — Cognitive Logic" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet" />
@@ -19,6 +19,7 @@
     :root {
       --navy:      #070D1A;
       --navy-2:    #0D1628;
+      --navy-3:    #122035;
       --gold:      #C9A84C;
       --gold-dim:  rgba(201,168,76,0.10);
       --gold-line: rgba(201,168,76,0.22);
@@ -28,6 +29,9 @@
       --muted:     #5A5448;
       --muted-2:   #7A7268;
       --line:      rgba(201,168,76,0.12);
+      --red-dim:   rgba(180,60,60,0.15);
+      --red-line:  rgba(180,60,60,0.32);
+      --red-text:  #C87070;
       --serif:     'Cormorant Garamond', serif;
       --mono:      'DM Mono', monospace;
     }
@@ -40,26 +44,44 @@
       min-height: 100vh;
     }
 
-    /* ── REPORT HEADER ── */
+    /* ── Loading ── */
+    .loading-screen {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 80vh;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .loading-ring {
+      width: 28px; height: 28px;
+      border: 1px solid var(--line);
+      border-top-color: var(--gold);
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    .loading-text { font-size: 0.6rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--muted); }
+
+    /* ── Report header ── */
     .report-header {
       display: grid;
       grid-template-columns: 1fr auto 1fr;
       align-items: start;
-      padding: 36px 56px 28px;
+      padding: 32px 48px 24px;
       border-bottom: 1px solid var(--line);
       gap: 24px;
     }
-
-    .rh-left { font-size: 0.58rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--muted-2); line-height: 1.9; }
-    .rh-left strong { color: var(--gold); display: block; font-weight: 400; }
-    .rh-center { text-align: center; font-size: 0.55rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--muted); white-space: nowrap; padding-top: 2px; }
+    .rh-left  { font-size: 0.58rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--muted-2); line-height: 1.9; }
+    .rh-left strong { color: var(--gold); display: block; font-weight: 400; margin-bottom: 2px; }
+    .rh-center { text-align: center; font-size: 0.55rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--muted); white-space: nowrap; }
     .rh-right { text-align: right; font-size: 0.58rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted-2); line-height: 1.9; }
 
-    /* ── NAV ── */
+    /* ── Nav ── */
     nav {
       display: flex;
       align-items: center;
-      padding: 0 56px;
+      padding: 0 48px;
       border-bottom: 1px solid var(--line);
       background: rgba(7,13,26,0.97);
       position: sticky;
@@ -81,272 +103,192 @@
     nav a:first-child { border-left: none; padding-left: 0; }
     nav a:hover { color: var(--gold); }
     .nav-spacer { flex: 1; }
-    .nav-back {
-      font-size: 0.58rem;
-      color: var(--muted);
-      letter-spacing: 0.1em;
-      text-decoration: none;
-      transition: color 0.2s;
-    }
-    .nav-back:hover { color: var(--gold); }
 
-    /* ── COVER ── */
+    /* ── Cover ── */
     .cover {
-      padding: 80px 56px 64px;
+      padding: 60px 48px 44px;
       border-bottom: 1px solid var(--line);
     }
-
     .cover-eyebrow {
-      font-size: 0.58rem;
+      font-size: 0.55rem;
       letter-spacing: 0.45em;
       text-transform: uppercase;
       color: var(--gold);
-      margin-bottom: 32px;
+      margin-bottom: 24px;
     }
-
     .cover-title {
       font-family: var(--serif);
-      font-size: clamp(3.5rem, 7vw, 7rem);
+      font-size: clamp(2.8rem, 5vw, 5rem);
       font-weight: 300;
-      line-height: 0.92;
+      line-height: 0.95;
       color: var(--text-2);
-      margin-bottom: 12px;
+      margin-bottom: 10px;
     }
-
-    .cover-title em {
-      font-style: italic;
-      color: var(--gold-soft);
-    }
-
+    .cover-title em { font-style: italic; color: var(--gold-soft); }
     .cover-sub {
       font-family: var(--serif);
       font-style: italic;
-      font-size: clamp(0.95rem, 1.5vw, 1.2rem);
+      font-size: 1rem;
       color: var(--muted-2);
-      margin-top: 20px;
-      line-height: 1.6;
+      margin-top: 12px;
     }
-
-    .cover-meta {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 8px 48px;
-      margin-top: 48px;
-      padding-top: 28px;
-      border-top: 1px solid var(--line);
-      max-width: 580px;
+    .cover-badges {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-top: 22px;
     }
-
-    .cover-meta-item { }
-    .cover-meta-key {
+    .badge {
       font-size: 0.52rem;
-      letter-spacing: 0.3em;
+      letter-spacing: 0.2em;
       text-transform: uppercase;
-      color: var(--muted);
-      margin-bottom: 3px;
+      padding: 4px 10px;
+      border: 1px solid;
     }
-    .cover-meta-val {
-      font-size: 0.72rem;
-      color: var(--text);
-    }
+    .badge-stato    { border-color: var(--line); color: var(--muted); }
+    .badge-p1       { border-color: var(--gold-line); color: var(--gold); background: var(--gold-dim); }
+    .badge-p2       { border-color: var(--line); color: var(--muted-2); }
+    .badge-cluster  { border-color: rgba(100,160,200,0.3); color: rgba(130,190,220,0.8); }
+    .badge-bolk     { border-color: rgba(201,168,76,0.4); color: var(--gold); }
+    .badge-cna      { border-color: rgba(120,180,120,0.3); color: rgba(140,200,140,0.85); }
 
-    /* ── SECTION INTRO ── */
-    .section-intro {
-      padding: 56px 56px 40px;
-      border-bottom: 1px solid var(--line);
+    /* ── Accordion ── */
+    .accordion { border-bottom: 1px solid var(--line); }
+    .acc-item  { border-top: 1px solid var(--line); }
+    .acc-header {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      padding: 18px 48px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      text-align: left;
+      transition: background 0.15s;
+      font-family: var(--mono);
     }
+    .acc-header:hover { background: var(--gold-dim); }
+    .acc-code  { font-size: 0.52rem; letter-spacing: 0.3em; color: var(--gold); flex-shrink: 0; min-width: 52px; }
+    .acc-title { font-family: var(--serif); font-size: 1.1rem; font-weight: 300; color: var(--text-2); flex: 1; }
+    .acc-chevron { font-size: 0.65rem; color: var(--muted); flex-shrink: 0; transition: transform 0.2s; }
+    .acc-item.open .acc-chevron { transform: rotate(180deg); }
+    .acc-body  { display: none; padding: 4px 48px 36px; }
+    .acc-item.open .acc-body { display: block; }
 
-    .section-tag {
-      font-size: 0.55rem;
-      letter-spacing: 0.4em;
+    /* ── Placeholder ── */
+    .placeholder {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 16px 20px;
+      background: var(--gold-dim);
+      border: 1px solid var(--gold-line);
+      margin-top: 12px;
+    }
+    .placeholder-text { font-family: var(--serif); font-style: italic; font-size: 0.85rem; color: var(--muted-2); }
+    .badge-mapping {
+      font-size: 0.46rem;
+      letter-spacing: 0.2em;
       text-transform: uppercase;
+      padding: 3px 8px;
+      border: 1px solid var(--gold-line);
       color: var(--gold);
-      margin-bottom: 20px;
+      flex-shrink: 0;
     }
 
-    .section-intro h2 {
-      font-family: var(--serif);
-      font-size: clamp(2rem, 3.5vw, 3.2rem);
-      font-weight: 300;
-      color: var(--text-2);
-      line-height: 1.1;
-      margin-bottom: 8px;
-    }
-
-    .section-intro h2 em { font-style: italic; }
-
-    .section-topics {
-      font-size: 0.62rem;
-      color: var(--muted-2);
-      letter-spacing: 0.12em;
-      margin-top: 14px;
-    }
-
-    /* ── Q-BLOCK ── */
-    .q-block {
-      padding: 48px 56px;
-      border-bottom: 1px solid var(--line);
-    }
-
-    .q-label {
-      font-size: 0.52rem;
-      letter-spacing: 0.35em;
-      text-transform: uppercase;
-      color: var(--gold);
-      margin-bottom: 16px;
-    }
-
-    .q-heading {
-      font-family: var(--serif);
-      font-size: clamp(1.6rem, 2.8vw, 2.4rem);
-      font-weight: 300;
-      color: var(--text-2);
-      line-height: 1.1;
-      margin-bottom: 28px;
-    }
-
-    .q-body {
-      font-size: 0.8rem;
-      line-height: 1.85;
-      color: var(--text);
-      max-width: 720px;
-    }
-
-    .q-body p { margin-bottom: 18px; }
-    .q-body p:last-child { margin-bottom: 0; }
-
-    /* ── META GRID (inside q-block) ── */
+    /* ── Meta grid ── */
     .meta-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-      gap: 24px 32px;
-      margin: 28px 0;
-      padding: 24px;
+      grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+      gap: 20px 28px;
+      padding: 22px;
       border: 1px solid var(--line);
       background: var(--gold-dim);
+      margin-bottom: 20px;
     }
+    .meta-key { font-size: 0.52rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--muted); margin-bottom: 4px; }
+    .meta-val { font-size: 0.72rem; color: var(--text-2); line-height: 1.4; }
 
-    .meta-item-key {
+    /* ── Body text ── */
+    .q-body { font-size: 0.78rem; line-height: 1.85; color: var(--text); max-width: 720px; margin-bottom: 16px; }
+
+    /* ── Compliance table ── */
+    .compliance-table { width: 100%; border-collapse: collapse; margin-top: 4px; }
+    .compliance-table th {
       font-size: 0.52rem;
       letter-spacing: 0.3em;
       text-transform: uppercase;
-      color: var(--muted);
-      margin-bottom: 4px;
+      color: var(--gold);
+      text-align: left;
+      padding: 10px 14px;
+      border-bottom: 1px solid var(--gold-line);
+      font-weight: 400;
     }
-
-    .meta-item-val {
-      font-size: 0.75rem;
-      color: var(--text-2);
-      line-height: 1.4;
-    }
-
-    /* ── RISK ITEMS ── */
-    .risk-list { margin-top: 8px; }
-
-    .risk-item {
-      margin-bottom: 22px;
-      padding-bottom: 22px;
+    .compliance-table td {
+      font-size: 0.68rem;
+      color: var(--text);
+      padding: 12px 14px;
       border-bottom: 1px solid var(--line);
+      vertical-align: top;
+      line-height: 1.5;
     }
-    .risk-item:last-child { border-bottom: none; margin-bottom: 0; }
+    .compliance-table tr:last-child td { border-bottom: none; }
+    .compliance-table tr:hover td { background: var(--gold-dim); }
+    .s-nv      { color: var(--muted-2); }
+    .s-ok      { color: rgba(120,200,120,0.85); }
+    .s-sogg    { color: var(--gold); }
+    .s-warn    { color: var(--red-text); }
 
-    .risk-title {
-      font-size: 0.72rem;
-      font-weight: 500;
-      color: var(--text-2);
-      margin-bottom: 6px;
+    /* ── Risk cards ── */
+    .risk-cards { display: flex; flex-direction: column; gap: 10px; }
+    .risk-card {
+      padding: 16px 20px;
+      border: 1px solid var(--red-line);
+      background: var(--red-dim);
     }
+    .risk-card-title { font-size: 0.65rem; font-weight: 500; color: var(--red-text); margin-bottom: 6px; letter-spacing: 0.04em; }
+    .risk-card-desc  { font-size: 0.7rem; color: var(--muted-2); line-height: 1.75; }
 
-    .risk-desc {
-      font-size: 0.72rem;
-      color: var(--muted-2);
-      line-height: 1.75;
+    /* ── Score panel (Q.1.07) ── */
+    .score-panel {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: var(--line);
+      margin-bottom: 24px;
     }
+    .score-cell { background: var(--navy-2); padding: 22px 20px; }
+    .score-cell-label { font-size: 0.52rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--gold); margin-bottom: 8px; }
+    .score-cell-val   { font-family: var(--serif); font-size: 2rem; font-weight: 300; color: var(--muted-2); margin-bottom: 4px; }
+    .score-cell-weight { font-size: 0.55rem; color: var(--muted); letter-spacing: 0.1em; }
 
-    /* ── BLOCKQUOTE sintesi ── */
-    .q-synthesis {
-      border-left: 1px solid var(--gold-soft);
-      padding-left: 28px;
-      margin: 28px 0;
-    }
-
+    /* ── Synthesis ── */
+    .q-synthesis { border-left: 1px solid var(--gold-soft); padding-left: 24px; margin: 0 0 24px; }
     .q-synthesis p {
       font-family: var(--serif);
       font-style: italic;
-      font-size: clamp(1rem, 1.6vw, 1.3rem);
+      font-size: 1.05rem;
       color: var(--text);
       line-height: 1.7;
-      margin-bottom: 14px;
+      margin-bottom: 12px;
     }
-
     .q-synthesis p:last-child { margin-bottom: 0; }
 
-    /* ── SCORE GRID ── */
-    .score-section {
-      padding: 48px 56px;
-      border-bottom: 1px solid var(--line);
-    }
-
-    .score-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr 1fr 1fr;
-      gap: 1px;
-      background: var(--line);
-      margin-bottom: 40px;
-    }
-
-    .score-cell {
-      background: var(--navy);
-      padding: 24px 20px;
-    }
-
-    .score-cell-label {
-      font-size: 0.52rem;
-      letter-spacing: 0.3em;
-      text-transform: uppercase;
-      color: var(--gold);
-      margin-bottom: 8px;
-    }
-
-    .score-cell-val {
-      font-family: var(--serif);
-      font-style: italic;
-      font-size: 1.1rem;
-      color: var(--muted-2);
-      margin-bottom: 6px;
-    }
-
-    .score-cell-weight {
-      font-size: 0.55rem;
-      color: var(--muted);
-      letter-spacing: 0.1em;
-    }
-
-    /* ── NEXT STEPS GRID ── */
-    .next-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr 1fr;
-      gap: 1px;
-      background: var(--line);
-    }
-
-    .next-col {
-      background: var(--navy-2);
-      padding: 24px 20px;
-    }
-
+    /* ── 3-col next grid ── */
+    .next-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1px; background: var(--line); }
+    .next-col  { background: var(--navy-2); padding: 20px; }
     .next-col-title {
       font-size: 0.52rem;
       letter-spacing: 0.3em;
       text-transform: uppercase;
       color: var(--gold);
-      margin-bottom: 16px;
+      margin-bottom: 14px;
       padding-bottom: 10px;
       border-bottom: 1px solid var(--line);
     }
-
     .next-item {
-      font-size: 0.68rem;
+      font-size: 0.65rem;
       color: var(--muted-2);
       line-height: 1.6;
       margin-bottom: 10px;
@@ -354,122 +296,39 @@
       border-bottom: 1px solid var(--line);
     }
     .next-item:last-child { border-bottom: none; margin-bottom: 0; }
-
     .next-item strong { color: var(--text); font-weight: 400; display: block; }
 
-    /* ── AI ANALYSIS ── */
-    .ai-section {
-      padding: 40px 56px;
-      border-top: 1px solid var(--line);
-      background: var(--navy-2);
-    }
+    /* ── Error ── */
+    .error-screen { padding: 80px 48px; text-align: center; }
+    .error-screen p { color: var(--muted); font-size: 0.8rem; margin-bottom: 16px; }
+    .error-screen a { color: var(--gold); font-size: 0.68rem; letter-spacing: 0.1em; text-decoration: none; }
 
-    .ai-trigger {
-      display: flex;
-      align-items: center;
-      gap: 16px;
-      margin-bottom: 20px;
-    }
-
-    .btn-ai {
-      font-family: var(--mono);
-      font-size: 0.6rem;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--navy);
-      background: var(--gold);
-      border: none;
-      padding: 10px 24px;
-      cursor: pointer;
-      transition: opacity 0.2s;
-    }
-    .btn-ai:hover { opacity: 0.85; }
-    .btn-ai:disabled { opacity: 0.4; cursor: default; }
-
-    .ai-note {
-      font-size: 0.6rem;
-      color: var(--muted);
-      letter-spacing: 0.05em;
-    }
-
-    .ai-result {
-      display: none;
-      margin-top: 24px;
-    }
-
-    .ai-result.visible { display: block; }
-
-    .ai-result-label {
-      font-size: 0.52rem;
-      letter-spacing: 0.3em;
-      text-transform: uppercase;
-      color: var(--gold);
-      margin-bottom: 16px;
-    }
-
-    .ai-score-row {
-      display: flex;
-      gap: 32px;
-      margin-bottom: 16px;
-      flex-wrap: wrap;
-    }
-
-    .ai-score-item { }
-    .ai-score-key { font-size: 0.52rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted); margin-bottom: 3px; }
-    .ai-score-val { font-family: var(--serif); font-size: 1.6rem; color: var(--gold); }
-
-    .ai-sintesi {
-      font-family: var(--serif);
-      font-style: italic;
-      font-size: 1.1rem;
-      color: var(--text);
-      line-height: 1.7;
-      border-left: 1px solid var(--gold-soft);
-      padding-left: 20px;
-      margin-top: 16px;
-    }
-
-    /* ── FOOTER ── */
+    /* ── Footer ── */
     footer {
-      padding: 28px 56px;
+      padding: 22px 48px;
+      border-top: 1px solid var(--line);
       display: flex;
       justify-content: space-between;
       align-items: center;
       font-size: 0.55rem;
       color: var(--muted);
       letter-spacing: 0.1em;
-      border-top: 1px solid var(--line);
     }
     footer a { color: var(--muted); text-decoration: none; transition: color 0.2s; }
     footer a:hover { color: var(--gold); }
-
-    /* ── LOADING ── */
-    .loading-screen {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      min-height: 60vh;
-      flex-direction: column;
-      gap: 16px;
-    }
-    .loading-ring {
-      width: 28px; height: 28px;
-      border: 1px solid var(--line);
-      border-top-color: var(--gold);
-      border-radius: 50%;
-      animation: spin 1s linear infinite;
-    }
-    @keyframes spin { to { transform: rotate(360deg); } }
-    .loading-text { font-size: 0.6rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--muted); }
 
     /* ── Responsive ── */
     @media (max-width: 768px) {
       .report-header { grid-template-columns: 1fr; gap: 6px; padding: 20px; }
       .rh-center, .rh-right { text-align: left; }
-      .cover, .section-intro, .q-block, .score-section, .ai-section, nav, footer { padding-left: 20px; padding-right: 20px; }
-      .score-grid { grid-template-columns: 1fr 1fr; }
+      .cover { padding: 40px 20px 32px; }
+      nav { padding: 0 20px; }
+      .acc-header { padding: 14px 20px; gap: 12px; }
+      .acc-body { padding: 4px 20px 24px; }
+      .meta-grid { grid-template-columns: 1fr 1fr; }
+      .score-panel { grid-template-columns: 1fr; }
       .next-grid { grid-template-columns: 1fr; }
-      .cover-meta { grid-template-columns: 1fr; }
+      footer { padding: 20px; flex-direction: column; gap: 8px; text-align: center; }
     }
   </style>
 </head>
@@ -483,104 +342,187 @@
 </div>
 
 <script>
-const SEED_URL  = 'data/operators_seed.json';
-const GRAPH_URL = 'data/qen_graph_v4.json';
-const API_BASE  = 'https://api.cognitivelogic.it';
+const SEED_URL = '/data/operators_seed.json';
 
-const CLUSTER_CONTEXT = {
-  bolkestein: {
-    label:     'Cluster I · Bolkestein 2027',
-    territorio: 'Riviera Romagnola Adriatica',
-    regolamenti: ['Direttiva 2006/123/CE', 'Legge Delega 2023', 'Scadenza concessioni 2027'],
-    note: 'Operatore soggetto alla direttiva Bolkestein. La scadenza delle concessioni demaniali al 31 dicembre 2027 rende urgente la documentazione del valore aziendale ai fini della gara di rinnovo. Il QEN Score costituisce evidenza quantificabile del valore storico, etico e territoriale dell\'impresa.'
-  },
-  horeca_bologna: {
-    label:     'Cluster II · HoReCa Bologna',
-    territorio: 'Area Metropolitana Bologna',
-    regolamenti: ['GDPR art.22/35', 'EU AI Act Allegato III', 'REG_GREEN_CLAIM_2026', 'CSRD'],
-    note: 'Operatore nel settore HoReCa dell\'area metropolitana bolognese. Il contesto di alta concentrazione artigianale e filiera corta emiliana rappresenta un vantaggio competitivo documentabile nel framework QEN. Partnership CNA Bologna attiva per il territorio.'
-  },
-  cna_bologna: {
-    label:     'Cluster III · CNA Bologna',
-    territorio: 'Provincia di Bologna',
-    regolamenti: ['GDPR', 'EU AI Act', 'CSRD (PMI quotate)'],
-    note: 'Operatore potenzialmente associabile CNA Bologna. La rete CNA conta 16.000 imprese nella provincia. Il QEN Score può essere presentato come strumento di valorizzazione nell\'ambito del piano sviluppo commerciale CNA-Cognitive Logic.'
-  }
+const CLUSTER_LABEL = {
+  bolkestein:     'Cluster I · Bolkestein 2027',
+  horeca_bologna: 'Cluster II · HoReCa Bologna',
+  cna_bologna:    'Cluster III · CNA Bologna'
 };
 
-const SETTORE_CONTEXT = {
-  balneare: {
-    mercato: 'Demanio marittimo · Turismo balneare adriatico',
-    kpi_rilevanti: 'Concessione demaniale, stagionalità, servizi spiaggia, accessibilità',
-    rischio_primario: 'Scadenza concessione Bolkestein 2027 — gara pubblica obbligatoria'
-  },
-  ristorativo: {
-    mercato: 'Ristorazione indipendente · Food & Beverage locale',
-    kpi_rilevanti: 'Filiera km0, sprechi alimentari, contratti lavoro, certificazioni igienico-sanitarie',
-    rischio_primario: 'Green Claim non verificati, GDPR su gestione dati clienti (fidelity, prenotazioni)'
-  },
-  alberghiero: {
-    mercato: 'Ospitalità · Accommodation · Revenue Management',
-    kpi_rilevanti: 'PMS utilizzato, CIN/CIR strutture, AlloggiatiWeb PS, occupancy annuale',
-    rischio_primario: 'EU AI Act Allegato III se PMS con profilazione ospiti o dynamic pricing automatico'
-  },
-  misto: {
-    mercato: 'Artigianato alimentare · Produzione locale · Distribuzione corta',
-    kpi_rilevanti: 'Certificazioni DOP/IGP, tracciabilità filiera, sostenibilità imballaggi (PPWR 2026)',
-    rischio_primario: 'CSRD per PMI con catena di fornitura complessa, Green Claim su prodotto artigianale'
-  }
+const SETTORE_LABEL = {
+  balneare:    'Balneare · Demanio marittimo',
+  ristorativo: 'Ristorativo · F&B locale',
+  alberghiero: 'Alberghiero · Accommodation',
+  misto:       'Artigianato / Misto'
 };
 
-function pad2(n) { return String(n).padStart(2,'0'); }
+function today() {
+  const d = new Date();
+  return `${String(d.getDate()).padStart(2,'0')}/${String(d.getMonth()+1).padStart(2,'0')}/${d.getFullYear()}`;
+}
 
 function daysTo(dateStr) {
   return Math.ceil((new Date(dateStr) - new Date()) / 864e5);
 }
 
-function today() {
-  const d = new Date();
-  return `${d.getDate().toString().padStart(2,'0')}/${(d.getMonth()+1).toString().padStart(2,'0')}/${d.getFullYear()}`;
+function ph() {
+  return `<div class="placeholder">
+    <span class="badge-mapping">In fase di mappatura</span>
+    <span class="placeholder-text">— In fase di mappatura —</span>
+  </div>`;
 }
 
-function buildReport(op, graphEdges) {
-  const cc   = CLUSTER_CONTEXT[op.cluster]  || {};
-  const sc   = SETTORE_CONTEXT[op.settore]  || {};
-  const prioritaLabel = op.priorita === 1 ? 'Priorita 1 — Alta' : 'Priorita 2 — Media';
-  const clusterLabel  = cc.label || op.cluster;
+function toggleAcc(id) {
+  document.getElementById('acc-' + id).classList.toggle('open');
+}
 
-  // Edges for this operator from the graph
-  const myEdges = graphEdges.filter(e => e.from === op.id || e.to === op.id);
-  const edgesOut = myEdges.filter(e => e.from === op.id);
-  const edgesIn  = myEdges.filter(e => e.to   === op.id);
+function buildRisks(op) {
+  const r = [];
 
-  // Compliance analysis
-  const complianceGaps = [];
-  if (op.compliance.cin_cir  === 'N/V') complianceGaps.push('CIN/CIR');
-  if (op.compliance.gdpr     === 'N/V') complianceGaps.push('GDPR');
-  if (op.compliance.eu_ai_act=== 'N/V') complianceGaps.push('EU AI Act');
+  if (op.cluster === 'bolkestein' && op.compliance.bolkestein === 'soggetto') {
+    r.push({
+      title: 'Scadenza concessione Bolkestein 2027',
+      desc:  `Mancano ${daysTo('2027-12-31')} giorni alla scadenza delle concessioni demaniali marittime. La gara pubblica obbligatoria richiede documentazione verificabile del valore aziendale storico ed etico. Senza un Dossier QEN certificato, l'operatore si presenta alla gara senza evidenza quantificabile del proprio capitale territoriale.`
+    });
+  }
 
-  // Risk items
-  const risks = buildRisks(op, sc, complianceGaps);
+  if (op.compliance.cin_cir === 'N/V') {
+    r.push({
+      title: 'CIN/CIR non verificati',
+      desc:  'I codici identificativi nazionali delle strutture ricettive non sono stati verificati. La mancata registrazione CIN/CIR implica sanzioni amministrative e incide direttamente sul vettore Vs (peso × 0.40) del QEN Score.'
+    });
+  }
 
-  // Synthesis
-  const synthesis = buildSynthesis(op, cc, sc);
+  if (op.compliance.gdpr === 'N/V') {
+    r.push({
+      title: 'GDPR non verificato',
+      desc:  'La conformità al Regolamento UE 2016/679 non è stata verificata. Per operatori che gestiscono prenotazioni, fidelizzazione clienti o PMS con dati personali, la mancanza di DPA documentato costituisce un gap di compliance rilevante.'
+    });
+  }
 
-  // Next steps
-  const nextSteps  = buildNextSteps(op, complianceGaps);
-  const nodiDaCrea = buildNodiDaCreare(op);
-  const edgeAttesi = buildEdgeAttesi(op);
+  r.push({
+    title: 'Profilo digitale non mappato',
+    desc:  "Il livello di innovazione digitale, la presenza online verificabile e l'identità digitale dell'operatore non sono stati rilevati. Impatta il KPI digitale del vettore Vt (peso 0.10 su Vt) e la valutazione Brand Equity (Q.1.03)."
+  });
 
-  return `
+  r.push({
+    title: 'Filiera fornitori non documentata',
+    desc:  'La percentuale di approvvigionamenti entro 100km (km0) e la tracciabilità fornitori non sono verificate. Gap critico per Green Claim Directive (UE 2024/825) e CSRD — peso rilevante nel vettore Va.'
+  });
+
+  return r;
+}
+
+function buildNextSteps(op) {
+  if (op.cluster === 'bolkestein') {
+    return [
+      'Verifica titolarità concessione demaniale',
+      'Raccolta dati KPI balneare (M1–M6)',
+      'Crawl profilo digitale e reputazione online',
+      'Avvio Dossier QEN · Bolkestein 2027'
+    ];
+  }
+  if (op.cluster === 'horeca_bologna') {
+    return [
+      'Audit QEN HoReCa (8 moduli)',
+      'Verifica filiera km0 e fornitori locali',
+      'Raccolta dati lavoro e welfare aziendale',
+      'Mappatura brand equity e recensioni'
+    ];
+  }
+  return [
+    'Contatto e assessment CNA Bologna',
+    'Audit ECI — Ethical Commerce Index',
+    'Verifica certificazioni DOP/IGP/prodotto',
+    'Costruzione nodo @Gruppo nel grafo QEN'
+  ];
+}
+
+function buildNodiQEN(op) {
+  const n = [{ label: `@Gruppo ${op.label}`, desc: 'Nodo hub operatore' }];
+  if (op.settore === 'alberghiero' || op.settore === 'balneare') {
+    n.push({ label: '@Struttura principale', desc: 'da identificare e verificare' });
+    n.push({ label: '@Persona titolare',     desc: 'proprietà / gestione' });
+  }
+  if (op.settore === 'balneare') {
+    n.push({ label: '@Concessione demaniale', desc: 'numero / scadenza 2027' });
+  }
+  if (op.settore === 'alberghiero') {
+    n.push({ label: '@PMS sistema', desc: 'stack tecnologico da verificare' });
+  }
+  if (op.settore === 'ristorativo' || op.settore === 'misto') {
+    n.push({ label: '@Prodotto / certificazione', desc: 'DOP / IGP / artigianale' });
+  }
+  if (op.cna_potenziale) {
+    n.push({ label: '@CNA_BOLOGNA', desc: 'associazione potenziale' });
+  }
+  return n.slice(0, 5);
+}
+
+function buildEdgeAttesi(op) {
+  const e = [{ label: 'Gruppo → Strutture', desc: '1+ nodi operativi' }];
+  if (op.compliance.cin_cir === 'N/V') {
+    e.push({ label: 'Strutture → CIN/CIR', desc: 'compliance identificativa' });
+  }
+  if (op.cluster === 'bolkestein') {
+    e.push({ label: 'Struttura → Concessione',  desc: 'demanio marittimo' });
+    e.push({ label: 'Gruppo → BOLKESTEIN_2027', desc: 'urgenza normativa' });
+  }
+  if (op.cluster === 'horeca_bologna' || op.cluster === 'cna_bologna') {
+    e.push({ label: 'Struttura → Filiera km0', desc: 'supply chain locale' });
+    e.push({ label: 'Gruppo → Territorio BO',  desc: 'radicamento semantico' });
+  }
+  if (op.cna_potenziale) {
+    e.push({ label: 'Operatore → CNA_BOLOGNA', desc: 'associazione / rete' });
+  }
+  return e.slice(0, 5);
+}
+
+function buildSynthesis(op) {
+  if (op.cluster === 'bolkestein') {
+    return `<p>${op.label} rappresenta una delle categorie a massima urgenza normativa del panorama italiano: quella degli operatori balneari adriatici che entro il 2027 dovranno dimostrare — davanti a una commissione pubblica — il valore storico, etico e territoriale di una presenza che in molti casi risale a decenni.</p>
+    <p>Nel paradigma QEN, questa urgenza è un'opportunità: la direttiva Bolkestein non chiede solo conformità, chiede <em>narrazione verificabile</em>. Il QEN Score è la struttura computazionale che converte quella narrazione in evidenza difendibile.</p>`;
+  }
+  if (op.cluster === 'horeca_bologna') {
+    return `<p>${op.label} opera in uno dei contesti HoReCa più ricchi di capitale semantico d'Italia: l'area metropolitana bolognese, dove la tradizione culinaria DOP, la filiera corta emiliana e la densità artigianale costituiscono un vantaggio competitivo raramente documentato in forma computabile.</p>
+    <p>Il QEN Framework permette di tradurre questo capitale intangibile in metriche Vs/Va/Vt difendibili — utili per candidature a bandi, partnership con CNA Bologna e posizionamento ESG verso i clienti.</p>`;
+  }
+  return `<p>${op.label} è un operatore della provincia bolognese con potenziale di associazione CNA e profilo adatto alla certificazione QEN. Il valore dell'artigianato locale, della filiera corta e del radicamento territoriale è la materia prima su cui il framework costruisce lo score.</p>
+  <p>La sfida è la stessa per tutti i 16.000 associati CNA Bologna: rendere visibile e misurabile ciò che finora era solo vissuto. Il QEN Score è lo strumento.</p>`;
+}
+
+function statusClass(val) {
+  if (val === 'N/V')      return 's-nv';
+  if (val === 'ok')       return 's-ok';
+  if (val === 'soggetto') return 's-sogg';
+  return 's-warn';
+}
+
+function renderOperatore(op) {
+  const cLabel  = CLUSTER_LABEL[op.cluster]  || op.cluster;
+  const sLabel  = SETTORE_LABEL[op.settore]  || op.settore;
+  const pLabel  = op.priorita === 1 ? 'Priorità 1 · Alta' : 'Priorità 2 · Media';
+  const risks   = buildRisks(op);
+  const steps   = buildNextSteps(op);
+  const nodi    = buildNodiQEN(op);
+  const edges   = buildEdgeAttesi(op);
+  const synth   = buildSynthesis(op);
+
+  document.title = `${op.label} — QEN · Cognitive Logic`;
+
+  const titleParts = op.label.split(' ');
+  const titleL1    = titleParts.slice(0,2).join(' ');
+  const titleL2    = titleParts.slice(2).join(' ') || op.territorio;
+
+  document.getElementById('app').innerHTML = `
     <header class="report-header">
       <div class="rh-left">
         <strong>QEN — Quantum Ethics Network</strong>
-        Report Strategico · ${clusterLabel}
+        Scheda Operatore · ${cLabel}
       </div>
       <div class="rh-center">Cognitive Logic · cognitivelogic.it</div>
-      <div class="rh-right">
-        ${today()}<br>
-        V1.0 · Seed Data
-      </div>
+      <div class="rh-right">${today()}<br>Seed v1.0 · da mappare</div>
     </header>
 
     <nav>
@@ -588,505 +530,260 @@ function buildReport(op, graphEdges) {
       <a href="operatori.html">← Operatori</a>
       <a href="qen-live.html">QEN Live</a>
       <div class="nav-spacer"></div>
-      <a href="operatori.html" class="nav-back">↩ Directory</a>
+      <a href="operatori.html">↩ Directory</a>
     </nav>
 
-    <!-- COVER -->
     <section class="cover">
-      <div class="cover-eyebrow">Report Strategico · ${prioritaLabel}</div>
-      <h1 class="cover-title">
-        ${op.label.split(' ').slice(0,2).join(' ')}<br>
-        <em>${op.label.split(' ').slice(2).join(' ') || op.territorio}</em>
-      </h1>
-      <p class="cover-sub">${op.territorio} — Analisi Qualitativa degli Asset · QEN Framework</p>
-      <div class="cover-meta">
-        <div class="cover-meta-item">
-          <div class="cover-meta-key">Cluster</div>
-          <div class="cover-meta-val">${clusterLabel}</div>
-        </div>
-        <div class="cover-meta-item">
-          <div class="cover-meta-key">Territorio</div>
-          <div class="cover-meta-val">${op.territorio}</div>
-        </div>
-        <div class="cover-meta-item">
-          <div class="cover-meta-key">Settore</div>
-          <div class="cover-meta-val">${op.settore.charAt(0).toUpperCase() + op.settore.slice(1)}</div>
-        </div>
-        <div class="cover-meta-item">
-          <div class="cover-meta-key">Stato QEN</div>
-          <div class="cover-meta-val">${op.stato_qen.replace(/_/g,' ')}</div>
-        </div>
-        <div class="cover-meta-item">
-          <div class="cover-meta-key">Nodo Graph</div>
-          <div class="cover-meta-val" style="font-size:0.62rem;color:var(--muted)">${op.id}</div>
-        </div>
-        <div class="cover-meta-item">
-          <div class="cover-meta-key">Edge attivi</div>
-          <div class="cover-meta-val">${myEdges.length}</div>
-        </div>
+      <div class="cover-eyebrow">Scheda QEN · ${pLabel}</div>
+      <h1 class="cover-title">${titleL1}<br><em>${titleL2}</em></h1>
+      <p class="cover-sub">${op.territorio} — ${sLabel}</p>
+      <div class="cover-badges">
+        <span class="badge badge-stato">${op.stato_qen.replace(/_/g,' ')}</span>
+        <span class="badge ${op.priorita === 1 ? 'badge-p1' : 'badge-p2'}">${op.priorita === 1 ? 'Priorità Alta' : 'Priorità Media'}</span>
+        <span class="badge badge-cluster">${cLabel}</span>
+        ${op.bolkestein_flag ? `<span class="badge badge-bolk">Bolkestein 2027 · ${daysTo('2027-12-31')} gg</span>` : ''}
+        ${op.cna_potenziale  ? `<span class="badge badge-cna">CNA Bologna potential</span>` : ''}
       </div>
     </section>
 
-    <!-- SECTION INTRO -->
-    <section class="section-intro">
-      <div class="section-tag">Sezione 1 · QEN Framework</div>
-      <h2>Qualitative Analysis<br><em>Il Valore degli Asset</em></h2>
-      <p class="section-topics">Identita · Posizionamento · Compliance · Normativa · Radicamento · Segnali di Rischio · Lettura Semantica</p>
-    </section>
+    <div class="accordion">
 
-    <!-- Q.1.01 -->
-    <div class="q-block">
-      <div class="q-label">Q.1.01 · Asset Primario</div>
-      <h2 class="q-heading">Identita &amp; Capitale Storico</h2>
-      <div class="meta-grid">
-        <div>
-          <div class="meta-item-key">Denominazione</div>
-          <div class="meta-item-val">${op.label}</div>
-        </div>
-        <div>
-          <div class="meta-item-key">Territorio</div>
-          <div class="meta-item-val">${op.territorio}</div>
-        </div>
-        <div>
-          <div class="meta-item-key">Settore</div>
-          <div class="meta-item-val">${op.settore.charAt(0).toUpperCase() + op.settore.slice(1)}</div>
-        </div>
-        <div>
-          <div class="meta-item-key">Anno fondazione</div>
-          <div class="meta-item-val">N/V — da verificare</div>
-        </div>
-        <div>
-          <div class="meta-item-key">Tipologia gestione</div>
-          <div class="meta-item-val">N/V — da verificare</div>
-        </div>
-        <div>
-          <div class="meta-item-key">Mercato di riferimento</div>
-          <div class="meta-item-val">${sc.mercato || 'N/V'}</div>
+      <div class="acc-item open" id="acc-Q101">
+        <button class="acc-header" onclick="toggleAcc('Q101')">
+          <span class="acc-code">Q.1.01</span>
+          <span class="acc-title">Identità Fondativa &amp; Capitale Storico</span>
+          <span class="acc-chevron">▾</span>
+        </button>
+        <div class="acc-body">
+          <div class="meta-grid">
+            <div><div class="meta-key">Denominazione</div><div class="meta-val">${op.label}</div></div>
+            <div><div class="meta-key">Territorio</div><div class="meta-val">${op.territorio}</div></div>
+            <div><div class="meta-key">Settore</div><div class="meta-val">${sLabel}</div></div>
+            <div><div class="meta-key">Anno fondazione</div><div class="meta-val" style="color:var(--muted-2)">— In fase di mappatura —</div></div>
+            <div><div class="meta-key">Forma giuridica</div><div class="meta-val" style="color:var(--muted-2)">— In fase di mappatura —</div></div>
+            <div><div class="meta-key">Titolare / Gruppo</div><div class="meta-val" style="color:var(--muted-2)">— In fase di mappatura —</div></div>
+            <div><div class="meta-key">Nodo QEN</div><div class="meta-val" style="font-size:0.62rem;color:var(--muted)">${op.id}</div></div>
+            <div><div class="meta-key">Tipo nodo</div><div class="meta-val" style="color:var(--muted-2)">${op.type}</div></div>
+          </div>
+          <p class="q-body">L'operatore <strong>${op.label}</strong> è attivo nel settore ${op.settore} con sede a ${op.territorio}. Il profilo anagrafico completo — anno di fondazione, forma giuridica, titolare o gruppo proprietario — è al momento non verificato e costituisce il primo obiettivo della fase di mappatura QEN.</p>
+          <p class="q-body">Il nodo semantico nel grafo QEN è <strong style="color:var(--gold)">${op.id}</strong> (tipo: ${op.type}). La fase di approfondimento prevede la scomposizione in nodi figlio: strutture operative, persone chiave, sistemi gestionali e relazioni territoriali documentate.</p>
         </div>
       </div>
-      <div class="q-body">
-        <p>L'operatore ${op.label} e' attivo nel settore ${op.settore} con sede a ${op.territorio}. Il profilo anagrafico completo — anno di fondazione, forma giuridica, titolare o gruppo proprietario — e' al momento non verificato e costituisce il primo obiettivo della fase di mappatura QEN.</p>
-        <p>Il nodo semantico identificato nel grafo QEN e' <strong>${op.id}</strong>, di tipo @Gruppo. La fase di approfondimento prevede la scomposizione in nodi figlio: strutture operative (@Struttura), eventuali persone chiave (@Persona), sistemi gestionali (@PMS) e relazioni territoriali documentate.</p>
+
+      <div class="acc-item" id="acc-Q102">
+        <button class="acc-header" onclick="toggleAcc('Q102')">
+          <span class="acc-code">Q.1.02</span>
+          <span class="acc-title">Posizionamento — Segmento di Mercato</span>
+          <span class="acc-chevron">▾</span>
+        </button>
+        <div class="acc-body">
+          <div class="meta-grid">
+            <div><div class="meta-key">Cluster</div><div class="meta-val">${cLabel}</div></div>
+            <div><div class="meta-key">Settore</div><div class="meta-val">${sLabel}</div></div>
+            <div><div class="meta-key">Priorità</div><div class="meta-val" style="${op.priorita===1?'color:var(--gold)':''}">${pLabel}</div></div>
+            <div><div class="meta-key">Segmento target</div><div class="meta-val" style="color:var(--muted-2)">— In fase di mappatura —</div></div>
+            <div><div class="meta-key">Fascia prezzo</div><div class="meta-val" style="color:var(--muted-2)">— In fase di mappatura —</div></div>
+            <div><div class="meta-key">Cliente tipo</div><div class="meta-val" style="color:var(--muted-2)">— In fase di mappatura —</div></div>
+            ${op.bolkestein_flag ? `<div><div class="meta-key">Bolkestein</div><div class="meta-val" style="color:var(--gold)">Soggetto · scad. 31/12/2027</div></div>
+            <div><div class="meta-key">Giorni alla scadenza</div><div class="meta-val" style="color:var(--gold)">${daysTo('2027-12-31')}</div></div>` : ''}
+            ${op.cna_potenziale ? `<div><div class="meta-key">CNA Bologna</div><div class="meta-val" style="color:rgba(140,200,140,0.85)">Potenziale associato</div></div>` : ''}
+          </div>
+          <p class="q-body">Il posizionamento di mercato dell'operatore, la fascia di clientela servita e la strategia competitiva non sono ancora stati rilevati. Il segmento price e il profilo del cliente tipo costituiranno elementi chiave del vettore Va nel calcolo QEN Score.</p>
+          ${ph()}
+        </div>
       </div>
+
+      <div class="acc-item" id="acc-Q103">
+        <button class="acc-header" onclick="toggleAcc('Q103')">
+          <span class="acc-code">Q.1.03</span>
+          <span class="acc-title">Asset Intangibili — Brand Equity</span>
+          <span class="acc-chevron">▾</span>
+        </button>
+        <div class="acc-body">
+          <div class="meta-grid">
+            <div><div class="meta-key">Presenza online</div><div class="meta-val" style="color:var(--muted-2)">— In fase di mappatura —</div></div>
+            <div><div class="meta-key">Recensioni (Google / TripAdvisor)</div><div class="meta-val" style="color:var(--muted-2)">— In fase di mappatura —</div></div>
+            <div><div class="meta-key">Social media</div><div class="meta-val" style="color:var(--muted-2)">— In fase di mappatura —</div></div>
+            <div><div class="meta-key">Premi / riconoscimenti</div><div class="meta-val" style="color:var(--muted-2)">— In fase di mappatura —</div></div>
+            <div><div class="meta-key">Certificazioni qualità</div><div class="meta-val" style="color:var(--muted-2)">— In fase di mappatura —</div></div>
+            <div><div class="meta-key">Brand awareness locale</div><div class="meta-val" style="color:var(--muted-2)">— In fase di mappatura —</div></div>
+          </div>
+          <p class="q-body">Gli asset intangibili — reputazione online, brand equity territoriale, riconoscimenti di categoria e presenza certificata — alimentano il vettore Va (Ambientale/Reputazionale, peso × 0.35) nel calcolo del QEN Score. La fase di mappatura prevede crawling del profilo digitale e analisi delle menzioni pubbliche.</p>
+          ${ph()}
+        </div>
+      </div>
+
+      <div class="acc-item" id="acc-Q104">
+        <button class="acc-header" onclick="toggleAcc('Q104')">
+          <span class="acc-code">Q.1.04</span>
+          <span class="acc-title">Stack Tecnologico — PMS &amp; Compliance</span>
+          <span class="acc-chevron">▾</span>
+        </button>
+        <div class="acc-body">
+          <table class="compliance-table">
+            <thead>
+              <tr>
+                <th>Sistema / Obbligo</th>
+                <th>Stato</th>
+                <th>Note</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>PMS</strong><br><span style="color:var(--muted);font-size:0.6rem">Property Management System</span></td>
+                <td class="s-nv">N/V</td>
+                <td style="color:var(--muted)">da identificare in fase di audit</td>
+              </tr>
+              <tr>
+                <td><strong>CIN / CIR</strong><br><span style="color:var(--muted);font-size:0.6rem">Codice Identificativo Nazionale / Regionale</span></td>
+                <td class="${statusClass(op.compliance.cin_cir)}">${op.compliance.cin_cir}</td>
+                <td style="color:var(--muted)">${op.compliance.cin_cir === 'N/V' ? 'obbligatorio strutture ricettive — D.L. 145/2023' : 'verificato'}</td>
+              </tr>
+              <tr>
+                <td><strong>AlloggiatiWeb PS</strong><br><span style="color:var(--muted);font-size:0.6rem">Portale Polizia di Stato</span></td>
+                <td class="s-nv">N/V</td>
+                <td style="color:var(--muted)">${(op.settore === 'alberghiero' || op.settore === 'balneare') ? 'obbligatorio strutture ricettive — art. 109 TULPS' : 'verificare applicabilità al settore'}</td>
+              </tr>
+              <tr>
+                <td><strong>GDPR</strong><br><span style="color:var(--muted);font-size:0.6rem">Regolamento UE 2016/679</span></td>
+                <td class="${statusClass(op.compliance.gdpr)}">${op.compliance.gdpr}</td>
+                <td style="color:var(--muted)">${op.compliance.gdpr === 'N/V' ? 'DPA e registro trattamenti da verificare' : 'conforme'}</td>
+              </tr>
+              <tr>
+                <td><strong>EU AI Act</strong><br><span style="color:var(--muted);font-size:0.6rem">Reg. UE 2024/1689</span></td>
+                <td class="${statusClass(op.compliance.eu_ai_act)}">${op.compliance.eu_ai_act}</td>
+                <td style="color:var(--muted)">${op.settore === 'alberghiero' ? 'verifica Allegato III se PMS con revenue management automatico' : 'monitorare adozione strumenti AI'}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="acc-item" id="acc-Q105">
+        <button class="acc-header" onclick="toggleAcc('Q105')">
+          <span class="acc-code">Q.1.05</span>
+          <span class="acc-title">Radicamento Territoriale</span>
+          <span class="acc-chevron">▾</span>
+        </button>
+        <div class="acc-body">
+          <div class="meta-grid">
+            <div><div class="meta-key">Comune / Area</div><div class="meta-val">${op.territorio}</div></div>
+            <div><div class="meta-key">Anni di presenza</div><div class="meta-val" style="color:var(--muted-2)">— In fase di mappatura —</div></div>
+            <div><div class="meta-key">Fornitori locali km0</div><div class="meta-val" style="color:var(--muted-2)">— In fase di mappatura —</div></div>
+            <div><div class="meta-key">Reti associative</div><div class="meta-val" style="${op.cna_potenziale ? 'color:rgba(140,200,140,0.85)' : 'color:var(--muted-2)'}">${op.cna_potenziale ? 'CNA Bologna (potenziale)' : '— In fase di mappatura —'}</div></div>
+            <div><div class="meta-key">Impatto occupazionale</div><div class="meta-val" style="color:var(--muted-2)">— In fase di mappatura —</div></div>
+            <div><div class="meta-key">Partecipazione eventi locali</div><div class="meta-val" style="color:var(--muted-2)">— In fase di mappatura —</div></div>
+          </div>
+          <p class="q-body">Il radicamento territoriale alimenta il vettore Vt (Territoriale, peso × 0.25) nel calcolo del QEN Score. Gli indicatori rilevanti — anni di presenza nel territorio, percentuale fornitori locali verificati, partecipazione a reti e impatto occupazionale — richiederanno raccolta dati diretta nella fase di audit.</p>
+          ${ph()}
+        </div>
+      </div>
+
+      <div class="acc-item" id="acc-Q106">
+        <button class="acc-header" onclick="toggleAcc('Q106')">
+          <span class="acc-code">Q.1.06</span>
+          <span class="acc-title">Segnali di Rischio</span>
+          <span class="acc-chevron">▾</span>
+        </button>
+        <div class="acc-body">
+          <p class="q-body" style="margin-bottom:18px">L'analisi qualitativa a partire dai dati seed evidenzia le seguenti aree critiche da monitorare nella mappatura QEN completa:</p>
+          <div class="risk-cards">
+            ${risks.map(r => `
+            <div class="risk-card">
+              <div class="risk-card-title">${r.title}</div>
+              <div class="risk-card-desc">${r.desc}</div>
+            </div>`).join('')}
+          </div>
+        </div>
+      </div>
+
+      <div class="acc-item" id="acc-Q107">
+        <button class="acc-header" onclick="toggleAcc('Q107')">
+          <span class="acc-code">Q.1.07</span>
+          <span class="acc-title">Sintesi Narrativa QEN</span>
+          <span class="acc-chevron">▾</span>
+        </button>
+        <div class="acc-body">
+          <div class="score-panel">
+            <div class="score-cell">
+              <div class="score-cell-label">VS · Sociale</div>
+              <div class="score-cell-val">N/V</div>
+              <div class="score-cell-weight">peso × 0.40</div>
+            </div>
+            <div class="score-cell">
+              <div class="score-cell-label">VA · Ambientale</div>
+              <div class="score-cell-val">N/V</div>
+              <div class="score-cell-weight">peso × 0.35</div>
+            </div>
+            <div class="score-cell">
+              <div class="score-cell-label">VT · Territoriale</div>
+              <div class="score-cell-val">${(op.cluster === 'bolkestein' || op.priorita === 1) ? 'stima alta' : 'N/V'}</div>
+              <div class="score-cell-weight">peso × 0.25</div>
+            </div>
+          </div>
+          <div class="q-synthesis">${synth}</div>
+          <div class="next-grid">
+            <div class="next-col">
+              <div class="next-col-title">Prossimi Passi</div>
+              ${steps.map(s => `<div class="next-item">${s}</div>`).join('')}
+            </div>
+            <div class="next-col">
+              <div class="next-col-title">Nodi QEN</div>
+              ${nodi.map(n => `<div class="next-item"><strong>${n.label}</strong>${n.desc}</div>`).join('')}
+            </div>
+            <div class="next-col">
+              <div class="next-col-title">Edge Semantici</div>
+              ${edges.map(e => `<div class="next-item"><strong>${e.label}</strong>${e.desc}</div>`).join('')}
+            </div>
+          </div>
+        </div>
+      </div>
+
     </div>
-
-    <!-- Q.1.02 -->
-    <div class="q-block">
-      <div class="q-label">Q.1.02 · Posizionamento</div>
-      <h2 class="q-heading">Cluster &amp; Mercato di Riferimento</h2>
-      <div class="q-body">
-        <p>${cc.note || 'Contesto di cluster non definito.'}</p>
-        <p>Il mercato di riferimento per questo operatore e': <strong>${sc.mercato || op.settore}</strong>. I KPI rilevanti per il calcolo del QEN Score includono: ${sc.kpi_rilevanti || 'da definire in fase di audit'}.</p>
-      </div>
-      <div class="meta-grid" style="margin-top:20px">
-        <div>
-          <div class="meta-item-key">Territorio cluster</div>
-          <div class="meta-item-val">${cc.territorio || op.territorio}</div>
-        </div>
-        <div>
-          <div class="meta-item-key">Priorita</div>
-          <div class="meta-item-val">${prioritaLabel}</div>
-        </div>
-        ${op.bolkestein_flag ? `
-        <div>
-          <div class="meta-item-key">Bolkestein</div>
-          <div class="meta-item-val" style="color:var(--gold)">Soggetto — scad. 31/12/2027</div>
-        </div>
-        <div>
-          <div class="meta-item-key">Giorni alla scadenza</div>
-          <div class="meta-item-val" style="color:var(--gold)">${daysTo('2027-12-31')}</div>
-        </div>
-        ` : ''}
-        ${op.cna_potenziale ? `
-        <div>
-          <div class="meta-item-key">CNA Bologna</div>
-          <div class="meta-item-val" style="color:var(--gold)">Potenziale associato</div>
-        </div>
-        ` : ''}
-      </div>
-    </div>
-
-    <!-- Q.1.03 -->
-    <div class="q-block">
-      <div class="q-label">Q.1.03 · Compliance</div>
-      <h2 class="q-heading">Profilo Normativo</h2>
-      <div class="q-body">
-        <p>Il profilo compliance e' al momento <strong>non mappato</strong>: tutti i parametri risultano N/V (Non Verificato). La verifica normativa e' prerequisito per il calcolo del QEN Score — ogni gap di compliance incide direttamente sul vettore Vs (Sociale/Legale, peso 0.40).</p>
-      </div>
-      <div class="meta-grid" style="margin-top:20px">
-        <div>
-          <div class="meta-item-key">CIN / CIR</div>
-          <div class="meta-item-val" style="color:${op.compliance.cin_cir === 'N/V' ? 'var(--muted-2)' : 'var(--gold)'}">${op.compliance.cin_cir}</div>
-        </div>
-        <div>
-          <div class="meta-item-key">GDPR</div>
-          <div class="meta-item-val" style="color:${op.compliance.gdpr === 'N/V' ? 'var(--muted-2)' : 'var(--gold)'}">${op.compliance.gdpr}</div>
-        </div>
-        <div>
-          <div class="meta-item-key">EU AI Act</div>
-          <div class="meta-item-val" style="color:${op.compliance.eu_ai_act === 'N/V' ? 'var(--muted-2)' : 'var(--gold)'}">${op.compliance.eu_ai_act}</div>
-        </div>
-        <div>
-          <div class="meta-item-key">Bolkestein</div>
-          <div class="meta-item-val" style="color:${op.compliance.bolkestein === 'soggetto' ? 'var(--gold)' : 'var(--muted-2)'}">${op.compliance.bolkestein}</div>
-        </div>
-      </div>
-      ${complianceGaps.length > 0 ? `
-      <div class="q-body" style="margin-top:20px">
-        <p>Gap identificati: <strong>${complianceGaps.join(', ')}</strong>. La verifica di questi parametri costituisce la priorita immediata della Fase 2 di mappatura. Per il calcolo del QEN Score, la compliance documentata su tutti i parametri e' un moltiplicatore diretto del vettore Vs.</p>
-      </div>
-      ` : ''}
-    </div>
-
-    <!-- Q.1.04 -->
-    <div class="q-block">
-      <div class="q-label">Q.1.04 · Normativa Applicabile</div>
-      <h2 class="q-heading">Regolamenti &amp; Obblighi</h2>
-      <div class="q-body">
-        <p>Sulla base del cluster di appartenenza (<strong>${op.cluster}</strong>) e del settore operativo (<strong>${op.settore}</strong>), i regolamenti applicabili identificati sono:</p>
-      </div>
-      <div class="meta-grid" style="margin-top:20px">
-        ${(cc.regolamenti || []).map((r,i) => `
-        <div>
-          <div class="meta-item-key">Reg. ${pad2(i+1)}</div>
-          <div class="meta-item-val">${r}</div>
-        </div>
-        `).join('')}
-      </div>
-      ${op.settore === 'alberghiero' ? `
-      <div class="q-body" style="margin-top:20px">
-        <p><strong>EU AI Act Allegato III</strong>: se l'operatore utilizza un PMS con profilazione ospiti, revenue management dinamico o channel manager integrati, il sistema potrebbe rientrare nell'Allegato III del Regolamento UE 2024/1689. La verifica del PMS e' priorita della Fase 2.</p>
-      </div>
-      ` : ''}
-      ${op.settore === 'balneare' ? `
-      <div class="q-body" style="margin-top:20px">
-        <p><strong>Direttiva Bolkestein (2006/123/CE)</strong>: la scadenza delle concessioni demaniali marittime al 31 dicembre 2027 richiede la documentazione del valore aziendale ai fini della gara pubblica. Il Dossier QEN e' lo strumento previsto dal framework per questa finalita'.</p>
-        <p><strong>Green Claim Directive (UE 2024/825)</strong>: in vigore dal settembre 2026. Qualsiasi affermazione ambientale nelle comunicazioni commerciali deve essere verificata da terzi. Il QEN Score fornisce la base computabile per certificare i green claim.</p>
-      </div>
-      ` : ''}
-    </div>
-
-    <!-- Q.1.05 -->
-    <div class="q-block">
-      <div class="q-label">Q.1.05 · Radicamento</div>
-      <h2 class="q-heading">Territorio &amp; Ecosistema Locale</h2>
-      <div class="q-body">
-        <p>L'operatore e' localizzato a <strong>${op.territorio}</strong>, territorio che nel grafo QEN e' collegato al cluster <strong>${op.cluster}</strong>. Il radicamento territoriale e' uno dei fattori che alimentano il vettore Vt (Territoriale, peso 0.25) nel calcolo del QEN Score.</p>
-        <p>Gli indicatori Vt rilevanti — anni di presenza nel territorio, percentuale fornitori locali verificati, partecipazione a reti territoriali, innovazione digitale — sono al momento non verificati e richiederanno raccolta dati diretta nella fase di audit.</p>
-      </div>
-      <div class="meta-grid" style="margin-top:20px">
-        <div>
-          <div class="meta-item-key">Comune / Area</div>
-          <div class="meta-item-val">${op.territorio}</div>
-        </div>
-        <div>
-          <div class="meta-item-key">Edge territoriali attivi</div>
-          <div class="meta-item-val">${edgesOut.filter(e => e.to === 'RIVIERA_ADRIATICA_BALNEARI' || e.to === 'SETTORE_HORECA_BOLOGNA' || e.to === 'SETTORE_ARTIGIANATO_BOLOGNA' || e.to === 'SETTORE_RISTORAZIONE').length}</div>
-        </div>
-        <div>
-          <div class="meta-item-key">Filiera km0</div>
-          <div class="meta-item-val">N/V — da verificare</div>
-        </div>
-        <div>
-          <div class="meta-item-key">Reti associative</div>
-          <div class="meta-item-val">${op.cna_potenziale ? 'CNA Bologna (potenziale)' : 'N/V'}</div>
-        </div>
-      </div>
-      ${myEdges.length > 0 ? `
-      <div class="q-body" style="margin-top:20px">
-        <p>Edge semantici presenti nel grafo (${myEdges.length} totali):</p>
-        ${edgesOut.map(e => `<p style="color:var(--muted-2);font-size:0.68rem;margin-bottom:4px">→ <strong style="color:var(--text)">${e.to}</strong> · ${e.type}</p>`).join('')}
-        ${edgesIn.map(e => `<p style="color:var(--muted-2);font-size:0.68rem;margin-bottom:4px">← <strong style="color:var(--text)">${e.from}</strong> · ${e.type}</p>`).join('')}
-      </div>
-      ` : ''}
-    </div>
-
-    <!-- Q.1.06 -->
-    <div class="q-block">
-      <div class="q-label">Q.1.06 · Segnali di Rischio</div>
-      <h2 class="q-heading">Gap Identificati</h2>
-      <p class="q-body" style="margin-bottom:24px">L'analisi qualitativa a partire dai dati seed evidenzia le seguenti aree critiche da monitorare nella mappatura QEN completa:</p>
-      <div class="risk-list">
-        ${risks.map(r => `
-        <div class="risk-item">
-          <div class="risk-title">${r.title}</div>
-          <div class="risk-desc">${r.desc}</div>
-        </div>
-        `).join('')}
-      </div>
-    </div>
-
-    <!-- Q.1.07 -->
-    <div class="q-block">
-      <div class="q-label">Q.1.07 · Lettura Semantica</div>
-      <h2 class="q-heading">Il Valore Complessivo degli Asset —<br>Lettura Semantica</h2>
-      <div class="q-synthesis">
-        ${synthesis}
-      </div>
-      <div class="q-body" style="margin-top:24px">
-        <p>Nel paradigma QEN, questo non e' un profilo incompleto: e' <strong>capitale semantico comprimibile in nodi</strong>, edge verificabili e score calcolabili. La sfida e' tradurre la presenza territoriale e il radicamento storico dell'operatore in metriche Vs/Va/Vt difendibili davanti a un interlocutore normativo, commerciale o finanziario.</p>
-      </div>
-    </div>
-
-    <!-- SCORE GRID -->
-    <section class="score-section">
-      <div class="q-label" style="margin-bottom:20px">Score QEN · Stato Attuale</div>
-      <div class="score-grid">
-        <div class="score-cell">
-          <div class="score-cell-label">Vs · Sociale</div>
-          <div class="score-cell-val">N/V</div>
-          <div class="score-cell-weight">peso &times; 0.40</div>
-        </div>
-        <div class="score-cell">
-          <div class="score-cell-label">Va · Ambientale</div>
-          <div class="score-cell-val">N/V</div>
-          <div class="score-cell-weight">peso &times; 0.35</div>
-        </div>
-        <div class="score-cell">
-          <div class="score-cell-label">Vt · Territoriale</div>
-          <div class="score-cell-val">${op.cluster === 'bolkestein' || op.priorita === 1 ? 'stima alta' : 'N/V'}</div>
-          <div class="score-cell-weight">peso &times; 0.25</div>
-        </div>
-        <div class="score-cell">
-          <div class="score-cell-label">QEN Score</div>
-          <div class="score-cell-val">pending audit</div>
-          <div class="score-cell-weight">formula QEN v1.2</div>
-        </div>
-      </div>
-
-      <div class="next-grid">
-        <div class="next-col">
-          <div class="next-col-title">Prossimi Passi · Fase 2</div>
-          ${nextSteps.map(s => `<div class="next-item">${s}</div>`).join('')}
-        </div>
-        <div class="next-col">
-          <div class="next-col-title">Nodi QEN da Creare</div>
-          ${nodiDaCrea.map(n => `<div class="next-item"><strong>${n.label}</strong>${n.desc}</div>`).join('')}
-        </div>
-        <div class="next-col">
-          <div class="next-col-title">Edge Semantici Attesi</div>
-          ${edgeAttesi.map(e => `<div class="next-item"><strong>${e.label}</strong>${e.desc}</div>`).join('')}
-        </div>
-      </div>
-    </section>
-
-    <!-- AI ANALYSIS -->
-    <section class="ai-section">
-      <div class="q-label" style="margin-bottom:12px">Analisi QEN · Stima Preliminare AI</div>
-      <div class="ai-trigger">
-        <button class="btn-ai" id="btn-ai" onclick="requestAI()">Genera Analisi QEN</button>
-        <span class="ai-note">Richiede connessione a api.cognitivelogic.it · Powered by Gemini / Claude</span>
-      </div>
-      <div class="ai-result" id="ai-result">
-        <div class="ai-result-label">Stima Preliminare · QEN Score Computato</div>
-        <div class="ai-score-row">
-          <div class="ai-score-item"><div class="ai-score-key">Vs</div><div class="ai-score-val" id="ai-vs">—</div></div>
-          <div class="ai-score-item"><div class="ai-score-key">Va</div><div class="ai-score-val" id="ai-va">—</div></div>
-          <div class="ai-score-item"><div class="ai-score-key">Vt</div><div class="ai-score-val" id="ai-vt">—</div></div>
-          <div class="ai-score-item"><div class="ai-score-key">QEN Score</div><div class="ai-score-val" id="ai-qen" style="font-size:2rem">—</div></div>
-        </div>
-        <div class="ai-sintesi" id="ai-sintesi">—</div>
-      </div>
-    </section>
 
     <footer>
-      <span>© 2026 Roberto Bob Malini — Cognitive Logic · QEN Framework v6.0</span>
-      <span><a href="operatori.html">Directory</a> · <a href="qen-live.html">Grafo Live</a> · <a href="copilot.html">Copilot</a></span>
+      <span>COGNITIVE LOGIC · QEN Framework v1.2</span>
+      <span><a href="operatori.html">Directory</a> · <a href="qen-live.html">Grafo Live</a> · <a href="framework.html">Framework</a></span>
     </footer>
   `;
 }
 
-function buildRisks(op, sc, gaps) {
-  const risks = [];
-
-  if (gaps.includes('CIN/CIR')) {
-    risks.push({
-      title: 'CIN/CIR non verificati.',
-      desc: 'I codici identificativi nazionali delle strutture ricettive non sono stati verificati. Per gli operatori alberghieri e balneari con funzione ricettiva, la mancata registrazione CIN/CIR implica sanzioni amministrative e incide direttamente sul vettore Vs del QEN Score.'
-    });
-  }
-
-  if (op.cluster === 'bolkestein' && op.compliance.bolkestein === 'soggetto') {
-    risks.push({
-      title: 'Scadenza concessione Bolkestein 2027.',
-      desc: `Mancano ${daysTo('2027-12-31')} giorni alla scadenza delle concessioni demaniali. La gara pubblica obbligatoria richiede documentazione del valore aziendale storico ed etico. Senza un Dossier QEN certificato, l'operatore si presenta alla gara senza evidenza quantificabile del proprio valore territoriale.`
-    });
-  }
-
-  if (sc.rischio_primario) {
-    risks.push({
-      title: 'Rischio normativo primario.',
-      desc: sc.rischio_primario + ' Da investigare nella fase di mappatura QEN completa.'
-    });
-  }
-
-  risks.push({
-    title: 'Profilo digitale non mappato.',
-    desc: 'Il livello di innovazione digitale, la presenza online verificabile e l\'identita\' digitale dell\'operatore non sono stati rilevati. Questo impatta il KPI "digitale" del vettore Vt (peso 0.10 su Vt).'
-  });
-
-  risks.push({
-    title: 'Filiera fornitori non documentata.',
-    desc: 'La percentuale di approvvigionamenti entro 100km (km0) e la tracciabilita\' dei fornitori locali non sono verificate. Il KPI "km0" ha peso 0.20 nel vettore Va — gap rilevante per Green Claim e CSRD.'
-  });
-
-  return risks;
-}
-
-function buildSynthesis(op, cc, sc) {
-  if (op.cluster === 'bolkestein') {
-    return `<p>${op.label} incarna una delle categorie a massima urgenza normativa del panorama italiano: quella degli operatori balneari adriatici che entro il 2027 dovranno dimostrare — davanti a una commissione pubblica — il valore storico, etico e territoriale di una presenza che in molti casi risale a decenni.</p>
-    <p>Nel paradigma QEN, questa urgenza e' un'opportunita': la direttiva Bolkestein non chiede solo conformita', chiede <em>narrazione verificabile</em>. Il QEN Score e' la struttura computazionale che converte quella narrazione in evidenza difendibile.</p>`;
-  }
-  if (op.cluster === 'horeca_bologna') {
-    return `<p>${op.label} opera in uno dei contesti HoReCa piu' ricchi di capitale semantico d'Italia: l'area metropolitana bolognese, dove la tradizione culinaria DOP, la filiera corta emiliana e la densita' artigianale costituiscono un vantaggio competitivo raramente documentato in forma computabile.</p>
-    <p>Il QEN Framework permette di tradurre questo capitale intangibile in metriche Vs/Va/Vt difendibili — utili per candidature a bandi, partnership con CNA Bologna e posizionamento ESG verso i clienti.</p>`;
-  }
-  return `<p>${op.label} e' un operatore della provincia bolognese con potenziale di associazione CNA e profilo adatto alla certificazione QEN. Il valore dell'artigianato locale, della filiera corta e del radicamento territoriale e' la materia prima su cui il framework costruisce lo score.</p>
-  <p>La sfida e' la stessa per tutti i 16.000 associati CNA Bologna: rendere visibile e misurabile cio' che finora era solo vissuto. Il QEN Score e' lo strumento.</p>`;
-}
-
-function buildNextSteps(op, gaps) {
-  const steps = [];
-  if (op.settore === 'alberghiero' || op.settore === 'misto') {
-    steps.push('Verifica CIN/CIR tutte le strutture');
-    steps.push('Identificazione PMS in uso');
-  }
-  if (op.cluster === 'bolkestein') {
-    steps.push('Crawl sito / profilo digitale');
-    steps.push('Verifica titolarita\' concessione');
-    steps.push('Raccolta dati KPI balneare (M1-M6)');
-  } else if (op.cluster === 'horeca_bologna') {
-    steps.push('Audit QEN HoReCa (8 moduli)');
-    steps.push('Verifica filiera km0');
-    steps.push('Raccolta dati lavoro e welfare');
-  } else {
-    steps.push('Contatto CNA Bologna');
-    steps.push('Audit ECI Assessment');
-    steps.push('Verifica certificazioni prodotto');
-  }
-  return steps.slice(0, 4);
-}
-
-function buildNodiDaCreare(op) {
-  const nodi = [
-    { label: `@Gruppo ${op.label}`, desc: ' (hub)' },
-  ];
-  if (op.settore === 'alberghiero' || op.settore === 'balneare') {
-    nodi.push({ label: '@Struttura principale', desc: ' (da identificare)' });
-    nodi.push({ label: '@Persona titolare', desc: ' (proprieta\')' });
-  }
-  if (op.settore === 'alberghiero') {
-    nodi.push({ label: '@PMS sistema', desc: ' (da verificare)' });
-  }
-  if (op.settore === 'balneare') {
-    nodi.push({ label: '@Concessione demaniale', desc: ' (numero/scadenza)' });
-  }
-  if (op.settore === 'misto' || op.settore === 'ristorativo') {
-    nodi.push({ label: '@Prodotto / certificazione', desc: ' (DOP/IGP/artigianale)' });
-  }
-  return nodi.slice(0, 4);
-}
-
-function buildEdgeAttesi(op) {
-  const edges = [
-    { label: 'Gruppo → Strutture', desc: ' (1+ nodi)' },
-  ];
-  if (op.compliance.cin_cir === 'N/V') {
-    edges.push({ label: 'Strutture → CIN/CIR', desc: ' (compliance)' });
-  }
-  if (op.cluster === 'bolkestein') {
-    edges.push({ label: 'Strutture → Concessione', desc: ' (demanio)' });
-    edges.push({ label: 'Hub → Comune', desc: ' (territorio)' });
-  }
-  if (op.cluster === 'horeca_bologna' || op.cluster === 'cna_bologna') {
-    edges.push({ label: 'Strutture → Filiera', desc: ' (km0)' });
-    edges.push({ label: 'Hub → Territorio BO', desc: ' (radicamento)' });
-  }
-  if (op.cna_potenziale) {
-    edges.push({ label: 'Operatore → CNA_BOLOGNA', desc: ' (associazione)' });
-  }
-  return edges.slice(0, 4);
-}
-
-async function requestAI() {
-  const btn = document.getElementById('btn-ai');
-  btn.disabled = true;
-  btn.textContent = 'Analisi in corso…';
-
-  const params = new URLSearchParams(window.location.search);
-  const id     = params.get('id');
-
-  try {
-    const resp = await fetch(SEED_URL);
-    const ops  = await resp.json();
-    const op   = ops.find(o => o.id === id);
-    if (!op) throw new Error('operatore non trovato');
-
-    const desc = `Operatore ${op.settore} denominato "${op.label}", localizzato a ${op.territorio}. Cluster: ${op.cluster}. ${op.bolkestein_flag ? 'Soggetto a direttiva Bolkestein 2027.' : ''} ${op.cna_potenziale ? 'Potenziale associato CNA Bologna.' : ''} Compliance: tutti i parametri N/V.`;
-
-    const r = await fetch(`${API_BASE}/gemini/qen-score`, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json', 'Origin': 'https://cognitivelogic.it' },
-      body: JSON.stringify({ business_name: op.label, sector: op.settore, description: desc })
-    });
-
-    if (!r.ok) throw new Error('API error');
-    const data = await r.json();
-    const q    = data.qen || {};
-
-    document.getElementById('ai-vs').textContent  = q.vs   != null ? q.vs.toFixed(1)  : '—';
-    document.getElementById('ai-va').textContent  = q.va   != null ? q.va.toFixed(1)  : '—';
-    document.getElementById('ai-vt').textContent  = q.vt   != null ? q.vt.toFixed(1)  : '—';
-    document.getElementById('ai-qen').textContent = q.qen_score != null ? q.qen_score.toFixed(1) : '—';
-    document.getElementById('ai-sintesi').textContent = q.sintesi || '—';
-    document.getElementById('ai-result').classList.add('visible');
-
-    btn.textContent = 'Analisi completata';
-  } catch(e) {
-    btn.textContent = 'Errore — riprova';
-    btn.disabled = false;
-    console.error(e);
-  }
-}
-
 async function init() {
   const params = new URLSearchParams(window.location.search);
-  const id     = params.get('id');
+  const id = params.get('id');
 
   if (!id) {
     document.getElementById('app').innerHTML = `
-      <div style="padding:80px 56px;text-align:center">
-        <p style="color:var(--muted);font-size:0.8rem;margin-bottom:16px">Nessun operatore specificato.</p>
-        <a href="operatori.html" style="color:var(--gold);font-size:0.7rem;letter-spacing:0.1em">← Torna alla directory</a>
+      <div class="error-screen">
+        <p>Nessun operatore specificato nell'URL.</p>
+        <a href="operatori.html">← Torna alla directory operatori</a>
       </div>`;
     return;
   }
 
-  const [seedResp, graphResp] = await Promise.all([
-    fetch(SEED_URL),
-    fetch(GRAPH_URL)
-  ]);
+  try {
+    const resp = await fetch(SEED_URL);
+    if (!resp.ok) throw new Error('fetch error');
+    const data = await resp.json();
+    const op   = data.find(o => o.id === id);
 
-  const ops   = await seedResp.json();
-  const graph = await graphResp.json();
-  const op    = ops.find(o => o.id === id);
+    if (!op) {
+      document.getElementById('app').innerHTML = `
+        <div class="error-screen">
+          <p>Operatore non trovato: <code style="color:var(--gold)">${id}</code></p>
+          <a href="operatori.html">← Torna alla directory operatori</a>
+        </div>`;
+      return;
+    }
 
-  if (!op) {
+    renderOperatore(op);
+  } catch(e) {
     document.getElementById('app').innerHTML = `
-      <div style="padding:80px 56px;text-align:center">
-        <p style="color:var(--muted);font-size:0.8rem;margin-bottom:16px">Operatore non trovato: <code>${id}</code></p>
-        <a href="operatori.html" style="color:var(--gold);font-size:0.7rem;letter-spacing:0.1em">← Torna alla directory</a>
+      <div class="error-screen">
+        <p>Errore nel caricamento dei dati. Verificare la connessione.</p>
+        <a href="operatori.html">← Torna alla directory operatori</a>
       </div>`;
-    return;
   }
-
-  // Update page title and meta
-  document.title = `${op.label} — Report QEN · Cognitive Logic`;
-  document.querySelector('meta[name="description"]').content =
-    `Report QEN ${op.label} — ${op.territorio} · ${op.settore} · Analisi Qualitativa degli Asset · QEN Framework`;
-
-  document.getElementById('app').innerHTML = buildReport(op, graph.edges || []);
 }
 
 init();
