@@ -159,6 +159,19 @@
       color: rgba(255,255,255,0.25); border: 1px solid rgba(255,255,255,0.08);
       padding: 3px 8px; border-radius: 2px; display: inline-block; margin-top: 10px;
     }
+    .examples-label {
+      font-family: 'IBM Plex Mono', monospace; font-size: 9px; letter-spacing: 0.18em; text-transform: uppercase;
+      color: rgba(255,255,255,0.2); margin-bottom: 8px;
+    }
+    .examples-chips { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 16px; }
+    .example-chip {
+      font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: 0.08em;
+      color: rgba(255,255,255,0.35); background: transparent;
+      border: 1px solid rgba(255,255,255,0.1); border-radius: 2px;
+      padding: 5px 12px; cursor: pointer;
+      transition: color 0.15s, border-color 0.15s, background 0.15s;
+    }
+    .example-chip:hover { color: #00c896; border-color: rgba(0,200,150,0.4); background: rgba(0,200,150,0.04); }
   </style>
   <link rel="search" type="application/opensearchdescription+xml" title="Cognitive Logic" href="https://cognitivelogic.it/opensearchdescription.xml" />
 </head>
@@ -176,6 +189,15 @@
   <div class="llm-toggle">
     <button class="llm-btn active" id="btn-claude" data-provider="claude">Claude Sonnet 4.6</button>
     <button class="llm-btn" id="btn-mistral" data-provider="mistral">Mistral Large</button>
+  </div>
+  <div class="examples-label">Esempi rapidi</div>
+  <div class="examples-chips" id="examples-chips">
+    <button class="example-chip" data-example="scoring-credito">Scoring creditizio</button>
+    <button class="example-chip" data-example="assunzioni-hr">Assunzioni HR</button>
+    <button class="example-chip" data-example="bolkestein">Bolkestein 2027</button>
+    <button class="example-chip" data-example="diagnosi-medica">Diagnosi medica</button>
+    <button class="example-chip" data-example="chatbot-cs">Chatbot clienti</button>
+    <button class="example-chip" data-example="esg-csrd">ESG / CSRD</button>
   </div>
   <div class="input-label">Descrizione sistema AI</div>
   <textarea id="input" placeholder="Es: sistema di scoring creditizio automatizzato che elabora dati reddituali e comportamentali, con supervisione umana solo su casi edge..."></textarea>
@@ -599,6 +621,33 @@
     });
     inputEl.addEventListener("keydown", e => {
       if ((e.metaKey || e.ctrlKey) && e.key === "Enter") analyze();
+    });
+
+    const EXAMPLES = {
+      "scoring-credito": "Sistema di scoring creditizio automatizzato che elabora dati reddituali, storico bancario e comportamenti di spesa per produrre un punteggio di affidabilità (0–1000). Il modello determina l'approvazione o il rifiuto automatico dei prestiti fino a 5.000 €; per importi superiori la decisione finale spetta a un operatore umano che visualizza il punteggio e la motivazione sintetica. I dati trattati includono reddito, IBAN, spese ricorrenti e categoria professionale. Il sistema è in uso presso una fintech italiana con 120.000 clienti attivi.",
+
+      "assunzioni-hr": "Piattaforma di pre-selezione del personale basata su LLM che analizza CV, lettere di motivazione e profili LinkedIn per generare un ranking dei candidati e raccomandare i 5 profili da invitare al colloquio. Il sistema estrae automaticamente competenze, anni di esperienza e 'fit culturale' da testi non strutturati. L'HR riceve la lista ordinata senza vedere i criteri esatti di scoring. Attualmente in uso per posizioni tecniche e commerciali in un'azienda manifatturiera di 800 dipendenti.",
+
+      "bolkestein": "Gestione e valorizzazione della concessione demaniale marittima per uno stabilimento balneare con 12 dipendenti stagionali, attivo dal 1987 sul litorale adriatico. In vista delle gare europee previste post-2027 dalla Direttiva Bolkestein (2006/123/CE), vogliamo strutturare la documentazione di evidenza territoriale (investimenti, occupazione locale, impatto ambientale) per partecipare in modo competitivo. Cerchiamo anche indicazioni sui decreti attuativi della L. 118/2022.",
+
+      "diagnosi-medica": "Sistema di supporto alla diagnosi radiologica che analizza immagini TAC toraciche per identificare potenziali noduli polmonari e classificarne il grado di rischio (Lung-RADS 1–4). Il modello segnala automaticamente le scansioni ad alta priorità e genera un report preliminare. Il referto definitivo rimane sempre a carico del radiologo, che può accettare, modificare o ignorare i suggerimenti del sistema. Utilizzato in 3 ospedali del SSN con circa 200 scansioni/giorno.",
+
+      "chatbot-cs": "Assistente virtuale per il customer service di un operatore energetico che gestisce richieste di clienti residenziali: informazioni su bollette, attivazioni/cessazioni contratti, reclami e rateizzazioni. Il chatbot risponde in linguaggio naturale tramite widget web e WhatsApp Business. Escalation automatica all'operatore umano in caso di reclamo formale o richiesta di rimborso superiore a 200 €. Processa circa 3.000 conversazioni/giorno e non archivia contenuti delle chat oltre 30 giorni.",
+
+      "esg-csrd": "Report di sostenibilità annuale generato con supporto di AI che aggrega dati interni (consumi energetici, emissioni scope 1-2, ore di formazione, infortuni) e li confronta con benchmark di settore per produrre un'analisi ESG e indicatori GRI. Il sistema suggerisce automaticamente i claim da inserire nel bilancio di sostenibilità e identifica le aree di miglioramento. L'azienda è una PMI manifatturiera con 250 dipendenti che vuole anticipare gli obblighi CSRD e certificare le proprie dichiarazioni ambientali."
+    };
+
+    document.getElementById("examples-chips").addEventListener("click", e => {
+      const chip = e.target.closest(".example-chip");
+      if (!chip) return;
+      const key = chip.dataset.example;
+      if (EXAMPLES[key]) {
+        inputEl.value = EXAMPLES[key];
+        inputEl.focus();
+        errorBox.style.display = "none";
+        resultsEl.style.display = "none";
+        lastResult = null;
+      }
     });
   </script>
 
