@@ -27,6 +27,16 @@ architectures that make compliance structural rather than declarative.
   EU AI Act Annex I / II / III classification.
   GDPR Art. 22 (automated decisions) and Art. 35 (DPIA) mapping.
   PDF report export via jsPDF.
+- **GLM — Governance Layer Manifest**
+  Machine-readable policy manifest at `/.well-known/governance-layer-manifest.json`.
+  Protocol: GLM/1.0. Declares operational scope, data sovereignty, framework claims,
+  and EVIDE registry endpoints. Discoverable by autonomous AI agents without bilateral agreements.
+- **EVIDE — Evidentiary Registry**
+  Chain-of-custody registry for AI inference fingerprints. Protocol: EVIDE/1.0.
+  Every critical inference (QEN Score, compliance audit, regulatory check) is recorded
+  as a SHA-256 hash-chained entry. Provides post-event traceability for GDPR Art. 22
+  (automated decisions) and EU AI Act obligations.
+  API: `GET /evide/chain` · `POST /evide/register`
 - **Digital Identity & DID Infrastructure**
   `did:web:cognitivelogic.it:robertomalini`
   Decentralized identifier anchored on sovereign data node.
@@ -81,6 +91,8 @@ DNS: Hetzner DNS Zone
 |`/gemini/qen-score`              |POST  |Gemini 2.5 Flash     |QEN Score calculation                 |
 |`/gemini/market-scan`            |GET   |Gemini 2.5 Flash     |Market intelligence                   |
 |`/full-analysis`                 |POST  |Multi-brain          |Parallel Claude + Mistral + Gemini    |
+|`/evide/chain`                   |GET   |Flask :5000          |EVIDE registry — full chain of custody|
+|`/evide/register`                |POST  |Flask :5000          |EVIDE webhook — register AI inference |
 |`/cross-data` *(roadmap Q3)*     |GET   |—                    |Multi-institutional zone/sector       |
 
 -----

@@ -1,0 +1,49 @@
+{
+  "protocol": "GLM/1.0",
+  "spec": "https://cognitivelogic.it/.well-known/governance-layer-manifest.json",
+  "layer_id": "it.cognitivelogic.node.01",
+  "version": "1.0.0",
+  "issued": "2026-06-14",
+  "organization": {
+    "name": "Cognitive Logic",
+    "did": "did:web:cognitivelogic.it:robertomalini",
+    "contact": "info@cognitivelogic.it",
+    "domain": "cognitivelogic.it",
+    "founder": "Roberto Bob Malini"
+  },
+  "claims": {
+    "scope": "Semantic Modeling & AI-First Data Architecture",
+    "data_sovereignty": "Strict — local processing on sovereign infrastructure",
+    "framework": "QEN — Quantifiable Ethical Nodes",
+    "formula": "QEN = (Vs × 0.40) + (Va × 0.35) + (Vt × 0.25)",
+    "regulatory_alignment": [
+      "EU AI Act",
+      "GDPR Art.22 (automated decisions)",
+      "GDPR Art.35 (DPIA)",
+      "CSRD",
+      "Bolkestein 2027"
+    ]
+  },
+  "infrastructure": {
+    "vps": "Hetzner CAX21 ARM64 — Ubuntu 24.04",
+    "api": "https://api.cognitivelogic.it",
+    "evide_registry": "https://api.cognitivelogic.it/evide/chain",
+    "graph_version": "v4 — 97 nodes · 182 relations"
+  },
+  "composition": {
+    "compatible_layers": ["urn:glm:base:core"],
+    "agent_interop": true,
+    "graphrag_enabled": true,
+    "multi_brain": ["claude-sonnet-4-6", "mistral-large", "gemini-2.5-flash"]
+  },
+  "evide": {
+    "registry": "https://api.cognitivelogic.it/evide/chain",
+    "webhook": "https://api.cognitivelogic.it/evide/register",
+    "schema": "https://cognitivelogic.it/data/evide-registry.json"
+  },
+  "discovery": {
+    "robots": "https://cognitivelogic.it/robots.txt",
+    "llms": "https://cognitivelogic.it/llms.txt",
+    "sitemap": "https://cognitivelogic.it/sitemap.xml"
+  }
+}

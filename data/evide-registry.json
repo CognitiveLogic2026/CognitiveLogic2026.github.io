@@ -1,0 +1,75 @@
+{
+  "meta": {
+    "name": "EVIDE — Evidentiary Registry",
+    "version": "1.0",
+    "protocol": "EVIDE/1.0",
+    "author": "Roberto Bob Malini | Cognitive Logic",
+    "created": "2026-06-14",
+    "updated": "2026-06-14T08:00:00Z",
+    "description": "Chain-of-custody registry for AI inference fingerprints. Ogni decisione critica viene registrata come impronta verificabile nel registro EVIDE.",
+    "total": 3,
+    "glm_ref": "https://cognitivelogic.it/.well-known/governance-layer-manifest.json",
+    "api_chain": "https://api.cognitivelogic.it/evide/chain",
+    "api_register": "https://api.cognitivelogic.it/evide/register"
+  },
+  "schema": {
+    "entry": {
+      "id": "string — sequential identifier (evide-NNNN)",
+      "seq": "integer — sequential index",
+      "timestamp": "string — ISO 8601 UTC",
+      "type": "string — QEN_SCORE | COMPLIANCE_AUDIT | RISK_ANALYSIS | REGULATORY_CHECK | INFERENCE",
+      "agent": "string — agent identifier (e.g. claude-sonnet-4-6)",
+      "operator_id": "string — anonymized operator reference",
+      "input_digest": "string — sha256: prefix + hex digest of input payload",
+      "output_digest": "string — sha256: prefix + hex digest of output payload",
+      "qen_score": "float | null — QEN score if applicable",
+      "verdict": "string — COMPLIANT | NON_COMPLIANT | REVIEW_REQUIRED | PENDING",
+      "glm_node": "string — GLM layer_id of issuing node",
+      "prev_hash": "string | null — sha256 of serialized previous entry (chain link)"
+    }
+  },
+  "entries": [
+    {
+      "id": "evide-0001",
+      "seq": 1,
+      "timestamp": "2026-06-14T07:00:00Z",
+      "type": "QEN_SCORE",
+      "agent": "gemini-2.5-flash",
+      "operator_id": "op:bagno-roma-rimini",
+      "input_digest": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "output_digest": "sha256:a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3",
+      "qen_score": 77.5,
+      "verdict": "COMPLIANT",
+      "glm_node": "it.cognitivelogic.node.01",
+      "prev_hash": null
+    },
+    {
+      "id": "evide-0002",
+      "seq": 2,
+      "timestamp": "2026-06-14T07:15:00Z",
+      "type": "COMPLIANCE_AUDIT",
+      "agent": "claude-sonnet-4-6",
+      "operator_id": "op:lido-adriatico-01",
+      "input_digest": "sha256:2cf24dba5fb0a30e26e83b2ac5b9e29e1b161e5c1fa7425e73043362938b9824",
+      "output_digest": "sha256:3fc4ccfe745870e2c0d99f71f30ff0656c8dbe9a54b8943d31d0b6d22ada65c3",
+      "qen_score": 61.2,
+      "verdict": "REVIEW_REQUIRED",
+      "glm_node": "it.cognitivelogic.node.01",
+      "prev_hash": "sha256:a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3"
+    },
+    {
+      "id": "evide-0003",
+      "seq": 3,
+      "timestamp": "2026-06-14T08:00:00Z",
+      "type": "REGULATORY_CHECK",
+      "agent": "mistral-large",
+      "operator_id": "op:horeca-rimini-coast",
+      "input_digest": "sha256:82e35a63ceba71a4df25c3e2a43cde7f0ca91d2b7ab59cf8da68f8e40da60e9",
+      "output_digest": "sha256:fcde2b2edba56bf408601fb721fe9b5c338d10ee429ea04fae5511b68fbf8fb9",
+      "qen_score": null,
+      "verdict": "COMPLIANT",
+      "glm_node": "it.cognitivelogic.node.01",
+      "prev_hash": "sha256:3fc4ccfe745870e2c0d99f71f30ff0656c8dbe9a54b8943d31d0b6d22ada65c3"
+    }
+  ]
+}

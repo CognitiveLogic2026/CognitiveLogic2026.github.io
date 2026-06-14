@@ -2,6 +2,7 @@
 # https://www.cognitivelogic.it
 # Licensed under CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/)
 import fcntl
+import hashlib
 import os
 import hmac
 import json
@@ -659,6 +660,91 @@ def reconcile_batch():
         "report": report,
         "timestamp": datetime.utcnow().strftime("%Y-%m-%dT%H:%M:%SZ"),
     }), 200
+
+
+# ── EVIDE — Evidentiary Registry ──────────────────────────────────────────────
+
+EVIDE_PATH       = "/app/cognitivelogic/evide.json"
+_EVIDE_LOCK_PATH = EVIDE_PATH + ".lock"
+
+def _sha256(data: str) -> str:
+    return "sha256:" + hashlib.sha256(data.encode("utf-8")).hexdigest()
+
+def load_evide() -> dict:
+    if not os.path.exists(EVIDE_PATH):
+        return {
+            "meta": {
+                "version": "1.0",
+                "protocol": "EVIDE/1.0",
+                "created": datetime.utcnow().strftime("%Y-%m-%dT%H:%M:%SZ"),
+                "updated": datetime.utcnow().strftime("%Y-%m-%dT%H:%M:%SZ"),
+                "total": 0,
+                "glm_node": "it.cognitivelogic.node.01",
+            },
+            "entries": [],
+        }
+    with open(EVIDE_PATH, "r") as f:
+        return json.load(f)
+
+@app.route("/evide/chain", methods=["GET"])
+def evide_chain():
+    registry = load_evide()
+    return jsonify(registry), 200
+
+@app.route("/evide/register", methods=["POST"])
+@limiter.limit("30 per minute;500 per day")
+def evide_register():
+    blocked = _require_trusted_origin()
+    if blocked:
+        return blocked
+
+    data        = request.get_json() or {}
+    entry_type  = data.get("type", "INFERENCE")
+    agent       = data.get("agent", "unknown")
+    operator_id = data.get("operator_id", "")
+    input_payload  = json.dumps(data.get("input", {}),  sort_keys=True, ensure_ascii=False)
+    output_payload = json.dumps(data.get("output", {}), sort_keys=True, ensure_ascii=False)
+    qen_score   = data.get("qen_score")
+    verdict     = data.get("verdict", "PENDING")
+
+    Path(_EVIDE_LOCK_PATH).touch(exist_ok=True)
+    with open(_EVIDE_LOCK_PATH, "r") as _lf:
+        fcntl.flock(_lf, fcntl.LOCK_EX)
+        try:
+            registry = load_evide()
+            entries  = registry.get("entries", [])
+            seq      = len(entries) + 1
+
+            prev_hash = None
+            if entries:
+                prev_hash = _sha256(json.dumps(entries[-1], sort_keys=True, ensure_ascii=False))
+
+            entry = {
+                "id":             f"evide-{seq:04d}",
+                "seq":            seq,
+                "timestamp":      datetime.utcnow().strftime("%Y-%m-%dT%H:%M:%SZ"),
+                "type":           entry_type,
+                "agent":          agent,
+                "operator_id":    operator_id,
+                "input_digest":   _sha256(input_payload),
+                "output_digest":  _sha256(output_payload),
+                "qen_score":      qen_score,
+                "verdict":        verdict,
+                "glm_node":       "it.cognitivelogic.node.01",
+                "prev_hash":      prev_hash,
+            }
+            entries.append(entry)
+            registry["entries"] = entries
+            registry.setdefault("meta", {})["total"]   = len(entries)
+            registry["meta"]["updated"] = datetime.utcnow().strftime("%Y-%m-%dT%H:%M:%SZ")
+
+            with open(EVIDE_PATH, "w") as f:
+                json.dump(registry, f, indent=2, ensure_ascii=False)
+
+            return jsonify({"status": "registered", "entry": entry}), 201
+        finally:
+            fcntl.flock(_lf, fcntl.LOCK_UN)
+
 
 from orchestrator import register_orchestrator
 register_orchestrator(app, limiter)
