@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<!--
+  Copyright (c) 2026 Roberto Bob Malini - Cognitive Logic
+  https://www.cognitivelogic.it
+  Licensed under CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/)
+-->
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GLM &amp; EVIDE — Governance Layer &amp; Evidentiary Registry — Cognitive Logic</title>
+  <meta name="description" content="GLM (Governance Layer Manifest) ed EVIDE (Evidentiary Registry): infrastruttura di governance e catena di custodia per decisioni AI in Cognitive Logic." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css?v=2" />
+  <link rel="search" type="application/opensearchdescription+xml" title="Cognitive Logic" href="https://cognitivelogic.it/opensearchdescription.xml" />
+  <style>
+    .evide-code {
+      background: rgba(0,0,0,0.35);
+      border: 1px solid var(--line);
+      border-left: 3px solid var(--gold);
+      padding: 20px 24px;
+      font-family: "DM Mono", monospace;
+      font-size: 0.75rem;
+      line-height: 1.7;
+      color: var(--text-2);
+      overflow-x: auto;
+      white-space: pre;
+    }
+    .evide-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.75rem;
+      font-family: "DM Mono", monospace;
+    }
+    .evide-table th {
+      text-align: left;
+      padding: 10px 12px;
+      background: rgba(212,175,55,0.08);
+      color: var(--gold);
+      font-size: 0.65rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      border-bottom: 1px solid var(--line);
+    }
+    .evide-table td {
+      padding: 10px 12px;
+      border-bottom: 1px solid var(--line-2);
+      color: var(--text-2);
+      vertical-align: top;
+    }
+    .evide-table tr:last-child td { border-bottom: none; }
+    .evide-table tr:hover td { background: rgba(212,175,55,0.03); }
+    .verdict-compliant   { color: #4caf8a; font-weight: 500; }
+    .verdict-review      { color: #e0a030; font-weight: 500; }
+    .verdict-noncompliant{ color: #e05555; font-weight: 500; }
+    .verdict-pending     { color: var(--muted); }
+    .hash-short {
+      display: inline-block;
+      max-width: 140px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      vertical-align: bottom;
+      cursor: default;
+    }
+    .chain-link {
+      display: inline-block;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--gold);
+      margin-right: 6px;
+      vertical-align: middle;
+    }
+    .step-num {
+      font-family: "DM Mono", monospace;
+      font-size: 2.5rem;
+      color: var(--gold);
+      opacity: 0.25;
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+    #registry-status {
+      font-family: "DM Mono", monospace;
+      font-size: 0.72rem;
+      color: var(--muted);
+      margin-bottom: 16px;
+    }
+    .glm-tag {
+      display: inline-block;
+      font-family: "DM Mono", monospace;
+      font-size: 0.65rem;
+      letter-spacing: 0.08em;
+      background: rgba(212,175,55,0.12);
+      color: var(--gold);
+      border: 1px solid rgba(212,175,55,0.3);
+      padding: 2px 8px;
+      margin: 2px;
+    }
+  </style>
+</head>
+<body>
+  <div class="site-bg"></div>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="index.html" class="brand">
+        <img src="img/logo-cognitivelogic.svg" alt="Cognitive Logic" style="height:28px;width:auto;display:block;">
+      </a>
+      <nav class="main-nav">
+        <a href="framework.html">Framework</a>
+        <a href="ecosystem.html">Ecosystem</a>
+        <a href="qen-live.html">QEN Live</a>
+        <a href="ai.html">AI Engine</a>
+        <a href="identity.html">Identity</a>
+        <a href="demo.html">Demo</a>
+      </nav>
+      <div class="header-end">
+        <a href="copilot.html" class="btn btn-ghost">Copilot</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- ── Hero ── -->
+    <section class="hero">
+      <div class="container">
+        <div class="eyebrow">GLM · EVIDE · Governance Infrastructure</div>
+        <h1>
+          Governance by Design.<br>
+          <em style="font-style:italic;color:var(--gold)">Ogni decisione, tracciata.</em>
+        </h1>
+        <p class="hero-lead">
+          Il <strong>Governance Layer Manifest (GLM)</strong> espone i confini operativi del nodo
+          Cognitive Logic in formato machine-readable. L'<strong>Evidentiary Registry (EVIDE)</strong>
+          registra ogni inferenza critica come impronta verificabile nella catena di custodia AI.
+        </p>
+        <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:24px">
+          <a href="/.well-known/governance-layer-manifest.json" target="_blank" class="btn btn-ghost" style="font-family:'DM Mono',monospace;font-size:0.75rem">
+            /.well-known/governance-layer-manifest.json
+          </a>
+          <a href="#registry" class="btn btn-ghost">Registro EVIDE ↓</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── GLM + EVIDE Architecture ── -->
+    <section class="section" style="padding-top:0">
+      <div class="container">
+        <div class="section-heading">
+          <div class="eyebrow">Architecture Overview</div>
+          <h2>Due primitive di governance nativa per agenti autonomi.</h2>
+          <p>
+            GLM ed EVIDE trasformano la governance da processo passivo ad
+            asset architetturale immediatamente operativo. Ogni agente AI
+            può scoprire le policy del nodo e verificare la catena di custodia
+            delle decisioni senza mediazione umana.
+          </p>
+        </div>
+
+        <div class="grid-2">
+
+          <!-- GLM Card -->
+          <div>
+            <div class="card" style="padding:32px;height:100%">
+              <span class="feature-number">GLM — Governance Layer Manifest</span>
+              <h3 style="margin-bottom:16px">Il manifesto di governance del nodo.</h3>
+              <p class="text-sm" style="color:var(--muted);line-height:1.8;margin-bottom:20px">
+                Pubblicato all'indirizzo standard <code>/.well-known/</code>, il file GLM dichiara
+                scope operativo, sovranità dei dati, framework etico e compatibilità con altri layer.
+                Nessuna integrazione bilaterale richiesta — un agente AI scopre tutto autonomamente.
+              </p>
+              <div style="display:flex;flex-wrap:wrap;gap:4px;margin-bottom:20px">
+                <span class="glm-tag">protocol: GLM/1.0</span>
+                <span class="glm-tag">layer_id: it.cognitivelogic.node.01</span>
+                <span class="glm-tag">agent_interop: true</span>
+                <span class="glm-tag">graphrag_enabled: true</span>
+              </div>
+              <div class="evide-code" id="glm-manifest-preview">{
+  "protocol": "GLM/1.0",
+  "layer_id": "it.cognitivelogic.node.01",
+  "organization": { "name": "Cognitive Logic", ... },
+  "claims": {
+    "scope": "Semantic Modeling &amp; AI-First Data Architecture",
+    "data_sovereignty": "Strict — local processing"
+  },
+  "composition": {
+    "compatible_layers": ["urn:glm:base:core"],
+    "agent_interop": true
+  },
+  "evide": {
+    "registry": "https://api.cognitivelogic.it/evide/chain",
+    "webhook": "https://api.cognitivelogic.it/evide/register"
+  }
+}</div>
+            </div>
+          </div>
+
+          <!-- EVIDE Card -->
+          <div>
+            <div class="card" style="padding:32px;height:100%">
+              <span class="feature-number">EVIDE — Evidentiary Registry</span>
+              <h3 style="margin-bottom:16px">La catena di custodia delle decisioni AI.</h3>
+              <p class="text-sm" style="color:var(--muted);line-height:1.8;margin-bottom:20px">
+                Ogni inferenza critica — QEN Score, audit di compliance, classificazione EU AI Act —
+                viene registrata come impronta hash-chained nel registro EVIDE.
+                Post-event traceability per il GDPR Art. 22 e l'EU AI Act senza overhead operativo.
+              </p>
+              <div style="display:flex;flex-wrap:wrap;gap:4px;margin-bottom:20px">
+                <span class="glm-tag">protocol: EVIDE/1.0</span>
+                <span class="glm-tag">hash: SHA-256</span>
+                <span class="glm-tag">chaining: prev_hash</span>
+                <span class="glm-tag">verdicts: 4 tipi</span>
+              </div>
+              <div class="evide-code">{
+  "id": "evide-0001",
+  "timestamp": "2026-06-14T07:00:00Z",
+  "type": "QEN_SCORE",
+  "agent": "gemini-2.5-flash",
+  "input_digest":  "sha256:e3b0c4...",
+  "output_digest": "sha256:a665a4...",
+  "qen_score": 77.5,
+  "verdict": "COMPLIANT",
+  "glm_node": "it.cognitivelogic.node.01",
+  "prev_hash": null
+}</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── How it works ── -->
+    <section class="section" style="padding-top:0">
+      <div class="container">
+        <div class="section-heading">
+          <div class="eyebrow">Flusso Operativo</div>
+          <h2>Dalla richiesta alla prova verificabile.</h2>
+        </div>
+
+        <div class="grid-3">
+          <div class="card" style="padding:28px">
+            <div class="step-num">01</div>
+            <h3 style="font-size:1rem;margin-bottom:10px">Inferenza</h3>
+            <p class="text-sm" style="color:var(--muted);line-height:1.8">
+              Un agente (Claude, Gemini, Mistral) elabora una richiesta:
+              QEN Score, audit di compliance, valutazione Bolkestein.
+              L'input viene serializzato e hashed prima dell'elaborazione.
+            </p>
+          </div>
+          <div class="card" style="padding:28px">
+            <div class="step-num">02</div>
+            <h3 style="font-size:1rem;margin-bottom:10px">Impronta</h3>
+            <p class="text-sm" style="color:var(--muted);line-height:1.8">
+              L'output viene hashed (SHA-256). Il registry costruisce
+              un entry con <code>input_digest</code>, <code>output_digest</code>,
+              <code>verdict</code> e <code>prev_hash</code> dell'entry precedente.
+            </p>
+          </div>
+          <div class="card" style="padding:28px">
+            <div class="step-num">03</div>
+            <h3 style="font-size:1rem;margin-bottom:10px">Registro</h3>
+            <p class="text-sm" style="color:var(--muted);line-height:1.8">
+              L'entry viene scritto nel registro EVIDE con lock di file atomico.
+              La catena è immutabile per design: alterare un entry rompe tutti
+              gli hash successivi, rendendo la manomissione rilevabile.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Registry Table ── -->
+    <section class="section" style="padding-top:0" id="registry">
+      <div class="container">
+        <div class="section-heading">
+          <div class="eyebrow">Live Registry</div>
+          <h2>Registro EVIDE — Catena di custodia attiva.</h2>
+          <p>
+            Ogni entry rappresenta una decisione AI verificabile.
+            La colonna <code>prev_hash</code> collega ogni entry alla precedente,
+            formando una catena crittografica integra.
+          </p>
+        </div>
+
+        <div id="registry-status">Caricamento registro...</div>
+
+        <div style="overflow-x:auto;border:1px solid var(--line)">
+          <table class="evide-table">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Timestamp</th>
+                <th>Tipo</th>
+                <th>Agente</th>
+                <th>Operatore</th>
+                <th>QEN</th>
+                <th>Verdict</th>
+                <th>Input Digest</th>
+                <th>Chain</th>
+              </tr>
+            </thead>
+            <tbody id="evide-tbody">
+              <tr><td colspan="9" style="text-align:center;color:var(--muted);padding:24px">Caricamento...</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div style="margin-top:16px;display:flex;gap:24px;flex-wrap:wrap">
+          <span class="text-xs" style="color:var(--muted);font-family:'DM Mono',monospace">
+            Schema: <a href="/data/evide-registry.json" style="color:var(--gold)">data/evide-registry.json</a>
+          </span>
+          <span class="text-xs" style="color:var(--muted);font-family:'DM Mono',monospace">
+            API Live: <a href="https://api.cognitivelogic.it/evide/chain" target="_blank" rel="noopener" style="color:var(--gold)">api.cognitivelogic.it/evide/chain</a>
+          </span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Integration Stack ── -->
+    <section class="section" style="padding-top:0">
+      <div class="container">
+        <div class="section-heading">
+          <div class="eyebrow">Integration Stack</div>
+          <h2>GLM + EVIDE nel contesto QEN.</h2>
+        </div>
+
+        <div style="border:1px solid var(--line)">
+          <div class="stack-layer" style="display:flex;justify-content:space-between;align-items:center">
+            <div>
+              <div class="stack-layer-label">Livello 4 · Governance Manifest</div>
+              <div class="stack-layer-text">GLM — policy machine-readable su <code>/.well-known/governance-layer-manifest.json</code></div>
+            </div>
+            <span class="tag">GLM/1.0</span>
+          </div>
+          <div class="stack-layer" style="display:flex;justify-content:space-between;align-items:center">
+            <div>
+              <div class="stack-layer-label">Livello 3 · Evidentiary Registry</div>
+              <div class="stack-layer-text">EVIDE — catena di custodia hash-chained per ogni inferenza critica</div>
+            </div>
+            <span class="tag">EVIDE/1.0</span>
+          </div>
+          <div class="stack-layer" style="display:flex;justify-content:space-between;align-items:center">
+            <div>
+              <div class="stack-layer-label">Livello 2 · QEN Framework</div>
+              <div class="stack-layer-text">Scoring etico QEN = (Vs×0.40) + (Va×0.35) + (Vt×0.25) — ogni score registrato in EVIDE</div>
+            </div>
+            <span class="tag">QEN v4</span>
+          </div>
+          <div class="stack-layer" style="display:flex;justify-content:space-between;align-items:center">
+            <div>
+              <div class="stack-layer-label">Livello 1 · Multi-Brain Engine</div>
+              <div class="stack-layer-text">Claude · Gemini · Mistral — ogni risposta LLM firmata con fingerprint EVIDE</div>
+            </div>
+            <span class="tag">AI</span>
+          </div>
+          <div class="stack-layer" style="display:flex;justify-content:space-between;align-items:center;border-bottom:none">
+            <div>
+              <div class="stack-layer-label">Livello 0 · Identity</div>
+              <div class="stack-layer-text">DID:web — <code>did:web:cognitivelogic.it:robertomalini</code> — identità crittografica sovrana</div>
+            </div>
+            <span class="tag">DID</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── API Reference ── -->
+    <section class="section" style="padding-top:0">
+      <div class="container">
+        <div class="section-heading">
+          <div class="eyebrow">API Reference</div>
+          <h2>Endpoint EVIDE.</h2>
+          <p>
+            Due endpoint sul backend Hetzner gestiscono il ciclo di vita del registro.
+            Il webhook <code>POST /evide/register</code> è il punto di integrazione
+            per GraphRAG e agenti autonomi.
+          </p>
+        </div>
+
+        <div style="display:flex;flex-direction:column;gap:20px">
+
+          <div class="card" style="padding:24px">
+            <div style="display:flex;align-items:center;gap:12px;margin-bottom:12px">
+              <span class="tag" style="background:rgba(76,175,138,0.15);color:#4caf8a;border-color:#4caf8a">GET</span>
+              <code style="font-family:'DM Mono',monospace;color:var(--gold)">/evide/chain</code>
+            </div>
+            <p class="text-sm" style="color:var(--muted);margin-bottom:12px">
+              Restituisce l'intero registro EVIDE ordinato per <code>seq</code> crescente.
+              Nessuna autenticazione richiesta — il registro è pubblico per design (dati anonimizzati).
+            </p>
+            <div class="evide-code">curl https://api.cognitivelogic.it/evide/chain
+
+# Response
+{
+  "meta": { "total": 3, "updated": "2026-06-14T08:00:00Z" },
+  "entries": [ ... ]
+}</div>
+          </div>
+
+          <div class="card" style="padding:24px">
+            <div style="display:flex;align-items:center;gap:12px;margin-bottom:12px">
+              <span class="tag" style="background:rgba(212,175,55,0.15);color:var(--gold);border-color:var(--gold)">POST</span>
+              <code style="font-family:'DM Mono',monospace;color:var(--gold)">/evide/register</code>
+            </div>
+            <p class="text-sm" style="color:var(--muted);margin-bottom:12px">
+              Registra una nuova inferenza nel registro EVIDE. Richiede origin trusted
+              o <code>X-API-Key</code> header. L'endpoint calcola automaticamente
+              <code>input_digest</code>, <code>output_digest</code> e <code>prev_hash</code>.
+            </p>
+            <div class="evide-code">curl -X POST https://api.cognitivelogic.it/evide/register \
+  -H "Content-Type: application/json" \
+  -H "X-API-Key: $COGNITIVE_API_KEY" \
+  -d '{
+    "type": "QEN_SCORE",
+    "agent": "gemini-2.5-flash",
+    "operator_id": "op:example-operator",
+    "input":  { "name": "Ristorante X", "vs": 80, "va": 70, "vt": 65 },
+    "output": { "qen_score": 72.75, "badge": "QEN VERIFIED" },
+    "qen_score": 72.75,
+    "verdict": "COMPLIANT"
+  }'
+
+# Response 201
+{
+  "status": "registered",
+  "entry": {
+    "id": "evide-0004",
+    "seq": 4,
+    "timestamp": "2026-06-14T09:00:00Z",
+    "input_digest":  "sha256:...",
+    "output_digest": "sha256:...",
+    "prev_hash": "sha256:..."
+  }
+}</div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ── CTA ── -->
+    <section class="section" style="padding-top:0">
+      <div class="container">
+        <div class="cta-box" style="text-align:center">
+          <div style="max-width:600px;margin:0 auto">
+            <div class="eyebrow">Governance as Infrastructure</div>
+            <h2 style="font-style:italic;font-size:clamp(1.6rem,3vw,2.6rem)">
+              "La governance non è un processo.<br>
+              È un'infrastruttura."
+            </h2>
+            <p class="mt-16" style="color:var(--muted);line-height:1.9;font-size:0.9rem">
+              GLM ed EVIDE completano l'infrastruttura Pure Data Nodes di Cognitive Logic:
+              ogni decisione AI è tracciata, ogni confine operativo è dichiarato,
+              ogni agente autonomo trova quello di cui ha bisogno senza intermediari.
+            </p>
+            <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:24px">
+              <a href="identity.html" class="btn btn-ghost">Identity &amp; DID →</a>
+              <a href="ecosystem.html" class="btn btn-ghost">Ecosystem →</a>
+              <a href="ai.html" class="btn btn-ghost">AI Engine →</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div>
+        <div class="footer-brand">Cognitive Logic · GLM &amp; EVIDE</div>
+        <div class="footer-sub">Governance Layer · Evidentiary Registry · Pure Data Nodes.</div>
+        <div class="footer-copy mt-8">© 2026 Roberto Bob Malini</div>
+        <div class="footer-social">
+          <a class="footer-social-link" href="https://www.linkedin.com/in/robertobobmalini/" target="_blank" rel="noopener"><span class="fsl-net">LinkedIn</span><span class="fsl-name">Roberto Malini</span></a>
+          <a class="footer-social-link" href="https://www.linkedin.com/company/cognitivelogic/" target="_blank" rel="noopener"><span class="fsl-net">LinkedIn</span><span class="fsl-name">Cognitive Logic</span></a>
+          <a class="footer-social-link" href="https://fuorimenu.substack.com" target="_blank" rel="noopener"><span class="fsl-net">Substack</span><span class="fsl-name">Fuori Menu</span></a>
+          <a class="footer-social-link" href="mailto:info@cognitivelogic.it"><span class="fsl-net">Email</span><span class="fsl-name">info@cognitivelogic.it</span></a>
+        </div>
+      </div>
+      <div class="footer-links">
+        <a href="index.html">Home</a>
+        <a href="identity.html">Identity</a>
+        <a href="ecosystem.html">Ecosystem</a>
+        <a href="ai.html">AI Engine</a>
+        <a href="copilot.html">Copilot</a>
+        <a href="/privacy.html">Privacy</a>
+        <a href="/cookie.html">Cookie</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="/js/cookie-banner.js"></script>
+  <script>
+    (function () {
+      var SEED_URL = '/data/evide-registry.json';
+      var LIVE_URL = 'https://api.cognitivelogic.it/evide/chain';
+
+      function verdictClass(v) {
+        if (!v) return 'verdict-pending';
+        v = v.toUpperCase();
+        if (v === 'COMPLIANT') return 'verdict-compliant';
+        if (v === 'NON_COMPLIANT') return 'verdict-noncompliant';
+        if (v === 'REVIEW_REQUIRED') return 'verdict-review';
+        return 'verdict-pending';
+      }
+
+      function shortHash(h) {
+        if (!h) return '<span style="color:var(--muted)">genesis</span>';
+        var hex = h.replace('sha256:', '');
+        return '<span class="hash-short" title="' + h + '">sha256:' + hex.substring(0, 16) + '…</span>';
+      }
+
+      function renderEntries(entries, source) {
+        var tbody = document.getElementById('evide-tbody');
+        var status = document.getElementById('registry-status');
+
+        if (!entries || entries.length === 0) {
+          tbody.innerHTML = '<tr><td colspan="9" style="text-align:center;color:var(--muted);padding:24px">Nessun entry nel registro.</td></tr>';
+          return;
+        }
+
+        status.textContent = '↳ ' + entries.length + ' entries · fonte: ' + source + ' · aggiornato: ' + new Date().toISOString().slice(0, 19) + 'Z';
+
+        tbody.innerHTML = entries.map(function (e) {
+          var chain = e.prev_hash
+            ? '<span class="chain-link"></span><span class="hash-short" title="' + e.prev_hash + '">' + e.prev_hash.slice(7, 23) + '…</span>'
+            : '<span style="color:var(--muted);font-size:0.65rem">GENESIS</span>';
+          return '<tr>' +
+            '<td style="color:var(--gold)">' + (e.id || '—') + '</td>' +
+            '<td>' + (e.timestamp ? e.timestamp.replace('T', ' ').replace('Z', '') : '—') + '</td>' +
+            '<td>' + (e.type || '—') + '</td>' +
+            '<td>' + (e.agent || '—') + '</td>' +
+            '<td style="color:var(--muted)">' + (e.operator_id ? e.operator_id.replace('op:', '') : '—') + '</td>' +
+            '<td>' + (e.qen_score != null ? e.qen_score : '<span style="color:var(--muted)">—</span>') + '</td>' +
+            '<td class="' + verdictClass(e.verdict) + '">' + (e.verdict || 'PENDING') + '</td>' +
+            '<td>' + shortHash(e.input_digest) + '</td>' +
+            '<td>' + chain + '</td>' +
+            '</tr>';
+        }).join('');
+      }
+
+      fetch(LIVE_URL)
+        .then(function (r) { return r.ok ? r.json() : Promise.reject(r.status); })
+        .then(function (data) {
+          renderEntries(data.entries || [], 'api.cognitivelogic.it (live)');
+        })
+        .catch(function () {
+          fetch(SEED_URL)
+            .then(function (r) { return r.json(); })
+            .then(function (data) {
+              renderEntries(data.entries || [], 'seed locale (API non disponibile)');
+            })
+            .catch(function () {
+              document.getElementById('registry-status').textContent = 'Registro non disponibile.';
+              document.getElementById('evide-tbody').innerHTML =
+                '<tr><td colspan="9" style="text-align:center;color:var(--muted);padding:24px">Errore nel caricamento del registro.</td></tr>';
+            });
+        });
+    })();
+  </script>
+</body>
+</html>
