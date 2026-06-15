@@ -19,100 +19,66 @@
 
   <link rel="canonical" href="https://cognitivelogic.it/qen/methodology">
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@300;400;500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css?v=3">
   <style>
     :root {
-      --ink: #0f0e0c;
-      --paper: #f5f2ec;
-      --gold: #b8922a;
-      --gold-light: #d4a84b;
-      --rust: #8b3a2a;
-      --muted: #7a7469;
-      --rule: #d4cfc6;
-      --code-bg: #1a1916;
-      --code-fg: #e8e3da;
+      --ink: var(--text);
+      --paper: var(--bg);
+      --gold-light: var(--gold-soft);
+      --rust: var(--danger);
+      --rule: var(--line-soft);
+      --code-bg: var(--bg-panel);
+      --code-fg: var(--text-soft);
     }
 
-```
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-html { font-size: 16px; scroll-behavior: smooth; }
+    html { font-size: 16px; scroll-behavior: smooth; }
 
-body {
-  font-family: 'DM Sans', sans-serif;
-  background: var(--paper);
-  color: var(--ink);
-  line-height: 1.7;
-  -webkit-font-smoothing: antialiased;
-}
-
-/* ── HEADER ── */
-header {
-  border-bottom: 1px solid var(--rule);
-  padding: 1.5rem 2rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  position: sticky;
-  top: 0;
-  background: var(--paper);
-  z-index: 100;
-}
-
-.wordmark {
-  font-family: 'DM Mono', monospace;
-  font-size: 0.75rem;
-  font-weight: 400;
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
-  color: var(--gold);
-  text-decoration: none;
-}
-
-.doc-meta {
-  font-family: 'DM Mono', monospace;
-  font-size: 0.65rem;
-  color: var(--muted);
-  letter-spacing: 0.08em;
-}
+    body {
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
 
 /* ── HERO ── */
 .hero {
   max-width: 780px;
   margin: 0 auto;
   padding: 5rem 2rem 3rem;
-  border-bottom: 1px solid var(--rule);
+  border-bottom: 1px solid var(--line-soft);
 }
 
 .doc-label {
-  font-family: 'DM Mono', monospace;
+  font-family: "DM Mono", monospace;
   font-size: 0.65rem;
   letter-spacing: 0.2em;
   text-transform: uppercase;
-  color: var(--gold);
+  color: var(--gold-soft);
   margin-bottom: 1.5rem;
   display: block;
 }
 
 h1 {
-  font-family: 'DM Serif Display', serif;
+  font-family: "Cormorant Garamond", serif;
   font-size: clamp(2.2rem, 5vw, 3.5rem);
   line-height: 1.1;
-  font-weight: 400;
+  font-weight: 600;
   margin-bottom: 0.5rem;
   letter-spacing: -0.02em;
+  color: var(--text);
 }
 
 h1 em {
   font-style: italic;
-  color: var(--gold);
+  color: var(--gold-soft);
 }
 
 .subtitle {
-  font-family: 'DM Sans', sans-serif;
-  font-size: 1rem;
-  color: var(--muted);
-  font-weight: 300;
+  font-family: "Cormorant Garamond", serif;
+  font-size: 1.1rem;
+  color: var(--text-soft);
+  font-weight: 400;
   margin-top: 1rem;
   margin-bottom: 2rem;
 }
@@ -121,22 +87,24 @@ h1 em {
   display: flex;
   flex-wrap: wrap;
   gap: 2rem;
-  font-family: 'DM Mono', monospace;
+  font-family: "DM Mono", monospace;
   font-size: 0.7rem;
   color: var(--muted);
   letter-spacing: 0.05em;
 }
 
 .meta-row span strong {
-  color: var(--ink);
+  color: var(--text);
   font-weight: 500;
 }
 
 /* ── ABSTRACT BAND ── */
 .abstract-band {
-  background: var(--ink);
-  color: var(--code-fg);
+  background: var(--bg-panel);
+  color: var(--text-soft);
   padding: 3rem 2rem;
+  border-top: 1px solid var(--line-soft);
+  border-bottom: 1px solid var(--line-soft);
 }
 
 .abstract-inner {
@@ -145,11 +113,11 @@ h1 em {
 }
 
 .abstract-band .section-label {
-  font-family: 'DM Mono', monospace;
+  font-family: "DM Mono", monospace;
   font-size: 0.65rem;
   letter-spacing: 0.2em;
   text-transform: uppercase;
-  color: var(--gold-light);
+  color: var(--gold-soft);
   display: block;
   margin-bottom: 1.2rem;
 }
@@ -157,8 +125,7 @@ h1 em {
 .abstract-band p {
   font-size: 1.05rem;
   line-height: 1.8;
-  font-weight: 300;
-  color: #c8c3ba;
+  color: var(--text-soft);
   max-width: 640px;
 }
 
@@ -174,16 +141,16 @@ h1 em {
 }
 
 .formula-display {
-  border: 1px solid var(--rule);
+  border: 1px solid var(--line);
   padding: 2.5rem;
   text-align: center;
-  background: white;
+  background: var(--bg-panel);
   position: relative;
 }
 
 .formula-display::before {
   content: 'QEN SCORE FORMULA';
-  font-family: 'DM Mono', monospace;
+  font-family: "DM Mono", monospace;
   font-size: 0.6rem;
   letter-spacing: 0.2em;
   color: var(--gold);
@@ -191,20 +158,20 @@ h1 em {
   top: -0.5rem;
   left: 50%;
   transform: translateX(-50%);
-  background: white;
+  background: var(--bg-panel);
   padding: 0 1rem;
 }
 
 .formula-eq {
-  font-family: 'DM Mono', monospace;
+  font-family: "DM Mono", monospace;
   font-size: clamp(1rem, 2.5vw, 1.4rem);
-  color: var(--ink);
+  color: var(--text);
   letter-spacing: 0.05em;
   margin-bottom: 1.5rem;
 }
 
 .formula-eq .coeff {
-  color: var(--gold);
+  color: var(--gold-soft);
   font-weight: 500;
 }
 
@@ -215,7 +182,7 @@ h1 em {
   flex-wrap: wrap;
   margin-top: 1.5rem;
   padding-top: 1.5rem;
-  border-top: 1px solid var(--rule);
+  border-top: 1px solid var(--line-soft);
 }
 
 .var-item {
@@ -223,14 +190,15 @@ h1 em {
 }
 
 .var-sym {
-  font-family: 'DM Mono', monospace;
+  font-family: "DM Mono", monospace;
   font-size: 1.2rem;
-  color: var(--gold);
+  color: var(--gold-soft);
   font-weight: 500;
   display: block;
 }
 
 .var-label {
+  font-family: "DM Mono", monospace;
   font-size: 0.7rem;
   color: var(--muted);
   letter-spacing: 0.05em;
@@ -247,53 +215,54 @@ h1 em {
 .section {
   margin-top: 4rem;
   padding-top: 2rem;
-  border-top: 1px solid var(--rule);
+  border-top: 1px solid var(--line-soft);
 }
 
 .section-label {
-  font-family: 'DM Mono', monospace;
+  font-family: "DM Mono", monospace;
   font-size: 0.65rem;
   letter-spacing: 0.2em;
   text-transform: uppercase;
-  color: var(--gold);
+  color: var(--gold-soft);
   display: block;
   margin-bottom: 1rem;
 }
 
 h2 {
-  font-family: 'DM Serif Display', serif;
+  font-family: "Cormorant Garamond", serif;
   font-size: 1.8rem;
-  font-weight: 400;
+  font-weight: 600;
   margin-bottom: 1.2rem;
   letter-spacing: -0.01em;
+  color: var(--text);
 }
 
 h3 {
-  font-family: 'DM Serif Display', serif;
+  font-family: "Cormorant Garamond", serif;
   font-size: 1.25rem;
-  font-weight: 400;
+  font-weight: 600;
   margin: 2rem 0 0.8rem;
   letter-spacing: -0.01em;
+  color: var(--text);
 }
 
 p {
   margin-bottom: 1rem;
   font-size: 0.97rem;
-  color: #2a2824;
-  font-weight: 300;
+  color: var(--text-soft);
 }
 
 /* ── COEFFICIENT CARDS ── */
 .coeff-grid {
   display: grid;
   gap: 1px;
-  background: var(--rule);
-  border: 1px solid var(--rule);
+  background: var(--line-soft);
+  border: 1px solid var(--line-soft);
   margin-top: 2rem;
 }
 
 .coeff-card {
-  background: white;
+  background: var(--bg-panel);
   padding: 2rem;
   display: grid;
   grid-template-columns: auto 1fr;
@@ -302,7 +271,7 @@ p {
 }
 
 .coeff-number {
-  font-family: 'DM Serif Display', serif;
+  font-family: "Cormorant Garamond", serif;
   font-size: 3rem;
   color: var(--gold);
   line-height: 1;
@@ -316,7 +285,7 @@ p {
 
 .coeff-body p {
   font-size: 0.88rem;
-  color: var(--muted);
+  color: var(--text-soft);
   margin-bottom: 0.5rem;
 }
 
@@ -326,17 +295,17 @@ p {
 }
 
 .ref-list li {
-  font-family: 'DM Mono', monospace;
+  font-family: "DM Mono", monospace;
   font-size: 0.7rem;
   color: var(--muted);
   padding: 0.2rem 0;
   padding-left: 1rem;
-  border-left: 2px solid var(--rule);
+  border-left: 2px solid var(--line-soft);
   margin-bottom: 0.4rem;
 }
 
 .ref-list li strong {
-  color: var(--ink);
+  color: var(--text);
 }
 
 /* ── SUMMARY TABLE ── */
@@ -348,48 +317,51 @@ p {
 }
 
 .summary-table th {
-  font-family: 'DM Mono', monospace;
+  font-family: "DM Mono", monospace;
   font-size: 0.62rem;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: var(--muted);
+  color: var(--gold-soft);
   text-align: left;
   padding: 0.75rem 1rem;
-  border-bottom: 2px solid var(--ink);
+  border-bottom: 2px solid var(--line);
   font-weight: 400;
+  background: var(--bg-panel);
 }
 
 .summary-table td {
   padding: 0.9rem 1rem;
-  border-bottom: 1px solid var(--rule);
+  border-bottom: 1px solid var(--line-soft);
   vertical-align: top;
-  font-weight: 300;
+  color: var(--text-soft);
 }
 
 .summary-table td:first-child {
-  font-family: 'DM Mono', monospace;
+  font-family: "DM Mono", monospace;
   font-size: 0.78rem;
   color: var(--gold);
 }
 
 .summary-table td:nth-child(2) {
-  font-family: 'DM Mono', monospace;
+  font-family: "DM Mono", monospace;
   font-size: 0.9rem;
   font-weight: 500;
+  color: var(--text);
 }
 
 .summary-table tfoot td {
-  font-family: 'DM Mono', monospace;
+  font-family: "DM Mono", monospace;
   font-size: 0.78rem;
   font-weight: 500;
-  border-top: 2px solid var(--ink);
+  border-top: 2px solid var(--line);
   border-bottom: none;
+  color: var(--text);
 }
 
 /* ── VERSIONING ── */
 .version-block {
-  background: white;
-  border: 1px solid var(--rule);
+  background: var(--bg-panel);
+  border: 1px solid var(--line-soft);
   padding: 2rem;
   margin-top: 2rem;
 }
@@ -439,62 +411,62 @@ p {
   grid-template-columns: 1.5rem 1fr;
   gap: 1rem;
   padding: 0.75rem 0;
-  border-bottom: 1px solid var(--rule);
+  border-bottom: 1px solid var(--line-soft);
   align-items: baseline;
 }
 
 .ref-num {
-  font-family: 'DM Mono', monospace;
+  font-family: "DM Mono", monospace;
   font-size: 0.65rem;
   color: var(--gold);
 }
 
 .ref-text {
+  font-family: "DM Mono", monospace;
   font-size: 0.85rem;
-  font-weight: 300;
   color: var(--muted);
 }
 
 .ref-text strong {
-  color: var(--ink);
+  color: var(--text);
   font-weight: 500;
 }
 
 /* ── V_EN FORMULA BLOCK ── */
 .ven-formula-display {
-  border: 1px solid var(--rule);
+  border: 1px solid var(--line);
   padding: 2.5rem;
-  background: var(--ink);
+  background: var(--bg-panel);
   position: relative;
   margin-top: 1.5rem;
 }
 
 .ven-formula-display::before {
-  content: 'V\5F EN(A) — VALORE ETICO NATURALE';
-  font-family: 'DM Mono', monospace;
+  content: 'V_EN(A) — VALORE ETICO NATURALE';
+  font-family: "DM Mono", monospace;
   font-size: 0.6rem;
   letter-spacing: 0.2em;
-  color: var(--gold-light);
+  color: var(--gold-soft);
   position: absolute;
   top: -0.5rem;
   left: 50%;
   transform: translateX(-50%);
-  background: var(--ink);
+  background: var(--bg-panel);
   padding: 0 1rem;
   white-space: nowrap;
 }
 
 .ven-formula-eq {
-  font-family: 'DM Mono', monospace;
+  font-family: "DM Mono", monospace;
   font-size: clamp(0.85rem, 2vw, 1.15rem);
-  color: #e8e3da;
+  color: var(--text);
   letter-spacing: 0.03em;
   text-align: center;
   line-height: 1.8;
 }
 
-.ven-formula-eq .coeff { color: var(--gold-light); font-weight: 500; }
-.ven-formula-eq .penalty { color: #ff7b7b; }
+.ven-formula-eq .coeff { color: var(--gold-soft); font-weight: 500; }
+.ven-formula-eq .penalty { color: var(--danger); }
 
 .ven-vars {
   display: flex;
@@ -509,16 +481,17 @@ p {
 .ven-var-item { text-align: center; }
 
 .ven-var-sym {
-  font-family: 'DM Mono', monospace;
+  font-family: "DM Mono", monospace;
   font-size: 1rem;
-  color: var(--gold-light);
+  color: var(--gold-soft);
   font-weight: 500;
   display: block;
 }
 
 .ven-var-label {
+  font-family: "DM Mono", monospace;
   font-size: 0.65rem;
-  color: #8a8480;
+  color: var(--muted);
   letter-spacing: 0.04em;
   margin-top: 0.2rem;
 }
@@ -527,13 +500,13 @@ p {
 .phase-grid {
   display: grid;
   gap: 1px;
-  background: var(--rule);
-  border: 1px solid var(--rule);
+  background: var(--line-soft);
+  border: 1px solid var(--line-soft);
   margin-top: 2rem;
 }
 
 .phase-card {
-  background: white;
+  background: var(--bg-panel);
   padding: 2rem;
 }
 
@@ -545,62 +518,63 @@ p {
 }
 
 .phase-num {
-  font-family: 'DM Mono', monospace;
+  font-family: "DM Mono", monospace;
   font-size: 0.65rem;
   letter-spacing: 0.15em;
-  color: white;
+  color: var(--bg);
   background: var(--gold);
   padding: 0.3rem 0.7rem;
   white-space: nowrap;
 }
 
 .phase-title {
-  font-family: 'DM Serif Display', serif;
+  font-family: "Cormorant Garamond", serif;
   font-size: 1.1rem;
-  font-weight: 400;
+  font-weight: 600;
+  color: var(--text);
 }
 
 .phase-card p {
   font-size: 0.88rem;
-  color: var(--muted);
+  color: var(--text-soft);
   margin-bottom: 0.6rem;
 }
 
 .phase-formula {
-  font-family: 'DM Mono', monospace;
+  font-family: "DM Mono", monospace;
   font-size: 0.82rem;
-  background: #f5f2ec;
+  background: var(--bg-panel-2);
   border-left: 3px solid var(--gold);
   padding: 0.8rem 1rem;
   margin: 0.8rem 0;
-  color: var(--ink);
+  color: var(--text);
   overflow-x: auto;
 }
 
-.phase-formula .coeff { color: var(--gold); }
-.phase-formula .penalty { color: var(--rust); }
+.phase-formula .coeff { color: var(--gold-soft); }
+.phase-formula .penalty { color: var(--danger); }
 
 /* ── IO TABLE ── */
 .io-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 1px;
-  background: var(--rule);
-  border: 1px solid var(--rule);
+  background: var(--line-soft);
+  border: 1px solid var(--line-soft);
   margin-top: 1.5rem;
 }
 
 .io-cell {
-  background: white;
+  background: var(--bg-panel);
   padding: 1.5rem;
 }
 
 .io-label {
-  font-family: 'DM Mono', monospace;
+  font-family: "DM Mono", monospace;
   font-size: 0.6rem;
   letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: var(--gold);
+  color: var(--gold-soft);
   display: block;
   margin-bottom: 0.8rem;
 }
@@ -608,48 +582,48 @@ p {
 .io-list {
   list-style: none;
   font-size: 0.85rem;
-  color: var(--muted);
+  color: var(--text-soft);
   line-height: 1.9;
-  font-weight: 300;
 }
 
-.io-list li { padding-left: 1rem; border-left: 2px solid var(--rule); margin-bottom: 0.35rem; }
-.io-list li strong { color: var(--ink); font-weight: 500; }
+.io-list li { padding-left: 1rem; border-left: 2px solid var(--line-soft); margin-bottom: 0.35rem; }
+.io-list li strong { color: var(--text); font-weight: 500; }
 
 /* ── ARGMAX BLOCK ── */
 .argmax-block {
-  background: var(--ink);
-  color: var(--code-fg);
+  background: var(--bg-panel);
+  color: var(--text-soft);
   padding: 2rem 2.5rem;
   margin-top: 2rem;
   border-left: 4px solid var(--gold);
+  border: 1px solid var(--line);
 }
 
 .argmax-label {
-  font-family: 'DM Mono', monospace;
+  font-family: "DM Mono", monospace;
   font-size: 0.6rem;
   letter-spacing: 0.2em;
   text-transform: uppercase;
-  color: var(--gold-light);
+  color: var(--gold-soft);
   display: block;
   margin-bottom: 1rem;
 }
 
 .argmax-eq {
-  font-family: 'DM Mono', monospace;
+  font-family: "DM Mono", monospace;
   font-size: clamp(0.9rem, 2vw, 1.2rem);
-  color: #e8e3da;
+  color: var(--text);
   text-align: center;
   padding: 1rem 0;
 }
 
-.argmax-eq .coeff { color: var(--gold-light); }
+.argmax-eq .coeff { color: var(--gold-soft); }
 
 .argmax-desc {
+  font-family: "DM Mono", monospace;
   font-size: 0.85rem;
-  color: #8a8480;
+  color: var(--text-soft);
   margin-top: 1rem;
-  font-weight: 300;
   line-height: 1.7;
 }
 
@@ -657,59 +631,56 @@ p {
   .io-grid { grid-template-columns: 1fr; }
 }
 
-/* ── FOOTER ── */
-footer {
-  border-top: 1px solid var(--rule);
-  padding: 2rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 1rem;
-  font-family: 'DM Mono', monospace;
-  font-size: 0.65rem;
-  color: var(--muted);
-  letter-spacing: 0.05em;
-}
-
-footer a {
-  color: var(--gold);
-  text-decoration: none;
-}
-
 /* ── DOI BADGE ── */
 .doi-badge {
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-  background: var(--ink);
-  color: var(--code-fg);
-  font-family: 'DM Mono', monospace;
+  background: var(--bg-panel);
+  color: var(--text-soft);
+  font-family: "DM Mono", monospace;
   font-size: 0.65rem;
   padding: 0.4rem 0.8rem;
   letter-spacing: 0.05em;
   margin-top: 1rem;
+  border: 1px solid var(--line-soft);
 }
 
-.doi-badge span { color: var(--gold-light); }
+.doi-badge span { color: var(--gold-soft); }
 
 @media (max-width: 600px) {
   .coeff-card { grid-template-columns: 1fr; }
   .formula-vars { gap: 1.5rem; }
-  header { padding: 1rem; }
 }
-```
 
   </style>
   <link rel="search" type="application/opensearchdescription+xml" title="Cognitive Logic" href="https://cognitivelogic.it/opensearchdescription.xml" />
 </head>
 <body>
 
-<!-- HEADER -->
-
-<header>
-  <a href="https://cognitivelogic.it" class="wordmark" style="line-height:0;"><img src="img/logo-cognitivelogic.svg" alt="Cognitive Logic" style="height:28px;width:auto;display:block;"></a>
-  <span class="doc-meta">QEN METHODOLOGICAL NOTE · v1.0 · April 2026</span>
+<div class="site-bg"></div>
+<header class="site-header">
+  <div class="container header-inner">
+    <a href="index.html" class="brand">
+      <img src="img/logo-cognitivelogic.svg" alt="Cognitive Logic" style="height:32px;width:auto;display:block;">
+    </a>
+    <nav class="main-nav">
+      <a href="framework.html">Framework</a>
+      <a href="ecosystem.html">Ecosystem</a>
+      <a href="qen-live.html">QEN Live</a>
+      <a href="ai.html">AI Engine</a>
+      <a href="identity.html">Identity</a>
+      <a href="demo.html">Demo</a>
+    </nav>
+    <div class="header-end">
+      <div class="nav-lang">
+        <a href="index.html">IT</a>
+        <span class="nav-sep">·</span>
+        <a href="index_en.html">EN</a>
+      </div>
+      <a href="copilot.html" class="btn btn-ghost">Copilot</a>
+    </div>
+  </div>
 </header>
 
 <!-- HERO -->
@@ -1076,11 +1047,33 @@ footer a {
   <a href="/legal.html" style="color:#ffd89b;text-decoration:underline;margin-left:.5rem;">Avviso Legale &amp; Copyright →</a>
 </div>
 
-<footer>
-  <span>© 2026 Roberto Bob Malini — Cognitive Logic · Bologna, Italia · Tutti i diritti riservati</span>
-  <span><a href="mailto:info@cognitivelogic.it">info@cognitivelogic.it</a> · <a href="https://cognitivelogic.it">cognitivelogic.it</a> · <a href="/legal.html">Legal &amp; IP</a></span>
-  <span>Legge 633/1941 · CC BY-SA 4.0 · QEN v1.0 · Aprile 2026</span>
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <div>
+      <img src="img/logo-cognitivelogic.svg" alt="Cognitive Logic" style="width:80px;height:auto;display:block;margin-bottom:10px;opacity:0.85;">
+      <div class="footer-sub">Qualitative Ethical Network — QEN Methodological Note v1.0 · Aprile 2026</div>
+      <div class="footer-copy mt-8">© 2026 Roberto Bob Malini — Cognitive Logic · Tutti i diritti riservati · <a href="/legal.html" style="color:inherit;text-decoration:underline;">Legal &amp; IP</a> · Legge 633/1941 · CC BY-SA 4.0</div>
+      <div class="footer-social">
+        <a class="footer-social-link" href="https://www.linkedin.com/in/robertobobmalini/" target="_blank" rel="noopener">
+          <span class="fsl-net">LinkedIn</span><span class="fsl-name">Roberto Malini</span>
+        </a>
+        <a class="footer-social-link" href="mailto:info@cognitivelogic.it">
+          <span class="fsl-net">Email</span><span class="fsl-name">info@cognitivelogic.it</span>
+        </a>
+      </div>
+    </div>
+    <div class="footer-links">
+      <a href="framework.html">Framework</a>
+      <a href="ecosystem.html">Ecosystem</a>
+      <a href="ai.html">AI Engine</a>
+      <a href="demo.html">Demo</a>
+      <a href="copilot.html">Copilot</a>
+      <a href="/privacy.html">Privacy</a>
+      <a href="/cookie.html">Cookie</a>
+    </div>
+  </div>
 </footer>
+<script src="/js/cookie-banner.js"></script>
 
 </body>
 </html>
