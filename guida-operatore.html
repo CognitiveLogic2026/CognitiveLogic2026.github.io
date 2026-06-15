@@ -12,46 +12,44 @@
   <meta name="robots" content="noindex, nofollow" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@300;400;500&family=Syne:wght@400;700;800&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css?v=3" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     :root {
-      --bg: #05080f; --s1: #0a0d1a; --s2: #0f1323;
-      --border: #181d30; --border2: #242a42;
-      --green: #3dffa0; --gold: #c8a84b; --red: #ff5f57; --yellow: #ffd166; --blue: #4db8ff;
-      --text: #ccd4ef; --mid: #8892b5; --dim: #4a5270;
-      --mono: 'IBM Plex Mono', monospace; --sans: 'Syne', sans-serif;
+      --s1: var(--bg-panel);
+      --s2: var(--bg-panel-2);
+      --border: var(--line-soft);
+      --border2: var(--line);
+      --green: var(--gold);
+      --mid: var(--text-soft);
+      --dim: var(--muted);
+      --mono: 'DM Mono', monospace;
+      --sans: 'Cormorant Garamond', serif;
+      --blue: #4db8ff;
+      --red: #ff5f57;
+      --yellow: #ffd166;
     }
     html { scroll-behavior: smooth; }
     body {
       background: var(--bg); color: var(--text);
       font-family: var(--mono); line-height: 1.7; overflow-x: hidden;
     }
-    body::after {
-      content: ''; position: fixed; inset: 0;
-      background-image:
-        linear-gradient(var(--border) 1px, transparent 1px),
-        linear-gradient(90deg, var(--border) 1px, transparent 1px);
-      background-size: 64px 64px; pointer-events: none; z-index: 0; opacity: 0.12;
-    }
-    * { position: relative; z-index: 1; }
 
-    nav {
-      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-      height: 52px; display: flex; align-items: center; justify-content: space-between;
-      padding: 0 2rem; background: rgba(5,8,15,0.96);
-      backdrop-filter: blur(16px); border-bottom: 1px solid var(--border);
+    .nav-print {
+      font-size: 0.6rem; letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--mid); background: none; border: 1px solid var(--border2);
+      padding: 0.3rem 0.8rem; cursor: pointer; border-radius: 2px;
+      font-family: var(--mono); transition: border-color 0.2s, color 0.2s;
     }
-    .nav-logo { font-family: var(--sans); font-weight: 800; font-size: 0.8rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--green); text-decoration: none; }
-    .nav-tag { font-size: 0.6rem; letter-spacing: 0.15em; color: var(--dim); text-transform: uppercase; }
-    .nav-print { font-size: 0.6rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--mid); background: none; border: 1px solid var(--border2); padding: 0.3rem 0.8rem; cursor: pointer; border-radius: 2px; font-family: var(--mono); transition: border-color 0.2s, color 0.2s; }
     .nav-print:hover { border-color: var(--green); color: var(--green); }
 
     main { max-width: 780px; margin: 0 auto; padding: 80px 1.5rem 5rem; }
 
-    .page-header { padding: 2.5rem 0 2rem; border-bottom: 1px solid var(--border); margin-bottom: 2.5rem; }
+    .page-header { padding: 2.5rem 0 2rem; border-bottom: 1px solid var(--border); margin-bottom: 2.5rem; display: flex; align-items: flex-start; justify-content: space-between; gap: 1rem; flex-wrap: wrap; }
+    .page-header-text { flex: 1; }
     .eyebrow { font-size: 0.58rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--green); margin-bottom: 0.75rem; }
-    h1 { font-family: var(--sans); font-weight: 800; font-size: clamp(1.8rem, 4vw, 2.6rem); letter-spacing: -0.02em; line-height: 1.1; }
+    h1 { font-family: var(--sans); font-weight: 700; font-size: clamp(1.8rem, 4vw, 2.6rem); letter-spacing: -0.02em; line-height: 1.1; }
     h1 span { color: var(--green); }
     .subtitle { font-size: 0.75rem; color: var(--mid); max-width: 560px; line-height: 1.9; margin-top: 0.75rem; }
 
@@ -62,16 +60,16 @@
       padding: 1rem 1.4rem; margin-bottom: 1px;
       border-radius: 2px 2px 0 0;
     }
-    .phase-header.pre  { background: rgba(61,255,160,0.06);  border: 1px solid rgba(61,255,160,0.2); }
+    .phase-header.pre  { background: rgba(212,175,55,0.06);  border: 1px solid rgba(212,175,55,0.2); }
     .phase-header.meet { background: rgba(77,184,255,0.06);  border: 1px solid rgba(77,184,255,0.2); }
-    .phase-header.audit{ background: rgba(200,168,75,0.06);  border: 1px solid rgba(200,168,75,0.2); }
+    .phase-header.audit{ background: rgba(212,175,55,0.10);  border: 1px solid rgba(212,175,55,0.3); }
     .phase-header.post { background: rgba(255,209,102,0.06); border: 1px solid rgba(255,209,102,0.2); }
 
     .phase-num {
-      font-family: var(--sans); font-weight: 800; font-size: 2rem; line-height: 1;
+      font-family: var(--sans); font-weight: 700; font-size: 2rem; line-height: 1;
       min-width: 2.5rem;
     }
-    .phase-header.pre  .phase-num { color: var(--green); }
+    .phase-header.pre  .phase-num { color: var(--gold-soft); }
     .phase-header.meet .phase-num { color: var(--blue); }
     .phase-header.audit .phase-num { color: var(--gold); }
     .phase-header.post .phase-num { color: var(--yellow); }
@@ -92,10 +90,10 @@
       display: flex; align-items: center; justify-content: center;
       font-size: 0.6rem; font-weight: 500; margin-top: 1px;
     }
-    .phase-pre  .step-dot { background: rgba(61,255,160,0.15);  color: var(--green); border: 1px solid rgba(61,255,160,0.3); }
-    .phase-meet .step-dot { background: rgba(77,184,255,0.15);  color: var(--blue);  border: 1px solid rgba(77,184,255,0.3); }
-    .phase-audit .step-dot { background: rgba(200,168,75,0.15); color: var(--gold);  border: 1px solid rgba(200,168,75,0.3); }
-    .phase-post .step-dot { background: rgba(255,209,102,0.15); color: var(--yellow);border: 1px solid rgba(255,209,102,0.3); }
+    .phase-pre  .step-dot { background: rgba(212,175,55,0.15);  color: var(--gold-soft); border: 1px solid rgba(212,175,55,0.3); }
+    .phase-meet .step-dot { background: rgba(77,184,255,0.15);  color: var(--blue);      border: 1px solid rgba(77,184,255,0.3); }
+    .phase-audit .step-dot { background: rgba(212,175,55,0.20); color: var(--gold);      border: 1px solid rgba(212,175,55,0.4); }
+    .phase-post .step-dot { background: rgba(255,209,102,0.15); color: var(--yellow);    border: 1px solid rgba(255,209,102,0.3); }
 
     .step-content { flex: 1; }
     .step-title { font-size: 0.82rem; font-weight: 500; color: var(--text); margin-bottom: 0.3rem; }
@@ -108,11 +106,11 @@
       display: inline-block; font-size: 0.55rem; letter-spacing: 0.12em;
       text-transform: uppercase; padding: 0.2rem 0.5rem; border-radius: 2px; margin-right: 0.3rem; margin-top: 0.4rem;
     }
-    .tag-green  { color: var(--green);  background: rgba(61,255,160,0.08);  border: 1px solid rgba(61,255,160,0.2); }
-    .tag-gold   { color: var(--gold);   background: rgba(200,168,75,0.08);  border: 1px solid rgba(200,168,75,0.2); }
-    .tag-blue   { color: var(--blue);   background: rgba(77,184,255,0.08);  border: 1px solid rgba(77,184,255,0.2); }
-    .tag-yellow { color: var(--yellow); background: rgba(255,209,102,0.08); border: 1px solid rgba(255,209,102,0.2); }
-    .tag-red    { color: var(--red);    background: rgba(255,95,87,0.08);   border: 1px solid rgba(255,95,87,0.2); }
+    .tag-green  { color: var(--gold-soft); background: rgba(212,175,55,0.08);  border: 1px solid rgba(212,175,55,0.2); }
+    .tag-gold   { color: var(--gold);      background: rgba(212,175,55,0.08);  border: 1px solid rgba(212,175,55,0.2); }
+    .tag-blue   { color: var(--blue);      background: rgba(77,184,255,0.08);  border: 1px solid rgba(77,184,255,0.2); }
+    .tag-yellow { color: var(--yellow);    background: rgba(255,209,102,0.08); border: 1px solid rgba(255,209,102,0.2); }
+    .tag-red    { color: var(--red);       background: rgba(255,95,87,0.08);   border: 1px solid rgba(255,95,87,0.2); }
 
     /* ── Sector table ── */
     .sector-table { width: 100%; border-collapse: collapse; font-size: 0.72rem; }
@@ -134,7 +132,7 @@
     .qen-dim-label { font-size: 0.58rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--mid); margin-bottom: 0.5rem; }
     .qen-dim-name { font-family: var(--sans); font-weight: 700; font-size: 0.9rem; margin-bottom: 0.5rem; }
     .qen-dim-name.vs { color: var(--blue); }
-    .qen-dim-name.va { color: var(--green); }
+    .qen-dim-name.va { color: var(--gold-soft); }
     .qen-dim-name.vt { color: var(--gold); }
     .qen-dim-items { font-size: 0.65rem; color: var(--mid); line-height: 2; }
 
@@ -153,12 +151,11 @@
 
     /* ── Print ── */
     @media print {
-      nav, .nav-print { display: none !important; }
+      .site-header, .nav-print { display: none !important; }
       body { background: white; color: #111; font-size: 11pt; }
-      body::after { display: none; }
       main { padding: 1rem; max-width: 100%; }
       .phase-body { border: 1px solid #ccc; }
-      .phase-header.pre  { background: #f0fff8; border-color: #aaa; }
+      .phase-header.pre  { background: #f8f5ea; border-color: #aaa; }
       .phase-header.meet { background: #f0f8ff; border-color: #aaa; }
       .phase-header.audit { background: #fffbf0; border-color: #aaa; }
       .phase-header.post { background: #fffff0; border-color: #aaa; }
@@ -174,17 +171,33 @@
 </head>
 <body>
 
-<nav>
-  <a href="/" class="nav-logo">Cognitive Logic</a>
-  <span class="nav-tag">Guida Operatore — Riservato</span>
-  <button class="nav-print" onclick="window.print()">⎙ Stampa</button>
-</nav>
+<header class="site-header">
+  <div class="container header-inner">
+    <a href="index.html" class="brand">
+      <img src="img/logo-cognitivelogic.svg" alt="Cognitive Logic" style="height:32px;width:auto;display:block;">
+    </a>
+    <nav class="main-nav">
+      <a href="framework.html">Framework</a>
+      <a href="ecosystem.html">Ecosystem</a>
+      <a href="qen-live.html">QEN Live</a>
+      <a href="ai.html">AI Engine</a>
+      <a href="identity.html">Identity</a>
+      <a href="demo.html">Demo</a>
+    </nav>
+    <div class="header-end">
+      <button class="nav-print" onclick="window.print()">⎙ Stampa</button>
+      <a href="copilot.html" class="btn btn-ghost">Copilot</a>
+    </div>
+  </div>
+</header>
 
 <main>
   <div class="page-header">
-    <div class="eyebrow">Protocollo Operativo · Tutti i Settori</div>
-    <h1>Guida <span>Cliente</span> QEN</h1>
-    <p class="subtitle">Flusso completo dall'acquisizione alla certificazione. Valido per HoReCa, balneare, artigianato, agroalimentare, commercio ambulante. Uso interno — non distribuire.</p>
+    <div class="page-header-text">
+      <div class="eyebrow">Protocollo Operativo · Tutti i Settori</div>
+      <h1>Guida <span>Cliente</span> QEN</h1>
+      <p class="subtitle">Flusso completo dall'acquisizione alla certificazione. Valido per HoReCa, balneare, artigianato, agroalimentare, commercio ambulante. Uso interno — non distribuire.</p>
+    </div>
   </div>
 
   <!-- ── FASE 1: PRE-INCONTRO ── -->
@@ -503,5 +516,6 @@
   </div>
 
 </main>
+<script src="/js/cookie-banner.js"></script>
 </body>
 </html>
