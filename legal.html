@@ -14,46 +14,32 @@
   <meta name="copyright" content="© 2026 Roberto Bob Malini — Cognitive Logic. Tutti i diritti riservati.">
   <meta name="robots" content="index, follow">
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@300;400;500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css?v=3">
   <style>
     :root {
-      --ink: #0f0e0c;
-      --paper: #f5f2ec;
-      --gold: #b8922a;
-      --gold-light: #d4a84b;
-      --rust: #8b3a2a;
-      --muted: #7a7469;
-      --rule: #d4cfc6;
+      --ink: var(--text);
+      --paper: var(--bg);
+      --rule: var(--line-soft);
+      --sans: 'Cormorant Garamond', serif;
+      --mono: 'DM Mono', monospace;
+      --muted-local: var(--muted);
       --red: #c0392b;
-      --red-bg: #fdf0ee;
+      --red-bg: rgba(192,57,43,0.08);
     }
 
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { font-size: 16px; scroll-behavior: smooth; }
-    body { font-family: 'DM Sans', sans-serif; background: var(--paper); color: var(--ink); line-height: 1.7; -webkit-font-smoothing: antialiased; }
-
-    header {
-      border-bottom: 1px solid var(--rule);
-      padding: 1.5rem 2rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      position: sticky;
-      top: 0;
-      background: var(--paper);
-      z-index: 100;
-    }
-
-    .wordmark { font-family: 'DM Mono', monospace; font-size: 0.75rem; font-weight: 400; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gold); text-decoration: none; }
-    .doc-meta { font-family: 'DM Mono', monospace; font-size: 0.65rem; color: var(--muted); letter-spacing: 0.08em; }
+    body { font-family: var(--sans); background: var(--bg); color: var(--text); line-height: 1.7; -webkit-font-smoothing: antialiased; }
 
     /* ALERT BANNER */
     .alert-banner {
       background: var(--red);
       color: white;
-      padding: 1rem 2rem;
+      padding: 0.75rem 2rem;
       text-align: center;
-      font-family: 'DM Mono', monospace;
+      font-family: var(--mono);
       font-size: 0.72rem;
       letter-spacing: 0.12em;
       text-transform: uppercase;
@@ -67,28 +53,28 @@
       border-bottom: 1px solid var(--rule);
     }
 
-    .doc-label { font-family: 'DM Mono', monospace; font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); margin-bottom: 1.5rem; display: block; }
+    .doc-label { font-family: var(--mono); font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); margin-bottom: 1.5rem; display: block; }
 
-    h1 { font-family: 'DM Serif Display', serif; font-size: clamp(2rem, 5vw, 3.2rem); line-height: 1.1; font-weight: 400; margin-bottom: 0.5rem; letter-spacing: -0.02em; }
+    h1 { font-family: var(--sans); font-size: clamp(2rem, 5vw, 3.2rem); line-height: 1.1; font-weight: 400; margin-bottom: 0.5rem; letter-spacing: -0.02em; }
     h1 em { font-style: italic; color: var(--red); }
 
-    .subtitle { font-size: 1rem; color: var(--muted); font-weight: 300; margin-top: 1rem; margin-bottom: 2rem; }
+    .subtitle { font-size: 1rem; color: var(--text-soft); font-weight: 300; margin-top: 1rem; margin-bottom: 2rem; }
 
-    .meta-row { display: flex; flex-wrap: wrap; gap: 2rem; font-family: 'DM Mono', monospace; font-size: 0.7rem; color: var(--muted); letter-spacing: 0.05em; }
-    .meta-row span strong { color: var(--ink); font-weight: 500; }
+    .meta-row { display: flex; flex-wrap: wrap; gap: 2rem; font-family: var(--mono); font-size: 0.7rem; color: var(--muted); letter-spacing: 0.05em; }
+    .meta-row span strong { color: var(--text); font-weight: 500; }
 
     /* CONTENT */
     .content { max-width: 820px; margin: 0 auto; padding: 0 2rem 6rem; }
 
     .section { margin-top: 4rem; padding-top: 2rem; border-top: 1px solid var(--rule); }
 
-    .section-label { font-family: 'DM Mono', monospace; font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); display: block; margin-bottom: 1rem; }
+    .section-label { font-family: var(--mono); font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); display: block; margin-bottom: 1rem; }
 
-    h2 { font-family: 'DM Serif Display', serif; font-size: 1.8rem; font-weight: 400; margin-bottom: 1.2rem; letter-spacing: -0.01em; }
-    h3 { font-family: 'DM Serif Display', serif; font-size: 1.2rem; font-weight: 400; margin: 2rem 0 0.8rem; }
+    h2 { font-family: var(--sans); font-size: 1.8rem; font-weight: 400; margin-bottom: 1.2rem; letter-spacing: -0.01em; }
+    h3 { font-family: var(--sans); font-size: 1.2rem; font-weight: 400; margin: 2rem 0 0.8rem; }
 
-    p { margin-bottom: 1rem; font-size: 0.97rem; color: #2a2824; font-weight: 300; line-height: 1.75; }
-    p strong { color: var(--ink); font-weight: 500; }
+    p { margin-bottom: 1rem; font-size: 0.97rem; color: var(--text-soft); font-weight: 300; line-height: 1.75; }
+    p strong { color: var(--text); font-weight: 500; }
 
     /* OWNERSHIP BOX */
     .ownership-grid {
@@ -100,14 +86,14 @@
     }
 
     .ownership-card {
-      background: white;
+      background: var(--bg-panel);
       padding: 1.8rem 2rem;
     }
 
     .ownership-card h3 { margin-top: 0; font-size: 1rem; }
 
     .asset-tag {
-      font-family: 'DM Mono', monospace;
+      font-family: var(--mono);
       font-size: 0.6rem;
       letter-spacing: 0.15em;
       text-transform: uppercase;
@@ -117,12 +103,13 @@
     }
 
     .priority-date {
-      font-family: 'DM Mono', monospace;
+      font-family: var(--mono);
       font-size: 0.68rem;
       color: var(--muted);
       margin-top: 0.5rem;
       padding: 0.3rem 0.6rem;
-      background: var(--paper);
+      background: var(--bg);
+      border: 1px solid var(--line-soft);
       display: inline-block;
     }
 
@@ -135,7 +122,7 @@
     }
 
     .warning-box .warning-title {
-      font-family: 'DM Mono', monospace;
+      font-family: var(--mono);
       font-size: 0.65rem;
       letter-spacing: 0.2em;
       text-transform: uppercase;
@@ -145,7 +132,7 @@
       font-weight: 500;
     }
 
-    .warning-box p { color: #5a1a12; font-size: 0.92rem; margin-bottom: 0.5rem; }
+    .warning-box p { color: var(--text-soft); font-size: 0.92rem; margin-bottom: 0.5rem; }
 
     /* REMEDIES LIST */
     .remedies-list {
@@ -159,7 +146,7 @@
       font-size: 0.92rem;
       font-weight: 300;
       position: relative;
-      color: #2a2824;
+      color: var(--text-soft);
     }
 
     .remedies-list li::before {
@@ -167,28 +154,28 @@
       position: absolute;
       left: 0.8rem;
       color: var(--red);
-      font-family: 'DM Mono', monospace;
+      font-family: var(--mono);
     }
 
     .remedies-list li:last-child { border-bottom: none; }
-    .remedies-list li strong { font-weight: 500; color: var(--ink); }
+    .remedies-list li strong { font-weight: 500; color: var(--text); }
 
     /* LICENSE BLOCK */
     .license-block {
-      background: white;
+      background: var(--bg-panel);
       border: 1px solid var(--rule);
       padding: 2rem;
       margin-top: 2rem;
     }
 
     .license-formula {
-      font-family: 'DM Mono', monospace;
+      font-family: var(--mono);
       font-size: 0.82rem;
-      background: var(--paper);
+      background: var(--bg-panel-2);
       border-left: 3px solid var(--gold);
       padding: 0.8rem 1rem;
       margin: 1rem 0;
-      color: var(--ink);
+      color: var(--text);
       line-height: 1.7;
     }
 
@@ -211,9 +198,9 @@
     .legal-checklist li:last-child { border-bottom: none; }
 
     .step-num {
-      font-family: 'DM Mono', monospace;
+      font-family: var(--mono);
       font-size: 0.65rem;
-      color: white;
+      color: var(--bg);
       background: var(--gold);
       width: 1.4rem;
       height: 1.4rem;
@@ -224,11 +211,11 @@
       margin-top: 0.1rem;
     }
 
-    .step-body strong { color: var(--ink); font-weight: 500; display: block; margin-bottom: 0.2rem; }
+    .step-body strong { color: var(--text); font-weight: 500; display: block; margin-bottom: 0.2rem; }
     .step-body span { color: var(--muted); font-size: 0.82rem; line-height: 1.5; }
 
     .step-status {
-      font-family: 'DM Mono', monospace;
+      font-family: var(--mono);
       font-size: 0.58rem;
       letter-spacing: 0.1em;
       text-transform: uppercase;
@@ -237,54 +224,55 @@
       margin-top: 0.1rem;
     }
 
-    .status-todo { background: #fff3cd; color: #856404; }
-    .status-done { background: #d4edda; color: #155724; }
-    .status-progress { background: #cce5ff; color: #004085; }
+    .status-todo     { background: rgba(212,175,55,0.10); color: var(--gold); }
+    .status-done     { background: rgba(61,160,90,0.12);  color: #7de0a0; }
+    .status-progress { background: rgba(77,184,255,0.12); color: #7dd0ff; }
 
     /* CONTACT */
     .contact-block {
-      background: var(--ink);
-      color: #e8e3da;
+      background: var(--bg-panel-2);
+      border: 1px solid var(--line-soft);
+      color: var(--text);
       padding: 2.5rem;
       margin-top: 2rem;
     }
 
     .contact-block .contact-label {
-      font-family: 'DM Mono', monospace;
+      font-family: var(--mono);
       font-size: 0.6rem;
       letter-spacing: 0.2em;
       text-transform: uppercase;
-      color: var(--gold-light);
+      color: var(--gold-soft);
       display: block;
       margin-bottom: 1rem;
     }
 
-    .contact-block p { color: #8a8480; font-size: 0.9rem; margin-bottom: 0.8rem; }
+    .contact-block p { color: var(--text-soft); font-size: 0.9rem; margin-bottom: 0.8rem; }
 
     .contact-block a {
-      color: var(--gold-light);
+      color: var(--gold-soft);
       text-decoration: none;
-      font-family: 'DM Mono', monospace;
+      font-family: var(--mono);
       font-size: 0.85rem;
     }
 
-    /* FOOTER */
-    footer {
-      border-top: 2px solid var(--ink);
+    /* PAGE FOOTER */
+    .page-footer {
+      border-top: 1px solid var(--line);
       padding: 2rem;
       display: flex;
       justify-content: space-between;
       align-items: center;
       flex-wrap: wrap;
       gap: 1rem;
-      font-family: 'DM Mono', monospace;
+      font-family: var(--mono);
       font-size: 0.65rem;
       color: var(--muted);
       letter-spacing: 0.05em;
-      background: var(--paper);
+      background: var(--bg);
     }
 
-    footer a { color: var(--gold); text-decoration: none; }
+    .page-footer a { color: var(--gold); text-decoration: none; }
 
     @media (max-width: 600px) {
       .meta-row { gap: 1rem; }
@@ -299,9 +287,23 @@
   Proprietà intellettuale protetta — Tutti i diritti riservati · © 2026 Roberto Bob Malini — Cognitive Logic
 </div>
 
-<header>
-  <a href="https://cognitivelogic.it" class="wordmark"><img src="img/logo-cognitivelogic.svg" alt="Cognitive Logic" style="height:28px;width:auto;display:block;"></a>
-  <span class="doc-meta">LEGAL NOTICE · IP PROTECTION · v1.0 · 2026</span>
+<header class="site-header">
+  <div class="container header-inner">
+    <a href="index.html" class="brand">
+      <img src="img/logo-cognitivelogic.svg" alt="Cognitive Logic" style="height:32px;width:auto;display:block;">
+    </a>
+    <nav class="main-nav">
+      <a href="framework.html">Framework</a>
+      <a href="ecosystem.html">Ecosystem</a>
+      <a href="qen-live.html">QEN Live</a>
+      <a href="ai.html">AI Engine</a>
+      <a href="identity.html">Identity</a>
+      <a href="demo.html">Demo</a>
+    </nav>
+    <div class="header-end">
+      <a href="copilot.html" class="btn btn-ghost">Copilot</a>
+    </div>
+  </div>
 </header>
 
 <section class="hero">
@@ -475,17 +477,18 @@
       <p>Roberto Bob Malini — Cognitive Logic<br>Bologna, Italia</p>
       <p>Email: <a href="mailto:info@cognitivelogic.it">info@cognitivelogic.it</a></p>
       <p>LinkedIn: <a href="https://linkedin.com/in/robertobobmalini" target="_blank" rel="noopener">linkedin.com/in/robertobobmalini</a></p>
-      <p style="margin-top:1.2rem;font-size:0.82rem;color:#666;">Indicare nell'oggetto: "Richiesta Licenza QEN" o "Segnalazione Violazione IP". Le richieste vengono esaminate entro 10 giorni lavorativi.</p>
+      <p style="margin-top:1.2rem;font-size:0.82rem;color:var(--muted);">Indicare nell'oggetto: "Richiesta Licenza QEN" o "Segnalazione Violazione IP". Le richieste vengono esaminate entro 10 giorni lavorativi.</p>
     </div>
   </div>
 
 </div>
 
-<footer>
+<footer class="page-footer">
   <span>© 2026 Roberto Bob Malini — Cognitive Logic · Bologna, Italia · Tutti i diritti riservati</span>
-  <span><a href="mailto:info@cognitivelogic.it">info@cognitivelogic.it</a> · <a href="https://cognitivelogic.it">cognitivelogic.it</a></span>
+  <span><a href="mailto:info@cognitivelogic.it">info@cognitivelogic.it</a> · <a href="index.html">cognitivelogic.it</a></span>
   <span>Legge 633/1941 · GDPR 2016/679 · Reg. UE 2017/1001</span>
 </footer>
 
+<script src="/js/cookie-banner.js"></script>
 </body>
 </html>
