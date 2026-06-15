@@ -12,16 +12,23 @@
   <meta name="robots" content="noindex, nofollow" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@300;400;500&family=Syne:wght@400;700;800&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css?v=3" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     :root {
-      --bg: #05080f; --s1: #0a0d1a; --s2: #0f1323;
-      --border: #181d30; --border2: #242a42;
-      --green: #3dffa0; --blue: #4db8ff; --gold: #c8a84b;
-      --red: #ff5f57; --yellow: #ffd166;
-      --text: #ccd4ef; --mid: #8892b5; --dim: #4a5270;
-      --mono: 'IBM Plex Mono', monospace; --sans: 'Syne', sans-serif;
+      --s1: var(--bg-panel);
+      --s2: var(--bg-panel-2);
+      --border: var(--line-soft);
+      --border2: var(--line);
+      --green: var(--gold);
+      --mid: var(--text-soft);
+      --dim: var(--muted);
+      --mono: 'DM Mono', monospace;
+      --sans: 'Cormorant Garamond', serif;
+      --blue: #4db8ff;
+      --red: #ff5f57;
+      --yellow: #ffd166;
     }
     html { scroll-behavior: smooth; }
     body {
@@ -29,45 +36,22 @@
       font-family: var(--mono); line-height: 1.6; overflow-x: hidden;
       min-height: 100vh;
     }
-    body::after {
-      content: ''; position: fixed; inset: 0;
-      background-image:
-        linear-gradient(var(--border) 1px, transparent 1px),
-        linear-gradient(90deg, var(--border) 1px, transparent 1px);
-      background-size: 64px 64px; pointer-events: none; z-index: 0; opacity: 0.15;
-    }
-    * { position: relative; z-index: 1; }
 
-    nav {
-      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-      height: 52px; display: flex; align-items: center; justify-content: space-between;
-      padding: 0 2rem; background: rgba(5,8,15,0.95);
-      backdrop-filter: blur(16px); border-bottom: 1px solid var(--border);
-    }
-    .nav-logo {
-      font-family: var(--sans); font-weight: 800; font-size: 0.8rem;
-      letter-spacing: 0.12em; text-transform: uppercase;
-      color: var(--green); text-decoration: none;
-    }
-    .nav-tag {
-      font-size: 0.58rem; letter-spacing: 0.14em; text-transform: uppercase;
-      color: var(--gold); background: rgba(200,168,75,0.1);
-      padding: 0.2rem 0.6rem; border: 1px solid rgba(200,168,75,0.2); border-radius: 2px;
-    }
+    /* Status dot in header */
     .nav-right { font-size: 0.62rem; color: var(--dim); display: flex; align-items: center; gap: 0.6rem; }
-    .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--red); box-shadow: 0 0 8px var(--red); }
-    .dot.ok { background: var(--green); box-shadow: 0 0 8px var(--green); }
+    .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--red); box-shadow: 0 0 8px var(--red); flex-shrink: 0; }
+    .dot.ok { background: var(--gold); box-shadow: 0 0 8px rgba(212,175,55,0.6); }
 
     /* Auth gate */
     #authGate {
       min-height: 100vh; display: flex; align-items: center; justify-content: center;
-      padding: 2rem;
+      padding: 80px 2rem 2rem;
     }
     .auth-card {
       background: var(--s1); border: 1px solid var(--border2);
       border-radius: 2px; padding: 2.5rem; width: 100%; max-width: 400px;
     }
-    .auth-title { font-family: var(--sans); font-weight: 800; font-size: 1.3rem; margin-bottom: 0.4rem; }
+    .auth-title { font-family: var(--sans); font-weight: 700; font-size: 1.3rem; margin-bottom: 0.4rem; }
     .auth-sub { font-size: 0.72rem; color: var(--mid); margin-bottom: 1.8rem; line-height: 1.6; }
     .auth-label { font-size: 0.6rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--dim); display: block; margin-bottom: 0.5rem; }
     .auth-input {
@@ -78,20 +62,20 @@
     }
     .auth-input:focus { border-color: var(--green); }
     .auth-btn {
-      width: 100%; padding: 0.7rem; background: var(--green); color: #05080f;
+      width: 100%; padding: 0.7rem; background: var(--green); color: var(--bg);
       font-family: var(--mono); font-size: 0.78rem; font-weight: 600;
       letter-spacing: 0.06em; border: none; border-radius: 2px; cursor: pointer;
-      transition: background 0.2s;
+      transition: opacity 0.2s;
     }
-    .auth-btn:hover { background: #5affc0; }
+    .auth-btn:hover { opacity: 0.85; }
     .auth-err { color: var(--red); font-size: 0.72rem; margin-top: 0.5rem; display: none; }
 
     /* Dashboard */
-    #dashboard { display: none; padding: 70px 0 4rem; max-width: 1200px; margin: 0 auto; padding-left: 2rem; padding-right: 2rem; padding-top: 80px; }
+    #dashboard { display: none; max-width: 1200px; margin: 0 auto; padding: 80px 2rem 4rem; }
 
     .page-header { padding: 2.5rem 0 2rem; border-bottom: 1px solid var(--border); margin-bottom: 2rem; display: flex; align-items: flex-start; justify-content: space-between; gap: 1rem; flex-wrap: wrap; }
-    .eyebrow { font-size: 0.6rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.8rem; }
-    h1 { font-family: var(--sans); font-weight: 800; font-size: clamp(1.6rem, 3.5vw, 2.4rem); letter-spacing: -0.02em; line-height: 1.1; }
+    .eyebrow { font-size: 0.6rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--green); margin-bottom: 0.8rem; }
+    h1 { font-family: var(--sans); font-weight: 700; font-size: clamp(1.6rem, 3.5vw, 2.4rem); letter-spacing: -0.02em; line-height: 1.1; }
     h1 .g { color: var(--green); }
     .supervisor-id { font-size: 0.65rem; color: var(--dim); margin-top: 0.5rem; }
 
@@ -103,16 +87,16 @@
     }
     .btn-ghost { background: transparent; color: var(--mid); }
     .btn-ghost:hover { color: var(--text); border-color: var(--border2); }
-    .btn-reload { background: rgba(61,255,160,0.08); border-color: var(--green); color: var(--green); }
-    .btn-reload:hover { background: rgba(61,255,160,0.15); }
-    .btn-resolve { background: rgba(61,255,160,0.08); border-color: rgba(61,255,160,0.3); color: var(--green); font-size: 0.68rem; padding: 0.35rem 0.8rem; }
-    .btn-resolve:hover { background: rgba(61,255,160,0.15); }
+    .btn-reload { background: rgba(212,175,55,0.08); border-color: var(--green); color: var(--green); }
+    .btn-reload:hover { background: rgba(212,175,55,0.15); }
+    .btn-resolve { background: rgba(212,175,55,0.08); border-color: rgba(212,175,55,0.3); color: var(--green); font-size: 0.68rem; padding: 0.35rem 0.8rem; }
+    .btn-resolve:hover { background: rgba(212,175,55,0.15); }
     .btn-resolved { background: transparent; border-color: var(--border); color: var(--dim); font-size: 0.68rem; padding: 0.35rem 0.8rem; cursor: default; }
 
     /* Stats */
     .stats-bar { display: grid; grid-template-columns: repeat(5, 1fr); gap: 1px; background: var(--border); border: 1px solid var(--border); margin-bottom: 1.5rem; }
     .stat-cell { background: var(--s1); padding: 1.2rem 1.5rem; }
-    .stat-val { font-family: var(--sans); font-weight: 800; font-size: 2rem; line-height: 1; }
+    .stat-val { font-family: var(--sans); font-weight: 700; font-size: 2rem; line-height: 1; }
     .stat-label { font-size: 0.58rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--dim); margin-top: 0.3rem; }
     .stat-red { color: var(--red); }
     .stat-yellow { color: var(--yellow); }
@@ -127,7 +111,7 @@
       font-size: 0.68rem; letter-spacing: 0.08em; text-transform: uppercase;
       cursor: pointer; border-radius: 2px; transition: all 0.2s;
     }
-    .filter-btn.active { background: rgba(61,255,160,0.1); border-color: var(--green); color: var(--green); }
+    .filter-btn.active { background: rgba(212,175,55,0.1); border-color: var(--green); color: var(--green); }
     .filter-sep { color: var(--border2); font-size: 0.7rem; }
     #lastUpdated { font-size: 0.62rem; color: var(--dim); margin-left: auto; }
 
@@ -156,16 +140,16 @@
     .badge-red    { background: rgba(255,95,87,0.12); color: var(--red); }
     .badge-yellow { background: rgba(255,209,102,0.12); color: var(--yellow); }
     .badge-open     { background: rgba(77,184,255,0.08); color: var(--blue); }
-    .badge-resolved { background: rgba(61,255,160,0.08); color: var(--green); }
+    .badge-resolved { background: rgba(212,175,55,0.08); color: var(--gold); }
     .badge-sla-breach { background: rgba(255,95,87,0.18); color: var(--red); border: 1px solid rgba(255,95,87,0.35); }
-    .badge-sla-ok { background: rgba(61,255,160,0.06); color: var(--mid); }
+    .badge-sla-ok { background: rgba(212,175,55,0.06); color: var(--mid); }
 
     .empty-state { padding: 3rem; text-align: center; color: var(--dim); font-size: 0.78rem; }
 
     /* Modal */
     #resolveModal {
       display: none; position: fixed; inset: 0; z-index: 200;
-      background: rgba(5,8,15,0.85); backdrop-filter: blur(8px);
+      background: rgba(7,17,31,0.85); backdrop-filter: blur(8px);
       align-items: center; justify-content: center; padding: 1rem;
     }
     #resolveModal.open { display: flex; }
@@ -173,7 +157,7 @@
       background: var(--s1); border: 1px solid var(--border2);
       border-radius: 2px; padding: 2rem; width: 100%; max-width: 520px;
     }
-    .modal-title { font-family: var(--sans); font-weight: 800; font-size: 1.1rem; margin-bottom: 0.3rem; }
+    .modal-title { font-family: var(--sans); font-weight: 700; font-size: 1.1rem; margin-bottom: 0.3rem; }
     .modal-sub { font-size: 0.72rem; color: var(--mid); margin-bottom: 1.5rem; }
     .modal-label { font-size: 0.6rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--dim); display: block; margin-bottom: 0.4rem; }
     .modal-input {
@@ -187,14 +171,13 @@
     .modal-actions { display: flex; gap: 0.8rem; justify-content: flex-end; }
     .btn-cancel { background: transparent; border-color: var(--border2); color: var(--mid); }
     .btn-cancel:hover { color: var(--text); }
-    .btn-confirm { background: var(--green); border-color: var(--green); color: #05080f; font-weight: 600; }
-    .btn-confirm:hover { background: #5affc0; }
+    .btn-confirm { background: var(--green); border-color: var(--green); color: var(--bg); font-weight: 600; }
+    .btn-confirm:hover { opacity: 0.85; }
     .modal-err { color: var(--red); font-size: 0.7rem; margin-bottom: 0.8rem; display: none; }
 
     @media (max-width: 768px) {
       .stats-bar { grid-template-columns: 1fr 1fr 1fr; }
       .esc-item { grid-template-columns: 1fr; }
-      nav { padding: 0 1rem; }
     }
     @media (max-width: 480px) { .stats-bar { grid-template-columns: 1fr; } }
   </style>
@@ -202,14 +185,28 @@
 </head>
 <body>
 
-<nav>
-  <a class="nav-logo" href="/"><img src="img/logo-cognitivelogic.svg" alt="Cognitive Logic" style="height:28px;width:auto;display:block;"></a>
-  <span class="nav-tag">CNA Supervisor</span>
-  <div class="nav-right">
-    <div class="dot" id="navDot"></div>
-    <span id="navStatus">Dashboard Escalation</span>
+<header class="site-header">
+  <div class="container header-inner">
+    <a href="index.html" class="brand">
+      <img src="img/logo-cognitivelogic.svg" alt="Cognitive Logic" style="height:32px;width:auto;display:block;">
+    </a>
+    <nav class="main-nav">
+      <a href="framework.html">Framework</a>
+      <a href="ecosystem.html">Ecosystem</a>
+      <a href="qen-live.html">QEN Live</a>
+      <a href="ai.html">AI Engine</a>
+      <a href="identity.html">Identity</a>
+      <a href="demo.html">Demo</a>
+    </nav>
+    <div class="header-end">
+      <div class="nav-right">
+        <div class="dot" id="navDot"></div>
+        <span id="navStatus">Dashboard Escalation</span>
+      </div>
+      <a href="copilot.html" class="btn btn-ghost">Copilot</a>
+    </div>
   </div>
-</nav>
+</header>
 
 <!-- Auth Gate -->
 <div id="authGate">
@@ -553,5 +550,6 @@
     document.getElementById('authGate').style.display = 'flex';
   }
 </script>
+<script src="/js/cookie-banner.js"></script>
 </body>
 </html>
