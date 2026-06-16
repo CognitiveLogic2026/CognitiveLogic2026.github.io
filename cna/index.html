@@ -13,22 +13,22 @@
   <meta name="robots" content="noindex, nofollow">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@300;400;500&family=Syne:wght@400;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
   <style>
     /* ── TOKENS ── */
     :root {
-      --bg:     #05080f;
-      --s1:     #0a0d1a;
-      --s2:     #0f1323;
-      --border: #181d30;
-      --green:  #00e5a0;
-      --gold:   #c8a84b;
-      --blue:   #4db8ff;
-      --text:   #ccd4ef;
-      --mid:    #8892b5;
-      --dim:    #4a5270;
-      --mono:   'IBM Plex Mono', monospace;
-      --sans:   'Syne', sans-serif;
+      --bg:     #07111f;
+      --s1:     #0d1728;
+      --s2:     #101b2d;
+      --border: rgba(212,175,55,0.15);
+      --green:  #d4af37;
+      --gold:   #d4af37;
+      --blue:   #f1df9b;
+      --text:   #f4efe4;
+      --mid:    #a79d8b;
+      --dim:    rgba(167,157,139,0.55);
+      --mono:   "DM Mono", monospace;
+      --sans:   "Cormorant Garamond", serif;
     }
 
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -44,8 +44,8 @@
       content: '';
       position: fixed; inset: 0;
       background-image:
-        linear-gradient(var(--border) 1px, transparent 1px),
-        linear-gradient(90deg, var(--border) 1px, transparent 1px);
+        linear-gradient(rgba(212,175,55,0.08) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(212,175,55,0.08) 1px, transparent 1px);
       background-size: 64px 64px;
       pointer-events: none; z-index: 0; opacity: 0.18;
     }
@@ -132,13 +132,13 @@
       padding: 0.25rem 0.6rem; border: 1px solid;
       display: inline-block; margin-bottom: 1rem;
     }
-    .sc-tag.green { color: var(--green); border-color: rgba(0,229,160,0.3); }
-    .sc-tag.gold  { color: var(--gold);  border-color: rgba(200,168,75,0.3); }
+    .sc-tag.green { color: var(--green); border-color: rgba(212,175,55,0.3); }
+    .sc-tag.gold  { color: var(--gold);  border-color: rgba(212,175,55,0.3); }
     .sc-tag.blue  { color: var(--blue);  border-color: rgba(77,184,255,0.3); }
     .sc-title { font-family: var(--sans); font-weight: 700; font-size: 1.05rem; margin-bottom: 0.6rem; }
     .sc-risk {
       font-size: 0.7rem; color: var(--mid); line-height: 1.8; margin-bottom: 1.2rem;
-      padding: 0.8rem; background: rgba(200,168,75,0.04); border-left: 2px solid rgba(200,168,75,0.3);
+      padding: 0.8rem; background: rgba(212,175,55,0.04); border-left: 2px solid rgba(212,175,55,0.3);
     }
     .sc-risk-label { font-size: 0.55rem; color: var(--gold); text-transform: uppercase; letter-spacing: 0.12em; margin-bottom: 0.4rem; }
     .sc-sol { font-size: 0.7rem; color: var(--mid); line-height: 1.8; }
@@ -224,11 +224,11 @@
     .btn-secondary {
       display: inline-block; font-family: var(--mono); font-size: 0.62rem;
       letter-spacing: 0.12em; text-transform: uppercase;
-      color: var(--green); border: 1px solid rgba(0,229,160,0.35);
+      color: var(--green); border: 1px solid rgba(212,175,55,0.35);
       padding: 0.85rem 1.8rem; text-decoration: none;
       transition: background 0.2s; white-space: nowrap; text-align: center;
     }
-    .btn-secondary:hover { background: rgba(0,229,160,0.08); }
+    .btn-secondary:hover { background: rgba(212,175,55,0.08); }
 
     /* ── FOOTER ── */
     footer {
