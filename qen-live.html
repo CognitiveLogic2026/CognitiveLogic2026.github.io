@@ -18,16 +18,16 @@
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --navy:    #070D1A;
-      --navy-2:  #0D1628;
-      --navy-3:  #122035;
-      --gold:    #C9A84C;
-      --gold-dim: rgba(201,168,76,0.10);
-      --gold-line: rgba(201,168,76,0.22);
-      --text:    #CFC9B8;
-      --text-2:  #E8E2D4;
-      --muted:   #6A6254;
-      --line:    rgba(201,168,76,0.12);
+      --navy:    #07111f;
+      --navy-2:  #0d1728;
+      --navy-3:  #101b2d;
+      --gold:    #d4af37;
+      --gold-dim: rgba(212,175,55,0.10);
+      --gold-line: rgba(212,175,55,0.22);
+      --text:    #f4efe4;
+      --text-2:  #d9cfbf;
+      --muted:   #a79d8b;
+      --line:    rgba(212,175,55,0.12);
       --line-2:  rgba(255,255,255,0.05);
       --serif:   'Cormorant Garamond', serif;
       --mono:    'DM Mono', monospace;
@@ -125,8 +125,8 @@
     }
 
     @keyframes pulse {
-      0%, 100% { opacity: 1; box-shadow: 0 0 0 0 rgba(201,168,76,0.4); }
-      50% { opacity: 0.6; box-shadow: 0 0 0 4px rgba(201,168,76,0); }
+      0%, 100% { opacity: 1; box-shadow: 0 0 0 0 rgba(212,175,55,0.4); }
+      50% { opacity: 0.6; box-shadow: 0 0 0 4px rgba(212,175,55,0); }
     }
 
     /* ── Layout ── */
@@ -245,7 +245,7 @@
     .method {
       font-size: 0.55rem;
       padding: 2px 6px;
-      background: rgba(201,168,76,0.15);
+      background: rgba(212,175,55,0.15);
       color: var(--gold);
       letter-spacing: 0.1em;
     }
@@ -259,7 +259,7 @@
     .graph-area {
       position: relative;
       overflow: hidden;
-      background: radial-gradient(ellipse 50% 50% at 60% 40%, rgba(201,168,76,0.03) 0%, transparent 70%);
+      background: radial-gradient(ellipse 50% 50% at 60% 40%, rgba(212,175,55,0.03) 0%, transparent 70%);
     }
 
     .graph-controls {
@@ -402,7 +402,7 @@
       <div class="stat-value" id="edge-count">—</div>
       <div class="stat-label">Relazioni</div>
       <div class="stat-bar">
-        <div class="stat-bar-fill" id="edge-bar" style="background:rgba(201,168,76,0.6)"></div>
+        <div class="stat-bar-fill" id="edge-bar" style="background:rgba(212,175,55,0.6)"></div>
       </div>
     </div>
 
@@ -429,12 +429,12 @@
         <span class="type-count">:8000</span>
       </div>
       <div class="type-row loaded">
-        <div class="type-dot" style="background:rgba(201,168,76,0.6)"></div>
+        <div class="type-dot" style="background:rgba(212,175,55,0.6)"></div>
         <span class="type-name">FastAPI + uvicorn</span>
         <span class="type-count">active</span>
       </div>
       <div class="type-row loaded">
-        <div class="type-dot" style="background:rgba(201,168,76,0.4)"></div>
+        <div class="type-dot" style="background:rgba(212,175,55,0.4)"></div>
         <span class="type-name">GitHub Actions</span>
         <span class="type-count">CI/CD</span>
       </div>
@@ -471,7 +471,7 @@ const API       = 'https://api.cognitivelogic.it';
 const GRAPH_URL = 'data/qen_graph_v4.json';
 
 const TYPE_COLORS = {
-  'Progetto':           '#C9A84C',
+  'Progetto':           '#d4af37',
   'Framework':          '#D4B460',
   'Algoritmo':          '#A89060',
   'Territorio':         '#7A9A6A',
@@ -636,7 +636,7 @@ function buildGraph(nodesObj, edgesArr) {
     .selectAll('line')
     .data(edges)
     .join('line')
-    .attr('stroke', 'rgba(201,168,76,0.07)')
+    .attr('stroke', 'rgba(212,175,55,0.07)')
     .attr('stroke-width', 0.7);
 
   const node = g.append('g')
