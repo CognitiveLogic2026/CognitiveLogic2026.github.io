@@ -34,6 +34,14 @@
   --container: 1200px;
   --nav-height: 80px;
   --transition: 220ms ease;
+  --mono: 'DM Mono', monospace;
+  --serif: 'Cormorant Garamond', serif;
+  --text-2: #d9cfbf;
+  --line-2: rgba(255, 255, 255, 0.06);
+  --gold-line: rgba(212, 175, 55, 0.22);
+  --navy-2: #0d1728;
+  --navy-3: #101b2d;
+  --good: #85c98d;
 }
 
 *,
