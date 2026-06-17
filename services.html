@@ -26,10 +26,16 @@
     --dim: var(--text-soft);
     --faint: var(--line-soft);
   }
-  html { scroll-behavior: smooth; }
+  html { scroll-behavior: smooth; background: #06101d; }
   body {
+    background:
+      radial-gradient(circle at top left, rgba(212,175,55,0.10), transparent 30%),
+      radial-gradient(circle at 85% 15%, rgba(212,175,55,0.06), transparent 20%),
+      linear-gradient(180deg, #06101d 0%, #081321 40%, #0a1626 100%);
+    color: #f4efe4;
     overflow-x: hidden;
   }
+  .mt-8 { margin-top: 8px; }
 
 /* HERO */
 .hero {
@@ -430,6 +436,40 @@ text-transform: uppercase; color: var(--muted);
 .formula-val {
 font-family: “DM Mono”, monospace;
 font-size: 0.72rem; color: var(--gold-soft);
+}
+
+/* TABLET / MOBILE RESPONSIVE */
+@media (max-width: 900px) {
+  .header-inner {
+    flex-wrap: wrap;
+    min-height: auto;
+    padding: 14px 0;
+    gap: 12px;
+  }
+  .main-nav {
+    order: 3;
+    width: 100%;
+    gap: 14px;
+    flex-wrap: wrap;
+  }
+  .header-end {
+    margin-left: auto;
+  }
+  .hero {
+    min-height: 60vh;
+  }
+}
+@media (max-width: 600px) {
+  .hero h1 {
+    font-size: clamp(2.2rem, 9vw, 3.5rem);
+  }
+  .process-grid {
+    grid-template-columns: 1fr;
+  }
+  .pstep { border-right: none; border-bottom: 1px solid var(--line-soft); }
+  .pstep:last-child { border-bottom: none; }
+  .onboarding-band { padding: clamp(2rem,5vw,4rem) clamp(1.5rem,5vw,3rem); }
+  .metrics-band { padding: clamp(2rem,5vw,4rem) clamp(1.5rem,5vw,3rem); }
 }
 </style>
 
