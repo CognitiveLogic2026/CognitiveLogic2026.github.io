@@ -42,13 +42,16 @@ Studio notarile consigliato: [TBD — preferibilmente Bologna / Casalecchio di R
 | Data | Evento | Fonte / Prova |
 |------|--------|---------------|
 | **11 novembre 2025** | Registrazione dominio cognitivelogic.it | WHOIS — "Created November 11, 2025" (S5b) |
+| **20 gennaio 2026** | Prima stesura manuale operativo motore QEN | `QEN_ALGORITMO.pdf` — data intestazione documento |
 | **25 febbraio 2026** | Prima indicizzazione pubblica sito | Microsoft Bing Webmaster Tools — prima submission sitemap (S4) |
 | **8 giugno 2026** | 493 commit GitHub certificati | Screenshot repo CognitiveLogic2026 (S1) |
 | Early 2026 | Inizio sviluppo QEN — Quantificazione Etica Naturale | — |
 | **25 maggio 2026** | Completamento MVP | Deploy log Hetzner |
 | **26–27 maggio 2026** | Deployment in produzione | Console Hetzner VPS |
 
-> **Nota legale:** La data più antica documentata da terze parti indipendenti è **11 novembre 2025** (registrazione dominio, certificata da WHOIS). La prima prova di pubblicazione pubblica verificabile è **25 febbraio 2026** (Bing Webmaster Tools — Microsoft).
+> **Nota legale:** La data più antica documentata da terze parti indipendenti è **11 novembre 2025** (registrazione dominio, certificata da WHOIS). Il primo documento interno datato del framework è **20 gennaio 2026** (`QEN_ALGORITMO.pdf`). La prima prova di pubblicazione pubblica verificabile è **25 febbraio 2026** (Bing Webmaster Tools — Microsoft).
+>
+> **Nota sulla sigla:** `QEN_ALGORITMO.pdf` riporta la variante "Quantificazione dell'Etica Naturale" (con articolo). Ai fini del presente deposito la sigla ufficiale è **QEN — Quantificazione Etica Naturale** (senza articolo), come stabilito in tutti i documenti successivi.
 
 ---
 
@@ -105,11 +108,12 @@ Studio notarile consigliato: [TBD — preferibilmente Bologna / Casalecchio di R
 ## 4. ALLEGATI FISICI (da stampare e consegnare al notaio)
 
 ### 4.1 Codice Sorgente Stampato
-- [ ] `orchestrator.py` (con intestazione: "Roberto Malini — Cognitive Logic — QEN Framework")
-- [ ] `qen_context.py` (modulo di contesto)
+- [ ] `orchestrator.py` (con intestazione: "Roberto Malini — Cognitive Logic — QEN — Quantificazione Etica Naturale")
+- [ ] **Allegato J** — `AllegatoJqen_context.pdf` — `qen_context.py`, versione Diamante 26.0, 12/06/2026 (9 pag.)
+- [ ] **Codice_QEN.pdf** — `QEN_Generatore_Report.ipynb` — notebook Jupyter generatore report PDF (13 pag.)
 - [ ] `graph_expanded.json` (estratto)
 
-**Formato:** Stampa con footer contenente:
+**Formato stampa — footer obbligatorio:**
 ```
 © 2026 Roberto Malini | Cognitive Logic | QEN — Quantificazione Etica Naturale
 Data di creazione: 25–26 maggio 2026
@@ -117,7 +121,9 @@ Ubicazione deployment: Hetzner VPS `cognitive-node-01` (178.104.190.107)
 ```
 
 ### 4.2 Documentazione Progettuale
-- [ ] `QEN_FRAMEWORK_SPECIFICATION.md` (stampa, 4–5 pagine)
+- [ ] **Allegato H** — `AllegatoHQEN_FRAMEWORK_SPEC.pdf` — QEN Framework Specification v2.0, 12/06/2026 (5 pag.)
+- [ ] **MANUALE_TECNICO_OPERATIVO_MOTORE_QEN_v1.0_.pdf** — Architettura motore, dashboard, compliance filter (6 pag.)
+- [ ] **QEN_ALGORITMO.pdf** — Prima stesura manuale operativo, **data: 20 gennaio 2026** (2 pag.) — documento più antico del framework
 - [ ] `INFRASTRUCTURE_SPEC.md` (stampa, 2–3 pagine)
 - [ ] `RECONCILIATION_PROTOCOL.md` (stampa, 2–3 pagine)
 
