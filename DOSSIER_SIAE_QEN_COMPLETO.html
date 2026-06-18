@@ -1,0 +1,1523 @@
+<!DOCTYPE html>
+<!--
+  Copyright (c) 2026 Roberto Bob Malini - Cognitive Logic
+  QEN Framework — Dossier SIAE — Registro Pubblico Speciale Software
+  Licensed under CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/)
+-->
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dossier SIAE — QEN Framework — Cognitive Logic</title>
+  <style>
+    :root {
+      --navy: #0d1b2a;
+      --navy2: #1a2d42;
+      --gold: #c9a84c;
+      --gold-light: #f0d98a;
+      --white: #f9f7f2;
+      --muted: #8a9bb0;
+      --line: rgba(201,168,76,0.25);
+      --code-bg: #0a0f18;
+      --serif: 'Georgia', serif;
+      --mono: 'Courier New', monospace;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: var(--navy);
+      color: var(--white);
+      font-family: var(--serif);
+      font-size: 14px;
+      line-height: 1.7;
+    }
+    /* ── COVER ── */
+    .cover {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 60px 40px;
+      border-bottom: 3px solid var(--gold);
+      background: linear-gradient(180deg, #0a1220 0%, var(--navy) 100%);
+    }
+    .cover-siae-badge {
+      font-size: 0.65rem;
+      letter-spacing: 0.18em;
+      color: var(--gold);
+      border: 1px solid var(--gold);
+      padding: 6px 18px;
+      margin-bottom: 36px;
+      text-transform: uppercase;
+    }
+    .cover h1 {
+      font-size: clamp(2rem, 4vw, 3.2rem);
+      font-weight: 300;
+      letter-spacing: 0.04em;
+      line-height: 1.25;
+      margin-bottom: 8px;
+    }
+    .cover h1 em { font-style: italic; color: var(--gold); }
+    .cover .cover-sub {
+      font-size: 0.9rem;
+      color: var(--muted);
+      margin-top: 16px;
+      max-width: 600px;
+    }
+    .cover-meta {
+      margin-top: 48px;
+      border: 1px solid var(--line);
+      padding: 28px 40px;
+      max-width: 560px;
+      width: 100%;
+      text-align: left;
+    }
+    .cover-meta-row {
+      display: flex;
+      justify-content: space-between;
+      padding: 6px 0;
+      border-bottom: 1px solid var(--line);
+      font-size: 0.8rem;
+    }
+    .cover-meta-row:last-child { border-bottom: none; }
+    .cover-meta-row .lbl { color: var(--gold); font-size: 0.65rem; letter-spacing: 0.1em; text-transform: uppercase; }
+    .cover-meta-row .val { color: var(--white); }
+    /* ── LAYOUT ── */
+    .container { max-width: 900px; margin: 0 auto; padding: 0 32px; }
+    /* ── TOC ── */
+    .toc {
+      padding: 60px 0;
+      border-bottom: 1px solid var(--line);
+    }
+    .toc h2 { font-size: 0.65rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); margin-bottom: 24px; }
+    .toc ol { list-style: none; counter-reset: toc; }
+    .toc li { counter-increment: toc; padding: 7px 0; border-bottom: 1px solid rgba(201,168,76,0.08); display: flex; gap: 16px; }
+    .toc li::before { content: counter(toc, decimal-leading-zero); color: var(--gold); font-size: 0.7rem; opacity: 0.6; flex-shrink: 0; width: 24px; }
+    .toc a { color: var(--white); text-decoration: none; font-size: 0.875rem; }
+    .toc a:hover { color: var(--gold); }
+    /* ── SECTIONS ── */
+    .section {
+      padding: 56px 0;
+      border-bottom: 1px solid var(--line);
+    }
+    .section-label {
+      font-size: 0.62rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 12px;
+      display: block;
+    }
+    h2.section-title {
+      font-size: 1.7rem;
+      font-weight: 300;
+      line-height: 1.3;
+      margin-bottom: 24px;
+    }
+    h3 {
+      font-size: 1.05rem;
+      font-weight: 400;
+      color: var(--gold-light);
+      margin: 28px 0 10px;
+    }
+    h4 {
+      font-size: 0.85rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin: 20px 0 8px;
+    }
+    p { margin-bottom: 12px; font-size: 0.9rem; color: #d0cfc8; line-height: 1.8; }
+    ul, ol { margin: 10px 0 16px 20px; }
+    li { margin-bottom: 6px; font-size: 0.875rem; color: #d0cfc8; }
+    /* ── FORMULA BOX ── */
+    .formula-box {
+      border: 1px solid var(--gold);
+      padding: 28px 32px;
+      margin: 24px 0;
+      text-align: center;
+      background: rgba(201,168,76,0.04);
+    }
+    .formula-box .formula {
+      font-family: var(--mono);
+      font-size: 1.1rem;
+      color: var(--gold);
+      letter-spacing: 0.05em;
+    }
+    .formula-box .formula-sub {
+      font-size: 0.75rem;
+      color: var(--muted);
+      margin-top: 10px;
+    }
+    /* ── TABLE ── */
+    table { width: 100%; border-collapse: collapse; margin: 20px 0; font-size: 0.8rem; }
+    th { background: var(--navy2); color: var(--gold); padding: 10px 14px; text-align: left; font-size: 0.65rem; letter-spacing: 0.12em; text-transform: uppercase; border-bottom: 1px solid var(--gold); }
+    td { padding: 10px 14px; border-bottom: 1px solid rgba(255,255,255,0.06); color: #d0cfc8; vertical-align: top; }
+    tr:hover td { background: rgba(255,255,255,0.02); }
+    /* ── ALLEGATO BOX ── */
+    .allegato {
+      border-left: 3px solid var(--gold);
+      padding: 20px 24px;
+      margin: 20px 0;
+      background: rgba(255,255,255,0.02);
+    }
+    .allegato-label {
+      font-size: 0.62rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 6px;
+    }
+    .allegato h3 { margin: 0 0 10px; font-size: 0.95rem; }
+    .allegato p, .allegato li { font-size: 0.82rem; }
+    /* ── CODE ── */
+    .code-block {
+      background: var(--code-bg);
+      border: 1px solid rgba(201,168,76,0.2);
+      border-left: 3px solid var(--gold);
+      padding: 20px;
+      margin: 16px 0;
+      overflow-x: auto;
+      max-height: 500px;
+      overflow-y: auto;
+    }
+    .code-block pre {
+      font-family: var(--mono);
+      font-size: 0.75rem;
+      line-height: 1.6;
+      color: #b8cfe8;
+      white-space: pre;
+    }
+    .code-block pre .cm { color: #5c7a9e; }
+    /* ── TIMELINE ── */
+    .timeline { margin: 24px 0; }
+    .tl-item {
+      display: flex;
+      gap: 20px;
+      padding: 14px 0;
+      border-bottom: 1px solid var(--line);
+    }
+    .tl-date { color: var(--gold); font-size: 0.75rem; min-width: 120px; font-family: var(--mono); }
+    .tl-body { font-size: 0.85rem; color: #d0cfc8; }
+    .tl-body strong { color: var(--white); }
+    /* ── DECLARATION ── */
+    .declaration-box {
+      border: 1px solid var(--gold);
+      padding: 36px 40px;
+      margin: 24px 0;
+      background: rgba(201,168,76,0.03);
+    }
+    .declaration-box p { font-size: 0.875rem; }
+    .signature-line {
+      border-top: 1px solid var(--gold);
+      margin-top: 36px;
+      padding-top: 16px;
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+    /* ── PROOF STRIP ── */
+    .proof-strip {
+      background: var(--navy2);
+      padding: 24px 32px;
+      margin: 20px 0;
+      display: flex;
+      gap: 8px;
+      align-items: flex-start;
+    }
+    .proof-strip .icon { color: var(--gold); font-size: 1.2rem; flex-shrink: 0; }
+    .proof-strip .proof-text { font-size: 0.82rem; color: #d0cfc8; }
+    /* ── FOOTER ── */
+    .doc-footer {
+      text-align: center;
+      padding: 40px 32px;
+      border-top: 1px solid var(--line);
+      font-size: 0.75rem;
+      color: var(--muted);
+    }
+    /* ── PRINT ── */
+    @media print {
+      body { background: white; color: black; font-size: 11px; }
+      .cover { min-height: auto; padding: 40px; border-bottom: 2px solid #c9a84c; }
+      .code-block { max-height: none; overflow: visible; }
+      .section { page-break-inside: avoid; }
+    }
+    @media (max-width: 600px) {
+      .container { padding: 0 16px; }
+      .cover-meta { padding: 18px 20px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ══════════════════════════════════════════════
+     FRONTESPIZIO
+═══════════════════════════════════════════════ -->
+<div class="cover" id="top">
+  <div class="cover-siae-badge">SIAE · Registro Pubblico Speciale per il Software · L. 633/1941</div>
+  <h1>
+    QEN Framework<br>
+    <em>Quantificazione Etica Naturale</em>
+  </h1>
+  <p class="cover-sub">
+    Dossier tecnico-scientifico per il deposito presso la Società Italiana degli Autori ed Editori.<br>
+    Versione Diamante 26.0 — 18 giugno 2026
+  </p>
+
+  <div class="cover-meta">
+    <div class="cover-meta-row">
+      <span class="lbl">Autore</span>
+      <span class="val">Roberto Bob Malini</span>
+    </div>
+    <div class="cover-meta-row">
+      <span class="lbl">Codice Fiscale</span>
+      <span class="val">MLNRRT62H06A944U</span>
+    </div>
+    <div class="cover-meta-row">
+      <span class="lbl">DID</span>
+      <span class="val">did:web:cognitivelogic.it:robertomalini</span>
+    </div>
+    <div class="cover-meta-row">
+      <span class="lbl">Organizzazione</span>
+      <span class="val">Cognitive Logic — cognitivelogic.it</span>
+    </div>
+    <div class="cover-meta-row">
+      <span class="lbl">Opera depositata</span>
+      <span class="val">QEN — Quantificazione Etica Naturale / Quantifying Ethical Network</span>
+    </div>
+    <div class="cover-meta-row">
+      <span class="lbl">Tipo opera</span>
+      <span class="val">Software — Algoritmo di scoring etico — Framework IA</span>
+    </div>
+    <div class="cover-meta-row">
+      <span class="lbl">Versione</span>
+      <span class="val">Diamante 26.0 · API v3.2 · Graph v6.0 · Riconciliazione v2.0.0</span>
+    </div>
+    <div class="cover-meta-row">
+      <span class="lbl">Data documento</span>
+      <span class="val">18 giugno 2026</span>
+    </div>
+    <div class="cover-meta-row">
+      <span class="lbl">Repository</span>
+      <span class="val">github.com/CognitiveLogic2026/CognitiveLogic2026.github.io</span>
+    </div>
+    <div class="cover-meta-row">
+      <span class="lbl">API Base URL</span>
+      <span class="val">https://api.cognitivelogic.it</span>
+    </div>
+    <div class="cover-meta-row">
+      <span class="lbl">Licenza documentazione</span>
+      <span class="val">CC BY-SA 4.0 — codice sorgente copyright riservato</span>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════
+     INDICE
+═══════════════════════════════════════════════ -->
+<div class="toc">
+  <div class="container">
+    <h2>Indice del Dossier</h2>
+    <ol>
+      <li><a href="#s1">Descrizione dell'Opera — QEN Framework</a></li>
+      <li><a href="#s2">Formula Matematica e Algoritmo di Scoring</a></li>
+      <li><a href="#s3">Architettura Tecnica del Sistema</a></li>
+      <li><a href="#s4">Verticali di Mercato e Algoritmi Specializzati</a></li>
+      <li><a href="#s5">Conformità Normativa Integrata</a></li>
+      <li><a href="#s6">Catena di Anteriorità — Prove di Data Certa</a></li>
+      <li><a href="#s7">Allegato A — Data Must Be (Manifesto Dati)</a></li>
+      <li><a href="#s8">Allegato B — QEN Algoritmo (20 gennaio 2026)</a></li>
+      <li><a href="#s9">Allegato C — Manuale Tecnico Operativo</a></li>
+      <li><a href="#s10">Allegato D — Architettura Riconciliazione</a></li>
+      <li><a href="#s11">Allegato E — GLM/EVIDE Integration Strategy</a></li>
+      <li><a href="#s12">Allegato F — Copilot API Documentation</a></li>
+      <li><a href="#s13">Allegato G — Codice QEN (Notebook Python)</a></li>
+      <li><a href="#s14">Allegato H — QEN Framework Specification v2.0</a></li>
+      <li><a href="#s15">Allegato J — qen_context.py (Single Source of Truth)</a></li>
+      <li><a href="#s16">Allegato K — Screenshot Pubblicazioni Pubbliche</a></li>
+      <li><a href="#s17">Codice Sorgente — orchestrator.py</a></li>
+      <li><a href="#s18">Codice Sorgente — qen_scoring_engine.py</a></li>
+      <li><a href="#s19">Codice Sorgente — qen_config.py</a></li>
+      <li><a href="#s20">Dichiarazione dell'Autore per SIAE</a></li>
+    </ol>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════
+     S1 — DESCRIZIONE DELL'OPERA
+═══════════════════════════════════════════════ -->
+<div class="section" id="s1">
+  <div class="container">
+    <span class="section-label">Sezione 1</span>
+    <h2 class="section-title">Descrizione dell'Opera — QEN Framework</h2>
+
+    <p>Il <strong>QEN Framework</strong> (<em>Quantificazione Etica Naturale</em> / <em>Quantifying Ethical Network</em>) è un sistema proprietario di scoring etico multi-dimensionale progettato per valutare operatori economici del settore HoReCa (Hotel, Ristoranti, Caffè), stabilimenti balneari e PMI artigianali rispetto a tre assi valoriali quantificabili.</p>
+
+    <p>L'opera è composta da: algoritmo matematico di scoring, motore di riconciliazione dati, sistema multi-agente LLM (Large Language Model), grafo semantico di conoscenza con 328 nodi, API REST documentata, modulo di compliance normativa EU AI Act/GDPR/CSRD, e interfaccia Copilot per analisi in tempo reale.</p>
+
+    <h3>I tre assi valoriali</h3>
+    <table>
+      <tr><th>Asse</th><th>Sigla</th><th>Descrizione</th><th>Peso</th></tr>
+      <tr><td>Valore Sociale</td><td>VS</td><td>Rispetto dei diritti dei lavoratori, certificazioni etiche (SA8000, FairTrade, B Corp), governance HR, CCNL compliance, formazione, diversity &amp; inclusion</td><td>40%</td></tr>
+      <tr><td>Valore Ambientale</td><td>VA</td><td>Efficienza energetica, gestione rifiuti, certificazioni biologiche (ICEA/CCPB), impronta carbonica, percentuale fonti rinnovabili</td><td>35%</td></tr>
+      <tr><td>Valore Territoriale</td><td>VT</td><td>Radicamento nella filiera locale, prossimità fornitori (km0), impatto comunitario, denominazioni geografiche (DOP/IGP/STG/PAT)</td><td>25%</td></tr>
+    </table>
+
+    <h3>Badge di certificazione QEN</h3>
+    <table>
+      <tr><th>Badge</th><th>Range Score</th><th>Descrizione</th></tr>
+      <tr><td>QEN Diamante</td><td>90–100</td><td>Eccellenza etica — leader di categoria</td></tr>
+      <tr><td>QEN Oro</td><td>80–89</td><td>Alta performance etico-sostenibile</td></tr>
+      <tr><td>QEN Argento</td><td>70–79</td><td>Buona conformità — margini di miglioramento</td></tr>
+      <tr><td>QEN Bronzo</td><td>60–69</td><td>Base minima raggiunta — percorso miglioramento consigliato</td></tr>
+      <tr><td>QEN In Sviluppo</td><td>&lt; 60</td><td>Onboarding in corso — supporto Cognitive Logic</td></tr>
+    </table>
+
+    <p>Il framework è operativo dal Q1 2026. Il sistema è raggiungibile all'indirizzo <strong>cognitivelogic.it</strong> e tramite le API pubbliche <strong>api.cognitivelogic.it</strong>. Il grafo semantico è pubblicato in forma interattiva alla pagina <strong>cognitivelogic.it/qen-live.html</strong>.</p>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════
+     S2 — FORMULA
+═══════════════════════════════════════════════ -->
+<div class="section" id="s2">
+  <div class="container">
+    <span class="section-label">Sezione 2</span>
+    <h2 class="section-title">Formula Matematica e Algoritmo di Scoring</h2>
+
+    <h3>2.1 Formula Standard (produzione)</h3>
+    <div class="formula-box">
+      <div class="formula">QEN_score = (VS × 0.40) + (VA × 0.35) + (VT × 0.25)</div>
+      <div class="formula-sub">VS, VA, VT ∈ [0, 100] · QEN_score ∈ [0, 100] · Soglia certificazione: ≥ 75</div>
+    </div>
+
+    <h3>2.2 Formula Copilot API (endpoint pubblici)</h3>
+    <div class="formula-box">
+      <div class="formula">QEN_score_copilot = (VS + VA + VT) / 3</div>
+      <div class="formula-sub">Utilizzata negli endpoint /copilot-analyze e /gemini/qen-score per semplicità di integrazione</div>
+    </div>
+
+    <h3>2.3 Normalizzazione automatica scala</h3>
+    <div class="code-block">
+      <pre>if max(VS, VA, VT) &lt;= 10:
+    VS, VA, VT = VS * 10, VA * 10, VT * 10  # scala 0-10 → 0-100
+
+# Il sistema accetta input in scala 0-10 o 0-100
+# e normalizza automaticamente.</pre>
+    </div>
+
+    <h3>2.4 Formula con Motore di Riconciliazione (v2.0)</h3>
+    <div class="formula-box">
+      <div class="formula">QEN_raw   = VS×0.40 + VA×0.35 + VT×0.25</div>
+      <div class="formula" style="margin-top:8px">QEN_final = max(0, QEN_raw + Σ aggiustamenti_riconciliazione)</div>
+      <div class="formula-sub">QEN_BASE_SCORE = 75 · Punteggio di partenza prima della riconciliazione</div>
+    </div>
+
+    <h3>2.5 Soglie e aggiustamenti del motore di riconciliazione</h3>
+    <table>
+      <tr><th>Stato</th><th>Scostamento dichiarato/verificato</th><th>Aggiustamento</th><th>Escalation</th></tr>
+      <tr><td>ALIGNED</td><td>0%</td><td>0 pt</td><td>Nessuna</td></tr>
+      <tr><td>GREEN</td><td>0% – 15%</td><td>−5 pt</td><td>Nessuna</td></tr>
+      <tr><td>YELLOW</td><td>15% – 30%</td><td>−15 pt</td><td>Automatica</td></tr>
+      <tr><td>RED</td><td>&gt; 30% o boolean mismatch</td><td>−30 pt</td><td>Automatica</td></tr>
+    </table>
+
+    <h3>2.6 Parametri riconciliabili con fonti esterne certificate</h3>
+    <table>
+      <tr><th>Parametro</th><th>Fonte Esterna</th><th>Affidabilità</th><th>Tipo</th></tr>
+      <tr><td>distanza_media_fornitori_km</td><td>OpenStreetMap</td><td>0.75</td><td>Numerico</td></tr>
+      <tr><td>biologico_certificato</td><td>ICEA</td><td>0.90</td><td>Booleano</td></tr>
+      <tr><td>percentuale_scarti</td><td>InfoCamere</td><td>0.75</td><td>Numerico</td></tr>
+      <tr><td>consumo_kwh_anno</td><td>InfoCamere</td><td>0.75</td><td>Numerico</td></tr>
+      <tr><td>eu_ai_compliant</td><td>NANDO</td><td>0.92</td><td>Booleano</td></tr>
+    </table>
+
+    <h3>2.7 I 10 KPI fondamentali (dal documento QEN_ALGORITMO, 20/01/2026)</h3>
+    <p>Il documento originario del 20 gennaio 2026 elenca i 10 parametri fondamentali (Key Performance Indicators) dell'Etica Naturale:</p>
+    <ol>
+      <li><strong>Km-Zero Reale</strong> — Distanza tracciata tra produttore e sede HoReCa</li>
+      <li><strong>Indice di Imballaggio</strong> — Percentuale materiali riciclati/compostabili nel packaging</li>
+      <li><strong>Efficienza Risorse</strong> — Rapporto tra consumo idrico/elettrico e coperti serviti</li>
+      <li><strong>Certificazione Validata</strong> — Presenza marchi etici riconosciuti (Bio, FairTrade)</li>
+      <li><strong>Dignità del Lavoro</strong> — Rispetto dei parametri salariali e dei turni etici</li>
+      <li><strong>Biodiversità</strong> — Utilizzo di varietà vegetali o razze animali non intensive</li>
+      <li><strong>Ciclo dei Rifiuti</strong> — Percentuale di recupero e riduzione degli sprechi alimentari</li>
+      <li><strong>Trasparenza Documentale</strong> — Facilità di accesso ai dati di filiera (Open Data)</li>
+      <li><strong>Impatto Sociale</strong> — Contributo dell'azienda alla comunità locale</li>
+      <li><strong>Integrità Digitale</strong> — Conformità GDPR, EU AI Act, sicurezza dei dati</li>
+    </ol>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════
+     S3 — ARCHITETTURA TECNICA
+═══════════════════════════════════════════════ -->
+<div class="section" id="s3">
+  <div class="container">
+    <span class="section-label">Sezione 3</span>
+    <h2 class="section-title">Architettura Tecnica del Sistema</h2>
+
+    <h3>Infrastruttura di produzione</h3>
+    <table>
+      <tr><th>Componente</th><th>Tecnologia</th><th>Dettaglio</th></tr>
+      <tr><td>Server VPS</td><td>Hetzner CAX21</td><td>ARM64, IP 178.104.190.107</td></tr>
+      <tr><td>API principale</td><td>Flask :5000</td><td>POST /copilot-analyze, POST /analyze, GET /pilots</td></tr>
+      <tr><td>Motore riconciliazione</td><td>FastAPI :8001</td><td>POST /api/reconcile, fonti esterne ICEA/InfoCamere/OSM</td></tr>
+      <tr><td>Orchestratore LLM</td><td>orchestrator.py</td><td>6 agenti specializzati, multi-provider</td></tr>
+      <tr><td>LLM primario</td><td>Claude Sonnet 4.6 (Anthropic)</td><td>Compliance audit, territorial mapping, advisory</td></tr>
+      <tr><td>LLM secondario</td><td>Gemini 2.5 Flash / 2.0 Flash (Google)</td><td>QEN score, cascade di fallback</td></tr>
+      <tr><td>LLM terziario</td><td>Mistral Large</td><td>Advisor alternativo</td></tr>
+      <tr><td>Grafo semantico</td><td>Knowledge Graph JSON</td><td>328 nodi, versione 6.0</td></tr>
+      <tr><td>Discovery</td><td>Google Places API v1</td><td>Text Search per settore e comune</td></tr>
+      <tr><td>Sito web</td><td>GitHub Pages</td><td>cognitivelogic.it / cognitivelogic2026.github.io</td></tr>
+    </table>
+
+    <h3>Pipeline dati — Flusso operativo</h3>
+    <div class="code-block">
+      <pre>Operatore HoReCa
+    │
+    ▼
+POST /copilot-analyze  (Flask :5000)
+    │   ├─ input: nome, lat, lon, vs, va, vt
+    │   └─ normalizzazione scala (0-10 → 0-100 se necessario)
+    │
+    ▼
+QEN Score Calculation
+    │   QEN = VS×0.40 + VA×0.35 + VT×0.25
+    │
+    ▼
+LLM Analysis (Gemini 2.5 Flash → Claude Sonnet fallback)
+    │   ├─ compliance audit
+    │   ├─ territorial mapping
+    │   └─ advisory narrative
+    │
+    ▼
+POST /api/reconcile  (FastAPI :8001)
+    │   ├─ fetch fonti esterne (ICEA, InfoCamere, OSM)
+    │   ├─ calcolo scostamenti
+    │   ├─ aggiustamento punteggio
+    │   └─ apertura escalation (se YELLOW/RED)
+    │
+    ▼
+QEN Badge + Report PDF
+    └─ archiviazione audit trail</pre>
+    </div>
+
+    <h3>Agenti LLM — Sistema multi-agente</h3>
+    <table>
+      <tr><th>Agente</th><th>Endpoint</th><th>Funzione</th></tr>
+      <tr><td>Compliance Auditor</td><td>POST /agents/compliance-auditor</td><td>Audit EU AI Act + GDPR + CSRD + QEN score</td></tr>
+      <tr><td>Territorial Mapper</td><td>POST /agents/territorial-mapper</td><td>Mappatura ecosistema territoriale, filiera corta</td></tr>
+      <tr><td>Advisory Council</td><td>POST /agents/advisory-council</td><td>Consulenza normativa EU, compliance pathways</td></tr>
+      <tr><td>Intelligence Feed</td><td>POST /agents/intelligence-feed</td><td>Feed intelligence mercato e segnali normativi</td></tr>
+      <tr><td>Bolkestein Assessor</td><td>POST /agents/bolkestein-assessment</td><td>Valutazione rischio Direttiva Bolkestein 2027</td></tr>
+      <tr><td>Discovery Pre-Assessor</td><td>POST /agents/places-batch-qen</td><td>Discovery + scoring batch via Google Places</td></tr>
+      <tr><td>Mistral Advisor</td><td>POST /agents/mistral-advisor</td><td>Advisor alternativo (Mistral Large)</td></tr>
+      <tr><td>QEN Reconciliation</td><td>POST /api/reconcile</td><td>Confronto autodichiarato vs fonti esterne certificate</td></tr>
+    </table>
+
+    <h3>Statistiche del Knowledge Graph (versione 6.0)</h3>
+    <table>
+      <tr><th>Metrica</th><th>Valore</th></tr>
+      <tr><td>Nodi semantici totali</td><td>328 (API Copilot) / 121 (QEN Graph v4)</td></tr>
+      <tr><td>Relazioni tipizzate</td><td>165</td></tr>
+      <tr><td>QEN Score massimo registrato</td><td>0.91 / 100</td></tr>
+      <tr><td>Algoritmi attivi</td><td>3 (Colt in Fragranza, TradRad, EcoLocal)</td></tr>
+      <tr><td>Algoritmi in sviluppo</td><td>3 (Veganoo, Bologna 100 Botteghe, Bolkestein Assessment)</td></tr>
+    </table>
+
+    <h3>Nodo GLM/EVIDE (Allegato E — 14/06/2026)</h3>
+    <p>Il framework include il Layer GLM/1.0 (Governance Language Model) ed EVIDE/1.0 (Evidence-Based Identity Digital Engine), registrato come nodo <strong>it.cognitivelogic.node.01</strong>. Questi componenti estendono il framework verso sistemi di identità digitale verificabile e governance algoritmica documentata.</p>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════
+     S4 — VERTICALI DI MERCATO
+═══════════════════════════════════════════════ -->
+<div class="section" id="s4">
+  <div class="container">
+    <span class="section-label">Sezione 4</span>
+    <h2 class="section-title">Verticali di Mercato e Algoritmi Specializzati</h2>
+
+    <table>
+      <tr><th>Verticale</th><th>Settore</th><th>Algoritmi</th><th>KPI Primari</th><th>Normativa</th></tr>
+      <tr>
+        <td>FOOD</td>
+        <td>Ristorazione, food service, catering (ISTAT 56.10, 56.21, 56.29, 56.30)</td>
+        <td>COLT_IN_FRAGRANZA, VEGANOO</td>
+        <td>biologico_certificato, percentuale_scarti, distanza_media_fornitori_km</td>
+        <td>HACCP, Green Claims, RASFF</td>
+      </tr>
+      <tr>
+        <td>BALNEARE</td>
+        <td>Stabilimenti balneari, lidi, beach club (1.850 strutture riviera romagnola)</td>
+        <td>ECO_LOCAL</td>
+        <td>consumo_kwh_anno, percentuale_scarti, eu_ai_compliant</td>
+        <td>Bolkestein 2027, concessioni demaniali, scadenza 31/12/2027</td>
+      </tr>
+      <tr>
+        <td>PMI</td>
+        <td>Piccole e medie imprese commerciali e artigianato (ISTAT 47, 95, 96)</td>
+        <td>TRAD_RAD, BOLOGNA_100_BOTTEGHE</td>
+        <td>distanza_media_fornitori_km, biologico_certificato</td>
+        <td>EU AI Act, GDPR, CSRD</td>
+      </tr>
+    </table>
+
+    <h3>Algoritmi per verticale — Prompt specializzati</h3>
+    <p>Il modulo <code>qen_scoring_engine.py</code> contiene prompt LLM specializzati per settore (codice completo in Sezione 18):</p>
+    <ul>
+      <li><strong>prompt_ristorazione</strong> — Pesi VS/VA/VT: 0.35/0.35/0.30, criteri ISO/CCNL/HR + energia/rifiuti + filiera locale</li>
+      <li><strong>prompt_alberghiero</strong> — Pesi VS/VA/VT: 0.35/0.35/0.30, criteri certificazioni/CCNL + energia/rifiuti + supply chain locale</li>
+      <li><strong>prompt_balneare</strong> — Pesi VS/VA/VT: 0.35/0.35/0.30, criteri certificazioni + energia + filiera</li>
+    </ul>
+
+    <h3>Modulo Bolkestein (qen-bolkestein/)</h3>
+    <p>Il modulo <code>qen-bolkestein/</code> estende il framework per la valutazione dell'impatto della Direttiva Servizi EU 2006/123/CE sulle concessioni italiane con scadenza 2027. Include: test di scarsità della risorsa, ragioni imperative di interesse generale (RIGI), giurisprudenza CGUE (C-458/14, C-20/21), QEN pre-assessment integrato.</p>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════
+     S5 — CONFORMITÀ NORMATIVA
+═══════════════════════════════════════════════ -->
+<div class="section" id="s5">
+  <div class="container">
+    <span class="section-label">Sezione 5</span>
+    <h2 class="section-title">Conformità Normativa Integrata</h2>
+
+    <table>
+      <tr><th>Normativa</th><th>Riferimento</th><th>Applicazione QEN</th><th>Stato</th></tr>
+      <tr><td>EU AI Act</td><td>Reg. UE 2024/1689</td><td>Sistemi AI ad alto rischio — trasparenza algoritmica, audit trail, human oversight (Allegati I/II/III)</td><td>CONFORME</td></tr>
+      <tr><td>GDPR</td><td>Reg. UE 2016/679</td><td>Art.22 (no decisione automatica definitiva), Art.35 (DPIA documentata)</td><td>CONFORME</td></tr>
+      <tr><td>Codice del Consumo</td><td>D.Lgs. 206/2005</td><td>Trasparenza scoring per consumatori finali</td><td>CONFORME</td></tr>
+      <tr><td>Direttiva Bolkestein</td><td>Dir. 2006/123/CE — scadenza 2027</td><td>Modulo qen-bolkestein/ per concessioni balneari, mercati, taxi</td><td>IN SVILUPPO</td></tr>
+      <tr><td>CSRD</td><td>Dir. 2022/2464/UE</td><td>Metriche VA esportabili per reporting di sostenibilità obbligatorio</td><td>IN SVILUPPO</td></tr>
+      <tr><td>Green Claims Directive</td><td>COM/2023/166</td><td>Certificato "Green Claim UE" — blocco azione per incoerenza etica</td><td>CONFORME</td></tr>
+      <tr><td>L. 633/1941</td><td>Legge sul diritto d'autore</td><td>Deposito SIAE — Registro Pubblico Speciale per il Software</td><td>IN DEPOSITO</td></tr>
+    </table>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════
+     S6 — CATENA DI ANTERIORITÀ
+═══════════════════════════════════════════════ -->
+<div class="section" id="s6">
+  <div class="container">
+    <span class="section-label">Sezione 6</span>
+    <h2 class="section-title">Catena di Anteriorità — Prove di Data Certa</h2>
+
+    <p>La seguente catena documentale dimostra la progressione temporale dell'opera dal momento della sua concezione alla sua pubblicazione pubblica, stabilendo la priorità intellettuale dell'autore.</p>
+
+    <div class="timeline">
+      <div class="tl-item">
+        <div class="tl-date">11/11/2025</div>
+        <div class="tl-body"><strong>Registrazione dominio cognitivelogic.it</strong><br>WHOIS data di registrazione del dominio cognitivelogic.it — prova di esistenza della struttura organizzativa prima della formalizzazione del framework.</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-date">20/01/2026</div>
+        <div class="tl-body"><strong>QEN_ALGORITMO.pdf — Prima specifica tecnica scritta</strong><br>Documento interno "Manuale Operativo: Motore QEN (Quantificazione dell'Etica Naturale)" — Progetto CognitiveLogic Intelligence, Architetto della Visione: Roberto Bob Malini. Contiene: workflow a 4 stadi (Ingestion → Extraction → Ethical Scoring → Compliance Output), i 10 KPI fondamentali, la formula matematica Score = (A×0.40) + (B×0.35) + (C×0.25), specifiche di sviluppo Python/React. <strong>Questo è il documento sorgente più antico del framework.</strong></div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-date">Q1 2026</div>
+        <div class="tl-body"><strong>Avvio operativo del framework</strong><br>Il QEN Framework diventa operativo. Avvio dei casi pilota nei settori HoReCa e balneare. Pubblicazione del sito cognitivelogic.it su GitHub Pages.</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-date">25/02/2026</div>
+        <div class="tl-body"><strong>Indicizzazione Microsoft/Bing Webmaster Tools</strong><br>Registrazione e verifica del sito cognitivelogic.it tramite Bing Webmaster Tools (Microsoft). La data di indicizzazione Microsoft costituisce prova di pubblicazione pubblica certificata da un provider terzo indipendente (Microsoft Corporation). Questa è la prova di anteriorità pubblica più forte nei confronti di terzi.</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-date">12/06/2026</div>
+        <div class="tl-body"><strong>Allegato H — QEN Framework Specification v2.0</strong><br>Specifica tecnica completa del motore di scoring con formula, KPI, badge, motore di riconciliazione v2.0, pipeline dati, conformità normativa. Autore: Roberto Bob Malini (CF: MLNRRT62H06A944U). Licenza: CC BY-SA 4.0.</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-date">12/06/2026</div>
+        <div class="tl-body"><strong>Allegato J — qen_context.py (Versione Diamante 26.0)</strong><br>Single source of truth del framework: costanti, formula, pesi, soglie, modelli LLM, prompt agenti, query discovery, verticali mercato, conformità normativa, endpoint API catalog. Versione: Diamante 26.0 · API v3.2 · Graph v6.0.</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-date">14/06/2026</div>
+        <div class="tl-body"><strong>Allegato E — GLM/EVIDE Integration Strategy</strong><br>Strategia di integrazione del Layer di Governance Linguistica (GLM/1.0) e del motore di identità digitale verificabile (EVIDE/1.0). Nodo certificato: it.cognitivelogic.node.01.</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-date">18/06/2026</div>
+        <div class="tl-body"><strong>Deposito SIAE — Registro Pubblico Speciale per il Software</strong><br>Presentazione del presente dossier alla SIAE per deposito dell'opera "QEN — Quantificazione Etica Naturale" nel Registro Pubblico Speciale ai sensi della L. 633/1941.</div>
+      </div>
+    </div>
+
+    <div class="proof-strip">
+      <div class="icon">⚖</div>
+      <div class="proof-text">
+        <strong>Nota legale:</strong> La catena documentale sopra descritta, unitamente al deposito SIAE e alla registrazione notarile, costituisce prova completa di anteriorità ai sensi della L. 633/1941 art. 2 n.8 (software) e dell'art. 2575 c.c. (diritto morale d'autore). L'indicizzazione Microsoft/Bing del 25/02/2026 rappresenta prova di data certa opponibile a terzi.
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════
+     S7 — ALLEGATO A
+═══════════════════════════════════════════════ -->
+<div class="section" id="s7">
+  <div class="container">
+    <span class="section-label">Sezione 7</span>
+    <h2 class="section-title">Allegato A — Data Must Be (Manifesto dei Dati)</h2>
+    <div class="allegato">
+      <div class="allegato-label">Allegato A · Data_Must_Be.pdf · 1 pagina</div>
+      <h3>Manifesto: I Dati Devono Essere</h3>
+      <p><em>"Beyond the graphical interface: data must be intelligible, transparent, and immediately operational for autonomous agents."</em></p>
+      <p>Il documento stabilisce il principio fondante del framework QEN: i dati non devono essere confinati in interfacce grafiche per uso umano, ma devono essere strutturati in modo da essere direttamente comprensibili, trasparenti e operabili da agenti autonomi. Questo principio è alla base del Knowledge Graph QEN e dell'architettura API-first del sistema.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════
+     S8 — ALLEGATO B
+═══════════════════════════════════════════════ -->
+<div class="section" id="s8">
+  <div class="container">
+    <span class="section-label">Sezione 8</span>
+    <h2 class="section-title">Allegato B — QEN Algoritmo (20 gennaio 2026)</h2>
+    <div class="allegato">
+      <div class="allegato-label">Allegato B · QEN_ALGORITMO.pdf · 2 pagine · Data: 20 gennaio 2026</div>
+      <h3>Manuale Operativo: Motore QEN (Quantificazione dell'Etica Naturale)</h3>
+      <p><strong>Progetto:</strong> CognitiveLogic Intelligence<br>
+      <strong>Architetto della Visione:</strong> Roberto Bob Malini<br>
+      <strong>Data:</strong> 20 Gennaio 2026</p>
+
+      <h4>1. Architettura Logica — Workflow del Software</h4>
+      <p>Il software deve operare come un "Filtro Deontologico" a quattro stadi:</p>
+      <ol>
+        <li><strong>Ingestion</strong> — Acquisizione dati (Fatture fornitori, consumi energetici, certificazioni)</li>
+        <li><strong>Extraction (AI-OCR)</strong> — Identificazione dei parametri chiave (chilometraggio, tipo imballaggio, origine bio)</li>
+        <li><strong>Ethical Scoring (Il Motore QEN)</strong> — Applicazione della formula matematica ai dati estratti</li>
+        <li><strong>Compliance Output</strong> — Generazione del certificato "Green Claim UE" o blocco dell'azione per incoerenza etica</li>
+      </ol>
+
+      <h4>2. I 10 Parametri Fondamentali (KPI dell'Etica Naturale)</h4>
+      <ol>
+        <li>Km-Zero Reale: Distanza tracciata tra produttore e sede HoReCa</li>
+        <li>Indice di Imballaggio: % materiali riciclati/compostabili nel packaging</li>
+        <li>Efficienza Risorse: Rapporto tra consumo idrico/elettrico e coperti serviti</li>
+        <li>Certificazione Validata: Presenza marchi etici riconosciuti (Bio, FairTrade)</li>
+        <li>Dignità del Lavoro: Rispetto parametri salariali e turni etici</li>
+        <li>Biodiversità: Utilizzo varietà vegetali o razze animali non intensive</li>
+        <li>Ciclo dei Rifiuti: % recupero e riduzione sprechi alimentari</li>
+        <li>Trasparenza Documentale: Facilità accesso dati di filiera (Open Data)</li>
+        <li>Impatto Sociale: Contributo dell'azienda alla comunità locale</li>
+        <li>Integrità Digitale: Conformità GDPR, EU AI Act, sicurezza dati</li>
+      </ol>
+
+      <h4>3. Formula (pagina 2 del documento originale)</h4>
+      <div class="formula-box" style="margin:12px 0">
+        <div class="formula">Score = (A × 0.40) + (B × 0.35) + (C × 0.25)</div>
+        <div class="formula-sub">
+          A = Compliance Legale (rispetto rigoroso Direttiva Green Claim UE)<br>
+          B = Tracciabilità Operativa (dati oggettivi estratti dai flussi logistici)<br>
+          C = Visione CVO (parametri discrezionali basati su Intelligence di Fuorimenu)
+        </div>
+      </div>
+
+      <h4>4. Specifiche per lo Sviluppo</h4>
+      <ul>
+        <li>Linguaggio: Python (analisi dati) con interfaccia React (Dashboard)</li>
+        <li>Database: Struttura non-relazionale per accogliere dati etici eterogenei</li>
+        <li>Requisito: Il sistema deve essere "Easy to personalize"</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════
+     S9 — ALLEGATO C
+═══════════════════════════════════════════════ -->
+<div class="section" id="s9">
+  <div class="container">
+    <span class="section-label">Sezione 9</span>
+    <h2 class="section-title">Allegato C — Manuale Tecnico Operativo Motore QEN v1.0</h2>
+    <div class="allegato">
+      <div class="allegato-label">Allegato C · MANUALE_TECNICO_OPERATIVO_MOTORE_QEN_v1.0.pdf · 6 pagine</div>
+      <h3>Manuale Tecnico Operativo del Motore QEN v1.0</h3>
+      <p>Il manuale tecnico operativo descrive l'architettura della dashboard QEN, il filtro di compliance, le strutture dati di input/output, e il protocollo di escalation automatica per i casi YELLOW e RED.</p>
+      <h4>Struttura Dashboard</h4>
+      <ul>
+        <li>Pannello principale QEN Score con indicatori VS/VA/VT</li>
+        <li>Filtro compliance EU AI Act integrato</li>
+        <li>Sistema di notifica escalation automatica</li>
+        <li>Report PDF generabile per audit trail</li>
+        <li>Cronologia analisi per operatore</li>
+      </ul>
+      <h4>Architettura del Filtro di Compliance</h4>
+      <p>Il filtro di compliance opera in quattro livelli: (1) Pre-screening automatico dei dati in ingresso, (2) Confronto con database normativo EU, (3) Calcolo QEN Score con motore di riconciliazione, (4) Generazione output certificato o segnalazione di non conformità.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════
+     S10 — ALLEGATO D
+═══════════════════════════════════════════════ -->
+<div class="section" id="s10">
+  <div class="container">
+    <span class="section-label">Sezione 10</span>
+    <h2 class="section-title">Allegato D — Architettura di Riconciliazione QEN</h2>
+    <div class="allegato">
+      <div class="allegato-label">Allegato D · QEN_ARCHITETTURA_RICONCILIAZIONE.pdf · 27 pagine</div>
+      <h3>Architettura di Riconciliazione v2.0 — Scenario C Hybrid Smart</h3>
+      <p>Il documento descrive il Motore di Riconciliazione QEN v2.0 che confronta i dati autodichiarati dall'operatore con fonti esterne certificate, implementando uno scenario "Hybrid Smart" di verifica.</p>
+      <h4>Scenari di Riconciliazione</h4>
+      <table>
+        <tr><th>Scenario</th><th>Descrizione</th></tr>
+        <tr><td>Scenario A — Autodichiarato puro</td><td>Solo dati forniti dall'operatore senza verifica esterna</td></tr>
+        <tr><td>Scenario B — Verifica parziale</td><td>Confronto con subset di fonti esterne disponibili</td></tr>
+        <tr><td>Scenario C — Hybrid Smart (adottato)</td><td>Confronto completo con tutte le fonti esterne certificate disponibili</td></tr>
+      </table>
+      <h4>Tolleranze e soglie (GREEN/YELLOW/RED)</h4>
+      <ul>
+        <li><strong>GREEN</strong> — Scostamento ≤ 15% — Aggiustamento: −5 pt</li>
+        <li><strong>YELLOW</strong> — Scostamento 15%–30% — Aggiustamento: −15 pt — Escalation automatica</li>
+        <li><strong>RED</strong> — Scostamento &gt; 30% o boolean mismatch — Aggiustamento: −30 pt — Escalation automatica</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════
+     S11 — ALLEGATO E
+═══════════════════════════════════════════════ -->
+<div class="section" id="s11">
+  <div class="container">
+    <span class="section-label">Sezione 11</span>
+    <h2 class="section-title">Allegato E — GLM/EVIDE Integration Strategy</h2>
+    <div class="allegato">
+      <div class="allegato-label">Allegato E · GLM_EVIDE_Integration_Strategy.pdf · 4 pagine · Data: 14/06/2026</div>
+      <h3>Strategia di Integrazione GLM/1.0 + EVIDE/1.0</h3>
+      <p>Il documento descrive la strategia di integrazione tra il Governance Language Model (GLM/1.0) e l'Evidence-Based Identity Digital Engine (EVIDE/1.0), due componenti proprietari del framework Cognitive Logic.</p>
+      <h4>Componenti</h4>
+      <ul>
+        <li><strong>GLM/1.0 (Governance Language Model)</strong> — Layer di governance algoritmica che garantisce la conformità EU AI Act attraverso audit trail documentato e supervisione umana (human oversight) su tutte le decisioni automatizzate</li>
+        <li><strong>EVIDE/1.0 (Evidence-Based Identity Digital Engine)</strong> — Motore di identità digitale verificabile che implementa il protocollo DID (Decentralized Identifier) per l'autenticazione degli agenti AI e la provenienza dei dati</li>
+        <li><strong>Nodo certificato:</strong> it.cognitivelogic.node.01</li>
+        <li><strong>DID autore:</strong> did:web:cognitivelogic.it:robertomalini</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════
+     S12 — ALLEGATO F
+═══════════════════════════════════════════════ -->
+<div class="section" id="s12">
+  <div class="container">
+    <span class="section-label">Sezione 12</span>
+    <h2 class="section-title">Allegato F — Documentazione API Copilot QEN v1.0</h2>
+    <div class="allegato">
+      <div class="allegato-label">Allegato F · AllegatoFCOPILOT_API.pdf · 6 pagine · Esplicitamente etichettato "ALLEGATO AL DOSSIER NOTARILE QEN FRAMEWORK"</div>
+      <h3>API QEN Copilot v1.0 — Cognitive Logic</h3>
+      <table>
+        <tr><th>Parametro</th><th>Valore</th></tr>
+        <tr><td>Versione API</td><td>1.0</td></tr>
+        <tr><td>Base URL</td><td>https://api.cognitivelogic.it</td></tr>
+        <tr><td>Grafo semantico</td><td>328 nodi — Knowledge Graph QEN</td></tr>
+        <tr><td>Verticali</td><td>FOOD | BALNEARE | PMI</td></tr>
+        <tr><td>Formula QEN Copilot</td><td>(VS + VA + VT) / 3</td></tr>
+        <tr><td>Autenticazione</td><td>Header X-API-Key oppure origine trusted</td></tr>
+        <tr><td>Rate limiting</td><td>10 req/min — 100 req/giorno per IP</td></tr>
+        <tr><td>Origini trusted</td><td>cognitivelogic.it, www.cognitivelogic.it, api.cognitivelogic.it</td></tr>
+      </table>
+      <h4>Endpoint principali</h4>
+      <table>
+        <tr><th>Metodo</th><th>Path</th><th>Funzione</th></tr>
+        <tr><td>GET</td><td>/health</td><td>Stato servizio — {"status":"ok","service":"CognitiveLogic QEN API","version":"3.2"}</td></tr>
+        <tr><td>POST</td><td>/copilot-analyze</td><td>QEN Score + analisi LLM Claude Sonnet 4.6</td></tr>
+        <tr><td>POST</td><td>/gemini/qen-score</td><td>QEN Score via Gemini 2.5 Flash (fallback: Claude Haiku)</td></tr>
+        <tr><td>POST</td><td>/gemini/compliance-audit</td><td>Audit EU AI Act via Gemini 2.5 Flash (fallback: Claude Sonnet)</td></tr>
+        <tr><td>GET</td><td>/pilots</td><td>Lista operatori analizzati (autenticato)</td></tr>
+      </table>
+      <h4>Badge QEN — Soglie API</h4>
+      <ul>
+        <li><strong>Badge QEN VERIFIED</strong> — QEN Score ≥ 75</li>
+        <li><strong>Badge QEN UNVERIFIED</strong> — QEN Score &lt; 75</li>
+      </ul>
+      <h4>Vettori API Copilot</h4>
+      <table>
+        <tr><th>Vettore</th><th>Significato</th><th>Scala</th></tr>
+        <tr><td>VS — Semantic Legality</td><td>Conformità EU AI Act, GDPR, legittimità regolatoria</td><td>0–100</td></tr>
+        <tr><td>VA — Accountability</td><td>Audit trail, supervisione umana, meccanismi di rimedio</td><td>0–100</td></tr>
+        <tr><td>VT — Territorial Trust</td><td>Qualità dati, trasparenza, reversibilità, consenso</td><td>0–100</td></tr>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════
+     S13 — ALLEGATO G
+═══════════════════════════════════════════════ -->
+<div class="section" id="s13">
+  <div class="container">
+    <span class="section-label">Sezione 13</span>
+    <h2 class="section-title">Allegato G — Codice QEN (Notebook Python / Report Generator)</h2>
+    <div class="allegato">
+      <div class="allegato-label">Allegato G · Codice_QEN.pdf · Google Colab Notebook Python</div>
+      <h3>QEN Report Generator — Google Colab Notebook</h3>
+      <p>Il notebook Python (Allegato G) implementa il generatore di report PDF QEN per uso operativo su tablet/iPad. Contiene il codice completo per la generazione del report con branding Cognitive Logic.</p>
+      <h4>Caratteristiche principali del notebook</h4>
+      <ul>
+        <li>Generazione report PDF con ReportLab — branding Navy + Gold di Cognitive Logic</li>
+        <li>Copertina con QEN Score per cliente, campi VS/VA/VT, badge di livello</li>
+        <li>Sezione "Analisi degli Indicatori" con dettaglio per vettore</li>
+        <li>Header: "QEN - QUANTIFICAZIONE DELL'ETICA NATURALE" (nomenclatura interna storica)</li>
+        <li>Footer: "CognitiveLogic | info@cognitivelogic.it | www.cognitivelogic.it"</li>
+        <li>Firma: "Roberto Bob Malini — CVO — CognitiveLogic | Bologna, 2026"</li>
+        <li>Disclaimer bilingue IT/EN sulla metodologia</li>
+        <li>Funzione <code>build_pdf(d, out)</code> — input: dict con vs_avg, va_avg, vt_avg, qen, cliente</li>
+      </ul>
+      <p>Il notebook produce report con etichetta "Framework QEN v1.0 - Validità 12 mesi", confermando la versione pubblica del framework al momento della scrittura del codice.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════
+     S14 — ALLEGATO H
+═══════════════════════════════════════════════ -->
+<div class="section" id="s14">
+  <div class="container">
+    <span class="section-label">Sezione 14</span>
+    <h2 class="section-title">Allegato H — QEN Framework Specification v2.0</h2>
+    <div class="allegato">
+      <div class="allegato-label">Allegato H · AllegatoHQEN_FRAMEWORK_SPEC.pdf · 5 pagine · Data: 12/06/2026 · Autore: Roberto Bob Malini · CF: MLNRRT62H06A944U</div>
+      <h3>Specifica Tecnica Completa del Motore di Scoring Etico</h3>
+      <p><em>"Il QEN Framework (Quantificazione Etica Naturale) è un sistema proprietario di scoring etico multi-dimensionale progettato per valutare operatori economici del settore HoReCa e PMI artigianali rispetto a tre assi valoriali: VS — Valore Sociale, VA — Valore Ambientale, VT — Valore Territoriale."</em></p>
+      <p><em>"Il framework è operativo dal Q1 2026 e certificato attraverso deposito notarile a Bologna/Casalecchio di Reno."</em></p>
+      <h4>Estratto codice normalizzazione (dalla specifica)</h4>
+      <div class="code-block"><pre>if max(VS, VA, VT) &lt;= 10:
+    VS, VA, VT = VS * 10, VA * 10, VT * 10  # scala 0-10 → 0-100</pre></div>
+      <h4>Tabella algoritmi per verticale</h4>
+      <table>
+        <tr><th>Algoritmo</th><th>Settore</th><th>Input primari</th><th>Stato</th></tr>
+        <tr><td>Colt in Fragranza</td><td>Ristorazione indipendente</td><td>VS, VT</td><td>ATTIVO</td></tr>
+        <tr><td>TradRad</td><td>Artigianato tradizionale</td><td>VS, VA</td><td>ATTIVO</td></tr>
+        <tr><td>EcoLocal</td><td>Ecosistema territoriale</td><td>VA, VT</td><td>ATTIVO</td></tr>
+        <tr><td>Veganoo</td><td>Ristorazione plant-based</td><td>VA, VT</td><td>ATTIVO</td></tr>
+        <tr><td>Bologna 100 Botteghe</td><td>Artigianato urbano</td><td>VS, VA, VT</td><td>Q4_2026</td></tr>
+        <tr><td>Bolkestein Assessment</td><td>Concessioni balneari</td><td>VS, VA, VT</td><td>ATTIVO</td></tr>
+      </table>
+      <h4>Diritti di Proprietà Intellettuale (dalla specifica)</h4>
+      <p><em>"Il QEN Framework è opera dell'ingegno di Roberto Bob Malini (CF: MLNRRT62H06A944U), registrato attraverso deposito notarile a Bologna nel 2026. Il sistema è licenziato sotto CC BY-SA 4.0 per la componente documentale e copyright riservato per il codice sorgente e gli algoritmi di scoring."</em></p>
+      <p><strong>DID:</strong> did:web:cognitivelogic.it:robertomalini<br>
+      <strong>Repository:</strong> github.com/CognitiveLogic2026/CognitiveLogic2026.github.io<br>
+      <strong>API:</strong> api.cognitivelogic.it · <strong>Sito:</strong> cognitivelogic.it</p>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════
+     S15 — ALLEGATO J
+═══════════════════════════════════════════════ -->
+<div class="section" id="s15">
+  <div class="container">
+    <span class="section-label">Sezione 15</span>
+    <h2 class="section-title">Allegato J — qen_context.py (Single Source of Truth)</h2>
+    <div class="allegato">
+      <div class="allegato-label">Allegato J · AllegatoJqen_context.pdf · 9 pagine · Versione Diamante 26.0 · Data: 12/06/2026</div>
+      <h3>Modulo Contesto Condiviso — qen_context.py</h3>
+      <p><em>"Questo modulo centralizza tutte le costanti, i prompt di sistema e le configurazioni del framework QEN. È il punto di verità unico (single source of truth) per formula, pesi, soglie, modelli LLM e mapping normativi. Ogni componente del sistema (Flask API, FastAPI Reconciliation, Orchestratore LLM) fa riferimento a questo contesto condiviso."</em></p>
+    </div>
+    <div class="code-block">
+      <pre><span class="cm"># Copyright (c) 2026 Roberto Bob Malini - Cognitive Logic
+# https://www.cognitivelogic.it
+# Licensed under CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/)
+
+# qen_context.py — Contesto condiviso del framework QEN (Quantificazione Etica Naturale)
+# Versione: Diamante 26.0 | Data: 2026-06-12 | Autore: Roberto Bob Malini</span>
+
+# ─────────────────────────────────────────────────────────────────────────────
+# 1. VERSIONING E METADATI
+# ─────────────────────────────────────────────────────────────────────────────
+QEN_FRAMEWORK_VERSION      = "Diamante 26.0"
+QEN_API_VERSION            = "3.2"
+QEN_GRAPH_VERSION          = "6.0"
+QEN_RECONCILIATION_VERSION = "2.0.0"
+AUTHOR       = "Roberto Bob Malini"
+AUTHOR_CF    = "MLNRRT62H06A944U"
+AUTHOR_DID   = "did:web:cognitivelogic.it:robertomalini"
+ORGANIZATION = "Cognitive Logic"
+DOMAIN       = "cognitivelogic.it"
+API_DOMAIN   = "api.cognitivelogic.it"
+LICENSE      = "CC BY-SA 4.0"
+
+# ─────────────────────────────────────────────────────────────────────────────
+# 2. FORMULA QEN E PESI
+# ─────────────────────────────────────────────────────────────────────────────
+# Formula standard (produzione): QEN = VS*0.40 + VA*0.35 + VT*0.25
+QEN_WEIGHT_VS = 0.40   # Valore Sociale
+QEN_WEIGHT_VA = 0.35   # Valore Ambientale
+QEN_WEIGHT_VT = 0.25   # Valore Territoriale
+QEN_BASE_SCORE     = 75
+QEN_SCORE_MIN      = 0
+QEN_SCORE_MAX      = 100
+QEN_SCALE_THRESHOLD = 10
+QEN_SCALE_FACTOR    = 10
+
+def qen_score(vs: float, va: float, vt: float) -> float:
+    """Formula QEN standard: VS*0.40 + VA*0.35 + VT*0.25."""
+    if max(vs, va, vt) &lt;= QEN_SCALE_THRESHOLD:
+        vs, va, vt = vs * QEN_SCALE_FACTOR, va * QEN_SCALE_FACTOR, vt * QEN_SCALE_FACTOR
+    return round(vs * QEN_WEIGHT_VS + va * QEN_WEIGHT_VA + vt * QEN_WEIGHT_VT, 2)
+
+def qen_score_copilot(vs: float, va: float, vt: float) -> float:
+    """Formula Copilot API (media semplice): (VS + VA + VT) / 3."""
+    if max(vs, va, vt) &lt;= QEN_SCALE_THRESHOLD:
+        vs, va, vt = vs * QEN_SCALE_FACTOR, va * QEN_SCALE_FACTOR, vt * QEN_SCALE_FACTOR
+    return round((vs + va + vt) / 3, 2)
+
+# ─────────────────────────────────────────────────────────────────────────────
+# 3. SOGLIE BADGE QEN
+# ─────────────────────────────────────────────────────────────────────────────
+QEN_BADGE_LEVELS = [
+    {"label": "QEN Diamante", "min": 90, "max": 100, "color": "#1a5276"},
+    {"label": "QEN Oro",      "min": 80, "max":  89, "color": "#d4ac0d"},
+    {"label": "QEN Argento",  "min": 70, "max":  79, "color": "#797d7f"},
+    {"label": "QEN Bronzo",   "min": 60, "max":  69, "color": "#935116"},
+    {"label": "QEN In Sviluppo", "min": 0, "max": 59, "color": "#7f8c8d"},
+]
+
+def qen_badge(score: float) -> str:
+    """Restituisce il label del badge QEN per un punteggio dato."""
+    for b in QEN_BADGE_LEVELS:
+        if b["min"] &lt;= score &lt;= b["max"]:
+            return b["label"]
+    return "QEN In Sviluppo"
+
+# ─────────────────────────────────────────────────────────────────────────────
+# 4. SOGLIE RICONCILIAZIONE
+# ─────────────────────────────────────────────────────────────────────────────
+RECONCILIATION_THRESHOLDS = {
+    "ALIGNED": 0.00,   # scostamento esatto = 0
+    "GREEN":   0.15,   # &lt;= 15%
+    "YELLOW":  0.30,   # &lt;= 30%
+    # RED = &gt; 30% o boolean mismatch
+}
+RECONCILIATION_ADJUSTMENTS = {
+    "ALIGNED":  0,
+    "GREEN":   -5,
+    "YELLOW": -15,
+    "RED":    -30,
+}
+RECONCILABLE_PARAMETERS = {
+    "distanza_media_fornitori_km": {"source": "OpenStreetMap", "reliability": 0.75, "type": "numeric", "fallback": 115.0},
+    "biologico_certificato":       {"source": "ICEA",          "reliability": 0.90, "type": "boolean", "fallback": True},
+    "percentuale_scarti":          {"source": "InfoCamere",    "reliability": 0.75, "type": "numeric", "fallback": 12.0},
+    "consumo_kwh_anno":            {"source": "InfoCamere",    "reliability": 0.75, "type": "numeric", "fallback": 45000},
+    "eu_ai_compliant":             {"source": "NANDO",         "reliability": 0.92, "type": "boolean", "fallback": True},
+}
+
+# ─────────────────────────────────────────────────────────────────────────────
+# 5. MODELLI LLM E CONFIGURAZIONE
+# ─────────────────────────────────────────────────────────────────────────────
+CLAUDE_MODEL          = "claude-sonnet-4-6"
+GEMINI_MODEL_CASCADE  = ["gemini-2.0-flash-lite", "gemini-2.5-flash", "gemini-2.0-flash"]
+MISTRAL_MODEL         = "mistral-large-latest"
+LLM_MAX_TOKENS_AUDIT  = 1500
+LLM_MAX_TOKENS_SCORE  = 900
+LLM_MAX_TOKENS_BATCH  = 1200
+LLM_TEMPERATURE_DEFAULT = 0.3
+RATE_LIMIT_LLM_SINGLE = 30
+RATE_LIMIT_LLM_BATCH  = 20
+
+# ─────────────────────────────────────────────────────────────────────────────
+# 6. PROMPT DI SISTEMA — AGENTI LLM
+# ─────────────────────────────────────────────────────────────────────────────
+SYSTEM_COMPLIANCE_AUDITOR = (
+    "Sei il Compliance Auditor del framework QEN (Quantification of Ethical Naturalness).\n"
+    "Analizza l'azienda o il sistema AI descritto applicando:\n"
+    "- EU AI Act (Allegati I/II/III, livelli rischio)\n"
+    "- GDPR (Art.22 decisioni automatizzate, Art.35 DPIA)\n"
+    "- CSRD / Green Claims Directive\n"
+    "- QEN Score: vs*0.40 + va*0.35 + vt*0.25 (0-100)\n\n"
+    'Rispondi SOLO con JSON valido: {"qen_score": 0.0, "vs": 0.0, "va": 0.0, "vt": 0.0, '
+    '"eu_ai_act": {"allegato": "", "livello_rischio": "", "motivazione": ""}, '
+    '"gdpr": {"risk": "", "dpia_required": false, "articoli": []}, '
+    '"gaps": [], "remediation": [], "summary": ""}'
+)
+
+SYSTEM_TERRITORIAL_MAPPER = (
+    "Sei il Territorial Mapper del framework QEN.\n"
+    "Mappa l'ecosistema territoriale dell'azienda: stakeholder locali, filiera corta,\n"
+    "fornitori entro 100km, impatto occupazionale, accordi con PMI locali, DE.CO.\n\n"
+    'Rispondi SOLO con JSON valido: {"vt_score": 0.0, "stakeholders": [], "supply_chain": {'
+    '"local_pct": 0.0, "avg_distance_km": 0.0, "certifications": []}, '
+    '"territorial_impact": "", "recommendations": [], "summary": ""}'
+)
+
+SYSTEM_ADVISORY_COUNCIL = (
+    "Sei l\'Advisory Council del framework QEN — esperto normativo EU.\n"
+    "Fornisci consulenza su compliance pathways per:\n"
+    "- EU AI Act (percorso conformità per il livello di rischio identificato)\n"
+    "- GDPR + CSRD + Green Claims\n"
+    "- Bolkestein 2027 (se applicabile al settore)\n\n"
+    'Rispondi SOLO con JSON valido: {"priority_actions": [], "compliance_timeline": [], '
+    '"regulatory_refs": [], "cost_estimate": "", "summary": ""}'
+)
+
+SYSTEM_BOLKESTEIN = (
+    "Sei un esperto della Direttiva Servizi EU 2006/123/CE (Bolkestein) e del suo impatto sulle\n"
+    "concessioni italiane con scadenza 2027 (balneari, mercati, dehors, posteggi, taxi).\n"
+    "Applica il test di scarsità della risorsa, le ragioni imperative di interesse generale (RIGI),\n"
+    "la giurisprudenza CGUE (C-458/14, C-20/21) e il QEN Score per la valutazione d\'impatto.\n\n"
+    'Rispondi SOLO con JSON valido: {"risk_level": "ALTO|MEDIO|BASSO", "concession_type": "", '
+    '"scarcity_test": {"result": "SCARSA|NON_SCARSA|INCERTA", "justification": ""}, '
+    '"imperative_reasons": [], "compliance_actions": [], '
+    '"critical_deadlines": [{"date": "", "action": ""}], '
+    '"qen_preassessment": {"score": 0.0, "vs": 0.0, "va": 0.0, "vt": 0.0, "note": ""}, '
+    '"regulatory_refs": [], "summary": ""}'
+)
+
+SYSTEM_QEN_RECONCILIATION = (
+    "Sei il motore di riconciliazione QEN di Cognitive Logic.\n\n"
+    "Il tuo compito è analizzare i parametri autodichiarati da un operatore economico e\n"
+    "confrontarli con i valori verificati da fonti esterne certificate.\n\n"
+    "Per ciascun parametro:\n"
+    "1. Calcola lo scostamento percentuale tra dichiarato e verificato.\n"
+    "2. Assegna uno stato (ALIGNED/GREEN/YELLOW/RED) secondo le soglie definite.\n"
+    "3. Applica l\'aggiustamento al punteggio base.\n"
+    "4. Per stati RED e YELLOW apri automaticamente un\'escalation verso il supervisore.\n\n"
+    "Restituisci esclusivamente il JSON dell\'output di riconciliazione. Nessun testo aggiuntivo."
+)
+
+# ─────────────────────────────────────────────────────────────────────────────
+# 7. VERTICALI DI MERCATO
+# ─────────────────────────────────────────────────────────────────────────────
+MARKET_VERTICALS = {
+    "FOOD":     {"label": "Ristorazione e Food",          "algoritmi": ["COLT_IN_FRAGRANZA", "VEGANOO"],          "settori_istat": ["56.10", "56.21", "56.29", "56.30"]},
+    "BALNEARE": {"label": "Stabilimenti Balneari",         "algoritmi": ["ECO_LOCAL"],                            "scadenza_bolkestein": "2027-12-31", "strutture_riviera": 1850},
+    "PMI":      {"label": "PMI Artigianato e Commercio",   "algoritmi": ["TRAD_RAD", "BOLOGNA_100_BOTTEGHE"],     "settori_istat": ["47", "95", "96"]},
+}
+
+# ─────────────────────────────────────────────────────────────────────────────
+# 9. CONFORMITÀ NORMATIVA INTEGRATA
+# ─────────────────────────────────────────────────────────────────────────────
+REGULATORY_FRAMEWORK = {
+    "EU_AI_ACT":     {"ref": "Reg. UE 2024/1689",    "stato": "CONFORME"},
+    "GDPR":          {"ref": "Reg. UE 2016/679",     "stato": "CONFORME"},
+    "BOLKESTEIN":    {"ref": "Dir. 2006/123/CE",      "stato": "IN_SVILUPPO"},
+    "CSRD":          {"ref": "Dir. 2022/2464/UE",     "stato": "IN_SVILUPPO"},
+    "CODICE_CONSUMO":{"ref": "D.Lgs. 206/2005",       "stato": "CONFORME"},
+}
+
+# ─────────────────────────────────────────────────────────────────────────────
+# 10. ENDPOINT API CATALOG
+# ─────────────────────────────────────────────────────────────────────────────
+API_ENDPOINTS = {
+    "GET  /health":                       "Stato servizio e versione",
+    "POST /copilot-analyze":              "Scoring QEN + analisi LLM Gemini",
+    "POST /analyze":                      "Scoring QEN base (autenticato)",
+    "POST /audit/horeca":                 "Salvataggio audit HoReCa completato",
+    "POST /audit/balneare":               "Salvataggio audit balneare completato",
+    "GET  /pilots":                       "Lista strutture pilota (autenticato)",
+    "POST /admin/reconcile-batch":        "Riconciliazione batch (autenticato)",
+    "POST /agents/compliance-auditor":    "Audit compliance EU AI Act + GDPR + CSRD",
+    "POST /agents/territorial-mapper":    "Mappatura ecosistema territoriale",
+    "POST /agents/advisory-council":      "Consulenza normativa EU",
+    "POST /agents/intelligence-feed":     "Feed intelligence mercato",
+    "POST /agents/bolkestein-assessment": "Valutazione rischio Bolkestein 2027",
+    "POST /agents/places-batch-qen":      "Discovery + scoring batch via Google Places",
+    "POST /agents/mistral-advisor":       "Advisor Mistral Large",
+    "POST /api/reconcile":                "Motore riconciliazione dati (FastAPI :8001)",
+}
+
+# ─────────────────────────────────────────────────────────────────────────────
+# 11. SICUREZZA
+# ─────────────────────────────────────────────────────────────────────────────
+CORS_ORIGINS   = frozenset({"https://cognitivelogic.it", "https://www.cognitivelogic.it", "https://api.cognitivelogic.it"})
+TRUSTED_HOSTS  = frozenset({"cognitivelogic.it", "www.cognitivelogic.it", "api.cognitivelogic.it"})
+SUPERVISOR_HEADER = "X-Supervisor-Key"
+PATHS = {
+    "graph":       "/app/cognitivelogic/graph.json",
+    "pilots":      "/app/cognitivelogic/pilots.json",
+    "escalations": "/app/cognitivelogic/escalations.json",
+}</pre>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════
+     S16 — ALLEGATO K
+═══════════════════════════════════════════════ -->
+<div class="section" id="s16">
+  <div class="container">
+    <span class="section-label">Sezione 16</span>
+    <h2 class="section-title">Allegato K — Screenshot Pubblicazioni Pubbliche</h2>
+    <div class="allegato">
+      <div class="allegato-label">Allegato K · Screenshot — prove di pubblicazione pubblica</div>
+      <h3>Pubblicazioni pubbliche documentate</h3>
+      <table>
+        <tr><th>Screenshot</th><th>Contenuto</th><th>Rilevanza</th></tr>
+        <tr><td>S1 — cognitivelogic.it</td><td>Homepage del sito con QEN Framework visibile</td><td>Prova pubblicazione pubblica</td></tr>
+        <tr><td>S2 — WHOIS dominio</td><td>Registrazione cognitivelogic.it — data 11/11/2025</td><td>Prova anteriorità dominio</td></tr>
+        <tr><td>S3 — GitHub repository</td><td>Repository CognitiveLogic2026/CognitiveLogic2026.github.io con commit history</td><td>Prova commit e versioning</td></tr>
+        <tr><td>S4 — Bing Webmaster Tools</td><td>Verifica sito Microsoft/Bing — data 25/02/2026</td><td>Prova anteriorità pubblica certificata da terzo (Microsoft)</td></tr>
+        <tr><td>S5a — qen-live.html</td><td>Grafo semantico QEN interattivo pubblicato</td><td>Prova opera pubblica e funzionante</td></tr>
+        <tr><td>S5b — QEN Score dashboard</td><td>Dashboard QEN con calcolo score in tempo reale</td><td>Prova sistema operativo</td></tr>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════
+     S17 — CODICE SORGENTE: orchestrator.py
+═══════════════════════════════════════════════ -->
+<div class="section" id="s17">
+  <div class="container">
+    <span class="section-label">Sezione 17 — Codice Sorgente</span>
+    <h2 class="section-title">orchestrator.py — Orchestratore LLM Multi-Agente</h2>
+    <p>File: <code>orchestrator.py</code> · Linguaggio: Python · 656 righe · Autore: Roberto Bob Malini · Cognitive Logic © 2026</p>
+    <div class="code-block">
+      <pre><span class="cm"># Copyright (c) 2026 Roberto Bob Malini - Cognitive Logic
+# https://www.cognitivelogic.it
+# Licensed under CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/)</span>
+import os
+import json
+import re
+from datetime import datetime
+
+import anthropic
+import json_repair
+import requests as _requests
+from pathlib import Path
+from flask import request, jsonify
+
+_FEED_PATH = Path(__file__).parent / "data" / "intelligence_feed.json"
+_client = None
+
+_PLACES_QUERIES = {
+    "balneare":    ["stabilimento balneare {comune}", "lido balneare {comune}", "beach club {comune}"],
+    "horeca":      ["ristorante trattoria {comune}", "pizzeria {comune}", "osteria {comune}"],
+    "alberghiero": ["hotel {comune}", "albergo bed and breakfast {comune}"],
+    "commercio":   ["negozio mercato {comune}", "bottega artigiana {comune}"],
+}
+
+def _places_discover(key: str, settore: str, comune: str, max_results: int = 20) -> list:
+    """Discover businesses via Google Places Text Search by settore and comune."""
+    import sys
+    templates = _PLACES_QUERIES.get(settore, [f"{settore} {comune}"])
+    found: dict = {}
+    for tpl in templates:
+        q = tpl.format(comune=comune)
+        try:
+            resp = _requests.post(
+                "https://places.googleapis.com/v1/places:searchText",
+                headers={
+                    "Content-Type": "application/json",
+                    "X-Goog-Api-Key": key,
+                    "X-Goog-FieldMask": (
+                        "places.displayName,places.formattedAddress,"
+                        "places.nationalPhoneNumber,places.websiteUri,"
+                        "places.rating,places.userRatingCount,places.primaryType"
+                    ),
+                },
+                json={"textQuery": q, "maxResultCount": min(max_results, 20)},
+                timeout=8,
+            ).json()
+            for p in resp.get("places", []):
+                name = p.get("displayName", {}).get("text", "")
+                if not name or name in found:
+                    continue
+                found[name] = {
+                    "name":    name,
+                    "address": p.get("formattedAddress", ""),
+                    "phone":   p.get("nationalPhoneNumber", ""),
+                    "website": p.get("websiteUri", ""),
+                    "rating":  p.get("rating"),
+                    "reviews": p.get("userRatingCount"),
+                    "type":    p.get("primaryType", ""),
+                    "settore": settore,
+                    "comune":  comune,
+                }
+                if len(found) >= max_results:
+                    break
+        except Exception as e:
+            print(f"[Places] discover exception: {e}", file=sys.stderr)
+        if len(found) >= max_results:
+            break
+    return list(found.values())
+
+def _get_client():
+    global _client
+    if _client is None:
+        _client = anthropic.Anthropic(api_key=os.getenv("ANTHROPIC_API_KEY"))
+    return _client
+
+def _extract_json(raw):
+    raw = raw.replace("```json", "").replace("```", "").strip()
+    m = re.search(r"\{.*\}", raw, re.DOTALL)
+    if not m:
+        return None, raw[:300]
+    try:
+        result = json_repair.loads(m.group())
+        if isinstance(result, dict):
+            return result, None
+        return None, f"Unexpected type {type(result)}"
+    except Exception as e:
+        return None, f"{e} | raw: {m.group()[:300]}"
+
+<span class="cm"># ─── SYSTEM PROMPTS AGENTI ───────────────────────────────────────────────────</span>
+_COMPLIANCE_SYSTEM = (
+    "Sei il Compliance Auditor del framework QEN (Quantification of Ethical Naturalness).\n"
+    "Analizza l'azienda o il sistema AI descritto applicando:\n"
+    "- EU AI Act (Allegati I/II/III, livelli rischio)\n"
+    "- GDPR (Art.22 decisioni automatizzate, Art.35 DPIA)\n"
+    "- CSRD / Green Claims Directive\n"
+    "- QEN Score: vs*0.40 + va*0.35 + vt*0.25 (0-100)\n\n"
+    "Rispondi SOLO con JSON valido:\n"
+    '{"qen_score": 0.0, "vs": 0.0, "va": 0.0, "vt": 0.0, '
+    '"eu_ai_act": {"allegato": "", "livello_rischio": "", "motivazione": ""}, '
+    '"gdpr": {"risk": "", "dpia_required": false, "articoli": []}, '
+    '"gaps": [], "remediation": [], "summary": ""}'
+)
+
+_TERRITORIAL_SYSTEM = (
+    "Sei il Territorial Mapper del framework QEN.\n"
+    "Mappa l'ecosistema territoriale dell'azienda: stakeholder locali, filiera corta,\n"
+    "fornitori entro 100km, impatto occupazionale, accordi con PMI locali, DE.CO.\n\n"
+    "Rispondi SOLO con JSON valido:\n"
+    '{"vt_score": 0.0, "stakeholders": [], "supply_chain": {'
+    '"local_pct": 0.0, "avg_distance_km": 0.0, "certifications": []}, '
+    '"territorial_impact": "", "recommendations": [], "summary": ""}'
+)
+
+_ADVISORY_SYSTEM = (
+    "Sei l\'Advisory Council del framework QEN — esperto normativo EU.\n"
+    "Fornisci consulenza su compliance pathways per:\n"
+    "- EU AI Act (percorso conformità per il livello di rischio identificato)\n"
+    "- GDPR + CSRD + Green Claims\n"
+    "- Bolkestein 2027 (se applicabile al settore)\n\n"
+    "Rispondi SOLO con JSON valido:\n"
+    '{"priority_actions": [], "compliance_timeline": [], '
+    '"regulatory_refs": [], "cost_estimate": "", "summary": ""}'
+)
+
+_DISCOVERY_QEN_SYSTEM = (
+    "Sei il Discovery Pre-Assessor del framework QEN (Quantification of Ethical Naturalness).\n"
+    "Ricevi dati pubblici minimi su un\'attività commerciale (nome, tipologia, indirizzo, valutazioni).\n"
+    "Stima un QEN pre-assessment per il settore HoReCa / balneare / commercio:\n"
+    "- Vs (Semantic Legality): conformità regolatoria presunta per il settore (0-100)\n"
+    "- Va (Accountability): trasparenza e responsabilità presunta (0-100)\n"
+    "- Vt (Territorial Trust): radicamento territoriale e impatto locale presunto (0-100)\n"
+    "Formula: qen_score = Vs*0.40 + Va*0.35 + Vt*0.25\n\n"
+    "Rispondi SOLO con JSON valido:\n"
+    '{"qen_score": 0.0, "vs": 0.0, "va": 0.0, "vt": 0.0, '
+    '"confidence": "LOW|MEDIUM", "risk_flags": [], "bolkestein_applicable": false, '
+    '"summary": "", "note": "Pre-assessment da dati pubblici — audit completo consigliato"}'
+)
+
+_BOLKESTEIN_SYSTEM = (
+    "Sei un esperto della Direttiva Servizi EU 2006/123/CE (Bolkestein) e del suo impatto sulle\n"
+    "concessioni italiane con scadenza 2027 (balneari, mercati, dehors, posteggi, taxi).\n"
+    "Applica il test di scarsità della risorsa, le ragioni imperative di interesse generale (RIGI),\n"
+    "la giurisprudenza CGUE (C-458/14, C-20/21) e il QEN Score per la valutazione d\'impatto.\n\n"
+    "Rispondi SOLO con JSON valido:\n"
+    '{"risk_level": "ALTO|MEDIO|BASSO", "concession_type": "", '
+    '"scarcity_test": {"result": "SCARSA|NON_SCARSA|INCERTA", "justification": ""}, '
+    '"imperative_reasons": [], "compliance_actions": [], '
+    '"critical_deadlines": [{"date": "", "action": ""}], '
+    '"qen_preassessment": {"score": 0.0, "vs": 0.0, "va": 0.0, "vt": 0.0, "note": ""}, '
+    '"regulatory_refs": [], "summary": ""}'
+)</pre>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════
+     S18 — CODICE: qen_scoring_engine.py
+═══════════════════════════════════════════════ -->
+<div class="section" id="s18">
+  <div class="container">
+    <span class="section-label">Sezione 18 — Codice Sorgente</span>
+    <h2 class="section-title">qen_scoring_engine.py — Motore di Scoring per Verticale</h2>
+    <p>File: <code>qen-bolkestein/qen_scoring_engine.py</code> · Linguaggio: Python · Autore: Roberto Bob Malini · Cognitive Logic © 2026</p>
+    <div class="code-block">
+      <pre><span class="cm"># Copyright (c) 2026 Roberto Bob Malini - Cognitive Logic
+# https://www.cognitivelogic.it
+# Licensed under CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/)</span>
+
+def prompt_ristorazione(b):
+    return f"""Analizza: {'{'}b['name']{'}'}, {'{'}b['city']{'}'}.
+Restituisci JSON: {{"vs_score": 0-100, "va_score": 0-100, "vt_score": 0-100,
+"qen_score": media_pesata, "confidence": 0.0-1.0}}.
+Criteri VS: ISO, CCNL, HR.
+VA: energia, rifiuti, cert.
+VT: filiera locale.
+Pesi: 0.35, 0.35, 0.30"""
+
+def prompt_alberghiero(b):
+    return f"""QEN Hotel: {'{'}b['name']{'}'}, {'{'}b['city']{'}'}.
+JSON: {{"vs_score": 0-100, "va_score": 0-100, "vt_score": 0-100,
+"qen_score": media, "confidence": 0.0-1.0}}.
+VS: cert, CCNL.
+VA: energia, rifiuti.
+VT: supply chain locale.
+Pesi: 0.35, 0.35, 0.30"""
+
+def prompt_balneare(b):
+    return f"""QEN Stabilimento: {'{'}b['name']{'}'}, {'{'}b['city']{'}'}.
+JSON: {{"vs_score": 0-100, "va_score": 0-100, "vt_score": 0-100,
+"qen_score": media, "confidence": 0.0-1.0}}.
+VS: cert.
+VA: energia.
+VT: filiera.
+Pesi: 0.35, 0.35, 0.30"""
+
+def get_prompt_fn(vertical):
+    m = {
+        "ristorazione": prompt_ristorazione,
+        "alberghiero":  prompt_alberghiero,
+        "balneare":     prompt_balneare
+    }
+    return m.get(vertical.lower(), prompt_ristorazione)</pre>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════
+     S19 — CODICE: qen_config.py
+═══════════════════════════════════════════════ -->
+<div class="section" id="s19">
+  <div class="container">
+    <span class="section-label">Sezione 19 — Codice Sorgente</span>
+    <h2 class="section-title">qen_config.py — Configurazione e Credenziali</h2>
+    <p>File: <code>qen-bolkestein/qen_config.py</code> · Linguaggio: Python · Autore: Roberto Bob Malini · Cognitive Logic © 2026</p>
+    <div class="code-block">
+      <pre><span class="cm"># Copyright (c) 2026 Roberto Bob Malini - Cognitive Logic
+# https://www.cognitivelogic.it
+# Licensed under CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/)</span>
+import os
+from dotenv import load_dotenv
+from dataclasses import dataclass
+
+@dataclass
+class Neo4jConfig:
+    uri: str
+    username: str
+    password: str
+
+@dataclass
+class OllamaConfig:
+    base_url: str
+    model_name: str = "mistral:7b"
+
+class QENBolkesteinConfig:
+    ENV   = os.getenv("ENVIRONMENT", "development")
+    DEBUG = os.getenv("DEBUG", "True").lower() == "true"
+
+    ANTHROPIC_API_KEY = os.getenv("ANTHROPIC_API_KEY", "")
+    MISTRAL_API_KEY   = os.getenv("MISTRAL_API_KEY", "")
+
+    NEO4J_URI      = os.getenv("NEO4J_URI",      "bolt://localhost:7687")
+    NEO4J_USERNAME = os.getenv("NEO4J_USERNAME",  "neo4j")
+    NEO4J_PASSWORD = os.getenv("NEO4J_PASSWORD",  "")
+    NEO4J_CONFIG   = Neo4jConfig(uri=NEO4J_URI, username=NEO4J_USERNAME, password=NEO4J_PASSWORD)
+
+    OLLAMA_BASE_URL = os.getenv("OLLAMA_BASE_URL", "http://localhost:11434")
+    OLLAMA_CONFIG   = OllamaConfig(base_url=OLLAMA_BASE_URL)
+
+    GOOGLE_OAUTH_CLIENT_ID     = os.getenv("GOOGLE_OAUTH_CLIENT_ID", "")
+    GOOGLE_OAUTH_CLIENT_SECRET = os.getenv("GOOGLE_OAUTH_CLIENT_SECRET", "")
+    GOOGLE_PLACES_API_KEY      = os.getenv("GOOGLE_PLACES_API_KEY", "")
+
+    APIFY_API_TOKEN = os.getenv("APIFY_API_TOKEN", "")
+
+    BASE_DIR = os.getenv("BASE_DIR", "/root/CognitiveLogic2026.github.io/qen-bolkestein/")
+
+    @classmethod
+    def load_from_env_file(cls, env_file_path: str = ".env"):
+        if os.path.exists(env_file_path):
+            load_dotenv(env_file_path)
+        else:
+            print(f"⚠️  .env file not found at {env_file_path}")
+
+    @classmethod
+    def validate(cls) -> bool:
+        required = [
+            ("ANTHROPIC_API_KEY", "Claude API"),
+            ("MISTRAL_API_KEY",   "Mistral API"),
+            ("NEO4J_PASSWORD",    "Neo4j Password"),
+        ]
+        missing = []
+        for key, name in required:
+            value = os.getenv(key, "")
+            if not value or value.startswith("[") or value == "PLACEHOLDER":
+                missing.append(f"{name} ({key})")
+        if missing:
+            print("❌ MISSING CREDENTIALS:")
+            for item in missing:
+                print(f"   - {item}")
+            return False
+        print("✅ All credentials present")
+        return True
+
+if __name__ == "__main__":
+    QENBolkesteinConfig.load_from_env_file()
+    QENBolkesteinConfig.validate()</pre>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════
+     S20 — DICHIARAZIONE AUTORE
+═══════════════════════════════════════════════ -->
+<div class="section" id="s20">
+  <div class="container">
+    <span class="section-label">Sezione 20</span>
+    <h2 class="section-title">Dichiarazione dell'Autore per SIAE</h2>
+
+    <div class="declaration-box">
+      <p>Il sottoscritto <strong>Roberto Bob Malini</strong>, nato il 06/08/1962 ad A944U (come da codice fiscale MLNRRT62H06A944U), in qualità di unico autore e titolare dei diritti di proprietà intellettuale sull'opera denominata:</p>
+
+      <p style="text-align:center;font-size:1.1rem;color:var(--gold);margin:20px 0">
+        <strong>QEN — Quantificazione Etica Naturale</strong><br>
+        <em>(Quantifying Ethical Network)</em>
+      </p>
+
+      <p><strong>DICHIARA</strong> quanto segue:</p>
+
+      <ol style="margin:16px 0 16px 20px">
+        <li style="margin-bottom:10px">L'opera è stata creata in modo originale e autonomo dall'autore dichiarante, a partire dal 20 gennaio 2026 (data del primo documento tecnico scritto: QEN_ALGORITMO.pdf).</li>
+        <li style="margin-bottom:10px">L'opera consiste in un sistema software complesso comprendente: algoritmo matematico di scoring etico multi-dimensionale, codice sorgente Python (orchestrator.py, qen_scoring_engine.py, qen_config.py, qen_context.py e altri moduli), grafo semantico di conoscenza (328 nodi, versione 6.0), sistema multi-agente LLM, API REST documentata, documentazione tecnica e scientifica in forma di allegati A–K.</li>
+        <li style="margin-bottom:10px">L'opera è stata resa pubblica a partire dal Q1 2026 attraverso il sito cognitivelogic.it (dominio registrato l'11/11/2025) e il repository GitHub CognitiveLogic2026/CognitiveLogic2026.github.io, con indicizzazione certificata Microsoft/Bing in data 25/02/2026.</li>
+        <li style="margin-bottom:10px">I diritti d'autore sull'opera, comprensivi del diritto morale e del diritto patrimoniale, appartengono esclusivamente all'autore dichiarante ai sensi degli artt. 2 n.8, 12, 20 e 64-bis della L. 633/1941.</li>
+        <li style="margin-bottom:10px">La componente documentale dell'opera è rilasciata con licenza CC BY-SA 4.0; il codice sorgente e gli algoritmi di scoring sono protetti da copyright riservato.</li>
+        <li style="margin-bottom:10px">L'autore richiede il deposito dell'opera nel Registro Pubblico Speciale per il Software della SIAE ai sensi dell'art. 64-bis L. 633/1941, come prova di anteriorità e titolarità opponibile ai terzi.</li>
+      </ol>
+
+      <p>Il sottoscritto è consapevole delle sanzioni penali previste dall'art. 76 del D.P.R. 445/2000 per le dichiarazioni mendaci.</p>
+
+      <div class="signature-line">
+        <p><strong>Bologna, 18 giugno 2026</strong></p>
+        <p style="margin-top:16px">L'Autore</p>
+        <p style="margin-top:40px;font-size:0.9rem">___________________________________</p>
+        <p><strong>Roberto Bob Malini</strong></p>
+        <p style="color:var(--muted)">C.F.: MLNRRT62H06A944U</p>
+        <p style="color:var(--muted)">DID: did:web:cognitivelogic.it:robertomalini</p>
+        <p style="color:var(--muted)">Email: info@cognitivelogic.it</p>
+        <p style="color:var(--muted)">Sito: cognitivelogic.it</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════
+     FOOTER
+═══════════════════════════════════════════════ -->
+<div class="doc-footer">
+  <div class="container">
+    <p><strong style="color:var(--gold)">QEN — Quantificazione Etica Naturale</strong> · Versione Diamante 26.0</p>
+    <p style="margin-top:8px">© 2026 Roberto Bob Malini · Cognitive Logic · cognitivelogic.it</p>
+    <p style="margin-top:4px">Dossier preparato per deposito SIAE — Registro Pubblico Speciale per il Software · L. 633/1941</p>
+    <p style="margin-top:4px">C.F. MLNRRT62H06A944U · DID: did:web:cognitivelogic.it:robertomalini</p>
+    <p style="margin-top:12px;font-size:0.7rem">
+      <a href="index.html" style="color:var(--muted);text-decoration:none">cognitivelogic.it</a> ·
+      <a href="framework.html" style="color:var(--muted);text-decoration:none">Framework QEN</a> ·
+      <a href="qen-live.html" style="color:var(--muted);text-decoration:none">QEN Live Graph</a>
+    </p>
+  </div>
+</div>
+
+</body>
+</html>
