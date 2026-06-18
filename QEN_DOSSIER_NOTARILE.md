@@ -121,11 +121,13 @@ Ubicazione deployment: Hetzner VPS `cognitive-node-01` (178.104.190.107)
 ```
 
 ### 4.2 Documentazione Progettuale
+- [ ] **Allegato F** — `AllegatoFCOPILOT_API.pdf` — Documentazione API QEN Copilot v1.0 — **etichettato "ALLEGATO AL DOSSIER NOTARILE QEN FRAMEWORK"** (6 pag.) — 328 nodi knowledge graph, verticali FOOD/BALNEARE/PMI
 - [ ] **Allegato H** — `AllegatoHQEN_FRAMEWORK_SPEC.pdf` — QEN Framework Specification v2.0, 12/06/2026 (5 pag.)
 - [ ] **MANUALE_TECNICO_OPERATIVO_MOTORE_QEN_v1.0_.pdf** — Architettura motore, dashboard, compliance filter (6 pag.)
 - [ ] **QEN_ALGORITMO.pdf** — Prima stesura manuale operativo, **data: 20 gennaio 2026** (2 pag.) — documento più antico del framework
+- [ ] **QEN_ARCHITETTURA_RICONCILIAZIONE.pdf** — Architettura riconciliazione multi-source, maggio 2026, CognitiveLogic × CNA Bologna (27 pag.) — sostituisce il generico `RECONCILIATION_PROTOCOL.md`
+- [ ] **GLM_EVIDE_Integration_Strategy.pdf** — Strategia integrazione Governance Layer Manifest + Evidentiary Registry, 14/06/2026, v1.0 (4 pag.)
 - [ ] `INFRASTRUCTURE_SPEC.md` (stampa, 2–3 pagine)
-- [ ] `RECONCILIATION_PROTOCOL.md` (stampa, 2–3 pagine)
 
 ### 4.3 Prove di Deployment
 - [ ] Screenshot della console Hetzner (IP, hostname, data di creazione)
@@ -139,6 +141,7 @@ Ubicazione deployment: Hetzner VPS `cognitive-node-01` (178.104.190.107)
 - [ ] Slide di presentazione QEN — Quantificazione Etica Naturale (opzionale, ma consigliato per contesto)
 
 ### 4.5 Prova di Titolarità Intellettuale
+- [ ] **Data_Must_Be.pdf** — Manifesto fondativo Cognitive Logic (1 pag.): *"Beyond the graphical interface: data must be intelligible, transparent, and immediately operational for autonomous agents."* — documento di visione originale, prova della filosofia progettuale dell'autore
 - [ ] Copia della P.IVA opening (una volta acquisita)
 - [ ] Certificato di dominio cognitivelogic.it (WHOIS proof o certificate)
 - [ ] Elenco di lavori precedenti che dimostrano traiettoria (optional: link Fuorimenu Substack, LinkedIn)
