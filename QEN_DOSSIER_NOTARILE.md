@@ -1,7 +1,9 @@
 # Dossier di Autenticazione Notarile — QEN Framework
-## Cognitive Logic | Bologna, Italia
-**Data preparazione:** 27 maggio 2026  
-**Oggetto:** Certificazione di data certa per framework semantico QEN (Quantificazione Etica Naturale)
+## QEN — Quantificazione Etica Naturale | Cognitive Logic | Bologna, Italia
+**Data preparazione:** 27 maggio 2026 — **Aggiornato:** 18 giugno 2026  
+**Oggetto:** Certificazione di data certa per framework semantico QEN — Quantificazione Etica Naturale  
+**Sigla ufficiale:** QEN = Quantificazione Etica Naturale (IT) / Quantifying Ethical Network (EN)  
+**Data più antica documentata:** 11 novembre 2025 (registrazione dominio cognitivelogic.it)
 
 ---
 
@@ -25,7 +27,7 @@ Studio notarile consigliato: [TBD — preferibilmente Bologna / Casalecchio di R
 ## 2. DESCRIZIONE DELL'OPERA INTELLETTUALE
 
 ### 2.1 Titolo e Genere
-**QEN Framework — Sistema di Quantificazione Etica per Operatori HoReCa**
+**QEN Framework — Quantificazione Etica Naturale — Sistema di Scoring Etico per Operatori HoReCa**
 - Genere: Framework semantico + Sistema di scoring + Infrastruttura dati
 - Natura: Software, documentazione, metodologia proprietaria
 - Stato: MVP completato, 4 agenti live in produzione
@@ -35,10 +37,18 @@ Studio notarile consigliato: [TBD — preferibilmente Bologna / Casalecchio di R
 - **Target:** HoReCa (ristorazione, alberghiero, balneare)
 - **Geografico:** Emilia-Romagna (pilota CNA Bologna)
 
-### 2.3 Data di Creazione Concettuale
-- **Inizio sviluppo:** Early 2026
-- **Completamento MVP:** 25 maggio 2026
-- **Deployment in produzione:** 26–27 maggio 2026
+### 2.3 Cronologia Documentata — Prove di Anteriorità
+
+| Data | Evento | Fonte / Prova |
+|------|--------|---------------|
+| **11 novembre 2025** | Registrazione dominio cognitivelogic.it | WHOIS — "Created November 11, 2025" (S5b) |
+| **25 febbraio 2026** | Prima indicizzazione pubblica sito | Microsoft Bing Webmaster Tools — prima submission sitemap (S4) |
+| **8 giugno 2026** | 493 commit GitHub certificati | Screenshot repo CognitiveLogic2026 (S1) |
+| Early 2026 | Inizio sviluppo QEN — Quantificazione Etica Naturale | — |
+| **25 maggio 2026** | Completamento MVP | Deploy log Hetzner |
+| **26–27 maggio 2026** | Deployment in produzione | Console Hetzner VPS |
+
+> **Nota legale:** La data più antica documentata da terze parti indipendenti è **11 novembre 2025** (registrazione dominio, certificata da WHOIS). La prima prova di pubblicazione pubblica verificabile è **25 febbraio 2026** (Bing Webmaster Tools — Microsoft).
 
 ---
 
@@ -101,7 +111,7 @@ Studio notarile consigliato: [TBD — preferibilmente Bologna / Casalecchio di R
 
 **Formato:** Stampa con footer contenente:
 ```
-© 2026 Roberto Malini | Cognitive Logic | Quantificazione Etica Naturale (QEN)
+© 2026 Roberto Malini | Cognitive Logic | QEN — Quantificazione Etica Naturale
 Data di creazione: 25–26 maggio 2026
 Ubicazione deployment: Hetzner VPS `cognitive-node-01` (178.104.190.107)
 ```
@@ -120,12 +130,28 @@ Ubicazione deployment: Hetzner VPS `cognitive-node-01` (178.104.190.107)
 ### 4.4 Documentazione di Progetto
 - [ ] `CNA_BOLOGNA_OUTREACH.md` (strategia commerciale, dimostra ecosistema operativo)
 - [ ] QEN Academia Proposal (istituzionale, 3–5 pagine)
-- [ ] Slide di presentazione QEN (opzionale, ma consigliato per contesto)
+- [ ] Slide di presentazione QEN — Quantificazione Etica Naturale (opzionale, ma consigliato per contesto)
 
 ### 4.5 Prova di Titolarità Intellettuale
 - [ ] Copia della P.IVA opening (una volta acquisita)
 - [ ] Certificato di dominio cognitivelogic.it (WHOIS proof o certificate)
 - [ ] Elenco di lavori precedenti che dimostrano traiettoria (optional: link Fuorimenu Substack, LinkedIn)
+
+### 4.6 CARTELLA 09 — Screenshots Datati (8 giugno 2026)
+**Deposito opere per certificazione anteriorità QEN — Quantificazione Etica Naturale**
+
+Questa cartella costituisce prova documentale fotografica con data certa. Tutti gli screenshot sono stati acquisiti in data 8 giugno 2026 e riportano data/ora visibile del dispositivo.
+
+| File | Data/Ora | Contenuto | Valore legale |
+|------|----------|-----------|---------------|
+| `S1_github_repository_20260608.png` | 8 giu 2026 ore 22:47 | Repository GitHub CognitiveLogic2026 — 493 commit, struttura cartelle | Prova di sviluppo continuativo e pubblico |
+| `S2_profilo_roberto_bob_malini_20260608.png` | 8 giu 2026 ore 22:53 | Profilo GitHub Roberto Bob Malini — AI Data Architect & Founder Cognitive Logic | Identità pubblica autore su piattaforma terza certificata |
+| `S3_homepage_cognitivelogic_20260608.png` | 8 giu 2026 ore 23:15 | Homepage https://cognitivelogic.it — "Intelligenza artificiale misurabile" | Sito live e pubblico con design Diamante 26.0 (URL visibile) |
+| `S4_bing_webmaster_sitemap_20260608.png` | 8 giu 2026 ore 23:18 | Microsoft Bing Webmaster Tools — prima submission sitemap: **25/02/2026** | **PROVA DI ANTERIORITÀ PUBBLICA** certificata da Microsoft — data certa terza parte |
+| `S5a_whois_cognitivelogic_intro_20260608.png` | 8 giu 2026 ore 23:19 | WHOIS cognitivelogic.it — IP 185.199.111.153 (GitHub Pages CDN) | Conferma dominio registrato e attivo |
+| `S5b_whois_cognitivelogic_created_20260608.png` | 8 giu 2026 ore 23:19 | WHOIS cognitivelogic.it — **Created: November 11, 2025** | **DATA PIÙ ANTICA** — dominio registrato 7 mesi prima del deposito notarile |
+
+**Nota per il notaio:** Lo screenshot S4 (Bing Webmaster Tools) dimostra che il sito cognitivelogic.it era indicizzato pubblicamente già al **25 febbraio 2026**, per effetto della prima submission della sitemap. Tale dato è certificato da Microsoft Corporation, soggetto terzo indipendente rispetto all'autore. Lo screenshot S5b dimostra che il dominio cognitivelogic.it era registrato dal **11 novembre 2025**, come risulta dal database WHOIS internazionale.
 
 ---
 
@@ -231,7 +257,9 @@ Prossimi step:
 
 ---
 
-**Documento preparato:** 27 maggio 2026 — aggiornato 28 maggio 2026  
+**Documento preparato:** 27 maggio 2026 — **aggiornato 18 giugno 2026**  
 **Per:** Roberto Malini (CF: MLNRRT62H06A944U), Founder & CVO — Cognitive Logic  
 **Residenza:** Via Della Costituzione 11, 40033 Casalecchio di Reno (BO)  
-**Versione:** 1.1
+**Versione:** 1.2  
+**Sigla registrata:** QEN — Quantificazione Etica Naturale (IT) | Quantifying Ethical Network (EN)  
+**Data più antica documentata:** 11 novembre 2025 (WHOIS dominio cognitivelogic.it)
