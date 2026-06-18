@@ -1,0 +1,798 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Deposito SIAE — QEN Framework — Istruzioni Copisteria</title>
+<style>
+  /* ── Reset ── */
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  /* ── Base ── */
+  body {
+    font-family: 'Georgia', serif;
+    font-size: 11pt;
+    line-height: 1.6;
+    color: #1a1a1a;
+    background: #fff;
+  }
+
+  /* ── Page breaks ── */
+  .page {
+    width: 210mm;
+    min-height: 297mm;
+    margin: 0 auto 20mm;
+    padding: 20mm 22mm 20mm;
+    background: #fff;
+    page-break-after: always;
+    position: relative;
+  }
+  .page:last-child { page-break-after: auto; }
+
+  /* ── Cover ── */
+  .cover {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 257mm;
+  }
+  .cover-top { padding-top: 10mm; }
+  .cover-logo {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 9pt;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: #666;
+    margin-bottom: 20mm;
+  }
+  .cover-title {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 28pt;
+    font-weight: 700;
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+    color: #0a0a0a;
+    margin-bottom: 6mm;
+  }
+  .cover-subtitle {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 13pt;
+    color: #444;
+    margin-bottom: 12mm;
+    font-weight: 400;
+  }
+  .cover-rule {
+    width: 40mm;
+    height: 2px;
+    background: #0a0a0a;
+    margin-bottom: 12mm;
+  }
+  .cover-meta {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 10pt;
+    line-height: 2;
+    color: #333;
+  }
+  .cover-meta strong { color: #0a0a0a; }
+  .cover-sigla {
+    font-family: 'Courier New', monospace;
+    font-size: 9pt;
+    background: #f4f4f4;
+    border-left: 3px solid #0a0a0a;
+    padding: 4mm 6mm;
+    margin: 8mm 0;
+    color: #333;
+  }
+  .cover-bottom {
+    border-top: 1px solid #ccc;
+    padding-top: 6mm;
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 8.5pt;
+    color: #888;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  /* ── Section headings ── */
+  h1 {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 16pt;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    color: #0a0a0a;
+    margin-bottom: 6mm;
+    padding-bottom: 2mm;
+    border-bottom: 2px solid #0a0a0a;
+  }
+  h2 {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 11pt;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: #333;
+    margin-top: 8mm;
+    margin-bottom: 3mm;
+  }
+  h3 {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 10pt;
+    font-weight: 700;
+    color: #0a0a0a;
+    margin-top: 5mm;
+    margin-bottom: 2mm;
+  }
+
+  /* ── Tables ── */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 9pt;
+    margin: 4mm 0 6mm;
+  }
+  thead tr {
+    background: #0a0a0a;
+    color: #fff;
+  }
+  thead th {
+    padding: 2.5mm 3mm;
+    text-align: left;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    font-size: 8pt;
+    text-transform: uppercase;
+  }
+  tbody tr { border-bottom: 1px solid #e0e0e0; }
+  tbody tr:nth-child(even) { background: #f9f9f9; }
+  tbody td { padding: 2.5mm 3mm; vertical-align: top; }
+  td.allg {
+    font-family: 'Courier New', monospace;
+    font-weight: 700;
+    font-size: 9pt;
+    color: #0a0a0a;
+    white-space: nowrap;
+  }
+  td.filename {
+    font-family: 'Courier New', monospace;
+    font-size: 8.5pt;
+    color: #333;
+  }
+  td.date { white-space: nowrap; font-size: 8.5pt; }
+  td.pages { text-align: center; font-size: 8.5pt; }
+  td.note { font-size: 8pt; color: #555; }
+  .highlight { background: #fffae0 !important; }
+  .critical { background: #fff0f0 !important; }
+
+  /* ── Boxes ── */
+  .box {
+    border: 1px solid #ccc;
+    padding: 4mm 5mm;
+    margin: 4mm 0;
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 9.5pt;
+    line-height: 1.7;
+  }
+  .box-alert {
+    border: 2px solid #0a0a0a;
+    background: #f4f4f4;
+    padding: 4mm 5mm;
+    margin: 5mm 0;
+  }
+  .box-alert .label {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 8pt;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: #0a0a0a;
+    margin-bottom: 2mm;
+  }
+  .box-red {
+    border: 2px solid #c00;
+    background: #fff5f5;
+    padding: 4mm 5mm;
+    margin: 5mm 0;
+  }
+  .box-red .label {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 8pt;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: #c00;
+    margin-bottom: 2mm;
+  }
+
+  /* ── Checklist ── */
+  .checklist {
+    list-style: none;
+    margin: 3mm 0;
+    padding: 0;
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 10pt;
+    line-height: 1.8;
+  }
+  .checklist li::before {
+    content: "☐  ";
+    font-size: 11pt;
+    color: #555;
+  }
+  .checklist li { padding: 0.5mm 0; }
+
+  /* ── Folder tree ── */
+  .tree {
+    font-family: 'Courier New', monospace;
+    font-size: 8.5pt;
+    background: #f4f4f4;
+    border: 1px solid #ddd;
+    padding: 4mm 5mm;
+    margin: 3mm 0;
+    line-height: 1.7;
+    color: #222;
+  }
+
+  /* ── Signature block ── */
+  .signature-block {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10mm;
+    margin-top: 15mm;
+  }
+  .sig-box {
+    border-top: 1px solid #888;
+    padding-top: 2mm;
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 8.5pt;
+    color: #666;
+    min-height: 20mm;
+  }
+
+  /* ── Page header ── */
+  .page-header {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 8pt;
+    color: #aaa;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    margin-bottom: 8mm;
+    padding-bottom: 2mm;
+    border-bottom: 1px solid #eee;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  /* ── Page footer ── */
+  .page-footer {
+    position: absolute;
+    bottom: 10mm;
+    left: 22mm;
+    right: 22mm;
+    border-top: 1px solid #e0e0e0;
+    padding-top: 2mm;
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 7.5pt;
+    color: #aaa;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  p { margin-bottom: 2.5mm; }
+
+  /* ── Print ── */
+  @media print {
+    body { background: #fff; }
+    .page { margin: 0; width: 100%; page-break-after: always; }
+    .page:last-child { page-break-after: auto; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════════════════════
+     PAGINA 1 — COPERTINA
+═══════════════════════════════════════════════════════ -->
+<div class="page">
+  <div class="cover">
+    <div class="cover-top">
+      <div class="cover-logo">Cognitive Logic · Bologna · 2026</div>
+
+      <div class="cover-title">Deposito SIAE<br>QEN Framework</div>
+      <div class="cover-subtitle">Istruzioni per masterizzazione CD-ROM non riscrivibile</div>
+      <div class="cover-rule"></div>
+
+      <div class="cover-meta">
+        <strong>Autore / Titolare IP:</strong> Roberto Malini<br>
+        <strong>Codice Fiscale:</strong> MLNRRT62H06A944U<br>
+        <strong>Indirizzo:</strong> Via Della Costituzione 11, 40033 Casalecchio di Reno (BO)<br>
+        <strong>Data documento:</strong> 18 giugno 2026<br>
+        <strong>Versione dossier:</strong> 2.0
+      </div>
+
+      <div class="cover-sigla">
+        QEN = Quantificazione Etica Naturale (IT)<br>
+        QEN = Quantifying Ethical Network (EN)<br>
+        Sigla ufficiale registrata — CC BY-SA 4.0 + All rights reserved
+      </div>
+
+      <div class="cover-meta">
+        <strong>Destinazione:</strong> SIAE — Società Italiana degli Autori ed Editori<br>
+        Registro Pubblico Speciale — Deposito opera intellettuale / software<br><br>
+        <strong>Data più antica documentata:</strong> 11 novembre 2025<br>
+        (registrazione dominio cognitivelogic.it — WHOIS internazionale)
+      </div>
+    </div>
+
+    <div class="cover-bottom">
+      <span>© 2026 Roberto Malini — Cognitive Logic — QEN — Quantificazione Etica Naturale</span>
+      <span>Pag. 1</span>
+    </div>
+  </div>
+</div>
+
+
+<!-- ═══════════════════════════════════════════════════════
+     PAGINA 2 — ISTRUZIONI PER LA COPISTERIA
+═══════════════════════════════════════════════════════ -->
+<div class="page">
+  <div class="page-header">
+    <span>Cognitive Logic — Deposito SIAE — QEN Framework</span>
+    <span>Istruzioni Copisteria</span>
+  </div>
+
+  <h1>Istruzioni per la Copisteria</h1>
+
+  <div class="box-red">
+    <div class="label">⚠ Specifiche tecniche obbligatorie</div>
+    <strong>Supporto richiesto: CD-ROM NON RISCRIVIBILE (CD-R)</strong><br>
+    NON usare CD-RW (riscrivibile), DVD o USB — il supporto deve essere fisicamente non alterabile dopo la masterizzazione.<br>
+    Velocità di scrittura raccomandata: 4× – 8× (bassa velocità = maggiore affidabilità a lungo termine).<br>
+    Standard: ISO 9660 / Joliet. Etichetta volume: <code>QEN_SIAE_2026</code>
+  </div>
+
+  <h2>Cosa fare</h2>
+  <ol style="font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 10pt; line-height: 2; padding-left: 5mm;">
+    <li>Ricevere la cartella <strong>QEN_SIAE_DEPOSITO</strong> (consegnata su chiavetta USB o via trasferimento file)</li>
+    <li>Copiare la cartella <strong>esattamente come fornita</strong> — non rinominare file né cartelle</li>
+    <li>Masterizzare su <strong>CD-R vergine</strong> — formato ISO 9660 / Joliet</li>
+    <li>Produrre <strong>3 copie identiche</strong> dello stesso master</li>
+    <li>Applicare etichetta adesiva su ogni CD (vedi specifiche etichetta a pag. 4)</li>
+    <li>Consegnare i 3 CD in buste protettive rigide</li>
+  </ol>
+
+  <div class="box-alert">
+    <div class="label">Copie richieste: 3</div>
+    <strong>Copia #1</strong> — Archivio personale autore (Roberto Malini)<br>
+    <strong>Copia #2</strong> — Deposito SIAE — Registro Pubblico Speciale<br>
+    <strong>Copia #3</strong> — Supporto deposito notarile / EUIPO
+  </div>
+
+  <h2>Struttura cartelle sul CD</h2>
+  <div class="tree">
+QEN_SIAE_2026\
+│
+├── 00_DOSSIER\
+│   └── QEN_DOSSIER_NOTARILE_v2.0.pdf
+│
+├── ALLEGATO_A\
+│   └── Data_Must_Be.pdf
+│
+├── ALLEGATO_B\
+│   └── QEN_ALGORITMO.pdf
+│
+├── ALLEGATO_C\
+│   └── MANUALE_TECNICO_OPERATIVO_MOTORE_QEN_v1.0.pdf
+│
+├── ALLEGATO_D\
+│   └── QEN_ARCHITETTURA_RICONCILIAZIONE.pdf
+│
+├── ALLEGATO_E\
+│   └── GLM_EVIDE_Integration_Strategy.pdf
+│
+├── ALLEGATO_F\
+│   └── AllegatoFCOPILOT_API.pdf
+│
+├── ALLEGATO_G\
+│   └── Codice_QEN.pdf
+│
+├── ALLEGATO_H\
+│   └── AllegatoHQEN_FRAMEWORK_SPEC.pdf
+│
+├── ALLEGATO_J\
+│   └── AllegatoJqen_context.pdf
+│
+└── ALLEGATO_K_SCREENSHOTS\
+    ├── S1_github_repository_20260608.png
+    ├── S2_profilo_roberto_bob_malini_20260608.png
+    ├── S3_homepage_cognitivelogic_20260608.png
+    ├── S4_bing_webmaster_sitemap_20260608.png
+    ├── S5a_whois_cognitivelogic_intro_20260608.png
+    └── S5b_whois_cognitivelogic_created_20260608.png
+  </div>
+
+  <p style="font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 8.5pt; color: #666; margin-top: 3mm;">
+    Nota: la lettera I è omessa intenzionalmente (convenzione per evitare confusione con il numero 1 nei documenti stampati).
+  </p>
+
+  <div class="page-footer">
+    <span>© 2026 Roberto Malini — Cognitive Logic — QEN — Quantificazione Etica Naturale</span>
+    <span>Pag. 2</span>
+  </div>
+</div>
+
+
+<!-- ═══════════════════════════════════════════════════════
+     PAGINA 3 — INDICE ALLEGATI
+═══════════════════════════════════════════════════════ -->
+<div class="page">
+  <div class="page-header">
+    <span>Cognitive Logic — Deposito SIAE — QEN Framework</span>
+    <span>Indice Allegati</span>
+  </div>
+
+  <h1>Indice Allegati — Contenuto CD</h1>
+
+  <table>
+    <thead>
+      <tr>
+        <th style="width:8%">All.</th>
+        <th style="width:34%">File</th>
+        <th style="width:22%">Contenuto</th>
+        <th style="width:14%">Data</th>
+        <th style="width:6%">Pag.</th>
+        <th style="width:16%">Note</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="allg">A</td>
+        <td class="filename">Data_Must_Be.pdf</td>
+        <td>Manifesto fondativo Cognitive Logic</td>
+        <td class="date">—</td>
+        <td class="pages">1</td>
+        <td class="note">Visione progettuale dell'autore</td>
+      </tr>
+      <tr class="highlight">
+        <td class="allg">B</td>
+        <td class="filename">QEN_ALGORITMO.pdf</td>
+        <td>Prima stesura manuale operativo motore QEN</td>
+        <td class="date"><strong>20/01/2026</strong></td>
+        <td class="pages">2</td>
+        <td class="note"><strong>Documento interno più antico</strong></td>
+      </tr>
+      <tr>
+        <td class="allg">C</td>
+        <td class="filename">MANUALE_TECNICO_OPERATIVO_MOTORE_QEN_v1.0.pdf</td>
+        <td>Architettura motore QEN, dashboard, compliance filter</td>
+        <td class="date">—</td>
+        <td class="pages">6</td>
+        <td class="note">—</td>
+      </tr>
+      <tr>
+        <td class="allg">D</td>
+        <td class="filename">QEN_ARCHITETTURA_RICONCILIAZIONE.pdf</td>
+        <td>Architettura riconciliazione multi-source × CNA Bologna</td>
+        <td class="date">Mag. 2026</td>
+        <td class="pages">27</td>
+        <td class="note">Scenario C — Hybrid Smart</td>
+      </tr>
+      <tr>
+        <td class="allg">E</td>
+        <td class="filename">GLM_EVIDE_Integration_Strategy.pdf</td>
+        <td>Strategia integrazione GLM + EVIDE</td>
+        <td class="date">14/06/2026</td>
+        <td class="pages">4</td>
+        <td class="note">Nodo it.cognitivelogic.node.01</td>
+      </tr>
+      <tr>
+        <td class="allg">F</td>
+        <td class="filename">AllegatoFCOPILOT_API.pdf</td>
+        <td>Documentazione API QEN Copilot v1.0</td>
+        <td class="date">—</td>
+        <td class="pages">6</td>
+        <td class="note">328 nodi — etichettato "Allegato dossier notarile"</td>
+      </tr>
+      <tr>
+        <td class="allg">G</td>
+        <td class="filename">Codice_QEN.pdf</td>
+        <td>Codice sorgente: QEN_Generatore_Report.ipynb</td>
+        <td class="date">—</td>
+        <td class="pages">13</td>
+        <td class="note">Notebook Jupyter — generatore report PDF</td>
+      </tr>
+      <tr>
+        <td class="allg">H</td>
+        <td class="filename">AllegatoHQEN_FRAMEWORK_SPEC.pdf</td>
+        <td>QEN Framework Specification v2.0</td>
+        <td class="date">12/06/2026</td>
+        <td class="pages">5</td>
+        <td class="note">CC BY-SA 4.0</td>
+      </tr>
+      <tr>
+        <td class="allg">J</td>
+        <td class="filename">AllegatoJqen_context.pdf</td>
+        <td>Codice sorgente: qen_context.py — Diamante 26.0</td>
+        <td class="date">12/06/2026</td>
+        <td class="pages">9</td>
+        <td class="note">Single source of truth formula QEN</td>
+      </tr>
+      <tr class="critical">
+        <td class="allg">K</td>
+        <td class="filename">Cartella K — 6 screenshot datati</td>
+        <td>Prove fotografiche di anteriorità — 8 giugno 2026</td>
+        <td class="date">08/06/2026</td>
+        <td class="pages">6</td>
+        <td class="note">WHOIS 11/11/2025 · Bing 25/02/2026</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h2>Dettaglio Allegato K — Screenshots Datati</h2>
+
+  <table>
+    <thead>
+      <tr>
+        <th style="width:10%">Codice</th>
+        <th style="width:42%">File</th>
+        <th style="width:10%">Ora</th>
+        <th style="width:38%">Contenuto / Valore</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="allg">S1</td>
+        <td class="filename">S1_github_repository_20260608.png</td>
+        <td class="date">22:47</td>
+        <td>GitHub repo — 493 commit</td>
+      </tr>
+      <tr>
+        <td class="allg">S2</td>
+        <td class="filename">S2_profilo_roberto_bob_malini_20260608.png</td>
+        <td class="date">22:53</td>
+        <td>Identità pubblica autore — GitHub</td>
+      </tr>
+      <tr>
+        <td class="allg">S3</td>
+        <td class="filename">S3_homepage_cognitivelogic_20260608.png</td>
+        <td class="date">23:15</td>
+        <td>Sito live cognitivelogic.it</td>
+      </tr>
+      <tr class="highlight">
+        <td class="allg">S4</td>
+        <td class="filename">S4_bing_webmaster_sitemap_20260608.png</td>
+        <td class="date">23:18</td>
+        <td><strong>Bing Webmaster — prima submission: 25/02/2026</strong> — prova anteriorità pubblica (Microsoft)</td>
+      </tr>
+      <tr>
+        <td class="allg">S5a</td>
+        <td class="filename">S5a_whois_cognitivelogic_intro_20260608.png</td>
+        <td class="date">23:19</td>
+        <td>WHOIS — IP 185.199.111.153</td>
+      </tr>
+      <tr class="critical">
+        <td class="allg">S5b</td>
+        <td class="filename">S5b_whois_cognitivelogic_created_20260608.png</td>
+        <td class="date">23:19</td>
+        <td><strong>WHOIS — Created: 11/11/2025</strong> — data più antica documentata</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div style="font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 8pt; color: #777; margin-top: 3mm;">
+    Legenda colori: <span style="background:#fffae0; padding: 0 3px;">■</span> Prove di anteriorità datate &nbsp;&nbsp; <span style="background:#fff0f0; padding: 0 3px;">■</span> Data più antica / Priorità massima
+  </div>
+
+  <div class="page-footer">
+    <span>© 2026 Roberto Malini — Cognitive Logic — QEN — Quantificazione Etica Naturale</span>
+    <span>Pag. 3</span>
+  </div>
+</div>
+
+
+<!-- ═══════════════════════════════════════════════════════
+     PAGINA 4 — ETICHETTA CD + CHECKLIST VERIFICA
+═══════════════════════════════════════════════════════ -->
+<div class="page">
+  <div class="page-header">
+    <span>Cognitive Logic — Deposito SIAE — QEN Framework</span>
+    <span>Etichetta CD + Verifica</span>
+  </div>
+
+  <h1>Etichetta da Applicare su Ogni CD</h1>
+
+  <p style="font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 9pt; color: #666; margin-bottom: 4mm;">
+    Stampare e applicare etichetta adesiva circolare su ciascuno dei 3 CD. Scrivere a penna il numero di copia.
+  </p>
+
+  <!-- Mockup etichetta CD -->
+  <div style="width: 100mm; height: 100mm; border-radius: 50%; border: 2px solid #0a0a0a; margin: 0 auto 8mm; display: flex; align-items: center; justify-content: center; position: relative;">
+    <div style="width: 20mm; height: 20mm; border-radius: 50%; border: 1px solid #0a0a0a; background: white; position: absolute;"></div>
+    <div style="text-align: center; font-family: 'Helvetica Neue', Arial, sans-serif; padding: 0 22mm;">
+      <div style="font-size: 7pt; letter-spacing: 0.15em; text-transform: uppercase; color: #666; margin-bottom: 1mm;">Cognitive Logic · Bologna</div>
+      <div style="font-size: 12pt; font-weight: 700; line-height: 1.2; margin-bottom: 2mm;">QEN<br>Framework</div>
+      <div style="font-size: 6.5pt; color: #444; margin-bottom: 2mm;">Quantificazione Etica Naturale</div>
+      <div style="font-size: 6pt; color: #888; font-family: 'Courier New', monospace;">DEPOSITO SIAE · 2026</div>
+      <div style="font-size: 6pt; color: #888; font-family: 'Courier New', monospace;">© Roberto Malini · CF: MLNRRT62H06A944U</div>
+      <div style="margin-top: 3mm; font-size: 7pt; border: 1px solid #ccc; padding: 1mm 3mm; display: inline-block;">
+        Copia n° _____ / 3
+      </div>
+    </div>
+  </div>
+
+  <h2>Testo etichetta (alternativa scritta a mano)</h2>
+  <div class="box" style="font-family: 'Courier New', monospace; font-size: 9pt; line-height: 2;">
+    COGNITIVE LOGIC · QEN FRAMEWORK<br>
+    Quantificazione Etica Naturale<br>
+    Deposito SIAE · Roberto Malini<br>
+    CF: MLNRRT62H06A944U · 2026<br>
+    Copia n° _____ / 3<br>
+    Data masterizzazione: _______________
+  </div>
+
+  <h2>Checklist verifica finale (per la copisteria)</h2>
+  <ul class="checklist">
+    <li>CD-R vergine non riscrivibile — non CD-RW</li>
+    <li>Struttura cartelle rispettata (00_DOSSIER + ALLEGATO_A … ALLEGATO_K)</li>
+    <li>Tutti i 10 file PDF presenti (Allegati A–H, J)</li>
+    <li>Cartella K con 6 screenshot PNG presenti</li>
+    <li>Etichetta volume CD: <code>QEN_SIAE_2026</code></li>
+    <li>Prodotte esattamente 3 copie identiche</li>
+    <li>Etichetta adesiva applicata su ogni CD con numero copia indicato</li>
+    <li>CD consegnati in buste protettive rigide</li>
+    <li>Verifica leggibilità su PC prima della consegna</li>
+  </ul>
+
+  <div class="box-alert" style="margin-top: 6mm;">
+    <div class="label">Conteggio file atteso sul CD</div>
+    10 file PDF (Allegati A–H, J) + 6 file PNG (Allegato K) + 1 PDF dossier (00_DOSSIER) = <strong>17 file totali</strong>
+  </div>
+
+  <div class="signature-block">
+    <div class="sig-box">
+      Firma richiedente<br><br><br>
+      Roberto Malini<br>
+      Data: _______________
+    </div>
+    <div class="sig-box">
+      Operatore copisteria<br><br><br>
+      Nome: _______________<br>
+      Data: _______________
+    </div>
+  </div>
+
+  <div class="page-footer">
+    <span>© 2026 Roberto Malini — Cognitive Logic — QEN — Quantificazione Etica Naturale</span>
+    <span>Pag. 4</span>
+  </div>
+</div>
+
+
+<!-- ═══════════════════════════════════════════════════════
+     PAGINA 5 — CRONOLOGIA ANTERIORITÀ (per SIAE)
+═══════════════════════════════════════════════════════ -->
+<div class="page">
+  <div class="page-header">
+    <span>Cognitive Logic — Deposito SIAE — QEN Framework</span>
+    <span>Prove di Anteriorità</span>
+  </div>
+
+  <h1>Cronologia Prove di Anteriorità</h1>
+  <p style="font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 9pt; color: #555; margin-bottom: 5mm;">
+    Documento riepilogativo da allegare alla pratica SIAE. Certifica la catena temporale di anteriorità su tre livelli di fonte indipendente.
+  </p>
+
+  <table>
+    <thead>
+      <tr>
+        <th style="width:6%">#</th>
+        <th style="width:16%">Data</th>
+        <th style="width:28%">Evento</th>
+        <th style="width:28%">Fonte / Prova</th>
+        <th style="width:22%">Allegato</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="critical">
+        <td style="text-align:center; font-weight:700;">1</td>
+        <td class="date"><strong>11/11/2025</strong></td>
+        <td>Registrazione dominio cognitivelogic.it</td>
+        <td>WHOIS internazionale — "Created: November 11, 2025"</td>
+        <td class="note"><strong>Allegato K — S5b</strong></td>
+      </tr>
+      <tr class="highlight">
+        <td style="text-align:center; font-weight:700;">2</td>
+        <td class="date"><strong>20/01/2026</strong></td>
+        <td>Prima stesura manuale operativo motore QEN</td>
+        <td>Documento interno datato — intestazione PDF</td>
+        <td class="note"><strong>Allegato B</strong></td>
+      </tr>
+      <tr class="highlight">
+        <td style="text-align:center; font-weight:700;">3</td>
+        <td class="date"><strong>25/02/2026</strong></td>
+        <td>Prima indicizzazione pubblica sito</td>
+        <td>Microsoft Bing Webmaster Tools — prima submission sitemap</td>
+        <td class="note"><strong>Allegato K — S4</strong></td>
+      </tr>
+      <tr>
+        <td style="text-align:center; font-weight:700;">4</td>
+        <td class="date">25/05/2026</td>
+        <td>Completamento MVP</td>
+        <td>Deploy log Hetzner VPS cognitive-node-01</td>
+        <td class="note">§ 4.4 Prove deployment</td>
+      </tr>
+      <tr>
+        <td style="text-align:center; font-weight:700;">5</td>
+        <td class="date">26–27/05/2026</td>
+        <td>Deployment in produzione</td>
+        <td>Console Hetzner — IP 178.104.190.107</td>
+        <td class="note">§ 4.4 Prove deployment</td>
+      </tr>
+      <tr>
+        <td style="text-align:center; font-weight:700;">6</td>
+        <td class="date">08/06/2026</td>
+        <td>493 commit GitHub certificati — sito live</td>
+        <td>Screenshot repo CognitiveLogic2026 (S1) + homepage (S3)</td>
+        <td class="note"><strong>Allegato K — S1, S3</strong></td>
+      </tr>
+      <tr>
+        <td style="text-align:center; font-weight:700;">7</td>
+        <td class="date">12/06/2026</td>
+        <td>Framework Spec v2.0 + qen_context.py Diamante 26.0</td>
+        <td>PDF datati firmati CC BY-SA 4.0</td>
+        <td class="note"><strong>Allegato H + J</strong></td>
+      </tr>
+      <tr>
+        <td style="text-align:center; font-weight:700;">8</td>
+        <td class="date">14/06/2026</td>
+        <td>Strategia integrazione GLM + EVIDE v1.0</td>
+        <td>Documento datato — Cognitive Logic Observatory</td>
+        <td class="note"><strong>Allegato E</strong></td>
+      </tr>
+      <tr>
+        <td style="text-align:center; font-weight:700;">9</td>
+        <td class="date">18/06/2026</td>
+        <td>Completamento dossier notarile v2.0</td>
+        <td>Presente documento</td>
+        <td class="note">00_DOSSIER</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="box-alert" style="margin-top: 6mm;">
+    <div class="label">Tre livelli di anteriorità indipendente</div>
+    <strong>Livello 1 — Terza parte (WHOIS):</strong> 11 novembre 2025 — database WHOIS internazionale, indipendente dall'autore<br>
+    <strong>Livello 2 — Terza parte pubblica (Microsoft):</strong> 25 febbraio 2026 — Bing Webmaster Tools<br>
+    <strong>Livello 3 — Documento interno datato:</strong> 20 gennaio 2026 — prima stesura operativa (Allegato B)
+  </div>
+
+  <h2>Dichiarazione dell'autore</h2>
+  <div class="box" style="font-size: 9.5pt; line-height: 1.8;">
+    Il sottoscritto <strong>Roberto Malini</strong> (CF: MLNRRT62H06A944U), Founder &amp; CVO di Cognitive Logic,
+    dichiara che il framework <strong>QEN — Quantificazione Etica Naturale</strong> è opera intellettuale originale
+    da lui creata, con prima documentazione risalente al <strong>20 gennaio 2026</strong> e prima pubblicazione
+    pubblica verificabile al <strong>25 febbraio 2026</strong>. Il dominio cognitivelogic.it risulta registrato
+    dal <strong>11 novembre 2025</strong> come da database WHOIS internazionale.
+  </div>
+
+  <div class="signature-block" style="margin-top: 10mm;">
+    <div class="sig-box">
+      Firma autore<br><br><br>
+      Roberto Malini<br>
+      Casalecchio di Reno (BO)<br>
+      Data: _______________
+    </div>
+    <div class="sig-box">
+      Timbro / ricevuta SIAE<br><br><br><br>
+      Numero pratica: _______________<br>
+      Data deposito: _______________
+    </div>
+  </div>
+
+  <div class="page-footer">
+    <span>© 2026 Roberto Malini — Cognitive Logic — QEN — Quantificazione Etica Naturale</span>
+    <span>Pag. 5</span>
+  </div>
+</div>
+
+</body>
+</html>
