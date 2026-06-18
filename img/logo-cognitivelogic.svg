@@ -1,51 +1,106 @@
-<svg width="268" height="64" viewBox="0 0 268 64" xmlns="http://www.w3.org/2000/svg">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 368 88" width="368" height="88">
   <defs>
-    <linearGradient id="holo" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%"  stop-color="#00ccff"/>
-      <stop offset="16%" stop-color="#aa44ff"/>
-      <stop offset="33%" stop-color="#ff44bb"/>
-      <stop offset="50%" stop-color="#ffaa00"/>
-      <stop offset="67%" stop-color="#00ddbb"/>
-      <stop offset="83%" stop-color="#4488ff"/>
-      <stop offset="100%" stop-color="#00ccff"/>
+
+    <!-- Background: dark navy with radial glow -->
+    <radialGradient id="bg" cx="38%" cy="45%" r="65%">
+      <stop offset="0%"  stop-color="#1a2e46"/>
+      <stop offset="100%" stop-color="#050d18"/>
+    </radialGradient>
+
+    <!-- Subtle grid overlay -->
+    <pattern id="grid" width="28" height="28" patternUnits="userSpaceOnUse">
+      <path d="M 28 0 L 0 0 0 28" fill="none" stroke="#1c3050" stroke-width="0.55"/>
+    </pattern>
+
+    <!-- Chrome gradient for VERTICAL pieces (spine, center bar) — left-to-right sheen -->
+    <linearGradient id="cv" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%"   stop-color="#6878a0"/>
+      <stop offset="18%"  stop-color="#c8d4ec"/>
+      <stop offset="38%"  stop-color="#f0f4ff"/>
+      <stop offset="55%"  stop-color="#d0daf0"/>
+      <stop offset="75%"  stop-color="#8898b8"/>
+      <stop offset="100%" stop-color="#5868a0"/>
     </linearGradient>
+
+    <!-- Chrome gradient for HORIZONTAL pieces (flanges/arms) — top-to-bottom sheen -->
+    <linearGradient id="ch" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%"   stop-color="#f2f6ff"/>
+      <stop offset="22%"  stop-color="#c0cce0"/>
+      <stop offset="48%"  stop-color="#e4ecf8"/>
+      <stop offset="72%"  stop-color="#8898b8"/>
+      <stop offset="100%" stop-color="#6070a0"/>
+    </linearGradient>
+
+    <!-- Wordmark text gradient -->
+    <linearGradient id="tg" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%"   stop-color="#dce8fc"/>
+      <stop offset="30%"  stop-color="#aab8d2"/>
+      <stop offset="65%"  stop-color="#ccd8ee"/>
+      <stop offset="100%" stop-color="#7888aa"/>
+    </linearGradient>
+
+    <!-- Drop-shadow for 3D depth on symbol -->
+    <filter id="sh" x="-8%" y="-8%" width="118%" height="118%">
+      <feDropShadow dx="2" dy="3" stdDeviation="3" flood-color="#000a1e" flood-opacity="0.75"/>
+    </filter>
+
   </defs>
 
-  <!-- LEFT: C / bracket shape (opens to the right) -->
-  <!-- vertical spine -->
-  <rect x="4"  y="4"  width="9" height="56" rx="4.5" fill="url(#holo)"/>
-  <!-- top arm -->
-  <rect x="4"  y="4"  width="27" height="9" rx="4.5" fill="url(#holo)"/>
-  <!-- bottom arm -->
-  <rect x="4"  y="51" width="27" height="9" rx="4.5" fill="url(#holo)"/>
+  <!-- BACKGROUND -->
+  <rect width="368" height="88" fill="url(#bg)" rx="5"/>
+  <rect width="368" height="88" fill="url(#grid)" rx="5"/>
 
-  <!-- CENTER: vertical separator bar -->
-  <rect x="37" y="4"  width="9" height="56" rx="4.5" fill="url(#holo)"/>
+  <!-- I-BEAM SYMBOL -->
+  <g transform="translate(14, 6)" filter="url(#sh)">
 
-  <!-- RIGHT: E shape — three horizontal bars extending from center bar -->
-  <!-- top bar -->
-  <rect x="37" y="4"  width="26" height="9" rx="4.5" fill="url(#holo)"/>
-  <!-- middle bar -->
-  <rect x="37" y="27" width="26" height="9" rx="4.5" fill="url(#holo)"/>
-  <!-- bottom bar -->
-  <rect x="37" y="51" width="26" height="9" rx="4.5" fill="url(#holo)"/>
+    <!-- LEFT — C bracket (opens right) -->
+    <!-- vertical spine -->
+    <rect x="0"  y="0"  width="12" height="76" rx="6" fill="url(#cv)"/>
+    <!-- top arm -->
+    <rect x="0"  y="0"  width="37" height="12" rx="6" fill="url(#ch)"/>
+    <!-- bottom arm -->
+    <rect x="0"  y="64" width="37" height="12" rx="6" fill="url(#ch)"/>
 
-  <!-- Sparkle / lens-flare highlight (top-right of mark) -->
-  <g transform="translate(57,11)" opacity="0.92">
-    <line x1="-7" y1="0"  x2="7"  y2="0"  stroke="white" stroke-width="1.6"/>
-    <line x1="0"  y1="-7" x2="0"  y2="7"  stroke="white" stroke-width="1.6"/>
-    <line x1="-5" y1="-5" x2="5"  y2="5"  stroke="white" stroke-width="0.9"/>
-    <line x1="5"  y1="-5" x2="-5" y2="5"  stroke="white" stroke-width="0.9"/>
-    <circle cx="0" cy="0" r="2.5" fill="white"/>
+    <!-- CENTER — vertical web bar -->
+    <rect x="51" y="0"  width="12" height="76" rx="6" fill="url(#cv)"/>
+
+    <!-- RIGHT — E bars extending from center bar -->
+    <!-- top bar -->
+    <rect x="51" y="0"  width="36" height="12" rx="6" fill="url(#ch)"/>
+    <!-- middle bar -->
+    <rect x="51" y="32" width="36" height="12" rx="6" fill="url(#ch)"/>
+    <!-- bottom bar -->
+    <rect x="51" y="64" width="36" height="12" rx="6" fill="url(#ch)"/>
+
+    <!-- Specular highlights (edge shine for 3D chrome feel) -->
+    <!-- top edge of upper flanges -->
+    <rect x="0"  y="0"  width="37" height="2.5" rx="1.2" fill="white" opacity="0.55"/>
+    <rect x="51" y="0"  width="36" height="2.5" rx="1.2" fill="white" opacity="0.55"/>
+    <!-- left edge of vertical pieces -->
+    <rect x="0"  y="0"  width="2.5" height="76" rx="1.2" fill="white" opacity="0.42"/>
+    <rect x="51" y="0"  width="2.5" height="76" rx="1.2" fill="white" opacity="0.30"/>
+    <!-- top of middle bar -->
+    <rect x="51" y="32" width="36" height="2.5" rx="1.2" fill="white" opacity="0.38"/>
+
   </g>
 
-  <!-- "CognitiveLogic" wordmark -->
+  <!-- WORDMARK -->
   <text
-    x="76" y="43"
-    font-family="system-ui, -apple-system, sans-serif"
-    font-weight="500"
-    font-size="22"
+    x="122" y="56"
+    font-family="'Helvetica Neue', 'Arial', system-ui, sans-serif"
+    font-weight="400"
+    font-size="28"
     letter-spacing="0.4"
-    fill="url(#holo)"
+    fill="url(#tg)"
   >CognitiveLogic</text>
+
+  <!-- SPARKLE — diamond star bottom-right (matches image) -->
+  <g transform="translate(356, 77)" opacity="0.62">
+    <line x1="-6" y1="0"  x2="6"  y2="0"  stroke="#90a8cc" stroke-width="1.1"/>
+    <line x1="0"  y1="-6" x2="0"  y2="6"  stroke="#90a8cc" stroke-width="1.1"/>
+    <line x1="-4" y1="-4" x2="4"  y2="4"  stroke="#90a8cc" stroke-width="0.65"/>
+    <line x1="4"  y1="-4" x2="-4" y2="4"  stroke="#90a8cc" stroke-width="0.65"/>
+    <circle cx="0" cy="0" r="1.4" fill="#c0d4ec"/>
+  </g>
+
 </svg>
