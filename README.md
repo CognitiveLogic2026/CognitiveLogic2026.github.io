@@ -12,7 +12,7 @@ declarative.
 
 ## Core Architecture Layers
 
-- **QEN Framework — Quantifiable Ethical Nodes**
+- **QEN Framework — Quantificazione Etica Naturale / Quantifying Ethical Network**
   Semantic graph + numerical ethics scoring for institutions, restaurants,
   and hotels. Formula: `QEN = (Vs × 0.40) + (Va × 0.35) + (Vt × 0.25)`
 - **Dual-Brain AI Engine**

@@ -14,7 +14,7 @@
   "claims": {
     "scope": "Semantic Modeling & AI-First Data Architecture",
     "data_sovereignty": "Strict — local processing on sovereign infrastructure",
-    "framework": "QEN — Quantifiable Ethical Nodes",
+    "framework": "QEN — Quantifying Ethical Network",
     "formula": "QEN = (Vs × 0.40) + (Va × 0.35) + (Vt × 0.25)",
     "regulatory_alignment": [
       "EU AI Act",
