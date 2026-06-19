@@ -1,25 +1,37 @@
-<svg width="5900" height="1200" viewBox="0 0 5900 1200" xmlns="http://www.w3.org/2000/svg">
+<svg width="4000" height="1200" viewBox="0 0 4000 1200" xmlns="http://www.w3.org/2000/svg">
 
-  <!-- Simbolo CL con I-beam a 1/5 -->
-  <g fill="none" stroke="#bfc3c7" stroke-width="120" stroke-linecap="round" stroke-linejoin="round">
+  <!-- Rettangolo sinistro (30%) -->
+  <rect x="0" y="200" width="1200" height="800"
+        fill="none" stroke="#cfd2d4" stroke-width="80" />
 
-    <!-- I-beam spostato a sinistra (x = 800) -->
-    <line x1="800" y1="200" x2="800" y2="1000" />
+  <!-- Rettangolo destro (70%) -->
+  <rect x="1200" y="200" width="2800" height="800"
+        fill="none" stroke="#cfd2d4" stroke-width="80" />
 
-    <!-- Curve simmetriche ai lati -->
-    <path d="M300 250 v450 a250 250 0 0 0 250 250" />
-    <path d="M1300 250 v450 a250 250 0 0 1 -250 250" />
+  <!-- I-beam al 30% (x = 1200) -->
+  <line x1="1200" y1="200" x2="1200" y2="1000"
+        stroke="#cfd2d4" stroke-width="120" stroke-linecap="round" />
 
-  </g>
-
-  <!-- Logotipo -->
-  <text x="1700" y="760"
-        font-family="Inter, sans-serif"
-        font-size="480"
-        font-weight="600"
-        fill="#bfc3c7"
-        letter-spacing="3">
+  <!-- Testo principale -->
+  <text x="1600" y="750"
+        font-family="JetBrains Mono, monospace"
+        font-size="500"
+        font-weight="500"
+        fill="#cfd2d4"
+        text-anchor="start"
+        letter-spacing="-12">
     CognitiveLogic
+  </text>
+
+  <!-- "Cog" inglobato nella parte destra -->
+  <text x="3300" y="750"
+        font-family="JetBrains Mono, monospace"
+        font-size="420"
+        font-weight="500"
+        fill="#cfd2d4"
+        text-anchor="middle"
+        letter-spacing="-10">
+    Cog
   </text>
 
 </svg>
