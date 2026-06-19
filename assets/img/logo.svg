@@ -1,0 +1,25 @@
+<svg width="4000" height="1200" viewBox="0 0 4000 1200" xmlns="http://www.w3.org/2000/svg">
+
+  <!-- Simbolo CL con I-beam a 1/5 -->
+  <g fill="none" stroke="#bfc3c7" stroke-width="120" stroke-linecap="round" stroke-linejoin="round">
+
+    <!-- I-beam spostato a sinistra (x = 800) -->
+    <line x1="800" y1="200" x2="800" y2="1000" />
+
+    <!-- Curve simmetriche ai lati -->
+    <path d="M300 250 v450 a250 250 0 0 0 250 250" />
+    <path d="M1300 250 v450 a250 250 0 0 1 -250 250" />
+
+  </g>
+
+  <!-- Logotipo -->
+  <text x="1700" y="760"
+        font-family="Inter, sans-serif"
+        font-size="480"
+        font-weight="600"
+        fill="#bfc3c7"
+        letter-spacing="3">
+    CognitiveLogic
+  </text>
+
+</svg>
