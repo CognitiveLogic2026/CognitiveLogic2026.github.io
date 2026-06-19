@@ -15,12 +15,38 @@
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="css/style.css?v=3" />
   <style>
-    .home-hero { padding: 140px 0 80px; }
-    .home-hero h1 { font-size: clamp(3rem, 7vw, 6.5rem); line-height: 0.93; letter-spacing: -0.03em; margin-bottom: 32px; }
+    /* ── Hero split 30 / 70 ── */
+    .home-hero {
+      display: grid;
+      grid-template-columns: 3fr 7fr;
+      min-height: calc(100vh - var(--nav-height));
+      border-bottom: 1px solid var(--line-soft);
+    }
+    .hero-left {
+      padding: 60px 40px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      border-right: 1px solid var(--line-soft);
+    }
+    .hero-logo { width: 100%; max-width: 200px; height: auto; display: block; margin-bottom: 40px; }
+    .hero-brand-label {
+      font-family: "DM Mono", monospace;
+      font-size: 0.62rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--muted);
+      line-height: 2;
+    }
+    .hero-right {
+      padding: 80px 64px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .home-hero h1 { font-size: clamp(3rem, 7vw, 6.5rem); line-height: 0.93; letter-spacing: -0.03em; margin: 0 0 32px; }
     .home-hero h1 em { font-style: italic; color: var(--gold-soft); }
     .tagline { font-family: "DM Mono", monospace; font-size: 0.82rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--gold-soft); margin-bottom: 24px; }
-    .hero-logo { height: 60px; width: auto; display: block; margin-bottom: 36px; }
-    @media (max-width: 580px) { .hero-logo { height: 40px; margin-bottom: 24px; } }
     .hero-desc { font-size: clamp(1.1rem, 1.8vw, 1.35rem); color: var(--text-soft); line-height: 1.65; max-width: 620px; margin-bottom: 40px; }
     .hero-ctas { display: flex; gap: 12px; flex-wrap: wrap; }
 
@@ -45,8 +71,20 @@
     .divider-label span { font-family: "DM Mono", monospace; font-size: 0.72rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold-soft); white-space: nowrap; }
     .divider-label::after { content: ''; flex: 1; height: 1px; background: var(--line); }
 
-    @media (max-width: 900px) { .pages-grid { grid-template-columns: repeat(2, 1fr); } .social-strip { grid-template-columns: repeat(2, 1fr); } }
-    @media (max-width: 580px) { .pages-grid { grid-template-columns: 1fr; } .social-strip { grid-template-columns: 1fr; } .home-hero { padding: 100px 0 60px; } }
+    @media (max-width: 900px) {
+      .home-hero { grid-template-columns: 1fr; min-height: auto; }
+      .hero-left { border-right: none; border-bottom: 1px solid var(--line-soft); padding: 48px 24px 40px; flex-direction: row; align-items: center; gap: 24px; }
+      .hero-logo { max-width: 120px; margin-bottom: 0; }
+      .hero-right { padding: 48px 24px 60px; }
+      .pages-grid { grid-template-columns: repeat(2, 1fr); }
+      .social-strip { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 580px) {
+      .hero-left { flex-direction: column; align-items: flex-start; }
+      .hero-logo { max-width: 100px; margin-bottom: 16px; }
+      .pages-grid { grid-template-columns: 1fr; }
+      .social-strip { grid-template-columns: 1fr; }
+    }
   </style>
   <link rel="search" type="application/opensearchdescription+xml" title="Cognitive Logic" href="https://cognitivelogic.it/opensearchdescription.xml" />
 </head>
@@ -80,11 +118,16 @@
   <main>
     <!-- ── Hero ── -->
     <section class="home-hero">
-      <div class="container">
-        <div class="logo-container">
-          <img src="assets/img/logo.svg" alt="Cognitive Logic" class="hero-logo">
+      <div class="hero-left">
+        <img src="assets/img/logo.svg" alt="Cognitive Logic" class="hero-logo">
+        <div class="hero-brand-label">
+          Bologna · 2026<br>
+          Quantificazione<br>
+          Etica Naturale
         </div>
-        <div class="tagline">Bologna · 2026 · Quantificazione Etica Naturale</div>
+      </div>
+      <div class="hero-right">
+        <div class="tagline">QEN Framework · AI Ethics · Compliance</div>
         <h1>
           Intelligenza<br>
           <em>artificiale</em><br>
@@ -247,9 +290,7 @@
   <footer class="site-footer">
     <div class="container footer-inner">
       <div>
-        <div class="logo-container">
-          <img src="assets/img/logo.svg" alt="Cognitive Logic" style="width:80px;height:auto;display:block;margin-bottom:10px;opacity:0.85;">
-        </div>
+        <img src="assets/img/logo.svg" alt="Cognitive Logic" style="width:120px;height:auto;display:block;margin-bottom:12px;opacity:0.7;">
         <div class="footer-sub">Quantificazione Etica Naturale — Knowledge Infrastructure per AI Ethics, Compliance e Territorio.</div>
         <div class="footer-copy mt-8">© 2026 Roberto Bob Malini — Cognitive Logic · Tutti i diritti riservati · <a href="/legal.html" style="color:inherit;text-decoration:underline;">Legal &amp; IP</a></div>
         <div class="footer-social">
