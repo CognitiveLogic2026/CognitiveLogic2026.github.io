@@ -294,6 +294,17 @@ hr {
   min-width: 0;
 }
 
+.logo-container {
+  background-color: transparent;
+  display: inline-block;
+}
+
+.logo-container img {
+  display: block;
+  border: none;
+  box-shadow: none;
+}
+
 .brand-mark {
   width: 42px;
   height: 42px;
