@@ -13,6 +13,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css?v=3">
 <style>
 :root {
   --green: #d4af37;
@@ -64,28 +65,7 @@ pointer-events: none;
 z-index: 0;
 }
 
-/* HEADER */
-header {
-position: relative;
-z-index: 10;
-display: flex;
-align-items: center;
-justify-content: space-between;
-padding: 1.5rem 3rem;
-border-bottom: 1px solid var(--border);
-background: rgba(7,17,31,0.85);
-backdrop-filter: blur(12px);
-}
-
-.logo {
-font-family: "Cormorant Garamond", serif;
-font-weight: 800;
-font-size: 1.1rem;
-letter-spacing: 0.08em;
-color: var(--text);
-text-decoration: none;
-}
-.logo span { color: var(--green); }
+/* HEADER — handled by site-header from css/style.css */
 
 /* PIANO BADGE — mostrato se arriva da pricing */
 .plan-badge {
@@ -713,10 +693,24 @@ header { padding: 1rem 1.5rem; }
 </head>
 <body>
 
-<header>
-  <a href="https://cognitivelogic.it" class="logo" style="line-height:0;"></a>
-  <span class="plan-badge" id="plan-badge"></span>
-  <span class="header-tag">QEN · Onboarding</span>
+<div class="site-bg"></div>
+<header class="site-header">
+  <div class="container header-inner">
+    <a href="index.html" class="brand">
+      <span class="wordmark wordmark--nav">
+        <span class="wm-top">Cognitive</span>
+        <span class="wm-bot">Logic</span>
+      </span>
+    </a>
+    <nav class="main-nav">
+      <a href="qen.html">QEN</a>
+      <a href="onboarding.html" class="active">Onboarding</a>
+    </nav>
+    <div class="header-end">
+      <span class="plan-badge" id="plan-badge"></span>
+      <span class="header-tag" style="font-family:'DM Mono',monospace;font-size:0.62rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--muted);">QEN · Onboarding</span>
+    </div>
+  </div>
 </header>
 
 <div class="hero">
