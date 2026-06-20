@@ -1,17 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 368 88" width="368" height="88">
   <defs>
 
-    <!-- Background: dark navy with radial glow -->
-    <radialGradient id="bg" cx="38%" cy="45%" r="65%">
-      <stop offset="0%"  stop-color="#1a2e46"/>
-      <stop offset="100%" stop-color="#050d18"/>
-    </radialGradient>
-
-    <!-- Subtle grid overlay -->
-    <pattern id="grid" width="28" height="28" patternUnits="userSpaceOnUse">
-      <path d="M 28 0 L 0 0 0 28" fill="none" stroke="#1c3050" stroke-width="0.55"/>
-    </pattern>
-
     <!-- Chrome gradient for VERTICAL pieces (spine, center bar) — left-to-right sheen -->
     <linearGradient id="cv" x1="0%" y1="0%" x2="100%" y2="0%">
       <stop offset="0%"   stop-color="#6878a0"/>
@@ -45,10 +34,6 @@
     </filter>
 
   </defs>
-
-  <!-- BACKGROUND -->
-  <rect width="368" height="88" fill="url(#bg)" rx="5"/>
-  <rect width="368" height="88" fill="url(#grid)" rx="5"/>
 
   <!-- I-BEAM SYMBOL -->
   <g transform="translate(14, 6)" filter="url(#sh)">
