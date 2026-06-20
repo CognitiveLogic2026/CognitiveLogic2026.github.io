@@ -13,238 +13,168 @@
   <link rel="canonical" href="https://cognitivelogic.it/ristorazione.html">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,300;0,400;0,500;1,300&family=Syne:wght@400;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css?v=3">
   <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    :root {
-      --bg:     #05080f;
-      --s1:     #0a0d1a;
-      --s2:     #0f1323;
-      --border: #181d30;
-      --green:  #00e5a0;
-      --blue:   #4db8ff;
-      --gold:   #c8a84b;
-      --text:   #ccd4ef;
-      --mid:    #8892b5;
-      --dim:    #4a5270;
-      --mono:   'IBM Plex Mono', monospace;
-      --sans:   'Syne', sans-serif;
-    }
-    html { scroll-behavior: smooth; }
-    body {
-      background: var(--bg);
-      color: var(--text);
-      font-family: var(--mono);
-      line-height: 1.6;
-      overflow-x: hidden;
-    }
-    body::after {
-      content: '';
-      position: fixed; inset: 0;
-      background-image:
-        linear-gradient(var(--border) 1px, transparent 1px),
-        linear-gradient(90deg, var(--border) 1px, transparent 1px);
-      background-size: 64px 64px;
-      pointer-events: none; z-index: 0; opacity: 0.15;
-    }
-    * { position: relative; z-index: 1; }
-
-    /* NAV */
-    nav {
-      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-      height: 52px;
-      display: flex; align-items: center; justify-content: space-between;
-      padding: 0 2rem;
-      background: rgba(5,8,15,0.92);
-      backdrop-filter: blur(16px);
-      border-bottom: 1px solid var(--border);
-    }
-    .nav-logo { text-decoration: none; display: flex; align-items: center; }
-    .nav-logo img {
-      height: 28px; width: auto; display: block;
-      transition: transform 0.2s ease, opacity 0.2s ease;
-    }
-    .nav-logo:hover img { transform: scale(1.04); opacity: 0.88; }
-    .nav-links { display: flex; gap: 2rem; list-style: none; }
-    .nav-links a {
-      font-size: 0.62rem; letter-spacing: 0.1em; text-transform: uppercase;
-      color: var(--dim); text-decoration: none; transition: color 0.2s;
-    }
-    .nav-links a:hover { color: var(--green); }
-    .nav-cta {
-      font-size: 0.62rem; letter-spacing: 0.08em; text-transform: uppercase;
-      color: var(--green); text-decoration: none;
-      border: 1px solid rgba(0,229,160,0.35); padding: 0.35rem 0.9rem;
-      transition: background 0.2s;
-    }
-    .nav-cta:hover { background: rgba(0,229,160,0.08); }
-    @media (max-width: 768px) {
-      nav { padding: 0 1rem; }
-      .nav-links { display: none; }
-    }
+    /* QEN Ristorazione — page-specific overrides */
+    body { font-family: "DM Mono", monospace; overflow-x: hidden; }
 
     /* HERO */
-    .hero {
+    .rist-hero {
       min-height: 85vh;
       display: flex; flex-direction: column; justify-content: center;
       max-width: 1080px; margin: 0 auto;
       padding: 7rem 2rem 4rem;
     }
     .eyebrow {
+      font-family: "DM Mono", monospace;
       font-size: 0.58rem; letter-spacing: 0.3em; text-transform: uppercase;
-      color: var(--green); margin-bottom: 2rem;
+      color: var(--gold-soft); margin-bottom: 2rem;
       display: flex; align-items: center; gap: 0.8rem;
     }
-    .eyebrow::before { content: ''; width: 24px; height: 1px; background: var(--green); }
-    h1 {
-      font-family: var(--sans); font-weight: 800;
+    .eyebrow::before { content: ''; width: 24px; height: 1px; background: var(--gold); }
+    .rist-hero h1 {
+      font-family: 'Cormorant Garamond', serif; font-weight: 800;
       font-size: clamp(2.6rem, 6vw, 5.2rem);
       line-height: 0.96; letter-spacing: -0.03em;
       margin-bottom: 1.2rem;
     }
-    h1 .g { color: var(--green); }
-    h1 .d { color: var(--dim); }
+    .rist-hero h1 .g { color: var(--gold-soft); }
+    .rist-hero h1 .d { color: var(--muted); }
     .hero-sub {
-      font-size: 0.82rem; color: var(--mid);
+      font-size: 0.82rem; color: var(--text-soft);
       max-width: 600px; line-height: 1.9; margin: 1.8rem 0 2.8rem;
     }
     .hero-badges { display: flex; flex-wrap: wrap; gap: 0.6rem; margin-bottom: 3rem; }
-    .badge {
+    .rist-badge {
+      font-family: "DM Mono", monospace;
       font-size: 0.58rem; letter-spacing: 0.12em; text-transform: uppercase;
-      border: 1px solid var(--border); color: var(--mid);
+      border: 1px solid var(--line-soft); color: var(--muted);
       padding: 0.3rem 0.7rem;
     }
-    .badge.active { border-color: rgba(0,229,160,0.3); color: var(--green); }
+    .rist-badge.active { border-color: rgba(212,175,55,0.3); color: var(--gold-soft); }
     .hero-metrics {
       display: grid; grid-template-columns: repeat(4, auto); gap: 0;
-      border: 1px solid var(--border); width: fit-content;
+      border: 1px solid var(--line-soft); width: fit-content;
     }
-    .metric { padding: 1.2rem 1.8rem; border-right: 1px solid var(--border); }
-    .metric:last-child { border-right: none; }
-    .m-val { font-family: var(--sans); font-weight: 800; font-size: 1.8rem; color: var(--green); line-height: 1; }
-    .m-label { font-size: 0.58rem; color: var(--dim); text-transform: uppercase; letter-spacing: 0.1em; margin-top: 0.3rem; }
+    .hero-metrics .rist-metric { padding: 1.2rem 1.8rem; border-right: 1px solid var(--line-soft); }
+    .hero-metrics .rist-metric:last-child { border-right: none; }
+    .m-val { font-family: 'Cormorant Garamond', serif; font-weight: 800; font-size: 1.8rem; color: var(--gold-soft); line-height: 1; }
+    .m-label { font-family: "DM Mono", monospace; font-size: 0.58rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.1em; margin-top: 0.3rem; }
     @media (max-width: 640px) {
       .hero-metrics { grid-template-columns: repeat(2, 1fr); width: 100%; }
-      .metric { border-right: 1px solid var(--border); border-bottom: 1px solid var(--border); }
-      .metric:nth-child(even) { border-right: none; }
+      .hero-metrics .rist-metric { border-right: 1px solid var(--line-soft); border-bottom: 1px solid var(--line-soft); }
+      .hero-metrics .rist-metric:nth-child(even) { border-right: none; }
     }
 
     /* SECTIONS */
-    section { max-width: 1080px; margin: 0 auto; padding: 5rem 2rem; }
-    hr.div { border: none; border-top: 1px solid var(--border); max-width: 1080px; margin: 0 auto; }
+    .rist-page section { max-width: 1080px; margin: 0 auto; padding: 5rem 2rem; }
+    hr.div { border: none; border-top: 1px solid var(--line-soft); max-width: 1080px; margin: 0 auto; }
     .sec-label {
+      font-family: "DM Mono", monospace;
       font-size: 0.58rem; letter-spacing: 0.28em; text-transform: uppercase;
-      color: var(--green); margin-bottom: 0.8rem;
+      color: var(--gold-soft); margin-bottom: 0.8rem;
       display: flex; align-items: center; gap: 0.6rem;
     }
-    .sec-label::before { content: ''; width: 20px; height: 1px; background: var(--green); }
-    h2 {
-      font-family: var(--sans); font-weight: 700;
+    .sec-label::before { content: ''; width: 20px; height: 1px; background: var(--gold); }
+    .rist-page h2 {
+      font-family: 'Cormorant Garamond', serif; font-weight: 700;
       font-size: clamp(1.6rem, 3.5vw, 2.6rem);
       letter-spacing: -0.02em; line-height: 1.1; margin-bottom: 0.6rem;
     }
     .sec-desc {
-      font-size: 0.8rem; color: var(--mid);
+      font-size: 0.8rem; color: var(--text-soft);
       max-width: 560px; line-height: 1.9; margin-bottom: 2.8rem;
     }
 
     /* FORMULA */
     .formula-block {
-      background: var(--s1); border: 1px solid var(--border);
+      background: var(--bg-soft); border: 1px solid var(--line-soft);
       padding: 2.5rem; margin: 2rem 0;
     }
-    .formula-label { font-size: 0.58rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--dim); margin-bottom: 1.2rem; }
-    .formula { font-family: var(--mono); font-size: clamp(0.9rem, 2.5vw, 1.2rem); color: var(--green); letter-spacing: 0.05em; margin-bottom: 1.5rem; }
-    .formula-vars { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--border); border: 1px solid var(--border); }
-    .fv { background: var(--s2); padding: 1rem; }
-    .fv-sym { font-size: 0.65rem; color: var(--green); margin-bottom: 0.3rem; }
-    .fv-name { font-family: var(--sans); font-weight: 700; font-size: 0.85rem; color: var(--text); }
-    .fv-weight { font-size: 0.62rem; color: var(--gold); margin-top: 0.2rem; }
-    .fv-desc { font-size: 0.65rem; color: var(--mid); margin-top: 0.5rem; line-height: 1.6; }
+    .formula-label { font-family: "DM Mono", monospace; font-size: 0.58rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted); margin-bottom: 1.2rem; }
+    .rist-formula { font-family: "DM Mono", monospace; font-size: clamp(0.9rem, 2.5vw, 1.2rem); color: var(--gold-soft); letter-spacing: 0.05em; margin-bottom: 1.5rem; }
+    .formula-vars { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--line-soft); border: 1px solid var(--line-soft); }
+    .fv { background: var(--bg-panel); padding: 1rem; }
+    .fv-sym { font-family: "DM Mono", monospace; font-size: 0.65rem; color: var(--gold-soft); margin-bottom: 0.3rem; }
+    .fv-name { font-family: 'Cormorant Garamond', serif; font-weight: 700; font-size: 0.85rem; color: var(--text); }
+    .fv-weight { font-family: "DM Mono", monospace; font-size: 0.62rem; color: var(--gold); margin-top: 0.2rem; }
+    .fv-desc { font-size: 0.65rem; color: var(--text-soft); margin-top: 0.5rem; line-height: 1.6; }
     @media (max-width: 640px) { .formula-vars { grid-template-columns: 1fr; } }
 
     /* DIMENSIONI */
-    .dim-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1px; background: var(--border); border: 1px solid var(--border); }
-    .dim-card { background: var(--s1); padding: 2rem; transition: background 0.2s; }
-    .dim-card:hover { background: var(--s2); }
-    .dim-id { font-size: 0.55rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--dim); margin-bottom: 1rem; }
-    .dim-name { font-family: var(--sans); font-weight: 700; font-size: 1.05rem; color: var(--text); margin-bottom: 0.5rem; }
-    .dim-desc { font-size: 0.72rem; color: var(--mid); line-height: 1.8; margin-bottom: 1.2rem; }
-    .dim-items { list-style: none; display: flex; flex-direction: column; gap: 0.4rem; }
-    .dim-items li { font-size: 0.68rem; color: var(--mid); padding-left: 1rem; }
-    .dim-items li::before { content: '→ '; color: var(--green); margin-left: -1rem; }
+    .dim-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1px; background: var(--line-soft); border: 1px solid var(--line-soft); }
+    .dim-card { background: var(--bg-soft); padding: 2rem; transition: background 0.2s; }
+    .dim-card:hover { background: var(--bg-panel); }
+    .dim-id { font-family: "DM Mono", monospace; font-size: 0.55rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted); margin-bottom: 1rem; }
+    .dim-name { font-family: 'Cormorant Garamond', serif; font-weight: 700; font-size: 1.05rem; color: var(--text); margin-bottom: 0.5rem; }
+    .dim-desc { font-size: 0.72rem; color: var(--text-soft); line-height: 1.8; margin-bottom: 1.2rem; }
+    .dim-items { list-style: none; padding: 0; display: flex; flex-direction: column; gap: 0.4rem; }
+    .dim-items li { font-size: 0.68rem; color: var(--text-soft); padding-left: 1rem; }
+    .dim-items li::before { content: '→ '; color: var(--gold); margin-left: -1rem; }
 
     /* DATASET */
     .dataset-block {
-      background: var(--s1); border: 1px solid var(--border);
+      background: var(--bg-soft); border: 1px solid var(--line-soft);
       padding: 2.5rem; display: grid;
       grid-template-columns: 1fr auto; gap: 2rem; align-items: center;
     }
-    .dataset-title { font-family: var(--sans); font-weight: 800; font-size: 1.2rem; margin-bottom: 0.5rem; }
-    .dataset-desc { font-size: 0.78rem; color: var(--mid); line-height: 1.8; max-width: 520px; }
+    .dataset-title { font-family: 'Cormorant Garamond', serif; font-weight: 800; font-size: 1.2rem; margin-bottom: 0.5rem; color: var(--text); }
+    .dataset-desc { font-size: 0.78rem; color: var(--text-soft); line-height: 1.8; max-width: 520px; }
     .dataset-meta { display: flex; flex-direction: column; gap: 0.5rem; }
-    .dm-row { display: flex; justify-content: space-between; gap: 2rem; font-size: 0.65rem; }
-    .dm-label { color: var(--dim); text-transform: uppercase; letter-spacing: 0.1em; }
-    .dm-val { color: var(--green); }
-    .btn-primary {
-      display: inline-block; font-family: var(--mono); font-size: 0.65rem;
-      letter-spacing: 0.12em; text-transform: uppercase;
-      color: var(--bg); background: var(--green);
-      padding: 0.8rem 1.8rem; text-decoration: none;
-      transition: opacity 0.2s; white-space: nowrap;
-    }
-    .btn-primary:hover { opacity: 0.85; }
-    .btn-secondary {
-      display: inline-block; font-family: var(--mono); font-size: 0.65rem;
-      letter-spacing: 0.12em; text-transform: uppercase;
-      color: var(--green); border: 1px solid rgba(0,229,160,0.35);
-      padding: 0.8rem 1.8rem; text-decoration: none;
-      transition: background 0.2s; white-space: nowrap;
-    }
-    .btn-secondary:hover { background: rgba(0,229,160,0.08); }
+    .dm-row { display: flex; justify-content: space-between; gap: 2rem; font-family: "DM Mono", monospace; font-size: 0.65rem; }
+    .dm-label { color: var(--muted); text-transform: uppercase; letter-spacing: 0.1em; }
+    .dm-val { color: var(--gold-soft); }
     .btn-row { display: flex; gap: 0.8rem; flex-wrap: wrap; }
     @media (max-width: 640px) { .dataset-block { grid-template-columns: 1fr; } }
 
     /* PROCESS */
-    .process-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1px; background: var(--border); border: 1px solid var(--border); }
-    .step { background: var(--s1); padding: 1.8rem; }
-    .step-num { font-size: 0.55rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--dim); margin-bottom: 0.8rem; }
-    .step-title { font-family: var(--sans); font-weight: 700; font-size: 0.95rem; color: var(--text); margin-bottom: 0.5rem; }
-    .step-desc { font-size: 0.7rem; color: var(--mid); line-height: 1.8; }
+    .process-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1px; background: var(--line-soft); border: 1px solid var(--line-soft); }
+    .step { background: var(--bg-soft); padding: 1.8rem; }
+    .step-num { font-family: "DM Mono", monospace; font-size: 0.55rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted); margin-bottom: 0.8rem; }
+    .step-title { font-family: 'Cormorant Garamond', serif; font-weight: 700; font-size: 0.95rem; color: var(--text); margin-bottom: 0.5rem; }
+    .step-desc { font-size: 0.7rem; color: var(--text-soft); line-height: 1.8; }
 
-    /* FOOTER */
-    footer {
-      border-top: 1px solid var(--border);
-      padding: 2.5rem 2rem; max-width: 1080px; margin: 0 auto;
+    /* RIST FOOTER extras */
+    .rist-footer-inner {
+      max-width: 1080px; margin: 0 auto;
       display: flex; justify-content: space-between; align-items: flex-end;
       flex-wrap: wrap; gap: 1.5rem;
     }
-    .fb img { width: 80px; height: auto; display: block; margin-bottom: 0.5rem; opacity: 0.8; }
-    .ft-tag { font-size: 0.65rem; color: var(--mid); font-style: italic; max-width: 340px; line-height: 1.6; margin-top: 0.3rem; }
+    .ft-tag { font-size: 0.65rem; color: var(--muted); font-style: italic; max-width: 340px; line-height: 1.6; margin-top: 0.3rem; }
     .flinks { display: flex; flex-direction: column; gap: 0.35rem; text-align: right; }
-    .flinks a { font-size: 0.62rem; color: var(--dim); text-decoration: none; transition: color 0.2s; }
-    .flinks a:hover { color: var(--green); }
+    .flinks a { font-family: "DM Mono", monospace; font-size: 0.62rem; color: var(--muted); text-decoration: none; transition: color 0.2s; }
+    .flinks a:hover { color: var(--gold-soft); }
   </style>
   <link rel="search" type="application/opensearchdescription+xml" title="Cognitive Logic" href="https://cognitivelogic.it/opensearchdescription.xml" />
 </head>
 <body>
+<div class="site-bg"></div>
 
-<!-- NAV -->
-<nav>
-  <a class="nav-logo" href="/">
-    <span class="wordmark wordmark--nav"><span class="wm-top">Cognitive</span><span class="wm-bot">Logic</span></span>
-  </a>
-  <ul class="nav-links">
-    <li><a href="/methodology.html">Metodologia</a></li>
-    <li><a href="/qen.html">QEN</a></li>
-    <li><a href="/framework.html">Framework</a></li>
-    <li><a href="/pilots.html">Pilota</a></li>
-  </ul>
-  <a class="nav-cta" href="mailto:info@cognitivelogic.it">Richiedi accesso</a>
-</nav>
+<header class="site-header">
+  <div class="container header-inner">
+    <a href="index.html" class="brand">
+      <span class="wordmark wordmark--nav">
+        <span class="wm-top">Cognitive</span>
+        <span class="wm-bot">Logic</span>
+      </span>
+    </a>
+    <nav class="main-nav">
+      <a href="methodology.html">Metodologia</a>
+      <a href="qen.html">QEN</a>
+      <a href="framework.html">Framework</a>
+      <a href="pilots.html">Pilota</a>
+    </nav>
+    <div class="header-end">
+      <a href="mailto:info@cognitivelogic.it" class="btn btn-ghost">Richiedi accesso</a>
+    </div>
+  </div>
+</header>
+
+<div class="rist-page">
 
 <!-- HERO -->
-<div class="hero">
+<div class="rist-hero">
   <p class="eyebrow">QEN Ristorazione · HoReCa Bologna · Vertical v1.0</p>
   <h1>
     Etica<br>
@@ -257,27 +187,27 @@
     Tre dimensioni. Un numero verificabile. Zero narrative.
   </p>
   <div class="hero-badges">
-    <span class="badge active">Filiera Corta · Km0</span>
-    <span class="badge active">Welfare Lavorativo</span>
-    <span class="badge active">Radicamento Locale</span>
-    <span class="badge">CSRD Operativa</span>
-    <span class="badge">EU AI Act Art.22</span>
-    <span class="badge">5 Strutture Pilota</span>
+    <span class="rist-badge active">Filiera Corta · Km0</span>
+    <span class="rist-badge active">Welfare Lavorativo</span>
+    <span class="rist-badge active">Radicamento Locale</span>
+    <span class="rist-badge">CSRD Operativa</span>
+    <span class="rist-badge">EU AI Act Art.22</span>
+    <span class="rist-badge">5 Strutture Pilota</span>
   </div>
   <div class="hero-metrics">
-    <div class="metric">
+    <div class="rist-metric">
       <div class="m-val">5</div>
       <div class="m-label">Piloti attivi</div>
     </div>
-    <div class="metric">
+    <div class="rist-metric">
       <div class="m-val">38</div>
       <div class="m-label">Variabili</div>
     </div>
-    <div class="metric">
+    <div class="rist-metric">
       <div class="m-val">3</div>
       <div class="m-label">Dimensioni</div>
     </div>
-    <div class="metric">
+    <div class="rist-metric">
       <div class="m-val">0–100</div>
       <div class="m-label">Scala score</div>
     </div>
@@ -296,7 +226,7 @@
   </p>
   <div class="formula-block">
     <div class="formula-label">QEN Framework v6.0 — Formula primaria · Verticale Ristorazione</div>
-    <div class="formula">QEN = (Vs × 0.40) + (Va × 0.35) + (Vt × 0.25)</div>
+    <div class="rist-formula">QEN = (Vs × 0.40) + (Va × 0.35) + (Vt × 0.25)</div>
     <div class="formula-vars">
       <div class="fv">
         <div class="fv-sym">Vs — Valore Sociale</div>
@@ -437,32 +367,38 @@
       </div>
     </div>
     <div class="btn-row" style="flex-direction:column;">
-      <a href="mailto:info@cognitivelogic.it?subject=Richiesta%20accesso%20QEN-RIST-BO-2026" class="btn-primary">Richiedi accesso</a>
-      <a href="/methodology.html" class="btn-secondary">Metodologia</a>
+      <a href="mailto:info@cognitivelogic.it?subject=Richiesta%20accesso%20QEN-RIST-BO-2026" class="btn btn-primary">Richiedi accesso</a>
+      <a href="/methodology.html" class="btn btn-ghost">Metodologia</a>
     </div>
   </div>
 </section>
 
 <hr class="div">
 
-<!-- FOOTER -->
-<footer>
-  <div>
-    <div class="fb">
-      
+</div><!-- /.rist-page -->
+
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <div>
+      <div class="wordmark wordmark--footer" aria-label="Cognitive Logic">
+        <span class="wm-top">Cognitive</span>
+        <span class="wm-bot">Logic</span>
+      </div>
+      <div class="footer-sub">QEN Ristorazione · HoReCa Bologna · Cognitive Logic 2026</div>
+      <div class="footer-copy mt-8">© 2026 Roberto Bob Malini — Cognitive Logic · <a href="/legal.html" style="color:inherit;text-decoration:underline;">Legal &amp; IP</a></div>
     </div>
-    <div class="ft-tag">QEN Ristorazione · HoReCa Bologna · Cognitive Logic 2026<br>Roberto Malini · Founder &amp; AI Ethics Architect</div>
-  </div>
-  <div class="flinks">
-    <a href="/">Home</a>
-    <a href="/methodology.html">Metodologia</a>
-    <a href="/qen.html">QEN Score</a>
-    <a href="/framework.html">Framework</a>
-    <a href="/services.html">Servizi</a>
-    <a href="/academia/">Academia</a>
-    <a href="mailto:info@cognitivelogic.it">Contatti</a>
+    <div class="footer-links">
+      <a href="index.html">Home</a>
+      <a href="methodology.html">Metodologia</a>
+      <a href="qen.html">QEN Score</a>
+      <a href="framework.html">Framework</a>
+      <a href="services.html">Servizi</a>
+      <a href="pilots.html">Pilota</a>
+      <a href="mailto:info@cognitivelogic.it">Contatti</a>
+    </div>
   </div>
 </footer>
 
+<script src="/js/cookie-banner.js"></script>
 </body>
 </html>
