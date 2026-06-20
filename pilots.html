@@ -246,7 +246,7 @@
       </div>
     </div>
 
-    <div class="footer-note">Cognitive Logic · QEN Compliance Engine · EU AI Act 2024</div>
+    <div class="footer-note">Cognitive Logic · QEN Compliance Engine · EU AI Act 2025</div>
   </div>
 
   <script>
@@ -349,12 +349,39 @@
     }
 
     function getApiKey() {
-      let key = sessionStorage.getItem("cq_api_key");
-      if (!key) {
-        key = prompt("Inserisci la chiave API per accedere alla dashboard:");
-        if (key) sessionStorage.setItem("cq_api_key", key);
+      return localStorage.getItem("qen_api_key") || sessionStorage.getItem("cq_api_key") || "";
+    }
+
+    function showApiKeyInput() {
+      document.getElementById("table-body").innerHTML = `
+        <div class="state-box">
+          <div style="margin-bottom:16px">Inserisci la chiave API per accedere alla dashboard</div>
+          <div style="display:flex;gap:8px;justify-content:center;flex-wrap:wrap">
+            <input id="api-key-input" type="password" placeholder="Chiave API..."
+              style="background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.15);color:#fff;
+                     padding:8px 14px;font-family:'IBM Plex Mono',monospace;font-size:12px;
+                     border-radius:2px;min-width:220px;outline:none">
+            <button onclick="submitApiKey()"
+              style="background:#00c896;color:#080b0f;border:none;padding:8px 20px;
+                     font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:600;
+                     letter-spacing:0.1em;text-transform:uppercase;cursor:pointer;border-radius:2px">
+              Accedi
+            </button>
+          </div>
+        </div>`;
+      setTimeout(() => document.getElementById("api-key-input")?.focus(), 100);
+      document.getElementById("api-key-input")?.addEventListener("keydown", e => {
+        if (e.key === "Enter") submitApiKey();
+      });
+    }
+
+    function submitApiKey() {
+      const key = document.getElementById("api-key-input")?.value?.trim();
+      if (key) {
+        localStorage.setItem("qen_api_key", key);
+        sessionStorage.setItem("cq_api_key", key);
+        load();
       }
-      return key || "";
     }
 
     async function load() {
@@ -369,14 +396,14 @@
 
       const apiKey = getApiKey();
       if (!apiKey) {
-        document.getElementById("table-body").innerHTML =
-          '<div class="state-box">Chiave API necessaria per accedere alla dashboard.</div>';
+        showApiKeyInput();
         return;
       }
 
       try {
         const res = await fetch(API, { headers: { "X-API-Key": apiKey } });
         if (res.status === 403) {
+          localStorage.removeItem("qen_api_key");
           sessionStorage.removeItem("cq_api_key");
           throw new Error("HTTP 403 — chiave non valida, riprova.");
         }
@@ -394,7 +421,7 @@
     }
 
     document.getElementById("btn-refresh").addEventListener("click", load);
-    load();
+    document.addEventListener("DOMContentLoaded", load);
   </script>
 </body>
 </html>
