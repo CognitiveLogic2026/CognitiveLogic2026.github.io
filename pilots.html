@@ -9,12 +9,8 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>QEN Score Dashboard — Cognitive Logic</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css?v=3" />
   <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html, body { height: 100%; background: #080b0f; }
     @keyframes fadeSlideIn {
       from { opacity: 0; transform: translateY(8px); }
       to   { opacity: 1; transform: translateY(0); }
@@ -23,405 +19,532 @@
       from { transform: rotate(0deg); }
       to   { transform: rotate(360deg); }
     }
-    body {
-      min-height: 100vh;
-      background: #080b0f;
-      color: #e8eaed;
-      font-family: 'Syne', sans-serif;
+
+    .dash-section { padding: 64px 0 96px; }
+
+    .dash-header {
       display: flex;
       align-items: flex-start;
-      justify-content: center;
-      padding: 40px 20px 80px;
-      position: relative;
-      overflow-x: hidden;
-    }
-    body::before {
-      content: '';
-      position: fixed;
-      inset: 0;
-      background:
-        radial-gradient(ellipse 600px 400px at 20% 10%, rgba(0,200,150,0.04) 0%, transparent 70%),
-        radial-gradient(ellipse 400px 600px at 80% 80%, rgba(0,120,255,0.04) 0%, transparent 70%);
-      pointer-events: none;
-      z-index: 0;
-    }
-    .grid-bg {
-      position: fixed;
-      inset: 0;
-      background-image:
-        linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
-      background-size: 48px 48px;
-      pointer-events: none;
-      z-index: 0;
-    }
-    .container { width: 100%; max-width: 860px; position: relative; z-index: 1; }
-
-    /* Header */
-    .header { margin-bottom: 40px; animation: fadeSlideIn 0.6s ease both; }
-    .eyebrow {
-      font-family: 'IBM Plex Mono', monospace;
-      font-size: 10px;
-      letter-spacing: 0.2em;
-      color: #00c896;
-      text-transform: uppercase;
-      margin-bottom: 12px;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-    .eyebrow-line { display: inline-block; width: 24px; height: 1px; background: #00c896; }
-    h1 { font-size: clamp(26px, 4vw, 38px); font-weight: 800; line-height: 1.1; letter-spacing: -0.03em; color: #fff; margin-bottom: 8px; }
-    h1 span { color: #00c896; }
-    .subtitle { font-size: 14px; color: rgba(255,255,255,0.4); line-height: 1.6; }
-    .header-row { display: flex; align-items: flex-start; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
-
-    /* Buttons */
-    .btn-new {
-      background: #00c896; color: #080b0f; border: none;
-      padding: 10px 24px;
-      font-family: 'IBM Plex Mono', monospace; font-size: 11px; font-weight: 600;
-      letter-spacing: 0.12em; text-transform: uppercase;
-      cursor: pointer; border-radius: 2px;
-      text-decoration: none;
-      display: inline-flex; align-items: center; gap: 8px;
-      transition: background 0.2s, transform 0.15s;
-      white-space: nowrap;
-      margin-top: 4px;
-    }
-    .btn-new:hover { background: #00dfa8; transform: translateY(-1px); }
-    .btn-refresh {
-      background: transparent; color: rgba(255,255,255,0.4);
-      border: 1px solid rgba(255,255,255,0.1);
-      padding: 10px 20px;
-      font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase;
-      cursor: pointer; border-radius: 2px;
-      transition: color 0.2s, border-color 0.2s;
-      display: inline-flex; align-items: center; gap: 8px;
-    }
-    .btn-refresh:hover { color: rgba(255,255,255,0.7); border-color: rgba(255,255,255,0.25); }
-    .btn-row { display: flex; gap: 8px; flex-wrap: wrap; }
-
-    /* Stat cards */
-    .stats-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-bottom: 20px; }
-    @media (max-width: 560px) { .stats-row { grid-template-columns: 1fr 1fr; } }
-    .stat-card {
-      background: rgba(255,255,255,0.03);
-      border: 1px solid rgba(255,255,255,0.07);
-      border-radius: 4px;
-      padding: 20px;
+      justify-content: space-between;
+      gap: 20px;
+      flex-wrap: wrap;
+      margin-bottom: 40px;
       animation: fadeSlideIn 0.5s ease both;
     }
-    .stat-label { font-family: 'IBM Plex Mono', monospace; font-size: 9px; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(255,255,255,0.25); margin-bottom: 10px; }
-    .stat-value { font-size: 28px; font-weight: 800; letter-spacing: -0.03em; color: #fff; }
-    .stat-value.green { color: #00c896; }
-    .stat-sub { font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: rgba(255,255,255,0.2); margin-top: 4px; }
 
-    /* Table card */
-    .table-card {
-      background: rgba(255,255,255,0.03);
-      border: 1px solid rgba(255,255,255,0.07);
-      border-radius: 4px;
+    .dash-kicker {
+      font-family: var(--mono);
+      font-size: 0.72rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--gold-soft);
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .dash-kicker::before {
+      content: '';
+      display: inline-block;
+      width: 22px;
+      height: 1px;
+      background: var(--gold);
+      opacity: 0.5;
+    }
+
+    .dash-title {
+      font-size: clamp(1.8rem, 4vw, 2.8rem);
+      font-weight: 600;
+      letter-spacing: -0.03em;
+      color: var(--text);
+      margin: 0 0 8px;
+    }
+
+    .dash-subtitle {
+      font-family: var(--mono);
+      font-size: 0.76rem;
+      color: var(--muted);
+      letter-spacing: 0.04em;
+    }
+
+    .dash-btn-row {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      align-items: flex-start;
+      padding-top: 6px;
+    }
+
+    .dash-stats {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+      margin-bottom: 16px;
+    }
+
+    @media (max-width: 560px) {
+      .dash-stats { grid-template-columns: 1fr 1fr; }
+    }
+
+    .dash-stat {
+      background: linear-gradient(180deg, rgba(255,255,255,0.035), rgba(255,255,255,0.015)), rgba(10,20,34,0.92);
+      border: 1px solid var(--line-soft);
+      border-radius: var(--radius-lg);
+      padding: 22px 24px;
+      animation: fadeSlideIn 0.5s ease both;
+    }
+
+    .dash-stat-label {
+      font-family: var(--mono);
+      font-size: 0.68rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 12px;
+    }
+
+    .dash-stat-value {
+      font-size: 2.2rem;
+      font-weight: 600;
+      letter-spacing: -0.03em;
+      color: var(--text);
+      line-height: 1;
+    }
+
+    .dash-stat-value.gold { color: var(--gold-soft); }
+
+    .dash-stat-sub {
+      font-family: var(--mono);
+      font-size: 0.68rem;
+      color: var(--muted);
+      margin-top: 6px;
+    }
+
+    .dash-card {
+      background: linear-gradient(180deg, rgba(255,255,255,0.035), rgba(255,255,255,0.015)), rgba(10,20,34,0.92);
+      border: 1px solid var(--line-soft);
+      border-radius: var(--radius-lg);
       overflow: hidden;
-      animation: fadeSlideIn 0.5s ease 0.15s both;
+      animation: fadeSlideIn 0.5s ease 0.1s both;
     }
-    .section-label {
-      font-family: 'IBM Plex Mono', monospace; font-size: 9px; letter-spacing: 0.2em; text-transform: uppercase;
-      color: rgba(255,255,255,0.25);
-      padding: 16px 20px 12px;
-      border-bottom: 1px solid rgba(255,255,255,0.04);
-      display: flex; align-items: center; justify-content: space-between;
+
+    .dash-card-head {
+      font-family: var(--mono);
+      font-size: 0.68rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--muted);
+      padding: 16px 24px 14px;
+      border-bottom: 1px solid var(--line-soft);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
     }
-    .section-count { color: #00c896; }
-    table { width: 100%; border-collapse: collapse; }
-    thead th {
-      font-family: 'IBM Plex Mono', monospace;
-      font-size: 9px; letter-spacing: 0.15em; text-transform: uppercase;
-      color: rgba(255,255,255,0.2);
-      padding: 12px 20px;
-      text-align: left;
-      border-bottom: 1px solid rgba(255,255,255,0.04);
-      font-weight: 400;
+
+    .dash-card-count { color: var(--gold-soft); }
+
+    #table-body { overflow-x: auto; }
+
+    .dash-card table { min-width: unset; }
+
+    .dash-card th {
+      padding: 12px 24px;
+      font-size: 0.68rem;
+      letter-spacing: 0.1em;
+      color: var(--muted);
+      background: transparent;
     }
-    thead th.right { text-align: right; }
-    tbody tr {
-      border-bottom: 1px solid rgba(255,255,255,0.03);
-      transition: background 0.15s;
-      animation: fadeSlideIn 0.4s ease both;
+
+    .dash-card td { padding: 14px 24px; }
+
+    .td-name {
+      font-size: 0.98rem;
+      font-weight: 600;
+      color: var(--text);
+      letter-spacing: -0.01em;
     }
-    tbody tr:last-child { border-bottom: none; }
-    tbody tr:hover { background: rgba(255,255,255,0.02); }
-    td { padding: 14px 20px; vertical-align: middle; }
-    .td-name { font-size: 14px; font-weight: 600; color: rgba(255,255,255,0.85); letter-spacing: -0.01em; }
-    .td-date { font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: rgba(255,255,255,0.25); margin-top: 3px; }
-    .td-analyses { font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: rgba(255,255,255,0.3); text-align: center; }
+
+    .td-date {
+      font-family: var(--mono);
+      font-size: 0.7rem;
+      color: var(--muted);
+      margin-top: 3px;
+    }
+
+    .td-analyses {
+      font-family: var(--mono);
+      font-size: 0.78rem;
+      color: var(--muted);
+      text-align: center;
+    }
+
     .td-score { text-align: right; }
     .score-wrap { display: flex; flex-direction: column; align-items: flex-end; gap: 5px; }
-    .score-num { font-family: 'IBM Plex Mono', monospace; font-size: 13px; font-weight: 600; }
-    .score-bar-bg { width: 80px; height: 3px; background: rgba(255,255,255,0.06); border-radius: 2px; overflow: hidden; }
-    .score-bar { height: 100%; border-radius: 2px; }
-    .badge {
-      font-family: 'IBM Plex Mono', monospace; font-size: 9px; font-weight: 600;
-      letter-spacing: 0.08em; padding: 2px 7px; border-radius: 2px;
-      border: 1px solid; text-transform: uppercase;
+
+    .score-num {
+      font-family: var(--mono);
+      font-size: 0.88rem;
+      font-weight: 500;
     }
 
-    /* Empty / error / loading states */
-    .state-box {
-      padding: 48px 20px;
-      text-align: center;
-      color: rgba(255,255,255,0.25);
-      font-family: 'IBM Plex Mono', monospace;
-      font-size: 12px;
-      letter-spacing: 0.08em;
+    .score-bar-bg {
+      width: 72px;
+      height: 3px;
+      background: var(--line-soft);
+      border-radius: 2px;
+      overflow: hidden;
     }
-    .state-box .spinner {
-      width: 20px; height: 20px;
-      border: 1.5px solid rgba(0,200,150,0.2);
-      border-top-color: #00c896;
+
+    .score-bar { height: 100%; border-radius: 2px; }
+
+    .score-badge {
+      font-family: var(--mono);
+      font-size: 0.6rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      padding: 2px 8px;
+      border-radius: var(--radius-xs);
+      border: 1px solid;
+      text-transform: uppercase;
+    }
+
+    .state-box {
+      padding: 48px 24px;
+      text-align: center;
+      color: var(--muted);
+      font-family: var(--mono);
+      font-size: 0.78rem;
+      letter-spacing: 0.06em;
+      line-height: 1.8;
+    }
+
+    .state-box a { color: var(--gold-soft); }
+
+    .spinner {
+      width: 20px;
+      height: 20px;
+      border: 1.5px solid rgba(212,175,55,0.18);
+      border-top-color: var(--gold);
       border-radius: 50%;
       animation: spin 0.8s linear infinite;
-      margin: 0 auto 16px;
+      margin: 0 auto 14px;
     }
+
     .error-box {
-      background: rgba(255,59,59,0.06);
-      border: 1px solid rgba(255,59,59,0.2);
-      border-radius: 4px;
-      padding: 16px 20px;
-      color: #ff6b6b;
-      font-size: 13px;
-      font-family: 'IBM Plex Mono', monospace;
-      margin-bottom: 12px;
+      background: rgba(215,133,127,0.06);
+      border: 1px solid rgba(215,133,127,0.24);
+      border-radius: var(--radius-sm);
+      padding: 14px 18px;
+      color: var(--danger);
+      font-family: var(--mono);
+      font-size: 0.78rem;
+      margin-bottom: 14px;
       display: none;
     }
-    .footer-note { font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: rgba(255,255,255,0.12); letter-spacing: 0.08em; text-align: center; margin-top: 24px; }
+
+    .api-key-input {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid var(--line);
+      color: var(--text);
+      padding: 10px 16px;
+      font-family: var(--mono);
+      font-size: 0.78rem;
+      border-radius: var(--radius-xs);
+      min-width: 220px;
+      outline: none;
+      letter-spacing: 0.06em;
+    }
+
+    .api-key-input:focus {
+      border-color: rgba(212,175,55,0.40);
+      box-shadow: 0 0 0 3px rgba(212,175,55,0.08);
+    }
+
+    .api-key-row {
+      display: flex;
+      gap: 10px;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-top: 14px;
+    }
+
+    .dash-footer-note {
+      font-family: var(--mono);
+      font-size: 0.68rem;
+      color: var(--muted);
+      letter-spacing: 0.08em;
+      text-align: center;
+      margin-top: 24px;
+      opacity: 0.6;
+    }
+
+    @media (max-width: 640px) {
+      .dash-header { flex-direction: column; }
+      .dash-btn-row { width: 100%; }
+    }
   </style>
   <link rel="search" type="application/opensearchdescription+xml" title="Cognitive Logic" href="https://cognitivelogic.it/opensearchdescription.xml" />
 </head>
 <body>
-  <div class="grid-bg"></div>
+
+<header class="site-header">
+  <div class="container header-inner">
+    <a href="index.html" class="brand">
+      <span class="wordmark wordmark--nav"><span class="wm-top">Cognitive</span><span class="wm-bot">Logic</span></span>
+    </a>
+    <nav class="main-nav">
+      <a href="framework.html">Framework</a>
+      <a href="ecosystem.html">Ecosystem</a>
+      <a href="qen-live.html">QEN Live</a>
+      <a href="ai.html">AI Engine</a>
+      <a href="identity.html">Identity</a>
+      <a href="demo.html">Demo</a>
+    </nav>
+    <div class="header-end">
+      <div class="nav-lang">
+        <a href="pilots.html" class="active">IT</a>
+        <span class="nav-sep">·</span>
+        <a href="index_en.html">EN</a>
+      </div>
+      <a href="copilot.html" class="btn btn-ghost">Copilot</a>
+    </div>
+  </div>
+</header>
+
+<section class="dash-section">
   <div class="container">
 
-    <div class="header">
-      <div class="header-row">
-        <div>
-          <div class="eyebrow"><span class="eyebrow-line"></span>Cognitive Logic · QEN Framework</div>
-          <h1>QEN Score <span>Dashboard</span></h1>
-          <p class="subtitle">Storico analisi e score per tutti i pilot analizzati</p>
-        </div>
-        <div class="btn-row">
-          <button class="btn-refresh" id="btn-refresh">↻ Aggiorna</button>
-          <a class="btn-new" href="https://api.cognitivelogic.it/copilot">+ Nuova analisi</a>
-        </div>
+    <div class="dash-header">
+      <div>
+        <div class="dash-kicker">Cognitive Logic · QEN Framework</div>
+        <h1 class="dash-title">QEN Score Dashboard</h1>
+        <p class="dash-subtitle">Storico analisi e score per tutti i pilot analizzati</p>
+      </div>
+      <div class="dash-btn-row">
+        <button class="btn btn-ghost" id="btn-refresh">↻ Aggiorna</button>
+        <a class="btn btn-primary" href="https://api.cognitivelogic.it/copilot">+ Nuova analisi</a>
       </div>
     </div>
 
     <div class="error-box" id="error-box"></div>
 
-    <div class="stats-row" id="stats-row">
-      <div class="stat-card" style="animation-delay:0s">
-        <div class="stat-label">Totale pilot</div>
-        <div class="stat-value" id="stat-total">—</div>
-        <div class="stat-sub">analizzati</div>
+    <div class="dash-stats" id="stats-row">
+      <div class="dash-stat" style="animation-delay:0s">
+        <div class="dash-stat-label">Totale pilot</div>
+        <div class="dash-stat-value" id="stat-total">—</div>
+        <div class="dash-stat-sub">analizzati</div>
       </div>
-      <div class="stat-card" style="animation-delay:0.05s">
-        <div class="stat-label">QEN Score medio</div>
-        <div class="stat-value green" id="stat-avg">—</div>
-        <div class="stat-sub">su scala 0–100</div>
+      <div class="dash-stat" style="animation-delay:0.05s">
+        <div class="dash-stat-label">QEN Score medio</div>
+        <div class="dash-stat-value gold" id="stat-avg">—</div>
+        <div class="dash-stat-sub">su scala 0–100</div>
       </div>
-      <div class="stat-card" style="animation-delay:0.1s">
-        <div class="stat-label">Ultima analisi</div>
-        <div class="stat-value" id="stat-last" style="font-size:18px;padding-top:6px;">—</div>
-        <div class="stat-sub" id="stat-last-name">—</div>
+      <div class="dash-stat" style="animation-delay:0.1s">
+        <div class="dash-stat-label">Ultima analisi</div>
+        <div class="dash-stat-value" id="stat-last" style="font-size:1.4rem;padding-top:4px;">—</div>
+        <div class="dash-stat-sub" id="stat-last-name">—</div>
       </div>
     </div>
 
-    <div class="table-card">
-      <div class="section-label">
+    <div class="dash-card">
+      <div class="dash-card-head">
         <span>Pilot analizzati</span>
-        <span class="section-count" id="section-count"></span>
+        <span class="dash-card-count" id="section-count"></span>
       </div>
       <div id="table-body">
         <div class="state-box"><div class="spinner"></div>Caricamento...</div>
       </div>
     </div>
 
-    <div class="footer-note">Cognitive Logic · QEN Compliance Engine · EU AI Act 2025</div>
+    <p class="dash-footer-note">Cognitive Logic · QEN Compliance Engine · EU AI Act 2025</p>
   </div>
+</section>
 
-  <script>
-    const API = "https://api.cognitivelogic.it/pilots";
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <div>
+      <a href="index.html" class="brand">
+        <span class="wordmark wordmark--footer"><span class="wm-top">Cognitive</span><span class="wm-bot">Logic</span></span>
+      </a>
+      <p class="footer-sub">© 2026 Roberto Bob Malini — Cognitive Logic · Tutti i diritti riservati · Legge 633/1941</p>
+    </div>
+    <div class="footer-links">
+      <a href="legal.html">Legal</a>
+      <a href="privacy.html">Privacy</a>
+      <a href="cookie.html">Cookie</a>
+    </div>
+  </div>
+</footer>
 
-    function scoreColor(q) {
-      if (q === null || q === undefined) return "rgba(255,255,255,0.2)";
-      const n = normalizeScore(q);
-      if (n >= 60) return "#00c896";
-      if (n >= 35) return "#ff8c00";
-      return "#ff3b3b";
-    }
+<script>
+  const API = "https://api.cognitivelogic.it/pilots";
 
-    function normalizeScore(q) {
-      if (q === null || q === undefined) return null;
-      return q <= 1 ? Math.round(q * 100) : Math.round(q);
-    }
+  function scoreColor(q) {
+    if (q === null || q === undefined) return "#a79d8b";
+    const n = normalizeScore(q);
+    if (n >= 60) return "#85c98d";
+    if (n >= 35) return "#d8b15a";
+    return "#d7857f";
+  }
 
-    function badgeLabel(n) {
-      if (n === null) return null;
-      if (n >= 60) return "QEN OK";
-      if (n >= 35) return "ATTENZIONE";
-      return "CRITICO";
-    }
+  function normalizeScore(q) {
+    if (q === null || q === undefined) return null;
+    return q <= 1 ? Math.round(q * 100) : Math.round(q);
+  }
 
-    function formatDate(ts) {
-      if (!ts) return "—";
-      try {
-        return new Date(ts).toLocaleDateString("it-IT", { day: "2-digit", month: "short", year: "numeric" });
-      } catch { return ts.slice(0, 10); }
-    }
+  function badgeLabel(n) {
+    if (n === null) return null;
+    if (n >= 60) return "QEN OK";
+    if (n >= 35) return "ATTENZIONE";
+    return "CRITICO";
+  }
 
-    function renderTable(pilots) {
-      if (!pilots.length) {
-        document.getElementById("table-body").innerHTML =
-          '<div class="state-box">Nessun pilot analizzato ancora.<br>Usa <a href="https://api.cognitivelogic.it/copilot" style="color:#00c896">il copilot</a> per la prima analisi.</div>';
-        return;
-      }
+  function formatDate(ts) {
+    if (!ts) return "—";
+    try {
+      return new Date(ts).toLocaleDateString("it-IT", { day: "2-digit", month: "short", year: "numeric" });
+    } catch { return ts.slice(0, 10); }
+  }
 
-      const rows = pilots.map((p, i) => {
-        const q = p.qen_score;
-        const n = normalizeScore(q);
-        const col = scoreColor(q);
-        const label = badgeLabel(n);
-        const barPct = n !== null ? Math.min(100, n) : 0;
-        const scoreDisplay = n !== null ? n.toFixed(1) : "—";
-        return `
-          <tr style="animation-delay:${i * 0.04}s">
-            <td>
-              <div class="td-name">${escHtml(p.name || "—")}</div>
-              <div class="td-date">${formatDate(p.timestamp)}</div>
-            </td>
-            <td class="td-analyses">${p.analyses ?? 1}</td>
-            <td class="td-score">
-              <div class="score-wrap">
-                <span class="score-num" style="color:${col}">${scoreDisplay}</span>
-                <div class="score-bar-bg">
-                  <div class="score-bar" style="width:${barPct}%;background:${col}"></div>
-                </div>
-                ${label ? `<span class="badge" style="color:${col};border-color:${col}30">${label}</span>` : ""}
-              </div>
-            </td>
-          </tr>`;
-      }).join("");
-
-      document.getElementById("table-body").innerHTML = `
-        <table>
-          <thead>
-            <tr>
-              <th>Pilot / Azienda</th>
-              <th style="text-align:center">Analisi</th>
-              <th class="right">QEN Score</th>
-            </tr>
-          </thead>
-          <tbody>${rows}</tbody>
-        </table>`;
-    }
-
-    function renderStats(total, pilots) {
-      document.getElementById("stat-total").textContent = total;
-      document.getElementById("section-count").textContent = total + " record";
-
-      const scores = pilots.map(p => normalizeScore(p.qen_score)).filter(n => n !== null);
-      if (scores.length) {
-        const avg = scores.reduce((a, b) => a + b, 0) / scores.length;
-        document.getElementById("stat-avg").textContent = avg.toFixed(1);
-      } else {
-        document.getElementById("stat-avg").textContent = "—";
-      }
-
-      if (pilots.length) {
-        const last = pilots[0];
-        document.getElementById("stat-last").textContent = formatDate(last.timestamp);
-        document.getElementById("stat-last-name").textContent = last.name || "—";
-      }
-    }
-
-    function escHtml(s) {
-      return String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;");
-    }
-
-    function getApiKey() {
-      return localStorage.getItem("qen_api_key") || sessionStorage.getItem("cq_api_key") || "";
-    }
-
-    function showApiKeyInput() {
-      document.getElementById("table-body").innerHTML = `
-        <div class="state-box">
-          <div style="margin-bottom:16px">Inserisci la chiave API per accedere alla dashboard</div>
-          <div style="display:flex;gap:8px;justify-content:center;flex-wrap:wrap">
-            <input id="api-key-input" type="password" placeholder="Chiave API..."
-              style="background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.15);color:#fff;
-                     padding:8px 14px;font-family:'IBM Plex Mono',monospace;font-size:12px;
-                     border-radius:2px;min-width:220px;outline:none">
-            <button onclick="submitApiKey()"
-              style="background:#00c896;color:#080b0f;border:none;padding:8px 20px;
-                     font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:600;
-                     letter-spacing:0.1em;text-transform:uppercase;cursor:pointer;border-radius:2px">
-              Accedi
-            </button>
-          </div>
-        </div>`;
-      setTimeout(() => document.getElementById("api-key-input")?.focus(), 100);
-      document.getElementById("api-key-input")?.addEventListener("keydown", e => {
-        if (e.key === "Enter") submitApiKey();
-      });
-    }
-
-    function submitApiKey() {
-      const key = document.getElementById("api-key-input")?.value?.trim();
-      if (key) {
-        localStorage.setItem("qen_api_key", key);
-        sessionStorage.setItem("cq_api_key", key);
-        load();
-      }
-    }
-
-    async function load() {
+  function renderTable(pilots) {
+    if (!pilots.length) {
       document.getElementById("table-body").innerHTML =
-        '<div class="state-box"><div class="spinner"></div>Caricamento...</div>';
-      document.getElementById("error-box").style.display = "none";
-      document.getElementById("stat-total").textContent = "—";
-      document.getElementById("stat-avg").textContent = "—";
-      document.getElementById("stat-last").textContent = "—";
-      document.getElementById("stat-last-name").textContent = "—";
-      document.getElementById("section-count").textContent = "";
-
-      const apiKey = getApiKey();
-      if (!apiKey) {
-        showApiKeyInput();
-        return;
-      }
-
-      try {
-        const res = await fetch(API, { headers: { "X-API-Key": apiKey } });
-        if (res.status === 403) {
-          localStorage.removeItem("qen_api_key");
-          sessionStorage.removeItem("cq_api_key");
-          throw new Error("HTTP 403 — chiave non valida, riprova.");
-        }
-        if (!res.ok) throw new Error(`HTTP ${res.status}`);
-        const d = await res.json();
-        const pilots = d.pilots || [];
-        renderStats(d.total || pilots.length, pilots);
-        renderTable(pilots);
-      } catch (err) {
-        document.getElementById("error-box").textContent = "⚠ " + err.message;
-        document.getElementById("error-box").style.display = "block";
-        document.getElementById("table-body").innerHTML =
-          '<div class="state-box">Impossibile caricare i dati dal backend.</div>';
-      }
+        '<div class="state-box">Nessun pilot analizzato ancora.<br>Usa <a href="https://api.cognitivelogic.it/copilot">il copilot</a> per la prima analisi.</div>';
+      return;
     }
 
-    document.getElementById("btn-refresh").addEventListener("click", load);
-    document.addEventListener("DOMContentLoaded", load);
-  </script>
+    const rows = pilots.map((p, i) => {
+      const q = p.qen_score;
+      const n = normalizeScore(q);
+      const col = scoreColor(q);
+      const label = badgeLabel(n);
+      const barPct = n !== null ? Math.min(100, n) : 0;
+      const scoreDisplay = n !== null ? n.toFixed(1) : "—";
+      return `
+        <tr style="animation-delay:${i * 0.04}s">
+          <td>
+            <div class="td-name">${escHtml(p.name || "—")}</div>
+            <div class="td-date">${formatDate(p.timestamp)}</div>
+          </td>
+          <td class="td-analyses">${p.analyses ?? 1}</td>
+          <td class="td-score">
+            <div class="score-wrap">
+              <span class="score-num" style="color:${col}">${scoreDisplay}</span>
+              <div class="score-bar-bg">
+                <div class="score-bar" style="width:${barPct}%;background:${col}"></div>
+              </div>
+              ${label ? `<span class="score-badge" style="color:${col};border-color:${col}30">${label}</span>` : ""}
+            </div>
+          </td>
+        </tr>`;
+    }).join("");
+
+    document.getElementById("table-body").innerHTML = `
+      <table>
+        <thead>
+          <tr>
+            <th>Pilot / Azienda</th>
+            <th style="text-align:center">Analisi</th>
+            <th style="text-align:right">QEN Score</th>
+          </tr>
+        </thead>
+        <tbody>${rows}</tbody>
+      </table>`;
+  }
+
+  function renderStats(total, pilots) {
+    document.getElementById("stat-total").textContent = total;
+    document.getElementById("section-count").textContent = total + " record";
+
+    const scores = pilots.map(p => normalizeScore(p.qen_score)).filter(n => n !== null);
+    if (scores.length) {
+      const avg = scores.reduce((a, b) => a + b, 0) / scores.length;
+      document.getElementById("stat-avg").textContent = avg.toFixed(1);
+    } else {
+      document.getElementById("stat-avg").textContent = "—";
+    }
+
+    if (pilots.length) {
+      const last = pilots[0];
+      document.getElementById("stat-last").textContent = formatDate(last.timestamp);
+      document.getElementById("stat-last-name").textContent = last.name || "—";
+    }
+  }
+
+  function escHtml(s) {
+    return String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;");
+  }
+
+  function getApiKey() {
+    return localStorage.getItem("qen_api_key") || sessionStorage.getItem("cq_api_key") || "";
+  }
+
+  function showApiKeyInput() {
+    document.getElementById("table-body").innerHTML = `
+      <div class="state-box">
+        <div style="margin-bottom:14px">Inserisci la chiave API per accedere alla dashboard</div>
+        <div class="api-key-row">
+          <input id="api-key-input" type="password" placeholder="Chiave API..." class="api-key-input">
+          <button onclick="submitApiKey()" class="btn btn-primary" style="min-height:40px;padding:0 20px;font-size:0.76rem">
+            Accedi
+          </button>
+        </div>
+      </div>`;
+    setTimeout(() => document.getElementById("api-key-input")?.focus(), 100);
+    document.getElementById("api-key-input")?.addEventListener("keydown", e => {
+      if (e.key === "Enter") submitApiKey();
+    });
+  }
+
+  function submitApiKey() {
+    const key = document.getElementById("api-key-input")?.value?.trim();
+    if (key) {
+      localStorage.setItem("qen_api_key", key);
+      sessionStorage.setItem("cq_api_key", key);
+      load();
+    }
+  }
+
+  async function load() {
+    document.getElementById("table-body").innerHTML =
+      '<div class="state-box"><div class="spinner"></div>Caricamento...</div>';
+    document.getElementById("error-box").style.display = "none";
+    document.getElementById("stat-total").textContent = "—";
+    document.getElementById("stat-avg").textContent = "—";
+    document.getElementById("stat-last").textContent = "—";
+    document.getElementById("stat-last-name").textContent = "—";
+    document.getElementById("section-count").textContent = "";
+
+    const apiKey = getApiKey();
+    if (!apiKey) {
+      showApiKeyInput();
+      return;
+    }
+
+    try {
+      const res = await fetch(API, { headers: { "X-API-Key": apiKey } });
+      if (res.status === 403) {
+        localStorage.removeItem("qen_api_key");
+        sessionStorage.removeItem("cq_api_key");
+        throw new Error("HTTP 403 — chiave non valida, riprova.");
+      }
+      if (!res.ok) throw new Error(`HTTP ${res.status}`);
+      const d = await res.json();
+      const pilots = d.pilots || [];
+      renderStats(d.total || pilots.length, pilots);
+      renderTable(pilots);
+    } catch (err) {
+      document.getElementById("error-box").textContent = "⚠ " + err.message;
+      document.getElementById("error-box").style.display = "block";
+      document.getElementById("table-body").innerHTML =
+        '<div class="state-box">Impossibile caricare i dati dal backend.</div>';
+    }
+  }
+
+  document.getElementById("btn-refresh").addEventListener("click", load);
+  document.addEventListener("DOMContentLoaded", load);
+</script>
+<script src="/js/cookie-banner.js"></script>
 </body>
 </html>
