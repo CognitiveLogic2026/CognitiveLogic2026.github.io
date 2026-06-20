@@ -268,23 +268,56 @@ hr {
   line-height: 1;
 }
 
-.brand img,
-.logo-lockup img {
-  transition: transform 0.2s ease, opacity 0.2s ease;
+/* ── Wordmark — identità testuale ── */
+.wordmark {
+  display: inline-flex;
+  flex-direction: column;
+  font-family: 'Cormorant Garamond', serif;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  line-height: 1.15;
+  text-decoration: none;
+  user-select: none;
 }
-.brand:hover img,
-.logo-lockup:hover img { transform: scale(1.04); opacity: 0.88; }
-
-.site-footer img[alt="Cognitive Logic"] {
-  width: 80px; height: auto; display: block;
-  margin-bottom: 10px; opacity: 0.85;
-  transition: opacity 0.2s ease;
+.wm-top {
+  font-weight: 300;
+  color: var(--text);
+  transition: color var(--transition);
 }
-.site-footer img[alt="Cognitive Logic"]:hover { opacity: 1; }
-
-@media (max-width: 580px) {
-  .brand img { max-width: 140px; }
+.wm-bot {
+  font-weight: 600;
+  color: var(--gold);
+  padding-bottom: 5px;
+  position: relative;
+  transition: color var(--transition);
 }
+.wm-bot::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(90deg, var(--gold) 0%, transparent 100%);
+  opacity: 0.45;
+  transition: opacity var(--transition);
+}
+/* Nav – compatto */
+.wordmark--nav .wm-top { font-size: 0.62rem; }
+.wordmark--nav .wm-bot { font-size: 0.82rem; }
+/* Hero – standalone grande */
+.wordmark--hero { margin-bottom: 40px; }
+.wordmark--hero .wm-top { font-size: 1.05rem; }
+.wordmark--hero .wm-bot { font-size: 1.4rem; }
+/* Footer – medio, attenuato */
+.wordmark--footer { margin-bottom: 12px; opacity: 0.8; transition: opacity var(--transition); }
+.wordmark--footer .wm-top { font-size: 0.82rem; }
+.wordmark--footer .wm-bot { font-size: 1.05rem; }
+.wordmark--footer:hover { opacity: 1; }
+/* Hover nav */
+.brand:hover .wm-top,
+.brand:hover .wm-bot { color: var(--gold-soft); }
+.brand:hover .wm-bot::after { opacity: 0.75; }
 
 .brand,
 .logo-lockup {
