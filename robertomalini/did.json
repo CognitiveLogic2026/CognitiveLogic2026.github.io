@@ -25,6 +25,11 @@
   ],
   "service": [
     {
+      "id": "did:web:cognitivelogic.it:robertomalini#governance",
+      "type": "GovernanceLayerManifest",
+      "serviceEndpoint": "https://cognitivelogic.it/.well-known/governance-layer-manifest.json"
+    },
+    {
       "id": "did:web:cognitivelogic.it:robertomalini#website",
       "type": "LinkedDomains",
       "serviceEndpoint": "https://cognitivelogic.it"
@@ -43,6 +48,11 @@
       "id": "did:web:cognitivelogic.it:robertomalini#llms",
       "type": "LLMSManifest",
       "serviceEndpoint": "https://cognitivelogic.it/llms.txt"
+    },
+    {
+      "id": "did:web:cognitivelogic.it:robertomalini#linkedin",
+      "type": "LinkedDomains",
+      "serviceEndpoint": "https://linkedin.com/in/robertobobmalini"
     }
   ],
   "alsoKnownAs": [
