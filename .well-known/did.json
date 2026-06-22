@@ -1,0 +1,52 @@
+{
+  "@context": [
+    "https://www.w3.org/ns/did/v1",
+    "https://w3id.org/security/suites/jws-2020/v1"
+  ],
+  "id": "did:web:cognitivelogic.it:robertomalini",
+  "controller": "did:web:cognitivelogic.it:robertomalini",
+  "verificationMethod": [
+    {
+      "id": "did:web:cognitivelogic.it:robertomalini#key-1",
+      "type": "JsonWebKey2020",
+      "controller": "did:web:cognitivelogic.it:robertomalini",
+      "publicKeyJwk": {
+        "kty": "OKP",
+        "crv": "Ed25519",
+        "x": "M22udAheLbK4K0Hco-uZhiai3yKI5UkAaAxFOv6vl5E"
+      }
+    }
+  ],
+  "authentication": [
+    "did:web:cognitivelogic.it:robertomalini#key-1"
+  ],
+  "assertionMethod": [
+    "did:web:cognitivelogic.it:robertomalini#key-1"
+  ],
+  "service": [
+    {
+      "id": "did:web:cognitivelogic.it:robertomalini#website",
+      "type": "LinkedDomains",
+      "serviceEndpoint": "https://cognitivelogic.it"
+    },
+    {
+      "id": "did:web:cognitivelogic.it:robertomalini#qen-api",
+      "type": "QENFrameworkAPI",
+      "serviceEndpoint": "https://api.cognitivelogic.it"
+    },
+    {
+      "id": "did:web:cognitivelogic.it:robertomalini#copilot",
+      "type": "QENCopilot",
+      "serviceEndpoint": "https://api.cognitivelogic.it/copilot"
+    },
+    {
+      "id": "did:web:cognitivelogic.it:robertomalini#llms",
+      "type": "LLMSManifest",
+      "serviceEndpoint": "https://cognitivelogic.it/llms.txt"
+    }
+  ],
+  "alsoKnownAs": [
+    "https://cognitivelogic.it",
+    "https://fuorimenu.substack.com"
+  ]
+}
