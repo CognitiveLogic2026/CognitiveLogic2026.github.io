@@ -3,11 +3,11 @@
     "https://www.w3.org/ns/did/v1",
     "https://w3id.org/security/suites/jws-2020/v1"
   ],
-  "id": "did:web:cognitivelogic.it:robertomalini",
+  "id": "did:web:cognitivelogic.it",
   "controller": "did:web:cognitivelogic.it:robertomalini",
   "verificationMethod": [
     {
-      "id": "did:web:cognitivelogic.it:robertomalini#key-1",
+      "id": "did:web:cognitivelogic.it#key-1",
       "type": "JsonWebKey2020",
       "controller": "did:web:cognitivelogic.it:robertomalini",
       "publicKeyJwk": {
@@ -18,35 +18,29 @@
     }
   ],
   "authentication": [
-    "did:web:cognitivelogic.it:robertomalini#key-1"
+    "did:web:cognitivelogic.it#key-1"
   ],
   "assertionMethod": [
-    "did:web:cognitivelogic.it:robertomalini#key-1"
+    "did:web:cognitivelogic.it#key-1"
   ],
   "service": [
     {
-      "id": "did:web:cognitivelogic.it:robertomalini#website",
+      "id": "did:web:cognitivelogic.it#founder",
+      "type": "FounderDID",
+      "serviceEndpoint": "https://cognitivelogic.it/robertomalini/did.json"
+    },
+    {
+      "id": "did:web:cognitivelogic.it#governance",
+      "type": "GovernanceLayerManifest",
+      "serviceEndpoint": "https://cognitivelogic.it/.well-known/governance-layer-manifest.json"
+    },
+    {
+      "id": "did:web:cognitivelogic.it#website",
       "type": "LinkedDomains",
       "serviceEndpoint": "https://cognitivelogic.it"
-    },
-    {
-      "id": "did:web:cognitivelogic.it:robertomalini#qen-api",
-      "type": "QENFrameworkAPI",
-      "serviceEndpoint": "https://api.cognitivelogic.it"
-    },
-    {
-      "id": "did:web:cognitivelogic.it:robertomalini#copilot",
-      "type": "QENCopilot",
-      "serviceEndpoint": "https://api.cognitivelogic.it/copilot"
-    },
-    {
-      "id": "did:web:cognitivelogic.it:robertomalini#llms",
-      "type": "LLMSManifest",
-      "serviceEndpoint": "https://cognitivelogic.it/llms.txt"
     }
   ],
   "alsoKnownAs": [
-    "https://cognitivelogic.it",
-    "https://fuorimenu.substack.com"
+    "https://cognitivelogic.it"
   ]
 }
