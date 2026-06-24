@@ -168,6 +168,16 @@
       transition: color 0.15s, border-color 0.15s, background 0.15s;
     }
     .example-chip:hover { color: var(--gold-soft); border-color: rgba(212,175,55,0.4); background: rgba(212,175,55,0.04); }
+    .chip-sector { border-color: rgba(138,180,248,0.15); color: rgba(138,180,248,0.45); }
+    .chip-sector:hover { color: rgba(138,180,248,0.85); border-color: rgba(138,180,248,0.4); background: rgba(138,180,248,0.05); }
+    .company-input {
+      width: 100%; background: transparent; border: none;
+      border-bottom: 1px solid rgba(255,255,255,0.08); outline: none;
+      color: var(--text); font-family: 'DM Mono', monospace; font-size: 13px;
+      padding: 6px 0 10px; margin-bottom: 16px; caret-color: var(--gold);
+    }
+    .company-input::placeholder { color: var(--muted); }
+    .chips-divider { height: 1px; background: rgba(255,255,255,0.04); margin: 10px 0 12px; }
   </style>
   <link rel="search" type="application/opensearchdescription+xml" title="Cognitive Logic" href="https://cognitivelogic.it/opensearchdescription.xml" />
 </head>
@@ -210,7 +220,7 @@
     <button class="llm-btn active" id="btn-claude" data-provider="claude">Claude Sonnet 4.6</button>
     <button class="llm-btn" id="btn-mistral" data-provider="mistral">Mistral Large</button>
   </div>
-  <div class="examples-label">Esempi rapidi</div>
+  <div class="examples-label">Compliance AI / Normativa</div>
   <div class="examples-chips" id="examples-chips">
     <button class="example-chip" data-example="scoring-credito">Scoring creditizio</button>
     <button class="example-chip" data-example="assunzioni-hr">Assunzioni HR</button>
@@ -219,8 +229,21 @@
     <button class="example-chip" data-example="chatbot-cs">Chatbot clienti</button>
     <button class="example-chip" data-example="esg-csrd">ESG / CSRD</button>
   </div>
-  <div class="input-label">Descrizione sistema AI</div>
-  <textarea id="input" placeholder="Es: sistema di scoring creditizio automatizzato che elabora dati reddituali e comportamentali, con supervisione umana solo su casi edge..."></textarea>
+  <div class="chips-divider"></div>
+  <div class="examples-label">Ristorazione & Ospitalità</div>
+  <div class="examples-chips" id="examples-chips-food">
+    <button class="example-chip chip-sector" data-example="pizzeria">Pizzeria</button>
+    <button class="example-chip chip-sector" data-example="trattoria">Trattoria / Osteria</button>
+    <button class="example-chip chip-sector" data-example="agriturismo">Agriturismo</button>
+    <button class="example-chip chip-sector" data-example="bar-caffe">Bar & Caffetteria</button>
+    <button class="example-chip chip-sector" data-example="catering">Catering</button>
+    <button class="example-chip chip-sector" data-example="hotel-resort">Hotel & Resort</button>
+    <button class="example-chip chip-sector" data-example="retail-pmi">Retail PMI</button>
+  </div>
+  <div class="input-label" style="margin-top:4px;">Nome Azienda <span style="opacity:0.45;font-size:9px;">(opzionale)</span></div>
+  <input type="text" id="company-name" class="company-input" placeholder="Es: Pizzeria OROROSSO, Trattoria La Gatta, Locanda Dei Bastardi…" autocomplete="off" />
+  <div class="input-label">Descrizione</div>
+  <textarea id="input" placeholder="Es: trattoria familiare con cucina tipica emiliana, 8 dipendenti, fornitori locali, aperta dal 1978…"></textarea>
   <div class="input-footer">
     <div class="btn-group">
       <button class="btn-analyze" id="btn-analyze">▶ Analizza</button>
@@ -318,15 +341,17 @@
       LOW:    { label: "MONITOR",         color: "#d4af37", bg: "rgba(212,175,55,0.08)",  border: "rgba(212,175,55,0.3)",  message: "Sistema gestibile con controlli base e monitoraggio continuo" },
     };
 
-    const inputEl    = document.getElementById("input");
-    const btnAnalyze = document.getElementById("btn-analyze");
-    const btnClear   = document.getElementById("btn-clear");
-    const btnPdf     = document.getElementById("btn-pdf");
-    const errorBox   = document.getElementById("error-box");
-    const resultsEl  = document.getElementById("results");
+    const inputEl       = document.getElementById("input");
+    const companyNameEl = document.getElementById("company-name");
+    const btnAnalyze    = document.getElementById("btn-analyze");
+    const btnClear      = document.getElementById("btn-clear");
+    const btnPdf        = document.getElementById("btn-pdf");
+    const errorBox      = document.getElementById("error-box");
+    const resultsEl     = document.getElementById("results");
 
-    let lastResult = null;
-    let lastInput  = "";
+    let lastResult      = null;
+    let lastInput       = "";
+    let lastCompanyName = "";
 
     function renderList(id, items) {
       const el = document.getElementById(id);
@@ -390,6 +415,16 @@
       doc.setTextColor(80, 80, 80);
       doc.setFontSize(7);
       doc.setFont("helvetica", "normal");
+      if (lastCompanyName) {
+        doc.text("AZIENDA", M, y); y += 5;
+        doc.setTextColor(30, 30, 30);
+        doc.setFontSize(11);
+        doc.setFont("helvetica", "bold");
+        doc.text(lastCompanyName, M, y); y += 8;
+        doc.setFont("helvetica", "normal");
+      }
+      doc.setTextColor(80, 80, 80);
+      doc.setFontSize(7);
       doc.text("SISTEMA ANALIZZATO", M, y);
       y += 5;
       doc.setTextColor(40, 40, 40);
@@ -466,12 +501,13 @@
       const t = text.toLowerCase();
       const is = k => k.some(w => t.includes(w));
 
-      const bolkestein = is(["bolkestein","concessione","balneare","stabilimento","spiaggia","demanio","ambulante","mercato","posteggio"]);
-      const hiRisk     = is(["credito","scoring","creditizio","assunzioni","hiring","licenziamento","biometric","sorveglianza","polizia","giustizia","immigrazione","asilo"]);
-      const medRisk    = is(["raccomandazione","recommendation","hr","risorse umane","assicurazione","insurance","salute","health","banca","fintech","mutuo"]);
-      const csrd       = is(["csrd","esg","sostenibilità","green claims","km0","biologico","filiera","emissioni","carbonio"]);
-      const gdprHeavy  = is(["dati personali","biometr","posizione","salute","medic","profilazione","targeting"]);
-      const hasHuman   = is(["supervisione umana","human oversight","operatore","approvazione"]);
+      const bolkestein   = is(["bolkestein","concessione","balneare","stabilimento","spiaggia","demanio","ambulante","mercato","posteggio"]);
+      const hiRisk       = is(["credito","scoring","creditizio","assunzioni","hiring","licenziamento","biometric","sorveglianza","polizia","giustizia","immigrazione","asilo"]);
+      const medRisk      = is(["raccomandazione","recommendation","hr","risorse umane","assicurazione","insurance","salute","health","banca","fintech","mutuo"]);
+      const csrd         = is(["csrd","esg","sostenibilità","green claims","km0","biologico","filiera","emissioni","carbonio"]);
+      const gdprHeavy    = is(["dati personali","biometr","posizione","salute","medic","profilazione","targeting"]);
+      const hasHuman     = is(["supervisione umana","human oversight","operatore","approvazione"]);
+      const ristorazione = is(["pizzeria","trattoria","osteria","ristorante","agriturismo","bar","caffetteria","catering","banqueting","coperti","chef","locanda","enoteca","gelateria","taverna","paninoteca","pub","bistrot","brasserie","trattorie","osterie"]);
 
       let level, score, euClass, allegato, why, impact, summary, gaps, recs, qen;
 
@@ -533,6 +569,26 @@
           ? ["Eseguire QEN Assessment Ambientale (Va) per certificare le dichiarazioni green", "Raccogliere documentazione di filiera: origine prodotti, km percorsi, fornitori", "Predisporre report CSRD-ready annuale anche in anticipo rispetto all'obbligo formale", "Verificare conformità Green Claims Directive per ogni claim pubblicitario", "Valutare certificazione biologica IFOAM o equivalente per rafforzare le dichiarazioni"]
           : ["Aggiungere informativa 'AI-powered' visibile nell'interfaccia utente", "Predisporre data protection impact assessment (DPIA) preventivo", "Implementare sistema di logging delle decisioni per accountability", "Inserire possibilità di revisione umana per decisioni impattanti", "Nominare referente interno per la conformità AI (non obbligatorio ma consigliato)"];
         qen = 0.68;
+      } else if (ristorazione && !hiRisk) {
+        level = "LOW"; score = 0.18; allegato = "N/A"; euClass = "Minimo — Art. 6";
+        why = "Il settore della ristorazione e dell'ospitalità non rientra nelle categorie ad alto rischio dell'EU AI Act, a meno di utilizzo di sistemi AI per selezione del personale, prezzi dinamici automatizzati o profilazione dei clienti. Il QEN Score territoriale valorizza il radicamento locale, l'impatto occupazionale e la filiera corta.";
+        impact = "GDPR per loyalty/profilazione clienti · Green Claims Directive per dichiarazioni biologiche/km0 · QEN Vt per radicamento territoriale";
+        summary = "Per un'azienda della ristorazione la priorità normativa non è l'EU AI Act ma la valorizzazione territoriale e la conformità GDPR per i sistemi di fidelizzazione. Il QEN Score (Va + Vs + Vt) quantifica il valore ambientale, sociale e territoriale dell'attività, traducendo in dati strutturati l'identità locale dell'azienda per gare, certificazioni e accesso a bandi regionali. Con un Assessment QEN completo, l'azienda ottiene un dossier difendibile e machine-readable.";
+        gaps = [
+          "Documentazione del radicamento territoriale non strutturata in formato QEN-ready",
+          "Impatto occupazionale locale non quantificato (dipendenti fissi, stagionali, indotto)",
+          "Filiera fornitori non mappata: distanza media km, % acquisti locali, certificazioni",
+          "Dichiarazioni 'km0', 'biologico', 'filiera corta' non supportate da documentazione verificabile",
+          "Policy GDPR per loyalty/newsletter clienti da verificare e aggiornare"
+        ];
+        recs = [
+          "Avviare QEN Assessment Territoriale (Vt) per quantificare storico e radicamento locale",
+          "Mappare i fornitori principali: distanza media km, % acquisti entro 50 km, certificazioni",
+          "Raccogliere documentazione investimenti ultimi 10 anni e impatto occupazionale locale",
+          "Verificare e aggiornare l'informativa privacy GDPR per tutti i trattamenti dati clienti",
+          "Certificare le dichiarazioni green (biologico, km0) con documentazione di filiera verificabile"
+        ];
+        qen = 0.74;
       } else {
         level = "LOW"; score = 0.18; allegato = "N/A"; euClass = "Minimo — Art. 6";
         why = "Il sistema non ricade nelle categorie ad alto rischio dell'Allegato III EU AI Act. Non sono previsti obblighi di registrazione o audit obbligatori. Si applicano le misure di base di trasparenza (art. 50) se il sistema interagisce direttamente con utenti finali.";
@@ -563,6 +619,7 @@
       const text = inputEl.value.trim();
       if (!text) { inputEl.focus(); return; }
       lastInput = text;
+      lastCompanyName = companyNameEl.value.trim();
       setLoading(true);
       errorBox.style.display = "none";
       resultsEl.style.display = "none";
@@ -571,10 +628,12 @@
       try {
         const controller = new AbortController();
         const timeout = setTimeout(() => controller.abort(), 8000);
+        const body = { description: text };
+        if (lastCompanyName) body.company_name = lastCompanyName;
         const res = await fetch(ENDPOINTS[activeProvider], {
           method: "POST",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ description: text }),
+          body: JSON.stringify(body),
           signal: controller.signal
         });
         clearTimeout(timeout);
@@ -604,7 +663,8 @@
         tag.style.color = cfg.color;
         tag.style.borderColor = cfg.color;
         document.getElementById("decision-message").textContent = cfg.message;
-        document.getElementById("provider-badge").textContent = "powered by " + (d.provider || "claude-sonnet-4-6");
+        const nameDisplay = lastCompanyName ? ` · ${lastCompanyName}` : "";
+        document.getElementById("provider-badge").textContent = "powered by " + (d.provider || "claude-sonnet-4-6") + nameDisplay;
 
         const fill = document.getElementById("score-fill");
         const sv = document.getElementById("score-value");
@@ -634,9 +694,11 @@
     btnPdf.addEventListener("click", exportPDF);
     btnClear.addEventListener("click", () => {
       inputEl.value = "";
+      companyNameEl.value = "";
       errorBox.style.display = "none";
       resultsEl.style.display = "none";
       lastResult = null;
+      lastCompanyName = "";
       inputEl.focus();
     });
     inputEl.addEventListener("keydown", e => {
@@ -654,20 +716,42 @@
 
       "chatbot-cs": "Assistente virtuale per il customer service di un operatore energetico che gestisce richieste di clienti residenziali: informazioni su bollette, attivazioni/cessazioni contratti, reclami e rateizzazioni. Il chatbot risponde in linguaggio naturale tramite widget web e WhatsApp Business. Escalation automatica all'operatore umano in caso di reclamo formale o richiesta di rimborso superiore a 200 €. Processa circa 3.000 conversazioni/giorno e non archivia contenuti delle chat oltre 30 giorni.",
 
-      "esg-csrd": "Report di sostenibilità annuale generato con supporto di AI che aggrega dati interni (consumi energetici, emissioni scope 1-2, ore di formazione, infortuni) e li confronta con benchmark di settore per produrre un'analisi ESG e indicatori GRI. Il sistema suggerisce automaticamente i claim da inserire nel bilancio di sostenibilità e identifica le aree di miglioramento. L'azienda è una PMI manifatturiera con 250 dipendenti che vuole anticipare gli obblighi CSRD e certificare le proprie dichiarazioni ambientali."
+      "esg-csrd": "Report di sostenibilità annuale generato con supporto di AI che aggrega dati interni (consumi energetici, emissioni scope 1-2, ore di formazione, infortuni) e li confronta con benchmark di settore per produrre un'analisi ESG e indicatori GRI. Il sistema suggerisce automaticamente i claim da inserire nel bilancio di sostenibilità e identifica le aree di miglioramento. L'azienda è una PMI manifatturiera con 250 dipendenti che vuole anticipare gli obblighi CSRD e certificare le proprie dichiarazioni ambientali.",
+
+      "pizzeria": "Pizzeria artigianale con forno a legna, 8 dipendenti, aperta nel 1994. Produce pizza napoletana con ingredienti locali a km0, utilizza farina biologica di mulino emiliano e pomodoro DOP San Marzano. Fatturato annuo circa 350.000 €, clientela prevalentemente locale e turistica. Nessun sistema AI in uso. Vuole valorizzare il proprio impatto territoriale e occupazionale e ottenere QEN Score per partecipare a gare e bandi regionali.",
+
+      "trattoria": "Trattoria familiare a gestione diretta, 40 coperti, aperta nel 1978. Cucina tipica emiliana con ricette tradizionali tramandate, fornitori locali selezionati (carni da allevamento BO, verdure da orto locale, vini DOC regionali). 4 dipendenti fissi + 2 stagionali. Partecipa al circuito Osterie d'Italia. Vuole formalizzare il proprio radicamento territoriale in formato verificabile per certificazioni e valorizzazione del brand locale.",
+
+      "agriturismo": "Agriturismo con 20 posti letto e ristorante da 50 coperti, azienda agricola propria di 15 ettari. Produce vino DOC, olio EVO e ortaggi biologici certificati IFOAM. Offre attività didattiche e di ospitalità rurale. 9 dipendenti fissi, apertura 9 mesi/anno. Fornisce il 70% degli ingredienti da produzione propria. Vuole valorizzare la filiera corta e l'impatto ambientale per certificazione ESG e accesso a bandi regionali PSR.",
+
+      "bar-caffe": "Bar e caffetteria nel centro storico, in attività dal 2001. Offre colazione, pranzo veloce e aperitivo. 5 dipendenti, fatturato 280.000 €/anno. Utilizza caffè di torrefazione artigianale locale e prodotti da fornitori del territorio. Ha un sistema di fidelizzazione clienti con raccolta email e newsletter. Vuole valutare la conformità GDPR del programma loyalty e valorizzare il proprio impatto territoriale.",
+
+      "catering": "Azienda di catering e banqueting per eventi aziendali e privati, fondata nel 2008. 18 dipendenti fissi + collaboratori occasionali. Gestisce 150-200 eventi/anno (matrimoni, congressi, aziendali). Utilizza piattaforma digitale per la gestione ordini e preventivi. Fornitori locali certificati, cucina tradizionale e fusion. Fatturato 1,2M €/anno. Vuole certificare la propria supply chain sostenibile e valorizzare l'impatto occupazionale locale.",
+
+      "hotel-resort": "Country Resort con 35 camere, ristorante da 80 coperti e centro benessere, aperto nel 2003. Utilizza un sistema di revenue management AI per la gestione dinamica dei prezzi delle camere. Il sistema aggiusta automaticamente le tariffe in base a stagionalità, occupazione e prezzi competitor senza supervisione umana. 28 dipendenti fissi. Vuole valutare la conformità del sistema di pricing AI all'EU AI Act e le implicazioni GDPR per la profilazione degli ospiti.",
+
+      "retail-pmi": "Negozio di abbigliamento e accessori lifestyle, 3 punti vendita in centro città, fondato nel 2005. Ha implementato un sistema di raccomandazione prodotti basato su AI che suggerisce articoli ai clienti in base alla cronologia acquisti e preferenze. Sistema collegato al CRM con 15.000 profili clienti. Utilizza anche analytics predittivo per la gestione delle scorte. Fatturato 2,1M €/anno, 22 dipendenti. Vuole valutare la conformità AI e GDPR del sistema di raccomandazione."
     };
+
+    function applyExample(key) {
+      if (!EXAMPLES[key]) return;
+      inputEl.value = EXAMPLES[key];
+      errorBox.style.display = "none";
+      resultsEl.style.display = "none";
+      lastResult = null;
+      inputEl.focus();
+    }
 
     document.getElementById("examples-chips").addEventListener("click", e => {
       const chip = e.target.closest(".example-chip");
+      if (chip) applyExample(chip.dataset.example);
+    });
+
+    document.getElementById("examples-chips-food").addEventListener("click", e => {
+      const chip = e.target.closest(".example-chip");
       if (!chip) return;
-      const key = chip.dataset.example;
-      if (EXAMPLES[key]) {
-        inputEl.value = EXAMPLES[key];
-        inputEl.focus();
-        errorBox.style.display = "none";
-        resultsEl.style.display = "none";
-        lastResult = null;
-      }
+      applyExample(chip.dataset.example);
+      if (!companyNameEl.value.trim()) companyNameEl.focus();
     });
   </script>
   <script src="/js/cookie-banner.js"></script>
