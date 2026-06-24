@@ -83,6 +83,10 @@ a {
   transition: color var(--transition), opacity var(--transition), border-color var(--transition), background var(--transition), transform var(--transition);
 }
 
+a:visited {
+  color: inherit;
+}
+
 button,
 input,
 textarea,

@@ -42,7 +42,7 @@
 min-height: 80vh;
 display: flex; flex-direction: column;
 justify-content: center;
-padding: clamp(4rem,10vw,10rem) clamp(1.5rem,6vw,6rem);
+padding: clamp(4rem,10vw,10rem) 0;
 position: relative; overflow: hidden;
 }
 .hero::before {
@@ -92,7 +92,7 @@ to   { opacity: 1; transform: translateY(0); }
 }
 
 /* SECTION COMMON */
-section { padding: clamp(3rem,7vw,7rem) clamp(1.5rem,6vw,6rem); }
+section { padding: clamp(3rem,7vw,7rem) 0; }
 .slabel {
 font-family: “DM Mono”, monospace;
 font-size: 0.62rem;
@@ -110,14 +110,15 @@ background: linear-gradient(90deg, var(--line), transparent);
 
 /* STATS */
 .stats-row {
-display: grid; grid-template-columns: repeat(3,1fr); gap: 1px;
-background: var(--line);
+display: grid; grid-template-columns: repeat(3,1fr); gap: 16px;
 margin-bottom: clamp(3rem,5vw,5rem);
 }
 @media (max-width: 600px) { .stats-row { grid-template-columns: 1fr; } }
 .stat-box {
 background: var(--bg-panel);
 padding: 2rem 2.5rem;
+border: 1px solid var(--line-soft);
+border-radius: var(--radius-sm);
 }
 .stat-n {
 font-size: clamp(2.2rem,4vw,3.2rem);
@@ -139,8 +140,7 @@ margin-top: 0.5rem;
 .cards {
 display: grid;
 grid-template-columns: repeat(3,1fr);
-gap: 1px;
-background: var(--line);
+gap: 16px;
 }
 @media (max-width: 900px) { .cards { grid-template-columns: 1fr; } }
 
@@ -149,8 +149,6 @@ background: var(--bg-panel);
 padding: 2.5rem 2rem;
 position: relative; overflow: hidden;
 transition: background 0.3s;
-border-radius: 0;
-border: none;
 }
 .card::after {
 content: “”;
@@ -293,7 +291,7 @@ text-align: right;
 /* CTA */
 .cta-section {
 text-align: center;
-padding: clamp(4rem,8vw,8rem) clamp(1.5rem,6vw,6rem);
+padding: clamp(4rem,8vw,8rem) 0;
 position: relative; overflow: hidden;
 }
 .cta-section::before {
@@ -502,37 +500,43 @@ font-size: 0.72rem; color: var(--gold-soft);
   </div>
 </header>
 
+<main>
 <section class="hero">
-  <p class="hero-label">Cognitive Logic · Offerta Servizi 2026</p>
-  <h1>I tuoi dati sono<br><span>invisibili</span><br>agli agenti AI.</h1>
-  <p class="hero-sub">
-    Non perché manchino. Perché sono strutturati per essere letti da esseri umani —
-    non da sistemi autonomi che decidono in millisecondi.
-  </p>
-  <div class="hero-cta">
-    <a href="#packages" class="btn">→ Esplora i pacchetti</a>
-    <a href="https://api.cognitivelogic.it/copilot" class="btn btn-ghost" target="_blank" rel="noopener">Compliance Copilot ↗</a>
+  <div class="container">
+    <p class="hero-label">Cognitive Logic · Offerta Servizi 2026</p>
+    <h1>I tuoi dati sono<br><span>invisibili</span><br>agli agenti AI.</h1>
+    <p class="hero-sub">
+      Non perché manchino. Perché sono strutturati per essere letti da esseri umani —
+      non da sistemi autonomi che decidono in millisecondi.
+    </p>
+    <div class="hero-cta">
+      <a href="#packages" class="btn">→ Esplora i pacchetti</a>
+      <a href="https://api.cognitivelogic.it/copilot" class="btn btn-ghost" target="_blank" rel="noopener">Compliance Copilot ↗</a>
+    </div>
   </div>
 </section>
 
 <section style="padding-top:0">
-  <div class="stats-row reveal">
-    <div class="stat-box">
-      <div class="stat-n">130</div>
-      <div class="stat-d">Nodi QEN attivi</div>
-    </div>
-    <div class="stat-box">
-      <div class="stat-n">209</div>
-      <div class="stat-d">Relazioni semantiche</div>
-    </div>
-    <div class="stat-box">
-      <div class="stat-n">35+</div>
-      <div class="stat-d">Anni di dominio operativo</div>
+  <div class="container">
+    <div class="stats-row reveal">
+      <div class="stat-box">
+        <div class="stat-n">130</div>
+        <div class="stat-d">Nodi QEN attivi</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-n">209</div>
+        <div class="stat-d">Relazioni semantiche</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-n">35+</div>
+        <div class="stat-d">Anni di dominio operativo</div>
+      </div>
     </div>
   </div>
 </section>
 
 <section id="packages">
+  <div class="container">
   <p class="slabel reveal">I Tre Pacchetti</p>
   <div class="cards">
 
@@ -633,9 +637,11 @@ font-size: 0.72rem; color: var(--gold-soft);
 </div>
 
   </div>
+  </div>
 </section>
 
 <section>
+  <div class="container">
   <p class="slabel reveal">Come si lavora</p>
   <div class="process-grid reveal">
     <div class="pstep">
@@ -658,6 +664,7 @@ font-size: 0.72rem; color: var(--gold-soft);
       <h4><span>Monitoring</span> continuo</h4>
       <p>Report mensile, aggiornamento QEN scores e supervisione conformità normativa.</p>
     </div>
+  </div>
   </div>
 </section>
 
@@ -730,13 +737,16 @@ font-size: 0.72rem; color: var(--gold-soft);
 </div>
 
 <section class="cta-section">
-  <h2 class="reveal">Inizia con un<br><span>Audit gratuito.</span></h2>
-  <p class="reveal d1">30 minuti. Nessun impegno. Ti dico esattamente dove stanno i colli di bottiglia nella tua architettura dati.</p>
-  <div class="cta-btns reveal d2">
-    <a href="mailto:info@cognitivelogic.it?subject=AI-Ready Audit Request" class="btn">→ Prenota l'Audit</a>
-    <a href="https://api.cognitivelogic.it/copilot" class="btn btn-ghost" target="_blank" rel="noopener">Compliance Copilot ↗</a>
+  <div class="container">
+    <h2 class="reveal">Inizia con un<br><span>Audit gratuito.</span></h2>
+    <p class="reveal d1">30 minuti. Nessun impegno. Ti dico esattamente dove stanno i colli di bottiglia nella tua architettura dati.</p>
+    <div class="cta-btns reveal d2">
+      <a href="mailto:info@cognitivelogic.it?subject=AI-Ready Audit Request" class="btn">→ Prenota l'Audit</a>
+      <a href="https://api.cognitivelogic.it/copilot" class="btn btn-ghost" target="_blank" rel="noopener">Compliance Copilot ↗</a>
+    </div>
   </div>
 </section>
+</main>
 
 <footer class="site-footer">
   <div class="container footer-inner">
