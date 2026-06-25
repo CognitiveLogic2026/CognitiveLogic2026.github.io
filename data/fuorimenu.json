@@ -1,6 +1,13 @@
 {
   "articoli": [
     {
+      "titolo": "Il menu che non esiste",
+      "url": "https://fuorimenu.substack.com/p/il-menu-che-non-esiste",
+      "data": "2026-06-25 05:38",
+      "estratto": "Ispirato a “Diritto &amp; Rovescio” di Alberto Bozzo",
+      "tag": "Fuorimenu"
+    },
+    {
       "titolo": "Il motivo per cui ho smesso di fidarmi delle etichette",
       "url": "https://fuorimenu.substack.com/p/il-motivo-per-cui-ho-smesso-di-fidarmi",
       "data": "2026-06-23 18:13",
@@ -61,13 +68,6 @@
       "url": "https://fuorimenu.substack.com/p/casa-artusi-e-letica-naturale-come",
       "data": "2026-02-19 21:01",
       "estratto": "Casa Artusi e l’Etica Naturale: come si misura ciò che non ha prezzo? di Roberto Bob Malini | Fuorimenu | Cognitive",
-      "tag": "Fuorimenu"
-    },
-    {
-      "titolo": "Neurogastronomia 2026: Estrarre la Verità dal Rumore",
-      "url": "https://fuorimenu.substack.com/p/neurogastronomia-2026-estrarre-la",
-      "data": "2026-02-18 07:50",
-      "estratto": "\"Mappare la Future Truth tra bot e umani: la galassia semantica della Neurogastronomia 2026.\"",
       "tag": "Fuorimenu"
     }
   ]
