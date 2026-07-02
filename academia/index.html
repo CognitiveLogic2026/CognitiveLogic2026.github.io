@@ -18,730 +18,435 @@
   <meta property="og:type" content="website">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,300;0,400;0,500;1,300&family=Syne:wght@400;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css?v=3">
   <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    :root {
-      --bg:     #05080f;
-      --s1:     #0a0d1a;
-      --s2:     #0f1323;
-      --border: #181d30;
-      --green:  #00e5a0;
-      --blue:   #4db8ff;
-      --gold:   #c8a84b;
-      --text:   #ccd4ef;
-      --mid:    #8892b5;
-      --dim:    #4a5270;
-      --mono:   'IBM Plex Mono', monospace;
-      --sans:   'Syne', sans-serif;
-    }
-    html { scroll-behavior: smooth; }
-    body {
-      background: var(--bg);
-      color: var(--text);
-      font-family: var(--mono);
-      line-height: 1.6;
-      overflow-x: hidden;
-    }
-    body::after {
-      content: '';
-      position: fixed; inset: 0;
-      background-image:
-        linear-gradient(var(--border) 1px, transparent 1px),
-        linear-gradient(90deg, var(--border) 1px, transparent 1px);
-      background-size: 64px 64px;
-      pointer-events: none; z-index: 0; opacity: 0.2;
-    }
-    * { position: relative; z-index: 1; }
+    .badge-strong { border-color: rgba(212,175,55,0.45); color: var(--gold-soft); }
 
-    /* NAV */
-    nav {
-      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-      height: 52px;
-      display: flex; align-items: center; justify-content: space-between;
-      padding: 0 2rem;
-      background: rgba(5,8,15,0.92);
-      backdrop-filter: blur(16px);
-      border-bottom: 1px solid var(--border);
-    }
-    .nav-logo {
-      text-decoration: none;
-      display: flex; align-items: center;
-      flex-shrink: 0;
-    }
-    .nav-logo img {
-      width: 200px; height: auto; display: block;
-      transition: transform 0.2s ease, opacity 0.2s ease;
-    }
-    .nav-logo:hover img { transform: scale(1.04); opacity: 0.9; }
-    @media (max-width: 768px) { .nav-logo img { width: 140px; max-width: 150px; } }
-    .nav-links {
-      display: flex; gap: 2rem; list-style: none;
-    }
-    .nav-links a {
-      font-size: 0.62rem; letter-spacing: 0.1em; text-transform: uppercase;
-      color: var(--dim); text-decoration: none; transition: color 0.2s;
-    }
-    .nav-links a:hover { color: var(--green); }
-    .nav-cta {
-      font-size: 0.62rem; letter-spacing: 0.08em; text-transform: uppercase;
-      color: var(--green); text-decoration: none;
-      border: 1px solid rgba(0,229,160,0.35); padding: 0.35rem 0.9rem;
-      transition: background 0.2s;
-    }
-    .nav-cta:hover { background: rgba(0,229,160,0.08); }
-    @media (max-width: 768px) {
-      nav { padding: 0 1rem; }
-      .nav-links { display: none; }
-    }
-
-    /* HERO */
-    .hero {
-      min-height: 100vh;
-      display: flex; flex-direction: column; justify-content: center;
-      max-width: 1080px; margin: 0 auto;
-      padding: 7rem 2rem 4rem;
-    }
-    .eyebrow {
-      font-size: 0.58rem; letter-spacing: 0.3em; text-transform: uppercase;
-      color: var(--green); margin-bottom: 2rem;
-      display: flex; align-items: center; gap: 0.8rem;
-    }
-    .eyebrow::before { content: ''; width: 24px; height: 1px; background: var(--green); }
-    h1 {
-      font-family: var(--sans); font-weight: 800;
-      font-size: clamp(2.8rem, 7vw, 5.8rem);
-      line-height: 0.95; letter-spacing: -0.03em;
-      margin-bottom: 1.2rem;
-    }
-    h1 .g { color: var(--green); }
-    h1 .d { color: var(--dim); }
-    .hero-sub {
-      font-size: 0.82rem; color: var(--mid);
-      max-width: 600px; line-height: 1.9; margin: 1.8rem 0 2.8rem;
-    }
-    .hero-badges {
-      display: flex; flex-wrap: wrap; gap: 0.6rem; margin-bottom: 3rem;
-    }
-    .badge {
-      font-size: 0.58rem; letter-spacing: 0.12em; text-transform: uppercase;
-      border: 1px solid var(--border); color: var(--mid);
-      padding: 0.3rem 0.7rem;
-    }
-    .badge.active { border-color: rgba(0,229,160,0.3); color: var(--green); }
-    .hero-metrics {
-      display: grid; grid-template-columns: repeat(4, auto); gap: 0;
-      border: 1px solid var(--border); width: fit-content;
-    }
-    .metric {
-      padding: 1.2rem 1.8rem;
-      border-right: 1px solid var(--border);
-    }
-    .metric:last-child { border-right: none; }
-    .m-val {
-      font-family: var(--sans); font-weight: 800;
-      font-size: 1.8rem; color: var(--green); line-height: 1;
-    }
-    .m-label { font-size: 0.58rem; color: var(--dim); text-transform: uppercase; letter-spacing: 0.1em; margin-top: 0.3rem; }
-    @media (max-width: 640px) {
-      .hero-metrics { grid-template-columns: repeat(2, 1fr); width: 100%; }
-      .metric { border-right: 1px solid var(--border); border-bottom: 1px solid var(--border); }
-      .metric:nth-child(even) { border-right: none; }
-    }
-
-    /* SECTIONS */
-    section { max-width: 1080px; margin: 0 auto; padding: 5rem 2rem; }
-    .sec-label {
-      font-size: 0.58rem; letter-spacing: 0.28em; text-transform: uppercase;
-      color: var(--green); margin-bottom: 0.8rem;
-      display: flex; align-items: center; gap: 0.6rem;
-    }
-    .sec-label::before { content: ''; width: 20px; height: 1px; background: var(--green); }
-    h2 {
-      font-family: var(--sans); font-weight: 700;
-      font-size: clamp(1.6rem, 3.5vw, 2.6rem);
-      letter-spacing: -0.02em; line-height: 1.1; margin-bottom: 0.6rem;
-    }
-    .sec-desc {
-      font-size: 0.8rem; color: var(--mid);
-      max-width: 560px; line-height: 1.9; margin-bottom: 2.8rem;
-    }
-    hr.div {
-      border: none; border-top: 1px solid var(--border);
-      max-width: 1080px; margin: 0 auto;
-    }
-
-    /* RESEARCH DOMAINS */
-    .domain-grid {
-      display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 1px; background: var(--border);
-      border: 1px solid var(--border); margin-bottom: 1px;
-    }
-    .domain-card {
-      background: var(--s1); padding: 2rem;
-      transition: background 0.2s;
-    }
-    .domain-card:hover { background: var(--s2); }
     .domain-id {
-      font-size: 0.55rem; letter-spacing: 0.2em; text-transform: uppercase;
-      color: var(--dim); margin-bottom: 1rem;
-    }
-    .domain-title {
-      font-family: var(--sans); font-weight: 700;
-      font-size: 1rem; color: var(--text); margin-bottom: 0.6rem; line-height: 1.2;
-    }
-    .domain-desc {
-      font-size: 0.72rem; color: var(--mid); line-height: 1.8; margin-bottom: 1.2rem;
-    }
-    .domain-tags {
-      display: flex; flex-wrap: wrap; gap: 0.4rem;
+      font-family: var(--mono); font-size: 0.68rem; letter-spacing: 0.16em;
+      text-transform: uppercase; color: var(--muted); margin-bottom: 10px;
     }
     .tag {
-      font-size: 0.55rem; letter-spacing: 0.1em; text-transform: uppercase;
-      border: 1px solid var(--border); color: var(--dim); padding: 0.2rem 0.5rem;
+      display: inline-block; font-family: var(--mono); font-size: 0.66rem;
+      letter-spacing: 0.06em; text-transform: uppercase; border: 1px solid var(--line-soft);
+      color: var(--muted); padding: 3px 9px; border-radius: 999px;
     }
-    .tag.green { border-color: rgba(0,229,160,0.25); color: var(--green); }
-    .tag.blue  { border-color: rgba(77,184,255,0.25); color: var(--blue); }
-    .tag.gold  { border-color: rgba(200,168,75,0.25); color: var(--gold); }
+    .tag-accent { border-color: rgba(212,175,55,0.35); color: var(--gold-soft); }
 
-    /* QEN FORMULA BLOCK */
-    .formula-block {
-      background: var(--s1); border: 1px solid var(--border);
-      padding: 2.5rem; margin: 2rem 0;
-    }
-    .formula-label {
-      font-size: 0.58rem; letter-spacing: 0.2em; text-transform: uppercase;
-      color: var(--dim); margin-bottom: 1.2rem;
-    }
-    .formula {
-      font-family: var(--mono); font-size: clamp(0.9rem, 2.5vw, 1.2rem);
-      color: var(--green); letter-spacing: 0.05em; margin-bottom: 1.5rem;
-    }
-    .formula-vars {
-      display: grid; grid-template-columns: repeat(3, 1fr);
-      gap: 1px; background: var(--border); border: 1px solid var(--border);
-    }
-    .fv {
-      background: var(--s2); padding: 1rem;
-    }
-    .fv-sym { font-size: 0.65rem; color: var(--green); margin-bottom: 0.3rem; }
-    .fv-name { font-family: var(--sans); font-weight: 700; font-size: 0.85rem; color: var(--text); }
-    .fv-weight { font-size: 0.62rem; color: var(--gold); margin-top: 0.2rem; }
-    .fv-desc { font-size: 0.65rem; color: var(--mid); margin-top: 0.5rem; line-height: 1.6; }
-
-    /* COLLABORATION TRACKS */
-    .tracks {
-      display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 1.5rem; margin-bottom: 2rem;
-    }
-    .track {
-      border: 1px solid var(--border); padding: 2rem;
-      transition: border-color 0.2s;
-    }
-    .track:hover { border-color: rgba(0,229,160,0.3); }
-    .track-type {
-      font-size: 0.55rem; letter-spacing: 0.2em; text-transform: uppercase;
-      color: var(--dim); margin-bottom: 0.8rem;
-    }
-    .track-title {
-      font-family: var(--sans); font-weight: 700;
-      font-size: 1.05rem; color: var(--text); margin-bottom: 0.6rem;
-    }
-    .track-desc {
-      font-size: 0.72rem; color: var(--mid); line-height: 1.8; margin-bottom: 1.2rem;
-    }
-    .track-list {
-      list-style: none; display: flex; flex-direction: column; gap: 0.4rem;
-    }
-    .track-list li {
-      font-size: 0.68rem; color: var(--mid); padding-left: 1rem;
-    }
-    .track-list li::before { content: '→ '; color: var(--green); margin-left: -1rem; }
-
-    /* DATASET */
-    .dataset-table {
-      width: 100%; border-collapse: collapse;
-      border: 1px solid var(--border); margin-bottom: 1.5rem;
-    }
-    .dataset-table th {
-      font-size: 0.58rem; letter-spacing: 0.15em; text-transform: uppercase;
-      color: var(--dim); padding: 0.8rem 1rem; text-align: left;
-      background: var(--s1); border-bottom: 1px solid var(--border);
-    }
-    .dataset-table td {
-      font-size: 0.72rem; color: var(--text); padding: 0.9rem 1rem;
-      border-bottom: 1px solid var(--border); vertical-align: top;
-    }
-    .dataset-table tr:last-child td { border-bottom: none; }
-    .dataset-table tr:hover td { background: var(--s2); }
-    .ds-name { color: var(--green); font-size: 0.75rem; }
     .ds-status {
-      font-size: 0.55rem; letter-spacing: 0.1em; text-transform: uppercase;
-      padding: 0.2rem 0.5rem; border: 1px solid;
+      display: inline-block; font-family: var(--mono); font-size: 0.66rem;
+      letter-spacing: 0.08em; text-transform: uppercase; padding: 3px 9px;
+      border-radius: 999px; border: 1px solid;
     }
-    .ds-status.open   { color: var(--green); border-color: rgba(0,229,160,0.3); }
-    .ds-status.req    { color: var(--gold);  border-color: rgba(200,168,75,0.3); }
-    .ds-status.q4     { color: var(--dim);   border-color: var(--border); }
-    @media (max-width: 640px) {
-      .dataset-table { display: block; overflow-x: auto; }
-    }
+    .ds-status.open { color: var(--success); border-color: rgba(133,201,141,0.35); }
+    .ds-status.req  { color: var(--gold-soft); border-color: rgba(212,175,55,0.35); }
+    .ds-status.q4   { color: var(--muted); border-color: var(--line-soft); }
 
-    /* PUBLICATIONS */
-    .pub-list { display: flex; flex-direction: column; gap: 1px; background: var(--border); border: 1px solid var(--border); }
+    .pub-list { display: flex; flex-direction: column; gap: 14px; }
     .pub {
-      background: var(--s1); padding: 1.5rem 2rem;
-      display: grid; grid-template-columns: 1fr auto;
-      gap: 1rem; align-items: start;
-      transition: background 0.2s;
+      display: grid; grid-template-columns: 1fr auto; gap: 18px; align-items: center;
+      padding: 22px 26px; background: rgba(255,255,255,0.03);
+      border: 1px solid var(--line-soft); border-radius: var(--radius-lg);
+      transition: border-color var(--transition), background var(--transition);
     }
-    .pub:hover { background: var(--s2); }
-    .pub-meta { font-size: 0.6rem; color: var(--dim); margin-bottom: 0.4rem; letter-spacing: 0.08em; text-transform: uppercase; }
-    .pub-title { font-family: var(--sans); font-weight: 700; font-size: 0.9rem; color: var(--text); line-height: 1.3; margin-bottom: 0.4rem; }
-    .pub-authors { font-size: 0.65rem; color: var(--mid); font-style: italic; }
-    .pub-link {
-      font-size: 0.6rem; color: var(--green); text-decoration: none;
-      letter-spacing: 0.08em; text-transform: uppercase;
-      border: 1px solid rgba(0,229,160,0.25); padding: 0.3rem 0.6rem;
-      white-space: nowrap; align-self: center;
-      transition: background 0.2s;
-    }
-    .pub-link:hover { background: rgba(0,229,160,0.08); }
+    .pub:hover { border-color: rgba(212,175,55,0.26); background: rgba(255,255,255,0.045); }
+    .pub-meta { font-family: var(--mono); font-size: 0.68rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); margin-bottom: 6px; }
+    .pub-title { font-size: 1.05rem; color: var(--text); line-height: 1.35; margin-bottom: 6px; }
+    .pub-authors { font-size: 0.85rem; color: var(--text-soft); font-style: italic; }
+    .pub-link { flex-shrink: 0; }
+    @media (max-width: 640px) { .pub { grid-template-columns: 1fr; } }
 
-    /* APPLY */
-    .apply-block {
-      background: var(--s1); border: 1px solid var(--border);
-      padding: 3rem; display: grid;
-      grid-template-columns: 1fr auto; gap: 2rem; align-items: center;
-    }
-    .apply-title {
-      font-family: var(--sans); font-weight: 800;
-      font-size: clamp(1.4rem, 3vw, 2rem); line-height: 1.1;
-      margin-bottom: 0.6rem;
-    }
-    .apply-desc { font-size: 0.78rem; color: var(--mid); line-height: 1.8; max-width: 520px; }
-    .apply-actions { display: flex; flex-direction: column; gap: 0.8rem; }
-    .btn-primary {
-      display: inline-block;
-      font-family: var(--mono); font-size: 0.65rem;
-      letter-spacing: 0.12em; text-transform: uppercase;
-      color: var(--bg); background: var(--green);
-      padding: 0.8rem 1.8rem; text-decoration: none;
-      transition: opacity 0.2s; white-space: nowrap;
-    }
-    .btn-primary:hover { opacity: 0.85; }
-    .btn-secondary {
-      display: inline-block;
-      font-family: var(--mono); font-size: 0.65rem;
-      letter-spacing: 0.12em; text-transform: uppercase;
-      color: var(--green); border: 1px solid rgba(0,229,160,0.35);
-      padding: 0.8rem 1.8rem; text-decoration: none;
-      transition: background 0.2s; white-space: nowrap; text-align: center;
-    }
-    .btn-secondary:hover { background: rgba(0,229,160,0.08); }
-    @media (max-width: 640px) {
-      .apply-block { grid-template-columns: 1fr; }
-      .apply-actions { flex-direction: row; flex-wrap: wrap; }
-    }
-
-    /* FOOTER */
-    footer {
-      border-top: 1px solid var(--border);
-      padding: 2.5rem 2rem; max-width: 1080px; margin: 0 auto;
-      display: flex; justify-content: space-between; align-items: flex-end;
-      flex-wrap: wrap; gap: 1.5rem;
-    }
-    .fb img { width: 80px; height: auto; display: block; margin-bottom: 0.5rem; opacity: 0.85; }
-    .ft-tag { font-size: 0.65rem; color: var(--mid); font-style: italic; max-width: 340px; line-height: 1.6; margin-top: 0.3rem; }
-    .flinks { display: flex; flex-direction: column; gap: 0.35rem; text-align: right; }
-    .flinks a { font-size: 0.62rem; color: var(--dim); text-decoration: none; transition: color 0.2s; }
-    .flinks a:hover { color: var(--green); }
-    .ft-copy { width: 100%; font-size: 0.58rem; color: var(--dim); text-align: center; padding-top: 1.5rem; border-top: 1px solid var(--border); margin-top: 0.5rem; }
+    .apply-card { display: grid; grid-template-columns: 1fr auto; gap: 32px; align-items: center; padding: 40px; }
+    .apply-actions { display: flex; flex-direction: column; gap: 12px; }
+    @media (max-width: 640px) { .apply-card { grid-template-columns: 1fr; } }
   </style>
   <link rel="search" type="application/opensearchdescription+xml" title="Cognitive Logic" href="https://cognitivelogic.it/opensearchdescription.xml" />
 </head>
 <body>
 
-<!-- NAV -->
-<nav>
-  <a class="nav-logo" href="/">
-    <span class="wordmark wordmark--nav"><span class="wm-top">Cognitive</span><span class="wm-bot">Logic</span></span>
-  </a>
-  <ul class="nav-links">
-    <li><a href="/methodology.html">Methodology</a></li>
-    <li><a href="/qen.html">QEN</a></li>
-    <li><a href="/framework.html">Framework</a></li>
-    <li><a href="/research.html">Research</a></li>
-  </ul>
-  <a class="nav-cta" href="mailto:academia@cognitivelogic.it">Apply</a>
-</nav>
-
-<!-- HERO -->
-<div class="hero">
-  <p class="eyebrow">Academia Program · Cognitive Logic · Bologna 2026</p>
-  <h1>
-    Research<br>
-    <span class="g">Infrastructure</span><br>
-    <span class="d">for Ethical AI</span>
-  </h1>
-  <p class="hero-sub">
-    Cognitive Logic opens its QEN framework, scoring datasets and agent architecture
-    to universities, PhD candidates and independent researchers.
-    Formal collaborations, open data tracks, joint publication pathways.
-  </p>
-  <div class="hero-badges">
-    <span class="badge active">QEN Dataset</span>
-    <span class="badge active">PhD Track</span>
-    <span class="badge active">Thesis Supervision</span>
-    <span class="badge">EU AI Act Research</span>
-    <span class="badge">CSRD Measurement</span>
-    <span class="badge">Bolkestein 2027</span>
-    <span class="badge">Territorial Economics</span>
-  </div>
-  <div class="hero-metrics">
-    <div class="metric">
-      <div class="m-val">3</div>
-      <div class="m-label">Verticals</div>
-    </div>
-    <div class="metric">
-      <div class="m-val">40+</div>
-      <div class="m-label">QEN variables</div>
-    </div>
-    <div class="metric">
-      <div class="m-val">5</div>
-      <div class="m-label">Pilot datasets</div>
-    </div>
-    <div class="metric">
-      <div class="m-val">Open</div>
-      <div class="m-label">Access track</div>
+<header class="site-header">
+  <div class="container header-inner">
+    <a href="/" class="brand">
+      <span class="wordmark wordmark--nav"><span class="wm-top">Cognitive</span><span class="wm-bot">Logic</span></span>
+    </a>
+    <nav class="main-nav">
+      <a href="/methodology.html">Methodology</a>
+      <a href="/qen.html">QEN</a>
+      <a href="/framework.html">Framework</a>
+      <a href="/research.html">Research</a>
+    </nav>
+    <div class="header-end">
+      <a href="mailto:academia@cognitivelogic.it" class="btn btn-primary">Apply</a>
     </div>
   </div>
-</div>
+</header>
 
-<hr class="div">
+<main>
 
-<!-- RESEARCH DOMAINS -->
-<section id="domains">
-  <p class="sec-label">Research Domains</p>
-  <h2>What you can study<br>with QEN</h2>
-  <p class="sec-desc">
-    The QEN framework produces structured, multi-dimensional ethical scores
-    anchored to verifiable regulatory obligations. Four primary research domains.
-  </p>
-  <div class="domain-grid">
-    <div class="domain-card">
-      <div class="domain-id">Domain 01</div>
-      <div class="domain-title">Ethical AI Measurement &amp; Scoring</div>
-      <div class="domain-desc">
-        Quantitative methodologies for encoding social, environmental and territorial
-        values into machine-readable scores. Weighting models, uncertainty propagation,
-        multi-stakeholder aggregation.
+  <!-- HERO -->
+  <section class="hero">
+    <div class="container">
+      <p class="eyebrow">Academia Program · Cognitive Logic · Bologna 2026</p>
+      <h1>Research Infrastructure for Ethical AI</h1>
+      <p>
+        Cognitive Logic opens its QEN framework, scoring datasets and agent architecture
+        to universities, PhD candidates and independent researchers.
+        Formal collaborations, open data tracks, joint publication pathways.
+      </p>
+      <div class="hero-meta">
+        <span class="hero-chip badge-strong">QEN Dataset</span>
+        <span class="hero-chip badge-strong">PhD Track</span>
+        <span class="hero-chip badge-strong">Thesis Supervision</span>
+        <span class="hero-chip">EU AI Act Research</span>
+        <span class="hero-chip">CSRD Measurement</span>
+        <span class="hero-chip">Bolkestein 2027</span>
+        <span class="hero-chip">Territorial Economics</span>
       </div>
-      <div class="domain-tags">
-        <span class="tag green">QEN Score</span>
-        <span class="tag green">EU AI Act Annex III</span>
-        <span class="tag">GDPR Art.22</span>
-        <span class="tag">Explainability</span>
+      <div class="grid grid-4" style="margin-top:30px">
+        <div class="metric"><div class="label">Verticals</div><div class="value">3</div></div>
+        <div class="metric"><div class="label">QEN variables</div><div class="value">40+</div></div>
+        <div class="metric"><div class="label">Pilot datasets</div><div class="value">5</div></div>
+        <div class="metric"><div class="label">Access track</div><div class="value">Open</div></div>
       </div>
     </div>
-    <div class="domain-card">
-      <div class="domain-id">Domain 02</div>
-      <div class="domain-title">CSRD &amp; Non-Financial Disclosure</div>
-      <div class="domain-desc">
-        Operationalising CSRD sustainability reporting for SMEs and micro-operators.
-        Green Claims Directive compliance, double materiality assessment,
-        automated evidence extraction from unstructured documents.
-      </div>
-      <div class="domain-tags">
-        <span class="tag gold">CSRD</span>
-        <span class="tag gold">Green Claims</span>
-        <span class="tag">ESRS</span>
-        <span class="tag">SME reporting</span>
-      </div>
-    </div>
-    <div class="domain-card">
-      <div class="domain-id">Domain 03</div>
-      <div class="domain-title">Territorial Intelligence &amp; Local Economics</div>
-      <div class="domain-desc">
-        Proximity supply chains, Km0 sourcing networks, place-based economic
-        rootedness indicators. Intersection of territorial data with
-        regulatory compliance in the HoReCa and coastal tourism sectors.
-      </div>
-      <div class="domain-tags">
-        <span class="tag blue">Territorial score Vt</span>
-        <span class="tag blue">Bolkestein 2027</span>
-        <span class="tag">Concessions</span>
-        <span class="tag">HoReCa</span>
-      </div>
-    </div>
-    <div class="domain-card">
-      <div class="domain-id">Domain 04</div>
-      <div class="domain-title">Autonomous Agent Governance</div>
-      <div class="domain-desc">
-        Multi-agent orchestration patterns for regulatory compliance workflows.
-        LLM-based auditing agents, escalation logic, human-in-the-loop design
-        under EU AI Act high-risk system constraints.
-      </div>
-      <div class="domain-tags">
-        <span class="tag green">Agent architecture</span>
-        <span class="tag">EU AI Act Annex I</span>
-        <span class="tag">GDPR Art.35 DPIA</span>
-        <span class="tag">Oversight</span>
-      </div>
-    </div>
-  </div>
-</section>
+  </section>
 
-<hr class="div">
-
-<!-- QEN FORMULA -->
-<section id="framework">
-  <p class="sec-label">QEN Framework</p>
-  <h2>The scoring formula</h2>
-  <p class="sec-desc">
-    QEN (Quantum Ethics Network) quantifies enterprise ethical performance across
-    three orthogonal dimensions. The formula is fully open for academic inspection and critique.
-  </p>
-  <div class="formula-block">
-    <div class="formula-label">QEN Framework v6.0 — Primary aggregation formula</div>
-    <div class="formula">QEN = Vs × 0.40 + Va × 0.35 + Vt × 0.25</div>
-    <div class="formula-vars">
-      <div class="fv">
-        <div class="fv-sym">Vs</div>
-        <div class="fv-name">Social Score</div>
-        <div class="fv-weight">weight 0.40</div>
-        <div class="fv-desc">Labour conditions, worker welfare, community impact, gender equity, supply chain human rights.</div>
+  <!-- RESEARCH DOMAINS -->
+  <section class="section" id="domains">
+    <div class="container">
+      <div class="section-heading">
+        <p class="eyebrow">Research Domains</p>
+        <h2>What you can study with QEN</h2>
+        <p>
+          The QEN framework produces structured, multi-dimensional ethical scores
+          anchored to verifiable regulatory obligations. Four primary research domains.
+        </p>
       </div>
-      <div class="fv">
-        <div class="fv-sym">Va</div>
-        <div class="fv-name">Environmental Score</div>
-        <div class="fv-weight">weight 0.35</div>
-        <div class="fv-desc">Carbon footprint, waste management, energy sourcing, biodiversity impact, CSRD materiality.</div>
-      </div>
-      <div class="fv">
-        <div class="fv-sym">Vt</div>
-        <div class="fv-name">Territorial Score</div>
-        <div class="fv-weight">weight 0.25</div>
-        <div class="fv-desc">Local sourcing (Km0), territorial rootedness, cultural heritage, place-based economic contribution.</div>
+      <div class="grid grid-2">
+        <div class="card">
+          <div class="domain-id">Domain 01</div>
+          <h3>Ethical AI Measurement &amp; Scoring</h3>
+          <p>
+            Quantitative methodologies for encoding social, environmental and territorial
+            values into machine-readable scores. Weighting models, uncertainty propagation,
+            multi-stakeholder aggregation.
+          </p>
+          <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:16px">
+            <span class="tag tag-accent">QEN Score</span>
+            <span class="tag tag-accent">EU AI Act Annex III</span>
+            <span class="tag">GDPR Art.22</span>
+            <span class="tag">Explainability</span>
+          </div>
+        </div>
+        <div class="card">
+          <div class="domain-id">Domain 02</div>
+          <h3>CSRD &amp; Non-Financial Disclosure</h3>
+          <p>
+            Operationalising CSRD sustainability reporting for SMEs and micro-operators.
+            Green Claims Directive compliance, double materiality assessment,
+            automated evidence extraction from unstructured documents.
+          </p>
+          <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:16px">
+            <span class="tag tag-accent">CSRD</span>
+            <span class="tag tag-accent">Green Claims</span>
+            <span class="tag">ESRS</span>
+            <span class="tag">SME reporting</span>
+          </div>
+        </div>
+        <div class="card">
+          <div class="domain-id">Domain 03</div>
+          <h3>Territorial Intelligence &amp; Local Economics</h3>
+          <p>
+            Proximity supply chains, Km0 sourcing networks, place-based economic
+            rootedness indicators. Intersection of territorial data with
+            regulatory compliance in the HoReCa and coastal tourism sectors.
+          </p>
+          <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:16px">
+            <span class="tag tag-accent">Territorial score Vt</span>
+            <span class="tag tag-accent">Bolkestein 2027</span>
+            <span class="tag">Concessions</span>
+            <span class="tag">HoReCa</span>
+          </div>
+        </div>
+        <div class="card">
+          <div class="domain-id">Domain 04</div>
+          <h3>Autonomous Agent Governance</h3>
+          <p>
+            Multi-agent orchestration patterns for regulatory compliance workflows.
+            LLM-based auditing agents, escalation logic, human-in-the-loop design
+            under EU AI Act high-risk system constraints.
+          </p>
+          <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:16px">
+            <span class="tag tag-accent">Agent architecture</span>
+            <span class="tag">EU AI Act Annex I</span>
+            <span class="tag">GDPR Art.35 DPIA</span>
+            <span class="tag">Oversight</span>
+          </div>
+        </div>
       </div>
     </div>
-  </div>
-  <p style="font-size:0.72rem; color:var(--mid); line-height:1.8; max-width:620px;">
-    All three dimensions are scored 0–100. The output QEN score is likewise 0–100.
-    Full variable definitions, sub-indicator lists and weighting justification are documented
-    in the <a href="/methodology.html" style="color:var(--green);">Methodology v1.0</a>.
-  </p>
-</section>
+  </section>
 
-<hr class="div">
-
-<!-- COLLABORATION TRACKS -->
-<section id="tracks">
-  <p class="sec-label">Collaboration Tracks</p>
-  <h2>How we work together</h2>
-  <p class="sec-desc">
-    Three structured pathways for academic engagement. All tracks are formalized
-    via a brief research protocol submission.
-  </p>
-  <div class="tracks">
-    <div class="track">
-      <div class="track-type">Track A</div>
-      <div class="track-title">Thesis &amp; Dissertation</div>
-      <div class="track-desc">
-        Bachelor, Master and PhD theses directly using QEN data or methodology.
-        Cognitive Logic provides dataset access, methodology documentation,
-        and technical support sessions.
+  <!-- QEN FORMULA -->
+  <section class="section" id="framework">
+    <div class="container">
+      <div class="section-heading">
+        <p class="eyebrow">QEN Framework</p>
+        <h2>The scoring formula</h2>
+        <p>
+          QEN (Quantum Ethics Network) quantifies enterprise ethical performance across
+          three orthogonal dimensions. The formula is fully open for academic inspection and critique.
+        </p>
       </div>
-      <ul class="track-list">
-        <li>Dataset access (anonymized, structured)</li>
-        <li>Methodology consultation (3 sessions)</li>
-        <li>Co-authorship on outputs negotiable</li>
-        <li>Certificate of collaboration issued</li>
-        <li>Duration: semester to academic year</li>
-      </ul>
-    </div>
-    <div class="track">
-      <div class="track-type">Track B</div>
-      <div class="track-title">Joint Research &amp; Publication</div>
-      <div class="track-desc">
-        Collaborative research projects aimed at peer-reviewed publication.
-        Focus areas: ethical AI measurement, CSRD operationalisation,
-        territorial economics, autonomous agent governance.
+      <div class="definition-box">
+        <div class="definition-title">QEN Framework v6.0 — Primary aggregation formula</div>
+        <div class="formula">QEN = Vs × 0.40 + Va × 0.35 + Vt × 0.25</div>
+        <div class="qen-mini-grid" style="grid-template-columns:repeat(3,minmax(0,1fr))">
+          <div class="qen-mini-card">
+            <div class="label">Vs · Social Score</div>
+            <div class="value">0.40</div>
+            <p style="margin-top:10px;font-size:0.88rem">Labour conditions, worker welfare, community impact, gender equity, supply chain human rights.</p>
+          </div>
+          <div class="qen-mini-card">
+            <div class="label">Va · Environmental Score</div>
+            <div class="value">0.35</div>
+            <p style="margin-top:10px;font-size:0.88rem">Carbon footprint, waste management, energy sourcing, biodiversity impact, CSRD materiality.</p>
+          </div>
+          <div class="qen-mini-card">
+            <div class="label">Vt · Territorial Score</div>
+            <div class="value">0.25</div>
+            <p style="margin-top:10px;font-size:0.88rem">Local sourcing (Km0), territorial rootedness, cultural heritage, place-based economic contribution.</p>
+          </div>
+        </div>
       </div>
-      <ul class="track-list">
-        <li>Full dataset access (non-anonymized on NDA)</li>
-        <li>Roberto Malini co-authorship</li>
-        <li>Shared attribution on methodological IP</li>
-        <li>Target: conference papers + journal submissions</li>
-        <li>Duration: 6–18 months</li>
-      </ul>
-    </div>
-    <div class="track">
-      <div class="track-type">Track C</div>
-      <div class="track-title">Research Consultancy</div>
-      <div class="track-desc">
-        External advisory role for research groups needing applied compliance
-        expertise. Regulatory interpretation, framework validation,
-        field data access via Cognitive Logic operator network.
-      </div>
-      <ul class="track-list">
-        <li>Advisory sessions (4–8 per project)</li>
-        <li>Access to live operator data (NDA required)</li>
-        <li>EU funding proposal support (Horizon, EIC)</li>
-        <li>No co-authorship required</li>
-        <li>Compensation: negotiable / pro-bono for PhD candidates</li>
-      </ul>
-    </div>
-  </div>
-</section>
-
-<hr class="div">
-
-<!-- DATASETS -->
-<section id="data">
-  <p class="sec-label">Data Access</p>
-  <h2>Available datasets</h2>
-  <p class="sec-desc">
-    Structured datasets produced through the Cognitive Logic pilot program.
-    Covering Bologna HoReCa operators, coastal concessions and food supply chains.
-  </p>
-  <table class="dataset-table">
-    <thead>
-      <tr>
-        <th>Dataset</th>
-        <th>Vertical</th>
-        <th>Records</th>
-        <th>Variables</th>
-        <th>Access</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="ds-name">QEN-RIST-BO-2026</span><br><span style="font-size:0.65rem;color:var(--dim);">Bologna restaurants — pilot cohort</span></td>
-        <td>Ristorazione</td>
-        <td>5 operators</td>
-        <td>38 variables</td>
-        <td><span class="ds-status req">On request</span></td>
-      </tr>
-      <tr>
-        <td><span class="ds-name">QEN-BALNEARI-2026</span><br><span style="font-size:0.65rem;color:var(--dim);">Coastal concessions — Bolkestein compliance</span></td>
-        <td>Balneare</td>
-        <td>Expanding</td>
-        <td>42 variables</td>
-        <td><span class="ds-status req">On request</span></td>
-      </tr>
-      <tr>
-        <td><span class="ds-name">QEN-HORECA-SYNTHETIC</span><br><span style="font-size:0.65rem;color:var(--dim);">Synthetic benchmark dataset for methodology testing</span></td>
-        <td>HoReCa</td>
-        <td>100 synthetic</td>
-        <td>40 variables</td>
-        <td><span class="ds-status open">Open</span></td>
-      </tr>
-      <tr>
-        <td><span class="ds-name">COMPLIANCE-VECTORS-EU</span><br><span style="font-size:0.65rem;color:var(--dim);">Regulatory text embeddings — EU AI Act, CSRD, GDPR</span></td>
-        <td>Regulatory</td>
-        <td>Structured corpus</td>
-        <td>NLP vectors</td>
-        <td><span class="ds-status open">Open</span></td>
-      </tr>
-      <tr>
-        <td><span class="ds-name">QEN-ALBERGHIERO-2026</span><br><span style="font-size:0.65rem;color:var(--dim);">Hotel &amp; accommodation — seasonal operators</span></td>
-        <td>Alberghiero</td>
-        <td>Planned Q4 2026</td>
-        <td>~44 variables</td>
-        <td><span class="ds-status q4">Q4 2026</span></td>
-      </tr>
-    </tbody>
-  </table>
-  <p style="font-size:0.68rem; color:var(--dim); line-height:1.7;">
-    All datasets requiring access are gated by a brief research protocol form and NDA where applicable.
-    Anonymized versions of pilot data are available immediately upon track enrollment.
-  </p>
-</section>
-
-<hr class="div">
-
-<!-- PUBLICATIONS -->
-<section id="publications">
-  <p class="sec-label">Publications &amp; Working Papers</p>
-  <h2>Research outputs</h2>
-  <p class="sec-desc">
-    Working papers, methodology documents and forthcoming submissions from the Cognitive Logic research program.
-  </p>
-  <div class="pub-list">
-    <div class="pub">
-      <div>
-        <div class="pub-meta">Working Paper · 2026 · v1.0</div>
-        <div class="pub-title">QEN Score: A Multi-Dimensional Ethical Scoring Framework for SME Compliance in EU Regulatory Contexts</div>
-        <div class="pub-authors">Roberto Malini — Cognitive Logic, Bologna</div>
-      </div>
-      <a href="/methodology.html" class="pub-link">Read →</a>
-    </div>
-    <div class="pub">
-      <div>
-        <div class="pub-meta">Technical Note · 2026</div>
-        <div class="pub-title">Autonomous Agent Architectures for Regulatory Compliance: EU AI Act High-Risk Classification and Oversight Patterns</div>
-        <div class="pub-authors">Roberto Malini — Cognitive Logic, Bologna</div>
-      </div>
-      <a href="/ai.html" class="pub-link">Read →</a>
-    </div>
-    <div class="pub">
-      <div>
-        <div class="pub-meta">Forthcoming · Target: Q3 2026</div>
-        <div class="pub-title">Bolkestein Directive 2027 and the Measurement of Territorial Rootedness: A Scoring Approach for Italian Coastal Concessions</div>
-        <div class="pub-authors">Roberto Malini · Open for co-authorship</div>
-      </div>
-      <a href="mailto:academia@cognitivelogic.it" class="pub-link">Join →</a>
-    </div>
-    <div class="pub">
-      <div>
-        <div class="pub-meta">Planned · 2026–2027</div>
-        <div class="pub-title">CSRD Operationalisation for Micro-Operators: Automated Evidence Extraction and Double Materiality Assessment at Scale</div>
-        <div class="pub-authors">Open collaboration — seeking university partner</div>
-      </div>
-      <a href="mailto:academia@cognitivelogic.it" class="pub-link">Propose →</a>
-    </div>
-  </div>
-</section>
-
-<hr class="div">
-
-<!-- APPLY -->
-<section id="apply">
-  <div class="apply-block">
-    <div>
-      <div class="apply-title">Start a collaboration</div>
-      <p class="apply-desc">
-        Send a two-paragraph research protocol: your institution and role,
-        the research question you want to address, which dataset or framework
-        component you need. We respond within 5 working days.
-        PhD candidates and under-resourced institutions: pro-bono access available.
+      <p class="text-muted" style="max-width:620px">
+        All three dimensions are scored 0–100. The output QEN score is likewise 0–100.
+        Full variable definitions, sub-indicator lists and weighting justification are documented
+        in the <a href="/methodology.html" class="text-gold">Methodology v1.0</a>.
       </p>
     </div>
-    <div class="apply-actions">
-      <a href="mailto:academia@cognitivelogic.it?subject=Academia%20Track%20Application" class="btn-primary">Apply via email</a>
-      <a href="/methodology.html" class="btn-secondary">Read methodology</a>
-    </div>
-  </div>
-</section>
+  </section>
 
-<!-- FOOTER -->
-<footer>
-  <div>
-    <div class="fb">
-      
+  <!-- COLLABORATION TRACKS -->
+  <section class="section" id="tracks">
+    <div class="container">
+      <div class="section-heading">
+        <p class="eyebrow">Collaboration Tracks</p>
+        <h2>How we work together</h2>
+        <p>
+          Three structured pathways for academic engagement. All tracks are formalized
+          via a brief research protocol submission.
+        </p>
+      </div>
+      <div class="grid grid-3">
+        <div class="card">
+          <p class="eyebrow">Track A</p>
+          <h3>Thesis &amp; Dissertation</h3>
+          <p>
+            Bachelor, Master and PhD theses directly using QEN data or methodology.
+            Cognitive Logic provides dataset access, methodology documentation,
+            and technical support sessions.
+          </p>
+          <ul class="list-clean stack-sm" style="margin-top:16px">
+            <li>Dataset access (anonymized, structured)</li>
+            <li>Methodology consultation (3 sessions)</li>
+            <li>Co-authorship on outputs negotiable</li>
+            <li>Certificate of collaboration issued</li>
+            <li>Duration: semester to academic year</li>
+          </ul>
+        </div>
+        <div class="card">
+          <p class="eyebrow">Track B</p>
+          <h3>Joint Research &amp; Publication</h3>
+          <p>
+            Collaborative research projects aimed at peer-reviewed publication.
+            Focus areas: ethical AI measurement, CSRD operationalisation,
+            territorial economics, autonomous agent governance.
+          </p>
+          <ul class="list-clean stack-sm" style="margin-top:16px">
+            <li>Full dataset access (non-anonymized on NDA)</li>
+            <li>Roberto Malini co-authorship</li>
+            <li>Shared attribution on methodological IP</li>
+            <li>Target: conference papers + journal submissions</li>
+            <li>Duration: 6–18 months</li>
+          </ul>
+        </div>
+        <div class="card">
+          <p class="eyebrow">Track C</p>
+          <h3>Research Consultancy</h3>
+          <p>
+            External advisory role for research groups needing applied compliance
+            expertise. Regulatory interpretation, framework validation,
+            field data access via Cognitive Logic operator network.
+          </p>
+          <ul class="list-clean stack-sm" style="margin-top:16px">
+            <li>Advisory sessions (4–8 per project)</li>
+            <li>Access to live operator data (NDA required)</li>
+            <li>EU funding proposal support (Horizon, EIC)</li>
+            <li>No co-authorship required</li>
+            <li>Compensation: negotiable / pro-bono for PhD candidates</li>
+          </ul>
+        </div>
+      </div>
     </div>
-    <div class="ft-tag">QEN Framework · Ethical AI Infrastructure · Bologna, Italy<br>Roberto Malini · Founder</div>
+  </section>
+
+  <!-- DATASETS -->
+  <section class="section" id="data">
+    <div class="container">
+      <div class="section-heading">
+        <p class="eyebrow">Data Access</p>
+        <h2>Available datasets</h2>
+        <p>
+          Structured datasets produced through the Cognitive Logic pilot program.
+          Covering Bologna HoReCa operators, coastal concessions and food supply chains.
+        </p>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Dataset</th>
+              <th>Vertical</th>
+              <th>Records</th>
+              <th>Variables</th>
+              <th>Access</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong class="text-gold">QEN-RIST-BO-2026</strong><br><span class="text-muted" style="font-size:0.82rem">Bologna restaurants — pilot cohort</span></td>
+              <td>Ristorazione</td>
+              <td>5 operators</td>
+              <td>38 variables</td>
+              <td><span class="ds-status req">On request</span></td>
+            </tr>
+            <tr>
+              <td><strong class="text-gold">QEN-BALNEARI-2026</strong><br><span class="text-muted" style="font-size:0.82rem">Coastal concessions — Bolkestein compliance</span></td>
+              <td>Balneare</td>
+              <td>Expanding</td>
+              <td>42 variables</td>
+              <td><span class="ds-status req">On request</span></td>
+            </tr>
+            <tr>
+              <td><strong class="text-gold">QEN-HORECA-SYNTHETIC</strong><br><span class="text-muted" style="font-size:0.82rem">Synthetic benchmark dataset for methodology testing</span></td>
+              <td>HoReCa</td>
+              <td>100 synthetic</td>
+              <td>40 variables</td>
+              <td><span class="ds-status open">Open</span></td>
+            </tr>
+            <tr>
+              <td><strong class="text-gold">COMPLIANCE-VECTORS-EU</strong><br><span class="text-muted" style="font-size:0.82rem">Regulatory text embeddings — EU AI Act, CSRD, GDPR</span></td>
+              <td>Regulatory</td>
+              <td>Structured corpus</td>
+              <td>NLP vectors</td>
+              <td><span class="ds-status open">Open</span></td>
+            </tr>
+            <tr>
+              <td><strong class="text-gold">QEN-ALBERGHIERO-2026</strong><br><span class="text-muted" style="font-size:0.82rem">Hotel &amp; accommodation — seasonal operators</span></td>
+              <td>Alberghiero</td>
+              <td>Planned Q4 2026</td>
+              <td>~44 variables</td>
+              <td><span class="ds-status q4">Q4 2026</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="text-muted mt-3" style="font-size:0.9rem">
+        All datasets requiring access are gated by a brief research protocol form and NDA where applicable.
+        Anonymized versions of pilot data are available immediately upon track enrollment.
+      </p>
+    </div>
+  </section>
+
+  <!-- PUBLICATIONS -->
+  <section class="section" id="publications">
+    <div class="container">
+      <div class="section-heading">
+        <p class="eyebrow">Publications &amp; Working Papers</p>
+        <h2>Research outputs</h2>
+        <p>
+          Working papers, methodology documents and forthcoming submissions from the Cognitive Logic research program.
+        </p>
+      </div>
+      <div class="pub-list">
+        <div class="pub">
+          <div>
+            <div class="pub-meta">Working Paper · 2026 · v1.0</div>
+            <div class="pub-title">QEN Score: A Multi-Dimensional Ethical Scoring Framework for SME Compliance in EU Regulatory Contexts</div>
+            <div class="pub-authors">Roberto Malini — Cognitive Logic, Bologna</div>
+          </div>
+          <a href="/methodology.html" class="btn btn-ghost pub-link">Read →</a>
+        </div>
+        <div class="pub">
+          <div>
+            <div class="pub-meta">Technical Note · 2026</div>
+            <div class="pub-title">Autonomous Agent Architectures for Regulatory Compliance: EU AI Act High-Risk Classification and Oversight Patterns</div>
+            <div class="pub-authors">Roberto Malini — Cognitive Logic, Bologna</div>
+          </div>
+          <a href="/ai.html" class="btn btn-ghost pub-link">Read →</a>
+        </div>
+        <div class="pub">
+          <div>
+            <div class="pub-meta">Forthcoming · Target: Q3 2026</div>
+            <div class="pub-title">Bolkestein Directive 2027 and the Measurement of Territorial Rootedness: A Scoring Approach for Italian Coastal Concessions</div>
+            <div class="pub-authors">Roberto Malini · Open for co-authorship</div>
+          </div>
+          <a href="mailto:academia@cognitivelogic.it" class="btn btn-ghost pub-link">Join →</a>
+        </div>
+        <div class="pub">
+          <div>
+            <div class="pub-meta">Planned · 2026–2027</div>
+            <div class="pub-title">CSRD Operationalisation for Micro-Operators: Automated Evidence Extraction and Double Materiality Assessment at Scale</div>
+            <div class="pub-authors">Open collaboration — seeking university partner</div>
+          </div>
+          <a href="mailto:academia@cognitivelogic.it" class="btn btn-ghost pub-link">Propose →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- APPLY -->
+  <section class="section" id="apply">
+    <div class="container">
+      <div class="card apply-card">
+        <div>
+          <h2 style="margin-bottom:12px">Start a collaboration</h2>
+          <p class="mb-0">
+            Send a two-paragraph research protocol: your institution and role,
+            the research question you want to address, which dataset or framework
+            component you need. We respond within 5 working days.
+            PhD candidates and under-resourced institutions: pro-bono access available.
+          </p>
+        </div>
+        <div class="apply-actions">
+          <a href="mailto:academia@cognitivelogic.it?subject=Academia%20Track%20Application" class="btn btn-primary">Apply via email</a>
+          <a href="/methodology.html" class="btn btn-ghost">Read methodology</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <div>
+      <div class="footer-brand">Cognitive Logic · Academia Program</div>
+      <div class="footer-sub">QEN Framework · Ethical AI Infrastructure · Bologna, Italy · Roberto Malini · Founder</div>
+      <div class="footer-copy mt-8">© 2026 Cognitive Logic — Roberto Malini. Tutti i diritti riservati.</div>
+    </div>
+    <div class="footer-links">
+      <a href="/">Home</a>
+      <a href="/methodology.html">Methodology</a>
+      <a href="/qen.html">QEN Score</a>
+      <a href="/framework.html">Framework</a>
+      <a href="/services.html">Services</a>
+      <a href="/ai.html">AI Engine</a>
+    </div>
   </div>
-  <div class="flinks">
-    <a href="/">Home</a>
-    <a href="/methodology.html">Methodology</a>
-    <a href="/qen.html">QEN Score</a>
-    <a href="/framework.html">Framework</a>
-    <a href="/services.html">Services</a>
-    <a href="/ai.html">AI Engine</a>
-  </div>
-  <div class="ft-copy">&copy; 2026 Cognitive Logic &mdash; Roberto Malini. Tutti i diritti riservati.</div>
 </footer>
-
+<script src="/js/cookie-banner.js"></script>
 </body>
 </html>
