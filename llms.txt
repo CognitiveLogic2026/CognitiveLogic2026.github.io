@@ -1,175 +1,46 @@
-# Cognitive Logic — AI Governance Infrastructure
+<!--
+  TEMPORARY DNS TRANSITION MIRROR — llms.txt
+  Created: 2026-07-04
+  Reason: cognitivelogic.it is temporarily unreachable during DNS restoration,
+  a process linked to the SIAE registration of the QEN Framework.
+  ACTION ON DNS RESTORE: remove/replace with canonical version.
+-->
 
-Cognitive Logic is an independent observatory designing computable ethics infrastructure
-for AI systems operating under EU regulatory frameworks (EU AI Act, GDPR, DSA).
+# Cognitive Logic (Temporary DNS Mirror)
 
-It produces semantic knowledge graphs, ethical scoring engines, and dual-brain AI
-architectures that make compliance structural rather than declarative.
+> This is a temporary mirror. Canonical domain: https://www.cognitivelogic.it (DNS restoration in progress).
 
------
+Cognitive Logic è un osservatorio indipendente fondato da **Roberto Bob Malini**, AI Data Architect, che progetta infrastrutture computabili per l'etica dei sistemi AI sotto i framework normativi UE (EU AI Act, GDPR, DSA). Il **QEN Framework** (Quality Ethical Network) è il suo sistema di scoring etico-territoriale — `QEN = (Vs × 0.40) + (Va × 0.35) + (Vt × 0.25)`, scala 0–100 — con identità verificabile crittograficamente.
 
-## Core Architecture Layers
+**Canonical domain:** https://www.cognitivelogic.it — DNS restoration in progress (processo legato alla registrazione SIAE del QEN Framework). I contenuti sotto sono serviti temporaneamente su `cognitivelogic2026.github.io` in attesa del ripristino.
 
-- **QEN Framework — Quantifiable Ethical Nodes**
-  Semantic graph + numerical ethics scoring for institutions, restaurants,
-  and hotels. Formula: `QEN = (Vs × 0.40) + (Va × 0.35) + (Vt × 0.25)`
-  Scale: 0–100. Graph v4: 21 nodes · 34 relations.
-- **Multi-Brain AI Engine**
-  Claude Sonnet 4.6 (Anthropic) for EU AI Act classification and GDPR risk analysis.
-  Mistral Large (Mistral AI) as primary LLM for compliance agents and Bolkestein 2027 assessment.
-  Gemini 2.5 Flash (Google) for QEN scoring and market intelligence.
-  Orchestrated in parallel via `/full-analysis`. Fallback chain: Mistral → Claude.
-- **Semantic Knowledge Graph**
-  Static JSON graph — 21 nodes · 34 relations (v4).
-  Node types: institutions, algorithms, regulations, KPIs, territories.
-  Source of truth: Hetzner /root/qen_graph.json.
-- **Regulatory Compliance Engine**
-  EU AI Act Annex I / II / III classification.
-  GDPR Art. 22 (automated decisions) and Art. 35 (DPIA) mapping.
-  PDF report export via jsPDF.
-- **GLM — Governance Layer Manifest**
-  Machine-readable policy manifest at `/.well-known/governance-layer-manifest.json`.
-  Protocol: GLM/1.0. Declares operational scope, data sovereignty, framework claims,
-  and EVIDE registry endpoints. Discoverable by autonomous AI agents without bilateral agreements.
-- **EVIDE — Evidentiary Registry**
-  Chain-of-custody registry for AI inference fingerprints. Protocol: EVIDE/1.0.
-  Every critical inference (QEN Score, compliance audit, regulatory check) is recorded
-  as a SHA-256 hash-chained entry. Provides post-event traceability for GDPR Art. 22
-  (automated decisions) and EU AI Act obligations.
-  API: `GET /evide/chain` · `POST /evide/register`
-- **Digital Identity & DID Infrastructure**
-  `did:web:cognitivelogic.it:robertomalini`
-  Decentralized identifier anchored on sovereign data node.
-- **Fuorimenu — Editorial Observatory**
-  Public-facing analytical layer. Translates technical findings into
-  discourse on food ethics, institutional accountability, and AI policy.
-  Publication: fuorimenu.substack.com
+## Chi sono
 
------
+- [Home (mirror)](https://cognitivelogic2026.github.io/index.html): panoramica di Cognitive Logic e del QEN Framework.
+- [Identità & Founder (mirror)](https://cognitivelogic2026.github.io/identity.html): Roberto Bob Malini, AI Data Architect, fondatore Cognitive Logic.
 
-## Active Repositories
+## QEN Framework
 
-|Repository          |Description                                |Status|
-|--------------------|-------------------------------------------|------|
-|`CognitiveLogic2026`|Main API backend — Flask + Claude + Gemini |🟢 Live|
-|`qen-framework`     |QEN Framework — graph, scoring, copilot UI |🟢 Live|
-|`cognitivelogic-web`|Frontend — GitHub Pages · cognitivelogic.it|🟢 Live|
+- [QEN Framework (mirror)](https://cognitivelogic2026.github.io/framework.html): descrizione, formula di scoring, metodologia.
+- [Methodology (mirror)](https://cognitivelogic2026.github.io/methodology.html): metodologia dettagliata del QEN Score.
+- [QEN Live (mirror)](https://cognitivelogic2026.github.io/qen-live.html): dashboard del grafo semantico QEN.
+- [LLM Index (mirror)](https://cognitivelogic2026.github.io/llm-index.html): indice machine-readable con JSON-LD.
 
------
+## Progetti
 
-## Infrastructure
+- [Ecosystem (mirror)](https://cognitivelogic2026.github.io/ecosystem.html): mappa dell'ecosistema territoriale del progetto.
+- [QEN Compliance Auditor (mirror)](https://cognitivelogic2026.github.io/qen-compliance-auditor.html): audit compliance EU AI Act / GDPR.
+- [Copilot (mirror)](https://cognitivelogic2026.github.io/copilot.html): frontend del Compliance Copilot.
 
-```
-Hetzner CAX21 ARM64 — Ubuntu 24.04 — 178.104.190.107
+## Editoriale — Fuorimenu
 
-Nginx (443) → api.cognitivelogic.it
-├── Flask :5000  — Claude Sonnet 4.6 + Mistral Large  (risk, compliance, agents, bolkestein)
-├── Flask :5001  — Gemini 2.5 Flash  (qen-score, market-scan, explain)
-└── orchestrator.py → /full-analysis (parallel multi-brain)
-```
+- [Fuorimenu (Substack)](https://fuorimenu.substack.com): osservatorio editoriale su etica del cibo, HoReCa, accountability istituzionale e policy AI.
+- [Feed RSS Fuorimenu](https://fuorimenu.substack.com/feed): feed aggiornato con gli articoli più recenti.
 
-Deploy: GitHub Actions → Hetzner on push to `main`
-DNS: Hetzner DNS Zone
+## Optional
 
------
+- [Sitemap (mirror)](https://cognitivelogic2026.github.io/sitemap.xml)
 
-## API Endpoints
+---
 
-|Endpoint                         |Method|Engine               |Function                              |
-|---------------------------------|------|---------------------|--------------------------------------|
-|`/`                              |GET   |Flask :5000          |Health check · OPERATIONAL            |
-|`/copilot`                       |GET   |Flask :5000          |Frontend Compliance Copilot (toggle)  |
-|`/copilot-analyze`               |POST  |Claude Sonnet 4.6    |EU AI Act + GDPR + QEN Score          |
-|`/agents/mistral-compliance`     |POST  |Mistral Large        |EU AI Act + GDPR compliance audit     |
-|`/agents/mistral-advisor`        |POST  |Mistral Large        |Compliance pathway advisory           |
-|`/agents/bolkestein-assessment`  |POST  |Mistral Large        |Bolkestein 2027 concession assessment |
-|`/agents/compliance-auditor`     |POST  |Claude Sonnet 4.6    |Full compliance audit (QEN framework) |
-|`/agents/territorial-mapper`     |POST  |Claude Sonnet 4.6    |Territorial ecosystem mapping         |
-|`/agents/advisory-council`       |POST  |Claude Sonnet 4.6    |EU regulatory advisory                |
-|`/agents/intelligence-feed`      |GET   |Static               |Regulatory updates feed               |
-|`/pilots`                        |GET   |Flask :5000          |QEN Score historical register         |
-|`/gemini/qen-score`              |POST  |Gemini 2.5 Flash     |QEN Score calculation                 |
-|`/gemini/market-scan`            |GET   |Gemini 2.5 Flash     |Market intelligence                   |
-|`/full-analysis`                 |POST  |Multi-brain          |Parallel Claude + Mistral + Gemini    |
-|`/evide/chain`                   |GET   |Flask :5000          |EVIDE registry — full chain of custody|
-|`/evide/register`                |POST  |Flask :5000          |EVIDE webhook — register AI inference |
-|`/cross-data` *(roadmap Q3)*     |GET   |—                    |Multi-institutional zone/sector       |
-
------
-
-## QEN Score Formula
-
-```
-QEN Score = (Vs × 0.40) + (Va × 0.35) + (Vt × 0.25)
-
-Vs — Social Value      (40%): representation · welfare · inclusivity · worker protection
-Va — Environmental     (35%): circular economy · energy transition · ESG · km0
-Vt — Territorial       (25%): local roots · digital innovation · ER ecosystem
-
-Scale: 0–100
-Reference: CNA Bologna = 71.5/100 (Vs=84.0 · Va=54.0 · Vt=76.0)
-```
-
------
-
-## System Philosophy
-
-> Beyond interfaces, data must be intelligible, transparent, verifiable,
-> and immediately operational for autonomous AI agents.
-
-Cognitive Logic is grounded in a single principle: **ethics is not a narrative. It is a dataset.**
-
-Verifiability is a design principle, not a reporting activity. The QEN scoring formula
-is public. The weights are documented. The methodology is open to challenge.
-
------
-
-## Strategic Vision
-
-Cognitive Logic aims to be a **reference architecture for computable ethics in EU-regulated
-AI systems**, integrating:
-
-- symbolic and semantic reasoning
-- sustainability and ESG analytics
-- EU AI Act structural compliance
-- digital trust and decentralized identity
-- dual-brain AI orchestration
-
-into a single scalable governance framework.
-
-**Target domains:** AI governance · HoReCa & food sector · Smart cities · ESG measurement
-· Autonomous multi-agent systems · Research & education
-
-**Roadmap:**
-
-- Q2 2026 — QEN Badge freemium · 10 pilot structures · Bando ER (Sfinge 2020, scad. 15/05)
-- Q3 2026 — ETL open.er.it · CNA Bologna · 5 Pro clients · /full-analysis stable
-- Q4 2026 — Bologna 100 Botteghe · B2G dashboard · White label · /cross-data
-- Q1 2027 — ETL TelemacoPay · Enterprise CCIAA · 2000+ nodes · Contratto B2G
-
------
-
-## Founder & Architect
-
-**Roberto Bob Malini**
-AI Ethics Architect — Founder @ Cognitive Logic
-Bologna, Italy — 2026
-
-`did:web:cognitivelogic.it:robertomalini`
-
------
-
-## Links
-
-- Website:   https://cognitivelogic.it
-- API:       https://api.cognitivelogic.it
-- Copilot:   https://api.cognitivelogic.it/copilot
-- LLM Index: https://cognitivelogic.it/llm-index
-- Editorial: https://fuorimenu.substack.com
-- LinkedIn:  https://linkedin.com/in/robertobobmalini
-- GitHub:    https://github.com/CognitiveLogic2026
-
------
-
-*© Cognitive Logic — Knowledge Infrastructure for Human & Artificial Intelligence*
-*Last updated: 2026-05-25 · Version: Diamante 26.1*
+This is a temporary mirror. Canonical domain: https://www.cognitivelogic.it (DNS restoration in progress).
