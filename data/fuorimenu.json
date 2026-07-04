@@ -1,6 +1,13 @@
 {
   "articoli": [
     {
+      "titolo": "Un’etichetta non basta — perché un ristorante ha bisogno di un DID",
+      "url": "https://fuorimenu.substack.com/p/unetichetta-non-basta-perche-un-ristorante",
+      "data": "2026-07-04 07:01",
+      "estratto": "Come il QEN Code rende un claim di menu verificabile da agenti AI e sistemi di conformità.",
+      "tag": "Fuorimenu"
+    },
+    {
       "titolo": "L’Etica del Segnale: Cosa Ho Imparato Osservando le Istituzioni Mentire (Bologna, 1977-1982)",
       "url": "https://fuorimenu.substack.com/p/letica-del-segnale-cosa-ho-imparato",
       "data": "2026-07-03 17:23",
@@ -61,13 +68,6 @@
       "url": "https://fuorimenu.substack.com/p/larchitettura-qen-e-online-validazione",
       "data": "2026-03-01 00:00",
       "estratto": "Il primo Pure Data Node dedicato alla filiera corta bolognese è ora operativo.",
-      "tag": "Fuorimenu"
-    },
-    {
-      "titolo": "Bologna: La Tradizione è un'Equazione (o non è)",
-      "url": "https://fuorimenu.substack.com/p/bologna-la-tradizione-e-unequazione",
-      "data": "2026-02-27 17:38",
-      "estratto": "Validazione semantica della logistica di prossimità e Certificazione d'Origine Dinamica (QEN)",
       "tag": "Fuorimenu"
     }
   ]
