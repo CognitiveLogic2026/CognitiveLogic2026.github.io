@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<!--
+  Source template for img/qen-methodology-og.png
+  Render at exactly 1200x630 (e.g. with Playwright) to regenerate the PNG.
+-->
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>QEN Methodology OG Image</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400;1,600&family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #05070a;
+    --gold: #c9a227;
+    --gold-soft: #e8c96b;
+    --grey: #b9bcc2;
+    --grey-soft: #d9dbe0;
+    --line: rgba(201, 162, 39, 0.35);
+    --line-soft: rgba(255, 255, 255, 0.14);
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body {
+    width: 1200px;
+    height: 630px;
+    background: var(--bg);
+    font-family: 'DM Mono', monospace;
+    overflow: hidden;
+  }
+  .canvas {
+    position: relative;
+    width: 1200px;
+    height: 630px;
+    padding: 56px 64px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .top-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+  .brand {
+    font-size: 20px;
+    font-weight: 500;
+    letter-spacing: 0.32em;
+    color: var(--gold);
+    text-transform: uppercase;
+  }
+  .badge {
+    border: 1px solid var(--line-soft);
+    padding: 10px 18px;
+    font-size: 13px;
+    letter-spacing: 0.18em;
+    color: var(--grey-soft);
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+
+  .middle {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+  }
+  .eyebrow {
+    font-size: 15px;
+    letter-spacing: 0.22em;
+    color: var(--gold);
+    text-transform: uppercase;
+  }
+  .title {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 400;
+    font-size: 76px;
+    line-height: 1.05;
+    color: var(--grey-soft);
+  }
+  .subtitle {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-weight: 600;
+    font-size: 76px;
+    line-height: 1.05;
+    color: var(--gold);
+    margin-top: -6px;
+  }
+  .description {
+    font-size: 17px;
+    line-height: 1.7;
+    color: var(--grey);
+    margin-top: 6px;
+  }
+
+  .formula-box {
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+    padding: 18px 0;
+    font-size: 22px;
+    letter-spacing: 0.03em;
+    color: var(--grey-soft);
+  }
+  .formula-box .coef {
+    color: var(--gold);
+  }
+
+  .footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .footer-left {
+    font-size: 13px;
+    letter-spacing: 0.14em;
+    color: var(--grey-soft);
+    text-transform: uppercase;
+  }
+  .footer-right {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+  .sep {
+    width: 1px;
+    height: 22px;
+    background: var(--gold);
+  }
+  .url {
+    font-size: 15px;
+    letter-spacing: 0.02em;
+    color: var(--gold);
+  }
+</style>
+</head>
+<body>
+  <div class="canvas">
+    <div class="top-row">
+      <div class="brand">Cognitive Logic</div>
+      <div class="badge">Position Paper · Public Use</div>
+    </div>
+
+    <div class="middle">
+      <div class="eyebrow">QEN Framework · Nota Metodologica · Aprile 2026</div>
+      <div class="title">QEN Framework</div>
+      <div class="subtitle">Methodological Note</div>
+      <div class="description">
+        Quantum Ethics Network Scoring System —<br>
+        Fondamenti metodologici dei coefficienti di ponderazione
+      </div>
+      <div class="formula-box">
+        QEN&nbsp;=&nbsp;(Vs&nbsp;×&nbsp;<span class="coef">0.40</span>)&nbsp;+&nbsp;(Va&nbsp;×&nbsp;<span class="coef">0.35</span>)&nbsp;+&nbsp;(Vt&nbsp;×&nbsp;<span class="coef">0.25</span>)
+      </div>
+    </div>
+
+    <div class="footer">
+      <div class="footer-left">Roberto Malini — Cognitive Logic · Bologna</div>
+      <div class="footer-right">
+        <div class="sep"></div>
+        <div class="url">cognitivelogic2026.github.io/qen/methodology</div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
