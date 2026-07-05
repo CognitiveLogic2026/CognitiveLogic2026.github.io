@@ -1,6 +1,13 @@
 {
   "articoli": [
     {
+      "titolo": "Weekender — 29 giugno / 4 luglio",
+      "url": "https://fuorimenu.substack.com/p/weekender-29-giugno-4-luglio",
+      "data": "2026-07-04 16:32",
+      "estratto": "Quattro tappe, una sola domanda di fondo: cosa resta quando togli l’etichetta, il segnale, la narrazione ufficiale?",
+      "tag": "Fuorimenu"
+    },
+    {
       "titolo": "Un’etichetta non basta — perché un ristorante ha bisogno di un DID",
       "url": "https://fuorimenu.substack.com/p/unetichetta-non-basta-perche-un-ristorante",
       "data": "2026-07-04 07:01",
@@ -61,13 +68,6 @@
       "url": "https://fuorimenu.substack.com/p/il-motivo-per-cui-ho-smesso-di-fidarmi",
       "data": "2026-06-23 18:13",
       "estratto": "Trentacinque anni in HoReCa ti insegnano a leggere le persone. Non sempre bastano.",
-      "tag": "Fuorimenu"
-    },
-    {
-      "titolo": "L'Architettura QEN è online: Validazione Semantica del Territorio",
-      "url": "https://fuorimenu.substack.com/p/larchitettura-qen-e-online-validazione",
-      "data": "2026-03-01 00:00",
-      "estratto": "Il primo Pure Data Node dedicato alla filiera corta bolognese è ora operativo.",
       "tag": "Fuorimenu"
     }
   ]
