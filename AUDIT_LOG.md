@@ -69,6 +69,33 @@ gestito fuori da questa pipeline, la cui origine andrà chiarita separatamente
 (`pm2 stop` + `pm2 delete` + `pm2 save --force`). `pm2-logrotate` resta attivo
 come modulo indipendente per prevenire recidive sui processi pm2 futuri.
 
+**Aggiornamento (2026-07-07, stesso giorno) — gemini-backend ripristinato**:
+il codice sorgente è stato recuperato dall'autore (non presente in questo
+repository). Il file originale conteneva una **API key Google hardcoded come
+fallback** (`os.getenv("GOOGLE_API_KEY", "AIzaSy...")`) — problema di sicurezza
+corretto: la chiave è stata rigenerata su Google AI Studio, la vecchia
+considerata compromessa, e il codice ora fallisce esplicitamente
+(`RuntimeError`) se `GOOGLE_API_KEY` non è impostata, invece di usare un
+default in chiaro.
+
+Il servizio è gestito da pm2 tramite `/root/qen-framework/ecosystem.config.js`
+(non versionato in git, `chmod 600`, chiave passata solo come env var del
+processo pm2 — non letta da `.env`, lo script non usa `python-dotenv`).
+
+Verifiche finali:
+- `pm2 list`: `gemini-backend` online, **0 restart** (nessun crash-loop).
+- `curl http://localhost:5001/health` → `200 OK`, risposta JSON corretta.
+- Porta **5001 non era esposta** (`ufw` default `deny incoming`), ma mancava
+  una regola esplicita a differenza delle altre porte solo-interne
+  (5000, 6379, 7474, 7687, 5432, 11434). Aggiunta `ufw deny 5001` per
+  coerenza e chiarezza.
+
+**Osservazione non risolta, fuori scope di questo intervento**: `ufw status`
+mostra `8000/tcp` e `8001/tcp` con `ALLOW IN Anywhere` — l'8001 (FastAPI QEN
+Reconciliation) secondo `PROMPT_ANALISI_REPO.md` dovrebbe passare solo da
+nginx, non essere raggiungibile in diretta da internet. Da rivedere in un
+audit separato.
+
 ### 2. Blocco 3 — nota di deprecazione Neo4j nel dossier SIAE
 
 Nota di deprecazione Neo4j nel dossier SIAE: **mai applicata, in attesa di conferma**
