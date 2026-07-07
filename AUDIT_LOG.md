@@ -72,3 +72,21 @@ Neo4j produzione") e implicitamente nel dossier stesso. Prima di applicare qualu
 nota di deprecazione va chiarito con l'autore se quell'istanza è: (a) un residuo di
 test/sviluppo mai ripulito, (b) un uso reale non ancora documentato, oppure (c) da
 rimuovere. Nessuna modifica al dossier finché questo punto non è confermato.
+
+**Verifica eseguita (2026-07-07)** — evidenza raccolta direttamente su VPS:
+
+- `systemctl status neo4j`: `disabled` / `inactive (dead)` — non parte al boot, non in
+  esecuzione.
+- Log (`debug.log`): istanza creata `2026-05-12`, avviata/fermata solo a intermittenza
+  tra 28 maggio e 2 giugno 2026, mai più toccata da allora.
+- Store on-disk: **912 KiB totali** (`neostore.*`), `last committed transaction id: 17`
+  — schema di default, nessun dato reale (nessun grafo, nessun nodo applicativo).
+  I 520M+626M osservati su `/root/neo4j` e `/var/lib/neo4j` sono quasi certamente
+  binari/dipendenze dell'installazione, non dati.
+- Un solo tentativo di connessione bolt registrato, fallito per autenticazione.
+
+**Esito**: residuo di test/esplorazione mai ripulito (opzione a), non uso reale in
+produzione. La narrativa "mai in produzione" in `PROMPT_ANALISI_REPO.md` e nel
+dossier resta corretta — non serve alcuna correzione di sostanza. Resta comunque
+valido il vincolo di non modificare `DOSSIER_SIAE_QEN_COMPLETO.html` senza conferma
+esplicita separata dell'autore, indipendentemente da questo esito.
