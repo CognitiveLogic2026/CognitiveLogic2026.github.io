@@ -37,3 +37,38 @@ File verificati (59):
 PRSW Mod. 349 (3 luglio 2026). Non va mai modificato — nessuna marcatura, nessun edit —
 senza conferma esplicita separata dell'autore, indipendentemente da qualunque audit
 successivo.
+
+---
+
+## Item aperti — VPS e riconciliazione Neo4j (2026-07-07)
+
+### 1. pm2-logrotate da installare sulla VPS
+
+La VPS ha già riempito il disco una volta a causa di log non ruotati di processi
+gestiti via pm2. Nessun deploy automatizzato di questo repo usa pm2 (il backend
+QEN gira su systemd + gunicorn/uvicorn, cfr. `deploy-vps.yml`), quindi l'installazione
+va fatta manualmente via SSH sulla VPS, fuori dalla pipeline CI/CD:
+
+```
+pm2 install pm2-logrotate
+pm2 set pm2-logrotate:max_size 10M
+pm2 set pm2-logrotate:retain 7
+pm2 set pm2-logrotate:compress true
+```
+
+Azione non eseguibile da questa sessione (nessun accesso SSH alla VPS). Da fare
+manualmente o da una sessione con accesso diretto.
+
+### 2. Blocco 3 — nota di deprecazione Neo4j nel dossier SIAE
+
+Nota di deprecazione Neo4j nel dossier SIAE: **mai applicata, in attesa di conferma**
+dell'autore (vedi eccezione permanente sopra — il dossier non si tocca senza
+autorizzazione esplicita).
+
+Complicazione emersa: su VPS esiste un'istanza Neo4j reale (`/root/neo4j`,
+`/var/lib/neo4j`, rispettivamente 520M e 626M) — dato che contraddice la narrativa
+"mai in produzione" usata finora in `PROMPT_ANALISI_REPO.md` (roadmap: "Q1 2027
+Neo4j produzione") e implicitamente nel dossier stesso. Prima di applicare qualunque
+nota di deprecazione va chiarito con l'autore se quell'istanza è: (a) un residuo di
+test/sviluppo mai ripulito, (b) un uso reale non ancora documentato, oppure (c) da
+rimuovere. Nessuna modifica al dossier finché questo punto non è confermato.
