@@ -95,7 +95,7 @@ QEN Score = (VS × 0,40) + (VA × 0,35) + (VT × 0,25)
 
 **`QEN_Generatore_Report.ipynb`** — Notebook Jupyter generatore report PDF (Allegato G)
 
-**`graph_expanded.json`** — Knowledge graph semantico (130 nodi, 209 edge)
+**`data/qen_graph_v4.json`** — Knowledge graph semantico (130 nodi, 209 edge)
 
 ### 3.2 Documentazione Metodologica
 
@@ -148,7 +148,7 @@ Data di creazione: 25–26 maggio 2026 | Hetzner VPS cognitive-node-01 (178.104.
 ```
 
 - [ ] `orchestrator.py` — backend FastAPI (~350–400 linee)
-- [ ] `graph_expanded.json` — knowledge graph (estratto rappresentativo)
+- [ ] `data/qen_graph_v4.json` — knowledge graph (estratto rappresentativo)
 - [ ] `INFRASTRUCTURE_SPEC.md` — specifica infrastruttura (2–3 pagine)
 
 ### 4.3 Prove di Anteriorità — Cartella 09 Screenshots (Allegato K)
