@@ -20,7 +20,7 @@ declarative.
   Gemini for QEN scoring and market intelligence.
   Orchestrated in parallel via `/full-analysis`.
 - **Semantic Knowledge Graph**
-  Static JSON graph — 21 nodes · 34 relations (v4).
+  Static JSON graph — 97 nodes · 182 relations (v4).
   Node types: institutions, algorithms, regulations, KPIs, territories.
 - **Regulatory Compliance Engine**
   EU AI Act Annex I / II / III classification.

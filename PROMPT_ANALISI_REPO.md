@@ -103,7 +103,7 @@ ma non è raggiungibile dall'esterno via nginx (solo via localhost nel deploy).
 ### Dati persistenti (VPS /app/cognitivelogic/)
 
 - `pilots.json` — entità con QEN score e history analisi
-- `graph.json` — knowledge graph 67 nodi, 105 relazioni
+- `graph.json` — knowledge graph 97 nodi, 182 relazioni
 - `escalations.json` — escalation riconciliazione RED/YELLOW
 
 ### Moduli non in produzione

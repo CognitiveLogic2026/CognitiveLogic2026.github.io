@@ -32,7 +32,7 @@
       },
       "stato": {
         "copilot": "LIVE api.cognitivelogic.it/copilot",
-        "graph": "LIVE 67 nodi / 110 relazioni — v5",
+        "graph": "LIVE 97 nodi / 182 relazioni — v6",
         "piva": "IN CORSO ATECO 62.01.09 forfettario",
         "notaio": "IN CORSO maggio 2026"
       },
@@ -181,7 +181,7 @@
         "vs": 84,
         "va": 54,
         "vt": 76,
-        "totale": 71.5
+        "totale": 77.75
       }
     },
     "HOTELLERIE_RIVIERA": {
@@ -954,8 +954,8 @@
       "id": "KNOWLEDGE_GRAPH_SEMANTICO",
       "type": "Tecnologia",
       "label": "Knowledge Graph Semantico QEN",
-      "nodi": 67,
-      "relazioni": 110,
+      "nodi": 97,
+      "relazioni": 182,
       "tipologie_relazione": [
         "SCORING_APPLICATO",
         "APPLICA_REGOLAMENTO",
