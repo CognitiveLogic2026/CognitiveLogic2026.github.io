@@ -42,22 +42,32 @@ successivo.
 
 ## Item aperti — VPS e riconciliazione Neo4j (2026-07-07)
 
-### 1. pm2-logrotate da installare sulla VPS
+### 1. pm2-logrotate da installare sulla VPS — RISOLTO (2026-07-07)
 
 La VPS ha già riempito il disco una volta a causa di log non ruotati di processi
 gestiti via pm2. Nessun deploy automatizzato di questo repo usa pm2 (il backend
-QEN gira su systemd + gunicorn/uvicorn, cfr. `deploy-vps.yml`), quindi l'installazione
-va fatta manualmente via SSH sulla VPS, fuori dalla pipeline CI/CD:
+QEN gira su systemd + gunicorn/uvicorn, cfr. `deploy-vps.yml`); pm2 gestisce invece
+processi separati, non tracciati da questo repository.
 
-```
-pm2 install pm2-logrotate
-pm2 set pm2-logrotate:max_size 10M
-pm2 set pm2-logrotate:retain 7
-pm2 set pm2-logrotate:compress true
-```
+**Installazione eseguita manualmente via SSH** (fuori dalla pipeline CI/CD):
+modulo `pm2-logrotate` installato e online, con i default già allineati alla
+config desiderata (`max_size 10M`, `retain 7`, `compress true`, `workerInterval 30`,
+`rotateInterval` giornaliero).
 
-Azione non eseguibile da questa sessione (nessun accesso SSH alla VPS). Da fare
-manualmente o da una sessione con accesso diretto.
+**Causa radice trovata durante la diagnosi**: il vero responsabile del disco pieno
+non erano (solo) i log non ruotati, ma il processo pm2 `gemini-backend` in
+**crash-loop dal 2026-05-13** — quasi 5000 restart consecutivi — perché lo script
+`/root/qen-framework/gemini_backend.py` non esisteva più sul filesystem
+(`python3: can't open file ... No such file or directory`). Ogni restart scriveva
+una riga di errore, generando volume di log molto superiore a quanto la sola
+rotazione potesse contenere. Il file `gemini_backend.py` non risulta in nessun
+commit di questo repository (verificato su tutti i branch); è quindi uno script
+gestito fuori da questa pipeline, la cui origine andrà chiarita separatamente
+(possibile repo esterno) prima di un eventuale ripristino.
+
+**Azione presa**: processo `gemini-backend` fermato ed eliminato da pm2
+(`pm2 stop` + `pm2 delete` + `pm2 save --force`). `pm2-logrotate` resta attivo
+come modulo indipendente per prevenire recidive sui processi pm2 futuri.
 
 ### 2. Blocco 3 — nota di deprecazione Neo4j nel dossier SIAE
 
