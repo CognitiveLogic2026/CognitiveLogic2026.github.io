@@ -1331,22 +1331,23 @@ header { padding: 1rem 1.5rem; }
 
 <script>
 // ─── PIANI CONFIG ───
+const PRICE_PLACEHOLDER = 'Prezzo comunicato in fase di preventivo';
 const PLANS = {
   'progetto-chiuso': {
     label: 'AI Readiness Audit — Progetto Chiuso',
-    price: '€ 1.500',
+    price: null,
     desc: 'Fee fissa · Consegna entro 5 giorni lavorativi',
     tag: 'PROGETTO CHIUSO'
   },
   'ricorrente-mensile': {
     label: 'Knowledge Architecture — Ricorrente Mensile',
-    price: '€ 2.500 setup + € 800/mese',
+    price: null,
     desc: 'Primo report QEN entro 30 giorni',
     tag: 'RICORRENTE MENSILE'
   },
   'value-based': {
     label: 'AI Identity & Compliance — Value-Based',
-    price: 'Su richiesta',
+    price: null,
     desc: 'Prima call di valutazione gratuita',
     tag: 'VALUE-BASED PRICING'
   }
@@ -1367,7 +1368,7 @@ function initFromURL() {
     selectedPlan = piano;
     const plan = PLANS[piano];
     state.piano_selezionato = plan.label;
-    state.piano_price = plan.price;
+    state.piano_price = PRICE_PLACEHOLDER;
 
     // Badge in header
     const badge = document.getElementById('plan-badge');
@@ -1377,7 +1378,7 @@ function initFromURL() {
     // Banner hero
     const banner = document.getElementById('plan-banner');
     banner.innerHTML = `Piano selezionato: <strong>${plan.label}</strong><br>
-      <span style="color:var(--text-dim)">${plan.price} · ${plan.desc}</span>`;
+      <span style="color:var(--text-dim)">${PRICE_PLACEHOLDER} · ${plan.desc}</span>`;
     banner.classList.add('visible');
   }
 }
@@ -1544,7 +1545,7 @@ function buildReview() {
     const row = document.getElementById('plan-review-row');
     row.style.display = 'flex';
     document.getElementById('plan-review-value').textContent =
-      PLANS[selectedPlan].label + ' · ' + PLANS[selectedPlan].price;
+      PLANS[selectedPlan].label + ' · ' + PRICE_PLACEHOLDER;
   }
 
   document.getElementById('review-content').innerHTML = `
