@@ -20,6 +20,21 @@ azione necessaria.
 definitivamente a `cognitivelogic.it`, senza più alcun riferimento al mirror GitHub
 Pages. Il bridge temporaneo descritto sopra non è più in vigore.
 
+**Aggiornamento (2026-07-09) — verifica host canonico (apex vs www)**: Google Search
+Console mostrava un segnale ambiguo (sitemap letta con successo su
+`www.cognitivelogic.it`, ultimo tentativo su `cognitivelogic.it` fallito e datato
+14 maggio, pre-restore). L'autore ha verificato manualmente (Settings → Pages del
+repo, browser, dettaglio errore GSC) e confermato che l'host canonico reale è
+l'apex `cognitivelogic.it`. Controllo a tappeto eseguito su canonical tag (36
+pagine), `og:url`, `sitemap.xml` (35 URL), `robots.txt` e `llms.txt`: zero
+riferimenti residui a `www.cognitivelogic.it` in questi contesti, `CNAME` già
+corretto. Nessuna discrepanza trovata, nessuna modifica necessaria. Il segnale GSC
+sull'apex è verosimilmente solo un ritardo di ri-crawl da parte di Google, da
+verificare forzando manualmente un nuovo tentativo di fetch della sitemap in
+Search Console. Con questo, il round di audit SEO/DNS-restore aperto con PR #149
+è da considerarsi chiuso, salvo le azioni manuali lato Google Search Console e
+Bing Webmaster Tools che restano in capo all'autore.
+
 File verificati (59):
 `.well-known/did.json`, `.well-known/governance-layer-manifest.json`,
 `DOSSIER_SIAE_QEN_COMPLETO.html`, `ELENCO_PAGINE.md`, `PROMPT_ANALISI_REPO.md`,
