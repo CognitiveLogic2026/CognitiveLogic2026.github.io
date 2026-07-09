@@ -1,11 +1,4 @@
-# TEMPORARY DNS TRANSITION MIRROR — robots.txt
-# Created: 2026-07-04
-# Reason: cognitivelogic.it temporarily unreachable (DNS restoration in progress,
-# linked to SIAE registration of the QEN Framework). Applies only to this
-# GitHub Pages mirror. Canonical domain: https://www.cognitivelogic.it
-# ACTION ON DNS RESTORE: remove/replace with the canonical robots.txt,
-# and update/resubmit the Sitemap directive below to the cognitivelogic.it property.
-Sitemap: https://cognitivelogic2026.github.io/sitemap.xml
+Sitemap: https://cognitivelogic.it/sitemap.xml
 
 User-agent: GPTBot
 Allow: /

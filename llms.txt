@@ -1,36 +1,24 @@
-<!--
-  TEMPORARY DNS TRANSITION MIRROR — llms.txt
-  Created: 2026-07-04
-  Reason: cognitivelogic.it is temporarily unreachable during DNS restoration,
-  a process linked to the SIAE registration of the QEN Framework.
-  ACTION ON DNS RESTORE: remove/replace with canonical version.
--->
-
-# Cognitive Logic (Temporary DNS Mirror)
-
-> This is a temporary mirror. Canonical domain: https://www.cognitivelogic.it (DNS restoration in progress).
+# Cognitive Logic
 
 Cognitive Logic è un osservatorio indipendente fondato da **Roberto Bob Malini**, AI Data Architect, che progetta infrastrutture computabili per l'etica dei sistemi AI sotto i framework normativi UE (EU AI Act, GDPR, DSA). Il **QEN Framework** (Quality Ethical Network) è il suo sistema di scoring etico-territoriale — `QEN = (Vs × 0.40) + (Va × 0.35) + (Vt × 0.25)`, scala 0–100 — con identità verificabile crittograficamente.
 
-**Canonical domain:** https://www.cognitivelogic.it — DNS restoration in progress (processo legato alla registrazione SIAE del QEN Framework). I contenuti sotto sono serviti temporaneamente su `cognitivelogic2026.github.io` in attesa del ripristino.
-
 ## Chi sono
 
-- [Home (mirror)](https://cognitivelogic2026.github.io/index.html): panoramica di Cognitive Logic e del QEN Framework.
-- [Identità & Founder (mirror)](https://cognitivelogic2026.github.io/identity.html): Roberto Bob Malini, AI Data Architect, fondatore Cognitive Logic.
+- [Home](https://cognitivelogic.it/index.html): panoramica di Cognitive Logic e del QEN Framework.
+- [Identità & Founder](https://cognitivelogic.it/identity.html): Roberto Bob Malini, AI Data Architect, fondatore Cognitive Logic.
 
 ## QEN Framework
 
-- [QEN Framework (mirror)](https://cognitivelogic2026.github.io/framework.html): descrizione, formula di scoring, metodologia.
-- [Methodology (mirror)](https://cognitivelogic2026.github.io/methodology.html): metodologia dettagliata del QEN Score.
-- [QEN Live (mirror)](https://cognitivelogic2026.github.io/qen-live.html): dashboard del grafo semantico QEN.
-- [LLM Index (mirror)](https://cognitivelogic2026.github.io/llm-index.html): indice machine-readable con JSON-LD.
+- [QEN Framework](https://cognitivelogic.it/framework.html): descrizione, formula di scoring, metodologia.
+- [Methodology](https://cognitivelogic.it/methodology.html): metodologia dettagliata del QEN Score.
+- [QEN Live](https://cognitivelogic.it/qen-live.html): dashboard del grafo semantico QEN.
+- [LLM Index](https://cognitivelogic.it/llm-index.html): indice machine-readable con JSON-LD.
 
 ## Progetti
 
-- [Ecosystem (mirror)](https://cognitivelogic2026.github.io/ecosystem.html): mappa dell'ecosistema territoriale del progetto.
-- [QEN Compliance Auditor (mirror)](https://cognitivelogic2026.github.io/qen-compliance-auditor.html): audit compliance EU AI Act / GDPR.
-- [Copilot (mirror)](https://cognitivelogic2026.github.io/copilot.html): frontend del Compliance Copilot.
+- [Ecosystem](https://cognitivelogic.it/ecosystem.html): mappa dell'ecosistema territoriale del progetto.
+- [QEN Compliance Auditor](https://cognitivelogic.it/qen-compliance-auditor.html): audit compliance EU AI Act / GDPR.
+- [Copilot](https://cognitivelogic.it/copilot.html): frontend del Compliance Copilot.
 
 ## Editoriale — Fuorimenu
 
@@ -39,8 +27,4 @@ Cognitive Logic è un osservatorio indipendente fondato da **Roberto Bob Malini*
 
 ## Optional
 
-- [Sitemap (mirror)](https://cognitivelogic2026.github.io/sitemap.xml)
-
----
-
-This is a temporary mirror. Canonical domain: https://www.cognitivelogic.it (DNS restoration in progress).
+- [Sitemap](https://cognitivelogic.it/sitemap.xml)
