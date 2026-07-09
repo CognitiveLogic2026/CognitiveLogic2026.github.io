@@ -15,6 +15,11 @@ GitHub Pages, cfr. PR #138, marcati con "ACTION ON DNS RESTORE"), questi 59 file
 già correttamente il dominio proprio `cognitivelogic.it` e non un workaround. Nessuna
 azione necessaria.
 
+**Aggiornamento (2026-07-09) — DNS ripristinato**: i marker "ACTION ON DNS RESTORE" in
+`llms.txt` e `robots.txt` sono stati rimossi in PR #149; entrambi i file puntano ora
+definitivamente a `cognitivelogic.it`, senza più alcun riferimento al mirror GitHub
+Pages. Il bridge temporaneo descritto sopra non è più in vigore.
+
 File verificati (59):
 `.well-known/did.json`, `.well-known/governance-layer-manifest.json`,
 `DOSSIER_SIAE_QEN_COMPLETO.html`, `ELENCO_PAGINE.md`, `PROMPT_ANALISI_REPO.md`,
