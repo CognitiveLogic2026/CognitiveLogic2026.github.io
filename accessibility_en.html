@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<!--
+  Copyright (c) 2026 Roberto Bob Malini - Cognitive Logic
+  https://www.cognitivelogic.it
+  Licensed under CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/)
+-->
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Accessibility Statement — Cognitive Logic</title>
+  <meta name="description" content="Accessibility statement for cognitivelogic.it — WCAG 2.1 AA conformance status, known limitations, contact channel." />
+  <meta name="robots" content="noindex, follow" />
+  <link rel="stylesheet" href="css/fonts-local.css" />
+  <link rel="stylesheet" href="css/style.css?v=3" />
+  <style>
+    .legal-body { max-width: 780px; }
+    .legal-body h2 { font-size: clamp(1.4rem, 2.5vw, 2rem); margin: 48px 0 16px; color: var(--text); }
+    .legal-body h3 { font-size: 1.1rem; font-weight: 600; margin: 28px 0 10px; color: var(--text); }
+    .legal-body p { font-size: 1rem; color: var(--text-soft); line-height: 1.75; margin-bottom: 14px; }
+    .legal-body ul { margin: 10px 0 18px 1.2rem; }
+    .legal-body ul li { font-size: 1rem; color: var(--text-soft); line-height: 1.75; margin-bottom: 6px; }
+    .meta-box { background: rgba(212,175,55,0.06); border: 1px solid rgba(212,175,55,0.2); padding: 20px 24px; margin: 32px 0; }
+    .meta-box dt { font-family: "DM Mono", monospace; font-size: 0.65rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold-soft); margin-bottom: 3px; }
+    .meta-box dd { font-size: 0.95rem; color: var(--text-soft); margin: 0 0 14px; }
+    .meta-box dd:last-child { margin-bottom: 0; }
+    .last-updated { font-family: "DM Mono", monospace; font-size: 0.68rem; color: var(--muted); margin-bottom: 40px; }
+  </style>
+  <link rel="search" type="application/opensearchdescription+xml" title="Cognitive Logic" href="https://cognitivelogic.it/opensearchdescription.xml" />
+</head>
+<body>
+<a href="#main" class="skip-link">Skip to content</a>
+
+  <div class="site-bg"></div>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="index_en.html" class="brand">
+        <span class="wordmark wordmark--nav"><span class="wm-top">Cognitive</span><span class="wm-bot">Logic</span></span>
+      </a>
+      <nav class="main-nav">
+        <a href="framework_en.html">Framework</a>
+        <a href="ecosystem_en.html">Ecosystem</a>
+        <a href="ai_en.html">AI Engine</a>
+        <a href="demo.html">Demo</a>
+      </nav>
+      <div class="header-end">
+        <div class="nav-lang">
+          <a href="accessibilita.html">IT</a>
+          <span class="nav-sep">·</span>
+          <a href="accessibility_en.html" class="active">EN</a>
+        </div>
+        <a href="index_en.html" class="btn btn-ghost">← Home</a>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="section">
+      <div class="container">
+        <div class="legal-body">
+
+          <div class="eyebrow">Legal document · Accessibility</div>
+          <h1 style="font-size:clamp(2rem,5vw,3.5rem);line-height:1;margin-bottom:16px">
+            Accessibility Statement
+          </h1>
+          <p class="last-updated">Last updated: July 2026 · Version 1.0</p>
+
+          <p>
+            Cognitive Logic is committed to making its website accessible, in line with the
+            principles of the Web Content Accessibility Guidelines (WCAG) 2.1, level AA, and in
+            the spirit of EU Directive 2016/2102 (Web Accessibility Directive) and EU Directive
+            2019/882 (European Accessibility Act). cognitivelogic.it does not fall within the
+            mandatory scope of these regulations (which cover public-sector bodies and, for the
+            EAA, specific categories of private products/services), but this statement is published
+            voluntarily, in line with the QEN project's commitment to its Social Value dimension.
+          </p>
+
+          <dl class="meta-box">
+            <dt>Site owner</dt>
+            <dd>Roberto Bob Malini — Cognitive Logic<br>Bologna (BO), Italy</dd>
+            <dt>Contact for reports</dt>
+            <dd><a href="mailto:info@cognitivelogic.it" style="color:var(--gold-soft)">info@cognitivelogic.it</a></dd>
+            <dt>Reference standard</dt>
+            <dd>WCAG 2.1 level AA</dd>
+          </dl>
+
+          <h2>1. Conformance status</h2>
+          <p>
+            This site is <strong>partially conformant</strong> with WCAG 2.1 AA. "Partially
+            conformant" means that some parts of the content do not yet fully conform to the
+            accessibility standard, as listed in section 2.
+          </p>
+
+          <h2>2. Non-accessible content</h2>
+          <p>As of this statement, the following limitations are known:</p>
+          <ul>
+            <li>Some interactive data visualisations (the Knowledge Graph in
+            <code style="font-family:'DM Mono',monospace;font-size:0.85em">qen-live.html</code>) do
+            not offer a complete text alternative equivalent to the visual content, beyond a link to
+            the Operators Directory in list/table format</li>
+            <li>Some tool pages (auditors, widgets, generators) use custom interactive components
+            that may not be fully optimised for advanced assistive technology use (screen readers on
+            complex interactions, voice dictation)</li>
+            <li>Some historical documents in static HTML or PDF format (e.g. technical dossiers)
+            have not been individually verified for WCAG conformance</li>
+          </ul>
+
+          <h2>3. Measures taken</h2>
+          <ul>
+            <li>Colour contrast programmatically verified across the site's navy/gold palette
+            (ratios ≥ 4.5:1 on all main text/background combinations)</li>
+            <li>Semantic heading structure (a single H1 per page, consistent H2/H3 hierarchy)</li>
+            <li>A "Skip to content" link present on all main pages for keyboard navigation</li>
+            <li>Visible keyboard focus indicators on links, buttons and form fields</li>
+            <li>Text labels (<code style="font-family:'DM Mono',monospace;font-size:0.85em">aria-label</code>)
+            on SVG visualisations where the equivalent numeric data is also reported in text/table form</li>
+          </ul>
+
+          <h2>4. Feedback</h2>
+          <p>
+            If you encounter accessibility barriers while using the site, please report it to
+            <a href="mailto:info@cognitivelogic.it" style="color:var(--gold-soft)">info@cognitivelogic.it</a>,
+            indicating the page affected and the assistive technology used. We aim to respond within
+            30 days.
+          </p>
+
+          <h2>5. Preparation of this statement</h2>
+          <p>
+            This statement was prepared on 10 July 2026 based on an internal self-assessment, not an
+            external certified audit.
+          </p>
+
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div>
+        <div class="wordmark wordmark--footer" aria-label="Cognitive Logic">
+          <span class="wm-top">Cognitive</span>
+          <span class="wm-bot">Logic</span>
+        </div>
+        <div class="footer-copy mt-8">© 2026 Roberto Bob Malini — Cognitive Logic · <a href="/legal_en.html" style="color:inherit;text-decoration:underline;">Legal &amp; IP</a></div>
+      </div>
+      <div class="footer-links">
+        <a href="index_en.html">Home</a>
+        <a href="/privacy_en.html">Privacy</a>
+        <a href="/cookie_en.html">Cookie</a>
+      </div>
+    </div>
+  </footer>
+
+<script src="/js/cookie-banner.js"></script>
+</body>
+</html>

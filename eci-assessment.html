@@ -11,9 +11,7 @@
   <title>ECI Assessment Toolkit — Ethical Compliance Index · Cognitive Logic</title>
   <meta name="description" content="Questionario ECI — Ethical Compliance Index per PMI Agroalimentari e Cooperative. Compliance Green UE 2030." />
   <meta name="robots" content="noindex, nofollow" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/fonts-local.css" />
   <link rel="stylesheet" href="css/style.css?v=3" />
   <style>
     /* ── Wizard Shell ── */
@@ -281,6 +279,8 @@
   </style>
 </head>
 <body>
+<a href="#main" class="skip-link">Salta al contenuto</a>
+
   <div class="site-bg"></div>
 
   <header class="site-header">
@@ -302,7 +302,7 @@
     </div>
   </header>
 
-  <main>
+  <main id="main">
     <div class="wiz-outer">
 
       <!-- Top bar -->
@@ -816,7 +816,7 @@
           <div class="res-grid">
             <!-- Gauge -->
             <div class="gauge-block">
-              <svg class="gauge-svg" viewBox="0 0 200 110">
+              <svg class="gauge-svg" viewBox="0 0 200 110" role="img" aria-label="Indicatore visivo del punteggio ECI, il cui valore numerico è riportato qui sotto">
                 <path class="gauge-track" d="M 20 108 A 80 80 0 0 1 180 108" />
                 <path class="gauge-fill" id="gaugeFill" d="M 20 108 A 80 80 0 0 1 180 108"
                   stroke="rgba(212,175,55,0.25)" stroke-dasharray="251.33" stroke-dashoffset="251.33" />
@@ -832,7 +832,7 @@
 
             <!-- Radar -->
             <div class="radar-block">
-              <svg class="radar-svg" viewBox="0 0 200 200" id="radarSvg">
+              <svg class="radar-svg" viewBox="0 0 200 200" id="radarSvg" role="img" aria-label="Grafico radar delle 5 dimensioni ECI (sprechi, pesticidi, qualità, tracciabilità, benessere), i cui valori numerici sono riportati nella tabella sottostante">
                 <!-- bg rings -->
                 <polygon class="radar-bg" id="rr4" points="100,20 162,57 162,143 100,180 38,143 38,57"/>
                 <polygon class="radar-bg" id="rr3" points="100,35 149,64 149,136 100,165 51,136 51,64"/>
@@ -1253,5 +1253,13 @@
     recalc();
   });
   </script>
+<footer style="max-width:1080px;margin:40px auto 0;padding:20px 24px;border-top:1px solid var(--line, rgba(212,175,55,0.2));font-family:'DM Mono',monospace;font-size:0.7rem;color:var(--text-soft, #d9cfbf);text-align:center;">
+  © 2026 Roberto Bob Malini — Cognitive Logic ·
+  <a href="/legal.html" style="color:inherit;text-decoration:underline;">Legal &amp; Copyright</a> ·
+  <a href="/privacy.html" style="color:inherit;text-decoration:underline;">Privacy</a> ·
+  <a href="/cookie.html" style="color:inherit;text-decoration:underline;">Cookie</a> · <a href="/accessibilita.html">Accessibilità</a>
+</footer>
+
+<script src="/js/cookie-banner.js"></script>
 </body>
 </html>

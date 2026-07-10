@@ -11,9 +11,7 @@
   <title>Privacy Policy — Cognitive Logic</title>
   <meta name="description" content="Informativa sul trattamento dei dati personali ai sensi del Regolamento UE 2016/679 (GDPR) — Cognitive Logic." />
   <meta name="robots" content="noindex, follow" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/fonts-local.css" />
   <link rel="stylesheet" href="css/style.css?v=3" />
   <style>
     .legal-body { max-width: 780px; }
@@ -34,6 +32,8 @@
   <link rel="search" type="application/opensearchdescription+xml" title="Cognitive Logic" href="https://cognitivelogic.it/opensearchdescription.xml" />
 </head>
 <body>
+<a href="#main" class="skip-link">Salta al contenuto</a>
+
   <div class="site-bg"></div>
 
   <header class="site-header">
@@ -51,14 +51,14 @@
         <div class="nav-lang">
           <a href="privacy.html" class="active">IT</a>
           <span class="nav-sep">·</span>
-          <a href="index_en.html">EN</a>
+          <a href="privacy_en.html">EN</a>
         </div>
         <a href="index.html" class="btn btn-ghost">← Home</a>
       </div>
     </div>
   </header>
 
-  <main>
+  <main id="main">
     <section class="section">
       <div class="container">
         <div class="legal-body">
@@ -67,7 +67,7 @@
           <h1 style="font-size:clamp(2rem,5vw,3.5rem);line-height:1;margin-bottom:16px">
             Informativa Privacy
           </h1>
-          <p class="last-updated">Ultimo aggiornamento: maggio 2026 · Versione 1.0</p>
+          <p class="last-updated">Ultimo aggiornamento: luglio 2026 · Versione 1.1</p>
 
           <p>
             La presente informativa descrive le modalità di raccolta, utilizzo e protezione
@@ -113,7 +113,24 @@
             oltre <strong>24 mesi</strong> dall'ultimo contatto.
           </p>
 
-          <h3>1.3 Cookie e tecnologie di tracciamento</h3>
+          <h3>1.3 Dati inviati agli strumenti di analisi AI</h3>
+          <p>
+            Alcune pagine del sito (compliance auditor, prompt generator, widget QEN score e
+            gli endpoint <code style="font-family:'DM Mono',monospace;font-size:0.85em">/agents/*</code>
+            che ne costituiscono il motore) permettono di inviare testo libero o dati strutturati
+            (es. nome dell'entità analizzata, livello di rischio, contenuto di una richiesta di
+            compliance) per ottenere un'analisi generata da un modello di intelligenza artificiale
+            di terze parti (Anthropic Claude, Google Gemini o Mistral AI a seconda dello strumento).
+            Questi dati sono trasmessi al fornitore del modello per generare la risposta e non sono
+            utilizzati per finalità diverse da quella richiesta dall'utente. Alcuni strumenti
+            (<code style="font-family:'DM Mono',monospace;font-size:0.85em">qen-balneare-auditor.html</code>,
+            <code style="font-family:'DM Mono',monospace;font-size:0.85em">qen-horeca-auditor.html</code>)
+            calcolano invece il punteggio QEN tramite una formula deterministica lato client, senza
+            invio a modelli AI: in questo caso i dati trasmessi al server servono solo a salvare il
+            risultato nel Knowledge Graph pubblico del progetto.
+          </p>
+
+          <h3>1.4 Cookie e tecnologie di tracciamento</h3>
           <p>
             Vedi la <a href="cookie.html" style="color:var(--gold-soft)">Cookie Policy</a>
             per il dettaglio completo dei cookie utilizzati e delle opzioni di consenso.
@@ -140,6 +157,16 @@
                 <td>Art. 6(1)(b)(f)</td>
               </tr>
               <tr>
+                <td>Invio dati agli strumenti di analisi AI (agent endpoint)</td>
+                <td>Consenso esplicito dell'utente, prestato inviando la richiesta</td>
+                <td>Art. 6(1)(a)</td>
+              </tr>
+              <tr>
+                <td>Salvataggio risultati QEN nel Knowledge Graph pubblico</td>
+                <td>Consenso esplicito dell'utente / esecuzione di richiesta precontrattuale</td>
+                <td>Art. 6(1)(a)(b)</td>
+              </tr>
+              <tr>
                 <td>Cookie tecnici necessari</td>
                 <td>Legittimo interesse / esenzione da consenso</td>
                 <td>Art. 6(1)(f) + Considerando 47</td>
@@ -160,17 +187,29 @@
           <ul>
             <li><strong>Fornitori di servizi tecnici</strong> (hosting, infrastruttura) che trattano
             i dati come responsabili del trattamento ex art. 28 GDPR</li>
-            <li><strong>Google LLC</strong> — limitatamente al caricamento dei font tipografici
-            via Google Fonts (dati tecnici di connessione); Google agisce come titolare
-            autonomo secondo la propria <a href="https://policies.google.com/privacy" target="_blank" rel="noopener" style="color:var(--gold-soft)">privacy policy</a></li>
+            <li><strong>Google LLC</strong> — limitatamente alle poche pagine strumento/interne
+            (<code style="font-family:'DM Mono',monospace;font-size:0.85em">alert-engine.html</code>,
+            <code style="font-family:'DM Mono',monospace;font-size:0.85em">qen-widget.html</code>,
+            <code style="font-family:'DM Mono',monospace;font-size:0.85em">qen-prompt-generator.html</code>,
+            <code style="font-family:'DM Mono',monospace;font-size:0.85em">mascot.html</code>) che caricano ancora
+            font tipografici via Google Fonts (dati tecnici di connessione); Google agisce come titolare
+            autonomo secondo la propria <a href="https://policies.google.com/privacy" target="_blank" rel="noopener" style="color:var(--gold-soft)">privacy policy</a>.
+            Il resto del sito ospita i font direttamente sul proprio dominio (self-hosted), senza connessioni
+            a terze parti per la tipografia</li>
+            <li><strong>Fornitori dei modelli AI</strong> — per le pagine che espongono strumenti di analisi
+            basati su intelligenza artificiale (v. <a href="legal.html" style="color:var(--gold-soft)">Legal &amp; IP</a>
+            per l'elenco), i contenuti inviati dall'utente sono trasmessi al fornitore del modello
+            (Anthropic, Google, Mistral AI a seconda dello strumento) per generare la risposta</li>
             <li><strong>Autorità competenti</strong> in caso di obbligo di legge</li>
           </ul>
 
           <h2>4. Trasferimento verso paesi terzi</h2>
           <p>
-            I dati tecnici di connessione possono essere trasferiti verso gli USA tramite
-            Google Fonts. Tale trasferimento avviene in base alle Clausole Contrattuali
-            Standard (SCC) approvate dalla Commissione Europea ai sensi dell'art. 46 GDPR.
+            I dati tecnici di connessione delle poche pagine che caricano ancora Google Fonts (v. sopra)
+            possono essere trasferiti verso gli USA. Lo stesso vale per i dati inviati agli strumenti
+            di analisi basati su modelli AI di terze parti (Anthropic, Google, Mistral AI). Tali
+            trasferimenti avvengono in base alle Clausole Contrattuali Standard (SCC) approvate dalla
+            Commissione Europea ai sensi dell'art. 46 GDPR.
           </p>
 
           <h2>5. Diritti dell'interessato</h2>
@@ -247,8 +286,10 @@
         <a href="index.html">Home</a>
         <a href="privacy.html">Privacy Policy</a>
         <a href="cookie.html">Cookie Policy</a>
+        <a href="accessibilita.html">Accessibilità</a>
       </div>
     </div>
   </footer>
+<script src="/js/cookie-banner.js"></script>
 </body>
 </html>
