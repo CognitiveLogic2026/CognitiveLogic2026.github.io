@@ -11,9 +11,7 @@
   <title>Portale Operatore — QEN Reconciliation · Cognitive Logic</title>
   <link rel="canonical" href="https://cognitivelogic.it/operator-portal.html">
   <meta name="description" content="Dichiara i parametri di sostenibilità e avvia la riconciliazione QEN con ICEA, InfoCamere e OpenStreetMap." />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/fonts-local.css" />
   <link rel="stylesheet" href="css/style.css?v=3" />
   <style>
     /* ── Form ── */
@@ -260,6 +258,8 @@
   </style>
 </head>
 <body>
+<a href="#main" class="skip-link">Salta al contenuto</a>
+
   <div class="site-bg"></div>
 
   <header class="site-header">
@@ -281,7 +281,7 @@
     </div>
   </header>
 
-  <main>
+  <main id="main">
 
     <!-- ── HERO ── -->
     <section class="hero">
@@ -523,7 +523,7 @@
         <a href="demo.html">Demo</a>
         <a href="copilot.html">Copilot</a>
         <a href="/privacy.html">Privacy</a>
-        <a href="/cookie.html">Cookie</a>
+        <a href="/cookie.html">Cookie</a> · <a href="/accessibilita.html">Accessibilità</a>
       </div>
     </div>
   </footer>
@@ -714,5 +714,6 @@
     // Load on page init
     loadEscalations();
   </script>
+<script src="/js/cookie-banner.js"></script>
 </body>
 </html>

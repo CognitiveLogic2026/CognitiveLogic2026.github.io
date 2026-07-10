@@ -11,9 +11,7 @@
   <title>QEN Live — Cognitive Logic</title>
   <link rel="canonical" href="https://cognitivelogic.it/qen-live.html">
   <meta name="description" content="QEN Framework grafo semantico live — 97 nodi, 182 relazioni." />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/fonts-local.css" />
   <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.8.5/d3.min.js"></script>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -452,7 +450,7 @@
       <div class="loading-ring"></div>
       <div class="loading-text">Loading QEN Graph</div>
     </div>
-    <svg id="graph-svg"></svg>
+    <svg id="graph-svg" role="img" aria-label="Grafo interattivo del Knowledge Graph QEN: nodi ed entità del network etico-territoriale. Per un elenco navigabile via tastiera degli stessi operatori, vedi la Directory Operatori."></svg>
     <div class="tooltip" id="tooltip">
       <div class="tooltip-id" id="tooltip-id"></div>
       <div class="tooltip-type" id="tooltip-type"></div>
@@ -690,6 +688,13 @@ function buildGraph(nodesObj, edgesArr) {
 
 init();
 </script>
+
+<footer style="max-width:1080px;margin:40px auto 0;padding:20px 24px;border-top:1px solid var(--line, rgba(212,175,55,0.2));font-family:'DM Mono',monospace;font-size:0.7rem;color:var(--text-soft, #d9cfbf);text-align:center;">
+  © 2026 Roberto Bob Malini — Cognitive Logic ·
+  <a href="/legal.html" style="color:inherit;text-decoration:underline;">Legal &amp; Copyright</a> ·
+  <a href="/privacy.html" style="color:inherit;text-decoration:underline;">Privacy</a> ·
+  <a href="/cookie.html" style="color:inherit;text-decoration:underline;">Cookie</a> · <a href="/accessibilita.html">Accessibilità</a>
+</footer>
 
 <script src="/js/cookie-banner.js"></script>
 </body>
