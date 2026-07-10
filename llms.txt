@@ -1,6 +1,10 @@
 # Cognitive Logic
 
-Cognitive Logic è un osservatorio indipendente fondato da **Roberto Bob Malini**, AI Data Architect, che progetta infrastrutture computabili per l'etica dei sistemi AI sotto i framework normativi UE (EU AI Act, GDPR, DSA). Il **QEN Framework** (Quality Ethical Network) è il suo sistema di scoring etico-territoriale — `QEN = (Vs × 0.40) + (Va × 0.35) + (Vt × 0.25)`, scala 0–100 — con identità verificabile crittograficamente.
+Cognitive Logic è un osservatorio indipendente fondato da **Roberto Bob Malini**, AI Data Architect, che progetta infrastrutture computabili per l'etica dei sistemi AI sotto i framework normativi UE (EU AI Act, GDPR, DSA, EU Green Claims Directive). Il **QEN Framework** (Quantificazione Etica Naturale) è il suo sistema di scoring etico-territoriale, basato su metriche verificabili anziché dichiarazioni — `QEN = (Vs × 0.40) + (Va × 0.35) + (Vt × 0.25)`, scala 0–100 — con identità verificabile crittograficamente (DID).
+
+## Per chi è pensato
+
+QEN è pensato per PMI e filiere (HoReCa, balneari, commercio di prossimità), enti pubblici e associazioni di categoria che devono dimostrare compliance EU AI Act/GDPR o rendicontare claim ambientali verificabili secondo la EU Green Claims Directive, e per sviluppatori di agenti autonomi che integrano etica computabile via API.
 
 ## Chi sono
 
@@ -11,19 +15,36 @@ Cognitive Logic è un osservatorio indipendente fondato da **Roberto Bob Malini*
 
 - [QEN Framework](https://cognitivelogic.it/framework.html): descrizione, formula di scoring, metodologia.
 - [Methodology](https://cognitivelogic.it/methodology.html): metodologia dettagliata del QEN Score.
-- [QEN Live](https://cognitivelogic.it/qen-live.html): dashboard del grafo semantico QEN.
+- [QEN Live](https://cognitivelogic.it/qen-live.html): dashboard del grafo semantico QEN (97 nodi, 182 relazioni).
 - [LLM Index](https://cognitivelogic.it/llm-index.html): indice machine-readable con JSON-LD.
 
 ## Progetti
 
 - [Ecosystem](https://cognitivelogic.it/ecosystem.html): mappa dell'ecosistema territoriale del progetto.
-- [QEN Compliance Auditor](https://cognitivelogic.it/qen-compliance-auditor.html): audit compliance EU AI Act / GDPR.
-- [Copilot](https://cognitivelogic.it/copilot.html): frontend del Compliance Copilot.
+- [Copilot](https://cognitivelogic.it/copilot.html): frontend del Compliance Copilot (Claude + Mistral).
+
+## Agent Endpoint
+
+Endpoint API HTTPS esposti su `api.cognitivelogic.it`, documentati integralmente in [LLM Index](https://cognitivelogic.it/llm-index.html) (metodo, body, response schema):
+
+- `POST /copilot-analyze` — analisi compliance EU AI Act / GDPR (Claude Sonnet).
+- `POST /agents/mistral-compliance` e `/agents/mistral-advisor` — audit e raccomandazioni compliance (Mistral Large).
+- `POST /agents/bolkestein-assessment` — pre-assessment concessioni Bolkestein 2027.
+- `POST /gemini/qen-score` — calcolo QEN Score (Gemini).
+- `POST /full-analysis` — orchestrazione multi-brain in parallelo.
+- `GET /pilots` — registro storico QEN Score.
+- [QEN Compliance Auditor](https://cognitivelogic.it/qen-compliance-auditor.html): audit compliance EU AI Act / GDPR (interfaccia web).
+- [QEN HoReCa Auditor](https://cognitivelogic.it/qen-horeca-auditor.html): audit sostenibilità per il settore HoReCa.
+- [QEN Balneare Auditor](https://cognitivelogic.it/qen-balneare-auditor.html): audit compliance Bolkestein 2027 per stabilimenti balneari e ambulanti.
 
 ## Editoriale — Fuorimenu
 
 - [Fuorimenu (Substack)](https://fuorimenu.substack.com): osservatorio editoriale su etica del cibo, HoReCa, accountability istituzionale e policy AI.
 - [Feed RSS Fuorimenu](https://fuorimenu.substack.com/feed): feed aggiornato con gli articoli più recenti.
+
+## Contatti
+
+- Scrivi a info@cognitivelogic.it per richieste di audit, dati sui pilot o collaborazioni.
 
 ## Optional
 

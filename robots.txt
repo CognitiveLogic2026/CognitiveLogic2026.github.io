@@ -1,5 +1,7 @@
 Sitemap: https://cognitivelogic.it/sitemap.xml
 
+# Descrizione semantica del progetto per agenti AI e LLM: https://cognitivelogic.it/llms.txt
+
 User-agent: GPTBot
 Allow: /
 
