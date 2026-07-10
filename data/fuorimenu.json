@@ -1,6 +1,13 @@
 {
   "articoli": [
     {
+      "titolo": "QR Code: perché stai perdendo clienti? La sfida dell'autenticità nell'era dell'IA",
+      "url": "https://fuorimenu.substack.com/p/qr-code-perche-stai-perdendo-clienti",
+      "data": "2026-07-10 07:01",
+      "estratto": "Smetti di perdere clienti con QR code obsoleti. Scopri l'architettura dei dati semantica per rendere il tuo menu digitale un asset di valore reale.",
+      "tag": "Fuorimenu"
+    },
+    {
       "titolo": "Quando il Ragù Diventa Codice: 35 Anni di Neurogastronomia",
       "url": "https://fuorimenu.substack.com/p/quando-il-ragu-diventa-codice-35",
       "data": "2026-07-09 06:44",
@@ -61,13 +68,6 @@
       "url": "https://fuorimenu.substack.com/p/42-miliardi-di-bugie-al-gusto-di",
       "data": "2026-06-29 12:34",
       "estratto": "Quando il simulacro vale più dell’originale, il problema non è solo economico. È epistemico.",
-      "tag": "Fuorimenu"
-    },
-    {
-      "titolo": "Il guardiano che non guardava sé stesso",
-      "url": "https://fuorimenu.substack.com/p/il-guardiano-che-non-guardava-se",
-      "data": "2026-06-26 22:41",
-      "estratto": "Ovvero: cosa ci insegna il caso AGID sul perché le regole digitali non si possono delegare a nessuno",
       "tag": "Fuorimenu"
     }
   ]
