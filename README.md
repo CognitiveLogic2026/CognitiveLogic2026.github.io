@@ -28,9 +28,12 @@ declarative.
 - **Digital Identity & DID Infrastructure**
   `did:web:cognitivelogic.it:robertomalini`
   Decentralized identifier anchored on sovereign data node.
-- **Fuorimenu — Editorial Observatory**
+- **Fuorimenu — Editorial Observatory & Knowledge Hub**
   Public-facing analytical layer. Translates technical findings into
   discourse on food ethics, institutional accountability, and AI policy.
+  Semantic knowledge base on Neurogastronomy and AI systems at
+  `fuorimenu.html`, with a Semantic Markdown twin (`fuorimenu.md`) and
+  `llms.txt` indexing for real-time consumption by AI agents.
 
 -----
 
@@ -115,6 +118,7 @@ Bologna, Italy — 2026
 - API: [api.cognitivelogic.it](https://api.cognitivelogic.it)
 - Copilot: [api.cognitivelogic.it/copilot](https://api.cognitivelogic.it/copilot)
 - Editorial: [fuorimenu.substack.com](https://fuorimenu.substack.com)
+- Knowledge Hub: [cognitivelogic.it/fuorimenu.html](https://cognitivelogic.it/fuorimenu.html) · [fuorimenu.md](https://cognitivelogic.it/fuorimenu.md)
 - LinkedIn: [linkedin.com/in/robertobobmalini](https://linkedin.com/in/robertobobmalini)
 
 -----

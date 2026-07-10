@@ -22,8 +22,10 @@ Cognitive Logic è un osservatorio indipendente fondato da **Roberto Bob Malini*
 
 ## Editoriale — Fuorimenu
 
+- [Fuorimenu — Knowledge Hub](https://cognitivelogic.it/fuorimenu.html): hub di contenuto semantico su Neurogastronomia e sistemi di intelligenza artificiale — il cuore della ricerca Cognitive Logic sul cibo. JSON-LD `CollectionPage` + `DefinedTermSet` in `<head>`, feed articoli reso staticamente nel markup (nessuna esecuzione JS richiesta), rigenerato ogni 6 ore.
+- [Fuorimenu.md](https://cognitivelogic.it/fuorimenu.md): gemello Semantic Markdown della pagina precedente — stessa knowledge base e stesso feed, in Markdown puro per il parsing diretto da parte di LLM.
 - [Fuorimenu (Substack)](https://fuorimenu.substack.com): osservatorio editoriale su etica del cibo, HoReCa, accountability istituzionale e policy AI.
-- [Feed RSS Fuorimenu](https://fuorimenu.substack.com/feed): feed aggiornato con gli articoli più recenti.
+- [Feed RSS Fuorimenu](https://fuorimenu.substack.com/feed): feed aggiornato con gli articoli più recenti — fonte sincronizzata automaticamente in fuorimenu.html e fuorimenu.md.
 
 ## Optional
 

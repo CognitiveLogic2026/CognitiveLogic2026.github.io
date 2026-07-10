@@ -20,6 +20,7 @@
 | 07 | `/ecosystem.html` | Ecosistema QEN — partner, agenti, integrazioni |
 | 08 | `/identity.html` | Identità e valori fondanti Cognitive Logic |
 | 09 | `/research.html` | Ricerca e sviluppo |
+| 09b | `/fuorimenu.html` | Fuorimenu — Knowledge Hub semantico su Neurogastronomia e sistemi AI (llms.txt, Semantic Markdown, JSON-LD) |
 | 10 | `/pilots.html` | Casi pilota e benchmark (es. CNA Bologna) |
 
 ---
@@ -99,6 +100,7 @@
 | `sitemap.xml` | Mappa del sito per crawler e motori di ricerca |
 | `robots.txt` | Direttive per bot di indicizzazione |
 | `llms.txt` | Istruzioni per modelli linguistici (LLM) |
+| `fuorimenu.md` | Semantic Markdown twin di `/fuorimenu.html` — knowledge base in Markdown puro, rigenerata ogni 6h |
 | `opensearchdescription.xml` | Protocollo OpenSearch per browser |
 | `CNAME` | Dominio personalizzato: `www.cognitivelogic.it` |
 | `_headers` | Header HTTP (sicurezza, CSP, CORS) |

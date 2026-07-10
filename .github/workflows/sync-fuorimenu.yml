@@ -29,6 +29,6 @@ jobs:
         run: |
           git config user.name "fuorimenu-bot"
           git config user.email "bot@cognitivelogic.it"
-          git add data/fuorimenu.json
-          git diff --cached --quiet || git commit -m "chore: sync Fuorimenu RSS"
+          git add data/fuorimenu.json fuorimenu.md fuorimenu.html
+          git diff --cached --quiet || git commit -m "chore: sync Fuorimenu RSS + Semantic Markdown feed"
           git push

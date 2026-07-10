@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<!--
+  Copyright (c) 2026 Roberto Bob Malini - Cognitive Logic
+  https://www.cognitivelogic.it
+  Licensed under CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/)
+-->
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Fuorimenu — Knowledge Hub · Neurogastronomia & AI · Cognitive Logic</title>
+  <link rel="canonical" href="https://cognitivelogic.it/fuorimenu.html">
+  <meta name="description" content="Fuorimenu: hub semantico di Cognitive Logic su Neurogastronomia, etica computazionale del cibo e sistemi di intelligenza artificiale. Knowledge base machine-readable, aggiornata ogni 6 ore, indicizzabile in tempo reale da agenti AI." />
+  <meta name="author" content="Roberto Malini — Cognitive Logic" />
+  <meta name="robots" content="index, follow" />
+  <meta property="og:title" content="Fuorimenu — Knowledge Hub · Neurogastronomia & AI" />
+  <meta property="og:description" content="Il cuore della ricerca di Cognitive Logic su Neurogastronomia e sistemi di intelligenza artificiale. Semantic Markdown + llms.txt per l'indicizzazione da agenti AI." />
+  <meta property="og:url" content="https://cognitivelogic.it/fuorimenu.html" />
+  <meta property="og:type" content="website" />
+
+  <!-- Machine-readable companions: llms.txt convention + Semantic Markdown twin -->
+  <link rel="alternate" type="text/markdown" title="Fuorimenu — Semantic Markdown" href="https://cognitivelogic.it/fuorimenu.md">
+  <link rel="alternate" type="application/rss+xml" title="Fuori Menu — Substack" href="https://fuorimenu.substack.com/feed">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    "@id": "https://cognitivelogic.it/fuorimenu.html",
+    "name": "Fuorimenu — Knowledge Hub",
+    "url": "https://cognitivelogic.it/fuorimenu.html",
+    "description": "Hub di contenuto semantico su Neurogastronomia, etica computazionale del cibo e sistemi di intelligenza artificiale. Cuore della ricerca di Cognitive Logic.",
+    "inLanguage": "it",
+    "isPartOf": { "@type": "WebSite", "name": "Cognitive Logic", "url": "https://cognitivelogic.it" },
+    "publisher": {
+      "@type": "Organization",
+      "name": "Cognitive Logic",
+      "url": "https://cognitivelogic.it",
+      "address": { "@type": "PostalAddress", "addressLocality": "Bologna", "addressCountry": "IT" }
+    },
+    "author": {
+      "@type": "Person",
+      "name": "Roberto Bob Malini",
+      "jobTitle": "AI Ethics Architect & Founder",
+      "identifier": "did:web:cognitivelogic.it:robertomalini",
+      "sameAs": ["https://linkedin.com/in/robertobobmalini", "https://fuorimenu.substack.com"]
+    },
+    "about": {
+      "@type": "DefinedTermSet",
+      "name": "Fuorimenu Knowledge Base",
+      "hasDefinedTerm": [
+        { "@type": "DefinedTerm", "name": "Neurogastronomia", "description": "Neuroscienza applicata alla percezione del gusto: olfatto retronasale, memoria e cervello nella costruzione dell'esperienza alimentare." },
+        { "@type": "DefinedTerm", "name": "Etica Computazionale del Cibo", "description": "Applicazione del QEN Score (Vs · Va · Vt) ai sistemi alimentari: filiera, lavoro, impatto ambientale come variabili misurabili." },
+        { "@type": "DefinedTerm", "name": "AI Alignment nei Food Systems", "description": "Come agenti AI leggono, verificano e raccomandano cibo a partire da dato strutturato invece che narrazione di marketing." },
+        { "@type": "DefinedTerm", "name": "DID applicato al Menu", "description": "Decentralized Identifier come ancoraggio crittografico di un claim di menu, verificabile da un agente AI senza intermediari." },
+        { "@type": "DefinedTerm", "name": "Semantic Web del Cibo", "description": "Markup semantico (JSON-LD, schema.org, llms.txt) che rende i contenuti gastronomici leggibili in tempo reale da crawler e agenti autonomi." }
+      ]
+    },
+    "mainEntity": { "@type": "ItemList", "name": "Fuorimenu — Ultimi articoli", "url": "https://fuorimenu.substack.com/feed" },
+    "dateModified": "2026-07-10"
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css?v=3" />
+  <link rel="search" type="application/opensearchdescription+xml" title="Cognitive Logic" href="https://cognitivelogic.it/opensearchdescription.xml" />
+
+  <style>
+    .machine-notice {
+      margin: 0 0 8px;
+      padding: 18px 22px;
+      border: 1px solid var(--line);
+      border-left: 3px solid var(--gold);
+      background: rgba(212, 175, 55, 0.05);
+      border-radius: var(--radius-sm);
+      font-family: var(--mono);
+      font-size: 0.74rem;
+      color: var(--text-soft);
+      letter-spacing: 0.02em;
+      line-height: 1.9;
+    }
+    .machine-notice strong { color: var(--gold-soft); }
+    .machine-notice .live-dot { display: inline-block; width: 7px; height: 7px; border-radius: 50%; background: var(--success); box-shadow: 0 0 8px var(--success); margin-right: 6px; vertical-align: middle; animation: fm-blink 2s infinite; }
+    .machine-notice a { color: var(--gold-soft); }
+    @keyframes fm-blink { 0%, 100% { opacity: 1; } 50% { opacity: 0.35; } }
+
+    .concept-list { list-style: none; display: flex; flex-direction: column; gap: 10px; margin: 0; padding: 0; }
+    .concept-list li {
+      display: grid;
+      grid-template-columns: 220px 1fr;
+      gap: 20px;
+      padding: 18px 22px;
+      border: 1px solid var(--line-soft);
+      border-radius: var(--radius-sm);
+      background: rgba(255, 255, 255, 0.02);
+      transition: border-color var(--transition), background var(--transition);
+    }
+    .concept-list li:hover { border-color: var(--line); background: rgba(212, 175, 55, 0.03); }
+    .concept-key { font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--gold-soft); }
+    .concept-val { font-size: 0.98rem; color: var(--text-soft); line-height: 1.7; }
+
+    .ed { background: var(--bg-panel); border: 1px solid var(--line-soft); border-top: 3px solid var(--gold); padding: 26px; border-radius: var(--radius-sm); }
+    .ed-tag { font-family: var(--mono); font-size: 0.58rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold-soft); margin-bottom: 10px; }
+    .ed-title { font-weight: 600; font-size: 1.18rem; line-height: 1.3; margin-bottom: 10px; color: var(--text); }
+    .ed-quote { font-family: var(--mono); font-size: 0.74rem; color: var(--text-soft); line-height: 1.8; border-left: 2px solid var(--line); padding-left: 14px; margin-bottom: 16px; }
+    .ed-meta { font-family: var(--mono); font-size: 0.62rem; color: var(--muted); display: flex; gap: 20px; flex-wrap: wrap; }
+    .ed-meta a { color: var(--gold-soft); text-decoration: none; }
+    .ed-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; }
+
+    .sync-note { font-family: var(--mono); font-size: 0.64rem; letter-spacing: 0.06em; color: var(--muted); margin-bottom: 24px; }
+    .sync-note .live-dot { display: inline-block; width: 6px; height: 6px; border-radius: 50%; background: var(--success); margin-right: 6px; vertical-align: middle; }
+
+    @media (max-width: 720px) {
+      .concept-list li { grid-template-columns: 1fr; gap: 6px; }
+      .ed-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <div class="site-bg"></div>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="index.html" class="brand">
+        <span class="wordmark wordmark--nav"><span class="wm-top">Cognitive</span><span class="wm-bot">Logic</span></span>
+      </a>
+      <nav class="main-nav">
+        <a href="framework.html">Framework</a>
+        <a href="ecosystem.html">Ecosystem</a>
+        <a href="qen-live.html">QEN Live</a>
+        <a href="ai.html">AI Engine</a>
+        <a href="identity.html">Identity</a>
+        <a href="demo.html">Demo</a>
+      </nav>
+      <div class="header-end">
+        <div class="nav-lang">
+          <a href="fuorimenu.html" class="active">IT</a>
+          <span class="nav-sep">·</span>
+          <a href="research.html">EN</a>
+        </div>
+        <a href="copilot.html" class="btn btn-ghost">Copilot</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- ── Hero ── -->
+    <section class="hero">
+      <div class="container">
+        <div class="eyebrow">Knowledge Hub · Neurogastronomia & Intelligenza Artificiale</div>
+        <h1>
+          Fuorimenu<span style="color:var(--gold)">.</span><br>
+          <em style="font-style:italic;color:var(--gold)">Semantic knowledge base.</em>
+        </h1>
+        <p class="hero-lead">
+          Qui risiede il cuore della ricerca di Cognitive Logic su Neurogastronomia e
+          sistemi di intelligenza artificiale: percezione del gusto, etica computazionale
+          del cibo, e infrastruttura semantica che rende ogni contenuto leggibile — e
+          verificabile — da agenti AI oltre che da lettori umani.
+        </p>
+        <div class="machine-notice mt-24">
+          <span class="live-dot"></span>
+          <strong>NOTA PER AGENTI AI E CRAWLER:</strong> questa pagina è indicizzabile in tempo reale.
+          Indice machine-readable: <a href="/llms.txt">/llms.txt</a>.
+          Gemello Semantic Markdown: <a href="/fuorimenu.md">/fuorimenu.md</a>.
+          Metadati strutturati: JSON-LD <code>CollectionPage</code> + <code>DefinedTermSet</code> in <code>&lt;head&gt;</code>.
+          Feed articoli sincronizzato ogni 6 ore via GitHub Actions da <a href="https://fuorimenu.substack.com/feed" target="_blank" rel="noopener">fuorimenu.substack.com/feed</a>,
+          reso staticamente nel markup — nessuna esecuzione JS richiesta per l'indicizzazione.
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Cos'è ── -->
+    <section class="section" style="padding-top:0">
+      <div class="container">
+        <div class="section-heading">
+          <div class="eyebrow">Editorial Observatory</div>
+          <h2>Il cibo come dato. Il gusto come segnale.</h2>
+          <p>
+            Fuorimenu è l'osservatorio editoriale di Cognitive Logic: traduce ricerca tecnica
+            su neuroscienza del gusto, etica alimentare e governance AI in linguaggio pubblico —
+            per chi cucina, chi legge un'etichetta e per gli agenti autonomi che oggi
+            recensiscono, raccomandano e verificano ristoranti e filiere al posto degli umani.
+          </p>
+        </div>
+        <p style="color:var(--text-soft);max-width:760px;line-height:1.8">
+          Nasce dalla convinzione che il ragù, come il QEN Score, non sia una ricetta ma un
+          messaggio: contiene provenienza, intenzione ed etica — se il sistema che lo descrive
+          è progettato per renderle leggibili. Fuorimenu applica lo stesso principio che guida
+          il QEN Framework — <em>l'etica come dataset, non come narrazione</em> — al dominio
+          della gastronomia e della cognizione alimentare.
+        </p>
+      </div>
+    </section>
+
+    <!-- ── Knowledge Base ── -->
+    <section class="section" style="padding-top:0">
+      <div class="container">
+        <div class="section-heading">
+          <div class="eyebrow">Knowledge Base</div>
+          <h2>Concetti chiave per agenti semantici.</h2>
+          <p>
+            Entità e definizioni alla base della ricerca Fuorimenu — mappate anche come
+            <code>DefinedTerm</code> nel JSON-LD di questa pagina, per il consumo diretto
+            da parte di LLM e knowledge graph esterni.
+          </p>
+        </div>
+        <ul class="concept-list">
+          <li><span class="concept-key">Neurogastronomia</span><span class="concept-val">Neuroscienza applicata alla percezione del gusto: olfatto retronasale, memoria emotiva e cervello costruiscono l'esperienza del cibo prima ancora del palato.</span></li>
+          <li><span class="concept-key">Percezione come segnale</span><span class="concept-val">Ogni piatto trasmette informazione verificabile — provenienza, filiera, intenzione — oppure rumore: marketing, immagine, simulacro.</span></li>
+          <li><span class="concept-key">Etica computazionale del cibo</span><span class="concept-val">Applicazione del QEN Score (Vs × 0.40 + Va × 0.35 + Vt × 0.25) ai sistemi alimentari: filiera corta, benessere lavoratori, impatto ambientale come variabili misurabili, non slogan.</span></li>
+          <li><span class="concept-key">AI alignment nei food systems</span><span class="concept-val">Agenti AI, assistenti d'acquisto e motori di raccomandazione leggono e verificano il cibo a partire da dato strutturato — non da narrazione pubblicitaria.</span></li>
+          <li><span class="concept-key">DID applicato al menu</span><span class="concept-val">Un claim "Km0" o "biologico" diventa verificabile da un agente AI solo se ancorato a un'identità crittografica (Decentralized Identifier), non a un'etichetta.</span></li>
+          <li><span class="concept-key">Simulacro vs originale</span><span class="concept-val">Critica al marketing alimentare che sostituisce il segnale con l'immagine — quando il simulacro vale più dell'originale, il problema è epistemico prima che economico.</span></li>
+          <li><span class="concept-key">Sovranità del dato alimentare</span><span class="concept-val">Chi controlla l'informazione sul cibo — etichette, certificazioni, algoritmi di raccomandazione — controlla la fiducia del consumatore e dell'agente AI che lo assiste.</span></li>
+          <li><span class="concept-key">Cognizione comportamentale</span><span class="concept-val">Bias cognitivi, euristiche e memoria emotiva guidano le scelte alimentari; un sistema etico li rende trasparenti invece di sfruttarli.</span></li>
+          <li><span class="concept-key">Semantic web del cibo</span><span class="concept-val">Markup semantico — JSON-LD, schema.org, llms.txt, Semantic Markdown — che rende i contenuti gastronomici leggibili in tempo reale da crawler e agenti autonomi.</span></li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ── Ricerca correlata ── -->
+    <section class="section" style="padding-top:0">
+      <div class="container">
+        <div class="section-heading">
+          <div class="eyebrow">Ricerca correlata</div>
+          <h2>Dove la ricerca continua.</h2>
+        </div>
+        <div class="grid-2">
+          <a href="research.html" class="card" style="padding:28px;text-decoration:none;color:inherit;display:block">
+            <span class="feature-number">Research Lab</span>
+            <h3>Research &amp; Manifesto</h3>
+            <p class="text-sm mt-16" style="color:var(--muted);line-height:1.8">Neurogastronomy &amp; Food Ethics come dominio di ricerca ufficiale — cognizione comportamentale, perception engineering, sistemi alimentari etici.</p>
+          </a>
+          <a href="framework.html" class="card" style="padding:28px;text-decoration:none;color:inherit;display:block">
+            <span class="feature-number">Core Framework</span>
+            <h3>QEN Framework</h3>
+            <p class="text-sm mt-16" style="color:var(--muted);line-height:1.8">La formula Vs · Va · Vt applicata a filiere e ristorazione: lo stesso motore etico che struttura i contenuti di Fuorimenu.</p>
+          </a>
+          <a href="ai.html" class="card" style="padding:28px;text-decoration:none;color:inherit;display:block">
+            <span class="feature-number">AI Engine</span>
+            <h3>Intelligenza per Sistemi Food</h3>
+            <p class="text-sm mt-16" style="color:var(--muted);line-height:1.8">Dual-brain AI (Claude + Gemini) applicato a metriche di sostenibilità e cognizione comportamentale per l'HoReCa.</p>
+          </a>
+          <a href="llm-index.html" class="card" style="padding:28px;text-decoration:none;color:inherit;display:block">
+            <span class="feature-number">Machine Index</span>
+            <h3>LLM Index</h3>
+            <p class="text-sm mt-16" style="color:var(--muted);line-height:1.8">Indice machine-readable completo di Cognitive Logic — endpoint, entità, JSON-LD — per l'orchestrazione da parte di agenti autonomi.</p>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Live feed ── -->
+    <section class="section" style="padding-top:0">
+      <div class="container">
+        <div class="section-heading">
+          <div class="eyebrow">Ultimi articoli</div>
+          <h2>Feed editoriale — sincronizzato in automatico.</h2>
+          <p>
+            Contenuto statico rigenerato ogni 6 ore da <code>sync_rss.py</code> via GitHub Actions,
+            a partire dal feed RSS di <a href="https://fuorimenu.substack.com" target="_blank" rel="noopener">fuorimenu.substack.com</a>.
+            Nessuna dipendenza da JavaScript lato client: il contenuto è già presente nel markup
+            per crawler e agenti che non eseguono script.
+          </p>
+        </div>
+
+        <p class="sync-note"><span class="live-dot"></span>Ultimo sync automatico: <span id="fm-sync-ts">2026-07-10</span> · fonte: data/fuorimenu.json</p>
+
+        <!-- FUORIMENU:ARTICLES:START -->
+        <div class="ed-grid">
+          <div class="ed">
+            <div class="ed-tag">Fuorimenu · 2026-07-09 06:44</div>
+            <div class="ed-title">Quando il Ragù Diventa Codice: 35 Anni di Neurogastronomia</div>
+            <div class="ed-quote">Il ragù non è una ricetta. È un messaggio puro.</div>
+            <div class="ed-meta"><span>Roberto Bob Malini · Fuorimenu</span><a href="https://fuorimenu.substack.com/p/quando-il-ragu-diventa-codice-35" target="_blank" rel="noopener">→ Leggi su Substack</a></div>
+          </div>
+          <div class="ed">
+            <div class="ed-tag">Fuorimenu · 2026-07-08 06:55</div>
+            <div class="ed-title">8 articoli in 10 giorni: recap della strada da Santa Viola a Sala Borsa</div>
+            <div class="ed-quote">La serie ha accelerato più del previsto. Ecco tutti gli otto pezzi pubblicati finora, in ordine, per chi vuole recuperare con calma.</div>
+            <div class="ed-meta"><span>Roberto Bob Malini · Fuorimenu</span><a href="https://fuorimenu.substack.com/p/8-articoli-in-10-giorni-recap-della" target="_blank" rel="noopener">→ Leggi su Substack</a></div>
+          </div>
+          <div class="ed">
+            <div class="ed-tag">Fuorimenu · 2026-07-06 07:01</div>
+            <div class="ed-title">Il Bit Come Libertà — Da Motociclista a Navigatore CDN</div>
+            <div class="ed-quote">Il Bit Come Libertà: Come Internet Mi Ha Dato Lo Strumento Che Cercavo</div>
+            <div class="ed-meta"><span>Roberto Bob Malini · Fuorimenu</span><a href="https://fuorimenu.substack.com/p/il-bit-come-liberta-da-motociclista" target="_blank" rel="noopener">→ Leggi su Substack</a></div>
+          </div>
+          <div class="ed">
+            <div class="ed-tag">Fuorimenu · 2026-07-05 08:02</div>
+            <div class="ed-title">Il registratore di cassa che non si lascia fregare</div>
+            <div class="ed-quote">su “Hack Your Grade”, il voto che si difende, e perché un punteggio che non regge alla manipolazione non è un punteggio</div>
+            <div class="ed-meta"><span>Roberto Bob Malini · Fuorimenu</span><a href="https://fuorimenu.substack.com/p/il-registratore-di-cassa-che-non" target="_blank" rel="noopener">→ Leggi su Substack</a></div>
+          </div>
+          <div class="ed">
+            <div class="ed-tag">Fuorimenu · 2026-07-04 16:32</div>
+            <div class="ed-title">Weekender — 29 giugno / 4 luglio</div>
+            <div class="ed-quote">Quattro tappe, una sola domanda di fondo: cosa resta quando togli l’etichetta, il segnale, la narrazione ufficiale?</div>
+            <div class="ed-meta"><span>Roberto Bob Malini · Fuorimenu</span><a href="https://fuorimenu.substack.com/p/weekender-29-giugno-4-luglio" target="_blank" rel="noopener">→ Leggi su Substack</a></div>
+          </div>
+          <div class="ed">
+            <div class="ed-tag">Fuorimenu · 2026-07-04 07:01</div>
+            <div class="ed-title">Un’etichetta non basta — perché un ristorante ha bisogno di un DID</div>
+            <div class="ed-quote">Come il QEN Code rende un claim di menu verificabile da agenti AI e sistemi di conformità.</div>
+            <div class="ed-meta"><span>Roberto Bob Malini · Fuorimenu</span><a href="https://fuorimenu.substack.com/p/unetichetta-non-basta-perche-un-ristorante" target="_blank" rel="noopener">→ Leggi su Substack</a></div>
+          </div>
+          <div class="ed">
+            <div class="ed-tag">Fuorimenu · 2026-07-03 17:23</div>
+            <div class="ed-title">L’Etica del Segnale: Cosa Ho Imparato Osservando le Istituzioni Mentire (Bologna, 1977-1982)</div>
+            <div class="ed-quote">Due date, una lezione: perché ho smesso di fidarmi della narrazione ufficiale</div>
+            <div class="ed-meta"><span>Roberto Bob Malini · Fuorimenu</span><a href="https://fuorimenu.substack.com/p/letica-del-segnale-cosa-ho-imparato" target="_blank" rel="noopener">→ Leggi su Substack</a></div>
+          </div>
+          <div class="ed">
+            <div class="ed-tag">Fuorimenu · 2026-07-03 07:02</div>
+            <div class="ed-title">Dall’asfalto all’Etica Naturale: la genesi di Cognitive Logic</div>
+            <div class="ed-quote">Perché un ex easy rider di Santa Viola oggi certifica l’etica dei sistemi digitali — e cosa c’entra Pellegrino Artusi con una CDN.</div>
+            <div class="ed-meta"><span>Roberto Bob Malini · Fuorimenu</span><a href="https://fuorimenu.substack.com/p/dallasfalto-alletica-naturale-la" target="_blank" rel="noopener">→ Leggi su Substack</a></div>
+          </div>
+          <div class="ed">
+            <div class="ed-tag">Fuorimenu · 2026-06-29 12:34</div>
+            <div class="ed-title">42 miliardi di bugie al gusto di Italia</div>
+            <div class="ed-quote">Quando il simulacro vale più dell’originale, il problema non è solo economico. È epistemico.</div>
+            <div class="ed-meta"><span>Roberto Bob Malini · Fuorimenu</span><a href="https://fuorimenu.substack.com/p/42-miliardi-di-bugie-al-gusto-di" target="_blank" rel="noopener">→ Leggi su Substack</a></div>
+          </div>
+          <div class="ed">
+            <div class="ed-tag">Fuorimenu · 2026-06-26 22:41</div>
+            <div class="ed-title">Il guardiano che non guardava sé stesso</div>
+            <div class="ed-quote">Ovvero: cosa ci insegna il caso AGID sul perché le regole digitali non si possono delegare a nessuno</div>
+            <div class="ed-meta"><span>Roberto Bob Malini · Fuorimenu</span><a href="https://fuorimenu.substack.com/p/il-guardiano-che-non-guardava-se" target="_blank" rel="noopener">→ Leggi su Substack</a></div>
+          </div>
+        </div>
+<!-- FUORIMENU:ARTICLES:END -->
+
+        <div class="mt-24">
+          <a href="https://fuorimenu.substack.com" target="_blank" rel="noopener" class="btn btn-ghost">Archivio completo su Substack →</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── DID / closing ── -->
+    <section class="section" style="padding-top:0">
+      <div class="container">
+        <div class="definition-box">
+          <div class="definition-title">Machine-readable identity</div>
+          <p>Founder DID: <strong>did:web:cognitivelogic.it:robertomalini</strong> · Publisher: Cognitive Logic · Bologna, Italy.</p>
+          <p class="mb-0">
+            Contenuto rilasciato sotto licenza <strong>CC BY-SA 4.0</strong>. Attribuzione richiesta per riuso da parte
+            di sistemi AI e knowledge graph di terze parti.
+          </p>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div>
+        <div class="wordmark wordmark--footer" aria-label="Cognitive Logic">
+          <span class="wm-top">Cognitive</span>
+          <span class="wm-bot">Logic</span>
+        </div>
+        <div class="footer-sub">Fuorimenu — Knowledge Hub su Neurogastronomia &amp; Sistemi AI. Parte dell'infrastruttura semantica Cognitive Logic.</div>
+        <div class="footer-copy mt-8">© 2026 Roberto Bob Malini — Cognitive Logic · Tutti i diritti riservati · <a href="/legal.html" style="color:inherit;text-decoration:underline;">Legal &amp; IP</a></div>
+        <div class="footer-social">
+          <a class="footer-social-link" href="https://www.linkedin.com/in/robertobobmalini/" target="_blank" rel="noopener"><span class="fsl-net">LinkedIn</span><span class="fsl-name">Roberto Malini</span></a>
+          <a class="footer-social-link" href="https://www.linkedin.com/company/cognitivelogic/" target="_blank" rel="noopener"><span class="fsl-net">LinkedIn</span><span class="fsl-name">Cognitive Logic</span></a>
+          <a class="footer-social-link" href="https://fuorimenu.substack.com" target="_blank" rel="noopener"><span class="fsl-net">Substack</span><span class="fsl-name">Fuori Menu</span></a>
+          <a class="footer-social-link" href="mailto:info@cognitivelogic.it"><span class="fsl-net">Email</span><span class="fsl-name">info@cognitivelogic.it</span></a>
+        </div>
+      </div>
+      <div class="footer-links">
+        <a href="research.html">Research</a>
+        <a href="framework.html">Framework</a>
+        <a href="ai.html">AI Engine</a>
+        <a href="llm-index.html">LLM Index</a>
+        <a href="/llms.txt">llms.txt</a>
+        <a href="/privacy.html">Privacy</a>
+        <a href="/cookie.html">Cookie</a>
+      </div>
+    </div>
+  </footer>
+<script src="/js/cookie-banner.js"></script>
+</body>
+</html>
