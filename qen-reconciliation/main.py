@@ -76,6 +76,13 @@ _NOMINATIM_LAST: float = 0.0
 
 _INFOCAMERE_DEFAULTS: dict = {"percentuale_scarti": 8.5, "consumo_kwh_anno": 45000.0}
 
+# Reliability ceiling applied when a source falls back to a mock/default value
+# instead of an actual live lookup. A source's nominal "reliability" describes
+# how much to trust *that source when it actually answers* — it must not carry
+# over unchanged to a hardcoded fallback, or a mock value ends up reconciled
+# with the same confidence as a verified one.
+MOCK_RELIABILITY_CAP = 0.3
+
 
 # ── Email notifications ───────────────────────────────────────────────────────
 
@@ -202,19 +209,21 @@ def _cache_set(key: str, value: Any) -> None:
 
 # ── ICEA integration ──────────────────────────────────────────────────────────
 
-def _fetch_icea(param: str, context: dict) -> bool:
+def _fetch_icea(param: str, context: dict) -> tuple[bool, bool]:
     """
     Verify organic certification via ICEA API.
     Requires ICEA_API_KEY; degrades gracefully to True when absent or on error.
+    Returns (value, verified) — verified is False whenever the value comes from
+    the mock fallback rather than a live ICEA response.
     """
     operator_id = context.get("operator_id", "")
     cache_key = f"icea:{operator_id}"
     cached = _cache_get(cache_key)
     if cached is not None:
-        return bool(cached)
+        return bool(cached), True
 
     if not ICEA_API_KEY:
-        return True
+        return True, False
 
     url = "https://api.icea.bio/v1/certification?" + urllib.parse.urlencode({
         "key": ICEA_API_KEY,
@@ -231,27 +240,29 @@ def _fetch_icea(param: str, context: dict) -> bool:
         )
         _cache_set(cache_key, result)
         logger.info("ICEA: operator '%s' certified=%s", operator_id, result)
-        return result
+        return result, True
     except Exception as exc:
         logger.warning("ICEA API error for '%s': %s — using mock fallback", operator_id, exc)
-        return True
+        return True, False
 
 
 # ── InfoCamere integration ────────────────────────────────────────────────────
 
-def _fetch_infocamere(param: str, context: dict) -> Any:
+def _fetch_infocamere(param: str, context: dict) -> tuple[Any, bool]:
     """
     Fetch a sustainability parameter from the InfoCamere business registry.
     Requires INFOCAMERE_API_KEY; degrades gracefully to sector defaults on error.
+    Returns (value, verified) — verified is False whenever the value is a
+    sector default rather than a live InfoCamere response.
     """
     operator_id = context.get("operator_id", "")
     cache_key = f"infocamere:{operator_id}:{param}"
     cached = _cache_get(cache_key)
     if cached is not None:
-        return cached
+        return cached, True
 
     if not INFOCAMERE_API_KEY:
-        return _INFOCAMERE_DEFAULTS.get(param)
+        return _INFOCAMERE_DEFAULTS.get(param), False
 
     url = "https://api.infocamere.it/v2/registri?" + urllib.parse.urlencode({
         "key": INFOCAMERE_API_KEY,
@@ -263,14 +274,14 @@ def _fetch_infocamere(param: str, context: dict) -> Any:
         raw = data.get(param) or data.get("value") or data.get("valore")
         if raw is None:
             logger.warning("InfoCamere: '%s' missing in response for '%s'", param, operator_id)
-            return _INFOCAMERE_DEFAULTS.get(param)
+            return _INFOCAMERE_DEFAULTS.get(param), False
         value = float(raw)
         _cache_set(cache_key, value)
         logger.info("InfoCamere: '%s' for operator '%s' = %.2f", param, operator_id, value)
-        return value
+        return value, True
     except Exception as exc:
         logger.warning("InfoCamere API error for '%s'/'%s': %s — using sector default", operator_id, param, exc)
-        return _INFOCAMERE_DEFAULTS.get(param)
+        return _INFOCAMERE_DEFAULTS.get(param), False
 
 
 # ── OpenStreetMap integration ─────────────────────────────────────────────────
@@ -344,39 +355,41 @@ def _overpass_suppliers(lat: float, lon: float) -> list:
     return []
 
 
-def _fetch_osm_distance(context: dict) -> float:
+def _fetch_osm_distance(context: dict) -> tuple[float, bool]:
     """
     Compute average km from operator to nearby agricultural suppliers via OSM.
     Falls back to 115.0 km (Italian HoReCa sector benchmark) when geocoding
     or Overpass queries return no usable data.
+    Returns (value, verified) — verified is False whenever the fallback
+    benchmark distance is used instead of a computed value.
     """
     operator_name = context.get("operator_name", "")
     fallback = 115.0
 
     if not operator_name:
-        return fallback
+        return fallback, False
 
     cache_key = f"osm:{operator_name}"
     cached = _cache_get(cache_key)
     if cached is not None:
-        return float(cached)
+        return float(cached), True
 
     coords = _nominatim_geocode(f"{operator_name}, Italia")
     if not coords:
         logger.warning("OSM: geocoding failed for '%s', using fallback %.1f km", operator_name, fallback)
-        return fallback
+        return fallback, False
 
     lat, lon = coords
     suppliers = _overpass_suppliers(lat, lon)
     if not suppliers:
         logger.warning("OSM: no supplier nodes near '%s' (%.4f, %.4f), using fallback", operator_name, lat, lon)
-        return fallback
+        return fallback, False
 
     distances = [_haversine(lat, lon, slat, slon) for slat, slon in suppliers]
     avg = round(sum(distances) / len(distances), 1)
     _cache_set(cache_key, avg)
     logger.info("OSM: avg supplier distance for '%s' = %.1f km (%d nodes)", operator_name, avg, len(suppliers))
-    return avg
+    return avg, True
 
 
 # ── Source registry ───────────────────────────────────────────────────────────
@@ -405,7 +418,9 @@ SOURCES: dict = {
     "eu_ai_compliant": {
         "source": "NANDO",
         "reliability": 0.92,
-        "value_fn": lambda p, ctx: True,
+        # NANDO integration is not implemented yet (cfr. VALIDATION_STATUS.md) —
+        # this always returns the mock value, never a live lookup.
+        "value_fn": lambda p, ctx: (True, False),
     },
 }
 
@@ -417,6 +432,7 @@ class ParameterResult:
     verified: Any
     source: str
     reliability: float
+    verified_source: bool
     discrepancy_pct: float
     status: str
     adjustment: int
@@ -448,27 +464,36 @@ class QENEngine:
         if not source_def:
             return ParameterResult(
                 parameter=param, declared=declared, verified=None,
-                source="N/A", reliability=0.0, discrepancy_pct=0.0,
+                source="N/A", reliability=0.0, verified_source=False,
+                discrepancy_pct=0.0,
                 status="ALIGNED", adjustment=0,
                 message=f"✓ {param}: nessuna fonte esterna disponibile",
             )
-        verified = source_def["value_fn"](param, ctx)
+        verified, verified_source = source_def["value_fn"](param, ctx)
         source = source_def["source"]
         reliability = source_def["reliability"]
+        if not verified_source:
+            # A mock/fallback value must not carry the source's nominal
+            # reliability — cap it so downstream consumers can see the
+            # confidence was degraded, not just that a value exists.
+            reliability = min(reliability, MOCK_RELIABILITY_CAP)
         disc = self._discrepancy(declared, verified)
         status = self._status(disc)
         adj = ADJUSTMENTS[status]
-        if status == "ALIGNED":
+        mock_tag = "" if verified_source else " [MOCK — fonte non raggiungibile/non configurata]"
+        if status == "ALIGNED" and verified_source:
             msg = f"✓ {param}: verificato ({source})"
+        elif status == "ALIGNED":
+            msg = f"✓ {param}: dichiarato coerente col default ({source}){mock_tag}"
         elif status == "RED":
-            msg = f"🛑 {disc * 100:.1f}% scostamento — fonte: {source}"
+            msg = f"🛑 {disc * 100:.1f}% scostamento — fonte: {source}{mock_tag}"
         elif status == "YELLOW":
-            msg = f"⚠️ {disc * 100:.1f}% scostamento — fonte: {source}"
+            msg = f"⚠️ {disc * 100:.1f}% scostamento — fonte: {source}{mock_tag}"
         else:
-            msg = f"✅ {disc * 100:.1f}% entro tolleranza — fonte: {source}"
+            msg = f"✅ {disc * 100:.1f}% entro tolleranza — fonte: {source}{mock_tag}"
         return ParameterResult(
             parameter=param, declared=declared, verified=verified,
-            source=source, reliability=reliability,
+            source=source, reliability=reliability, verified_source=verified_source,
             discrepancy_pct=round(disc * 100, 2),
             status=status, adjustment=adj, message=msg,
         )
@@ -525,6 +550,8 @@ def _save_escalations_from_reconcile(
             "declared": r["declared"],
             "verified": r["verified"],
             "source": r["source"],
+            "reliability": r["reliability"],
+            "verified_source": r["verified_source"],
             "discrepancy_pct": r["discrepancy_pct"],
             "status": r["status"],
             "escalation_status": "OPEN",
@@ -619,6 +646,7 @@ def reconcile(req: ReconcileRequest):
             "verified":        r.verified,
             "source":          r.source,
             "reliability":     r.reliability,
+            "verified_source": r.verified_source,
             "discrepancy_pct": r.discrepancy_pct,
             "status":          r.status,
             "adjustment":      r.adjustment,

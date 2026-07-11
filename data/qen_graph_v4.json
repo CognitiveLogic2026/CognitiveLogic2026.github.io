@@ -4,11 +4,12 @@
     "version": "6.0",
     "author": "Roberto Bob Malini | Cognitive Logic",
     "created": "2026-04-25",
-    "updated": "2026-06-05",
+    "updated": "2026-07-11",
     "description": "Knowledge Graph — 97 nodi | 182 relazioni | Cognitive Logic Observatory",
     "formula": "QEN Score = Vs*0.40 + Va*0.35 + Vt*0.25",
     "nodi": 97,
-    "relazioni": 182
+    "relazioni": 182,
+    "schema_note": "evide_id: EVIDE registry entry id (evide-NNNN) backing this node's qen_score with a verifiable, hash-chained record at /evide/chain. null means the score is declarative / not yet backed by an EVIDE entry."
   },
   "nodes": {
     "COGNITIVE_LOGIC": {
@@ -63,7 +64,8 @@
         "va": 70,
         "vt": 90,
         "totale": 79.5
-      }
+      },
+      "evide_id": null
     },
     "QEN_COMPLIANCE_ENGINE": {
       "id": "QEN_COMPLIANCE_ENGINE",
@@ -77,7 +79,8 @@
         "va": 85,
         "vt": 95,
         "totale": 89.75
-      }
+      },
+      "evide_id": null
     },
     "COLT_IN_FRAGRANZA": {
       "id": "COLT_IN_FRAGRANZA",
@@ -95,7 +98,8 @@
         "va": 80,
         "vt": 85,
         "totale": 83.25
-      }
+      },
+      "evide_id": null
     },
     "TRAD_RAD": {
       "id": "TRAD_RAD",
@@ -113,7 +117,8 @@
         "va": 82,
         "vt": 80,
         "totale": 84.1
-      }
+      },
+      "evide_id": null
     },
     "ECO_LOCAL": {
       "id": "ECO_LOCAL",
@@ -131,7 +136,8 @@
         "va": 88,
         "vt": 92,
         "totale": 85.1
-      }
+      },
+      "evide_id": null
     },
     "BOLOGNA_100_BOTTEGHE": {
       "id": "BOLOGNA_100_BOTTEGHE",
@@ -150,7 +156,8 @@
         "va": 65,
         "vt": 95,
         "totale": 79.75
-      }
+      },
+      "evide_id": null
     },
     "VEGANOO": {
       "id": "VEGANOO",
@@ -168,7 +175,8 @@
         "va": 90,
         "vt": 70,
         "totale": 79.0
-      }
+      },
+      "evide_id": null
     },
     "CNA_BOLOGNA": {
       "id": "CNA_BOLOGNA",
@@ -182,7 +190,8 @@
         "va": 54,
         "vt": 76,
         "totale": 77.75
-      }
+      },
+      "evide_id": null
     },
     "HOTELLERIE_RIVIERA": {
       "id": "HOTELLERIE_RIVIERA",
@@ -200,7 +209,8 @@
         "va": 50,
         "vt": 70,
         "totale": 60.75
-      }
+      },
+      "evide_id": null
     },
     "ACADEMIA_BOLOGNA": {
       "id": "ACADEMIA_BOLOGNA",
@@ -218,7 +228,8 @@
         "va": 70,
         "vt": 85,
         "totale": 83.3
-      }
+      },
+      "evide_id": null
     },
     "RIVIERA_ADRIATICA_BALNEARI": {
       "id": "RIVIERA_ADRIATICA_BALNEARI",
@@ -238,7 +249,8 @@
         "va": 55,
         "vt": 78,
         "totale": 67.25
-      }
+      },
+      "evide_id": null
     },
     "FUORIMENU": {
       "id": "FUORIMENU",
@@ -255,7 +267,8 @@
         "va": 75,
         "vt": 85,
         "totale": 83.75
-      }
+      },
+      "evide_id": null
     },
     "ATLANTIC_HOTELS": {
       "id": "ATLANTIC_HOTELS",
@@ -276,7 +289,8 @@
         "va": 55,
         "vt": 72,
         "totale": 64.45
-      }
+      },
+      "evide_id": null
     },
     "MAXIMILIANS": {
       "id": "MAXIMILIANS",
@@ -297,7 +311,8 @@
         "va": 52,
         "vt": 70,
         "totale": 62.2
-      }
+      },
+      "evide_id": null
     },
     "DV_HOTELS": {
       "id": "DV_HOTELS",
@@ -318,7 +333,8 @@
         "va": 50,
         "vt": 71,
         "totale": 61.85
-      }
+      },
+      "evide_id": null
     },
     "DEVIRA": {
       "id": "DEVIRA",
@@ -339,7 +355,8 @@
         "va": 50,
         "vt": 68,
         "totale": 60.3
-      }
+      },
+      "evide_id": null
     },
     "COSTA_HOTELS": {
       "id": "COSTA_HOTELS",
@@ -360,7 +377,8 @@
         "va": 48,
         "vt": 70,
         "totale": 59.8
-      }
+      },
+      "evide_id": null
     },
     "REG_EU_AI_ACT_I": {
       "id": "REG_EU_AI_ACT_I",
@@ -376,7 +394,8 @@
         "Identificazione biometrica real-time spazi pubblici"
       ],
       "conseguenze": "Divieto assoluto — sanzione fino al 7% fatturato globale",
-      "qen_impatto": "BLOCCO — nodo azienda non riceve QEN Score se rientra in Allegato I"
+      "qen_impatto": "BLOCCO — nodo azienda non riceve QEN Score se rientra in Allegato I",
+      "evide_id": null
     },
     "REG_EU_AI_ACT_II": {
       "id": "REG_EU_AI_ACT_II",
@@ -397,7 +416,8 @@
         "Supervisione umana",
         "Documentazione tecnica"
       ],
-      "sanzione": "Fino al 3% fatturato globale"
+      "sanzione": "Fino al 3% fatturato globale",
+      "evide_id": null
     },
     "REG_EU_AI_ACT_III": {
       "id": "REG_EU_AI_ACT_III",
@@ -417,7 +437,8 @@
         "Obbligo informativo verso utenti",
         "Dichiarazione AI-generated content"
       ],
-      "nota_horeca": "PMS con profilazione ospiti rientra in Allegato III — rilevante per tutti i gruppi Riviera"
+      "nota_horeca": "PMS con profilazione ospiti rientra in Allegato III — rilevante per tutti i gruppi Riviera",
+      "evide_id": null
     },
     "REG_GDPR_ART22": {
       "id": "REG_GDPR_ART22",
@@ -432,7 +453,8 @@
         "Diritto di contestazione",
         "Spiegazione della logica decisionale"
       ],
-      "rilevanza_qen": "Ogni algoritmo di scoring QEN che produce decisioni su persone fisiche è soggetto ad art.22"
+      "rilevanza_qen": "Ogni algoritmo di scoring QEN che produce decisioni su persone fisiche è soggetto ad art.22",
+      "evide_id": null
     },
     "REG_GDPR_ART35": {
       "id": "REG_GDPR_ART35",
@@ -447,7 +469,8 @@
         "Dati sensibili su larga scala"
       ],
       "output": "DPIA report strutturato — obbligatorio prima del trattamento",
-      "rilevanza_qen": "ETL CCIAA + scoring batch su 16.000 imprese richiede DPIA preventiva"
+      "rilevanza_qen": "ETL CCIAA + scoring batch su 16.000 imprese richiede DPIA preventiva",
+      "evide_id": null
     },
     "REG_BOLKESTEIN_2027": {
       "id": "REG_BOLKESTEIN_2027",
@@ -468,7 +491,8 @@
         "Documentazione trasparente del valore aziendale",
         "Compliance EU entro scadenza"
       ],
-      "rilevanza_qen": "Il QEN Score è strumento di valorizzazione dell'azienda ai fini della gara Bolkestein"
+      "rilevanza_qen": "Il QEN Score è strumento di valorizzazione dell'azienda ai fini della gara Bolkestein",
+      "evide_id": null
     },
     "REG_CSRD_2026": {
       "id": "REG_CSRD_2026",
@@ -483,7 +507,8 @@
         "Assurance esterna",
         "Piano di transizione climatica"
       ],
-      "rilevanza_qen": "QEN alimenta il reporting CSRD con KPI ambientali, sociali e governance verificabili"
+      "rilevanza_qen": "QEN alimenta il reporting CSRD con KPI ambientali, sociali e governance verificabili",
+      "evide_id": null
     },
     "REG_GREEN_CLAIM_2026": {
       "id": "REG_GREEN_CLAIM_2026",
@@ -497,7 +522,8 @@
         "Vietate espressioni generiche non provate (es. 'eco-friendly')",
         "Certificazione di sistema"
       ],
-      "rilevanza_qen": "QEN Score fornisce la base computabile per certificare i green claim in modo difendibile"
+      "rilevanza_qen": "QEN Score fornisce la base computabile per certificare i green claim in modo difendibile",
+      "evide_id": null
     },
     "KPI_SOCIALE": {
       "id": "KPI_SOCIALE",
@@ -526,7 +552,8 @@
           "descrizione": "Accessibilità prodotti/servizi per fasce deboli",
           "peso": 0.1
         }
-      }
+      },
+      "evide_id": null
     },
     "KPI_AMBIENTALE": {
       "id": "KPI_AMBIENTALE",
@@ -555,7 +582,8 @@
           "descrizione": "Carbon footprint dichiarata e verificabile",
           "peso": 0.1
         }
-      }
+      },
+      "evide_id": null
     },
     "KPI_TERRITORIALE": {
       "id": "KPI_TERRITORIALE",
@@ -584,7 +612,8 @@
           "descrizione": "Livello di innovazione digitale e identità online verificabile",
           "peso": 0.1
         }
-      }
+      },
+      "evide_id": null
     },
     "KPI_COMPLIANCE_AI": {
       "id": "KPI_COMPLIANCE_AI",
@@ -606,7 +635,8 @@
           "descrizione": "Documentazione algoritmica accessibile e verificabile",
           "peso": 0.25
         }
-      }
+      },
+      "evide_id": null
     },
     "KPI_BOLKESTEIN_COMPLIANCE": {
       "id": "KPI_BOLKESTEIN_COMPLIANCE",
@@ -628,7 +658,8 @@
           "descrizione": "Assenza violazioni pregresse",
           "peso": 0.3
         }
-      }
+      },
+      "evide_id": null
     },
     "KPI_FILIERA_CORTA": {
       "id": "KPI_FILIERA_CORTA",
@@ -640,7 +671,8 @@
         "verde": ">= 60% km0",
         "giallo": "30–59% km0",
         "rosso": "< 30% km0"
-      }
+      },
+      "evide_id": null
     },
     "QEN_HORECA_AUDITOR": {
       "id": "QEN_HORECA_AUDITOR",
@@ -663,7 +695,8 @@
         "va": 80,
         "vt": 78,
         "totale": 80.5
-      }
+      },
+      "evide_id": null
     },
     "QEN_BALNEARE_AUDITOR": {
       "id": "QEN_BALNEARE_AUDITOR",
@@ -687,7 +720,8 @@
         "va": 75,
         "vt": 85,
         "totale": 79.05
-      }
+      },
+      "evide_id": null
     },
     "ECI_ASSESSMENT_TOOLKIT": {
       "id": "ECI_ASSESSMENT_TOOLKIT",
@@ -711,7 +745,8 @@
         "va": 85,
         "vt": 75,
         "totale": 80.25
-      }
+      },
+      "evide_id": null
     },
     "QEN_ALERT_ENGINE": {
       "id": "QEN_ALERT_ENGINE",
@@ -731,7 +766,8 @@
         "va": 80,
         "vt": 82,
         "totale": 82.7
-      }
+      },
+      "evide_id": null
     },
     "QEN_ONBOARDING_WIZARD": {
       "id": "QEN_ONBOARDING_WIZARD",
@@ -754,7 +790,8 @@
         "va": 70,
         "vt": 80,
         "totale": 74.75
-      }
+      },
+      "evide_id": null
     },
     "QEN_COPILOT_AI": {
       "id": "QEN_COPILOT_AI",
@@ -770,7 +807,8 @@
         "va": 82,
         "vt": 80,
         "totale": 84.2
-      }
+      },
+      "evide_id": null
     },
     "IDENTITY_DID": {
       "id": "IDENTITY_DID",
@@ -786,7 +824,8 @@
         "va": 88,
         "vt": 85,
         "totale": 88.05
-      }
+      },
+      "evide_id": null
     },
     "QEN_PROMPT_GENERATOR": {
       "id": "QEN_PROMPT_GENERATOR",
@@ -806,7 +845,8 @@
         "va": 78,
         "vt": 70,
         "totale": 74.55
-      }
+      },
+      "evide_id": null
     },
     "QEN_WIDGET_BADGE": {
       "id": "QEN_WIDGET_BADGE",
@@ -821,7 +861,8 @@
         "va": 75,
         "vt": 70,
         "totale": 72.5
-      }
+      },
+      "evide_id": null
     },
     "FORTRESS_PROTOCOL": {
       "id": "FORTRESS_PROTOCOL",
@@ -841,7 +882,8 @@
         "va": 88,
         "vt": 90,
         "totale": 90.3
-      }
+      },
+      "evide_id": null
     },
     "SETTORE_BALNEARE": {
       "id": "SETTORE_BALNEARE",
@@ -860,7 +902,8 @@
         "va": 60,
         "vt": 80,
         "totale": 70.3
-      }
+      },
+      "evide_id": null
     },
     "SETTORE_HORECA_BOLOGNA": {
       "id": "SETTORE_HORECA_BOLOGNA",
@@ -878,7 +921,8 @@
         "va": 72,
         "vt": 88,
         "totale": 80.6
-      }
+      },
+      "evide_id": null
     },
     "SETTORE_RISTORAZIONE": {
       "id": "SETTORE_RISTORAZIONE",
@@ -896,7 +940,8 @@
         "va": 70,
         "vt": 82,
         "totale": 76.1
-      }
+      },
+      "evide_id": null
     },
     "SETTORE_ARTIGIANATO_BOLOGNA": {
       "id": "SETTORE_ARTIGIANATO_BOLOGNA",
@@ -914,7 +959,8 @@
         "va": 76,
         "vt": 92,
         "totale": 85.4
-      }
+      },
+      "evide_id": null
     },
     "SETTORE_COMMERCIO_AMBULANTE": {
       "id": "SETTORE_COMMERCIO_AMBULANTE",
@@ -930,7 +976,8 @@
         "va": 58,
         "vt": 76,
         "totale": 67.2
-      }
+      },
+      "evide_id": null
     },
     "DUAL_BRAIN_AI": {
       "id": "DUAL_BRAIN_AI",
@@ -948,7 +995,8 @@
         "va": 90,
         "vt": 80,
         "totale": 85.25
-      }
+      },
+      "evide_id": null
     },
     "KNOWLEDGE_GRAPH_SEMANTICO": {
       "id": "KNOWLEDGE_GRAPH_SEMANTICO",
@@ -972,7 +1020,8 @@
         "va": 85,
         "vt": 90,
         "totale": 87.75
-      }
+      },
+      "evide_id": null
     },
     "API_COGNITIVELOGIC": {
       "id": "API_COGNITIVELOGIC",
@@ -993,7 +1042,8 @@
         "va": 80,
         "vt": 85,
         "totale": 82.25
-      }
+      },
+      "evide_id": null
     },
     "BOTTEGA_CONTADINA": {
       "id": "BOTTEGA_CONTADINA",
@@ -1007,7 +1057,8 @@
         "va": 89,
         "vt": 93,
         "totale": 91.0
-      }
+      },
+      "evide_id": null
     },
     "LE_SFOGLINE": {
       "id": "LE_SFOGLINE",
@@ -1021,7 +1072,8 @@
         "va": 88,
         "vt": 86,
         "totale": 89.05
-      }
+      },
+      "evide_id": null
     },
     "AHIME": {
       "id": "AHIME",
@@ -1035,7 +1087,8 @@
         "va": 95,
         "vt": 82,
         "totale": 85.25
-      }
+      },
+      "evide_id": null
     },
     "GRANI_ANTICHI": {
       "id": "GRANI_ANTICHI",
@@ -1049,7 +1102,8 @@
         "va": 85,
         "vt": 84,
         "totale": 87.35
-      }
+      },
+      "evide_id": null
     },
     "BERTOZZI": {
       "id": "BERTOZZI",
@@ -1063,7 +1117,8 @@
         "va": 82,
         "vt": 82,
         "totale": 84.4
-      }
+      },
+      "evide_id": null
     },
     "STABILIMENTO_LIDO_RAVENNA": {
       "id": "STABILIMENTO_LIDO_RAVENNA",
@@ -1078,7 +1133,8 @@
         "va": 62,
         "vt": 78,
         "totale": 70.6
-      }
+      },
+      "evide_id": null
     },
     "COOPERATIVA_AGRO_EMILIA": {
       "id": "COOPERATIVA_AGRO_EMILIA",
@@ -1093,7 +1149,8 @@
         "va": 78,
         "vt": 90,
         "totale": 83.0
-      }
+      },
+      "evide_id": null
     },
     "PMI_HORECA_PILOT": {
       "id": "PMI_HORECA_PILOT",
@@ -1107,7 +1164,8 @@
         "va": 72,
         "vt": 80,
         "totale": 75.6
-      }
+      },
+      "evide_id": null
     },
     "AGENT_QEN_SCORER": {
       "id": "AGENT_QEN_SCORER",
@@ -1120,7 +1178,8 @@
         "KPI_TERRITORIALE"
       ],
       "output": "QEN_SCORE_CERTIFICATO",
-      "stato": "ATTIVO"
+      "stato": "ATTIVO",
+      "evide_id": null
     },
     "AGENT_COMPLIANCE_CHECKER": {
       "id": "AGENT_COMPLIANCE_CHECKER",
@@ -1137,7 +1196,8 @@
         "REG_CSRD_2026"
       ],
       "output": "DOSSIER_BOLKESTEIN",
-      "stato": "ATTIVO"
+      "stato": "ATTIVO",
+      "evide_id": null
     },
     "AGENT_REPORT_GENERATOR": {
       "id": "AGENT_REPORT_GENERATOR",
@@ -1145,7 +1205,8 @@
       "label": "Agent — Report Generator",
       "funzione": "Genera report strutturati CSRD, DPIA, dossier Bolkestein, audit EU AI Act in formato PDF e JSON",
       "output": "CSRD_REPORT_QEN",
-      "stato": "ATTIVO"
+      "stato": "ATTIVO",
+      "evide_id": null
     },
     "QEN_SCORE_CERTIFICATO": {
       "id": "QEN_SCORE_CERTIFICATO",
@@ -1154,7 +1215,8 @@
       "descrizione": "Punteggio QEN firmato crittograficamente con DID, verificabile da terzi senza intermediari.",
       "formato": "JSON-LD + firma W3C DID",
       "validita": "12 mesi dalla data di emissione",
-      "stato": "PRODOTTO"
+      "stato": "PRODOTTO",
+      "evide_id": null
     },
     "DOSSIER_BOLKESTEIN": {
       "id": "DOSSIER_BOLKESTEIN",
@@ -1168,7 +1230,8 @@
         "Green Claim verificati",
         "Piano di continuità"
       ],
-      "stato": "PRODOTTO"
+      "stato": "PRODOTTO",
+      "evide_id": null
     },
     "CSRD_REPORT_QEN": {
       "id": "CSRD_REPORT_QEN",
@@ -1176,7 +1239,8 @@
       "label": "CSRD Report QEN",
       "descrizione": "Report di sostenibilità CSRD alimentato dai KPI QEN — conforme ESRS, con doppia materialità.",
       "standard": "ESRS E1–E5, S1–S4, G1",
-      "stato": "PRODOTTO"
+      "stato": "PRODOTTO",
+      "evide_id": null
     },
     "ISO_14001": {
       "id": "ISO_14001",
@@ -1184,7 +1248,8 @@
       "label": "ISO 14001 — Sistemi di Gestione Ambientale",
       "ente": "ISO / UNI",
       "scope": "Certificazione sistema di gestione ambientale aziendale",
-      "rilevanza_qen": "Alimenta KPI_AMBIENTALE con peso 0.25 su cert_green"
+      "rilevanza_qen": "Alimenta KPI_AMBIENTALE con peso 0.25 su cert_green",
+      "evide_id": null
     },
     "ECOLABEL_EU": {
       "id": "ECOLABEL_EU",
@@ -1192,7 +1257,8 @@
       "label": "Ecolabel UE",
       "ente": "Commissione Europea",
       "scope": "Marchio ecologico per prodotti e servizi — bassa impronta ambientale",
-      "rilevanza_qen": "Riconoscimento diretto in KPI_AMBIENTALE — forte impatto su Va"
+      "rilevanza_qen": "Riconoscimento diretto in KPI_AMBIENTALE — forte impatto su Va",
+      "evide_id": null
     },
     "PPWR_2026": {
       "id": "PPWR_2026",
@@ -1201,7 +1267,8 @@
       "fonte": "Regolamento UE 2025/40",
       "vigenza": "2026-09-01",
       "scope": "Requisiti di sostenibilità degli imballaggi — reuse, recycle, design for recycling",
-      "rilevanza_qen": "Impatta KPI_AMBIENTALE (rifiuti) e vincola i Green Claim su packaging"
+      "rilevanza_qen": "Impatta KPI_AMBIENTALE (rifiuti) e vincola i Green Claim su packaging",
+      "evide_id": null
     },
     "GREEN_DEAL_EU": {
       "id": "GREEN_DEAL_EU",
@@ -1213,7 +1280,8 @@
         "25% superfici bio",
         "30% riduzione perdite alimentari"
       ],
-      "rilevanza_qen": "Quadro strategico di riferimento per KPI_AMBIENTALE e KPI_FILIERA_CORTA"
+      "rilevanza_qen": "Quadro strategico di riferimento per KPI_AMBIENTALE e KPI_FILIERA_CORTA",
+      "evide_id": null
     },
     "bagno-roma-rimini": {
       "id": "bagno-roma-rimini",
@@ -1232,7 +1300,8 @@
         "bolkestein": "soggetto"
       },
       "score_qen": null,
-      "edge": []
+      "edge": [],
+      "evide_id": null
     },
     "lido-adriatico-riccione": {
       "id": "lido-adriatico-riccione",
@@ -1251,7 +1320,8 @@
         "bolkestein": "soggetto"
       },
       "score_qen": null,
-      "edge": []
+      "edge": [],
+      "evide_id": null
     },
     "bagno-delfino-cervia": {
       "id": "bagno-delfino-cervia",
@@ -1270,7 +1340,8 @@
         "bolkestein": "soggetto"
       },
       "score_qen": null,
-      "edge": []
+      "edge": [],
+      "evide_id": null
     },
     "lido-la-perla-cesenatico": {
       "id": "lido-la-perla-cesenatico",
@@ -1289,7 +1360,8 @@
         "bolkestein": "soggetto"
       },
       "score_qen": null,
-      "edge": []
+      "edge": [],
+      "evide_id": null
     },
     "bagno-riviera-rimini": {
       "id": "bagno-riviera-rimini",
@@ -1308,7 +1380,8 @@
         "bolkestein": "soggetto"
       },
       "score_qen": null,
-      "edge": []
+      "edge": [],
+      "evide_id": null
     },
     "lido-san-martino-cattolica": {
       "id": "lido-san-martino-cattolica",
@@ -1327,7 +1400,8 @@
         "bolkestein": "soggetto"
       },
       "score_qen": null,
-      "edge": []
+      "edge": [],
+      "evide_id": null
     },
     "bagno-azzurro-cesenatico": {
       "id": "bagno-azzurro-cesenatico",
@@ -1346,7 +1420,8 @@
         "bolkestein": "soggetto"
       },
       "score_qen": null,
-      "edge": []
+      "edge": [],
+      "evide_id": null
     },
     "rotonda-beach-riccione": {
       "id": "rotonda-beach-riccione",
@@ -1365,7 +1440,8 @@
         "bolkestein": "soggetto"
       },
       "score_qen": null,
-      "edge": []
+      "edge": [],
+      "evide_id": null
     },
     "bagno-mirta-cervia": {
       "id": "bagno-mirta-cervia",
@@ -1384,7 +1460,8 @@
         "bolkestein": "soggetto"
       },
       "score_qen": null,
-      "edge": []
+      "edge": [],
+      "evide_id": null
     },
     "stabilimento-paradiso-cattolica": {
       "id": "stabilimento-paradiso-cattolica",
@@ -1403,7 +1480,8 @@
         "bolkestein": "soggetto"
       },
       "score_qen": null,
-      "edge": []
+      "edge": [],
+      "evide_id": null
     },
     "osteria-del-pratello-bo": {
       "id": "osteria-del-pratello-bo",
@@ -1421,7 +1499,8 @@
         "bolkestein": "non_soggetto"
       },
       "score_qen": null,
-      "edge": []
+      "edge": [],
+      "evide_id": null
     },
     "trattoria-san-felice-bo": {
       "id": "trattoria-san-felice-bo",
@@ -1439,7 +1518,8 @@
         "bolkestein": "non_soggetto"
       },
       "score_qen": null,
-      "edge": []
+      "edge": [],
+      "evide_id": null
     },
     "ristorante-la-quercia-casalecchio": {
       "id": "ristorante-la-quercia-casalecchio",
@@ -1457,7 +1537,8 @@
         "bolkestein": "non_soggetto"
       },
       "score_qen": null,
-      "edge": []
+      "edge": [],
+      "evide_id": null
     },
     "da-gianni-trattoria-bologna": {
       "id": "da-gianni-trattoria-bologna",
@@ -1475,7 +1556,8 @@
         "bolkestein": "non_soggetto"
       },
       "score_qen": null,
-      "edge": []
+      "edge": [],
+      "evide_id": null
     },
     "il-portico-zola-predosa": {
       "id": "il-portico-zola-predosa",
@@ -1493,7 +1575,8 @@
         "bolkestein": "non_soggetto"
       },
       "score_qen": null,
-      "edge": []
+      "edge": [],
+      "evide_id": null
     },
     "trattoria-del-navile-bologna": {
       "id": "trattoria-del-navile-bologna",
@@ -1511,7 +1594,8 @@
         "bolkestein": "non_soggetto"
       },
       "score_qen": null,
-      "edge": []
+      "edge": [],
+      "evide_id": null
     },
     "osteria-dell-orsa-bologna": {
       "id": "osteria-dell-orsa-bologna",
@@ -1529,7 +1613,8 @@
         "bolkestein": "non_soggetto"
       },
       "score_qen": null,
-      "edge": []
+      "edge": [],
+      "evide_id": null
     },
     "hotel-majestic-bologna": {
       "id": "hotel-majestic-bologna",
@@ -1547,7 +1632,8 @@
         "bolkestein": "non_soggetto"
       },
       "score_qen": null,
-      "edge": []
+      "edge": [],
+      "evide_id": null
     },
     "albergo-san-luca-bologna": {
       "id": "albergo-san-luca-bologna",
@@ -1565,7 +1651,8 @@
         "bolkestein": "non_soggetto"
       },
       "score_qen": null,
-      "edge": []
+      "edge": [],
+      "evide_id": null
     },
     "hotel-zola-zola-predosa": {
       "id": "hotel-zola-zola-predosa",
@@ -1583,7 +1670,8 @@
         "bolkestein": "non_soggetto"
       },
       "score_qen": null,
-      "edge": []
+      "edge": [],
+      "evide_id": null
     },
     "pasta-fresca-gentilini-cspt": {
       "id": "pasta-fresca-gentilini-cspt",
@@ -1602,7 +1690,8 @@
         "bolkestein": "non_soggetto"
       },
       "score_qen": null,
-      "edge": []
+      "edge": [],
+      "evide_id": null
     },
     "forno-artigianale-melloni-imola": {
       "id": "forno-artigianale-melloni-imola",
@@ -1621,7 +1710,8 @@
         "bolkestein": "non_soggetto"
       },
       "score_qen": null,
-      "edge": []
+      "edge": [],
+      "evide_id": null
     },
     "caseificio-artigianale-rossi-porretta": {
       "id": "caseificio-artigianale-rossi-porretta",
@@ -1640,7 +1730,8 @@
         "bolkestein": "non_soggetto"
       },
       "score_qen": null,
-      "edge": []
+      "edge": [],
+      "evide_id": null
     },
     "trattoria-appennino-grizzana": {
       "id": "trattoria-appennino-grizzana",
@@ -1659,7 +1750,8 @@
         "bolkestein": "non_soggetto"
       },
       "score_qen": null,
-      "edge": []
+      "edge": [],
+      "evide_id": null
     },
     "osteria-del-borgo-sgip": {
       "id": "osteria-del-borgo-sgip",
@@ -1678,7 +1770,8 @@
         "bolkestein": "non_soggetto"
       },
       "score_qen": null,
-      "edge": []
+      "edge": [],
+      "evide_id": null
     },
     "ristorante-la-pineta-marzabotto": {
       "id": "ristorante-la-pineta-marzabotto",
@@ -1697,7 +1790,8 @@
         "bolkestein": "non_soggetto"
       },
       "score_qen": null,
-      "edge": []
+      "edge": [],
+      "evide_id": null
     },
     "pizzeria-artistica-tonino-budrio": {
       "id": "pizzeria-artistica-tonino-budrio",
@@ -1716,7 +1810,8 @@
         "bolkestein": "non_soggetto"
       },
       "score_qen": null,
-      "edge": []
+      "edge": [],
+      "evide_id": null
     },
     "hotel-appennino-vergato": {
       "id": "hotel-appennino-vergato",
@@ -1735,7 +1830,8 @@
         "bolkestein": "non_soggetto"
       },
       "score_qen": null,
-      "edge": []
+      "edge": [],
+      "evide_id": null
     },
     "locanda-della-valle-castiglione": {
       "id": "locanda-della-valle-castiglione",
@@ -1754,7 +1850,8 @@
         "bolkestein": "non_soggetto"
       },
       "score_qen": null,
-      "edge": []
+      "edge": [],
+      "evide_id": null
     },
     "albergo-emilia-pianoro": {
       "id": "albergo-emilia-pianoro",
@@ -1773,7 +1870,8 @@
         "bolkestein": "non_soggetto"
       },
       "score_qen": null,
-      "edge": []
+      "edge": [],
+      "evide_id": null
     }
   },
   "edges": [
