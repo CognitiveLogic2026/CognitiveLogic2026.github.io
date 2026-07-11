@@ -148,15 +148,16 @@ ma non è raggiungibile dall'esterno via nginx (solo via localhost nel deploy).
 1. **Rate limiter multi-worker** — Gunicorn `--workers 2` + in-memory: limite effettivo 2× per IP.
    Soluzione: Redis backend o ridurre a 1 worker. Documentato in `VALIDATION_STATUS.md`.
 
-2. **Gemini lato client in `app.js`** — chiamata diretta a `generativelanguage.googleapis.com`
-   con chiave in `js/config.js` (in `.gitignore`). Pattern rischioso, chiave esposta nel browser.
-   Soluzione: proxiare via `/gemini/qen-score` già esistente nel backend.
+2. ~~**Gemini lato client in `app.js`**~~ — **RISOLTO** (verificato 2026-07-11): `js/app.js`
+   chiama `/gemini/qen-score` sul backend, non più `generativelanguage.googleapis.com`
+   direttamente; `js/config.js` non contiene più alcuna chiave, solo metadati di branding.
 
 3. **`/health` Flask non raggiungibile** — nginx non lo instrada. Aggiungere al regex:
    `location ~ ^/(classify-risk|...|health)$` in `nginx/api.cognitivelogic.it.conf`.
 
-4. **Zero test per orchestrator** — nessun test per i 11 agenti. Aggiungere mock LLM almeno
-   per `compliance-auditor` e `bolkestein-assessment`.
+4. ~~**Zero test per orchestrator**~~ — **RISOLTO** (verificato 2026-07-11): `tests/test_orchestrator.py`
+   copre tutti gli 11 agenti (40 test), inclusi `compliance-auditor` e `bolkestein-assessment`,
+   con mock LLM.
 
 5. **ICEA/InfoCamere stub** — dati riconciliazione non verificati da fonte ufficiale.
    Da attivare con chiavi reali quando disponibili.

@@ -33,6 +33,15 @@ def _key_ok(provided: str | None, env_var: str = "COGNITIVE_API_KEY") -> bool:
 def _qen(vs: float, va: float, vt: float) -> float:
     return round(vs * 0.40 + va * 0.35 + vt * 0.25, 2)
 
+def _verdict_for_qen(score: float) -> str:
+    """Map a QEN total to an EVIDE verdict using the published thresholds
+    (<60 critico, 60-70 medio, 70-85 buono, >85 eccellente)."""
+    if score < 60:
+        return "NON_COMPLIANT"
+    if score < 70:
+        return "REVIEW_REQUIRED"
+    return "COMPLIANT"
+
 
 _TRUSTED_HOSTS = frozenset({
     "cognitivelogic.it",
@@ -160,7 +169,13 @@ def analyze():
     env    = data.get("environmental_impact", 0)
     terr   = data.get("territorial_impact", 0)
     qen_score = _qen(social, env, terr)
-    new_node = {"id": name, "type": "System", "qen": qen_score,
+    evide_entry = _evide_append(
+        entry_type="QEN_SCORE", agent="cognitivelogic-api", operator_id=name,
+        input_obj={"social_impact": social, "environmental_impact": env, "territorial_impact": terr},
+        output_obj={"qen_score": qen_score},
+        qen_score=qen_score, verdict=_verdict_for_qen(qen_score),
+    )
+    new_node = {"id": name, "type": "System", "qen": qen_score, "evide_id": evide_entry["id"],
                 "status": "Analyzed", "timestamp": datetime.utcnow().strftime("%Y-%m-%dT%H:%M:%SZ")}
     try:
         with open(GRAPH_PATH, "r") as f:
@@ -198,10 +213,17 @@ def audit_horeca():
     }
     save_pilot(nome, score_data)
 
+    evide_entry = _evide_append(
+        entry_type="COMPLIANCE_AUDIT", agent="cognitivelogic-api", operator_id=nome,
+        input_obj={"coperti": coperti, "moduli_dettagliati": mods},
+        output_obj=score_data,
+        qen_score=qen, verdict=_verdict_for_qen(qen),
+    )
     new_node = {
         "id": nome, "type": "EntitaPilota", "label": nome,
         "settore": "HoReCa",
         "qen_score": {"vs": vs, "va": va, "vt": vt, "totale": qen},
+        "evide_id": evide_entry["id"],
         "stato": "AUDIT_COMPLETATO",
         "timestamp": datetime.utcnow().strftime("%Y-%m-%dT%H:%M:%SZ"),
     }
@@ -246,10 +268,17 @@ def audit_balneare():
     }
     save_pilot(nome, score_data)
 
+    evide_entry = _evide_append(
+        entry_type="COMPLIANCE_AUDIT", agent="cognitivelogic-api", operator_id=nome,
+        input_obj={"tipo": tipo, "scores": scores},
+        output_obj=score_data,
+        qen_score=qen, verdict=_verdict_for_qen(qen),
+    )
     new_node = {
         "id": nome, "type": "EntitaPilota", "label": nome,
         "settore": "Balneare", "tipo": tipo,
         "qen_score": {"vs": vs, "va": va, "vt": vt, "totale": qen},
+        "evide_id": evide_entry["id"],
         "stato": "AUDIT_COMPLETATO",
         "timestamp": datetime.utcnow().strftime("%Y-%m-%dT%H:%M:%SZ"),
     }
@@ -286,10 +315,17 @@ def admin_add_client():
     }
     save_pilot(nome, score_data)
 
+    evide_entry = _evide_append(
+        entry_type="QEN_SCORE", agent="cognitivelogic-admin", operator_id=nome,
+        input_obj={"vs": vs, "va": va, "vt": vt, "settore": settore, "note": note},
+        output_obj=score_data,
+        qen_score=qen, verdict=_verdict_for_qen(qen),
+    )
     new_node = {
         "id": nome, "type": "EntitaPilota", "label": nome,
         "settore": settore, "note": note,
         "qen_score": {"vs": vs, "va": va, "vt": vt, "totale": qen},
+        "evide_id": evide_entry["id"],
         "stato": "INSERITO_MANUALE",
         "timestamp": datetime.utcnow().strftime("%Y-%m-%dT%H:%M:%SZ"),
     }
@@ -691,6 +727,68 @@ def evide_chain():
     registry = load_evide()
     return jsonify(registry), 200
 
+def _evide_append(entry_type: str, agent: str, operator_id: str,
+                   input_obj, output_obj, qen_score=None, verdict: str = "PENDING") -> dict:
+    """Append a chained, hash-linked entry to the EVIDE registry and return it.
+    Shared by the /evide/register endpoint and every internal caller that writes
+    a scored node to graph.json, so a node's qen_score is never persisted without
+    a corresponding verifiable EVIDE entry."""
+    input_payload  = json.dumps(input_obj,  sort_keys=True, ensure_ascii=False)
+    output_payload = json.dumps(output_obj, sort_keys=True, ensure_ascii=False)
+
+    try:
+        Path(_EVIDE_LOCK_PATH).touch(exist_ok=True)
+        with open(_EVIDE_LOCK_PATH, "r") as _lf:
+            fcntl.flock(_lf, fcntl.LOCK_EX)
+            try:
+                registry = load_evide()
+                entries  = registry.get("entries", [])
+                seq      = len(entries) + 1
+
+                prev_hash = None
+                if entries:
+                    prev_hash = _sha256(json.dumps(entries[-1], sort_keys=True, ensure_ascii=False))
+
+                entry = {
+                    "id":             f"evide-{seq:04d}",
+                    "seq":            seq,
+                    "timestamp":      datetime.utcnow().strftime("%Y-%m-%dT%H:%M:%SZ"),
+                    "type":           entry_type,
+                    "agent":          agent,
+                    "operator_id":    operator_id,
+                    "input_digest":   _sha256(input_payload),
+                    "output_digest":  _sha256(output_payload),
+                    "qen_score":      qen_score,
+                    "verdict":        verdict,
+                    "glm_node":       "it.cognitivelogic.node.01",
+                    "prev_hash":      prev_hash,
+                }
+                entries.append(entry)
+                registry["entries"] = entries
+                registry.setdefault("meta", {})["total"]   = len(entries)
+                registry["meta"]["updated"] = datetime.utcnow().strftime("%Y-%m-%dT%H:%M:%SZ")
+
+                with open(EVIDE_PATH, "w") as f:
+                    json.dump(registry, f, indent=2, ensure_ascii=False)
+
+                return entry
+            finally:
+                fcntl.flock(_lf, fcntl.LOCK_UN)
+    except OSError as exc:
+        # EVIDE_PATH's parent directory only exists on the deployed VPS. Degrade
+        # to an unregistered entry (id=None) rather than failing the caller's
+        # primary action (an audit save, a manual score entry) over the
+        # evidentiary side-write — mirrors the existing best-effort graph.json
+        # write pattern elsewhere in this file.
+        app.logger.warning("EVIDE append failed for operator '%s': %s", operator_id, exc)
+        return {
+            "id": None, "seq": None, "type": entry_type, "agent": agent,
+            "operator_id": operator_id, "qen_score": qen_score, "verdict": verdict,
+            "input_digest": _sha256(input_payload), "output_digest": _sha256(output_payload),
+            "glm_node": "it.cognitivelogic.node.01", "prev_hash": None,
+            "error": "evide_store_unavailable",
+        }
+
 @app.route("/evide/register", methods=["POST"])
 @limiter.limit("30 per minute;500 per day")
 def evide_register():
@@ -698,52 +796,19 @@ def evide_register():
     if blocked:
         return blocked
 
-    data        = request.get_json() or {}
-    entry_type  = data.get("type", "INFERENCE")
-    agent       = data.get("agent", "unknown")
-    operator_id = data.get("operator_id", "")
-    input_payload  = json.dumps(data.get("input", {}),  sort_keys=True, ensure_ascii=False)
-    output_payload = json.dumps(data.get("output", {}), sort_keys=True, ensure_ascii=False)
-    qen_score   = data.get("qen_score")
-    verdict     = data.get("verdict", "PENDING")
-
-    Path(_EVIDE_LOCK_PATH).touch(exist_ok=True)
-    with open(_EVIDE_LOCK_PATH, "r") as _lf:
-        fcntl.flock(_lf, fcntl.LOCK_EX)
-        try:
-            registry = load_evide()
-            entries  = registry.get("entries", [])
-            seq      = len(entries) + 1
-
-            prev_hash = None
-            if entries:
-                prev_hash = _sha256(json.dumps(entries[-1], sort_keys=True, ensure_ascii=False))
-
-            entry = {
-                "id":             f"evide-{seq:04d}",
-                "seq":            seq,
-                "timestamp":      datetime.utcnow().strftime("%Y-%m-%dT%H:%M:%SZ"),
-                "type":           entry_type,
-                "agent":          agent,
-                "operator_id":    operator_id,
-                "input_digest":   _sha256(input_payload),
-                "output_digest":  _sha256(output_payload),
-                "qen_score":      qen_score,
-                "verdict":        verdict,
-                "glm_node":       "it.cognitivelogic.node.01",
-                "prev_hash":      prev_hash,
-            }
-            entries.append(entry)
-            registry["entries"] = entries
-            registry.setdefault("meta", {})["total"]   = len(entries)
-            registry["meta"]["updated"] = datetime.utcnow().strftime("%Y-%m-%dT%H:%M:%SZ")
-
-            with open(EVIDE_PATH, "w") as f:
-                json.dump(registry, f, indent=2, ensure_ascii=False)
-
-            return jsonify({"status": "registered", "entry": entry}), 201
-        finally:
-            fcntl.flock(_lf, fcntl.LOCK_UN)
+    data  = request.get_json() or {}
+    entry = _evide_append(
+        entry_type=data.get("type", "INFERENCE"),
+        agent=data.get("agent", "unknown"),
+        operator_id=data.get("operator_id", ""),
+        input_obj=data.get("input", {}),
+        output_obj=data.get("output", {}),
+        qen_score=data.get("qen_score"),
+        verdict=data.get("verdict", "PENDING"),
+    )
+    if entry.get("id") is None:
+        return jsonify({"status": "error", "message": "EVIDE store unavailable"}), 503
+    return jsonify({"status": "registered", "entry": entry}), 201
 
 
 from orchestrator import register_orchestrator
