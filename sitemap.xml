@@ -46,4 +46,13 @@
   <url><loc>https://cognitivelogic.it/accessibilita.html</loc><lastmod>2026-07-10</lastmod><priority>0.3</priority></url>
   <url><loc>https://cognitivelogic.it/accessibility_en.html</loc><lastmod>2026-07-10</lastmod><priority>0.3</priority></url>
   <url><loc>https://cognitivelogic.it/whistleblowing.html</loc><lastmod>2026-07-10</lastmod><priority>0.3</priority></url>
+<url>
+<loc>https://www.cognitivelogic.it/international-watch/frontier-ai-governance-demis-hassabis/</loc>
+<changefreq>monthly</changefreq>
+<priority>0.90</priority>
+</url>
+<url>
+<loc>https://www.cognitivelogic.it/international-watch/agentic-coding-trends-anthropic/</loc>
+<lastmod>2026-07-20</lastmod>
+</url>
 </urlset>
