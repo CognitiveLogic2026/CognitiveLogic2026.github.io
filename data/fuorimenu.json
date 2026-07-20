@@ -1,6 +1,13 @@
 {
   "articoli": [
     {
+      "titolo": "Governare l’Intelligenza Artificiale prima che diventi invisibile",
+      "url": "https://fuorimenu.substack.com/p/governare-lintelligenza-artificiale",
+      "data": "2026-07-20 06:13",
+      "estratto": "La proposta di Demis Hassabis riapre il dibattito sulla Frontier AI e mostra perché il futuro dell’Intelligenza Artificiale dipenderà sempre più dalla governance, dalla trasparenza e dalla fiducia.",
+      "tag": "Fuorimenu"
+    },
+    {
       "titolo": "Il ristorante del futuro non avrà un solo assistente AI. Avrà una squadra di agenti.",
       "url": "https://fuorimenu.substack.com/p/il-ristorante-del-futuro-non-avra",
       "data": "2026-07-19 06:32",
@@ -61,13 +68,6 @@
       "url": "https://fuorimenu.substack.com/p/letica-del-segnale-cosa-ho-imparato",
       "data": "2026-07-03 17:23",
       "estratto": "Due date, una lezione: perché ho smesso di fidarmi della narrazione ufficiale",
-      "tag": "Fuorimenu"
-    },
-    {
-      "titolo": "Dall’asfalto all’Etica Naturale: la genesi di Cognitive Logic",
-      "url": "https://fuorimenu.substack.com/p/dallasfalto-alletica-naturale-la",
-      "data": "2026-07-03 07:02",
-      "estratto": "Perché un ex easy rider di Santa Viola oggi certifica l’etica dei sistemi digitali — e cosa c’entra Pellegrino Artusi con una CDN.",
       "tag": "Fuorimenu"
     }
   ]
