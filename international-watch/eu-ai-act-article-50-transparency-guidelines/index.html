@@ -1,0 +1,830 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Linee guida AI Act articolo 50: obblighi di trasparenza | Cognitive Logic</title>
+
+  <meta
+    name="description"
+    content="La Commissione europea chiarisce gli obblighi di trasparenza dell’articolo 50 dell’AI Act per provider, deployer e contenuti generati dall’IA."
+  >
+
+  <meta
+    name="keywords"
+    content="AI Act, articolo 50, trasparenza AI, contenuti generati dall’intelligenza artificiale, deep fake, provider, deployer, European Commission, AI Governance, Knowledge Governance, QEN Framework"
+  >
+
+  <meta name="author" content="Cognitive Logic">
+  <meta name="robots" content="index, follow">
+  <meta name="article:published_time" content="2026-07-20">
+  <meta name="article:modified_time" content="2026-07-20">
+
+  <link
+    rel="canonical"
+    href="https://www.cognitivelogic.it/international-watch/eu-ai-act-article-50-transparency-guidelines/"
+  >
+
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Cognitive Logic">
+  <meta property="og:locale" content="it_IT">
+  <meta
+    property="og:title"
+    content="AI Act, la Commissione chiarisce gli obblighi di trasparenza dell’articolo 50"
+  >
+  <meta
+    property="og:description"
+    content="Le linee guida distinguono gli obblighi di provider e deployer e accompagnano l’applicazione delle regole di trasparenza dal 2 agosto 2026."
+  >
+  <meta
+    property="og:url"
+    content="https://www.cognitivelogic.it/international-watch/eu-ai-act-article-50-transparency-guidelines/"
+  >
+
+  <meta name="twitter:card" content="summary">
+  <meta
+    name="twitter:title"
+    content="Linee guida AI Act articolo 50: obblighi di trasparenza"
+  >
+  <meta
+    name="twitter:description"
+    content="Provider, deployer, contenuti sintetici, deep fake e trasparenza: che cosa chiariscono le nuove linee guida della Commissione europea."
+  >
+
+  <link rel="stylesheet" href="/css/fonts-local.css">
+  <link rel="stylesheet" href="/css/style.css">
+
+  <style>
+    .watch-article {
+      max-width: 920px;
+      margin: 0 auto;
+      padding: 72px 24px 96px;
+    }
+
+    .watch-breadcrumb {
+      margin-bottom: 32px;
+      font-size: 0.92rem;
+      opacity: 0.78;
+    }
+
+    .watch-breadcrumb a {
+      text-decoration: none;
+    }
+
+    .watch-kicker {
+      margin-bottom: 16px;
+      font-size: 0.84rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .watch-article h1 {
+      max-width: 900px;
+      margin: 0 0 24px;
+      font-size: clamp(2.2rem, 6vw, 4.6rem);
+      line-height: 1.02;
+      letter-spacing: -0.04em;
+    }
+
+    .watch-subtitle {
+      max-width: 820px;
+      margin: 0 0 28px;
+      font-size: clamp(1.15rem, 2.5vw, 1.45rem);
+      line-height: 1.55;
+      opacity: 0.86;
+    }
+
+    .watch-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px 22px;
+      margin-bottom: 48px;
+      padding-bottom: 28px;
+      border-bottom: 1px solid rgba(127, 127, 127, 0.3);
+      font-size: 0.94rem;
+    }
+
+    .watch-body {
+      max-width: 780px;
+    }
+
+    .watch-body p,
+    .watch-body li {
+      font-size: 1.08rem;
+      line-height: 1.8;
+    }
+
+    .watch-body h2 {
+      margin-top: 56px;
+      margin-bottom: 20px;
+      font-size: clamp(1.55rem, 3vw, 2.2rem);
+      line-height: 1.2;
+    }
+
+    .watch-body h3 {
+      margin-top: 34px;
+      margin-bottom: 14px;
+      font-size: 1.3rem;
+      line-height: 1.3;
+    }
+
+    .watch-body ul {
+      margin: 22px 0 30px;
+      padding-left: 24px;
+    }
+
+    .watch-callout {
+      margin: 42px 0;
+      padding: 28px;
+      border-left: 4px solid currentColor;
+      background: rgba(127, 127, 127, 0.08);
+    }
+
+    .watch-callout p {
+      margin: 0;
+      font-size: 1.18rem;
+      font-weight: 600;
+    }
+
+    .watch-comparison {
+      width: 100%;
+      margin: 30px 0 42px;
+      border-collapse: collapse;
+    }
+
+    .watch-comparison th,
+    .watch-comparison td {
+      padding: 16px;
+      border: 1px solid rgba(127, 127, 127, 0.3);
+      text-align: left;
+      vertical-align: top;
+      line-height: 1.55;
+    }
+
+    .watch-source {
+      margin-top: 58px;
+      padding-top: 28px;
+      border-top: 1px solid rgba(127, 127, 127, 0.3);
+    }
+
+    .watch-source li {
+      margin-bottom: 14px;
+    }
+
+    .watch-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 28px;
+    }
+
+    .watch-tag {
+      padding: 7px 12px;
+      border: 1px solid rgba(127, 127, 127, 0.4);
+      border-radius: 999px;
+      font-size: 0.84rem;
+    }
+
+    .watch-related {
+      max-width: 920px;
+      margin: -48px auto 80px;
+      padding: 0 24px;
+    }
+
+    @media (max-width: 700px) {
+      .watch-article {
+        padding-top: 48px;
+      }
+
+      .watch-comparison {
+        display: block;
+        overflow-x: auto;
+      }
+    }
+  </style>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "NewsArticle",
+    "headline": "AI Act, la Commissione chiarisce gli obblighi di trasparenza dell’articolo 50",
+    "description": "Le linee guida della Commissione europea distinguono gli obblighi di provider e deployer e accompagnano l’applicazione dell’articolo 50 dell’AI Act dal 2 agosto 2026.",
+    "datePublished": "2026-07-20",
+    "dateModified": "2026-07-20",
+    "inLanguage": "it-IT",
+    "url": "https://www.cognitivelogic.it/international-watch/eu-ai-act-article-50-transparency-guidelines/",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://www.cognitivelogic.it/international-watch/eu-ai-act-article-50-transparency-guidelines/"
+    },
+    "articleSection": "International Watch",
+    "keywords": [
+      "AI Act",
+      "Article 50",
+      "AI transparency",
+      "AI-generated content",
+      "Deep fake",
+      "AI Governance",
+      "Knowledge Governance"
+    ],
+    "author": {
+      "@type": "Organization",
+      "name": "Cognitive Logic",
+      "url": "https://www.cognitivelogic.it/"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "Cognitive Logic",
+      "url": "https://www.cognitivelogic.it/"
+    },
+    "isPartOf": {
+      "@type": "CollectionPage",
+      "name": "International Watch",
+      "url": "https://www.cognitivelogic.it/international-watch/"
+    },
+    "citation": [
+      "https://digital-strategy.ec.europa.eu/en/library/guidelines-transparency-obligations-providers-and-deployers-ai-systems",
+      "https://ai-act-service-desk.ec.europa.eu/en/ai-act/article-50",
+      "https://digital-strategy.ec.europa.eu/en/policies/code-practice-ai-generated-content",
+      "https://digital-strategy.ec.europa.eu/en/policies/eu-icons-labelling-ai-generated-content"
+    ]
+  }
+  </script>
+</head>
+
+<body>
+
+  <header class="site-header">
+    <div class="container">
+      <a href="/" aria-label="Cognitive Logic home">Cognitive Logic</a>
+
+      <nav aria-label="Navigazione principale">
+        <a href="/">Home</a>
+        <a href="/qen/">QEN</a>
+        <a href="/research.html">Research</a>
+        <a href="/international-watch/">International Watch</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <article class="watch-article">
+
+      <div class="watch-breadcrumb">
+        <a href="/">Home</a>
+        <span aria-hidden="true"> / </span>
+        <a href="/international-watch/">International Watch</a>
+        <span aria-hidden="true"> / </span>
+        Articolo 50 AI Act
+      </div>
+
+      <div class="watch-kicker">
+        International Watch · European Union · 20 July 2026
+      </div>
+
+      <h1>
+        AI Act, la Commissione chiarisce gli obblighi di trasparenza
+        dell’articolo 50
+      </h1>
+
+      <p class="watch-subtitle">
+        Le indicazioni operative distinguono le responsabilità di provider e
+        deployer, chiariscono marcatura e disclosure dei contenuti sintetici e
+        accompagnano l’applicazione delle regole dal 2 agosto 2026.
+      </p>
+
+      <div class="watch-meta">
+        <span><strong>Pubblicato:</strong> 20 luglio 2026</span>
+        <span><strong>SOURCE:</strong> European Commission</span>
+        <span><strong>TOPIC:</strong> AI Act · Transparency · AI-generated content</span>
+        <span><strong>TYPE:</strong> Regulatory Guidelines</span>
+      </div>
+
+      <div class="watch-body">
+
+        <p>
+          La Commissione europea ha pubblicato il 20 luglio 2026 le linee guida
+          sull’attuazione degli obblighi di trasparenza previsti dall’articolo
+          50 dell’AI Act.
+        </p>
+
+        <p>
+          Il documento arriva a ridosso della data generale di applicazione
+          delle disposizioni, fissata al <strong>2 agosto 2026</strong>, e si
+          rivolge alle autorità competenti, ai provider e ai deployer dei sistemi
+          di intelligenza artificiale interessati.
+        </p>
+
+        <p>
+          L’obiettivo dichiarato è favorire un’applicazione coerente, efficace,
+          proporzionata e uniforme degli obblighi di trasparenza nell’Unione
+          europea. Le linee guida non sostituiscono il testo del Regolamento, ma
+          ne chiariscono il perimetro operativo attraverso definizioni,
+          interpretazioni ed esempi.
+        </p>
+
+        <div class="watch-callout">
+          <p>
+            Il passaggio decisivo è dalla trasparenza come principio generale
+            alla trasparenza come responsabilità operativa attribuita a soggetti,
+            sistemi, contenuti e contesti specifici.
+          </p>
+        </div>
+
+        <h2>Key Development</h2>
+
+        <p>
+          L’articolo 50 non introduce un unico obbligo indistinto. Definisce
+          responsabilità differenti a seconda del ruolo dell’organizzazione e
+          del tipo di sistema o contenuto coinvolto.
+        </p>
+
+        <p>
+          La distinzione fondamentale è quella tra:
+        </p>
+
+        <ul>
+          <li>
+            <strong>provider</strong>, responsabili della progettazione e dello
+            sviluppo di determinate caratteristiche di trasparenza del sistema;
+          </li>
+          <li>
+            <strong>deployer</strong>, responsabili di specifiche informative o
+            disclosure nel contesto concreto di utilizzo e pubblicazione.
+          </li>
+        </ul>
+
+        <p>
+          Questa separazione è essenziale perché impedisce di trattare la
+          conformità come una semplice etichetta applicabile nello stesso modo a
+          ogni attore della catena del valore dell’intelligenza artificiale.
+        </p>
+
+        <h2>Che cosa disciplina l’articolo 50</h2>
+
+        <p>
+          L’articolo 50 riguarda sistemi di IA che presentano particolari rischi
+          di opacità, inganno o manipolazione informativa. Il suo perimetro
+          comprende, in sintesi:
+        </p>
+
+        <ul>
+          <li>sistemi progettati per interagire direttamente con persone fisiche;</li>
+          <li>sistemi che generano o manipolano contenuti sintetici;</li>
+          <li>sistemi di riconoscimento delle emozioni;</li>
+          <li>sistemi di categorizzazione biometrica nei casi consentiti;</li>
+          <li>deep fake;</li>
+          <li>
+            determinati testi generati o manipolati dall’IA e pubblicati per
+            informare il pubblico su questioni di interesse pubblico.
+          </li>
+        </ul>
+
+        <p>
+          Le disposizioni devono essere lette tenendo conto delle condizioni,
+          delle eccezioni e del contesto previsti dal Regolamento. Non ogni
+          utilizzo dell’IA genera automaticamente il medesimo obbligo.
+        </p>
+
+        <h2>Gli obblighi dei provider</h2>
+
+        <h3>Informare quando una persona interagisce con un sistema di IA</h3>
+
+        <p>
+          I provider devono progettare e sviluppare i sistemi destinati a
+          interagire direttamente con persone fisiche affinché queste siano
+          informate del fatto che stanno interagendo con un sistema di
+          intelligenza artificiale.
+        </p>
+
+        <p>
+          L’obbligo non opera quando la natura artificiale dell’interazione è
+          evidente per una persona ragionevolmente informata, attenta e prudente,
+          considerando le circostanze e il contesto d’uso.
+        </p>
+
+        <p>
+          Le linee guida aiutano a valutare questa evidenza contestuale. La sola
+          familiarità generale del pubblico con i chatbot non dovrebbe diventare
+          una presunzione indiscriminata che renda superflua ogni informazione.
+        </p>
+
+        <h3>Marcatura leggibile dalla macchina</h3>
+
+        <p>
+          I provider dei sistemi che generano contenuti sintetici audio,
+          immagini, video o testi devono assicurare che gli output siano marcati
+          in un formato leggibile dalla macchina e rilevabili come generati o
+          manipolati artificialmente, nei limiti previsti dalla norma.
+        </p>
+
+        <p>
+          Le soluzioni devono essere efficaci, interoperabili, robuste e
+          affidabili, tenendo conto delle specificità tecniche, dei costi di
+          implementazione e dello stato dell’arte.
+        </p>
+
+        <p>
+          La marcatura machine-readable appartiene al livello tecnico del
+          sistema. Non coincide con la disclosure visibile che può spettare al
+          deployer nel momento in cui il contenuto viene utilizzato o pubblicato.
+        </p>
+
+        <h2>Gli obblighi dei deployer</h2>
+
+        <h3>Riconoscimento delle emozioni e categorizzazione biometrica</h3>
+
+        <p>
+          Nei casi in cui tali sistemi siano legalmente utilizzabili, i deployer
+          devono informare le persone fisiche esposte al loro funzionamento.
+          Restano applicabili anche gli obblighi e i limiti derivanti dalla
+          disciplina sulla protezione dei dati personali.
+        </p>
+
+        <h3>Deep fake</h3>
+
+        <p>
+          Chi utilizza un sistema di IA per generare o manipolare immagini,
+          contenuti audio o video che costituiscono un deep fake deve rendere
+          noto che il contenuto è stato generato o manipolato artificialmente.
+        </p>
+
+        <p>
+          Per opere manifestamente artistiche, creative, satiriche, fittizie o
+          analoghe, il Regolamento prevede modalità di disclosure che non
+          ostacolino indebitamente la fruizione o la visualizzazione dell’opera.
+        </p>
+
+        <h3>Testi di interesse pubblico</h3>
+
+        <p>
+          La disclosure riguarda anche determinati testi generati o manipolati
+          dall’IA e pubblicati con lo scopo di informare il pubblico su questioni
+          di interesse pubblico.
+        </p>
+
+        <p>
+          Il Regolamento contempla un’eccezione quando il contenuto è stato
+          sottoposto a un processo di revisione umana o controllo editoriale e
+          una persona fisica o giuridica conserva la responsabilità editoriale
+          della pubblicazione.
+        </p>
+
+        <h2>Provider e deployer: responsabilità a confronto</h2>
+
+        <table class="watch-comparison">
+          <thead>
+            <tr>
+              <th scope="col">Provider</th>
+              <th scope="col">Deployer</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Progetta le caratteristiche di trasparenza del sistema.</td>
+              <td>Applica gli obblighi nel contesto concreto di utilizzo.</td>
+            </tr>
+            <tr>
+              <td>Informa sull’interazione diretta con l’IA, salvo evidenza.</td>
+              <td>Informa le persone esposte a emotion recognition o categorizzazione biometrica.</td>
+            </tr>
+            <tr>
+              <td>Implementa la marcatura machine-readable degli output sintetici.</td>
+              <td>Rende visibile la natura artificiale di deep fake e contenuti soggetti a disclosure.</td>
+            </tr>
+            <tr>
+              <td>Deve considerare efficacia, interoperabilità, robustezza e affidabilità.</td>
+              <td>Deve considerare finalità, pubblico, mezzo e responsabilità editoriale.</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h2>Contenuti sintetici ed editing standard</h2>
+
+        <p>
+          Uno dei punti più delicati riguarda la distinzione tra generazione o
+          manipolazione sostanziale e normali operazioni tecniche o redazionali.
+        </p>
+
+        <p>
+          Correzioni automatiche, miglioramenti tecnici, ridimensionamento,
+          compressione, regolazioni di base o altre forme di editing standard non
+          dovrebbero essere automaticamente equiparate alla creazione di un
+          contenuto sintetico ingannevole.
+        </p>
+
+        <p>
+          La valutazione deve considerare se l’intervento modifica in modo
+          sostanziale il significato, la percezione o la rappresentazione del
+          contenuto. Questa distinzione è particolarmente importante per
+          fotografia, produzione audiovisiva, editoria e comunicazione digitale.
+        </p>
+
+        <h2>Il rapporto con il Code of Practice</h2>
+
+        <p>
+          Il Code of Practice on Transparency of AI-Generated Content è stato
+          sviluppato attraverso un processo multi-stakeholder facilitato
+          dall’AI Office. Ha la funzione di aiutare provider e deployer ad
+          applicare gli obblighi relativi alla marcatura e alla disclosure dei
+          contenuti generati dall’IA.
+        </p>
+
+        <p>
+          L’adesione al Codice è <strong>volontaria</strong>. Gli obblighi
+          dell’articolo 50, invece, sono obblighi legali.
+        </p>
+
+        <p>
+          Il Codice può offrire pratiche, specifiche e strumenti utili per
+          dimostrare la conformità, ma non sostituisce il Regolamento e non
+          costituisce, da solo, un accertamento definitivo di conformità.
+        </p>
+
+        <p>
+          Analogamente, l’utilizzo delle icone europee proposte per segnalare i
+          contenuti generati dall’IA è facoltativo. Le icone possono sostenere
+          una comunicazione coerente, ma il loro uso non determina
+          automaticamente la conformità giuridica.
+        </p>
+
+        <h2>Il ruolo dell’AI Act Service Desk</h2>
+
+        <p>
+          L’AI Act Service Desk mette a disposizione il testo navigabile del
+          Regolamento, la timeline di applicazione, FAQ e strumenti informativi.
+          Rappresenta un’infrastruttura utile per orientare imprese,
+          amministrazioni e professionisti.
+        </p>
+
+        <p>
+          Gli strumenti del Service Desk hanno funzione informativa e
+          facilitativa. La valutazione dei casi concreti resta affidata alle
+          autorità competenti, mentre l’interpretazione definitiva del diritto
+          dell’Unione spetta alla Corte di giustizia dell’Unione europea.
+        </p>
+
+        <h2>Il calendario: lex lata e sviluppi legislativi</h2>
+
+        <p>
+          Alla data di pubblicazione di questa analisi, il riferimento generale
+          da mantenere fermo è il <strong>2 agosto 2026</strong>, data dalla
+          quale iniziano ad applicarsi gli obblighi di trasparenza
+          dell’articolo 50.
+        </p>
+
+        <p>
+          Nel dibattito legislativo europeo sono state considerate modifiche
+          collegate al Digital Omnibus, comprese disposizioni transitorie per
+          determinati sistemi già presenti sul mercato.
+        </p>
+
+        <p>
+          Tali sviluppi devono essere tenuti distinti dalla disciplina
+          attualmente applicabile. Una scadenza nuova o differita può essere
+          trattata come diritto vigente soltanto dopo il completamento del
+          procedimento legislativo e la pubblicazione dell’atto pertinente nella
+          Gazzetta ufficiale dell’Unione europea.
+        </p>
+
+        <div class="watch-callout">
+          <p>
+            La certezza operativa richiede di distinguere sempre il Regolamento
+            vigente, gli orientamenti interpretativi, gli strumenti volontari e
+            le modifiche legislative ancora condizionate.
+          </p>
+        </div>
+
+        <h2>Implicazioni operative per le organizzazioni</h2>
+
+        <p>
+          Le imprese e le amministrazioni non dovrebbero limitarsi a verificare
+          la presenza di una dicitura finale. Serve una ricognizione
+          organizzativa e tecnica più ampia.
+        </p>
+
+        <ul>
+          <li>inventariare i sistemi che interagiscono direttamente con persone;</li>
+          <li>distinguere il ruolo di provider da quello di deployer;</li>
+          <li>classificare i tipi di output generati o manipolati;</li>
+          <li>verificare la disponibilità di marcature machine-readable;</li>
+          <li>definire regole di disclosure visibile per i casi pertinenti;</li>
+          <li>documentare eccezioni, revisione umana e responsabilità editoriale;</li>
+          <li>conservare evidenze tecniche e organizzative della conformità;</li>
+          <li>formare personale, responsabili editoriali e funzioni di controllo.</li>
+        </ul>
+
+        <h2>Osservazione dell’Osservatorio</h2>
+
+        <p>
+          Il valore principale delle linee guida è la riduzione
+          dell’incertezza operativa in prossimità dell’applicazione
+          dell’articolo 50.
+        </p>
+
+        <p>
+          Il documento chiarisce che la trasparenza non può essere ridotta a un
+          unico segnale grafico. È una combinazione di progettazione tecnica,
+          informazione all’utente, marcatura, disclosure contestuale,
+          responsabilità editoriale e capacità di documentare le decisioni
+          adottate.
+        </p>
+
+        <p>
+          Deve tuttavia essere preservata la distinzione tra uno strumento
+          facilitativo, come il Code of Practice, e l’accertamento della
+          conformità. L’adesione volontaria può rafforzare la capacità di
+          dimostrare un comportamento diligente, ma non trasferisce al Codice il
+          ruolo delle autorità competenti.
+        </p>
+
+        <h2>QEN Analysis — Transparency must be architectural</h2>
+
+        <p>
+          L’articolo 50 definisce risultati di trasparenza. Una conformità
+          sostenibile richiede però un’architettura capace di conservare,
+          collegare e rendere verificabili le evidenze che dimostrano come quei
+          risultati sono stati prodotti.
+        </p>
+
+        <p>
+          Un sistema governato dovrebbe poter rappresentare almeno:
+        </p>
+
+        <ul>
+          <li>l’identità del sistema di IA;</li>
+          <li>il ruolo dell’organizzazione nella catena del valore;</li>
+          <li>la provenienza del contenuto;</li>
+          <li>la natura artificiale o manipolata dell’output;</li>
+          <li>la tecnologia di marcatura utilizzata;</li>
+          <li>la regola che determina la disclosure;</li>
+          <li>il contesto e la finalità della pubblicazione;</li>
+          <li>la presenza di revisione o controllo editoriale umano;</li>
+          <li>le versioni del sistema, delle regole e dei contenuti;</li>
+          <li>la responsabilità organizzativa;</li>
+          <li>la decision traceability e l’audit trail.</li>
+        </ul>
+
+        <p>
+          Questa prospettiva collega gli obblighi di trasparenza alla
+          <strong>Knowledge Governance</strong>, alla
+          <strong>Semantic Identity</strong>, alla
+          <strong>Explainable AI</strong> e alla
+          <strong>Decision Traceability</strong>.
+        </p>
+
+        <p>
+          Nel paradigma QEN, l’informazione non è governabile se non è
+          identificabile, contestualizzata e collegata alle evidenze che ne
+          attestano provenienza, trasformazioni e responsabilità.
+        </p>
+
+        <div class="watch-callout">
+          <p>
+            La trasparenza non dovrebbe essere un’etichetta aggiunta alla fine
+            del processo, ma una proprietà verificabile dell’architettura
+            informativa.
+          </p>
+        </div>
+
+        <p>
+          Questo è il punto nel quale il principio
+          <strong>Data must be intelligible</strong> assume valore operativo:
+          non basta dichiarare che un contenuto è stato generato dall’IA. Occorre
+          poter ricostruire quale sistema lo ha prodotto, quale soggetto lo ha
+          utilizzato, quale regola è stata applicata e quali evidenze dimostrano
+          il rispetto degli obblighi.
+        </p>
+
+        <h2>Conclusioni</h2>
+
+        <p>
+          Le linee guida della Commissione rappresentano un passaggio importante
+          verso l’applicazione concreta dell’articolo 50.
+        </p>
+
+        <p>
+          La distinzione tra provider e deployer, i chiarimenti sui chatbot, la
+          marcatura dei contenuti sintetici, i deep fake, i testi di interesse
+          pubblico e le eccezioni editoriali offrono alle organizzazioni una
+          base più chiara per prepararsi alla scadenza del 2 agosto 2026.
+        </p>
+
+        <p>
+          La fase successiva non sarà soltanto documentale. Le organizzazioni
+          dovranno dimostrare che obblighi, tecnologie, procedure e
+          responsabilità sono integrati in un sistema coerente e verificabile.
+        </p>
+
+        <section class="watch-source" aria-labelledby="source-title">
+          <h2 id="source-title">Fonti ufficiali</h2>
+
+          <ul>
+            <li>
+              European Commission,
+              <a
+                href="https://digital-strategy.ec.europa.eu/en/library/guidelines-transparency-obligations-providers-and-deployers-ai-systems"
+                target="_blank"
+                rel="noopener noreferrer external"
+              >
+                Guidelines on transparency obligations for providers and deployers of AI systems
+              </a>.
+            </li>
+
+            <li>
+              AI Act Service Desk,
+              <a
+                href="https://ai-act-service-desk.ec.europa.eu/en/ai-act/article-50"
+                target="_blank"
+                rel="noopener noreferrer external"
+              >
+                Article 50 — Transparency obligations for providers and deployers of certain AI systems
+              </a>.
+            </li>
+
+            <li>
+              European Commission,
+              <a
+                href="https://digital-strategy.ec.europa.eu/en/policies/code-practice-ai-generated-content"
+                target="_blank"
+                rel="noopener noreferrer external"
+              >
+                Code of Practice on Transparency of AI-Generated Content
+              </a>.
+            </li>
+
+            <li>
+              European Commission,
+              <a
+                href="https://digital-strategy.ec.europa.eu/en/policies/eu-icons-labelling-ai-generated-content"
+                target="_blank"
+                rel="noopener noreferrer external"
+              >
+                EU Icons for labelling AI-generated content
+              </a>.
+            </li>
+
+            <li>
+              AI Act Service Desk,
+              <a
+                href="https://ai-act-service-desk.ec.europa.eu/en/ai-act/timeline/timeline-implementation-eu-ai-act"
+                target="_blank"
+                rel="noopener noreferrer external"
+              >
+                Timeline for the implementation of the EU AI Act
+              </a>.
+            </li>
+          </ul>
+
+          <p>
+            International Watch distingue le informazioni attribuite alle fonti
+            istituzionali dalle osservazioni editoriali e dalla QEN Analysis
+            sviluppate da Cognitive Logic. Il contenuto non costituisce
+            consulenza legale.
+          </p>
+
+          <div class="watch-tags" aria-label="Argomenti">
+            <span class="watch-tag">AI Act</span>
+            <span class="watch-tag">Article 50</span>
+            <span class="watch-tag">AI Transparency</span>
+            <span class="watch-tag">AI-generated Content</span>
+            <span class="watch-tag">Deep Fake</span>
+            <span class="watch-tag">European Commission</span>
+            <span class="watch-tag">AI Governance</span>
+            <span class="watch-tag">Knowledge Governance</span>
+            <span class="watch-tag">QEN Framework</span>
+          </div>
+        </section>
+
+      </div>
+    </article>
+
+    <section class="watch-related" aria-labelledby="related-title">
+      <h2 id="related-title">Approfondimenti Cognitive Logic</h2>
+      <ul>
+        <li><a href="/international-watch/">International Watch</a></li>
+        <li><a href="/research.html">Research</a></li>
+        <li><a href="/qen/">QEN Framework</a></li>
+      </ul>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>
+        © 2026 Cognitive Logic · Tutti i diritti riservati ·
+        <a href="/legal.html">Legal &amp; IP</a> ·
+        <a href="/privacy.html">Privacy</a> ·
+        <a href="/cookie.html">Cookie</a> ·
+        <a href="/accessibilita.html">Accessibilità</a>
+      </p>
+    </div>
+  </footer>
+
+  <script src="/js/cookie-banner.js" defer></script>
+  <script src="/js/app.js" defer></script>
+
+</body>
+</html>
