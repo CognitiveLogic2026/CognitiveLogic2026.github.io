@@ -213,3 +213,15 @@ js/config.js
 test-results/
 npm-debug.log*
 qen-bolkestein/.env*
+
+# Node dependencies
+node_modules/
+
+# Local and historical backups
+*.bak
+*.bak-*
+*.backup-*
+*.release-*
+
+# Runtime lock files
+pilots.json.lock
