@@ -1,0 +1,17 @@
+## main...origin/main [ahead 7]
+?? Dockerfile
+?? app/
+?? articles/
+?? cognitivelogic_neo4j.py
+?? docker-compose.yml
+?? editorial-evolution-1.0/
+?? enterprise-platform-evolution-1.0/
+?? housekeeping-2026/final-status.txt
+?? monitoring/
+?? populate_balneare.py
+?? populate_balneare_mock.py
+?? qen_context.py
+?? qen_source_integrations.py
+?? requirements.txt
+?? wizard-src/
+?? wizard.py

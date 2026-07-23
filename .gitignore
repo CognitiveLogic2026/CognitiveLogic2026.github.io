@@ -225,3 +225,13 @@ node_modules/
 
 # Runtime lock files
 pilots.json.lock
+
+# Cognitive Logic local runtime
+pilots.json
+graph.json
+escalations.json
+
+# Local backups
+*.bak
+*.bak_*
+*.bak-*

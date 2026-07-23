@@ -1,0 +1,10 @@
+ce619de (HEAD -> main) chore(repository): classify assets and protect runtime files
+f3cb806 chore(repository): classify untracked assets and protect runtime files
+ed646c3 docs(commercial): extract published commercial evidence
+eb8908a docs(commercial): add repository evidence audit
+9f55f60 docs(commercial): initialize evidence inventory
+d3d7780 docs(commercial): add Service Evidence Matrix
+b0fa324 feat(commercial): initialize Commercial Service Catalogue structure
+4d8ebdf (origin/main) feat(qencode): constitutionalize QEncode module
+7c20dfa assets(editorial): track published visual assets
+75c10da docs(governance): track commercial homepage evidence
