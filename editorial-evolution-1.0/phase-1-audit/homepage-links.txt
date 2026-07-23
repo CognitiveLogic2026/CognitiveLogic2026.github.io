@@ -1,0 +1,11 @@
+139:          Knowledge Governance
+143:        <div class="tagline">AI Governance · Knowledge Governance · QEN Framework</div>
+180:            <h3>Knowledge Governance</h3>
+208:          Cognitive Logic integra AI Governance, Knowledge Governance ed Explainable AI
+215:          basate su Knowledge Graph, da metodologie evidence-based e da un patrimonio
+221:          <li><strong>Knowledge Governance</strong> — conoscenza strutturata, contestualizzata e governabile.</li>
+226:          <li><strong>Knowledge Graph</strong> — relazioni semantiche verificabili tra dati, fonti e decisioni.</li>
+227:          <li><strong>Research &amp; International Watch</strong> — ricerca proprietaria e osservazione continuativa dell’AI Governance internazionale.</li>
+281:            <p class="pc-desc">Knowledge graph semantico · 97 nodi · 182 relazioni. Modellazione Human–AI Symbiosis. Identità digitale e governance distribuita.</p>
+328:            <div class="pc-title">Research</div>
+413:        <div class="footer-sub">Quantificazione Etica Naturale — Knowledge Infrastructure per AI Ethics, Compliance e Territorio.</div>

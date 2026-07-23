@@ -1,0 +1,10 @@
+4d8ebdf (HEAD -> main, origin/main) feat(qencode): constitutionalize QEncode module
+7c20dfa assets(editorial): track published visual assets
+75c10da docs(governance): track commercial homepage evidence
+be78b4c (tag: commercial-homepage-release-1.0-step4) feat(homepage): add enterprise conversion path
+813ec09 (tag: commercial-homepage-release-1.0-step3.1) style(homepage): normalize section indentation
+9d79dc4 (tag: commercial-homepage-release-1.0-step3) feat(homepage): add enterprise trust positioning
+30ae93c feat(homepage): add enterprise value proposition
+3eba92d feat(homepage): evolve hero for enterprise AI governance
+61225f1 fix(seo): normalize and expand canonical sitemap
+c62b484 chore: sync Fuorimenu RSS
