@@ -1,0 +1,261 @@
+=======================================================
+QEN SOVEREIGN INTELLIGENCE REFACTOR 1.0
+PM2 STORAGE INVESTIGATION — READ ONLY
+=======================================================
+
+Generated: 2026-07-23T14:09:50Z
+Hostname: cognitive-node-01
+
+=== FILESYSTEM ===
+Filesystem     Type  Size  Used Avail Use% Mounted on
+/dev/sda2      ext4   75G   30G   42G  42% /
+
+=== PM2 TOP-LEVEL SIZE ===
+16K	/root/.pm2/pids
+64K	/root/.pm2/logs
+35M	/root/.pm2/modules
+16G	/root/.pm2
+
+=== PM2 SECOND-LEVEL SIZE ===
+16K	/root/.pm2/pids
+64K	/root/.pm2/logs
+35M	/root/.pm2/modules
+35M	/root/.pm2/modules/pm2-logrotate
+16G	/root/.pm2
+
+=== LARGEST PM2 FILES ===
+9.8G /root/.pm2/pm2__2026-07-07_14-40-41.log
+4.3G /root/.pm2/pm2__2026-07-07_14-41-11.log
+995M /root/.pm2/pm2__2026-07-07_14-41-41.log
+728K /root/.pm2/modules/pm2-logrotate/node_modules/moment-timezone/builds/moment-timezone-with-data.js
+715K /root/.pm2/modules/pm2-logrotate/node_modules/moment-timezone/builds/moment-timezone-with-data.min.js
+711K /root/.pm2/modules/pm2-logrotate/node_modules/moment-timezone/data/packed/latest.json
+645K /root/.pm2/modules/pm2-logrotate/node_modules/@tootallnate/quickjs-emscripten/dist/generated/emscripten-module.WASM_RELEASE_SYNC.js.map
+618K /root/.pm2/modules/pm2-logrotate/node_modules/@tootallnate/quickjs-emscripten/dist/generated/emscripten-module.WASM_RELEASE_SYNC.js
+618K /root/.pm2/modules/pm2-logrotate/node_modules/moment/min/moment-with-locales.js
+534K /root/.pm2/modules/pm2-logrotate/node_modules/lodash/lodash.js
+509K /root/.pm2/modules/pm2-logrotate/node_modules/@pm2/js-api/dist/keymetrics.es5.js
+447K /root/.pm2/modules/pm2-logrotate/node_modules/moment/min/locales.js
+367K /root/.pm2/modules/pm2-logrotate/node_modules/moment/min/moment-with-locales.min.js
+313K /root/.pm2/modules/pm2-logrotate/node_modules/@pm2/blessed/usr/fonts/ter-u14n.json
+313K /root/.pm2/modules/pm2-logrotate/node_modules/@pm2/blessed/usr/fonts/ter-u14b.json
+309K /root/.pm2/modules/pm2-logrotate/node_modules/moment/min/locales.min.js
+277K /root/.pm2/modules/pm2-logrotate/node_modules/esprima/dist/esprima.js
+267K /root/.pm2/modules/pm2-logrotate/node_modules/source-map/dist/source-map.debug.js
+253K /root/.pm2/modules/pm2-logrotate/node_modules/moment/min/moment-with-locales.min.js.map
+252K /root/.pm2/modules/pm2-logrotate/node_modules/source-map/dist/source-map.min.js.map
+231K /root/.pm2/modules/pm2-logrotate/node_modules/@pm2/js-api/dist/keymetrics.es5.min.js
+220K /root/.pm2/modules/pm2-logrotate/node_modules/async/dist/async.js
+196K /root/.pm2/modules/pm2-logrotate/node_modules/async/dist/async.mjs
+187K /root/.pm2/modules/pm2-logrotate/node_modules/js-yaml/dist/js-yaml.js.map
+181K /root/.pm2/modules/pm2-logrotate/node_modules/@pm2/js-api/node_modules/async/dist/async.js
+179K /root/.pm2/modules/pm2-logrotate/node_modules/js-yaml/dist/js-yaml.mjs.map
+175K /root/.pm2/modules/pm2-logrotate/node_modules/js-yaml/dist/js-yaml.min.js.map
+173K /root/.pm2/modules/pm2-logrotate/node_modules/moment/moment.js
+153K /root/.pm2/modules/pm2-logrotate/node_modules/moment/dist/moment.js
+153K /root/.pm2/modules/pm2-logrotate/node_modules/moment/min/locales.min.js.map
+
+=== DELETED BUT OPEN FILES ===
+gunicorn 488778 www-data    7u   REG    8,2        0     0 4587540 /tmp/wgunicorn-kdvz2d_7 (deleted)
+gunicorn 488777 www-data    6u   REG    8,2        0     0 4587539 /tmp/wgunicorn-7d7uhrrh (deleted)
+gunicorn 488767 www-data    7u   REG    8,2        0     0 4587540 /tmp/wgunicorn-kdvz2d_7 (deleted)
+gunicorn 488767 www-data    6u   REG    8,2        0     0 4587539 /tmp/wgunicorn-7d7uhrrh (deleted)
+COMMAND     PID     USER   FD   TYPE DEVICE SIZE/OFF NLINK    NODE NAME
+
+=== PM2 PROCESSES ===
+┌────┬───────────────────┬─────────────┬─────────┬─────────┬──────────┬────────┬──────┬───────────┬──────────┬──────────┬──────────┬──────────┐
+│ id │ name              │ namespace   │ version │ mode    │ pid      │ uptime │ ↺    │ status    │ cpu      │ mem      │ user     │ watching │
+├────┼───────────────────┼─────────────┼─────────┼─────────┼──────────┼────────┼──────┼───────────┼──────────┼──────────┼──────────┼──────────┤
+│ 1  │ gemini-backend    │ default     │ N/A     │ fork    │ 224628   │ 5D     │ 2    │ online    │ 0%       │ 79.8mb   │ root     │ disabled │
+└────┴───────────────────┴─────────────┴─────────┴─────────┴──────────┴────────┴──────┴───────────┴──────────┴──────────┴──────────┴──────────┘
+Module
+┌────┬──────────────────────────────┬───────────────┬──────────┬──────────┬──────┬──────────┬──────────┬──────────┐
+│ id │ module                       │ version       │ pid      │ status   │ ↺    │ cpu      │ mem      │ user     │
+├────┼──────────────────────────────┼───────────────┼──────────┼──────────┼──────┼──────────┼──────────┼──────────┤
+│ 0  │ pm2-logrotate                │ 3.0.0         │ 865      │ online   │ 0    │ 0%       │ 45.7mb   │ root     │
+└────┴──────────────────────────────┴───────────────┴──────────┴──────────┴──────┴──────────┴──────────┴──────────┘
+host metrics | cpu: 3.4% | ram usage: 10.8% | lo: ⇓ 0.001mb/s ⇑ 0.001mb/s | disk: ⇓ 0mb/s ⇑ 0.157mb/s |
+ Describing process with id 1 - name gemini-backend 
+┌───────────────────┬──────────────────────────────────────────┐
+│ status            │ online                                   │
+│ name              │ gemini-backend                           │
+│ namespace         │ default                                  │
+│ version           │ N/A                                      │
+│ restarts          │ 2                                        │
+│ uptime            │ 5D                                       │
+│ script path       │ /root/qen-framework/gemini_backend.py    │
+│ script args       │ N/A                                      │
+│ error log path    │ /root/.pm2/logs/gemini-backend-error.log │
+│ out log path      │ /root/.pm2/logs/gemini-backend-out.log   │
+│ pid path          │ /root/.pm2/pids/gemini-backend-1.pid     │
+│ interpreter       │ python3                                  │
+│ interpreter args  │ N/A                                      │
+│ script id         │ 1                                        │
+│ exec cwd          │ /root/qen-framework                      │
+│ exec mode         │ fork_mode                                │
+│ node.js version   │ N/A                                      │
+│ node env          │ N/A                                      │
+│ watch & reload    │ ✘                                        │
+│ unstable restarts │ 0                                        │
+│ created at        │ 2026-07-18T02:16:43.110Z                 │
+└───────────────────┴──────────────────────────────────────────┘
+ Divergent env variables from local env 
+┌────────────────┬───────────────────────────────────────────────────────┐
+│ PWD            │ /root/qen-framework                                   │
+│ SSH_CONNECTION │ 2.37.205.41 47527 178.104.190.107 22                  │
+│ XDG_SESSION_ID │ 1053                                                  │
+│ SSH_CLIENT     │ 2.37.205.41 47527 22                                  │
+│ GOOGLE_API_KEY │ [REDACTED] │
+│ SSH_TTY        │ /dev/pts/1                                            │
+│ OLDPWD         │ /root/qen-framework                                   │
+└────────────────┴───────────────────────────────────────────────────────┘
+
+ Add your own code metrics: http://bit.ly/code-metrics
+ Use `pm2 logs gemini-backend [--lines 1000]` to display logs
+ Use `pm2 env 1` to display environment variables
+ Use `pm2 monit` to monitor CPU and Memory usage gemini-backend
+
+=== PM2 CONFIGURATION ===
+Module: pm2-logrotate
+$ pm2 set pm2-logrotate:max_size 10M
+$ pm2 set pm2-logrotate:retain 7
+$ pm2 set pm2-logrotate:compress true
+$ pm2 set pm2-logrotate:dateFormat YYYY-MM-DD_HH-mm-ss
+$ pm2 set pm2-logrotate:workerInterval 30
+$ pm2 set pm2-logrotate:rotateInterval 0 0 * * *
+$ pm2 set pm2-logrotate:rotateModule true
+Module: module-db-v2
+$ pm2 set module-db-v2:pm2-logrotate [object Object]
+
+=== PM2 LOG DIRECTORY ===
+total 68K
+drwxr-xr-x 2 root root 4.0K Jul 23 00:00 .
+drwxr-xr-x 5 root root 4.0K Jul 13 18:36 ..
+-rw-r--r-- 1 root root  322 Jul  8 00:00 gemini-backend-error__2026-07-08_00-00-00.log
+-rw-r--r-- 1 root root 3.5K Jul 14 00:00 gemini-backend-error__2026-07-14_00-00-00.log
+-rw-r--r-- 1 root root  374 Jul 15 00:00 gemini-backend-error__2026-07-15_00-00-00.log
+-rw-r--r-- 1 root root  176 Jul 19 00:00 gemini-backend-error__2026-07-19_00-00-00.log
+-rw-r--r-- 1 root root    0 Jul 23 16:08 gemini-backend-error.log
+-rw-r--r-- 1 root root   57 Jul  8 00:00 gemini-backend-out__2026-07-08_00-00-00.log
+-rw-r--r-- 1 root root  114 Jul 14 00:00 gemini-backend-out__2026-07-14_00-00-00.log
+-rw-r--r-- 1 root root   57 Jul 15 00:00 gemini-backend-out__2026-07-15_00-00-00.log
+-rw-r--r-- 1 root root   57 Jul 19 00:00 gemini-backend-out__2026-07-19_00-00-00.log
+-rw-r--r-- 1 root root    0 Jul 23 16:08 gemini-backend-out.log
+-rw-r--r-- 1 root root    0 Jul 23 16:08 pm2-logrotate-error.log
+-rw-r--r-- 1 root root  140 Jul 17 00:00 pm2-logrotate-out__2026-07-17_00-00-00.log
+-rw-r--r-- 1 root root  140 Jul 18 00:00 pm2-logrotate-out__2026-07-18_00-00-00.log
+-rw-r--r-- 1 root root  140 Jul 19 00:00 pm2-logrotate-out__2026-07-19_00-00-00.log
+-rw-r--r-- 1 root root  300 Jul 20 00:00 pm2-logrotate-out__2026-07-20_00-00-00.log
+-rw-r--r-- 1 root root  140 Jul 21 00:00 pm2-logrotate-out__2026-07-21_00-00-00.log
+-rw-r--r-- 1 root root  140 Jul 22 00:00 pm2-logrotate-out__2026-07-22_00-00-00.log
+-rw-r--r-- 1 root root  140 Jul 23 00:00 pm2-logrotate-out__2026-07-23_00-00-00.log
+-rw-r--r-- 1 root root    0 Jul 23 16:08 pm2-logrotate-out.log
+
+=== DOCKER VOLUMES — INVENTORY ONLY ===
+DRIVER    VOLUME NAME
+local     0acf947eeaf9ea542bfcef0512471a9108fd8a889a5a566323057327ed77c0e5
+local     2ed81e93e60d3a63f9759c04d1c91eb10ad8ddec538be9617cf15ca9eccc2759
+local     4caad727877258dae6cf55ed4bf815d7169614231f5b7fa31f9701a08a2911f1
+local     4cb6497d51ff34977fd4fb7e1d33d72f8bd91c46d05b0ae0242bdee197d7d446
+local     7d286afc77b404ac95555284ef72cd89ec3b099d636da7f660caa30a3b54f68a
+local     9dac376adc0b5e3fda85bba8c56405072417b068d1ae7f84a3c0d6341d07f021
+local     24e763ae0a48e3a8343b35a15c9273ef7258dd48429bb4b8fcb5bbe1f916d0a6
+local     37a9d823135c6ca20aebaa3d4002726dff17cbf3ff14708a1091e05a5030f6b1
+local     54a4273d9d17d4a42390958358872784fcc7183fbd6665a497f65ac09c9ee18c
+local     58c05ac81740be91c0df7f6e504a8c8802e7624f0d7fb0fabbe64c10fd2d45ef
+local     62d96601f206a5b1354e32ce51aaf4e3cc3df3bcf40c989ff2dc4b95bdf47c81
+local     66a395966b23ce87f5beaa552fa53a0d4b79217ae4da1b7435d3ff068ac61f39
+local     406cf34b6d89802662098317d6b8614f24f98eccd4191a7cbbd6318ced02da80
+local     05754d9246ce5a558bac303e6538af40a24b6445d090d8d1a8c169dca9da64a8
+local     bf358ad1d45e9815dbf1c2868474105f68d04d7317d734305529b612a82f715e
+local     c241a0b96a1b3dcb1436d1561073fb39480ec6320048e5a1a98294828271f002
+local     c51530db607890da4467c48911351f460b3fd6739c2feb0251139d406c98b0bd
+local     cb4661d2fd40acd7963435ae441c8ae823851fc944516e2c568f8910b66ec268
+local     cognitive-logic-api_postgres_data
+local     cognitive_db_data
+local     cognitivelogic2026_cognitive_neo4j_data
+local     cognitivelogic2026_cognitive_postgres_data
+local     cognitivelogic2026_cognitive_redis_data
+local     cognitivelogic-api_postgres_data
+local     cognitivelogic_grafana_data
+local     cognitivelogic_postgres_data
+local     cognitivelogic_prometheus_data
+local     d049e12e19fbd95cddb94bd06a5bb36b4216836d512c87d86ac4fe325546a717
+local     eb83f3e337e97632e2a503d595ebe7d0521423827b0836d5aff0f7efae048848
+local     ef876681d8707ba28c11a7a059a252ce718b7b6c99390575d098e0fe225d8319
+
+=== DOCKER VOLUME USAGE ===
+Images space usage:
+
+REPOSITORY   TAG        IMAGE ID       CREATED        SIZE      SHARED SIZE   UNIQUE SIZE   CONTAINERS
+redis        7-alpine   6ab0b6e73817   2 months ago   58.7MB    0B            58.74MB       1
+
+Containers space usage:
+
+CONTAINER ID   IMAGE            COMMAND                  LOCAL VOLUMES   SIZE      CREATED       STATUS      NAMES
+2a99db3210a0   redis:7-alpine   "docker-entrypoint.s…"   1               4.1kB     11 days ago   Up 9 days   cognitive_cache
+
+Local Volumes space usage:
+
+VOLUME NAME                                                        LINKS     SIZE
+37a9d823135c6ca20aebaa3d4002726dff17cbf3ff14708a1091e05a5030f6b1   0         541.1MB
+66a395966b23ce87f5beaa552fa53a0d4b79217ae4da1b7435d3ff068ac61f39   0         121.1kB
+bf358ad1d45e9815dbf1c2868474105f68d04d7317d734305529b612a82f715e   0         0B
+05754d9246ce5a558bac303e6538af40a24b6445d090d8d1a8c169dca9da64a8   0         0B
+24e763ae0a48e3a8343b35a15c9273ef7258dd48429bb4b8fcb5bbe1f916d0a6   0         0B
+4cb6497d51ff34977fd4fb7e1d33d72f8bd91c46d05b0ae0242bdee197d7d446   0         541.1MB
+2ed81e93e60d3a63f9759c04d1c91eb10ad8ddec538be9617cf15ca9eccc2759   0         0B
+58c05ac81740be91c0df7f6e504a8c8802e7624f0d7fb0fabbe64c10fd2d45ef   0         0B
+62d96601f206a5b1354e32ce51aaf4e3cc3df3bcf40c989ff2dc4b95bdf47c81   0         0B
+cognitive_db_data                                                  0         72.83MB
+d049e12e19fbd95cddb94bd06a5bb36b4216836d512c87d86ac4fe325546a717   0         108.2kB
+54a4273d9d17d4a42390958358872784fcc7183fbd6665a497f65ac09c9ee18c   0         0B
+c51530db607890da4467c48911351f460b3fd6739c2feb0251139d406c98b0bd   0         112.7kB
+cognitivelogic_prometheus_data                                     0         237.1MB
+eb83f3e337e97632e2a503d595ebe7d0521423827b0836d5aff0f7efae048848   0         112.1kB
+c241a0b96a1b3dcb1436d1561073fb39480ec6320048e5a1a98294828271f002   0         541.1MB
+cognitivelogic-api_postgres_data                                   0         48.05MB
+cognitivelogic2026_cognitive_neo4j_data                            0         541.1MB
+cognitivelogic2026_cognitive_postgres_data                         0         48.23MB
+cognitivelogic_postgres_data                                       0         48.31MB
+0acf947eeaf9ea542bfcef0512471a9108fd8a889a5a566323057327ed77c0e5   0         110.2kB
+cb4661d2fd40acd7963435ae441c8ae823851fc944516e2c568f8910b66ec268   0         0B
+cognitive-logic-api_postgres_data                                  0         48.24MB
+9dac376adc0b5e3fda85bba8c56405072417b068d1ae7f84a3c0d6341d07f021   0         114.5kB
+cognitivelogic_grafana_data                                        0         53.49MB
+406cf34b6d89802662098317d6b8614f24f98eccd4191a7cbbd6318ced02da80   0         541.1MB
+4caad727877258dae6cf55ed4bf815d7169614231f5b7fa31f9701a08a2911f1   0         0B
+7d286afc77b404ac95555284ef72cd89ec3b099d636da7f660caa30a3b54f68a   0         0B
+cognitivelogic2026_cognitive_redis_data                            1         522B
+ef876681d8707ba28c11a7a059a252ce718b7b6c99390575d098e0fe225d8319   0         436.9kB
+
+Build cache usage: 0B
+
+CACHE ID   CACHE TYPE   SIZE      CREATED   LAST USED   USAGE     SHARED
+
+=== FASTAPI ROUTE DISCOVERY ===
+/docs: 200
+/openapi.json: 200
+Available routes:
+- /api/escalations
+- /api/escalations/{esc_id}/resolve
+- /api/ingest
+- /api/reconcile
+- /health
+
+=== SERVICES ===
+active
+active
+active
+active
+active
+active
+
+=== GIT STATUS ===
+## main...origin/main
+?? sovereign-intelligence-refactor-1.0/03-HETZNER-CAPACITY-BASELINE.txt
+?? sovereign-intelligence-refactor-1.0/04-HETZNER-STORAGE-REMEDIATION.txt
+?? sovereign-intelligence-refactor-1.0/05-PM2-STORAGE-INVESTIGATION.txt
+3e03284 (HEAD -> main, origin/main) docs(architecture): establish QEN sovereign intelligence refactor
+
+STATUS: READ-ONLY INVESTIGATION COMPLETED

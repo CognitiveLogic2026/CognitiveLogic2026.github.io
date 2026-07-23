@@ -1,0 +1,323 @@
+=======================================================
+QEN SOVEREIGN INTELLIGENCE REFACTOR 1.0
+HETZNER CAPACITY BASELINE
+=======================================================
+
+Generated: 2026-07-23T14:06:54Z
+Hostname: cognitive-node-01
+
+=== OPERATING SYSTEM ===
+Linux cognitive-node-01 6.8.0-134-generic #134-Ubuntu SMP PREEMPT_DYNAMIC Fri Jun 26 18:28:11 UTC 2026 aarch64 aarch64 aarch64 GNU/Linux
+
+PRETTY_NAME="Ubuntu 24.04.4 LTS"
+NAME="Ubuntu"
+VERSION_ID="24.04"
+VERSION="24.04.4 LTS (Noble Numbat)"
+VERSION_CODENAME=noble
+ID=ubuntu
+ID_LIKE=debian
+HOME_URL="https://www.ubuntu.com/"
+SUPPORT_URL="https://help.ubuntu.com/"
+BUG_REPORT_URL="https://bugs.launchpad.net/ubuntu/"
+PRIVACY_POLICY_URL="https://www.ubuntu.com/legal/terms-and-policies/privacy-policy"
+UBUNTU_CODENAME=noble
+LOGO=ubuntu-logo
+
+=== CPU ARCHITECTURE ===
+Architecture:                            aarch64
+CPU op-mode(s):                          32-bit, 64-bit
+Byte Order:                              Little Endian
+CPU(s):                                  4
+On-line CPU(s) list:                     0-3
+Vendor ID:                               ARM
+BIOS Vendor ID:                          QEMU
+Model name:                              Neoverse-N1
+BIOS Model name:                         NotSpecified  CPU @ 2.0GHz
+BIOS CPU family:                         1
+Model:                                   1
+Thread(s) per core:                      1
+Core(s) per socket:                      4
+Socket(s):                               1
+Stepping:                                r3p1
+BogoMIPS:                                50.00
+Flags:                                   fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm lrcpc dcpop asimddp ssbs
+NUMA node(s):                            1
+NUMA node0 CPU(s):                       0-3
+Vulnerability Gather data sampling:      Not affected
+Vulnerability Indirect target selection: Not affected
+Vulnerability Itlb multihit:             Not affected
+Vulnerability L1tf:                      Not affected
+Vulnerability Mds:                       Not affected
+Vulnerability Meltdown:                  Not affected
+Vulnerability Mmio stale data:           Not affected
+Vulnerability Reg file data sampling:    Not affected
+Vulnerability Retbleed:                  Not affected
+Vulnerability Spec rstack overflow:      Not affected
+Vulnerability Spec store bypass:         Mitigation; Speculative Store Bypass disabled via prctl
+Vulnerability Spectre v1:                Mitigation; __user pointer sanitization
+Vulnerability Spectre v2:                Mitigation; CSV2, BHB
+Vulnerability Srbds:                     Not affected
+Vulnerability Tsa:                       Not affected
+Vulnerability Tsx async abort:           Not affected
+Vulnerability Vmscape:                   Not affected
+
+=== MEMORY ===
+               total        used        free      shared  buff/cache   available
+Mem:           7.5Gi       848Mi       2.4Gi        19Mi       4.5Gi       6.7Gi
+Swap:             0B          0B          0B
+
+=== FILESYSTEM CAPACITY ===
+Filesystem     Type      Size  Used Avail Use% Mounted on
+tmpfs          tmpfs     773M  1.5M  772M   1% /run
+efivarfs       efivarfs  256K   20K  237K   8% /sys/firmware/efi/efivars
+/dev/sda2      ext4       75G   51G   21G  72% /
+tmpfs          tmpfs     3.8G  1.1M  3.8G   1% /dev/shm
+tmpfs          tmpfs     5.0M     0  5.0M   0% /run/lock
+/dev/sda1      vfat      256M  308K  256M   1% /boot/efi
+overlay        overlay    75G   51G   21G  72% /var/lib/docker/rootfs/overlayfs/2a99db3210a06682dcf78bd480e9038b2dda72957751e25c09f753ba7c43db84
+tmpfs          tmpfs     773M   16K  773M   1% /run/user/0
+
+=== FILESYSTEM INODES ===
+Filesystem     Inodes IUsed IFree IUse% Mounted on
+tmpfs            967K   832  966K    1% /run
+efivarfs            0     0     0     - /sys/firmware/efi/efivars
+/dev/sda2        4.8M  315K  4.5M    7% /
+tmpfs            967K     3  967K    1% /dev/shm
+tmpfs            967K     3  967K    1% /run/lock
+/dev/sda1           0     0     0     - /boot/efi
+overlay          4.8M  315K  4.5M    7% /var/lib/docker/rootfs/overlayfs/2a99db3210a06682dcf78bd480e9038b2dda72957751e25c09f753ba7c43db84
+tmpfs            194K    34  194K    1% /run/user/0
+
+=== BLOCK DEVICES ===
+NAME    SIZE TYPE FSTYPE MOUNTPOINTS
+sda    76.3G disk        
+├─sda1  256M part vfat   /boot/efi
+└─sda2   76G part ext4   /
+sr0    1024M rom         
+
+=== REPOSITORY SIZE ===
+431M	/app/cognitivelogic
+
+=== MAIN DIRECTORY SIZES ===
+8.0K	/app/cognitivelogic/robertomalini
+12K	/app/cognitivelogic/.well-known
+16K	/app/cognitivelogic/assets
+16K	/app/cognitivelogic/commercial-service-catalogue
+16K	/app/cognitivelogic/nginx
+24K	/app/cognitivelogic/tools
+28K	/app/cognitivelogic/academia
+28K	/app/cognitivelogic/articles
+32K	/app/cognitivelogic/js
+32K	/app/cognitivelogic/.pytest_cache
+32K	/app/cognitivelogic/qen-bolkestein
+32K	/app/cognitivelogic/qencode
+36K	/app/cognitivelogic/css
+36K	/app/cognitivelogic/.github
+36K	/app/cognitivelogic/housekeeping-2026
+36K	/app/cognitivelogic/static
+44K	/app/cognitivelogic/docs
+52K	/app/cognitivelogic/research
+56K	/app/cognitivelogic/qen-horeca-auditor
+84K	/app/cognitivelogic/qen-reconciliation
+84K	/app/cognitivelogic/sovereign-intelligence-refactor-1.0
+88K	/app/cognitivelogic/editorial-evolution-1.0
+104K	/app/cognitivelogic/enterprise-platform-evolution-1.0
+112K	/app/cognitivelogic/commercial-platform
+116K	/app/cognitivelogic/tests
+124K	/app/cognitivelogic/__pycache__
+148K	/app/cognitivelogic/fonts
+180K	/app/cognitivelogic/data
+1.2M	/app/cognitivelogic/img
+2.4M	/app/cognitivelogic/international-watch
+38M	/app/cognitivelogic/wizard-src
+51M	/app/cognitivelogic/.git
+58M	/app/cognitivelogic/.venv-runtime
+279M	/app/cognitivelogic/venv
+431M	/app/cognitivelogic
+
+=== SYSTEM DIRECTORY SIZES ===
+4.0K	/root/.gunicorn
+4.0K	/var/crash
+4.0K	/var/local
+4.0K	/var/mail
+4.0K	/var/opt
+8.0K	/root/.neo4j
+8.0K	/root/__pycache__
+12K	/opt/containerd
+12K	/root/cognitive-logic-commercial-homepage-release-1.0
+12K	/root/pages
+16K	/root/cognitivelogic-api
+16K	/root/outputs
+24K	/root/.local
+28K	/root/cognitive-logic-backups
+28K	/root/.config
+32K	/root/github-auth-backup-20260721-060543
+32K	/root/untracked-security-cleanup-20260723-103215
+32K	/var/spool
+36K	/opt/cognitivelogic
+40K	/root/qencode-backup-20260721-221603
+44K	/root/commercial-homepage-release-1.0
+48K	/root/.ssh
+52K	/var/tmp
+96K	/root/cognitivelogic-dormant-infrastructure-20260723-103749
+184K	/root/qen-private-archive
+196K	/root/documentation-normalization-20260723-104258
+208K	/root/international-watch-release-1.1-baseline-20260720-093020
+228K	/root/backup-2026-07-13
+264K	/root/architecture-freeze-3.0
+1.4M	/root/cognitive-logic-commercial-evolution-2.0
+1.5M	/root/gallina_progetto
+1.6M	/root/fuorimenu-sync
+2.1M	/root/backups
+2.6M	/var/backups
+4.4M	/var/www
+27M	/root/cognitivelogic-deployment
+31M	/root/venv
+53M	/root/logs
+71M	/opt/qen-balneare-pdf
+75M	/root/cognitive-logic-commercial-evolution-1.0
+113M	/root/CognitiveLogic2026.github.io
+127M	/var/cache
+132M	/root/cognitive-logic-api
+143M	/opt/CognitiveLogic2026
+213M	/opt
+326M	/root/qen-framework
+382M	/root/.npm
+663M	/root/.cache
+6.1G	/var/log
+16G	/root/.pm2
+18G	/root
+22G	/var/lib
+28G	/var
+
+=== DOCKER USAGE ===
+TYPE            TOTAL     ACTIVE    SIZE      RECLAIMABLE
+Images          13        3         18.87GB   13.71GB (72%)
+Containers      3         1         4.373GB   4.373GB (99%)
+Local Volumes   30        2         3.263GB   3.19GB (97%)
+Build Cache     0         0         0B        0B
+
+=== JOURNAL SIZE ===
+Archived and active journals take up 3.9G in the file system.
+
+=== ACTIVE SERVICES ===
+  UNIT                         LOAD   ACTIVE SUB     DESCRIPTION
+  atd.service                  loaded active running Deferred execution scheduler
+  avahi-daemon.service         loaded active running Avahi mDNS/DNS-SD Stack
+  cognitivelogic-flask.service loaded active running CognitiveLogic QEN Flask API
+  cognitivelogic.service       loaded active running CognitiveLogic QEN Reconciliation API
+  containerd.service           loaded active running containerd container runtime
+  cron.service                 loaded active running Regular background program processing daemon
+  dbus.service                 loaded active running D-Bus System Message Bus
+  docker.service               loaded active running Docker Application Container Engine
+  fail2ban.service             loaded active running Fail2Ban Service
+  getty@tty1.service           loaded active running Getty on tty1
+  ModemManager.service         loaded active running Modem Manager
+  multipathd.service           loaded active running Device-Mapper Multipath Device Controller
+  nginx.service                loaded active running A high performance web server and a reverse proxy server
+  polkit.service               loaded active running Authorization Manager
+  postgresql@16-main.service   loaded active running PostgreSQL Cluster 16-main
+  redis-server.service         loaded active running Advanced key-value store
+  rsyslog.service              loaded active running System Logging Service
+  serial-getty@ttyAMA0.service loaded active running Serial Getty on ttyAMA0
+  ssh.service                  loaded active running OpenBSD Secure Shell server
+  systemd-journald.service     loaded active running Journal Service
+  systemd-logind.service       loaded active running User Login Management
+  systemd-networkd.service     loaded active running Network Configuration
+  systemd-resolved.service     loaded active running Network Name Resolution
+  systemd-timesyncd.service    loaded active running Network Time Synchronization
+  systemd-udevd.service        loaded active running Rule-based Manager for Device Events and Files
+  unattended-upgrades.service  loaded active running Unattended Upgrades Shutdown
+  user@0.service               loaded active running User Manager for UID 0
+  wpa_supplicant.service       loaded active running WPA supplicant
+
+Legend: LOAD   → Reflects whether the unit definition was properly loaded.
+        ACTIVE → The high-level unit activation state, i.e. generalization of SUB.
+        SUB    → The low-level unit activation state, values depend on unit type.
+
+28 loaded units listed.
+
+=== LISTENING PORTS ===
+Netid State  Recv-Q Send-Q          Local Address:Port  Peer Address:PortProcess                                                                                                                                        
+udp   UNCONN 0      0                     0.0.0.0:40434      0.0.0.0:*    users:(("avahi-daemon",pid=718,fd=14))                                                                                                        
+udp   UNCONN 0      0                  127.0.0.54:53         0.0.0.0:*    users:(("systemd-resolve",pid=514,fd=16))                                                                                                     
+udp   UNCONN 0      0               127.0.0.53%lo:53         0.0.0.0:*    users:(("systemd-resolve",pid=514,fd=14))                                                                                                     
+udp   UNCONN 0      0      178.104.190.107%enp1s0:68         0.0.0.0:*    users:(("systemd-network",pid=744,fd=23))                                                                                                     
+udp   UNCONN 0      0                     0.0.0.0:5353       0.0.0.0:*    users:(("avahi-daemon",pid=718,fd=12))                                                                                                        
+udp   UNCONN 0      0                        [::]:57486         [::]:*    users:(("avahi-daemon",pid=718,fd=15))                                                                                                        
+udp   UNCONN 0      0                        [::]:5353          [::]:*    users:(("avahi-daemon",pid=718,fd=13))                                                                                                        
+tcp   LISTEN 0      4096               127.0.0.54:53         0.0.0.0:*    users:(("systemd-resolve",pid=514,fd=17))                                                                                                     
+tcp   LISTEN 0      511                   0.0.0.0:443        0.0.0.0:*    users:(("nginx",pid=427234,fd=14),("nginx",pid=427233,fd=14),("nginx",pid=427232,fd=14),("nginx",pid=427231,fd=14),("nginx",pid=427229,fd=14))
+tcp   LISTEN 0      4096                  0.0.0.0:22         0.0.0.0:*    users:(("sshd",pid=25742,fd=3),("systemd",pid=1,fd=81))                                                                                       
+tcp   LISTEN 0      511                   0.0.0.0:80         0.0.0.0:*    users:(("nginx",pid=427234,fd=13),("nginx",pid=427233,fd=13),("nginx",pid=427232,fd=13),("nginx",pid=427231,fd=13),("nginx",pid=427229,fd=13))
+tcp   LISTEN 0      2048                127.0.0.1:8001       0.0.0.0:*    users:(("uvicorn",pid=488718,fd=13))                                                                                                          
+tcp   LISTEN 0      511                 127.0.0.1:6379       0.0.0.0:*    users:(("redis-server",pid=784,fd=6))                                                                                                         
+tcp   LISTEN 0      4096                127.0.0.1:39633      0.0.0.0:*    users:(("containerd",pid=787,fd=14))                                                                                                          
+tcp   LISTEN 0      200                 127.0.0.1:5432       0.0.0.0:*    users:(("postgres",pid=814,fd=6))                                                                                                             
+tcp   LISTEN 0      4096            127.0.0.53%lo:53         0.0.0.0:*    users:(("systemd-resolve",pid=514,fd=15))                                                                                                     
+tcp   LISTEN 0      2048                127.0.0.1:5000       0.0.0.0:*    users:(("gunicorn",pid=488778,fd=5),("gunicorn",pid=488777,fd=5),("gunicorn",pid=488767,fd=5))                                                
+tcp   LISTEN 0      128                 127.0.0.1:5001       0.0.0.0:*    users:(("python3",pid=224628,fd=4))                                                                                                           
+tcp   LISTEN 0      4096                     [::]:22            [::]:*    users:(("sshd",pid=25742,fd=4),("systemd",pid=1,fd=82))                                                                                       
+tcp   LISTEN 0      511                     [::1]:6379          [::]:*    users:(("redis-server",pid=784,fd=7))                                                                                                         
+
+=== PROCESS MEMORY USAGE ===
+USER         PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
+root         311  0.0  3.4 440460 273336 ?       S<s  Jul13  14:08 /usr/lib/systemd/systemd-journald
+root      377713  0.3  2.2 1591304 174760 ?      Ssl  Jul21  12:59 /usr/bin/python3 /usr/bin/fail2ban-server -xf start
+root      224628  0.0  1.0  95232 82196 ?        Ss   Jul18   1:09 python3 /root/qen-framework/gemini_backend.py
+www-data  488777  0.0  0.8  83496 67904 ?        S    10:48   0:00 /app/cognitivelogic/venv/bin/python3 /app/cognitivelogic/venv/bin/gunicorn main:app --bind 127.0.0.1:5000 --workers 2 --timeout 120
+www-data  488778  0.0  0.8  83496 67904 ?        S    10:48   0:00 /app/cognitivelogic/venv/bin/python3 /app/cognitivelogic/venv/bin/gunicorn main:app --bind 127.0.0.1:5000 --workers 2 --timeout 120
+root         891  0.0  0.7 2127592 56144 ?       Ssl  Jul13   1:49 /usr/bin/dockerd -H fd:// --containerd=/run/containerd/containerd.sock
+root         849  0.1  0.6 1037340 52896 ?       Ssl  Jul13  14:37 PM2 v7.0.3: God Daemon (/root/.pm2)
+www-data  488718  0.1  0.6 234888 49624 ?        Ssl  10:48   0:33 /app/cognitivelogic/venv/bin/python3 /app/cognitivelogic/venv/bin/uvicorn main:app --host 127.0.0.1 --port 8001
+root         787  0.1  0.6 1942080 49524 ?       Ssl  Jul13  15:43 /usr/bin/containerd
+root         865  0.2  0.6 1037404 47492 ?       Ssl  Jul13  42:27 node /root/.pm2/modules/pm2-logrotate/node_modules/pm2-log
+root         365  0.0  0.3 290336 26352 ?        SLsl Jul13   1:32 /sbin/multipathd -d -s
+www-data  488767  0.0  0.2  33212 23440 ?        Ss   10:48   0:02 /app/cognitivelogic/venv/bin/python3 /app/cognitivelogic/venv/bin/gunicorn main:app --bind 127.0.0.1:5000 --workers 2 --timeout 120
+postgres     814  0.0  0.2 224228 17428 ?        Ss   Jul13   3:31 /usr/lib/postgresql/16/bin/postgres -D /var/lib/postgresql/16/main -c config_file=/etc/postgresql/16/main/postgresql.conf
+root         786  0.0  0.1 110548 11952 ?        Ssl  Jul13   0:00 /usr/bin/python3 /usr/share/unattended-upgrades/unattended-upgrade-shutdown --wait-for-signal
+root           1  0.0  0.1  22596 11032 ?        Ss   Jul13  11:48 /sbin/init
+root      499140  0.9  0.1  20136 10708 ?        Ss   16:06   0:00 /usr/lib/systemd/systemd --user
+www-data  427234  0.0  0.1  24080  9724 ?        S    Jul22   0:03 nginx: worker process
+root      499136  0.1  0.1  16700  9488 ?        Ss   16:06   0:00 sshd: root@pts/0
+www-data  427232  0.0  0.1  23912  9456 ?        S    Jul22   0:03 nginx: worker process
+
+=== PROCESS CPU USAGE ===
+USER         PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
+dnsmasq     1360  0.9  0.0  44580  4848 ?        Ssl  Jul13 137:08 redis-server *:6379
+root      499140  0.9  0.1  20136 10708 ?        Ss   16:06   0:00 /usr/lib/systemd/systemd --user
+root      377713  0.3  2.2 1591304 174760 ?      Ssl  Jul21  12:59 /usr/bin/python3 /usr/bin/fail2ban-server -xf start
+root      499155  0.3  0.0   9312  6132 pts/0    Ss   16:06   0:00 -bash
+root         865  0.2  0.6 1037404 47492 ?       Ssl  Jul13  42:27 node /root/.pm2/modules/pm2-logrotate/node_modules/pm2-log
+redis        784  0.1  0.0  68012  6624 ?        Ssl  Jul13  28:10 /usr/bin/redis-server 127.0.0.1:6379
+root      499136  0.1  0.1  16700  9488 ?        Ss   16:06   0:00 sshd: root@pts/0
+www-data  488718  0.1  0.6 234888 49624 ?        Ssl  10:48   0:33 /app/cognitivelogic/venv/bin/python3 /app/cognitivelogic/venv/bin/uvicorn main:app --host 127.0.0.1 --port 8001
+root      499170  0.1  0.0   9312  4404 pts/0    S+   16:06   0:00 -bash
+root         787  0.1  0.6 1942080 49524 ?       Ssl  Jul13  15:43 /usr/bin/containerd
+root         849  0.1  0.6 1037340 52896 ?       Ssl  Jul13  14:37 PM2 v7.0.3: God Daemon (/root/.pm2)
+root         311  0.0  3.4 440460 273336 ?       S<s  Jul13  14:08 /usr/lib/systemd/systemd-journald
+root           1  0.0  0.1  22596 11032 ?        Ss   Jul13  11:48 /sbin/init
+syslog       756  0.0  0.0 222812  5128 ?        Ssl  Jul13   7:24 /usr/sbin/rsyslogd -n -iNONE
+root          17  0.0  0.0      0     0 ?        I    Jul13   5:43 [rcu_preempt]
+postgres     814  0.0  0.2 224228 17428 ?        Ss   Jul13   3:31 /usr/lib/postgresql/16/bin/postgres -D /var/lib/postgresql/16/main -c config_file=/etc/postgresql/16/main/postgresql.conf
+message+     723  0.0  0.0  10088  4416 ?        Ss   Jul13   2:58 @dbus-daemon --system --address=systemd: --nofork --nopidfile --systemd-activation --syslog-only
+root      498963  0.0  0.0      0     0 ?        I    16:00   0:00 [kworker/u8:4-flush-8:0]
+www-data  488767  0.0  0.2  33212 23440 ?        Ss   10:48   0:02 /app/cognitivelogic/venv/bin/python3 /app/cognitivelogic/venv/bin/gunicorn main:app --bind 127.0.0.1:5000 --workers 2 --timeout 120
+
+=== GIT BASELINE ===
+## main...origin/main
+?? sovereign-intelligence-refactor-1.0/03-HETZNER-CAPACITY-BASELINE.txt
+3e03284 (HEAD -> main, origin/main) docs(architecture): establish QEN sovereign intelligence refactor
+
+=== CAPACITY DECISION ===
+Current Hetzner server: CAX21 ARM, 8 GB RAM, 80 GB SSD.
+Architectural assessment: adequate for QEN Sovereign Intelligence Refactor 1.0.
+Immediate server upgrade: not required.
+Recommended thresholds:
+- disk warning: 70%
+- disk critical: 85%
+- sustained RAM warning: 75%
+- sustained RAM critical: 90%
+- future target when required: 16 GB RAM / 160 GB SSD
+
+STATUS: CAPACITY BASELINE RECORDED

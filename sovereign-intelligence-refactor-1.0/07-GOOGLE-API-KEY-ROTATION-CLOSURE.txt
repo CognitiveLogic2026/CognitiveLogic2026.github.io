@@ -1,0 +1,32 @@
+=======================================================
+QEN SOVEREIGN INTELLIGENCE REFACTOR 1.0
+GOOGLE API KEY ROTATION CLOSURE
+=======================================================
+
+Date: 2026-07-23
+
+Actions completed:
+
+- exposed Google API key identified;
+- investigation report sanitized;
+- historical PM2 daemon logs removed;
+- new Google API key installed in protected runtime configuration;
+- PM2 gemini-backend restarted with updated environment;
+- runtime key presence verified without exposing its value;
+- runtime key length verified: 53 characters;
+- website verification: HTTP 200;
+- Flask verification: HTTP 200;
+- FastAPI health verification: HTTP 200.
+
+Required external action:
+
+- old Google AI Studio key ending in LbZg revoked/deleted.
+
+Infrastructure result:
+
+- storage reduced from 72% to 21%;
+- approximately 36 GB recovered;
+- PM2 storage reduced from 16 GB to 35 MB;
+- all principal services operational.
+
+STATUS: COMPLETED

@@ -1,0 +1,109 @@
+=======================================================
+QEN SOVEREIGN INTELLIGENCE REFACTOR 1.0
+PM2 STORAGE AND SECRET REMEDIATION
+=======================================================
+
+Generated: 2026-07-23T14:11:19Z
+
+=== CAPACITY BEFORE ===
+Filesystem     Type  Size  Used Avail Use% Mounted on
+/dev/sda2      ext4   75G   30G   42G  42% /
+16G	/root/.pm2
+
+=== SANITIZE INVESTIGATION REPORT ===
+Sanitized: sovereign-intelligence-refactor-1.0/05-PM2-STORAGE-INVESTIGATION.txt
+Report contains no detected plaintext API key.
+
+=== REMOVE HISTORICAL PM2 DAEMON LOGS ===
+10517204992 /root/.pm2/pm2__2026-07-07_14-40-41.log
+4511113216 /root/.pm2/pm2__2026-07-07_14-41-11.log
+1043070976 /root/.pm2/pm2__2026-07-07_14-41-41.log
+
+=== RESTRICT PM2 DIRECTORY PERMISSIONS ===
+
+=== SECRET LOCATION CHECK — FILENAMES ONLY ===
+/root/.pm2/dump.pm2.bak
+/root/.pm2/dump.pm2
+/root/qen-framework/ecosystem.config.js.before-secret-removal-20260718-040640
+/root/qen-framework/gemini_backend.py.before-secret-removal-20260718-040640
+/root/qen-framework/gemini_backend.py
+/root/qen-framework/gemini_backend.py.pre-freeze-20260714-214442
+/root/qen-framework/ecosystem.config.js
+/root/qen-framework/.env.production
+/app/cognitivelogic/main.py.bak_20260712_015255
+/app/cognitivelogic/sovereign-intelligence-refactor-1.0/02-ARCHITECTURAL-ANALYSIS.md
+/app/cognitivelogic/PROMPT_ANALISI_REPO.md
+/app/cognitivelogic/venv/lib64/python3.12/site-packages/google_genai-2.6.0.dist-info/METADATA
+/app/cognitivelogic/venv/lib64/python3.12/site-packages/google/generativeai/client.py
+/app/cognitivelogic/venv/lib64/python3.12/site-packages/google/genai/_api_client.py
+/app/cognitivelogic/venv/lib64/python3.12/site-packages/google/genai/tests/client/test_client_initialization.py
+/app/cognitivelogic/venv/lib64/python3.12/site-packages/google/genai/tests/client/test_client_requests.py
+/app/cognitivelogic/venv/lib64/python3.12/site-packages/google/genai/tests/live/test_live_music.py
+/app/cognitivelogic/venv/lib64/python3.12/site-packages/google/genai/tests/live/test_live.py
+/app/cognitivelogic/venv/lib64/python3.12/site-packages/google/genai/tests/conftest.py
+/app/cognitivelogic/venv/lib64/python3.12/site-packages/google/genai/tests/types/test_types.py
+/app/cognitivelogic/venv/lib64/python3.12/site-packages/google/genai/tests/interactions/test_auth.py
+/app/cognitivelogic/venv/lib64/python3.12/site-packages/google/genai/client.py
+/app/cognitivelogic/venv/lib/python3.12/site-packages/google_genai-2.6.0.dist-info/METADATA
+/app/cognitivelogic/venv/lib/python3.12/site-packages/google/generativeai/client.py
+/app/cognitivelogic/venv/lib/python3.12/site-packages/google/genai/_api_client.py
+/app/cognitivelogic/venv/lib/python3.12/site-packages/google/genai/tests/client/test_client_initialization.py
+/app/cognitivelogic/venv/lib/python3.12/site-packages/google/genai/tests/client/test_client_requests.py
+/app/cognitivelogic/venv/lib/python3.12/site-packages/google/genai/tests/live/test_live_music.py
+/app/cognitivelogic/venv/lib/python3.12/site-packages/google/genai/tests/live/test_live.py
+/app/cognitivelogic/venv/lib/python3.12/site-packages/google/genai/tests/conftest.py
+/app/cognitivelogic/venv/lib/python3.12/site-packages/google/genai/tests/types/test_types.py
+/app/cognitivelogic/venv/lib/python3.12/site-packages/google/genai/tests/interactions/test_auth.py
+/app/cognitivelogic/venv/lib/python3.12/site-packages/google/genai/client.py
+/app/cognitivelogic/main.py
+/app/cognitivelogic/main.py.bak_20260712_022331
+/app/cognitivelogic/tests/test_orchestrator.py
+/app/cognitivelogic/.github/workflows/deploy-vps.yml
+/app/cognitivelogic/AUDIT_LOG.md
+
+=== PM2 STATUS ===
+┌────┬───────────────────┬─────────────┬─────────┬─────────┬──────────┬────────┬──────┬───────────┬──────────┬──────────┬──────────┬──────────┐
+│ id │ name              │ namespace   │ version │ mode    │ pid      │ uptime │ ↺    │ status    │ cpu      │ mem      │ user     │ watching │
+├────┼───────────────────┼─────────────┼─────────┼─────────┼──────────┼────────┼──────┼───────────┼──────────┼──────────┼──────────┼──────────┤
+│ 1  │ gemini-backend    │ default     │ N/A     │ fork    │ 224628   │ 5D     │ 2    │ online    │ 0%       │ 79.8mb   │ root     │ disabled │
+└────┴───────────────────┴─────────────┴─────────┴─────────┴──────────┴────────┴──────┴───────────┴──────────┴──────────┴──────────┴──────────┘
+Module
+┌────┬──────────────────────────────┬───────────────┬──────────┬──────────┬──────┬──────────┬──────────┬──────────┐
+│ id │ module                       │ version       │ pid      │ status   │ ↺    │ cpu      │ mem      │ user     │
+├────┼──────────────────────────────┼───────────────┼──────────┼──────────┼──────┼──────────┼──────────┼──────────┤
+│ 0  │ pm2-logrotate                │ 3.0.0         │ 865      │ online   │ 0    │ 0%       │ 45.7mb   │ root     │
+└────┴──────────────────────────────┴───────────────┴──────────┴──────────┴──────┴──────────┴──────────┴──────────┘
+host metrics | cpu: 3.5% | ram usage: 10.6% | disk: ⇓ 6.807mb/s ⇑ 0.362mb/s |
+[PM2] Saving current process list...
+[PM2] Successfully saved in /root/.pm2/dump.pm2
+
+=== CAPACITY AFTER ===
+Filesystem     Type  Size  Used Avail Use% Mounted on
+/dev/sda2      ext4   75G   15G   57G  21% /
+35M	/root/.pm2
+16K	/root/.pm2/pids
+64K	/root/.pm2/logs
+35M	/root/.pm2
+35M	/root/.pm2/modules
+
+=== APPLICATION VERIFICATION ===
+active
+active
+active
+Website: 200
+Flask: 200
+FastAPI health: 200
+
+=== REPORT SECRET SCAN ===
+No detected plaintext API keys in documentation.
+
+=== GIT STATUS ===
+## main...origin/main
+?? sovereign-intelligence-refactor-1.0/03-HETZNER-CAPACITY-BASELINE.txt
+?? sovereign-intelligence-refactor-1.0/04-HETZNER-STORAGE-REMEDIATION.txt
+?? sovereign-intelligence-refactor-1.0/05-PM2-STORAGE-INVESTIGATION.txt
+?? sovereign-intelligence-refactor-1.0/06-PM2-STORAGE-REMEDIATION.txt
+3e03284 (HEAD -> main, origin/main) docs(architecture): establish QEN sovereign intelligence refactor
+
+STATUS: PM2 STORAGE REMEDIATION COMPLETED
+SECURITY ACTION STILL REQUIRED: revoke and replace the exposed Google API key.

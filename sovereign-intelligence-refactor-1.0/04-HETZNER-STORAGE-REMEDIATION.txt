@@ -1,0 +1,274 @@
+=======================================================
+QEN SOVEREIGN INTELLIGENCE REFACTOR 1.0
+HETZNER STORAGE REMEDIATION
+=======================================================
+
+Generated: 2026-07-23T14:08:23Z
+Hostname: cognitive-node-01
+
+=== CAPACITY BEFORE ===
+Filesystem     Type  Size  Used Avail Use% Mounted on
+/dev/sda2      ext4   75G   51G   21G  72% /
+               total        used        free      shared  buff/cache   available
+Mem:           7.5Gi       851Mi       2.2Gi        19Mi       4.8Gi       6.7Gi
+Swap:             0B          0B          0B
+
+=== DOCKER BEFORE ===
+TYPE            TOTAL     ACTIVE    SIZE      RECLAIMABLE
+Images          13        3         18.87GB   13.71GB (72%)
+Containers      3         1         4.373GB   4.373GB (99%)
+Local Volumes   30        2         3.263GB   3.19GB (97%)
+Build Cache     0         0         0B        0B
+
+=== JOURNAL BEFORE ===
+Archived and active journals take up 3.9G in the file system.
+
+=== PM2 BEFORE ===
+16G	/root/.pm2
+68K	/root/.pm2/logs
+┌────┬───────────────────┬─────────────┬─────────┬─────────┬──────────┬────────┬──────┬───────────┬──────────┬──────────┬──────────┬──────────┐
+│ id │ name              │ namespace   │ version │ mode    │ pid      │ uptime │ ↺    │ status    │ cpu      │ mem      │ user     │ watching │
+├────┼───────────────────┼─────────────┼─────────┼─────────┼──────────┼────────┼──────┼───────────┼──────────┼──────────┼──────────┼──────────┤
+│ 1  │ gemini-backend    │ default     │ N/A     │ fork    │ 224628   │ 5D     │ 2    │ online    │ 0%       │ 79.8mb   │ root     │ disabled │
+└────┴───────────────────┴─────────────┴─────────┴─────────┴──────────┴────────┴──────┴───────────┴──────────┴──────────┴──────────┴──────────┘
+Module
+┌────┬──────────────────────────────┬───────────────┬──────────┬──────────┬──────┬──────────┬──────────┬──────────┐
+│ id │ module                       │ version       │ pid      │ status   │ ↺    │ cpu      │ mem      │ user     │
+├────┼──────────────────────────────┼───────────────┼──────────┼──────────┼──────┼──────────┼──────────┼──────────┤
+│ 0  │ pm2-logrotate                │ 3.0.0         │ 865      │ online   │ 0    │ 0%       │ 46.1mb   │ root     │
+└────┴──────────────────────────────┴───────────────┴──────────┴──────────┴──────┴──────────┴──────────┴──────────┘
+host metrics | cpu: 2.5% | ram usage: 11% | disk: ⇓ 0mb/s ⇑ 0.046mb/s / 71.14% |
+
+=== PRESERVE PM2 LOG TAILS ===
+total 64K
+-rw-r--r-- 1 root root  322 Jul 23 16:08 gemini-backend-error__2026-07-08_00-00-00.log.tail.txt
+-rw-r--r-- 1 root root 3.5K Jul 23 16:08 gemini-backend-error__2026-07-14_00-00-00.log.tail.txt
+-rw-r--r-- 1 root root  374 Jul 23 16:08 gemini-backend-error__2026-07-15_00-00-00.log.tail.txt
+-rw-r--r-- 1 root root  176 Jul 23 16:08 gemini-backend-error__2026-07-19_00-00-00.log.tail.txt
+-rw-r--r-- 1 root root    0 Jul 23 16:08 gemini-backend-error.log.tail.txt
+-rw-r--r-- 1 root root   57 Jul 23 16:08 gemini-backend-out__2026-07-08_00-00-00.log.tail.txt
+-rw-r--r-- 1 root root  114 Jul 23 16:08 gemini-backend-out__2026-07-14_00-00-00.log.tail.txt
+-rw-r--r-- 1 root root   57 Jul 23 16:08 gemini-backend-out__2026-07-15_00-00-00.log.tail.txt
+-rw-r--r-- 1 root root   57 Jul 23 16:08 gemini-backend-out__2026-07-19_00-00-00.log.tail.txt
+-rw-r--r-- 1 root root    0 Jul 23 16:08 gemini-backend-out.log.tail.txt
+-rw-r--r-- 1 root root    0 Jul 23 16:08 pm2-logrotate-error.log.tail.txt
+-rw-r--r-- 1 root root  140 Jul 23 16:08 pm2-logrotate-out__2026-07-17_00-00-00.log.tail.txt
+-rw-r--r-- 1 root root  140 Jul 23 16:08 pm2-logrotate-out__2026-07-18_00-00-00.log.tail.txt
+-rw-r--r-- 1 root root  140 Jul 23 16:08 pm2-logrotate-out__2026-07-19_00-00-00.log.tail.txt
+-rw-r--r-- 1 root root  300 Jul 23 16:08 pm2-logrotate-out__2026-07-20_00-00-00.log.tail.txt
+-rw-r--r-- 1 root root  140 Jul 23 16:08 pm2-logrotate-out__2026-07-21_00-00-00.log.tail.txt
+-rw-r--r-- 1 root root  140 Jul 23 16:08 pm2-logrotate-out__2026-07-22_00-00-00.log.tail.txt
+-rw-r--r-- 1 root root  140 Jul 23 16:08 pm2-logrotate-out__2026-07-23_00-00-00.log.tail.txt
+-rw-r--r-- 1 root root  140 Jul 23 16:08 pm2-logrotate-out.log.tail.txt
+
+=== CLEAN UNUSED DOCKER OBJECTS ===
+Deleted Containers:
+7a6b17c957200d19240e1c2673699233070b8a6f7b776037a8bc8331cdbc38e7
+c79ee9443393bf1d91f2b16e945416d94f04a3a4f92177bcf9b0d00fa5939c09
+
+Total reclaimed space: 4.373GB
+Deleted Images:
+untagged: grafana/grafana:latest
+deleted: sha256:2d1f9ae67c1778d33e291d4c3c759cd8b650e67491f02533499eb950e075eeb5
+deleted: sha256:081a24a2bdc9f86588205525e6a341eb2231af63665b1ba55264a38da010163b
+untagged: sha256:0697390680f85097ae500fa31a07d644e29df96683221e4acfe159ac544fc1c1
+deleted: sha256:0697390680f85097ae500fa31a07d644e29df96683221e4acfe159ac544fc1c1
+untagged: sha256:5b909a199ffa504dd470e2933ba8c42b2505ef0a7c7b0909e86f18ce875cfdce
+deleted: sha256:5b909a199ffa504dd470e2933ba8c42b2505ef0a7c7b0909e86f18ce875cfdce
+untagged: sha256:c64c5a75d4bb39debeedcc48183d49b9319b53d942aa352b657520c9bc02a3bb
+deleted: sha256:c64c5a75d4bb39debeedcc48183d49b9319b53d942aa352b657520c9bc02a3bb
+untagged: postgres:15-alpine
+deleted: sha256:2a6577fca547b9021b9281c58bc71ec1617e05b8d128c8875bd5fa32c267c554
+deleted: sha256:ad551215ec961af6fb03fe68a4ac45390c69a25efd8d20f8730ca0ec5d3b89f1
+deleted: sha256:84a2ecd408d76019f4a8cd1885107fa4fafd5925746cd352efa022d705e40370
+untagged: python:3.11-slim
+deleted: sha256:9a7765b36773a37061455b332f18e265e7f58f6fea9c419a550d2a8b0e9db834
+deleted: sha256:9a3ec0bf8652555f5cb4693a313d6cfb667c544f15a141af2b904369387a0a9a
+deleted: sha256:cbce6efbbc83b14ca428db957c988f8e9bc60f705704cd4b8fd694739a89675c
+untagged: ollama/ollama:latest
+deleted: sha256:a6149234667efc71d37766d61c1a16f24c33e4cd7a0bf4125c44a7e47e2419c4
+deleted: sha256:32f9c3895f3a37cfcf637da5cabfd2d5d600cf3222ab294b366dae316e429589
+deleted: sha256:c9e5de60f25aba6d316e4a0a7ebf9af9e267df2cea9507edef32426eed72a533
+untagged: sha256:488df929de2e65f8763e1d68ccdd402b21b0a6343f5dec0a0732a78b4ebd55cd
+deleted: sha256:488df929de2e65f8763e1d68ccdd402b21b0a6343f5dec0a0732a78b4ebd55cd
+untagged: sha256:5d3c4d67ff70819168fbc38e4890abb8a78b23b09b5dd5b9ca3de219252fcabd
+deleted: sha256:5d3c4d67ff70819168fbc38e4890abb8a78b23b09b5dd5b9ca3de219252fcabd
+untagged: sha256:64429b48f6a4f17b12683779f96f3ffe78afabd8f3bef42438272f931dec55b0
+deleted: sha256:64429b48f6a4f17b12683779f96f3ffe78afabd8f3bef42438272f931dec55b0
+untagged: sha256:a942cf3f02a3c83474226852dec202750c917ad9bc54b663858aa7ced674354c
+deleted: sha256:a942cf3f02a3c83474226852dec202750c917ad9bc54b663858aa7ced674354c
+untagged: sha256:10335accdbf9dbce7480452861cd630ee0599f253ec461156e1de8f10e894666
+deleted: sha256:10335accdbf9dbce7480452861cd630ee0599f253ec461156e1de8f10e894666
+untagged: prom/node-exporter:latest
+deleted: sha256:e9cff4fc67b1818f8c97adb115b9f12c9a54b533de86765d4a0effc01b357205
+deleted: sha256:ffe5988c95f16df7e44e47d1b9129e304081723273d000c415ae38b4c02fc7e5
+untagged: sha256:8b6b5c1c6b1cd4f813ae0994bd9d319a15567eafedd98a459c1ee32be28c1138
+deleted: sha256:8b6b5c1c6b1cd4f813ae0994bd9d319a15567eafedd98a459c1ee32be28c1138
+untagged: sha256:e86d1bd69824aa04973fa7414e2622660b3be1f9587fa4fb9a62a444967b8a05
+deleted: sha256:e86d1bd69824aa04973fa7414e2622660b3be1f9587fa4fb9a62a444967b8a05
+untagged: sha256:fe4bb4e17b5273733bdab1d072c53c2e57916f236a091af6b70bd1b40d636d77
+deleted: sha256:fe4bb4e17b5273733bdab1d072c53c2e57916f236a091af6b70bd1b40d636d77
+untagged: cognitivelogic2026_api:latest
+deleted: sha256:1494e78d2752f1faab0dcd38a160e9bb609d8cb8187c8fa69072f8531decfd14
+untagged: sha256:bfd5cd5d80e19938ecfa1bb3135fa7e745a6a1d64462922e89a10e3e47c023d5
+deleted: sha256:bfd5cd5d80e19938ecfa1bb3135fa7e745a6a1d64462922e89a10e3e47c023d5
+untagged: prom/alertmanager:latest
+deleted: sha256:51a825c2a40acc3e338fdd00d622e01ec090f72be2b3ea46be0839cd47a4d286
+deleted: sha256:06a1e7960b1a68794ef943744082dc361dd352fd07ed3319ab6de3f929f38ad2
+untagged: prom/prometheus:latest
+deleted: sha256:e4254400b85610324913f0dc4acf92603d9984e7519414c5a12811aa6146acc3
+deleted: sha256:8737f27a6102141f06bd38e10e8908a8fa39a649cd187a2fee7c4b8429a366d6
+untagged: sha256:e4fd608de493e095e15a7c5e156cb4fc29e4c961c8fbe0c76d37fcceb0ed9209
+deleted: sha256:e4fd608de493e095e15a7c5e156cb4fc29e4c961c8fbe0c76d37fcceb0ed9209
+untagged: sha256:1524c3393952fe037066a4a13ac305f7d2aa49cf9e15cc28bc2b7f7beedd1f6a
+deleted: sha256:1524c3393952fe037066a4a13ac305f7d2aa49cf9e15cc28bc2b7f7beedd1f6a
+untagged: sha256:1708d31443fe4b72ee17a4dd565d99594cf4b6da603d2b97c4e24a3b35f634f1
+deleted: sha256:1708d31443fe4b72ee17a4dd565d99594cf4b6da603d2b97c4e24a3b35f634f1
+untagged: sha256:21f2c481d1e541420d4b8d80a2b5c3fe74f2ee6dd1bda90001ce4a8f5347d988
+deleted: sha256:21f2c481d1e541420d4b8d80a2b5c3fe74f2ee6dd1bda90001ce4a8f5347d988
+untagged: sha256:f84063bdfc135e17064a4eb533e36bd1eb81fe47c3d41f2fb755a1b22ecdb12c
+deleted: sha256:f84063bdfc135e17064a4eb533e36bd1eb81fe47c3d41f2fb755a1b22ecdb12c
+untagged: cognitivelogic:latest
+deleted: sha256:47944fad6273660aa8e48dad3e4e5078743454a609dda87c00093810506fc247
+untagged: neo4j:latest
+deleted: sha256:17073aaf68a7a48332ebd8de2e9de9833ba58f8301542b8a0b7d27a861a0c2dc
+deleted: sha256:e0782dface6d02e668d8ed03e9f464a6a71dec51dc1ae74b7c525741d8936e33
+deleted: sha256:84fa9f5847ed5a7271b21effbde9ea98f6a1916e882efe5a1d58a3e5a3f60549
+untagged: sha256:b4c7ccbbf6133e1d7365aec03eb01ac50e2af60df12a098c2448de66062088da
+deleted: sha256:b4c7ccbbf6133e1d7365aec03eb01ac50e2af60df12a098c2448de66062088da
+untagged: sha256:8a5448c7f16e91524d9701a61e1173793f4a95d23bf15ea49bf57759bd2870f6
+deleted: sha256:8a5448c7f16e91524d9701a61e1173793f4a95d23bf15ea49bf57759bd2870f6
+untagged: sha256:a03459ecc91d2013932ca37b16b6ba62718cc24c3f0a1bc59c77e258a7d15ed7
+deleted: sha256:a03459ecc91d2013932ca37b16b6ba62718cc24c3f0a1bc59c77e258a7d15ed7
+
+Total reclaimed space: 4.697GB
+Deleted Networks:
+cognitivelogic2026_cognitivelogic_network
+cognitivelogic_default
+cognitivelogic_cognitivelogic_network
+root_root_default
+
+Total reclaimed space: 0B
+
+Docker volumes deliberately preserved.
+
+=== REDUCE SYSTEM JOURNAL ===
+
+=== FLUSH PM2 LOGS ===
+[PM2] Flushing /root/.pm2/pm2.log
+[PM2] Flushing:
+[PM2] /root/.pm2/logs/pm2-logrotate-out.log
+[PM2] /root/.pm2/logs/pm2-logrotate-error.log
+[PM2] Flushing:
+[PM2] /root/.pm2/logs/gemini-backend-out.log
+[PM2] /root/.pm2/logs/gemini-backend-error.log
+[PM2] Logs flushed
+[PM2] Saving current process list...
+[PM2] Successfully saved in /root/.pm2/dump.pm2
+
+=== VERIFY PM2 LOG ROTATION ===
+Module: pm2-logrotate
+$ pm2 set pm2-logrotate:max_size 10M
+$ pm2 set pm2-logrotate:retain 7
+$ pm2 set pm2-logrotate:compress true
+$ pm2 set pm2-logrotate:dateFormat YYYY-MM-DD_HH-mm-ss
+$ pm2 set pm2-logrotate:workerInterval 30
+$ pm2 set pm2-logrotate:rotateInterval 0 0 * * *
+$ pm2 set pm2-logrotate:rotateModule true
+Module: module-db-v2
+$ pm2 set module-db-v2:pm2-logrotate [object Object]
+Module: pm2-logrotate
+$ pm2 set pm2-logrotate:max_size 10M
+$ pm2 set pm2-logrotate:retain 7
+$ pm2 set pm2-logrotate:compress true
+$ pm2 set pm2-logrotate:dateFormat YYYY-MM-DD_HH-mm-ss
+$ pm2 set pm2-logrotate:workerInterval 30
+$ pm2 set pm2-logrotate:rotateInterval 0 0 * * *
+$ pm2 set pm2-logrotate:rotateModule true
+Module: module-db-v2
+$ pm2 set module-db-v2:pm2-logrotate [object Object]
+Module: pm2-logrotate
+$ pm2 set pm2-logrotate:max_size 10M
+$ pm2 set pm2-logrotate:retain 7
+$ pm2 set pm2-logrotate:compress true
+$ pm2 set pm2-logrotate:dateFormat YYYY-MM-DD_HH-mm-ss
+$ pm2 set pm2-logrotate:workerInterval 30
+$ pm2 set pm2-logrotate:rotateInterval 0 0 * * *
+$ pm2 set pm2-logrotate:rotateModule true
+Module: module-db-v2
+$ pm2 set module-db-v2:pm2-logrotate [object Object]
+Module: pm2-logrotate
+$ pm2 set pm2-logrotate:max_size 10M
+$ pm2 set pm2-logrotate:retain 7
+$ pm2 set pm2-logrotate:compress true
+$ pm2 set pm2-logrotate:dateFormat YYYY-MM-DD_HH-mm-ss
+$ pm2 set pm2-logrotate:workerInterval 30
+$ pm2 set pm2-logrotate:rotateInterval 0 0 * * *
+$ pm2 set pm2-logrotate:rotateModule true
+Module: module-db-v2
+$ pm2 set module-db-v2:pm2-logrotate [object Object]
+
+=== CAPACITY AFTER ===
+Filesystem     Type  Size  Used Avail Use% Mounted on
+/dev/sda2      ext4   75G   30G   42G  42% /
+               total        used        free      shared  buff/cache   available
+Mem:           7.5Gi       823Mi       4.0Gi        19Mi       3.0Gi       6.7Gi
+Swap:             0B          0B          0B
+
+=== DOCKER AFTER ===
+TYPE            TOTAL     ACTIVE    SIZE      RECLAIMABLE
+Images          1         1         58.78MB   58.78MB (100%)
+Containers      1         1         4.096kB   0B (0%)
+Local Volumes   30        1         3.263GB   3.263GB (99%)
+Build Cache     0         0         0B        0B
+
+=== JOURNAL AFTER ===
+Archived and active journals take up 465.3M in the file system.
+
+=== PM2 AFTER ===
+16G	/root/.pm2
+64K	/root/.pm2/logs
+┌────┬───────────────────┬─────────────┬─────────┬─────────┬──────────┬────────┬──────┬───────────┬──────────┬──────────┬──────────┬──────────┐
+│ id │ name              │ namespace   │ version │ mode    │ pid      │ uptime │ ↺    │ status    │ cpu      │ mem      │ user     │ watching │
+├────┼───────────────────┼─────────────┼─────────┼─────────┼──────────┼────────┼──────┼───────────┼──────────┼──────────┼──────────┼──────────┤
+│ 1  │ gemini-backend    │ default     │ N/A     │ fork    │ 224628   │ 5D     │ 2    │ online    │ 0%       │ 79.8mb   │ root     │ disabled │
+└────┴───────────────────┴─────────────┴─────────┴─────────┴──────────┴────────┴──────┴───────────┴──────────┴──────────┴──────────┴──────────┘
+Module
+┌────┬──────────────────────────────┬───────────────┬──────────┬──────────┬──────┬──────────┬──────────┬──────────┐
+│ id │ module                       │ version       │ pid      │ status   │ ↺    │ cpu      │ mem      │ user     │
+├────┼──────────────────────────────┼───────────────┼──────────┼──────────┼──────┼──────────┼──────────┼──────────┤
+│ 0  │ pm2-logrotate                │ 3.0.0         │ 865      │ online   │ 0    │ 0%       │ 46.5mb   │ root     │
+└────┴──────────────────────────────┴───────────────┴──────────┴──────────┴──────┴──────────┴──────────┴──────────┘
+host metrics | cpu: 2.5% | ram usage: 11% | disk: ⇓ 0mb/s ⇑ 0.046mb/s / 71.14% |
+
+=== SERVICE VERIFICATION ===
+active
+active
+active
+active
+active
+active
+
+=== LISTENING APPLICATION PORTS ===
+LISTEN 0      511          0.0.0.0:443        0.0.0.0:*    users:(("nginx",pid=427234,fd=14),("nginx",pid=427233,fd=14),("nginx",pid=427232,fd=14),("nginx",pid=427231,fd=14),("nginx",pid=427229,fd=14))
+LISTEN 0      511          0.0.0.0:80         0.0.0.0:*    users:(("nginx",pid=427234,fd=13),("nginx",pid=427233,fd=13),("nginx",pid=427232,fd=13),("nginx",pid=427231,fd=13),("nginx",pid=427229,fd=13))
+LISTEN 0      2048       127.0.0.1:8001       0.0.0.0:*    users:(("uvicorn",pid=488718,fd=13))                                                                                                          
+LISTEN 0      511        127.0.0.1:6379       0.0.0.0:*    users:(("redis-server",pid=784,fd=6))                                                                                                         
+LISTEN 0      200        127.0.0.1:5432       0.0.0.0:*    users:(("postgres",pid=814,fd=6))                                                                                                             
+LISTEN 0      2048       127.0.0.1:5000       0.0.0.0:*    users:(("gunicorn",pid=488778,fd=5),("gunicorn",pid=488777,fd=5),("gunicorn",pid=488767,fd=5))                                                
+LISTEN 0      128        127.0.0.1:5001       0.0.0.0:*    users:(("python3",pid=224628,fd=4))                                                                                                           
+LISTEN 0      511            [::1]:6379          [::]:*    users:(("redis-server",pid=784,fd=7))                                                                                                         
+
+=== LOCAL ENDPOINT CHECKS ===
+HTTPS cognitivelogic.it: 200
+Flask 5000: 200
+FastAPI 8001: 404
+
+=== GIT BASELINE ===
+## main...origin/main
+?? sovereign-intelligence-refactor-1.0/03-HETZNER-CAPACITY-BASELINE.txt
+?? sovereign-intelligence-refactor-1.0/04-HETZNER-STORAGE-REMEDIATION.txt
+3e03284 (HEAD -> main, origin/main) docs(architecture): establish QEN sovereign intelligence refactor
+
+STATUS: STORAGE REMEDIATION COMPLETED
+PM2 log tails preserved in: /root/storage-remediation-evidence-20260723-160823
