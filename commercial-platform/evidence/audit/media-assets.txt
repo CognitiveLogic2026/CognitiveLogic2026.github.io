@@ -1,0 +1,13 @@
+./assets/img/logo.svg
+./assets/logo.svg
+./img/logo-cognitivelogic.png
+./img/logo-cognitivelogic.svg
+./img/logo-qen.svg
+./img/qen-homepage-og.png
+./img/qen-methodology-og.png
+./international-watch/eu-ai-act-article-50-transparency-guidelines/art50-hero.png
+./qencode/hamster-ai-governance/qen-code.png
+./static/images/og/og-copilot.png
+./venv/lib/python3.12/site-packages/werkzeug/debug/shared/console.png
+./venv/lib/python3.12/site-packages/werkzeug/debug/shared/less.png
+./venv/lib/python3.12/site-packages/werkzeug/debug/shared/more.png

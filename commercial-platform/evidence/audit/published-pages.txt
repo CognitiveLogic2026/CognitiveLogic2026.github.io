@@ -1,0 +1,12 @@
+./academia/index.html
+./articles/2026/agentic-coding-trends/index.html
+./index.html
+./international-watch/agentic-coding-trends-anthropic/index.html
+./international-watch/eu-ai-act-article-50-transparency-guidelines/index.html
+./international-watch/frontier-ai-governance-demis-hassabis/index.html
+./international-watch/index.html
+./qencode/hamster-ai-governance/index.html
+./qencode/index.html
+./research/ai-governance-matters/index.html
+./wizard-src/dist/index.html
+./wizard-src/index.html
