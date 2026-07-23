@@ -9,7 +9,10 @@ import json
 import re
 from pathlib import Path
 import requests as _requests
-import anthropic
+try:
+    import anthropic
+except ImportError:
+    anthropic = None
 from datetime import datetime
 from flask import Flask, request, jsonify
 from flask_limiter import Limiter
@@ -90,7 +93,16 @@ def add_cors(response):
 
 GRAPH_PATH   = "/app/cognitivelogic/graph.json"
 PILOTS_PATH  = "/app/cognitivelogic/pilots.json"
-ANTHROPIC_CLIENT = anthropic.Anthropic(api_key=os.getenv("ANTHROPIC_API_KEY"))
+ANTHROPIC_CLIENT = None
+
+def get_anthropic_client():
+    global ANTHROPIC_CLIENT
+    api_key = os.getenv("ANTHROPIC_API_KEY")
+    if anthropic is None or not api_key:
+        return None
+    if ANTHROPIC_CLIENT is None:
+        ANTHROPIC_CLIENT = anthropic.Anthropic(api_key=api_key)
+    return ANTHROPIC_CLIENT
 
 def load_pilots():
     if not os.path.exists(PILOTS_PATH):
@@ -367,8 +379,14 @@ def classify_risk():
     contesto    = data.get("contesto", "")
     settore     = data.get("settore", "")
     user_message = "Sistema: " + descrizione + " Contesto: " + contesto + " Settore: " + settore
+    client = get_anthropic_client()
+    if client is None:
+        return jsonify({
+            "status": "unavailable",
+            "error": "external_provider_not_configured"
+        }), 503
     try:
-        response = ANTHROPIC_CLIENT.messages.create(
+        response = client.messages.create(
             model="claude-sonnet-4-6",
             max_tokens=1024,
             system=RISK_SYSTEM_PROMPT,
@@ -406,8 +424,14 @@ def copilot_analyze():
             "analyses":    1 + len(existing.get("history", []))
         }), 200
     user_message = "Sistema AI da classificare: " + descrizione
+    client = get_anthropic_client()
+    if client is None:
+        return jsonify({
+            "status": "unavailable",
+            "error": "external_provider_not_configured"
+        }), 503
     try:
-        response = ANTHROPIC_CLIENT.messages.create(
+        response = client.messages.create(
             model="claude-sonnet-4-6",
             max_tokens=1024,
             system=RISK_SYSTEM_PROMPT,
@@ -517,14 +541,10 @@ def gemini_qen_score():
             if raw is None:
                 raise RuntimeError(f"Nessun modello Gemini disponibile: {last_err}")
         else:
-            msg = ANTHROPIC_CLIENT.messages.create(
-                model="claude-haiku-4-5-20251001",
-                max_tokens=1024,
-                system=SIMPLE_SYSTEM,
-                messages=[{"role": "user", "content": prompt}]
-            )
-            raw = msg.content[0].text.strip()
-            provider = "claude-haiku-fallback"
+            return jsonify({
+                "status": "unavailable",
+                "error": "external_provider_not_configured"
+            }), 503
 
         raw = raw.replace("```json", "").replace("```", "").strip()
         m = re.search(r"\{.*\}", raw, re.DOTALL)
@@ -621,14 +641,10 @@ def gemini_compliance_audit():
                 except Exception:
                     continue
         if raw is None:
-            msg = ANTHROPIC_CLIENT.messages.create(
-                model="claude-sonnet-4-6",
-                max_tokens=2048,
-                system=_COMPLIANCE_AUDIT_SYSTEM,
-                messages=[{"role": "user", "content": prompt}],
-            )
-            raw = msg.content[0].text.strip()
-            provider = "claude-sonnet-4-6-fallback"
+            return jsonify({
+                "status": "unavailable",
+                "error": "external_provider_not_configured"
+            }), 503
         raw = raw.replace("```json", "").replace("```", "").strip()
         m = re.search(r"\{.*\}", raw, re.DOTALL)
         if m:
