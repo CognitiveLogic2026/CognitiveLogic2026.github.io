@@ -6,7 +6,11 @@ import json
 import re
 from datetime import datetime
 
-import anthropic
+try:
+    import anthropic
+except ImportError:
+    anthropic = None
+
 import json_repair
 import requests as _requests
 from pathlib import Path
@@ -152,9 +156,19 @@ def _places_enrich(location: str) -> str:
 
 def _get_client():
     global _client
+    api_key = os.getenv("ANTHROPIC_API_KEY")
+    if anthropic is None or not api_key:
+        return None
     if _client is None:
-        _client = anthropic.Anthropic(api_key=os.getenv("ANTHROPIC_API_KEY"))
+        _client = anthropic.Anthropic(api_key=api_key)
     return _client
+
+
+def _anthropic_messages_create(**kwargs):
+    client = _get_client()
+    if client is None:
+        raise RuntimeError("external_provider_not_configured")
+    return client.messages.create(**kwargs)
 
 
 def _extract_json(raw):
@@ -269,27 +283,26 @@ def _score_business_list(businesses: list, settore: str, provider: str, auto_sav
         try:
             if provider == "mistral":
                 mk = os.getenv("MISTRAL_API_KEY", "")
-                if mk:
-                    raw = _mistral_chat(mk, _DISCOVERY_QEN_SYSTEM, prompt)
-                else:
-                    raise RuntimeError("no mistral key")
-            else:
-                raise RuntimeError("use claude")
-        except Exception:
-            try:
-                msg = _get_client().messages.create(
+                if not mk:
+                    raise RuntimeError("external_provider_not_configured")
+                raw = _mistral_chat(mk, _DISCOVERY_QEN_SYSTEM, prompt)
+            elif provider in {"anthropic", "claude"}:
+                msg = _anthropic_messages_create(
                     model="claude-sonnet-4-6",
                     max_tokens=900,
                     system=_DISCOVERY_QEN_SYSTEM,
                     messages=[{"role": "user", "content": prompt}],
                 )
                 raw = msg.content[0].text
-            except Exception as e:
-                scored["error"] = str(e)
-                results.append(scored)
-                if len(results) < len(businesses):
-                    time.sleep(0.5)
-                continue
+            else:
+                raise RuntimeError(f"unsupported_provider:{provider}")
+        except Exception as e:
+            scored["error"] = str(e)
+            scored["provider"] = provider
+            results.append(scored)
+            if len(results) < len(businesses):
+                time.sleep(0.5)
+            continue
         audit, err = _extract_json(raw)
         if audit:
             scored.update({
@@ -328,8 +341,14 @@ def register_orchestrator(app, limiter=None):
         prompt = (
             f"Azienda: {entity}\nSettore: {sector}\nDescrizione: {description}"
         )
+        if _get_client() is None:
+            return jsonify({
+                "status": "unavailable",
+                "error": "external_provider_not_configured",
+                "provider": "anthropic"
+            }), 503
         try:
-            msg = _get_client().messages.create(
+            msg = _anthropic_messages_create(
                 model="claude-sonnet-4-6",
                 max_tokens=1500,
                 system=_COMPLIANCE_SYSTEM,
@@ -358,8 +377,14 @@ def register_orchestrator(app, limiter=None):
             f"Azienda: {entity}\nLocalità: {location}\nDescrizione: {description}"
             + places_context
         )
+        if _get_client() is None:
+            return jsonify({
+                "status": "unavailable",
+                "error": "external_provider_not_configured",
+                "provider": "anthropic"
+            }), 503
         try:
-            msg = _get_client().messages.create(
+            msg = _anthropic_messages_create(
                 model="claude-sonnet-4-6",
                 max_tokens=1200,
                 system=_TERRITORIAL_SYSTEM,
@@ -388,8 +413,14 @@ def register_orchestrator(app, limiter=None):
             f"Azienda: {entity}\nSettore: {sector}\n"
             f"Livello rischio identificato: {risk_level}\nDescrizione: {description}"
         )
+        if _get_client() is None:
+            return jsonify({
+                "status": "unavailable",
+                "error": "external_provider_not_configured",
+                "provider": "anthropic"
+            }), 503
         try:
-            msg = _get_client().messages.create(
+            msg = _anthropic_messages_create(
                 model="claude-sonnet-4-6",
                 max_tokens=1200,
                 system=_ADVISORY_SYSTEM,
@@ -458,18 +489,11 @@ def register_orchestrator(app, limiter=None):
         try:
             raw = _mistral_chat(key, _COMPLIANCE_SYSTEM, prompt)
         except Exception as mistral_err:
-            # Fallback: Claude Sonnet if Mistral fails
-            try:
-                msg = _get_client().messages.create(
-                    model="claude-sonnet-4-6",
-                    max_tokens=1500,
-                    system=_COMPLIANCE_SYSTEM,
-                    messages=[{"role": "user", "content": prompt}],
-                )
-                raw = msg.content[0].text
-                provider = "claude-sonnet-4-6-fallback"
-            except Exception as claude_err:
-                return jsonify({"error": f"Mistral: {mistral_err} | Claude fallback: {claude_err}"}), 500
+            return jsonify({
+                "status": "provider_error",
+                "provider": "mistral-large-latest",
+                "error": str(mistral_err)
+            }), 502
         result, err = _extract_json(raw)
         if err:
             return jsonify({"error": err}), 500
@@ -499,18 +523,11 @@ def register_orchestrator(app, limiter=None):
         try:
             raw = _mistral_chat(key, _ADVISORY_SYSTEM, prompt)
         except Exception as mistral_err:
-            # Fallback: Claude Sonnet if Mistral fails
-            try:
-                msg = _get_client().messages.create(
-                    model="claude-sonnet-4-6",
-                    max_tokens=1200,
-                    system=_ADVISORY_SYSTEM,
-                    messages=[{"role": "user", "content": prompt}],
-                )
-                raw = msg.content[0].text
-                provider = "claude-sonnet-4-6-fallback"
-            except Exception as claude_err:
-                return jsonify({"error": f"Mistral: {mistral_err} | Claude fallback: {claude_err}"}), 500
+            return jsonify({
+                "status": "provider_error",
+                "provider": "mistral-large-latest",
+                "error": str(mistral_err)
+            }), 502
         result, err = _extract_json(raw)
         if err:
             return jsonify({"error": err}), 500
@@ -557,23 +574,20 @@ def register_orchestrator(app, limiter=None):
         )
         key = os.getenv("MISTRAL_API_KEY", "")
         provider = "mistral-large-latest"
+        if not key:
+            return jsonify({
+                "status": "unavailable",
+                "error": "external_provider_not_configured",
+                "provider": "mistral-large-latest"
+            }), 503
         try:
-            if key:
-                raw = _mistral_chat(key, _BOLKESTEIN_SYSTEM, prompt)
-            else:
-                raise RuntimeError("MISTRAL_API_KEY non configurata")
+            raw = _mistral_chat(key, _BOLKESTEIN_SYSTEM, prompt)
         except Exception as mistral_err:
-            try:
-                msg = _get_client().messages.create(
-                    model="claude-sonnet-4-6",
-                    max_tokens=1500,
-                    system=_BOLKESTEIN_SYSTEM,
-                    messages=[{"role": "user", "content": prompt}],
-                )
-                raw = msg.content[0].text
-                provider = "claude-sonnet-4-6-fallback"
-            except Exception as claude_err:
-                return jsonify({"error": f"Mistral: {mistral_err} | Claude fallback: {claude_err}"}), 500
+            return jsonify({
+                "status": "provider_error",
+                "provider": "mistral-large-latest",
+                "error": str(mistral_err)
+            }), 502
         result, err = _extract_json(raw)
         if err:
             return jsonify({"error": err}), 500
