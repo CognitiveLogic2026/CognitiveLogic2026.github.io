@@ -11,7 +11,6 @@ import uuid
 from datetime import datetime, timedelta
 from typing import List, Optional
 
-import anthropic
 from fastapi import Depends, FastAPI, Header, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel, Field
@@ -32,8 +31,6 @@ app.add_middleware(
     allow_methods=["GET", "POST", "OPTIONS"],
     allow_headers=["Content-Type", "X-API-Key"],
 )
-
-_anthropic = anthropic.Anthropic(api_key=os.getenv("ANTHROPIC_API_KEY"))
 
 _HORECA_API_KEY = os.getenv("COGNITIVE_API_KEY", "")
 
