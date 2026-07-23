@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Agentic Coding 2026: il futuro è nella governance degli agenti | Cognitive Logic</title>
+
+  <meta name="description" content="Il 2026 Agentic Coding Trends Report di Anthropic descrive il passaggio dalla scrittura del codice alla progettazione e governance di ecosistemi multi-agente.">
+
+  <meta name="keywords" content="Agentic AI, Agentic Coding, AI Governance, Multi-Agent Systems, Software Architecture, Anthropic, QEN Framework, Cognitive Logic">
+
+  <meta name="author" content="Roberto Malini — Cognitive Logic">
+  <meta name="robots" content="index, follow">
+
+  <link rel="canonical" href="https://cognitivelogic.it/articles/2026/agentic-coding-trends/">
+
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Agentic Coding 2026: il futuro è nella governance degli agenti">
+  <meta property="og:description" content="Il ruolo dell'ingegnere evolve: dalla scrittura del codice alla progettazione di architetture di coordinamento multi-agente.">
+  <meta property="og:url" content="https://cognitivelogic.it/articles/2026/agentic-coding-trends/">
+  <meta property="og:site_name" content="Cognitive Logic">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Agentic Coding 2026: il futuro è nella governance degli agenti">
+  <meta name="twitter:description" content="Una lettura QEN del 2026 Agentic Coding Trends Report di Anthropic.">
+
+  <style>
+    :root {
+      --navy: #071425;
+      --navy-soft: #0d2037;
+      --gold: #d7ad53;
+      --text: #172235;
+      --muted: #627087;
+      --background: #f4f6f8;
+      --white: #ffffff;
+      --border: #dce2e8;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Inter, Arial, Helvetica, sans-serif;
+      color: var(--text);
+      background: var(--background);
+      line-height: 1.75;
+    }
+
+    header {
+      background: var(--navy);
+      color: var(--white);
+      padding: 24px;
+      border-bottom: 3px solid var(--gold);
+    }
+
+    .nav {
+      max-width: 1120px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 24px;
+    }
+
+    .brand {
+      color: var(--white);
+      text-decoration: none;
+      font-size: 1.2rem;
+      font-weight: 700;
+      letter-spacing: .02em;
+    }
+
+    .nav a {
+      color: #dce6f3;
+      text-decoration: none;
+      margin-left: 20px;
+    }
+
+    .nav a:hover {
+      color: var(--gold);
+    }
+
+    main {
+      max-width: 920px;
+      margin: 48px auto;
+      padding: 0 22px;
+    }
+
+    article {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 54px;
+      box-shadow: 0 18px 50px rgba(7, 20, 37, .08);
+    }
+
+    .eyebrow {
+      color: #85651f;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      font-size: .82rem;
+    }
+
+    h1 {
+      color: var(--navy);
+      font-size: clamp(2.2rem, 5vw, 3.8rem);
+      line-height: 1.08;
+      margin: 14px 0 22px;
+    }
+
+    h2 {
+      color: var(--navy);
+      margin-top: 46px;
+      line-height: 1.25;
+    }
+
+    h3 {
+      color: var(--navy-soft);
+      margin-top: 30px;
+    }
+
+    .lead {
+      font-size: 1.24rem;
+      color: #3b4b61;
+      border-left: 4px solid var(--gold);
+      padding-left: 22px;
+    }
+
+    .metadata {
+      color: var(--muted);
+      font-size: .94rem;
+      margin: 24px 0 38px;
+    }
+
+    blockquote {
+      margin: 36px 0;
+      padding: 24px 28px;
+      background: #f7f2e8;
+      border-left: 5px solid var(--gold);
+      color: var(--navy);
+      font-size: 1.2rem;
+      font-weight: 600;
+    }
+
+    .analysis-box {
+      margin: 30px 0;
+      padding: 28px;
+      background: #f6f8fb;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+    }
+
+    .analysis-box strong {
+      color: var(--navy);
+    }
+
+    ul {
+      padding-left: 24px;
+    }
+
+    li {
+      margin-bottom: 10px;
+    }
+
+    .source {
+      margin-top: 42px;
+      padding: 26px;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      background: #fbfcfd;
+    }
+
+    .source a,
+    .cta a {
+      color: #755713;
+      font-weight: 700;
+    }
+
+    .cta {
+      margin-top: 50px;
+      padding: 34px;
+      background: var(--navy);
+      color: var(--white);
+      border-radius: 14px;
+    }
+
+    .cta h2 {
+      color: var(--white);
+      margin-top: 0;
+    }
+
+    footer {
+      max-width: 920px;
+      margin: 0 auto;
+      padding: 20px 22px 50px;
+      color: var(--muted);
+      text-align: center;
+      font-size: .9rem;
+    }
+
+    @media (max-width: 720px) {
+      article {
+        padding: 30px 22px;
+      }
+
+      .nav {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .nav div:last-child {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+      }
+
+      .nav a {
+        margin-left: 0;
+      }
+    }
+  </style>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Agentic Coding 2026: il futuro è nella governance degli agenti",
+    "description": "Una lettura QEN del 2026 Agentic Coding Trends Report di Anthropic.",
+    "author": {
+      "@type": "Person",
+      "name": "Roberto Malini"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "Cognitive Logic",
+      "url": "https://cognitivelogic.it"
+    },
+    "datePublished": "2026-07-19",
+    "dateModified": "2026-07-19",
+    "mainEntityOfPage": "https://cognitivelogic.it/articles/2026/agentic-coding-trends/"
+  }
+  </script>
+</head>
+
+<body>
+
+<header>
+  <div class="nav">
+    <a class="brand" href="/">Cognitive Logic</a>
+
+    <div>
+      <a href="/">Home</a>
+      <a href="/framework.html">QEN Framework</a>
+      <a href="/international-watch/">International Watch</a>
+    </div>
+  </div>
+</header>
+
+<main>
+  <article>
+
+    <div class="eyebrow">Trend di settore · Agentic AI · AI Governance</div>
+
+    <h1>Agentic Coding 2026: il futuro è nella governance degli agenti</h1>
+
+    <p class="lead">
+      Il <em>2026 Agentic Coding Trends Report</em> di Anthropic descrive
+      un cambiamento che supera la semplice automazione della scrittura
+      del codice: l'ingegnere sta diventando il progettista di architetture
+      nelle quali più agenti AI collaborano, condividono contesto e operano
+      sotto supervisione umana.
+    </p>
+
+    <div class="metadata">
+      Analisi di Roberto Malini · Cognitive Logic · 19 luglio 2026
+    </div>
+
+    <h2>Oltre la scrittura del codice</h2>
+
+    <p>
+      Ogni rivoluzione tecnologica modifica gli strumenti, ma soprattutto
+      ridefinisce il ruolo delle persone che li utilizzano.
+    </p>
+
+    <p>
+      L'evoluzione dell'Agentic Coding non riguarda soltanto la possibilità
+      di produrre software più velocemente. Riguarda il modo in cui vengono
+      progettati, coordinati e verificati i sistemi software.
+    </p>
+
+    <p>
+      Nel paradigma emergente, una parte crescente delle attività operative
+      può essere affidata ad agenti specializzati: pianificazione,
+      implementazione, test, revisione, sicurezza e documentazione.
+    </p>
+
+    <p>
+      Il ruolo umano non scompare. Si sposta verso la progettazione
+      dell'architettura, la definizione delle responsabilità, la supervisione
+      dei flussi e la validazione dei risultati.
+    </p>
+
+    <blockquote>
+      La domanda non è più soltanto: “Il codice funziona?”. La domanda
+      diventa: “Possiamo comprendere, verificare e governare il processo
+      che lo ha prodotto?”.
+    </blockquote>
+
+    <h2>Fatti, analisi e interpretazione</h2>
+
+    <div class="analysis-box">
+      <p><strong>Fatto.</strong> Gli strumenti di coding agentico possono assumere compiti sempre più articolati lungo il ciclo di sviluppo.</p>
+
+      <p><strong>Analisi.</strong> Il valore dell'ingegnere si sposta progressivamente dall'esecuzione manuale alla definizione del contesto, dei vincoli e delle condizioni di verifica.</p>
+
+      <p><strong>Interpretazione QEN.</strong> Quando più agenti partecipano allo stesso processo, identità, autorità, evidenze e tracciabilità diventano proprietà architetturali essenziali.</p>
+    </div>
+
+    <h2>Dai componenti software agli ecosistemi di agenti</h2>
+
+    <p>
+      Nell'ingegneria tradizionale, l'architettura definisce moduli,
+      interfacce, dipendenze e flussi di dati.
+    </p>
+
+    <p>
+      In un sistema multi-agente deve definire anche:
+    </p>
+
+    <ul>
+      <li>quale agente può svolgere una determinata funzione;</li>
+      <li>quale livello di autorità possiede;</li>
+      <li>quali informazioni può utilizzare;</li>
+      <li>quali politiche deve rispettare;</li>
+      <li>quando deve richiedere l'intervento umano;</li>
+      <li>come vengono documentate e verificate le decisioni.</li>
+    </ul>
+
+    <p>
+      L'agente diventa quindi un'unità operativa e decisionale.
+      La sua identità non può limitarsi a un nome tecnico o a una credenziale.
+      Deve includere ruolo, responsabilità, limiti, fonti informative e
+      meccanismi di escalation.
+    </p>
+
+    <h2>Gli impatti tecnologici</h2>
+
+    <p>
+      Le architetture agentiche aumentano l'importanza del
+      <strong>context engineering</strong>: qualità e struttura del contesto,
+      memoria, documentazione, regole operative e conoscenza condivisa.
+    </p>
+
+    <p>
+      Cresce inoltre la necessità di osservabilità. Non basta registrare
+      l'output finale: occorre ricostruire quale agente abbia svolto
+      un'azione, con quali dati e sulla base di quale politica.
+    </p>
+
+    <p>
+      Diventano centrali:
+    </p>
+
+    <ul>
+      <li>registri decisionali;</li>
+      <li>provenienza dei dati;</li>
+      <li>controlli di accesso e autorità;</li>
+      <li>validazione indipendente;</li>
+      <li>audit dei flussi multi-agente;</li>
+      <li>supervisione umana significativa.</li>
+    </ul>
+
+    <h2>Gli impatti economici e organizzativi</h2>
+
+    <p>
+      L'automazione può ridurre i tempi di sviluppo, ma non elimina
+      la necessità di competenze qualificate. Cambia il punto in cui
+      si concentra il valore.
+    </p>
+
+    <p>
+      Le organizzazioni dovranno investire meno nella semplice esecuzione
+      ripetitiva e maggiormente nella capacità di:
+    </p>
+
+    <ul>
+      <li>progettare architetture AI-native;</li>
+      <li>governare sistemi multi-agente;</li>
+      <li>definire responsabilità e procedure di escalation;</li>
+      <li>verificare qualità, sicurezza e conformità;</li>
+      <li>preservare conoscenza e memoria organizzativa.</li>
+    </ul>
+
+    <p>
+      Il rischio è adottare agenti autonomi senza aggiornare processi,
+      ruoli e sistemi di controllo. In questo scenario l'aumento della
+      velocità operativa può produrre anche un aumento della velocità
+      dell'errore.
+    </p>
+
+    <h2>Gli impatti normativi</h2>
+
+    <p>
+      Quando gli agenti contribuiscono a decisioni che incidono su persone,
+      servizi o processi critici, aumentano le esigenze di trasparenza,
+      accountability, controllo umano e tracciabilità.
+    </p>
+
+    <p>
+      La governance non può essere aggiunta al termine del progetto.
+      Deve essere progettata insieme agli agenti, ai dati e alle interazioni
+      che compongono il sistema.
+    </p>
+
+    <h2>La lettura del QEN Framework</h2>
+
+    <p>
+      L'evoluzione descritta dal report Anthropic è coerente con alcuni
+      elementi centrali del QEN Framework.
+    </p>
+
+    <h3>Semantic Identity Layer</h3>
+
+    <p>
+      Ogni agente deve poter essere identificato non soltanto tecnicamente,
+      ma anche semanticamente: chi è, quale ruolo svolge, che cosa è
+      autorizzato a fare e quali sono i suoi limiti.
+    </p>
+
+    <h3>QEN Semantic Decision Passport</h3>
+
+    <p>
+      Ogni decisione significativa dovrebbe essere accompagnata da
+      informazioni su identità, autorità, tracciabilità, spiegabilità,
+      evidenze e policy applicate.
+    </p>
+
+    <h3>Governance by Design</h3>
+
+    <p>
+      Le regole di controllo, supervisione ed escalation devono far parte
+      dell'architettura fin dalle prime fasi di progettazione.
+    </p>
+
+    <h3>Corpus Dependency Graph</h3>
+
+    <p>
+      Le relazioni tra agenti, politiche, evidenze, artefatti e decisioni
+      devono essere rappresentate esplicitamente affinché il sistema possa
+      essere compreso e verificato.
+    </p>
+
+    <blockquote>
+      Data must be intelligible.
+    </blockquote>
+
+    <p>
+      In un ecosistema agentico, questo principio riguarda non soltanto
+      i dati in ingresso, ma anche le relazioni, le decisioni, le dipendenze
+      e le responsabilità che producono il risultato finale.
+    </p>
+
+    <h2>La nuova responsabilità dell'architetto</h2>
+
+    <p>
+      L'architetto del software non progetterà soltanto componenti e API.
+      Dovrà progettare sistemi socio-tecnici nei quali agenti artificiali
+      e persone cooperano all'interno di regole comprensibili.
+    </p>
+
+    <p>
+      Questo richiede una nuova disciplina: non soltanto AI engineering,
+      ma architettura della responsabilità.
+    </p>
+
+    <p>
+      Il futuro del software potrebbe dipendere sempre meno dalla quantità
+      di codice scritto e sempre più dalla qualità dell'architettura che
+      governa chi — o che cosa — lo scrive.
+    </p>
+
+    <h2>Conclusione</h2>
+
+    <p>
+      Il <em>2026 Agentic Coding Trends Report</em> non annuncia la fine
+      dell'ingegneria del software. Ne segnala una trasformazione.
+    </p>
+
+    <p>
+      L'ingegnere diventa progettista di contesto, coordinatore di agenti
+      e garante della qualità del processo decisionale.
+    </p>
+
+    <p>
+      La sfida non consiste soltanto nel costruire agenti più capaci.
+      Consiste nel costruire ecosistemi nei quali ogni agente, decisione
+      ed evidenza possa essere identificata, spiegata e verificata.
+    </p>
+
+    <div class="source">
+      <strong>Fonte primaria</strong>
+
+      <p>
+        Anthropic, <em>2026 Agentic Coding Trends Report</em>.
+      </p>
+
+      <a
+        href="https://resources.anthropic.com/2026-agentic-coding-trends-report"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Consulta il report ufficiale di Anthropic
+      </a>
+    </div>
+
+    <div class="cta">
+      <h2>Governare sistemi AI comprensibili</h2>
+
+      <p>
+        Cognitive Logic sviluppa il QEN Framework per rendere dati,
+        decisioni e sistemi agentici più intelligibili, verificabili
+        e governabili.
+      </p>
+
+      <p>
+        <a href="/framework.html">Approfondisci il QEN Framework</a>
+      </p>
+    </div>
+
+  </article>
+</main>
+
+<footer>
+  © 2026 Cognitive Logic · Data must be intelligible.
+</footer>
+
+</body>
+</html>
