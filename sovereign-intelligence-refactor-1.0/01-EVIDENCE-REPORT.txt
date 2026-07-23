@@ -1,0 +1,654 @@
+==================================================
+QEN SOVEREIGN INTELLIGENCE — FOCUSED EVIDENCE
+Tracked repository files only
+==================================================
+
+=== GIT BASELINE ===
+## main...origin/main
+?? sovereign-audit/
+6c52222 (HEAD -> main, origin/main) feat(wizard): add QEN assessment wizard
+05dc23d feat(qen): add shared QEN context module
+bad5d0f content(article): preserve agentic coding trends publication
+0ca8622 docs(enterprise): establish enterprise platform architecture corpus
+4f4878a docs(editorial): establish governed editorial platform architecture
+
+=== PROVIDER REFERENCES IN TRACKED FILES ===
+.github/workflows/deploy-vps.yml:31:          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+.github/workflows/deploy-vps.yml:33:          GOOGLE_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+.github/workflows/deploy-vps.yml:35:          MISTRAL_API_KEY: ${{ secrets.MISTRAL_API_KEY }}
+.github/workflows/deploy-vps.yml:36:          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+.github/workflows/deploy-vps.yml:48:          envs: ICEA_API_KEY,INFOCAMERE_API_KEY,SUPERVISOR_KEY,ANTHROPIC_API_KEY,COGNITIVE_API_KEY,GOOGLE_API_KEY,GOOGLE_PLACES_API_KEY,MISTRAL_API_KEY,OPENAI_API_KEY,SMTP_HOST,SMTP_PORT,SMTP_USER,SMTP_PASS,ALERT_EMAIL_FROM,ALERT_EMAIL_TO
+.github/workflows/deploy-vps.yml:94:              ANTHROPIC_API_KEY     "${ANTHROPIC_API_KEY}" \
+.github/workflows/deploy-vps.yml:98:              MISTRAL_API_KEY       "${MISTRAL_API_KEY}" \
+.github/workflows/deploy-vps.yml:99:              OPENAI_API_KEY        "${OPENAI_API_KEY}" \
+AUDIT_LOG.md:13:del dominio. A differenza di `llms.txt` e `robots.txt` (bridge temporaneo verso il mirror
+AUDIT_LOG.md:19:`llms.txt` e `robots.txt` sono stati rimossi in PR #149; entrambi i file puntano ora
+AUDIT_LOG.md:29:pagine), `og:url`, `sitemap.xml` (35 URL), `robots.txt` e `llms.txt`: zero
+AUDIT_LOG.md:48:`identity.html`, `identity_en.html`, `index_en.html`, `legal.html`, `llm-index.html`,
+AUDIT_LOG.md:78:non erano (solo) i log non ruotati, ma il processo pm2 `gemini-backend` in
+AUDIT_LOG.md:80:`/root/qen-framework/gemini_backend.py` non esisteva più sul filesystem
+AUDIT_LOG.md:83:rotazione potesse contenere. Il file `gemini_backend.py` non risulta in nessun
+AUDIT_LOG.md:88:**Azione presa**: processo `gemini-backend` fermato ed eliminato da pm2
+AUDIT_LOG.md:92:**Aggiornamento (2026-07-07, stesso giorno) — gemini-backend ripristinato**:
+AUDIT_LOG.md:106:- `pm2 list`: `gemini-backend` online, **0 restart** (nessun crash-loop).
+ELENCO_PAGINE.md:88:| 32 | `/llm-index.html` | Index semantico per LLM e crawler AI |
+ELENCO_PAGINE.md:101:| `llms.txt` | Istruzioni per modelli linguistici (LLM) |
+PROMPT_ANALISI_REPO.md:3:Incolla questo testo all'inizio di una nuova sessione Claude Code.
+PROMPT_ANALISI_REPO.md:9:Sei Claude Code sul repository `CognitiveLogic2026/CognitiveLogic2026.github.io`.
+PROMPT_ANALISI_REPO.md:37:**JS:** vanilla, chiamate dirette a api.cognitivelogic.it. `app.js` chiama Gemini REST lato client.
+PROMPT_ANALISI_REPO.md:52:| POST `/classify-risk` | ✅ X-API-Key | EU AI Act via Claude Sonnet 4.6 (30/min) |
+PROMPT_ANALISI_REPO.md:54:| POST `/gemini/qen-score` | ❌ | QEN via Gemini (fallback Claude Haiku) (30/min) |
+PROMPT_ANALISI_REPO.md:60:| Path | Rate | LLM primario | Fallback |
+PROMPT_ANALISI_REPO.md:62:| `/agents/compliance-auditor` | 30/min | Claude Sonnet 4.6 | — |
+PROMPT_ANALISI_REPO.md:63:| `/agents/territorial-mapper` | 30/min | Claude + Google Places | — |
+PROMPT_ANALISI_REPO.md:64:| `/agents/advisory-council` | 30/min | Claude Sonnet 4.6 | — |
+PROMPT_ANALISI_REPO.md:66:| `/agents/mistral-compliance` | 30/min | Mistral Large | Claude Sonnet 4.6 |
+PROMPT_ANALISI_REPO.md:67:| `/agents/mistral-advisor` | 30/min | Mistral Large | Claude Sonnet 4.6 |
+PROMPT_ANALISI_REPO.md:68:| `/agents/openai-advisor` | — | ❌ 503 stub | — |
+PROMPT_ANALISI_REPO.md:69:| `/agents/bolkestein-assessment` | 30/min | Mistral Large | Claude Sonnet 4.6 |
+PROMPT_ANALISI_REPO.md:71:| `/agents/score-businesses` | 20/min | Mistral / Claude | Claude fallback |
+PROMPT_ANALISI_REPO.md:72:| `/agents/places-batch-qen` | 20/min | Mistral / Claude | Claude fallback |
+PROMPT_ANALISI_REPO.md:92:/agents/*, /gemini/*, /admin/*, /audit/*,
+PROMPT_ANALISI_REPO.md:134:| `ANTHROPIC_API_KEY` | ✅ Attivo |
+PROMPT_ANALISI_REPO.md:135:| `MISTRAL_API_KEY` | ✅ Attivo |
+PROMPT_ANALISI_REPO.md:137:| `GOOGLE_API_KEY` (Gemini) | ✅ Attivo |
+PROMPT_ANALISI_REPO.md:142:| `OPENAI_API_KEY` | ❌ Disabilitato (pagamento pending) |
+PROMPT_ANALISI_REPO.md:151:2. ~~**Gemini lato client in `app.js`**~~ — **RISOLTO** (verificato 2026-07-11): `js/app.js`
+PROMPT_ANALISI_REPO.md:152:   chiama `/gemini/qen-score` sul backend, non più `generativelanguage.googleapis.com`
+PROMPT_ANALISI_REPO.md:160:   con mock LLM.
+QEN_DOSSIER_NOTARILE.md:93:- Single source of truth per formula, pesi, soglie, modelli LLM e mapping normativi
+QEN_DOSSIER_NOTARILE.md:116:- **Stack:** FastAPI + Claude Sonnet + JSON knowledge graph
+QEN_DOSSIER_NOTARILE.md:175:- [ ] Email di conferma ANTHROPIC_API_KEY setup (date-stamped)
+QEN_DOSSIER_NOTARILE.md:185:2. Di aver sviluppato il framework in modo **completamente indipendente**, senza utilizzo di opere pre-esistenti protette da diritti terzi (salvo librerie open-source dichiarate: FastAPI, Python standard library, Claude API — che rimangono proprietà dei rispettivi titolari)
+QEN_DOSSIER_NOTARILE.md:189:4. Che il framework è stato sviluppato su **infrastruttura propria** (VPS Hetzner CAX21 ARM64 affittato) utilizzando API commerciali (Anthropic Claude Sonnet)
+QEN_RECONCILIAZIONE_PROMPT.md:13:## Prompt di Riconciliazione (template LLM)
+README.md:19:  Claude (Anthropic) for EU AI Act classification and GDPR risk analysis.
+README.md:20:  Gemini for QEN scoring and market intelligence.
+README.md:41:|`CognitiveLogic2026`|Main API backend — Flask + Claude + Gemini |🟢 Live|
+README.md:53:  ├── Flask :5000  — Claude API  (risk, compliance, analyze)
+README.md:54:  ├── Flask :5001  — Gemini API  (qen-score, market-scan)
+VALIDATION_STATUS.md:44:### OpenAI (OPENAI_API_KEY)
+VALIDATION_STATUS.md:49:| Motivo | Pagamento in sospeso — credito OpenAI esaurito |
+VALIDATION_STATUS.md:50:| Endpoint | `POST /agents/openai-advisor` |
+VALIDATION_STATUS.md:52:| Alternativa | `POST /agents/mistral-advisor` (Mistral AI, operativo) |
+VALIDATION_STATUS.md:54:L'endpoint `/agents/openai-advisor` è registrato nel router di
+VALIDATION_STATUS.md:56:a `api.openai.com`. Il modello `gpt-4o-mini` può essere riabilitato
+VALIDATION_STATUS.md:57:impostando `OPENAI_API_KEY` e ripristinando il corpo della funzione
+VALIDATION_STATUS.md:58:`openai_advisor()`.
+VALIDATION_STATUS.md:86:| Orchestrator (Claude + Gemini) | — | Operativo |
+VALIDATION_STATUS.md:87:| Mistral advisor | — | Operativo |
+VALIDATION_STATUS.md:88:| OpenAI advisor | — | Disabilitato (503) |
+VALIDATION_STATUS.md:98:| Limite endpoint LLM singolo | 30 req/min per IP |
+VALIDATION_STATUS.md:99:| Limite endpoint batch LLM | 20 req/min per IP |
+commercial-platform/evidence/audit/commercial-evidence-candidates.txt:3:/international-watch/eu-ai-act-article-50-transparency-guidelines/,international-watch/eu-ai-act-article-50-transparency-guidelines/index.html,Linee guida AI Act articolo 50: obblighi di trasparenza | Cognitive Logic,"AI Act, la Commissione chiarisce gli obblighi di trasparenza dell’articolo 50","La Commissione europea chiarisce gli obblighi di trasparenza dell’articolo 50 dell’AI Act per provider, deployer e contenuti generati dall’IA."
+commercial-platform/evidence/audit/markdown-assets.txt:42:./venv/lib/python3.12/site-packages/anthropic/lib/foundry.md
+commercial-platform/evidence/audit/published-pages.txt:4:./international-watch/agentic-coding-trends-anthropic/index.html
+docs/MANUALE_TECNICO_OPERATIVO_v1.0.md:124:- **Stack:** FastAPI + Claude Sonnet 4.6 + JSON graphs
+docs/commercial-homepage-release-1.0/STEP-3-ENTERPRISE-TRUST-EVIDENCE-20260721-215346.md:141:            <p class="pc-desc">Dual-Brain: Claude + Gemini in orchestrazione parallela. /full-analysis, /gemini/qen-score, /dati-incrociati. Endpoint operativi.</p>
+docs/commercial-homepage-release-1.0/STEP-4-EVIDENCE-20260721-220144.md:208:267-            <p class="pc-desc">Dual-Brain: Claude + Gemini in orchestrazione parallela. /full-analysis, /gemini/qen-score, /dati-incrociati. Endpoint operativi.</p>
+docs/commercial-homepage-release-1.0/STEP-4-EVIDENCE-20260721-220144.md:257:267-            <p class="pc-desc">Dual-Brain: Claude + Gemini in orchestrazione parallela. /full-analysis, /gemini/qen-score, /dati-incrociati. Endpoint operativi.</p>
+docs/commercial-homepage-release-1.0/STEP-4-EVIDENCE-20260721-220144.md:275:285-            <p class="pc-desc">Interfaccia conversazionale per compliance AI. Risponde su EU AI Act, Bolkestein, CSRD, QEN Score. Powered by Claude.</p>
+editorial-evolution-1.0/phase-1-audit/EDITORIAL-ARCHITECTURE-REPORT.md:17:- Anthropic analysis
+editorial-evolution-1.0/phase-1-audit/editorial-pages.txt:1:international-watch/agentic-coding-trends-anthropic/index.html
+enterprise-platform-evolution-1.0/05-enterprise-semantic-layer/ETM-001-ENTERPRISE-TAXONOMY-MODEL.md:131:- Technology Providers
+llms.txt:19:- [LLM Index](https://cognitivelogic.it/llm-index.html): indice machine-readable con JSON-LD.
+llms.txt:24:- [Copilot](https://cognitivelogic.it/copilot.html): frontend del Compliance Copilot (Claude + Mistral).
+llms.txt:28:Endpoint API HTTPS esposti su `api.cognitivelogic.it`, documentati integralmente in [LLM Index](https://cognitivelogic.it/llm-index.html) (metodo, body, response schema):
+llms.txt:30:- `POST /copilot-analyze` — analisi compliance EU AI Act / GDPR (Claude Sonnet).
+llms.txt:31:- `POST /agents/mistral-compliance` e `/agents/mistral-advisor` — audit e raccomandazioni compliance (Mistral Large).
+llms.txt:33:- `POST /gemini/qen-score` — calcolo QEN Score (Gemini).
+main.py:13:    import anthropic
+main.py:15:    anthropic = None
+main.py:96:ANTHROPIC_CLIENT = None
+main.py:98:def get_anthropic_client():
+main.py:99:    global ANTHROPIC_CLIENT
+main.py:100:    api_key = os.getenv("ANTHROPIC_API_KEY")
+main.py:101:    if anthropic is None or not api_key:
+main.py:103:    if ANTHROPIC_CLIENT is None:
+main.py:104:        ANTHROPIC_CLIENT = anthropic.Anthropic(api_key=api_key)
+main.py:105:    return ANTHROPIC_CLIENT
+main.py:382:    client = get_anthropic_client()
+main.py:386:            "error": "external_provider_not_configured"
+main.py:390:            model="claude-sonnet-4-6",
+main.py:427:    client = get_anthropic_client()
+main.py:431:            "error": "external_provider_not_configured"
+main.py:435:            model="claude-sonnet-4-6",
+main.py:482:@app.route("/gemini/qen-score", methods=["POST"])
+main.py:484:def gemini_qen_score():
+main.py:519:            _GEMINI_MODELS = ["gemini-2.0-flash-lite", "gemini-2.5-flash", "gemini-2.0-flash"]
+main.py:521:            provider = None
+main.py:522:            for _model in _GEMINI_MODELS:
+main.py:536:                    provider = _model
+main.py:542:                raise RuntimeError(f"Nessun modello Gemini disponibile: {last_err}")
+main.py:546:                "error": "external_provider_not_configured"
+main.py:560:            q["provider"] = provider
+main.py:596:@app.route("/gemini/compliance-audit", methods=["POST"])
+main.py:598:def gemini_compliance_audit():
+main.py:623:        provider = None
+main.py:625:            for _model in ["gemini-2.0-flash-lite", "gemini-2.5-flash", "gemini-2.0-flash"]:
+main.py:639:                    provider = _model
+main.py:646:                "error": "external_provider_not_configured"
+main.py:656:            q["provider"] = provider
+orchestrator.py:10:    import anthropic
+orchestrator.py:12:    anthropic = None
+orchestrator.py:159:    api_key = os.getenv("ANTHROPIC_API_KEY")
+orchestrator.py:160:    if anthropic is None or not api_key:
+orchestrator.py:163:        _client = anthropic.Anthropic(api_key=api_key)
+orchestrator.py:167:def _anthropic_messages_create(**kwargs):
+orchestrator.py:170:        raise RuntimeError("external_provider_not_configured")
+orchestrator.py:261:def _score_business_list(businesses: list, settore: str, provider: str, auto_save: bool) -> list:
+orchestrator.py:284:            if provider == "mistral":
+orchestrator.py:285:                mk = os.getenv("MISTRAL_API_KEY", "")
+orchestrator.py:287:                    raise RuntimeError("external_provider_not_configured")
+orchestrator.py:288:                raw = _mistral_chat(mk, _DISCOVERY_QEN_SYSTEM, prompt)
+orchestrator.py:289:            elif provider in {"anthropic", "claude"}:
+orchestrator.py:290:                msg = _anthropic_messages_create(
+orchestrator.py:291:                    model="claude-sonnet-4-6",
+orchestrator.py:298:                raise RuntimeError(f"unsupported_provider:{provider}")
+orchestrator.py:301:            scored["provider"] = provider
+orchestrator.py:347:                "error": "external_provider_not_configured",
+orchestrator.py:348:                "provider": "anthropic"
+orchestrator.py:351:            msg = _anthropic_messages_create(
+orchestrator.py:352:                model="claude-sonnet-4-6",
+orchestrator.py:383:                "error": "external_provider_not_configured",
+orchestrator.py:384:                "provider": "anthropic"
+orchestrator.py:387:            msg = _anthropic_messages_create(
+orchestrator.py:388:                model="claude-sonnet-4-6",
+orchestrator.py:419:                "error": "external_provider_not_configured",
+orchestrator.py:420:                "provider": "anthropic"
+orchestrator.py:423:            msg = _anthropic_messages_create(
+orchestrator.py:424:                model="claude-sonnet-4-6",
+orchestrator.py:449:    # Mistral endpoints (primary LLM — Mistral Large via REST, no SDK)
+orchestrator.py:450:    # MISTRAL_API_KEY injected from GitHub Secrets at deploy time
+orchestrator.py:451:    # Falls back to Claude Sonnet if Mistral is unavailable
+orchestrator.py:454:    def _mistral_chat(key: str, system: str, prompt: str) -> str:
+orchestrator.py:455:        """Call Mistral Large and return the raw content string."""
+orchestrator.py:457:            "https://api.mistral.ai/v1/chat/completions",
+orchestrator.py:463:                "model": "mistral-large-latest",
+orchestrator.py:475:    @app.route("/agents/mistral-compliance", methods=["POST"])
+orchestrator.py:477:    def mistral_compliance():
+orchestrator.py:484:        key = os.getenv("MISTRAL_API_KEY", "")
+orchestrator.py:486:            return jsonify({"error": "MISTRAL_API_KEY non configurata"}), 503
+orchestrator.py:488:        provider = "mistral-large-latest"
+orchestrator.py:490:            raw = _mistral_chat(key, _COMPLIANCE_SYSTEM, prompt)
+orchestrator.py:491:        except Exception as mistral_err:
+orchestrator.py:493:                "status": "provider_error",
+orchestrator.py:494:                "provider": "mistral-large-latest",
+orchestrator.py:495:                "error": str(mistral_err)
+orchestrator.py:501:        result["provider"] = provider
+orchestrator.py:505:    @app.route("/agents/mistral-advisor", methods=["POST"])
+orchestrator.py:507:    def mistral_advisor():
+orchestrator.py:515:        key = os.getenv("MISTRAL_API_KEY", "")
+orchestrator.py:517:            return jsonify({"error": "MISTRAL_API_KEY non configurata"}), 503
+orchestrator.py:522:        provider = "mistral-large-latest"
+orchestrator.py:524:            raw = _mistral_chat(key, _ADVISORY_SYSTEM, prompt)
+orchestrator.py:525:        except Exception as mistral_err:
+orchestrator.py:527:                "status": "provider_error",
+orchestrator.py:528:                "provider": "mistral-large-latest",
+orchestrator.py:529:                "error": str(mistral_err)
+orchestrator.py:535:        result["provider"] = provider
+orchestrator.py:540:    # OpenAI endpoint — DISABLED (payment pending, OPENAI_API_KEY non disponibile)
+orchestrator.py:542:    # @app.route("/agents/openai-advisor", methods=["POST"])
+orchestrator.py:543:    # def openai_advisor():
+orchestrator.py:544:    #     ...  # gpt-4o-mini via https://api.openai.com/v1/chat/completions
+orchestrator.py:547:    @app.route("/agents/openai-advisor", methods=["POST"])
+orchestrator.py:548:    def openai_advisor():
+orchestrator.py:551:            "message": "OpenAI advisor temporaneamente non disponibile.",
+orchestrator.py:575:        key = os.getenv("MISTRAL_API_KEY", "")
+orchestrator.py:576:        provider = "mistral-large-latest"
+orchestrator.py:580:                "error": "external_provider_not_configured",
+orchestrator.py:581:                "provider": "mistral-large-latest"
+orchestrator.py:584:            raw = _mistral_chat(key, _BOLKESTEIN_SYSTEM, prompt)
+orchestrator.py:585:        except Exception as mistral_err:
+orchestrator.py:587:                "status": "provider_error",
+orchestrator.py:588:                "provider": "mistral-large-latest",
+orchestrator.py:589:                "error": str(mistral_err)
+orchestrator.py:595:        result["provider"] = provider
+orchestrator.py:628:        provider  = (data.get("provider") or "mistral").lower()
+orchestrator.py:631:        results   = _score_business_list(businesses, settore, provider, auto_save)
+orchestrator.py:646:        provider    = (data.get("provider") or "mistral").lower()
+orchestrator.py:660:        results = _score_business_list(businesses, settore, provider, auto_save)
+qen-bolkestein/qen_config.py:17:    model_name: str = "mistral:7b"
+qen-bolkestein/qen_config.py:22:    ANTHROPIC_API_KEY = os.getenv("ANTHROPIC_API_KEY", "")
+qen-bolkestein/qen_config.py:23:    MISTRAL_API_KEY = os.getenv("MISTRAL_API_KEY", "")
+qen-bolkestein/qen_config.py:55:            ("ANTHROPIC_API_KEY", "Claude API"),
+qen-bolkestein/qen_config.py:56:            ("MISTRAL_API_KEY", "Mistral API"),
+qen-bolkestein/qen_multi_agent_router.py:6:from anthropic import Anthropic
+qen-bolkestein/qen_multi_agent_router.py:23:class LLMRouter:
+qen-bolkestein/qen_multi_agent_router.py:25:        self.anthropic = Anthropic(api_key=os.getenv("ANTHROPIC_API_KEY"))
+qen-bolkestein/qen_multi_agent_router.py:29:        m = {"ristorazione": "claude-sonnet-4-20250514", "alberghiero": "claude-sonnet-4-20250514", "balneare": "mistral:7b"}
+qen-bolkestein/qen_multi_agent_router.py:30:        return m.get(vertical.lower(), "claude-sonnet-4-20250514")
+qen-bolkestein/qen_multi_agent_router.py:32:    async def call_claude(self, prompt, name):
+qen-bolkestein/qen_multi_agent_router.py:34:            r = self.anthropic.messages.create(model="claude-sonnet-4-20250514", max_tokens=1000, messages=[{"role": "user", "content": prompt}])
+qen-bolkestein/qen_multi_agent_router.py:39:            logger.info(f"✅ Claude: {name} = {result.get('qen_score', 0):.1f}")
+qen-bolkestein/qen_multi_agent_router.py:42:            logger.error(f"❌ Claude: {e}")
+qen-bolkestein/qen_multi_agent_router.py:48:                async with session.post(f"{self.ollama_url}/api/generate", json={"model": "mistral:7b", "prompt": prompt, "stream": False}, timeout=aiohttp.ClientTimeout(total=60)) as resp:
+qen-bolkestein/qen_multi_agent_router.py:66:        if "claude" in model:
+qen-bolkestein/qen_multi_agent_router.py:67:            result, conf = await self.call_claude(prompt, name)
+qen-bolkestein/qen_multi_agent_router.py:74:        self.router = LLMRouter()
+qen-bolkestein/requirements.txt:1:anthropic>=0.28.0
+qen-bolkestein/requirements.txt:2:mistralai>=0.0.14
+qen-horeca-auditor/requirements.txt:1:anthropic>=0.28.0
+qen_context.py:8:- gemini_backend.py (PM2, porta 5001): in esecuzione ma SCOLLEGATO da main.py.
+qen_context.py:9:- /gemini/qen-score e /gemini/compliance-audit sono rotte DENTRO main.py su Flask :5000.
+qen_context.py:69:CLAUDE_MODEL = "claude-sonnet-4-6"
+qen_context.py:70:GEMINI_MODEL_CASCADE = ["gemini-2.0-flash-lite", "gemini-2.5-flash", "gemini-2.0-flash"]
+qen_context.py:71:MISTRAL_MODEL = "mistral-large-latest"
+qen_context.py:72:LLM_MAX_TOKENS_AUDIT = 1500
+qen_context.py:73:LLM_MAX_TOKENS_SCORE = 900
+qen_context.py:74:LLM_MAX_TOKENS_BATCH = 1200
+qen_context.py:75:LLM_TEMPERATURE_DEFAULT = 0.3
+qen_context.py:76:RATE_LIMIT_LLM_SINGLE = 30
+qen_context.py:77:RATE_LIMIT_LLM_BATCH = 20
+qen_context.py:181:    "POST /copilot-analyze": "Scoring QEN + analisi LLM Gemini",
+qen_context.py:187:    "POST /gemini/qen-score": "QEN scoring via Gemini, dentro main.py :5000",
+qen_context.py:188:    "POST /gemini/compliance-audit": "Audit compliance via Gemini, dentro main.py :5000",
+qen_context.py:189:    "POST /agents/compliance-auditor": "Audit compliance via Claude, live su :5000 (orchestrator.py)",
+qen_context.py:190:    "POST /agents/territorial-mapper": "Mappatura territoriale via Claude + Google Places",
+qen_context.py:191:    "POST /agents/advisory-council": "Consulenza normativa via Claude",
+qen_context.py:193:    "POST /agents/mistral-compliance": "Audit compliance via Mistral, fallback Claude",
+qen_context.py:194:    "POST /agents/mistral-advisor": "Consulenza via Mistral, fallback Claude",
+qen_context.py:195:    "POST /agents/bolkestein-assessment": "Pre-assessment Bolkestein via Mistral/Claude",
+qen_context.py:206:    "POST /agents/openai-advisor": "Presente in orchestrator.py ma disabilitata a mano, sempre 503",
+requirements-flask.txt:2:anthropic~=0.105
+robots.txt:3:# Descrizione semantica del progetto per agenti AI e LLM: https://cognitivelogic.it/llms.txt
+robots.txt:20:User-agent: ClaudeBot
+robots.txt:23:User-agent: Claude-User
+robots.txt:26:User-agent: anthropic-ai
+tests/test_orchestrator.py:3:All external I/O (Anthropic, Mistral, Google Places, file reads) is mocked so
+tests/test_orchestrator.py:18:_mock_anthropic = MagicMock()
+tests/test_orchestrator.py:19:sys.modules["anthropic"] = _mock_anthropic
+tests/test_orchestrator.py:69:def _make_claude_mock(text: str):
+tests/test_orchestrator.py:78:def _make_mistral_response(text: str):
+tests/test_orchestrator.py:79:    """Return a mock requests.Response for Mistral chat completions."""
+tests/test_orchestrator.py:96:        with patch.object(_orch, "_get_client", _make_claude_mock(_VALID_JSON_AUDIT)):
+tests/test_orchestrator.py:113:        with patch.object(_orch, "_get_client", _make_claude_mock(_VALID_JSON_TERRITORIAL)):
+tests/test_orchestrator.py:130:        with patch.object(_orch, "_get_client", _make_claude_mock(_VALID_JSON_ADVISORY)):
+tests/test_orchestrator.py:158:# ── 5. mistral-compliance ────────────────────────────────────────────────────
+tests/test_orchestrator.py:160:class TestMistralCompliance:
+tests/test_orchestrator.py:162:        with patch.dict(os.environ, {"MISTRAL_API_KEY": "fake"}):
+tests/test_orchestrator.py:163:            resp = client.post("/agents/mistral-compliance", json={"entity_name": "X"})
+tests/test_orchestrator.py:167:        env = {k: v for k, v in os.environ.items() if k != "MISTRAL_API_KEY"}
+tests/test_orchestrator.py:169:            resp = client.post("/agents/mistral-compliance", json=_BASE_PAYLOAD)
+tests/test_orchestrator.py:172:    def test_success_via_mistral(self):
+tests/test_orchestrator.py:174:        mock_requests.post.return_value = _make_mistral_response(_VALID_JSON_AUDIT)
+tests/test_orchestrator.py:175:        with patch.dict(os.environ, {"MISTRAL_API_KEY": "fake"}):
+tests/test_orchestrator.py:177:                resp = client.post("/agents/mistral-compliance", json=_BASE_PAYLOAD)
+tests/test_orchestrator.py:181:    def test_fallback_to_claude_when_mistral_fails(self):
+tests/test_orchestrator.py:183:        mock_requests.post.side_effect = Exception("mistral down")
+tests/test_orchestrator.py:184:        with patch.dict(os.environ, {"MISTRAL_API_KEY": "fake"}):
+tests/test_orchestrator.py:186:                with patch.object(_orch, "_get_client", _make_claude_mock(_VALID_JSON_AUDIT)):
+tests/test_orchestrator.py:187:                    resp = client.post("/agents/mistral-compliance", json=_BASE_PAYLOAD)
+tests/test_orchestrator.py:190:        assert "fallback" in data["audit"].get("provider", "")
+tests/test_orchestrator.py:193:# ── 6. mistral-advisor ───────────────────────────────────────────────────────
+tests/test_orchestrator.py:195:class TestMistralAdvisor:
+tests/test_orchestrator.py:197:        with patch.dict(os.environ, {"MISTRAL_API_KEY": "fake"}):
+tests/test_orchestrator.py:198:            resp = client.post("/agents/mistral-advisor", json={"entity_name": "X"})
+tests/test_orchestrator.py:202:        env = {k: v for k, v in os.environ.items() if k != "MISTRAL_API_KEY"}
+tests/test_orchestrator.py:204:            resp = client.post("/agents/mistral-advisor", json=_BASE_PAYLOAD)
+tests/test_orchestrator.py:207:    def test_success_via_mistral(self):
+tests/test_orchestrator.py:209:        mock_requests.post.return_value = _make_mistral_response(_VALID_JSON_ADVISORY)
+tests/test_orchestrator.py:210:        with patch.dict(os.environ, {"MISTRAL_API_KEY": "fake"}):
+tests/test_orchestrator.py:212:                resp = client.post("/agents/mistral-advisor", json={**_BASE_PAYLOAD, "risk_level": "HIGH"})
+tests/test_orchestrator.py:217:# ── 7. openai-advisor (disabled) ─────────────────────────────────────────────
+tests/test_orchestrator.py:219:class TestOpenAIAdvisor:
+tests/test_orchestrator.py:221:        resp = client.post("/agents/openai-advisor", json=_BASE_PAYLOAD)
+tests/test_orchestrator.py:233:    def test_success_via_mistral(self):
+tests/test_orchestrator.py:235:        mock_requests.post.return_value = _make_mistral_response(_VALID_JSON_BOLKESTEIN)
+tests/test_orchestrator.py:236:        with patch.dict(os.environ, {"MISTRAL_API_KEY": "fake"}):
+tests/test_orchestrator.py:248:    def test_fallback_to_claude_when_no_mistral_key(self):
+tests/test_orchestrator.py:249:        env = {k: v for k, v in os.environ.items() if k != "MISTRAL_API_KEY"}
+tests/test_orchestrator.py:251:            with patch.object(_orch, "_get_client", _make_claude_mock(_VALID_JSON_BOLKESTEIN)):
+tests/test_orchestrator.py:254:        assert "fallback" in resp.get_json()["assessment"].get("provider", "")
+tests/test_orchestrator.py:291:                "provider": "mistral",
+tests/test_orchestrator.py:385:# ── gemini/compliance-audit ───────────────────────────────────────────────────
+tests/test_orchestrator.py:415:        resp = client.post("/gemini/compliance-audit", json={"system_name": "X"},
+tests/test_orchestrator.py:419:    def test_success_via_claude_fallback(self):
+tests/test_orchestrator.py:424:            with patch("main.ANTHROPIC_CLIENT") as mock_client:
+tests/test_orchestrator.py:426:                resp = client.post("/gemini/compliance-audit", json=self._payload,
+tests/test_orchestrator.py:435:    def test_success_via_gemini(self):
+tests/test_orchestrator.py:437:        gemini_resp = MagicMock()
+tests/test_orchestrator.py:438:        gemini_resp.raise_for_status = MagicMock()
+tests/test_orchestrator.py:439:        gemini_resp.json.return_value = {
+tests/test_orchestrator.py:442:        mock_requests.post.return_value = gemini_resp
+tests/test_orchestrator.py:445:                resp = client.post("/gemini/compliance-audit", json=self._payload,
+tests/test_orchestrator.py:470:        with patch("main.ANTHROPIC_CLIENT") as mock_client, \
+tests/test_orchestrator.py:482:        with patch("main.ANTHROPIC_CLIENT") as mock_client, \
+tests/test_orchestrator.py:491:    def test_gemini_qen_score_blocked_without_origin(self):
+tests/test_orchestrator.py:492:        resp = client.post("/gemini/qen-score",
+tests/test_orchestrator.py:497:    def test_gemini_qen_score_allowed_with_referer(self):
+tests/test_orchestrator.py:502:            with patch("main.ANTHROPIC_CLIENT") as mock_client, \
+tests/test_orchestrator.py:506:                resp = client.post("/gemini/qen-score",
+tests/test_orchestrator.py:512:        resp = client.post("/gemini/compliance-audit",
+tests/test_smoke.py:4:The anthropic module is mocked before Flask app import to avoid needing a
+tests/test_smoke.py:5:real ANTHROPIC_API_KEY in CI.
+tests/test_smoke.py:14:# ── Mock anthropic before importing Flask app (client instantiated at module level) ──
+tests/test_smoke.py:15:_mock_anthropic = MagicMock()
+tests/test_smoke.py:16:sys.modules["anthropic"] = _mock_anthropic
+wizard.py:51:    @app.route("/gemini/compliance-audit/wizard/disclaimer", methods=["POST"])
+wizard.py:70:    @app.route("/gemini/compliance-audit/wizard/submit", methods=["POST"])
+
+=== PROVIDER ENVIRONMENT VARIABLES ===
+.github/workflows/deploy-vps.yml:31:          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+.github/workflows/deploy-vps.yml:33:          GOOGLE_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+.github/workflows/deploy-vps.yml:35:          MISTRAL_API_KEY: ${{ secrets.MISTRAL_API_KEY }}
+.github/workflows/deploy-vps.yml:36:          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+.github/workflows/deploy-vps.yml:48:          envs: ICEA_API_KEY,INFOCAMERE_API_KEY,SUPERVISOR_KEY,ANTHROPIC_API_KEY,COGNITIVE_API_KEY,GOOGLE_API_KEY,GOOGLE_PLACES_API_KEY,MISTRAL_API_KEY,OPENAI_API_KEY,SMTP_HOST,SMTP_PORT,SMTP_USER,SMTP_PASS,ALERT_EMAIL_FROM,ALERT_EMAIL_TO
+.github/workflows/deploy-vps.yml:94:              ANTHROPIC_API_KEY     "${ANTHROPIC_API_KEY}" \
+.github/workflows/deploy-vps.yml:96:              GOOGLE_API_KEY        "${GOOGLE_API_KEY}" \
+.github/workflows/deploy-vps.yml:98:              MISTRAL_API_KEY       "${MISTRAL_API_KEY}" \
+.github/workflows/deploy-vps.yml:99:              OPENAI_API_KEY        "${OPENAI_API_KEY}" \
+main.py:96:ANTHROPIC_CLIENT = None
+main.py:99:    global ANTHROPIC_CLIENT
+main.py:100:    api_key = os.getenv("ANTHROPIC_API_KEY")
+main.py:103:    if ANTHROPIC_CLIENT is None:
+main.py:104:        ANTHROPIC_CLIENT = anthropic.Anthropic(api_key=api_key)
+main.py:105:    return ANTHROPIC_CLIENT
+main.py:516:    google_key = os.getenv("GOOGLE_API_KEY", "")
+main.py:519:            _GEMINI_MODELS = ["gemini-2.0-flash-lite", "gemini-2.5-flash", "gemini-2.0-flash"]
+main.py:522:            for _model in _GEMINI_MODELS:
+main.py:620:    google_key = os.getenv("GOOGLE_API_KEY", "")
+orchestrator.py:159:    api_key = os.getenv("ANTHROPIC_API_KEY")
+orchestrator.py:285:                mk = os.getenv("MISTRAL_API_KEY", "")
+orchestrator.py:450:    # MISTRAL_API_KEY injected from GitHub Secrets at deploy time
+orchestrator.py:484:        key = os.getenv("MISTRAL_API_KEY", "")
+orchestrator.py:486:            return jsonify({"error": "MISTRAL_API_KEY non configurata"}), 503
+orchestrator.py:515:        key = os.getenv("MISTRAL_API_KEY", "")
+orchestrator.py:517:            return jsonify({"error": "MISTRAL_API_KEY non configurata"}), 503
+orchestrator.py:540:    # OpenAI endpoint — DISABLED (payment pending, OPENAI_API_KEY non disponibile)
+orchestrator.py:575:        key = os.getenv("MISTRAL_API_KEY", "")
+qen-bolkestein/qen_config.py:22:    ANTHROPIC_API_KEY = os.getenv("ANTHROPIC_API_KEY", "")
+qen-bolkestein/qen_config.py:23:    MISTRAL_API_KEY = os.getenv("MISTRAL_API_KEY", "")
+qen-bolkestein/qen_config.py:55:            ("ANTHROPIC_API_KEY", "Claude API"),
+qen-bolkestein/qen_config.py:56:            ("MISTRAL_API_KEY", "Mistral API"),
+qen-bolkestein/qen_multi_agent_router.py:25:        self.anthropic = Anthropic(api_key=os.getenv("ANTHROPIC_API_KEY"))
+qen_context.py:69:CLAUDE_MODEL = "claude-sonnet-4-6"
+qen_context.py:70:GEMINI_MODEL_CASCADE = ["gemini-2.0-flash-lite", "gemini-2.5-flash", "gemini-2.0-flash"]
+qen_context.py:71:MISTRAL_MODEL = "mistral-large-latest"
+qen_context.py:72:LLM_MAX_TOKENS_AUDIT = 1500
+qen_context.py:73:LLM_MAX_TOKENS_SCORE = 900
+qen_context.py:74:LLM_MAX_TOKENS_BATCH = 1200
+qen_context.py:75:LLM_TEMPERATURE_DEFAULT = 0.3
+qen_context.py:76:RATE_LIMIT_LLM_SINGLE = 30
+qen_context.py:77:RATE_LIMIT_LLM_BATCH = 20
+tests/test_orchestrator.py:162:        with patch.dict(os.environ, {"MISTRAL_API_KEY": "fake"}):
+tests/test_orchestrator.py:167:        env = {k: v for k, v in os.environ.items() if k != "MISTRAL_API_KEY"}
+tests/test_orchestrator.py:175:        with patch.dict(os.environ, {"MISTRAL_API_KEY": "fake"}):
+tests/test_orchestrator.py:184:        with patch.dict(os.environ, {"MISTRAL_API_KEY": "fake"}):
+tests/test_orchestrator.py:197:        with patch.dict(os.environ, {"MISTRAL_API_KEY": "fake"}):
+tests/test_orchestrator.py:202:        env = {k: v for k, v in os.environ.items() if k != "MISTRAL_API_KEY"}
+tests/test_orchestrator.py:210:        with patch.dict(os.environ, {"MISTRAL_API_KEY": "fake"}):
+tests/test_orchestrator.py:236:        with patch.dict(os.environ, {"MISTRAL_API_KEY": "fake"}):
+tests/test_orchestrator.py:249:        env = {k: v for k, v in os.environ.items() if k != "MISTRAL_API_KEY"}
+tests/test_orchestrator.py:422:        env = {k: v for k, v in os.environ.items() if k != "GOOGLE_API_KEY"}
+tests/test_orchestrator.py:424:            with patch("main.ANTHROPIC_CLIENT") as mock_client:
+tests/test_orchestrator.py:443:        with patch.dict(os.environ, {"GOOGLE_API_KEY": "fake"}):
+tests/test_orchestrator.py:470:        with patch("main.ANTHROPIC_CLIENT") as mock_client, \
+tests/test_orchestrator.py:482:        with patch("main.ANTHROPIC_CLIENT") as mock_client, \
+tests/test_orchestrator.py:498:        env = {k: v for k, v in os.environ.items() if k != "GOOGLE_API_KEY"}
+tests/test_orchestrator.py:502:            with patch("main.ANTHROPIC_CLIENT") as mock_client, \
+tests/test_smoke.py:5:real ANTHROPIC_API_KEY in CI.
+
+=== EXTERNAL PROVIDER CALLS ===
+main.py:104:        ANTHROPIC_CLIENT = anthropic.Anthropic(api_key=api_key)
+main.py:389:        response = client.messages.create(
+main.py:434:        response = client.messages.create(
+main.py:524:                    _resp = _requests.post(
+main.py:627:                    _resp = _requests.post(
+orchestrator.py:54:            resp = _requests.post(
+orchestrator.py:133:            resp = _requests.post(
+orchestrator.py:163:        _client = anthropic.Anthropic(api_key=api_key)
+orchestrator.py:171:    return client.messages.create(**kwargs)
+orchestrator.py:456:        resp = _requests.post(
+qen-bolkestein/qen_multi_agent_router.py:25:        self.anthropic = Anthropic(api_key=os.getenv("ANTHROPIC_API_KEY"))
+qen-bolkestein/qen_multi_agent_router.py:34:            r = self.anthropic.messages.create(model="claude-sonnet-4-20250514", max_tokens=1000, messages=[{"role": "user", "content": prompt}])
+tests/test_orchestrator.py:70:    """Return a mock for _get_client().messages.create(...)."""
+tests/test_orchestrator.py:74:    mock_client.return_value.messages.create.return_value = msg
+tests/test_orchestrator.py:174:        mock_requests.post.return_value = _make_mistral_response(_VALID_JSON_AUDIT)
+tests/test_orchestrator.py:183:        mock_requests.post.side_effect = Exception("mistral down")
+tests/test_orchestrator.py:209:        mock_requests.post.return_value = _make_mistral_response(_VALID_JSON_ADVISORY)
+tests/test_orchestrator.py:235:        mock_requests.post.return_value = _make_mistral_response(_VALID_JSON_BOLKESTEIN)
+tests/test_orchestrator.py:425:                mock_client.messages.create.return_value = mock_msg
+tests/test_orchestrator.py:442:        mock_requests.post.return_value = gemini_resp
+tests/test_orchestrator.py:473:            mock_client.messages.create.return_value = mock_msg
+tests/test_orchestrator.py:485:            mock_client.messages.create.return_value = mock_msg
+tests/test_orchestrator.py:505:                mock_client.messages.create.return_value = mock_msg
+wizard.py:131:                _wh_requests.post(
+
+=== PUBLIC ENDPOINTS ===
+main.py:146:@app.route("/")
+main.py:150:@app.route("/health", methods=["GET"])
+main.py:154:@app.route("/pilots", methods=["GET"])
+main.py:174:@app.route("/analyze", methods=["POST"])
+main.py:202:@app.route("/audit/horeca", methods=["POST"])
+main.py:255:@app.route("/audit/balneare", methods=["POST"])
+main.py:310:@app.route("/admin/add-client", methods=["POST"])
+main.py:370:@app.route("/classify-risk", methods=["POST"])
+main.py:405:@app.route("/copilot-analyze", methods=["POST"])
+main.py:482:@app.route("/gemini/qen-score", methods=["POST"])
+main.py:596:@app.route("/gemini/compliance-audit", methods=["POST"])
+main.py:665:@app.route("/admin/reconcile-batch", methods=["POST"])
+main.py:741:@app.route("/evide/chain", methods=["GET"])
+main.py:808:@app.route("/evide/register", methods=["POST"])
+orchestrator.py:332:    @app.route("/agents/compliance-auditor", methods=["POST"])
+orchestrator.py:366:    @app.route("/agents/territorial-mapper", methods=["POST"])
+orchestrator.py:402:    @app.route("/agents/advisory-council", methods=["POST"])
+orchestrator.py:438:    @app.route("/agents/intelligence-feed", methods=["GET"])
+orchestrator.py:475:    @app.route("/agents/mistral-compliance", methods=["POST"])
+orchestrator.py:505:    @app.route("/agents/mistral-advisor", methods=["POST"])
+orchestrator.py:542:    # @app.route("/agents/openai-advisor", methods=["POST"])
+orchestrator.py:547:    @app.route("/agents/openai-advisor", methods=["POST"])
+orchestrator.py:554:    @app.route("/agents/bolkestein-assessment", methods=["POST"])
+orchestrator.py:604:    @app.route("/agents/places-discovery", methods=["POST"])
+orchestrator.py:623:    @app.route("/agents/score-businesses", methods=["POST"])
+orchestrator.py:639:    @app.route("/agents/places-batch-qen", methods=["POST"])
+qen-horeca-auditor/main.py:400:@app.get("/health")
+qen-horeca-auditor/main.py:411:@app.post("/api/qen/audit", dependencies=[Depends(_require_api_key)])
+qen-reconciliation/main.py:603:@app.get("/health")
+qen-reconciliation/main.py:624:@app.post("/api/ingest")
+qen-reconciliation/main.py:635:@app.post("/api/reconcile")
+qen-reconciliation/main.py:701:@app.get("/api/escalations")
+qen-reconciliation/main.py:726:@app.post("/api/escalations/{esc_id}/resolve")
+wizard.py:51:    @app.route("/gemini/compliance-audit/wizard/disclaimer", methods=["POST"])
+wizard.py:70:    @app.route("/gemini/compliance-audit/wizard/submit", methods=["POST"])
+
+=== TEST ASSUMPTIONS ===
+tests/test_orchestrator.py:3:All external I/O (Anthropic, Mistral, Google Places, file reads) is mocked so
+tests/test_orchestrator.py:18:_mock_anthropic = MagicMock()
+tests/test_orchestrator.py:19:sys.modules["anthropic"] = _mock_anthropic
+tests/test_orchestrator.py:21:os.environ.setdefault("COGNITIVE_API_KEY", "test-key-ci")
+tests/test_orchestrator.py:69:def _make_claude_mock(text: str):
+tests/test_orchestrator.py:78:def _make_mistral_response(text: str):
+tests/test_orchestrator.py:79:    """Return a mock requests.Response for Mistral chat completions."""
+tests/test_orchestrator.py:96:        with patch.object(_orch, "_get_client", _make_claude_mock(_VALID_JSON_AUDIT)):
+tests/test_orchestrator.py:113:        with patch.object(_orch, "_get_client", _make_claude_mock(_VALID_JSON_TERRITORIAL)):
+tests/test_orchestrator.py:130:        with patch.object(_orch, "_get_client", _make_claude_mock(_VALID_JSON_ADVISORY)):
+tests/test_orchestrator.py:158:# ── 5. mistral-compliance ────────────────────────────────────────────────────
+tests/test_orchestrator.py:160:class TestMistralCompliance:
+tests/test_orchestrator.py:162:        with patch.dict(os.environ, {"MISTRAL_API_KEY": "fake"}):
+tests/test_orchestrator.py:163:            resp = client.post("/agents/mistral-compliance", json={"entity_name": "X"})
+tests/test_orchestrator.py:167:        env = {k: v for k, v in os.environ.items() if k != "MISTRAL_API_KEY"}
+tests/test_orchestrator.py:169:            resp = client.post("/agents/mistral-compliance", json=_BASE_PAYLOAD)
+tests/test_orchestrator.py:172:    def test_success_via_mistral(self):
+tests/test_orchestrator.py:174:        mock_requests.post.return_value = _make_mistral_response(_VALID_JSON_AUDIT)
+tests/test_orchestrator.py:175:        with patch.dict(os.environ, {"MISTRAL_API_KEY": "fake"}):
+tests/test_orchestrator.py:177:                resp = client.post("/agents/mistral-compliance", json=_BASE_PAYLOAD)
+tests/test_orchestrator.py:181:    def test_fallback_to_claude_when_mistral_fails(self):
+tests/test_orchestrator.py:183:        mock_requests.post.side_effect = Exception("mistral down")
+tests/test_orchestrator.py:184:        with patch.dict(os.environ, {"MISTRAL_API_KEY": "fake"}):
+tests/test_orchestrator.py:186:                with patch.object(_orch, "_get_client", _make_claude_mock(_VALID_JSON_AUDIT)):
+tests/test_orchestrator.py:187:                    resp = client.post("/agents/mistral-compliance", json=_BASE_PAYLOAD)
+tests/test_orchestrator.py:190:        assert "fallback" in data["audit"].get("provider", "")
+tests/test_orchestrator.py:193:# ── 6. mistral-advisor ───────────────────────────────────────────────────────
+tests/test_orchestrator.py:195:class TestMistralAdvisor:
+tests/test_orchestrator.py:197:        with patch.dict(os.environ, {"MISTRAL_API_KEY": "fake"}):
+tests/test_orchestrator.py:198:            resp = client.post("/agents/mistral-advisor", json={"entity_name": "X"})
+tests/test_orchestrator.py:202:        env = {k: v for k, v in os.environ.items() if k != "MISTRAL_API_KEY"}
+tests/test_orchestrator.py:204:            resp = client.post("/agents/mistral-advisor", json=_BASE_PAYLOAD)
+tests/test_orchestrator.py:207:    def test_success_via_mistral(self):
+tests/test_orchestrator.py:209:        mock_requests.post.return_value = _make_mistral_response(_VALID_JSON_ADVISORY)
+tests/test_orchestrator.py:210:        with patch.dict(os.environ, {"MISTRAL_API_KEY": "fake"}):
+tests/test_orchestrator.py:212:                resp = client.post("/agents/mistral-advisor", json={**_BASE_PAYLOAD, "risk_level": "HIGH"})
+tests/test_orchestrator.py:217:# ── 7. openai-advisor (disabled) ─────────────────────────────────────────────
+tests/test_orchestrator.py:219:class TestOpenAIAdvisor:
+tests/test_orchestrator.py:221:        resp = client.post("/agents/openai-advisor", json=_BASE_PAYLOAD)
+tests/test_orchestrator.py:233:    def test_success_via_mistral(self):
+tests/test_orchestrator.py:235:        mock_requests.post.return_value = _make_mistral_response(_VALID_JSON_BOLKESTEIN)
+tests/test_orchestrator.py:236:        with patch.dict(os.environ, {"MISTRAL_API_KEY": "fake"}):
+tests/test_orchestrator.py:248:    def test_fallback_to_claude_when_no_mistral_key(self):
+tests/test_orchestrator.py:249:        env = {k: v for k, v in os.environ.items() if k != "MISTRAL_API_KEY"}
+tests/test_orchestrator.py:251:            with patch.object(_orch, "_get_client", _make_claude_mock(_VALID_JSON_BOLKESTEIN)):
+tests/test_orchestrator.py:254:        assert "fallback" in resp.get_json()["assessment"].get("provider", "")
+tests/test_orchestrator.py:261:        env = {k: v for k, v in os.environ.items() if k != "GOOGLE_PLACES_API_KEY"}
+tests/test_orchestrator.py:268:        with patch.dict(os.environ, {"GOOGLE_PLACES_API_KEY": "fake"}):
+tests/test_orchestrator.py:291:                "provider": "mistral",
+tests/test_orchestrator.py:303:        env = {k: v for k, v in os.environ.items() if k != "GOOGLE_PLACES_API_KEY"}
+tests/test_orchestrator.py:309:        with patch.dict(os.environ, {"GOOGLE_PLACES_API_KEY": "fake"}):
+tests/test_orchestrator.py:318:        with patch.dict(os.environ, {"GOOGLE_PLACES_API_KEY": "fake"}):
+tests/test_orchestrator.py:385:# ── gemini/compliance-audit ───────────────────────────────────────────────────
+tests/test_orchestrator.py:415:        resp = client.post("/gemini/compliance-audit", json={"system_name": "X"},
+tests/test_orchestrator.py:419:    def test_success_via_claude_fallback(self):
+tests/test_orchestrator.py:422:        env = {k: v for k, v in os.environ.items() if k != "GOOGLE_API_KEY"}
+tests/test_orchestrator.py:424:            with patch("main.ANTHROPIC_CLIENT") as mock_client:
+tests/test_orchestrator.py:426:                resp = client.post("/gemini/compliance-audit", json=self._payload,
+tests/test_orchestrator.py:435:    def test_success_via_gemini(self):
+tests/test_orchestrator.py:437:        gemini_resp = MagicMock()
+tests/test_orchestrator.py:438:        gemini_resp.raise_for_status = MagicMock()
+tests/test_orchestrator.py:439:        gemini_resp.json.return_value = {
+tests/test_orchestrator.py:442:        mock_requests.post.return_value = gemini_resp
+tests/test_orchestrator.py:443:        with patch.dict(os.environ, {"GOOGLE_API_KEY": "fake"}):
+tests/test_orchestrator.py:445:                resp = client.post("/gemini/compliance-audit", json=self._payload,
+tests/test_orchestrator.py:470:        with patch("main.ANTHROPIC_CLIENT") as mock_client, \
+tests/test_orchestrator.py:479:    def test_copilot_analyze_allowed_with_api_key(self):
+tests/test_orchestrator.py:482:        with patch("main.ANTHROPIC_CLIENT") as mock_client, \
+tests/test_orchestrator.py:491:    def test_gemini_qen_score_blocked_without_origin(self):
+tests/test_orchestrator.py:492:        resp = client.post("/gemini/qen-score",
+tests/test_orchestrator.py:497:    def test_gemini_qen_score_allowed_with_referer(self):
+tests/test_orchestrator.py:498:        env = {k: v for k, v in os.environ.items() if k != "GOOGLE_API_KEY"}
+tests/test_orchestrator.py:502:            with patch("main.ANTHROPIC_CLIENT") as mock_client, \
+tests/test_orchestrator.py:506:                resp = client.post("/gemini/qen-score",
+tests/test_orchestrator.py:512:        resp = client.post("/gemini/compliance-audit",
+tests/test_smoke.py:4:The anthropic module is mocked before Flask app import to avoid needing a
+tests/test_smoke.py:5:real ANTHROPIC_API_KEY in CI.
+tests/test_smoke.py:14:# ── Mock anthropic before importing Flask app (client instantiated at module level) ──
+tests/test_smoke.py:15:_mock_anthropic = MagicMock()
+tests/test_smoke.py:16:sys.modules["anthropic"] = _mock_anthropic
+tests/test_smoke.py:19:os.environ.setdefault("COGNITIVE_API_KEY", "test-key-ci")
+
+=== DEPENDENCY DECLARATIONS ===
+
+----- requirements-flask.txt -----
+flask~=3.1
+anthropic~=0.105
+gunicorn~=21.0
+json-repair~=0.59
+requests~=2.33
+flask-limiter[redis]~=4.1
+
+----- qen-reconciliation/requirements.txt -----
+fastapi~=0.115
+uvicorn~=0.32
+pydantic~=2.13
+python-dotenv~=1.0
+
+----- qen-horeca-auditor/requirements.txt -----
+anthropic>=0.28.0
+fastapi>=0.110.0
+uvicorn[standard]>=0.29.0
+pydantic>=2.0.0
+python-dotenv>=1.0.0
+
+----- qen-bolkestein/requirements.txt -----
+anthropic>=0.28.0
+mistralai>=0.0.14
+neo4j==5.0.0
+aiohttp>=3.9.0
+python-dotenv>=1.0.0
+loguru>=0.7.0
+requests>=2.31.0
+
+=== CI TEST WORKFLOW ===
+
+----- .github/workflows/deploy-static.yml -----
+
+----- .github/workflows/deploy-vps.yml -----
+13:      - 'requirements-flask.txt'
+28:          ICEA_API_KEY: ${{ secrets.ICEA_API_KEY }}
+29:          INFOCAMERE_API_KEY: ${{ secrets.INFOCAMERE_API_KEY }}
+31:          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+32:          COGNITIVE_API_KEY: ${{ secrets.COGNITIVE_API_KEY }}
+33:          GOOGLE_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+34:          GOOGLE_PLACES_API_KEY: ${{ secrets.GOOGLE_PLACES_API_KEY }}
+35:          MISTRAL_API_KEY: ${{ secrets.MISTRAL_API_KEY }}
+36:          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+48:          envs: ICEA_API_KEY,INFOCAMERE_API_KEY,SUPERVISOR_KEY,ANTHROPIC_API_KEY,COGNITIVE_API_KEY,GOOGLE_API_KEY,GOOGLE_PLACES_API_KEY,MISTRAL_API_KEY,OPENAI_API_KEY,SMTP_HOST,SMTP_PORT,SMTP_USER,SMTP_PASS,ALERT_EMAIL_FROM,ALERT_EMAIL_TO
+72:            [ -d "$VENV" ] || python3 -m venv "$VENV"
+73:            "$VENV/bin/pip" install -q -r qen-reconciliation/requirements.txt
+74:            "$VENV/bin/pip" install -q -r requirements-flask.txt
+91:              ICEA_API_KEY          "${ICEA_API_KEY}" \
+92:              INFOCAMERE_API_KEY    "${INFOCAMERE_API_KEY}" \
+94:              ANTHROPIC_API_KEY     "${ANTHROPIC_API_KEY}" \
+95:              COGNITIVE_API_KEY     "${COGNITIVE_API_KEY}" \
+96:              GOOGLE_API_KEY        "${GOOGLE_API_KEY}" \
+97:              GOOGLE_PLACES_API_KEY "${GOOGLE_PLACES_API_KEY}" \
+98:              MISTRAL_API_KEY       "${MISTRAL_API_KEY}" \
+99:              OPENAI_API_KEY        "${OPENAI_API_KEY}" \
+
+----- .github/workflows/security-scan.yml -----
+23:          # Pattern pericolosi nei file Python e JS
+26:            "api_key\s*=\s*['\"][^'\"]{10,}"
+
+----- .github/workflows/sync-fuorimenu.yml -----
+26:        run: python3 sync_rss.py
+
+----- .github/workflows/test.yml -----
+15:      - name: Set up Python 3.11
+16:        uses: actions/setup-python@v5
+18:          python-version: "3.11"
+23:            -r requirements-flask.txt \
+24:            -r qen-reconciliation/requirements.txt \
+25:            pytest httpx
+28:        run: pytest tests/ -v
+
+=== QEN SOVEREIGN CORE CANDIDATES ===
+AUDIT_LOG.md
+commercial-platform/evidence/audit/commercial-evidence-candidates.txt
+commercial-platform/evidence/audit/markdown-assets.txt
+commercial-platform/evidence/audit/media-assets.txt
+commercial-platform/evidence/audit/published-content-register.csv
+commercial-platform/evidence/audit/published-pages.txt
+commercial-platform/evidence/inventory/evidence-inventory.md
+commercial-platform/evidence/inventory/source-register.csv
+commercial-platform/evidence/service-evidence-matrix.md
+commercial-service-catalogue/CS-001-AI-GOVERNANCE-ASSESSMENT-AND-READINESS.md
+data/evide-registry.json
+data/qen_graph_v4.json
+data/qen_graph_v4.json.bak.20260605
+data/qen.json
+docs/commercial-homepage-release-1.0/STEP-3-ENTERPRISE-TRUST-EVIDENCE-20260721-215346.md
+docs/commercial-homepage-release-1.0/STEP-4-EVIDENCE-20260721-220144.md
+editorial-evolution-1.0/phase-1-audit/EDITORIAL-ARCHITECTURE-REPORT.md
+editorial-evolution-1.0/phase-1-audit/editorial-pages.txt
+editorial-evolution-1.0/phase-1-audit/git-baseline.txt
+editorial-evolution-1.0/phase-1-audit/homepage-links.txt
+editorial-evolution-1.0/phase-2-editorial-platform/EDITORIAL-KNOWLEDGE-GRAPH-BLUEPRINT.md
+enterprise-platform-evolution-1.0/00-governance/EPE-1.0-PROGRAM-CHARTER.md
+international-watch/governance/.gitkeep
+qen-bolkestein/qen_bolkestein_main.py
+qen-bolkestein/qen_bolkestein_mapper.py
+qen-bolkestein/qen_config.py
+qen-bolkestein/qen_multi_agent_router.py
+qen-bolkestein/qen_scoring_engine.py
+qen-bolkestein/requirements.txt
+qen_bolkestein_s4.py
+qencode/hamster-ai-governance/metadata.json
+qencode/registry.json
+qen_context.py
+QEN_DOSSIER_NOTARILE.md
+qen-horeca-auditor/main.py
+qen-horeca-auditor/requirements.txt
+qen-reconciliation/main.py
+qen-reconciliation/requirements.txt
+QEN_RECONCILIAZIONE_PROMPT.md
+.well-known/governance-layer-manifest.json
+wizard-src/QENAssessment.jsx
