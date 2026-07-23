@@ -1,0 +1,23 @@
+{
+  "metadata": { "version": "1.1", "weighted_logic": { "A": 0.40, "B": 0.35, "C": 0.25 } },
+  "questions": [
+    {
+      "id": 1,
+      "area": "A",
+      "text": "Qualita della modellazione",
+      "options": ["Assente", "Parziale", "Adeguato", "Completo"]
+    },
+    {
+      "id": 2,
+      "area": "B",
+      "text": "Tracciabilita del risk management",
+      "options": ["Non tracciato", "Base", "Documentato", "Certificato"]
+    },
+    {
+      "id": 3,
+      "area": "C",
+      "text": "Sorveglianza umana attiva",
+      "options": ["Assente", "Parziale", "Adeguato", "Completo"]
+    }
+  ]
+}
