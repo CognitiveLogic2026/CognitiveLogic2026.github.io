@@ -17,6 +17,7 @@ from datetime import datetime
 from flask import Flask, request, jsonify
 from flask_limiter import Limiter
 from flask_limiter.util import get_remote_address
+from sovereign_engine import classify_risk as sovereign_classify_risk
 
 app = Flask(__name__)
 
@@ -378,29 +379,57 @@ def classify_risk():
     descrizione = data.get("descrizione", "")
     contesto    = data.get("contesto", "")
     settore     = data.get("settore", "")
-    user_message = "Sistema: " + descrizione + " Contesto: " + contesto + " Settore: " + settore
-    client = get_anthropic_client()
-    if client is None:
-        return jsonify({
-            "status": "unavailable",
-            "error": "external_provider_not_configured"
-        }), 503
     try:
-        response = client.messages.create(
-            model="claude-sonnet-4-6",
-            max_tokens=1024,
-            system=RISK_SYSTEM_PROMPT,
-            messages=[{"role": "user", "content": user_message}]
+        sovereign = sovereign_classify_risk(
+            description=descrizione,
+            context=contesto,
+            sector=settore,
         )
-        raw = response.content[0].text.strip()
-        if raw.startswith("`"):
-            raw = raw.split("\n", 1)[1].rsplit("\n", 1)[0].strip().replace("`json", "").replace("```", "").strip()
-        result = json.loads(raw)
-        return jsonify({"status": "success", "sistema": descrizione[:80], "classificazione": result}), 200
-    except json.JSONDecodeError:
-        return jsonify({"status": "error", "message": "Parsing fallito"}), 500
+
+        level_map = {
+            "PROHIBITED": "Vietato",
+            "HIGH": "Alto",
+            "MEDIUM": "Sorveglianza",
+            "LOW": "Minimo",
+        }
+        gdpr_map = {
+            "CRITICAL": "CRITICO",
+            "HIGH": "ALTO",
+            "MEDIUM": "MEDIO",
+            "LOW": "BASSO",
+        }
+
+        classification = {
+            "allegato": sovereign["eu_classification"].split(" - ", 1)[-1],
+            "livello_rischio": level_map.get(
+                sovereign["risk_level"], "Minimo"
+            ),
+            "motivazione": sovereign["summary"],
+            "gdpr_risk": gdpr_map.get(
+                sovereign["gdpr_risk"], "BASSO"
+            ),
+            "gdpr_motivazione": (
+                "Valutazione GDPR deterministica basata su dati personali, "
+                "profilazione e decisioni automatizzate."
+            ),
+            "articoli_rilevanti": sovereign["gaps"],
+            "azioni_richieste": sovereign["recommendations"],
+            "qen_impact": sovereign["decision"],
+            "vs": sovereign["vs"],
+            "va": sovereign["va"],
+            "vt": sovereign["vt"],
+        }
+
+        return jsonify({
+            "status": "success",
+            "sistema": descrizione[:80],
+            "classificazione": classification,
+        }), 200
     except Exception:
-        return jsonify({"status": "error", "message": "Errore interno del server"}), 500
+        return jsonify({
+            "status": "error",
+            "message": "Errore interno del server",
+        }), 500
 
 @app.route("/copilot-analyze", methods=["POST"])
 @limiter.limit("10 per minute;100 per day")
