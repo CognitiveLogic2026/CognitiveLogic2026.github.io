@@ -432,10 +432,12 @@ class TestTrustedOrigin:
     def test_copilot_analyze_allowed_with_trusted_origin(self):
         mock_msg = MagicMock()
         mock_msg.content = [MagicMock(text=self._copilot_mock_text)]
-        with patch("main.ANTHROPIC_CLIENT") as mock_client, \
+        with patch("main.get_anthropic_client") as mock_get_client, \
              patch("main.check_duplicate", return_value=None), \
              patch("main.save_pilot"):
+            mock_client = MagicMock()
             mock_client.messages.create.return_value = mock_msg
+            mock_get_client.return_value = mock_client
             resp = client.post("/copilot-analyze",
                                json={"description": "test"},
                                headers={"Origin": "https://www.cognitivelogic.it"})
@@ -444,10 +446,12 @@ class TestTrustedOrigin:
     def test_copilot_analyze_allowed_with_api_key(self):
         mock_msg = MagicMock()
         mock_msg.content = [MagicMock(text=self._copilot_mock_text)]
-        with patch("main.ANTHROPIC_CLIENT") as mock_client, \
+        with patch("main.get_anthropic_client") as mock_get_client, \
              patch("main.check_duplicate", return_value=None), \
              patch("main.save_pilot"):
+            mock_client = MagicMock()
             mock_client.messages.create.return_value = mock_msg
+            mock_get_client.return_value = mock_client
             resp = client.post("/copilot-analyze",
                                json={"description": "test"},
                                headers={"X-API-Key": "test-key-ci"})
