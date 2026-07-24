@@ -425,37 +425,36 @@ class TestTrustedOrigin:
                            headers={})
         assert resp.status_code == 403
 
-    _copilot_mock_text = ('{"allegato":"III","livello_rischio":"Minimo","gdpr_risk":"BASSO",'
-                          '"motivazione":"ok","gdpr_motivazione":"ok","qen_impact":"low",'
-                          '"articoli_rilevanti":[],"azioni_richieste":[],"vs":70,"va":65,"vt":75}')
 
     def test_copilot_analyze_allowed_with_trusted_origin(self):
-        mock_msg = MagicMock()
-        mock_msg.content = [MagicMock(text=self._copilot_mock_text)]
-        with patch("main.get_anthropic_client") as mock_get_client, \
-             patch("main.check_duplicate", return_value=None), \
+        with patch("main.check_duplicate", return_value=None), \
              patch("main.save_pilot"):
-            mock_client = MagicMock()
-            mock_client.messages.create.return_value = mock_msg
-            mock_get_client.return_value = mock_client
-            resp = client.post("/copilot-analyze",
-                               json={"description": "test"},
-                               headers={"Origin": "https://www.cognitivelogic.it"})
+            resp = client.post(
+                "/copilot-analyze",
+                json={"description": "chatbot informativo"},
+                headers={"Origin": "https://www.cognitivelogic.it"},
+            )
+
         assert resp.status_code == 200
+        result = resp.get_json()
+        assert result["risk_level"] == "MEDIUM"
+        assert result["risk_score"] == 0.45
+        assert result["decision"] == "MEDIUM"
 
     def test_copilot_analyze_allowed_with_api_key(self):
-        mock_msg = MagicMock()
-        mock_msg.content = [MagicMock(text=self._copilot_mock_text)]
-        with patch("main.get_anthropic_client") as mock_get_client, \
-             patch("main.check_duplicate", return_value=None), \
+        with patch("main.check_duplicate", return_value=None), \
              patch("main.save_pilot"):
-            mock_client = MagicMock()
-            mock_client.messages.create.return_value = mock_msg
-            mock_get_client.return_value = mock_client
-            resp = client.post("/copilot-analyze",
-                               json={"description": "test"},
-                               headers={"X-API-Key": "test-key-ci"})
+            resp = client.post(
+                "/copilot-analyze",
+                json={"description": "sistema informativo interno"},
+                headers={"X-API-Key": "test-key-ci"},
+            )
+
         assert resp.status_code == 200
+        result = resp.get_json()
+        assert result["risk_level"] == "LOW"
+        assert result["risk_score"] == 0.15
+
 
     def test_gemini_qen_score_blocked_without_origin(self):
         resp = client.post("/gemini/qen-score",

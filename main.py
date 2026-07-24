@@ -437,76 +437,67 @@ def copilot_analyze():
     blocked = _require_trusted_origin()
     if blocked:
         return blocked
-    data = request.json
+
+    data = request.get_json(silent=True)
     if not data or "description" not in data:
         return jsonify({"error": "Campo description obbligatorio"}), 400
-    descrizione     = data.get("description", "")
-    entity_name     = data.get("entity_name", descrizione[:60])
+
+    descrizione = str(data.get("description", "")).strip()
+    if not descrizione:
+        return jsonify({"error": "Campo description obbligatorio"}), 400
+
+    entity_name = data.get("entity_name", descrizione[:60])
     force_reanalyze = data.get("force", False)
+
     existing = check_duplicate(entity_name)
     if existing and not force_reanalyze:
         return jsonify({
-            "duplicate":   True,
-            "message":     "Analisi gia presente per " + entity_name + ". Usa force=true per rieseguire.",
-            "timestamp":   existing.get("timestamp"),
+            "duplicate": True,
+            "message": "Analisi gia presente per " + entity_name + ". Usa force=true per rieseguire.",
+            "timestamp": existing.get("timestamp"),
             "cached_data": existing.get("data"),
-            "analyses":    1 + len(existing.get("history", []))
+            "analyses": 1 + len(existing.get("history", [])),
         }), 200
-    user_message = "Sistema AI da classificare: " + descrizione
-    client = get_anthropic_client()
-    if client is None:
-        return jsonify({
-            "status": "unavailable",
-            "error": "external_provider_not_configured"
-        }), 503
+
     try:
-        response = client.messages.create(
-            model="claude-sonnet-4-6",
-            max_tokens=1024,
-            system=RISK_SYSTEM_PROMPT,
-            messages=[{"role": "user", "content": user_message}]
+        sovereign = sovereign_classify_risk(descrizione)
+
+        public_level = (
+            "HIGH"
+            if sovereign["risk_level"] in {"PROHIBITED", "HIGH"}
+            else sovereign["risk_level"]
         )
-        raw = response.content[0].text.strip()
-        raw = raw.replace("```json", "").replace("```", "").strip()
-        m = re.search(r"\{.*\}", raw, re.DOTALL)
-        if not m:
-            return jsonify({"error": "Risposta non valida dal modello"}), 500
-        result = json.loads(m.group())
-        allegato = result.get("allegato", "Nessuno")
-        livello  = result.get("livello_rischio", "Minimo")
-        score_map      = {"Vietato": 0.95, "Alto": 0.75, "Sorveglianza": 0.45, "Minimo": 0.15}
-        gdpr_score_map = {"CRITICO": 0.90, "ALTO": 0.70, "MEDIO": 0.45, "BASSO": 0.15}
-        gdpr_risk  = result.get("gdpr_risk", "BASSO")
-        gdpr_score = gdpr_score_map.get(gdpr_risk, 0.15)
-        ai_score   = score_map.get(livello, 0.15)
-        final_score = round(max(ai_score, gdpr_score), 2)
-        final_level = "HIGH" if final_score >= 0.70 else ("MEDIUM" if final_score >= 0.45 else "LOW")
-        vs = float(result.get("vs", 50))
-        va = float(result.get("va", 50))
-        vt = float(result.get("vt", 50))
-        qen_score = _qen(vs, va, vt)
+
         output = {
-            "risk_level":        final_level,
-            "risk_score":        final_score,
-            "qen_score":         qen_score,
-            "vs":                vs,
-            "va":                va,
-            "vt":                vt,
-            "summary":           result.get("motivazione", ""),
-            "why":               result.get("gdpr_motivazione", ""),
-            "gdpr_risk":         gdpr_risk,
-            "impact":            result.get("qen_impact", ""),
-            "eu_classification": livello + " - Allegato " + allegato,
-            "gaps":              result.get("articoli_rilevanti", []),
-            "recommendations":   result.get("azioni_richieste", []),
-            "decision":          livello
+            "risk_level": public_level,
+            "risk_score": sovereign["risk_score"],
+            "qen_score": sovereign["qen_score"],
+            "vs": sovereign["vs"],
+            "va": sovereign["va"],
+            "vt": sovereign["vt"],
+            "summary": sovereign["summary"],
+            "why": (
+                "Valutazione GDPR deterministica: "
+                + sovereign["gdpr_risk"]
+            ),
+            "gdpr_risk": sovereign["gdpr_risk"],
+            "impact": (
+                "Impatto QEN calcolato mediante dati intelligibili, "
+                "regole deterministiche ed evidenze verificabili."
+            ),
+            "eu_classification": sovereign["eu_classification"],
+            "gaps": sovereign["gaps"],
+            "recommendations": sovereign["recommendations"],
+            "decision": sovereign["decision"],
         }
+
         save_pilot(entity_name, output)
         return jsonify(output), 200
-    except json.JSONDecodeError:
-        return jsonify({"error": "Parsing fallito"}), 500
+
     except Exception:
+        app.logger.exception("Sovereign Copilot analysis failed")
         return jsonify({"error": "Errore interno del server"}), 500
+
 
 @app.route("/gemini/qen-score", methods=["POST"])
 @limiter.limit("10 per minute;100 per day")
