@@ -363,6 +363,35 @@ class TestAuditAuth:
         assert resp.get_json()["status"] == "saved"
 
 
+# ── legacy QEN route backed by sovereign engine ──────────────────────────────
+
+class TestSovereignQenScoreEndpoint:
+    _trusted = {"Origin": "https://www.cognitivelogic.it"}
+
+    def test_success_via_sovereign_engine(self):
+        payload = {
+            "business_name": "Test SRL",
+            "sector": "tech",
+            "description": "Sistema informativo interno.",
+        }
+
+        with patch("main.check_duplicate", return_value=None), \
+             patch("main.save_pilot") as mock_save:
+            resp = client.post(
+                "/gemini/qen-score",
+                json=payload,
+                headers=self._trusted,
+            )
+
+        assert resp.status_code == 200
+        data = resp.get_json()
+        assert data["status"] == "success"
+        assert data["qen"]["provider"] == "qen-sovereign"
+        assert data["qen"]["architecture"] == "ADR-CLE-004"
+        assert set(("qen_score", "badge", "vs", "va", "vt", "sintesi")) <= set(data["qen"])
+        mock_save.assert_called_once()
+
+
 # ── gemini/compliance-audit ───────────────────────────────────────────────────
 
 _VALID_COMPLIANCE_AUDIT = json.dumps({

@@ -18,6 +18,7 @@ from flask import Flask, request, jsonify
 from flask_limiter import Limiter
 from flask_limiter.util import get_remote_address
 from sovereign_engine import classify_risk as sovereign_classify_risk
+from sovereign_engine import score_entity as sovereign_score_entity
 
 app = Flask(__name__)
 
@@ -502,87 +503,62 @@ def copilot_analyze():
 @app.route("/gemini/qen-score", methods=["POST"])
 @limiter.limit("10 per minute;100 per day")
 def gemini_qen_score():
+    """Legacy-compatible QEN scoring route backed by the sovereign engine."""
     blocked = _require_trusted_origin()
     if blocked:
         return blocked
-    data   = request.get_json()
-    name   = data.get("business_name", "")
+
+    data = request.get_json(silent=True) or {}
+    name = data.get("business_name", "")
     sector = data.get("sector", "")
-    desc   = data.get("description", "")
-    force_reanalyze = data.get("force", False)
+    description = data.get("description", "")
+    force_reanalyze = bool(data.get("force", False))
+
     existing = check_duplicate(name)
-    prompt = (
-        "Analizza questa azienda e calcola il QEN Score.\n"
-        "Nome: " + name + "\nSettore: " + sector + "\nDescrizione: " + desc + "\n\n"
-        "Rispondi SOLO con JSON valido:\n"
-        '{"qen_score": 0.00, "badge": "QEN VERIFIED", '
-        '"vs": 0.00, "va": 0.00, "vt": 0.00, "sintesi": "testo"}'
-    )
     if existing and not force_reanalyze:
         return jsonify({
-            "duplicate":   True,
-            "message":     "QEN Score gia presente per " + name + ". Usa force=true per rieseguire.",
-            "timestamp":   existing.get("timestamp"),
+            "duplicate": True,
+            "message": (
+                "QEN Score gia presente per "
+                + name
+                + ". Usa force=true per rieseguire."
+            ),
+            "timestamp": existing.get("timestamp"),
             "cached_data": existing.get("data"),
-            "analyses":    1 + len(existing.get("history", []))
+            "analyses": 1 + len(existing.get("history", [])),
         }), 200
-    SIMPLE_SYSTEM = (
-        "Sei un esperto QEN Score. Rispondi SOLO con JSON valido, nessun testo aggiuntivo.\n"
-        "IMPORTANTE: vs, va, vt sono valori da 0 a 100 (non 0-10).\n"
-        "Formula QEN: vs*0.40 + va*0.35 + vt*0.25\n"
-        "Campi obbligatori: qen_score (0-100), badge (QEN VERIFIED o QEN UNVERIFIED), "
-        "vs (0-100), va (0-100), vt (0-100), sintesi"
-    )
-    google_key = os.getenv("GOOGLE_API_KEY", "")
-    try:
-        if google_key:
-            _GEMINI_MODELS = ["gemini-2.0-flash-lite", "gemini-2.5-flash", "gemini-2.0-flash"]
-            raw = None
-            provider = None
-            for _model in _GEMINI_MODELS:
-                try:
-                    _resp = _requests.post(
-                        f"https://generativelanguage.googleapis.com/v1beta/models/{_model}:generateContent",
-                        params={"key": google_key},
-                        json={
-                            "system_instruction": {"parts": [{"text": SIMPLE_SYSTEM}]},
-                            "contents": [{"parts": [{"text": prompt}]}],
-                            "generationConfig": {"response_mime_type": "application/json"},
-                        },
-                        timeout=30,
-                    )
-                    _resp.raise_for_status()
-                    raw = _resp.json()["candidates"][0]["content"]["parts"][0]["text"].strip()
-                    provider = _model
-                    break
-                except Exception as _me:
-                    last_err = str(_me)
-                    continue
-            if raw is None:
-                raise RuntimeError(f"Nessun modello Gemini disponibile: {last_err}")
-        else:
-            return jsonify({
-                "status": "unavailable",
-                "error": "external_provider_not_configured"
-            }), 503
 
-        raw = raw.replace("```json", "").replace("```", "").strip()
-        m = re.search(r"\{.*\}", raw, re.DOTALL)
-        if m:
-            q = json.loads(m.group())
-            vs = float(q.get("vs", 50))
-            va = float(q.get("va", 50))
-            vt = float(q.get("vt", 50))
-            if max(vs, va, vt) <= 10:  # normalize 0-10 scale to 0-100
-                vs, va, vt = vs * 10, va * 10, vt * 10
-            q["vs"], q["va"], q["vt"] = vs, va, vt
-            q["qen_score"] = _qen(vs, va, vt)
-            q["provider"] = provider
-            save_pilot(name, q)
-            return jsonify({"status": "success", "qen": q})
-        return jsonify({"status": "error", "error": "Risposta non valida dal modello"}), 500
+    try:
+        sovereign = sovereign_score_entity(
+            name=name,
+            description=description,
+            sector=sector,
+        )
+
+        score = sovereign["qen_score"]
+        qen = {
+            "qen_score": score,
+            "badge": "QEN VERIFIED" if score >= 60 else "QEN UNVERIFIED",
+            "vs": sovereign["vs"],
+            "va": sovereign["va"],
+            "vt": sovereign["vt"],
+            "sintesi": sovereign["summary"],
+            "provider": "qen-sovereign",
+            "engine": sovereign.get("engine", "QEN Sovereign Intelligence Engine"),
+            "architecture": "ADR-CLE-004",
+            "timestamp": sovereign["timestamp"],
+        }
+
+        save_pilot(name, qen)
+        return jsonify({"status": "success", "qen": qen}), 200
+
     except Exception:
-        return jsonify({"status": "error", "error": "Errore interno del server"}), 500
+        app.logger.exception("Sovereign QEN scoring failed")
+        return jsonify({
+            "status": "error",
+            "error": "Errore interno del server",
+        }), 500
+
 
 _COMPLIANCE_AUDIT_SYSTEM = (
     "You are QEN Compliance Auditor — an AI governance specialist operating under the "
