@@ -16,8 +16,8 @@ _mock_anthropic = MagicMock()
 sys.modules["anthropic"] = _mock_anthropic
 
 # Set required env vars before importing modules that validate them at startup
-os.environ.setdefault("COGNITIVE_API_KEY", "test-key-ci")
-os.environ.setdefault("SUPERVISOR_KEY", "test-supervisor-ci")
+os.environ["COGNITIVE_API_KEY"] = "test-key-ci"
+os.environ["SUPERVISOR_KEY"] = "test-supervisor-ci"
 
 # ── Flask app ────────────────────────────────────────────────────────────────────────
 _repo_root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))

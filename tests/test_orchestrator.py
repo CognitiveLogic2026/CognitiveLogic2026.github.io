@@ -18,8 +18,8 @@ import pytest
 _mock_anthropic = MagicMock()
 sys.modules["anthropic"] = _mock_anthropic
 
-os.environ.setdefault("COGNITIVE_API_KEY", "test-key-ci")
-os.environ.setdefault("SUPERVISOR_KEY", "test-supervisor-ci")
+os.environ["COGNITIVE_API_KEY"] = "test-key-ci"
+os.environ["SUPERVISOR_KEY"] = "test-supervisor-ci"
 
 _repo_root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.insert(0, _repo_root)
@@ -362,8 +362,8 @@ class TestAuditAuth:
         assert resp.status_code == 403
 
     def test_horeca_correct_key_returns_200(self):
-        with patch("main.save_pilot"), patch("main.open", create=True), \
-             patch("builtins.open", mock_open(read_data='{"nodes":{}}')):
+        with patch("main.save_pilot"), \
+             patch("main._evide_append", return_value={"id": "evide-test"}):
             resp = client.post("/audit/horeca", json=self._horeca_payload,
                                headers={"X-API-Key": "test-key-ci"})
         assert resp.status_code == 200
@@ -375,7 +375,7 @@ class TestAuditAuth:
 
     def test_balneare_correct_key_returns_200(self):
         with patch("main.save_pilot"), \
-             patch("builtins.open", mock_open(read_data='{"nodes":{}}')):
+             patch("main._evide_append", return_value={"id": "evide-test"}):
             resp = client.post("/audit/balneare", json=self._balneare_payload,
                                headers={"X-API-Key": "test-key-ci"})
         assert resp.status_code == 200
