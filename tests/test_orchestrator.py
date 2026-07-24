@@ -92,14 +92,14 @@ class TestComplianceAuditor:
         resp = client.post("/agents/compliance-auditor", json={"entity_name": "X"})
         assert resp.status_code == 400
 
-    def test_success(self):
-        with patch.object(_orch, "_get_client", _make_claude_mock(_VALID_JSON_AUDIT)):
-            resp = client.post("/agents/compliance-auditor", json=_BASE_PAYLOAD)
+    def test_success_uses_sovereign_engine(self):
+        resp = client.post("/agents/compliance-auditor", json=_BASE_PAYLOAD)
         assert resp.status_code == 200
         data = resp.get_json()
         assert data["status"] == "success"
-        assert "audit" in data
         assert data["audit"]["entity_name"] == "Test SRL"
+        assert data["audit"]["provider"] == "qen-sovereign"
+        assert data["audit"]["architecture"] == "ADR-CLE-004"
 
 
 # ── 2. territorial-mapper ─────────────────────────────────────────────────────
@@ -109,14 +109,14 @@ class TestTerritorialMapper:
         resp = client.post("/agents/territorial-mapper", json={"entity_name": "X"})
         assert resp.status_code == 400
 
-    def test_success(self):
-        with patch.object(_orch, "_get_client", _make_claude_mock(_VALID_JSON_TERRITORIAL)):
-            with patch.object(_orch, "_places_enrich", return_value=""):
-                resp = client.post("/agents/territorial-mapper", json=_BASE_PAYLOAD)
+    def test_success_uses_sovereign_engine(self):
+        with patch.object(_orch, "_places_enrich", return_value=""):
+            resp = client.post("/agents/territorial-mapper", json=_BASE_PAYLOAD)
         assert resp.status_code == 200
         data = resp.get_json()
         assert data["status"] == "success"
-        assert "mapping" in data
+        assert data["mapping"]["provider"] == "qen-sovereign"
+        assert data["mapping"]["architecture"] == "ADR-CLE-004"
 
 
 # ── 3. advisory-council ───────────────────────────────────────────────────────
@@ -126,13 +126,16 @@ class TestAdvisoryCouncil:
         resp = client.post("/agents/advisory-council", json={"entity_name": "X"})
         assert resp.status_code == 400
 
-    def test_success(self):
-        with patch.object(_orch, "_get_client", _make_claude_mock(_VALID_JSON_ADVISORY)):
-            resp = client.post("/agents/advisory-council", json={**_BASE_PAYLOAD, "risk_level": "LOW"})
+    def test_success_uses_sovereign_engine(self):
+        resp = client.post(
+            "/agents/advisory-council",
+            json={**_BASE_PAYLOAD, "risk_level": "LOW"},
+        )
         assert resp.status_code == 200
         data = resp.get_json()
         assert data["status"] == "success"
-        assert "advisory" in data
+        assert data["advisory"]["provider"] == "qen-sovereign"
+        assert data["advisory"]["architecture"] == "ADR-CLE-004"
 
 
 # ── 4. intelligence-feed ──────────────────────────────────────────────────────

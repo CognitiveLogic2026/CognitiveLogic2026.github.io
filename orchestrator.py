@@ -15,6 +15,9 @@ import json_repair
 import requests as _requests
 from pathlib import Path
 from flask import request, jsonify
+from sovereign_engine import compliance_audit as sovereign_compliance_audit
+from sovereign_engine import territorial_map as sovereign_territorial_map
+from sovereign_engine import advisory_assessment as sovereign_advisory_assessment
 
 _FEED_PATH = Path(__file__).parent / "data" / "intelligence_feed.json"
 
@@ -336,32 +339,16 @@ def register_orchestrator(app, limiter=None):
         entity = data.get("entity_name", data.get("name", ""))
         description = data.get("description", data.get("descrizione", ""))
         sector = data.get("sector", data.get("settore", ""))
+
         if not description:
             return jsonify({"error": "Campo description obbligatorio"}), 400
-        prompt = (
-            f"Azienda: {entity}\nSettore: {sector}\nDescrizione: {description}"
+
+        result = sovereign_compliance_audit(
+            entity_name=entity,
+            description=description,
+            sector=sector,
         )
-        if _get_client() is None:
-            return jsonify({
-                "status": "unavailable",
-                "error": "external_provider_not_configured",
-                "provider": "anthropic"
-            }), 503
-        try:
-            msg = _anthropic_messages_create(
-                model="claude-sonnet-4-6",
-                max_tokens=1500,
-                system=_COMPLIANCE_SYSTEM,
-                messages=[{"role": "user", "content": prompt}],
-            )
-            result, err = _extract_json(msg.content[0].text)
-            if err:
-                return jsonify({"error": err}), 500
-            result["entity_name"] = entity
-            result["timestamp"] = datetime.utcnow().isoformat() + "Z"
-            return jsonify({"status": "success", "audit": result}), 200
-        except Exception as e:
-            return jsonify({"error": str(e)}), 500
+        return jsonify({"status": "success", "audit": result}), 200
 
     @app.route("/agents/territorial-mapper", methods=["POST"])
     @_lim("30 per minute")
@@ -370,34 +357,18 @@ def register_orchestrator(app, limiter=None):
         entity = data.get("entity_name", data.get("name", ""))
         description = data.get("description", data.get("descrizione", ""))
         location = data.get("location", data.get("comune", "Bologna"))
+
         if not description:
             return jsonify({"error": "Campo description obbligatorio"}), 400
+
         places_context = _places_enrich(location)
-        prompt = (
-            f"Azienda: {entity}\nLocalità: {location}\nDescrizione: {description}"
-            + places_context
+        result = sovereign_territorial_map(
+            entity_name=entity,
+            description=description,
+            location=location,
+            places_context=places_context,
         )
-        if _get_client() is None:
-            return jsonify({
-                "status": "unavailable",
-                "error": "external_provider_not_configured",
-                "provider": "anthropic"
-            }), 503
-        try:
-            msg = _anthropic_messages_create(
-                model="claude-sonnet-4-6",
-                max_tokens=1200,
-                system=_TERRITORIAL_SYSTEM,
-                messages=[{"role": "user", "content": prompt}],
-            )
-            result, err = _extract_json(msg.content[0].text)
-            if err:
-                return jsonify({"error": err}), 500
-            result["entity_name"] = entity
-            result["timestamp"] = datetime.utcnow().isoformat() + "Z"
-            return jsonify({"status": "success", "mapping": result}), 200
-        except Exception as e:
-            return jsonify({"error": str(e)}), 500
+        return jsonify({"status": "success", "mapping": result}), 200
 
     @app.route("/agents/advisory-council", methods=["POST"])
     @_lim("30 per minute")
@@ -407,33 +378,17 @@ def register_orchestrator(app, limiter=None):
         description = data.get("description", data.get("descrizione", ""))
         sector = data.get("sector", data.get("settore", ""))
         risk_level = data.get("risk_level", "")
+
         if not description:
             return jsonify({"error": "Campo description obbligatorio"}), 400
-        prompt = (
-            f"Azienda: {entity}\nSettore: {sector}\n"
-            f"Livello rischio identificato: {risk_level}\nDescrizione: {description}"
+
+        result = sovereign_advisory_assessment(
+            entity_name=entity,
+            description=description,
+            sector=sector,
+            risk_level=risk_level,
         )
-        if _get_client() is None:
-            return jsonify({
-                "status": "unavailable",
-                "error": "external_provider_not_configured",
-                "provider": "anthropic"
-            }), 503
-        try:
-            msg = _anthropic_messages_create(
-                model="claude-sonnet-4-6",
-                max_tokens=1200,
-                system=_ADVISORY_SYSTEM,
-                messages=[{"role": "user", "content": prompt}],
-            )
-            result, err = _extract_json(msg.content[0].text)
-            if err:
-                return jsonify({"error": err}), 500
-            result["entity_name"] = entity
-            result["timestamp"] = datetime.utcnow().isoformat() + "Z"
-            return jsonify({"status": "success", "advisory": result}), 200
-        except Exception as e:
-            return jsonify({"error": str(e)}), 500
+        return jsonify({"status": "success", "advisory": result}), 200
 
     @app.route("/agents/intelligence-feed", methods=["GET"])
     def intelligence_feed():
