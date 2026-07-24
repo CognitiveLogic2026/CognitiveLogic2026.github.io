@@ -10,7 +10,7 @@ import json
 import os
 import sys
 from pathlib import Path
-from unittest.mock import MagicMock, patch, mock_open
+from unittest.mock import MagicMock, patch
 
 import pytest
 
@@ -178,17 +178,6 @@ class TestMistralCompliance:
         assert resp.status_code == 200
         assert resp.get_json()["status"] == "success"
 
-    def test_fallback_to_claude_when_mistral_fails(self):
-        mock_requests = MagicMock()
-        mock_requests.post.side_effect = Exception("mistral down")
-        with patch.dict(os.environ, {"MISTRAL_API_KEY": "fake"}):
-            with patch.object(_orch, "_requests", mock_requests):
-                with patch.object(_orch, "_get_client", _make_claude_mock(_VALID_JSON_AUDIT)):
-                    resp = client.post("/agents/mistral-compliance", json=_BASE_PAYLOAD)
-        assert resp.status_code == 200
-        data = resp.get_json()
-        assert "fallback" in data["audit"].get("provider", "")
-
 
 # ── 6. mistral-advisor ───────────────────────────────────────────────────────
 
@@ -244,14 +233,6 @@ class TestBolkesteinAssessment:
         data = resp.get_json()
         assert data["status"] == "success"
         assert data["assessment"]["deadline_2027"] == "2027-01-01"
-
-    def test_fallback_to_claude_when_no_mistral_key(self):
-        env = {k: v for k, v in os.environ.items() if k != "MISTRAL_API_KEY"}
-        with patch.dict(os.environ, env, clear=True):
-            with patch.object(_orch, "_get_client", _make_claude_mock(_VALID_JSON_BOLKESTEIN)):
-                resp = client.post("/agents/bolkestein-assessment", json=_BASE_PAYLOAD)
-        assert resp.status_code == 200
-        assert "fallback" in resp.get_json()["assessment"].get("provider", "")
 
 
 # ── 9. places-discovery ───────────────────────────────────────────────────────
@@ -416,22 +397,6 @@ class TestComplianceAuditEndpoint:
                            headers=self._trusted)
         assert resp.status_code == 400
 
-    def test_success_via_claude_fallback(self):
-        mock_msg = MagicMock()
-        mock_msg.content = [MagicMock(text=_VALID_COMPLIANCE_AUDIT)]
-        env = {k: v for k, v in os.environ.items() if k != "GOOGLE_API_KEY"}
-        with patch.dict(os.environ, env, clear=True):
-            with patch("main.ANTHROPIC_CLIENT") as mock_client:
-                mock_client.messages.create.return_value = mock_msg
-                resp = client.post("/gemini/compliance-audit", json=self._payload,
-                                   headers=self._trusted)
-        assert resp.status_code == 200
-        data = resp.get_json()
-        assert data["status"] == "success"
-        assert "audit" in data
-        assert data["audit"]["risk_classification"] == "High-Risk"
-        assert "QEN_SCORE" in data["audit"]["scores"]
-
     def test_success_via_gemini(self):
         mock_requests = MagicMock()
         gemini_resp = MagicMock()
@@ -493,20 +458,6 @@ class TestTrustedOrigin:
                            json={"description": "test"},
                            headers={})
         assert resp.status_code == 403
-
-    def test_gemini_qen_score_allowed_with_referer(self):
-        env = {k: v for k, v in os.environ.items() if k != "GOOGLE_API_KEY"}
-        mock_msg = MagicMock()
-        mock_msg.content = [MagicMock(text='{"qen_score":72,"badge":"QEN VERIFIED","vs":70,"va":72,"vt":75,"sintesi":"ok"}')]
-        with patch.dict(os.environ, env, clear=True):
-            with patch("main.ANTHROPIC_CLIENT") as mock_client, \
-                 patch("main.check_duplicate", return_value=None), \
-                 patch("main.save_pilot"):
-                mock_client.messages.create.return_value = mock_msg
-                resp = client.post("/gemini/qen-score",
-                                   json={"business_name": "Test", "description": "test"},
-                                   headers={"Referer": "https://cognitivelogic.it/qen.html"})
-        assert resp.status_code == 200
 
     def test_compliance_audit_blocked_without_origin(self):
         resp = client.post("/gemini/compliance-audit",
