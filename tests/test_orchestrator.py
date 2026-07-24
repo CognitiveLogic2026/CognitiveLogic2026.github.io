@@ -158,52 +158,94 @@ class TestIntelligenceFeed:
         assert data["feed"] == []
 
 
-# ── 5. mistral-compliance ────────────────────────────────────────────────────
+# ── 5. mistral-compliance compatibility endpoint ─────────────────────────────
 
 class TestMistralCompliance:
     def test_missing_description_returns_400(self):
-        with patch.dict(os.environ, {"MISTRAL_API_KEY": "fake"}):
-            resp = client.post("/agents/mistral-compliance", json={"entity_name": "X"})
+        resp = client.post(
+            "/agents/mistral-compliance",
+            json={"entity_name": "X"},
+        )
         assert resp.status_code == 400
 
-    def test_no_key_returns_503(self):
-        env = {k: v for k, v in os.environ.items() if k != "MISTRAL_API_KEY"}
-        with patch.dict(os.environ, env, clear=True):
-            resp = client.post("/agents/mistral-compliance", json=_BASE_PAYLOAD)
-        assert resp.status_code == 503
+    def test_success_uses_sovereign_engine(self):
+        resp = client.post(
+            "/agents/mistral-compliance",
+            json=_BASE_PAYLOAD,
+        )
 
-    def test_success_via_mistral(self):
-        mock_requests = MagicMock()
-        mock_requests.post.return_value = _make_mistral_response(_VALID_JSON_AUDIT)
-        with patch.dict(os.environ, {"MISTRAL_API_KEY": "fake"}):
-            with patch.object(_orch, "_requests", mock_requests):
-                resp = client.post("/agents/mistral-compliance", json=_BASE_PAYLOAD)
         assert resp.status_code == 200
-        assert resp.get_json()["status"] == "success"
+
+        data = resp.get_json()
+
+        assert data["status"] == "success"
+        assert data["audit"]["entity_name"] == "Test SRL"
+        assert data["audit"]["provider"] == "qen-sovereign"
+        assert data["audit"]["engine"] == "QEN Sovereign Intelligence Engine"
+        assert data["audit"]["architecture"] == "ADR-CLE-004"
+        assert "timestamp" in data["audit"]
+
+    def test_does_not_require_mistral_api_key(self):
+        env = {
+            key: value
+            for key, value in os.environ.items()
+            if key != "MISTRAL_API_KEY"
+        }
+
+        with patch.dict(os.environ, env, clear=True):
+            resp = client.post(
+                "/agents/mistral-compliance",
+                json=_BASE_PAYLOAD,
+            )
+
+        assert resp.status_code == 200
 
 
-# ── 6. mistral-advisor ───────────────────────────────────────────────────────
+# ── 6. mistral-advisor compatibility endpoint ────────────────────────────────
 
 class TestMistralAdvisor:
     def test_missing_description_returns_400(self):
-        with patch.dict(os.environ, {"MISTRAL_API_KEY": "fake"}):
-            resp = client.post("/agents/mistral-advisor", json={"entity_name": "X"})
+        resp = client.post(
+            "/agents/mistral-advisor",
+            json={"entity_name": "X"},
+        )
         assert resp.status_code == 400
 
-    def test_no_key_returns_503(self):
-        env = {k: v for k, v in os.environ.items() if k != "MISTRAL_API_KEY"}
-        with patch.dict(os.environ, env, clear=True):
-            resp = client.post("/agents/mistral-advisor", json=_BASE_PAYLOAD)
-        assert resp.status_code == 503
+    def test_success_uses_sovereign_engine(self):
+        resp = client.post(
+            "/agents/mistral-advisor",
+            json={
+                **_BASE_PAYLOAD,
+                "risk_level": "HIGH",
+            },
+        )
 
-    def test_success_via_mistral(self):
-        mock_requests = MagicMock()
-        mock_requests.post.return_value = _make_mistral_response(_VALID_JSON_ADVISORY)
-        with patch.dict(os.environ, {"MISTRAL_API_KEY": "fake"}):
-            with patch.object(_orch, "_requests", mock_requests):
-                resp = client.post("/agents/mistral-advisor", json={**_BASE_PAYLOAD, "risk_level": "HIGH"})
         assert resp.status_code == 200
-        assert resp.get_json()["status"] == "success"
+
+        data = resp.get_json()
+
+        assert data["status"] == "success"
+        assert data["advisory"]["entity_name"] == "Test SRL"
+        assert data["advisory"]["provider"] == "qen-sovereign"
+        assert data["advisory"]["engine"] == "QEN Sovereign Intelligence Engine"
+        assert data["advisory"]["architecture"] == "ADR-CLE-004"
+        assert "priority_actions" in data["advisory"]
+        assert "timestamp" in data["advisory"]
+
+    def test_does_not_require_mistral_api_key(self):
+        env = {
+            key: value
+            for key, value in os.environ.items()
+            if key != "MISTRAL_API_KEY"
+        }
+
+        with patch.dict(os.environ, env, clear=True):
+            resp = client.post(
+                "/agents/mistral-advisor",
+                json=_BASE_PAYLOAD,
+            )
+
+        assert resp.status_code == 200
 
 
 # ── 7. openai-advisor (disabled) ─────────────────────────────────────────────

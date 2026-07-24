@@ -430,66 +430,50 @@ def register_orchestrator(app, limiter=None):
     @app.route("/agents/mistral-compliance", methods=["POST"])
     @_lim("30 per minute")
     def mistral_compliance():
+        """Compatibility endpoint backed exclusively by the Sovereign Engine."""
         data = request.get_json() or {}
         entity = data.get("entity_name", data.get("name", ""))
         description = data.get("description", data.get("descrizione", ""))
         sector = data.get("sector", data.get("settore", ""))
+
         if not description:
             return jsonify({"error": "Campo description obbligatorio"}), 400
-        key = os.getenv("MISTRAL_API_KEY", "")
-        if not key:
-            return jsonify({"error": "MISTRAL_API_KEY non configurata"}), 503
-        prompt = f"Azienda: {entity}\nSettore: {sector}\nDescrizione: {description}"
-        provider = "mistral-large-latest"
-        try:
-            raw = _mistral_chat(key, _COMPLIANCE_SYSTEM, prompt)
-        except Exception as mistral_err:
-            return jsonify({
-                "status": "provider_error",
-                "provider": "mistral-large-latest",
-                "error": str(mistral_err)
-            }), 502
-        result, err = _extract_json(raw)
-        if err:
-            return jsonify({"error": err}), 500
-        result["entity_name"] = entity
-        result["provider"] = provider
-        result["timestamp"] = datetime.utcnow().isoformat() + "Z"
-        return jsonify({"status": "success", "audit": result}), 200
+
+        result = sovereign_compliance_audit(
+            entity_name=entity,
+            description=description,
+            sector=sector,
+        )
+
+        return jsonify({
+            "status": "success",
+            "audit": result,
+        }), 200
 
     @app.route("/agents/mistral-advisor", methods=["POST"])
     @_lim("30 per minute")
     def mistral_advisor():
+        """Compatibility endpoint backed exclusively by the Sovereign Engine."""
         data = request.get_json() or {}
         entity = data.get("entity_name", data.get("name", ""))
         description = data.get("description", data.get("descrizione", ""))
         sector = data.get("sector", data.get("settore", ""))
         risk_level = data.get("risk_level", "")
+
         if not description:
             return jsonify({"error": "Campo description obbligatorio"}), 400
-        key = os.getenv("MISTRAL_API_KEY", "")
-        if not key:
-            return jsonify({"error": "MISTRAL_API_KEY non configurata"}), 503
-        prompt = (
-            f"Azienda: {entity}\nSettore: {sector}\n"
-            f"Livello rischio identificato: {risk_level}\nDescrizione: {description}"
+
+        result = sovereign_advisory_assessment(
+            entity_name=entity,
+            description=description,
+            sector=sector,
+            risk_level=risk_level,
         )
-        provider = "mistral-large-latest"
-        try:
-            raw = _mistral_chat(key, _ADVISORY_SYSTEM, prompt)
-        except Exception as mistral_err:
-            return jsonify({
-                "status": "provider_error",
-                "provider": "mistral-large-latest",
-                "error": str(mistral_err)
-            }), 502
-        result, err = _extract_json(raw)
-        if err:
-            return jsonify({"error": err}), 500
-        result["entity_name"] = entity
-        result["provider"] = provider
-        result["timestamp"] = datetime.utcnow().isoformat() + "Z"
-        return jsonify({"status": "success", "advisory": result}), 200
+
+        return jsonify({
+            "status": "success",
+            "advisory": result,
+        }), 200
 
     # ---------------------------------------------------------------------------
     # OpenAI endpoint — DISABLED (payment pending, OPENAI_API_KEY non disponibile)
