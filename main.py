@@ -13,7 +13,7 @@ try:
     import anthropic
 except ImportError:
     anthropic = None
-from datetime import datetime
+from datetime import datetime, timezone, timedelta
 from flask import Flask, request, jsonify
 from flask_limiter import Limiter
 from flask_limiter.util import get_remote_address
@@ -560,100 +560,134 @@ def gemini_qen_score():
         }), 500
 
 
-_COMPLIANCE_AUDIT_SYSTEM = (
-    "You are QEN Compliance Auditor — an AI governance specialist operating under the "
-    "Quantum Ethics Network (QEN) framework. Your role is to assess AI/biometric systems "
-    "for regulatory risk, generate compliance findings, and produce governance recommendations.\n\n"
-    "Core Framework:\n"
-    "QEN Score = (Vs × 0.40) + (Va × 0.35) + (Vt × 0.25)\n"
-    "Where:\n"
-    "- Vs (Semantic Legality): Alignment with EU AI Act, GDPR, regulatory legitimacy [0–100]\n"
-    "- Va (Accountability): Audit trail, human oversight, redress mechanisms [0–100]\n"
-    "- Vt (Trust & Control): Data quality, transparency, reversibility, consent [0–100]\n\n"
-    "Assessment Methodology:\n"
-    "1. Risk Classification: Categorize system by EU AI Act Annex "
-    "(Prohibited / High-Risk / Limited Risk / Minimal Risk)\n"
-    "2. Vector Scoring: Evaluate each dimension independently using the scoring rubric\n"
-    "3. Control Requirements: Map findings to mandatory controls\n"
-    "4. Escalation Logic: Flag for immediate escalation if any vector < 30 OR system is Prohibited\n"
-    "5. Recommendation: Produce actionable governance decisions "
-    "(approve, conditional-approve, remediate, prohibit)\n\n"
-    "You MUST output ONLY valid JSON with no additional text, following this exact schema:\n"
-    '{"system_name":"string","risk_classification":"Prohibited|High-Risk|Limited-Risk|Minimal-Risk",'
-    '"domain":"string","assessment_date":"ISO 8601 date",'
-    '"scores":{"Vs":number,"Va":number,"Vt":number,"QEN_SCORE":number},'
-    '"findings":[{"category":"string","severity":"Critical|High|Medium|Low",'
-    '"issue":"string","evidence":"string","remediation":"string"}],'
-    '"mandatory_controls":["string"],"escalation_flag":false,"escalation_reason":"string or null",'
-    '"recommendation":"Approve|Conditional Approval|Remediation Required|Prohibit",'
-    '"next_steps":["string"],"governance_owner":"string","review_date":"ISO 8601 date"}'
-)
-
 @app.route("/gemini/compliance-audit", methods=["POST"])
 @limiter.limit("10 per minute;100 per day")
 def gemini_compliance_audit():
+    """Legacy-compatible compliance audit backed by sovereign intelligence."""
     blocked = _require_trusted_origin()
     if blocked:
         return blocked
-    data     = request.get_json() or {}
-    name     = data.get("system_name", "Unnamed System")
-    sys_type = data.get("system_type", "")
-    domain   = data.get("domain", "")
-    desc     = data.get("description", "")
+
+    data = request.get_json(silent=True) or {}
+    name = data.get("system_name", "Unnamed System")
+    system_type = data.get("system_type", "")
+    domain = data.get("domain", "")
+    description = data.get("description", "")
     controls = data.get("controls", "(no controls documented)")
-    if not desc:
+
+    if not description:
         return jsonify({"error": "Campo description obbligatorio"}), 400
-    today = datetime.utcnow().strftime("%Y-%m-%d")
-    prompt = (
-        f"Assess the following system under QEN framework v1.0:\n\n"
-        f"System Name: {name}\nType: {sys_type}\nDomain: {domain}\n"
-        f"Description: {desc}\nCurrent Controls: {controls}\n"
-        f"Today's date: {today}\n\n"
-        "Provide: 1) Risk classification (EU AI Act Annex) 2) QEN scores (Vs, Va, Vt) "
-        "3) Findings (critical gaps) 4) Mandatory controls checklist "
-        "5) Recommendation + next steps 6) Output as JSON only — no other text"
-    )
-    google_key = os.getenv("GOOGLE_API_KEY", "")
+
     try:
-        raw = None
-        provider = None
-        if google_key:
-            for _model in ["gemini-2.0-flash-lite", "gemini-2.5-flash", "gemini-2.0-flash"]:
-                try:
-                    _resp = _requests.post(
-                        f"https://generativelanguage.googleapis.com/v1beta/models/{_model}:generateContent",
-                        params={"key": google_key},
-                        json={
-                            "system_instruction": {"parts": [{"text": _COMPLIANCE_AUDIT_SYSTEM}]},
-                            "contents": [{"parts": [{"text": prompt}]}],
-                            "generationConfig": {"response_mime_type": "application/json"},
-                        },
-                        timeout=30,
-                    )
-                    _resp.raise_for_status()
-                    raw = _resp.json()["candidates"][0]["content"]["parts"][0]["text"].strip()
-                    provider = _model
-                    break
-                except Exception:
-                    continue
-        if raw is None:
-            return jsonify({
-                "status": "unavailable",
-                "error": "external_provider_not_configured"
-            }), 503
-        raw = raw.replace("```json", "").replace("```", "").strip()
-        m = re.search(r"\{.*\}", raw, re.DOTALL)
-        if m:
-            q = json.loads(m.group())
-            vs = float(q.get("scores", {}).get("Vs", 50))
-            va = float(q.get("scores", {}).get("Va", 50))
-            vt = float(q.get("scores", {}).get("Vt", 50))
-            q.setdefault("scores", {})["QEN_SCORE"] = _qen(vs, va, vt)
-            q["provider"] = provider
-            return jsonify({"status": "success", "audit": q})
-        return jsonify({"status": "error", "error": "Risposta non valida dal modello"}), 500
+        context = (
+            f"System type: {system_type}. "
+            f"Domain: {domain}. "
+            f"Current controls: {controls}."
+        )
+
+        sovereign = sovereign_classify_risk(
+            description=description,
+            context=context,
+            sector=domain,
+        )
+
+        level_map = {
+            "PROHIBITED": "Prohibited",
+            "HIGH": "High-Risk",
+            "MEDIUM": "Limited-Risk",
+            "LOW": "Minimal-Risk",
+        }
+        severity_map = {
+            "PROHIBITED": "Critical",
+            "HIGH": "High",
+            "MEDIUM": "Medium",
+            "LOW": "Low",
+        }
+        recommendation_map = {
+            "PROHIBITED": "Prohibit",
+            "HIGH": "Remediation Required",
+            "MEDIUM": "Conditional Approval",
+            "LOW": "Approve",
+        }
+
+        gap_labels = {
+            "risk_management": "Risk management system",
+            "human_oversight": "Human oversight",
+            "technical_documentation": "Technical documentation",
+            "transparency_notice": "Transparency notice",
+            "gdpr_legal_basis": "GDPR legal basis",
+            "gdpr_article_22_review": "Automated decision safeguards",
+        }
+
+        findings = []
+        for index, gap in enumerate(sovereign["gaps"]):
+            remediation = (
+                sovereign["recommendations"][index]
+                if index < len(sovereign["recommendations"])
+                else "Documentare e applicare il controllo richiesto."
+            )
+            findings.append({
+                "category": gap_labels.get(gap, gap.replace("_", " ").title()),
+                "severity": severity_map[sovereign["risk_level"]],
+                "issue": f"Controllo mancante o non sufficientemente documentato: {gap}.",
+                "evidence": (
+                    "Gap identificato dal QEN Sovereign Intelligence Engine "
+                    "mediante regole deterministiche ed evidenze intelligibili."
+                ),
+                "remediation": remediation,
+            })
+
+        mandatory_controls = [
+            gap_labels.get(gap, gap.replace("_", " ").title())
+            for gap in sovereign["gaps"]
+        ]
+
+        escalation_flag = (
+            sovereign["risk_level"] == "PROHIBITED"
+            or min(sovereign["vs"], sovereign["va"], sovereign["vt"]) < 30
+        )
+
+        assessment_date = datetime.now(timezone.utc).date()
+        review_date = assessment_date + timedelta(days=90)
+
+        audit = {
+            "system_name": name,
+            "risk_classification": level_map[sovereign["risk_level"]],
+            "domain": domain,
+            "assessment_date": assessment_date.isoformat(),
+            "scores": {
+                "Vs": sovereign["vs"],
+                "Va": sovereign["va"],
+                "Vt": sovereign["vt"],
+                "QEN_SCORE": sovereign["qen_score"],
+            },
+            "findings": findings,
+            "mandatory_controls": mandatory_controls,
+            "escalation_flag": escalation_flag,
+            "escalation_reason": (
+                "Sistema proibito o vettore QEN inferiore alla soglia minima."
+                if escalation_flag
+                else None
+            ),
+            "recommendation": recommendation_map[sovereign["risk_level"]],
+            "next_steps": sovereign["recommendations"],
+            "governance_owner": "AI Governance Owner",
+            "review_date": review_date.isoformat(),
+            "provider": "qen-sovereign",
+            "engine": sovereign["engine"],
+            "architecture": sovereign["architecture"],
+            "decision_id": sovereign["decision_id"],
+            "knowledge_evidence": sovereign["knowledge_evidence"],
+        }
+
+        return jsonify({"status": "success", "audit": audit}), 200
+
     except Exception:
-        return jsonify({"status": "error", "error": "Errore interno del server"}), 500
+        app.logger.exception("Sovereign compliance audit failed")
+        return jsonify({
+            "status": "error",
+            "error": "Errore interno del server",
+        }), 500
 
 
 _QEN_DRIFT_THRESHOLD = 0.5

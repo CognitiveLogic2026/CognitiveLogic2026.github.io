@@ -394,22 +394,6 @@ class TestSovereignQenScoreEndpoint:
 
 # ── gemini/compliance-audit ───────────────────────────────────────────────────
 
-_VALID_COMPLIANCE_AUDIT = json.dumps({
-    "system_name": "Test System",
-    "risk_classification": "High-Risk",
-    "domain": "HR",
-    "assessment_date": "2026-05-31",
-    "scores": {"Vs": 70, "Va": 65, "Vt": 75, "QEN_SCORE": 70.0},
-    "findings": [],
-    "mandatory_controls": [],
-    "escalation_flag": False,
-    "escalation_reason": None,
-    "recommendation": "Conditional Approval",
-    "next_steps": [],
-    "governance_owner": "Legal",
-    "review_date": "2026-08-29",
-})
-
 class TestComplianceAuditEndpoint:
     _payload = {
         "system_name": "AI Hiring Tool",
@@ -426,20 +410,26 @@ class TestComplianceAuditEndpoint:
                            headers=self._trusted)
         assert resp.status_code == 400
 
-    def test_success_via_gemini(self):
-        mock_requests = MagicMock()
-        gemini_resp = MagicMock()
-        gemini_resp.raise_for_status = MagicMock()
-        gemini_resp.json.return_value = {
-            "candidates": [{"content": {"parts": [{"text": _VALID_COMPLIANCE_AUDIT}]}}]
-        }
-        mock_requests.post.return_value = gemini_resp
-        with patch.dict(os.environ, {"GOOGLE_API_KEY": "fake"}):
-            with patch("main._requests", mock_requests):
-                resp = client.post("/gemini/compliance-audit", json=self._payload,
-                                   headers=self._trusted)
+    def test_success_via_sovereign_engine(self):
+        resp = client.post(
+            "/gemini/compliance-audit",
+            json=self._payload,
+            headers=self._trusted,
+        )
+
         assert resp.status_code == 200
-        assert resp.get_json()["status"] == "success"
+        data = resp.get_json()
+        assert data["status"] == "success"
+
+        audit = data["audit"]
+        assert audit["system_name"] == "AI Hiring Tool"
+        assert audit["risk_classification"] == "High-Risk"
+        assert audit["provider"] == "qen-sovereign"
+        assert audit["architecture"] == "ADR-CLE-004"
+        assert audit["recommendation"] == "Remediation Required"
+        assert set(("Vs", "Va", "Vt", "QEN_SCORE")) <= set(audit["scores"])
+        assert isinstance(audit["mandatory_controls"], list)
+        assert isinstance(audit["findings"], list)
 
 
 # ── origin check su endpoint cost-bearing ────────────────────────────────────
