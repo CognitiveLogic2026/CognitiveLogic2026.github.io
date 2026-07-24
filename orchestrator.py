@@ -6,11 +6,6 @@ import json
 import re
 from datetime import datetime
 
-try:
-    import anthropic
-except ImportError:
-    anthropic = None
-
 import json_repair
 import requests as _requests
 from pathlib import Path
@@ -18,10 +13,9 @@ from flask import request, jsonify
 from sovereign_engine import compliance_audit as sovereign_compliance_audit
 from sovereign_engine import territorial_map as sovereign_territorial_map
 from sovereign_engine import advisory_assessment as sovereign_advisory_assessment
+from sovereign_engine import score_entity as sovereign_score_entity
 
 _FEED_PATH = Path(__file__).parent / "data" / "intelligence_feed.json"
-
-_client = None
 
 
 _PLACES_QUERIES = {
@@ -157,23 +151,6 @@ def _places_enrich(location: str) -> str:
     return "\n\nFornitori/stakeholder reali (Google Places):\n" + "\n".join(found[:10])
 
 
-def _get_client():
-    global _client
-    api_key = os.getenv("ANTHROPIC_API_KEY")
-    if anthropic is None or not api_key:
-        return None
-    if _client is None:
-        _client = anthropic.Anthropic(api_key=api_key)
-    return _client
-
-
-def _anthropic_messages_create(**kwargs):
-    client = _get_client()
-    if client is None:
-        raise RuntimeError("external_provider_not_configured")
-    return client.messages.create(**kwargs)
-
-
 def _extract_json(raw):
     raw = raw.replace("```json", "").replace("```", "").strip()
     m = re.search(r"\{.*\}", raw, re.DOTALL)
@@ -261,74 +238,48 @@ _BOLKESTEIN_SYSTEM = (
 )
 
 
-def _score_business_list(businesses: list, settore: str, provider: str, auto_save: bool) -> list:
-    import time
+def _score_business_list(
+    businesses: list,
+    settore: str,
+    provider: str = "qen-sovereign",
+    auto_save: bool = False,
+) -> list:
     results = []
+
     for biz in businesses:
         name = biz.get("name", "")
         if not name:
             continue
+
         biz_settore = biz.get("settore") or settore
-        biz_comune = biz.get("comune", "")
-        desc = (
+        description = (
             f"Attività: {name}. "
             f"Tipologia: {biz.get('type', biz_settore)}. "
             f"Indirizzo: {biz.get('address', '')}."
         )
-        if biz.get("rating"):
-            desc += f" Valutazione clienti: {biz['rating']}/5 ({biz.get('reviews', 0)} recensioni)."
-        prompt = (
-            f"Azienda: {name}\nSettore: {biz_settore}\n"
-            f"Comune: {biz_comune}\nDescrizione: {desc}"
-        )
-        scored = dict(biz)
-        raw = None
-        try:
-            if provider == "mistral":
-                mk = os.getenv("MISTRAL_API_KEY", "")
-                if not mk:
-                    raise RuntimeError("external_provider_not_configured")
-                raw = _mistral_chat(mk, _DISCOVERY_QEN_SYSTEM, prompt)
-            elif provider in {"anthropic", "claude"}:
-                msg = _anthropic_messages_create(
-                    model="claude-sonnet-4-6",
-                    max_tokens=900,
-                    system=_DISCOVERY_QEN_SYSTEM,
-                    messages=[{"role": "user", "content": prompt}],
-                )
-                raw = msg.content[0].text
-            else:
-                raise RuntimeError(f"unsupported_provider:{provider}")
-        except Exception as e:
-            scored["error"] = str(e)
-            scored["provider"] = provider
-            results.append(scored)
-            if len(results) < len(businesses):
-                time.sleep(0.5)
-            continue
-        audit, err = _extract_json(raw)
-        if audit:
-            scored.update({
-                "qen_score":             audit.get("qen_score"),
-                "vs":                    audit.get("vs"),
-                "va":                    audit.get("va"),
-                "vt":                    audit.get("vt"),
-                "confidence":            audit.get("confidence", "LOW"),
-                "risk_flags":            audit.get("risk_flags", []),
-                "bolkestein_applicable": audit.get("bolkestein_applicable", False),
-                "summary":               audit.get("summary", ""),
-                "note":                  audit.get("note", ""),
-                "status":                "PRE_ASSESSMENT",
-            })
-            if auto_save and audit.get("qen_score") is not None:
-                _discovery_save_pilot(name, scored)
-        else:
-            scored["error"] = err
-        results.append(scored)
-        if len(results) < len(businesses):
-            time.sleep(0.5)
-    return results
 
+        if biz.get("rating"):
+            description += (
+                f" Valutazione clienti: {biz['rating']}/5 "
+                f"({biz.get('reviews', 0)} recensioni)."
+            )
+
+        scored = dict(biz)
+        scored.update(
+            sovereign_score_entity(
+                name=name,
+                description=description,
+                sector=biz_settore,
+            )
+        )
+        scored["status"] = "PRE_ASSESSMENT"
+
+        if auto_save:
+            _discovery_save_pilot(name, scored)
+
+        results.append(scored)
+
+    return results
 
 def register_orchestrator(app, limiter=None):
     _lim = limiter.limit if limiter else lambda _: (lambda f: f)
@@ -402,30 +353,7 @@ def register_orchestrator(app, limiter=None):
 
     # ---------------------------------------------------------------------------
     # Mistral endpoints (primary LLM — Mistral Large via REST, no SDK)
-    # MISTRAL_API_KEY injected from GitHub Secrets at deploy time
-    # Falls back to Claude Sonnet if Mistral is unavailable
-    # ---------------------------------------------------------------------------
 
-    def _mistral_chat(key: str, system: str, prompt: str) -> str:
-        """Call Mistral Large and return the raw content string."""
-        resp = _requests.post(
-            "https://api.mistral.ai/v1/chat/completions",
-            headers={
-                "Authorization": f"Bearer {key}",
-                "Content-Type": "application/json",
-            },
-            json={
-                "model": "mistral-large-latest",
-                "response_format": {"type": "json_object"},
-                "messages": [
-                    {"role": "system", "content": system},
-                    {"role": "user", "content": prompt},
-                ],
-            },
-            timeout=45,
-        )
-        resp.raise_for_status()
-        return resp.json()["choices"][0]["message"]["content"]
 
     @app.route("/agents/mistral-compliance", methods=["POST"])
     @_lim("30 per minute")
@@ -500,41 +428,32 @@ def register_orchestrator(app, limiter=None):
         location = data.get("location", data.get("comune", ""))
         concessione = data.get("concessione_tipo", "")
         scadenza = data.get("scadenza_attuale", "2027-12-31")
+
         if not description:
             return jsonify({"error": "Campo description obbligatorio"}), 400
-        prompt = (
-            f"Azienda: {entity}\n"
-            f"Settore: {sector}\n"
-            f"Tipo concessione: {concessione}\n"
-            f"Localita: {location}\n"
-            f"Scadenza concessione attuale: {scadenza}\n"
-            f"Descrizione attivita: {description}\n\n"
-            "Esegui il Bolkestein 2027 pre-assessment completo."
+
+        context = (
+            f"{description} "
+            f"Tipo concessione: {concessione}. "
+            f"Località: {location}. "
+            f"Scadenza attuale: {scadenza}."
         )
-        key = os.getenv("MISTRAL_API_KEY", "")
-        provider = "mistral-large-latest"
-        if not key:
-            return jsonify({
-                "status": "unavailable",
-                "error": "external_provider_not_configured",
-                "provider": "mistral-large-latest"
-            }), 503
-        try:
-            raw = _mistral_chat(key, _BOLKESTEIN_SYSTEM, prompt)
-        except Exception as mistral_err:
-            return jsonify({
-                "status": "provider_error",
-                "provider": "mistral-large-latest",
-                "error": str(mistral_err)
-            }), 502
-        result, err = _extract_json(raw)
-        if err:
-            return jsonify({"error": err}), 500
-        result["entity_name"] = entity
-        result["provider"] = provider
+
+        result = sovereign_compliance_audit(
+            entity_name=entity,
+            description=context,
+            sector=sector,
+        )
+        result["concession_type"] = concessione
+        result["location"] = location
+        result["current_deadline"] = scadenza
         result["deadline_2027"] = "2027-01-01"
-        result["timestamp"] = datetime.utcnow().isoformat() + "Z"
-        return jsonify({"status": "success", "assessment": result}), 200
+        result["provider"] = "qen-sovereign"
+
+        return jsonify({
+            "status": "success",
+            "assessment": result,
+        }), 200
 
     # -----------------------------------------------------------------------
     # Google Places discovery endpoints
@@ -564,7 +483,7 @@ def register_orchestrator(app, limiter=None):
     def score_businesses():
         data      = request.get_json() or {}
         businesses = data.get("businesses", [])[:5]
-        provider  = (data.get("provider") or "mistral").lower()
+        provider  = "qen-sovereign"
         auto_save = bool(data.get("auto_save", False))
         settore   = (data.get("settore") or "").strip()
         results   = _score_business_list(businesses, settore, provider, auto_save)
@@ -582,7 +501,7 @@ def register_orchestrator(app, limiter=None):
         comune      = (data.get("comune") or "Bologna").strip()
         settore     = (data.get("settore") or "horeca").strip().lower()
         max_results = min(int(data.get("max_results", 10)), 20)
-        provider    = (data.get("provider") or "mistral").lower()
+        provider    = "qen-sovereign"
         auto_save   = bool(data.get("auto_save", False))
 
         key_places = os.getenv("GOOGLE_PLACES_API_KEY", "")
