@@ -31,10 +31,13 @@
     "graph_version": "v4 — 97 nodes · 182 relations"
   },
   "composition": {
-    "compatible_layers": ["urn:glm:base:core"],
+    "compatible_layers": [
+      "urn:glm:base:core"
+    ],
     "agent_interop": true,
     "graphrag_enabled": true,
-    "multi_brain": ["claude-sonnet-4-6", "mistral-large", "gemini-2.5-flash"]
+    "decision_engine": "QEN Sovereign Engine",
+    "external_provider_decisioning": false
   },
   "evide": {
     "registry": "https://api.cognitivelogic.it/evide/chain",
