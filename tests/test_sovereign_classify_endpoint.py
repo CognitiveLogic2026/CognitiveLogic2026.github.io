@@ -20,22 +20,18 @@ def test_classify_risk_requires_description():
 
 
 def test_classify_risk_uses_sovereign_engine_without_anthropic():
-    with patch(
-        "main.get_anthropic_client",
-        side_effect=AssertionError("Anthropic must not be called"),
-    ):
-        response = client.post(
-            "/classify-risk",
-            json={
-                "descrizione": (
-                    "Sistema biometrico per la selezione automatizzata "
-                    "del personale"
-                ),
-                "contesto": "Assunzioni",
-                "settore": "Risorse umane",
-            },
-            headers=HEADERS,
-        )
+    response = client.post(
+        "/classify-risk",
+        json={
+            "descrizione": (
+                "Sistema biometrico per la selezione automatizzata "
+                "del personale"
+            ),
+            "contesto": "Assunzioni",
+            "settore": "Risorse umane",
+        },
+        headers=HEADERS,
+    )
 
     assert response.status_code == 200
 

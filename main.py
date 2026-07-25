@@ -9,10 +9,6 @@ import json
 import re
 from pathlib import Path
 import requests as _requests
-try:
-    import anthropic
-except ImportError:
-    anthropic = None
 from datetime import datetime, timezone, timedelta, UTC
 from flask import Flask, request, jsonify
 from flask_limiter import Limiter
@@ -95,16 +91,6 @@ def add_cors(response):
 
 GRAPH_PATH   = "/app/cognitivelogic/graph.json"
 PILOTS_PATH  = "/app/cognitivelogic/pilots.json"
-ANTHROPIC_CLIENT = None
-
-def get_anthropic_client():
-    global ANTHROPIC_CLIENT
-    api_key = os.getenv("ANTHROPIC_API_KEY")
-    if anthropic is None or not api_key:
-        return None
-    if ANTHROPIC_CLIENT is None:
-        ANTHROPIC_CLIENT = anthropic.Anthropic(api_key=api_key)
-    return ANTHROPIC_CLIENT
 
 def load_pilots():
     if not os.path.exists(PILOTS_PATH):
