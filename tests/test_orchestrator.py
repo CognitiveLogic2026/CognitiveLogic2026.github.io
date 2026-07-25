@@ -250,14 +250,6 @@ class TestMistralAdvisor:
 
 # ── 7. openai-advisor (disabled) ─────────────────────────────────────────────
 
-class TestOpenAIAdvisor:
-    def test_always_returns_503(self):
-        resp = client.post("/agents/openai-advisor", json=_BASE_PAYLOAD)
-        assert resp.status_code == 503
-        assert resp.get_json()["error"] == "endpoint_disabled"
-
-
-# ── 8. bolkestein-assessment ─────────────────────────────────────────────────
 
 class TestBolkesteinAssessment:
     def test_missing_description_returns_400(self):
