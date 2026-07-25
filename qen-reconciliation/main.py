@@ -14,7 +14,7 @@ import urllib.error
 import urllib.parse
 import urllib.request
 from dataclasses import dataclass
-from datetime import datetime, timezone, timedelta
+from datetime import datetime, timezone, timedelta, UTC
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 from pathlib import Path
@@ -522,7 +522,7 @@ def _save_escalations(store: dict) -> None:
 
 
 def _make_escalation_id(operator_id: str, param: str) -> str:
-    key = f"{operator_id}:{param}:{datetime.utcnow().isoformat()}"
+    key = f"{operator_id}:{param}:{datetime.now(UTC).replace(tzinfo=None).isoformat()}"
     return "ESC_" + hashlib.md5(key.encode()).hexdigest()[:8].upper()
 
 
@@ -617,7 +617,7 @@ def health():
             "smtp_host": SMTP_HOST or None,
         },
         "sla": {"RED_hours": SLA_HOURS["RED"], "YELLOW_hours": SLA_HOURS["YELLOW"]},
-        "timestamp": datetime.utcnow().isoformat() + "Z",
+        "timestamp": datetime.now(UTC).isoformat().replace("+00:00", "Z"),
     }
 
 
@@ -628,7 +628,7 @@ def ingest(req: IngestRequest):
         "operator_id": req.operator_id,
         "operator_name": req.operator_name,
         "parameters_received": list(req.declared_data.keys()),
-        "timestamp": datetime.utcnow().isoformat() + "Z",
+        "timestamp": datetime.now(UTC).isoformat().replace("+00:00", "Z"),
     }
 
 
@@ -656,7 +656,7 @@ def reconcile(req: ReconcileRequest):
 
     score_after = max(0, req.base_score + total_adjustment)
     rec_id = "REC_" + hashlib.md5(
-        f"{req.operator_id}{datetime.utcnow().isoformat()}".encode()
+        f"{req.operator_id}{datetime.now(UTC).replace(tzinfo=None).isoformat()}".encode()
     ).hexdigest()[:8].upper()
 
     _save_escalations_from_reconcile(
@@ -673,7 +673,7 @@ def reconcile(req: ReconcileRequest):
             "after":      score_after,
             "adjustment": total_adjustment,
         },
-        "timestamp": datetime.utcnow().isoformat() + "Z",
+        "timestamp": datetime.now(UTC).isoformat().replace("+00:00", "Z"),
     }
 
 

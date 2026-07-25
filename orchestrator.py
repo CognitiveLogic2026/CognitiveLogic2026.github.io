@@ -4,7 +4,7 @@
 import os
 import json
 import re
-from datetime import datetime
+from datetime import datetime, UTC
 
 import json_repair
 import requests as _requests
@@ -100,7 +100,7 @@ def _discovery_save_pilot(name: str, score_data: dict):
         k = name.strip().lower()
         entry = {
             "name": name,
-            "timestamp": datetime.utcnow().strftime("%Y-%m-%dT%H:%M:%SZ"),
+            "timestamp": datetime.now(UTC).strftime("%Y-%m-%dT%H:%M:%SZ"),
             "data": score_data,
         }
         if k in pilots:
@@ -348,7 +348,7 @@ def register_orchestrator(app, limiter=None):
         except Exception:
             payload = {"feed": [], "benchmarks": {}}
         payload["status"] = "ok"
-        payload["timestamp"] = datetime.utcnow().isoformat() + "Z"
+        payload["timestamp"] = datetime.now(UTC).isoformat().replace("+00:00", "Z")
         return jsonify(payload), 200
 
     # ---------------------------------------------------------------------------
@@ -402,21 +402,6 @@ def register_orchestrator(app, limiter=None):
             "status": "success",
             "advisory": result,
         }), 200
-
-    # ---------------------------------------------------------------------------
-    # OpenAI endpoint — DISABLED (payment pending, OPENAI_API_KEY non disponibile)
-    # ---------------------------------------------------------------------------
-    # @app.route("/agents/openai-advisor", methods=["POST"])
-    # def openai_advisor():
-    #     ...  # gpt-4o-mini via https://api.openai.com/v1/chat/completions
-    # ---------------------------------------------------------------------------
-
-    @app.route("/agents/openai-advisor", methods=["POST"])
-    def openai_advisor():
-        return jsonify({
-            "error": "endpoint_disabled",
-            "message": "OpenAI advisor temporaneamente non disponibile.",
-        }), 503
 
     @app.route("/agents/bolkestein-assessment", methods=["POST"])
     @_lim("30 per minute")
@@ -475,7 +460,7 @@ def register_orchestrator(app, limiter=None):
             "settore":    settore,
             "total":      len(businesses),
             "businesses": businesses,
-            "timestamp":  datetime.utcnow().isoformat() + "Z",
+            "timestamp":  datetime.now(UTC).isoformat().replace("+00:00", "Z"),
         }), 200
 
     @app.route("/agents/score-businesses", methods=["POST"])
@@ -491,7 +476,7 @@ def register_orchestrator(app, limiter=None):
             "status":    "success",
             "total":     len(results),
             "scored":    results,
-            "timestamp": datetime.utcnow().isoformat() + "Z",
+            "timestamp": datetime.now(UTC).isoformat().replace("+00:00", "Z"),
         }), 200
 
     @app.route("/agents/places-batch-qen", methods=["POST"])
@@ -523,5 +508,5 @@ def register_orchestrator(app, limiter=None):
             "total":      len(results),
             "auto_saved": auto_save,
             "scored":     results,
-            "timestamp":  datetime.utcnow().isoformat() + "Z",
+            "timestamp":  datetime.now(UTC).isoformat().replace("+00:00", "Z"),
         }), 200

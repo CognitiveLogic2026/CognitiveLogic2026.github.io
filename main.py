@@ -13,7 +13,7 @@ try:
     import anthropic
 except ImportError:
     anthropic = None
-from datetime import datetime, timezone, timedelta
+from datetime import datetime, timezone, timedelta, UTC
 from flask import Flask, request, jsonify
 from flask_limiter import Limiter
 from flask_limiter.util import get_remote_address
@@ -123,7 +123,7 @@ def save_pilot(name, score_data):
             key = name.strip().lower()
             entry = {
                 "name":      name,
-                "timestamp": datetime.utcnow().strftime("%Y-%m-%dT%H:%M:%SZ"),
+                "timestamp": datetime.now(UTC).strftime("%Y-%m-%dT%H:%M:%SZ"),
                 "data":      score_data
             }
             if key in pilots:
@@ -190,7 +190,7 @@ def analyze():
         qen_score=qen_score, verdict=_verdict_for_qen(qen_score),
     )
     new_node = {"id": name, "type": "System", "qen": qen_score, "evide_id": evide_entry["id"],
-                "status": "Analyzed", "timestamp": datetime.utcnow().strftime("%Y-%m-%dT%H:%M:%SZ")}
+                "status": "Analyzed", "timestamp": datetime.now(UTC).strftime("%Y-%m-%dT%H:%M:%SZ")}
     try:
         with open(GRAPH_PATH, "r") as f:
             g = json.load(f)
@@ -211,7 +211,7 @@ def audit_horeca():
     qen      = data.get("qen_score_finale", 0)
     mods     = data.get("moduli_dettagliati", {})
     status   = data.get("status_conformita", "")
-    audit_id = data.get("qen_audit_id") or "qen-" + datetime.utcnow().strftime("%Y%m%d%H%M%S")
+    audit_id = data.get("qen_audit_id") or "qen-" + datetime.now(UTC).strftime("%Y%m%d%H%M%S")
 
     def ms(key):
         return mods.get(key, {}).get("score", 0) or 0
@@ -239,7 +239,7 @@ def audit_horeca():
         "qen_score": {"vs": vs, "va": va, "vt": vt, "totale": qen},
         "evide_id": evide_entry["id"],
         "stato": "AUDIT_COMPLETATO",
-        "timestamp": datetime.utcnow().strftime("%Y-%m-%dT%H:%M:%SZ"),
+        "timestamp": datetime.now(UTC).strftime("%Y-%m-%dT%H:%M:%SZ"),
     }
     try:
         with open(GRAPH_PATH, "r") as f:
@@ -263,7 +263,7 @@ def audit_balneare():
     tipo     = data.get("tipo", "balneare")
     qen      = data.get("qen_score_finale", 0)
     scores   = data.get("scores", {})
-    audit_id = data.get("qen_audit_id") or "qen-bal-" + datetime.utcnow().strftime("%Y%m%d%H%M%S")
+    audit_id = data.get("qen_audit_id") or "qen-bal-" + datetime.now(UTC).strftime("%Y%m%d%H%M%S")
 
     def sc(key):
         return scores.get(key, 0) or 0
@@ -294,7 +294,7 @@ def audit_balneare():
         "qen_score": {"vs": vs, "va": va, "vt": vt, "totale": qen},
         "evide_id": evide_entry["id"],
         "stato": "AUDIT_COMPLETATO",
-        "timestamp": datetime.utcnow().strftime("%Y-%m-%dT%H:%M:%SZ"),
+        "timestamp": datetime.now(UTC).strftime("%Y-%m-%dT%H:%M:%SZ"),
     }
     try:
         with open(GRAPH_PATH, "r") as f:
@@ -341,7 +341,7 @@ def admin_add_client():
         "qen_score": {"vs": vs, "va": va, "vt": vt, "totale": qen},
         "evide_id": evide_entry["id"],
         "stato": "INSERITO_MANUALE",
-        "timestamp": datetime.utcnow().strftime("%Y-%m-%dT%H:%M:%SZ"),
+        "timestamp": datetime.now(UTC).strftime("%Y-%m-%dT%H:%M:%SZ"),
     }
     try:
         with open(GRAPH_PATH, "r") as f:
@@ -740,7 +740,7 @@ def reconcile_batch():
         "corrected": corrected,
         "unchanged": len(report) - corrected,
         "report": report,
-        "timestamp": datetime.utcnow().strftime("%Y-%m-%dT%H:%M:%SZ"),
+        "timestamp": datetime.now(UTC).strftime("%Y-%m-%dT%H:%M:%SZ"),
     }), 200
 
 
@@ -758,8 +758,8 @@ def load_evide() -> dict:
             "meta": {
                 "version": "1.0",
                 "protocol": "EVIDE/1.0",
-                "created": datetime.utcnow().strftime("%Y-%m-%dT%H:%M:%SZ"),
-                "updated": datetime.utcnow().strftime("%Y-%m-%dT%H:%M:%SZ"),
+                "created": datetime.now(UTC).strftime("%Y-%m-%dT%H:%M:%SZ"),
+                "updated": datetime.now(UTC).strftime("%Y-%m-%dT%H:%M:%SZ"),
                 "total": 0,
                 "glm_node": "it.cognitivelogic.node.01",
             },
@@ -798,7 +798,7 @@ def _evide_append(entry_type: str, agent: str, operator_id: str,
                 entry = {
                     "id":             f"evide-{seq:04d}",
                     "seq":            seq,
-                    "timestamp":      datetime.utcnow().strftime("%Y-%m-%dT%H:%M:%SZ"),
+                    "timestamp":      datetime.now(UTC).strftime("%Y-%m-%dT%H:%M:%SZ"),
                     "type":           entry_type,
                     "agent":          agent,
                     "operator_id":    operator_id,
@@ -812,7 +812,7 @@ def _evide_append(entry_type: str, agent: str, operator_id: str,
                 entries.append(entry)
                 registry["entries"] = entries
                 registry.setdefault("meta", {})["total"]   = len(entries)
-                registry["meta"]["updated"] = datetime.utcnow().strftime("%Y-%m-%dT%H:%M:%SZ")
+                registry["meta"]["updated"] = datetime.now(UTC).strftime("%Y-%m-%dT%H:%M:%SZ")
 
                 with open(EVIDE_PATH, "w") as f:
                     json.dump(registry, f, indent=2, ensure_ascii=False)

@@ -8,7 +8,7 @@
 import hmac
 import os
 import uuid
-from datetime import datetime, timedelta
+from datetime import datetime, timedelta, UTC
 from typing import List, Optional
 
 from fastapi import Depends, FastAPI, Header, HTTPException
@@ -377,7 +377,7 @@ def compute_qen_audit(req: QENAuditRequest) -> dict:
     if mods["territorio"]["score"] < 40:
         recs.append("Portare acquisti locali oltre 60% e attivare almeno un progetto di inclusione sociale")
 
-    now = datetime.utcnow()
+    now = datetime.now(UTC)
     return {
         "qen_audit_id": str(uuid.uuid4()),
         "timestamp": now.strftime("%Y-%m-%dT%H:%M:%SZ"),
@@ -404,7 +404,7 @@ def health():
         "service": "QEN HoReCa Compliance Auditor",
         "version": "1.0.0",
         "motore": "QEN v1.0 — Quantificazione Etica Naturale",
-        "timestamp": datetime.utcnow().strftime("%Y-%m-%dT%H:%M:%SZ"),
+        "timestamp": datetime.now(UTC).strftime("%Y-%m-%dT%H:%M:%SZ"),
     }
 
 

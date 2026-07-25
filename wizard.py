@@ -3,7 +3,7 @@
 # Registrato su main.py con lo stesso pattern di orchestrator.py (register_orchestrator).
 import os
 import json
-from datetime import datetime
+from datetime import datetime, UTC
 
 import redis as _redis_lib
 from flask import request, jsonify
@@ -60,7 +60,7 @@ def register_wizard(app, limiter=None, require_trusted_origin=None):
             return jsonify({"error": "sessionId obbligatorio"}), 400
         if not bool(data.get("consented", False)):
             return jsonify({"error": "consenso non fornito"}), 400
-        payload = {"consented": True, "timestamp": datetime.utcnow().isoformat() + "Z"}
+        payload = {"consented": True, "timestamp": datetime.now(UTC).isoformat().replace("+00:00", "Z")}
         try:
             _get_redis().setex(f"qen:disclaimer:{session_id}", _DISCLAIMER_TTL_SECONDS, json.dumps(payload))
         except Exception as e:
@@ -100,7 +100,7 @@ def register_wizard(app, limiter=None, require_trusted_origin=None):
 
         qen_total = _qen_wizard(a_score, b_score, c_score)
         verdict = _verdict_for_qen(qen_total)
-        now = datetime.utcnow().isoformat() + "Z"
+        now = datetime.now(UTC).isoformat().replace("+00:00", "Z")
 
         assessment_payload = {
             "sessionId": session_id,
