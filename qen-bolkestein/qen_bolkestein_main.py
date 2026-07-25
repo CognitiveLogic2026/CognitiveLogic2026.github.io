@@ -42,8 +42,10 @@ class QENOrchestrator:
             prompt_fn = get_prompt_fn(vertical)
             results = await self.processor.process_batch(batch, prompt_fn)
             for r in results:
-                successful += 1 if self.save_score(r.business_name, r) else 0
-                failed += 0 if self.save_score(r.business_name, r) else 1
+                if self.save_score(r.business_name, r):
+                    successful += 1
+                else:
+                    failed += 1
         logger.info(f"✅ Complete: {successful} OK, {failed} failed")
         return successful, failed
     
