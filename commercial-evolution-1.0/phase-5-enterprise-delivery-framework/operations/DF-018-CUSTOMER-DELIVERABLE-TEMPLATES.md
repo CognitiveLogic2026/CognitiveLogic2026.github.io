@@ -327,4 +327,3 @@ This document shall be reviewed whenever significant changes occur in:
 - approved architectural decisions.
 
 Any modification shall follow the official document governance and approval process defined within the Enterprise Delivery Framework.
-
