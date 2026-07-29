@@ -68,3 +68,122 @@
       .pages-grid { grid-template-columns: 1fr; }
       .social-strip { grid-template-columns: 1fr; }
     }
+
+/* =========================================================
+   RELEASE 2.5 — VALIDATION PAGE
+   ========================================================= */
+
+.hero-kicker,
+.section-kicker,
+.status-label,
+.card-index,
+.process-step > span {
+  font-family: "DM Mono", monospace;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+}
+
+.hero-kicker,
+.section-kicker {
+  margin: 0 0 1rem;
+  font-size: 0.7rem;
+  color: var(--gold);
+}
+
+.hero-lead {
+  max-width: 760px;
+  margin: 1.5rem 0 0;
+  font-size: clamp(1.05rem, 1.8vw, 1.25rem);
+  line-height: 1.75;
+  color: var(--text-soft);
+}
+
+.hero-status {
+  padding: 1.25rem 0;
+  border-bottom: 1px solid var(--line-soft);
+}
+
+.hero-status:first-child {
+  border-top: 1px solid var(--line-soft);
+}
+
+.hero-status strong {
+  display: block;
+  margin-top: 0.35rem;
+  font-family: "Cormorant Garamond", serif;
+  font-size: clamp(1.25rem, 2vw, 1.6rem);
+  font-weight: 600;
+  line-height: 1.2;
+  color: var(--text);
+}
+
+.status-label {
+  display: block;
+  font-size: 0.62rem;
+  color: var(--muted);
+}
+
+.card-index {
+  display: inline-block;
+  margin-bottom: 1rem;
+  font-size: 0.66rem;
+  color: var(--gold);
+}
+
+.process-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1px;
+  margin-top: 2.5rem;
+  padding: 1px;
+  background: var(--line-soft);
+  border: 1px solid var(--line-soft);
+}
+
+.process-step {
+  min-height: 220px;
+  padding: 2rem;
+  background: var(--bg-panel);
+}
+
+.process-step > span {
+  display: block;
+  margin-bottom: 1.25rem;
+  font-size: 0.68rem;
+  color: var(--gold);
+}
+
+.process-step strong {
+  display: block;
+  margin-bottom: 0.8rem;
+  font-family: "Cormorant Garamond", serif;
+  font-size: 1.35rem;
+  font-weight: 600;
+  line-height: 1.2;
+  color: var(--text);
+}
+
+.process-step p {
+  margin: 0;
+  color: var(--text-soft);
+}
+
+@media (max-width: 900px) {
+  .process-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 640px) {
+  .process-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .process-step {
+    min-height: auto;
+  }
+
+  .hero-status {
+    padding: 1rem 0;
+  }
+}
