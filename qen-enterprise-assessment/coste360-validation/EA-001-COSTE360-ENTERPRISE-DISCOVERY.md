@@ -4,17 +4,17 @@
 
 # EA-001 — Costa360 Enterprise Discovery
 
-**Document ID:** EA-001  
-**Document Title:** Costa360 Enterprise Discovery  
-**Programme:** QEN Enterprise Assessment Programme  
-**Validation Case:** No.001 — Costa360  
-**Version:** 1.0  
-**Status:** Approved Baseline  
-**Owner:** Cognitive Logic  
-**Classification:** Public Assessment Baseline  
-**Assessment Type:** Evidence-Based Enterprise Discovery  
-**Target Platform:** Costa360  
-**Public Reference:** https://www.coste360.it/  
+**Document ID:** EA-001
+**Document Title:** Costa360 Enterprise Discovery
+**Programme:** QEN Enterprise Assessment Programme
+**Validation Case:** No.001 — Costa360
+**Version:** 1.0
+**Status:** Approved Baseline
+**Owner:** Cognitive Logic
+**Classification:** Public Assessment Baseline
+**Assessment Type:** Evidence-Based Enterprise Discovery
+**Target Platform:** Costa360
+**Public Reference:** https://www.coste360.it/
 **Methodology:** QEN Enterprise Assessment Programme — Evidence First
 
 ---
