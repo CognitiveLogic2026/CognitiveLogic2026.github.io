@@ -470,6 +470,61 @@ font-size: 0.72rem; color: var(--gold-soft);
 </style>
 
   <link rel="search" type="application/opensearchdescription+xml" title="Cognitive Logic" href="https://cognitivelogic.it/opensearchdescription.xml" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Organization",
+        "@id": "https://cognitivelogic.it/#organization",
+        "name": "Cognitive Logic",
+        "url": "https://cognitivelogic.it/"
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://cognitivelogic.it/#website",
+        "url": "https://cognitivelogic.it/",
+        "name": "Cognitive Logic",
+        "publisher": {
+          "@id": "https://cognitivelogic.it/#organization"
+        }
+      },
+      {
+        "@type": "WebPage",
+        "@id": "https://cognitivelogic.it/services.html#webpage",
+        "url": "https://cognitivelogic.it/services.html",
+        "name": "Cognitive Logic — Servizi QEN",
+        "description": "Servizi Cognitive Logic per assessment, AI governance, knowledge governance, conformità, tracciabilità e infrastrutture semantiche.",
+        "inLanguage": "it-IT",
+        "about": [
+          {
+            "@type": "Thing",
+            "name": "AI Governance Services"
+          },
+          {
+            "@type": "Thing",
+            "name": "Knowledge Governance Services"
+          },
+          {
+            "@type": "Thing",
+            "name": "AI-Ready Assessment"
+          },
+          {
+            "@type": "Thing",
+            "name": "Decision Traceability"
+          }
+        ],
+        "isPartOf": {
+          "@id": "https://cognitivelogic.it/#website"
+        },
+        "publisher": {
+          "@id": "https://cognitivelogic.it/#organization"
+        }
+      }
+    ]
+  }
+  </script>
 </head>
 <body>
 <a href="#main" class="skip-link">Salta al contenuto</a>
