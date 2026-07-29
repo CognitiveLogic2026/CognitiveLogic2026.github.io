@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<!--
+  Copyright (c) 2026 Roberto Bob Malini - Cognitive Logic
+  https://www.cognitivelogic.it
+  Licensed under CC BY-SA 4.0
+-->
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Pagina non trovata — Cognitive Logic</title>
+
+  <meta
+    name="description"
+    content="La risorsa richiesta non è disponibile oppure è stata spostata."
+  />
+
+  <meta name="robots" content="noindex, follow" />
+
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
+  <link rel="stylesheet" href="/css/fonts-local.css" />
+  <link rel="stylesheet" href="/css/style.css?v=3" />
+
+  <style>
+    .error-page {
+      min-height: calc(100vh - var(--nav-height));
+      display: flex;
+      align-items: center;
+      padding: 80px 0;
+    }
+
+    .error-content {
+      max-width: 760px;
+    }
+
+    .error-code {
+      margin-bottom: 20px;
+      font-family: var(--mono);
+      font-size: 0.72rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--gold-soft);
+    }
+
+    .error-content h1 {
+      margin-bottom: 24px;
+      font-size: clamp(3rem, 8vw, 6.5rem);
+      line-height: 0.95;
+    }
+
+    .error-description {
+      max-width: 620px;
+      margin-bottom: 36px;
+      color: var(--text-soft);
+      font-size: clamp(1.05rem, 2vw, 1.3rem);
+      line-height: 1.7;
+    }
+
+    .error-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    @media (max-width: 640px) {
+      .error-page {
+        padding: 56px 0;
+      }
+    }
+  </style>
+</head>
+
+<body>
+<a href="#main" class="skip-link">Salta al contenuto</a>
+
+<div class="site-bg"></div>
+
+<header class="site-header">
+  <div class="container header-inner">
+    <a href="/index.html" class="brand" aria-label="Cognitive Logic — Homepage">
+      <span class="wordmark wordmark--nav">
+        <span class="wm-top">Cognitive</span>
+        <span class="wm-bot">Logic</span>
+      </span>
+    </a>
+
+    <nav class="main-nav" aria-label="Navigazione principale">
+      <a href="/framework.html">Framework</a>
+      <a href="/ecosystem.html">Ecosystem</a>
+      <a href="/services.html">Servizi</a>
+      <a href="/demo.html">Demo</a>
+    </nav>
+
+    <div class="header-end">
+      <a href="/index.html" class="btn btn-ghost">Homepage</a>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+  <section class="error-page">
+    <div class="container">
+      <div class="error-content">
+        <p class="error-code">Errore 404</p>
+
+        <h1>Pagina non trovata.</h1>
+
+        <p class="error-description">
+          La risorsa richiesta non è disponibile oppure è stata spostata.
+          Puoi tornare alla homepage o continuare l’esplorazione del QEN Framework.
+        </p>
+
+        <div class="error-actions">
+          <a href="/index.html" class="btn btn-primary">
+            Torna alla homepage
+          </a>
+
+          <a href="/framework.html" class="btn btn-ghost">
+            Esplora il QEN Framework
+          </a>
+
+          <a href="/services.html" class="btn btn-ghost">
+            Consulta i servizi
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <div class="footer-brand">
+      <div class="wordmark wordmark--footer" aria-label="Cognitive Logic">
+        <span class="wm-top">Cognitive</span>
+        <span class="wm-bot">Logic</span>
+      </div>
+
+      <p class="footer-sub">
+        AI Governance Infrastructure · QEN Framework
+      </p>
+
+      <div class="footer-copy mt-8">
+        © 2026 Roberto Bob Malini — Cognitive Logic · Tutti i diritti riservati
+      </div>
+    </div>
+
+    <div class="footer-links">
+      <a href="/framework.html">Framework</a>
+      <a href="/services.html">Servizi</a>
+      <a href="/privacy.html">Privacy</a>
+      <a href="/cookie.html">Cookie</a>
+      <a href="/accessibilita.html">Accessibilità</a>
+    </div>
+  </div>
+</footer>
+
+<script src="/js/cookie-banner.js"></script>
+</body>
+</html>
