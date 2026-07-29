@@ -1,22 +1,22 @@
 # QEN Sovereign Architecture Overview
 
-**Document ID:** QEN-SOV-ARCH-001  
-**Document Title:** QEN Sovereign Architecture Overview  
-**Document Type:** Enterprise Architecture Documentation  
-**Classification:** Internal — Official Documentation  
-**Status:** Approved Baseline  
-**Version:** 1.0.0  
-**Owner:** Cognitive Logic  
-**Maintainer:** Repository Maintainers  
-**Architecture Domain:** Documentary Architecture  
-**Governance Domain:** AI Governance & Knowledge Governance  
-**Reference Repository:** QEN Sovereign  
-**Technology Dependency:** None  
-**Provider Dependency:** None  
-**Implementation Dependency:** None  
-**Runtime Dependency:** Documentary Reference Only  
-**Normative Language:** SHALL / SHOULD / MAY  
-**Approval Authority:** Cognitive Logic Governance  
+**Document ID:** QEN-SOV-ARCH-001
+**Document Title:** QEN Sovereign Architecture Overview
+**Document Type:** Enterprise Architecture Documentation
+**Classification:** Internal — Official Documentation
+**Status:** Approved Baseline
+**Version:** 1.0.0
+**Owner:** Cognitive Logic
+**Maintainer:** Repository Maintainers
+**Architecture Domain:** Documentary Architecture
+**Governance Domain:** AI Governance & Knowledge Governance
+**Reference Repository:** QEN Sovereign
+**Technology Dependency:** None
+**Provider Dependency:** None
+**Implementation Dependency:** None
+**Runtime Dependency:** Documentary Reference Only
+**Normative Language:** SHALL / SHOULD / MAY
+**Approval Authority:** Cognitive Logic Governance
 **Related Registry:** QEN-SOVEREIGN-MASTER-REGISTRY.md
 
 ---
