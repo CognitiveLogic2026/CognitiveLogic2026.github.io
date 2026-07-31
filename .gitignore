@@ -237,3 +237,9 @@ escalations.json
 *.bak-*
 .venv-runtime/
 wizard-src/node_modules/
+
+# RC audit local extraction and raw evidence
+rc1-audit/
+rc1-audit-complete/
+rc1-audit-complete.tar.gz
+rc1-audit-closure/evidence/*.txt
