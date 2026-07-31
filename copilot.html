@@ -215,22 +215,21 @@
 <div class="header">
   <div class="eyebrow"><span class="eyebrow-line"></span>Cognitive Logic · QEN Framework</div>
   <h1>AI Compliance <span>Copilot</span></h1>
-  <p class="subtitle">Analisi regolatoria EU AI Act 2025 + GDPR — Claude Sonnet · Mistral Large</p>
+  <p class="subtitle">Analisi regolatoria EU AI Act + GDPR — QEN Sovereign</p>
 </div>
 
 <div class="ai-disclosure" style="font-family:'DM Mono',monospace;font-size:0.72rem;line-height:1.6;color:var(--text-soft);border:1px solid rgba(212,175,55,0.25);background:rgba(212,175,55,0.05);padding:12px 16px;margin-bottom:20px;">
   <strong>Art. 50 EU AI Act — Trasparenza:</strong> stai interagendo con un sistema di intelligenza
-  artificiale generativa (Claude Sonnet 4.6 di Anthropic o Mistral Large di Mistral AI, a scelta).
+  artificiale governata attraverso il runtime proprietario QEN Sovereign.
   L'analisi prodotta è generata automaticamente e non costituisce consulenza legale vincolante —
   verifica sempre con un professionista abilitato.
-  <br><em>You are interacting with a generative AI system (Claude Sonnet 4.6 or Mistral Large). Output is
+  <br><em>You are interacting with the QEN Sovereign governed intelligence system. Output is
   automatically generated and does not constitute binding legal advice.</em>
 </div>
 
 <div class="card" style="animation: fadeSlideIn 0.6s ease 0.1s both;">
   <div class="llm-toggle">
-    <button class="llm-btn active" id="btn-claude" data-provider="claude">Claude Sonnet 4.6</button>
-    <button class="llm-btn" id="btn-mistral" data-provider="mistral">Mistral Large</button>
+    <span class="llm-btn active" id="qen-sovereign-runtime">QEN Sovereign</span>
   </div>
   <div class="examples-label">Compliance AI / Normativa</div>
   <div class="examples-chips" id="examples-chips">
@@ -312,60 +311,7 @@
 
   <script>
     const { jsPDF } = window.jspdf;
-    const ENDPOINTS = {
-      claude:  "https://api.cognitivelogic.it/copilot-analyze",
-      mistral: "https://api.cognitivelogic.it/agents/mistral-compliance",
-    };
-    let activeProvider = "claude";
-
-    document.getElementById("btn-claude").addEventListener("click", () => setProvider("claude"));
-    document.getElementById("btn-mistral").addEventListener("click", () => setProvider("mistral"));
-    function setProvider(p) {
-      activeProvider = p;
-      document.getElementById("btn-claude").classList.toggle("active", p === "claude");
-      document.getElementById("btn-mistral").classList.toggle("active", p === "mistral");
-    }
-
-    function normalizeMistral(raw) {
-      const a = raw.audit;
-      const livello = a.eu_ai_act?.livello_rischio || "Minimo";
-      const scoreMap = { Vietato: 0.95, Alto: 0.75, Sorveglianza: 0.45, Minimo: 0.15 };
-      const gdprMap  = { CRITICO: 0.90, ALTO: 0.70, MEDIO: 0.45, BASSO: 0.15 };
-      const gdprRisk  = a.gdpr?.risk || "BASSO";
-      const riskScore = Math.max(scoreMap[livello] ?? 0.15, gdprMap[gdprRisk] ?? 0.15);
-      return {
-        risk_level:      riskScore >= 0.70 ? "HIGH" : riskScore >= 0.45 ? "MEDIUM" : "LOW",
-        risk_score:      riskScore,
-        qen_score:       a.qen_score,
-        summary:         a.summary,
-        why:             a.eu_ai_act?.motivazione || "",
-        impact:          a.eu_ai_act?.allegato ? `Allegato ${a.eu_ai_act.allegato} — ${livello}` : livello,
-        eu_classification: `${livello} — Allegato ${a.eu_ai_act?.allegato || "N/A"}`,
-        gdpr_risk:       gdprRisk,
-        gaps:            a.gaps || [],
-        recommendations: a.remediation || [],
-        provider:        a.provider || "mistral-large-latest",
-      };
-    }
-
-    const riskConfig = {
-      HIGH:   { label: "CRITICAL",        color: "#ff3b3b", bg: "rgba(255,59,59,0.08)",  border: "rgba(255,59,59,0.3)",  message: "Intervento immediato richiesto — obblighi normativi avanzati" },
-      MEDIUM: { label: "ACTION REQUIRED", color: "#ff8c00", bg: "rgba(255,140,0,0.08)",  border: "rgba(255,140,0,0.3)",  message: "Implementare controlli mancanti prima del deployment" },
-      LOW:    { label: "MONITOR",         color: "#d4af37", bg: "rgba(212,175,55,0.08)",  border: "rgba(212,175,55,0.3)",  message: "Sistema gestibile con controlli base e monitoraggio continuo" },
-    };
-
-    const inputEl       = document.getElementById("input");
-    const companyNameEl = document.getElementById("company-name");
-    const btnAnalyze    = document.getElementById("btn-analyze");
-    const btnClear      = document.getElementById("btn-clear");
-    const btnPdf        = document.getElementById("btn-pdf");
-    const errorBox      = document.getElementById("error-box");
-    const resultsEl     = document.getElementById("results");
-
-    let lastResult      = null;
-    let lastInput       = "";
-    let lastCompanyName = "";
-
+    const COPILOT_ENDPOINT = "https://api.cognitivelogic.it/copilot-analyze";
     function renderList(id, items) {
       const el = document.getElementById(id);
       el.innerHTML = (items || []).map((t, i) => `
@@ -643,7 +589,7 @@
         const timeout = setTimeout(() => controller.abort(), 8000);
         const body = { description: text };
         if (lastCompanyName) body.company_name = lastCompanyName;
-        const res = await fetch(ENDPOINTS[activeProvider], {
+        const res = await fetch(COPILOT_ENDPOINT, {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify(body),
@@ -655,7 +601,7 @@
           throw new Error(err.error || err.detail || `HTTP ${res.status}`);
         }
         const raw = await res.json();
-        d = activeProvider === "mistral" ? normalizeMistral(raw) : raw;
+        d = raw;
       } catch (err) {
         // Backend unreachable — use local engine for demo
         await new Promise(r => setTimeout(r, 1400)); // realistic delay
@@ -677,7 +623,7 @@
         tag.style.borderColor = cfg.color;
         document.getElementById("decision-message").textContent = cfg.message;
         const nameDisplay = lastCompanyName ? ` · ${lastCompanyName}` : "";
-        document.getElementById("provider-badge").textContent = "powered by " + (d.provider || "claude-sonnet-4-6") + nameDisplay;
+        document.getElementById("provider-badge").textContent = "powered by QEN Sovereign" + nameDisplay;
 
         const fill = document.getElementById("score-fill");
         const sv = document.getElementById("score-value");
