@@ -1,0 +1,131 @@
+{
+  "nodes": [
+    {
+      "id": "framework",
+      "title": "QEN Framework",
+      "type": "Framework",
+      "url": "/framework.html"
+    },
+    {
+      "id": "trust",
+      "title": "Trust Center",
+      "type": "Governance",
+      "url": "/trust.html"
+    },
+    {
+      "id": "services",
+      "title": "Enterprise Services",
+      "type": "Services",
+      "url": "/services.html"
+    },
+    {
+      "id": "assessment",
+      "title": "Assessment",
+      "type": "Assessment",
+      "url": "/assessment.html"
+    },
+    {
+      "id": "validation",
+      "title": "Validation Programme",
+      "type": "Validation",
+      "url": "/validation.html"
+    },
+    {
+      "id": "resources",
+      "title": "Resource Center",
+      "type": "Resources",
+      "url": "/resources/"
+    },
+    {
+      "id": "executive",
+      "title": "Executive Assets",
+      "type": "Executive",
+      "url": "/executive-assets/"
+    },
+    {
+      "id": "research",
+      "title": "Research",
+      "type": "Research",
+      "url": "/research.html"
+    },
+    {
+      "id": "engagement",
+      "title": "Enterprise Engagement",
+      "type": "Engagement",
+      "url": "/engagement.html"
+    },
+    {
+      "id": "case-studies",
+      "title": "Case Studies",
+      "type": "Evidence",
+      "url": "/case-studies.html"
+    }
+  ],
+  "links": [
+    {
+      "source": "framework",
+      "target": "trust",
+      "relation": "governed-by"
+    },
+    {
+      "source": "framework",
+      "target": "services",
+      "relation": "enables"
+    },
+    {
+      "source": "framework",
+      "target": "assessment",
+      "relation": "measured-through"
+    },
+    {
+      "source": "assessment",
+      "target": "validation",
+      "relation": "validated-through"
+    },
+    {
+      "source": "validation",
+      "target": "case-studies",
+      "relation": "produces"
+    },
+    {
+      "source": "validation",
+      "target": "resources",
+      "relation": "documented-in"
+    },
+    {
+      "source": "resources",
+      "target": "executive",
+      "relation": "contains"
+    },
+    {
+      "source": "research",
+      "target": "framework",
+      "relation": "informs"
+    },
+    {
+      "source": "research",
+      "target": "trust",
+      "relation": "supports"
+    },
+    {
+      "source": "executive",
+      "target": "services",
+      "relation": "explains"
+    },
+    {
+      "source": "executive",
+      "target": "assessment",
+      "relation": "introduces"
+    },
+    {
+      "source": "services",
+      "target": "engagement",
+      "relation": "activated-through"
+    },
+    {
+      "source": "engagement",
+      "target": "assessment",
+      "relation": "initiates"
+    }
+  ]
+}
