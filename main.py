@@ -486,6 +486,18 @@ def copilot_analyze():
         return jsonify({"error": "Errore interno del server"}), 500
 
 
+@app.after_request
+def add_legacy_gemini_deprecation_headers(response):
+    """Mark /gemini/* as a deprecated sovereign compatibility namespace."""
+    if request.path.startswith("/gemini/"):
+        response.headers["Deprecation"] = "true"
+        response.headers["Link"] = (
+            '</copilot-analyze>; rel="successor-version"'
+        )
+        response.headers["X-QEN-Compatibility-Route"] = "legacy-gemini"
+    return response
+
+
 @app.route("/gemini/qen-score", methods=["POST"])
 @limiter.limit("10 per minute;100 per day")
 def gemini_qen_score():
