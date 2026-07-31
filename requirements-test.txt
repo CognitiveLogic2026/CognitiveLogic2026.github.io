@@ -1,0 +1,3 @@
+# Cognitive Logic test dependencies
+# Generated and verified during RC 1.0 reproducible-build validation.
+pytest==8.4.2
