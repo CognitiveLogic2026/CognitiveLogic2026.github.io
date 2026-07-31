@@ -1,0 +1,185 @@
+.asset-hero {
+  padding: 6rem 0 5rem;
+  border-bottom: 1px solid rgba(201,168,76,.22);
+}
+
+.asset-hero-inner {
+  max-width: 980px;
+}
+
+.asset-hero h1 {
+  margin: 0;
+  font-size: clamp(2.8rem,7vw,5.8rem);
+  line-height: .96;
+}
+
+.asset-lead {
+  max-width: 850px;
+  margin-top: 1.5rem;
+  font-size: 1.2rem;
+  line-height: 1.65;
+}
+
+.breadcrumbs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .5rem;
+  margin-bottom: 2rem;
+  font-size: .82rem;
+}
+
+.asset-kicker,
+.asset-id,
+.asset-status {
+  font-family: "DM Mono", monospace;
+  text-transform: uppercase;
+  letter-spacing: .08em;
+}
+
+.asset-metadata {
+  display: grid;
+  grid-template-columns: repeat(4,1fr);
+  margin-top: 3rem;
+  border: 1px solid rgba(201,168,76,.22);
+}
+
+.asset-metadata div {
+  padding: 1rem;
+}
+
+.asset-metadata dt {
+  font-family: "DM Mono", monospace;
+  font-size: .7rem;
+  text-transform: uppercase;
+}
+
+.asset-metadata dd {
+  margin: .35rem 0 0;
+}
+
+.download-grid {
+  display: grid;
+  grid-template-columns: repeat(2,1fr);
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.download-card,
+.asset-side-card,
+.principle-card {
+  padding: 1.5rem;
+  border: 1px solid rgba(201,168,76,.22);
+  background: rgba(255,255,255,.025);
+}
+
+.download-card {
+  display: flex;
+  flex-direction: column;
+  min-height: 310px;
+}
+
+.download-card p {
+  flex: 1;
+  line-height: 1.7;
+}
+
+.download-card-top,
+.download-card-meta {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.download-card-meta {
+  margin: 1rem 0;
+  padding-top: 1rem;
+  border-top: 1px solid rgba(201,168,76,.14);
+  font-family: "DM Mono", monospace;
+  font-size: .72rem;
+}
+
+.asset-full-button {
+  width: 100%;
+  justify-content: center;
+}
+
+.library-principles {
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.asset-layout-grid {
+  display: grid;
+  grid-template-columns: minmax(0,1fr) 320px;
+  gap: 4rem;
+  align-items: start;
+}
+
+.asset-document h2 {
+  margin-top: 3.5rem;
+  padding-top: 1rem;
+  border-top: 1px solid rgba(201,168,76,.2);
+}
+
+.asset-document h2:first-child {
+  margin-top: 0;
+}
+
+.asset-document p,
+.asset-document li {
+  line-height: 1.8;
+}
+
+.asset-sidebar {
+  position: sticky;
+  top: 7rem;
+  display: grid;
+  gap: 1rem;
+}
+
+.resource-links {
+  display: grid;
+}
+
+.resource-link {
+  padding: .75rem 0;
+  border-top: 1px solid rgba(201,168,76,.14);
+}
+
+.asset-return {
+  padding-bottom: 4rem;
+}
+
+@media (max-width: 900px) {
+  .asset-layout-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .asset-sidebar {
+    position: static;
+  }
+
+  .asset-metadata {
+    grid-template-columns: repeat(2,1fr);
+  }
+}
+
+@media (max-width: 700px) {
+  .download-grid,
+  .library-principles {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 500px) {
+  .asset-metadata {
+    grid-template-columns: 1fr;
+  }
+
+  .download-card-top,
+  .download-card-meta {
+    flex-direction: column;
+  }
+}
