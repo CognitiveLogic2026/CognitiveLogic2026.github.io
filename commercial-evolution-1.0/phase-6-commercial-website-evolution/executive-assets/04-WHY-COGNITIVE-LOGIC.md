@@ -36,7 +36,9 @@ Every governance conclusion should be supported by identifiable evidence.
 
 Evidence is treated as an organisational asset rather than a by-product of technology.
 
-This enables executive stakeholders to understand why a governance conclusion has been reached and which information supports it.## Explainability and Traceability
+This enables executive stakeholders to understand why a governance conclusion has been reached and which information supports it.
+
+## Explainability and Traceability
 
 Artificial intelligence becomes trustworthy only when its outputs can be understood, reviewed and justified.
 
@@ -87,7 +89,9 @@ Typical outcomes include:
 - improved organisational trust;
 - sustainable continuous improvement.
 
-Success is measured through governance capability rather than technology adoption alone.## Institutional Trust
+Success is measured through governance capability rather than technology adoption alone.
+
+## Institutional Trust
 
 Trust cannot be established through declarations alone.
 

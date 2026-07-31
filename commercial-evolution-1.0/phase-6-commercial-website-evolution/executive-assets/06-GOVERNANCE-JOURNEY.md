@@ -57,7 +57,9 @@ Executive stakeholders define:
 - accountability structures;
 - success criteria.
 
-Alignment reduces ambiguity before formal assessments begin.## Assess
+Alignment reduces ambiguity before formal assessments begin.
+
+## Assess
 
 The Assess phase provides an evidence-based evaluation of the organisation's current governance capability.
 
@@ -118,7 +120,9 @@ Continuous Improvement includes:
 - governance optimisation;
 - executive reporting.
 
-The objective is to maintain governance effectiveness as organisational needs and external conditions evolve.## Service Mapping
+The objective is to maintain governance effectiveness as organisational needs and external conditions evolve.
+
+## Service Mapping
 
 The Governance Journey is supported by the Cognitive Logic Enterprise Service Catalogue.
 

@@ -51,7 +51,9 @@ Example:
 
 EA-COM-001-Executive-Brief-v1.0.pdf
 
-Naming standards improve traceability, version control and repository consistency.## Versioning
+Naming standards improve traceability, version control and repository consistency.
+
+## Versioning
 
 Executive Assets follow semantic document versioning.
 
@@ -128,7 +130,9 @@ Each download page should provide:
 - related research;
 - related governance resources.
 
-This improves discoverability while maintaining a consistent user experience.## Download Tracking
+This improves discoverability while maintaining a consistent user experience.
+
+## Download Tracking
 
 The Executive Asset Library should support measurable engagement while respecting user privacy.
 

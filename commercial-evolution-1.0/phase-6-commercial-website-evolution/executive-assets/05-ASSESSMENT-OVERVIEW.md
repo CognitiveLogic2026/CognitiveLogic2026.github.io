@@ -43,7 +43,9 @@ The Cognitive Logic assessment portfolio includes:
 - domain-specific governance assessments;
 - sovereign intelligence validation assessments.
 
-Each assessment follows common governance principles while adapting to different organisational contexts.## Evidence Collection
+Each assessment follows common governance principles while adapting to different organisational contexts.
+
+## Evidence Collection
 
 Every Enterprise Assessment is based on identifiable and reviewable evidence.
 
@@ -104,7 +106,9 @@ Each significant conclusion should be connected to:
 - documented observations;
 - executive interpretation.
 
-Traceability enables future reviews, continuous improvement and governance audits.## Executive Deliverables
+Traceability enables future reviews, continuous improvement and governance audits.
+
+## Executive Deliverables
 
 Each Enterprise Assessment produces structured executive deliverables designed to support governance decisions.
 

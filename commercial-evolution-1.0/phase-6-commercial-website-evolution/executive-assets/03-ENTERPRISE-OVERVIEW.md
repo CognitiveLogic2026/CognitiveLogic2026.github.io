@@ -44,7 +44,9 @@ Typical challenges include:
 
 These issues reduce executive confidence and make it difficult to demonstrate responsible governance.
 
-Cognitive Logic addresses these challenges through evidence-based governance architectures designed to support organisational decision quality.## QEN Framework
+Cognitive Logic addresses these challenges through evidence-based governance architectures designed to support organisational decision quality.
+
+## QEN Framework
 
 The QEN Framework provides the methodological foundation for Cognitive Logic.
 
@@ -105,7 +107,9 @@ The framework standardises:
 - executive reporting;
 - continuous improvement.
 
-Each engagement follows repeatable processes that increase consistency, transparency and auditability across different organisational contexts.## Trust Architecture
+Each engagement follows repeatable processes that increase consistency, transparency and auditability across different organisational contexts.
+
+## Trust Architecture
 
 Trust is treated as an organisational capability rather than a communication objective.
 
