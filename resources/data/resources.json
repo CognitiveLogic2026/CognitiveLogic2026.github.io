@@ -1,0 +1,206 @@
+[
+  {
+    "id": "executive-download-center",
+    "title": "Executive Download Center",
+    "description": "Biblioteca centralizzata dei documenti executive e istituzionali di Cognitive Logic.",
+    "type": "Publication",
+    "category": "publications",
+    "audience": "Executive",
+    "topics": [
+      "AI Governance",
+      "Knowledge Governance",
+      "Decision Intelligence"
+    ],
+    "url": "/executive-assets/",
+    "status": "published",
+    "language": "it",
+    "featured": true
+  },
+  {
+    "id": "executive-brief",
+    "title": "Executive Brief",
+    "description": "Sintesi istituzionale di Cognitive Logic, del QEN Framework e delle capacità offerte.",
+    "type": "Executive Guide",
+    "category": "executive-guides",
+    "audience": "Executive",
+    "topics": [
+      "Cognitive Logic",
+      "QEN Framework",
+      "AI Governance"
+    ],
+    "url": "/executive-assets/executive-brief.html",
+    "status": "published",
+    "language": "it",
+    "featured": true
+  },
+  {
+    "id": "capability-statement",
+    "title": "Capability Statement",
+    "description": "Descrizione sintetica delle capacità, dei servizi e degli ambiti di intervento di Cognitive Logic.",
+    "type": "Publication",
+    "category": "publications",
+    "audience": "Enterprise",
+    "topics": [
+      "Capabilities",
+      "Enterprise Services",
+      "AI Governance"
+    ],
+    "url": "/executive-assets/capability-statement.html",
+    "status": "published",
+    "language": "it",
+    "featured": false
+  },
+  {
+    "id": "enterprise-overview",
+    "title": "Enterprise Overview",
+    "description": "Panoramica enterprise dell'architettura, del posizionamento e del modello operativo Cognitive Logic.",
+    "type": "Publication",
+    "category": "publications",
+    "audience": "Enterprise",
+    "topics": [
+      "Enterprise Architecture",
+      "Governance",
+      "Decision Intelligence"
+    ],
+    "url": "/executive-assets/enterprise-overview.html",
+    "status": "published",
+    "language": "it",
+    "featured": true
+  },
+  {
+    "id": "why-cognitive-logic",
+    "title": "Why Cognitive Logic",
+    "description": "Documento introduttivo sulle motivazioni, il valore e il posizionamento di Cognitive Logic.",
+    "type": "Publication",
+    "category": "publications",
+    "audience": "Executive",
+    "topics": [
+      "Institutional Positioning",
+      "AI Governance",
+      "Knowledge Infrastructure"
+    ],
+    "url": "/executive-assets/why-cognitive-logic.html",
+    "status": "published",
+    "language": "it",
+    "featured": false
+  },
+  {
+    "id": "assessment-overview",
+    "title": "Assessment Overview",
+    "description": "Panoramica dell'approccio Cognitive Logic agli assessment di governance, capacità e maturità.",
+    "type": "Executive Guide",
+    "category": "executive-guides",
+    "audience": "Executive",
+    "topics": [
+      "Assessment",
+      "Governance Maturity",
+      "Readiness"
+    ],
+    "url": "/executive-assets/assessment-overview.html",
+    "status": "published",
+    "language": "it",
+    "featured": true
+  },
+  {
+    "id": "governance-journey",
+    "title": "Governance Journey",
+    "description": "Percorso progressivo per sviluppare governance, tracciabilità e capacità decisionali.",
+    "type": "Executive Guide",
+    "category": "executive-guides",
+    "audience": "Executive",
+    "topics": [
+      "Governance",
+      "Transformation",
+      "Decision Traceability"
+    ],
+    "url": "/executive-assets/governance-journey.html",
+    "status": "published",
+    "language": "it",
+    "featured": true
+  },
+  {
+    "id": "qen-framework",
+    "title": "QEN Framework",
+    "description": "Architettura proprietaria per misurazione, explainability, governance e tracciabilità decisionale.",
+    "type": "White Paper",
+    "category": "white-papers",
+    "audience": "Technical",
+    "topics": [
+      "QEN Framework",
+      "Explainability",
+      "Decision Traceability"
+    ],
+    "url": "/framework.html",
+    "status": "published",
+    "language": "it",
+    "featured": true
+  },
+  {
+    "id": "ai-governance-matters",
+    "title": "AI Governance Matters",
+    "description": "Analisi del ruolo della governance nell'adozione responsabile e verificabile dei sistemi AI.",
+    "type": "Research Note",
+    "category": "research-notes",
+    "audience": "Research",
+    "topics": [
+      "AI Governance",
+      "Risk",
+      "Accountability"
+    ],
+    "url": "/research/ai-governance-matters/",
+    "status": "published",
+    "language": "it",
+    "featured": true
+  },
+  {
+    "id": "coste360-validation-programme",
+    "title": "Coste360 Validation Programme",
+    "description": "Programma pubblico di assessment e validazione QEN Sovereign Intelligence applicato alla piattaforma Coste360.",
+    "type": "Case Study",
+    "category": "case-studies",
+    "audience": "Enterprise",
+    "topics": [
+      "Validation",
+      "Coste360",
+      "Sovereign Intelligence"
+    ],
+    "url": "/validation.html",
+    "status": "published",
+    "language": "it",
+    "featured": true
+  },
+  {
+    "id": "international-watch",
+    "title": "International Watch",
+    "description": "Osservatorio sulle evoluzioni internazionali dell'intelligenza artificiale e della governance.",
+    "type": "Research Note",
+    "category": "research-notes",
+    "audience": "Research",
+    "topics": [
+      "International Governance",
+      "Frontier AI",
+      "Regulation"
+    ],
+    "url": "/international-watch/",
+    "status": "published",
+    "language": "it",
+    "featured": false
+  },
+  {
+    "id": "trust-center",
+    "title": "Trust Center",
+    "description": "Centro istituzionale dedicato a governance, trasparenza, responsabilità, evidenze e affidabilità.",
+    "type": "Publication",
+    "category": "publications",
+    "audience": "Enterprise",
+    "topics": [
+      "Trust",
+      "Governance",
+      "Transparency"
+    ],
+    "url": "/trust.html",
+    "status": "published",
+    "language": "it",
+    "featured": false
+  }
+]
