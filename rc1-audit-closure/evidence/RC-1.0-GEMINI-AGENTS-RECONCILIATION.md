@@ -41,3 +41,30 @@ Deferred:
 - Reconciliation and classification of all `/agents/*` endpoints.
 - Renaming of provider-specific compatibility endpoint names.
 - Current documentation and Nginx comments alignment.
+
+## Phase 3D — Provider-named Agents compatibility routes
+
+Verified implementation:
+
+- `/agents/mistral-compliance` remains available as a backward-compatible route.
+- Its successor is `/agents/compliance-auditor`.
+- `/agents/mistral-advisor` remains available as a backward-compatible route.
+- Its successor is `/agents/advisory-council`.
+- Both compatibility routes include `Deprecation: true`.
+- Both compatibility routes include `X-QEN-Compatibility-Route: legacy-provider-agent`.
+- Sovereign agent routes are not marked as legacy.
+- Dedicated compatibility-route tests passed.
+- Complete automated test suite result: 58 passed, 1 non-blocking dependency warning.
+
+Endpoint classification:
+
+- Sovereign: compliance-auditor, territorial-mapper, advisory-council, bolkestein-assessment, score-businesses, places-batch-qen.
+- Data service: intelligence-feed.
+- External discovery utility: places-discovery.
+- Legacy compatibility: mistral-compliance, mistral-advisor.
+
+Deferred:
+
+- Removal of provider-named route aliases in a future approved release.
+- Alignment of AI Engine, LLM Index, privacy pages and runtime documentation.
+- Removal of residual provider dependency declarations after source verification.

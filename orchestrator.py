@@ -355,6 +355,28 @@ def register_orchestrator(app, limiter=None):
     # Mistral endpoints (primary LLM — Mistral Large via REST, no SDK)
 
 
+    @app.after_request
+    def add_legacy_agent_deprecation_headers(response):
+        """Mark provider-named agent routes as sovereign compatibility routes."""
+        legacy_routes = {
+            "/agents/mistral-compliance": "/agents/compliance-auditor",
+            "/agents/mistral-advisor": "/agents/advisory-council",
+        }
+
+        successor = legacy_routes.get(request.path)
+
+        if successor:
+            response.headers["Deprecation"] = "true"
+            response.headers["Link"] = (
+                f'<{successor}>; rel="successor-version"'
+            )
+            response.headers["X-QEN-Compatibility-Route"] = (
+                "legacy-provider-agent"
+            )
+
+        return response
+
+
     @app.route("/agents/mistral-compliance", methods=["POST"])
     @_lim("30 per minute")
     def mistral_compliance():
