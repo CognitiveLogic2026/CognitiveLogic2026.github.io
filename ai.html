@@ -10,7 +10,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Cognitive Logic — AI Engine · Pure Data Nodes</title>
   <link rel="canonical" href="https://cognitivelogic.it/ai.html">
-  <meta name="description" content="Motore AI Dual-Brain di Cognitive Logic — Claude + Gemini, Pure Data Nodes, QEN Score con metriche verificabili, infrastruttura di compliance EU AI Act per agenti autonomi." />
+  <meta name="description" content="Motore AI QEN Sovereign di Cognitive Logic — QEN Sovereign Intelligence, Pure Data Nodes, QEN Score con metriche verificabili, infrastruttura di compliance EU AI Act per agenti autonomi." />
   <link rel="stylesheet" href="css/fonts-local.css" />
   <link rel="stylesheet" href="css/style.css?v=3" />
   <link rel="search" type="application/opensearchdescription+xml" title="Cognitive Logic" href="https://cognitivelogic.it/opensearchdescription.xml" />
@@ -39,7 +39,7 @@
           <span class="nav-sep">·</span>
           <a href="ai_en.html">EN</a>
         </div>
-        <a href="copilot.html" class="btn btn-ghost">Copilot</a>
+        <a href="/copilot.html" class="btn btn-ghost">Copilot</a>
       </div>
     </div>
   </header>
@@ -49,27 +49,27 @@
 <!-- ── Hero ── -->
 <section class="hero">
   <div class="container">
-    <div class="eyebrow">AI Engine · Architettura Dual-Brain</div>
+    <div class="eyebrow">AI Engine · Architettura QEN Sovereign</div>
     <h1>
       Due cervelli.<br>
       <em style="font-style:italic;color:var(--gold)">Un'unica etica computabile.</em>
     </h1>
     <p class="hero-lead">
       Il motore AI di Cognitive Logic è un sistema dual-brain orchestrato:
-      Claude (Anthropic) per compliance EU AI Act + GDPR,
-      Gemini (Google) per QEN scoring e market intelligence.
+      QEN Sovereign per compliance EU AI Act + GDPR,
+      QEN Sovereign per QEN scoring e market intelligence.
       Esecuzione parallela via <code style="font-family:var(--mono);font-size:0.85em">/full-analysis</code>.
       L'allineamento etico come substrato computazionale, non post-hoc.
     </p>
   </div>
 </section>
 
-<!-- ── Dual-Brain Overview ── -->
+<!-- ── QEN Sovereign Overview ── -->
 <section class="section" style="padding-top:0">
   <div class="container">
     <div class="section-heading">
-      <div class="eyebrow">Dual-Brain Engine</div>
-      <h2>Claude + Gemini — orchestrazione parallela.</h2>
+      <div class="eyebrow">QEN Sovereign Engine</div>
+      <h2>QEN Sovereign Intelligence — orchestrazione parallela.</h2>
       <p>
         Due LLM con specializzazioni distinte, orchestrati in parallelo da
         <code style="font-family:var(--mono);font-size:0.85em">orchestrator.py</code>.
@@ -81,7 +81,7 @@
     <div class="grid-2">
       <article class="card" style="padding:32px">
         <div class="eyebrow" style="margin-bottom:14px">Brain A · Flask :5000</div>
-        <h3>Claude — Anthropic</h3>
+        <h3>QEN Sovereign — </h3>
         <p class="text-sm mt-16" style="color:var(--muted);line-height:1.8">
           Classificazione EU AI Act Allegato I / II / III.<br>
           GDPR art. 22 — decisioni automatizzate.<br>
@@ -92,7 +92,7 @@
 
       <article class="card" style="padding:32px">
         <div class="eyebrow" style="margin-bottom:14px">Brain B · Flask :5001</div>
-        <h3>Gemini — Google</h3>
+        <h3>QEN Sovereign — </h3>
         <p class="text-sm mt-16" style="color:var(--muted);line-height:1.8">
           Punteggio QEN (Vs · Va · Vt).<br>
           Market intelligence e scansione di settore.<br>
@@ -106,8 +106,8 @@
     <div class="card" style="padding:28px;margin-top:0;font-family:var(--mono);font-size:0.78rem;color:var(--muted);line-height:2">
       <div style="color:var(--gold);margin-bottom:8px;font-size:0.7rem;letter-spacing:0.12em;text-transform:uppercase">Orchestration Layer · api.cognitivelogic.it</div>
       Nginx (443) → api.cognitivelogic.it<br>
-      ├── Flask :5000 — Claude API · risk · compliance · analyze<br>
-      ├── Flask :5001 — Gemini API · qen-score · market-scan · explain<br>
+      ├── QEN Sovereign Runtime · risk · compliance · analyze<br>
+      ├── QEN Sovereign Runtime · qen-score · market-scan · explain<br>
       └── orchestrator.py → /full-analysis (parallel dual-brain)
     </div>
   </div>
@@ -194,8 +194,8 @@
       <div>
         <div class="stack-layer">
           <div class="stack-layer-label">Fase 03</div>
-          <div class="stack-layer-text">Dual-Brain Reasoning</div>
-          <p class="text-xs mt-8" style="color:var(--muted)">Claude + Gemini in parallelo. Inferenza neuro-simbolica, scoring QEN, compliance EU AI Act + GDPR.</p>
+          <div class="stack-layer-text">QEN Sovereign Reasoning</div>
+          <p class="text-xs mt-8" style="color:var(--muted)">QEN Sovereign Intelligence in parallelo. Inferenza neuro-simbolica, scoring QEN, compliance EU AI Act + GDPR.</p>
         </div>
         <div class="stack-layer" style="border-left-color:transparent">
           <div class="stack-layer-label">Fase 04</div>
@@ -221,7 +221,7 @@
 
     <div class="grid-2">
       <article class="card" style="padding:28px">
-        <span class="feature-number">POST · Flask :5000 · Claude</span>
+        <span class="feature-number">POST · Flask :5000 · QEN Sovereign</span>
         <h3 translate="no">/copilot-analyze</h3>
         <p class="text-sm mt-16" style="color:var(--muted);line-height:1.8">
           Classificazione EU AI Act Allegato I/II/III.<br>
@@ -233,13 +233,13 @@
         <span class="feature-number">POST · orchestrator.py · parallelo</span>
         <h3 translate="no">/full-analysis</h3>
         <p class="text-sm mt-16" style="color:var(--muted);line-height:1.8">
-          Esecuzione dual-brain: Claude + Gemini simultanei.<br>
+          Esecuzione dual-brain: QEN Sovereign Intelligence simultanei.<br>
           Output unificato: compliance + QEN score + market scan.<br>
           Endpoint principale per analisi complete.
         </p>
       </article>
       <article class="card" style="padding:28px">
-        <span class="feature-number">POST · Flask :5001 · Gemini</span>
+        <span class="feature-number">POST · Flask :5001 · QEN Sovereign</span>
         <h3 translate="no">/gemini/qen-score</h3>
         <p class="text-sm mt-16" style="color:var(--muted);line-height:1.8">
           Punteggio QEN su tre dimensioni (Vs · Va · Vt).<br>
@@ -355,7 +355,7 @@
     <div class="container footer-inner">
       <div>
         <div class="footer-brand">Cognitive Logic · AI Engine</div>
-        <div class="footer-sub">Architettura Dual-Brain · Claude + Gemini · Intelligenza Etica · AI Sovrana.</div>
+        <div class="footer-sub">Architettura QEN Sovereign · QEN Sovereign Intelligence · Intelligenza Etica · AI Sovrana.</div>
         <div class="footer-copy mt-8">© 2026 Roberto Bob Malini · did:web:cognitivelogic.it:robertomalini</div>
         <div class="footer-social">
           <a class="footer-social-link" href="https://www.linkedin.com/in/robertobobmalini/" target="_blank" rel="noopener"><span class="fsl-net">LinkedIn</span><span class="fsl-name">Roberto Malini</span></a>
@@ -368,7 +368,7 @@
         <a href="index.html">Home</a>
         <a href="framework.html">Framework</a>
         <a href="identity.html">Identity</a>
-        <a href="copilot.html">Copilot</a>
+        <a href="/copilot.html">Copilot</a>
         <a href="/privacy.html">Privacy</a>
         <a href="/cookie.html">Cookie</a> · <a href="/accessibilita.html">Accessibilità</a>
       </div>

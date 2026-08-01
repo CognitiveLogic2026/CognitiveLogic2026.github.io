@@ -28,7 +28,7 @@ QEN è pensato per PMI e filiere (HoReCa, balneari, commercio di prossimità), e
 Endpoint API HTTPS esposti su `api.cognitivelogic.it`, documentati integralmente in [LLM Index](https://cognitivelogic.it/llm-index.html) (metodo, body, response schema):
 
 - `POST /copilot-analyze` — analisi compliance EU AI Act / GDPR (Claude Sonnet).
-- `POST /agents/mistral-compliance` e `/agents/mistral-advisor` — audit e raccomandazioni compliance (Mistral Large).
+- `POST /agents/mistral-compliance` e `/agents/mistral-advisor` — audit compatibility route (Legacy compatibility endpoint (deprecated)).
 - `POST /agents/bolkestein-assessment` — pre-assessment concessioni Bolkestein 2027.
 - `POST /gemini/qen-score` — calcolo QEN Score (Gemini).
 - `POST /full-analysis` — orchestrazione multi-brain in parallelo.

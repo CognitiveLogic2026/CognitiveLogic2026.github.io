@@ -113,10 +113,19 @@ Bologna, Italy — 2026
 
 - Website: [cognitivelogic.it](https://cognitivelogic.it)
 - API: [api.cognitivelogic.it](https://api.cognitivelogic.it)
-- Copilot: [api.cognitivelogic.it/copilot](https://api.cognitivelogic.it/copilot)
+- Copilot: [api.cognitivelogic.it/copilot](/copilot-analyze)
 - Editorial: [fuorimenu.substack.com](https://fuorimenu.substack.com)
 - LinkedIn: [linkedin.com/in/robertobobmalini](https://linkedin.com/in/robertobobmalini)
 
 -----
 
 *© Cognitive Logic — Knowledge Infrastructure for Human & Artificial Intelligence*
+
+
+## Current Runtime Architecture
+
+- QEN Sovereign Intelligence Engine
+- QEN Governance Engine
+- Knowledge Graph
+- Decision Intelligence
+- Copilot Sovereign Runtime
