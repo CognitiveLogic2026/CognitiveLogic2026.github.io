@@ -76,9 +76,8 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   const categoryLabels = {
     publications: "Publications",
-    "white-papers": "White Papers",
-    "case-studies": "Case Studies",
-    "research-notes": "Research Notes",
+    research: "Research",
+    "validation-case-studies": "Validation e Case Studies",
     "executive-guides": "Executive Guides"
   };
 
@@ -134,17 +133,13 @@ document.addEventListener("DOMContentLoaded", async () => {
       : "";
 
     return `
-      <article class="resource-result-card">
+      <a class="resource-result-card" href="${escapeHtml(item.url)}">
         <div class="resource-result-meta">
           <span class="resource-badge">${escapeHtml(item.type)}</span>
           ${featuredMarkup}
         </div>
 
-        <h2>
-          <a href="${escapeHtml(item.url)}">
-            ${escapeHtml(item.title)}
-          </a>
-        </h2>
+        <h2 class="notranslate" translate="no">${escapeHtml(item.title)}</h2>
 
         <p>
           ${escapeHtml(item.description)}
@@ -154,12 +149,20 @@ document.addEventListener("DOMContentLoaded", async () => {
           ${topicMarkup}
         </div>
 
-        <a class="resource-result-link" href="${escapeHtml(item.url)}">
-          Apri la risorsa
-        </a>
-      </article>
+        <span class="resource-result-link">Apri documento →</span>
+      </a>
     `;
   };
+
+  const setCount = (selector, value) => {
+    const element = document.querySelector(selector);
+    if (element) element.textContent = String(value);
+  };
+  setCount("[data-count-total]", resources.length);
+  setCount("[data-count-categories]", new Set(resources.map((item) => item.category)).size);
+  setCount("[data-count-research]", resources.filter((item) => item.category === "research").length);
+  setCount("[data-count-watch]", resources.filter((item) => item.category === "international-watch").length);
+  setCount("[data-count-validation]", resources.filter((item) => item.category === "validation-case-studies").length);
 
   const getSearchText = (item) =>
     normalize(

@@ -11,6 +11,8 @@
   <title>Cognitive Logic — Digital Identity & DID</title>
   <link rel="canonical" href="https://cognitivelogic.it/identity.html">
   <meta name="description" content="Infrastruttura di identità digitale Cognitive Logic — DID, fiducia crittografica, policy machine-readable per agenti autonomi e verifica del QEN Score." />
+  <link rel="alternate" hreflang="it" href="https://cognitivelogic.it/identity.html">
+  <link rel="alternate" hreflang="en" href="https://cognitivelogic.it/identity_en.html">
   <link rel="stylesheet" href="css/fonts-local.css" />
   <link rel="stylesheet" href="css/style.css?v=3" />
   <link rel="search" type="application/opensearchdescription+xml" title="Cognitive Logic" href="https://cognitivelogic.it/opensearchdescription.xml" />
@@ -22,7 +24,7 @@
 
   <header class="site-header">
     <div class="container header-inner">
-      <a href="index.html" class="brand">
+      <a href="index.html" class="brand notranslate" translate="no">
         <span class="wordmark wordmark--nav"><span class="wm-top">Cognitive</span><span class="wm-bot">Logic</span></span>
       </a>
       <nav class="main-nav">
@@ -34,7 +36,7 @@
         <a href="demo.html">Demo</a>
       </nav>
       <div class="header-end">
-        <div class="nav-lang">
+        <div class="nav-lang notranslate" translate="no" aria-label="Selezione lingua">
           <a href="identity.html" class="active">IT</a>
           <span class="nav-sep">·</span>
           <a href="identity_en.html">EN</a>
@@ -77,7 +79,7 @@
 
         <div class="grid-2">
           <article class="card" style="padding:32px">
-            <span class="feature-number">Cryptographic Anchoring</span>
+            <span class="feature-number notranslate" translate="no">Cryptographic Anchoring</span>
             <h3>Ancoraggio crittografico</h3>
             <p class="text-sm mt-16" style="color:var(--muted);line-height:1.8">
               Ogni identità è legata a coppie di chiavi crittografiche che garantiscono
@@ -87,7 +89,7 @@
           </article>
 
           <article class="card" style="padding:32px">
-            <span class="feature-number">Sovereign Control</span>
+            <span class="feature-number notranslate" translate="no">Sovereign Control</span>
             <h3>Controllo sovrano</h3>
             <p class="text-sm mt-16" style="color:var(--muted);line-height:1.8">
               L'identità rimane sotto il pieno controllo del suo proprietario, indipendente
@@ -97,7 +99,7 @@
           </article>
 
           <article class="card" style="padding:32px">
-            <span class="feature-number">Machine Verifiability</span>
+            <span class="feature-number notranslate" translate="no">Machine Verifiability</span>
             <h3>Verificabilità automatica</h3>
             <p class="text-sm mt-16" style="color:var(--muted);line-height:1.8">
               Gli agenti artificiali possono verificare autonomamente identità e policy
@@ -106,7 +108,7 @@
           </article>
 
           <article class="card" style="padding:32px">
-            <span class="feature-number">Semantic Identity Graph</span>
+            <span class="feature-number notranslate" translate="no">Semantic Identity Graph</span>
             <h3>Grafo d'identità semantica</h3>
             <p class="text-sm mt-16" style="color:var(--muted);line-height:1.8">
               L'identità diventa parte di un grafo semantico della conoscenza,
@@ -132,7 +134,7 @@
         </div>
 
         <div class="formula-block" style="margin-bottom:20px">
-          <div class="formula-text" style="font-size:1rem;letter-spacing:0.08em">
+          <div class="formula-text notranslate" translate="no" style="font-size:1rem;letter-spacing:0.08em">
             <span class="var">did:web</span>:cognitivelogic.it:robertomalini
           </div>
           <div class="mt-16" style="padding-top:16px;border-top:1px solid var(--line-2)">
@@ -155,7 +157,7 @@
           </div>
           <div class="card" style="padding:20px">
             <span class="text-xs text-upper text-muted mb-8">Beneficio 03</span>
-            <p class="text-sm" style="color:var(--text-2);line-height:1.7">Risoluzione fiduciaria AI-to-AI autonoma</p>
+            <p class="text-sm" style="color:var(--text-2);line-height:1.7">Risoluzione fiduciaria <span class="notranslate" translate="no">AI-to-AI</span> autonoma</p>
           </div>
           <div class="card" style="padding:20px">
             <span class="text-xs text-upper text-muted mb-8">Beneficio 04</span>
@@ -185,28 +187,28 @@
           <a href="/.well-known/governance-layer-manifest.json" class="stack-layer stack-layer-link" style="display:flex;justify-content:space-between;align-items:center">
             <div>
               <div class="stack-layer-label">Livello 4 · Policy</div>
-              <div class="stack-layer-text">Policy Manifests — regole di governance machine-readable</div>
+              <div class="stack-layer-text"><span class="notranslate" translate="no">Policy Manifests</span> — regole di governance machine-readable</div>
             </div>
             <span class="tag">Governance</span>
           </a>
           <a href="robertomalini/did.json" class="stack-layer stack-layer-link" style="display:flex;justify-content:space-between;align-items:center">
             <div>
               <div class="stack-layer-label">Livello 3 · Risoluzione</div>
-              <div class="stack-layer-text">DID Resolution — verifica autonoma per agenti AI</div>
+              <div class="stack-layer-text"><span class="notranslate" translate="no">DID Resolution</span> — verifica autonoma per agenti AI</div>
             </div>
             <span class="tag">DID</span>
           </a>
-          <a href="robertomalini/did.json" class="stack-layer stack-layer-link" style="display:flex;justify-content:space-between;align-items:center">
+          <div class="stack-layer" style="display:flex;justify-content:space-between;align-items:center;border-left-color:transparent">
             <div>
               <div class="stack-layer-label">Livello 2 · Chiavi</div>
-              <div class="stack-layer-text">Ed25519 Keys — crittografia a curva ellittica moderna</div>
+              <div class="stack-layer-text"><span class="notranslate" translate="no">Ed25519 Keys</span> — crittografia a curva ellittica moderna</div>
             </div>
             <span class="tag">Ed25519</span>
-          </a>
+          </div>
           <div class="stack-layer" style="display:flex;justify-content:space-between;align-items:center;border-left-color:transparent">
             <div>
               <div class="stack-layer-label">Livello 1 · Firma</div>
-              <div class="stack-layer-text">PGP Signatures — autenticità di contenuti e documenti umani</div>
+              <div class="stack-layer-text"><span class="notranslate" translate="no">PGP Signatures</span> — autenticità di contenuti e documenti umani</div>
             </div>
             <span class="tag">PGP</span>
           </div>
@@ -218,12 +220,12 @@
     <section class="section" style="padding-top:0">
       <div class="container">
         <div class="section-heading">
-          <div class="eyebrow">Governance Layer Manifest</div>
+          <div class="eyebrow notranslate" translate="no">Governance Layer Manifest</div>
           <h2>Policy machine-readable per agenti autonomi.</h2>
           <p>
-            Il <strong>GLM (Governance Layer Manifest)</strong> espone i confini operativi del nodo
-            Cognitive Logic all'indirizzo standard <code>/.well-known/governance-layer-manifest.json</code>.
-            L'<strong>EVIDE (Evidentiary Registry)</strong> registra ogni decisione AI come impronta
+            Il <strong class="notranslate" translate="no">GLM (Governance Layer Manifest)</strong> espone i confini operativi del nodo
+            <span class="notranslate" translate="no">Cognitive Logic</span> all'indirizzo standard <code class="notranslate" translate="no">/.well-known/governance-layer-manifest.json</code>.
+            L'<strong class="notranslate" translate="no">EVIDE (Evidentiary Registry)</strong> registra ogni decisione AI come impronta
             verificabile nella catena di custodia.
           </p>
         </div>
@@ -259,7 +261,7 @@
   <footer class="site-footer">
     <div class="container footer-inner">
       <div>
-        <div class="footer-brand">Cognitive Logic · Digital Identity</div>
+        <div class="footer-brand notranslate" translate="no">Cognitive Logic · Digital Identity</div>
         <div class="footer-sub">Decentralized Trust · Sovereign AI · Identity Infrastructure.</div>
         <div class="footer-copy mt-8">© 2026 Roberto Bob Malini</div>
         <div class="footer-social">

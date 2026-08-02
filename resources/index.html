@@ -3,426 +3,129 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-
   <title>Resource &amp; Publications Center | Cognitive Logic</title>
-
-  <meta
-    name="description"
-    content="Resource & Publications Center di Cognitive Logic: pubblicazioni, white paper, case study, research note e guide executive."
-  >
-
+  <meta name="description" content="Catalogo dei documenti pubblici Cognitive Logic, renderizzati integralmente in HTML statico.">
   <link rel="canonical" href="https://cognitivelogic.it/resources/">
-
   <link rel="stylesheet" href="../css/fonts-local.css">
   <link rel="stylesheet" href="../css/style.css?v=3">
-  <link rel="stylesheet" href="style.css?v=1">
+  <link rel="stylesheet" href="style.css?v=2">
 </head>
-
 <body>
-
-  <a class="skip-link" href="#main">
-    Vai al contenuto principale
-  </a>
-
-  <header class="site-header">
-    <div class="container header-inner">
-
-      <a href="../index.html" class="brand" aria-label="Cognitive Logic — Home">
-        <span class="wordmark wordmark--nav">
-          <span class="wm-top">Cognitive</span>
-          <span class="wm-bot">Logic</span>
-        </span>
-      </a>
-
-      <nav class="main-nav" aria-label="Navigazione principale">
-        <a href="../framework.html">Framework</a>
-        <a href="../services.html">Servizi</a>
-        <a href="../assessment.html">Assessment</a>
-        <a href="../validation.html">Validazione</a>
-        <a href="../trust.html">Trust Center</a>
-        <a href="../case-studies.html">Case Studies</a>
-        <a href="../engagement.html">Engagement</a>
-        <a href="../research.html">Research</a>
-        <a href="../international-watch/">International Watch</a>
-        <a href="../contact.html">Contatti</a>
-      </nav>
-
-      <div class="header-end">
-        <a href="../copilot.html" class="btn btn-ghost">
-          Copilot
-        </a>
-      </div>
-
-    </div>
-  </header>
-
+  <a class="skip-link" href="#main">Vai al contenuto principale</a>
+  <header class="site-header"><div class="container header-inner">
+    <a href="../index.html" class="brand" aria-label="Cognitive Logic — Home"><span class="wordmark wordmark--nav notranslate" translate="no"><span class="wm-top">Cognitive</span><span class="wm-bot">Logic</span></span></a>
+    <nav class="main-nav" aria-label="Navigazione principale"><a href="../framework.html">Framework</a><a href="../validation.html">Validazione</a><a href="../trust.html">Trust Center</a><a href="../research.html">Research</a><a href="../international-watch/">International Watch</a></nav>
+  </div></header>
   <main id="main">
-
-    <section class="resource-hero">
-      <div class="container resource-hero-inner">
-
-        <p class="resource-kicker">
-          Knowledge Platform
-        </p>
-
-        <h1>
-          Resource &amp; Publications Center
-        </h1>
-
-        <p class="resource-lead">
-          Hub documentale di Cognitive Logic dedicato a pubblicazioni,
-          approfondimenti, casi di studio, note di ricerca e guide operative
-          per AI Governance, Knowledge Governance e Decision Intelligence.
-        </p>
-
+    <section class="resource-hero"><div class="container resource-hero-inner">
+      <p class="resource-kicker">Knowledge Platform</p><h1>Resource &amp; Publications Center</h1>
+      <p class="resource-lead">Catalogo dei documenti pubblici di <span class="notranslate" translate="no">Cognitive Logic</span>. Ogni risorsa apre il corpo documentale completo in una pagina HTML statica leggibile anche senza JavaScript.</p>
+      <div class="resource-counts" aria-label="Conteggio documenti">
+        <div><strong data-count-total>13</strong><span>Documenti disponibili</span></div>
+        <div><strong data-count-categories>4</strong><span>Categorie</span></div>
+        <div><strong data-count-research>4</strong><span>Research</span></div>
+        <div><strong data-count-watch>0</strong><span>International Watch</span></div>
+        <div><strong data-count-validation>3</strong><span>Validation e Case Studies</span></div>
       </div>
-    </section>
-
-    <section class="section">
-      <div class="container">
-
-        <div class="section-head">
-
-          <p class="section-kicker">
-            Resource Library
-          </p>
-
-          <h2>
-            Esplora le aree documentali
-          </h2>
-
-          <p>
-            Le risorse sono organizzate per finalità, livello di approfondimento
-            e pubblico di riferimento.
-          </p>
-
+    </div></section>
+    <section class="section resource-search" aria-labelledby="resource-search-title"><div class="container">
+      <div class="section-head"><p class="section-kicker">Catalogo documentale</p><h2 id="resource-search-title">Documenti disponibili</h2><p>Titoli, categorie e destinazioni derivano dal catalogo verificato.</p></div>
+      <div class="resource-search-panel" data-resource-search>
+        <div class="resource-search-grid">
+          <div class="resource-search-field"><label for="resource-query">Cerca</label><input id="resource-query" type="search" placeholder="Titolo, argomento o parola chiave" autocomplete="off" data-resource-query></div>
+          <div class="resource-search-field"><label for="resource-type">Tipologia</label><select id="resource-type" data-resource-type><option value="">Tutte le tipologie</option></select></div>
+          <div class="resource-search-field"><label for="resource-category">Categoria</label><select id="resource-category" data-resource-category><option value="">Tutte le categorie</option></select></div>
+          <div class="resource-search-field"><label for="resource-sort">Ordinamento</label><select id="resource-sort" data-resource-sort><option value="featured">In evidenza</option><option value="alphabetical">Titolo</option><option value="type">Tipologia</option></select></div>
         </div>
-
-        <div class="resource-grid">
-
-          <a class="resource-card" href="../framework.html">
-            <span class="resource-meta">HTML · Methodology</span>
-            <h2>Framework &amp; Methodology</h2>
-            <p>
-              QEN Framework, metodologia di misurazione, explainability
-              e tracciabilità decisionale.
-            </p>
-          </a>
-
-          <a class="resource-card" href="../ai.html">
-            <span class="resource-meta">HTML · Technical Reference</span>
-            <h2>AI Governance</h2>
-            <p>
-              AI Engine, governance dei sistemi intelligenti e riferimenti
-              al funzionamento verificabile del QEN.
-            </p>
-          </a>
-
-          <a class="resource-card" href="../qen-sovereign/documentation/QEN-SOVEREIGN-MASTER-REGISTRY.md">
-            <span class="resource-meta">Markdown · Technical Reference</span>
-            <h2>QEN Sovereign Architecture</h2>
-            <p>
-              Master Registry ufficiale della baseline QEN Sovereign,
-              destinato anche a partner, auditor, ricerca e investitori.
-            </p>
-          </a>
-
-          <a class="resource-card" href="../identity.html">
-            <span class="resource-meta">HTML · Technical Reference</span>
-            <h2>Identity &amp; Cryptographic Trust</h2>
-            <p>
-              DID, identità sovrana, firme e policy machine-readable
-              per la fiducia tra persone, dati e agenti AI.
-            </p>
-          </a>
-
-          <a class="resource-card" href="../assessment.html">
-            <span class="resource-meta">HTML · Assessment</span>
-            <h2>Assessment &amp; Compliance</h2>
-            <p>
-              Approccio agli assessment enterprise di governance,
-              capacità, maturità e readiness.
-            </p>
-          </a>
-
-          <a class="resource-card" href="../validation.html">
-            <span class="resource-meta">HTML · Validation</span>
-            <h2>Validation &amp; Evidence</h2>
-            <p>
-              Programma di validazione basato su scope, evidenze,
-              assessment e tracciabilità documentale.
-            </p>
-          </a>
-
-
-          <a class="resource-card" href="../case-studies.html">
-            <span class="resource-meta">HTML · Case Study</span>
-            <h2>Case Studies</h2>
-            <p>
-              Casi applicativi e programmi di validazione pubblicati,
-              incluso il caso Coste360.
-            </p>
-          </a>
-
-          <a class="resource-card" href="../coste360.html"><span class="resource-meta">HTML · Validation Programme</span><h2>Coste360 Validation Programme</h2><p>Caso di validazione del QEN Sovereign Intelligence Layer applicato alla coastal governance intelligence.</p></a>
-          <a class="resource-card" href="../qen-enterprise-assessment/coste360-validation/EA-001-COSTE360-ENTERPRISE-DISCOVERY.md"><span class="resource-meta">Markdown · Assessment</span><h2>EA-001 · Costa360 Enterprise Discovery</h2><p>Baseline pubblica approvata dell’Enterprise Assessment Programme, costruita su informazioni pubblicamente osservabili.</p></a>
-          <a class="resource-card" href="../qen-sovereign/validation/assessments/EA-003-COSTE360-PLATFORM-CAPABILITY-ASSESSMENT.md"><span class="resource-meta">Markdown · Assessment</span><h2>EA-003 · Coste360 Platform Capability Assessment</h2><p>Assessment indipendente delle capacità della piattaforma, approvato per il Validation Programme.</p></a>
-          <a class="resource-card" href="../qen-sovereign/validation/assessments/EA-004-COSTE360-ENTERPRISE-GOVERNANCE-ASSESSMENT.md"><span class="resource-meta">Markdown · Assessment</span><h2>EA-004 · Coste360 Enterprise Governance Assessment</h2><p>Assessment approvato della governance enterprise nel perimetro del Coste360 Validation Programme.</p></a>
-          <a class="resource-card" href="../research.html"><span class="resource-meta">HTML · Research</span><h2>Research</h2><p>Programma di ricerca QEN e articoli su AI Governance, identità digitale e infrastrutture cognitive.</p></a>
-          <a class="resource-card" href="../international-watch/"><span class="resource-meta">HTML · Research</span><h2>International Watch</h2><p>Osservatorio internazionale su AI governance, frontier AI, sistemi agentici, sicurezza e trasparenza.</p></a>
-          <a class="resource-card" href="../executive-assets/"><span class="resource-meta">HTML · Executive Assets</span><h2>Executive Assets &amp; Downloads</h2><p>Executive Brief, Capability Statement, Enterprise Overview e guide executive consultabili e scaricabili.</p></a>
-          <a class="resource-card" href="graph/"><span class="resource-meta">HTML · Technical Reference</span><h2>Technical References</h2><p>Knowledge Graph delle relazioni tra framework, governance, assessment, validazione, ricerca e risorse executive.</p></a>
-
-        </div>
-
-    <section class="section resource-search" aria-labelledby="resource-search-title">
-      <div class="container">
-
-        <div class="section-head">
-          <p class="section-kicker">
-            Search &amp; Navigation
-          </p>
-
-          <h2 id="resource-search-title">
-            Cerca nel catalogo
-          </h2>
-
-          <p>
-            Cerca e filtra le risorse per tipologia, categoria
-            e rilevanza editoriale.
-          </p>
-        </div>
-
-        <div
-          class="resource-search-panel"
-          data-resource-search
-        >
-
-          <div class="resource-search-grid">
-
-            <div class="resource-search-field">
-              <label for="resource-query">
-                Cerca
-              </label>
-
-              <input
-                id="resource-query"
-                type="search"
-                placeholder="Titolo, argomento o parola chiave"
-                autocomplete="off"
-                data-resource-query
-              >
-            </div>
-
-            <div class="resource-search-field">
-              <label for="resource-type">
-                Tipologia
-              </label>
-
-              <select
-                id="resource-type"
-                data-resource-type
-              >
-                <option value="">
-                  Tutte le tipologie
-                </option>
-              </select>
-            </div>
-
-            <div class="resource-search-field">
-              <label for="resource-category">
-                Categoria
-              </label>
-
-              <select
-                id="resource-category"
-                data-resource-category
-              >
-                <option value="">
-                  Tutte le categorie
-                </option>
-              </select>
-            </div>
-
-            <div class="resource-search-field">
-              <label for="resource-sort">
-                Ordinamento
-              </label>
-
-              <select
-                id="resource-sort"
-                data-resource-sort
-              >
-                <option value="featured">
-                  In evidenza
-                </option>
-
-                <option value="alphabetical">
-                  Titolo
-                </option>
-
-                <option value="type">
-                  Tipologia
-                </option>
-              </select>
-            </div>
-
-          </div>
-
-          <div class="resource-search-options">
-
-            <label class="resource-search-checkbox">
-              <input
-                type="checkbox"
-                data-resource-featured
-              >
-              <span>
-                Solo risorse in evidenza
-              </span>
-            </label>
-
-            <div class="resource-search-summary">
-
-              <strong
-                aria-live="polite"
-                data-resource-count
-              >
-                Caricamento catalogo
-              </strong>
-
-              <button
-                type="button"
-                class="btn btn-ghost"
-                data-resource-reset
-              >
-                Reimposta filtri
-              </button>
-
-            </div>
-
-          </div>
-
-        </div>
-
-        <div
-          class="resource-results"
-          aria-live="polite"
-          data-resource-results
-        ></div>
-
-        <div
-          class="resource-empty"
-          data-resource-empty
-          hidden
-        >
-          <h3>
-            Nessuna risorsa trovata
-          </h3>
-
-          <p>
-            Modifica i criteri di ricerca oppure reimposta i filtri.
-          </p>
-        </div>
-
-        <noscript>
-          <div class="resource-search-error">
-            Per utilizzare la ricerca dinamica è necessario abilitare JavaScript.
-            Le categorie documentali restano comunque accessibili dalla sezione
-            precedente.
-          </div>
-        </noscript>
-
+        <div class="resource-search-options"><label class="resource-search-checkbox"><input type="checkbox" data-resource-featured><span>Solo documenti in evidenza</span></label><div class="resource-search-summary"><strong aria-live="polite" data-resource-count>Caricamento catalogo</strong><button type="button" class="btn btn-ghost" data-resource-reset>Reimposta filtri</button></div></div>
       </div>
-    </section>
-
-
-        <div class="resource-featured">
-
-          <div class="section-head">
-            <p class="section-kicker">Featured Resources</p>
-            <h2>Risorse in evidenza</h2>
-          </div>
-
-          <div class="resource-featured-grid">
-
-            <article class="resource-feature">
-              <h3>QEN Framework</h3>
-              <p>
-                Architettura di governance, misurazione,
-                tracciabilità ed explainability.
-              </p>
-              <a href="../framework.html">Esplora il Framework</a>
-            </article>
-
-            <article class="resource-feature">
-              <h3>Validation Programme</h3>
-              <p>
-                Evidenze, assessment e documentazione
-                dei programmi di validazione.
-              </p>
-              <a href="../validation.html">Vai alla Validazione</a>
-            </article>
-
-            <article class="resource-feature">
-              <h3>Trust Center</h3>
-              <p>
-                Governance, principi, evidenze,
-                responsabilità e trasparenza.
-              </p>
-              <a href="../trust.html">Accedi al Trust Center</a>
-            </article>
-
-          </div>
-
-        </div>
-
+      <div class="resource-results" aria-live="polite" data-resource-results>
+        <!-- RESOURCE_CARDS_START -->
+<a class="resource-result-card" href="/resources/documents/executive-brief/">
+  <div class="resource-result-meta"><span class="resource-badge">Executive Guide</span><span class="resource-badge resource-badge--featured">In evidenza</span></div>
+  <h2 class="notranslate" translate="no">Cognitive Logic Executive Brief</h2><p>Sintesi istituzionale del modello di AI Governance, delle capacità e degli outcome enterprise.</p>
+  <div class="resource-topic-list"><span class="resource-topic">Cognitive Logic</span><span class="resource-topic">QEN Sovereign</span><span class="resource-topic">AI Governance</span></div>
+  <span class="resource-result-link">Apri documento →</span>
+</a>
+<a class="resource-result-card" href="/resources/documents/capability-statement/">
+  <div class="resource-result-meta"><span class="resource-badge">Publication</span><span class="resource-badge resource-badge--featured">In evidenza</span></div>
+  <h2 class="notranslate" translate="no">Cognitive Logic Capability Statement</h2><p>Capacità, servizi e ambiti di intervento per governance, conoscenza e decision intelligence.</p>
+  <div class="resource-topic-list"><span class="resource-topic">Capabilities</span><span class="resource-topic">Enterprise Services</span><span class="resource-topic">AI Governance</span></div>
+  <span class="resource-result-link">Apri documento →</span>
+</a>
+<a class="resource-result-card" href="/resources/documents/enterprise-overview/">
+  <div class="resource-result-meta"><span class="resource-badge">Publication</span><span class="resource-badge resource-badge--featured">In evidenza</span></div>
+  <h2 class="notranslate" translate="no">Cognitive Logic Enterprise Overview</h2><p>Panoramica enterprise dell’architettura, del posizionamento e del modello operativo.</p>
+  <div class="resource-topic-list"><span class="resource-topic">Enterprise Architecture</span><span class="resource-topic">Governance</span><span class="resource-topic">Decision Intelligence</span></div>
+  <span class="resource-result-link">Apri documento →</span>
+</a>
+<a class="resource-result-card" href="/resources/documents/why-cognitive-logic/">
+  <div class="resource-result-meta"><span class="resource-badge">Publication</span></div>
+  <h2 class="notranslate" translate="no">Why Cognitive Logic</h2><p>Motivazioni e valore di un’infrastruttura indipendente per la governance dell’intelligenza artificiale.</p>
+  <div class="resource-topic-list"><span class="resource-topic">Cognitive Logic</span><span class="resource-topic">AI Governance</span><span class="resource-topic">Knowledge Infrastructure</span></div>
+  <span class="resource-result-link">Apri documento →</span>
+</a>
+<a class="resource-result-card" href="/resources/documents/assessment-overview/">
+  <div class="resource-result-meta"><span class="resource-badge">Executive Guide</span><span class="resource-badge resource-badge--featured">In evidenza</span></div>
+  <h2 class="notranslate" translate="no">Cognitive Logic Assessment Overview</h2><p>Approccio evidence-based agli assessment di governance, capacità e maturità.</p>
+  <div class="resource-topic-list"><span class="resource-topic">Assessment</span><span class="resource-topic">Governance Maturity</span><span class="resource-topic">Readiness</span></div>
+  <span class="resource-result-link">Apri documento →</span>
+</a>
+<a class="resource-result-card" href="/resources/documents/governance-journey/">
+  <div class="resource-result-meta"><span class="resource-badge">Executive Guide</span><span class="resource-badge resource-badge--featured">In evidenza</span></div>
+  <h2 class="notranslate" translate="no">Cognitive Logic Governance Journey</h2><p>Percorso progressivo per costruire governance, tracciabilità e capacità decisionali.</p>
+  <div class="resource-topic-list"><span class="resource-topic">Governance</span><span class="resource-topic">Transformation</span><span class="resource-topic">Decision Traceability</span></div>
+  <span class="resource-result-link">Apri documento →</span>
+</a>
+<a class="resource-result-card" href="/resources/documents/qen-sovereign-master-registry/">
+  <div class="resource-result-meta"><span class="resource-badge">Technical Reference</span><span class="resource-badge resource-badge--featured">In evidenza</span></div>
+  <h2 class="notranslate" translate="no">QEN Sovereign Master Registry</h2><p>Registro ufficiale della baseline documentale QEN Sovereign.</p>
+  <div class="resource-topic-list"><span class="resource-topic">QEN Sovereign</span><span class="resource-topic">Architecture</span><span class="resource-topic">Governance</span></div>
+  <span class="resource-result-link">Apri documento →</span>
+</a>
+<a class="resource-result-card" href="/resources/documents/qen-sovereign-architecture/">
+  <div class="resource-result-meta"><span class="resource-badge">Technical Reference</span><span class="resource-badge resource-badge--featured">In evidenza</span></div>
+  <h2 class="notranslate" translate="no">QEN Sovereign Architecture Overview</h2><p>Architettura completa della baseline documentale e dei domini di governance QEN Sovereign.</p>
+  <div class="resource-topic-list"><span class="resource-topic">QEN Sovereign</span><span class="resource-topic">Enterprise Architecture</span><span class="resource-topic">Documentation</span></div>
+  <span class="resource-result-link">Apri documento →</span>
+</a>
+<a class="resource-result-card" href="/resources/documents/qen-documentation-index/">
+  <div class="resource-result-meta"><span class="resource-badge">Technical Reference</span></div>
+  <h2 class="notranslate" translate="no">QEN Sovereign Documentation Index</h2><p>Indice governato dei documenti, delle relazioni e delle baseline QEN Sovereign.</p>
+  <div class="resource-topic-list"><span class="resource-topic">QEN Sovereign</span><span class="resource-topic">Documentation Governance</span><span class="resource-topic">Registry</span></div>
+  <span class="resource-result-link">Apri documento →</span>
+</a>
+<a class="resource-result-card" href="/resources/documents/qen-governance-model/">
+  <div class="resource-result-meta"><span class="resource-badge">Technical Reference</span><span class="resource-badge resource-badge--featured">In evidenza</span></div>
+  <h2 class="notranslate" translate="no">QEN Sovereign Governance Model</h2><p>Modello di governance, autorità, responsabilità e controlli della piattaforma QEN Sovereign.</p>
+  <div class="resource-topic-list"><span class="resource-topic">QEN Sovereign</span><span class="resource-topic">Governance</span><span class="resource-topic">Accountability</span></div>
+  <span class="resource-result-link">Apri documento →</span>
+</a>
+<a class="resource-result-card" href="/resources/documents/coste360-ea-001/">
+  <div class="resource-result-meta"><span class="resource-badge">Case Study</span><span class="resource-badge resource-badge--featured">In evidenza</span></div>
+  <h2 class="notranslate" translate="no">EA-001 — Costa360 Enterprise Discovery</h2><p>Baseline pubblica dell’Enterprise Assessment Programme costruita su evidenze osservabili.</p>
+  <div class="resource-topic-list"><span class="resource-topic">Validation</span><span class="resource-topic">Costa360</span><span class="resource-topic">Enterprise Discovery</span></div>
+  <span class="resource-result-link">Apri documento →</span>
+</a>
+<a class="resource-result-card" href="/resources/documents/coste360-ea-003/">
+  <div class="resource-result-meta"><span class="resource-badge">Case Study</span><span class="resource-badge resource-badge--featured">In evidenza</span></div>
+  <h2 class="notranslate" translate="no">EA-003 — Coste360 Platform Capability Assessment</h2><p>Assessment completo e indipendente delle capacità della piattaforma Coste360.</p>
+  <div class="resource-topic-list"><span class="resource-topic">Validation</span><span class="resource-topic">Coste360</span><span class="resource-topic">Platform Capability</span></div>
+  <span class="resource-result-link">Apri documento →</span>
+</a>
+<a class="resource-result-card" href="/resources/documents/coste360-ea-004/">
+  <div class="resource-result-meta"><span class="resource-badge">Case Study</span><span class="resource-badge resource-badge--featured">In evidenza</span></div>
+  <h2 class="notranslate" translate="no">Coste360 Enterprise Governance Assessment</h2><p>Assessment completo della governance enterprise nel Validation Programme Coste360.</p>
+  <div class="resource-topic-list"><span class="resource-topic">Validation</span><span class="resource-topic">Coste360</span><span class="resource-topic">Enterprise Governance</span></div>
+  <span class="resource-result-link">Apri documento →</span>
+</a>
+        <!-- RESOURCE_CARDS_END -->
       </div>
-    </section>
-
+      <div class="resource-empty" data-resource-empty hidden><h3>Nessun documento trovato</h3><p>Modifica i filtri per visualizzare altri documenti.</p></div>
+      <noscript><p class="resource-search-error">Il filtro richiede JavaScript. I documenti restano accessibili dai link diretti pubblicati nel catalogo.</p></noscript>
+    </div></section>
   </main>
-
-  <footer class="site-footer">
-    <div class="container footer-inner">
-
-      <div>
-        <div class="wordmark wordmark--footer">
-          <span class="wm-top">Cognitive</span>
-          <span class="wm-bot">Logic</span>
-        </div>
-
-        <div class="footer-sub">
-          Quantificazione Etica Naturale — Knowledge Infrastructure per
-          AI Governance, Knowledge Governance e Decision Intelligence.
-        </div>
-
-        <div class="footer-copy mt-8">
-          © 2026 Roberto Bob Malini — Cognitive Logic ·
-          <a href="../legal.html">Legal &amp; IP</a>
-        </div>
-      </div>
-
-      <div class="footer-links">
-        <a href="../resources/">Resource Center</a>
-        <a href="../framework.html">Framework</a>
-        <a href="../services.html">Servizi</a>
-        <a href="../assessment.html">Assessment</a>
-        <a href="../validation.html">Validazione</a>
-        <a href="../trust.html">Trust Center</a>
-        <a href="../engagement.html">Engagement</a>
-        <a href="../research.html">Research</a>
-        <a href="../international-watch/">International Watch</a>
-        <a href="../contact.html">Contatti</a>
-        <a href="../privacy.html">Privacy</a>
-        <a href="../cookie.html">Cookie</a>
-        <a href="../accessibilita.html">Accessibilità</a>
-      </div>
-
-    </div>
-  </footer>
-
-  <script src="js/search.js?v=1" defer></script>
-
-  <script src="../js/cookie-banner.js"></script>
-
+  <footer class="site-footer"><div class="container footer-inner"><div><div class="wordmark wordmark--footer notranslate" translate="no"><span class="wm-top">Cognitive</span><span class="wm-bot">Logic</span></div><div class="footer-copy">© 2026 Roberto Bob Malini — <span class="notranslate" translate="no">Cognitive Logic</span></div></div><div class="footer-links"><a href="../research.html">Research</a><a href="../international-watch/">International Watch</a><a href="../privacy.html">Privacy</a></div></div></footer>
+  <script src="js/search.js"></script>
 </body>
 </html>
