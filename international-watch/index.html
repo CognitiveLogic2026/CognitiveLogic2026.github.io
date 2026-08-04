@@ -157,10 +157,39 @@
   }
 
   .watch-card {
+
+    display: block;
+
     border: 1px solid var(--line-soft);
+
     background: var(--surface);
+
     padding: clamp(28px, 5vw, 54px);
+
     margin-bottom: 28px;
+
+    color: inherit;
+
+    text-decoration: none;
+
+  }
+
+
+  a.watch-card:hover {
+
+    border-color: var(--gold);
+
+    transform: translateY(-2px);
+
+  }
+
+
+  a.watch-card:focus-visible {
+
+    outline: 3px solid var(--gold);
+
+    outline-offset: 4px;
+
   }
 
   .watch-meta {
@@ -315,7 +344,7 @@
 
     <div class="watch-grid">
 
-      <article class="watch-card">
+      <a class="watch-card" href="/international-watch/agentic-coding-trends-anthropic/">
 
         <p class="watch-meta">
           SOURCE: Anthropic ·
@@ -331,24 +360,19 @@
           Analisi del report Anthropic Agentic Coding Trends 2026: evoluzione degli agenti di coding, sviluppo software assistito dall’AI e nuove esigenze di governance.
         </p>
 
-        <a
-          class="btn btn-outline"
-          href="/international-watch/agentic-coding-trends-anthropic/"
-        >
-          Read the analysis
-        </a>
+        <span class="btn btn-outline">Read the analysis</span>
 
-      </article>
+      </a>
 
-      <article class="watch-card">
+      <a class="watch-card" href="/international-watch/eu-ai-act-article-50-transparency-guidelines/">
         <p class="watch-meta">SOURCE: European Commission · TOPIC: AI Act Transparency · TYPE: Regulatory Guidelines</p>
         <h2>AI Act, la Commissione chiarisce gli obblighi di trasparenza dell’articolo 50</h2>
         <p>Le linee guida distinguono le responsabilità di provider e deployer e chiariscono marcatura e disclosure dei contenuti sintetici.</p>
-        <a class="btn btn-outline" href="/international-watch/eu-ai-act-article-50-transparency-guidelines/">Read the analysis</a>
-      </article>
+        <span class="btn btn-outline">Read the analysis</span>
+      </a>
 
 
-      <article class="watch-card">
+      <a class="watch-card" href="/international-watch/frontier-ai-governance-demis-hassabis/">
 
         <p class="watch-meta">
           SOURCE: Public Statements and International Reporting ·
@@ -364,21 +388,16 @@
           Demis Hassabis propone un framework internazionale per governare la Frontier AI. Analisi di standard, valutazioni, sicurezza e governance della conoscenza.
         </p>
 
-        <a
-          class="btn btn-outline"
-          href="/international-watch/frontier-ai-governance-demis-hassabis/"
-        >
-          Read the analysis
-        </a>
+        <span class="btn btn-outline">Read the analysis</span>
 
-      </article>
+      </a>
 
-      <article class="watch-card">
+      <a class="watch-card" href="/articles/2026/agentic-coding-trends/">
         <p class="watch-meta">SOURCE: Anthropic · TOPIC: Multi-agent Systems · TYPE: QEN Analysis</p>
         <h2>Agentic Coding 2026: il futuro è nella governance degli agenti</h2>
         <p>Una lettura QEN del passaggio dalla scrittura del codice alla progettazione e governance di ecosistemi multi-agente.</p>
-        <a class="btn btn-outline" href="/articles/2026/agentic-coding-trends/">Read the analysis</a>
-      </article>
+        <span class="btn btn-outline">Read the analysis</span>
+      </a>
 
     </div>
 
