@@ -174,6 +174,18 @@ main > .section:nth-of-type(even) { padding-block: clamp(3.25rem, 6vw, 4.75rem);
 .card:hover::before, .info-card:hover::before, .use-case-card:hover::before { opacity: 1; }
 .card p:last-child, .panel p:last-child { margin-bottom: 0; }
 .card a:not(.btn) { color: var(--gold-soft); text-decoration: underline; text-decoration-color: rgba(143,188,255,.35); text-underline-offset: .2em; }
+.card-link { display: flex; min-height: 100%; flex-direction: column; color: inherit; text-decoration: none; cursor: pointer; }
+.card-link:visited { color: inherit; }
+.card-link:focus-visible { outline: 3px solid var(--gold-soft); outline-offset: 4px; }
+.card-link:focus-visible::before { opacity: 1; }
+.card-link .card-footer, .card-link > p:last-child { margin-top: auto; }
+.deliverables a { color: inherit; text-decoration: none; }
+.deliverables a:hover { color: var(--gold-soft); }
+.vettore-link { color: inherit; text-decoration: none; }
+.vettore-link:hover { background: var(--surface); }
+.vettore-link:focus-visible { position: relative; z-index: 1; }
+.process-link { display: block; min-height: 220px; color: inherit; text-decoration: none; }
+.process-link:hover { background: var(--bg-panel-2); }
 .card-num, .card-index, .feature-number { display: block; margin-bottom: 1.2rem; }
 .card-model { margin-bottom: 1.2rem; color: var(--gold-soft); font-family: var(--mono); font-size: .68rem; letter-spacing: .08em; text-transform: uppercase; }
 .card-desc { color: var(--text-soft); font-size: .95rem; }
@@ -295,6 +307,7 @@ textarea { min-height: 140px; resize: vertical; }
   .cards { grid-template-columns: 1fr; }
   .process-grid { grid-template-columns: 1fr; }
   .pstep, .process-step { min-height: auto; }
+  .process-link { min-height: auto; }
   .hero { min-height: auto; padding-block: 3.25rem; }
   .home-hero .hero-left { min-height: 145px; }
   .home-hero .hero-right { min-height: auto; padding-block: 3rem; }
