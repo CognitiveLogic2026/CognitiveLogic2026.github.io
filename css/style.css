@@ -179,6 +179,7 @@ main > .section:nth-of-type(even) { padding-block: clamp(3.25rem, 6vw, 4.75rem);
 .card-link:focus-visible { outline: 3px solid var(--gold-soft); outline-offset: 4px; }
 .card-link:focus-visible::before { opacity: 1; }
 .card-link .card-footer, .card-link > p:last-child { margin-top: auto; }
+.card-link .card-cta { color: var(--gold-soft); text-decoration: underline; text-decoration-color: rgba(143,188,255,.35); text-underline-offset: .2em; }
 .deliverables a { color: inherit; text-decoration: none; }
 .deliverables a:hover { color: var(--gold-soft); }
 .vettore-link { color: inherit; text-decoration: none; }
