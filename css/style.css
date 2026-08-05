@@ -180,6 +180,13 @@ main > .section:nth-of-type(even) { padding-block: clamp(3.25rem, 6vw, 4.75rem);
 .card-footer { display: flex; justify-content: space-between; gap: 1rem; margin-top: 1.5rem; padding-top: 1rem; border-top: 1px solid var(--line-soft); }
 .card-tag { color: var(--muted); font-family: var(--mono); font-size: .68rem; text-transform: uppercase; }
 .card-arrow { color: var(--accent-strong); }
+.validation-principles { gap: clamp(.85rem, 1.5vw, 1.25rem); align-items: stretch; }
+.validation-card { display: flex; min-height: 100%; flex-direction: column; color: inherit; text-decoration: none; }
+.validation-card h3 { margin-bottom: .75rem; }
+.validation-card p { flex-grow: 1; }
+.validation-card--link { cursor: pointer; }
+.validation-card--link:focus-visible { outline: 3px solid var(--gold-soft); outline-offset: 4px; }
+.validation-card--link:focus-visible::before { opacity: 1; }
 .deliverables, .list-clean, .result-list { padding: 0; list-style: none; }
 .deliverables li, .list-clean li, .result-list li { position: relative; padding: .65rem 0 .65rem 1.15rem; color: var(--text-soft); border-bottom: 1px solid var(--line-soft); font-size: .9rem; }
 .deliverables li::before, .list-clean li::before, .result-list li::before { content: ""; position: absolute; top: 1.2rem; left: 0; width: 5px; height: 5px; border-radius: 50%; background: var(--accent); }
