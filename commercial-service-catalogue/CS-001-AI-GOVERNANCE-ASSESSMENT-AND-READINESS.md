@@ -1,5 +1,173 @@
 # CS-001 — AI Governance Assessment & Readiness
 
+> **Enterprise Service Catalogue**  
+> Capire il livello di preparazione dell’organizzazione.
+
+## 1. Executive Summary
+
+Il servizio **AI Governance Assessment & Readiness** aiuta l’organizzazione a capire il livello di preparazione dell’organizzazione.
+
+L’organizzazione utilizza, acquista o sta introducendo sistemi di Intelligenza Artificiale senza disporre di una visione condivisa su rischi, responsabilità, controlli, dipendenze e priorità.
+
+Fornisce una baseline verificabile della preparazione organizzativa e una roadmap prioritaria per decidere dove intervenire, con quale urgenza e con quali responsabilità.
+
+Il risultato è una base concreta per assumere decisioni executive, ridurre il rischio, assegnare responsabilità e definire il passo successivo con evidenze verificabili.
+
+## 2. Perché questo servizio
+
+L’organizzazione utilizza, acquista o sta introducendo sistemi di Intelligenza Artificiale senza disporre di una visione condivisa su rischi, responsabilità, controlli, dipendenze e priorità.
+
+Quando l’Intelligenza Artificiale entra nei processi, nei prodotti o nelle decisioni, il rischio non è soltanto tecnologico. Diventa un rischio organizzativo, operativo, normativo, reputazionale e decisionale.
+
+Senza un intervento strutturato, leadership e funzioni di controllo possono operare con informazioni incomplete, responsabilità non definite e priorità non condivise. Questo rallenta le decisioni, aumenta i costi di correzione e rende difficile dimostrare che l’organizzazione mantiene un controllo effettivo.
+
+## 3. Quando attivarlo
+
+Il servizio è particolarmente indicato:
+
+- prima dell’introduzione o dell’estensione di sistemi AI
+- in presenza di iniziative AI distribuite tra più funzioni
+- prima di investimenti, procurement o approvazioni executive
+- in preparazione ad audit, verifiche o obblighi normativi
+- durante trasformazioni organizzative, fusioni o acquisizioni
+
+Può essere attivato come intervento autonomo oppure come parte di un percorso più ampio di Assessment, Strategy, Validation o trasformazione della governance.
+
+## 4. Problemi che risolve
+
+Se il servizio non viene svolto, l’organizzazione rischia di:
+
+- assumere decisioni senza una base informativa condivisa;
+- sottovalutare rischi, dipendenze e responsabilità;
+- introdurre sistemi AI senza controlli adeguati;
+- affrontare audit e verifiche senza evidenze sufficienti;
+- investire in iniziative non prioritarie o non sostenibili;
+- generare conflitti tra direzione, tecnologia, operations, legal e compliance;
+- non riuscire a spiegare o ricostruire le decisioni;
+- aumentare costi, ritardi e rischio reputazionale;
+- compromettere continuità operativa e fiducia degli stakeholder.
+
+## 5. Destinatari
+
+- CEO e direzione generale
+- CIO e responsabili dei sistemi informativi
+- COO e responsabili delle operations
+- Compliance Officer
+- Risk Manager
+- Legal e General Counsel
+- responsabili Innovation e trasformazione digitale
+- Data Office e responsabili della conoscenza
+- Pubbliche Amministrazioni
+- organizzazioni territoriali, consorzi ed enti complessi
+
+Il servizio viene adattato al livello decisionale, al settore, alla complessità organizzativa e al grado di esposizione dell’organizzazione.
+
+## 6. Come lavoriamo
+
+Il percorso operativo viene definito in funzione della decisione da supportare e del rischio da ridurre.
+
+1. **Inquadramento executive** — chiarimento di obiettivi, contesto, decisioni e stakeholder.
+2. **Definizione del perimetro** — identificazione di sistemi, processi, fonti, responsabilità e obblighi.
+3. **Raccolta delle evidenze** — analisi di documenti, interviste, dati, policy, processi e controlli esistenti.
+4. **Valutazione** — identificazione di rischi, gap, dipendenze, priorità e capacità organizzative.
+5. **Validazione** — verifica delle evidenze e confronto con requisiti, KPI e criteri di governance.
+6. **Decisione executive** — restituzione di risultati, opzioni, raccomandazioni e priorità.
+7. **Piano d’azione** — definizione di responsabilità, tempi, indicatori e passi successivi.
+
+Solo dopo aver chiarito il problema organizzativo viene applicato il metodo Cognitive Logic e il QEN Framework.
+
+## 7. Deliverable
+
+I principali output del servizio includono:
+
+- AI Governance Assessment Report
+- Executive Decision Brief
+- Readiness Baseline
+- Risk Register
+- Evidence Catalogue
+- Roadmap prioritaria
+- KPI e raccomandazioni operative
+
+Il perimetro definitivo dei deliverable viene stabilito in fase di avvio in base agli obiettivi, alla complessità e alle evidenze disponibili.
+
+## 8. Benefici
+
+- riduzione dell’esposizione organizzativa e normativa;
+- maggiore affidabilità delle decisioni;
+- responsabilità e priorità più chiare;
+- conformità dimostrabile attraverso evidenze;
+- riduzione delle ambiguità tra funzioni;
+- decisioni spiegabili, verificabili e tracciabili;
+- maggiore fiducia da parte di board, clienti, autorità e stakeholder;
+- migliore continuità operativa;
+- roadmap e investimenti basati su priorità verificabili.
+
+Il beneficio centrale è la capacità di trasformare un problema complesso in una decisione governabile, documentata e attuabile.
+
+## 9. Evidenze
+
+Il servizio produce evidenze documentate e utilizzabili dalla direzione, dalle funzioni di controllo e dai responsabili operativi.
+
+Le evidenze vengono:
+
+- raccolte da fonti organizzative, normative, operative e documentali;
+- classificate per origine, rilevanza, affidabilità e aggiornamento;
+- collegate a rischi, obblighi, decisioni, controlli e responsabilità;
+- mantenute attraverso registri, cataloghi, matrici e KPI;
+- validate mediante verifiche di coerenza, completezza e tracciabilità;
+- utilizzate per motivare decisioni, priorità, raccomandazioni e azioni correttive.
+
+L’obiettivo non è produrre documentazione formale fine a sé stessa, ma costruire una base probatoria capace di sostenere audit, governance, controllo e decisioni executive.
+
+## 10. Collegamenti
+
+- [Assessment](/assessment.html)
+- [Validation](/validation.html)
+- [Case Studies](/case-studies.html)
+- [Research](/research.html)
+- [Trust Center](/trust.html)
+- [QEN Framework](/framework.html)
+
+## 11. QEN Framework
+
+Il QEN Framework non costituisce il prodotto acquistato dal cliente. È il metodo proprietario che rende il servizio strutturato, misurabile e verificabile.
+
+Il Framework abilita:
+
+- governance di ruoli, responsabilità e controlli;
+- misurazione mediante KPI e modelli di maturità;
+- tracciabilità delle fonti e delle decisioni;
+- raccolta e validazione delle evidenze;
+- explainability e accountability;
+- mappatura normativa e supporto alla conformità;
+- indipendenza da piattaforme e fornitori tecnologici.
+
+Il valore del Framework emerge nei risultati prodotti dal servizio: decisioni più affidabili, rischi più leggibili, evidenze utilizzabili e responsabilità dimostrabili.
+
+## 12. Documentazione tecnica
+
+La sezione seguente conserva integralmente la specifica tecnica, metodologica e operativa originaria del servizio.
+
+Sono mantenuti senza eliminazioni:
+
+- metodologia;
+- modelli;
+- algoritmi;
+- KPI;
+- tabelle;
+- tassonomie;
+- architetture;
+- dipendenze;
+- riferimenti normativi;
+- esempi;
+- evidenze;
+- appendici;
+- note architetturali.
+
+---
+
+# CS-001 — AI Governance Assessment & Readiness
+
 Status: PROPOSED  
 Catalogue: Cognitive Logic Commercial Service Catalogue  
 Service Type: Assessment and Readiness  
