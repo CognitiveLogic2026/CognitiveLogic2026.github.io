@@ -1,15 +1,462 @@
 [
-  {"id":"executive-brief","title":"Cognitive Logic Executive Brief","description":"Sintesi istituzionale del modello di AI Governance, delle capacità e degli outcome enterprise.","type":"Executive Guide","category":"executive-guides","categoryLabel":"Executive Guides","audience":"Executive","topics":["Cognitive Logic","QEN Sovereign","AI Governance"],"source":"commercial-evolution-1.0/phase-6-commercial-website-evolution/executive-assets/01-EXECUTIVE-BRIEF.md","output":"resources/documents/executive-brief/index.html","url":"/resources/documents/executive-brief/","status":"published","language":"en","featured":true},
-  {"id":"capability-statement","title":"Cognitive Logic Capability Statement","description":"Capacità, servizi e ambiti di intervento per governance, conoscenza e decision intelligence.","type":"Publication","category":"publications","categoryLabel":"Publications","audience":"Enterprise","topics":["Capabilities","Enterprise Services","AI Governance"],"source":"commercial-evolution-1.0/phase-6-commercial-website-evolution/executive-assets/02-CAPABILITY-STATEMENT.md","output":"resources/documents/capability-statement/index.html","url":"/resources/documents/capability-statement/","status":"published","language":"en","featured":true},
-  {"id":"enterprise-overview","title":"Cognitive Logic Enterprise Overview","description":"Panoramica enterprise dell’architettura, del posizionamento e del modello operativo.","type":"Publication","category":"publications","categoryLabel":"Publications","audience":"Enterprise","topics":["Enterprise Architecture","Governance","Decision Intelligence"],"source":"commercial-evolution-1.0/phase-6-commercial-website-evolution/executive-assets/03-ENTERPRISE-OVERVIEW.md","output":"resources/documents/enterprise-overview/index.html","url":"/resources/documents/enterprise-overview/","status":"published","language":"en","featured":true},
-  {"id":"why-cognitive-logic","title":"Why Cognitive Logic","description":"Motivazioni e valore di un’infrastruttura indipendente per la governance dell’intelligenza artificiale.","type":"Publication","category":"publications","categoryLabel":"Publications","audience":"Executive","topics":["Cognitive Logic","AI Governance","Knowledge Infrastructure"],"source":"commercial-evolution-1.0/phase-6-commercial-website-evolution/executive-assets/04-WHY-COGNITIVE-LOGIC.md","output":"resources/documents/why-cognitive-logic/index.html","url":"/resources/documents/why-cognitive-logic/","status":"published","language":"en","featured":false},
-  {"id":"assessment-overview","title":"Cognitive Logic Assessment Overview","description":"Approccio evidence-based agli assessment di governance, capacità e maturità.","type":"Executive Guide","category":"executive-guides","categoryLabel":"Executive Guides","audience":"Executive","topics":["Assessment","Governance Maturity","Readiness"],"source":"commercial-evolution-1.0/phase-6-commercial-website-evolution/executive-assets/05-ASSESSMENT-OVERVIEW.md","output":"resources/documents/assessment-overview/index.html","url":"/resources/documents/assessment-overview/","status":"published","language":"en","featured":true},
-  {"id":"governance-journey","title":"Cognitive Logic Governance Journey","description":"Percorso progressivo per costruire governance, tracciabilità e capacità decisionali.","type":"Executive Guide","category":"executive-guides","categoryLabel":"Executive Guides","audience":"Executive","topics":["Governance","Transformation","Decision Traceability"],"source":"commercial-evolution-1.0/phase-6-commercial-website-evolution/executive-assets/06-GOVERNANCE-JOURNEY.md","output":"resources/documents/governance-journey/index.html","url":"/resources/documents/governance-journey/","status":"published","language":"en","featured":true},
-  {"id":"qen-sovereign-master-registry","title":"QEN Sovereign Master Registry","description":"Registro ufficiale della baseline documentale QEN Sovereign.","type":"Technical Reference","category":"research","categoryLabel":"Research","audience":"Technical","topics":["QEN Sovereign","Architecture","Governance"],"source":"qen-sovereign/documentation/QEN-SOVEREIGN-MASTER-REGISTRY.md","output":"resources/documents/qen-sovereign-master-registry/index.html","url":"/resources/documents/qen-sovereign-master-registry/","status":"published","language":"en","featured":true},
-  {"id":"qen-sovereign-architecture","title":"QEN Sovereign Architecture Overview","description":"Architettura completa della baseline documentale e dei domini di governance QEN Sovereign.","type":"Technical Reference","category":"research","categoryLabel":"Research","audience":"Technical","topics":["QEN Sovereign","Enterprise Architecture","Documentation"],"source":"qen-sovereign/documentation/QEN-SOVEREIGN-ARCHITECTURE-OVERVIEW.md","output":"resources/documents/qen-sovereign-architecture/index.html","url":"/resources/documents/qen-sovereign-architecture/","status":"published","language":"en","featured":true},
-  {"id":"qen-documentation-index","title":"QEN Sovereign Documentation Index","description":"Indice governato dei documenti, delle relazioni e delle baseline QEN Sovereign.","type":"Technical Reference","category":"research","categoryLabel":"Research","audience":"Technical","topics":["QEN Sovereign","Documentation Governance","Registry"],"source":"qen-sovereign/documentation/QEN-SOVEREIGN-DOCUMENTATION-INDEX.md","output":"resources/documents/qen-documentation-index/index.html","url":"/resources/documents/qen-documentation-index/","status":"published","language":"en","featured":false},
-  {"id":"qen-governance-model","title":"QEN Sovereign Governance Model","description":"Modello di governance, autorità, responsabilità e controlli della piattaforma QEN Sovereign.","type":"Technical Reference","category":"research","categoryLabel":"Research","audience":"Technical","topics":["QEN Sovereign","Governance","Accountability"],"source":"qen-sovereign/documentation/QEN-SOVEREIGN-GOVERNANCE-MODEL.md","output":"resources/documents/qen-governance-model/index.html","url":"/resources/documents/qen-governance-model/","status":"published","language":"en","featured":true},
-  {"id":"coste360-ea-001","title":"EA-001 — Costa360 Enterprise Discovery","description":"Baseline pubblica dell’Enterprise Assessment Programme costruita su evidenze osservabili.","type":"Case Study","category":"validation-case-studies","categoryLabel":"Validation e Case Studies","audience":"Enterprise","topics":["Validation","Costa360","Enterprise Discovery"],"source":"qen-enterprise-assessment/coste360-validation/EA-001-COSTE360-ENTERPRISE-DISCOVERY.md","output":"resources/documents/coste360-ea-001/index.html","url":"/resources/documents/coste360-ea-001/","status":"published","language":"en","featured":true},
-  {"id":"coste360-ea-003","title":"EA-003 — Coste360 Platform Capability Assessment","description":"Assessment completo e indipendente delle capacità della piattaforma Coste360.","type":"Case Study","category":"validation-case-studies","categoryLabel":"Validation e Case Studies","audience":"Enterprise","topics":["Validation","Coste360","Platform Capability"],"source":"qen-sovereign/validation/assessments/EA-003-COSTE360-PLATFORM-CAPABILITY-ASSESSMENT.md","output":"resources/documents/coste360-ea-003/index.html","url":"/resources/documents/coste360-ea-003/","status":"published","language":"en","featured":true},
-  {"id":"coste360-ea-004","title":"Coste360 Enterprise Governance Assessment","description":"Assessment completo della governance enterprise nel Validation Programme Coste360.","type":"Case Study","category":"validation-case-studies","categoryLabel":"Validation e Case Studies","audience":"Enterprise","topics":["Validation","Coste360","Enterprise Governance"],"source":"qen-sovereign/validation/assessments/EA-004-COSTE360-ENTERPRISE-GOVERNANCE-ASSESSMENT.md","output":"resources/documents/coste360-ea-004/index.html","url":"/resources/documents/coste360-ea-004/","status":"published","language":"en","featured":true}
+  {
+    "id": "executive-brief",
+    "title": "Cognitive Logic Executive Brief",
+    "description": "Sintesi istituzionale del modello di AI Governance, delle capacità e degli outcome enterprise.",
+    "type": "Executive Guide",
+    "category": "executive-guides",
+    "categoryLabel": "Executive Guides",
+    "audience": "Executive",
+    "topics": [
+      "Cognitive Logic",
+      "QEN Sovereign",
+      "AI Governance"
+    ],
+    "source": "commercial-evolution-1.0/phase-6-commercial-website-evolution/executive-assets/01-EXECUTIVE-BRIEF.md",
+    "output": "resources/documents/executive-brief/index.html",
+    "url": "/resources/documents/executive-brief/",
+    "status": "published",
+    "language": "en",
+    "featured": true
+  },
+  {
+    "id": "capability-statement",
+    "title": "Cognitive Logic Capability Statement",
+    "description": "Capacità, servizi e ambiti di intervento per governance, conoscenza e decision intelligence.",
+    "type": "Publication",
+    "category": "publications",
+    "categoryLabel": "Publications",
+    "audience": "Enterprise",
+    "topics": [
+      "Capabilities",
+      "Enterprise Services",
+      "AI Governance"
+    ],
+    "source": "commercial-evolution-1.0/phase-6-commercial-website-evolution/executive-assets/02-CAPABILITY-STATEMENT.md",
+    "output": "resources/documents/capability-statement/index.html",
+    "url": "/resources/documents/capability-statement/",
+    "status": "published",
+    "language": "en",
+    "featured": true
+  },
+  {
+    "id": "enterprise-overview",
+    "title": "Cognitive Logic Enterprise Overview",
+    "description": "Panoramica enterprise dell’architettura, del posizionamento e del modello operativo.",
+    "type": "Publication",
+    "category": "publications",
+    "categoryLabel": "Publications",
+    "audience": "Enterprise",
+    "topics": [
+      "Enterprise Architecture",
+      "Governance",
+      "Decision Intelligence"
+    ],
+    "source": "commercial-evolution-1.0/phase-6-commercial-website-evolution/executive-assets/03-ENTERPRISE-OVERVIEW.md",
+    "output": "resources/documents/enterprise-overview/index.html",
+    "url": "/resources/documents/enterprise-overview/",
+    "status": "published",
+    "language": "en",
+    "featured": true
+  },
+  {
+    "id": "why-cognitive-logic",
+    "title": "Why Cognitive Logic",
+    "description": "Motivazioni e valore di un’infrastruttura indipendente per la governance dell’intelligenza artificiale.",
+    "type": "Publication",
+    "category": "publications",
+    "categoryLabel": "Publications",
+    "audience": "Executive",
+    "topics": [
+      "Cognitive Logic",
+      "AI Governance",
+      "Knowledge Infrastructure"
+    ],
+    "source": "commercial-evolution-1.0/phase-6-commercial-website-evolution/executive-assets/04-WHY-COGNITIVE-LOGIC.md",
+    "output": "resources/documents/why-cognitive-logic/index.html",
+    "url": "/resources/documents/why-cognitive-logic/",
+    "status": "published",
+    "language": "en",
+    "featured": false
+  },
+  {
+    "id": "assessment-overview",
+    "title": "Cognitive Logic Assessment Overview",
+    "description": "Approccio evidence-based agli assessment di governance, capacità e maturità.",
+    "type": "Executive Guide",
+    "category": "executive-guides",
+    "categoryLabel": "Executive Guides",
+    "audience": "Executive",
+    "topics": [
+      "Assessment",
+      "Governance Maturity",
+      "Readiness"
+    ],
+    "source": "commercial-evolution-1.0/phase-6-commercial-website-evolution/executive-assets/05-ASSESSMENT-OVERVIEW.md",
+    "output": "resources/documents/assessment-overview/index.html",
+    "url": "/resources/documents/assessment-overview/",
+    "status": "published",
+    "language": "en",
+    "featured": true
+  },
+  {
+    "id": "governance-journey",
+    "title": "Cognitive Logic Governance Journey",
+    "description": "Percorso progressivo per costruire governance, tracciabilità e capacità decisionali.",
+    "type": "Executive Guide",
+    "category": "executive-guides",
+    "categoryLabel": "Executive Guides",
+    "audience": "Executive",
+    "topics": [
+      "Governance",
+      "Transformation",
+      "Decision Traceability"
+    ],
+    "source": "commercial-evolution-1.0/phase-6-commercial-website-evolution/executive-assets/06-GOVERNANCE-JOURNEY.md",
+    "output": "resources/documents/governance-journey/index.html",
+    "url": "/resources/documents/governance-journey/",
+    "status": "published",
+    "language": "en",
+    "featured": true
+  },
+  {
+    "id": "qen-sovereign-master-registry",
+    "title": "QEN Sovereign Master Registry",
+    "description": "Registro ufficiale della baseline documentale QEN Sovereign.",
+    "type": "Technical Reference",
+    "category": "research",
+    "categoryLabel": "Research",
+    "audience": "Technical",
+    "topics": [
+      "QEN Sovereign",
+      "Architecture",
+      "Governance"
+    ],
+    "source": "qen-sovereign/documentation/QEN-SOVEREIGN-MASTER-REGISTRY.md",
+    "output": "resources/documents/qen-sovereign-master-registry/index.html",
+    "url": "/resources/documents/qen-sovereign-master-registry/",
+    "status": "published",
+    "language": "en",
+    "featured": true
+  },
+  {
+    "id": "qen-sovereign-architecture",
+    "title": "QEN Sovereign Architecture Overview",
+    "description": "Architettura completa della baseline documentale e dei domini di governance QEN Sovereign.",
+    "type": "Technical Reference",
+    "category": "research",
+    "categoryLabel": "Research",
+    "audience": "Technical",
+    "topics": [
+      "QEN Sovereign",
+      "Enterprise Architecture",
+      "Documentation"
+    ],
+    "source": "qen-sovereign/documentation/QEN-SOVEREIGN-ARCHITECTURE-OVERVIEW.md",
+    "output": "resources/documents/qen-sovereign-architecture/index.html",
+    "url": "/resources/documents/qen-sovereign-architecture/",
+    "status": "published",
+    "language": "en",
+    "featured": true
+  },
+  {
+    "id": "qen-documentation-index",
+    "title": "QEN Sovereign Documentation Index",
+    "description": "Indice governato dei documenti, delle relazioni e delle baseline QEN Sovereign.",
+    "type": "Technical Reference",
+    "category": "research",
+    "categoryLabel": "Research",
+    "audience": "Technical",
+    "topics": [
+      "QEN Sovereign",
+      "Documentation Governance",
+      "Registry"
+    ],
+    "source": "qen-sovereign/documentation/QEN-SOVEREIGN-DOCUMENTATION-INDEX.md",
+    "output": "resources/documents/qen-documentation-index/index.html",
+    "url": "/resources/documents/qen-documentation-index/",
+    "status": "published",
+    "language": "en",
+    "featured": false
+  },
+  {
+    "id": "qen-governance-model",
+    "title": "QEN Sovereign Governance Model",
+    "description": "Modello di governance, autorità, responsabilità e controlli della piattaforma QEN Sovereign.",
+    "type": "Technical Reference",
+    "category": "research",
+    "categoryLabel": "Research",
+    "audience": "Technical",
+    "topics": [
+      "QEN Sovereign",
+      "Governance",
+      "Accountability"
+    ],
+    "source": "qen-sovereign/documentation/QEN-SOVEREIGN-GOVERNANCE-MODEL.md",
+    "output": "resources/documents/qen-governance-model/index.html",
+    "url": "/resources/documents/qen-governance-model/",
+    "status": "published",
+    "language": "en",
+    "featured": true
+  },
+  {
+    "id": "coste360-ea-001",
+    "title": "EA-001 — Costa360 Enterprise Discovery",
+    "description": "Baseline pubblica dell’Enterprise Assessment Programme costruita su evidenze osservabili.",
+    "type": "Case Study",
+    "category": "validation-case-studies",
+    "categoryLabel": "Validation e Case Studies",
+    "audience": "Enterprise",
+    "topics": [
+      "Validation",
+      "Costa360",
+      "Enterprise Discovery"
+    ],
+    "source": "qen-enterprise-assessment/coste360-validation/EA-001-COSTE360-ENTERPRISE-DISCOVERY.md",
+    "output": "resources/documents/coste360-ea-001/index.html",
+    "url": "/resources/documents/coste360-ea-001/",
+    "status": "published",
+    "language": "en",
+    "featured": true
+  },
+  {
+    "id": "coste360-ea-003",
+    "title": "EA-003 — Coste360 Platform Capability Assessment",
+    "description": "Assessment completo e indipendente delle capacità della piattaforma Coste360.",
+    "type": "Case Study",
+    "category": "validation-case-studies",
+    "categoryLabel": "Validation e Case Studies",
+    "audience": "Enterprise",
+    "topics": [
+      "Validation",
+      "Coste360",
+      "Platform Capability"
+    ],
+    "source": "qen-sovereign/validation/assessments/EA-003-COSTE360-PLATFORM-CAPABILITY-ASSESSMENT.md",
+    "output": "resources/documents/coste360-ea-003/index.html",
+    "url": "/resources/documents/coste360-ea-003/",
+    "status": "published",
+    "language": "en",
+    "featured": true
+  },
+  {
+    "id": "coste360-ea-004",
+    "title": "Coste360 Enterprise Governance Assessment",
+    "description": "Assessment completo della governance enterprise nel Validation Programme Coste360.",
+    "type": "Case Study",
+    "category": "validation-case-studies",
+    "categoryLabel": "Validation e Case Studies",
+    "audience": "Enterprise",
+    "topics": [
+      "Validation",
+      "Coste360",
+      "Enterprise Governance"
+    ],
+    "source": "qen-sovereign/validation/assessments/EA-004-COSTE360-ENTERPRISE-GOVERNANCE-ASSESSMENT.md",
+    "output": "resources/documents/coste360-ea-004/index.html",
+    "url": "/resources/documents/coste360-ea-004/",
+    "status": "published",
+    "language": "en",
+    "featured": true
+  },
+  {
+    "id": "cs-001-ai-governance-assessment-readiness",
+    "title": "CS-001 — AI Governance Assessment & Readiness",
+    "description": "Valuta preparazione, rischi, responsabilità e priorità dell’organizzazione rispetto all’adozione e alla governance dell’Intelligenza Artificiale.",
+    "source": "commercial-service-catalogue/CS-001-AI-GOVERNANCE-ASSESSMENT-AND-READINESS.md",
+    "output": "resources/documents/cs-001-ai-governance-assessment-readiness/index.html",
+    "url": "/resources/documents/cs-001-ai-governance-assessment-readiness/",
+    "topics": [
+      "AI Governance",
+      "Assessment",
+      "Readiness"
+    ],
+    "type": "Enterprise Service",
+    "category": "enterprise-services",
+    "categoryLabel": "Enterprise Services",
+    "audience": "Enterprise",
+    "status": "published",
+    "language": "it",
+    "featured": false
+  },
+  {
+    "id": "cs-002-executive-discovery",
+    "title": "CS-002 — Executive Discovery",
+    "description": "Allinea il management su obiettivi, rischi, responsabilità e decisioni relative all’Intelligenza Artificiale.",
+    "source": "commercial-evolution-1.0/phase-4-enterprise-service-specifications/services/CS-002-EXECUTIVE-DISCOVERY.md",
+    "output": "resources/documents/cs-002-executive-discovery/index.html",
+    "url": "/resources/documents/cs-002-executive-discovery/",
+    "topics": [
+      "Executive Alignment",
+      "AI Governance",
+      "Decision Making"
+    ],
+    "type": "Enterprise Service",
+    "category": "enterprise-services",
+    "categoryLabel": "Enterprise Services",
+    "audience": "Enterprise",
+    "status": "published",
+    "language": "it",
+    "featured": false
+  },
+  {
+    "id": "cs-003-governance-vision-workshop",
+    "title": "CS-003 — Governance Vision Workshop",
+    "description": "Definisce una visione condivisa, principi, priorità e obiettivi per la governance dell’Intelligenza Artificiale.",
+    "source": "commercial-evolution-1.0/phase-4-enterprise-service-specifications/services/CS-003-GOVERNANCE-VISION-WORKSHOP.md",
+    "output": "resources/documents/cs-003-governance-vision-workshop/index.html",
+    "url": "/resources/documents/cs-003-governance-vision-workshop/",
+    "topics": [
+      "Governance Vision",
+      "Executive Workshop",
+      "AI Strategy"
+    ],
+    "type": "Enterprise Service",
+    "category": "enterprise-services",
+    "categoryLabel": "Enterprise Services",
+    "audience": "Enterprise",
+    "status": "published",
+    "language": "it",
+    "featured": false
+  },
+  {
+    "id": "cs-004-knowledge-discovery",
+    "title": "CS-004 — Knowledge Discovery",
+    "description": "Individua conoscenza critica, fonti, competenze, dipendenze e lacune che condizionano decisioni e continuità operativa.",
+    "source": "commercial-evolution-1.0/phase-4-enterprise-service-specifications/services/CS-004-KNOWLEDGE-DISCOVERY.md",
+    "output": "resources/documents/cs-004-knowledge-discovery/index.html",
+    "url": "/resources/documents/cs-004-knowledge-discovery/",
+    "topics": [
+      "Knowledge Discovery",
+      "Critical Knowledge",
+      "Evidence"
+    ],
+    "type": "Enterprise Service",
+    "category": "enterprise-services",
+    "categoryLabel": "Enterprise Services",
+    "audience": "Enterprise",
+    "status": "published",
+    "language": "it",
+    "featured": false
+  },
+  {
+    "id": "cs-005-ai-act-readiness-assessment",
+    "title": "CS-005 — AI Act Readiness Assessment",
+    "description": "Identifica sistemi, ruoli, obblighi, gap ed evidenze necessari per preparare l’organizzazione all’AI Act.",
+    "source": "commercial-evolution-1.0/phase-4-enterprise-service-specifications/services/CS-005-AI-ACT-READINESS-ASSESSMENT.md",
+    "output": "resources/documents/cs-005-ai-act-readiness-assessment/index.html",
+    "url": "/resources/documents/cs-005-ai-act-readiness-assessment/",
+    "topics": [
+      "AI Act",
+      "Compliance",
+      "Readiness"
+    ],
+    "type": "Enterprise Service",
+    "category": "enterprise-services",
+    "categoryLabel": "Enterprise Services",
+    "audience": "Enterprise",
+    "status": "published",
+    "language": "it",
+    "featured": false
+  },
+  {
+    "id": "cs-006-knowledge-governance-assessment",
+    "title": "CS-006 — Knowledge Governance Assessment",
+    "description": "Valuta qualità, proprietà, provenienza, aggiornamento e responsabilità della conoscenza usata dall’organizzazione.",
+    "source": "commercial-evolution-1.0/phase-4-enterprise-service-specifications/services/CS-006-KNOWLEDGE-GOVERNANCE-ASSESSMENT.md",
+    "output": "resources/documents/cs-006-knowledge-governance-assessment/index.html",
+    "url": "/resources/documents/cs-006-knowledge-governance-assessment/",
+    "topics": [
+      "Knowledge Governance",
+      "Information Quality",
+      "Accountability"
+    ],
+    "type": "Enterprise Service",
+    "category": "enterprise-services",
+    "categoryLabel": "Enterprise Services",
+    "audience": "Enterprise",
+    "status": "published",
+    "language": "it",
+    "featured": false
+  },
+  {
+    "id": "cs-007-ai-governance-strategy",
+    "title": "CS-007 — AI Governance Strategy",
+    "description": "Costruisce una strategia misurabile di AI Governance con ruoli, controlli, KPI, priorità e roadmap.",
+    "source": "commercial-evolution-1.0/phase-4-enterprise-service-specifications/services/CS-007-AI-GOVERNANCE-STRATEGY.md",
+    "output": "resources/documents/cs-007-ai-governance-strategy/index.html",
+    "url": "/resources/documents/cs-007-ai-governance-strategy/",
+    "topics": [
+      "AI Governance Strategy",
+      "Operating Model",
+      "Roadmap"
+    ],
+    "type": "Enterprise Service",
+    "category": "enterprise-services",
+    "categoryLabel": "Enterprise Services",
+    "audience": "Enterprise",
+    "status": "published",
+    "language": "it",
+    "featured": false
+  },
+  {
+    "id": "cs-008-explainability-decision-traceability",
+    "title": "CS-008 — Explainability & Decision Traceability",
+    "description": "Rende decisioni, fonti, verifiche e responsabilità spiegabili, ricostruibili e dimostrabili.",
+    "source": "commercial-evolution-1.0/phase-4-enterprise-service-specifications/services/CS-008-EXPLAINABILITY-DECISION-TRACEABILITY.md",
+    "output": "resources/documents/cs-008-explainability-decision-traceability/index.html",
+    "url": "/resources/documents/cs-008-explainability-decision-traceability/",
+    "topics": [
+      "Explainability",
+      "Decision Traceability",
+      "Evidence"
+    ],
+    "type": "Enterprise Service",
+    "category": "enterprise-services",
+    "categoryLabel": "Enterprise Services",
+    "audience": "Enterprise",
+    "status": "published",
+    "language": "it",
+    "featured": false
+  },
+  {
+    "id": "cs-009-governance-maturity-assessment",
+    "title": "CS-009 — Governance Maturity Assessment",
+    "description": "Misura maturità, capacità, controlli, evidenze e priorità di miglioramento della governance dell’Intelligenza Artificiale.",
+    "source": "commercial-evolution-1.0/phase-4-enterprise-service-specifications/services/CS-009-GOVERNANCE-MATURITY-ASSESSMENT.md",
+    "output": "resources/documents/cs-009-governance-maturity-assessment/index.html",
+    "url": "/resources/documents/cs-009-governance-maturity-assessment/",
+    "topics": [
+      "Governance Maturity",
+      "Assessment",
+      "KPI"
+    ],
+    "type": "Enterprise Service",
+    "category": "enterprise-services",
+    "categoryLabel": "Enterprise Services",
+    "audience": "Enterprise",
+    "status": "published",
+    "language": "it",
+    "featured": false
+  },
+  {
+    "id": "cs-010-coastal-governance-intelligence",
+    "title": "CS-010 — Coastal Governance Intelligence",
+    "description": "Supporta amministrazioni, territori e organizzazioni complesse nel governare rischi, norme, stakeholder ed evidenze.",
+    "source": "commercial-evolution-1.0/phase-4-enterprise-service-specifications/services/CS-010-COASTAL-GOVERNANCE-INTELLIGENCE.md",
+    "output": "resources/documents/cs-010-coastal-governance-intelligence/index.html",
+    "url": "/resources/documents/cs-010-coastal-governance-intelligence/",
+    "topics": [
+      "Territorial Governance",
+      "Decision Intelligence",
+      "Resilience"
+    ],
+    "type": "Enterprise Service",
+    "category": "enterprise-services",
+    "categoryLabel": "Enterprise Services",
+    "audience": "Enterprise",
+    "status": "published",
+    "language": "it",
+    "featured": false
+  }
 ]
