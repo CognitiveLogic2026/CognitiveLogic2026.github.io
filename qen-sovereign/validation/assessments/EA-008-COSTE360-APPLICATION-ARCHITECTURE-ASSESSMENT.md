@@ -26,6 +26,14 @@
 
 ---
 
+# Executive Decision Brief
+
+This assessment gives executive and architecture stakeholders a decision-oriented view of the publicly observable application architecture of Coste360. It establishes what can be demonstrated about application domains, logical components, functional capabilities, user interaction, services, relationships, governance indicators and traceability without inferring source code, proprietary implementation technologies or internal runtime structures.
+
+The document supports decisions concerning application rationalisation, capability alignment, interaction coherence, governance priorities, evidence gaps and the sequencing of deeper validation activities. Executives can begin with the Application Architecture Executive Findings, Enterprise Application Landscape and Overall Application Architecture Assessment; architecture and assurance teams can then inspect the detailed layers, domains, components, services, relationships and evidence mapping.
+
+---
+
 # Executive Summary
 
 The Coste360 Application Architecture Assessment documents the publicly observable application architecture of the Coste360 platform using exclusively evidence available through publicly accessible information.
@@ -165,6 +173,14 @@ An observable application function delivering identifiable business or operation
 **User Interaction**
 
 A publicly observable mechanism through which users interact with application functionality.
+
+---
+
+# Enterprise Application Landscape
+
+The enterprise application landscape is interpreted as a set of observable application domains, logical components, functional capabilities, user interaction structures, services, relationships and governance indicators. The landscape view consolidates these perspectives so that detailed architectural observations can be read as one coherent enterprise baseline rather than as isolated technical sections.
+
+This view does not extend the evidentiary perimeter: source code, internal runtime components, proprietary service implementations and non-public operational mechanisms remain outside scope unless publicly observable.
 
 ---
 
@@ -801,6 +817,14 @@ Its purpose is to establish a reproducible enterprise baseline supporting archit
 
 ---
 
+# Application Architecture Executive Findings
+
+The detailed findings below should be read as a consolidated enterprise view of the application architecture. They connect the observable domains, logical components, functional capabilities, interaction structures, services, relationships, governance indicators and consistency observations already documented in this assessment.
+
+Their purpose is to make the architectural implications visible to decision-makers while preserving the evidence-based and technology-neutral character of the underlying assessment.
+
+---
+
 # Architectural Findings
 
 ## Assessment Overview
@@ -919,6 +943,22 @@ The assessment:
 - contributes to enterprise reproducibility.
 
 The assessment remains independent from software implementation technologies and vendor-specific application platforms.
+
+---
+
+# Strategic Implications
+
+The strategic implications arise from the findings already documented in this assessment. They concern the ability to use the observable architecture as a governed enterprise baseline, to identify where evidence is sufficient for decision support, and to target subsequent validation where public observation cannot establish internal implementation characteristics.
+
+No new technical conclusion is introduced in this section; it provides an executive reading of the existing findings and limitations.
+
+---
+
+# Overall Application Architecture Assessment
+
+The overall assessment consolidates the architectural findings, enterprise assessment matrix, limitations, conformance statement and cross-assessment traceability into a single decision point. It does not introduce a new rating or alter any underlying finding.
+
+Coste360's publicly observable application architecture can therefore be used as a reproducible baseline for enterprise architecture review and subsequent validation, subject to the explicit limitations of public evidence and the exclusion of non-observable implementation mechanisms.
 
 ---
 
