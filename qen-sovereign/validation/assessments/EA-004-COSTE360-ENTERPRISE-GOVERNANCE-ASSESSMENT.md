@@ -40,6 +40,37 @@
 
 ---
 
+# Executive Decision Brief
+
+EA-004 is the enterprise governance view of the Coste360 Validation Programme. It organises publicly observable governance evidence into a decision-oriented structure while maintaining the Evidence First boundary: the document evaluates observability and traceability, not undocumented internal governance effectiveness.
+
+## Value of This Assessment
+
+The assessment gives senior stakeholders a governed way to distinguish what can be verified publicly from what cannot be concluded without internal evidence. It connects governance structure, processes, transparency, accountability, information, documentation, repository controls, risk and maturity to the EA-009 evidence catalogue.
+
+## Decisions This Document Enables
+
+| Executive Perspective | Decision Support Provided |
+|---|---|
+| CEO | Understand the governance evidence that is publicly demonstrable and the boundaries of that evidence. |
+| CIO | Review governance structure, information, documentation and repository observability through a common assessment model. |
+| COO | Examine observable governance processes and operational accountability without inferring internal workflows. |
+| CRO | Review governance risk observations, evidence coverage and explicit assessment limitations. |
+| Compliance | Verify traceability, public-source boundaries, documentation integrity and reproducibility. |
+
+## Problems Addressed
+
+- fragmented governance evidence across multiple observable areas;
+- repeated control-level detail that can obscure the enterprise view;
+- risk of confusing public observability with internal governance maturity;
+- need for direct traceability from governance observations to EA-009.
+
+## Why It Matters
+
+The document creates an executive-to-evidence reading path: decision-makers can understand the governance landscape first, then move into individual controls, matrices and appendices without losing the underlying technical detail.
+
+---
+
 # Executive Summary
 
 This Enterprise Assessment documents the publicly observable governance characteristics of the Coste360 platform.
@@ -61,6 +92,28 @@ Every technical statement included in this assessment shall be traceable to Evid
 EA-009 represents the Single Source of Truth for all referenced evidence.
 
 No evidence is duplicated within this document.
+
+---
+
+# Governance Executive Findings
+
+The assessment is based exclusively on publicly observable evidence and references Evidence IDs maintained within EA-009. Its findings therefore describe governance observability and traceability rather than undocumented internal governance effectiveness.
+
+# Governance Strengths
+
+Within the defined assessment boundaries, the document records evidence-based governance observations, traceable documentation, consistent repository references, delegated evidence ownership through EA-009 and preserved architectural consistency. These are methodological and observability findings, not a certification of organisational governance quality.
+
+# Governance Risks
+
+Governance risk is assessed in the dedicated Governance Risk Assessment. Risk observations remain limited to publicly observable evidence and must not be interpreted as proof of internal governance deficiencies where evidence is unavailable.
+
+# Strategic Implications
+
+EA-004 provides a reproducible governance baseline for executive review, subsequent validation and evidence-based comparison over time. The baseline separates public governance observability from organisational maturity, compliance maturity and governance effectiveness.
+
+# Overall Governance Assessment
+
+The overall assessment remains Evidence First, publicly observable, traceable to EA-009 and bounded by the explicit exclusions documented throughout EA-004. Detailed domain assessments, maturity analysis and evidence mapping provide the technical basis for this enterprise-level view.
 
 ---
 
@@ -303,8 +356,7 @@ No governance statement shall rely upon assumptions or inferred organisational s
 
 ## GP-001 Evidence First
 
-### Objective
-
+**Objective.**
 Ensure that every governance observation is directly supported by publicly observable evidence.
 
 ### Assessment Criteria
@@ -320,16 +372,14 @@ Ensure that every governance observation is directly supported by publicly obser
 
 Refer to EA-009 Evidence IDs.
 
-### Assessment Boundary
-
+**Assessment boundary.**
 Only evidence recorded within EA-009 may be referenced.
 
 ---
 
 ## GP-002 Traceability
 
-### Objective
-
+**Objective.**
 Ensure complete traceability between governance observations and supporting evidence.
 
 ### Assessment Criteria
@@ -348,8 +398,7 @@ Every governance statement shall reference one or more Evidence IDs defined with
 
 ## GP-003 Transparency
 
-### Objective
-
+**Objective.**
 Assess the extent to which governance-related information is publicly accessible.
 
 Transparency is evaluated solely on the availability of observable governance information.
@@ -433,12 +482,10 @@ Each domain shall include:
 
 # GD-001 Enterprise Governance
 
-## Objective
-
+**Objective.**
 Assess publicly observable enterprise governance information.
 
-### Scope
-
+**Scope.**
 The assessment considers only governance information made publicly available through official sources.
 
 ### Observable Elements
@@ -457,8 +504,7 @@ Refer to EA-009.
 
 # GD-002 Governance Structure
 
-## Objective
-
+**Objective.**
 Assess publicly observable governance structures.
 
 ### Assessment Focus
@@ -475,12 +521,10 @@ Refer to EA-009.
 
 # GD-003 Governance Responsibilities
 
-## Objective
-
+**Objective.**
 Assess publicly observable governance responsibilities.
 
-### Assessment Scope
-
+**Assessment scope.**
 The assessment considers only responsibilities explicitly documented within public information.
 
 Undocumented responsibilities shall not be inferred.
@@ -493,12 +537,10 @@ Refer to EA-009.
 
 # GD-004 Decision Accountability
 
-## Objective
-
+**Objective.**
 Assess publicly observable accountability mechanisms.
 
-### Assessment Scope
-
+**Assessment scope.**
 Only documented accountability mechanisms are evaluated.
 
 Internal decision-making processes remain outside the assessment boundary.
@@ -511,8 +553,7 @@ Refer to EA-009.
 
 # GD-005 Organizational Governance
 
-## Objective
-
+**Objective.**
 Assess publicly observable organisational governance information.
 
 ### Observable Governance Elements
@@ -527,8 +568,7 @@ Only documented elements are considered.
 
 # GD-006 Information Governance
 
-## Objective
-
+**Objective.**
 Assess publicly observable information governance characteristics.
 
 ### Observable Elements
@@ -543,12 +583,10 @@ Only observable information governance characteristics are included.
 
 # GD-007 Documentation Governance
 
-## Objective
-
+**Objective.**
 Assess governance mechanisms related to publicly available documentation.
 
-### Assessment Scope
-
+**Assessment scope.**
 The assessment evaluates:
 
 - documentation consistency;
@@ -562,8 +600,7 @@ Internal documentation lifecycle management is excluded.
 
 # GD-008 Repository Governance
 
-## Objective
-
+**Objective.**
 Assess governance characteristics observable within public repositories.
 
 ### Observable Elements
@@ -579,8 +616,7 @@ Only publicly accessible repositories are assessed.
 
 # GD-009 Governance Transparency
 
-## Objective
-
+**Objective.**
 Assess the public transparency of governance-related information.
 
 ### Assessment Criteria
@@ -597,12 +633,10 @@ Actual evidence references are provided in the Evidence Mapping section.
 
 # GD-010 Governance Processes
 
-## Objective
-
+**Objective.**
 Assess publicly observable governance processes.
 
-### Scope
-
+**Scope.**
 Only governance processes explicitly documented in public sources are evaluated.
 
 Undocumented processes are not inferred.
@@ -611,20 +645,17 @@ Undocumented processes are not inferred.
 
 # GD-011 Validation Governance
 
-## Objective
-
+**Objective.**
 Assess publicly observable governance mechanisms supporting validation activities.
 
-### Scope
-
+**Scope.**
 Validation governance is assessed exclusively through documented public artefacts.
 
 ---
 
 # GD-012 Governance Controls
 
-## Objective
-
+**Objective.**
 Assess observable governance control mechanisms.
 
 ### Assessment Criteria
@@ -635,8 +666,7 @@ Only governance controls explicitly documented through public evidence are consi
 
 # GD-013 Governance Risks
 
-## Objective
-
+**Objective.**
 Identify governance risks arising solely from limitations in publicly observable governance information.
 
 ### Important Note
@@ -684,8 +714,7 @@ The structure remains fully aligned with:
 **End of Block 2**
 # Governance Structure Assessment
 
-## Assessment Overview
-
+**Domain overview.**
 This section assesses the publicly observable governance structure of the Coste360 platform.
 
 The assessment is limited to governance information explicitly documented within publicly available sources referenced by EA-009.
@@ -698,8 +727,7 @@ All observations shall be traceable to one or more Evidence IDs defined within E
 
 ---
 
-# Assessment Objective
-
+**Assessment objective.**
 The objective of this assessment is to determine the extent to which governance structures are publicly observable.
 
 The assessment does not evaluate governance effectiveness.
@@ -710,8 +738,7 @@ The assessment documents observable governance characteristics only.
 
 ---
 
-# Assessment Boundary
-
+**Assessment boundary.**
 Included:
 
 - Public governance information
@@ -748,8 +775,7 @@ Each assessment area contains:
 
 # GS-001 Public Governance Structure
 
-## Objective
-
+**Objective.**
 Assess whether governance structures are publicly documented.
 
 ### Assessment Criteria
@@ -779,12 +805,10 @@ Evidence-based findings are documented through referenced Evidence IDs only.
 
 # GS-002 Governance Roles
 
-## Objective
-
+**Objective.**
 Assess publicly observable governance roles.
 
-### Assessment Scope
-
+**Assessment scope.**
 Only governance roles explicitly documented within public sources are assessed.
 
 No undocumented governance responsibility is inferred.
@@ -805,8 +829,7 @@ Refer to EA-009.
 
 # GS-003 Governance Responsibilities
 
-## Objective
-
+**Objective.**
 Assess publicly observable governance responsibilities.
 
 ### Assessment Criteria
@@ -827,12 +850,10 @@ Refer to EA-009.
 
 # GS-004 Governance Ownership
 
-## Objective
-
+**Objective.**
 Assess observable ownership information associated with governance artefacts.
 
-### Assessment Boundary
-
+**Assessment boundary.**
 Ownership is evaluated exclusively through public documentation.
 
 Internal ownership allocation is outside assessment scope.
@@ -845,8 +866,7 @@ Refer to EA-009.
 
 # GS-005 Governance Documentation
 
-## Objective
-
+**Objective.**
 Assess governance documentation supporting publicly observable governance structures.
 
 ### Assessment Criteria
@@ -865,12 +885,10 @@ Refer to EA-009.
 
 # GS-006 Governance Hierarchy
 
-## Objective
-
+**Objective.**
 Assess publicly observable governance hierarchy information.
 
-### Scope
-
+**Scope.**
 Only governance hierarchy explicitly documented within public sources is considered.
 
 Internal hierarchy is excluded.
@@ -883,8 +901,7 @@ Refer to EA-009.
 
 # GS-007 Governance Decision Layers
 
-## Objective
-
+**Objective.**
 Assess publicly documented governance decision layers.
 
 ### Observable Elements
@@ -901,12 +918,10 @@ Refer to EA-009.
 
 # GS-008 Governance Segregation
 
-## Objective
-
+**Objective.**
 Assess observable governance segregation information.
 
-### Assessment Limitation
-
+**Assessment limitation.**
 Internal segregation of duties cannot be evaluated unless publicly documented.
 
 ### Referenced Evidence IDs
@@ -980,8 +995,7 @@ Evidence descriptions remain maintained within the Validation Evidence Catalogue
 
 ---
 
-# Assessment Limitations
-
+**Assessment limitations.**
 This assessment does not determine:
 
 - governance effectiveness;
@@ -1025,8 +1039,7 @@ No conflicting governance interpretation is introduced.
 **End of Block 3**
 # Governance Process Assessment
 
-## Assessment Overview
-
+**Domain overview.**
 This section evaluates publicly observable governance processes associated with the Coste360 platform.
 
 The assessment is performed exclusively according to the QEN Sovereign Intelligence Evidence First methodology.
@@ -1041,8 +1054,7 @@ Every technical statement shall reference one or more Evidence IDs defined withi
 
 ---
 
-# Assessment Objective
-
+**Assessment objective.**
 The objective of this assessment is to determine the public observability of governance processes supporting the platform.
 
 The assessment does not evaluate:
@@ -1056,8 +1068,7 @@ The assessment documents observable governance processes only.
 
 ---
 
-# Assessment Boundary
-
+**Assessment boundary.**
 Included:
 
 - Public governance processes
@@ -1092,8 +1103,7 @@ Each governance process is analysed using the following structure:
 
 # GPA-001 Governance Process Documentation
 
-## Objective
-
+**Objective.**
 Assess whether governance processes are publicly documented.
 
 ### Assessment Criteria
@@ -1119,12 +1129,10 @@ Refer to EA-009.
 
 # GPA-002 Governance Lifecycle
 
-## Objective
-
+**Objective.**
 Assess publicly observable governance lifecycle information.
 
-### Scope
-
+**Scope.**
 Only lifecycle information explicitly documented through public sources is assessed.
 
 Internal lifecycle activities remain outside the assessment boundary.
@@ -1137,12 +1145,10 @@ Refer to EA-009.
 
 # GPA-003 Decision Process
 
-## Objective
-
+**Objective.**
 Assess publicly observable decision processes.
 
-### Assessment Scope
-
+**Assessment scope.**
 Only decision processes explicitly documented through public evidence are considered.
 
 Undocumented decision mechanisms are excluded.
@@ -1155,8 +1161,7 @@ Refer to EA-009.
 
 # GPA-004 Governance Review Process
 
-## Objective
-
+**Objective.**
 Assess publicly observable governance review activities.
 
 ### Assessment Criteria
@@ -1175,12 +1180,10 @@ Refer to EA-009.
 
 # GPA-005 Validation Process
 
-## Objective
-
+**Objective.**
 Assess publicly observable validation processes.
 
-### Scope
-
+**Scope.**
 Validation activities are assessed exclusively through documented public artefacts.
 
 No internal validation workflow is evaluated.
@@ -1193,8 +1196,7 @@ Refer to EA-009.
 
 # GPA-006 Documentation Process
 
-## Objective
-
+**Objective.**
 Assess governance processes supporting public documentation.
 
 ### Observable Elements
@@ -1212,12 +1214,10 @@ Refer to EA-009.
 
 # GPA-007 Repository Process
 
-## Objective
-
+**Objective.**
 Assess publicly observable repository governance processes.
 
-### Assessment Boundary
-
+**Assessment boundary.**
 Only repository activities publicly observable through official repositories are evaluated.
 
 Internal repository administration remains outside scope.
@@ -1230,12 +1230,10 @@ Refer to EA-009.
 
 # GPA-008 Change Governance Process
 
-## Objective
-
+**Objective.**
 Assess publicly observable change governance information.
 
-### Scope
-
+**Scope.**
 The assessment considers only documented change governance activities visible through public evidence.
 
 No internal release governance is inferred.
@@ -1248,8 +1246,7 @@ Refer to EA-009.
 
 # GPA-009 Information Governance Process
 
-## Objective
-
+**Objective.**
 Assess publicly observable information governance processes.
 
 ### Observable Elements
@@ -1266,8 +1263,7 @@ Refer to EA-009.
 
 # GPA-010 Process Transparency
 
-## Objective
-
+**Objective.**
 Assess transparency of publicly observable governance processes.
 
 ### Assessment Criteria
@@ -1324,8 +1320,7 @@ Evidence descriptions remain exclusively maintained within the Validation Eviden
 
 ---
 
-# Assessment Limitations
-
+**Assessment limitations.**
 This assessment does not determine:
 
 - operational maturity;
@@ -1369,8 +1364,7 @@ No governance interpretation beyond publicly observable evidence is introduced.
 **End of Block 4**
 # Governance Transparency Assessment
 
-## Assessment Overview
-
+**Domain overview.**
 This section assesses the publicly observable transparency characteristics of the Coste360 platform governance.
 
 The assessment applies the QEN Sovereign Intelligence Evidence First methodology and evaluates only governance information that is publicly accessible and traceable through Evidence IDs catalogued within EA-009.
@@ -1381,8 +1375,7 @@ The assessment does not infer the existence or absence of internal governance me
 
 ---
 
-# Assessment Objective
-
+**Assessment objective.**
 The objective of this assessment is to determine the degree to which governance information is publicly available, documented and traceable.
 
 The assessment does not measure:
@@ -1396,8 +1389,7 @@ Only transparency of publicly observable governance information is assessed.
 
 ---
 
-# Assessment Boundary
-
+**Assessment boundary.**
 Included:
 
 - Public governance documentation
@@ -1435,8 +1427,7 @@ Every section contains:
 
 # GTA-001 Public Governance Information
 
-## Objective
-
+**Objective.**
 Assess whether governance information is publicly available.
 
 ### Assessment Criteria
@@ -1462,12 +1453,10 @@ Refer to EA-009.
 
 # GTA-002 Governance Documentation Transparency
 
-## Objective
-
+**Objective.**
 Assess transparency of publicly available governance documentation.
 
-### Assessment Scope
-
+**Assessment scope.**
 Only documentation publicly accessible through official sources is evaluated.
 
 Internal documentation remains outside assessment scope.
@@ -1480,8 +1469,7 @@ Refer to EA-009.
 
 # GTA-003 Repository Transparency
 
-## Objective
-
+**Objective.**
 Assess transparency provided through publicly accessible repositories.
 
 ### Observable Elements
@@ -1499,8 +1487,7 @@ Refer to EA-009.
 
 # GTA-004 Architectural Transparency
 
-## Objective
-
+**Objective.**
 Assess publicly observable architectural governance information.
 
 ### Assessment Criteria
@@ -1519,12 +1506,10 @@ Refer to EA-009.
 
 # GTA-005 Documentation Accessibility
 
-## Objective
-
+**Objective.**
 Assess accessibility of publicly available governance documentation.
 
-### Assessment Scope
-
+**Assessment scope.**
 Only documentation intentionally made public is considered.
 
 Accessibility does not imply completeness.
@@ -1537,8 +1522,7 @@ Refer to EA-009.
 
 # GTA-006 Public Governance Artefacts
 
-## Objective
-
+**Objective.**
 Assess governance artefacts that are publicly observable.
 
 ### Observable Elements
@@ -1557,12 +1541,10 @@ Refer to EA-009.
 
 # GTA-007 Governance Communication
 
-## Objective
-
+**Objective.**
 Assess publicly observable governance communication.
 
-### Assessment Boundary
-
+**Assessment boundary.**
 Only communication documented through official public channels is evaluated.
 
 Informal communications are excluded.
@@ -1575,8 +1557,7 @@ Refer to EA-009.
 
 # GTA-008 Transparency Consistency
 
-## Objective
-
+**Objective.**
 Assess consistency across publicly observable governance information.
 
 ### Assessment Criteria
@@ -1633,8 +1614,7 @@ EA-009 remains the authoritative evidence catalogue.
 
 ---
 
-# Transparency Assessment Limitations
-
+**Assessment limitations.**
 This assessment does not determine:
 
 - organisational openness;
@@ -1680,8 +1660,7 @@ All transparency observations remain evidence-based and fully traceable.
 **End of Block 5**
 # Decision Accountability Assessment
 
-## Assessment Overview
-
+**Domain overview.**
 This section assesses the publicly observable decision accountability characteristics of the Coste360 platform.
 
 The assessment follows the QEN Sovereign Intelligence Evidence First methodology and evaluates only accountability information that is publicly observable through evidence catalogued within EA-009.
@@ -1694,8 +1673,7 @@ The assessment documents only publicly observable accountability information.
 
 ---
 
-# Assessment Objective
-
+**Assessment objective.**
 The objective of this assessment is to determine whether publicly available information provides observable evidence regarding governance accountability.
 
 The assessment evaluates only documented and verifiable information.
@@ -1704,8 +1682,7 @@ No undocumented responsibility is inferred.
 
 ---
 
-# Assessment Boundary
-
+**Assessment boundary.**
 Included:
 
 - Public governance documentation
@@ -1743,8 +1720,7 @@ Each section contains:
 
 # DAA-001 Accountability Documentation
 
-## Objective
-
+**Objective.**
 Assess whether governance accountability information is publicly documented.
 
 ### Assessment Criteria
@@ -1770,12 +1746,10 @@ Refer to EA-009.
 
 # DAA-002 Decision Ownership
 
-## Objective
-
+**Objective.**
 Assess publicly observable information regarding decision ownership.
 
-### Assessment Scope
-
+**Assessment scope.**
 Only ownership information explicitly documented through public evidence is assessed.
 
 Internal decision ownership remains outside assessment scope.
@@ -1788,8 +1762,7 @@ Refer to EA-009.
 
 # DAA-003 Governance Responsibilities
 
-## Objective
-
+**Objective.**
 Assess publicly observable governance responsibilities associated with decision accountability.
 
 ### Observable Elements
@@ -1806,8 +1779,7 @@ Refer to EA-009.
 
 # DAA-004 Accountability Traceability
 
-## Objective
-
+**Objective.**
 Assess whether publicly observable governance decisions are traceable to documented artefacts.
 
 ### Assessment Criteria
@@ -1827,12 +1799,10 @@ Refer to EA-009.
 
 # DAA-005 Governance Authority
 
-## Objective
-
+**Objective.**
 Assess publicly observable governance authority information.
 
-### Assessment Scope
-
+**Assessment scope.**
 Only authority explicitly documented within publicly available sources is evaluated.
 
 Undocumented governance authority is not inferred.
@@ -1845,8 +1815,7 @@ Refer to EA-009.
 
 # DAA-006 Decision Governance
 
-## Objective
-
+**Objective.**
 Assess publicly observable governance mechanisms supporting decision accountability.
 
 ### Observable Elements
@@ -1864,12 +1833,10 @@ Refer to EA-009.
 
 # DAA-007 Accountability Transparency
 
-## Objective
-
+**Objective.**
 Assess transparency of publicly observable accountability information.
 
-### Assessment Boundary
-
+**Assessment boundary.**
 Transparency is evaluated exclusively through public documentation.
 
 Internal accountability mechanisms remain outside scope.
@@ -1882,8 +1849,7 @@ Refer to EA-009.
 
 # DAA-008 Accountability Consistency
 
-## Objective
-
+**Objective.**
 Assess consistency across publicly observable accountability information.
 
 ### Assessment Criteria
@@ -1941,8 +1907,7 @@ EA-009 remains the authoritative repository for all evidence references.
 
 ---
 
-# Assessment Limitations
-
+**Assessment limitations.**
 This assessment does not determine:
 
 - executive accountability;
@@ -1988,8 +1953,7 @@ All accountability observations remain evidence-based, traceable and consistent 
 **End of Block 6**
 # Information Governance Assessment
 
-## Assessment Overview
-
+**Domain overview.**
 This section assesses the publicly observable Information Governance characteristics of the Coste360 platform.
 
 The assessment applies the QEN Sovereign Intelligence Evidence First methodology.
@@ -2004,8 +1968,7 @@ Every observation contained within this section shall be traceable to one or mor
 
 ---
 
-# Assessment Objective
-
+**Assessment objective.**
 The objective of this assessment is to evaluate the public observability of information governance practices.
 
 The assessment focuses exclusively on information that is:
@@ -2024,8 +1987,7 @@ The assessment does not evaluate:
 
 ---
 
-# Assessment Boundary
-
+**Assessment boundary.**
 Included:
 
 - Public information architecture
@@ -2064,8 +2026,7 @@ Each area contains:
 
 # IGA-001 Public Information Availability
 
-## Objective
-
+**Objective.**
 Assess whether governance-related information is publicly available.
 
 ### Assessment Criteria
@@ -2092,12 +2053,10 @@ Refer to EA-009.
 
 # IGA-002 Information Organization
 
-## Objective
-
+**Objective.**
 Assess the organisation of publicly observable information.
 
-### Assessment Scope
-
+**Assessment scope.**
 Only information explicitly published through official sources is evaluated.
 
 Internal information organisation remains outside the assessment boundary.
@@ -2110,8 +2069,7 @@ Refer to EA-009.
 
 # IGA-003 Information Classification
 
-## Objective
-
+**Objective.**
 Assess publicly observable information classification mechanisms.
 
 ### Observable Elements
@@ -2129,8 +2087,7 @@ Refer to EA-009.
 
 # IGA-004 Information Consistency
 
-## Objective
-
+**Objective.**
 Assess consistency across publicly available information.
 
 ### Assessment Criteria
@@ -2150,12 +2107,10 @@ Refer to EA-009.
 
 # IGA-005 Information Accessibility
 
-## Objective
-
+**Objective.**
 Assess accessibility of publicly observable information.
 
-### Assessment Scope
-
+**Assessment scope.**
 Accessibility is evaluated exclusively from public sources.
 
 Accessibility does not imply completeness.
@@ -2168,8 +2123,7 @@ Refer to EA-009.
 
 # IGA-006 Information Traceability
 
-## Objective
-
+**Objective.**
 Assess traceability of publicly available information.
 
 ### Observable Elements
@@ -2187,12 +2141,10 @@ Refer to EA-009.
 
 # IGA-007 Information Lifecycle
 
-## Objective
-
+**Objective.**
 Assess publicly observable information lifecycle characteristics.
 
-### Assessment Boundary
-
+**Assessment boundary.**
 Only lifecycle information explicitly documented within public artefacts is evaluated.
 
 Internal lifecycle management remains outside assessment scope.
@@ -2205,8 +2157,7 @@ Refer to EA-009.
 
 # IGA-008 Information Integrity
 
-## Objective
-
+**Objective.**
 Assess publicly observable information integrity characteristics.
 
 ### Assessment Criteria
@@ -2265,8 +2216,7 @@ EA-009 remains the authoritative repository for all evidence references.
 
 ---
 
-# Assessment Limitations
-
+**Assessment limitations.**
 This assessment does not determine:
 
 - internal information governance maturity;
@@ -2312,8 +2262,7 @@ All observations remain evidence-based, fully traceable and consistent with the 
 **End of Block 7**
 # Documentation Governance Assessment
 
-## Assessment Overview
-
+**Domain overview.**
 This section assesses the publicly observable Documentation Governance characteristics of the Coste360 platform.
 
 The assessment has been developed according to the QEN Sovereign Intelligence Evidence First methodology.
@@ -2328,8 +2277,7 @@ Every observation contained within this section shall be traceable to one or mor
 
 ---
 
-# Assessment Objective
-
+**Assessment objective.**
 The objective of this assessment is to evaluate the public observability of documentation governance characteristics.
 
 The assessment considers only documentation that is:
@@ -2350,8 +2298,7 @@ The assessment does not evaluate:
 
 ---
 
-# Assessment Boundary
-
+**Assessment boundary.**
 Included:
 
 - Official documentation
@@ -2390,8 +2337,7 @@ Each assessment area includes:
 
 # DGA-001 Documentation Availability
 
-## Objective
-
+**Objective.**
 Assess whether governance documentation is publicly available.
 
 ### Assessment Criteria
@@ -2418,12 +2364,10 @@ Refer to EA-009.
 
 # DGA-002 Documentation Structure
 
-## Objective
-
+**Objective.**
 Assess the publicly observable structure of documentation.
 
-### Assessment Scope
-
+**Assessment scope.**
 Only documentation structures explicitly observable through public sources are assessed.
 
 Internal documentation organisation remains outside assessment scope.
@@ -2436,8 +2380,7 @@ Refer to EA-009.
 
 # DGA-003 Documentation Classification
 
-## Objective
-
+**Objective.**
 Assess publicly observable documentation classification mechanisms.
 
 ### Observable Elements
@@ -2455,8 +2398,7 @@ Refer to EA-009.
 
 # DGA-004 Documentation Consistency
 
-## Objective
-
+**Objective.**
 Assess consistency across publicly available documentation.
 
 ### Assessment Criteria
@@ -2476,12 +2418,10 @@ Refer to EA-009.
 
 # DGA-005 Documentation Traceability
 
-## Objective
-
+**Objective.**
 Assess traceability across publicly available documentation.
 
-### Assessment Scope
-
+**Assessment scope.**
 Traceability is evaluated exclusively through observable public references.
 
 Internal traceability mechanisms remain outside assessment scope.
@@ -2494,8 +2434,7 @@ Refer to EA-009.
 
 # DGA-006 Documentation Versioning
 
-## Objective
-
+**Objective.**
 Assess publicly observable documentation version information.
 
 ### Observable Elements
@@ -2513,12 +2452,10 @@ Refer to EA-009.
 
 # DGA-007 Documentation Integrity
 
-## Objective
-
+**Objective.**
 Assess publicly observable documentation integrity characteristics.
 
-### Assessment Boundary
-
+**Assessment boundary.**
 Only integrity characteristics supported by public evidence are assessed.
 
 Internal integrity controls are excluded.
@@ -2531,8 +2468,7 @@ Refer to EA-009.
 
 # DGA-008 Documentation Accessibility
 
-## Objective
-
+**Objective.**
 Assess accessibility of publicly available documentation.
 
 ### Assessment Criteria
@@ -2552,8 +2488,7 @@ Refer to EA-009.
 
 # DGA-009 Documentation Lifecycle
 
-## Objective
-
+**Objective.**
 Assess publicly observable documentation lifecycle information.
 
 ### Observable Elements
@@ -2571,12 +2506,10 @@ Refer to EA-009.
 
 # DGA-010 Documentation Governance Controls
 
-## Objective
-
+**Objective.**
 Assess publicly observable documentation governance controls.
 
-### Assessment Scope
-
+**Assessment scope.**
 Only governance controls documented through public evidence are evaluated.
 
 Internal governance controls remain outside assessment scope.
@@ -2633,8 +2566,7 @@ No evidence is duplicated within this document.
 
 ---
 
-# Assessment Limitations
-
+**Assessment limitations.**
 This assessment does not determine:
 
 - documentation quality;
@@ -2682,8 +2614,7 @@ All observations remain evidence-based, fully traceable and consistent with the 
 **End of Block 8**
 # Repository Governance Assessment
 
-## Assessment Overview
-
+**Domain overview.**
 This section assesses the publicly observable Repository Governance characteristics associated with the Coste360 platform.
 
 The assessment follows the QEN Sovereign Intelligence Evidence First methodology.
@@ -2698,8 +2629,7 @@ Every observation contained within this section shall be traceable to one or mor
 
 ---
 
-# Assessment Objective
-
+**Assessment objective.**
 The objective of this assessment is to evaluate the public observability of repository governance characteristics.
 
 The assessment considers only repository information that is:
@@ -2720,8 +2650,7 @@ The assessment does not evaluate:
 
 ---
 
-# Assessment Boundary
-
+**Assessment boundary.**
 Included:
 
 - Public repositories
@@ -2760,8 +2689,7 @@ Each assessment area contains:
 
 # RGA-001 Repository Availability
 
-## Objective
-
+**Objective.**
 Assess whether repository information is publicly observable.
 
 ### Assessment Criteria
@@ -2788,12 +2716,10 @@ Refer to EA-009.
 
 # RGA-002 Repository Organization
 
-## Objective
-
+**Objective.**
 Assess the publicly observable organisation of repository artefacts.
 
-### Assessment Scope
-
+**Assessment scope.**
 Only repository structures explicitly observable through public repositories are assessed.
 
 Internal repository organisation remains outside assessment scope.
@@ -2806,8 +2732,7 @@ Refer to EA-009.
 
 # RGA-003 Repository Documentation
 
-## Objective
-
+**Objective.**
 Assess governance documentation associated with public repositories.
 
 ### Observable Elements
@@ -2825,8 +2750,7 @@ Refer to EA-009.
 
 # RGA-004 Repository Classification
 
-## Objective
-
+**Objective.**
 Assess publicly observable repository classification mechanisms.
 
 ### Assessment Criteria
@@ -2846,12 +2770,10 @@ Refer to EA-009.
 
 # RGA-005 Repository Traceability
 
-## Objective
-
+**Objective.**
 Assess traceability across publicly observable repository artefacts.
 
-### Assessment Scope
-
+**Assessment scope.**
 Traceability is evaluated exclusively through observable repository references.
 
 Internal traceability mechanisms remain outside assessment scope.
@@ -2864,8 +2786,7 @@ Refer to EA-009.
 
 # RGA-006 Repository Version Management
 
-## Objective
-
+**Objective.**
 Assess publicly observable repository version information.
 
 ### Observable Elements
@@ -2883,12 +2804,10 @@ Refer to EA-009.
 
 # RGA-007 Repository Integrity
 
-## Objective
-
+**Objective.**
 Assess publicly observable repository integrity characteristics.
 
-### Assessment Boundary
-
+**Assessment boundary.**
 Only repository integrity characteristics supported by public evidence are assessed.
 
 Internal integrity controls remain outside assessment scope.
@@ -2901,8 +2820,7 @@ Refer to EA-009.
 
 # RGA-008 Repository Accessibility
 
-## Objective
-
+**Objective.**
 Assess accessibility of publicly available repositories.
 
 ### Assessment Criteria
@@ -2922,8 +2840,7 @@ Refer to EA-009.
 
 # RGA-009 Repository Lifecycle
 
-## Objective
-
+**Objective.**
 Assess publicly observable repository lifecycle information.
 
 ### Observable Elements
@@ -2941,12 +2858,10 @@ Refer to EA-009.
 
 # RGA-010 Repository Governance Controls
 
-## Objective
-
+**Objective.**
 Assess publicly observable repository governance controls.
 
-### Assessment Scope
-
+**Assessment scope.**
 Only governance controls documented through public evidence are evaluated.
 
 Internal repository controls remain outside assessment scope.
@@ -3018,8 +2933,7 @@ No repository conclusion shall be derived without supporting evidence referenced
 
 ---
 
-# Assessment Limitations
-
+**Assessment limitations.**
 This assessment does not determine:
 
 - repository security posture;
@@ -3068,8 +2982,7 @@ All observations remain evidence-based, fully traceable and consistent with the 
 **End of Block 9**
 # Governance Risk Assessment
 
-## Assessment Overview
-
+**Domain overview.**
 This section assesses governance risks that are observable exclusively through publicly available evidence.
 
 The assessment applies the QEN Sovereign Intelligence Evidence First methodology.
@@ -3082,8 +2995,7 @@ Every observation contained within this section shall be traceable to one or mor
 
 ---
 
-# Assessment Objective
-
+**Assessment objective.**
 The objective of this assessment is to identify governance risks associated with publicly observable governance artefacts.
 
 The assessment evaluates only risks that can be identified through public evidence.
@@ -3100,8 +3012,7 @@ The assessment does not evaluate:
 
 ---
 
-# Assessment Boundary
-
+**Assessment boundary.**
 Included:
 
 - Public governance information
@@ -3142,8 +3053,7 @@ Each assessment area contains:
 
 # GRA-001 Governance Information Availability Risk
 
-## Objective
-
+**Objective.**
 Assess risks associated with the public availability of governance information.
 
 ### Observable Risk Area
@@ -3168,8 +3078,7 @@ Refer to EA-009.
 
 # GRA-002 Documentation Traceability Risk
 
-## Objective
-
+**Objective.**
 Assess risks associated with publicly observable documentation traceability.
 
 ### Observable Risk Area
@@ -3186,8 +3095,7 @@ Refer to EA-009.
 
 # GRA-003 Repository Governance Risk
 
-## Objective
-
+**Objective.**
 Assess risks associated with publicly observable repository governance.
 
 ### Observable Risk Area
@@ -3204,8 +3112,7 @@ Refer to EA-009.
 
 # GRA-004 Governance Transparency Risk
 
-## Objective
-
+**Objective.**
 Assess risks associated with publicly observable governance transparency.
 
 ### Observable Risk Area
@@ -3230,8 +3137,7 @@ Refer to EA-009.
 
 # GRA-005 Information Governance Risk
 
-## Objective
-
+**Objective.**
 Assess risks associated with publicly observable information governance.
 
 ### Observable Risk Area
@@ -3248,8 +3154,7 @@ Refer to EA-009.
 
 # GRA-006 Documentation Governance Risk
 
-## Objective
-
+**Objective.**
 Assess risks associated with publicly observable documentation governance.
 
 ### Observable Risk Area
@@ -3266,8 +3171,7 @@ Refer to EA-009.
 
 # GRA-007 Evidence Traceability Risk
 
-## Objective
-
+**Objective.**
 Assess risks associated with evidence traceability.
 
 ### Observable Risk Area
@@ -3340,8 +3244,7 @@ No evidence is duplicated within this document.
 
 ---
 
-# Assessment Limitations
-
+**Assessment limitations.**
 This assessment does not determine:
 
 - enterprise risk exposure;
@@ -3391,8 +3294,7 @@ All governance risk observations remain evidence-based, fully traceable and cons
 **End of Block 10**
 # Governance Maturity Assessment
 
-## Assessment Overview
-
+**Domain overview.**
 This section evaluates the maturity of publicly observable governance information associated with the Coste360 platform.
 
 The assessment follows the QEN Sovereign Intelligence Evidence First methodology.
@@ -3407,8 +3309,7 @@ Every observation shall be traceable to Evidence IDs maintained within EA-009.
 
 ---
 
-# Assessment Objective
-
+**Assessment objective.**
 The objective of this assessment is to determine the level of public governance observability.
 
 The assessment evaluates only:
@@ -3429,8 +3330,7 @@ The assessment does not evaluate:
 
 ---
 
-# Assessment Boundary
-
+**Assessment boundary.**
 Included:
 
 - Public documentation
@@ -3621,8 +3521,7 @@ No maturity conclusion shall be derived without supporting evidence referenced w
 
 ---
 
-# Assessment Limitations
-
+**Assessment limitations.**
 This assessment does not determine:
 
 - enterprise governance maturity;
@@ -3670,10 +3569,11 @@ All maturity observations remain evidence-based, fully traceable and consistent 
 ---
 
 **End of Block 11**
-# Evidence Mapping
+# Evidence Traceability
 
-## Assessment Overview
+## Evidence Mapping
 
+**Domain overview.**
 This section defines the evidence mapping model adopted by EA-004.
 
 The purpose of the Evidence Mapping is to demonstrate complete traceability between governance assessment areas and the Evidence IDs maintained within EA-009.
@@ -3891,8 +3791,7 @@ This section remains fully aligned with:
 **End of Block 12**
 # Evidence Coverage Analysis
 
-## Assessment Overview
-
+**Domain overview.**
 This section analyses the coverage of evidence referenced throughout EA-004.
 
 The purpose of the Evidence Coverage Analysis is to verify that every assessment area is supported by publicly observable evidence referenced through EA-009.
@@ -3903,8 +3802,7 @@ No evidence is duplicated within this document.
 
 ---
 
-# Assessment Objective
-
+**Assessment objective.**
 The objective of this section is to verify:
 
 - evidence completeness;
@@ -4123,8 +4021,7 @@ This section remains fully aligned with:
 **End of Block 13**
 # Referenced Evidence IDs
 
-## Assessment Overview
-
+**Domain overview.**
 This section provides the official registry of Evidence IDs referenced by EA-004.
 
 EA-004 does not redefine, duplicate or modify evidence.
@@ -4320,8 +4217,7 @@ This section remains fully aligned with:
 **End of Block 14**
 # Referenced Enterprise Documents
 
-## Assessment Overview
-
+**Domain overview.**
 This section identifies the enterprise documentation referenced by EA-004.
 
 Referenced documents provide the architectural, governance and methodological baseline required to interpret this assessment.
@@ -4504,10 +4400,8 @@ and with the approved enterprise baseline defined by the QEN Sovereign Intellige
 ---
 
 **End of Block 15**
-# Assessment Limitations
-
-## Assessment Overview
-
+**Assessment limitations.**
+**Domain overview.**
 This section defines the formal limitations of EA-004.
 
 Assessment limitations constitute an integral part of the QEN Sovereign Intelligence methodology and establish the boundaries within which the assessment shall be interpreted.
@@ -4745,8 +4639,7 @@ The limitations defined within this section remain fully consistent with:
 **End of Block 16**
 # Alignment with QEN Sovereign Principles
 
-## Assessment Overview
-
+**Domain overview.**
 This section verifies the alignment of EA-004 with the approved QEN Sovereign Intelligence baseline.
 
 The purpose of this section is to demonstrate that the assessment has been produced in accordance with the architectural, governance and documentation principles approved within the Cognitive Logic repository.
@@ -5001,7 +4894,7 @@ The alignment verification confirms only conformance with the approved QEN Sover
 
 ---
 
-# Conclusions
+# Overall Governance Assessment — Conclusions
 
 ## Assessment Summary
 
@@ -5113,7 +5006,9 @@ The assessment has been conducted in accordance with the approved QEN Sovereign 
 **Traceability Ready**
 
 **QEN Sovereign Ready**
-# Appendix A — Governance Assessment Criteria
+# Appendices
+
+## Appendix A — Governance Assessment Criteria
 
 ## A.1 Purpose
 
@@ -7377,8 +7272,7 @@ The assessment lifecycle includes the following Quality Gates.
 
 # I.4 QG-01 — Assessment Initiation
 
-## Objective
-
+**Objective.**
 Confirm that the assessment has been initiated according to the approved QEN Sovereign Intelligence methodology.
 
 ### Verification Criteria
@@ -7395,8 +7289,7 @@ Confirm that the assessment has been initiated according to the approved QEN Sov
 
 # I.5 QG-02 — Scope Validation
 
-## Objective
-
+**Objective.**
 Verify that the assessment scope has been correctly defined.
 
 ### Verification Criteria
@@ -7413,8 +7306,7 @@ Verify that the assessment scope has been correctly defined.
 
 # I.6 QG-03 — Evidence Validation
 
-## Objective
-
+**Objective.**
 Verify that every governance observation is supported by evidence referenced through EA-009.
 
 ### Verification Criteria
@@ -7431,8 +7323,7 @@ Verify that every governance observation is supported by evidence referenced thr
 
 # I.7 QG-04 — Governance Analysis
 
-## Objective
-
+**Objective.**
 Verify methodological consistency of the governance analysis.
 
 ### Verification Criteria
@@ -7449,8 +7340,7 @@ Verify methodological consistency of the governance analysis.
 
 # I.8 QG-05 — Documentation Review
 
-## Objective
-
+**Objective.**
 Verify documentation quality.
 
 ### Verification Criteria
@@ -7467,8 +7357,7 @@ Verify documentation quality.
 
 # I.9 QG-06 — Traceability Review
 
-## Objective
-
+**Objective.**
 Verify end-to-end traceability.
 
 ### Verification Criteria
@@ -7485,8 +7374,7 @@ Verify end-to-end traceability.
 
 # I.10 QG-07 — Repository Validation
 
-## Objective
-
+**Objective.**
 Verify repository consistency before publication.
 
 ### Verification Criteria
@@ -7503,8 +7391,7 @@ Verify repository consistency before publication.
 
 # I.11 QG-08 — Final Quality Assurance
 
-## Objective
-
+**Objective.**
 Perform the final enterprise quality review.
 
 ### Verification Criteria
@@ -7521,8 +7408,7 @@ Perform the final enterprise quality review.
 
 # I.12 QG-09 — Publication Readiness
 
-## Objective
-
+**Objective.**
 Determine whether EA-004 is ready for repository publication.
 
 ### Publication Checklist

@@ -20,6 +20,149 @@
 
 ---
 
+# Executive Decision Brief
+
+EA-003 is the enterprise capability view of the Coste360 Validation Programme. It translates publicly observable platform behaviour into a capability landscape that senior decision-makers can review before entering the detailed technical evidence.
+
+## Value of This Assessment
+
+The document provides a structured view of what the platform demonstrably exposes, how those capabilities contribute to information access and operational consultation, and where public evidence does not support conclusions about internal implementation.
+
+## Decisions This Document Enables
+
+| Executive Perspective | Decision Support Provided |
+|---|---|
+| CEO | Understand the breadth and enterprise orientation of observable platform capabilities. |
+| CIO | Review capability coverage and architectural relationships without inferring implementation technologies. |
+| COO | Identify observable operational and information-access capabilities relevant to service delivery. |
+| CRO | Distinguish evidenced capabilities from areas that remain partially observed or not publicly verifiable. |
+| Compliance | Verify the evidence-first boundary and traceability model applied to capability statements. |
+
+## Problems Addressed
+
+- fragmented understanding of platform capabilities;
+- difficulty separating observable functionality from assumptions about implementation;
+- limited executive visibility across capability domains;
+- need for a traceable baseline for subsequent validation activities.
+
+## Why It Matters
+
+The assessment creates a common capability baseline for executive, architectural, operational and assurance review while preserving direct access to the detailed observations, confidence levels and evidence references that support each domain.
+
+---
+
+# Executive Summary
+
+EA-003 provides an independent Enterprise Architecture assessment of the publicly observable capabilities of the Coste360 platform.
+
+The assessment has been conducted according to the principles established by the QEN Sovereign Intelligence Validation Programme:
+
+- Evidence-First;
+- Vendor Neutrality;
+- Technology Independence;
+- Functional Traceability;
+- Audit Readiness.
+
+The objective has not been to evaluate software implementation, but rather to identify and classify observable enterprise capabilities through publicly verifiable evidence.
+
+The assessment confirms the existence of a coherent set of enterprise information services supporting territorial, administrative and documentary consultation.
+
+No conclusions are drawn regarding internal implementation, software quality, infrastructure or organisational governance.
+
+---
+
+# Executive Findings
+
+The assessment identified the following principal observations.
+
+## Functional Coverage
+
+The platform exposes a broad range of publicly observable enterprise capabilities including:
+
+- Executive Dashboard;
+- Data Collection;
+- Data Management;
+- Dataset Governance;
+- Search Engine;
+- Geospatial Intelligence;
+- Administrative Intelligence;
+- Document Intelligence;
+- Monitoring;
+- Reporting;
+- Decision Support;
+- User Experience;
+- Knowledge Access;
+- Platform Governance;
+- Enterprise Services.
+
+---
+
+## Information Integration
+
+Observable functionality indicates an integrated consultation environment combining:
+
+- territorial information;
+- administrative resources;
+- documentary assets;
+- reporting outputs;
+- searchable datasets.
+
+The assessment does not infer the internal integration architecture supporting these services.
+
+---
+
+## Enterprise Orientation
+
+Publicly observable functionality suggests an enterprise-oriented information platform supporting consultation and information accessibility across multiple operational domains.
+
+This observation is based exclusively on externally visible behaviour.
+
+---
+
+## Decision Support
+
+The platform provides structured access to information that may support human decision-making.
+
+No evidence has been identified demonstrating automated decision engines or artificial intelligence services.
+
+Accordingly, Decision Support has been assessed exclusively from the perspective of information availability.
+
+---
+
+## Governance Visibility
+
+Observable governance characteristics are limited primarily to access control and differentiated service availability.
+
+Internal governance processes remain outside the scope of publicly verifiable assessment.
+
+---
+
+---
+
+# Enterprise Capability Landscape
+
+The detailed assessment is organised as a single enterprise capability landscape. Each domain retains its original evidence, confidence, business value, operational value, decision-support value and QEN perspective; the editorial hierarchy below reduces interruption without changing those assessments.
+
+| Capability Domain | Assessment Lens |
+|---|---|
+| Executive Dashboard | Executive information and operational visibility |
+| Data Collection | Enterprise data acquisition |
+| Data Management | Observable information organisation and availability |
+| Dataset Governance | Dataset-level governance observability |
+| Search Engine | Information discovery and retrieval |
+| Geospatial Intelligence | Territorial and geographic information access |
+| Administrative Intelligence | Administrative information access |
+| Document Intelligence | Documentary information access |
+| Monitoring | Observable monitoring functions |
+| Reporting | Consolidated information and reporting |
+| Decision Support | Information support for human decision-making |
+| User Experience | Access and interaction with platform services |
+| Knowledge Access | Structured access to information resources |
+| Platform Governance | Publicly observable governance characteristics |
+| Enterprise Services | Observable enterprise-oriented services |
+
+---
+
 # Document Purpose
 
 This Enterprise Assessment provides an independent architectural and functional evaluation of the publicly observable capabilities of the Coste360 platform.
@@ -376,27 +519,29 @@ Each capability analysed in this document will follow a consistent structure com
 - QEN Perspective
 
 The assessment begins with the first Enterprise Capability Domain: Executive Dashboard.
-# Executive Dashboard
+# Capability Domains
 
-## Capability Overview
+## Executive Dashboard
 
-### Capability Name
+### Capability Profile
+
+**Capability Name.**
 
 Executive Dashboard
 
-### Capability Category
+**Capability Category.**
 
 Executive Information & Operational Visibility
 
-### Assessment Status
+**Assessment Status.**
 
 Observed
 
-### Evidence Confidence
+**Evidence Confidence.**
 
 Medium
 
-### Assessment Scope
+**Assessment Scope.**
 
 The Executive Dashboard represents the primary access point to the platform and provides users with a consolidated view of the information assets and operational functions that are publicly accessible.
 
@@ -406,7 +551,7 @@ No assumptions are made regarding internal processing mechanisms, data aggregati
 
 ---
 
-## Business Purpose
+### Business Purpose
 
 From an Enterprise Architecture perspective, the Executive Dashboard appears to provide a unified entry point for accessing the platform's information resources.
 
@@ -422,7 +567,7 @@ No assumptions are made regarding personalised dashboard logic or internal decis
 
 ---
 
-## Observed Functions
+### Observed Functions
 
 The following functions are publicly observable.
 
@@ -438,7 +583,7 @@ The following functions are publicly observable.
 
 ---
 
-## Observed Evidence
+### Observed Evidence
 
 Current observations are supported through publicly observable platform behaviour.
 
@@ -459,7 +604,7 @@ Current Traceability:
 
 ---
 
-## Business Value
+### Business Value
 
 The Executive Dashboard contributes to business operations by providing a centralised access point to the available information resources.
 
@@ -474,7 +619,7 @@ These observations refer only to externally visible behaviour.
 
 ---
 
-## Operational Value
+### Operational Value
 
 Observable operational benefits include:
 
@@ -487,7 +632,7 @@ Operational workflows beyond publicly visible behaviour remain outside the scope
 
 ---
 
-## Decision Support Value
+### Decision Support Value
 
 The dashboard appears to facilitate access to information that may support operational and administrative decision-making.
 
@@ -501,7 +646,7 @@ No conclusions are drawn regarding internal decision support mechanisms.
 
 ---
 
-## Evidence Available
+### Evidence Available
 
 | Evidence Type | Status |
 |---------------|--------|
@@ -514,7 +659,7 @@ No conclusions are drawn regarding internal decision support mechanisms.
 
 ---
 
-## Evidence Confidence
+### Evidence Confidence
 
 Overall Confidence: Medium
 
@@ -526,7 +671,7 @@ However, internal operational behaviour cannot be verified using publicly availa
 
 ---
 
-## Observed Strengths
+### Observed Strengths
 
 Observed strengths include:
 
@@ -539,7 +684,7 @@ These observations are limited to publicly visible functionality.
 
 ---
 
-## Potential Evolution
+### Potential Evolution
 
 Possible architectural evolutions, without implying deficiencies in the current platform, may include:
 
@@ -553,7 +698,7 @@ These represent generic Enterprise Architecture considerations rather than recom
 
 ---
 
-## Related Enterprise Capabilities
+### Related Enterprise Capabilities
 
 The Executive Dashboard is functionally related to:
 
@@ -566,14 +711,14 @@ The Executive Dashboard is functionally related to:
 
 ---
 
-## Related Enterprise Assessments
+#### Related Enterprise Assessments
 
 - EA-001 — Coste360 Enterprise Discovery
 - EA-002 — Coste360 Enterprise Intelligence Assessment
 
 ---
 
-## QEN Perspective
+### QEN Perspective
 
 From a QEN Sovereign Intelligence perspective, an Enterprise Decision Intelligence Layer could operate above an existing dashboard without replacing the underlying platform.
 
@@ -590,32 +735,32 @@ This perspective represents a generic Enterprise Architecture extension model an
 
 ---
 
-# Data Collection
+## Data Collection
 
-## Capability Overview
+### Capability Profile
 
-### Capability Name
+**Capability Name.**
 
 Data Collection
 
-### Capability Category
+**Capability Category.**
 
 Enterprise Data Acquisition
 
-### Assessment Status
+**Assessment Status.**
 
 Observed
 
-### Evidence Confidence
+**Evidence Confidence.**
 
 Medium
 
-### Assessment Scope
+**Assessment Scope.**
 
 This capability concerns the publicly observable mechanisms through which the platform exposes structured territorial and administrative information.
 
 The assessment focuses exclusively on observable data acquisition outcomes rather than internal ingestion processes.
-## Business Purpose
+### Business Purpose
 
 From an Enterprise Architecture perspective, the Data Collection capability provides the observable foundation for acquiring, consolidating and exposing information relevant to the operational domain addressed by the platform.
 
@@ -625,7 +770,7 @@ The assessment does not infer the existence of internal ingestion pipelines, ETL
 
 ---
 
-## Observed Functions
+### Observed Functions
 
 The following observable functions contribute to the Data Collection capability.
 
@@ -642,7 +787,7 @@ The following observable functions contribute to the Data Collection capability.
 
 ---
 
-## Observed Evidence
+### Observed Evidence
 
 Observable evidence currently includes publicly accessible platform sections exposing structured information resources.
 
@@ -664,7 +809,7 @@ Current Traceability:
 
 ---
 
-## Business Value
+### Business Value
 
 Observable business value includes:
 
@@ -677,7 +822,7 @@ The assessment does not evaluate data completeness or information quality beyond
 
 ---
 
-## Operational Value
+### Operational Value
 
 Observed operational contributions include:
 
@@ -690,7 +835,7 @@ Internal operational workflows remain outside the assessment scope.
 
 ---
 
-## Decision Support Value
+### Decision Support Value
 
 Observable information assets may contribute to decision-making activities by improving information accessibility.
 
@@ -705,7 +850,7 @@ No assumptions are made regarding automated decision-support capabilities.
 
 ---
 
-## Evidence Available
+### Evidence Available
 
 | Evidence Type | Status |
 |---------------|--------|
@@ -718,7 +863,7 @@ No assumptions are made regarding automated decision-support capabilities.
 
 ---
 
-## Evidence Confidence
+### Evidence Confidence
 
 Overall Confidence: Medium
 
@@ -730,7 +875,7 @@ The acquisition mechanisms producing those resources cannot be verified using pu
 
 ---
 
-## Observed Strengths
+### Observed Strengths
 
 Observable strengths include:
 
@@ -744,7 +889,7 @@ These observations remain limited to externally visible platform behaviour.
 
 ---
 
-## Potential Evolution
+### Potential Evolution
 
 Possible Enterprise Architecture evolutions may include:
 
@@ -758,7 +903,7 @@ These considerations represent generic architectural evolution scenarios rather 
 
 ---
 
-## Related Enterprise Capabilities
+### Related Enterprise Capabilities
 
 The Data Collection capability is functionally related to:
 
@@ -771,14 +916,14 @@ The Data Collection capability is functionally related to:
 
 ---
 
-## Related Enterprise Assessments
+### Related Enterprise Assessments
 
 - EA-001 — Coste360 Enterprise Discovery
 - EA-002 — Coste360 Enterprise Intelligence Assessment
 
 ---
 
-## QEN Perspective
+### QEN Perspective
 
 From a QEN Sovereign Intelligence perspective, an Enterprise Decision Intelligence Layer could consume existing information assets without modifying the current collection mechanisms.
 
@@ -795,27 +940,27 @@ These considerations describe a generic Enterprise Architecture overlay and shal
 
 ---
 
-# Data Management
+## Data Management
 
-## Capability Overview
+### Capability Profile
 
-### Capability Name
+**Capability Name.**
 
 Data Management
 
-### Capability Category
+**Capability Category.**
 
 Enterprise Information Management
 
-### Assessment Status
+**Assessment Status.**
 
 Partially Observed
 
-### Evidence Confidence
+**Evidence Confidence.**
 
 Medium
 
-### Assessment Scope
+**Assessment Scope.**
 
 This capability concerns the observable organisation, presentation and accessibility of structured information exposed by the platform.
 
@@ -825,12 +970,12 @@ No assumptions are made regarding internal repositories, databases, storage tech
 
 ---
 
-## Business Purpose
+### Business Purpose
 
 From an Enterprise Architecture perspective, the observable Data Management capability appears to support the organisation and availability of heterogeneous information assets within a unified consultation environment.
 
 The assessment considers only publicly observable behaviour and information presentation characteristics.
-## Observed Functions
+### Observed Functions
 
 The following observable functions contribute to the Data Management capability.
 
@@ -847,7 +992,7 @@ The following observable functions contribute to the Data Management capability.
 
 ---
 
-## Observed Evidence
+### Observed Evidence
 
 The assessment is based on the observable presentation and organisation of information exposed through the platform.
 
@@ -867,7 +1012,7 @@ Traceability status:
 
 ---
 
-## Business Value
+### Business Value
 
 Observable business value includes:
 
@@ -880,7 +1025,7 @@ The assessment does not evaluate internal information governance processes.
 
 ---
 
-## Operational Value
+### Operational Value
 
 Observable operational contributions include:
 
@@ -893,7 +1038,7 @@ Internal operational processes remain outside the scope of this assessment.
 
 ---
 
-## Decision Support Value
+### Decision Support Value
 
 Well-organised information resources contribute to decision support by improving information accessibility and reducing the effort required to identify relevant content.
 
@@ -908,7 +1053,7 @@ No assumptions are made regarding automated analytical capabilities.
 
 ---
 
-## Evidence Available
+### Evidence Available
 
 | Evidence Type | Status |
 |---------------|--------|
@@ -921,7 +1066,7 @@ No assumptions are made regarding automated analytical capabilities.
 
 ---
 
-## Evidence Confidence
+### Evidence Confidence
 
 Overall Confidence: Medium
 
@@ -933,7 +1078,7 @@ Internal data management processes cannot be validated through public evidence.
 
 ---
 
-## Observed Strengths
+### Observed Strengths
 
 Observable strengths include:
 
@@ -946,7 +1091,7 @@ These observations are limited to externally visible functionality.
 
 ---
 
-## Potential Evolution
+### Potential Evolution
 
 Generic Enterprise Architecture evolution opportunities may include:
 
@@ -960,7 +1105,7 @@ These represent architectural considerations rather than recommendations for the
 
 ---
 
-## Related Enterprise Capabilities
+### Related Enterprise Capabilities
 
 The Data Management capability is related to:
 
@@ -973,14 +1118,14 @@ The Data Management capability is related to:
 
 ---
 
-## Related Enterprise Assessments
+### Related Enterprise Assessments
 
 - EA-001 — Coste360 Enterprise Discovery
 - EA-002 — Coste360 Enterprise Intelligence Assessment
 
 ---
 
-## QEN Perspective
+### QEN Perspective
 
 Within a QEN Sovereign Intelligence architecture, an Enterprise Decision Intelligence Layer could enhance the existing information landscape through additional governance capabilities while preserving the current platform.
 
@@ -997,27 +1142,27 @@ These observations represent a conceptual Enterprise Architecture perspective an
 
 ---
 
-# Dataset Governance
+## Dataset Governance
 
-## Capability Overview
+### Capability Profile
 
-### Capability Name
+**Capability Name.**
 
 Dataset Governance
 
-### Capability Category
+**Capability Category.**
 
 Enterprise Data Governance
 
-### Assessment Status
+**Assessment Status.**
 
 Partially Observed
 
-### Evidence Confidence
+**Evidence Confidence.**
 
 Low
 
-### Assessment Scope
+**Assessment Scope.**
 
 This capability evaluates the publicly observable governance characteristics associated with the datasets made available through the platform.
 
@@ -1035,7 +1180,7 @@ No assumptions are made regarding:
 
 ---
 
-## Business Purpose
+### Business Purpose
 
 From an Enterprise Architecture perspective, Dataset Governance concerns the observable mechanisms through which datasets appear to be organised, maintained and exposed for consultation.
 
@@ -1045,7 +1190,7 @@ The existence of formal governance processes cannot be inferred without addition
 
 ---
 
-## Observed Functions
+### Observed Functions
 
 | Function | Observation Status |
 |----------|--------------------|
@@ -1061,7 +1206,7 @@ The existence of formal governance processes cannot be inferred without addition
 
 ---
 
-## Observed Evidence
+### Observed Evidence
 
 Current observations are supported by the public availability of structured datasets and information collections exposed through the platform.
 
@@ -1070,7 +1215,7 @@ Current Traceability:
 - Evidence Status: Evidence Pending
 - Future Evidence ID: C360-EV-030
 - Validation Source: Public Dataset Observation
-## Business Value
+### Business Value
 
 Observable dataset governance contributes to the enterprise information environment by improving the discoverability and accessibility of publicly available information resources.
 
@@ -1085,7 +1230,7 @@ The assessment does not evaluate internal governance maturity or organisational 
 
 ---
 
-## Operational Value
+### Operational Value
 
 Observable operational value includes:
 
@@ -1098,7 +1243,7 @@ Internal governance workflows cannot be assessed using publicly available eviden
 
 ---
 
-## Decision Support Value
+### Decision Support Value
 
 The observable availability of structured datasets may contribute to operational and executive decision-making by improving information accessibility.
 
@@ -1113,7 +1258,7 @@ No conclusions are drawn regarding analytical processing or governance automatio
 
 ---
 
-## Evidence Available
+### Evidence Available
 
 | Evidence Type | Status |
 |---------------|--------|
@@ -1126,7 +1271,7 @@ No conclusions are drawn regarding analytical processing or governance automatio
 
 ---
 
-## Evidence Confidence
+### Evidence Confidence
 
 Overall Confidence: Low
 
@@ -1138,7 +1283,7 @@ However, governance processes, ownership responsibilities, lifecycle controls an
 
 ---
 
-## Observed Strengths
+### Observed Strengths
 
 Observable strengths include:
 
@@ -1151,7 +1296,7 @@ These observations are limited to externally observable functionality.
 
 ---
 
-## Potential Evolution
+### Potential Evolution
 
 Possible Enterprise Architecture evolution scenarios include:
 
@@ -1166,7 +1311,7 @@ These observations represent generic Enterprise Architecture practices and shall
 
 ---
 
-## Related Enterprise Capabilities
+### Related Enterprise Capabilities
 
 Dataset Governance is functionally related to:
 
@@ -1179,14 +1324,14 @@ Dataset Governance is functionally related to:
 
 ---
 
-## Related Enterprise Assessments
+### Related Enterprise Assessments
 
 - EA-001 — Coste360 Enterprise Discovery
 - EA-002 — Coste360 Enterprise Intelligence Assessment
 
 ---
 
-## QEN Perspective
+### QEN Perspective
 
 Within a QEN Sovereign Intelligence architecture, an Enterprise Decision Intelligence Layer could enrich existing datasets through governance-oriented services while preserving the current operational platform.
 
@@ -1203,27 +1348,27 @@ These considerations describe a generic Enterprise Architecture overlay and do n
 
 ---
 
-# Search Engine
+## Search Engine
 
-## Capability Overview
+### Capability Profile
 
-### Capability Name
+**Capability Name.**
 
 Search Engine
 
-### Capability Category
+**Capability Category.**
 
 Enterprise Information Retrieval
 
-### Assessment Status
+**Assessment Status.**
 
 Observed
 
-### Evidence Confidence
+**Evidence Confidence.**
 
 High
 
-### Assessment Scope
+**Assessment Scope.**
 
 This capability evaluates the publicly observable search functions made available through the platform.
 
@@ -1240,7 +1385,7 @@ No assumptions are made regarding:
 
 ---
 
-## Business Purpose
+### Business Purpose
 
 From an Enterprise Architecture perspective, the Search Engine capability enables users to locate relevant information within the available information assets.
 
@@ -1255,7 +1400,7 @@ Only publicly observable functionality is considered.
 
 ---
 
-## Observed Functions
+### Observed Functions
 
 | Function | Observation Status |
 |----------|--------------------|
@@ -1270,7 +1415,7 @@ Only publicly observable functionality is considered.
 
 ---
 
-## Observed Evidence
+### Observed Evidence
 
 Current observations are supported by publicly accessible search capabilities available through the platform.
 
@@ -1289,7 +1434,7 @@ Current Traceability:
 
 ---
 
-## Business Value
+### Business Value
 
 The Search Engine capability contributes to enterprise information accessibility by reducing the effort required to locate relevant information resources.
 
@@ -1302,7 +1447,7 @@ Observable business value includes:
 
 ---
 
-## Operational Value
+### Operational Value
 
 Observable operational contributions include:
 
@@ -1313,7 +1458,7 @@ Observable operational contributions include:
 
 ---
 
-## Decision Support Value
+### Decision Support Value
 
 Search functionality contributes to decision support by improving the accessibility of evidence required during operational and administrative activities.
 
@@ -1328,7 +1473,7 @@ No assumptions are made regarding intelligent retrieval or recommendation capabi
 
 ---
 
-## Evidence Available
+### Evidence Available
 
 | Evidence Type | Status |
 |---------------|--------|
@@ -1338,7 +1483,7 @@ No assumptions are made regarding intelligent retrieval or recommendation capabi
 | Search algorithms | Not Publicly Verifiable |
 | Ranking mechanisms | Out of Scope |
 | Indexing architecture | Out of Scope |
-## Evidence Confidence
+### Evidence Confidence
 
 Overall Confidence: High
 
@@ -1350,7 +1495,7 @@ Internal implementation details, indexing strategies and retrieval algorithms ca
 
 ---
 
-## Observed Strengths
+### Observed Strengths
 
 Observable strengths include:
 
@@ -1364,7 +1509,7 @@ These observations refer exclusively to externally visible platform behaviour.
 
 ---
 
-## Potential Evolution
+### Potential Evolution
 
 Generic Enterprise Architecture evolution scenarios may include:
 
@@ -1379,7 +1524,7 @@ These represent generic architectural considerations and shall not be interprete
 
 ---
 
-## Related Enterprise Capabilities
+### Related Enterprise Capabilities
 
 The Search Engine capability is functionally related to:
 
@@ -1392,14 +1537,14 @@ The Search Engine capability is functionally related to:
 
 ---
 
-## Related Enterprise Assessments
+### Related Enterprise Assessments
 
 - EA-001 — Coste360 Enterprise Discovery
 - EA-002 — Coste360 Enterprise Intelligence Assessment
 
 ---
 
-## QEN Perspective
+### QEN Perspective
 
 Within a QEN Sovereign Intelligence architecture, an Enterprise Decision Intelligence Layer could extend existing search capabilities by introducing governance-oriented retrieval services while preserving the existing operational platform.
 
@@ -1416,27 +1561,27 @@ These considerations describe a conceptual Enterprise Architecture overlay and d
 
 ---
 
-# Geospatial Intelligence
+## Geospatial Intelligence
 
-## Capability Overview
+### Capability Profile
 
-### Capability Name
+**Capability Name.**
 
 Geospatial Intelligence
 
-### Capability Category
+**Capability Category.**
 
 Enterprise Spatial Intelligence
 
-### Assessment Status
+**Assessment Status.**
 
 Observed
 
-### Evidence Confidence
+**Evidence Confidence.**
 
 High
 
-### Assessment Scope
+**Assessment Scope.**
 
 This capability evaluates the publicly observable geographical and territorial information services available through the platform.
 
@@ -1454,7 +1599,7 @@ No assumptions are made regarding:
 
 ---
 
-## Business Purpose
+### Business Purpose
 
 From an Enterprise Architecture perspective, the Geospatial Intelligence capability enables the visualisation and consultation of territorial information through geographical representations.
 
@@ -1469,7 +1614,7 @@ Only publicly observable functionality is evaluated.
 
 ---
 
-## Observed Functions
+### Observed Functions
 
 | Function | Observation Status |
 |----------|--------------------|
@@ -1485,7 +1630,7 @@ Only publicly observable functionality is evaluated.
 
 ---
 
-## Observed Evidence
+### Observed Evidence
 
 Observable evidence currently includes publicly accessible geographical information services.
 
@@ -1505,7 +1650,7 @@ Current Traceability:
 
 ---
 
-## Business Value
+### Business Value
 
 Observable business value includes:
 
@@ -1519,7 +1664,7 @@ The assessment does not evaluate analytical geospatial capabilities beyond obser
 
 ---
 
-## Operational Value
+### Operational Value
 
 Observable operational contributions include:
 
@@ -1530,7 +1675,7 @@ Observable operational contributions include:
 
 ---
 
-## Decision Support Value
+### Decision Support Value
 
 Observable geographical information contributes to decision support by providing territorial context for administrative and operational activities.
 
@@ -1545,7 +1690,7 @@ No assumptions are made regarding advanced geospatial analytics or decision mode
 
 ---
 
-## Evidence Available
+### Evidence Available
 
 | Evidence Type | Status |
 |---------------|--------|
@@ -1556,7 +1701,7 @@ No assumptions are made regarding advanced geospatial analytics or decision mode
 | Internal GIS architecture | Out of Scope |
 | Spatial processing workflows | Not Publicly Verifiable |
 ```
-## Evidence Confidence
+### Evidence Confidence
 
 Overall Confidence: High
 
@@ -1568,7 +1713,7 @@ The assessment is limited to observable behaviour and does not extend to interna
 
 ---
 
-## Observed Strengths
+### Observed Strengths
 
 Observable strengths include:
 
@@ -1582,7 +1727,7 @@ These observations are limited to publicly observable functionality.
 
 ---
 
-## Potential Evolution
+### Potential Evolution
 
 Generic Enterprise Architecture evolution opportunities may include:
 
@@ -1597,7 +1742,7 @@ These represent generic architectural considerations and shall not be interprete
 
 ---
 
-## Related Enterprise Capabilities
+### Related Enterprise Capabilities
 
 The Geospatial Intelligence capability is related to:
 
@@ -1610,14 +1755,14 @@ The Geospatial Intelligence capability is related to:
 
 ---
 
-## Related Enterprise Assessments
+### Related Enterprise Assessments
 
 - EA-001 — Coste360 Enterprise Discovery
 - EA-002 — Coste360 Enterprise Intelligence Assessment
 
 ---
 
-## QEN Perspective
+### QEN Perspective
 
 Within a QEN Sovereign Intelligence architecture, an Enterprise Decision Intelligence Layer could extend existing geospatial capabilities without modifying the underlying platform.
 
@@ -1634,27 +1779,27 @@ These considerations represent a conceptual Enterprise Architecture overlay and 
 
 ---
 
-# Administrative Intelligence
+## Administrative Intelligence
 
-## Capability Overview
+### Capability Profile
 
-### Capability Name
+**Capability Name.**
 
 Administrative Intelligence
 
-### Capability Category
+**Capability Category.**
 
 Enterprise Administrative Information Services
 
-### Assessment Status
+**Assessment Status.**
 
 Observed
 
-### Evidence Confidence
+**Evidence Confidence.**
 
 High
 
-### Assessment Scope
+**Assessment Scope.**
 
 This capability evaluates the publicly observable administrative information services exposed by the platform.
 
@@ -1671,7 +1816,7 @@ No assumptions are made regarding:
 
 ---
 
-## Business Purpose
+### Business Purpose
 
 From an Enterprise Architecture perspective, the Administrative Intelligence capability provides structured access to administrative information relevant to the operational domain of the platform.
 
@@ -1686,7 +1831,7 @@ Only observable functionality is considered.
 
 ---
 
-## Observed Functions
+### Observed Functions
 
 | Function | Observation Status |
 |----------|--------------------|
@@ -1701,7 +1846,7 @@ Only observable functionality is considered.
 
 ---
 
-## Observed Evidence
+### Observed Evidence
 
 Current observations are supported by publicly available administrative information exposed through the platform.
 
@@ -1721,7 +1866,7 @@ Current Traceability:
 
 ---
 
-## Business Value
+### Business Value
 
 Observable business value includes:
 
@@ -1734,7 +1879,7 @@ The assessment does not evaluate administrative governance processes.
 
 ---
 
-## Operational Value
+### Operational Value
 
 Observable operational contributions include:
 
@@ -1745,7 +1890,7 @@ Observable operational contributions include:
 
 ---
 
-## Decision Support Value
+### Decision Support Value
 
 Administrative information contributes to operational decision support by improving the accessibility of official reference material.
 
@@ -1760,7 +1905,7 @@ No conclusions are drawn regarding automated workflow or process intelligence.
 
 ---
 
-## Evidence Available
+### Evidence Available
 
 | Evidence Type | Status |
 |---------------|--------|
@@ -1773,7 +1918,7 @@ No conclusions are drawn regarding automated workflow or process intelligence.
 
 ---
 
-## Evidence Confidence
+### Evidence Confidence
 
 Overall Confidence: High
 
@@ -1782,7 +1927,7 @@ Overall Confidence: High
 The administrative information resources evaluated within this section are directly observable through publicly available platform interfaces.
 
 Internal administrative processes and governance mechanisms remain outside the scope of this assessment.
-## Observed Strengths
+### Observed Strengths
 
 Observable strengths include:
 
@@ -1796,7 +1941,7 @@ These observations are limited to functionality directly observable through publ
 
 ---
 
-## Potential Evolution
+### Potential Evolution
 
 Possible Enterprise Architecture evolution scenarios include:
 
@@ -1811,7 +1956,7 @@ These observations represent generic Enterprise Architecture considerations and 
 
 ---
 
-## Related Enterprise Capabilities
+### Related Enterprise Capabilities
 
 The Administrative Intelligence capability is functionally related to:
 
@@ -1824,14 +1969,14 @@ The Administrative Intelligence capability is functionally related to:
 
 ---
 
-## Related Enterprise Assessments
+### Related Enterprise Assessments
 
 - EA-001 — Coste360 Enterprise Discovery
 - EA-002 — Coste360 Enterprise Intelligence Assessment
 
 ---
 
-## QEN Perspective
+### QEN Perspective
 
 Within a QEN Sovereign Intelligence architecture, an Enterprise Decision Intelligence Layer could extend existing administrative information services without replacing operational components.
 
@@ -1848,27 +1993,27 @@ These considerations describe a conceptual Enterprise Architecture overlay and d
 
 ---
 
-# Document Intelligence
+## Document Intelligence
 
-## Capability Overview
+### Capability Profile
 
-### Capability Name
+**Capability Name.**
 
 Document Intelligence
 
-### Capability Category
+**Capability Category.**
 
 Enterprise Information & Document Services
 
-### Assessment Status
+**Assessment Status.**
 
 Observed
 
-### Evidence Confidence
+**Evidence Confidence.**
 
 Medium
 
-### Assessment Scope
+**Assessment Scope.**
 
 This capability evaluates the publicly observable document-related services exposed through the platform.
 
@@ -1885,7 +2030,7 @@ No assumptions are made regarding:
 
 ---
 
-## Business Purpose
+### Business Purpose
 
 From an Enterprise Architecture perspective, the Document Intelligence capability enables structured access to documentary information supporting operational and administrative activities.
 
@@ -1900,7 +2045,7 @@ Only publicly available evidence is considered.
 
 ---
 
-## Observed Functions
+### Observed Functions
 
 | Function | Observation Status |
 |----------|--------------------|
@@ -1915,7 +2060,7 @@ Only publicly available evidence is considered.
 
 ---
 
-## Observed Evidence
+### Observed Evidence
 
 Current observations are based on publicly accessible documentary resources available through the platform.
 
@@ -1934,7 +2079,7 @@ Current Traceability:
 
 ---
 
-## Business Value
+### Business Value
 
 Observable business value includes:
 
@@ -1947,7 +2092,7 @@ The assessment does not evaluate document governance processes or repository arc
 
 ---
 
-## Operational Value
+### Operational Value
 
 Observable operational contributions include:
 
@@ -1958,7 +2103,7 @@ Observable operational contributions include:
 
 ---
 
-## Decision Support Value
+### Decision Support Value
 
 Documentary information contributes to decision support by improving access to official reference sources.
 
@@ -1973,7 +2118,7 @@ No assumptions are made regarding intelligent document analysis or automated doc
 
 ---
 
-## Evidence Available
+### Evidence Available
 
 | Evidence Type | Status |
 |---------------|--------|
@@ -1986,7 +2131,7 @@ No assumptions are made regarding intelligent document analysis or automated doc
 
 ---
 
-## Evidence Confidence
+### Evidence Confidence
 
 Overall Confidence: Medium
 
@@ -1998,7 +2143,7 @@ Internal document governance, repository organisation and lifecycle management c
 
 ---
 
-## Observed Strengths
+### Observed Strengths
 
 Observable strengths include:
 
@@ -2009,7 +2154,7 @@ Observable strengths include:
 - accessibility of publicly available documentation.
 ---
 
-## Potential Evolution
+### Potential Evolution
 
 Possible Enterprise Architecture evolution scenarios include:
 
@@ -2024,7 +2169,7 @@ These observations represent generic Enterprise Architecture considerations and 
 
 ---
 
-## Related Enterprise Capabilities
+### Related Enterprise Capabilities
 
 The Document Intelligence capability is functionally related to:
 
@@ -2037,14 +2182,14 @@ The Document Intelligence capability is functionally related to:
 
 ---
 
-## Related Enterprise Assessments
+### Related Enterprise Assessments
 
 - EA-001 — Coste360 Enterprise Discovery
 - EA-002 — Coste360 Enterprise Intelligence Assessment
 
 ---
 
-## QEN Perspective
+### QEN Perspective
 
 Within a QEN Sovereign Intelligence architecture, an Enterprise Decision Intelligence Layer could enrich existing documentary resources without modifying the operational platform.
 
@@ -2061,27 +2206,27 @@ These considerations describe a conceptual Enterprise Architecture overlay and d
 
 ---
 
-# Monitoring
+## Monitoring
 
-## Capability Overview
+### Capability Profile
 
-### Capability Name
+**Capability Name.**
 
 Monitoring
 
-### Capability Category
+**Capability Category.**
 
 Enterprise Operational Monitoring
 
-### Assessment Status
+**Assessment Status.**
 
 Partially Observed
 
-### Evidence Confidence
+**Evidence Confidence.**
 
 Medium
 
-### Assessment Scope
+**Assessment Scope.**
 
 This capability evaluates the publicly observable monitoring services made available through the platform.
 
@@ -2098,7 +2243,7 @@ No assumptions are made regarding:
 
 ---
 
-## Business Purpose
+### Business Purpose
 
 From an Enterprise Architecture perspective, the Monitoring capability appears to support the continuous observation of information assets exposed by the platform.
 
@@ -2113,7 +2258,7 @@ Only publicly observable behaviour is evaluated.
 
 ---
 
-## Observed Functions
+### Observed Functions
 
 | Function | Observation Status |
 |----------|--------------------|
@@ -2128,7 +2273,7 @@ Only publicly observable behaviour is evaluated.
 
 ---
 
-## Observed Evidence
+### Observed Evidence
 
 Current observations are supported by publicly available references to continuously updated information resources.
 
@@ -2147,7 +2292,7 @@ Current Traceability:
 
 ---
 
-## Business Value
+### Business Value
 
 Observable business value includes:
 
@@ -2160,7 +2305,7 @@ The assessment does not evaluate internal monitoring mechanisms.
 
 ---
 
-## Operational Value
+### Operational Value
 
 Observable operational contributions include:
 
@@ -2171,7 +2316,7 @@ Observable operational contributions include:
 
 ---
 
-## Decision Support Value
+### Decision Support Value
 
 Monitoring contributes to decision support by improving access to current information resources.
 
@@ -2186,7 +2331,7 @@ No conclusions are drawn regarding automated alerting or operational intelligenc
 
 ---
 
-## Evidence Available
+### Evidence Available
 
 | Evidence Type | Status |
 |---------------|--------|
@@ -2199,7 +2344,7 @@ No conclusions are drawn regarding automated alerting or operational intelligenc
 
 ---
 
-## Evidence Confidence
+### Evidence Confidence
 
 Overall Confidence: Medium
 
@@ -2211,7 +2356,7 @@ The internal monitoring architecture and operational mechanisms cannot be verifi
 
 ---
 
-## Observed Strengths
+### Observed Strengths
 
 Observable strengths include:
 
@@ -2223,7 +2368,7 @@ Observable strengths include:
 
 ---
 
-## Potential Evolution
+### Potential Evolution
 
 Possible Enterprise Architecture evolution scenarios include:
 
@@ -2238,7 +2383,7 @@ These observations represent generic Enterprise Architecture considerations and 
 
 ---
 
-## Related Enterprise Capabilities
+### Related Enterprise Capabilities
 
 The Monitoring capability is functionally related to:
 
@@ -2251,14 +2396,14 @@ The Monitoring capability is functionally related to:
 
 ---
 
-## Related Enterprise Assessments
+### Related Enterprise Assessments
 
 - EA-001 — Coste360 Enterprise Discovery
 - EA-002 — Coste360 Enterprise Intelligence Assessment
 
 ---
 
-## QEN Perspective
+### QEN Perspective
 
 Within a QEN Sovereign Intelligence architecture, an Enterprise Decision Intelligence Layer could enhance existing monitoring capabilities through governance-oriented services while preserving the current operational platform.
 
@@ -2275,27 +2420,27 @@ These considerations represent a conceptual Enterprise Architecture perspective 
 
 ---
 
-# Reporting
+## Reporting
 
-## Capability Overview
+### Capability Profile
 
-### Capability Name
+**Capability Name.**
 
 Reporting
 
-### Capability Category
+**Capability Category.**
 
 Enterprise Reporting Services
 
-### Assessment Status
+**Assessment Status.**
 
 Observed
 
-### Evidence Confidence
+**Evidence Confidence.**
 
 High
 
-### Assessment Scope
+**Assessment Scope.**
 
 This capability evaluates the publicly observable reporting services available through the platform.
 
@@ -2309,7 +2454,7 @@ No assumptions are made regarding:
 - business intelligence platforms;
 - reporting automation;
 - internal report distribution processes.
-## Business Purpose
+### Business Purpose
 
 From an Enterprise Architecture perspective, the Reporting capability provides structured access to observable reporting outputs supporting consultation, analysis and operational awareness.
 
@@ -2324,7 +2469,7 @@ Only publicly observable reporting functionality is considered.
 
 ---
 
-## Observed Functions
+### Observed Functions
 
 | Function | Observation Status |
 |----------|--------------------|
@@ -2339,7 +2484,7 @@ Only publicly observable reporting functionality is considered.
 
 ---
 
-## Observed Evidence
+### Observed Evidence
 
 Current observations are based on publicly observable reporting resources and report consultation functionality.
 
@@ -2358,7 +2503,7 @@ Current Traceability:
 
 ---
 
-## Business Value
+### Business Value
 
 Observable business value includes:
 
@@ -2371,7 +2516,7 @@ The assessment does not evaluate report generation processes or analytical metho
 
 ---
 
-## Operational Value
+### Operational Value
 
 Observable operational contributions include:
 
@@ -2382,7 +2527,7 @@ Observable operational contributions include:
 
 ---
 
-## Decision Support Value
+### Decision Support Value
 
 Reporting contributes to decision support by making consolidated information available for consultation.
 
@@ -2397,7 +2542,7 @@ No assumptions are made regarding predictive analytics or automated reporting in
 
 ---
 
-## Evidence Available
+### Evidence Available
 
 | Evidence Type | Status |
 |---------------|--------|
@@ -2410,7 +2555,7 @@ No assumptions are made regarding predictive analytics or automated reporting in
 
 ---
 
-## Evidence Confidence
+### Evidence Confidence
 
 Overall Confidence: High
 
@@ -2422,7 +2567,7 @@ Internal reporting processes, analytical engines and automation workflows remain
 
 ---
 
-## Observed Strengths
+### Observed Strengths
 
 Observable strengths include:
 
@@ -2434,7 +2579,7 @@ Observable strengths include:
 
 ---
 
-## Potential Evolution
+### Potential Evolution
 
 Possible Enterprise Architecture evolution scenarios include:
 
@@ -2449,7 +2594,7 @@ These observations represent generic Enterprise Architecture considerations and 
 
 ---
 
-## Related Enterprise Capabilities
+### Related Enterprise Capabilities
 
 The Reporting capability is related to:
 
@@ -2462,14 +2607,14 @@ The Reporting capability is related to:
 
 ---
 
-## Related Enterprise Assessments
+### Related Enterprise Assessments
 
 - EA-001 — Coste360 Enterprise Discovery
 - EA-002 — Coste360 Enterprise Intelligence Assessment
 
 ---
 
-## QEN Perspective
+### QEN Perspective
 
 Within a QEN Sovereign Intelligence architecture, an Enterprise Decision Intelligence Layer could enrich reporting outputs through explainability and governance services while preserving existing reporting capabilities.
 
@@ -2486,27 +2631,27 @@ These considerations describe a conceptual Enterprise Architecture overlay and d
 
 ---
 
-# Decision Support
+## Decision Support
 
-## Capability Overview
+### Capability Profile
 
-### Capability Name
+**Capability Name.**
 
 Decision Support
 
-### Capability Category
+**Capability Category.**
 
 Enterprise Decision Support Services
 
-### Assessment Status
+**Assessment Status.**
 
 Partially Observed
 
-### Evidence Confidence
+**Evidence Confidence.**
 
 Medium
 
-### Assessment Scope
+**Assessment Scope.**
 
 This capability evaluates the observable characteristics through which the platform may support human decision-making.
 
@@ -2523,7 +2668,7 @@ No assumptions are made regarding:
 
 ---
 
-## Business Purpose
+### Business Purpose
 
 From an Enterprise Architecture perspective, the observable capabilities of the platform provide structured access to information that may assist operational and administrative decision-making.
 
@@ -2533,7 +2678,7 @@ The existence of automated decision-support mechanisms cannot be inferred from p
 
 ---
 
-## Observed Functions
+### Observed Functions
 
 | Function | Observation Status |
 |----------|--------------------|
@@ -2548,7 +2693,7 @@ The existence of automated decision-support mechanisms cannot be inferred from p
 
 ---
 
-## Observed Evidence
+### Observed Evidence
 
 Current observations are based on the availability of structured information resources supporting human consultation activities.
 
@@ -2557,7 +2702,7 @@ Current Traceability:
 - Evidence Status: Evidence Pending
 - Future Evidence ID: C360-EV-100
 - Validation Source: Public Functional Observation
-## Business Value
+### Business Value
 
 Observable business value includes:
 
@@ -2572,7 +2717,7 @@ Rather, it observes that the platform exposes information resources capable of s
 
 ---
 
-## Operational Value
+### Operational Value
 
 Observable operational contributions include:
 
@@ -2585,7 +2730,7 @@ These observations remain limited to publicly observable platform behaviour.
 
 ---
 
-## Decision Support Value
+### Decision Support Value
 
 From an Enterprise Architecture perspective, decision support is observable through the availability, accessibility and organisation of information.
 
@@ -2601,7 +2746,7 @@ No conclusions are drawn regarding automated recommendations, optimisation engin
 
 ---
 
-## Evidence Available
+### Evidence Available
 
 | Evidence Type | Status |
 |---------------|--------|
@@ -2614,7 +2759,7 @@ No conclusions are drawn regarding automated recommendations, optimisation engin
 
 ---
 
-## Evidence Confidence
+### Evidence Confidence
 
 Overall Confidence: Medium
 
@@ -2626,7 +2771,7 @@ However, internal decision support mechanisms cannot be verified through publicl
 
 ---
 
-## Observed Strengths
+### Observed Strengths
 
 Observable strengths include:
 
@@ -2638,7 +2783,7 @@ Observable strengths include:
 
 ---
 
-## Potential Evolution
+### Potential Evolution
 
 Generic Enterprise Architecture evolution scenarios include:
 
@@ -2653,7 +2798,7 @@ These observations represent generic architectural evolution models and shall no
 
 ---
 
-## Related Enterprise Capabilities
+### Related Enterprise Capabilities
 
 The Decision Support capability is related to:
 
@@ -2666,14 +2811,14 @@ The Decision Support capability is related to:
 
 ---
 
-## Related Enterprise Assessments
+### Related Enterprise Assessments
 
 - EA-001 — Coste360 Enterprise Discovery
 - EA-002 — Coste360 Enterprise Intelligence Assessment
 
 ---
 
-## QEN Perspective
+### QEN Perspective
 
 Within a QEN Sovereign Intelligence architecture, an Enterprise Decision Intelligence Layer could operate above the existing information assets while preserving the current platform.
 
@@ -2690,27 +2835,27 @@ These considerations describe a conceptual Enterprise Architecture model and do 
 
 ---
 
-# User Experience
+## User Experience
 
-## Capability Overview
+### Capability Profile
 
-### Capability Name
+**Capability Name.**
 
 User Experience
 
-### Capability Category
+**Capability Category.**
 
 Enterprise User Interaction
 
-### Assessment Status
+**Assessment Status.**
 
 Observed
 
-### Evidence Confidence
+**Evidence Confidence.**
 
 High
 
-### Assessment Scope
+**Assessment Scope.**
 
 This capability evaluates the publicly observable interaction model provided by the platform.
 
@@ -2726,7 +2871,7 @@ No assumptions are made regarding:
 
 ---
 
-## Business Purpose
+### Business Purpose
 
 From an Enterprise Architecture perspective, the User Experience capability provides users with a coherent interaction model for accessing platform services.
 
@@ -2739,7 +2884,7 @@ Observable objectives include:
 
 ---
 
-## Observed Functions
+### Observed Functions
 
 | Function | Observation Status |
 |----------|--------------------|
@@ -2754,7 +2899,7 @@ Observable objectives include:
 
 ---
 
-## Observed Evidence
+### Observed Evidence
 
 Current observations are based on publicly accessible user interface components and interaction flows.
 
@@ -2774,7 +2919,7 @@ Current Traceability:
 
 ---
 
-## Business Value
+### Business Value
 
 Observable business value includes:
 
@@ -2785,7 +2930,7 @@ Observable business value includes:
 
 ---
 
-## Operational Value
+### Operational Value
 
 Observable operational contributions include:
 
@@ -2796,7 +2941,7 @@ Observable operational contributions include:
 
 ---
 
-## Decision Support Value
+### Decision Support Value
 
 A consistent user experience contributes indirectly to decision support by facilitating access to relevant information resources.
 
@@ -2811,7 +2956,7 @@ No conclusions are drawn regarding adaptive interfaces or intelligent interactio
 
 ---
 
-## Evidence Available
+### Evidence Available
 
 | Evidence Type | Status |
 |---------------|--------|
@@ -2821,7 +2966,7 @@ No conclusions are drawn regarding adaptive interfaces or intelligent interactio
 | UX engineering documentation | Not Publicly Verifiable |
 | Accessibility verification | Not Publicly Verifiable |
 | Internal usability metrics | Out of Scope |
-## Evidence Confidence
+### Evidence Confidence
 
 Overall Confidence: High
 
@@ -2833,7 +2978,7 @@ The assessment does not evaluate usability methodologies, accessibility certific
 
 ---
 
-## Observed Strengths
+### Observed Strengths
 
 Observable strengths include:
 
@@ -2847,7 +2992,7 @@ These observations are based exclusively on externally visible platform behaviou
 
 ---
 
-## Potential Evolution
+### Potential Evolution
 
 Generic Enterprise Architecture evolution scenarios include:
 
@@ -2862,7 +3007,7 @@ These observations represent generic Enterprise Architecture considerations and 
 
 ---
 
-## Related Enterprise Capabilities
+### Related Enterprise Capabilities
 
 The User Experience capability is functionally related to:
 
@@ -2875,14 +3020,14 @@ The User Experience capability is functionally related to:
 
 ---
 
-## Related Enterprise Assessments
+### Related Enterprise Assessments
 
 - EA-001 — Coste360 Enterprise Discovery
 - EA-002 — Coste360 Enterprise Intelligence Assessment
 
 ---
 
-## QEN Perspective
+### QEN Perspective
 
 Within a QEN Sovereign Intelligence architecture, an Enterprise Decision Intelligence Layer could enrich the existing user experience by exposing governance-oriented information while preserving current operational workflows.
 
@@ -2899,27 +3044,27 @@ These considerations represent a conceptual Enterprise Architecture perspective 
 
 ---
 
-# Knowledge Access
+## Knowledge Access
 
-## Capability Overview
+### Capability Profile
 
-### Capability Name
+**Capability Name.**
 
 Knowledge Access
 
-### Capability Category
+**Capability Category.**
 
 Enterprise Knowledge Services
 
-### Assessment Status
+**Assessment Status.**
 
 Observed
 
-### Evidence Confidence
+**Evidence Confidence.**
 
 High
 
-### Assessment Scope
+**Assessment Scope.**
 
 This capability evaluates the publicly observable mechanisms through which information assets are made available for consultation.
 
@@ -2936,7 +3081,7 @@ No assumptions are made regarding:
 
 ---
 
-## Business Purpose
+### Business Purpose
 
 From an Enterprise Architecture perspective, the Knowledge Access capability enables users to consult structured information resources through a unified information environment.
 
@@ -2951,7 +3096,7 @@ Only publicly observable functionality is evaluated.
 
 ---
 
-## Observed Functions
+### Observed Functions
 
 | Function | Observation Status |
 |----------|--------------------|
@@ -2966,7 +3111,7 @@ Only publicly observable functionality is evaluated.
 
 ---
 
-## Observed Evidence
+### Observed Evidence
 
 Current observations are supported by publicly accessible information services exposing administrative, documentary and territorial knowledge.
 
@@ -2986,7 +3131,7 @@ Current Traceability:
 
 ---
 
-## Business Value
+### Business Value
 
 Observable business value includes:
 
@@ -2997,7 +3142,7 @@ Observable business value includes:
 
 ---
 
-## Operational Value
+### Operational Value
 
 Observable operational contributions include:
 
@@ -3008,7 +3153,7 @@ Observable operational contributions include:
 
 ---
 
-## Decision Support Value
+### Decision Support Value
 
 Knowledge accessibility contributes to decision support by making relevant information available to users performing operational and administrative activities.
 
@@ -3023,7 +3168,7 @@ No conclusions are drawn regarding semantic reasoning or automated knowledge ser
 
 ---
 
-## Evidence Available
+### Evidence Available
 
 | Evidence Type | Status |
 |---------------|--------|
@@ -3036,7 +3181,7 @@ No conclusions are drawn regarding semantic reasoning or automated knowledge ser
 
 ---
 
-## Evidence Confidence
+### Evidence Confidence
 
 Overall Confidence: High
 
@@ -3048,7 +3193,7 @@ Internal knowledge management technologies and governance models cannot be verif
 
 ---
 
-## Observed Strengths
+### Observed Strengths
 
 Observable strengths include:
 
@@ -3060,7 +3205,7 @@ Observable strengths include:
 
 ---
 
-## Potential Evolution
+### Potential Evolution
 
 Possible Enterprise Architecture evolution scenarios include:
 
@@ -3075,7 +3220,7 @@ These observations represent generic Enterprise Architecture considerations and 
 
 ---
 
-## Related Enterprise Capabilities
+### Related Enterprise Capabilities
 
 The Knowledge Access capability is related to:
 
@@ -3088,14 +3233,14 @@ The Knowledge Access capability is related to:
 
 ---
 
-## Related Enterprise Assessments
+### Related Enterprise Assessments
 
 - EA-001 — Coste360 Enterprise Discovery
 - EA-002 — Coste360 Enterprise Intelligence Assessment
 
 ---
 
-## QEN Perspective
+### QEN Perspective
 
 Within a QEN Sovereign Intelligence architecture, an Enterprise Decision Intelligence Layer could extend existing knowledge accessibility through governance-oriented services while preserving the current information ecosystem.
 
@@ -3112,34 +3257,34 @@ These considerations describe a conceptual Enterprise Architecture overlay and d
 
 ---
 
-# Platform Governance
+## Platform Governance
 
-## Capability Overview
+### Capability Profile
 
-### Capability Name
+**Capability Name.**
 
 Platform Governance
 
-### Capability Category
+**Capability Category.**
 
 Enterprise Governance Services
 
-### Assessment Status
+**Assessment Status.**
 
 Partially Observed
 
-### Evidence Confidence
+**Evidence Confidence.**
 
 Low
 
-### Assessment Scope
+**Assessment Scope.**
 
 This capability evaluates only governance characteristics that are publicly observable through the platform.
 
 The assessment excludes any inference regarding internal governance structures, organisational responsibilities, operational controls or compliance processes.
 
 Only externally visible governance evidence is considered.
-## Business Purpose
+### Business Purpose
 
 From an Enterprise Architecture perspective, the Platform Governance capability concerns the observable mechanisms that regulate access to information resources, service availability and platform organisation.
 
@@ -3156,7 +3301,7 @@ No assumptions are made regarding:
 
 ---
 
-## Observed Functions
+### Observed Functions
 
 | Function | Observation Status |
 |----------|--------------------|
@@ -3171,7 +3316,7 @@ No assumptions are made regarding:
 
 ---
 
-## Observed Evidence
+### Observed Evidence
 
 Current observations are supported by publicly observable access mechanisms and platform organisation.
 
@@ -3190,7 +3335,7 @@ Current Traceability:
 
 ---
 
-## Business Value
+### Business Value
 
 Observable business value includes:
 
@@ -3203,7 +3348,7 @@ The assessment does not evaluate governance effectiveness or organisational gove
 
 ---
 
-## Operational Value
+### Operational Value
 
 Observable operational contributions include:
 
@@ -3214,7 +3359,7 @@ Observable operational contributions include:
 
 ---
 
-## Decision Support Value
+### Decision Support Value
 
 Platform Governance contributes indirectly to decision support by ensuring that observable information resources are presented within a structured operational environment.
 
@@ -3229,7 +3374,7 @@ No conclusions are drawn regarding governance automation or policy enforcement m
 
 ---
 
-## Evidence Available
+### Evidence Available
 
 | Evidence Type | Status |
 |---------------|--------|
@@ -3242,7 +3387,7 @@ No conclusions are drawn regarding governance automation or policy enforcement m
 
 ---
 
-## Evidence Confidence
+### Evidence Confidence
 
 Overall Confidence: Low
 
@@ -3254,7 +3399,7 @@ Internal governance models, organisational controls and compliance processes can
 
 ---
 
-## Observed Strengths
+### Observed Strengths
 
 Observable strengths include:
 
@@ -3267,7 +3412,7 @@ These observations remain limited to publicly visible functionality.
 
 ---
 
-## Potential Evolution
+### Potential Evolution
 
 Generic Enterprise Architecture evolution scenarios include:
 
@@ -3282,7 +3427,7 @@ These considerations represent generic Enterprise Architecture concepts and shal
 
 ---
 
-## Related Enterprise Capabilities
+### Related Enterprise Capabilities
 
 The Platform Governance capability is related to:
 
@@ -3295,14 +3440,14 @@ The Platform Governance capability is related to:
 
 ---
 
-## Related Enterprise Assessments
+### Related Enterprise Assessments
 
 - EA-001 — Coste360 Enterprise Discovery
 - EA-002 — Coste360 Enterprise Intelligence Assessment
 
 ---
 
-## QEN Perspective
+### QEN Perspective
 
 Within a QEN Sovereign Intelligence architecture, an Enterprise Decision Intelligence Layer could complement existing governance mechanisms by introducing explainability, evidence traceability and governance transparency without modifying operational platform behaviour.
 
@@ -3319,27 +3464,27 @@ These considerations represent a conceptual Enterprise Architecture overlay and 
 
 ---
 
-# Enterprise Services
+## Enterprise Services
 
-## Capability Overview
+### Capability Profile
 
-### Capability Name
+**Capability Name.**
 
 Enterprise Services
 
-### Capability Category
+**Capability Category.**
 
 Enterprise Service Delivery
 
-### Assessment Status
+**Assessment Status.**
 
 Observed
 
-### Evidence Confidence
+**Evidence Confidence.**
 
 Medium
 
-### Assessment Scope
+**Assessment Scope.**
 
 This capability evaluates the observable enterprise services exposed by the platform through publicly accessible functionality.
 
@@ -3356,7 +3501,7 @@ No assumptions are made regarding:
 
 ---
 
-## Business Purpose
+### Business Purpose
 
 From an Enterprise Architecture perspective, the Enterprise Services capability represents the observable set of services made available to platform users.
 
@@ -3369,7 +3514,7 @@ Observable objectives include:
 
 ---
 
-## Observed Functions
+### Observed Functions
 
 | Function | Observation Status |
 |----------|--------------------|
@@ -3384,7 +3529,7 @@ Observable objectives include:
 
 ---
 
-## Observed Evidence
+### Observed Evidence
 
 Observable evidence includes:
 
@@ -3402,7 +3547,7 @@ Current Traceability:
 
 ---
 
-## Business Value
+### Business Value
 
 Observable business value includes:
 
@@ -3413,7 +3558,7 @@ Observable business value includes:
 
 ---
 
-## Operational Value
+### Operational Value
 
 Observable operational contributions include:
 
@@ -3424,7 +3569,7 @@ Observable operational contributions include:
 
 ---
 
-## Decision Support Value
+### Decision Support Value
 
 Enterprise Services contribute to decision support by exposing structured information resources through a unified service environment.
 
@@ -3439,7 +3584,7 @@ No assumptions are made regarding orchestration engines or intelligent service c
 
 ---
 
-## Evidence Available
+### Evidence Available
 
 | Evidence Type | Status |
 |---------------|--------|
@@ -3452,7 +3597,7 @@ No assumptions are made regarding orchestration engines or intelligent service c
 
 ---
 
-## Evidence Confidence
+### Evidence Confidence
 
 Overall Confidence: Medium
 
@@ -3464,7 +3609,7 @@ The internal service architecture and orchestration mechanisms remain outside th
 
 ---
 
-## Observed Strengths
+### Observed Strengths
 
 Observable strengths include:
 
@@ -3475,7 +3620,7 @@ Observable strengths include:
 - support for operational consultation.
 
 ---
-## Potential Evolution
+### Potential Evolution
 
 Possible Enterprise Architecture evolution scenarios include:
 
@@ -3490,7 +3635,7 @@ These observations represent generic Enterprise Architecture concepts and shall 
 
 ---
 
-## Related Enterprise Capabilities
+### Related Enterprise Capabilities
 
 The Enterprise Services capability is functionally related to:
 
@@ -3503,14 +3648,14 @@ The Enterprise Services capability is functionally related to:
 
 ---
 
-## Related Enterprise Assessments
+### Related Enterprise Assessments
 
 - EA-001 — Coste360 Enterprise Discovery
 - EA-002 — Coste360 Enterprise Intelligence Assessment
 
 ---
 
-## QEN Perspective
+### QEN Perspective
 
 Within a QEN Sovereign Intelligence architecture, an Enterprise Decision Intelligence Layer could operate above existing enterprise services without replacing or modifying operational components.
 
@@ -3527,7 +3672,9 @@ These considerations represent a conceptual Enterprise Architecture overlay and 
 
 ---
 
-# Enterprise Capability Maturity Model
+# Cross-Capability Analysis
+
+## Enterprise Capability Maturity Model
 
 ## Assessment Approach
 
@@ -3705,7 +3852,9 @@ The functional architecture reconstructed within this assessment demonstrates a 
 However, this representation remains strictly limited to publicly available evidence and shall not be interpreted as a reconstruction of the actual Coste360 software architecture.
 
 ---
-# Enterprise Value Analysis
+# Strategic Implications
+
+## Enterprise Value Analysis
 
 ## Assessment Method
 
@@ -3756,6 +3905,8 @@ Evidence Status: Observed
 High
 
 ---
+
+## Appendices
 
 ## Assessment Limitations
 
@@ -4152,95 +4303,8 @@ Assessment Limitation:
 Maintainability depends on internal software engineering practices, lifecycle management and operational governance that remain outside the scope of this assessment.
 
 ---
-# Assessment Summary
 
-## Executive Summary
-
-EA-003 provides an independent Enterprise Architecture assessment of the publicly observable capabilities of the Coste360 platform.
-
-The assessment has been conducted according to the principles established by the QEN Sovereign Intelligence Validation Programme:
-
-- Evidence-First;
-- Vendor Neutrality;
-- Technology Independence;
-- Functional Traceability;
-- Audit Readiness.
-
-The objective has not been to evaluate software implementation, but rather to identify and classify observable enterprise capabilities through publicly verifiable evidence.
-
-The assessment confirms the existence of a coherent set of enterprise information services supporting territorial, administrative and documentary consultation.
-
-No conclusions are drawn regarding internal implementation, software quality, infrastructure or organisational governance.
-
----
-
-# Key Findings
-
-The assessment identified the following principal observations.
-
-## Functional Coverage
-
-The platform exposes a broad range of publicly observable enterprise capabilities including:
-
-- Executive Dashboard;
-- Data Collection;
-- Data Management;
-- Dataset Governance;
-- Search Engine;
-- Geospatial Intelligence;
-- Administrative Intelligence;
-- Document Intelligence;
-- Monitoring;
-- Reporting;
-- Decision Support;
-- User Experience;
-- Knowledge Access;
-- Platform Governance;
-- Enterprise Services.
-
----
-
-## Information Integration
-
-Observable functionality indicates an integrated consultation environment combining:
-
-- territorial information;
-- administrative resources;
-- documentary assets;
-- reporting outputs;
-- searchable datasets.
-
-The assessment does not infer the internal integration architecture supporting these services.
-
----
-
-## Enterprise Orientation
-
-Publicly observable functionality suggests an enterprise-oriented information platform supporting consultation and information accessibility across multiple operational domains.
-
-This observation is based exclusively on externally visible behaviour.
-
----
-
-## Decision Support
-
-The platform provides structured access to information that may support human decision-making.
-
-No evidence has been identified demonstrating automated decision engines or artificial intelligence services.
-
-Accordingly, Decision Support has been assessed exclusively from the perspective of information availability.
-
----
-
-## Governance Visibility
-
-Observable governance characteristics are limited primarily to access control and differentiated service availability.
-
-Internal governance processes remain outside the scope of publicly verifiable assessment.
-
----
-
-# Capability Overview
+# Overall Capability Assessment
 
 | Capability Domain | Assessment Status | Confidence |
 |-------------------|------------------|------------|
@@ -4288,7 +4352,7 @@ No capability has been assigned Observable Maturity Level 4 or Level 5 due to th
 
 ---
 
-# Evidence Traceability Matrix
+# Evidence Matrix
 
 | Evidence Reference | Current Status | Planned Consolidation |
 |--------------------|----------------|-----------------------|
@@ -4338,7 +4402,7 @@ Whenever evidence was insufficient, the assessment explicitly adopted one of the
 
 ---
 
-# Recommendations for Future Assessment
+## Recommendations for Future Assessment
 
 Future enterprise assessments may expand the current evidence base through additional publicly verifiable artefacts.
 
