@@ -11,7 +11,7 @@ async function askGemini(promptText) {
     const API_BASE = "https://api.cognitivelogic.it";
 
     try {
-        const response = await fetch(`${API_BASE}/gemini/qen-score`, {
+        const response = await fetch(`${API_BASE}/qen-score`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ description: promptText })

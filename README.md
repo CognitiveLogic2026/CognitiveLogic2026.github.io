@@ -51,7 +51,7 @@ Hetzner CAX21 ARM64 — Ubuntu 24.04 — 178.104.190.107
 
 Nginx (443) → api.cognitivelogic.it
   ├── Flask :5000  — Claude API  (risk, compliance, analyze)
-  ├── Flask :5001  — Gemini API  (qen-score, market-scan)
+  ├── Flask :5001  — QEN Sovereign API  (qen-score, market-scan)
   └── orchestrator.py → /full-analysis (parallel dual-brain)
 ```
 

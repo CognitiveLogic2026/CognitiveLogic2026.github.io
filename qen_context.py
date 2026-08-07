@@ -6,7 +6,7 @@ NOTA STATO INFRASTRUTTURA (aggiornato 2026-07-12, diagnosi VPS):
   (systemctl disable --now, 12/7/2026). Caricavano app.py, uno stub FastAPI senza logica
   reale. Vedi API_ENDPOINTS_PIANIFICATI_NON_ATTIVI sotto.
 - gemini_backend.py (PM2, porta 5001): in esecuzione ma SCOLLEGATO da main.py.
-- /gemini/qen-score e /gemini/compliance-audit sono rotte DENTRO main.py su Flask :5000.
+- /qen-score e /compliance-audit sono rotte DENTRO main.py su Flask :5000.
 - Backend reali: Flask :5000 (cognitivelogic-flask.service) e FastAPI :8001 (cognitivelogic.service).
 """
 
@@ -184,8 +184,8 @@ API_ENDPOINTS_ATTIVI = {
     "POST /classify-risk": "Classificazione rischio",
     "GET/POST /admin/*": "Amministrazione (autenticato)",
     "GET/POST /evide/*": "Modulo Evide, audit trail con hash/prev_hash",
-    "POST /gemini/qen-score": "Legacy compatibility namespace (deprecated)",
-    "POST /gemini/compliance-audit": "Legacy compatibility namespace (deprecated)",
+    "POST /qen-score": "Legacy compatibility namespace (deprecated)",
+    "POST /compliance-audit": "Legacy compatibility namespace (deprecated)",
     "POST /agents/compliance-auditor": "QEN Sovereign Compliance Engine",
     "POST /agents/territorial-mapper": "QEN Territorial Intelligence Engine",
     "POST /agents/advisory-council": "QEN Governance Advisory Engine",

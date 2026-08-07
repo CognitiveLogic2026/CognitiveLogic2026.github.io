@@ -415,7 +415,7 @@ class TestSovereignQenScoreEndpoint:
         with patch("main.check_duplicate", return_value=None), \
              patch("main.save_pilot") as mock_save:
             resp = client.post(
-                "/gemini/qen-score",
+                "/qen-score",
                 json=payload,
                 headers=self._trusted,
             )
@@ -443,13 +443,13 @@ class TestComplianceAuditEndpoint:
     _trusted = {"Origin": "https://www.cognitivelogic.it"}
 
     def test_missing_description_returns_400(self):
-        resp = client.post("/gemini/compliance-audit", json={"system_name": "X"},
+        resp = client.post("/compliance-audit", json={"system_name": "X"},
                            headers=self._trusted)
         assert resp.status_code == 400
 
     def test_success_via_sovereign_engine(self):
         resp = client.post(
-            "/gemini/compliance-audit",
+            "/compliance-audit",
             json=self._payload,
             headers=self._trusted,
         )
@@ -513,13 +513,13 @@ class TestTrustedOrigin:
 
 
     def test_gemini_qen_score_blocked_without_origin(self):
-        resp = client.post("/gemini/qen-score",
+        resp = client.post("/qen-score",
                            json={"description": "test"},
                            headers={})
         assert resp.status_code == 403
 
     def test_compliance_audit_blocked_without_origin(self):
-        resp = client.post("/gemini/compliance-audit",
+        resp = client.post("/compliance-audit",
                            json={"description": "test"},
                            headers={})
         assert resp.status_code == 403

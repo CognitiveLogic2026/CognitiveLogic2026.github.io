@@ -75,7 +75,7 @@ def _require_trusted_origin():
 
 @app.before_request
 def handle_preflight():
-    if request.method == 'OPTIONS':
+    if request.method == 'OPTIONS' and request.url_rule is not None:
         resp = app.make_response('')
         resp.status_code = 204
         return resp
@@ -486,22 +486,11 @@ def copilot_analyze():
         return jsonify({"error": "Errore interno del server"}), 500
 
 
-@app.after_request
-def add_legacy_gemini_deprecation_headers(response):
-    """Mark /gemini/* as a deprecated sovereign compatibility namespace."""
-    if request.path.startswith("/gemini/"):
-        response.headers["Deprecation"] = "true"
-        response.headers["Link"] = (
-            '</copilot-analyze>; rel="successor-version"'
-        )
-        response.headers["X-QEN-Compatibility-Route"] = "legacy-gemini"
-    return response
 
-
-@app.route("/gemini/qen-score", methods=["POST"])
+@app.route("/qen-score", methods=["POST"])
 @limiter.limit("10 per minute;100 per day")
-def gemini_qen_score():
-    """Legacy-compatible QEN scoring route backed by the sovereign engine."""
+def qen_score():
+    """Canonical QEN scoring route backed by QEN Sovereign Intelligence."""
     blocked = _require_trusted_origin()
     if blocked:
         return blocked
@@ -558,10 +547,10 @@ def gemini_qen_score():
         }), 500
 
 
-@app.route("/gemini/compliance-audit", methods=["POST"])
+@app.route("/compliance-audit", methods=["POST"])
 @limiter.limit("10 per minute;100 per day")
-def gemini_compliance_audit():
-    """Legacy-compatible compliance audit backed by sovereign intelligence."""
+def compliance_audit():
+    """Canonical compliance audit backed by QEN Sovereign Intelligence."""
     blocked = _require_trusted_origin()
     if blocked:
         return blocked

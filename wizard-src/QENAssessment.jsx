@@ -40,7 +40,7 @@ const QENAssessment = () => {
   const acceptDisclaimer = async () => {
     setError(null);
     try {
-      const res = await fetch('/gemini/compliance-audit/wizard/disclaimer', {
+      const res = await fetch('/compliance-audit/wizard/disclaimer', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ sessionId, consented: true }),
@@ -65,7 +65,7 @@ const QENAssessment = () => {
         sessionId,
         answers: questions.map((q) => ({ id: q.id, area: q.area, value: answers[q.id] })),
       };
-      const res = await fetch('/gemini/compliance-audit/wizard/submit', {
+      const res = await fetch('/compliance-audit/wizard/submit', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(payload),
