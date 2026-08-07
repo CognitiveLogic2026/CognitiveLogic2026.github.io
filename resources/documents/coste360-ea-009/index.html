@@ -1,0 +1,439 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>EA-009 — Coste360 Validation Evidence Catalogue | Cognitive Logic</title>
+<meta name="description" content="Catalogo autorevole delle evidenze del Coste360 Validation Programme: identificazione, classificazione, governance e tracciabilità degli Evidence ID.">
+<link rel="stylesheet" href="/css/fonts-local.css">
+<link rel="stylesheet" href="/css/style.css?v=3">
+<link rel="stylesheet" href="/resources/style.css?v=2">
+</head>
+<body>
+<a class="skip-link" href="#main">Vai al contenuto principale</a>
+<header class="site-header"><div class="container header-inner"><a href="/index.html" class="brand" aria-label="Cognitive Logic — Home"><span class="wordmark wordmark--nav notranslate" translate="no"><span class="wm-top">Cognitive</span><span class="wm-bot">Logic</span></span></a><nav class="main-nav" aria-label="Navigazione principale"><a href="/resources/">Resource Center</a><a href="/framework.html">Framework</a><a href="/validation.html">Validazione</a><a href="/trust.html">Trust Center</a></nav></div></header>
+<main id="main">
+<section class="document-hero"><div class="container"><nav class="breadcrumbs" aria-label="Percorso"><a href="/index.html">Home</a> / <a href="/resources/">Resource Center</a> / <span class="notranslate" translate="no">EA-009 — Coste360 Validation Evidence Catalogue</span></nav><p class="resource-kicker">Validation e Case Studies</p><h1 class="notranslate" translate="no">EA-009 — Coste360 Validation Evidence Catalogue</h1><dl class="document-metadata"><div><dt>Categoria</dt><dd>Validation e Case Studies</dd></div><div><dt>Documento</dt><dd>Enterprise Assessment EA-009</dd></div><div><dt>Versione</dt><dd>1.0</dd></div><div><dt>Stato</dt><dd>Approved</dd></div><div><dt>Classificazione</dt><dd>Internal Enterprise Assessment</dd></div><div><dt>Formato</dt><dd>Evidence Catalogue · HTML statico</dd></div></dl></div></section>
+<section class="section"><div class="container document-layout"><article class="resource-document" data-source="qen-sovereign/validation/assessments/EA-009-COSTE360-VALIDATION-EVIDENCE-CATALOGUE.md">
+<!-- EXECUTIVE-LANDING-EA-009 -->
+<section aria-labelledby="executive-ea-009"><h2 id="executive-ea-009">Executive Landing</h2><p>EA-009 è il catalogo autorevole delle evidenze utilizzate dal Coste360 Validation Programme. Centralizza identificazione, classificazione, governance, stato e ciclo di vita delle evidenze, senza svolgere assessment, esprimere opinioni o certificare piattaforme esterne.</p><p>In qualità di Single Source of Truth, EA-009 assegna identificatori permanenti e non riutilizzabili, consente a ogni assessment di richiamare gli Evidence ID senza duplicare le evidenze e preserva la ricostruibilità delle modifiche. EA-003, EA-004, EA-005, EA-006, EA-007 ed EA-008 utilizzano così un riferimento comune per capacità di piattaforma, governance, informazione, dati, integrazione e architettura applicativa.</p><p>VR-001 consolida e verifica a livello di programma le conclusioni sostenute dal portafoglio degli assessment; EA-009 ne costituisce il riferimento centrale per l'identificazione e la tracciabilità delle evidenze. Per revisori, CIO, Risk, Compliance ed Enterprise Architect, il catalogo rende verificabili fonte, classificazione, criticità, freshness, maturità, relazioni, cronologia e responsabilità di revisione entro il perimetro dichiarato.</p></section>
+<section aria-labelledby="why-ea-009"><h2 id="why-ea-009">Why this document matters</h2><p>Un programma di validazione è auditabile solo quando le evidenze possono essere identificate senza ambiguità, mantenute in modo controllato e riutilizzate senza copie divergenti. EA-009 stabilisce quel riferimento comune e rende esplicite anche le condizioni in cui un'evidenza è scaduta, in revisione o non ancora verificata.</p></section>
+<section aria-labelledby="architecture-ea-009"><h2 id="architecture-ea-009">Evidence Architecture</h2><p>Il catalogo organizza ogni Evidence ID attraverso tassonomia primaria e secondaria, fonte, affidabilità, criticità, freshness, maturità, versione, ownership e stato di validazione. Il modello “Collect Once — Reuse Everywhere” separa la manutenzione centrale delle evidenze dai riferimenti mantenuti negli assessment.</p></section>
+<section aria-labelledby="traceability-ea-009"><h2 id="traceability-ea-009">Traceability Model</h2><p>La tracciabilità è bidirezionale: collega Evidence ID, Enterprise Assessment, artefatti di governance, documenti repository, attività di validazione, audit record e change history. Gli identificatori restano permanenti anche per evidenze deprecate, mentre ogni modifica conserva versione, data, revisore, motivazione e stato di approvazione.</p></section>
+<section aria-labelledby="programme-ea-009"><h2 id="programme-ea-009">Relationship with the Validation Programme</h2><p>EA-003 → EA-008 producono valutazioni su domini complementari e referenziano le evidenze governate da EA-009. VR-001 usa il portafoglio EA-001 → EA-009 come fonte di evidenza per il consolidamento del programma. EA-009 non sostituisce né modifica questi documenti: mantiene il livello comune necessario per coerenza cross-assessment, auditabilità e validazione.</p></section>
+<hr aria-hidden="true">
+<section aria-labelledby="technical-document-ea-009"><h2 id="technical-document-ea-009">Documento tecnico integrale</h2><p>Di seguito è pubblicato integralmente il contenuto tecnico del documento sorgente EA-009.</p></section>
+<div class="technical-document">
+<h1>QEN Sovereign Intelligence</h1>
+<h1>Coste360 Validation Programme</h1>
+<h1>Enterprise Assessment EA-009</h1>
+<h1>Coste360 Validation Evidence Catalogue</h1>
+<p>Version: 1.0</p>
+<p>Status: Approved</p>
+<p>Classification: Internal Enterprise Assessment</p>
+<p>Repository: Cognitive Logic</p>
+<p>Framework: QEN Sovereign Intelligence</p>
+<hr>
+<h1>Executive Summary</h1>
+<p>The Coste360 Validation Evidence Catalogue (EA-009) establishes the official enterprise repository of validation evidence supporting the QEN Sovereign Intelligence Validation Programme.</p>
+<p>The catalogue defines a centralized governance model for all evidence referenced by Enterprise Assessments.</p>
+<p>EA-009 serves as the authoritative repository for evidence identification, classification, governance, traceability, auditability, lifecycle management, and reuse.</p>
+<p>The catalogue does not perform assessments.</p>
+<p>It does not express opinions.</p>
+<p>It does not certify external platforms.</p>
+<p>Its purpose is to provide a structured inventory of publicly observable evidence supporting independent enterprise validation activities.</p>
+<p>EA-009 is designated as the Single Source of Truth for all validation evidence within the Coste360 Validation Programme.</p>
+<hr>
+<h1>Objectives</h1>
+<p>The objectives of this catalogue are to:</p>
+<ul>
+<li>establish a centralized evidence repository;</li>
+<li>define unique Evidence IDs;</li>
+<li>standardize evidence classification;</li>
+<li>support audit readiness;</li>
+<li>enable evidence reuse;</li>
+<li>eliminate duplication;</li>
+<li>improve repository consistency;</li>
+<li>support enterprise governance;</li>
+<li>strengthen decision traceability;</li>
+<li>provide lifecycle management for evidence.</li>
+</ul>
+<hr>
+<h1>Scope</h1>
+<p>This catalogue applies to all Enterprise Assessments produced within the Coste360 Validation Programme.</p>
+<p>Enterprise Assessments shall reference Evidence IDs defined in this catalogue without duplicating the underlying evidence.</p>
+<p>EA-009 governs the identification, maintenance, review, traceability and lifecycle of enterprise validation evidence.</p>
+<hr>
+<h1>Guiding Principles</h1>
+<p>The catalogue is based on the following principles:</p>
+<ul>
+<li>Evidence First</li>
+<li>Transparency</li>
+<li>Explainability</li>
+<li>Traceability</li>
+<li>Technology Independence</li>
+<li>Governance by Design</li>
+<li>Documentation First</li>
+<li>Continuous Validation</li>
+<li>Human Accountability</li>
+<li>Single Source of Truth</li>
+</ul>
+<hr>
+<h1>Repository Purpose</h1>
+<p>The repository exists to:</p>
+<ul>
+<li>centralize enterprise evidence;</li>
+<li>support cross-assessment reuse;</li>
+<li>simplify maintenance;</li>
+<li>improve auditability;</li>
+<li>ensure consistency across assessments;</li>
+<li>provide controlled lifecycle management;</li>
+<li>reduce documentation redundancy.</li>
+</ul>
+<hr>
+<h1>Evidence Identification Model</h1>
+<p>Each evidence item shall be assigned a unique identifier using the following format:</p>
+<p>EV-0001</p>
+<p>EV-0002</p>
+<p>EV-0003</p>
+<p>...</p>
+<p>Evidence IDs are permanent.</p>
+<p>Evidence IDs shall never be reused.</p>
+<p>Deprecated evidence shall retain its identifier.</p>
+<hr>
+<h1>Evidence Taxonomy</h1>
+<h2>Purpose</h2>
+<p>The Evidence Taxonomy defines the official enterprise classification model applied to every Evidence ID managed by EA-009.</p>
+<p>Each evidence item shall belong to one Primary Category and may optionally belong to multiple Secondary Categories.</p>
+<p>This taxonomy enables consistent classification, traceability, reporting and cross-reference across the entire Validation Programme.</p>
+<h2>Primary Categories</h2>
+<p>The following categories constitute the official enterprise taxonomy.</p>
+<div class="document-table-wrap"><table><thead><tr><th>Category</th><th>Description</th></tr></thead><tbody><tr><td>Platform</td><td>Platform capabilities and observable functionalities.</td></tr><tr><td>Governance</td><td>Governance structures, policies and decision processes.</td></tr><tr><td>Data</td><td>Data assets, models, metadata and information management.</td></tr><tr><td>Security</td><td>Security controls, authentication and protection mechanisms.</td></tr><tr><td>Compliance</td><td>Regulatory, legal and policy compliance evidence.</td></tr><tr><td>Operations</td><td>Operational processes and runtime activities.</td></tr><tr><td>Architecture</td><td>System architecture, components and design principles.</td></tr><tr><td>Documentation</td><td>Official documentation and technical publications.</td></tr><tr><td>Transparency</td><td>Public transparency and explainability information.</td></tr><tr><td>Public Communication</td><td>Public announcements and institutional communications.</td></tr><tr><td>Organization</td><td>Organizational information and governance structures.</td></tr><tr><td>Ecosystem</td><td>External ecosystem integrations and collaborations.</td></tr><tr><td>Integration</td><td>APIs, interoperability and integration capabilities.</td></tr><tr><td>Monitoring</td><td>Monitoring, observability and operational measurements.</td></tr><tr><td>Quality</td><td>Quality assurance and validation evidence.</td></tr></tbody></table></div>
+<hr>
+<h1>Evidence Classification Rules</h1>
+<p>Each Evidence ID shall include:</p>
+<ul>
+<li>Evidence ID</li>
+<li>Evidence Title</li>
+<li>Primary Category</li>
+<li>Secondary Categories</li>
+<li>Evidence Owner</li>
+<li>Source Type</li>
+<li>Criticality Level</li>
+<li>Freshness Status</li>
+<li>Maturity Level</li>
+<li>Current Version</li>
+</ul>
+<p>No evidence shall remain unclassified.</p>
+<hr>
+<h1>Evidence Criticality Model</h1>
+<p>Every Evidence ID shall be assigned one criticality level.</p>
+<div class="document-table-wrap"><table><thead><tr><th>Level</th><th>Objective Criteria</th></tr></thead><tbody><tr><td>Critical</td><td>Required to validate core enterprise capabilities or governance claims.</td></tr><tr><td>High</td><td>Strongly supports assessment conclusions and audit activities.</td></tr><tr><td>Medium</td><td>Important supporting evidence for validation.</td></tr><tr><td>Low</td><td>Informational evidence with limited assessment impact.</td></tr></tbody></table></div>
+<p>Criticality shall be determined using objective validation criteria only.</p>
+<hr>
+<h1>Evidence Source Classification</h1>
+<p>Evidence sources shall be classified using standardized categories.</p>
+<div class="document-table-wrap"><table><thead><tr><th>Source Category</th><th>Reliability</th></tr></thead><tbody><tr><td>Official Website</td><td>Very High</td></tr><tr><td>Official Documentation</td><td>Very High</td></tr><tr><td>Public Repository</td><td>High</td></tr><tr><td>Official API</td><td>Very High</td></tr><tr><td>Public Dataset</td><td>High</td></tr><tr><td>Technical Documentation</td><td>High</td></tr><tr><td>Official Announcement</td><td>High</td></tr><tr><td>Evidence Pending</td><td>Not Yet Verified</td></tr></tbody></table></div>
+<p>Only publicly observable evidence shall be included unless explicitly governed otherwise.</p>
+<hr>
+<h1>Evidence Freshness Model</h1>
+<p>Each evidence item shall maintain one freshness status.</p>
+<div class="document-table-wrap"><table><thead><tr><th>Status</th><th>Description</th></tr></thead><tbody><tr><td>Current</td><td>Recently reviewed and considered valid.</td></tr><tr><td>Recently Verified</td><td>Independently verified during the latest assessment cycle.</td></tr><tr><td>Scheduled for Review</td><td>Review already planned according to governance procedures.</td></tr><tr><td>Expired</td><td>Requires revalidation before further use.</td></tr><tr><td>Evidence Pending</td><td>Validation has not yet been completed.</td></tr></tbody></table></div>
+<p>Freshness shall be periodically reviewed according to repository governance procedures.</p>
+<hr>
+<h1>Review Policy</h1>
+<p>Evidence shall be reviewed periodically to ensure:</p>
+<ul>
+<li>continued availability;</li>
+<li>source integrity;</li>
+<li>traceability;</li>
+<li>technical consistency;</li>
+<li>governance compliance;</li>
+<li>assessment reliability.</li>
+</ul>
+<p>Expired evidence shall not be referenced by new Enterprise Assessments until revalidated.</p>
+<hr>
+<hr>
+<h1>Evidence Risk Assessment</h1>
+<p>Each Evidence ID shall include a standardized enterprise risk assessment.</p>
+<p>The assessment shall evaluate:</p>
+<ul>
+<li>Risk if Missing</li>
+<li>Risk if Outdated</li>
+<li>Risk if Incorrect</li>
+<li>Business Impact</li>
+<li>Assessment Impact</li>
+<li>Audit Impact</li>
+<li>Repository Impact</li>
+</ul>
+<h2>Risk Classification</h2>
+<div class="document-table-wrap"><table><thead><tr><th>Level</th><th>Description</th></tr></thead><tbody><tr><td>Critical</td><td>Prevents reliable enterprise validation.</td></tr><tr><td>High</td><td>Significantly affects assessment quality.</td></tr><tr><td>Medium</td><td>Reduces validation confidence but remains manageable.</td></tr><tr><td>Low</td><td>Limited operational impact.</td></tr></tbody></table></div>
+<p>Risk evaluations shall be objective, documented and periodically reviewed.</p>
+<hr>
+<h1>Evidence Reuse Policy</h1>
+<p>The Coste360 Validation Programme adopts the principle:</p>
+<h2>Collect Once — Reuse Everywhere</h2>
+<p>Evidence shall be collected a single time and subsequently reused across the entire enterprise repository.</p>
+<p>Benefits include:</p>
+<ul>
+<li>elimination of duplication;</li>
+<li>repository consistency;</li>
+<li>improved maintainability;</li>
+<li>simplified audits;</li>
+<li>increased traceability;</li>
+<li>reduced documentation effort.</li>
+</ul>
+<p>A single validated Evidence ID may be referenced by an unlimited number of Enterprise Assessments.</p>
+<p>No assessment shall duplicate evidence already governed by EA-009.</p>
+<hr>
+<h1>Evidence Change Control</h1>
+<p>Every Evidence ID shall follow a controlled lifecycle.</p>
+<p>Lifecycle stages include:</p>
+<ul>
+<li>Creation</li>
+<li>Review</li>
+<li>Approval</li>
+<li>Modification</li>
+<li>Deprecation</li>
+<li>Replacement</li>
+<li>Retirement</li>
+</ul>
+<p>Every modification shall preserve historical traceability.</p>
+<p>Deprecated evidence shall remain archived for audit purposes.</p>
+<p>Evidence identifiers shall never be reassigned.</p>
+<hr>
+<h1>Evidence Audit Trail</h1>
+<p>Each modification shall generate a permanent audit record containing:</p>
+<ul>
+<li>Evidence ID</li>
+<li>Version</li>
+<li>Date</li>
+<li>Reviewer</li>
+<li>Reason for Change</li>
+<li>Approval Status</li>
+</ul>
+<p>Additional optional attributes may include:</p>
+<ul>
+<li>Previous Version</li>
+<li>Repository Commit Reference</li>
+<li>Related Enterprise Assessment</li>
+<li>Validation Notes</li>
+<li>Review Cycle</li>
+</ul>
+<p>The audit trail shall remain immutable once approved.</p>
+<hr>
+<h1>Evidence Repository Integration Model</h1>
+<p>EA-009 represents the centralized enterprise evidence repository.</p>
+<p>Enterprise Assessments shall reference Evidence IDs exclusively.</p>
+<p>Evidence shall never be duplicated within assessment documents.</p>
+<p>Each assessment shall maintain references only.</p>
+<p>All evidence maintenance activities shall be performed within EA-009.</p>
+<p>Repository synchronization shall therefore occur automatically through Evidence IDs.</p>
+<hr>
+<h1>Evidence Maturity Model</h1>
+<p>Evidence governance maturity shall be evaluated using the following model.</p>
+<div class="document-table-wrap"><table><thead><tr><th>Level</th><th>Description</th></tr></thead><tbody><tr><td>Level 1</td><td>Identified</td></tr><tr><td>Level 2</td><td>Collected</td></tr><tr><td>Level 3</td><td>Verified</td></tr><tr><td>Level 4</td><td>Cross-Referenced</td></tr><tr><td>Level 5</td><td>Fully Governed</td></tr></tbody></table></div>
+<p>Level 5 represents complete governance integration including traceability, lifecycle management, audit readiness and repository consistency.</p>
+<hr>
+<h1>Enterprise Repository Rules</h1>
+<p>EA-009 constitutes the official Single Source of Truth for validation evidence.</p>
+<p>The following mandatory rules apply.</p>
+<ol>
+<li>Evidence shall never be duplicated.</li>
+</ol>
+<ol>
+<li>Enterprise Assessments shall reference Evidence IDs only.</li>
+</ol>
+<ol>
+<li>Evidence modifications shall be performed exclusively within EA-009.</li>
+</ol>
+<ol>
+<li>Repository traceability shall always be preserved.</li>
+</ol>
+<ol>
+<li>Evidence identifiers are permanent.</li>
+</ol>
+<ol>
+<li>Repository governance supersedes individual assessment copies.</li>
+</ol>
+<ol>
+<li>Cross-reference consistency shall be maintained across all Enterprise Assessments.</li>
+</ol>
+<hr>
+<h1>Alignment with QEN Sovereign Principles</h1>
+<p>EA-009 is formally aligned with the following approved governance artefacts:</p>
+<ul>
+<li>ADR-CLE-004 — QEN Sovereign Intelligence Principle</li>
+<li>AF-009 — QEN Semantic Identity &amp; Trust Layer</li>
+<li>AF-010 — QEN CLI</li>
+<li>QEN Sovereign Governance Model</li>
+<li>QEN Sovereign Documentation Reference Architecture</li>
+<li>QEN Sovereign Documentation Index</li>
+<li>Repository Sovereign Certification</li>
+</ul>
+<p>These artefacts collectively establish the enterprise governance framework supporting evidence management, traceability and explainability.</p>
+<hr>
+<h1>Repository Governance Statement</h1>
+<p>EA-009 serves as the authoritative enterprise repository governing all validation evidence used throughout the Coste360 Validation Programme.</p>
+<p>All Enterprise Assessments shall rely upon this catalogue for evidence identification, governance, lifecycle management and traceability.</p>
+<p>EA-009 therefore functions as the central evidence repository for the entire validation framework.</p>
+<hr>
+<h1>Final Classification</h1>
+<h2>Document Status</h2>
+<p>Approved</p>
+<h2>Repository Status</h2>
+<p>Repository Ready</p>
+<h2>Audit Status</h2>
+<p>Audit Ready</p>
+<h2>Evidence Status</h2>
+<p>Evidence Ready</p>
+<h2>Governance Status</h2>
+<p>Governance Ready</p>
+<h2>Traceability Status</h2>
+<p>Traceability Ready</p>
+<h2>Repository Classification</h2>
+<p>Single Source of Truth Ready</p>
+<hr>
+<p><strong>End of Document</strong></p>
+<hr>
+<h1>Standard Evidence Metadata Model</h1>
+<p>Each Evidence ID shall contain a standardized metadata record.</p>
+<p>The minimum metadata attributes are:</p>
+<ul>
+<li>Evidence ID</li>
+<li>Evidence Title</li>
+<li>Evidence Description</li>
+<li>Primary Category</li>
+<li>Secondary Categories</li>
+<li>Criticality Level</li>
+<li>Maturity Level</li>
+<li>Freshness Status</li>
+<li>Source Classification</li>
+<li>Source Reference</li>
+<li>Repository Location</li>
+<li>Validation Status</li>
+<li>Reviewer</li>
+<li>Approval Authority</li>
+<li>Version</li>
+<li>Creation Date</li>
+<li>Last Review Date</li>
+<li>Next Review Date</li>
+<li>Related Enterprise Assessments</li>
+<li>Related Governance Artefacts</li>
+<li>Repository Notes</li>
+</ul>
+<p>All metadata shall follow repository governance standards.</p>
+<hr>
+<h1>Evidence Record Template</h1>
+<p>Each Evidence ID shall be documented using the following structure.</p>
+<h2>Identification</h2>
+<ul>
+<li>Evidence ID</li>
+<li>Title</li>
+<li>Description</li>
+</ul>
+<h2>Classification</h2>
+<ul>
+<li>Primary Category</li>
+<li>Secondary Categories</li>
+</ul>
+<h2>Source</h2>
+<ul>
+<li>Source Classification</li>
+<li>Source Reference</li>
+<li>Reliability Level</li>
+</ul>
+<h2>Validation</h2>
+<ul>
+<li>Validation Status</li>
+<li>Validation Date</li>
+<li>Reviewer</li>
+<li>Approval Status</li>
+</ul>
+<h2>Governance</h2>
+<ul>
+<li>Criticality</li>
+<li>Freshness</li>
+<li>Maturity</li>
+<li>Version</li>
+</ul>
+<h2>Traceability</h2>
+<ul>
+<li>Referenced By</li>
+<li>Related Assessments</li>
+<li>Related Documents</li>
+<li>Repository Location</li>
+</ul>
+<hr>
+<h1>Enterprise Traceability Matrix</h1>
+<p>Each Evidence ID shall support complete enterprise traceability.</p>
+<p>Minimum traceability dimensions include:</p>
+<ul>
+<li>Evidence ID → Enterprise Assessment</li>
+<li>Evidence ID → Governance Artefact</li>
+<li>Evidence ID → Repository Document</li>
+<li>Evidence ID → Validation Activity</li>
+<li>Evidence ID → Audit Record</li>
+<li>Evidence ID → Change History</li>
+</ul>
+<p>Traceability shall be bidirectional.</p>
+<hr>
+<h1>Evidence Cross-Reference Policy</h1>
+<p>Evidence IDs may be referenced by:</p>
+<ul>
+<li>Enterprise Assessments</li>
+<li>Architecture Documents</li>
+<li>Governance Documents</li>
+<li>Validation Reports</li>
+<li>Audit Reports</li>
+<li>Research Papers</li>
+<li>Documentation Artefacts</li>
+</ul>
+<p>Cross-references shall always use the official Evidence ID.</p>
+<p>Narrative duplication is prohibited.</p>
+<hr>
+<h1>Evidence Quality Assurance</h1>
+<p>Evidence quality shall be periodically evaluated according to:</p>
+<ul>
+<li>Completeness</li>
+<li>Accuracy</li>
+<li>Consistency</li>
+<li>Traceability</li>
+<li>Timeliness</li>
+<li>Verifiability</li>
+<li>Reusability</li>
+</ul>
+<p>Evidence not meeting quality requirements shall enter the review workflow.</p>
+<hr>
+<h1>Repository Maintenance</h1>
+<p>The repository shall be maintained through controlled governance activities including:</p>
+<ul>
+<li>Scheduled Reviews</li>
+<li>Evidence Updates</li>
+<li>Version Management</li>
+<li>Cross-Reference Validation</li>
+<li>Repository Integrity Checks</li>
+<li>Audit Preparation</li>
+<li>Continuous Improvement</li>
+</ul>
+<p>Repository maintenance activities shall be documented and auditable.</p>
+<hr>
+<h1>Compliance Statement</h1>
+<p>EA-009 complies with the governance principles established by the QEN Sovereign Intelligence framework.</p>
+<p>The catalogue supports:</p>
+<ul>
+<li>Explainability</li>
+<li>Decision Traceability</li>
+<li>Enterprise Documentation Governance</li>
+<li>Audit Readiness</li>
+<li>Evidence Reuse</li>
+<li>Repository Integrity</li>
+<li>Human Accountability</li>
+</ul>
+<p>EA-009 constitutes the official enterprise evidence governance standard for the Coste360 Validation Programme.</p>
+</div>
+</article></div></section>
+</main>
+<footer class="site-footer"><div class="container footer-inner"><div><div class="wordmark wordmark--footer notranslate" translate="no"><span class="wm-top">Cognitive</span><span class="wm-bot">Logic</span></div><div class="footer-copy">© 2026 Roberto Bob Malini — Cognitive Logic</div></div><div class="footer-links"><a href="/resources/">Resource Center</a><a href="/privacy.html">Privacy</a></div></div></footer>
+</body>
+</html>
