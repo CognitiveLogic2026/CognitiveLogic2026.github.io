@@ -122,6 +122,7 @@ L’obiettivo non è produrre documentazione formale fine a sé stessa, ma costr
 
 ## 10. Collegamenti
 
+- [Coste360 — proof applicativa di Coastal Governance Intelligence](/coste360.html)
 - [Assessment](/assessment.html)
 - [Validation](/validation.html)
 - [Case Studies](/case-studies.html)

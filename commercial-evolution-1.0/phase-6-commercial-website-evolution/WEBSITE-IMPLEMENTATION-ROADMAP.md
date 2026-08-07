@@ -74,7 +74,7 @@ Phase 3
 Enterprise Services
 
 Phase 4
-Coste360 Validation
+Coste360 Validation — COMPLETATO CON QUESTO SPRINT
 
 Phase 5
 Research
@@ -98,13 +98,13 @@ Phase 11
 Google Search Console
 
 Phase 12
-Lead Generation
+Lead Generation — COMPLETATO CON QUESTO SPRINT per il percorso Coste360 → CS-010 → Assessment → Contact
 
 Phase 13
 Executive Papers
 
 Phase 14
-Case Studies
+Case Studies — COMPLETATO CON QUESTO SPRINT per la conversione Coste360
 
 Phase 15
 Commercial Launch
