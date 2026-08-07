@@ -640,7 +640,7 @@ The current validation architecture includes the following approved assets.
 | Asset | Status |
 |-------|--------|
 | QEN Validation Programme | **Validation** |
-| Costa360 Validation Case No.001 | **Validation** |
+| Coste360 Validation Case No.001 | **Validation** |
 | Evidence Documentation | **Validation** |
 
 ---
@@ -1090,7 +1090,7 @@ The following table summarizes the principal documentary relationships.
 | Enterprise Service Catalogue | Commercial Evolution 1.0 | **Approved** |
 | Enterprise Delivery Framework | Enterprise Service Catalogue | **Approved** |
 | QEN Validation Programme | Enterprise Delivery Framework | **Validation** |
-| Costa360 Validation Case No.001 | QEN Validation Programme | **Validation** |
+| Coste360 Validation Case No.001 | QEN Validation Programme | **Validation** |
 | Repository Sovereign Certification | Runtime Sovereign | **Certified** |
 
 ---
@@ -1218,7 +1218,7 @@ Documents validation methodology.
 Representative assets:
 
 - QEN Validation Programme
-- Costa360 Validation Case No.001
+- Coste360 Validation Case No.001
 
 Status: **Validation**
 
@@ -1266,7 +1266,7 @@ Each contributes to enterprise governance from its own architectural perspective
 | Commercial Evolution | Enterprise Service Catalogue | Commercial Definition |
 | Enterprise Service Catalogue | Enterprise Delivery Framework | Delivery Reference |
 | Enterprise Delivery Framework | Validation Programme | Validation Governance |
-| Validation Programme | Costa360 Validation | Demonstration Case |
+| Validation Programme | Coste360 Validation | Demonstration Case |
 | ADR-CLE-004 | AF-009 | Governance Principle |
 | AF-009 | AF-010 | Identity Relationship |
 | QEN Sovereign Registry | Architecture Overview | Documentary Baseline |
@@ -1787,7 +1787,7 @@ The documentary architecture references the following approved or recognized ass
 - CS-001 → CS-010 (**Approved**)
 - Enterprise Delivery Framework — DF-001 → DF-020 (**Approved**)
 - QEN Validation Programme (**Validation**)
-- Costa360 Validation Case No.001 (**Validation**)
+- Coste360 Validation Case No.001 (**Validation**)
 - QEN-SOVEREIGN-MASTER-REGISTRY.md (**Approved**)
 - Repository Documentation (**Implemented**)
 - Institutional Website Documentation (**Implemented**)

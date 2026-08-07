@@ -84,7 +84,7 @@ The Master Registry follows the principles of:
 13. Governance Registry
 14. Identity & Trust Registry
 15. Validation Registry
-16. Costa360 Validation Registry
+16. Coste360 Validation Registry
 17. Commercial Assets Registry
 18. Research Assets Registry
 19. Intellectual Property Registry
@@ -241,7 +241,7 @@ The Framework Registry identifies every official enterprise framework composing 
 | Enterprise Service Catalogue | Service architecture | Approved |
 | Enterprise Delivery Framework | Delivery governance | Approved |
 | QEN Validation Programme | Validation methodology | Approved |
-| Costa360 Validation Case No.001 | Demonstration project | Validation |
+| Coste360 Validation Case No.001 | Demonstration project | Validation |
 
 ## Framework Classification
 
@@ -269,7 +269,7 @@ Each framework is managed according to the following governance dimensions:
 | Enterprise Service Catalogue | Enterprise services definition | Commercial Evolution 1.0 | Approved |
 | Enterprise Delivery Framework | Delivery governance | Service Catalogue | Approved |
 | QEN Validation Programme | Validation methodology | Delivery Framework | Approved |
-| Costa360 Validation Case No.001 | Reference validation project | Validation Programme | Validation |
+| Coste360 Validation Case No.001 | Reference validation project | Validation Programme | Validation |
 
 ### Framework Governance Model
 
@@ -509,15 +509,15 @@ The validation programme demonstrates that the QEN Framework is:
 
 ---
 
-# 16. Costa360 Validation Registry
+# 16. Coste360 Validation Registry
 
-Costa360 Validation Case No.001 represents the first official application of the QEN Validation Programme.
+Coste360 Validation Case No.001 represents the first official application of the QEN Validation Programme.
 
 ## Registry
 
 | Asset | Status |
 |-------|--------|
-| Costa360 Validation Case No.001 | Validation |
+| Coste360 Validation Case No.001 | Validation |
 
 ## Validation Scope
 
@@ -558,7 +558,7 @@ The Research Registry identifies official research documentation.
 |---------------|--------|
 | QEN Research Documentation | Approved |
 | Validation Research | Validation |
-| Costa360 Research Evidence | Validation |
+| Coste360 Research Evidence | Validation |
 | International Research Monitoring | Implemented |
 
 Research activities support continuous improvement while preserving documentary integrity.
@@ -627,7 +627,7 @@ The Certification Status provides the official maturity assessment of the docume
 | Enterprise Service Catalogue | ✓ | — | ✓ | ✓ | — |
 | Enterprise Delivery Framework | ✓ | — | ✓ | ✓ | — |
 | QEN Validation Programme | ✓ | — | ✓ | ✓ | Continuous |
-| Costa360 Validation Case No.001 | ✓ | — | ✓ | ✓ | Continuous |
+| Coste360 Validation Case No.001 | ✓ | — | ✓ | ✓ | Continuous |
 
 ## Certification Objectives
 
@@ -656,7 +656,7 @@ The implementation status reflects the current documentary maturity of the ecosy
 | Runtime Documentation | Implemented |
 | Repository Documentation | Implemented |
 | Validation Programme | Active |
-| Costa360 Validation | Active |
+| Coste360 Validation | Active |
 
 ## Current Baseline
 
@@ -742,7 +742,7 @@ All future developments shall preserve:
 | Runtime Registry | Runtime Sovereign, Repository Certification, AF-010 |
 | Identity Registry | AF-009 |
 | Validation Registry | QEN Validation Programme |
-| Validation Case | Costa360 Validation Case No.001 |
+| Validation Case | Coste360 Validation Case No.001 |
 | Intellectual Property | SIAE Documentation |
 | Repository Registry | Cognitive Logic Repository |
 
@@ -756,7 +756,7 @@ All future developments shall preserve:
 | QEN Framework | Enterprise Service Catalogue | Direct |
 | Enterprise Service Catalogue | Enterprise Delivery Framework | Direct |
 | Enterprise Delivery Framework | Validation Programme | Direct |
-| Validation Programme | Costa360 Validation | Direct |
+| Validation Programme | Coste360 Validation | Direct |
 | Validation Evidence | Governance Documentation | Direct |
 | Repository Certification | Runtime Sovereign | Direct |
 | Runtime Sovereign | Commercial Assets | Direct |
@@ -806,7 +806,7 @@ The official QEN Sovereign documentary baseline currently includes:
 - Enterprise Delivery Framework
 - DF-001 → DF-020
 - QEN Validation Programme
-- Costa360 Validation Case No.001
+- Coste360 Validation Case No.001
 - SIAE Documentation
 - Cognitive Logic Repository
 - Institutional Website

@@ -2,18 +2,18 @@
 
 ## Validation Case No.001
 
-# EA-001 — Costa360 Enterprise Discovery
+# EA-001 — Coste360 Enterprise Discovery
 
 **Document ID:** EA-001
-**Document Title:** Costa360 Enterprise Discovery
+**Document Title:** Coste360 Enterprise Discovery
 **Programme:** QEN Enterprise Assessment Programme
-**Validation Case:** No.001 — Costa360
+**Validation Case:** No.001 — Coste360
 **Version:** 1.0
 **Status:** Approved Baseline
 **Owner:** Cognitive Logic
 **Classification:** Public Assessment Baseline
 **Assessment Type:** Evidence-Based Enterprise Discovery
-**Target Platform:** Costa360
+**Target Platform:** Coste360
 **Public Reference:** https://www.coste360.it/
 **Methodology:** QEN Enterprise Assessment Programme — Evidence First
 
@@ -21,7 +21,7 @@
 
 # Executive Summary
 
-Il documento EA-001 costituisce la fase iniziale del **QEN Enterprise Assessment Programme** applicata al caso di studio **Costa360**.
+Il documento EA-001 costituisce la fase iniziale del **QEN Enterprise Assessment Programme** applicata al caso di studio **Coste360**.
 
 L'obiettivo della Enterprise Discovery è costruire una base informativa neutrale, verificabile e tracciabile della piattaforma osservata attraverso l'analisi esclusiva di informazioni pubblicamente accessibili.
 
@@ -38,7 +38,7 @@ Il documento identifica:
 
 I risultati della Enterprise Discovery costituiranno la baseline per:
 
-- EA-002 — Costa360 Enterprise Intelligence Assessment;
+- EA-002 — Coste360 Enterprise Intelligence Assessment;
 - EA-003 — QEN Bolkestein Intelligence Score (QBIS);
 - EA-004 — Capability Gap Analysis;
 - EA-005 — Knowledge Graph Integration Vision;
@@ -584,7 +584,7 @@ La Enterprise Discovery potrà essere dichiarata completata quando risulteranno 
 
 Il completamento della Enterprise Discovery abilita:
 
-# EA-002 — Costa360 Enterprise Intelligence Assessment
+# EA-002 — Coste360 Enterprise Intelligence Assessment
 
 La seconda fase comprenderà:
 
@@ -622,7 +622,7 @@ Questa distinzione garantisce neutralità metodologica, trasparenza e ripetibili
 
 - QEN Sovereign Intelligence
 - QEN Enterprise Assessment Programme
-- EA-002 — Costa360 Enterprise Intelligence Assessment
+- EA-002 — Coste360 Enterprise Intelligence Assessment
 - EA-003 — QEN Bolkestein Intelligence Score
 - EA-004 — Capability Gap Analysis
 - EA-005 — Knowledge Graph Integration Vision
@@ -721,11 +721,11 @@ L'intero programma è articolato nelle seguenti fasi.
 
 **Document ID:** EA-001
 
-**Title:** Costa360 Enterprise Discovery
+**Title:** Coste360 Enterprise Discovery
 
 **Programme:** QEN Enterprise Assessment Programme
 
-**Validation Case:** No.001 — Costa360
+**Validation Case:** No.001 — Coste360
 
 **Status:** Approved Baseline
 

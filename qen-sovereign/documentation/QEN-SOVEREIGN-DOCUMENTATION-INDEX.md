@@ -153,7 +153,7 @@ The approved documentary baseline is organized into the following documentary do
 | Runtime | Runtime Sovereign Documentation |
 | Compliance | QEN Compliance Algorithm |
 | Commercial Evolution | Enterprise Service Catalogue (CS-001 → CS-010) • Enterprise Delivery Framework (DF-001 → DF-020) |
-| Validation | QEN Validation Programme • Costa360 Validation Case No.001 |
+| Validation | QEN Validation Programme • Coste360 Validation Case No.001 |
 | Website | Institutional Website |
 | Legal | SIAE Documentation |
 
@@ -226,7 +226,7 @@ The recommended reading sequence follows the logical progression of the approved
 | 12 | Enterprise Service Catalogue (CS-001 → CS-010) |
 | 13 | Enterprise Delivery Framework (DF-001 → DF-020) |
 | 14 | QEN Validation Programme |
-| 15 | Costa360 Validation Case No.001 |
+| 15 | Coste360 Validation Case No.001 |
 | 16 | Institutional Website |
 | 17 | SIAE Documentation |
 
@@ -354,7 +354,7 @@ Repository
 | Enterprise Service Catalogue | Implemented |
 | Enterprise Delivery Framework | Implemented |
 | Validation Programme | Validation |
-| Costa360 Validation Case No.001 | Validation |
+| Coste360 Validation Case No.001 | Validation |
 | Institutional Website | Implemented |
 | SIAE Documentation | Certified |
 
@@ -430,7 +430,7 @@ The following documentary assets are classified as **Validation**.
 | Documentary Asset | Classification |
 |-------------------|----------------|
 | QEN Validation Programme | Validation |
-| Costa360 Validation Case No.001 | Validation |
+| Coste360 Validation Case No.001 | Validation |
 
 Validation documentary assets support the documented validation activities of the approved QEN Sovereign baseline.
 

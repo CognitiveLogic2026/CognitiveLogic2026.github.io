@@ -201,7 +201,7 @@
   },
   {
     "id": "coste360-ea-001",
-    "title": "EA-001 — Costa360 Enterprise Discovery",
+    "title": "EA-001 — Coste360 Enterprise Discovery",
     "description": "Baseline pubblica dell’Enterprise Assessment Programme costruita su evidenze osservabili.",
     "type": "Case Study",
     "category": "validation-case-studies",
@@ -209,7 +209,7 @@
     "audience": "Enterprise",
     "topics": [
       "Validation",
-      "Costa360",
+      "Coste360",
       "Enterprise Discovery"
     ],
     "source": "qen-enterprise-assessment/coste360-validation/EA-001-COSTE360-ENTERPRISE-DISCOVERY.md",

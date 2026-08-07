@@ -2,18 +2,18 @@
 
 ## Validation Case No.001
 
-# EA-002 — Costa360 Enterprise Intelligence Assessment
+# EA-002 — Coste360 Enterprise Intelligence Assessment
 
 **Document ID:** EA-002  
-**Document Title:** Costa360 Enterprise Intelligence Assessment  
+**Document Title:** Coste360 Enterprise Intelligence Assessment
 **Programme:** QEN Enterprise Assessment Programme  
-**Validation Case:** No.001 — Costa360  
+**Validation Case:** No.001 — Coste360
 **Version:** 1.0  
 **Status:** Draft Assessment  
 **Owner:** Cognitive Logic  
 **Classification:** Public Enterprise Assessment  
 **Assessment Type:** Evidence-Based Enterprise Intelligence Assessment  
-**Target Platform:** Costa360  
+**Target Platform:** Coste360
 **Public Reference:** https://www.coste360.it/  
 **Methodology:** QEN Enterprise Assessment Programme — Evidence First
 
@@ -21,7 +21,7 @@
 
 # Executive Summary
 
-Il presente documento costituisce la seconda fase del QEN Enterprise Assessment Programme applicata al Validation Case No.001 — Costa360.
+Il presente documento costituisce la seconda fase del QEN Enterprise Assessment Programme applicata al Validation Case No.001 — Coste360.
 
 L'obiettivo dell'Enterprise Intelligence Assessment consiste nell'analizzare la piattaforma attraverso evidenze pubblicamente osservabili, identificandone le capacità informative, la struttura funzionale e il potenziale di evoluzione verso un modello di Decision Intelligence governato.
 
@@ -109,7 +109,7 @@ L'assessment deve poter essere ripetuto ottenendo risultati coerenti.
 
 ## Platform Respect
 
-Costa360 viene considerata una piattaforma consolidata.
+Coste360 viene considerata una piattaforma consolidata.
 
 L'obiettivo dell'assessment consiste nell'identificare possibili livelli di evoluzione e non sostituzioni della piattaforma esistente.
 
@@ -186,7 +186,7 @@ Nel blocco successivo saranno sviluppati:
 - Initial Assessment Findings
 # Platform Positioning
 
-Sulla base delle evidenze pubblicamente osservabili, Costa360 si presenta come una piattaforma verticale specializzata nella raccolta, organizzazione e consultazione di informazioni relative al dominio costiero e delle concessioni demaniali marittime.
+Sulla base delle evidenze pubblicamente osservabili, Coste360 si presenta come una piattaforma verticale specializzata nella raccolta, organizzazione e consultazione di informazioni relative al dominio costiero e delle concessioni demaniali marittime.
 
 L'architettura osservabile evidenzia un orientamento verso la centralizzazione di informazioni territoriali, amministrative e cartografiche, con l'obiettivo di facilitarne la consultazione da parte di utenti istituzionali e professionali.
 
@@ -210,7 +210,7 @@ La missione ufficiale dovrà essere riportata esclusivamente utilizzando contenu
 
 # Enterprise Context
 
-L'Enterprise Assessment considera Costa360 come una piattaforma appartenente al dominio della **Territorial Information Intelligence**.
+L'Enterprise Assessment considera Coste360 come una piattaforma appartenente al dominio della **Territorial Information Intelligence**.
 
 Il patrimonio informativo osservabile comprende:
 
@@ -622,7 +622,7 @@ Nel blocco successivo saranno sviluppati:
 - Next Steps
 # Strategic Assessment
 
-L'Enterprise Intelligence Assessment evidenzia che Costa360 costituisce una piattaforma specialistica con un patrimonio informativo di elevato interesse per il dominio delle concessioni demaniali marittime.
+L'Enterprise Intelligence Assessment evidenzia che Coste360 costituisce una piattaforma specialistica con un patrimonio informativo di elevato interesse per il dominio delle concessioni demaniali marittime.
 
 L'obiettivo del QEN Enterprise Assessment non consiste nel sostituire tale patrimonio, ma nel valutarne il potenziale evolutivo verso modelli di Knowledge Governance e Decision Intelligence.
 
@@ -713,7 +713,7 @@ L'Enterprise Intelligence Assessment consente di formulare le seguenti conclusio
 
 ## Conclusion 001
 
-Costa360 rappresenta una piattaforma specialistica caratterizzata da una significativa organizzazione delle informazioni pubblicamente osservabili.
+Coste360 rappresenta una piattaforma specialistica caratterizzata da una significativa organizzazione delle informazioni pubblicamente osservabili.
 
 ---
 
@@ -790,7 +790,7 @@ Ready
 
 ## Internal References
 
-- EA-001 — Costa360 Enterprise Discovery
+- EA-001 — Coste360 Enterprise Discovery
 - EA-003 — QEN Bolkestein Intelligence Score
 - EA-004 — Capability Gap Analysis
 - EA-005 — Knowledge Graph Integration Vision

@@ -25,7 +25,7 @@
 | Related ADR | ADR-CLE-004 |
 | Related Architecture | QEN Sovereign Architecture Overview |
 | Related Registry | QEN Sovereign Master Registry |
-| Validation Programme | Costa360 Validation Case No.001 |
+| Validation Programme | Coste360 Validation Case No.001 |
 | Technology Dependency | None |
 | Provider Dependency | None |
 
@@ -244,7 +244,7 @@ No additional governance domains are introduced.
 | Repository Governance | Repository Sovereign Certification | Certified |
 | Runtime Governance | Runtime Sovereign Documentation | Certified |
 | Validation Governance | Validation Programme | Approved |
-| Evidence Governance | Costa360 Validation | Validation |
+| Evidence Governance | Coste360 Validation | Validation |
 | Knowledge Governance | QEN Documentation | Implemented |
 | Identity Governance | AF-009 | Approved |
 | Trust Governance | AF-009 | Approved |
@@ -684,7 +684,7 @@ Validation governance documents how approved frameworks are validated through do
 The official validation baseline is represented by:
 
 - QEN Validation Programme
-- Costa360 Validation Case No.001
+- Coste360 Validation Case No.001
 
 Validation governance measures documentary consistency rather than software behaviour.
 
@@ -722,7 +722,7 @@ Repository Documentation
 | Asset | Status |
 |-------|--------|
 | Validation Programme | Approved |
-| Costa360 Validation | Validation |
+| Coste360 Validation | Validation |
 | Evidence Collection | Validation |
 | Executive Reporting | Planned |
 
@@ -815,7 +815,7 @@ The authoritative knowledge baseline is represented exclusively by approved docu
 | Repository Sovereign Certification | Certified |
 | Runtime Sovereign Documentation | Certified |
 | Validation Programme | Approved |
-| Costa360 Validation | Validation |
+| Coste360 Validation | Validation |
 
 ---
 
@@ -992,7 +992,7 @@ Research documentation supports governance evolution without replacing approved 
 |--------|--------|
 | Institutional Website | Implemented |
 | Validation Programme | Approved |
-| Costa360 Validation | Validation |
+| Coste360 Validation | Validation |
 | Architecture Documentation | Approved |
 | Governance Documentation | Approved |
 
@@ -1204,7 +1204,7 @@ Traceability is maintained through documented relationships rather than implemen
 | Enterprise Delivery Framework | Architecture | Delivery Documentation | Validation Programme | Approved |
 | Repository Sovereign Certification | Repository | Certification Documentation | Validation | Certified |
 | Runtime Sovereign Documentation | Repository | Runtime Documentation | Validation | Certified |
-| Costa360 Validation | Validation Programme | Validation Evidence | Ongoing Validation | Validation |
+| Coste360 Validation | Validation Programme | Validation Evidence | Ongoing Validation | Validation |
 
 ---
 
@@ -1273,7 +1273,7 @@ Compliance is documentary rather than technical.
 | Frameworks | Enterprise Delivery Framework |
 | Services | Enterprise Service Catalogue |
 | Validation | Validation Programme |
-| Evidence | Costa360 Validation |
+| Evidence | Coste360 Validation |
 
 ---
 
@@ -1420,7 +1420,7 @@ Potential evolution consists solely of expanding the existing documentary baseli
 | Repository | Certified |
 | Runtime Documentation | Certified |
 | Validation Programme | Approved |
-| Costa360 Validation | Validation |
+| Coste360 Validation | Validation |
 | Executive Reporting | Planned |
 
 ---
@@ -1459,7 +1459,7 @@ Validation
 | Enterprise Service Catalogue | Approved |
 | Enterprise Delivery Framework | Approved |
 | QEN Validation Programme | Approved |
-| Costa360 Validation Case No.001 | Validation |
+| Coste360 Validation Case No.001 | Validation |
 
 ---
 
@@ -1484,7 +1484,7 @@ Validation
 | Enterprise Delivery Framework | Architecture Overview |
 | Enterprise Service Catalogue | Architecture Overview |
 | Validation Programme | Delivery Framework |
-| Costa360 Validation | Validation Programme |
+| Coste360 Validation | Validation Programme |
 | Repository Certification | Repository Documentation |
 | Runtime Documentation | Repository Certification |
 
@@ -1496,7 +1496,7 @@ Validation
 |-----------|----------------|
 | Enterprise Delivery Framework | Enterprise Service Catalogue |
 | Enterprise Service Catalogue | Validation Programme |
-| Validation Programme | Costa360 Validation |
+| Validation Programme | Coste360 Validation |
 | Architecture Overview | Master Registry |
 | Governance Model | Entire Documentary Baseline |
 
@@ -1528,7 +1528,7 @@ Enterprise Frameworks
        │
 Validation Programme
        │
-Costa360 Validation
+Coste360 Validation
        │
 Evidence
        │

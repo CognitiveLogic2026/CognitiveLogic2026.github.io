@@ -323,7 +323,7 @@ QEN Sovereign Documentary Baseline
 │
 ├── Validation
 │     ├── QEN Validation Programme
-│     └── Costa360 Validation Case No.001
+│     └── Coste360 Validation Case No.001
 │
 ├── Institutional Repository
 │
@@ -350,7 +350,7 @@ QEN Sovereign Documentary Baseline
 | Enterprise Service Catalogue (CS-001 → CS-010) | Approved |
 | Enterprise Delivery Framework (DF-001 → DF-020) | Approved |
 | QEN Validation Programme | Validation |
-| Costa360 Validation Case No.001 | Validation |
+| Coste360 Validation Case No.001 | Validation |
 | Cognitive Logic Repository | Implemented |
 | Institutional Website | Implemented |
 | SIAE Documentation | Certified |
@@ -607,7 +607,7 @@ QEN-SOVEREIGN-MASTER-REGISTRY
 │
 ├── Validation Programme
 │
-├── Costa360 Validation Case No.001
+├── Coste360 Validation Case No.001
 │
 ├── Institutional Repository
 │
@@ -899,7 +899,7 @@ Validation
 │
 ├── QEN Validation Programme
 │
-└── Costa360 Validation Case No.001
+└── Coste360 Validation Case No.001
 ```
 
 ---
@@ -1223,7 +1223,7 @@ These dependencies represent documentary references only and do not define execu
 | Enterprise Service Catalogue | Governance Model |
 | Enterprise Delivery Framework | Governance Model |
 | Validation Programme | Governance Model, Architecture Overview |
-| Costa360 Validation Case No.001 | Validation Programme |
+| Coste360 Validation Case No.001 | Validation Programme |
 | Institutional Website | Approved Documentary Baseline |
 | SIAE Documentation | Approved Documentary Baseline |
 
@@ -1677,7 +1677,7 @@ The document therefore serves as the institutional documentary entry point for t
 | Enterprise Service Catalogue | Approved |
 | Enterprise Delivery Framework | Approved |
 | QEN Validation Programme | Validation |
-| Costa360 Validation Case No.001 | Validation |
+| Coste360 Validation Case No.001 | Validation |
 | Cognitive Logic Repository | Implemented |
 | Institutional Website | Implemented |
 | SIAE Documentation | Certified |
