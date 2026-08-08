@@ -15,7 +15,11 @@
 # Document Control
 
 | Attribute | Value |
-|---|---|
+|
+
+---|
+
+---|
 | Document ID | HVA-001 |
 | Document Type | Independent Validation Case |
 | Sector | Hospitality |
@@ -59,7 +63,9 @@ The purpose of this case is therefore to distinguish clearly between:
 
 **NOT VERIFIABLE** — information requiring internal access.
 
-The case demonstrates the ability of Cognitive Logic to map AI adoption to processes, information, responsibilities and management decisions without attributing unverified weaknesses to any organisation.---
+The case demonstrates the ability of Cognitive Logic to map AI adoption to processes, information, responsibilities and management decisions without attributing unverified weaknesses to any organisation.
+
+---
 
 # Validation Scope
 
@@ -122,7 +128,13 @@ A NOT VERIFIABLE classification is an assessment boundary, not a negative findin
 # AI Adoption Surface
 
 | Process | Possible AI Use | Governance Question |
-|---|---|---|
+|
+
+---|
+
+---|
+
+---|
 | Travel discovery | Conversational recommendation | What information drives recommendations? |
 | Booking | AI search / assistant | Which systems and data influence the interaction? |
 | Guest service | Chatbot / virtual concierge | When must staff intervene? |
@@ -132,7 +144,9 @@ A NOT VERIFIABLE classification is an assessment boundary, not a negative findin
 | Hotel operations | AI-enabled PMS functions | Which actions can be automated? |
 | Staff support | Knowledge assistant | Which sources are authoritative? |
 | Management | Analytics / decision support | How are decisions traced? |
-| External services | Cloud / AI providers | Which dependencies require governance? |---
+| External services | Cloud / AI providers | Which dependencies require governance? |
+
+---
 
 # Public Evidence
 
@@ -195,7 +209,9 @@ Therefore:
 
 **ASSESSMENT INFERENCE:** these adoption surfaces create governance questions concerning information, responsibility, oversight and decisions.
 
-**NOT VERIFIABLE:** the actual governance controls of a specific hospitality organisation require internal assessment.---
+**NOT VERIFIABLE:** the actual governance controls of a specific hospitality organisation require internal assessment.
+
+---
 
 # Governance Assessment
 
@@ -260,7 +276,150 @@ https://ai-act-service-desk.ec.europa.eu/en/ai-act/article-4
 
 **ASSESSMENT INFERENCE:** hospitality organisations need to identify which roles interact with AI and what level of competence is appropriate.
 
-**NOT VERIFIABLE:** actual AI-literacy measures implemented by a specific organisation.---
+**NOT VERIFIABLE:** actual AI-literacy measures implemented by a specific organisation.
+
+---
+
+
+# Evidence Upgrade — Primary Hospitality Evidence
+
+## PE-006 — Federalberghi: AI and hotels
+
+**Classification:** PUBLIC EVIDENCE
+
+Federalberghi has published sector-specific material addressing artificial intelligence in hotel operations and the need to understand and govern its use.
+
+Source:
+https://www.federalberghi.it/comunicati/lintelligenza-artificiale-e-gli-hotel.aspx
+
+## PE-007 — Accor: hospitality AI ecosystem
+
+**Classification:** PUBLIC EVIDENCE
+
+Accor publicly documents hospitality AI initiatives including conversational guest interaction, employee knowledge support and generative AI.
+
+Source:
+https://group.accor.com/en/news-stories/accor-leading-hospitality-ai
+
+## PE-008 — Accor: AI-assisted hotel discovery
+
+**Classification:** PUBLIC EVIDENCE
+
+Accor publicly announced integration of ALL Accor with ChatGPT for natural-language hotel discovery and access to hotel and rate information.
+
+Source:
+https://press.accor.com/accor-leads-hospitality-innovation-with-the-launch-of-its-all-accor-app-in-chatgpt/?lang=eng
+
+## PE-009 — IHG: conversational hotel search
+
+**Classification:** PUBLIC EVIDENCE
+
+IHG publicly announced AI-powered conversational search across its digital channels, connecting travel discovery with hotel information.
+
+Source:
+https://www.ihgplc.com/en/news-and-media/news-releases/2026/ihg-hotels-and-resorts-launches-ai-conversational-search-across-its-digital-channels-transforming-the-guest-experience
+
+## PE-010 — Hilton: AI Planner
+
+**Classification:** PUBLIC EVIDENCE
+
+Hilton publicly announced a generative-AI-powered digital concierge supporting conversational travel planning.
+
+Source:
+https://stories.hilton.com/apac/releases/hilton-introduces-the-hilton-ai-planner
+
+## PE-011 — Oracle OPERA Cloud: operational AI
+
+**Classification:** PUBLIC EVIDENCE
+
+Oracle publicly documents AI capabilities integrated into OPERA Cloud hospitality workflows.
+
+Source:
+https://www.oracle.com/news/announcement/new-ai-capabilities-in-oracle-opera-cloud-supercharge-hotel-operations-2026-06-16/
+
+## PE-012 — Oracle Hospitality: revenue and guest journey
+
+**Classification:** PUBLIC EVIDENCE
+
+Oracle publicly documents AI and machine-learning applications relevant to hospitality commercial and guest-journey processes.
+
+Source:
+https://www.oracle.com/it/hospitality/optimize-guest-journey/
+
+## PE-013 — Oracle Hospitality Analytics
+
+**Classification:** PUBLIC EVIDENCE
+
+Oracle documents hospitality reporting and analytics integrating operational and commercial information to support management decisions.
+
+Source:
+https://www.oracle.com/it/hospitality/products/opera-reporting-analytics/
+
+## PE-014 — Radisson: generative AI marketing
+
+**Classification:** PUBLIC EVIDENCE
+
+A Google Cloud customer case documents Radisson Hotel Group using generative AI with enterprise and customer information for localised marketing content.
+
+Source:
+https://cloud.google.com/customers/radisson?hl=it
+
+---
+
+# Additional Governance Dimensions
+
+## Evidence Availability
+
+**PUBLIC EVIDENCE:** public sources can demonstrate that AI capabilities exist and participate in hospitality processes.
+
+**ASSESSMENT INFERENCE:** technology adoption alone does not demonstrate governance. Management also requires evidence of purpose, approval, ownership, controls and review.
+
+**NOT VERIFIABLE:** whether a specific hospitality organisation maintains this governance evidence cannot be determined externally.
+
+**Assessment question:** what evidence can management produce for each material AI use case?
+
+## Transparency
+
+**PUBLIC EVIDENCE:** Article 50 of Regulation (EU) 2024/1689 establishes transparency obligations for specified AI systems and uses.
+
+Official source:
+https://ai-act-service-desk.ec.europa.eu/en/ai-act/article-50
+
+**ASSESSMENT INFERENCE:** customer-facing hospitality AI must be evaluated at use-case level to determine applicable transparency requirements.
+
+**NOT VERIFIABLE:** compliance of a specific hospitality deployment cannot be determined from sector evidence.
+
+**Assessment question:** which AI interactions require disclosure, labelling or other transparency measures?
+
+## Regulatory Readiness
+
+**PUBLIC EVIDENCE:** Regulation (EU) 2024/1689 establishes the EU regulatory framework for artificial intelligence.
+
+Official source:
+https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32024R1689
+
+The European Data Protection Board has also addressed personal-data considerations relating to AI models.
+
+Source:
+https://www.edpb.europa.eu/documents/opinion-of-the-board-art-64/opinion-282024-on-certain-data-protection-aspects-related-to_en
+
+**ASSESSMENT INFERENCE:** regulatory relevance depends on the characteristics, purpose, information and deployment context of each AI use case.
+
+**NOT VERIFIABLE:** this sector validation cannot determine the complete regulatory obligations applicable to an unexamined hotel deployment.
+
+**Assessment question:** what regulatory analysis exists for each material AI use case and what evidence supports it?
+
+## Reputational Risk
+
+**PUBLIC EVIDENCE:** hospitality AI can interact directly with guests and generate customer-facing information, recommendations and content.
+
+**ASSESSMENT INFERENCE:** inaccurate or inappropriate AI output may create customer-service and reputational consequences even where no regulatory breach occurs.
+
+**NOT VERIFIABLE:** incident history, escalation procedures and reputational controls of a specific organisation cannot be established from public evidence.
+
+**Assessment question:** what happens when customer-facing AI produces an unacceptable result?
+
+---
 
 # Management Findings
 
