@@ -151,13 +151,6 @@
         </select>
       </div>
       <div class="form-group">
-        <label>Modello scoring</label>
-        <select id="provider">
-          <option value="mistral">Mistral Large</option>
-          <option value="claude">Claude Sonnet</option>
-        </select>
-      </div>
-      <div class="form-group">
         <label>API Key (per salvataggio)</label>
         <input id="api_key" type="password" placeholder="COGNITIVE_API_KEY" oninput="sessionStorage.setItem('cog_api_key', this.value)">
       </div>
@@ -470,7 +463,6 @@
   btnBatchScore.addEventListener("click", async () => {
     clearError();
     if (!discovered.length) return;
-    const provider  = document.getElementById("provider").value;
     const auto_save = document.getElementById("auto_save").checked;
     const settore   = document.getElementById("settore").value;
     const CHUNK = 5;
@@ -490,7 +482,7 @@
         const res = await fetch(`${API}/agents/score-businesses`, {
           method: "POST",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ businesses: chunk, provider, auto_save, settore }),
+          body: JSON.stringify({ businesses: chunk, auto_save, settore }),
         });
         const data = await res.json();
         if (!res.ok) throw new Error(data.error || res.statusText);
@@ -502,7 +494,7 @@
 
       done += chunk.length;
       renderAll();
-      // pausa tra chunk per evitare rate-limit Mistral
+      // pausa tra chunk per rispettare il rate limit del runtime
       if (i + CHUNK < total) await new Promise(r => setTimeout(r, 1500));
     }
 

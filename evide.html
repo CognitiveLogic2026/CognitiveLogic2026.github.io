@@ -220,7 +220,7 @@
   "id": "evide-0001",
   "timestamp": "2026-06-14T07:00:00Z",
   "type": "QEN_SCORE",
-  "agent": "gemini-2.5-flash",
+  "agent": "qen-sovereign-intelligence",
   "input_digest":  "sha256:e3b0c4...",
   "output_digest": "sha256:a665a4...",
   "qen_score": 77.5,
@@ -247,7 +247,7 @@
             <div class="step-num">01</div>
             <h3 style="font-size:1rem;margin-bottom:10px">Inferenza</h3>
             <p class="text-sm" style="color:var(--muted);line-height:1.8">
-              Un agente (Claude, Gemini, Mistral) elabora una richiesta:
+              QEN Sovereign Intelligence elabora una richiesta:
               QEN Score, audit di compliance, valutazione Bolkestein.
               L'input viene serializzato e hashed prima dell'elaborazione.
             </p>
@@ -353,8 +353,8 @@
           </div>
           <div class="stack-layer" style="display:flex;justify-content:space-between;align-items:center">
             <div>
-              <div class="stack-layer-label">Livello 1 · Multi-Brain Engine</div>
-              <div class="stack-layer-text">Claude · Gemini · Mistral — ogni risposta LLM firmata con fingerprint EVIDE</div>
+              <div class="stack-layer-label">Livello 1 · QEN Sovereign Intelligence</div>
+              <div class="stack-layer-text">QEN Sovereign Engine · Governance Engine · Knowledge Graph — ogni decisione critica è associata a evidenze e fingerprint EVIDE</div>
             </div>
             <span class="tag">AI</span>
           </div>
@@ -417,7 +417,7 @@
   -H "X-API-Key: $COGNITIVE_API_KEY" \
   -d '{
     "type": "QEN_SCORE",
-    "agent": "gemini-2.5-flash",
+    "agent": "qen-sovereign-intelligence",
     "operator_id": "op:example-operator",
     "input":  { "name": "Ristorante X", "vs": 80, "va": 70, "vt": 65 },
     "output": { "qen_score": 72.75, "badge": "QEN VERIFIED" },

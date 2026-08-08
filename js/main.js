@@ -40,7 +40,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (ui.decision) ui.decision.textContent = "ELABORAZIONE...";
 
         // Chiamata alla funzione in app.js
-        const result = await askGemini(text);
+        const result = await askQEN(text);
 
         // Popolamento dinamico della UI
         if (ui.risk) ui.risk.textContent = result.risk_level;

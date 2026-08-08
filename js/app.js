@@ -7,7 +7,7 @@
  * COGNITIVE LOGIC — AI Node Connector (Engine)
  * Gestisce la comunicazione con il Pure Data Node.
  */
-async function askGemini(promptText) {
+async function askQEN(promptText) {
     const API_BASE = "https://api.cognitivelogic.it";
 
     try {
