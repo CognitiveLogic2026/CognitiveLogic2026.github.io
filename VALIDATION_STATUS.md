@@ -41,21 +41,17 @@ risultato, ma con dati non verificati da fonte ufficiale.
 
 ---
 
-### OpenAI (OPENAI_API_KEY)
+### QEN Sovereign Runtime
 
-| Campo | Valore |
-|-------|--------|
-| Stato | **disabilitato** |
-| Motivo | Pagamento in sospeso — credito OpenAI esaurito |
-| Endpoint | `POST /agents/openai-advisor` |
-| Risposta attuale | `503 endpoint_disabled` |
-| Alternativa | `POST /agents/mistral-advisor` (Mistral AI, operativo) |
+La precedente configurazione basata su provider AI esterni non rappresenta più
+l'architettura attiva di Cognitive Logic.
 
-L'endpoint `/agents/openai-advisor` è registrato nel router di
-`orchestrator.py` ma risponde sempre con `503`. Non effettua chiamate
-a `api.openai.com`. Il modello `gpt-4o-mini` può essere riabilitato
-impostando `OPENAI_API_KEY` e ripristinando il corpo della funzione
-`openai_advisor()`.
+Gli endpoint decisionali correnti utilizzano QEN Sovereign Intelligence,
+Governance Engine, Knowledge Graph, EVIDE e algoritmi proprietari.
+
+Le eventuali route con naming provider legacy sono mantenute esclusivamente
+come compatibility endpoint deprecati e non utilizzano provider esterni come
+motori decisionali.
 
 ---
 
@@ -83,9 +79,9 @@ tramite `qen_bolkestein_s4.py` per sviluppo e validazione del modello.
 | Flask QEN API | 5000 | Operativo |
 | FastAPI QEN Reconciliation | 8001 | Operativo |
 | Nginx reverse proxy | 443 | Operativo |
-| Orchestrator (Claude + Gemini) | — | Operativo |
-| Mistral advisor | — | Operativo |
-| OpenAI advisor | — | Disabilitato (503) |
+| QEN Sovereign Intelligence Runtime | — | Operativo |
+| Legacy provider-named compatibility routes | — | Deprecate / compatibility only |
+| External provider decision engines | — | Non attivi |
 | qen-bolkestein | — | Solo locale |
 
 ---

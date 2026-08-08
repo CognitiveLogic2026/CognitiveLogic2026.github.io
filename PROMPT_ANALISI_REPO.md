@@ -1,12 +1,18 @@
+# ARCHIVED / HISTORICAL ANALYSIS PROMPT
+
+> Questo documento conserva il contesto di una fase precedente del repository.
+> Le descrizioni operative devono essere interpretate alla luce dell'architettura
+> corrente QEN Sovereign. I provider AI esterni non sono motori decisionali attivi.
+
 # Prompt analisi repo — Cognitive Logic QEN Framework
 
-Incolla questo testo all'inizio di una nuova sessione Claude Code.
+Prompt storico di analisi repository. Non rappresenta l'architettura runtime corrente.
 
 ---
 
 ## PROMPT
 
-Sei Claude Code sul repository `CognitiveLogic2026/CognitiveLogic2026.github.io`.
+Analizza il repository `CognitiveLogic2026/CognitiveLogic2026.github.io`.
 
 Il progetto è **Cognitive Logic QEN Framework** — piattaforma SaaS B2B per compliance regolatoria
 EU AI Act + GDPR + Bolkestein 2027, rivolta a operatori HoReCa, balneare e commercio italiano.
@@ -34,7 +40,7 @@ EU AI Act + GDPR + Bolkestein 2027, rivolta a operatori HoReCa, balneare e comme
 | `operator.html` | Dashboard operatore |
 
 **CSS:** design system proprietario (Cormorant Garamond + DM Mono, dark theme `--gold-soft`)
-**JS:** vanilla, chiamate dirette a api.cognitivelogic.it. `app.js` chiama Gemini REST lato client.
+**JS:** vanilla, chiamate agli endpoint canonici QEN Sovereign su api.cognitivelogic.it.
 
 ### Backend Flask — api.cognitivelogic.it (porta 5000)
 
@@ -49,27 +55,26 @@ File: `main.py` + `orchestrator.py` (registrato via `register_orchestrator(app, 
 | POST `/audit/horeca` | ❌ | Audit HoReCa 8 moduli → pilots.json |
 | POST `/audit/balneare` | ❌ | Audit Balneare 6 moduli |
 | POST `/analyze` | ✅ X-API-Key | Crea nodo graph.json |
-| POST `/classify-risk` | ✅ X-API-Key | EU AI Act via Claude Sonnet 4.6 (30/min) |
+| POST `/classify-risk` | ✅ X-API-Key | QEN Sovereign risk classification (30/min) |
 | POST `/copilot-analyze` | ❌ | Risk + dedup pilots (30/min) |
-| POST `/gemini/qen-score` | ❌ | QEN via Gemini (fallback Claude Haiku) (30/min) |
+| POST `/qen-score` | ❌ | QEN Sovereign scoring (30/min) |
 | POST `/admin/add-client` | ✅ X-API-Key | Aggiunta manuale client |
 | POST `/admin/reconcile-batch` | ✅ X-API-Key | Drift correction formula QEN su pilots.json |
 
 **Endpoint Orchestrator (11 agenti, tutti con rate limit):**
 
-| Path | Rate | LLM primario | Fallback |
-|------|------|-------------|---------|
-| `/agents/compliance-auditor` | 30/min | Claude Sonnet 4.6 | — |
-| `/agents/territorial-mapper` | 30/min | Claude + Google Places | — |
-| `/agents/advisory-council` | 30/min | Claude Sonnet 4.6 | — |
+| Path | Rate | Engine / funzione | Compatibility / fonte |
+|------|------|-------------------|------------------------|
+| `/agents/compliance-auditor` | 30/min | QEN Sovereign Compliance Engine | — |
+| `/agents/territorial-mapper` | 30/min | QEN Territorial Intelligence Engine | Google Places data source |
+| `/agents/advisory-council` | 30/min | QEN Governance Advisory Engine | — |
 | `/agents/intelligence-feed` | — | JSON file (`data/intelligence_feed.json`) | — |
-| `/agents/mistral-compliance` | 30/min | Mistral Large | Claude Sonnet 4.6 |
-| `/agents/mistral-advisor` | 30/min | Mistral Large | Claude Sonnet 4.6 |
-| `/agents/openai-advisor` | — | ❌ 503 stub | — |
-| `/agents/bolkestein-assessment` | 30/min | Mistral Large | Claude Sonnet 4.6 |
+| `/agents/mistral-compliance` | 30/min | Deprecated compatibility route | `/agents/compliance-auditor` |
+| `/agents/mistral-advisor` | 30/min | Deprecated compatibility route | `/agents/advisory-council` |
+| `/agents/bolkestein-assessment` | 30/min | QEN Sovereign Bolkestein Assessment Engine | — |
 | `/agents/places-discovery` | — | Google Places API | — |
-| `/agents/score-businesses` | 20/min | Mistral / Claude | Claude fallback |
-| `/agents/places-batch-qen` | 20/min | Mistral / Claude | Claude fallback |
+| `/agents/score-businesses` | 20/min | QEN Sovereign scoring | — |
+| `/agents/places-batch-qen` | 20/min | QEN Sovereign scoring + Places discovery | — |
 
 ### Backend FastAPI — porta 8001 (QEN Reconciliation)
 
@@ -89,7 +94,7 @@ Fonti: ICEA (stub), InfoCamere (stub), OpenStreetMap (lambda), NANDO (lambda)
 ### Nginx Routing (api.cognitivelogic.it)
 
 ```
-/agents/*, /gemini/*, /admin/*, /audit/*,
+/agents/*, /admin/*, /audit/*,
 /classify-risk, /copilot-analyze, /pilots, /analyze, /validate
   → Flask 5000
 
@@ -131,15 +136,11 @@ ma non è raggiungibile dall'esterno via nginx (solo via localhost nel deploy).
 
 | Secret | Stato |
 |--------|-------|
-| `ANTHROPIC_API_KEY` | ✅ Attivo |
-| `MISTRAL_API_KEY` | ✅ Attivo |
 | `GOOGLE_PLACES_API_KEY` | ✅ Attivo |
-| `GOOGLE_API_KEY` (Gemini) | ✅ Attivo |
 | `COGNITIVE_API_KEY` | ✅ Attivo (auth admin + pilots) |
 | `SUPERVISOR_KEY` | ✅ Attivo — obbligatorio, RuntimeError senza |
 | `ICEA_API_KEY` | ⚠️ Stub — `biologico_certificato` restituisce sempre True |
 | `INFOCAMERE_API_KEY` | ⚠️ Stub — scarti/kwh sono mock |
-| `OPENAI_API_KEY` | ❌ Disabilitato (pagamento pending) |
 
 ---
 
@@ -148,12 +149,10 @@ ma non è raggiungibile dall'esterno via nginx (solo via localhost nel deploy).
 1. **Rate limiter multi-worker** — Gunicorn `--workers 2` + in-memory: limite effettivo 2× per IP.
    Soluzione: Redis backend o ridurre a 1 worker. Documentato in `VALIDATION_STATUS.md`.
 
-2. ~~**Gemini lato client in `app.js`**~~ — **RISOLTO** (verificato 2026-07-11): `js/app.js`
-   chiama `/gemini/qen-score` sul backend, non più `generativelanguage.googleapis.com`
-   direttamente; `js/config.js` non contiene più alcuna chiave, solo metadati di branding.
+2. **Provider legacy lato client** — RISOLTO. Il frontend utilizza gli endpoint canonici QEN Sovereign; i namespace `/gemini/*` sono rimossi.
 
-3. **`/health` Flask non raggiungibile** — nginx non lo instrada. Aggiungere al regex:
-   `location ~ ^/(classify-risk|...|health)$` in `nginx/api.cognitivelogic.it.conf`.
+3. **`/health` Flask** — RISOLTO. L'endpoint è instradato pubblicamente tramite nginx
+   ed è utilizzato dai controlli di health del deploy.
 
 4. ~~**Zero test per orchestrator**~~ — **RISOLTO** (verificato 2026-07-11): `tests/test_orchestrator.py`
    copre tutti gli 11 agenti (40 test), inclusi `compliance-auditor` e `bolkestein-assessment`,
