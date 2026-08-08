@@ -1,14 +1,14 @@
 # HVA-001 — Hospitality AI Governance — Independent Validation Case
 
-**Cognitive Logic**  
-**Document ID:** HVA-001  
-**Version:** 1.0  
-**Status:** Independent Validation Draft  
-**Classification:** Public-Evidence Assessment  
-**Sector:** Hospitality  
-**Commissioning Organisation:** None  
-**Client Relationship:** None  
-**Internal Access:** None  
+**Cognitive Logic**
+**Document ID:** HVA-001
+**Version:** 1.0
+**Status:** Approved
+**Classification:** Public-Evidence Assessment
+**Sector:** Hospitality
+**Commissioning Organisation:** None
+**Client Relationship:** None
+**Internal Access:** None
 
 ---
 
