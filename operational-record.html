@@ -1,0 +1,658 @@
+<!doctype html>
+<html lang="it">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Cognitive Logic Operational Record | QEN Sovereign Intelligence</title>
+
+  <meta name="description" content="Evidence-based record of the evolution of Cognitive Logic from the QEN Framework to QEN Sovereign Intelligence, validation and enterprise services.">
+  <meta name="author" content="Roberto Malini — Cognitive Logic">
+
+  <link rel="canonical" href="https://cognitivelogic.it/operational-record.html">
+
+  <meta property="og:title" content="Cognitive Logic Operational Record | QEN Sovereign Intelligence">
+  <meta property="og:description" content="Evidence-based record of the evolution of Cognitive Logic from the QEN Framework to QEN Sovereign Intelligence, validation and enterprise services.">
+  <meta property="og:url" content="https://cognitivelogic.it/operational-record.html">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Cognitive Logic">
+  <meta property="og:locale" content="it_IT">
+  <meta
+    property="og:image"
+    content="https://cognitivelogic.it/img/qen-homepage-og.png"
+  >
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Cognitive Logic Operational Record | QEN Sovereign Intelligence">
+  <meta name="twitter:description" content="Evidence-based record of the evolution of Cognitive Logic from the QEN Framework to QEN Sovereign Intelligence, validation and enterprise services.">
+  <meta
+    name="twitter:image"
+    content="https://cognitivelogic.it/img/qen-homepage-og.png"
+  >
+
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Organization",
+        "@id": "https://cognitivelogic.it/#organization",
+        "name": "Cognitive Logic",
+        "url": "https://cognitivelogic.it/",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://cognitivelogic.it/img/logo-cognitivelogic.png"
+        },
+        "founder": {
+          "@type": "Person",
+          "@id": "https://cognitivelogic.it/#founder",
+          "name": "Roberto Bob Malini",
+          "sameAs": [
+            "https://www.linkedin.com/in/robertobobmalini/"
+          ]
+        },
+        "sameAs": [
+          "https://www.linkedin.com/company/cognitivelogic/"
+        ],
+        "description": "Cognitive Logic sviluppa metodologie e infrastrutture di AI Governance e Knowledge Governance attraverso il QEN Framework."
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://cognitivelogic.it/#website",
+        "url": "https://cognitivelogic.it/",
+        "name": "Cognitive Logic",
+        "inLanguage": "it-IT",
+        "publisher": {
+          "@id": "https://cognitivelogic.it/#organization"
+        }
+      },
+      {
+        "@type": "WebPage",
+        "@id": "https://cognitivelogic.it/trust.html#webpage",
+        "url": "https://cognitivelogic.it/trust.html",
+        "name": "Trust Center | Cognitive Logic",
+        "description": "Centro istituzionale dedicato a governance, metodologia, evidenze, validazione, explainability e tracciabilità del QEN Framework.",
+        "inLanguage": "it-IT",
+        "isPartOf": {
+          "@id": "https://cognitivelogic.it/#website"
+        },
+        "about": {
+          "@id": "https://cognitivelogic.it/#organization"
+        },
+        "publisher": {
+          "@id": "https://cognitivelogic.it/#organization"
+        }
+      }
+    ]
+  }
+  </script>
+
+  <link
+    rel="preload"
+    href="/fonts/cormorant-garamond-normal.woff2"
+    as="font"
+    type="font/woff2"
+    crossorigin
+  >
+  <link
+    rel="preload"
+    href="/fonts/dm-mono-400.woff2"
+    as="font"
+    type="font/woff2"
+    crossorigin
+  >
+
+  <link rel="stylesheet" href="css/fonts-local.css">
+  <link rel="stylesheet" href="css/style.css?v=3">
+  <link rel="stylesheet" href="/css/home-it.css?v=1">
+
+  <link
+    rel="search"
+    type="application/opensearchdescription+xml"
+    title="Cognitive Logic"
+    href="https://cognitivelogic.it/opensearchdescription.xml"
+  >
+
+<style>
+  .operational-record .record-wrap{max-width:1120px;margin:0 auto;padding-left:1.25rem;padding-right:1.25rem}
+  .operational-record .record-hero{padding-top:4rem;padding-bottom:3rem}
+  .operational-record .record-section{padding-top:3rem;padding-bottom:3rem}
+  .operational-record .record-lead{max-width:820px}
+  .operational-record .record-actions{display:flex;flex-wrap:wrap;gap:.75rem;margin-top:1.5rem}
+  .operational-record .record-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1rem;margin-top:1.5rem}
+  .operational-record .record-card{border:1px solid currentColor;border-radius:.75rem;padding:1.25rem}
+  .operational-record .record-badge{display:inline-block;border:1px solid currentColor;border-radius:999px;padding:.2rem .55rem;font-size:.75rem;font-weight:700;letter-spacing:.04em;margin-right:.35rem}
+  .operational-record .timeline{display:grid;gap:1rem;margin-top:1.5rem}
+  .operational-record .timeline article{border-left:3px solid currentColor;padding-left:1rem}
+  .operational-record .timeline .step{font-weight:700;letter-spacing:.04em}
+  .operational-record .sovereign-flow{display:grid;gap:.55rem;max-width:760px;margin-top:1.5rem}
+  .operational-record .flow-node{border:1px solid currentColor;border-radius:.6rem;padding:1rem}
+  .operational-record .flow-arrow{text-align:center;font-weight:700}
+  .operational-record .record-note{border-left:4px solid currentColor;padding:1rem 1.25rem;margin-top:1.5rem}
+  .operational-record .evidence-list{columns:2;column-gap:2rem}
+  .operational-record .evidence-list li{break-inside:avoid;margin-bottom:.65rem}
+  @media (max-width:720px){
+    .operational-record .record-hero{padding-top:2.5rem}
+    .operational-record .evidence-list{columns:1}
+  }
+</style>
+
+</head>
+
+<body>
+  <a href="#main-content" class="skip-link">Salta al contenuto</a>
+
+  <div class="site-bg"></div>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="index.html" class="brand notranslate" translate="no" aria-label="Cognitive Logic — Home">
+        <span class="wordmark wordmark--nav">
+          <span class="wm-top">Cognitive</span>
+          <span class="wm-bot">Logic</span>
+        </span>
+      </a>
+
+      <nav class="main-nav" aria-label="Navigazione principale">
+        <a href="framework.html">Framework</a>
+        <a href="services.html">Servizi</a>
+        <a href="assessment.html">Assessment</a>
+        <a href="validation.html">Validazione</a>
+        <a href="trust.html" class="active" aria-current="page">Trust Center</a>
+        <a href="case-studies.html">Case Studies</a>
+        <a href="engagement.html">Engagement</a>
+        <a href="research.html">Research</a>
+        <a href="international-watch/">International Watch</a>
+        <a href="contact.html">Contatti</a>
+      </nav>
+
+      <div class="header-end">
+        <div class="nav-lang notranslate" translate="no" aria-label="Lingua corrente">
+          <span class="active" lang="it" aria-current="page">IT</span>
+        </div>
+
+        <a href="copilot.html" class="btn btn-ghost">Copilot</a>
+      </div>
+    </div>
+  </header>
+
+  
+<main id="main-content" class="operational-record">
+
+  <section class="record-hero">
+    <div class="record-wrap">
+      <p><strong>OPERATIONAL RECORD</strong></p>
+      <h1>How Cognitive Logic Was Built</h1>
+      <p class="record-lead"><strong>From QEN Framework to QEN Sovereign Intelligence.</strong></p>
+      <p class="record-lead">
+        Questa pagina documenta l'evoluzione di Cognitive Logic attraverso decisioni,
+        implementazioni, validation programme ed evidence verificabili.
+        Non presenta una ricostruzione promozionale della storia.
+      </p>
+      <div class="record-actions">
+        <a href="/validation.html">Explore the Evidence</a>
+        <a href="/framework.html">View QEN Framework</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="record-section" id="origins">
+    <div class="record-wrap">
+      <p>
+        <span class="record-badge">HISTORICAL</span>
+        <span class="record-badge">VERIFIED</span>
+      </p>
+      <h2>From principles to measurable governance</h2>
+      <p class="record-lead">
+        Il QEN Framework nasce come struttura per rendere criteri qualitativi,
+        responsabilità, impatti e vincoli di governance più espliciti e misurabili.
+        Nel repository questa impostazione evolve progressivamente verso scoring,
+        knowledge architecture, evidence management e meccanismi di governance
+        applicabili a decisioni verificabili.
+      </p>
+      <p>
+        Quando elementi precedono la storia Git disponibile, questa pagina non attribuisce
+        automaticamente una data retrospettiva: distingue l'evidence documentale dalla
+        cronologia dimostrabile nel repository.
+      </p>
+    </div>
+  </section>
+
+  <section class="record-section" id="evolution">
+    <div class="record-wrap">
+      <h2>Architectural evolution</h2>
+      <p class="record-lead">
+        La timeline descrive stati documentabili dell'architettura. Le configurazioni
+        precedenti sono riportate come storia del sistema, non come architettura corrente.
+      </p>
+
+      <div class="timeline">
+
+        <article>
+          <p class="step">01 — QEN Framework</p>
+          <p><span class="record-badge">HISTORICAL</span><span class="record-badge">VERIFIED</span></p>
+          <p>
+            Il punto di partenza è il Framework: criteri qualitativi vengono strutturati
+            affinché possano essere analizzati, confrontati e governati in modo più esplicito.
+            Questo crea la base concettuale per scoring, evidence e accountability.
+          </p>
+        </article>
+
+        <article>
+          <p class="step">02 — AI-Assisted Architecture</p>
+          <p><span class="record-badge">HISTORICAL</span></p>
+          <p>
+            L'architettura ha successivamente utilizzato capacità AI esterne come supporto
+            all'analisi e all'elaborazione. Questa fase ha permesso di esplorare il rapporto
+            tra reasoning assistito, dati, regole e responsabilità decisionale.
+          </p>
+        </article>
+
+        <article>
+          <p class="step">03 — Multi-Provider Experimentation</p>
+          <p><span class="record-badge">HISTORICAL</span><span class="record-badge">VERIFIED</span></p>
+          <p>
+            La Git history e i record di migrazione documentano sperimentazioni con differenti
+            provider e percorsi provider-specific. Tali riferimenti descrivono fasi storiche:
+            non rappresentano la baseline architetturale corrente.
+          </p>
+        </article>
+
+        <article>
+          <p class="step">04 — Sovereign Intelligence Decision</p>
+          <p><span class="record-badge">VERIFIED</span></p>
+          <p>
+            La decisione architetturale formalizzata da ADR-CLE-004 separa l'uso eventuale
+            di fonti o servizi esterni dalla decision authority. Classification, scoring,
+            verdict e governance recommendations devono essere governati dal sistema
+            Sovereign e dalle evidence ammesse.
+          </p>
+        </article>
+
+        <article>
+          <p class="step">05 — QEN Sovereign</p>
+          <p><span class="record-badge">CURRENT</span><span class="record-badge">VERIFIED</span></p>
+          <p>
+            QEN Sovereign costituisce la baseline corrente. Il sistema integra evidence,
+            knowledge structures, QEN processing, governance e traceability senza
+            rappresentare provider esterni come autorità finale della decisione.
+          </p>
+        </article>
+
+        <article>
+          <p class="step">06 — Evidence &amp; Validation</p>
+          <p><span class="record-badge">CURRENT</span><span class="record-badge">VERIFIED</span></p>
+          <p>
+            L'architettura viene consolidata attraverso evidence catalogue, validation
+            programme, decision traceability, explainability, audit e test. Coste360 è il
+            caso pubblico principale utilizzato per dimostrare questa capacità entro un
+            perimetro dichiarato.
+          </p>
+        </article>
+
+        <article>
+          <p class="step">07 — Enterprise Services</p>
+          <p><span class="record-badge">CURRENT</span><span class="record-badge">VERIFIED</span></p>
+          <p>
+            Le capacità vengono tradotte in servizi enterprise. Il punto di ingresso non è
+            necessariamente il Framework: il percorso parte dal problema organizzativo,
+            dalla decisione da governare e dalle evidence disponibili.
+          </p>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <section class="record-section" id="why-sovereign">
+    <div class="record-wrap">
+      <h2>Why decision authority changed</h2>
+      <p class="record-lead">
+        QEN Sovereign non significa necessariamente assenza di servizi o fonti esterne.
+        Significa che un servizio esterno non costituisce, per il solo fatto di essere
+        utilizzato, l'autorità finale della decisione.
+      </p>
+
+      <div class="record-grid">
+        <article class="record-card">
+          <h3>External factual source</h3>
+          <p>
+            Una fonte esterna può contribuire fatti, dati o materiale informativo quando
+            ammesso dal processo e sottoposto alle regole di evidence applicabili.
+          </p>
+        </article>
+
+        <article class="record-card">
+          <h3>Decision authority</h3>
+          <p>
+            Classification, scoring, verdict e governance recommendations sono ricondotti
+            alle evidence governate e al processing Sovereign descritto dall'architettura
+            corrente e dalle decisioni formalizzate.
+          </p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="record-section" id="how-it-works">
+    <div class="record-wrap">
+      <h2>How QEN Sovereign works</h2>
+      <p class="record-lead">
+        Il flusso seguente è intenzionalmente istituzionale e non espone dettagli
+        infrastrutturali o operativi sensibili.
+      </p>
+
+      <div class="sovereign-flow">
+        <div class="flow-node"><strong>INPUT</strong><br>Il problema, il contesto o il materiale da analizzare entra nel processo.</div>
+        <div class="flow-arrow" aria-hidden="true">↓</div>
+        <div class="flow-node"><strong>EVIDENCE</strong><br>Le informazioni vengono trattate secondo provenienza, disponibilità e verificabilità.</div>
+        <div class="flow-arrow" aria-hidden="true">↓</div>
+        <div class="flow-node"><strong>KNOWLEDGE</strong><br>Le evidence vengono organizzate in strutture di conoscenza utili al contesto decisionale.</div>
+        <div class="flow-arrow" aria-hidden="true">↓</div>
+        <div class="flow-node"><strong>QEN PROCESSING</strong><br>Il Framework applica le strutture di valutazione e misurazione previste.</div>
+        <div class="flow-arrow" aria-hidden="true">↓</div>
+        <div class="flow-node"><strong>GOVERNANCE</strong><br>Regole, responsabilità, vincoli e obblighi vengono collegati all'analisi.</div>
+        <div class="flow-arrow" aria-hidden="true">↓</div>
+        <div class="flow-node"><strong>DECISION</strong><br>Il sistema produce un risultato governato entro il perimetro e le evidence disponibili.</div>
+        <div class="flow-arrow" aria-hidden="true">↓</div>
+        <div class="flow-node"><strong>TRACEABILITY</strong><br>Il percorso della decisione deve restare ricostruibile e spiegabile.</div>
+        <div class="flow-arrow" aria-hidden="true">↓</div>
+        <div class="flow-node"><strong>OUTPUT</strong><br>Il risultato viene esposto con evidence, limiti e contesto sufficienti per il suo utilizzo.</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="record-section" id="evidence">
+    <div class="record-wrap">
+      <h2>Evidence before assertion</h2>
+      <p class="record-lead">
+        L'evidence layer distingue ciò che è disponibile, verificato, ricostruito,
+        storico o corrente. Evidence catalogue, EVIDE, explainability e decision
+        traceability servono a impedire che assenza di prova e prova verificata
+        vengano trattate come equivalenti.
+      </p>
+
+      <div class="record-note">
+        <strong>A missing evidence record must remain distinguishable from a verified evidence record.</strong>
+      </div>
+
+      <p>
+        Anche failure state e limiti devono rimanere dichiarabili. Un risultato non deve
+        acquisire maggiore certezza solo perché una fonte, un passaggio o una evidence
+        richiesta non è disponibile.
+      </p>
+    </div>
+  </section>
+
+  <section class="record-section" id="learning">
+    <div class="record-wrap">
+      <h2>Architecture evolved through testing and correction</h2>
+      <p class="record-lead">
+        L'evoluzione non viene descritta come una linea senza errori. Git history, audit,
+        migration records e test mostrano invece un processo di consolidamento.
+      </p>
+
+      <div class="record-grid">
+        <article class="record-card">
+          <h3>Failure</h3>
+          <p>Architetture, percorsi o implementazioni possono mostrare limiti o incoerenze.</p>
+        </article>
+        <article class="record-card">
+          <h3>Diagnosis</h3>
+          <p>Test, audit, runtime behaviour e documentazione vengono confrontati.</p>
+        </article>
+        <article class="record-card">
+          <h3>Correction</h3>
+          <p>Provider-specific decision paths, endpoint legacy e riferimenti obsoleti vengono rimossi o corretti quando non più coerenti.</p>
+        </article>
+        <article class="record-card">
+          <h3>Verification</h3>
+          <p>Il risultato viene sottoposto nuovamente a test e controlli di coerenza.</p>
+        </article>
+        <article class="record-card">
+          <h3>Learning</h3>
+          <p>Le correzioni diventano parte della baseline operativa e documentale successiva.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="record-section" id="coste360">
+    <div class="record-wrap">
+      <p><span class="record-badge">VERIFIED</span></p>
+      <h2>From architecture to demonstrable capability</h2>
+      <p class="record-lead">
+        Coste360 è utilizzato come Validation Case per applicare l'architettura a un
+        contesto reale e produrre una catena documentale verificabile.
+      </p>
+
+      <p>
+        Enterprise context → capability assessment → governance → information architecture
+        → data architecture → integration architecture → application architecture
+        → evidence catalogue → validation → sovereign analysis.
+      </p>
+
+      <p>
+        Il programme comprende EA-001 → EA-009, VR-001 e SA-001.
+        La validazione opera entro il perimetro, le evidence e i limiti dichiarati nei
+        documenti; non viene presentata come certificazione assoluta.
+      </p>
+
+      <div class="record-actions">
+        <a href="/coste360.html">Explore Coste360 Validation</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="record-section" id="services">
+    <div class="record-wrap">
+      <h2>Turning the architecture into enterprise services</h2>
+      <p class="record-lead">
+        Il Framework descrive capacità e principi; l'engagement enterprise parte invece
+        dal problema organizzativo. Il Service Catalogue corrente identifica
+        <strong>CS-001 — AI Governance Assessment &amp; Readiness</strong> come principale
+        punto di ingresso.
+      </p>
+
+      <p><strong>ASSESSMENT → GOVERNANCE → STRATEGY → ADOPTION → VALIDATION</strong></p>
+
+      <p>
+        Il percorso concreto dipende dal contesto, dalle evidence disponibili e dalle
+        dipendenze definite nei singoli servizi; la sequenza non sostituisce il Service Catalogue.
+      </p>
+
+      <div class="record-actions">
+        <a href="/assessment.html">Start with Assessment</a>
+        <a href="/services.html">View Enterprise Services</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="record-section" id="baseline">
+    <div class="record-wrap">
+      <p><span class="record-badge">CURRENT</span><span class="record-badge">VERIFIED</span></p>
+      <h2>Current verified baseline</h2>
+
+      <div class="record-grid">
+        <article class="record-card">
+          <h3>Architecture</h3>
+          <p>QEN Sovereign</p>
+        </article>
+
+        <article class="record-card">
+          <h3>Decision authority</h3>
+          <p>Governed evidence + sovereign processing</p>
+        </article>
+
+        <article class="record-card">
+          <h3>Legacy runtime</h3>
+          <p>Legacy <code>/gemini/*</code> namespace and <code>/full-analysis</code> are not part of the current public runtime baseline.</p>
+        </article>
+
+        <article class="record-card">
+          <h3>Validation</h3>
+          <p>Coste360 Validation Programme</p>
+        </article>
+
+        <article class="record-card">
+          <h3>Test baseline</h3>
+          <p><strong>60 / 60 PASS</strong></p>
+        </article>
+
+        <article class="record-card">
+          <h3>Entry service</h3>
+          <p>AI Governance Assessment &amp; Readiness</p>
+        </article>
+      </div>
+
+      <p>
+        Test baseline verificata sull'ambiente di progetto corrente mediante la suite
+        esistente del repository. La baseline rappresenta lo stato verificato al momento
+        della costruzione di questo Operational Record e non una garanzia permanente
+        su versioni future.
+      </p>
+    </div>
+  </section>
+
+  <section class="record-section" id="references">
+    <div class="record-wrap">
+      <h2>Verify the record</h2>
+      <p class="record-lead">
+        Le fonti pubbliche seguenti permettono di verificare il contesto metodologico,
+        architetturale, di validazione e di servizio senza esporre file interni non
+        destinati alla pubblicazione.
+      </p>
+
+      <ul class="evidence-list">
+        <li><a href="/framework.html">QEN Framework</a></li>
+        <li><a href="/trust.html">Trust</a></li>
+        <li><a href="/validation.html">Validation</a></li>
+        <li><a href="/coste360.html">Coste360 Validation Case</a></li>
+        <li><a href="/resources/documents/coste360-vr-001-validation-report/">VR-001 — Validation Report</a></li>
+        <li><a href="/resources/documents/coste360-sa-001/">SA-001 — Sovereign Intelligence Analysis</a></li>
+        <li><a href="/assessment.html">AI Governance Assessment</a></li>
+        <li><a href="/validation.html">Resource Center</a></li>
+        <li><a href="/services.html">Enterprise Services</a></li>
+        <li><a href="/research.html">Research</a></li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="record-section" id="final">
+    <div class="record-wrap">
+      <h2>Start with the problem, not the technology.</h2>
+      <p class="record-lead">
+        Cognitive Logic engagements begin by defining the decision, the evidence available
+        and the governance required.
+      </p>
+      <div class="record-actions">
+        <a href="/assessment.html">Start with Assessment</a>
+        <a href="/validation.html">Explore the Evidence</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+
+      <div>
+
+        <div class="wordmark wordmark--footer notranslate" translate="no" aria-label="Cognitive Logic">
+          <span class="wm-top">Cognitive</span>
+          <span class="wm-bot">Logic</span>
+        </div>
+
+        <div class="footer-sub">
+          Quantificazione Etica Naturale — Knowledge Infrastructure
+          per AI Governance, Knowledge Governance e Decision Intelligence.
+        </div>
+
+        <div class="footer-copy mt-8">
+          © 2026 Roberto Bob Malini — Cognitive Logic ·
+          Tutti i diritti riservati ·
+          <a
+            href="/legal.html"
+            style="color:inherit;text-decoration:underline;"
+          >
+            Legal &amp; IP
+          </a>
+        </div>
+
+        <div class="footer-social">
+
+          <a
+            class="footer-social-link"
+            href="https://www.linkedin.com/in/robertobobmalini/"
+            target="_blank"
+            rel="noopener"
+          >
+            <span class="fsl-net">LinkedIn</span>
+            <span class="fsl-name">Roberto Malini</span>
+          </a>
+
+          <a
+            class="footer-social-link"
+            href="https://www.linkedin.com/company/cognitivelogic/"
+            target="_blank"
+            rel="noopener"
+          >
+            <span class="fsl-net">LinkedIn</span>
+            <span class="fsl-name">Cognitive Logic</span>
+          </a>
+
+          <a
+            class="footer-social-link"
+            href="https://fuorimenu.substack.com"
+            target="_blank"
+            rel="noopener"
+          >
+            <span class="fsl-net">Substack</span>
+            <span class="fsl-name">Fuori Menu</span>
+          </a>
+
+          <a
+            class="footer-social-link"
+            href="mailto:info@cognitivelogic.it"
+          >
+            <span class="fsl-net">Email</span>
+            <span class="fsl-name">info@cognitivelogic.it</span>
+          </a>
+
+        </div>
+
+      </div>
+
+      <div class="footer-links">
+
+        <a href="framework.html">Framework</a>
+        <a href="services.html">Servizi</a>
+        <a href="assessment.html">Assessment</a>
+        <a href="validation.html">Validazione</a>
+        <a href="case-studies.html">Case Studies</a>
+        <a href="about.html">About</a>
+        <a href="research.html">Research</a>
+        <a href="international-watch/">International Watch</a>
+        <a href="engagement.html">Engagement</a>
+        <a href="contact.html">Contatti</a>
+        <a href="copilot.html">Copilot</a>
+
+        <a href="/privacy.html">Privacy</a>
+        <a href="/cookie.html">Cookie</a>
+        <a href="/accessibilita.html">Accessibilità</a>
+
+      </div>
+
+    </div>
+  </footer>
+
+  <script src="/js/cookie-banner.js"></script>
+
+</body>
+</html>
