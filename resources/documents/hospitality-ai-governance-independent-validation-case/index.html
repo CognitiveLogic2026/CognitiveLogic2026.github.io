@@ -377,4 +377,81 @@
 </section>
 </main>
 </body>
-</html>
+</html><style>
+.resource-document h1 {
+  font-size: clamp(2rem, 4vw, 3.6rem);
+  line-height: 1.08;
+  margin-top: 2.6rem;
+}
+.resource-document h2 {
+  font-size: clamp(1.5rem, 2.5vw, 2.2rem);
+  line-height: 1.15;
+  margin-top: 2rem;
+}
+.resource-document table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1.5rem 0;
+}
+.resource-document th,
+.resource-document td {
+  padding: .75rem 1rem;
+  border-bottom: 1px solid rgba(255,255,255,.12);
+  text-align: left;
+  vertical-align: top;
+}
+.resource-document th {
+  font-weight: 700;
+}
+.resource-document p,
+.resource-document li {
+  max-width: 78ch;
+}
+</style>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const article = document.querySelector('.resource-document');
+  if (!article) return;
+
+  [...article.querySelectorAll('p')].forEach(p => {
+    const t = p.textContent.trim();
+    if (!t.startsWith('|')) return;
+
+    const lines = t.split('\n').map(x => x.trim()).filter(Boolean);
+    if (lines.length < 2) return;
+
+    const rows = lines
+      .filter(x => !/^\|?\s*:?-+:?\s*(\|\s*:?-+:?\s*)+\|?$/.test(x))
+      .map(x => x.replace(/^\||\|$/g,'').split('|').map(c => c.trim()));
+
+    if (rows.length < 2) return;
+
+    const table = document.createElement('table');
+    const thead = document.createElement('thead');
+    const tbody = document.createElement('tbody');
+
+    const hr = document.createElement('tr');
+    rows[0].forEach(c => {
+      const th = document.createElement('th');
+      th.textContent = c;
+      hr.appendChild(th);
+    });
+    thead.appendChild(hr);
+
+    rows.slice(1).forEach(r => {
+      const tr = document.createElement('tr');
+      r.forEach(c => {
+        const td = document.createElement('td');
+        td.textContent = c;
+        tr.appendChild(td);
+      });
+      tbody.appendChild(tr);
+    });
+
+    table.appendChild(thead);
+    table.appendChild(tbody);
+    p.replaceWith(table);
+  });
+});
+</script>
