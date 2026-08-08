@@ -21,17 +21,16 @@ QEN è pensato per PMI e filiere (HoReCa, balneari, commercio di prossimità), e
 ## Progetti
 
 - [Ecosystem](https://cognitivelogic.it/ecosystem.html): mappa dell'ecosistema territoriale del progetto.
-- [Copilot](https://cognitivelogic.it/copilot.html): frontend del Compliance Copilot (Claude + Mistral).
+- [Copilot](https://cognitivelogic.it/copilot.html): frontend del QEN Sovereign Compliance Copilot.
 
 ## Agent Endpoint
 
 Endpoint API HTTPS esposti su `api.cognitivelogic.it`, documentati integralmente in [LLM Index](https://cognitivelogic.it/llm-index.html) (metodo, body, response schema):
 
-- `POST /copilot-analyze` — analisi compliance EU AI Act / GDPR (Claude Sonnet).
+- `POST /copilot-analyze` — analisi governance e compliance tramite QEN Sovereign Intelligence.
 - `POST /agents/mistral-compliance` e `/agents/mistral-advisor` — audit compatibility route (Legacy compatibility endpoint (deprecated)).
 - `POST /agents/bolkestein-assessment` — pre-assessment concessioni Bolkestein 2027.
 - `POST /qen-score` — calcolo QEN Score (QEN Sovereign).
-- `POST /full-analysis` — orchestrazione multi-brain in parallelo.
 - `GET /pilots` — registro storico QEN Score.
 - [QEN Compliance Auditor](https://cognitivelogic.it/qen-compliance-auditor.html): audit compliance EU AI Act / GDPR (interfaccia web).
 - [QEN HoReCa Auditor](https://cognitivelogic.it/qen-horeca-auditor.html): audit sostenibilità per il settore HoReCa.

@@ -4,8 +4,8 @@ Cognitive Logic is an independent observatory designing computable ethics
 infrastructure for AI systems operating under EU regulatory frameworks
 (EU AI Act, GDPR, DSA).
 
-It produces semantic knowledge graphs, ethical scoring engines, and
-dual-brain AI architectures that make compliance structural rather than
+It produces semantic knowledge graphs, governance scoring engines, and
+QEN Sovereign decision infrastructure that make compliance structural rather than
 declarative.
 
 -----
@@ -15,10 +15,9 @@ declarative.
 - **QEN Framework — Quantificazione Etica Naturale / Quantifying Ethical Network**
   Semantic graph + numerical ethics scoring for institutions, restaurants,
   and hotels. Formula: `QEN = (Vs × 0.40) + (Va × 0.35) + (Vt × 0.25)`
-- **Dual-Brain AI Engine**
-  Claude (Anthropic) for EU AI Act classification and GDPR risk analysis.
-  Gemini for QEN scoring and market intelligence.
-  Orchestrated in parallel via `/full-analysis`.
+- **QEN Sovereign Intelligence**
+  Proprietary governance and decision intelligence for EU AI Act classification,
+  GDPR risk analysis, QEN scoring, evidence traceability and governed decision support.
 - **Semantic Knowledge Graph**
   Static JSON graph — 97 nodes · 182 relations (v4).
   Node types: institutions, algorithms, regulations, KPIs, territories.
@@ -38,7 +37,7 @@ declarative.
 
 |Repository          |Description                                |Status|
 |--------------------|-------------------------------------------|------|
-|`CognitiveLogic2026`|Main API backend — Flask + Claude + Gemini |🟢 Live|
+|`CognitiveLogic2026`|QEN Sovereign Runtime and governance API   |🟢 Live|
 |`qen-framework`     |QEN Framework — graph, scoring, copilot UI |🟢 Live|
 |`cognitivelogic-web`|Frontend — GitHub Pages · cognitivelogic.it|🟢 Live|
 
@@ -47,12 +46,13 @@ declarative.
 ## Infrastructure
 
 ```
-Hetzner CAX21 ARM64 — Ubuntu 24.04 — 178.104.190.107
+Hetzner CAX21 ARM64 — Ubuntu 24.04 — EU-hosted
 
 Nginx (443) → api.cognitivelogic.it
-  ├── Flask :5000  — Claude API  (risk, compliance, analyze)
-  ├── Flask :5001  — QEN Sovereign API  (qen-score, market-scan)
-  └── orchestrator.py → /full-analysis (parallel dual-brain)
+  └── QEN Sovereign Runtime
+      ├── /copilot-analyze
+      ├── /qen-score
+      └── /compliance-audit
 ```
 
 Deploy: GitHub Actions → Hetzner on push to `main`
@@ -83,7 +83,7 @@ ethics in EU-regulated AI systems**, integrating:
 - sustainability and ESG analytics
 - EU AI Act structural compliance
 - digital trust and decentralized identity
-- dual-brain AI orchestration
+- sovereign decision intelligence and evidence traceability
 
 into a single scalable governance framework.
 
