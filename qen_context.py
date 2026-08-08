@@ -1,13 +1,12 @@
 """
 qen_context.py — Contesto condiviso del framework QEN (Quantification of Ethical Naturalness)
 
-NOTA STATO INFRASTRUTTURA (aggiornato 2026-07-12, diagnosi VPS):
-- qen-framework.service, qen-api.service, qen-copilot.service (porta 8000): DISATTIVATI
-  (systemctl disable --now, 12/7/2026). Caricavano app.py, uno stub FastAPI senza logica
-  reale. Vedi API_ENDPOINTS_PIANIFICATI_NON_ATTIVI sotto.
-- gemini_backend.py (PM2, porta 5001): in esecuzione ma SCOLLEGATO da main.py.
-- /qen-score e /compliance-audit sono rotte DENTRO main.py su Flask :5000.
-- Backend reali: Flask :5000 (cognitivelogic-flask.service) e FastAPI :8001 (cognitivelogic.service).
+ARCHITETTURA CANONICA:
+- QEN Sovereign Intelligence è il motore proprietario di governance e decision intelligence.
+- /copilot-analyze, /qen-score e /compliance-audit sono endpoint canonici QEN Sovereign.
+- Governance Engine, Knowledge Graph ed EVIDE supportano evidence e decision traceability.
+- I namespace provider-named eventualmente mantenuti sono esclusivamente compatibility route
+  deprecate e non rappresentano provider decisionali attivi.
 """
 
 QEN_FRAMEWORK_VERSION = "Diamante 26.0"
@@ -66,15 +65,6 @@ RECONCILABLE_PARAMETERS = {
     "eu_ai_compliant": {"source": "NANDO", "reliability": 0.92, "type": "boolean", "fallback": True},
 }
 
-CLAUDE_MODEL = "claude-sonnet-4-6"
-GEMINI_MODEL_CASCADE = ["gemini-2.0-flash-lite", "gemini-2.5-flash", "gemini-2.0-flash"]
-MISTRAL_MODEL = "mistral-large-latest"
-LLM_MAX_TOKENS_AUDIT = 1500
-LLM_MAX_TOKENS_SCORE = 900
-LLM_MAX_TOKENS_BATCH = 1200
-LLM_TEMPERATURE_DEFAULT = 0.3
-RATE_LIMIT_LLM_SINGLE = 30
-RATE_LIMIT_LLM_BATCH = 20
 
 SYSTEM_COMPLIANCE_AUDITOR = (
     "Sei il Compliance Auditor del framework QEN. Analizza applicando EU AI Act, "
@@ -184,8 +174,8 @@ API_ENDPOINTS_ATTIVI = {
     "POST /classify-risk": "Classificazione rischio",
     "GET/POST /admin/*": "Amministrazione (autenticato)",
     "GET/POST /evide/*": "Modulo Evide, audit trail con hash/prev_hash",
-    "POST /qen-score": "Legacy compatibility namespace (deprecated)",
-    "POST /compliance-audit": "Legacy compatibility namespace (deprecated)",
+    "POST /qen-score": "QEN Sovereign scoring endpoint",
+    "POST /compliance-audit": "QEN Sovereign compliance assessment endpoint",
     "POST /agents/compliance-auditor": "QEN Sovereign Compliance Engine",
     "POST /agents/territorial-mapper": "QEN Territorial Intelligence Engine",
     "POST /agents/advisory-council": "QEN Governance Advisory Engine",
@@ -202,9 +192,7 @@ API_ENDPOINTS_ATTIVI = {
     "GET /api/escalations": "Lista escalation",
 }
 
-API_ENDPOINTS_PIANIFICATI_NON_ATTIVI = {
-    "POST /agents/openai-advisor": "Presente in orchestrator.py ma disabilitata a mano, sempre 503",
-}
+API_ENDPOINTS_PIANIFICATI_NON_ATTIVI = {}
 CORS_ORIGINS = frozenset({"https://cognitivelogic.it", "https://www.cognitivelogic.it", "https://api.cognitivelogic.it"})
 TRUSTED_HOSTS = frozenset({"cognitivelogic.it", "www.cognitivelogic.it", "api.cognitivelogic.it"})
 SUPERVISOR_HEADER = "X-Supervisor-Key"

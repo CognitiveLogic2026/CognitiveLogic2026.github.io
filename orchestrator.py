@@ -352,7 +352,7 @@ def register_orchestrator(app, limiter=None):
         return jsonify(payload), 200
 
     # ---------------------------------------------------------------------------
-    # Mistral endpoints (primary LLM — Mistral Large via REST, no SDK)
+    # Deprecated provider-named compatibility routes backed exclusively by QEN Sovereign
 
 
     @app.after_request
