@@ -798,8 +798,8 @@
       "type": "Strumento",
       "label": "QEN Copilot AI",
       "descrizione": "Interfaccia conversazionale per compliance AI. Risponde su EU AI Act, Bolkestein, CSRD, QEN Score.",
-      "powered_by": "Claude (Anthropic)",
-      "endpoint": "api.cognitivelogic.it/copilot",
+      "powered_by": "QEN Sovereign Intelligence",
+      "endpoint": "api.cognitivelogic.it/copilot-analyze",
       "stato": "LIVE",
       "url": "/copilot.html",
       "qen_score": {
@@ -979,25 +979,6 @@
       },
       "evide_id": null
     },
-    "DUAL_BRAIN_AI": {
-      "id": "DUAL_BRAIN_AI",
-      "type": "Tecnologia",
-      "label": "Dual-Brain AI — Claude + Gemini",
-      "architettura": "Orchestrazione parallela Claude (Anthropic) e Gemini (Google)",
-      "endpoint": [
-        "/full-analysis",
-        "/gemini/qen-score",
-        "/dati-incrociati"
-      ],
-      "stato": "LIVE",
-      "qen_score": {
-        "vs": 85,
-        "va": 90,
-        "vt": 80,
-        "totale": 85.25
-      },
-      "evide_id": null
-    },
     "KNOWLEDGE_GRAPH_SEMANTICO": {
       "id": "KNOWLEDGE_GRAPH_SEMANTICO",
       "type": "Tecnologia",
@@ -1029,11 +1010,10 @@
       "label": "API Cognitive Logic",
       "base_url": "api.cognitivelogic.it",
       "endpoint_principali": [
-        "/copilot",
-        "/validate",
-        "/pilots",
+        "/copilot-analyze",
         "/qen-score",
-        "/full-analysis"
+        "/compliance-audit",
+        "/pilots"
       ],
       "stack": "Flask + Nginx + Let's Encrypt — Hetzner CAX21",
       "stato": "LIVE",
@@ -1872,6 +1852,25 @@
       "score_qen": null,
       "edge": [],
       "evide_id": null
+    },
+    "QEN_SOVEREIGN_INTELLIGENCE": {
+      "id": "QEN_SOVEREIGN_INTELLIGENCE",
+      "type": "Tecnologia",
+      "label": "QEN Sovereign Intelligence",
+      "architettura": "Governance e Decision Intelligence proprietaria basata su QEN Sovereign Engine, Governance Engine, Knowledge Graph ed EVIDE",
+      "endpoint": [
+        "/copilot-analyze",
+        "/qen-score",
+        "/compliance-audit"
+      ],
+      "stato": "LIVE",
+      "qen_score": {
+        "vs": 85,
+        "va": 90,
+        "vt": 80,
+        "totale": 85.25
+      },
+      "evide_id": null
     }
   },
   "edges": [
@@ -1897,7 +1896,7 @@
     },
     {
       "from": "COGNITIVE_LOGIC",
-      "to": "DUAL_BRAIN_AI",
+      "to": "QEN_SOVEREIGN_INTELLIGENCE",
       "type": "UTILIZZA"
     },
     {
@@ -2272,7 +2271,7 @@
     },
     {
       "from": "QEN_COPILOT_AI",
-      "to": "DUAL_BRAIN_AI",
+      "to": "QEN_SOVEREIGN_INTELLIGENCE",
       "type": "UTILIZZA"
     },
     {
@@ -2356,17 +2355,17 @@
       "type": "PRODUCE"
     },
     {
-      "from": "DUAL_BRAIN_AI",
+      "from": "QEN_SOVEREIGN_INTELLIGENCE",
       "to": "AGENT_QEN_SCORER",
       "type": "ALIMENTA"
     },
     {
-      "from": "DUAL_BRAIN_AI",
+      "from": "QEN_SOVEREIGN_INTELLIGENCE",
       "to": "AGENT_COMPLIANCE_CHECKER",
       "type": "ALIMENTA"
     },
     {
-      "from": "DUAL_BRAIN_AI",
+      "from": "QEN_SOVEREIGN_INTELLIGENCE",
       "to": "AGENT_REPORT_GENERATOR",
       "type": "ALIMENTA"
     },
