@@ -48,7 +48,7 @@ def register_wizard(app, limiter=None, require_trusted_origin=None):
     _lim = limiter.limit if limiter else lambda _rule: (lambda f: f)
     _origin_check = require_trusted_origin if require_trusted_origin else (lambda: None)
 
-    @app.route("/gemini/compliance-audit/wizard/disclaimer", methods=["POST"])
+    @app.route("/compliance-audit/wizard/disclaimer", methods=["POST"])
     @_lim("30 per minute;300 per day")
     def wizard_disclaimer():
         blocked = _origin_check()
@@ -67,7 +67,7 @@ def register_wizard(app, limiter=None, require_trusted_origin=None):
             return jsonify({"error": "persistenza non riuscita", "detail": str(e)}), 500
         return jsonify({"status": "ok"}), 200
 
-    @app.route("/gemini/compliance-audit/wizard/submit", methods=["POST"])
+    @app.route("/compliance-audit/wizard/submit", methods=["POST"])
     @_lim("10 per minute;100 per day")
     def wizard_submit():
         blocked = _origin_check()
