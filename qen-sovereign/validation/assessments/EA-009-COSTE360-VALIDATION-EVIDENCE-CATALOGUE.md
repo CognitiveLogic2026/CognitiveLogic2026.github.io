@@ -10,6 +10,10 @@ Version: 1.0
 
 Status: Approved
 
+Date: 2026-08-09
+
+Canonical URL: https://cognitivelogic.it/resources/documents/coste360-ea-009/
+
 Classification: Internal Enterprise Assessment
 
 Repository: Cognitive Logic

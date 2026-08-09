@@ -25,4 +25,7 @@ jobs:
             pytest httpx
 
       - name: Run smoke tests
-        run: pytest tests/ -v
+        run: |
+          python scripts/build_source_index.py
+          git diff --exit-code -- data/source-index.json
+          pytest tests/ -v

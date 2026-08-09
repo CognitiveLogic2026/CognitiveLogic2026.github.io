@@ -1,0 +1,187 @@
+import copy
+import hashlib
+import json
+from pathlib import Path
+from unittest.mock import patch
+
+import pytest
+
+import source_retrieval
+from main import app, check_duplicate
+from sovereign_engine import RISK_RULES, classify_risk, qen_score
+from source_retrieval import RegistryError, build_index, load_index, load_registry, retrieve
+
+
+ROOT = Path(__file__).resolve().parents[1]
+REGISTRY = ROOT / "data" / "source-registry.json"
+INDEX = ROOT / "data" / "source-index.json"
+COPILOT = ROOT / "copilot.html"
+
+EXPECTED = {
+    "OBS-BOLK-001": "https://cognitivelogic.it/resources/documents/osservatorio-bolkestein/",
+    "AGCM-AS1930-NOTE-001": "https://cognitivelogic.it/resources/documents/concessioni-balneari-criteri-agcm/",
+    "BEN-EGEA-QEN-001": "https://cognitivelogic.it/resources/documents/bolkestein-egea-benchmark/",
+    "EA-009": "https://cognitivelogic.it/resources/documents/coste360-ea-009/",
+    "CS-010": "https://cognitivelogic.it/resources/documents/cs-010-coastal-governance-intelligence/",
+}
+
+QUERIES = {
+    "OBS-BOLK-001": "Osservatorio Bolkestein concessioni balneari",
+    "AGCM-AS1930-NOTE-001": "AGCM AS1930 esperienza incumbent",
+    "BEN-EGEA-QEN-001": "benchmark Egea QEN KPI normalizzati",
+    "EA-009": "EA-009 EV-0001 validation evidence catalogue",
+    "CS-010": "CS-010 Coastal Governance Intelligence",
+}
+
+
+def sha256(path):
+    return hashlib.sha256(path.read_bytes()).hexdigest()
+
+
+def test_source_registry_is_valid_and_enforces_decision_boundary():
+    registry = load_registry()
+    assert registry["allowlist_enforced"] is True
+    assert set(EXPECTED) == {source["source_id"] for source in registry["sources"]}
+    for source in registry["sources"]:
+        assert {"modify_qen_configuration", "modify_qen_decisions"} <= set(source["prohibited_use"])
+        assert source["sha256"] == sha256(ROOT / source["source_path"])
+
+
+def test_loader_rejects_path_not_in_repository_allowlist(tmp_path):
+    registry = json.loads(REGISTRY.read_text(encoding="utf-8"))
+    source = copy.deepcopy(registry["sources"][0])
+    source["source_id"] = "UNREGISTERED"
+    source["source_path"] = "../../outside.md"
+    registry["sources"].append(source)
+    candidate = tmp_path / "registry.json"
+    candidate.write_text(json.dumps(registry), encoding="utf-8")
+    with pytest.raises(RegistryError, match="escapes repository"):
+        load_registry(candidate)
+
+
+def test_all_five_sources_load_and_generated_index_is_reproducible(tmp_path):
+    first = build_index(destination=tmp_path / "one.json")
+    second = build_index(destination=tmp_path / "two.json")
+    assert first == second
+    assert [doc["source_id"] for doc in first["documents"]] == list(EXPECTED)
+    assert (tmp_path / "one.json").read_bytes() == (tmp_path / "two.json").read_bytes()
+
+
+@pytest.mark.parametrize("source_id", EXPECTED)
+def test_retrieval_returns_each_governed_content(source_id):
+    result = retrieve(QUERIES[source_id])
+    match = next(source for source in result["sources"] if source["source_id"] == source_id)
+    assert result["retrieval_status"] == "ready"
+    assert match["canonical_url"] == EXPECTED[source_id]
+    assert match["source_class"] in {"primary", "secondary"}
+    assert match["section"] and match["excerpt"]
+
+
+def test_agcm_is_partial_secondary_orientation_not_case_study_or_judgment():
+    result = retrieve("AGCM AS1930")
+    source = next(item for item in result["sources"] if item["source_id"] == "AGCM-AS1930-NOTE-001")
+    assert source["category"] == "provvedimento o orientamento AGCM"
+    assert source["source_class"] == "secondary"
+    assert any("case study completo" in warning for warning in source["warnings"])
+
+
+def test_unapproved_benchmark_proposal_is_explicit():
+    source = next(item for item in retrieve("Egea proposta non approvata")["sources"] if item["source_id"] == "BEN-EGEA-QEN-001")
+    assert source["category"] == "benchmark proprietario"
+    assert any("non sono approvati" in warning for warning in source["warnings"])
+
+
+def test_primary_official_source_is_preferred_when_equally_relevant(monkeypatch):
+    base = json.loads(INDEX.read_text(encoding="utf-8"))
+    primary = copy.deepcopy(base["documents"][0])
+    secondary = copy.deepcopy(base["documents"][0])
+    primary["source_id"] = "OFFICIAL"
+    primary["metadata"]["source_class"] = "primary"
+    secondary["source_id"] = "COMMENTARY"
+    secondary["metadata"]["source_class"] = "secondary"
+    fake = {**base, "documents": [secondary, primary]}
+    monkeypatch.setattr(source_retrieval, "load_index", lambda *args, **kwargs: (fake, "ready"))
+    monkeypatch.setattr(source_retrieval, "knowledge_version", lambda: {"registry_version": "test", "index_version": "test", "retrieval_status": "ready"})
+    assert retrieve("Osservatorio Bolkestein")["sources"][0]["source_id"] == "OFFICIAL"
+
+
+def test_no_invented_citations():
+    registry = load_registry()
+    allowed = {source["source_id"]: source["canonical_url"] for source in registry["sources"] if source["enabled"]}
+    for query in QUERIES.values():
+        for source in retrieve(query)["sources"]:
+            assert allowed[source["source_id"]] == source["canonical_url"]
+
+
+@pytest.mark.parametrize("source_id", EXPECTED)
+def test_document_to_registry_to_loader_to_index_to_api_to_ui_citation(source_id):
+    registry = load_registry()
+    record = next(source for source in registry["sources"] if source["source_id"] == source_id)
+    assert (ROOT / record["source_path"]).is_file()
+    index, status = load_index()
+    assert status == "ready"
+    assert source_id in {doc["source_id"] for doc in index["documents"]}
+
+    with patch("main.check_duplicate", return_value=None), patch("main.save_pilot"):
+        response = app.test_client().post(
+            "/copilot-analyze",
+            json={"description": QUERIES[source_id]},
+            headers={"Origin": "https://cognitivelogic.it"},
+        )
+    assert response.status_code == 200
+    payload = response.get_json()
+    citation = next(source for source in payload["sources"] if source["source_id"] == source_id)
+    assert citation["canonical_url"] == EXPECTED[source_id]
+    assert payload["response_mode"] == "sovereign"
+    ui = COPILOT.read_text(encoding="utf-8")
+    for field in ("canonical_url", "category", "authority", "date", "source_class", "confidence", "section", "warnings"):
+        assert f"source.{field}" in ui
+
+
+def test_api_propagates_retrieval_contract():
+    with patch("main.check_duplicate", return_value=None), patch("main.save_pilot"):
+        response = app.test_client().post(
+            "/copilot-analyze", json={"description": "EA-009 EV-0001"},
+            headers={"Origin": "https://cognitivelogic.it"},
+        )
+    payload = response.get_json()
+    assert {"sources", "uncertainty", "confidence", "retrieval_status", "knowledge_version", "response_mode"} <= payload.keys()
+
+
+def test_ui_fallback_is_transparent_and_does_not_invoke_local_analysis():
+    ui = COPILOT.read_text(encoding="utf-8")
+    catch_block = ui[ui.index("} catch (err) {"):ui.index("\n      try {", ui.index("} catch (err) {"))]
+    assert "Modalità fallback" in catch_block
+    assert "localAnalyze(text)" not in catch_block
+    assert "powered by QEN Sovereign" not in catch_block
+
+
+def test_cache_is_invalidated_when_context_changes(monkeypatch):
+    monkeypatch.setattr("main.load_pilot", lambda name: {"cache_context": {"engine_version": "old"}, "data": {}})
+    assert check_duplicate("entity", {"engine_version": "new"}) is None
+
+
+def test_retrieval_does_not_change_qen_rules_or_approved_decisions():
+    rules_before = copy.deepcopy(RISK_RULES)
+    score_before = qen_score(80, 70, 60)
+    classification_before = classify_risk("chatbot informativo")["risk_level"]
+    graph_before = sha256(ROOT / "data" / "qen_graph_v4.json")
+    adr_before = sha256(ROOT / "docs" / "runtime" / "QEN-SOVEREIGN-CERTIFICATION.md")
+    retrieve("benchmark Egea QEN AGCM Bolkestein")
+    assert RISK_RULES == rules_before
+    assert qen_score(80, 70, 60) == score_before
+    assert classify_risk("chatbot informativo")["risk_level"] == classification_before
+    assert sha256(ROOT / "data" / "qen_graph_v4.json") == graph_before
+    assert sha256(ROOT / "docs" / "runtime" / "QEN-SOVEREIGN-CERTIFICATION.md") == adr_before
+
+
+def test_safe_degraded_states(tmp_path):
+    assert load_index(index_path=tmp_path / "missing.json")[1] == "index_missing"
+    stale = json.loads(INDEX.read_text(encoding="utf-8"))
+    stale["registry_hash"] = "stale"
+    stale_path = tmp_path / "stale.json"
+    stale_path.write_text(json.dumps(stale), encoding="utf-8")
+    assert load_index(index_path=stale_path)[1] == "index_stale"
+    result = retrieve("zzzxxyyqqq")
+    assert result["retrieval_status"] == "no_results"
+    assert result["sources"] == []

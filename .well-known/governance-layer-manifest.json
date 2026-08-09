@@ -35,7 +35,10 @@
       "urn:glm:base:core"
     ],
     "agent_interop": true,
-    "graphrag_enabled": true,
+    "graphrag_enabled": false,
+    "retrieval": "Governed deterministic lexical retrieval over an allowlisted local source index; no embeddings or vector database",
+    "source_registry": "https://cognitivelogic.it/data/source-registry.json",
+    "source_index": "https://cognitivelogic.it/data/source-index.json",
     "decision_engine": "QEN Sovereign Engine",
     "external_provider_decisioning": false
   },

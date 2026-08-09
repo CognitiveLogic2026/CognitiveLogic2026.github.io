@@ -15,6 +15,12 @@ on:
       - 'nginx/**'
       - 'data/intelligence_feed.json'
       - 'data/qen_graph_v4.json'
+      - 'data/source-registry.json'
+      - 'data/source-index.json'
+      - 'source_retrieval.py'
+      - 'qen-sovereign/knowledge-sources/**'
+      - 'qen-sovereign/validation/assessments/EA-009-COSTE360-VALIDATION-EVIDENCE-CATALOGUE.md'
+      - 'commercial-evolution-1.0/phase-4-enterprise-service-specifications/services/CS-010-COASTAL-GOVERNANCE-INTELLIGENCE.md'
       - '.github/workflows/deploy-vps.yml'
   workflow_dispatch:
 
@@ -68,6 +74,9 @@ jobs:
             [ -d "$VENV" ] || python3 -m venv "$VENV"
             "$VENV/bin/pip" install -q -r qen-reconciliation/requirements.txt
             "$VENV/bin/pip" install -q -r requirements-flask.txt
+
+            # Fail closed if the committed governed source index is absent or stale.
+            "$VENV/bin/python" -c "from source_retrieval import load_index; i,s=load_index(); assert i is not None and s == 'ready', s"
 
             # Initialize data files if missing
             [ -f /app/cognitivelogic/pilots.json ] || echo '{}' > /app/cognitivelogic/pilots.json

@@ -464,5 +464,37 @@
   },
   {
     "id": "concessioni-balneari-criteri-agcm", "title": "Concessioni balneari: analisi comparativa dei criteri contestati dall’AGCM", "description": "Case study comparativo su rischi concorrenziali, microimprese, prove equivalenti e controlli QEN.", "source": "resources/documents/concessioni-balneari-criteri-agcm/source.md", "output": "resources/documents/concessioni-balneari-criteri-agcm/index.html", "url": "/resources/documents/concessioni-balneari-criteri-agcm/", "topics": ["AGCM", "Concessioni balneari", "QEN Sovereign"], "type": "Case Study", "category": "validation-case-studies", "categoryLabel": "Validation e Case Studies", "audience": "Enterprise", "status": "published", "language": "it", "featured": true
+  },
+  {
+    "id": "coste360-ea-009",
+    "title": "EA-009 — Coste360 Validation Evidence Catalogue",
+    "description": "Catalogo autorevole delle evidenze di validazione Coste360, inclusa EV-0001.",
+    "source": "qen-sovereign/validation/assessments/EA-009-COSTE360-VALIDATION-EVIDENCE-CATALOGUE.md",
+    "output": "resources/documents/coste360-ea-009/index.html",
+    "url": "/resources/documents/coste360-ea-009/",
+    "topics": ["Coste360", "Validation Evidence", "EA-009"],
+    "type": "Validation Evidence",
+    "category": "case-studies",
+    "categoryLabel": "Case Studies",
+    "audience": "Enterprise",
+    "status": "published",
+    "language": "en",
+    "featured": false
+  },
+  {
+    "id": "bolkestein-egea-benchmark",
+    "title": "Osservatorio Bolkestein — Benchmark Egea–QEN",
+    "description": "Analisi indipendente e benchmark proprietario; proposte, soglie e pesi non costituiscono normativa approvata.",
+    "source": "qen-sovereign/knowledge-sources/BEN-001-EGEA-QEN-BENCHMARK.md",
+    "output": "resources/documents/bolkestein-egea-benchmark/index.html",
+    "url": "/resources/documents/bolkestein-egea-benchmark/",
+    "topics": ["Bolkestein", "Egea", "QEN", "Concessioni"],
+    "type": "Benchmark",
+    "category": "research",
+    "categoryLabel": "Research",
+    "audience": "Public and Enterprise",
+    "status": "published",
+    "language": "it",
+    "featured": true
   }
 ]

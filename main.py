@@ -13,8 +13,10 @@ from datetime import datetime, timezone, timedelta, UTC
 from flask import Flask, request, jsonify
 from flask_limiter import Limiter
 from flask_limiter.util import get_remote_address
+from sovereign_engine import ENGINE_VERSION
 from sovereign_engine import classify_risk as sovereign_classify_risk
 from sovereign_engine import score_entity as sovereign_score_entity
+from source_retrieval import knowledge_version, retrieve
 
 app = Flask(__name__)
 
@@ -100,7 +102,7 @@ def load_pilots():
 
 _PILOTS_LOCK_PATH = PILOTS_PATH + ".lock"
 
-def save_pilot(name, score_data):
+def save_pilot(name, score_data, cache_context=None):
     Path(_PILOTS_LOCK_PATH).touch(exist_ok=True)
     with open(_PILOTS_LOCK_PATH, "r") as _lf:
         fcntl.flock(_lf, fcntl.LOCK_EX)
@@ -110,7 +112,8 @@ def save_pilot(name, score_data):
             entry = {
                 "name":      name,
                 "timestamp": datetime.now(UTC).strftime("%Y-%m-%dT%H:%M:%SZ"),
-                "data":      score_data
+                "data":      score_data,
+                "cache_context": cache_context,
             }
             if key in pilots:
                 pilots[key]["history"] = pilots[key].get("history", [])
@@ -128,8 +131,21 @@ def load_pilot(name):
     key = name.strip().lower()
     return pilots.get(key)
 
-def check_duplicate(name):
-    return load_pilot(name)
+def check_duplicate(name, expected_cache_context=None):
+    pilot = load_pilot(name)
+    if pilot and expected_cache_context is not None:
+        if pilot.get("cache_context") != expected_cache_context:
+            return None
+    return pilot
+
+
+def _copilot_cache_context():
+    knowledge = knowledge_version()
+    return {
+        "engine_version": ENGINE_VERSION,
+        "registry_version": knowledge.get("registry_version"),
+        "index_version": knowledge.get("index_version"),
+    }
 
 @app.route("/")
 def root_health():
@@ -436,7 +452,8 @@ def copilot_analyze():
     entity_name = data.get("entity_name", descrizione[:60])
     force_reanalyze = data.get("force", False)
 
-    existing = check_duplicate(entity_name)
+    cache_context = _copilot_cache_context()
+    existing = check_duplicate(entity_name, cache_context)
     if existing and not force_reanalyze:
         return jsonify({
             "duplicate": True,
@@ -448,6 +465,9 @@ def copilot_analyze():
 
     try:
         sovereign = sovereign_classify_risk(descrizione)
+        retrieval = retrieve(
+            " ".join((descrizione, str(data.get("question", ""))))
+        )
 
         public_level = (
             "HIGH"
@@ -476,9 +496,15 @@ def copilot_analyze():
             "gaps": sovereign["gaps"],
             "recommendations": sovereign["recommendations"],
             "decision": sovereign["decision"],
+            "sources": retrieval["sources"],
+            "uncertainty": retrieval["uncertainty"],
+            "confidence": retrieval["confidence"],
+            "retrieval_status": retrieval["retrieval_status"],
+            "knowledge_version": retrieval["knowledge_version"],
+            "response_mode": "sovereign",
         }
 
-        save_pilot(entity_name, output)
+        save_pilot(entity_name, output, cache_context)
         return jsonify(output), 200
 
     except Exception:

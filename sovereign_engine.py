@@ -10,6 +10,7 @@ from pathlib import Path
 from typing import Any
 
 GRAPH_PATH = Path(__file__).with_name("graph.json")
+ENGINE_VERSION = "qen-sovereign-1.0"
 
 RISK_RULES = {
     "PROHIBITED": {

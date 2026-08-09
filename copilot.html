@@ -163,6 +163,11 @@
       color: rgba(255,255,255,0.25); border: 1px solid rgba(255,255,255,0.08);
       padding: 3px 8px; border-radius: 2px; display: inline-block; margin-top: 10px;
     }
+    .source-item { padding: 14px 0; border-bottom: 1px solid rgba(255,255,255,0.07); }
+    .source-item:last-child { border-bottom: 0; }
+    .source-title { color: var(--gold-soft); text-decoration: underline; text-underline-offset: 3px; }
+    .source-meta, .source-warning { margin-top: 5px; font-family: 'DM Mono', monospace; font-size: 10px; line-height: 1.6; color: rgba(255,255,255,0.58); }
+    .source-warning { color: #e6bd74; }
     .examples-label {
       font-family: 'DM Mono', monospace; font-size: 9px; letter-spacing: 0.18em; text-transform: uppercase;
       color: rgba(255,255,255,0.2); margin-bottom: 8px;
@@ -329,6 +334,13 @@
   <div class="card secondary-card">
     <div class="section-label">Recommendations</div>
     <div id="rec-list"></div>
+  </div>
+
+  <div class="card secondary-card" id="sources-card">
+    <div class="section-label">Fonti utilizzate</div>
+    <div id="retrieval-summary" class="metric-value" role="status"></div>
+    <div id="sources-list"></div>
+    <p class="source-warning">Nessun parere legale. Verificare data, stato e documento ufficiale quando indicato.</p>
   </div>
 
   <div class="footer-note">Cognitive Logic · QEN Compliance Engine · EU AI Act 2025</div>
@@ -503,8 +515,8 @@
       doc.save(`QEN_Compliance_Report_${new Date().toISOString().slice(0,10)}.pdf`);
     }
 
-    // ── Local demo engine (fallback when backend unreachable) ──────────────
-    function localAnalyze(text) {
+    /* Legacy local demo engine retained as non-executable release history.
+       The active fallback below never evaluates or returns this block.
       const t = text.toLowerCase();
       const is = k => k.some(w => t.includes(w));
 
@@ -647,7 +659,7 @@
                why, impact, summary, gaps, recommendations: recs,
                provider: "QEN Local Engine · demo mode" };
     }
-    // ────────────────────────────────────────────────────────────────────────
+    */
 
     async function analyze() {
       const text = inputEl.value.trim();
@@ -676,11 +688,13 @@
           throw new Error(err.error || err.detail || `HTTP ${res.status}`);
         }
         const raw = await res.json();
-        d = raw;
+        d = raw.cached_data || raw;
       } catch (err) {
-        // Backend unreachable — use local engine for demo
-        await new Promise(r => setTimeout(r, 1400)); // realistic delay
-        d = localAnalyze(text);
+        errorBox.textContent = "Modalità fallback: il QEN Sovereign Engine non è disponibile. Nessuna conclusione normativa o legale è stata generata.";
+        errorBox.style.display = "block";
+        errorBox.setAttribute("role", "alert");
+        setLoading(false);
+        return;
       }
 
       try {
@@ -714,6 +728,7 @@
         document.getElementById("summary").textContent = d.summary;
         renderList("gaps-list", d.gaps);
         renderList("rec-list", d.recommendations);
+        renderSources(d);
 
         resultsEl.style.display = "block";
         resultsEl.style.animation = "fadeSlideIn 0.5s ease both";
@@ -722,6 +737,41 @@
         errorBox.style.display = "block";
       } finally {
         setLoading(false);
+      }
+    }
+
+    function renderSources(data) {
+      const summary = document.getElementById("retrieval-summary");
+      const list = document.getElementById("sources-list");
+      const sources = Array.isArray(data.sources) ? data.sources : [];
+      summary.textContent = `Modalità: ${data.response_mode || "sovereign"} · Retrieval: ${data.retrieval_status || "non disponibile"} · Confidenza: ${data.confidence || "non disponibile"} · Incertezza: ${data.uncertainty || "non dichiarata"}`;
+      list.replaceChildren();
+      sources.forEach(source => {
+        const item = document.createElement("article");
+        item.className = "source-item";
+        const link = document.createElement("a");
+        link.className = "source-title";
+        link.href = source.canonical_url;
+        link.textContent = source.title;
+        link.target = "_blank";
+        link.rel = "noopener noreferrer";
+        const meta = document.createElement("div");
+        meta.className = "source-meta";
+        meta.textContent = `${source.category} · ${source.authority} · ${source.date} · fonte ${source.source_class} · confidenza ${source.confidence} · ${source.section}`;
+        item.append(link, meta);
+        (source.warnings || []).forEach(value => {
+          const warning = document.createElement("div");
+          warning.className = "source-warning";
+          warning.textContent = value;
+          item.appendChild(warning);
+        });
+        list.appendChild(item);
+      });
+      if (!sources.length) {
+        const empty = document.createElement("p");
+        empty.className = "source-warning";
+        empty.textContent = "Nessuna fonte registrata ha superato la soglia di rilevanza; non sono state create citazioni.";
+        list.appendChild(empty);
       }
     }
 

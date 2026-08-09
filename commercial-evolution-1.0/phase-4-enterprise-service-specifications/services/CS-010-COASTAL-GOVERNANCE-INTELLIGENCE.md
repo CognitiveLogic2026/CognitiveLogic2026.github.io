@@ -3,6 +3,16 @@
 > **Enterprise Service Catalogue**  
 > Governare ecosistemi territoriali e organizzazioni complesse.
 
+Version: 1.0
+
+Status: Approved
+
+Date: 2026-08-07
+
+Authority: Cognitive Logic
+
+Canonical URL: https://cognitivelogic.it/resources/documents/cs-010-coastal-governance-intelligence/
+
 ## 1. Executive Summary
 
 Il servizio **Coastal Governance Intelligence** aiuta l’organizzazione a governare ecosistemi territoriali e organizzazioni complesse.
