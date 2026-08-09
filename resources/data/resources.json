@@ -458,5 +458,11 @@
     "status": "published",
     "language": "it",
     "featured": false
+  },
+  {
+    "id": "osservatorio-bolkestein", "title": "Osservatorio Bolkestein", "description": "Indice aggiornabile di fonti, casi AGCM, benchmark scientifici e standard operativi per le concessioni demaniali marittime.", "source": "resources/documents/osservatorio-bolkestein/source.md", "output": "resources/documents/osservatorio-bolkestein/index.html", "url": "/resources/documents/osservatorio-bolkestein/", "topics": ["Bolkestein", "Coastal Governance", "AGCM"], "type": "Research Note", "category": "research", "categoryLabel": "Research", "audience": "Enterprise", "status": "published", "language": "it", "featured": true
+  },
+  {
+    "id": "concessioni-balneari-criteri-agcm", "title": "Concessioni balneari: analisi comparativa dei criteri contestati dall’AGCM", "description": "Case study comparativo su rischi concorrenziali, microimprese, prove equivalenti e controlli QEN.", "source": "resources/documents/concessioni-balneari-criteri-agcm/source.md", "output": "resources/documents/concessioni-balneari-criteri-agcm/index.html", "url": "/resources/documents/concessioni-balneari-criteri-agcm/", "topics": ["AGCM", "Concessioni balneari", "QEN Sovereign"], "type": "Case Study", "category": "validation-case-studies", "categoryLabel": "Validation e Case Studies", "audience": "Enterprise", "status": "published", "language": "it", "featured": true
   }
 ]

@@ -122,7 +122,12 @@ L’obiettivo non è produrre documentazione formale fine a sé stessa, ma costr
 
 ## 10. Collegamenti
 
-- [Coste360 — proof applicativa di Coastal Governance Intelligence](/coste360.html)
+- [Coste360 — programma principale di validazione metodologica](/coste360.html)
+- [Osservatorio Bolkestein](/resources/documents/osservatorio-bolkestein/)
+- [Benchmark scientifico Egea–QEN](/resources/documents/bolkestein-egea-benchmark/)
+- [Case study comparativo AGCM](/resources/documents/concessioni-balneari-criteri-agcm/)
+
+CS-010 integra monitoraggio normativo e giurisprudenziale, criteri contestati nella pratica, benchmark scientifici e standard operativi. Governa normalizzazione dei KPI, mezzi di prova equivalenti, neutralità rispetto all’incumbent, evidenze verificabili, motivazione, incertezza e audit della decisione. Non eroga pareri legali e non modifica assi, algoritmi o pesi QEN approvati.
 - [Assessment](/assessment.html)
 - [Validation](/validation.html)
 - [Case Studies](/case-studies.html)

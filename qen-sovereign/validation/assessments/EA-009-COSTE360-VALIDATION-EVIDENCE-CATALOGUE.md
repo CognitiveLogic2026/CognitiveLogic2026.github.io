@@ -117,6 +117,25 @@ Deprecated evidence shall retain its identifier.
 
 # Evidence Taxonomy
 
+## Coastal Governance External Evidence — verified 2026-08-09
+
+| ID | Category | Authority / author | Title / act | Year | DOI / official URL | Scope | Reliability | Limits | Intended use | Confidence |
+|---|---|---|---|---:|---|---|---|---|---|---|
+| EV-0001 | Benchmark | Tomasi, Giacoma, Ottolina | Egea six dimensions | 2026 | 10.57590/1120-5032-202601ITA-8 | 6 establishments, Forte dei Marmi | Medium | Local sample; size bias | Egea–QEN comparison | Medium |
+| EV-0002 | Normativa | EU / Italian Republic | Directive 2006/123; L.118/2022; DL131/2024; L.166/2024 | 2006–2024 | https://eur-lex.europa.eu/legal-content/IT/TXT/?uri=CELEX:32006L0123 | Maritime concessions | Very high | Apply current consolidated text | Legal baseline | High |
+| EV-0003 | Giurisprudenza | CdS / TAR Campania | Opinion 750/2025; judgments 4121/2026, 3530/2026 | 2025–2026 | https://www.giustizia-amministrativa.it/-/105486-1834 | Tenders, indemnities, extensions | Very high | Opinion interlocutory; case-specific holdings | Monitoring | High |
+| EV-0004 | AGCM | AGCM | AS1930, AS2048, AS2081, AS2144, AS2152, AS2161 | 2023–2026 | https://www.agcm.it/pubblicazioni/bollettino-settimanale/2026/15/Bollettino-15-2026 | Competition risks | Very high | Different nature/stage; follow-up gaps stated | Anti-incumbent controls | High; AS2161 detail Medium |
+| EV-0005 | Ricerca scientifica | Basurto-Cedeno et al. | Comprehensive Index for Beaches | 2025 | https://doi.org/10.3390/su17073049 | 600+ visitors, EFA | High | Perception-based, not tender validation | KPI taxonomy | Medium-high |
+| EV-0006 | Ricerca scientifica | Wang et al. | Taiwan coastal tourism framework | 2016 | https://doi.org/10.3390/su8070652 | Fuzzy Delphi/AHP | High | Territory-dependent expert weights | Taxonomy only | Medium |
+| EV-0007 | Ricerca scientifica | Er-Ramy et al. | Sector Analysis, Morocco | 2023 | https://doi.org/10.3390/su151612581 | 50 beaches | High | Exogenous site conditions | Baselines | Medium |
+| EV-0008 | Ricerca scientifica | Wyman et al. | Protected-area tourism concessions | 2011 | https://doi.org/10.3390/f2040913 | Public documents, 22 countries | High | Legal/context heterogeneity | Checklist | Medium |
+| EV-0009 | Certificazione | FEE | Blue Flag criteria | current | https://www.blueflag.global/criteria | Environment/safety | Medium-high | Voluntary private ecolabel; equivalents | Indicator reference | Medium |
+| EV-0010 | Standard operativo | EC/JRC | EMAS BEMP Tourism | 2016/current | https://green-forum.ec.europa.eu/publications/emas-sectoral-reference-document-best-environmental-management-practice-tourism-sector_en | Environmental KPIs | High | Voluntary | KPI design | High |
+| EV-0011 | Standard operativo | UNEP/IOC | Marine litter monitoring | 2009/2019 | https://www.unep.org/resources/report/unepioc-guidelines-survey-and-monitoring-marine-litter-0 | Standard surveys | High | Consistent area/time required | Performance evidence | High |
+| EV-0012 | Standard operativo | ISO | ISO 13009:2015 | 2015 | https://www.iso.org/standard/52329.html | Beach operations | High | Voluntary/paywalled; equivalents | Checklist | Medium-high |
+
+The records distinguish law, case law, AGCM advocacy, research, standards and certification. They approve no weights, thresholds or formulas and do not amend VR-001 or SA-001.
+
 ## Purpose
 
 The Evidence Taxonomy defines the official enterprise classification model applied to every Evidence ID managed by EA-009.
@@ -602,4 +621,3 @@ The catalogue supports:
 - Human Accountability
 
 EA-009 constitutes the official enterprise evidence governance standard for the Coste360 Validation Programme.
-
