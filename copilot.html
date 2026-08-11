@@ -310,28 +310,36 @@
     <div class="provider-badge" id="provider-badge"></div>
   </div>
 
-  <div class="card primary-card">
+  <div class="card primary-card" id="risk-score-card">
     <div class="section-label">Risk Score</div>
     <div class="score-track"><div class="score-fill" id="score-fill" style="width:0%"></div></div>
     <div class="score-labels"><span>0.0</span><span id="score-value"></span><span>1.0</span></div>
   </div>
 
-  <div class="metrics-row">
+  <div class="metrics-row" id="compliance-rationale-card">
     <div class="card secondary-card" style="margin-bottom:0;"><div class="metric-label">Motivazione</div><div class="metric-value" id="why"></div></div>
     <div class="card secondary-card" style="margin-bottom:0;"><div class="metric-label">Impatto</div><div class="metric-value" id="impact"></div></div>
   </div>
 
-  <div class="card primary-card">
+  <div class="card primary-card" id="summary-card">
     <div class="section-label">Executive Summary</div>
+    <div id="document-title" class="metric-value" hidden></div>
     <div id="summary" style="font-size:15px;font-weight:600;color:rgba(255,255,255,0.9);line-height:1.6;letter-spacing:-0.01em;"></div>
   </div>
 
-  <div class="card secondary-card">
+  <div class="card secondary-card" id="documentary-details-card" hidden>
+    <div class="section-label">Spiegazione</div>
+    <div id="document-explanation" class="metric-value"></div>
+    <div class="section-label" style="margin-top:18px;">Limiti</div>
+    <div id="document-limitations" class="metric-value"></div>
+  </div>
+
+  <div class="card secondary-card" id="compliance-gaps-card">
     <div class="section-label">Compliance Gaps</div>
     <div id="gaps-list"></div>
   </div>
 
-  <div class="card secondary-card">
+  <div class="card secondary-card" id="recommendations-card">
     <div class="section-label">Recommendations</div>
     <div id="rec-list"></div>
   </div>
@@ -374,11 +382,20 @@
 
     function renderList(id, items) {
       const el = document.getElementById(id);
-      el.innerHTML = (items || []).map((t, i) => `
-        <div class="list-item" style="animation-delay:${i*0.07}s">
-          <span class="list-index">${String(i+1).padStart(2,"0")}</span>
-          <span class="list-text">${t}</span>
-        </div>`).join("");
+      el.replaceChildren();
+      (items || []).forEach((value, index) => {
+        const item = document.createElement("div");
+        item.className = "list-item";
+        item.style.animationDelay = `${index * 0.07}s`;
+        const number = document.createElement("span");
+        number.className = "list-index";
+        number.textContent = String(index + 1).padStart(2, "0");
+        const body = document.createElement("span");
+        body.className = "list-text";
+        body.textContent = String(value);
+        item.append(number, body);
+        el.appendChild(item);
+      });
     }
 
     function setLoading(on) {
@@ -395,6 +412,10 @@
 
     function exportPDF() {
       if (!lastResult) return;
+      if (lastResult.interaction_mode === "documentary") {
+        exportDocumentaryPDF(lastResult);
+        return;
+      }
       const doc = new jsPDF({ unit: "mm", format: "a4" });
       const d = lastResult;
       const W = 210; const M = 20; const TW = W - M * 2;
@@ -513,6 +534,46 @@
       }
 
       doc.save(`QEN_Compliance_Report_${new Date().toISOString().slice(0,10)}.pdf`);
+    }
+
+    function exportDocumentaryPDF(d) {
+      const doc = new jsPDF({ unit: "mm", format: "a4" });
+      const W = 210; const M = 20; const TW = W - M * 2;
+      let y = 20;
+      const nextPage = () => { doc.addPage(); y = 20; };
+      const addSection = (label, value) => {
+        if (y > 265) nextPage();
+        doc.setTextColor(80, 80, 80); doc.setFontSize(7); doc.setFont("helvetica", "normal");
+        doc.text(label, M, y); y += 5;
+        doc.setTextColor(30, 30, 30); doc.setFontSize(9);
+        const lines = doc.splitTextToSize(String(value || "—"), TW);
+        lines.forEach(line => {
+          if (y > 275) nextPage();
+          doc.text(line, M, y); y += 5;
+        });
+        y += 6;
+      };
+      doc.setFillColor(8, 11, 15); doc.rect(0, 0, W, 40, "F");
+      doc.setTextColor(0, 200, 150); doc.setFontSize(8);
+      doc.text("COGNITIVE LOGIC · QEN SOVEREIGN · GOVERNED SOURCES", M, 16);
+      doc.setTextColor(255, 255, 255); doc.setFontSize(20); doc.setFont("helvetica", "bold");
+      doc.text("QEN Documentary Response", M, 30); y = 52;
+      addSection("DOMANDA", lastInput);
+      addSection("TITOLO", d.title);
+      addSection("SINTESI", d.summary);
+      addSection("SPIEGAZIONE", d.explanation);
+      addSection("LIMITI", d.limitations);
+      (d.sources || []).forEach((source, index) => {
+        addSection(`FONTE GOVERNATA ${index + 1}`, `${source.title} — ${source.author || source.authority} — ${source.date} — ${source.section}\n${source.canonical_url}\n${source.excerpt || ""}`);
+      });
+      const pages = doc.internal.getNumberOfPages();
+      for (let page = 1; page <= pages; page++) {
+        doc.setPage(page); doc.setDrawColor(220, 220, 220); doc.line(M, 285, W - M, 285);
+        doc.setTextColor(160, 160, 160); doc.setFontSize(7);
+        doc.text("cognitivelogic.it · risposta informativa, non certificazione della verità", M, 290);
+        doc.text(`${page}/${pages}`, W - M, 290, { align: "right" });
+      }
+      doc.save(`QEN_Documentary_Response_${new Date().toISOString().slice(0,10)}.pdf`);
     }
 
     /* Legacy local demo engine retained as non-executable release history.
@@ -699,6 +760,13 @@
 
       try {
         lastResult = d;
+        if (d.interaction_mode === "documentary") {
+          renderDocumentary(d);
+          resultsEl.style.display = "block";
+          resultsEl.style.animation = "fadeSlideIn 0.5s ease both";
+          return;
+        }
+        resetResultSections();
         const cfg = riskConfig[d.risk_level] || riskConfig.LOW;
         const riskScore = Number(d.risk_score);
         const scoreColor = riskScore > 0.7 ? "#ff3b3b" : riskScore > 0.45 ? "#ff8c00" : "#d4af37";
@@ -740,6 +808,42 @@
       }
     }
 
+    function resetResultSections() {
+      ["risk-score-card", "compliance-rationale-card", "compliance-gaps-card", "recommendations-card"].forEach(id => {
+        document.getElementById(id).hidden = false;
+      });
+      document.getElementById("documentary-details-card").hidden = true;
+      document.getElementById("document-title").hidden = true;
+      document.querySelector("#summary-card .section-label").textContent = "Executive Summary";
+    }
+
+    function renderDocumentary(d) {
+      ["risk-score-card", "compliance-rationale-card", "compliance-gaps-card", "recommendations-card"].forEach(id => {
+        document.getElementById(id).hidden = true;
+      });
+      document.getElementById("documentary-details-card").hidden = false;
+      const banner = document.getElementById("decision-banner");
+      banner.style.background = "rgba(0,200,150,0.08)";
+      banner.style.borderColor = "rgba(0,200,150,0.3)";
+      banner.style.borderLeftColor = "#00c896";
+      document.getElementById("decision-label").textContent = "RISPOSTA DOCUMENTALE";
+      document.getElementById("decision-label").style.color = "#00c896";
+      const tag = document.getElementById("decision-tag");
+      tag.textContent = "FONTE GOVERNATA";
+      tag.style.color = "#00c896";
+      tag.style.borderColor = "#00c896";
+      document.getElementById("decision-message").textContent = "Sintesi informativa basata esclusivamente su fonti governate recuperate";
+      document.getElementById("provider-badge").textContent = "powered by QEN Sovereign";
+      document.querySelector("#summary-card .section-label").textContent = "Sintesi";
+      const title = document.getElementById("document-title");
+      title.hidden = false;
+      title.textContent = d.title;
+      document.getElementById("summary").textContent = d.summary;
+      document.getElementById("document-explanation").textContent = d.explanation;
+      document.getElementById("document-limitations").textContent = d.limitations;
+      renderSources(d);
+    }
+
     function renderSources(data) {
       const summary = document.getElementById("retrieval-summary");
       const list = document.getElementById("sources-list");
@@ -755,10 +859,17 @@
         link.textContent = source.title;
         link.target = "_blank";
         link.rel = "noopener noreferrer";
+        const canonical = document.createElement("div");
+        canonical.className = "source-meta";
+        canonical.textContent = `Collegamento canonico: ${source.canonical_url}`;
         const meta = document.createElement("div");
         meta.className = "source-meta";
-        meta.textContent = `${source.category} · ${source.authority} · ${source.date} · fonte ${source.source_class} · confidenza ${source.confidence} · ${source.section}`;
-        item.append(link, meta);
+        meta.textContent = `${source.category} · autore ${source.author || source.authority} · ${source.date} · fonte ${source.source_class} · confidenza ${source.confidence} · ${source.section}`;
+        item.append(link, canonical, meta);
+        const excerpt = document.createElement("p");
+        excerpt.className = "source-excerpt";
+        excerpt.textContent = source.excerpt || "";
+        item.appendChild(excerpt);
         (source.warnings || []).forEach(value => {
           const warning = document.createElement("div");
           warning.className = "source-warning";
@@ -783,7 +894,9 @@
       errorBox.style.display = "none";
       resultsEl.style.display = "none";
       lastResult = null;
+      lastInput = "";
       lastCompanyName = "";
+      resetResultSections();
       inputEl.focus();
     });
     inputEl.addEventListener("keydown", e => {

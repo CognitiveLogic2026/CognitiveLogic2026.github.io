@@ -7,7 +7,7 @@ from unittest.mock import patch
 import pytest
 
 import source_retrieval
-from main import app, check_duplicate
+from main import _copilot_cache_context, app, check_duplicate, limiter
 from sovereign_engine import RISK_RULES, classify_risk, qen_score
 from source_retrieval import RegistryError, build_index, load_index, load_registry, retrieve
 
@@ -176,6 +176,47 @@ def test_ui_fallback_is_transparent_and_does_not_invoke_local_analysis():
 def test_cache_is_invalidated_when_context_changes(monkeypatch):
     monkeypatch.setattr("main.load_pilot", lambda name: {"cache_context": {"engine_version": "old"}, "data": {}})
     assert check_duplicate("entity", {"engine_version": "new"}) is None
+
+
+def test_documentary_dfv_002_contract_and_no_risk_classification():
+    with patch("main.check_duplicate", return_value=None), patch("main.save_pilot"), \
+         patch("main.sovereign_classify_risk") as classify:
+        response = app.test_client().post(
+            "/copilot-analyze",
+            json={"description": "Cos’è il Manifesto della Verità Verificabile DFV-002?"},
+            headers={"Origin": "https://cognitivelogic.it"},
+        )
+    assert response.status_code == 200
+    payload = response.get_json()
+    assert payload["interaction_mode"] == "documentary"
+    assert payload["sources"][0]["source_id"] == "DFV-002"
+    assert payload["sources"][0]["canonical_url"] == EXPECTED["DFV-002"]
+    assert "verità assoluta" in payload["summary"]
+    assert {"risk_level", "risk_score", "gdpr_risk", "eu_classification", "gaps", "recommendations"}.isdisjoint(payload)
+    classify.assert_not_called()
+    limiter.reset()
+
+
+def test_operational_credit_scoring_remains_compliance():
+    with patch("main.check_duplicate", return_value=None), patch("main.save_pilot"):
+        response = app.test_client().post(
+            "/copilot-analyze",
+            json={"description": "Sistema di scoring creditizio automatizzato per approvare prestiti"},
+            headers={"Origin": "https://cognitivelogic.it"},
+        )
+    payload = response.get_json()
+    assert payload["interaction_mode"] == "compliance"
+    assert "risk_level" in payload
+    limiter.reset()
+
+
+def test_documentary_cache_contract_invalidates_low_and_separates_queries(monkeypatch):
+    old = {"engine_version": "old", "data": {"risk_level": "LOW"}}
+    monkeypatch.setattr("main.load_pilot", lambda name: {"cache_context": old, "data": old["data"]})
+    dfv_context = _copilot_cache_context("Cos’è DFV-002?")
+    assert dfv_context["contract_version"] == "2.0"
+    assert check_duplicate("DFV-002", dfv_context) is None
+    assert _copilot_cache_context("Cos’è DFV-002?") != _copilot_cache_context("Spiega EA-009")
 
 
 def test_retrieval_does_not_change_qen_rules_or_approved_decisions():

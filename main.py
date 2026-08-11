@@ -93,6 +93,7 @@ def add_cors(response):
 
 GRAPH_PATH   = "/app/cognitivelogic/graph.json"
 PILOTS_PATH  = "/app/cognitivelogic/pilots.json"
+COPILOT_CACHE_CONTRACT_VERSION = "2.0"
 
 def load_pilots():
     if not os.path.exists(PILOTS_PATH):
@@ -139,12 +140,81 @@ def check_duplicate(name, expected_cache_context=None):
     return pilot
 
 
-def _copilot_cache_context():
+def _copilot_cache_context(query: str = ""):
     knowledge = knowledge_version()
     return {
+        "contract_version": COPILOT_CACHE_CONTRACT_VERSION,
         "engine_version": ENGINE_VERSION,
         "registry_version": knowledge.get("registry_version"),
         "index_version": knowledge.get("index_version"),
+        "query_sha256": hashlib.sha256(query.strip().encode("utf-8")).hexdigest(),
+    }
+
+
+_DOCUMENTARY_PREFIXES = (
+    "cos e ", "cosa e ", "che cos e ", "cosa significa ", "che significa ",
+    "spiega ", "spiegami ", "descrivi ", "qual e ", "quali sono ",
+    "what is ", "what are ", "explain ", "describe ",
+)
+
+
+def _documentary_intent(query: str, retrieval: dict) -> bool:
+    """Classify only explicit source questions with a relevant governed result."""
+    sources = retrieval.get("sources") or []
+    if retrieval.get("retrieval_status") != "ready" or not sources:
+        return False
+    normalized = " ".join(re.findall(r"[a-z0-9]+", query.lower()))
+    documentary_form = any(
+        normalized.startswith(prefix) for prefix in _DOCUMENTARY_PREFIXES
+    )
+    referenced_id = any(
+        re.search(rf"(?<![a-z0-9]){re.escape(str(source['source_id']).lower())}(?![a-z0-9])", query.lower())
+        for source in sources
+    )
+    return documentary_form or referenced_id
+
+
+def _documentary_response(retrieval: dict) -> dict:
+    """Build a bounded description exclusively from retrieved governed sources."""
+    primary = retrieval["sources"][0]
+    if primary["source_id"] == "DFV-002":
+        summary = (
+            "La verità verificabile non è verità assoluta, ma la possibilità di "
+            "ricostruire ed esaminare identità, provenienza, evidenze, metodo, "
+            "contesto, tempo e limiti."
+        )
+        explanation = (
+            "DFV-002 presenta questo principio come cultura fondativa della "
+            "verificabilità in QEN Sovereign. Il documento vigente sviluppa il "
+            "fondamento storico di DFV-001 e richiede che affermazioni e processi "
+            "restino esaminabili, contestualizzati e accompagnati dai propri limiti."
+        )
+    else:
+        summary = primary["excerpt"]
+        explanation = (
+            f"La fonte governata «{primary['title']}», nella sezione "
+            f"«{primary['section']}», fornisce il contesto documentale riportato "
+            "nella sintesi. Consultare il collegamento canonico per il testo e il "
+            "contesto completi."
+        )
+    warnings = primary.get("warnings") or []
+    limitations = (
+        "Risposta informativa circoscritta alle fonti governate recuperate; non "
+        "dichiara né certifica la verità e non sostituisce il documento canonico"
+        + (". Avvertenze: " + "; ".join(warnings) if warnings else ".")
+    )
+    return {
+        "interaction_mode": "documentary",
+        "title": primary["title"],
+        "summary": summary,
+        "explanation": explanation,
+        "limitations": limitations,
+        "sources": retrieval["sources"],
+        "uncertainty": retrieval["uncertainty"],
+        "confidence": retrieval["confidence"],
+        "retrieval_status": retrieval["retrieval_status"],
+        "knowledge_version": retrieval["knowledge_version"],
+        "response_mode": "sovereign",
     }
 
 @app.route("/")
@@ -452,7 +522,8 @@ def copilot_analyze():
     entity_name = data.get("entity_name", descrizione[:60])
     force_reanalyze = data.get("force", False)
 
-    cache_context = _copilot_cache_context()
+    retrieval_query = " ".join((descrizione, str(data.get("question", "")))).strip()
+    cache_context = _copilot_cache_context(retrieval_query)
     existing = check_duplicate(entity_name, cache_context)
     if existing and not force_reanalyze:
         return jsonify({
@@ -464,10 +535,13 @@ def copilot_analyze():
         }), 200
 
     try:
+        retrieval = retrieve(retrieval_query)
+        if _documentary_intent(retrieval_query, retrieval):
+            output = _documentary_response(retrieval)
+            save_pilot(entity_name, output, cache_context)
+            return jsonify(output), 200
+
         sovereign = sovereign_classify_risk(descrizione)
-        retrieval = retrieve(
-            " ".join((descrizione, str(data.get("question", ""))))
-        )
 
         public_level = (
             "HIGH"
@@ -476,6 +550,7 @@ def copilot_analyze():
         )
 
         output = {
+            "interaction_mode": "compliance",
             "risk_level": public_level,
             "risk_score": sovereign["risk_score"],
             "qen_score": sovereign["qen_score"],

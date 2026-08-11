@@ -223,7 +223,7 @@ def retrieve(query: str, *, limit: int = 5, minimum_score: float = 0.18) -> dict
             matches.append({
                 "source_id": document["source_id"], "title": meta["title"],
                 "canonical_url": meta["canonical_url"], "category": meta["category"],
-                "authority": meta["authority"], "date": meta["date"],
+                "authority": meta["authority"], "author": meta["authority"], "date": meta["date"],
                 "source_class": meta["source_class"], "confidence": meta["confidence"],
                 "section": section["section"], "excerpt": excerpt,
                 "relevance_score": round(score, 3), "_rank_score": rank_score,
