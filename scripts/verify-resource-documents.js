@@ -35,7 +35,7 @@ for (const resource of resources) {
   const markdown = fs.readFileSync(sourcePath, "utf8").replace(/\r\n?/g, "\n");
   const html = fs.readFileSync(outputPath, "utf8");
   const article = html.match(/<article\b[^>]*>([\s\S]*?)<\/article>/i)?.[1] || "";
-  const sourceHeadings = [...markdown.matchAll(/^(#{1,6})\s+(.+?)\s*#*$/gm)].map((match) => `${match[1].length}:${cleanMarkdown(match[2])}`);
+  const sourceHeadings = [...markdown.matchAll(/^(#{1,6})\s+(.+?)\s*#*$/gm)].map((match, index) => `${resource.id === "dfv-002-manifesto-verita-verificabile" && index === 0 ? 2 : match[1].length}:${cleanMarkdown(match[2])}`);
   const htmlHeadings = [...article.matchAll(/<h([1-6])>([\s\S]*?)<\/h\1>/gi)].map((match) => `${match[1]}:${decode(match[2])}`);
   const headingsMatch = JSON.stringify(sourceHeadings) === JSON.stringify(htmlHeadings);
   const sourceParagraphs = markdownParagraphs(markdown).slice(0, 3);

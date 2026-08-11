@@ -1,5 +1,5 @@
 {
-  "registry_version": "1.0.0",
+  "registry_version": "1.1.0",
   "schema_version": "1.0",
   "updated": "2026-08-09",
   "allowlist_enforced": true,
@@ -17,6 +17,28 @@
     "servizio Cognitive Logic"
   ],
   "sources": [
+    {
+      "source_id": "DFV-002",
+      "title": "DFV-002 — Manifesto della Verità Verificabile",
+      "version": "prima pubblicazione, 2026",
+      "source_path": "qen-sovereign/knowledge-sources/DFV-002-MANIFESTO-VERITA-VERIFICABILE.md",
+      "canonical_url": "https://cognitivelogic.it/manifesto-verita-verificabile/",
+      "category": "documentazione QEN",
+      "authority": "Roberto Bob Malini — Cognitive Logic",
+      "date": "2026-08-11",
+      "status": "testo fondativo vigente",
+      "source_class": "primary",
+      "confidence": "high",
+      "scope": "Cultura fondativa della verità verificabile; identità, provenienza, evidenze, metodo, contesto, tempo, limiti e responsabilità",
+      "language": "it",
+      "search_terms": ["DFV-002", "manifesto verità verificabile", "dodici tesi", "architettura della verificabilità", "identità provenienza evidenze metodo contesto tempo limiti", "QEN Sovereign non è autorità della verità"],
+      "allowed_use": ["inform", "contextualize", "support", "cite"],
+      "prohibited_use": ["modify_qen_configuration", "modify_qen_decisions", "certify_truth", "score_people_morally", "replace_human_authority"],
+      "publication_status": "published",
+      "enabled": true,
+      "sha256": "b0e9c414523eb9bdd5ef95abf580740fb6601e84a70de2aa236fc6ca4231e82a",
+      "warnings": ["Documento culturale fondativo, non specifica tecnica né certificazione della verità", "DFV-001 resta il documento originario e fondamento storico"]
+    },
     {
       "source_id": "OBS-BOLK-001",
       "title": "Osservatorio Bolkestein",

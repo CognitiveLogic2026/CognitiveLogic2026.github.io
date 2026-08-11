@@ -69,11 +69,29 @@ function markdownToHtml(markdown) {
 
 function page(resource, body) {
   const title = escapeHtml(resource.title); const category = escapeHtml(resource.categoryLabel || resource.category); const type = escapeHtml(resource.type);
-  return `<!doctype html><html lang="${escapeHtml(resource.language || "en")}"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>${title} | Cognitive Logic</title><meta name="description" content="${escapeHtml(resource.description)}"><link rel="stylesheet" href="/css/fonts-local.css"><link rel="stylesheet" href="/css/style.css?v=3"><link rel="stylesheet" href="/resources/style.css?v=2"></head><body>
+  const isManifesto = resource.id === "dfv-002-manifesto-verita-verificabile";
+  if (!isManifesto) return `<!doctype html><html lang="${escapeHtml(resource.language || "en")}"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>${title} | Cognitive Logic</title><meta name="description" content="${escapeHtml(resource.description)}"><link rel="stylesheet" href="/css/fonts-local.css"><link rel="stylesheet" href="/css/style.css?v=3"><link rel="stylesheet" href="/resources/style.css?v=2"></head><body>
 <a class="skip-link" href="#main">Vai al contenuto principale</a><header class="site-header"><div class="container header-inner"><a href="/index.html" class="brand" aria-label="Cognitive Logic — Home"><span class="wordmark wordmark--nav notranslate" translate="no"><span class="wm-top">Cognitive</span><span class="wm-bot">Logic</span></span></a><nav class="main-nav" aria-label="Navigazione principale"><a href="/resources/">Resource Center</a><a href="/research.html">Research</a><a href="/international-watch/">International Watch</a><a href="/trust.html">Trust Center</a></nav></div></header>
 <main id="main"><section class="document-hero"><div class="container"><nav class="breadcrumbs" aria-label="Percorso"><a href="/index.html">Home</a> / <a href="/resources/">Resource Center</a> / <span class="notranslate" translate="no">${title}</span></nav><p class="resource-kicker">${category}</p><h1 class="notranslate" translate="no">${title}</h1><dl class="document-metadata"><div><dt>Categoria</dt><dd>${category}</dd></div><div><dt>Formato</dt><dd>${type} · HTML statico</dd></div></dl></div></section>
 <section class="section"><div class="container document-layout"><article class="resource-document" data-source="${escapeHtml(resource.source)}">${body}</article></div></section><section class="document-return"><div class="container"><a href="/resources/">← Torna al Resource Center</a></div></section></main>
 <footer class="site-footer"><div class="container footer-inner"><div><div class="wordmark wordmark--footer notranslate" translate="no"><span class="wm-top">Cognitive</span><span class="wm-bot">Logic</span></div><div class="footer-copy">© 2026 Roberto Bob Malini — <span class="notranslate" translate="no">Cognitive Logic</span></div></div><div class="footer-links"><a href="/resources/">Resource Center</a><a href="/privacy.html">Privacy</a></div></div></footer></body></html>`;
+  const canonical = escapeHtml(resource.canonical || `https://cognitivelogic.it${resource.url}`);
+  const documentBody = isManifesto ? body.replace(/^<h1>(.*?)<\/h1>/, '<h2>$1</h2>') : body;
+  const metadata = isManifesto
+    ? '<div><dt>Identificatore</dt><dd>DFV-002</dd></div><div><dt>Autore</dt><dd>Roberto Bob Malini</dd></div><div><dt>Luogo e anno</dt><dd>Bologna, 2026</dd></div><div><dt>Stato</dt><dd>Testo fondativo vigente</dd></div><div><dt>Edizione</dt><dd>Prima pubblicazione, 11 agosto 2026</dd></div>'
+    : `<div><dt>Categoria</dt><dd>${category}</dd></div><div><dt>Formato</dt><dd>${type} · HTML statico</dd></div>`;
+  const structuredData = isManifesto ? `<script type="application/ld+json">${JSON.stringify({
+    "@context": "https://schema.org", "@type": "Article", headline: resource.title,
+    description: resource.description, inLanguage: "it-IT", datePublished: "2026-08-11",
+    author: {"@type": "Person", name: "Roberto Bob Malini"},
+    publisher: {"@type": "Organization", name: "Cognitive Logic", url: "https://cognitivelogic.it/"},
+    mainEntityOfPage: resource.canonical
+  }).replaceAll("<", "\\u003c")}</script>` : "";
+  return `<!doctype html><html lang="${escapeHtml(resource.language || "en")}"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>${title} | Cognitive Logic</title><meta name="description" content="${escapeHtml(resource.description)}"><meta name="author" content="Roberto Bob Malini — Cognitive Logic"><link rel="canonical" href="${canonical}"><meta property="og:title" content="${title}"><meta property="og:description" content="${escapeHtml(resource.description)}"><meta property="og:url" content="${canonical}"><meta property="og:type" content="article"><meta property="og:site_name" content="Cognitive Logic"><meta property="og:locale" content="it_IT"><meta property="og:image" content="https://cognitivelogic.it/img/qen-homepage-og.png"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="${title}"><meta name="twitter:description" content="${escapeHtml(resource.description)}"><meta name="twitter:image" content="https://cognitivelogic.it/img/qen-homepage-og.png">${structuredData}<link rel="icon" href="/favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="/css/fonts-local.css"><link rel="stylesheet" href="/css/style.css?v=3"><link rel="stylesheet" href="/resources/style.css?v=2"></head><body>
+<a class="skip-link" href="#main">Vai al contenuto principale</a><header class="site-header"><div class="container header-inner"><a href="/index.html" class="brand" aria-label="Cognitive Logic — Home"><span class="wordmark wordmark--nav notranslate" translate="no"><span class="wm-top">Cognitive</span><span class="wm-bot">Logic</span></span></a><nav class="main-nav" aria-label="Navigazione principale"><a href="/resources/">Resource Center</a><a href="/research.html">Research</a><a href="/international-watch/">International Watch</a><a href="/trust.html">Trust Center</a></nav></div></header>
+<main id="main"><section class="document-hero"><div class="container"><nav class="breadcrumbs" aria-label="Percorso"><a href="/index.html">Home</a> / <a href="/resources/">Resource Center</a> / <span class="notranslate" translate="no">${title}</span></nav><p class="resource-kicker">${category}</p><h1 class="notranslate" translate="no">${title}</h1>${isManifesto ? '<p class="document-subtitle">Identità, provenienza e responsabilità nell’era degli agenti autonomi</p>' : ''}<dl class="document-metadata">${metadata}</dl></div></section>
+<section class="section"><div class="container document-layout"><article class="resource-document" data-source="${escapeHtml(resource.source)}">${documentBody}</article></div></section><section class="document-return"><div class="container"><a href="/identity.html#manifesto">DFV-001 — Manifesto dell’Identità Verificabile (documento storico)</a> · <a href="/trust.html">Trust Center</a> · <a href="/framework.html">Framework</a> · <a href="/operational-record.html">Operational Record</a> · <a href="/resources/">Resource Center</a></div></section></main>
+<footer class="site-footer"><div class="container footer-inner"><div><div class="wordmark wordmark--footer notranslate" translate="no"><span class="wm-top">Cognitive</span><span class="wm-bot">Logic</span></div><div class="footer-copy">© 2026 Roberto Bob Malini — <span class="notranslate" translate="no">Cognitive Logic</span></div></div><div class="footer-links"><a href="/manifesto-verita-verificabile/">Manifesto</a><a href="/resources/">Resource Center</a><a href="/privacy.html">Privacy</a></div></div></footer></body></html>`;
 }
 
 function rebaseDocumentLinks(html, sourcePath) {
@@ -85,7 +103,11 @@ function rebaseDocumentLinks(html, sourcePath) {
 }
 
 const catalogue = JSON.parse(fs.readFileSync(cataloguePath, "utf8")); let generated = 0;
-for (const resource of catalogue) {
+const selectedResources = process.env.RESOURCE_ID
+  ? catalogue.filter((resource) => resource.id === process.env.RESOURCE_ID)
+  : catalogue;
+if (process.env.RESOURCE_ID && selectedResources.length !== 1) throw new Error(`Unknown RESOURCE_ID: ${process.env.RESOURCE_ID}`);
+for (const resource of selectedResources) {
   if (!resource.source || !resource.output) throw new Error(`Missing source/output mapping for ${resource.id}`);
   const source = path.resolve(root, resource.source); const output = path.resolve(root, resource.output);
   if (!source.startsWith(`${root}${path.sep}`) || !output.startsWith(`${root}${path.sep}`)) throw new Error(`Unsafe path for ${resource.id}`);
@@ -94,6 +116,7 @@ for (const resource of catalogue) {
 }
 const cataloguePagePath = path.join(root, "resources/index.html");
 const cataloguePage = fs.readFileSync(cataloguePagePath, "utf8");
+if (!cataloguePage.includes("<!-- RESOURCE_CARDS_START -->") || !cataloguePage.includes("<!-- RESOURCE_CARDS_END -->")) throw new Error("Resource catalogue markers not found");
 const cards = catalogue.map((resource) => `<a class="resource-result-card" href="${escapeHtml(resource.url)}">
   <div class="resource-result-meta"><span class="resource-badge">${escapeHtml(resource.type)}</span>${resource.featured ? '<span class="resource-badge resource-badge--featured">In evidenza</span>' : ""}</div>
   <h2 class="notranslate" translate="no">${escapeHtml(resource.title)}</h2><p>${escapeHtml(resource.description)}</p>
@@ -104,6 +127,5 @@ const updatedCataloguePage = cataloguePage.replace(
   /(<!-- RESOURCE_CARDS_START -->)[\s\S]*?(<!-- RESOURCE_CARDS_END -->)/,
   `$1\n${cards}\n        $2`
 );
-if (updatedCataloguePage === cataloguePage) throw new Error("Resource catalogue markers not found");
 fs.writeFileSync(cataloguePagePath, updatedCataloguePage);
 console.log(`Generated ${generated} static resource documents.`);

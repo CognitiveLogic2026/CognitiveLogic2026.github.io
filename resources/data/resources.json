@@ -1,5 +1,26 @@
 [
   {
+    "id": "dfv-002-manifesto-verita-verificabile",
+    "title": "DFV-002 — Manifesto della Verità Verificabile",
+    "description": "Testo fondativo vigente di Cognitive Logic su identità, provenienza e responsabilità nell’era degli agenti autonomi.",
+    "type": "Documento fondativo",
+    "category": "research",
+    "categoryLabel": "Documenti fondativi",
+    "audience": "Public",
+    "topics": [
+      "Verità verificabile",
+      "Knowledge Governance",
+      "Responsabilità"
+    ],
+    "source": "qen-sovereign/knowledge-sources/DFV-002-MANIFESTO-VERITA-VERIFICABILE.md",
+    "output": "manifesto-verita-verificabile/index.html",
+    "url": "/manifesto-verita-verificabile/",
+    "canonical": "https://cognitivelogic.it/manifesto-verita-verificabile/",
+    "status": "testo fondativo vigente",
+    "language": "it",
+    "featured": true
+  },
+  {
     "id": "executive-brief",
     "title": "Cognitive Logic Executive Brief",
     "description": "Sintesi istituzionale del modello di AI Governance, delle capacità e degli outcome enterprise.",

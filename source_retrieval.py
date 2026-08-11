@@ -200,18 +200,23 @@ def retrieve(query: str, *, limit: int = 5, minimum_score: float = 0.18) -> dict
         tag_terms = set(normalize_text(" ".join(document["search_terms"])).split())
         metadata_terms = set(normalize_text(" ".join(str(v) for v in meta.values())).split())
         for section in document["sections"]:
+            section_heading = normalize_text(section["section"])
+            section_terms = set(section_heading.split())
             content_terms = set(normalize_text(section["text"]).split())
             title_hits = len(query_terms & title_terms)
             tag_hits = len(query_terms & tag_terms)
             metadata_hits = len(query_terms & metadata_terms)
+            section_hits = len(query_terms & section_terms)
             content_hits = len(query_terms & content_terms)
             phrase_bonus = 2 if normalized and normalized in normalize_text(section["text"]) else 0
+            heading_bonus = 3 if normalized and normalized in section_heading else 0
             authority_bonus = 0.35 if meta["source_class"] == "primary" else 0.0
             official_bonus = 0.2 if "AGCM" in meta["authority"] else 0.0
-            raw = title_hits * 4 + tag_hits * 3 + metadata_hits + content_hits + phrase_bonus
+            raw = title_hits * 4 + tag_hits * 3 + section_hits * 3 + metadata_hits + content_hits + phrase_bonus + heading_bonus
             if raw == 0:
                 continue
-            score = min(1.0, (raw / max(6, len(query_terms) * 4)) + authority_bonus + official_bonus)
+            rank_score = (raw / max(6, len(query_terms) * 4)) + authority_bonus + official_bonus
+            score = min(1.0, rank_score)
             if score < minimum_score:
                 continue
             excerpt = re.sub(r"\s+", " ", section["text"]).strip()[:360]
@@ -221,11 +226,12 @@ def retrieve(query: str, *, limit: int = 5, minimum_score: float = 0.18) -> dict
                 "authority": meta["authority"], "date": meta["date"],
                 "source_class": meta["source_class"], "confidence": meta["confidence"],
                 "section": section["section"], "excerpt": excerpt,
-                "relevance_score": round(score, 3), "warnings": document["warnings"],
+                "relevance_score": round(score, 3), "_rank_score": rank_score,
+                "warnings": document["warnings"],
             })
 
     matches.sort(key=lambda item: (
-        -item["relevance_score"], item["source_class"] != "primary",
+        -item["_rank_score"], item["source_class"] != "primary",
         item["source_id"], item["section"],
     ))
     deduplicated: list[dict[str, Any]] = []
@@ -234,6 +240,7 @@ def retrieve(query: str, *, limit: int = 5, minimum_score: float = 0.18) -> dict
         if match["source_id"] in seen:
             continue
         seen.add(match["source_id"])
+        match.pop("_rank_score", None)
         deduplicated.append(match)
         if len(deduplicated) >= max(1, min(limit, 10)):
             break

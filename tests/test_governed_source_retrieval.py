@@ -18,6 +18,7 @@ INDEX = ROOT / "data" / "source-index.json"
 COPILOT = ROOT / "copilot.html"
 
 EXPECTED = {
+    "DFV-002": "https://cognitivelogic.it/manifesto-verita-verificabile/",
     "OBS-BOLK-001": "https://cognitivelogic.it/resources/documents/osservatorio-bolkestein/",
     "AGCM-AS1930-NOTE-001": "https://cognitivelogic.it/resources/documents/concessioni-balneari-criteri-agcm/",
     "BEN-EGEA-QEN-001": "https://cognitivelogic.it/resources/documents/bolkestein-egea-benchmark/",
@@ -26,6 +27,7 @@ EXPECTED = {
 }
 
 QUERIES = {
+    "DFV-002": "DFV-002 Manifesto verità verificabile dodici tesi",
     "OBS-BOLK-001": "Osservatorio Bolkestein concessioni balneari",
     "AGCM-AS1930-NOTE-001": "AGCM AS1930 esperienza incumbent",
     "BEN-EGEA-QEN-001": "benchmark Egea QEN KPI normalizzati",
@@ -59,7 +61,7 @@ def test_loader_rejects_path_not_in_repository_allowlist(tmp_path):
         load_registry(candidate)
 
 
-def test_all_five_sources_load_and_generated_index_is_reproducible(tmp_path):
+def test_all_sources_load_and_generated_index_is_reproducible(tmp_path):
     first = build_index(destination=tmp_path / "one.json")
     second = build_index(destination=tmp_path / "two.json")
     assert first == second
@@ -91,10 +93,25 @@ def test_unapproved_benchmark_proposal_is_explicit():
     assert any("non sono approvati" in warning for warning in source["warnings"])
 
 
+def test_manifesto_is_citable_by_section_and_not_confused_with_historical_dfv_001():
+    result = retrieve("DFV-002 QEN Sovereign architettura della verificabilità")
+    source = next(item for item in result["sources"] if item["source_id"] == "DFV-002")
+    assert source["canonical_url"] == EXPECTED["DFV-002"]
+    assert source["section"]
+    assert "DFV-001" not in {item["source_id"] for item in result["sources"]}
+    registry = load_registry()
+    assert "DFV-001" not in {item["source_id"] for item in registry["sources"]}
+    theses = next(item for item in retrieve("dodici tesi della verità verificabile")["sources"] if item["source_id"] == "DFV-002")
+    infrastructure = next(item for item in retrieve("Dalla cultura all’infrastruttura QEN Sovereign")["sources"] if item["source_id"] == "DFV-002")
+    assert theses["section"].startswith("17.")
+    assert infrastructure["section"].startswith("16.")
+
+
 def test_primary_official_source_is_preferred_when_equally_relevant(monkeypatch):
     base = json.loads(INDEX.read_text(encoding="utf-8"))
-    primary = copy.deepcopy(base["documents"][0])
-    secondary = copy.deepcopy(base["documents"][0])
+    observed = next(document for document in base["documents"] if document["source_id"] == "OBS-BOLK-001")
+    primary = copy.deepcopy(observed)
+    secondary = copy.deepcopy(observed)
     primary["source_id"] = "OFFICIAL"
     primary["metadata"]["source_class"] = "primary"
     secondary["source_id"] = "COMMENTARY"
