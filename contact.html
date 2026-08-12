@@ -81,36 +81,7 @@
 
   <div class="site-bg"></div>
 
-  <header class="site-header">
-    <div class="container header-inner">
-      <a href="index.html" class="brand">
-        <span class="wordmark wordmark--nav">
-          <span class="wm-top">Cognitive</span>
-          <span class="wm-bot">Logic</span>
-        </span>
-      </a>
-      <nav class="main-nav" aria-label="Navigazione principale">
-        <a href="framework.html">Framework</a>
-        <a href="services.html">Servizi</a>
-        <a href="assessment.html">Assessment</a>
-        <a href="validation.html">Validazione</a>
-        <a href="trust.html">Trust Center</a>
-        <a href="case-studies.html">Case Studies</a>
-        <a href="engagement.html">Engagement</a>
-        <a href="research.html">Research</a>
-        <a href="international-watch/">International Watch</a>
-        <a href="contact.html" class="active">Contatti</a>
-      </nav>
-      <div class="header-end">
-        <div class="nav-lang">
-          <a href="index.html" class="active">IT</a>
-          <span class="nav-sep">·</span>
-          <a href="index_en.html">EN</a>
-        </div>
-        <a href="copilot.html" class="btn btn-ghost">Copilot</a>
-      </div>
-    </div>
-  </header>
+  <header class="site-header"><div class="container header-inner"><a href="/" class="brand notranslate" translate="no" aria-label="Cognitive Logic — Home"><span class="wordmark wordmark--nav"><span class="wm-top">Cognitive</span><span class="wm-bot">Logic</span></span></a><nav class="main-nav" aria-label="Navigazione principale"><a href="/services.html">Servizi</a><a href="/assessment.html">Assessment</a><a href="/framework.html">Metodo</a><details class="nav-group"><summary>Evidenze</summary><div class="nav-group-menu"><a href="/validation.html">Validation</a><a href="/case-studies.html">Case Studies</a><a href="/trust.html">Trust Center</a><a href="/operational-record.html">Operational Record</a><a href="/coste360.html">Coste360</a></div></details><a href="/research.html">Ricerca</a><a href="/about.html">Chi siamo</a><a href="/contact.html" class="active" aria-current="page">Contatti</a></nav><div class="header-end"><div class="nav-lang" aria-label="Lingua"><a href="/contact.html" class="active" lang="it" aria-current="page">IT</a><span class="nav-sep">·</span><a href="/index_en.html" lang="en">EN</a></div><a href="/copilot.html" class="btn btn-ghost">QEN Sovereign Copilot</a></div></div></header>
 
     <main id="main">
 
@@ -133,7 +104,7 @@
             href="mailto:info@cognitivelogic.it?subject=Richiesta%20informazioni%20Cognitive%20Logic"
             class="btn btn-primary"
           >
-            Avvia l'Assessment iniziale
+            Richiedi la qualificazione iniziale
           </a>
 
         </div>
@@ -159,7 +130,7 @@
         <a class="card" href="assessment.html">
           <h3>1. Presa in carico &amp; Discovery</h3>
           <p>
-            Esaminiamo la richiesta e concordiamo un confronto per chiarire contesto, stakeholder, urgenza, rischio e decisione da supportare.
+            Esaminiamo per iscritto contesto, stakeholder, urgenza, rischio e decisione da supportare. Se servono passaggi successivi, modalità e tempi vengono concordati in base al caso.
           </p>
         </a>
 
@@ -214,75 +185,13 @@
     </div>
   </section>
 
-  <section class="section" aria-labelledby="contact-request-title">
-    <div class="container">
-      <div class="section-head">
-        <p class="section-kicker">Recommended Information</p>
+  <section class="section" aria-labelledby="contact-request-title"><div class="container"><div class="section-head"><p class="section-kicker">Qualificazione scritta</p><h2 id="contact-request-title">Richiedi la qualificazione iniziale.</h2><p>La richiesta iniziale non equivale all’acquisto dell’Assessment. Cognitive Logic verifica prima problema, perimetro e condizioni; eventuali modalità successive vengono concordate in base al caso.</p></div>
+<form id="qualification-form" class="card" novalidate><div class="grid grid-2"><label>Organizzazione <input name="organizzazione" required autocomplete="organization"></label><label>Settore <input name="settore" required></label><label>Problema osservato <textarea name="problema" required></textarea></label><label>Sistema AI o processo coinvolto <textarea name="sistema" required></textarea></label><label>Decisione da prendere <textarea name="decisione" required></textarea></label><label>Scadenza o urgenza <input name="scadenza" required></label></div><label>Evidenze o documentazione disponibili <textarea name="evidenze" required></textarea></label><p id="form-error" role="alert" hidden>Completa tutti i campi richiesti.</p><button class="btn btn-primary" type="submit">Prepara la richiesta email</button><p>Il pulsante apre il programma email del dispositivo con le informazioni inserite. Nessun dato viene inviato o memorizzato dal sito.</p></form></div></section>
 
-        <h2 id="contact-request-title">
-          Informazioni utili per ottenere una prima analisi.
-        </h2>
-
-        <p>
-          Nella richiesta è utile indicare organizzazione, settore,
-          problema osservato, sistemi AI coinvolti, obiettivo,
-          scadenze e disponibilità di evidenze o documentazione.
-        </p>
-      </div>
-
-      <div class="hero-actions">
-        <a
-          href="mailto:info@cognitivelogic.it?subject=Richiesta%20Assessment%20Cognitive%20Logic"
-          class="btn btn-primary"
-        >
-          Avvia l'Assessment iniziale
-        </a>
-      </div>
-    </div>
-  </section>
-
-</main>
+<script>document.getElementById("qualification-form").addEventListener("submit",function(e){e.preventDefault();if(!this.checkValidity()){document.getElementById("form-error").hidden=false;this.reportValidity();return;}const d=new FormData(this),lines=["Richiesta di qualificazione iniziale","",...Array.from(d,([k,v])=>k.replace(/^./,c=>c.toUpperCase())+": "+v)];location.href="mailto:info@cognitivelogic.it?subject="+encodeURIComponent("Richiesta di qualificazione iniziale")+"&body="+encodeURIComponent(lines.join("\n"));});</script></main>
 
 
-  <footer class="site-footer">
-    <div class="container footer-inner">
-      <div>
-        <div class="wordmark wordmark--footer" aria-label="Cognitive Logic">
-          <span class="wm-top">Cognitive</span>
-          <span class="wm-bot">Logic</span>
-        </div>
-        <div class="footer-sub">Quantificazione Etica Naturale — Knowledge Infrastructure per AI Ethics, Compliance e Territorio.</div>
-        <div class="footer-copy mt-8">© 2026 Roberto Bob Malini — Cognitive Logic · Tutti i diritti riservati · <a href="/legal.html" style="color:inherit;text-decoration:underline;">Legal &amp; IP</a></div>
-        <div class="footer-social">
-          <a class="footer-social-link" href="https://www.linkedin.com/in/robertobobmalini/" target="_blank" rel="noopener">
-            <span class="fsl-net">LinkedIn</span><span class="fsl-name">Roberto Malini</span>
-          </a>
-          <a class="footer-social-link" href="https://www.linkedin.com/company/cognitivelogic/" target="_blank" rel="noopener">
-            <span class="fsl-net">LinkedIn</span><span class="fsl-name">Cognitive Logic</span>
-          </a>
-          <a class="footer-social-link" href="https://fuorimenu.substack.com" target="_blank" rel="noopener">
-            <span class="fsl-net">Substack</span><span class="fsl-name">Fuori Menu</span>
-          </a>
-          <a class="footer-social-link" href="mailto:info@cognitivelogic.it">
-            <span class="fsl-net">Email</span><span class="fsl-name">info@cognitivelogic.it</span>
-          </a>
-        </div>
-      </div>
-      <div class="footer-links">
-        <a href="framework.html">Framework</a>
-        <a href="services.html">Servizi</a>
-        <a href="trust.html">Trust Center</a>
-          <a href="about.html">About</a>
-        <a href="coste360.html">Coste360</a>
-        <a href="contact.html">Contatti</a>
-        <a href="research.html">Research</a>
-        <a href="international-watch/">International Watch</a>
-        <a href="copilot.html">Copilot</a>
-        <a href="/privacy.html">Privacy</a>
-        <a href="/cookie.html">Cookie</a> · <a href="/accessibilita.html">Accessibilità</a>
-      </div>
-    </div>
-  </footer>
+  <footer class="site-footer"><div class="container footer-inner"><div><div class="wordmark wordmark--footer notranslate" translate="no"><span class="wm-top">Cognitive</span><span class="wm-bot">Logic</span></div><div class="footer-sub">AI Governance Infrastructure — conoscenza, evidenze e decisioni verificabili.</div><div class="footer-copy mt-8">© 2026 Roberto Bob Malini — Cognitive Logic · <a href="/legal.html">Legal &amp; IP</a></div></div><div class="footer-links"><a href="/services.html">Servizi</a><a href="/assessment.html">Assessment</a><a href="/framework.html">Metodo</a><a href="/validation.html">Validation</a><a href="/case-studies.html">Case Studies</a><a href="/trust.html">Trust Center</a><a href="/operational-record.html">Operational Record</a><a href="/coste360.html">Coste360</a><a href="/research.html">Ricerca</a><a href="/resources/">Risorse</a><a href="/international-watch/">International Watch</a><a href="/manifesto-verita-verificabile/">Manifesto</a><a href="/contact.html">Contatti</a><a href="/privacy.html">Privacy</a><a href="/cookie.html">Cookie</a><a href="/accessibilita.html">Accessibilità</a></div></div></footer>
 <script src="/js/cookie-banner.js"></script>
 </body>
 </html>

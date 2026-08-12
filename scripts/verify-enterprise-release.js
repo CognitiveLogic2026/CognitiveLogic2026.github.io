@@ -1,0 +1,31 @@
+#!/usr/bin/env node
+"use strict";
+const fs=require("node:fs"), path=require("node:path"), root=path.resolve(__dirname,"..");
+const pages=["index.html","services.html","assessment.html","contact.html","framework.html","methodology.html","validation.html","case-studies.html","coste360.html","trust.html","about.html","engagement.html","research.html","operational-record.html","copilot.html"];
+let failures=0; const check=(ok,msg)=>{console.log(`${ok?"PASS":"FAIL"} ${msg}`);if(!ok)failures++;};
+const strip=s=>s.replace(/<script\b[\s\S]*?<\/script>/gi,"");
+for(const file of pages){const html=fs.readFileSync(path.join(root,file),"utf8"), visible=strip(html), canonical=html.match(/<link\s+rel="canonical"\s+href="([^"]+)"/i)?.[1];
+ check((visible.match(/<h1\b/gi)||[]).length===1,`${file}: un solo H1`);
+ check(Boolean(canonical)&&canonical===`https://cognitivelogic.it/${file==="index.html"?"":file}`,`${file}: canonical autoconsistente`);
+ check(/<html\s+lang="[^"]+"/i.test(html),`${file}: lang presente`);
+ check(/<meta\s+name="description"/i.test(html),`${file}: meta description`);
+ check(/<meta\s+property="og:/i.test(html)&&/<meta\s+name="twitter:/i.test(html),`${file}: Open Graph e Twitter`);
+ check(/<a[^>]+class="skip-link"[^>]+href="#(?:main|main-content)"|<a[^>]+href="#(?:main|main-content)"[^>]+class="skip-link"/i.test(html),`${file}: skip-link`);
+ check(/<header\b/i.test(html)&&/<nav\b/i.test(html)&&/<main\b/i.test(html)&&/<footer\b/i.test(html),`${file}: landmark`);
+ check(!/Ecosistema<\/a>|QEN Live<\/a>|Motore AI<\/a>|Identità<\/a>|Demo<\/a>/.test(html),`${file}: nessuna navigazione legacy`);
+ check(/QEN Sovereign Copilot/.test(html),`${file}: accesso Copilot uniforme`);
+}
+const validation=fs.readFileSync(path.join(root,"validation.html"),"utf8");
+check(/primo caso di validazione completato/i.test(validation),"Coste360 completato");
+check(!/Coste360 non viene presentato come prova già conclusa|risultati ufficiali saranno pubblicati al completamento/i.test(validation),"frasi Coste360 obsolete assenti");
+const research=fs.readFileSync(path.join(root,"research.html"),"utf8");
+for(const term of ["AI Governance","Knowledge Governance","Evidence Governance","Sovereign Intelligence","Verità Verificabile"])check(research.includes(term),`Research: ${term}`);
+const contact=fs.readFileSync(path.join(root,"contact.html"),"utf8");
+for(const term of ["organizzazione","settore","problema","sistema","decisione","scadenza","evidenze"])check(contact.includes(`name="${term}"`),`Contatto scritto: ${term}`);
+const copilot=fs.readFileSync(path.join(root,"copilot.html"),"utf8");
+check((copilot.match(/https:\/\/api\.cognitivelogic\.it\/copilot-analyze/g)||[]).length===1,"Copilot usa il solo endpoint sovrano");
+check(/response_mode:\s*"sovereign"/.test(copilot),"Copilot mantiene response_mode sovereign");
+const sitemap=fs.readFileSync(path.join(root,"sitemap.xml"),"utf8");
+for(const file of pages)check(sitemap.includes(`https://cognitivelogic.it/${file==="index.html"?"":file}`),`Sitemap: ${file}`);
+check(!fs.readFileSync(path.join(root,"main.py"),"utf8").match(/gemini|claude|anthropic/i),"runtime principale senza provider dismessi");
+process.exitCode=failures?1:0;

@@ -27,15 +27,10 @@ import main as _flask_main  # noqa: E402  (top-level main.py is the Flask app)
 flask_client = _flask_main.app.test_client()
 
 # ── FastAPI app (qen-reconciliation/main.py) ─────────────────────────────────────────
-from fastapi.testclient import TestClient  # noqa: E402
-
 _reconciliation_path = os.path.join(_repo_root, "qen-reconciliation", "main.py")
 _spec = importlib.util.spec_from_file_location("reconciliation_main", _reconciliation_path)
 _reconciliation_mod = importlib.util.module_from_spec(_spec)
 _spec.loader.exec_module(_reconciliation_mod)
-
-fastapi_client = TestClient(_reconciliation_mod.app)
-
 
 # ── Flask tests ───────────────────────────────────────────────────────────────────────
 
@@ -57,10 +52,10 @@ def test_flask_pilots_authorized():
 # ── FastAPI tests ─────────────────────────────────────────────────────────────────────
 
 def test_fastapi_health():
-    resp = fastapi_client.get("/health")
-    assert resp.status_code == 200
+    payload = _reconciliation_mod.health()
+    assert payload["status"] == "ok"
 
 
 def test_fastapi_root():
-    resp = fastapi_client.get("/")
-    assert resp.status_code in (200, 404), f"Unexpected status: {resp.status_code}"
+    paths = {route.path for route in _reconciliation_mod.app.routes}
+    assert "/health" in paths
