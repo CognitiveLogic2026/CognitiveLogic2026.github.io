@@ -43,7 +43,7 @@ def sha256(path):
 def test_source_registry_is_valid_and_enforces_decision_boundary():
     registry = load_registry()
     assert registry["allowlist_enforced"] is True
-    assert set(EXPECTED) == {source["source_id"] for source in registry["sources"]}
+    assert set(EXPECTED) <= {source["source_id"] for source in registry["sources"]}
     for source in registry["sources"]:
         assert {"modify_qen_configuration", "modify_qen_decisions"} <= set(source["prohibited_use"])
         assert source["sha256"] == sha256(ROOT / source["source_path"])
@@ -65,7 +65,9 @@ def test_all_sources_load_and_generated_index_is_reproducible(tmp_path):
     first = build_index(destination=tmp_path / "one.json")
     second = build_index(destination=tmp_path / "two.json")
     assert first == second
-    assert [doc["source_id"] for doc in first["documents"]] == list(EXPECTED)
+    assert [doc["source_id"] for doc in first["documents"]] == [
+        source["source_id"] for source in load_registry()["sources"] if source["enabled"]
+    ]
     assert (tmp_path / "one.json").read_bytes() == (tmp_path / "two.json").read_bytes()
 
 
@@ -243,3 +245,86 @@ def test_safe_degraded_states(tmp_path):
     result = retrieve("zzzxxyyqqq")
     assert result["retrieval_status"] == "no_results"
     assert result["sources"] == []
+
+
+CASE_ACCEPTANCE = {
+    "Cos’è il catalogo Case Studies di Cognitive Logic?": "CASE-CATALOG-001",
+    "Cos’è il caso Coste360?": "CASE-COSTE360-001",
+    "Qual è la relazione tra Cognitive Logic e HVA-001?": "CASE-HVA-001",
+    "Confronta Egea e QEN senza dichiarare una superiorità assoluta.": "CASE-EGEA-QEN-001",
+    "Quali criteri AGCM sono stati contestati?": "CASE-AGCM-001",
+    "Cos’è la proposta Coastal Governance?": "CASE-COASTAL-001",
+    "Cosa documenta il caso Leeds Xylo Core?": "CASE-LEEDS-001",
+    "Cosa risulta dalle fonti EEOC sul caso iTutorGroup?": "CASE-ITUTOR-001",
+    "Quali aspetti del caso iTutorGroup non sono verificabili?": "CASE-ITUTOR-001",
+    "Quale autorità umana conserva la decisione finale?": "CASE-COASTAL-001",
+}
+
+
+@pytest.mark.parametrize(("query", "source_id"), CASE_ACCEPTANCE.items())
+def test_case_study_acceptance_queries_return_governed_case(query, source_id):
+    result = retrieve(query)
+    assert result["retrieval_status"] == "ready"
+    source = next(item for item in result["sources"] if item["source_id"] == source_id)
+    assert {
+        "PUBLIC EVIDENCE", "PRIMARY SOURCE", "ASSESSMENT INFERENCE",
+        "NOT VERIFIABLE", "HUMAN DECISION REQUIRED",
+    } <= set(source["evidence_labels"])
+    assert source["limitations"]
+    assert source["source_uncertainty"]
+    assert source["final_human_authority"]
+
+
+def test_case_pages_and_official_primary_sources_are_registered():
+    registry = load_registry()
+    urls = {source["canonical_url"] for source in registry["sources"]}
+    assert {
+        "https://cognitivelogic.it/case-studies/",
+        "https://cognitivelogic.it/case-studies/cognitive-logic/",
+        "https://cognitivelogic.it/case-studies/external/",
+        *{f"https://cognitivelogic.it/case-studies/{slug}/" for slug in (
+            "coste360", "hva-001", "egea-qen", "agcm-criteri-contestati",
+            "coastal-governance", "leeds-xylo-core", "itutorgroup-screening",
+        )},
+        "https://www.gov.uk/algorithmic-transparency-records/leeds-city-council-xylo-core",
+        "https://www.eeoc.gov/newsroom/eeoc-sues-itutorgroup-age-discrimination",
+        "https://www.eeoc.gov/newsroom/itutorgroup-pay-365000-settle-eeoc-discriminatory-hiring-suit",
+    } <= urls
+
+
+def test_case_documentary_api_exposes_evidence_boundaries_and_human_authority():
+    with patch("main.check_duplicate", return_value=None), patch("main.save_pilot"):
+        response = app.test_client().post(
+            "/copilot-analyze",
+            json={"description": "Cos’è il caso Coste360?"},
+            headers={"Origin": "https://cognitivelogic.it"},
+        )
+    payload = response.get_json()
+    assert response.status_code == 200
+    assert payload["response_mode"] == "sovereign"
+    assert payload["retrieval_status"] == "ready"
+    assert "HUMAN DECISION REQUIRED" in payload["evidence_classes"]
+    assert payload["source_limitations"]
+    assert payload["human_decision_authority"]
+    limiter.reset()
+
+
+@pytest.mark.parametrize("query", CASE_ACCEPTANCE)
+def test_all_case_acceptance_queries_use_documentary_sovereign_api(query):
+    with patch("main.check_duplicate", return_value=None), patch("main.save_pilot"):
+        response = app.test_client().post(
+            "/copilot-analyze", json={"description": query},
+            headers={"Origin": "https://cognitivelogic.it"},
+        )
+    payload = response.get_json()
+    assert response.status_code == 200
+    assert payload["interaction_mode"] == "documentary"
+    assert payload["response_mode"] == "sovereign"
+    assert payload["retrieval_status"] == "ready"
+    assert payload["knowledge_version"]["index_version"]
+    assert payload["sources"]
+    assert payload["confidence"] in {"medium", "high"}
+    assert payload["uncertainty"]
+    assert payload["limitations"]
+    assert payload["human_decision_authority"]
+    limiter.reset()

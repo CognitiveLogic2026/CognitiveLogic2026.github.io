@@ -1,7 +1,7 @@
 {
   "schema_version": "1.0",
-  "registry_version": "1.1.0",
-  "registry_hash": "1ed366978ee83950743c0aac93d462cb0794fd1496cab7c37fd7b536cb54ad08",
+  "registry_version": "2.0.0",
+  "registry_hash": "518864d1b1555554e7688069ade6954318e734af95dacb365e36096c627af52e",
   "documents": [
     {
       "source_id": "DFV-002",
@@ -684,7 +684,1365 @@
           "text": "Coastal Governance Intelligence is an integral component of the Cognitive Logic Enterprise Service Catalogue and is designed according to the principles of the Cognitive Logic Sovereign Intelligence Architecture.\n\nThe service enables executive decision-making by transforming territorial, organizational, regulatory and documentary information into governed knowledge through structured methodologies, measurable governance models and evidence-based analytical processes.\n\nThe service operates above operational information systems by providing a governance layer focused on knowledge quality, decision intelligence, explainability and strategic organizational improvement. It is designed to complement existing information infrastructures without requiring specific software platforms or technology vendors.\n\nAll analytical outputs are generated through the Cognitive Logic Sovereign Intelligence Architecture by combining the QEN Sovereign Engine, Governance Engine, Knowledge Graph, EVIDE, proprietary algorithms, intelligible data and verifiable evidence.\n\nThe service fully complies with the architectural principles established by ADR-CLE-004, ensuring that governance recommendations and executive conclusions are derived exclusively from governed knowledge and documented evidence. External artificial intelligence providers are not used as decision sources.\n\nCoastal Governance Intelligence is designed to integrate consistently with the broader Enterprise Service Catalogue, enabling organizations to establish a unified governance ecosystem that supports measurable governance maturity, explainable decision-making, organizational accountability and continuous strategic improvement.\n\nThis specification represents the authoritative architectural baseline for CS-010 within the Commercial Evolution 1.0 programme and shall be maintained in alignment with future approved architectural decisions, governance standards and Enterprise Service Catalogue evolution."
         }
       ]
+    },
+    {
+      "source_id": "CASE-CATALOG-001",
+      "source_sha256": "596c812833b9e1b3338822022e542dfa0c60f32527a6f18dbf627e8c61b51c33",
+      "metadata": {
+        "title": "Catalogo pubblico Case Studies governati QEN",
+        "version": "1.0",
+        "canonical_url": "https://cognitivelogic.it/case-studies/",
+        "category": "risorsa editoriale",
+        "authority": "Cognitive Logic",
+        "date": "2026-08-12",
+        "status": "published editorial catalogue",
+        "source_class": "secondary",
+        "confidence": "high",
+        "scope": "Indice, tassonomia A–G, classi probatorie e limiti del catalogo Case Studies",
+        "language": "it",
+        "publication_status": "published",
+        "document_type": "editorial_resource",
+        "evidence_labels": [
+          "PUBLIC EVIDENCE",
+          "PRIMARY SOURCE",
+          "ASSESSMENT INFERENCE",
+          "NOT VERIFIABLE",
+          "HUMAN DECISION REQUIRED"
+        ],
+        "limitations": "Indice editoriale, non fonte primaria dei fatti dei singoli casi",
+        "uncertainty": "Completezza e attualità dipendono dai dossier governati",
+        "final_human_authority": "Autorità umana competente per ciascun caso"
+      },
+      "search_terms": [
+        "case studies",
+        "catalogo case studies Cognitive Logic",
+        "CASE-CATALOG-001",
+        "tassonomia A B C D E F G",
+        "PUBLIC EVIDENCE",
+        "HUMAN DECISION REQUIRED"
+      ],
+      "warnings": [
+        "Risorsa editoriale: non è fonte primaria dei fatti dei singoli casi"
+      ],
+      "sections": [
+        {
+          "section": "CASE-CATALOG-001 — Catalogo pubblico Case Studies governati QEN",
+          "text": "Version: 1.0\n\nPublication date: 2026-08-12\n\nLast verified: 2026-08-13\n\nAuthority: Cognitive Logic; decisioni sostanziali riservate all'autorità umana competente.\n\nCanonical URL: https://cognitivelogic.it/case-studies/"
+        },
+        {
+          "section": "Natura del catalogo",
+          "text": "Il catalogo organizza casi Cognitive Logic, benchmark, proposte istituzionali e casi esterni ricostruiti da evidenze pubbliche. Le pagine indice e categoria sono risorse editoriali: aiutano la ricerca, ma non sono fonti primarie dei fatti dei singoli casi."
+        },
+        {
+          "section": "Tassonomia A–G",
+          "text": "A — Cognitive Logic Delivery Case; B — Cognitive Logic Validation Case; C — Independent Public-Evidence Validation Case; D — QEN Applied External Case; E — Governance Benchmark; F — Critical Case; G — Institutional Use Case."
+        },
+        {
+          "section": "Classi probatorie",
+          "text": "PUBLIC EVIDENCE indica un fatto sostenuto da una fonte pubblica. PRIMARY SOURCE identifica la fonte ufficiale o originaria registrata. ASSESSMENT INFERENCE identifica una lettura Cognitive Logic distinta dai fatti. NOT VERIFIABLE segnala informazione non accessibile o non verificata, non un giudizio negativo. HUMAN DECISION REQUIRED ricorda che QEN non assume l'autorità decisionale finale."
+        },
+        {
+          "section": "Collezione Cognitive Logic",
+          "text": "La collezione comprende Coste360 e la proposta Coastal Governance. Coste360 è validazione proprietaria, non certificazione indipendente. Coastal Governance è una proposta non implementata e non documenta adozione da parte di enti pubblici."
+        },
+        {
+          "section": "Collezione External",
+          "text": "La collezione comprende HVA-001, Egea–QEN, AGCM, Leeds City Council — Xylo Core e iTutorGroup. La presenza nel catalogo non presenta le organizzazioni osservate come clienti, partner o utilizzatori di QEN e non attribuisce loro risultati prodotti da QEN."
+        },
+        {
+          "section": "Limiti e responsabilità",
+          "text": "Il livello documentale V0–V4 non certifica la verità. Completezza, attualità e accessibilità delle fonti possono limitare ogni ricostruzione. QEN rende esaminabili provenienza, evidenze, inferenze e limiti; non sostituisce autorità pubbliche, professionisti, titolari del processo o decisori umani."
+        }
+      ]
+    },
+    {
+      "source_id": "CASE-CATEGORY-CL-001",
+      "source_sha256": "596c812833b9e1b3338822022e542dfa0c60f32527a6f18dbf627e8c61b51c33",
+      "metadata": {
+        "title": "Case Studies Cognitive Logic",
+        "version": "1.0",
+        "canonical_url": "https://cognitivelogic.it/case-studies/cognitive-logic/",
+        "category": "risorsa editoriale",
+        "authority": "Cognitive Logic",
+        "date": "2026-08-12",
+        "status": "published editorial collection",
+        "source_class": "secondary",
+        "confidence": "high",
+        "scope": "Indice editoriale dei casi e delle proposte Cognitive Logic",
+        "language": "it",
+        "publication_status": "published"
+      },
+      "search_terms": [
+        "case studies Cognitive Logic",
+        "coste360",
+        "coastal governance",
+        "categoria Cognitive Logic"
+      ],
+      "warnings": [
+        "Indice editoriale, non evidenza primaria"
+      ],
+      "sections": [
+        {
+          "section": "CASE-CATALOG-001 — Catalogo pubblico Case Studies governati QEN",
+          "text": "Version: 1.0\n\nPublication date: 2026-08-12\n\nLast verified: 2026-08-13\n\nAuthority: Cognitive Logic; decisioni sostanziali riservate all'autorità umana competente.\n\nCanonical URL: https://cognitivelogic.it/case-studies/"
+        },
+        {
+          "section": "Natura del catalogo",
+          "text": "Il catalogo organizza casi Cognitive Logic, benchmark, proposte istituzionali e casi esterni ricostruiti da evidenze pubbliche. Le pagine indice e categoria sono risorse editoriali: aiutano la ricerca, ma non sono fonti primarie dei fatti dei singoli casi."
+        },
+        {
+          "section": "Tassonomia A–G",
+          "text": "A — Cognitive Logic Delivery Case; B — Cognitive Logic Validation Case; C — Independent Public-Evidence Validation Case; D — QEN Applied External Case; E — Governance Benchmark; F — Critical Case; G — Institutional Use Case."
+        },
+        {
+          "section": "Classi probatorie",
+          "text": "PUBLIC EVIDENCE indica un fatto sostenuto da una fonte pubblica. PRIMARY SOURCE identifica la fonte ufficiale o originaria registrata. ASSESSMENT INFERENCE identifica una lettura Cognitive Logic distinta dai fatti. NOT VERIFIABLE segnala informazione non accessibile o non verificata, non un giudizio negativo. HUMAN DECISION REQUIRED ricorda che QEN non assume l'autorità decisionale finale."
+        },
+        {
+          "section": "Collezione Cognitive Logic",
+          "text": "La collezione comprende Coste360 e la proposta Coastal Governance. Coste360 è validazione proprietaria, non certificazione indipendente. Coastal Governance è una proposta non implementata e non documenta adozione da parte di enti pubblici."
+        },
+        {
+          "section": "Collezione External",
+          "text": "La collezione comprende HVA-001, Egea–QEN, AGCM, Leeds City Council — Xylo Core e iTutorGroup. La presenza nel catalogo non presenta le organizzazioni osservate come clienti, partner o utilizzatori di QEN e non attribuisce loro risultati prodotti da QEN."
+        },
+        {
+          "section": "Limiti e responsabilità",
+          "text": "Il livello documentale V0–V4 non certifica la verità. Completezza, attualità e accessibilità delle fonti possono limitare ogni ricostruzione. QEN rende esaminabili provenienza, evidenze, inferenze e limiti; non sostituisce autorità pubbliche, professionisti, titolari del processo o decisori umani."
+        }
+      ]
+    },
+    {
+      "source_id": "CASE-CATEGORY-EXT-001",
+      "source_sha256": "596c812833b9e1b3338822022e542dfa0c60f32527a6f18dbf627e8c61b51c33",
+      "metadata": {
+        "title": "Case Studies esterni",
+        "version": "1.0",
+        "canonical_url": "https://cognitivelogic.it/case-studies/external/",
+        "category": "risorsa editoriale",
+        "authority": "Cognitive Logic",
+        "date": "2026-08-12",
+        "status": "published editorial collection",
+        "source_class": "secondary",
+        "confidence": "high",
+        "scope": "Indice editoriale dei casi esterni ricostruiti da fonti pubbliche",
+        "language": "it",
+        "publication_status": "published"
+      },
+      "search_terms": [
+        "case studies external",
+        "casi esterni",
+        "Leeds Xylo Core",
+        "iTutorGroup",
+        "HVA-001",
+        "Egea AGCM"
+      ],
+      "warnings": [
+        "Le organizzazioni elencate non sono presentate come clienti, partner o utilizzatori QEN"
+      ],
+      "sections": [
+        {
+          "section": "CASE-CATALOG-001 — Catalogo pubblico Case Studies governati QEN",
+          "text": "Version: 1.0\n\nPublication date: 2026-08-12\n\nLast verified: 2026-08-13\n\nAuthority: Cognitive Logic; decisioni sostanziali riservate all'autorità umana competente.\n\nCanonical URL: https://cognitivelogic.it/case-studies/"
+        },
+        {
+          "section": "Natura del catalogo",
+          "text": "Il catalogo organizza casi Cognitive Logic, benchmark, proposte istituzionali e casi esterni ricostruiti da evidenze pubbliche. Le pagine indice e categoria sono risorse editoriali: aiutano la ricerca, ma non sono fonti primarie dei fatti dei singoli casi."
+        },
+        {
+          "section": "Tassonomia A–G",
+          "text": "A — Cognitive Logic Delivery Case; B — Cognitive Logic Validation Case; C — Independent Public-Evidence Validation Case; D — QEN Applied External Case; E — Governance Benchmark; F — Critical Case; G — Institutional Use Case."
+        },
+        {
+          "section": "Classi probatorie",
+          "text": "PUBLIC EVIDENCE indica un fatto sostenuto da una fonte pubblica. PRIMARY SOURCE identifica la fonte ufficiale o originaria registrata. ASSESSMENT INFERENCE identifica una lettura Cognitive Logic distinta dai fatti. NOT VERIFIABLE segnala informazione non accessibile o non verificata, non un giudizio negativo. HUMAN DECISION REQUIRED ricorda che QEN non assume l'autorità decisionale finale."
+        },
+        {
+          "section": "Collezione Cognitive Logic",
+          "text": "La collezione comprende Coste360 e la proposta Coastal Governance. Coste360 è validazione proprietaria, non certificazione indipendente. Coastal Governance è una proposta non implementata e non documenta adozione da parte di enti pubblici."
+        },
+        {
+          "section": "Collezione External",
+          "text": "La collezione comprende HVA-001, Egea–QEN, AGCM, Leeds City Council — Xylo Core e iTutorGroup. La presenza nel catalogo non presenta le organizzazioni osservate come clienti, partner o utilizzatori di QEN e non attribuisce loro risultati prodotti da QEN."
+        },
+        {
+          "section": "Limiti e responsabilità",
+          "text": "Il livello documentale V0–V4 non certifica la verità. Completezza, attualità e accessibilità delle fonti possono limitare ogni ricostruzione. QEN rende esaminabili provenienza, evidenze, inferenze e limiti; non sostituisce autorità pubbliche, professionisti, titolari del processo o decisori umani."
+        }
+      ]
+    },
+    {
+      "source_id": "CASE-COSTE360-001",
+      "source_sha256": "ecac42c62893b3b3e40ddcfc849d505b6d169d14991e7ba2f7d4f2ecda785b02",
+      "metadata": {
+        "title": "Coste360",
+        "version": "1.0",
+        "canonical_url": "https://cognitivelogic.it/case-studies/coste360/",
+        "category": "case study governato",
+        "authority": "Cognitive Logic",
+        "date": "2026-08-12",
+        "status": "published proprietary validation case",
+        "source_class": "primary",
+        "confidence": "high",
+        "scope": "Validazione proprietaria Coste360 e governo del catalogo EA-009",
+        "language": "it",
+        "publication_status": "published",
+        "document_type": "case_study",
+        "primary_case_type": "B",
+        "relationship_with_cognitive_logic": "Validazione proprietaria Cognitive Logic; nessuna relazione cliente-fornitore esterna implicata",
+        "observed_organisation": "Coste360 (corpus proprietario)",
+        "sector": "governance costiera",
+        "jurisdiction": "Italia",
+        "publication_date": "2026-08-12",
+        "last_verified_at": "2026-08-13",
+        "primary_sources": [
+          "EA-009"
+        ],
+        "provenance": "Dossier canonico EA-009",
+        "evidence_labels": [
+          "PUBLIC EVIDENCE",
+          "PRIMARY SOURCE",
+          "ASSESSMENT INFERENCE",
+          "NOT VERIFIABLE",
+          "HUMAN DECISION REQUIRED"
+        ],
+        "limitations": "Validazione proprietaria, non certificazione indipendente; efficacia esterna e adozione di terzi non verificate",
+        "uncertainty": "Limitata al corpus e alle evidenze governate disponibili",
+        "final_human_authority": "Responsabile umano del programma e del processo decisionale"
+      },
+      "search_terms": [
+        "CASE-COSTE360-001",
+        "coste360",
+        "EA-009",
+        "validation evidence catalogue",
+        "governance costiera",
+        "tipo B"
+      ],
+      "warnings": [
+        "Non costituisce certificazione indipendente"
+      ],
+      "sections": [
+        {
+          "section": "Coste360 Validation Evidence Catalogue",
+          "text": "Version: 1.0\n\nStatus: Approved\n\nDate: 2026-08-09\n\nCanonical URL: https://cognitivelogic.it/resources/documents/coste360-ea-009/\n\nClassification: Internal Enterprise Assessment\n\nRepository: Cognitive Logic\n\nFramework: QEN Sovereign Intelligence\n\n---"
+        },
+        {
+          "section": "Executive Summary",
+          "text": "The Coste360 Validation Evidence Catalogue (EA-009) establishes the official enterprise repository of validation evidence supporting the QEN Sovereign Intelligence Validation Programme.\n\nThe catalogue defines a centralized governance model for all evidence referenced by Enterprise Assessments.\n\nEA-009 serves as the authoritative repository for evidence identification, classification, governance, traceability, auditability, lifecycle management, and reuse.\n\nThe catalogue does not perform assessments.\n\nIt does not express opinions.\n\nIt does not certify external platforms.\n\nIts purpose is to provide a structured inventory of publicly observable evidence supporting independent enterprise validation activities.\n\nEA-009 is designated as the Single Source of Truth for all validation evidence within the Coste360 Validation Programme.\n\n---"
+        },
+        {
+          "section": "Objectives",
+          "text": "The objectives of this catalogue are to:\n\n- establish a centralized evidence repository;\n- define unique Evidence IDs;\n- standardize evidence classification;\n- support audit readiness;\n- enable evidence reuse;\n- eliminate duplication;\n- improve repository consistency;\n- support enterprise governance;\n- strengthen decision traceability;\n- provide lifecycle management for evidence.\n\n---"
+        },
+        {
+          "section": "Scope",
+          "text": "This catalogue applies to all Enterprise Assessments produced within the Coste360 Validation Programme.\n\nEnterprise Assessments shall reference Evidence IDs defined in this catalogue without duplicating the underlying evidence.\n\nEA-009 governs the identification, maintenance, review, traceability and lifecycle of enterprise validation evidence.\n\n---"
+        },
+        {
+          "section": "Guiding Principles",
+          "text": "The catalogue is based on the following principles:\n\n- Evidence First\n- Transparency\n- Explainability\n- Traceability\n- Technology Independence\n- Governance by Design\n- Documentation First\n- Continuous Validation\n- Human Accountability\n- Single Source of Truth\n\n---"
+        },
+        {
+          "section": "Repository Purpose",
+          "text": "The repository exists to:\n\n- centralize enterprise evidence;\n- support cross-assessment reuse;\n- simplify maintenance;\n- improve auditability;\n- ensure consistency across assessments;\n- provide controlled lifecycle management;\n- reduce documentation redundancy.\n\n---"
+        },
+        {
+          "section": "Evidence Identification Model",
+          "text": "Each evidence item shall be assigned a unique identifier using the following format:\n\nEV-0001\n\nEV-0002\n\nEV-0003\n\n...\n\nEvidence IDs are permanent.\n\nEvidence IDs shall never be reused.\n\nDeprecated evidence shall retain its identifier.\n---"
+        },
+        {
+          "section": "Coastal Governance External Evidence — verified 2026-08-09",
+          "text": "| ID | Category | Authority / author | Title / act | Year | DOI / official URL | Scope | Reliability | Limits | Intended use | Confidence |\n|---|---|---|---|---:|---|---|---|---|---|---|\n| EV-0001 | Benchmark | Tomasi, Giacoma, Ottolina | Egea six dimensions | 2026 | 10.57590/1120-5032-202601ITA-8 | 6 establishments, Forte dei Marmi | Medium | Local sample; size bias | Egea–QEN comparison | Medium |\n| EV-0002 | Normativa | EU / Italian Republic | Directive 2006/123; L.118/2022; DL131/2024; L.166/2024 | 2006–2024 | https://eur-lex.europa.eu/legal-content/IT/TXT/?uri=CELEX:32006L0123 | Maritime concessions | Very high | Apply current consolidated text | Legal baseline | High |\n| EV-0003 | Giurisprudenza | CdS / TAR Campania | Opinion 750/2025; judgments 4121/2026, 3530/2026 | 2025–2026 | https://www.giustizia-amministrativa.it/-/105486-1834 | Tenders, indemnities, extensions | Very high | Opinion interlocutory; case-specific holdings | Monitoring | High |\n| EV-0004 | AGCM | AGCM | AS1930, AS2048, AS2081, AS2144, AS2152, AS2161 | 2023–2026 | https://www.agcm.it/pubblicazioni/bollettino-settimanale/2026/15/Bollettino-15-2026 | Competition risks | Very high | Different nature/stage; follow-up gaps stated | Anti-incumbent controls | High; AS2161 detail Medium |\n| EV-0005 | Ricerca scientifica | Basurto-Cedeno et al. | Comprehensive Index for Beaches | 2025 | https://doi.org/10.3390/su17073049 | 600+ visitors, EFA | High | Perception-based, not tender validation | KPI taxonomy | Medium-high |\n| EV-0006 | Ricerca scientifica | Wang et al. | Taiwan coastal tourism framework | 2016 | https://doi.org/10.3390/su8070652 | Fuzzy Delphi/AHP | High | Territory-dependent expert weights | Taxonomy only | Medium |\n| EV-0007 | Ricerca scientifica | Er-Ramy et al. | Sector Analysis, Morocco | 2023 | https://doi.org/10.3390/su151612581 | 50 beaches | High | Exogenous site conditions | Baselines | Medium |\n| EV-0008 | Ricerca scientifica | Wyman et al. | Protected-area tourism concessions | 2011 | https://doi.org/10.3390/f2040913 | Public documents, 22 countries | High | Legal/context heterogeneity | Checklist | Medium |\n| EV-0009 | Certificazione | FEE | Blue Flag criteria | current | https://www.blueflag.global/criteria | Environment/safety | Medium-high | Voluntary private ecolabel; equivalents | Indicator reference | Medium |\n| EV-0010 | Standard operativo | EC/JRC | EMAS BEMP Tourism | 2016/current | https://green-forum.ec.europa.eu/publications/emas-sectoral-reference-document-best-environmental-management-practice-tourism-sector_en | Environmental KPIs | High | Voluntary | KPI design | High |\n| EV-0011 | Standard operativo | UNEP/IOC | Marine litter monitoring | 2009/2019 | https://www.unep.org/resources/report/unepioc-guidelines-survey-and-monitoring-marine-litter-0 | Standard surveys | High | Consistent area/time required | Performance evidence | High |\n| EV-0012 | Standard operativo | ISO | ISO 13009:2015 | 2015 | https://www.iso.org/standard/52329.html | Beach operations | High | Voluntary/paywalled; equivalents | Checklist | Medium-high |\n\nThe records distinguish law, case law, AGCM advocacy, research, standards and certification. They approve no weights, thresholds or formulas and do not amend VR-001 or SA-001."
+        },
+        {
+          "section": "Purpose",
+          "text": "The Evidence Taxonomy defines the official enterprise classification model applied to every Evidence ID managed by EA-009.\n\nEach evidence item shall belong to one Primary Category and may optionally belong to multiple Secondary Categories.\n\nThis taxonomy enables consistent classification, traceability, reporting and cross-reference across the entire Validation Programme."
+        },
+        {
+          "section": "Primary Categories",
+          "text": "The following categories constitute the official enterprise taxonomy.\n\n| Category | Description |\n|-----------|-------------|\n| Platform | Platform capabilities and observable functionalities. |\n| Governance | Governance structures, policies and decision processes. |\n| Data | Data assets, models, metadata and information management. |\n| Security | Security controls, authentication and protection mechanisms. |\n| Compliance | Regulatory, legal and policy compliance evidence. |\n| Operations | Operational processes and runtime activities. |\n| Architecture | System architecture, components and design principles. |\n| Documentation | Official documentation and technical publications. |\n| Transparency | Public transparency and explainability information. |\n| Public Communication | Public announcements and institutional communications. |\n| Organization | Organizational information and governance structures. |\n| Ecosystem | External ecosystem integrations and collaborations. |\n| Integration | APIs, interoperability and integration capabilities. |\n| Monitoring | Monitoring, observability and operational measurements. |\n| Quality | Quality assurance and validation evidence. |\n\n---"
+        },
+        {
+          "section": "Evidence Classification Rules",
+          "text": "Each Evidence ID shall include:\n\n- Evidence ID\n- Evidence Title\n- Primary Category\n- Secondary Categories\n- Evidence Owner\n- Source Type\n- Criticality Level\n- Freshness Status\n- Maturity Level\n- Current Version\n\nNo evidence shall remain unclassified.\n\n---"
+        },
+        {
+          "section": "Evidence Criticality Model",
+          "text": "Every Evidence ID shall be assigned one criticality level.\n\n| Level | Objective Criteria |\n|--------|--------------------|\n| Critical | Required to validate core enterprise capabilities or governance claims. |\n| High | Strongly supports assessment conclusions and audit activities. |\n| Medium | Important supporting evidence for validation. |\n| Low | Informational evidence with limited assessment impact. |\n\nCriticality shall be determined using objective validation criteria only.\n\n---"
+        },
+        {
+          "section": "Evidence Source Classification",
+          "text": "Evidence sources shall be classified using standardized categories.\n\n| Source Category | Reliability |\n|-----------------|-------------|\n| Official Website | Very High |\n| Official Documentation | Very High |\n| Public Repository | High |\n| Official API | Very High |\n| Public Dataset | High |\n| Technical Documentation | High |\n| Official Announcement | High |\n| Evidence Pending | Not Yet Verified |\n\nOnly publicly observable evidence shall be included unless explicitly governed otherwise.\n\n---"
+        },
+        {
+          "section": "Evidence Freshness Model",
+          "text": "Each evidence item shall maintain one freshness status.\n\n| Status | Description |\n|--------|-------------|\n| Current | Recently reviewed and considered valid. |\n| Recently Verified | Independently verified during the latest assessment cycle. |\n| Scheduled for Review | Review already planned according to governance procedures. |\n| Expired | Requires revalidation before further use. |\n| Evidence Pending | Validation has not yet been completed. |\n\nFreshness shall be periodically reviewed according to repository governance procedures.\n\n---"
+        },
+        {
+          "section": "Review Policy",
+          "text": "Evidence shall be reviewed periodically to ensure:\n\n- continued availability;\n- source integrity;\n- traceability;\n- technical consistency;\n- governance compliance;\n- assessment reliability.\n\nExpired evidence shall not be referenced by new Enterprise Assessments until revalidated.\n\n---\n---"
+        },
+        {
+          "section": "Evidence Risk Assessment",
+          "text": "Each Evidence ID shall include a standardized enterprise risk assessment.\n\nThe assessment shall evaluate:\n\n- Risk if Missing\n- Risk if Outdated\n- Risk if Incorrect\n- Business Impact\n- Assessment Impact\n- Audit Impact\n- Repository Impact"
+        },
+        {
+          "section": "Risk Classification",
+          "text": "| Level | Description |\n|--------|-------------|\n| Critical | Prevents reliable enterprise validation. |\n| High | Significantly affects assessment quality. |\n| Medium | Reduces validation confidence but remains manageable. |\n| Low | Limited operational impact. |\n\nRisk evaluations shall be objective, documented and periodically reviewed.\n\n---"
+        },
+        {
+          "section": "Evidence Reuse Policy",
+          "text": "The Coste360 Validation Programme adopts the principle:"
+        },
+        {
+          "section": "Collect Once — Reuse Everywhere",
+          "text": "Evidence shall be collected a single time and subsequently reused across the entire enterprise repository.\n\nBenefits include:\n\n- elimination of duplication;\n- repository consistency;\n- improved maintainability;\n- simplified audits;\n- increased traceability;\n- reduced documentation effort.\n\nA single validated Evidence ID may be referenced by an unlimited number of Enterprise Assessments.\n\nNo assessment shall duplicate evidence already governed by EA-009.\n\n---"
+        },
+        {
+          "section": "Evidence Change Control",
+          "text": "Every Evidence ID shall follow a controlled lifecycle.\n\nLifecycle stages include:\n\n- Creation\n- Review\n- Approval\n- Modification\n- Deprecation\n- Replacement\n- Retirement\n\nEvery modification shall preserve historical traceability.\n\nDeprecated evidence shall remain archived for audit purposes.\n\nEvidence identifiers shall never be reassigned.\n\n---"
+        },
+        {
+          "section": "Evidence Audit Trail",
+          "text": "Each modification shall generate a permanent audit record containing:\n\n- Evidence ID\n- Version\n- Date\n- Reviewer\n- Reason for Change\n- Approval Status\n\nAdditional optional attributes may include:\n\n- Previous Version\n- Repository Commit Reference\n- Related Enterprise Assessment\n- Validation Notes\n- Review Cycle\n\nThe audit trail shall remain immutable once approved.\n\n---"
+        },
+        {
+          "section": "Evidence Repository Integration Model",
+          "text": "EA-009 represents the centralized enterprise evidence repository.\n\nEnterprise Assessments shall reference Evidence IDs exclusively.\n\nEvidence shall never be duplicated within assessment documents.\n\nEach assessment shall maintain references only.\n\nAll evidence maintenance activities shall be performed within EA-009.\n\nRepository synchronization shall therefore occur automatically through Evidence IDs.\n\n---"
+        },
+        {
+          "section": "Evidence Maturity Model",
+          "text": "Evidence governance maturity shall be evaluated using the following model.\n\n| Level | Description |\n|--------|-------------|\n| Level 1 | Identified |\n| Level 2 | Collected |\n| Level 3 | Verified |\n| Level 4 | Cross-Referenced |\n| Level 5 | Fully Governed |\n\nLevel 5 represents complete governance integration including traceability, lifecycle management, audit readiness and repository consistency.\n\n---"
+        },
+        {
+          "section": "Enterprise Repository Rules",
+          "text": "EA-009 constitutes the official Single Source of Truth for validation evidence.\n\nThe following mandatory rules apply.\n\n1. Evidence shall never be duplicated.\n\n2. Enterprise Assessments shall reference Evidence IDs only.\n\n3. Evidence modifications shall be performed exclusively within EA-009.\n\n4. Repository traceability shall always be preserved.\n\n5. Evidence identifiers are permanent.\n\n6. Repository governance supersedes individual assessment copies.\n\n7. Cross-reference consistency shall be maintained across all Enterprise Assessments.\n\n---"
+        },
+        {
+          "section": "Alignment with QEN Sovereign Principles",
+          "text": "EA-009 is formally aligned with the following approved governance artefacts:\n\n- ADR-CLE-004 — QEN Sovereign Intelligence Principle\n- AF-009 — QEN Semantic Identity & Trust Layer\n- AF-010 — QEN CLI\n- QEN Sovereign Governance Model\n- QEN Sovereign Documentation Reference Architecture\n- QEN Sovereign Documentation Index\n- Repository Sovereign Certification\n\nThese artefacts collectively establish the enterprise governance framework supporting evidence management, traceability and explainability.\n\n---"
+        },
+        {
+          "section": "Repository Governance Statement",
+          "text": "EA-009 serves as the authoritative enterprise repository governing all validation evidence used throughout the Coste360 Validation Programme.\n\nAll Enterprise Assessments shall rely upon this catalogue for evidence identification, governance, lifecycle management and traceability.\n\nEA-009 therefore functions as the central evidence repository for the entire validation framework.\n\n---"
+        },
+        {
+          "section": "Document Status",
+          "text": "Approved"
+        },
+        {
+          "section": "Repository Status",
+          "text": "Repository Ready"
+        },
+        {
+          "section": "Audit Status",
+          "text": "Audit Ready"
+        },
+        {
+          "section": "Evidence Status",
+          "text": "Evidence Ready"
+        },
+        {
+          "section": "Governance Status",
+          "text": "Governance Ready"
+        },
+        {
+          "section": "Traceability Status",
+          "text": "Traceability Ready"
+        },
+        {
+          "section": "Repository Classification",
+          "text": "Single Source of Truth Ready\n\n---\n\n**End of Document**\n---"
+        },
+        {
+          "section": "Standard Evidence Metadata Model",
+          "text": "Each Evidence ID shall contain a standardized metadata record.\n\nThe minimum metadata attributes are:\n\n- Evidence ID\n- Evidence Title\n- Evidence Description\n- Primary Category\n- Secondary Categories\n- Criticality Level\n- Maturity Level\n- Freshness Status\n- Source Classification\n- Source Reference\n- Repository Location\n- Validation Status\n- Reviewer\n- Approval Authority\n- Version\n- Creation Date\n- Last Review Date\n- Next Review Date\n- Related Enterprise Assessments\n- Related Governance Artefacts\n- Repository Notes\n\nAll metadata shall follow repository governance standards.\n\n---"
+        },
+        {
+          "section": "Evidence Record Template",
+          "text": "Each Evidence ID shall be documented using the following structure."
+        },
+        {
+          "section": "Identification",
+          "text": "- Evidence ID\n- Title\n- Description"
+        },
+        {
+          "section": "Classification",
+          "text": "- Primary Category\n- Secondary Categories"
+        },
+        {
+          "section": "Source",
+          "text": "- Source Classification\n- Source Reference\n- Reliability Level"
+        },
+        {
+          "section": "Validation",
+          "text": "- Validation Status\n- Validation Date\n- Reviewer\n- Approval Status"
+        },
+        {
+          "section": "Governance",
+          "text": "- Criticality\n- Freshness\n- Maturity\n- Version"
+        },
+        {
+          "section": "Traceability",
+          "text": "- Referenced By\n- Related Assessments\n- Related Documents\n- Repository Location\n\n---"
+        },
+        {
+          "section": "Enterprise Traceability Matrix",
+          "text": "Each Evidence ID shall support complete enterprise traceability.\n\nMinimum traceability dimensions include:\n\n- Evidence ID → Enterprise Assessment\n- Evidence ID → Governance Artefact\n- Evidence ID → Repository Document\n- Evidence ID → Validation Activity\n- Evidence ID → Audit Record\n- Evidence ID → Change History\n\nTraceability shall be bidirectional.\n\n---"
+        },
+        {
+          "section": "Evidence Cross-Reference Policy",
+          "text": "Evidence IDs may be referenced by:\n\n- Enterprise Assessments\n- Architecture Documents\n- Governance Documents\n- Validation Reports\n- Audit Reports\n- Research Papers\n- Documentation Artefacts\n\nCross-references shall always use the official Evidence ID.\n\nNarrative duplication is prohibited.\n\n---"
+        },
+        {
+          "section": "Evidence Quality Assurance",
+          "text": "Evidence quality shall be periodically evaluated according to:\n\n- Completeness\n- Accuracy\n- Consistency\n- Traceability\n- Timeliness\n- Verifiability\n- Reusability\n\nEvidence not meeting quality requirements shall enter the review workflow.\n\n---"
+        },
+        {
+          "section": "Repository Maintenance",
+          "text": "The repository shall be maintained through controlled governance activities including:\n\n- Scheduled Reviews\n- Evidence Updates\n- Version Management\n- Cross-Reference Validation\n- Repository Integrity Checks\n- Audit Preparation\n- Continuous Improvement\n\nRepository maintenance activities shall be documented and auditable.\n\n---"
+        },
+        {
+          "section": "Compliance Statement",
+          "text": "EA-009 complies with the governance principles established by the QEN Sovereign Intelligence framework.\n\nThe catalogue supports:\n\n- Explainability\n- Decision Traceability\n- Enterprise Documentation Governance\n- Audit Readiness\n- Evidence Reuse\n- Repository Integrity\n- Human Accountability\n\nEA-009 constitutes the official enterprise evidence governance standard for the Coste360 Validation Programme."
+        }
+      ]
+    },
+    {
+      "source_id": "CASE-HVA-001",
+      "source_sha256": "7a16491c09323a052d1b66b3bc5ed9059604eba31e46f6107201e53bb87a0808",
+      "metadata": {
+        "title": "HVA-001 — Hospitality AI Governance",
+        "version": "1.0",
+        "canonical_url": "https://cognitivelogic.it/case-studies/hva-001/",
+        "category": "case study governato",
+        "authority": "Cognitive Logic",
+        "date": "2026-08-12",
+        "status": "published public-evidence assessment",
+        "source_class": "secondary",
+        "confidence": "medium",
+        "scope": "Independent public-evidence hospitality AI governance case",
+        "language": "it",
+        "publication_status": "published",
+        "document_type": "case_study",
+        "primary_case_type": "C",
+        "relationship_with_cognitive_logic": "None",
+        "observed_organisation": "Nessuna organizzazione specifica",
+        "sector": "hospitality",
+        "jurisdiction": "non specificata",
+        "publication_date": "2026-08-12",
+        "last_verified_at": "2026-08-13",
+        "primary_sources": [
+          "Fonti pubbliche elencate nel dossier HVA-001"
+        ],
+        "provenance": "Dossier canonico HVA-001",
+        "evidence_labels": [
+          "PUBLIC EVIDENCE",
+          "PRIMARY SOURCE",
+          "ASSESSMENT INFERENCE",
+          "NOT VERIFIABLE",
+          "HUMAN DECISION REQUIRED"
+        ],
+        "limitations": "Controlli, dataset, performance e responsabilità interne non accessibili",
+        "uncertainty": "Analisi pubblica soggetta a riesame",
+        "final_human_authority": "Organizzazione che adotta e governa il processo AI"
+      },
+      "search_terms": [
+        "CASE-HVA-001",
+        "HVA-001",
+        "Hospitality AI Governance",
+        "hospitality",
+        "relazione Cognitive Logic None",
+        "tipo C"
+      ],
+      "warnings": [
+        "Nessuna relazione con l'organizzazione osservata"
+      ],
+      "sections": [
+        {
+          "section": "HVA-001 — Hospitality AI Governance — Independent Validation Case",
+          "text": "**Cognitive Logic**\n**Document ID:** HVA-001\n**Version:** 1.0\n**Status:** Approved\n**Classification:** Public-Evidence Assessment\n**Sector:** Hospitality\n**Commissioning Organisation:** None\n**Client Relationship:** None\n**Internal Access:** None\n\n---"
+        },
+        {
+          "section": "Document Control",
+          "text": "| Attribute | Value |\n|\n\n---|\n\n---|\n| Document ID | HVA-001 |\n| Document Type | Independent Validation Case |\n| Sector | Hospitality |\n| Organisation Assessed | None |\n| Evidence Basis | Publicly verifiable evidence |\n| Confidential Information | Not used |\n| Repository | Cognitive Logic |\n\n---"
+        },
+        {
+          "section": "Executive Summary",
+          "text": "Artificial intelligence is entering concrete hospitality processes including customer service, booking, marketing, revenue management, operational support, knowledge access and decision support.\n\nThis document does not assess any specific hotel, hotel group, Federalberghi or other organisation.\n\nIt asks one question:\n\n> When AI enters hospitality processes, does the organisation have the governance, responsibilities, knowledge and evidence required to remain in control?\n\nPublic evidence can demonstrate where AI adoption is occurring.\n\nPublic evidence generally cannot establish whether a specific hospitality organisation has:\n\n- an AI inventory;\n- assigned accountability;\n- human oversight;\n- approved information sources;\n- provider controls;\n- decision traceability;\n- AI literacy measures;\n- evidence-retention rules.\n\nThose elements require an internal AI Governance Assessment.\n\nThe purpose of this case is therefore to distinguish clearly between:\n\n**PUBLIC EVIDENCE** — directly verifiable facts;\n\n**ASSESSMENT INFERENCE** — analytical conclusions derived from evidence;\n\n**NOT VERIFIABLE** — information requiring internal access.\n\nThe case demonstrates the ability of Cognitive Logic to map AI adoption to processes, information, responsibilities and management decisions without attributing unverified weaknesses to any organisation.\n\n---"
+        },
+        {
+          "section": "Validation Scope",
+          "text": "The assessment considers AI adoption surfaces relevant to hotels, hotel groups and hospitality organisations.\n\nAreas examined:\n\n- generative AI;\n- customer service and virtual assistants;\n- booking and travel discovery;\n- revenue management;\n- marketing and personalisation;\n- property-management operations;\n- staff knowledge support;\n- operational automation;\n- decision support;\n- privacy and information governance;\n- human oversight;\n- accountability;\n- transparency;\n- AI literacy;\n- external provider dependency;\n- regulatory readiness;\n- reputational risk.\n\nThis assessment does not assume that every hospitality organisation uses these technologies."
+        },
+        {
+          "section": "Validation Boundaries",
+          "text": "This is an **INDEPENDENT VALIDATION CASE**.\n\nIt:\n\n- was not commissioned by Federalberghi;\n- was not commissioned by any hotel or hotel group;\n- does not imply partnership or endorsement;\n- does not assess a specific organisation;\n- does not use confidential information;\n- does not certify AI Act or GDPR compliance;\n- does not infer internal deficiencies from missing public information.\n\nAbsence of public evidence is not evidence of absence."
+        },
+        {
+          "section": "PUBLIC EVIDENCE",
+          "text": "Information directly supported by a verifiable public source."
+        },
+        {
+          "section": "ASSESSMENT INFERENCE",
+          "text": "An analytical conclusion reasonably derived from public evidence but not directly stated by the source."
+        },
+        {
+          "section": "NOT VERIFIABLE",
+          "text": "Information requiring internal organisational access.\n\nA NOT VERIFIABLE classification is an assessment boundary, not a negative finding."
+        },
+        {
+          "section": "AI Adoption Surface",
+          "text": "| Process | Possible AI Use | Governance Question |\n|\n\n---|\n\n---|\n\n---|\n| Travel discovery | Conversational recommendation | What information drives recommendations? |\n| Booking | AI search / assistant | Which systems and data influence the interaction? |\n| Guest service | Chatbot / virtual concierge | When must staff intervene? |\n| Revenue | Pricing / forecasting | Is AI advisory or decision-making? |\n| Marketing | Generative AI | Who validates generated content? |\n| Personalisation | Recommendations | Which customer information is used? |\n| Hotel operations | AI-enabled PMS functions | Which actions can be automated? |\n| Staff support | Knowledge assistant | Which sources are authoritative? |\n| Management | Analytics / decision support | How are decisions traced? |\n| External services | Cloud / AI providers | Which dependencies require governance? |\n\n---"
+        },
+        {
+          "section": "PE-001 — Enterprise AI adoption",
+          "text": "**Classification:** PUBLIC EVIDENCE\n\nEurostat reports increasing adoption of AI technologies among EU enterprises.\n\nSource:\nhttps://ec.europa.eu/eurostat/statistics-explained/index.php?title=Use_of_artificial_intelligence_in_enterprises"
+        },
+        {
+          "section": "PE-002 — Italian enterprise AI adoption",
+          "text": "**Classification:** PUBLIC EVIDENCE\n\nISTAT reports increasing use of artificial intelligence among Italian enterprises.\n\nSource:\nhttps://www.istat.it/"
+        },
+        {
+          "section": "PE-003 — Hospitality sector relevance",
+          "text": "**Classification:** PUBLIC EVIDENCE\n\nFederalberghi has published sector material specifically addressing artificial intelligence and hotels.\n\nSource:\nhttps://www.federalberghi.it/"
+        },
+        {
+          "section": "PE-004 — Hospitality conversational AI",
+          "text": "**Classification:** PUBLIC EVIDENCE\n\nMajor hospitality organisations publicly document AI-supported conversational services for travel discovery, hotel information and guest interaction.\n\nSources:\nhttps://group.accor.com/\nhttps://www.ihgplc.com/\nhttps://stories.hilton.com/"
+        },
+        {
+          "section": "PE-005 — AI-enabled hotel operations",
+          "text": "**Classification:** PUBLIC EVIDENCE\n\nHospitality technology providers publicly document AI capabilities supporting hotel operational workflows, analytics and commercial processes.\n\nSource:\nhttps://www.oracle.com/hospitality/"
+        },
+        {
+          "section": "Evidence Interpretation",
+          "text": "Public evidence establishes that AI can participate in real hospitality processes.\n\nIt does not establish how a specific hotel governs those systems.\n\nTherefore:\n\n**PUBLIC EVIDENCE:** AI adoption surfaces exist in hospitality.\n\n**ASSESSMENT INFERENCE:** these adoption surfaces create governance questions concerning information, responsibility, oversight and decisions.\n\n**NOT VERIFIABLE:** the actual governance controls of a specific hospitality organisation require internal assessment.\n\n---"
+        },
+        {
+          "section": "AI Governance",
+          "text": "**PUBLIC EVIDENCE:** AI can operate across multiple hospitality processes.\n\n**ASSESSMENT INFERENCE:** organisations using multiple AI capabilities need visibility over which systems are authorised, for what purpose and under whose responsibility.\n\n**NOT VERIFIABLE:** whether a specific hotel maintains an AI inventory or approval process."
+        },
+        {
+          "section": "Knowledge Governance",
+          "text": "**PUBLIC EVIDENCE:** AI assistants can support employees and guests with information and operational knowledge.\n\n**ASSESSMENT INFERENCE:** authoritative sources, ownership and information freshness become governance requirements.\n\n**NOT VERIFIABLE:** which internal knowledge sources a specific organisation permits AI systems to use."
+        },
+        {
+          "section": "Data & Information Governance",
+          "text": "**PUBLIC EVIDENCE:** hospitality AI can involve booking, property, customer, operational and commercial information.\n\n**ASSESSMENT INFERENCE:** AI can increase the number of systems through which organisational information flows.\n\n**NOT VERIFIABLE:** actual data flows, permissions and retention rules of a specific hotel."
+        },
+        {
+          "section": "Human Oversight",
+          "text": "**PUBLIC EVIDENCE:** AI systems can generate recommendations, responses, content and operational guidance.\n\n**ASSESSMENT INFERENCE:** management needs to determine which AI-supported actions require human review.\n\n**NOT VERIFIABLE:** actual human-oversight controls within a specific organisation."
+        },
+        {
+          "section": "Responsibility & Accountability",
+          "text": "**ASSESSMENT INFERENCE:** AI use across reservations, marketing, revenue, IT and operations requires clear ownership and accountability.\n\n**NOT VERIFIABLE:** who is accountable for individual AI use cases within an organisation not internally assessed."
+        },
+        {
+          "section": "Decision Traceability",
+          "text": "**ASSESSMENT INFERENCE:** material AI-supported decisions may require evidence connecting information, AI output, human review and final action.\n\n**NOT VERIFIABLE:** whether a specific hospitality organisation maintains such evidence."
+        },
+        {
+          "section": "Third-Party Dependency",
+          "text": "**PUBLIC EVIDENCE:** hospitality AI can depend on external platforms, cloud services and technology providers.\n\n**ASSESSMENT INFERENCE:** provider dependency becomes part of operational and information governance.\n\n**NOT VERIFIABLE:** contractual conditions and dependency controls of a specific organisation."
+        },
+        {
+          "section": "AI Literacy",
+          "text": "**PUBLIC EVIDENCE:** Article 4 of the EU AI Act establishes AI-literacy requirements for providers and deployers.\n\nSource:\nhttps://ai-act-service-desk.ec.europa.eu/en/ai-act/article-4\n\n**ASSESSMENT INFERENCE:** hospitality organisations need to identify which roles interact with AI and what level of competence is appropriate.\n\n**NOT VERIFIABLE:** actual AI-literacy measures implemented by a specific organisation.\n\n---"
+        },
+        {
+          "section": "PE-006 — Federalberghi: AI and hotels",
+          "text": "**Classification:** PUBLIC EVIDENCE\n\nFederalberghi has published sector-specific material addressing artificial intelligence in hotel operations and the need to understand and govern its use.\n\nSource:\nhttps://www.federalberghi.it/comunicati/lintelligenza-artificiale-e-gli-hotel.aspx"
+        },
+        {
+          "section": "PE-007 — Accor: hospitality AI ecosystem",
+          "text": "**Classification:** PUBLIC EVIDENCE\n\nAccor publicly documents hospitality AI initiatives including conversational guest interaction, employee knowledge support and generative AI.\n\nSource:\nhttps://group.accor.com/en/news-stories/accor-leading-hospitality-ai"
+        },
+        {
+          "section": "PE-008 — Accor: AI-assisted hotel discovery",
+          "text": "**Classification:** PUBLIC EVIDENCE\n\nAccor publicly announced integration of ALL Accor with ChatGPT for natural-language hotel discovery and access to hotel and rate information.\n\nSource:\nhttps://press.accor.com/accor-leads-hospitality-innovation-with-the-launch-of-its-all-accor-app-in-chatgpt/?lang=eng"
+        },
+        {
+          "section": "PE-009 — IHG: conversational hotel search",
+          "text": "**Classification:** PUBLIC EVIDENCE\n\nIHG publicly announced AI-powered conversational search across its digital channels, connecting travel discovery with hotel information.\n\nSource:\nhttps://www.ihgplc.com/en/news-and-media/news-releases/2026/ihg-hotels-and-resorts-launches-ai-conversational-search-across-its-digital-channels-transforming-the-guest-experience"
+        },
+        {
+          "section": "PE-010 — Hilton: AI Planner",
+          "text": "**Classification:** PUBLIC EVIDENCE\n\nHilton publicly announced a generative-AI-powered digital concierge supporting conversational travel planning.\n\nSource:\nhttps://stories.hilton.com/apac/releases/hilton-introduces-the-hilton-ai-planner"
+        },
+        {
+          "section": "PE-011 — Oracle OPERA Cloud: operational AI",
+          "text": "**Classification:** PUBLIC EVIDENCE\n\nOracle publicly documents AI capabilities integrated into OPERA Cloud hospitality workflows.\n\nSource:\nhttps://www.oracle.com/news/announcement/new-ai-capabilities-in-oracle-opera-cloud-supercharge-hotel-operations-2026-06-16/"
+        },
+        {
+          "section": "PE-012 — Oracle Hospitality: revenue and guest journey",
+          "text": "**Classification:** PUBLIC EVIDENCE\n\nOracle publicly documents AI and machine-learning applications relevant to hospitality commercial and guest-journey processes.\n\nSource:\nhttps://www.oracle.com/it/hospitality/optimize-guest-journey/"
+        },
+        {
+          "section": "PE-013 — Oracle Hospitality Analytics",
+          "text": "**Classification:** PUBLIC EVIDENCE\n\nOracle documents hospitality reporting and analytics integrating operational and commercial information to support management decisions.\n\nSource:\nhttps://www.oracle.com/it/hospitality/products/opera-reporting-analytics/"
+        },
+        {
+          "section": "PE-014 — Radisson: generative AI marketing",
+          "text": "**Classification:** PUBLIC EVIDENCE\n\nA Google Cloud customer case documents Radisson Hotel Group using generative AI with enterprise and customer information for localised marketing content.\n\nSource:\nhttps://cloud.google.com/customers/radisson?hl=it\n\n---"
+        },
+        {
+          "section": "Evidence Availability",
+          "text": "**PUBLIC EVIDENCE:** public sources can demonstrate that AI capabilities exist and participate in hospitality processes.\n\n**ASSESSMENT INFERENCE:** technology adoption alone does not demonstrate governance. Management also requires evidence of purpose, approval, ownership, controls and review.\n\n**NOT VERIFIABLE:** whether a specific hospitality organisation maintains this governance evidence cannot be determined externally.\n\n**Assessment question:** what evidence can management produce for each material AI use case?"
+        },
+        {
+          "section": "Transparency",
+          "text": "**PUBLIC EVIDENCE:** Article 50 of Regulation (EU) 2024/1689 establishes transparency obligations for specified AI systems and uses.\n\nOfficial source:\nhttps://ai-act-service-desk.ec.europa.eu/en/ai-act/article-50\n\n**ASSESSMENT INFERENCE:** customer-facing hospitality AI must be evaluated at use-case level to determine applicable transparency requirements.\n\n**NOT VERIFIABLE:** compliance of a specific hospitality deployment cannot be determined from sector evidence.\n\n**Assessment question:** which AI interactions require disclosure, labelling or other transparency measures?"
+        },
+        {
+          "section": "Regulatory Readiness",
+          "text": "**PUBLIC EVIDENCE:** Regulation (EU) 2024/1689 establishes the EU regulatory framework for artificial intelligence.\n\nOfficial source:\nhttps://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32024R1689\n\nThe European Data Protection Board has also addressed personal-data considerations relating to AI models.\n\nSource:\nhttps://www.edpb.europa.eu/documents/opinion-of-the-board-art-64/opinion-282024-on-certain-data-protection-aspects-related-to_en\n\n**ASSESSMENT INFERENCE:** regulatory relevance depends on the characteristics, purpose, information and deployment context of each AI use case.\n\n**NOT VERIFIABLE:** this sector validation cannot determine the complete regulatory obligations applicable to an unexamined hotel deployment.\n\n**Assessment question:** what regulatory analysis exists for each material AI use case and what evidence supports it?"
+        },
+        {
+          "section": "Reputational Risk",
+          "text": "**PUBLIC EVIDENCE:** hospitality AI can interact directly with guests and generate customer-facing information, recommendations and content.\n\n**ASSESSMENT INFERENCE:** inaccurate or inappropriate AI output may create customer-service and reputational consequences even where no regulatory breach occurs.\n\n**NOT VERIFIABLE:** incident history, escalation procedures and reputational controls of a specific organisation cannot be established from public evidence.\n\n**Assessment question:** what happens when customer-facing AI produces an unacceptable result?\n\n---"
+        },
+        {
+          "section": "MF-01 — AI is entering material hospitality processes",
+          "text": "Public evidence demonstrates AI applications across guest interaction, booking, marketing, operations and decision support.\n\n**Management relevance:** management first needs visibility over which AI-enabled processes actually exist.\n\n**Classification:** PUBLIC EVIDENCE"
+        },
+        {
+          "section": "MF-02 — AI creates an information-governance surface",
+          "text": "AI-generated answers and recommendations depend on information sources.\n\n**Governance question:** which sources are authorised, current and accountable?\n\n**Classification:** ASSESSMENT INFERENCE"
+        },
+        {
+          "section": "MF-03 — Human oversight cannot be assumed",
+          "text": "Different AI use cases can require different levels of human intervention.\n\n**Governance question:** which outputs may be used automatically and which require human validation?\n\n**Classification:** ASSESSMENT INFERENCE"
+        },
+        {
+          "section": "MF-04 — Responsibility must follow the process",
+          "text": "AI can cross reservations, marketing, revenue, IT and operations.\n\n**Governance question:** who owns the system, process and final decision?\n\n**Classification:** ASSESSMENT INFERENCE"
+        },
+        {
+          "section": "MF-05 — External providers become governance dependencies",
+          "text": "AI capabilities may depend on external platforms and providers.\n\n**Governance question:** which critical processes depend on third parties and under which conditions?\n\n**Classification:** ASSESSMENT INFERENCE"
+        },
+        {
+          "section": "MF-06 — Internal governance cannot be established externally",
+          "text": "Public evidence cannot demonstrate the internal controls of a specific hotel.\n\n**Management relevance:** this is where public validation ends and an internal Assessment begins.\n\n**Classification:** NOT VERIFIABLE"
+        },
+        {
+          "section": "Management Decision Framework",
+          "text": "A real AI Governance Assessment can support decisions about:\n\n- where AI use should be permitted;\n- where controls are required;\n- which processes require human oversight;\n- which information AI may access;\n- who owns each use case;\n- which evidence must be retained;\n- which external providers require evaluation;\n- which AI use cases can be expanded;\n- which require limitations;\n- which require regulatory review."
+        },
+        {
+          "section": "What a Real Assessment Would Verify",
+          "text": "A real Assessment would verify:\n\n- AI system inventory;\n- business purpose;\n- process ownership;\n- accountability;\n- information and knowledge sources;\n- personal-data involvement;\n- provider dependencies;\n- integrations;\n- human-review points;\n- automated actions;\n- decision impact;\n- transparency requirements;\n- logging and evidence;\n- access controls;\n- incident management;\n- escalation;\n- AI literacy;\n- regulatory assessment;\n- periodic review."
+        },
+        {
+          "section": "What This Validation Case Demonstrates",
+          "text": "This case demonstrates the ability of Cognitive Logic to:\n\n- analyse a real domain;\n- structure public evidence;\n- distinguish evidence from inference;\n- identify what cannot be externally verified;\n- map AI to processes and decisions;\n- connect AI with knowledge and information governance;\n- identify accountability and oversight questions;\n- translate findings into management decisions;\n- establish the scope of a real AI Governance Assessment."
+        },
+        {
+          "section": "What This Validation Case Does Not Demonstrate",
+          "text": "This case:\n\n- is not an audit of Federalberghi;\n- is not an audit of any hotel or hotel group;\n- was not commissioned by organisations cited;\n- does not imply partnership or endorsement;\n- does not certify compliance;\n- does not identify deficiencies in any organisation;\n- does not use confidential information;\n- does not replace an internal Assessment."
+        },
+        {
+          "section": "QEN Sovereign Evidence Layer",
+          "text": "QEN Sovereign supports the case as **Evidence and Governance Infrastructure**.\n\nIts role is to support evidence structuring, traceability, knowledge governance, assessment reasoning and governance consistency.\n\nThe analytical sequence remains:\n\n**problem → evidence → implications → governance questions → management decisions**"
+        },
+        {
+          "section": "Conclusion",
+          "text": "Public evidence demonstrates that AI is entering concrete hospitality processes.\n\nIt does not demonstrate how any specific hospitality organisation governs those systems.\n\nThat distinction defines the boundary between public evidence and an internal AI Governance Assessment.\n\nThe purpose of the Assessment is not to presume deficiencies.\n\nIt is to replace uncertainty with verifiable organisational evidence and give management a basis for deciding where AI can be used, under which controls and with which responsibilities.\n\n---\n\n**End of HVA-001**"
+        }
+      ]
+    },
+    {
+      "source_id": "CASE-EGEA-QEN-001",
+      "source_sha256": "d6e4f92bbf4bb8d03a7e33d6dffc588efce80fad8114a92f79ec92c3a803008d",
+      "metadata": {
+        "title": "Egea–QEN Governance Benchmark",
+        "version": "1.0",
+        "canonical_url": "https://cognitivelogic.it/case-studies/egea-qen/",
+        "category": "case study governato",
+        "authority": "Cognitive Logic",
+        "date": "2026-08-12",
+        "status": "published benchmark; proposal not approved",
+        "source_class": "secondary",
+        "confidence": "medium",
+        "scope": "Confronto metodologico Egea–QEN senza superiorità assoluta",
+        "language": "it",
+        "publication_status": "published",
+        "document_type": "case_study",
+        "primary_case_type": "E",
+        "relationship_with_cognitive_logic": "None",
+        "observed_organisation": "Egea (modello documentale osservato)",
+        "sector": "governance costiera",
+        "jurisdiction": "Italia / Unione europea",
+        "publication_date": "2026-08-12",
+        "last_verified_at": "2026-08-13",
+        "primary_sources": [
+          "BEN-EGEA-QEN-001"
+        ],
+        "provenance": "Dossier canonico Benchmark Egea–QEN",
+        "evidence_labels": [
+          "PUBLIC EVIDENCE",
+          "PRIMARY SOURCE",
+          "ASSESSMENT INFERENCE",
+          "NOT VERIFIABLE",
+          "HUMAN DECISION REQUIRED"
+        ],
+        "limitations": "Benchmark metodologico; adozione, efficacia e approvazione non verificate",
+        "uncertainty": "Soglie e punteggi proposti non sono approvati",
+        "final_human_authority": "Autorità competente per il procedimento e l'approvazione"
+      },
+      "search_terms": [
+        "CASE-EGEA-QEN-001",
+        "Egea QEN",
+        "governance benchmark",
+        "confronto senza superiorità",
+        "tipo E",
+        "concessioni"
+      ],
+      "warnings": [
+        "Non dichiara superiorità assoluta",
+        "Non modifica criteri o pesi QEN"
+      ],
+      "sections": [
+        {
+          "section": "BEN-EGEA-QEN-001 — Benchmark Egea–QEN",
+          "text": "Version: 1.0\n\nStatus: Published benchmark — not an approved rule\n\nDate: 2026-08-09\n\nAuthority: Cognitive Logic\n\nCanonical URL: https://cognitivelogic.it/resources/documents/bolkestein-egea-benchmark/"
+        },
+        {
+          "section": "Fonte esterna analizzata",
+          "text": "Giovanni Tomasi, Giulia Giacoma e Angelica Maria Ottolina, *Sei dimensioni per valutare le performance nelle concessioni balneari*, Economia & Management, n. 1, gennaio-marzo 2026, DOI 10.57590/1120-5032-202601ITA-8.\n\nLa fonte è utile per la tassonomia dei criteri e per documentare il rischio dimensionale. Non è normativa primaria e non valida automaticamente criteri, soglie, pesi o conclusioni QEN. L'affidabilità è media per orientamento progettuale e bassa per generalizzazione empirica nazionale: la simulazione riguarda sei stabilimenti di Forte dei Marmi e non costituisce validazione nazionale."
+        },
+        {
+          "section": "Mappatura governata",
+          "text": "Le sei dimensioni Egea — sostenibilità ambientale, sicurezza e accessibilità, sostenibilità sociale, governance ed esperienza, qualità e servizi, innovazione — sono confrontate con gli assi QEN Social, Environmental e Territorial senza alterarli. I pesi Egea e la ripartizione descrittiva 70% tecnica / 30% economica non sono incorporati nel QEN Framework.\n\nLa matrice proposta separa requisiti di ammissione, obblighi normativi, criteri tecnico-qualitativi, indicatori di performance, evidenze, normalizzazione e controlli anti-vantaggio. Soglie e punteggi sono **PROPOSTA — NON APPROVATA** e richiedono determinazione nel singolo bando, analisi del lotto, consultazione di mercato e test di non discriminazione."
+        },
+        {
+          "section": "Cautele supportate dalla fonte",
+          "text": "- accettare mezzi di prova equivalenti quando pertinente;\n- verificare effetti di vantaggio per incumbent e barriere all'ingresso;\n- normalizzare KPI per capacità, FTE, utenti, superficie o altra unità coerente;\n- non premiare due volte un obbligo minimo;\n- non confondere quantità, anzianità o certificazione con performance futura."
+        },
+        {
+          "section": "Limiti e protezione QEN",
+          "text": "Il benchmark informa il confronto e sostiene risposte citabili. Non modifica RISK_RULES, assi, pesi, KPI, formule, soglie, classificazioni, ADR, AF o decisioni approvate. Non costituisce parere legale."
+        }
+      ]
+    },
+    {
+      "source_id": "CASE-AGCM-001",
+      "source_sha256": "b8488e5dc0725c90bcd45caee9d0137bfe345a8f850b6afd9e6d0849605dcd0d",
+      "metadata": {
+        "title": "AGCM — criteri contestati",
+        "version": "1.0",
+        "canonical_url": "https://cognitivelogic.it/case-studies/agcm-criteri-contestati/",
+        "category": "case study governato",
+        "authority": "Cognitive Logic",
+        "date": "2026-08-12",
+        "status": "published partial reconstruction",
+        "source_class": "secondary",
+        "confidence": "medium",
+        "scope": "Criteri contestati, proporzionalità, incumbent e barriere all'ingresso",
+        "language": "it",
+        "publication_status": "published",
+        "document_type": "case_study",
+        "primary_case_type": "F",
+        "relationship_with_cognitive_logic": "None",
+        "observed_organisation": "Autorità Garante della Concorrenza e del Mercato (AGCM)",
+        "sector": "concessioni e concorrenza",
+        "jurisdiction": "Italia",
+        "publication_date": "2026-08-12",
+        "last_verified_at": "2026-08-13",
+        "primary_sources": [
+          "AGCM AS1930"
+        ],
+        "provenance": "Atto ufficiale AGCM e dossier canonico Cognitive Logic",
+        "evidence_labels": [
+          "PUBLIC EVIDENCE",
+          "PRIMARY SOURCE",
+          "ASSESSMENT INFERENCE",
+          "NOT VERIFIABLE",
+          "HUMAN DECISION REQUIRED"
+        ],
+        "limitations": "Scheda parziale; fascicolo completo, esiti successivi e applicazione locale non verificati",
+        "uncertainty": "Ricostruzione temporalmente limitata",
+        "final_human_authority": "AGCM, giudice o amministrazione competente secondo il procedimento"
+      },
+      "search_terms": [
+        "CASE-AGCM-001",
+        "AGCM criteri contestati",
+        "AS1930",
+        "esperienza incumbent",
+        "microimprese",
+        "prove equivalenti",
+        "tipo F"
+      ],
+      "warnings": [
+        "Non è una sentenza né un parere legale"
+      ],
+      "sections": [
+        {
+          "section": "Document",
+          "text": "“Contestato” descrive criticità AGCM, non un giudicato. Le riformulazioni sono controlli metodologici, non clausole pronte all’uso."
+        }
+      ]
+    },
+    {
+      "source_id": "CASE-COASTAL-001",
+      "source_sha256": "291dec726b4f51f967c8b6d44f27f71f0019bdf3f28b4ce8790e430674011227",
+      "metadata": {
+        "title": "Coastal Governance Institutional Use Case",
+        "version": "1.0",
+        "canonical_url": "https://cognitivelogic.it/case-studies/coastal-governance/",
+        "category": "case study governato",
+        "authority": "Cognitive Logic",
+        "date": "2026-08-12",
+        "status": "proposal not implemented",
+        "source_class": "primary",
+        "confidence": "medium",
+        "scope": "Proposta istituzionale per istruttorie di governance costiera",
+        "language": "it",
+        "publication_status": "published",
+        "document_type": "case_study",
+        "primary_case_type": "G",
+        "relationship_with_cognitive_logic": "Proposta Cognitive Logic; nessuna adozione documentata",
+        "observed_organisation": "Comuni ed enti concedenti ipotetici",
+        "sector": "pubblica amministrazione e governance costiera",
+        "jurisdiction": "Italia / Unione europea",
+        "publication_date": "2026-08-12",
+        "last_verified_at": "2026-08-13",
+        "primary_sources": [
+          "CS-010",
+          "OBS-BOLK-001",
+          "BEN-EGEA-QEN-001"
+        ],
+        "provenance": "Dossier canonico CS-010 e fonti Bolkestein governate",
+        "evidence_labels": [
+          "PUBLIC EVIDENCE",
+          "PRIMARY SOURCE",
+          "ASSESSMENT INFERENCE",
+          "NOT VERIFIABLE",
+          "HUMAN DECISION REQUIRED"
+        ],
+        "limitations": "Adozione, impatto, performance e approvazione da parte di enti non documentati",
+        "uncertainty": "Proposta non implementata",
+        "final_human_authority": "Ente concedente e responsabile umano del procedimento"
+      },
+      "search_terms": [
+        "CASE-COASTAL-001",
+        "Coastal Governance",
+        "proposta governance costiera",
+        "institutional use case",
+        "CS-010",
+        "tipo G"
+      ],
+      "warnings": [
+        "Non risulta adottata o approvata da un ente"
+      ],
+      "sections": [
+        {
+          "section": "CS-010 — Coastal Governance Intelligence",
+          "text": "> **Enterprise Service Catalogue**  \n> Governare ecosistemi territoriali e organizzazioni complesse.\n\nVersion: 1.0\n\nStatus: Approved\n\nDate: 2026-08-07\n\nAuthority: Cognitive Logic\n\nCanonical URL: https://cognitivelogic.it/resources/documents/cs-010-coastal-governance-intelligence/"
+        },
+        {
+          "section": "1. Executive Summary",
+          "text": "Il servizio **Coastal Governance Intelligence** aiuta l’organizzazione a governare ecosistemi territoriali e organizzazioni complesse.\n\nEcosistemi territoriali, amministrazioni, imprese e stakeholder devono assumere decisioni complesse utilizzando dati, norme, interessi e fonti eterogenee, spesso non integrate e non verificabili.\n\nCrea una base decisionale condivisa e verificabile per coordinare attori, rischi, conoscenza, norme e priorità in contesti territoriali complessi.\n\nIl risultato è una base concreta per assumere decisioni executive, ridurre il rischio, assegnare responsabilità e definire il passo successivo con evidenze verificabili."
+        },
+        {
+          "section": "2. Perché questo servizio",
+          "text": "Ecosistemi territoriali, amministrazioni, imprese e stakeholder devono assumere decisioni complesse utilizzando dati, norme, interessi e fonti eterogenee, spesso non integrate e non verificabili.\n\nQuando l’Intelligenza Artificiale entra nei processi, nei prodotti o nelle decisioni, il rischio non è soltanto tecnologico. Diventa un rischio organizzativo, operativo, normativo, reputazionale e decisionale.\n\nSenza un intervento strutturato, leadership e funzioni di controllo possono operare con informazioni incomplete, responsabilità non definite e priorità non condivise. Questo rallenta le decisioni, aumenta i costi di correzione e rende difficile dimostrare che l’organizzazione mantiene un controllo effettivo."
+        },
+        {
+          "section": "3. Quando attivarlo",
+          "text": "Il servizio è particolarmente indicato:\n\n- per amministrazioni ed ecosistemi territoriali complessi\n- in presenza di concessioni, vincoli normativi o interessi multipli\n- durante pianificazione, rigenerazione o trasformazione territoriale\n- quando occorre coordinare enti, imprese e comunità\n- in processi decisionali con elevato impatto pubblico e reputazionale\n\nPuò essere attivato come intervento autonomo oppure come parte di un percorso più ampio di Assessment, Strategy, Validation o trasformazione della governance."
+        },
+        {
+          "section": "4. Problemi che risolve",
+          "text": "Se il servizio non viene svolto, l’organizzazione rischia di:\n\n- assumere decisioni senza una base informativa condivisa;\n- sottovalutare rischi, dipendenze e responsabilità;\n- introdurre sistemi AI senza controlli adeguati;\n- affrontare audit e verifiche senza evidenze sufficienti;\n- investire in iniziative non prioritarie o non sostenibili;\n- generare conflitti tra direzione, tecnologia, operations, legal e compliance;\n- non riuscire a spiegare o ricostruire le decisioni;\n- aumentare costi, ritardi e rischio reputazionale;\n- compromettere continuità operativa e fiducia degli stakeholder."
+        },
+        {
+          "section": "5. Destinatari",
+          "text": "- CEO e direzione generale\n- CIO e responsabili dei sistemi informativi\n- COO e responsabili delle operations\n- Compliance Officer\n- Risk Manager\n- Legal e General Counsel\n- responsabili Innovation e trasformazione digitale\n- Data Office e responsabili della conoscenza\n- Pubbliche Amministrazioni\n- organizzazioni territoriali, consorzi ed enti complessi\n\nIl servizio viene adattato al livello decisionale, al settore, alla complessità organizzativa e al grado di esposizione dell’organizzazione."
+        },
+        {
+          "section": "6. Come lavoriamo",
+          "text": "Il percorso operativo viene definito in funzione della decisione da supportare e del rischio da ridurre.\n\n1. **Inquadramento executive** — chiarimento di obiettivi, contesto, decisioni e stakeholder.\n2. **Definizione del perimetro** — identificazione di sistemi, processi, fonti, responsabilità e obblighi.\n3. **Raccolta delle evidenze** — analisi di documenti, interviste, dati, policy, processi e controlli esistenti.\n4. **Valutazione** — identificazione di rischi, gap, dipendenze, priorità e capacità organizzative.\n5. **Validazione** — verifica delle evidenze e confronto con requisiti, KPI e criteri di governance.\n6. **Decisione executive** — restituzione di risultati, opzioni, raccomandazioni e priorità.\n7. **Piano d’azione** — definizione di responsabilità, tempi, indicatori e passi successivi.\n\nSolo dopo aver chiarito il problema organizzativo viene applicato il metodo Cognitive Logic e il QEN Framework."
+        },
+        {
+          "section": "7. Deliverable",
+          "text": "I principali output del servizio includono:\n\n- Territorial Governance Assessment\n- Decision Intelligence Report\n- Stakeholder and Institutional Map\n- Territorial Risk Register\n- Evidence Catalogue\n- KPI and Resilience Indicators\n- Executive and Institutional Decision Brief\n- Strategic Action Plan\n\nIl perimetro definitivo dei deliverable viene stabilito in fase di avvio in base agli obiettivi, alla complessità e alle evidenze disponibili."
+        },
+        {
+          "section": "8. Benefici",
+          "text": "- riduzione dell’esposizione organizzativa e normativa;\n- maggiore affidabilità delle decisioni;\n- responsabilità e priorità più chiare;\n- conformità dimostrabile attraverso evidenze;\n- riduzione delle ambiguità tra funzioni;\n- decisioni spiegabili, verificabili e tracciabili;\n- maggiore fiducia da parte di board, clienti, autorità e stakeholder;\n- migliore continuità operativa;\n- roadmap e investimenti basati su priorità verificabili.\n\nIl beneficio centrale è la capacità di trasformare un problema complesso in una decisione governabile, documentata e attuabile."
+        },
+        {
+          "section": "9. Evidenze",
+          "text": "Il servizio produce evidenze documentate e utilizzabili dalla direzione, dalle funzioni di controllo e dai responsabili operativi.\n\nLe evidenze vengono:\n\n- raccolte da fonti organizzative, normative, operative e documentali;\n- classificate per origine, rilevanza, affidabilità e aggiornamento;\n- collegate a rischi, obblighi, decisioni, controlli e responsabilità;\n- mantenute attraverso registri, cataloghi, matrici e KPI;\n- validate mediante verifiche di coerenza, completezza e tracciabilità;\n- utilizzate per motivare decisioni, priorità, raccomandazioni e azioni correttive.\n\nL’obiettivo non è produrre documentazione formale fine a sé stessa, ma costruire una base probatoria capace di sostenere audit, governance, controllo e decisioni executive."
+        },
+        {
+          "section": "10. Collegamenti",
+          "text": "- [Coste360 — programma principale di validazione metodologica](/coste360.html)\n- [Osservatorio Bolkestein](/resources/documents/osservatorio-bolkestein/)\n- [Benchmark scientifico Egea–QEN](/resources/documents/bolkestein-egea-benchmark/)\n- [Case study comparativo AGCM](/resources/documents/concessioni-balneari-criteri-agcm/)\n\nCS-010 integra monitoraggio normativo e giurisprudenziale, criteri contestati nella pratica, benchmark scientifici e standard operativi. Governa normalizzazione dei KPI, mezzi di prova equivalenti, neutralità rispetto all’incumbent, evidenze verificabili, motivazione, incertezza e audit della decisione. Non eroga pareri legali e non modifica assi, algoritmi o pesi QEN approvati.\n- [Assessment](/assessment.html)\n- [Validation](/validation.html)\n- [Case Studies](/case-studies.html)\n- [Research](/research.html)\n- [Trust Center](/trust.html)\n- [QEN Framework](/framework.html)"
+        },
+        {
+          "section": "11. QEN Framework",
+          "text": "Il QEN Framework non costituisce il prodotto acquistato dal cliente. È il metodo proprietario che rende il servizio strutturato, misurabile e verificabile.\n\nIl Framework abilita:\n\n- governance di ruoli, responsabilità e controlli;\n- misurazione mediante KPI e modelli di maturità;\n- tracciabilità delle fonti e delle decisioni;\n- raccolta e validazione delle evidenze;\n- explainability e accountability;\n- mappatura normativa e supporto alla conformità;\n- indipendenza da piattaforme e fornitori tecnologici.\n\nIl valore del Framework emerge nei risultati prodotti dal servizio: decisioni più affidabili, rischi più leggibili, evidenze utilizzabili e responsabilità dimostrabili."
+        },
+        {
+          "section": "12. Documentazione tecnica",
+          "text": "La sezione seguente conserva integralmente la specifica tecnica, metodologica e operativa originaria del servizio.\n\nSono mantenuti senza eliminazioni:\n\n- metodologia;\n- modelli;\n- algoritmi;\n- KPI;\n- tabelle;\n- tassonomie;\n- architetture;\n- dipendenze;\n- riferimenti normativi;\n- esempi;\n- evidenze;\n- appendici;\n- note architetturali.\n\n---"
+        },
+        {
+          "section": "Service ID",
+          "text": "CS-010"
+        },
+        {
+          "section": "Family",
+          "text": "Decision Intelligence / Knowledge Governance / Territorial Governance"
+        },
+        {
+          "section": "Maturity Level",
+          "text": "Assessment"
+        },
+        {
+          "section": "Executive Summary",
+          "text": "Coastal Governance Intelligence is an enterprise professional service designed to transform territorial, administrative, regulatory, cartographic and documentary information concerning coastal areas and maritime concessions into intelligible, measurable and decision-ready knowledge.\n\nThe service addresses the governance gap that arises when public authorities, concession holders, territorial organizations and institutional stakeholders possess extensive but fragmented information without a unified method for evaluating risks, priorities, dependencies, resilience and strategic alternatives. Rather than providing another operational platform for data collection, mapping or document consultation, the service establishes a governed decision layer above existing information systems and data sources.\n\nThrough the Cognitive Logic Sovereign Intelligence Architecture, available evidence is structured, contextualized and evaluated using the QEN Sovereign Engine, Governance Engine, Knowledge Graph, EVIDE and proprietary algorithms. The resulting assessments, indicators and recommendations remain explainable, traceable and verifiable throughout the decision lifecycle.\n\nThe service produces an integrated view of territorial governance maturity, concession-related exposure, regulatory dependencies, information quality, decision accountability and organizational resilience. It enables decision makers to compare scenarios, identify material risks, measure governance performance and justify strategic choices through explicit evidence and documented reasoning.\n\nGeospatial, cadastral, environmental, administrative and regulatory data are treated exclusively as governed inputs. The principal output is not a map, database or monitoring interface, but a body of usable knowledge consisting of measurable KPI, risk assessments, governance indicators, decision scenarios, motivated recommendations and traceable evidence.\n\nCoastal Governance Intelligence therefore positions Cognitive Logic at a higher architectural and advisory level than conventional coastal management platforms. Its competitive value derives from converting distributed information into explainable Decision Intelligence and from enabling organizations to govern coastal assets, maritime concessions and territorial strategies with greater transparency, accountability and strategic control."
+        },
+        {
+          "section": "Business Problem",
+          "text": "Organizations responsible for governing coastal territories and maritime concessions operate within an increasingly complex ecosystem characterized by fragmented information, evolving regulatory frameworks, heterogeneous data sources and multiple institutional stakeholders.\n\nCritical information is frequently distributed across cadastral records, geographic information systems, administrative documentation, environmental assessments, regulatory repositories, concession registers and operational monitoring systems. Although these sources provide substantial quantities of data, they rarely produce a coherent representation of governance quality or meaningful support for executive decision-making.\n\nAs a consequence, strategic decisions concerning concession management, territorial planning, regulatory compliance, investment prioritization, environmental resilience and institutional accountability are often based on partial visibility, inconsistent evidence or disconnected analytical processes. This fragmentation reduces organizational transparency, limits explainability and increases the difficulty of demonstrating the rationale underlying complex governance decisions.\n\nConventional territorial management platforms primarily improve operational efficiency through data collection, visualization, mapping and document management. However, they generally stop before transforming available information into structured knowledge capable of supporting measurable governance, risk evaluation and evidence-based strategic planning.\n\nThe absence of an integrated Decision Intelligence layer limits the ability of organizations to identify systemic risks, evaluate governance maturity, compare alternative scenarios, measure organizational resilience and justify strategic decisions through transparent and verifiable evidence.\n\nCoastal Governance Intelligence addresses this gap by establishing a governance-oriented analytical layer that transforms heterogeneous territorial information into intelligible knowledge, measurable indicators, explainable assessments and traceable recommendations. The service enables organizations to move from information management to knowledge governance, supporting accountable decision-making through evidence-driven methodologies fully aligned with the Cognitive Logic Sovereign Intelligence Architecture."
+        },
+        {
+          "section": "Customer Value",
+          "text": "Coastal Governance Intelligence enables organizations to transform fragmented territorial information into measurable strategic value by supporting transparent, explainable and evidence-based governance decisions.\n\nRather than increasing the quantity of available information, the service increases the quality of organizational decision-making. Decision makers obtain a unified governance perspective capable of integrating territorial, regulatory, environmental and administrative evidence into coherent assessments that support executive planning and institutional accountability.\n\nThe service improves governance effectiveness by identifying structural risks, governance weaknesses, regulatory dependencies and resilience opportunities before they become operational or strategic issues. This proactive approach reduces uncertainty, improves prioritization and strengthens the organization's ability to justify decisions through documented and verifiable evidence.\n\nOrganizations benefit from measurable improvements in governance maturity, knowledge quality, decision traceability and cross-functional coordination. Executive teams gain access to explainable indicators, comparable scenarios and motivated recommendations that facilitate strategic alignment across technical, administrative and institutional functions.\n\nThe service also supports long-term organizational resilience by establishing repeatable governance methodologies that remain independent from individual systems, software platforms or operational workflows. As governance requirements evolve, organizations retain a consistent decision framework capable of incorporating new evidence, regulatory changes and territorial dynamics without compromising explainability or accountability.\n\nBy transforming data into governed knowledge, Coastal Governance Intelligence creates sustainable competitive value through improved strategic control, reduced governance risk, greater institutional transparency and higher confidence in complex territorial decisions."
+        },
+        {
+          "section": "Target Customer",
+          "text": "Coastal Governance Intelligence is designed for public and private organizations responsible for governing, managing, regulating or strategically evaluating coastal territories, maritime concessions and related territorial assets where complex decision-making depends on the integration of heterogeneous information sources.\n\nThe service primarily targets executive decision makers who require measurable, explainable and evidence-based governance capabilities rather than operational data management tools.\n\nTypical customers include:\n\n- National, regional and local Public Administrations responsible for coastal governance and maritime public domain management.\n- Municipal administrations managing coastal territories, urban waterfronts and concession planning.\n- Regional authorities responsible for territorial planning, environmental governance and coastal resilience.\n- Port Authorities and public entities supervising maritime infrastructures and concession ecosystems.\n- Public agencies responsible for environmental protection, territorial monitoring and regulatory compliance.\n- Concession holders managing beaches, tourism infrastructures, marinas, waterfront facilities and other coastal assets requiring strategic governance.\n- Infrastructure operators involved in long-term management of coastal or maritime public assets.\n- Engineering, environmental and management consulting firms supporting public administrations and regulated organizations.\n- Legal and regulatory advisory firms assisting clients in governance, compliance and concession-related decision processes.\n- Investment funds, institutional investors and asset managers evaluating governance quality, resilience and long-term sustainability of coastal assets.\n- Research institutions, universities and policy organizations analysing territorial governance models and evidence-based public decision making.\n\nThe service is particularly valuable for organizations operating in environments characterized by regulatory complexity, multiple institutional stakeholders, distributed information sources and long-term strategic planning requirements. It supports executive leadership by providing an explainable Decision Intelligence capability that complements existing operational, geographic and administrative information systems without replacing them."
+        },
+        {
+          "section": "Prerequisites",
+          "text": "The effectiveness of Coastal Governance Intelligence depends on the availability of a minimum governance context that enables the transformation of territorial information into strategic, explainable and evidence-based knowledge.\n\nThe service does not require the adoption of specific software platforms or proprietary technologies. Instead, it requires organizational commitment to provide relevant information sources, identify decision objectives and support collaborative governance activities throughout the assessment process.\n\nTypical prerequisites include:\n\n- Definition of the strategic governance objectives that the organization intends to achieve.\n- Identification of the organizational units and executive stakeholders participating in the assessment.\n- Availability of territorial, administrative, regulatory and documentary information relevant to the governance scope.\n- Access to existing policies, procedures, concession documentation, planning instruments or equivalent governance artefacts where available.\n- Identification of applicable regulatory and institutional frameworks.\n- Availability of subject matter experts capable of providing contextual information during interviews and validation activities.\n- Executive sponsorship ensuring organizational cooperation and decision-making commitment.\n- Agreement on the scope, boundaries and expected outcomes of the engagement.\n\nThe service can operate with varying levels of information maturity. Where information is incomplete, fragmented or inconsistent, the assessment explicitly identifies evidence gaps, uncertainty factors and data quality limitations as part of the governance analysis, ensuring that every recommendation remains transparent, explainable and proportionate to the available evidence.\n\nNo prerequisite requires dependency on external artificial intelligence providers, proprietary decision engines or technology-specific infrastructures. All analyses are performed according to the Cognitive Logic Sovereign Intelligence Architecture and the principles of intelligible, verifiable and governed knowledge."
+        },
+        {
+          "section": "Required Inputs",
+          "text": "Coastal Governance Intelligence operates by integrating heterogeneous sources of organizational, territorial, regulatory and documentary information into a governed decision process. All inputs are treated as evidence supporting governance analysis rather than as final outputs of the service.\n\nThe quality, completeness and consistency of available information directly influence the confidence level of the resulting assessments. Where information is incomplete or unavailable, the service explicitly identifies evidence limitations and incorporates them into the explainability and decision traceability process.\n\nTypical input categories include:\n\n- Strategic objectives, governance priorities and organizational decision criteria.\n- Organizational structure, governance responsibilities and institutional roles.\n- Maritime concession documentation and related administrative records.\n- Territorial planning instruments and coastal development strategies.\n- Applicable regulatory, legislative and institutional frameworks.\n- Geographic, cadastral and geospatial datasets supporting territorial analysis.\n- Environmental assessments, sustainability indicators and resilience studies.\n- Operational reports, inspections, audits and monitoring activities.\n- Policies, procedures and internal governance documentation.\n- Historical decisions, previous assessments and governance evidence.\n- Stakeholder interviews, executive workshops and subject matter expert contributions.\n- Risk registers, control frameworks and organizational performance indicators.\n- External institutional publications and publicly available authoritative sources relevant to the assessment scope.\n\nAll collected inputs undergo contextualization, evidence validation and semantic integration according to the Cognitive Logic Sovereign Intelligence Architecture. Data is never evaluated in isolation; each information element is interpreted within its organizational, regulatory and territorial context to produce intelligible, explainable and verifiable knowledge.\n\nThe service remains independent from the technologies used to collect, store or visualize information. Existing GIS platforms, document repositories, databases, monitoring systems and administrative applications are treated exclusively as potential information sources that enrich the governance assessment without determining its analytical methodology or strategic conclusions."
+        },
+        {
+          "section": "Activities",
+          "text": "The Coastal Governance Intelligence service follows a structured governance methodology designed to transform heterogeneous territorial information into explainable, measurable and evidence-based strategic knowledge. Each activity contributes to a transparent decision process in which every assessment, recommendation and governance indicator can be traced back to verified evidence.\n\nThe service is performed through the following integrated activities:\n\n1. **Governance Scope Definition**\n   - Define the assessment objectives, organizational boundaries, governance priorities and expected strategic outcomes.\n\n2. **Stakeholder Identification**\n   - Identify executive sponsors, institutional stakeholders, subject matter experts and decision makers participating in the engagement.\n\n3. **Evidence Collection**\n   - Collect and classify territorial, administrative, regulatory, environmental and organizational information relevant to the assessment scope.\n\n4. **Evidence Validation**\n   - Assess completeness, consistency, reliability and governance relevance of available evidence while identifying information gaps and uncertainty factors.\n\n5. **Knowledge Discovery**\n   - Discover relationships, dependencies, governance patterns and critical factors through semantic analysis and contextual interpretation.\n\n6. **Knowledge Integration**\n   - Integrate heterogeneous evidence into a coherent governance knowledge base according to the Cognitive Logic Sovereign Intelligence Architecture.\n\n7. **Governance Assessment**\n   - Evaluate governance capabilities, organizational maturity, regulatory exposure and strategic alignment using measurable governance criteria.\n\n8. **Risk Assessment**\n   - Identify governance risks, operational dependencies, regulatory vulnerabilities, resilience factors and potential strategic impacts.\n\n9. **KPI Generation**\n   - Produce measurable governance indicators capable of monitoring organizational performance, resilience and decision quality over time.\n\n10. **Scenario Evaluation**\n    - Compare alternative governance scenarios, assessing potential consequences, trade-offs, priorities and strategic implications.\n\n11. **Explainability and Decision Traceability**\n    - Document the reasoning process supporting every assessment, recommendation and governance conclusion through explicit evidence and transparent decision logic.\n\n12. **Executive Review**\n    - Validate findings with executive stakeholders, refine priorities and confirm organizational alignment before finalizing recommendations.\n\n13. **Strategic Recommendations**\n    - Produce prioritized recommendations supported by measurable evidence, governance indicators and documented rationale.\n\nThroughout the engagement, every activity remains technology-independent and evidence-driven. Existing geographic information systems, document repositories, monitoring platforms and administrative databases contribute information but do not determine the analytical process or strategic conclusions. The resulting governance knowledge is generated exclusively through the Cognitive Logic Sovereign Intelligence Architecture, ensuring intelligibility, explainability, traceability and organizational accountability."
+        },
+        {
+          "section": "Outputs",
+          "text": "The Coastal Governance Intelligence service delivers a structured set of governance outcomes that enable executive decision makers to understand complex territorial scenarios, evaluate governance performance and justify strategic decisions through measurable and verifiable evidence.\n\nUnlike conventional territorial management solutions, the outputs are not operational datasets, maps or administrative repositories. They consist of governed knowledge specifically designed to support strategic planning, organizational accountability and continuous governance improvement.\n\nTypical outputs include:\n\n- Executive Governance Assessment summarizing the overall governance status of the assessed territorial context.\n- Governance Maturity Assessment identifying organizational strengths, weaknesses and improvement priorities.\n- Risk Assessment highlighting strategic, regulatory, organizational and territorial risk factors.\n- Decision Intelligence Report integrating evidence, governance analysis and strategic interpretation.\n- Explainability Report documenting the rationale supporting every significant assessment and recommendation.\n- Decision Traceability Matrix linking conclusions, indicators and recommendations to explicit evidence.\n- Governance KPI Framework providing measurable indicators for continuous monitoring and performance evaluation.\n- Scenario Analysis comparing alternative governance strategies, priorities and potential organizational impacts.\n- Executive Recommendations prioritized according to governance relevance, expected benefits and implementation feasibility.\n- Evidence Register documenting the sources, validation status and governance relevance of all information used during the assessment.\n- Organizational Improvement Roadmap identifying progressive actions supporting governance maturity and long-term resilience.\n\nEach output is produced according to the principles of intelligibility, explainability, traceability and verifiability established by the Cognitive Logic Sovereign Intelligence Architecture. Every conclusion remains explicitly connected to documented evidence, measurable indicators and transparent reasoning, enabling organizations to demonstrate accountability and support future governance decisions with confidence.\n\nThe outputs are designed to become reusable governance assets that support continuous organizational learning, future assessments and progressive improvement rather than representing isolated consulting deliverables."
+        },
+        {
+          "section": "Deliverables",
+          "text": "The Coastal Governance Intelligence service provides a structured set of executive-level deliverables designed to support strategic decision-making, governance improvement and long-term organizational resilience.\n\nEach deliverable is evidence-based, fully explainable and aligned with the principles of the Cognitive Logic Sovereign Intelligence Architecture. Together, these artefacts establish a reusable governance knowledge base that extends beyond the duration of the engagement.\n\nThe standard deliverables include:\n\n- **Executive Governance Report**\n  - Comprehensive assessment of the governance status, strategic findings and executive conclusions.\n\n- **Governance Maturity Assessment**\n  - Evaluation of governance capabilities, organizational maturity and priority improvement areas.\n\n- **Territorial Risk Assessment**\n  - Analysis of strategic, regulatory, environmental and organizational risks affecting coastal governance.\n\n- **Decision Intelligence Report**\n  - Integrated interpretation of evidence, governance indicators, scenario analysis and strategic recommendations.\n\n- **Governance KPI Framework**\n  - Structured set of measurable governance indicators supporting continuous monitoring and executive reporting.\n\n- **Decision Traceability Matrix**\n  - Documentation linking every significant conclusion and recommendation to explicit evidence and governance rationale.\n\n- **Explainability Report**\n  - Detailed description of the analytical process, assumptions, evidence validation and reasoning supporting each assessment.\n\n- **Strategic Governance Roadmap**\n  - Prioritized implementation plan identifying short-, medium- and long-term governance improvement initiatives.\n\n- **Evidence Register**\n  - Structured inventory of information sources, validation status and governance relevance used throughout the engagement.\n\n- **Executive Presentation**\n  - Board-ready presentation summarizing key findings, governance priorities, identified risks and recommended strategic actions.\n\nAll deliverables are technology-independent and designed to remain valid independently from specific software platforms, GIS solutions or operational systems. Their value derives from the quality of the governance methodology, the transparency of the reasoning process and the traceability of supporting evidence."
+        },
+        {
+          "section": "KPI",
+          "text": "The effectiveness of Coastal Governance Intelligence is measured through a multidimensional governance performance framework designed to evaluate the quality of decision-making, organizational governance capability and long-term strategic resilience.\n\nThe KPI framework emphasizes measurable governance outcomes rather than operational activity metrics, enabling executive stakeholders to continuously monitor governance performance and organizational improvement."
+        },
+        {
+          "section": "Governance Performance",
+          "text": "- Governance Maturity Score\n- Governance Coverage Index\n- Governance Policy Alignment Score\n- Executive Decision Quality Index\n- Organizational Accountability Score"
+        },
+        {
+          "section": "Knowledge Quality",
+          "text": "- Evidence Completeness Index\n- Knowledge Quality Score\n- Semantic Consistency Index\n- Evidence Reliability Score\n- Information Traceability Index"
+        },
+        {
+          "section": "Decision Intelligence",
+          "text": "- Explainability Score\n- Decision Traceability Score\n- Scenario Confidence Index\n- Recommendation Acceptance Rate\n- Decision Consistency Index"
+        },
+        {
+          "section": "Risk and Resilience",
+          "text": "- Governance Risk Index\n- Regulatory Exposure Score\n- Organizational Resilience Index\n- Territorial Resilience Score\n- Control Effectiveness Index"
+        },
+        {
+          "section": "Strategic Value",
+          "text": "- Strategic Alignment Score\n- Governance Value Creation Index\n- Executive Readiness Score\n- Continuous Improvement Index\n- Governance Sustainability Score\n\nEach KPI is generated through measurable governance criteria, validated evidence and transparent analytical processes. Indicator values are intended to support executive decision-making, benchmark organizational progress over time and demonstrate continuous governance improvement through objective and verifiable measurements.\n\nThe KPI framework remains independent from operational software platforms and can be applied consistently across organizations with different territorial contexts, governance models and information infrastructures."
+        },
+        {
+          "section": "Estimated Duration",
+          "text": "The duration of the Coastal Governance Intelligence service depends on the organizational complexity, governance maturity, territorial scope, availability of evidence and number of stakeholders involved in the assessment.\n\nThe following estimates represent typical enterprise engagements:\n\n| Engagement Complexity | Estimated Duration |\n|-----------------------|-------------------:|\n| Limited organizational scope | 2–3 weeks |\n| Medium organizational scope | 4–6 weeks |\n| Large multi-stakeholder organizations | 6–10 weeks |\n| National or multi-territorial governance programmes | 10–16 weeks |\n\nThe execution timeline generally includes the following phases:\n\n- Engagement initiation and governance scope definition.\n- Evidence collection and validation.\n- Knowledge discovery and semantic integration.\n- Governance and risk assessment.\n- KPI generation and scenario evaluation.\n- Explainability and decision traceability.\n- Executive review and validation.\n- Delivery of final reports, roadmap and governance recommendations.\n\nActual duration may vary according to:\n\n- Availability and quality of organizational evidence.\n- Number of participating institutions and stakeholders.\n- Complexity of the territorial governance context.\n- Regulatory scope and assessment objectives.\n- Required depth of executive analysis.\n- Availability of subject matter experts for interviews and validation workshops.\n\nThe service methodology is designed to scale progressively without compromising explainability, evidence quality or governance traceability, ensuring consistent delivery across organizations of different sizes and governance maturity levels."
+        },
+        {
+          "section": "Dependencies",
+          "text": "Coastal Governance Intelligence is designed as an integrated component of the Cognitive Logic Enterprise Service Catalogue. The service can be delivered as a standalone executive assessment or as part of a broader governance transformation programme.\n\nIts methodology is complementary to other enterprise services and enables organizations to progressively increase their governance maturity through coordinated assessments, strategic planning and continuous improvement initiatives.\n\nThe service has the following principal dependencies:\n\n- Availability of organizational stakeholders and executive sponsorship.\n- Access to relevant governance evidence and information sources.\n- Definition of the organizational scope and governance objectives.\n- Participation of subject matter experts during evidence validation and executive review activities.\n\nMethodological dependencies within the Enterprise Service Catalogue include:\n\n- **CS-004 – Knowledge Discovery**\n  - Supports evidence discovery and semantic understanding of organizational knowledge.\n\n- **CS-005 – AI Act Readiness Assessment**\n  - Provides regulatory readiness analysis where artificial intelligence systems are involved.\n\n- **CS-006 – Knowledge Governance Assessment**\n  - Evaluates organizational knowledge governance capabilities that contribute to territorial decision quality.\n\n- **CS-007 – AI Governance Strategy**\n  - Defines strategic governance models supporting long-term organizational evolution.\n\n- **CS-008 – Explainability & Decision Traceability**\n  - Ensures governance decisions remain transparent, explainable and fully traceable.\n\n- **CS-009 – Governance Maturity Assessment**\n  - Measures organizational governance maturity and supports continuous improvement planning.\n\nAlthough the service benefits from these complementary capabilities, it remains independently executable and does not require the prior completion of any specific engagement. Existing assessments can be reused whenever available to improve analytical depth, reduce duplication of activities and strengthen governance continuity.\n\nAll dependencies are methodological and organizational rather than technological. The service does not depend on specific software platforms, geographic information systems or external artificial intelligence providers, remaining fully aligned with the Cognitive Logic Sovereign Intelligence Architecture."
+        },
+        {
+          "section": "Cross-selling Opportunities",
+          "text": "Coastal Governance Intelligence naturally creates opportunities for complementary governance services that strengthen organizational capability, improve regulatory readiness and support continuous executive decision-making.\n\nTypical cross-selling opportunities include:\n\n- **CS-004 – Knowledge Discovery**\n  - Identification and structuring of organizational and territorial knowledge assets.\n\n- **CS-005 – AI Act Readiness Assessment**\n  - Assessment of regulatory obligations where AI-enabled decision processes are present.\n\n- **CS-006 – Knowledge Governance Assessment**\n  - Evaluation of governance practices for organizational knowledge and information quality.\n\n- **CS-007 – AI Governance Strategy**\n  - Definition of long-term governance strategies, operating models and executive governance frameworks.\n\n- **CS-008 – Explainability & Decision Traceability**\n  - Implementation of explainable governance processes and decision traceability mechanisms.\n\n- **CS-009 – Governance Maturity Assessment**\n  - Measurement of governance capability, benchmarking and continuous maturity improvement.\n\nAdditional complementary opportunities may include:\n\n- Executive governance workshops.\n- Governance KPI definition programmes.\n- Decision Intelligence capability assessments.\n- Governance policy reviews.\n- Executive advisory services.\n- Governance awareness and leadership sessions.\n\nThese complementary services extend the value generated by Coastal Governance Intelligence while maintaining a coherent governance methodology and a consistent executive decision framework across the organization."
+        },
+        {
+          "section": "Up-selling Opportunities",
+          "text": "Coastal Governance Intelligence can represent the starting point of a broader governance transformation programme. The insights generated through the assessment frequently identify strategic initiatives that require longer-term executive support, governance modernization and continuous organizational improvement.\n\nTypical up-selling opportunities include:\n\n- Enterprise AI Governance Programme.\n- Organization-wide Knowledge Governance transformation.\n- Governance Operating Model design and implementation.\n- Decision Intelligence Framework deployment.\n- Executive Governance Dashboard implementation.\n- Governance KPI continuous monitoring services.\n- Governance maturity improvement programmes.\n- Executive advisory retainers.\n- Multi-year governance transformation roadmaps.\n- Enterprise governance architecture definition.\n\nOrganizations with complex territorial responsibilities may also benefit from extended programmes covering:\n\n- Multi-entity governance coordination.\n- Regional and national governance frameworks.\n- Cross-organizational decision intelligence initiatives.\n- Governance centres of excellence.\n- Executive governance capability development.\n- Continuous governance assessment and periodic executive reviews.\n\nThese initiatives enable organizations to evolve from a single governance assessment toward a sustainable governance capability, supporting continuous executive decision-making, measurable organizational improvement and long-term strategic resilience."
+        },
+        {
+          "section": "Future Evolution",
+          "text": "Coastal Governance Intelligence is designed as an evolving governance capability rather than a one-time assessment. Future development will progressively extend the service through continuous governance monitoring, advanced decision intelligence and increasingly evidence-driven executive support.\n\nPlanned evolution areas include:\n\n- Continuous Governance Intelligence.\n- Longitudinal Governance Maturity monitoring.\n- Predictive governance risk analysis.\n- Advanced governance KPI benchmarking.\n- Executive governance dashboards.\n- Cross-organizational governance comparison.\n- Scenario simulation and strategic impact analysis.\n- Regulatory evolution assessment.\n- Knowledge Graph enrichment.\n- Decision Intelligence optimization.\n\nFuture releases will strengthen integration across the Cognitive Logic Enterprise Service Catalogue, enabling organizations to establish a unified governance ecosystem where knowledge, evidence, explainability and executive decision-making continuously reinforce one another.\n\nThe long-term vision is to support organizations in moving from periodic governance assessments toward continuous governance capability, providing measurable improvements in transparency, accountability, organizational resilience and strategic decision quality.\n\nThe service architecture has been intentionally designed to remain adaptable to future regulatory frameworks, governance models and organizational requirements while preserving methodological consistency, explainability and evidence traceability."
+        },
+        {
+          "section": "Evidence Sources",
+          "text": "Coastal Governance Intelligence adopts an evidence-based methodology in which every assessment, recommendation and governance conclusion is supported by verifiable organizational evidence.\n\nEvidence may originate from multiple authoritative sources, including but not limited to:"
+        },
+        {
+          "section": "Organizational Sources",
+          "text": "- Governance policies.\n- Strategic plans.\n- Organizational procedures.\n- Internal regulations.\n- Risk registers.\n- Executive reports.\n- Audit reports.\n- Performance reports."
+        },
+        {
+          "section": "Territorial Sources",
+          "text": "- Territorial datasets.\n- Cadastral documentation.\n- Concession documentation.\n- Environmental assessments.\n- Urban planning documentation.\n- Public administration records.\n- Geographic information where available.\n- Historical territorial documentation."
+        },
+        {
+          "section": "Regulatory Sources",
+          "text": "- National legislation.\n- Regional legislation.\n- European regulations.\n- Administrative guidelines.\n- Sector-specific regulatory frameworks.\n- Public governance standards."
+        },
+        {
+          "section": "Stakeholder Evidence",
+          "text": "- Executive interviews.\n- Workshops.\n- Subject matter expert validation.\n- Governance committee findings.\n- Operational stakeholder feedback.\n- Institutional consultations."
+        },
+        {
+          "section": "Analytical Evidence",
+          "text": "- Governance maturity assessments.\n- Risk assessments.\n- Knowledge discovery outputs.\n- Explainability analyses.\n- Decision traceability records.\n- KPI measurements.\n- Scenario evaluations.\n\nAll evidence is evaluated according to principles of relevance, reliability, traceability and governance significance.\n\nThe service does not generate recommendations from opaque analytical processes. Every governance conclusion remains explainable, traceable and supported by documented evidence, ensuring transparency, accountability and executive confidence throughout the decision-making process."
+        },
+        {
+          "section": "Architectural Notes",
+          "text": "Coastal Governance Intelligence is an integral component of the Cognitive Logic Enterprise Service Catalogue and is designed according to the principles of the Cognitive Logic Sovereign Intelligence Architecture.\n\nThe service enables executive decision-making by transforming territorial, organizational, regulatory and documentary information into governed knowledge through structured methodologies, measurable governance models and evidence-based analytical processes.\n\nThe service operates above operational information systems by providing a governance layer focused on knowledge quality, decision intelligence, explainability and strategic organizational improvement. It is designed to complement existing information infrastructures without requiring specific software platforms or technology vendors.\n\nAll analytical outputs are generated through the Cognitive Logic Sovereign Intelligence Architecture by combining the QEN Sovereign Engine, Governance Engine, Knowledge Graph, EVIDE, proprietary algorithms, intelligible data and verifiable evidence.\n\nThe service fully complies with the architectural principles established by ADR-CLE-004, ensuring that governance recommendations and executive conclusions are derived exclusively from governed knowledge and documented evidence. External artificial intelligence providers are not used as decision sources.\n\nCoastal Governance Intelligence is designed to integrate consistently with the broader Enterprise Service Catalogue, enabling organizations to establish a unified governance ecosystem that supports measurable governance maturity, explainable decision-making, organizational accountability and continuous strategic improvement.\n\nThis specification represents the authoritative architectural baseline for CS-010 within the Commercial Evolution 1.0 programme and shall be maintained in alignment with future approved architectural decisions, governance standards and Enterprise Service Catalogue evolution."
+        }
+      ]
+    },
+    {
+      "source_id": "CASE-LEEDS-001",
+      "source_sha256": "8fd073e252bf3f37115ae01adaf3c3b4b296a8f7c45a04efbf44916895da5e85",
+      "metadata": {
+        "title": "Leeds City Council — Xylo Core",
+        "version": "1.0",
+        "canonical_url": "https://cognitivelogic.it/case-studies/leeds-xylo-core/",
+        "category": "case study governato",
+        "authority": "Cognitive Logic",
+        "date": "2026-08-12",
+        "status": "outdated or time-limited public-evidence reconstruction",
+        "source_class": "secondary",
+        "confidence": "medium",
+        "scope": "Ricostruzione governata del record pubblico Leeds Xylo Core",
+        "language": "it",
+        "publication_status": "published",
+        "document_type": "case_study",
+        "primary_case_type": "D",
+        "relationship_with_cognitive_logic": "None",
+        "observed_organisation": "Leeds City Council; Xylo AI Ltd",
+        "sector": "pianificazione pubblica",
+        "jurisdiction": "Regno Unito",
+        "publication_date": "2026-08-12",
+        "last_verified_at": "2026-08-13",
+        "primary_sources": [
+          "GOVUK-ATRS-LEEDS-XYLO-001"
+        ],
+        "provenance": "Record ATRS ufficiale GOV.UK e ricostruzione Cognitive Logic",
+        "evidence_labels": [
+          "PUBLIC EVIDENCE",
+          "PRIMARY SOURCE",
+          "ASSESSMENT INFERENCE",
+          "NOT VERIFIABLE",
+          "HUMAN DECISION REQUIRED"
+        ],
+        "limitations": "Implementazione corrente, qualità dei log, risultati pilot e DPIA conclusa non verificati",
+        "uncertainty": "Stato Private Beta nel record del 27 novembre 2025; cambiamenti successivi possibili",
+        "final_human_authority": "Officer e autorità competente di Leeds City Council"
+      },
+      "search_terms": [
+        "CASE-LEEDS-001",
+        "Leeds Xylo Core",
+        "Leeds City Council",
+        "Xylo AI",
+        "planning",
+        "Private Beta",
+        "officer review override",
+        "tipo D"
+      ],
+      "warnings": [
+        "Nessuna relazione con Leeds City Council o Xylo AI Ltd"
+      ],
+      "sections": [
+        {
+          "section": "CASE-LEEDS-001 — Leeds City Council — Xylo Core",
+          "text": "Version: 1.0\n\nPublication date: 2026-08-12\n\nLast verified: 2026-08-13\n\nRelationship with Cognitive Logic: None.\n\nObserved organisations: Leeds City Council; Xylo AI Ltd, indicata come fornitore nella fonte.\n\nSector and jurisdiction: pianificazione pubblica; Regno Unito.\n\nPrimary case type: D — QEN Applied External Case.\n\nCanonical URL: https://cognitivelogic.it/case-studies/leeds-xylo-core/\n\nPrimary source: https://www.gov.uk/algorithmic-transparency-records/leeds-city-council-xylo-core"
+        },
+        {
+          "section": "PUBLIC EVIDENCE · PRIMARY SOURCE",
+          "text": "Il record ufficiale Algorithmic Transparency Recording Standard di GOV.UK descrive Xylo Core per il supporto alla validazione e alla lavorazione di pratiche. Nel record datato 27 novembre 2025 lo stato è Private Beta. La fonte dichiara review e override degli officer, audit log, modelli esterni e una DPIA in corso al 18 settembre 2025."
+        },
+        {
+          "section": "Dichiarazioni organizzative",
+          "text": "Funzioni, controlli e stato sono dichiarazioni contenute nel record pubblicato dall'organizzazione sul servizio GOV.UK. La registrazione pubblica non costituisce verifica indipendente dell'implementazione o dell'efficacia dei controlli."
+        },
+        {
+          "section": "ASSESSMENT INFERENCE",
+          "text": "Citazioni, log, review e override possono sostenere la tracciabilità soltanto se completezza, qualità e uso effettivo sono verificati. Questa è un'inferenza Cognitive Logic e non un risultato attribuibile a Leeds City Council, Xylo AI Ltd o QEN."
+        },
+        {
+          "section": "NOT VERIFIABLE",
+          "text": "Non sono verificabili dal materiale registrato l'implementazione corrente, la qualità e completezza dei log, i risultati del pilot, le prestazioni dei modelli, i controlli interni non pubblici e la conclusione della DPIA."
+        },
+        {
+          "section": "Validità temporale, limiti e decisione",
+          "text": "Il record è OUTDATED OR TIME-LIMITED rispetto a cambiamenti successivi alla verifica. Nessuna relazione cliente, partner o utilizzatore QEN è dichiarata. Gli officer e l'autorità pubblica competente conservano responsabilità, review e decisione finale: HUMAN DECISION REQUIRED."
+        }
+      ]
+    },
+    {
+      "source_id": "GOVUK-ATRS-LEEDS-XYLO-001",
+      "source_sha256": "8fd073e252bf3f37115ae01adaf3c3b4b296a8f7c45a04efbf44916895da5e85",
+      "metadata": {
+        "title": "GOV.UK ATRS — Leeds City Council Xylo Core",
+        "version": "record verificato 2026-08-13",
+        "canonical_url": "https://www.gov.uk/algorithmic-transparency-records/leeds-city-council-xylo-core",
+        "category": "fonte ufficiale pubblica",
+        "authority": "UK Government / Leeds City Council",
+        "date": "2025-11-27",
+        "status": "official public record; time-limited",
+        "source_class": "primary",
+        "confidence": "high",
+        "scope": "Algorithmic Transparency Recording Standard record for Xylo Core",
+        "language": "en",
+        "publication_status": "published"
+      },
+      "search_terms": [
+        "GOVUK-ATRS-LEEDS-XYLO-001",
+        "Leeds Xylo Core official",
+        "GOV.UK ATRS",
+        "algorithmic transparency record"
+      ],
+      "warnings": [
+        "Dichiarazioni organizzative in un record ufficiale; implementazione non verificata indipendentemente"
+      ],
+      "sections": [
+        {
+          "section": "CASE-LEEDS-001 — Leeds City Council — Xylo Core",
+          "text": "Version: 1.0\n\nPublication date: 2026-08-12\n\nLast verified: 2026-08-13\n\nRelationship with Cognitive Logic: None.\n\nObserved organisations: Leeds City Council; Xylo AI Ltd, indicata come fornitore nella fonte.\n\nSector and jurisdiction: pianificazione pubblica; Regno Unito.\n\nPrimary case type: D — QEN Applied External Case.\n\nCanonical URL: https://cognitivelogic.it/case-studies/leeds-xylo-core/\n\nPrimary source: https://www.gov.uk/algorithmic-transparency-records/leeds-city-council-xylo-core"
+        },
+        {
+          "section": "PUBLIC EVIDENCE · PRIMARY SOURCE",
+          "text": "Il record ufficiale Algorithmic Transparency Recording Standard di GOV.UK descrive Xylo Core per il supporto alla validazione e alla lavorazione di pratiche. Nel record datato 27 novembre 2025 lo stato è Private Beta. La fonte dichiara review e override degli officer, audit log, modelli esterni e una DPIA in corso al 18 settembre 2025."
+        },
+        {
+          "section": "Dichiarazioni organizzative",
+          "text": "Funzioni, controlli e stato sono dichiarazioni contenute nel record pubblicato dall'organizzazione sul servizio GOV.UK. La registrazione pubblica non costituisce verifica indipendente dell'implementazione o dell'efficacia dei controlli."
+        },
+        {
+          "section": "ASSESSMENT INFERENCE",
+          "text": "Citazioni, log, review e override possono sostenere la tracciabilità soltanto se completezza, qualità e uso effettivo sono verificati. Questa è un'inferenza Cognitive Logic e non un risultato attribuibile a Leeds City Council, Xylo AI Ltd o QEN."
+        },
+        {
+          "section": "NOT VERIFIABLE",
+          "text": "Non sono verificabili dal materiale registrato l'implementazione corrente, la qualità e completezza dei log, i risultati del pilot, le prestazioni dei modelli, i controlli interni non pubblici e la conclusione della DPIA."
+        },
+        {
+          "section": "Validità temporale, limiti e decisione",
+          "text": "Il record è OUTDATED OR TIME-LIMITED rispetto a cambiamenti successivi alla verifica. Nessuna relazione cliente, partner o utilizzatore QEN è dichiarata. Gli officer e l'autorità pubblica competente conservano responsabilità, review e decisione finale: HUMAN DECISION REQUIRED."
+        }
+      ]
+    },
+    {
+      "source_id": "CASE-ITUTOR-001",
+      "source_sha256": "39fb8bec516787a8c7bbca858a378b052208e53d5f2b56cbd281a95bd7358b90",
+      "metadata": {
+        "title": "iTutorGroup automated screening",
+        "version": "1.0",
+        "canonical_url": "https://cognitivelogic.it/case-studies/itutorgroup-screening/",
+        "category": "case study governato",
+        "authority": "Cognitive Logic",
+        "date": "2026-08-12",
+        "status": "historical public-evidence reconstruction",
+        "source_class": "secondary",
+        "confidence": "medium",
+        "scope": "Ricostruzione governata dell'azione e dell'accordo EEOC sullo screening automatizzato",
+        "language": "it",
+        "publication_status": "published",
+        "document_type": "case_study",
+        "primary_case_type": "F",
+        "relationship_with_cognitive_logic": "None",
+        "observed_organisation": "iTutorGroup e società indicate dalla EEOC",
+        "sector": "lavoro e selezione",
+        "jurisdiction": "Stati Uniti",
+        "publication_date": "2026-08-12",
+        "last_verified_at": "2026-08-13",
+        "primary_sources": [
+          "EEOC-ITUTOR-2022",
+          "EEOC-ITUTOR-2023"
+        ],
+        "provenance": "Comunicazioni ufficiali EEOC 2022 e 2023 e ricostruzione Cognitive Logic",
+        "evidence_labels": [
+          "PUBLIC EVIDENCE",
+          "PRIMARY SOURCE",
+          "ASSESSMENT INFERENCE",
+          "NOT VERIFIABLE",
+          "HUMAN DECISION REQUIRED"
+        ],
+        "limitations": "Architettura, dataset, controlli, funzionamento corrente e attuazione dell'accordo non verificati",
+        "uncertainty": "Allegazioni e accordo sono distinti da accertamenti tecnici completi o ammissioni",
+        "final_human_authority": "Datore di lavoro e autorità competenti"
+      },
+      "search_terms": [
+        "CASE-ITUTOR-001",
+        "iTutorGroup screening",
+        "automated hiring",
+        "EEOC",
+        "age discrimination",
+        "365000",
+        "non verificabile",
+        "tipo F"
+      ],
+      "warnings": [
+        "Ricostruzione storica",
+        "Nessuna relazione con iTutorGroup"
+      ],
+      "sections": [
+        {
+          "section": "CASE-ITUTOR-001 — iTutorGroup automated screening",
+          "text": "Version: 1.0\n\nPublication date: 2026-08-12\n\nLast verified: 2026-08-13\n\nRelationship with Cognitive Logic: None.\n\nObserved organisation: iTutorGroup e società indicate dalla EEOC.\n\nSector and jurisdiction: lavoro e selezione; Stati Uniti.\n\nPrimary case type: F — Critical Case; secondary type D — QEN Applied External Case.\n\nCanonical URL: https://cognitivelogic.it/case-studies/itutorgroup-screening/\n\nPrimary sources: https://www.eeoc.gov/newsroom/eeoc-sues-itutorgroup-age-discrimination ; https://www.eeoc.gov/newsroom/itutorgroup-pay-365000-settle-eeoc-discriminatory-hiring-suit"
+        },
+        {
+          "section": "PUBLIC EVIDENCE · PRIMARY SOURCE — EEOC 2022",
+          "text": "La comunicazione ufficiale EEOC del 2022 descrive una causa e contiene allegazioni relative a screening automatizzato e discriminazione per età. Le allegazioni sono registrate come tali, non come fatti giudizialmente accertati."
+        },
+        {
+          "section": "PUBLIC EVIDENCE · PRIMARY SOURCE — EEOC 2023",
+          "text": "La comunicazione ufficiale EEOC del 2023 annuncia un accordo da 365.000 dollari e misure concordate. L'accordo è distinto da un'ammissione e questa scheda non lo presenta come accertamento tecnico completo del sistema."
+        },
+        {
+          "section": "Dichiarazioni e attribuzioni",
+          "text": "Le descrizioni dell'azione, dell'accordo e delle misure sono attribuite alla EEOC. Cognitive Logic non attribuisce a QEN risultati dell'organizzazione osservata e non dichiara relazioni con iTutorGroup."
+        },
+        {
+          "section": "ASSESSMENT INFERENCE",
+          "text": "Lo screening automatizzato richiede ownership, test, review umana, contestazione e audit. Questa è un'inferenza di governance QEN, non una conclusione della EEOC né una certificazione della verità."
+        },
+        {
+          "section": "NOT VERIFIABLE",
+          "text": "Non risultano verificabili dalle fonti registrate architettura tecnica, dataset, regole e soglie, tassi di errore, controlli interni, funzionamento corrente, attuazione delle misure dell'accordo e autorità umana effettivamente esercitata nei singoli esiti."
+        },
+        {
+          "section": "Validità temporale, limiti e decisione",
+          "text": "Il caso è una ricostruzione storica: azione 2022 e accordo 2023, verificati l'ultima volta il 13 agosto 2026. Le fonti EEOC sono primarie per le comunicazioni dell'autorità, non prova indipendente di ogni dettaglio tecnico. Il datore di lavoro e le autorità competenti conservano la decisione e la responsabilità finali: HUMAN DECISION REQUIRED."
+        }
+      ]
+    },
+    {
+      "source_id": "EEOC-ITUTOR-2022",
+      "source_sha256": "39fb8bec516787a8c7bbca858a378b052208e53d5f2b56cbd281a95bd7358b90",
+      "metadata": {
+        "title": "EEOC sues iTutorGroup for age discrimination",
+        "version": "verified 2026-08-13",
+        "canonical_url": "https://www.eeoc.gov/newsroom/eeoc-sues-itutorgroup-age-discrimination",
+        "category": "fonte ufficiale pubblica",
+        "authority": "U.S. Equal Employment Opportunity Commission (EEOC)",
+        "date": "2022-05-05",
+        "status": "official enforcement announcement",
+        "source_class": "primary",
+        "confidence": "high",
+        "scope": "Allegazioni EEOC 2022 sullo screening automatizzato iTutorGroup",
+        "language": "en",
+        "publication_status": "published"
+      },
+      "search_terms": [
+        "EEOC-ITUTOR-2022",
+        "EEOC sues iTutorGroup",
+        "age discrimination",
+        "automated screening allegations"
+      ],
+      "warnings": [
+        "La comunicazione contiene allegazioni, non un accertamento tecnico completo"
+      ],
+      "sections": [
+        {
+          "section": "CASE-ITUTOR-001 — iTutorGroup automated screening",
+          "text": "Version: 1.0\n\nPublication date: 2026-08-12\n\nLast verified: 2026-08-13\n\nRelationship with Cognitive Logic: None.\n\nObserved organisation: iTutorGroup e società indicate dalla EEOC.\n\nSector and jurisdiction: lavoro e selezione; Stati Uniti.\n\nPrimary case type: F — Critical Case; secondary type D — QEN Applied External Case.\n\nCanonical URL: https://cognitivelogic.it/case-studies/itutorgroup-screening/\n\nPrimary sources: https://www.eeoc.gov/newsroom/eeoc-sues-itutorgroup-age-discrimination ; https://www.eeoc.gov/newsroom/itutorgroup-pay-365000-settle-eeoc-discriminatory-hiring-suit"
+        },
+        {
+          "section": "PUBLIC EVIDENCE · PRIMARY SOURCE — EEOC 2022",
+          "text": "La comunicazione ufficiale EEOC del 2022 descrive una causa e contiene allegazioni relative a screening automatizzato e discriminazione per età. Le allegazioni sono registrate come tali, non come fatti giudizialmente accertati."
+        },
+        {
+          "section": "PUBLIC EVIDENCE · PRIMARY SOURCE — EEOC 2023",
+          "text": "La comunicazione ufficiale EEOC del 2023 annuncia un accordo da 365.000 dollari e misure concordate. L'accordo è distinto da un'ammissione e questa scheda non lo presenta come accertamento tecnico completo del sistema."
+        },
+        {
+          "section": "Dichiarazioni e attribuzioni",
+          "text": "Le descrizioni dell'azione, dell'accordo e delle misure sono attribuite alla EEOC. Cognitive Logic non attribuisce a QEN risultati dell'organizzazione osservata e non dichiara relazioni con iTutorGroup."
+        },
+        {
+          "section": "ASSESSMENT INFERENCE",
+          "text": "Lo screening automatizzato richiede ownership, test, review umana, contestazione e audit. Questa è un'inferenza di governance QEN, non una conclusione della EEOC né una certificazione della verità."
+        },
+        {
+          "section": "NOT VERIFIABLE",
+          "text": "Non risultano verificabili dalle fonti registrate architettura tecnica, dataset, regole e soglie, tassi di errore, controlli interni, funzionamento corrente, attuazione delle misure dell'accordo e autorità umana effettivamente esercitata nei singoli esiti."
+        },
+        {
+          "section": "Validità temporale, limiti e decisione",
+          "text": "Il caso è una ricostruzione storica: azione 2022 e accordo 2023, verificati l'ultima volta il 13 agosto 2026. Le fonti EEOC sono primarie per le comunicazioni dell'autorità, non prova indipendente di ogni dettaglio tecnico. Il datore di lavoro e le autorità competenti conservano la decisione e la responsabilità finali: HUMAN DECISION REQUIRED."
+        }
+      ]
+    },
+    {
+      "source_id": "EEOC-ITUTOR-2023",
+      "source_sha256": "39fb8bec516787a8c7bbca858a378b052208e53d5f2b56cbd281a95bd7358b90",
+      "metadata": {
+        "title": "iTutorGroup to pay $365,000 to settle EEOC discriminatory hiring suit",
+        "version": "verified 2026-08-13",
+        "canonical_url": "https://www.eeoc.gov/newsroom/itutorgroup-pay-365000-settle-eeoc-discriminatory-hiring-suit",
+        "category": "fonte ufficiale pubblica",
+        "authority": "U.S. Equal Employment Opportunity Commission (EEOC)",
+        "date": "2023-08-09",
+        "status": "official settlement announcement",
+        "source_class": "primary",
+        "confidence": "high",
+        "scope": "Accordo EEOC 2023 e misure annunciate nel caso iTutorGroup",
+        "language": "en",
+        "publication_status": "published"
+      },
+      "search_terms": [
+        "EEOC-ITUTOR-2023",
+        "iTutorGroup 365000 settlement",
+        "EEOC hiring suit",
+        "settlement measures"
+      ],
+      "warnings": [
+        "Accordo distinto da ammissione; attuazione delle misure non verificata"
+      ],
+      "sections": [
+        {
+          "section": "CASE-ITUTOR-001 — iTutorGroup automated screening",
+          "text": "Version: 1.0\n\nPublication date: 2026-08-12\n\nLast verified: 2026-08-13\n\nRelationship with Cognitive Logic: None.\n\nObserved organisation: iTutorGroup e società indicate dalla EEOC.\n\nSector and jurisdiction: lavoro e selezione; Stati Uniti.\n\nPrimary case type: F — Critical Case; secondary type D — QEN Applied External Case.\n\nCanonical URL: https://cognitivelogic.it/case-studies/itutorgroup-screening/\n\nPrimary sources: https://www.eeoc.gov/newsroom/eeoc-sues-itutorgroup-age-discrimination ; https://www.eeoc.gov/newsroom/itutorgroup-pay-365000-settle-eeoc-discriminatory-hiring-suit"
+        },
+        {
+          "section": "PUBLIC EVIDENCE · PRIMARY SOURCE — EEOC 2022",
+          "text": "La comunicazione ufficiale EEOC del 2022 descrive una causa e contiene allegazioni relative a screening automatizzato e discriminazione per età. Le allegazioni sono registrate come tali, non come fatti giudizialmente accertati."
+        },
+        {
+          "section": "PUBLIC EVIDENCE · PRIMARY SOURCE — EEOC 2023",
+          "text": "La comunicazione ufficiale EEOC del 2023 annuncia un accordo da 365.000 dollari e misure concordate. L'accordo è distinto da un'ammissione e questa scheda non lo presenta come accertamento tecnico completo del sistema."
+        },
+        {
+          "section": "Dichiarazioni e attribuzioni",
+          "text": "Le descrizioni dell'azione, dell'accordo e delle misure sono attribuite alla EEOC. Cognitive Logic non attribuisce a QEN risultati dell'organizzazione osservata e non dichiara relazioni con iTutorGroup."
+        },
+        {
+          "section": "ASSESSMENT INFERENCE",
+          "text": "Lo screening automatizzato richiede ownership, test, review umana, contestazione e audit. Questa è un'inferenza di governance QEN, non una conclusione della EEOC né una certificazione della verità."
+        },
+        {
+          "section": "NOT VERIFIABLE",
+          "text": "Non risultano verificabili dalle fonti registrate architettura tecnica, dataset, regole e soglie, tassi di errore, controlli interni, funzionamento corrente, attuazione delle misure dell'accordo e autorità umana effettivamente esercitata nei singoli esiti."
+        },
+        {
+          "section": "Validità temporale, limiti e decisione",
+          "text": "Il caso è una ricostruzione storica: azione 2022 e accordo 2023, verificati l'ultima volta il 13 agosto 2026. Le fonti EEOC sono primarie per le comunicazioni dell'autorità, non prova indipendente di ogni dettaglio tecnico. Il datore di lavoro e le autorità competenti conservano la decisione e la responsabilità finali: HUMAN DECISION REQUIRED."
+        }
+      ]
     }
   ],
-  "index_version": "3c478ac0ed6de6d7cdcedc8eb80f806875379a4983d77d97db45f91d35a66860"
+  "index_version": "442646da6de0800b9404f2f276879d554460215adfe575313a8b77a5673573ea"
 }

@@ -27,6 +27,17 @@ REQUIRED_FIELDS = {
 PROTECTED_PROHIBITIONS = {"modify_qen_configuration", "modify_qen_decisions"}
 CONFIDENCE_VALUES = {"low", "medium", "high"}
 SOURCE_CLASSES = {"primary", "secondary"}
+CASE_TYPES = set("ABCDEFG")
+EVIDENCE_LABELS = {
+    "PUBLIC EVIDENCE", "PRIMARY SOURCE", "ASSESSMENT INFERENCE",
+    "NOT VERIFIABLE", "HUMAN DECISION REQUIRED",
+}
+CASE_REQUIRED_FIELDS = {
+    "document_type", "primary_case_type", "relationship_with_cognitive_logic",
+    "observed_organisation", "sector", "jurisdiction", "publication_date",
+    "last_verified_at", "primary_sources", "provenance", "evidence_labels",
+    "limitations", "uncertainty", "final_human_authority",
+}
 
 
 class RegistryError(ValueError):
@@ -70,6 +81,16 @@ def load_registry(path: Path = REGISTRY_PATH, *, verify_sources: bool = True) ->
             raise RegistryError(f"Invalid confidence: {source['source_id']}")
         if source["category"] not in allowed_categories:
             raise RegistryError(f"Invalid category: {source['source_id']}")
+        if source.get("document_type") == "case_study":
+            missing_case = CASE_REQUIRED_FIELDS - source.keys()
+            if missing_case:
+                raise RegistryError(
+                    f"Missing governed case fields for {source['source_id']}: {sorted(missing_case)}"
+                )
+            if source["primary_case_type"] not in CASE_TYPES:
+                raise RegistryError(f"Invalid primary_case_type: {source['source_id']}")
+            if not EVIDENCE_LABELS.issubset(set(source["evidence_labels"])):
+                raise RegistryError(f"Evidence boundary missing: {source['source_id']}")
         if not PROTECTED_PROHIBITIONS.issubset(set(source["prohibited_use"])):
             raise RegistryError(f"Decision boundary missing: {source['source_id']}")
         source_path = (BASE_DIR / source["source_path"]).resolve()
@@ -125,6 +146,13 @@ def build_index(
                     "date", "status", "source_class", "confidence", "scope",
                     "language", "publication_status",
                 )
+            } | {
+                key: source[key] for key in (
+                    "document_type", "primary_case_type", "relationship_with_cognitive_logic",
+                    "observed_organisation", "sector", "jurisdiction", "publication_date",
+                    "last_verified_at", "primary_sources", "provenance", "evidence_labels",
+                    "limitations", "uncertainty", "final_human_authority",
+                ) if key in source
             },
             "search_terms": source["search_terms"],
             "warnings": source.get("warnings", []),
@@ -228,6 +256,11 @@ def retrieve(query: str, *, limit: int = 5, minimum_score: float = 0.18) -> dict
                 "section": section["section"], "excerpt": excerpt,
                 "relevance_score": round(score, 3), "_rank_score": rank_score,
                 "warnings": document["warnings"],
+                "evidence_labels": meta.get("evidence_labels", []),
+                "limitations": meta.get("limitations", ""),
+                "source_uncertainty": meta.get("uncertainty", ""),
+                "final_human_authority": meta.get("final_human_authority", ""),
+                "primary_sources": meta.get("primary_sources", []),
             })
 
     matches.sort(key=lambda item: (

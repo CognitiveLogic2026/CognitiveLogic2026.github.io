@@ -16,7 +16,7 @@ from flask_limiter.util import get_remote_address
 from sovereign_engine import ENGINE_VERSION
 from sovereign_engine import classify_risk as sovereign_classify_risk
 from sovereign_engine import score_entity as sovereign_score_entity
-from source_retrieval import knowledge_version, retrieve
+from source_retrieval import knowledge_version, normalize_text, retrieve
 
 app = Flask(__name__)
 
@@ -154,6 +154,8 @@ def _copilot_cache_context(query: str = ""):
 _DOCUMENTARY_PREFIXES = (
     "cos e ", "cosa e ", "che cos e ", "cosa significa ", "che significa ",
     "spiega ", "spiegami ", "descrivi ", "qual e ", "quali sono ",
+    "confronta ", "cosa documenta ", "cosa risulta ", "quali aspetti ",
+    "quale autorita ", "quali criteri ",
     "what is ", "what are ", "explain ", "describe ",
 )
 
@@ -163,7 +165,7 @@ def _documentary_intent(query: str, retrieval: dict) -> bool:
     sources = retrieval.get("sources") or []
     if retrieval.get("retrieval_status") != "ready" or not sources:
         return False
-    normalized = " ".join(re.findall(r"[a-z0-9]+", query.lower()))
+    normalized = normalize_text(query)
     documentary_form = any(
         normalized.startswith(prefix) for prefix in _DOCUMENTARY_PREFIXES
     )
@@ -198,6 +200,19 @@ def _documentary_response(retrieval: dict) -> dict:
             "contesto completi."
         )
     warnings = primary.get("warnings") or []
+    evidence_classes = sorted({
+        label
+        for source in retrieval["sources"]
+        for label in source.get("evidence_labels", [])
+    })
+    source_limitations = [
+        source["limitations"] for source in retrieval["sources"]
+        if source.get("limitations")
+    ]
+    human_authorities = [
+        source["final_human_authority"] for source in retrieval["sources"]
+        if source.get("final_human_authority")
+    ]
     limitations = (
         "Risposta informativa circoscritta alle fonti governate recuperate; non "
         "dichiara né certifica la verità e non sostituisce il documento canonico"
@@ -209,6 +224,11 @@ def _documentary_response(retrieval: dict) -> dict:
         "summary": summary,
         "explanation": explanation,
         "limitations": limitations,
+        "source_limitations": source_limitations,
+        "evidence_classes": evidence_classes,
+        "human_decision_authority": human_authorities[0] if human_authorities else (
+            "Autorità umana competente; QEN non assume la decisione finale."
+        ),
         "sources": retrieval["sources"],
         "uncertainty": retrieval["uncertainty"],
         "confidence": retrieval["confidence"],
