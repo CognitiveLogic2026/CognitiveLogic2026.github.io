@@ -22,19 +22,59 @@
   html[lang="it"] body > .site-bg + .site-header + main > .home-hero h1 { max-width: 18ch; font-size: clamp(2.75rem,5vw,3.7rem); line-height: 1.04; }
 }
 
-/* Validation header and hero: keep the composition readable on tablets. */
-@media (min-width: 1121px) and (max-width: 1239px) {
-  .validation-page .header-inner { flex-wrap: wrap; padding-block: .75rem; }
+/* Validation header: compact two-row tablet composition. */
+@media (min-width: 768px) and (max-width: 1239px) {
+  .validation-page .header-inner {
+    min-height: 0;
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr);
+    row-gap: .125rem;
+    column-gap: 1rem;
+    padding-block: .375rem .25rem;
+  }
+  .validation-page .brand { grid-column: 1; grid-row: 1; }
+  .validation-page .header-end {
+    grid-column: 2;
+    grid-row: 1;
+    justify-self: end;
+    gap: .625rem;
+  }
   .validation-page .main-nav {
-    order: 3;
+    grid-column: 1 / -1;
+    grid-row: 2;
     width: 100%;
     max-width: 100%;
-    padding: .65rem 0 .2rem;
+    min-height: 44px;
+    padding: 0;
     overflow-x: auto;
     overscroll-behavior-inline: contain;
     scrollbar-width: none;
   }
+  .validation-page .main-nav > a,
+  .validation-page .nav-group > summary,
+  .validation-page .nav-lang a {
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+  }
+  .validation-page .brand { min-height: 44px; display: inline-flex; align-items: center; }
+  .validation-page .nav-lang a { min-width: 44px; justify-content: center; }
   .validation-page .main-nav::-webkit-scrollbar { display: none; }
+}
+
+@media (min-width: 1240px) and (max-width: 1366px) {
+  .validation-page .header-inner { gap: .75rem; }
+  .validation-page .main-nav { gap: .2rem; }
+  .validation-page .header-end { gap: .625rem; }
+  .validation-page .brand,
+  .validation-page .main-nav > a,
+  .validation-page .nav-group > summary,
+  .validation-page .nav-lang a {
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+  }
+  .validation-page .nav-lang a { min-width: 44px; justify-content: center; }
 }
 
 @media (min-width: 1024px) and (max-width: 1366px) {
