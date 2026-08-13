@@ -15,5 +15,11 @@
 .divider-label { display: flex; align-items: center; gap: 1rem; margin-bottom: 2rem; }
 .divider-label::after { content: ""; flex: 1; height: 1px; background: var(--line-soft); }
 .divider-label span, .divider-label h2 { margin: 0; color: var(--gold-soft); font-family: var(--mono); font-size: .7rem; font-weight: 500; letter-spacing: .12em; text-transform: uppercase; }
+@media (min-width: 821px) and (max-width: 1180px) {
+  html[lang="it"] body > .site-bg + .site-header + main > .home-hero { grid-template-columns: minmax(150px,18%) minmax(0,1fr); }
+  html[lang="it"] body > .site-bg + .site-header + main > .home-hero .hero-left { padding: clamp(1.5rem,2.5vw,2.25rem); }
+  html[lang="it"] body > .site-bg + .site-header + main > .home-hero .hero-right { min-width: 0; padding: clamp(2.5rem,4vw,3rem); }
+  html[lang="it"] body > .site-bg + .site-header + main > .home-hero h1 { max-width: 18ch; font-size: clamp(2.75rem,5vw,3.7rem); line-height: 1.04; }
+}
 @media (max-width: 820px) { .pages-grid { grid-template-columns: repeat(2,minmax(0,1fr)); } .social-strip { grid-template-columns: repeat(2,minmax(0,1fr)); } }
 @media (max-width: 560px) { .pages-grid, .social-strip { grid-template-columns: 1fr; } .page-card { min-height: 210px; } }
