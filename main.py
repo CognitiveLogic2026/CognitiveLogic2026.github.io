@@ -155,8 +155,21 @@ _DOCUMENTARY_PREFIXES = (
     "cos e ", "cosa e ", "che cos e ", "cosa significa ", "che significa ",
     "spiega ", "spiegami ", "descrivi ", "qual e ", "quali sono ",
     "confronta ", "cosa documenta ", "cosa risulta ", "quali aspetti ",
+    "analizza ", "riassumi ", "sintetizza ", "quali evidenze ",
     "quale autorita ", "quali criteri ",
     "what is ", "what are ", "explain ", "describe ",
+)
+
+_ASSESSMENT_INTENTS = (
+    "risk assessment", "valutazione del rischio", "valutazione rischio",
+    "compliance assessment", "valutazione di compliance", "gdpr assessment",
+    "valutazione gdpr", "ai act classification", "classificazione ai act",
+    "qen score", "punteggio qen", "gap analysis", "analisi dei gap",
+    "raccomandazioni operative", "recommendations operative",
+)
+
+_DOCUMENTARY_REFERENCES = (
+    "dfv 002", "hva 001", "coste360", "egea", "agcm", "ea 009", "cs 010",
 )
 
 
@@ -166,6 +179,8 @@ def _documentary_intent(query: str, retrieval: dict) -> bool:
     if retrieval.get("retrieval_status") != "ready" or not sources:
         return False
     normalized = normalize_text(query)
+    if any(intent in normalized for intent in _ASSESSMENT_INTENTS):
+        return False
     documentary_form = any(
         normalized.startswith(prefix) for prefix in _DOCUMENTARY_PREFIXES
     )
@@ -173,7 +188,11 @@ def _documentary_intent(query: str, retrieval: dict) -> bool:
         re.search(rf"(?<![a-z0-9]){re.escape(str(source['source_id']).lower())}(?![a-z0-9])", query.lower())
         for source in sources
     )
-    return documentary_form or referenced_id
+    referenced_document = any(
+        re.search(rf"(?<![a-z0-9]){re.escape(reference)}(?![a-z0-9])", normalized)
+        for reference in _DOCUMENTARY_REFERENCES
+    )
+    return documentary_form or referenced_id or referenced_document
 
 
 def _documentary_response(retrieval: dict) -> dict:

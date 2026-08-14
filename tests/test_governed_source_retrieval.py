@@ -328,3 +328,60 @@ def test_all_case_acceptance_queries_use_documentary_sovereign_api(query):
     assert payload["limitations"]
     assert payload["human_decision_authority"]
     limiter.reset()
+
+
+HARDENING_DOCUMENTARY_QUERIES = (
+    ("Cos'è il Manifesto DFV-002 e quali principi introduce?", {"DFV-002"}),
+    ("Analizza il caso Coste360 e indica evidenze, limiti e stato di validazione.",
+     {"CASE-COSTE360-001", "EA-009"}),
+    ("Confronta Egea e QEN indicando differenze metodologiche e limiti.",
+     {"CASE-EGEA-QEN-001", "BEN-EGEA-QEN-001"}),
+    ("Riassumi il caso AGCM sui criteri contestati senza trasformarlo in consulenza legale.",
+     {"CASE-AGCM-001", "AGCM-AS1930-NOTE-001"}),
+    ("Quali evidenze governate risultano disponibili per HVA-001?", {"CASE-HVA-001"}),
+)
+
+
+@pytest.mark.parametrize(("query", "expected_sources"), HARDENING_DOCUMENTARY_QUERIES)
+def test_hardened_documentary_routing_scoping_and_output(query, expected_sources):
+    with patch("main.check_duplicate", return_value=None), patch("main.save_pilot"), \
+         patch("main.sovereign_classify_risk") as classify:
+        response = app.test_client().post(
+            "/copilot-analyze", json={"description": query},
+            headers={"Origin": "https://cognitivelogic.it"},
+        )
+    payload = response.get_json()
+    assert response.status_code == 200
+    assert payload["interaction_mode"] == "documentary"
+    assert payload["response_mode"] == "sovereign"
+    assert payload["retrieval_status"] == "ready"
+    assert payload["sources"][0]["source_id"] in expected_sources
+    assert {source["source_id"] for source in payload["sources"]} <= expected_sources
+    assert {
+        "risk_level", "risk_score", "qen_score", "gdpr_risk",
+        "eu_classification", "vs", "va", "vt", "decision",
+    }.isdisjoint(payload)
+    assert payload["limitations"] and "source_limitations" in payload
+    assert payload["uncertainty"] and payload["human_decision_authority"]
+    assert any(source["warnings"] for source in payload["sources"])
+    classify.assert_not_called()
+    limiter.reset()
+
+
+@pytest.mark.parametrize("query", (
+    "Esegui un GDPR assessment del sistema HVA-001",
+    "Calcola il QEN score e produci una gap analysis per Coste360",
+))
+def test_explicit_assessment_requests_remain_compliance(query):
+    with patch("main.check_duplicate", return_value=None), patch("main.save_pilot"):
+        response = app.test_client().post(
+            "/copilot-analyze", json={"description": query},
+            headers={"Origin": "https://cognitivelogic.it"},
+        )
+    payload = response.get_json()
+    assert response.status_code == 200
+    assert payload["interaction_mode"] == "compliance"
+    assert {"risk_level", "qen_score", "gdpr_risk", "decision"} <= payload.keys()
+    assert payload["response_mode"] == "sovereign"
+    assert payload["retrieval_status"] == "ready"
+    limiter.reset()

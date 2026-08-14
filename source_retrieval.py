@@ -18,6 +18,18 @@ REGISTRY_PATH = BASE_DIR / "data" / "source-registry.json"
 INDEX_PATH = BASE_DIR / "data" / "source-index.json"
 INDEX_SCHEMA_VERSION = "1.0"
 
+# Query anchors are deliberately kept outside the governed registry: they tune
+# retrieval only and do not alter source metadata or the evidence model.
+_SOURCE_SCOPES = {
+    "dfv 002": {"DFV-002"},
+    "hva 001": {"CASE-HVA-001"},
+    "coste360": {"CASE-COSTE360-001", "EA-009"},
+    "egea": {"CASE-EGEA-QEN-001", "BEN-EGEA-QEN-001"},
+    "agcm": {"CASE-AGCM-001", "AGCM-AS1930-NOTE-001"},
+    "ea 009": {"EA-009", "CASE-COSTE360-001"},
+    "cs 010": {"CS-010", "CASE-COASTAL-001"},
+}
+
 REQUIRED_FIELDS = {
     "source_id", "title", "version", "source_path", "canonical_url",
     "category", "authority", "date", "status", "source_class",
@@ -206,7 +218,7 @@ def knowledge_version() -> dict[str, str | None]:
     }
 
 
-def retrieve(query: str, *, limit: int = 5, minimum_score: float = 0.18) -> dict[str, Any]:
+def retrieve(query: str, *, limit: int = 5, minimum_score: float = 0.25) -> dict[str, Any]:
     index, status = load_index()
     version = knowledge_version()
     if not index:
@@ -221,9 +233,21 @@ def retrieve(query: str, *, limit: int = 5, minimum_score: float = 0.18) -> dict
                 "confidence": "low", "retrieval_status": "no_results",
                 "knowledge_version": version}
 
+    scoped_ids = set().union(*(
+        source_ids for anchor, source_ids in _SOURCE_SCOPES.items()
+        if re.search(rf"(?<![a-z0-9]){re.escape(anchor)}(?![a-z0-9])", normalized)
+    ))
+
     matches: list[dict[str, Any]] = []
     for document in index["documents"]:
         meta = document["metadata"]
+        source_id = document["source_id"]
+        # An explicit governed identifier defines the documentary perimeter.
+        # Related records are already included in the scope map (for example a
+        # case page and its evidence catalogue); unrelated cases cannot enter
+        # merely through generic words such as evidence, limits or governance.
+        if scoped_ids and source_id not in scoped_ids:
+            continue
         title_terms = set(normalize_text(meta["title"]).split())
         tag_terms = set(normalize_text(" ".join(document["search_terms"])).split())
         metadata_terms = set(normalize_text(" ".join(str(v) for v in meta.values())).split())
@@ -243,7 +267,24 @@ def retrieve(query: str, *, limit: int = 5, minimum_score: float = 0.18) -> dict
             raw = title_hits * 4 + tag_hits * 3 + section_hits * 3 + metadata_hits + content_hits + phrase_bonus + heading_bonus
             if raw == 0:
                 continue
-            rank_score = (raw / max(6, len(query_terms) * 4)) + authority_bonus + official_bonus
+            exact_source = bool(re.search(
+                rf"(?<![a-z0-9]){re.escape(normalize_text(source_id))}(?![a-z0-9])",
+                normalized,
+            ))
+            exact_title = normalize_text(meta["title"]) in normalized
+            exact_term = any(
+                len(term := normalize_text(value)) >= 4 and term in normalized
+                for value in document["search_terms"]
+            )
+            exact_bonus = (
+                0.9 if exact_source else 0.55 if exact_title
+                else 0.35 if exact_term else 0.0
+            )
+            scope_adjustment = 0.65 if scoped_ids else 0.0
+            rank_score = (
+                raw / max(6, len(query_terms) * 4)
+                + authority_bonus + official_bonus + exact_bonus + scope_adjustment
+            )
             score = min(1.0, rank_score)
             if score < minimum_score:
                 continue
