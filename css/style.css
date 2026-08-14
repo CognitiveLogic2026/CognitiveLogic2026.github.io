@@ -316,6 +316,7 @@ textarea { min-height: 140px; resize: vertical; }
   .container { width: min(calc(100% - 24px), var(--container)); }
   .header-end .btn { display: none; }
   .wordmark--nav { font-size: 1.05rem; }
+  .nav-group-menu { position: static; width: min(220px, calc(100vw - 2rem)); margin-top: .35rem; }
   .grid-2, .grid-3, .grid-4, .feature-grid, .architecture-grid, .copilot-grid, .qen-mini-grid, .stats-row, .metric-row, .result-grid, .score-band, .risk-band, .dashboard-grid, .result-layout { grid-template-columns: 1fr; }
   .cards { grid-template-columns: 1fr; }
   .process-grid { grid-template-columns: 1fr; }
