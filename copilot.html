@@ -194,6 +194,7 @@
     .company-input::placeholder { color: var(--muted); }
     .chips-divider { height: 1px; background: rgba(255,255,255,0.04); margin: 10px 0 12px; }
     #summary { max-width: 96ch; }
+    .site-header { width: 100%; }
     .site-header .header-inner { gap: clamp(14px, 2vw, 30px); }
     .site-header .header-end { gap: 12px; }
     .site-header .btn-primary { padding: 8px 16px; min-height: 0; font-size: 0.72rem; letter-spacing: 0.08em; font-weight: 600; }
@@ -265,9 +266,9 @@
     <button class="example-chip chip-sector" data-example="hotel-resort">Hotel & Resort</button>
     <button class="example-chip chip-sector" data-example="retail-pmi">Retail PMI</button>
   </div>
-  <div class="input-label" style="margin-top:4px;">Nome Azienda <span style="opacity:0.45;font-size:9px;">(opzionale)</span></div>
+  <label class="input-label" for="company-name" style="margin-top:4px;">Nome Azienda <span style="opacity:0.45;font-size:9px;">(opzionale)</span></label>
   <input type="text" id="company-name" class="company-input" placeholder="Es: Pizzeria OROROSSO, Trattoria La Gatta, Locanda Dei Bastardi…" autocomplete="off" />
-  <div class="input-label">Descrizione</div>
+  <label class="input-label" for="input">Descrizione</label>
   <textarea id="input" placeholder="Es: trattoria familiare con cucina tipica emiliana, 8 dipendenti, fornitori locali, aperta dal 1978…"></textarea>
   <div class="input-footer">
     <div class="btn-group">

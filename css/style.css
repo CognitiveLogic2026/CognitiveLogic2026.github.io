@@ -303,8 +303,8 @@ textarea { min-height: 140px; resize: vertical; }
   .container { width: min(calc(100% - 32px), var(--container)); }
   .grid-3, .grid-4, .feature-grid, .architecture-grid, .copilot-grid, .qen-mini-grid, .stats-row, .metric-row, .result-grid, .score-band, .risk-band { grid-template-columns: repeat(2,minmax(0,1fr)); }
   .home-hero { grid-template-columns: 1fr; min-height: auto; }
-  .home-hero .hero-left { min-height: 170px; border-right: 0; border-bottom: 1px solid var(--line-soft); }
-  .home-hero .hero-right { min-height: auto; padding-block: clamp(3rem, 9vw, 4.5rem); }
+  .home-hero .hero-left { min-width: 0; min-height: 170px; border-right: 0; border-bottom: 1px solid var(--line-soft); }
+  .home-hero .hero-right { min-width: 0; min-height: auto; padding-block: clamp(3rem, 9vw, 4.5rem); }
   .hero-grid, .metrics-band, .decision-banner, .footer-inner, .footer-grid { grid-template-columns: 1fr; }
   .cards, .onboarding-band { grid-template-columns: 1fr; }
   .process-grid { grid-template-columns: repeat(2,minmax(0,1fr)); }
