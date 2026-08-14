@@ -1,0 +1,69 @@
+name: IndexNow
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "**/*.html"
+      - "**/*.css"
+      - "**/*.js"
+      - "**/*.jpg"
+      - "**/*.jpeg"
+      - "**/*.png"
+      - "**/*.gif"
+      - "**/*.webp"
+      - "**/*.svg"
+      - "**/*.ico"
+      - "**/*.avif"
+      - "**/*.pdf"
+      - "**/*.woff"
+      - "**/*.woff2"
+      - "**/*.webmanifest"
+      - "_headers"
+      - "robots.txt"
+      - "sitemap.xml"
+      - "scripts/indexnow-submit.py"
+      - "!tests/**"
+      - "!documentation-audit/**"
+      - "!commercial-evolution-1.0/**"
+      - "!enterprise-platform-evolution-1.0/**"
+      - "!commercial-platform/**"
+      - "!qen-*/**"
+      - "!wizard-src/**"
+
+permissions:
+  contents: read
+
+concurrency:
+  group: indexnow-main
+  cancel-in-progress: false
+
+jobs:
+  submit:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+
+      - name: Determine changed public files
+        env:
+          BEFORE_SHA: ${{ github.event.before }}
+        run: |
+          if git cat-file -e "${BEFORE_SHA}^{commit}" 2>/dev/null; then
+            git diff --name-only --diff-filter=ACMRT "$BEFORE_SHA" "$GITHUB_SHA" > "$RUNNER_TEMP/indexnow-files.txt"
+          else
+            git diff-tree --no-commit-id --name-only --diff-filter=ACMRT -r "$GITHUB_SHA" > "$RUNNER_TEMP/indexnow-files.txt"
+          fi
+          echo "Changed paths considered by IndexNow:"
+          sed -n '1,200p' "$RUNNER_TEMP/indexnow-files.txt"
+
+      - name: Submit current canonical URLs
+        id: indexnow
+        continue-on-error: true
+        run: python3 scripts/indexnow-submit.py --files-from "$RUNNER_TEMP/indexnow-files.txt"
+
+      - name: Report non-blocking IndexNow failure
+        if: steps.indexnow.outcome == 'failure'
+        run: echo "::warning title=IndexNow submission failed::The deploy is not blocked; inspect the IndexNow step and retry after any temporary service error."
