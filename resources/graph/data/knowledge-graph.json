@@ -40,7 +40,7 @@
       "id": "executive",
       "title": "Executive Assets",
       "type": "Executive",
-      "url": "/executive-assets/"
+      "url": "/resources/executive-guides/"
     },
     {
       "id": "research",
@@ -58,7 +58,7 @@
       "id": "case-studies",
       "title": "Case Studies",
       "type": "Evidence",
-      "url": "/case-studies.html"
+      "url": "/case-studies/"
     }
   ],
   "links": [

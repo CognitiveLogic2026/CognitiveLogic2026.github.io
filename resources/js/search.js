@@ -12,9 +12,9 @@ document.addEventListener("DOMContentLoaded", async () => {
   const categoryFilter = root.querySelector("[data-resource-category]");
   const sortFilter = root.querySelector("[data-resource-sort]");
   const featuredOnly = root.querySelector("[data-resource-featured]");
-  const results = root.querySelector("[data-resource-results]");
+  const results = document.querySelector("[data-resource-results]");
   const count = root.querySelector("[data-resource-count]");
-  const empty = root.querySelector("[data-resource-empty]");
+  const empty = document.querySelector("[data-resource-empty]");
   const reset = root.querySelector("[data-resource-reset]");
 
   if (
@@ -52,7 +52,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     }
 
     resources = payload.filter(
-      (item) => item && item.status === "published"
+      (item) => item && item.status !== "draft"
     );
   } catch (error) {
     console.error("Resource catalogue loading failed:", error);
@@ -76,8 +76,9 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   const categoryLabels = {
     publications: "Publications",
-    research: "Research",
-    "validation-case-studies": "Validation e Case Studies",
+    "white-papers": "White Papers",
+    "case-studies": "Case Studies",
+    "research-notes": "Research Notes",
     "executive-guides": "Executive Guides"
   };
 
@@ -160,9 +161,9 @@ document.addEventListener("DOMContentLoaded", async () => {
   };
   setCount("[data-count-total]", resources.length);
   setCount("[data-count-categories]", new Set(resources.map((item) => item.category)).size);
-  setCount("[data-count-research]", resources.filter((item) => item.category === "research").length);
-  setCount("[data-count-watch]", resources.filter((item) => item.category === "international-watch").length);
-  setCount("[data-count-validation]", resources.filter((item) => item.category === "validation-case-studies").length);
+  setCount("[data-count-research]", resources.filter((item) => item.category === "research-notes").length);
+  setCount("[data-count-white-papers]", resources.filter((item) => item.category === "white-papers").length);
+  setCount("[data-count-validation]", resources.filter((item) => item.category === "case-studies").length);
 
   const getSearchText = (item) =>
     normalize(

@@ -70,11 +70,14 @@ function markdownToHtml(markdown) {
 function page(resource, body) {
   const title = escapeHtml(resource.title); const category = escapeHtml(resource.categoryLabel || resource.category); const type = escapeHtml(resource.type);
   const isManifesto = resource.id === "dfv-002-manifesto-verita-verificabile";
-  if (!isManifesto) return `<!doctype html><html lang="${escapeHtml(resource.language || "en")}"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>${title} | Cognitive Logic</title><meta name="description" content="${escapeHtml(resource.description)}"><link rel="stylesheet" href="/css/fonts-local.css"><link rel="stylesheet" href="/css/style.css?v=3"><link rel="stylesheet" href="/resources/style.css?v=2"></head><body>
+  if (!isManifesto) {
+    const canonical = escapeHtml(resource.canonical || `https://cognitivelogic.it${resource.url}`);
+    return `<!doctype html><html lang="${escapeHtml(resource.language || "en")}"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>${title} | Cognitive Logic</title><meta name="description" content="${escapeHtml(resource.description)}"><link rel="canonical" href="${canonical}"><meta property="og:title" content="${title}"><meta property="og:description" content="${escapeHtml(resource.description)}"><meta property="og:url" content="${canonical}"><meta property="og:type" content="article"><meta property="og:image" content="https://cognitivelogic.it/img/qen-homepage-og.png"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="${title}"><meta name="twitter:description" content="${escapeHtml(resource.description)}"><meta name="twitter:image" content="https://cognitivelogic.it/img/qen-homepage-og.png"><link rel="stylesheet" href="/css/fonts-local.css"><link rel="stylesheet" href="/css/style.css?v=3"><link rel="stylesheet" href="/resources/style.css?v=2"></head><body>
 <a class="skip-link" href="#main">Vai al contenuto principale</a><header class="site-header"><div class="container header-inner"><a href="/index.html" class="brand" aria-label="Cognitive Logic — Home"><span class="wordmark wordmark--nav notranslate" translate="no"><span class="wm-top">Cognitive</span><span class="wm-bot">Logic</span></span></a><nav class="main-nav" aria-label="Navigazione principale"><a href="/resources/">Resource Center</a><a href="/research.html">Research</a><a href="/international-watch/">International Watch</a><a href="/trust.html">Trust Center</a></nav></div></header>
 <main id="main"><section class="document-hero"><div class="container"><nav class="breadcrumbs" aria-label="Percorso"><a href="/index.html">Home</a> / <a href="/resources/">Resource Center</a> / <span class="notranslate" translate="no">${title}</span></nav><p class="resource-kicker">${category}</p><h1 class="notranslate" translate="no">${title}</h1><dl class="document-metadata"><div><dt>Categoria</dt><dd>${category}</dd></div><div><dt>Formato</dt><dd>${type} · HTML statico</dd></div></dl></div></section>
 <section class="section"><div class="container document-layout"><article class="resource-document" data-source="${escapeHtml(resource.source)}">${body}</article></div></section><section class="document-return"><div class="container"><a href="/resources/">← Torna al Resource Center</a></div></section></main>
 <footer class="site-footer"><div class="container footer-inner"><div><div class="wordmark wordmark--footer notranslate" translate="no"><span class="wm-top">Cognitive</span><span class="wm-bot">Logic</span></div><div class="footer-copy">© 2026 Roberto Bob Malini — <span class="notranslate" translate="no">Cognitive Logic</span></div></div><div class="footer-links"><a href="/resources/">Resource Center</a><a href="/privacy.html">Privacy</a></div></div></footer></body></html>`;
+  }
   const canonical = escapeHtml(resource.canonical || `https://cognitivelogic.it${resource.url}`);
   const documentBody = isManifesto ? body.replace(/^<h1>(.*?)<\/h1>/, '<h2>$1</h2>') : body;
   const metadata = isManifesto
@@ -103,9 +106,11 @@ function rebaseDocumentLinks(html, sourcePath) {
 }
 
 const catalogue = JSON.parse(fs.readFileSync(cataloguePath, "utf8")); let generated = 0;
-const selectedResources = process.env.RESOURCE_ID
+const selectedResources = process.env.CATALOGUE_ONLY === "1"
+  ? []
+  : process.env.RESOURCE_ID
   ? catalogue.filter((resource) => resource.id === process.env.RESOURCE_ID)
-  : catalogue;
+  : catalogue.filter((resource) => resource.rendering !== "standalone");
 if (process.env.RESOURCE_ID && selectedResources.length !== 1) throw new Error(`Unknown RESOURCE_ID: ${process.env.RESOURCE_ID}`);
 for (const resource of selectedResources) {
   if (!resource.source || !resource.output) throw new Error(`Missing source/output mapping for ${resource.id}`);
