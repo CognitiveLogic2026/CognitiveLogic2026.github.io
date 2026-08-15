@@ -40,6 +40,24 @@ CARDS = (
         "note_2": "Non costituisce valutazione o certificazione",
         "url": "cognitivelogic.it/case-studies/egea-qen/",
     },
+    {
+        "path": ROOT / "img/og/hva-001-hospitality-ai-governance.png",
+        "category": "PUBLIC-EVIDENCE CASE",
+        "title": "HVA-001",
+        "subtitle": "Hospitality AI Governance",
+        "note_1": "Analisi indipendente su evidenze pubbliche",
+        "note_2": "Controlli interni non verificati",
+        "url": "cognitivelogic.it/case-studies/hva-001/",
+    },
+    {
+        "path": ROOT / "img/og/agcm-criteri-contestati.png",
+        "category": "CRITICAL CASE",
+        "title": "AGCM",
+        "subtitle": "Criteri contestati nelle concessioni",
+        "note_1": "Ricostruzione da provvedimenti e fonti citate",
+        "note_2": "Scheda parziale e temporalmente limitata",
+        "url": "cognitivelogic.it/case-studies/agcm-criteri-contestati/",
+    },
 )
 
 
