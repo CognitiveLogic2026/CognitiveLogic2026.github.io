@@ -21,8 +21,9 @@ jobs:
         run: |
           pip install -q \
             -r requirements-flask.txt \
+            -r requirements-test.txt \
             -r qen-reconciliation/requirements.txt \
-            pytest httpx
+            httpx
 
       - name: Run smoke tests
         run: |
