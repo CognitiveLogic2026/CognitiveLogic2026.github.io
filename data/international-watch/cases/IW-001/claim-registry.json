@@ -1,0 +1,1236 @@
+{
+  "schema_version": "1.0.0",
+  "case_id": "IW-001",
+  "records": [
+    {
+      "id": "IW-001-CLM-001",
+      "schema_version": "1.0.0",
+      "record_version": "1.0.0",
+      "created_at": "2026-08-19T12:00:00Z",
+      "updated_at": "2026-08-19T15:00:00Z",
+      "valid_from": "2026-08-19T12:00:00Z",
+      "valid_until": null,
+      "as_of": "2026-08-19T12:00:00Z",
+      "status": "approved",
+      "supersedes": null,
+      "provenance": {
+        "created_by": "Cognitive Logic IW research",
+        "method": "Manual OSINT review; deterministic structuring",
+        "sources": [],
+        "transformations": [
+          "Phase 3 formal methodological review"
+        ]
+      },
+      "responsible_actor": "Cognitive Logic IW author",
+      "review_required": true,
+      "review_due": "2026-09-19T12:00:00Z",
+      "content_hash": null,
+      "claim_id": "IW-001-CLM-001",
+      "event_id": "IW-001-E001",
+      "claim_text_original": "Tracked commercial vessels transited the Strait during the week ending 16 August 2026.",
+      "language": "en",
+      "translation": "Tracked commercial vessels transited the Strait during the week ending 16 August 2026.",
+      "translation_method": "human",
+      "claim_type": "observable_fact",
+      "speaker_actor_id": "Kpler dataset as reported by AP",
+      "origin_source_id": "IW-001-SRC-007",
+      "origin_timestamp": null,
+      "publication_timestamp": null,
+      "original_context": "Analytic atom; statement content kept distinct from statement occurrence.",
+      "subject": "Kpler dataset as reported by AP",
+      "predicate": "asserts or establishes",
+      "object": "95 confirmed crossings; three on Sunday",
+      "qualifiers": [
+        "as_of 2026-08-19T12:00:00Z"
+      ],
+      "geographic_scope": [
+        "Strait of Hormuz"
+      ],
+      "temporal_scope": {
+        "start": "2026-08-01T00:00:00Z",
+        "end": "2026-08-19T12:00:00Z"
+      },
+      "definition_refs": [
+        "CONTROLLED-GLOSSARY"
+      ],
+      "testability": {
+        "status": "partially_testable",
+        "method": "Inspect named origin and claim-specific evidence; preserve AIS and access limits."
+      },
+      "evidence_refs": [
+        "IW-001-EVD-001"
+      ],
+      "counter_evidence_refs": [],
+      "counter_evidence_absence_reason": "No claim-specific counter-evidence identified at cut-off; absence is not confirmation.",
+      "dependency_refs": [],
+      "assessment_id": "IW-001-ASM-001",
+      "revision_triggers": [
+        "new material evidence",
+        "source correction or withdrawal",
+        "dependency or temporal-scope change"
+      ]
+    },
+    {
+      "id": "IW-001-CLM-002",
+      "schema_version": "1.0.0",
+      "record_version": "1.0.0",
+      "created_at": "2026-08-19T12:00:00Z",
+      "updated_at": "2026-08-19T15:00:00Z",
+      "valid_from": "2026-08-19T12:00:00Z",
+      "valid_until": null,
+      "as_of": "2026-08-19T12:00:00Z",
+      "status": "approved",
+      "supersedes": null,
+      "provenance": {
+        "created_by": "Cognitive Logic IW research",
+        "method": "Manual OSINT review; deterministic structuring",
+        "sources": [],
+        "transformations": [
+          "Phase 3 formal methodological review"
+        ]
+      },
+      "responsible_actor": "Cognitive Logic IW author",
+      "review_required": true,
+      "review_due": "2026-09-19T12:00:00Z",
+      "content_hash": null,
+      "claim_id": "IW-001-CLM-002",
+      "event_id": "IW-001-E001",
+      "claim_text_original": "The observed weekly count was 95 confirmed crossings, down 19.5%.",
+      "language": "en",
+      "translation": "The observed weekly count was 95 confirmed crossings, down 19.5%.",
+      "translation_method": "human",
+      "claim_type": "observable_fact",
+      "speaker_actor_id": "Kpler dataset as reported by AP",
+      "origin_source_id": "IW-001-SRC-007",
+      "origin_timestamp": null,
+      "publication_timestamp": null,
+      "original_context": "Analytic atom; statement content kept distinct from statement occurrence.",
+      "subject": "Kpler dataset as reported by AP",
+      "predicate": "asserts or establishes",
+      "object": "95 crossings under Kpler method",
+      "qualifiers": [
+        "as_of 2026-08-19T12:00:00Z"
+      ],
+      "geographic_scope": [
+        "Strait of Hormuz"
+      ],
+      "temporal_scope": {
+        "start": "2026-08-01T00:00:00Z",
+        "end": "2026-08-19T12:00:00Z"
+      },
+      "definition_refs": [
+        "CONTROLLED-GLOSSARY"
+      ],
+      "testability": {
+        "status": "partially_testable",
+        "method": "Inspect named origin and claim-specific evidence; preserve AIS and access limits."
+      },
+      "evidence_refs": [
+        "IW-001-EVD-002"
+      ],
+      "counter_evidence_refs": [],
+      "counter_evidence_absence_reason": "No claim-specific counter-evidence identified at cut-off; absence is not confirmation.",
+      "dependency_refs": [],
+      "assessment_id": "IW-001-ASM-002",
+      "revision_triggers": [
+        "new material evidence",
+        "source correction or withdrawal",
+        "dependency or temporal-scope change"
+      ]
+    },
+    {
+      "id": "IW-001-CLM-003",
+      "schema_version": "1.0.0",
+      "record_version": "1.0.0",
+      "created_at": "2026-08-19T12:00:00Z",
+      "updated_at": "2026-08-19T15:00:00Z",
+      "valid_from": "2026-08-19T12:00:00Z",
+      "valid_until": null,
+      "as_of": "2026-08-19T12:00:00Z",
+      "status": "approved",
+      "supersedes": null,
+      "provenance": {
+        "created_by": "Cognitive Logic IW research",
+        "method": "Manual OSINT review; deterministic structuring",
+        "sources": [],
+        "transformations": [
+          "Phase 3 formal methodological review"
+        ]
+      },
+      "responsible_actor": "Cognitive Logic IW author",
+      "review_required": true,
+      "review_due": "2026-09-19T12:00:00Z",
+      "content_hash": null,
+      "claim_id": "IW-001-CLM-003",
+      "event_id": "IW-001-E001",
+      "claim_text_original": "AIS-derived counts do not represent all physical traffic.",
+      "language": "en",
+      "translation": "AIS-derived counts do not represent all physical traffic.",
+      "translation_method": "human",
+      "claim_type": "inference",
+      "speaker_actor_id": "Cognitive Logic analysis",
+      "origin_source_id": "IW-001-SRC-007",
+      "origin_timestamp": null,
+      "publication_timestamp": null,
+      "original_context": "Analytic atom; statement content kept distinct from statement occurrence.",
+      "subject": "Cognitive Logic analysis",
+      "predicate": "asserts or establishes",
+      "object": "tracked traffic is not total traffic",
+      "qualifiers": [
+        "as_of 2026-08-19T12:00:00Z"
+      ],
+      "geographic_scope": [
+        "Strait of Hormuz"
+      ],
+      "temporal_scope": {
+        "start": "2026-08-01T00:00:00Z",
+        "end": "2026-08-19T12:00:00Z"
+      },
+      "definition_refs": [
+        "CONTROLLED-GLOSSARY"
+      ],
+      "testability": {
+        "status": "partially_testable",
+        "method": "Inspect named origin and claim-specific evidence; preserve AIS and access limits."
+      },
+      "evidence_refs": [
+        "IW-001-EVD-003"
+      ],
+      "counter_evidence_refs": [],
+      "counter_evidence_absence_reason": "No claim-specific counter-evidence identified at cut-off; absence is not confirmation.",
+      "dependency_refs": [],
+      "assessment_id": "IW-001-ASM-003",
+      "revision_triggers": [
+        "new material evidence",
+        "source correction or withdrawal",
+        "dependency or temporal-scope change"
+      ]
+    },
+    {
+      "id": "IW-001-CLM-004",
+      "schema_version": "1.0.0",
+      "record_version": "1.0.0",
+      "created_at": "2026-08-19T12:00:00Z",
+      "updated_at": "2026-08-19T15:00:00Z",
+      "valid_from": "2026-08-19T12:00:00Z",
+      "valid_until": null,
+      "as_of": "2026-08-19T12:00:00Z",
+      "status": "approved",
+      "supersedes": null,
+      "provenance": {
+        "created_by": "Cognitive Logic IW research",
+        "method": "Manual OSINT review; deterministic structuring",
+        "sources": [],
+        "transformations": [
+          "Phase 3 formal methodological review"
+        ]
+      },
+      "responsible_actor": "Cognitive Logic IW author",
+      "review_required": true,
+      "review_due": "2026-09-19T12:00:00Z",
+      "content_hash": null,
+      "claim_id": "IW-001-CLM-004",
+      "event_id": "IW-001-E001",
+      "claim_text_original": "At least some commercial vessels could physically navigate the Strait in the observed period.",
+      "language": "en",
+      "translation": "At least some commercial vessels could physically navigate the Strait in the observed period.",
+      "translation_method": "human",
+      "claim_type": "inference",
+      "speaker_actor_id": "Cognitive Logic analysis",
+      "origin_source_id": "IW-001-SRC-007",
+      "origin_timestamp": null,
+      "publication_timestamp": null,
+      "original_context": "Analytic atom; statement content kept distinct from statement occurrence.",
+      "subject": "Cognitive Logic analysis",
+      "predicate": "asserts or establishes",
+      "object": "physical navigability for observed vessels",
+      "qualifiers": [
+        "as_of 2026-08-19T12:00:00Z"
+      ],
+      "geographic_scope": [
+        "Strait of Hormuz"
+      ],
+      "temporal_scope": {
+        "start": "2026-08-01T00:00:00Z",
+        "end": "2026-08-19T12:00:00Z"
+      },
+      "definition_refs": [
+        "CONTROLLED-GLOSSARY"
+      ],
+      "testability": {
+        "status": "partially_testable",
+        "method": "Inspect named origin and claim-specific evidence; preserve AIS and access limits."
+      },
+      "evidence_refs": [
+        "IW-001-EVD-004"
+      ],
+      "counter_evidence_refs": [],
+      "counter_evidence_absence_reason": "No claim-specific counter-evidence identified at cut-off; absence is not confirmation.",
+      "dependency_refs": [],
+      "assessment_id": "IW-001-ASM-004",
+      "revision_triggers": [
+        "new material evidence",
+        "source correction or withdrawal",
+        "dependency or temporal-scope change"
+      ]
+    },
+    {
+      "id": "IW-001-CLM-005",
+      "schema_version": "1.0.0",
+      "record_version": "1.0.0",
+      "created_at": "2026-08-19T12:00:00Z",
+      "updated_at": "2026-08-19T15:00:00Z",
+      "valid_from": "2026-08-19T12:00:00Z",
+      "valid_until": null,
+      "as_of": "2026-08-19T12:00:00Z",
+      "status": "approved",
+      "supersedes": null,
+      "provenance": {
+        "created_by": "Cognitive Logic IW research",
+        "method": "Manual OSINT review; deterministic structuring",
+        "sources": [],
+        "transformations": [
+          "Phase 3 formal methodological review"
+        ]
+      },
+      "responsible_actor": "Cognitive Logic IW author",
+      "review_required": true,
+      "review_due": "2026-09-19T12:00:00Z",
+      "content_hash": null,
+      "claim_id": "IW-001-CLM-005",
+      "event_id": "IW-001-E001",
+      "claim_text_original": "Normal commercial freedom of navigation existed at the cut-off.",
+      "language": "en",
+      "translation": "Normal commercial freedom of navigation existed at the cut-off.",
+      "translation_method": "human",
+      "claim_type": "inference",
+      "speaker_actor_id": "No single origin",
+      "origin_source_id": "IW-001-SRC-007",
+      "origin_timestamp": null,
+      "publication_timestamp": null,
+      "original_context": "Analytic atom; statement content kept distinct from statement occurrence.",
+      "subject": "No single origin",
+      "predicate": "asserts or establishes",
+      "object": "normal unrestricted commercial passage",
+      "qualifiers": [
+        "as_of 2026-08-19T12:00:00Z"
+      ],
+      "geographic_scope": [
+        "Strait of Hormuz"
+      ],
+      "temporal_scope": {
+        "start": "2026-08-01T00:00:00Z",
+        "end": "2026-08-19T12:00:00Z"
+      },
+      "definition_refs": [
+        "CONTROLLED-GLOSSARY"
+      ],
+      "testability": {
+        "status": "partially_testable",
+        "method": "Inspect named origin and claim-specific evidence; preserve AIS and access limits."
+      },
+      "evidence_refs": [
+        "IW-001-EVD-005"
+      ],
+      "counter_evidence_refs": [
+        "IW-001-EVD-005"
+      ],
+      "counter_evidence_absence_reason": null,
+      "dependency_refs": [],
+      "assessment_id": "IW-001-ASM-005",
+      "revision_triggers": [
+        "new material evidence",
+        "source correction or withdrawal",
+        "dependency or temporal-scope change"
+      ]
+    },
+    {
+      "id": "IW-001-CLM-006",
+      "schema_version": "1.0.0",
+      "record_version": "1.0.0",
+      "created_at": "2026-08-19T12:00:00Z",
+      "updated_at": "2026-08-19T15:00:00Z",
+      "valid_from": "2026-08-19T12:00:00Z",
+      "valid_until": null,
+      "as_of": "2026-08-19T12:00:00Z",
+      "status": "approved",
+      "supersedes": null,
+      "provenance": {
+        "created_by": "Cognitive Logic IW research",
+        "method": "Manual OSINT review; deterministic structuring",
+        "sources": [],
+        "transformations": [
+          "Phase 3 formal methodological review"
+        ]
+      },
+      "responsible_actor": "Cognitive Logic IW author",
+      "review_required": true,
+      "review_due": "2026-09-19T12:00:00Z",
+      "content_hash": null,
+      "claim_id": "IW-001-CLM-006",
+      "event_id": "IW-001-E002",
+      "claim_text_original": "The US President stated the Strait was open and operating.",
+      "language": "en",
+      "translation": "The US President stated the Strait was open and operating.",
+      "translation_method": "human",
+      "claim_type": "statement",
+      "speaker_actor_id": "US President as reported by AP",
+      "origin_source_id": "IW-001-SRC-007",
+      "origin_timestamp": null,
+      "publication_timestamp": null,
+      "original_context": "Analytic atom; statement content kept distinct from statement occurrence.",
+      "subject": "US President as reported by AP",
+      "predicate": "asserts or establishes",
+      "object": "statement was made",
+      "qualifiers": [
+        "as_of 2026-08-19T12:00:00Z"
+      ],
+      "geographic_scope": [
+        "Strait of Hormuz"
+      ],
+      "temporal_scope": {
+        "start": "2026-08-01T00:00:00Z",
+        "end": "2026-08-19T12:00:00Z"
+      },
+      "definition_refs": [
+        "CONTROLLED-GLOSSARY"
+      ],
+      "testability": {
+        "status": "partially_testable",
+        "method": "Inspect named origin and claim-specific evidence; preserve AIS and access limits."
+      },
+      "evidence_refs": [
+        "IW-001-EVD-006"
+      ],
+      "counter_evidence_refs": [],
+      "counter_evidence_absence_reason": "No claim-specific counter-evidence identified at cut-off; absence is not confirmation.",
+      "dependency_refs": [],
+      "assessment_id": "IW-001-ASM-006",
+      "revision_triggers": [
+        "new material evidence",
+        "source correction or withdrawal",
+        "dependency or temporal-scope change"
+      ]
+    },
+    {
+      "id": "IW-001-CLM-007",
+      "schema_version": "1.0.0",
+      "record_version": "1.0.0",
+      "created_at": "2026-08-19T12:00:00Z",
+      "updated_at": "2026-08-19T15:00:00Z",
+      "valid_from": "2026-08-19T12:00:00Z",
+      "valid_until": null,
+      "as_of": "2026-08-19T12:00:00Z",
+      "status": "approved",
+      "supersedes": null,
+      "provenance": {
+        "created_by": "Cognitive Logic IW research",
+        "method": "Manual OSINT review; deterministic structuring",
+        "sources": [],
+        "transformations": [
+          "Phase 3 formal methodological review"
+        ]
+      },
+      "responsible_actor": "Cognitive Logic IW author",
+      "review_required": true,
+      "review_due": "2026-09-19T12:00:00Z",
+      "content_hash": null,
+      "claim_id": "IW-001-CLM-007",
+      "event_id": "IW-001-E002",
+      "claim_text_original": "The Strait was open and operating in the normal-commercial sense.",
+      "language": "en",
+      "translation": "The Strait was open and operating in the normal-commercial sense.",
+      "translation_method": "human",
+      "claim_type": "statement",
+      "speaker_actor_id": "US President as reported by AP",
+      "origin_source_id": "IW-001-SRC-007",
+      "origin_timestamp": null,
+      "publication_timestamp": null,
+      "original_context": "Analytic atom; statement content kept distinct from statement occurrence.",
+      "subject": "US President as reported by AP",
+      "predicate": "asserts or establishes",
+      "object": "normal commercial opening",
+      "qualifiers": [
+        "as_of 2026-08-19T12:00:00Z"
+      ],
+      "geographic_scope": [
+        "Strait of Hormuz"
+      ],
+      "temporal_scope": {
+        "start": "2026-08-01T00:00:00Z",
+        "end": "2026-08-19T12:00:00Z"
+      },
+      "definition_refs": [
+        "CONTROLLED-GLOSSARY"
+      ],
+      "testability": {
+        "status": "partially_testable",
+        "method": "Inspect named origin and claim-specific evidence; preserve AIS and access limits."
+      },
+      "evidence_refs": [
+        "IW-001-EVD-007"
+      ],
+      "counter_evidence_refs": [
+        "IW-001-EVD-007"
+      ],
+      "counter_evidence_absence_reason": null,
+      "dependency_refs": [],
+      "assessment_id": "IW-001-ASM-007",
+      "revision_triggers": [
+        "new material evidence",
+        "source correction or withdrawal",
+        "dependency or temporal-scope change"
+      ]
+    },
+    {
+      "id": "IW-001-CLM-008",
+      "schema_version": "1.0.0",
+      "record_version": "1.0.0",
+      "created_at": "2026-08-19T12:00:00Z",
+      "updated_at": "2026-08-19T15:00:00Z",
+      "valid_from": "2026-08-19T12:00:00Z",
+      "valid_until": null,
+      "as_of": "2026-08-19T12:00:00Z",
+      "status": "approved",
+      "supersedes": null,
+      "provenance": {
+        "created_by": "Cognitive Logic IW research",
+        "method": "Manual OSINT review; deterministic structuring",
+        "sources": [],
+        "transformations": [
+          "Phase 3 formal methodological review"
+        ]
+      },
+      "responsible_actor": "Cognitive Logic IW author",
+      "review_required": true,
+      "review_due": "2026-09-19T12:00:00Z",
+      "content_hash": null,
+      "claim_id": "IW-001-CLM-008",
+      "event_id": "IW-001-E002",
+      "claim_text_original": "Iran stated no change should be expected until US conditions were met.",
+      "language": "en",
+      "translation": "Iran stated no change should be expected until US conditions were met.",
+      "translation_method": "human",
+      "claim_type": "statement",
+      "speaker_actor_id": "Iran MFA as carried by Tasnim",
+      "origin_source_id": "IW-001-SRC-005",
+      "origin_timestamp": null,
+      "publication_timestamp": null,
+      "original_context": "Analytic atom; statement content kept distinct from statement occurrence.",
+      "subject": "Iran MFA as carried by Tasnim",
+      "predicate": "asserts or establishes",
+      "object": "conditional non-reopening position",
+      "qualifiers": [
+        "as_of 2026-08-19T12:00:00Z"
+      ],
+      "geographic_scope": [
+        "Strait of Hormuz"
+      ],
+      "temporal_scope": {
+        "start": "2026-08-01T00:00:00Z",
+        "end": "2026-08-19T12:00:00Z"
+      },
+      "definition_refs": [
+        "CONTROLLED-GLOSSARY"
+      ],
+      "testability": {
+        "status": "partially_testable",
+        "method": "Inspect named origin and claim-specific evidence; preserve AIS and access limits."
+      },
+      "evidence_refs": [
+        "IW-001-EVD-008"
+      ],
+      "counter_evidence_refs": [],
+      "counter_evidence_absence_reason": "No claim-specific counter-evidence identified at cut-off; absence is not confirmation.",
+      "dependency_refs": [],
+      "assessment_id": "IW-001-ASM-008",
+      "revision_triggers": [
+        "new material evidence",
+        "source correction or withdrawal",
+        "dependency or temporal-scope change"
+      ]
+    },
+    {
+      "id": "IW-001-CLM-009",
+      "schema_version": "1.0.0",
+      "record_version": "1.0.0",
+      "created_at": "2026-08-19T12:00:00Z",
+      "updated_at": "2026-08-19T15:00:00Z",
+      "valid_from": "2026-08-19T12:00:00Z",
+      "valid_until": null,
+      "as_of": "2026-08-19T12:00:00Z",
+      "status": "approved",
+      "supersedes": null,
+      "provenance": {
+        "created_by": "Cognitive Logic IW research",
+        "method": "Manual OSINT review; deterministic structuring",
+        "sources": [],
+        "transformations": [
+          "Phase 3 formal methodological review"
+        ]
+      },
+      "responsible_actor": "Cognitive Logic IW author",
+      "review_required": true,
+      "review_due": "2026-09-19T12:00:00Z",
+      "content_hash": null,
+      "claim_id": "IW-001-CLM-009",
+      "event_id": "IW-001-E002",
+      "claim_text_original": "Iran exercised comprehensive operational control over every transit.",
+      "language": "en",
+      "translation": "Iran exercised comprehensive operational control over every transit.",
+      "translation_method": "human",
+      "claim_type": "statement",
+      "speaker_actor_id": "Iranian claims reported in derivatives",
+      "origin_source_id": "IW-001-SRC-007",
+      "origin_timestamp": null,
+      "publication_timestamp": null,
+      "original_context": "Analytic atom; statement content kept distinct from statement occurrence.",
+      "subject": "Iranian claims reported in derivatives",
+      "predicate": "asserts or establishes",
+      "object": "comprehensive operational control",
+      "qualifiers": [
+        "as_of 2026-08-19T12:00:00Z"
+      ],
+      "geographic_scope": [
+        "Strait of Hormuz"
+      ],
+      "temporal_scope": {
+        "start": "2026-08-01T00:00:00Z",
+        "end": "2026-08-19T12:00:00Z"
+      },
+      "definition_refs": [
+        "CONTROLLED-GLOSSARY"
+      ],
+      "testability": {
+        "status": "partially_testable",
+        "method": "Inspect named origin and claim-specific evidence; preserve AIS and access limits."
+      },
+      "evidence_refs": [
+        "IW-001-EVD-009"
+      ],
+      "counter_evidence_refs": [],
+      "counter_evidence_absence_reason": "No claim-specific counter-evidence identified at cut-off; absence is not confirmation.",
+      "dependency_refs": [],
+      "assessment_id": "IW-001-ASM-009",
+      "revision_triggers": [
+        "new material evidence",
+        "source correction or withdrawal",
+        "dependency or temporal-scope change"
+      ]
+    },
+    {
+      "id": "IW-001-CLM-010",
+      "schema_version": "1.0.0",
+      "record_version": "1.0.0",
+      "created_at": "2026-08-19T12:00:00Z",
+      "updated_at": "2026-08-19T15:00:00Z",
+      "valid_from": "2026-08-19T12:00:00Z",
+      "valid_until": null,
+      "as_of": "2026-08-19T12:00:00Z",
+      "status": "approved",
+      "supersedes": null,
+      "provenance": {
+        "created_by": "Cognitive Logic IW research",
+        "method": "Manual OSINT review; deterministic structuring",
+        "sources": [],
+        "transformations": [
+          "Phase 3 formal methodological review"
+        ]
+      },
+      "responsible_actor": "Cognitive Logic IW author",
+      "review_required": true,
+      "review_due": "2026-09-19T12:00:00Z",
+      "content_hash": null,
+      "claim_id": "IW-001-CLM-010",
+      "event_id": "IW-001-E002",
+      "claim_text_original": "Iran possessed exclusive legal control or sovereignty over the Strait.",
+      "language": "en",
+      "translation": "Iran possessed exclusive legal control or sovereignty over the Strait.",
+      "translation_method": "human",
+      "claim_type": "statement",
+      "speaker_actor_id": "Iranian/derivative framing",
+      "origin_source_id": "IW-001-SRC-007",
+      "origin_timestamp": null,
+      "publication_timestamp": null,
+      "original_context": "Analytic atom; statement content kept distinct from statement occurrence.",
+      "subject": "Iranian/derivative framing",
+      "predicate": "asserts or establishes",
+      "object": "exclusive legal control",
+      "qualifiers": [
+        "as_of 2026-08-19T12:00:00Z"
+      ],
+      "geographic_scope": [
+        "Strait of Hormuz"
+      ],
+      "temporal_scope": {
+        "start": "2026-08-01T00:00:00Z",
+        "end": "2026-08-19T12:00:00Z"
+      },
+      "definition_refs": [
+        "CONTROLLED-GLOSSARY"
+      ],
+      "testability": {
+        "status": "partially_testable",
+        "method": "Inspect named origin and claim-specific evidence; preserve AIS and access limits."
+      },
+      "evidence_refs": [
+        "IW-001-EVD-010"
+      ],
+      "counter_evidence_refs": [
+        "IW-001-EVD-010"
+      ],
+      "counter_evidence_absence_reason": null,
+      "dependency_refs": [],
+      "assessment_id": "IW-001-ASM-010",
+      "revision_triggers": [
+        "new material evidence",
+        "source correction or withdrawal",
+        "dependency or temporal-scope change"
+      ]
+    },
+    {
+      "id": "IW-001-CLM-011",
+      "schema_version": "1.0.0",
+      "record_version": "1.0.0",
+      "created_at": "2026-08-19T12:00:00Z",
+      "updated_at": "2026-08-19T15:00:00Z",
+      "valid_from": "2026-08-19T12:00:00Z",
+      "valid_until": null,
+      "as_of": "2026-08-19T12:00:00Z",
+      "status": "approved",
+      "supersedes": null,
+      "provenance": {
+        "created_by": "Cognitive Logic IW research",
+        "method": "Manual OSINT review; deterministic structuring",
+        "sources": [],
+        "transformations": [
+          "Phase 3 formal methodological review"
+        ]
+      },
+      "responsible_actor": "Cognitive Logic IW author",
+      "review_required": true,
+      "review_due": "2026-09-19T12:00:00Z",
+      "content_hash": null,
+      "claim_id": "IW-001-CLM-011",
+      "event_id": "IW-001-E003",
+      "claim_text_original": "Iran and Oman were negotiating a temporary shipping arrangement.",
+      "language": "en",
+      "translation": "Iran and Oman were negotiating a temporary shipping arrangement.",
+      "translation_method": "human",
+      "claim_type": "statement",
+      "speaker_actor_id": "Iran MFA/FM statements",
+      "origin_source_id": "IW-001-SRC-006",
+      "origin_timestamp": null,
+      "publication_timestamp": null,
+      "original_context": "Analytic atom; statement content kept distinct from statement occurrence.",
+      "subject": "Iran MFA/FM statements",
+      "predicate": "asserts or establishes",
+      "object": "bilateral negotiation existed",
+      "qualifiers": [
+        "as_of 2026-08-19T12:00:00Z"
+      ],
+      "geographic_scope": [
+        "Strait of Hormuz"
+      ],
+      "temporal_scope": {
+        "start": "2026-08-01T00:00:00Z",
+        "end": "2026-08-19T12:00:00Z"
+      },
+      "definition_refs": [
+        "CONTROLLED-GLOSSARY"
+      ],
+      "testability": {
+        "status": "partially_testable",
+        "method": "Inspect named origin and claim-specific evidence; preserve AIS and access limits."
+      },
+      "evidence_refs": [
+        "IW-001-EVD-011"
+      ],
+      "counter_evidence_refs": [],
+      "counter_evidence_absence_reason": "No claim-specific counter-evidence identified at cut-off; absence is not confirmation.",
+      "dependency_refs": [],
+      "assessment_id": "IW-001-ASM-011",
+      "revision_triggers": [
+        "new material evidence",
+        "source correction or withdrawal",
+        "dependency or temporal-scope change"
+      ]
+    },
+    {
+      "id": "IW-001-CLM-012",
+      "schema_version": "1.0.0",
+      "record_version": "1.0.0",
+      "created_at": "2026-08-19T12:00:00Z",
+      "updated_at": "2026-08-19T15:00:00Z",
+      "valid_from": "2026-08-19T12:00:00Z",
+      "valid_until": null,
+      "as_of": "2026-08-19T12:00:00Z",
+      "status": "approved",
+      "supersedes": null,
+      "provenance": {
+        "created_by": "Cognitive Logic IW research",
+        "method": "Manual OSINT review; deterministic structuring",
+        "sources": [],
+        "transformations": [
+          "Phase 3 formal methodological review"
+        ]
+      },
+      "responsible_actor": "Cognitive Logic IW author",
+      "review_required": true,
+      "review_due": "2026-09-19T12:00:00Z",
+      "content_hash": null,
+      "claim_id": "IW-001-CLM-012",
+      "event_id": "IW-001-E003",
+      "claim_text_original": "A definitive Iran–Oman agreement had been published by the cut-off.",
+      "language": "en",
+      "translation": "A definitive Iran–Oman agreement had been published by the cut-off.",
+      "translation_method": "human",
+      "claim_type": "observable_fact",
+      "speaker_actor_id": "No identified publication",
+      "origin_source_id": "IW-001-SRC-007",
+      "origin_timestamp": null,
+      "publication_timestamp": null,
+      "original_context": "Analytic atom; statement content kept distinct from statement occurrence.",
+      "subject": "No identified publication",
+      "predicate": "asserts or establishes",
+      "object": "published definitive agreement",
+      "qualifiers": [
+        "as_of 2026-08-19T12:00:00Z"
+      ],
+      "geographic_scope": [
+        "Strait of Hormuz"
+      ],
+      "temporal_scope": {
+        "start": "2026-08-01T00:00:00Z",
+        "end": "2026-08-19T12:00:00Z"
+      },
+      "definition_refs": [
+        "CONTROLLED-GLOSSARY"
+      ],
+      "testability": {
+        "status": "partially_testable",
+        "method": "Inspect named origin and claim-specific evidence; preserve AIS and access limits."
+      },
+      "evidence_refs": [
+        "IW-001-EVD-012"
+      ],
+      "counter_evidence_refs": [],
+      "counter_evidence_absence_reason": "No claim-specific counter-evidence identified at cut-off; absence is not confirmation.",
+      "dependency_refs": [],
+      "assessment_id": "IW-001-ASM-012",
+      "revision_triggers": [
+        "new material evidence",
+        "source correction or withdrawal",
+        "dependency or temporal-scope change"
+      ]
+    },
+    {
+      "id": "IW-001-CLM-013",
+      "schema_version": "1.0.0",
+      "record_version": "1.0.0",
+      "created_at": "2026-08-19T12:00:00Z",
+      "updated_at": "2026-08-19T15:00:00Z",
+      "valid_from": "2026-08-19T12:00:00Z",
+      "valid_until": null,
+      "as_of": "2026-08-19T12:00:00Z",
+      "status": "approved",
+      "supersedes": null,
+      "provenance": {
+        "created_by": "Cognitive Logic IW research",
+        "method": "Manual OSINT review; deterministic structuring",
+        "sources": [],
+        "transformations": [
+          "Phase 3 formal methodological review"
+        ]
+      },
+      "responsible_actor": "Cognitive Logic IW author",
+      "review_required": true,
+      "review_due": "2026-09-19T12:00:00Z",
+      "content_hash": null,
+      "claim_id": "IW-001-CLM-013",
+      "event_id": "IW-001-E004",
+      "claim_text_original": "MINOAN DIGNITY (IMO 9294484) was damaged in the Strait of Hormuz on 17 August; one seafarer died and no pollution was reported.",
+      "language": "en",
+      "translation": "MINOAN DIGNITY (IMO 9294484) was damaged in the Strait of Hormuz on 17 August; one seafarer died and no pollution was reported.",
+      "translation_method": "human",
+      "claim_type": "observable_fact",
+      "speaker_actor_id": "IMO updated incident register",
+      "origin_source_id": "IW-001-SRC-015",
+      "origin_timestamp": null,
+      "publication_timestamp": null,
+      "original_context": "Analytic atom; statement content kept distinct from statement occurrence.",
+      "subject": "IMO updated incident register",
+      "predicate": "asserts or establishes",
+      "object": "incident identity, date, damage, fatality and no reported pollution",
+      "qualifiers": [
+        "as_of 2026-08-19T12:00:00Z"
+      ],
+      "geographic_scope": [
+        "Strait of Hormuz"
+      ],
+      "temporal_scope": {
+        "start": "2026-08-01T00:00:00Z",
+        "end": "2026-08-19T12:00:00Z"
+      },
+      "definition_refs": [
+        "CONTROLLED-GLOSSARY"
+      ],
+      "testability": {
+        "status": "partially_testable",
+        "method": "Inspect named origin and claim-specific evidence; preserve AIS and access limits."
+      },
+      "evidence_refs": [
+        "IW-001-EVD-013"
+      ],
+      "counter_evidence_refs": [],
+      "counter_evidence_absence_reason": "No claim-specific counter-evidence identified at cut-off; absence is not confirmation.",
+      "dependency_refs": [],
+      "assessment_id": "IW-001-ASM-013",
+      "revision_triggers": [
+        "new material evidence",
+        "source correction or withdrawal",
+        "dependency or temporal-scope change"
+      ]
+    },
+    {
+      "id": "IW-001-CLM-014",
+      "schema_version": "1.0.0",
+      "record_version": "1.0.0",
+      "created_at": "2026-08-19T12:00:00Z",
+      "updated_at": "2026-08-19T15:00:00Z",
+      "valid_from": "2026-08-19T12:00:00Z",
+      "valid_until": null,
+      "as_of": "2026-08-19T12:00:00Z",
+      "status": "approved",
+      "supersedes": null,
+      "provenance": {
+        "created_by": "Cognitive Logic IW research",
+        "method": "Manual OSINT review; deterministic structuring",
+        "sources": [],
+        "transformations": [
+          "Phase 3 formal methodological review"
+        ]
+      },
+      "responsible_actor": "Cognitive Logic IW author",
+      "review_required": true,
+      "review_due": "2026-09-19T12:00:00Z",
+      "content_hash": null,
+      "claim_id": "IW-001-CLM-014",
+      "event_id": "IW-001-E005",
+      "claim_text_original": "MINOAN PIONEER (IMO 9471630) was damaged 20 NM northeast of Al Khasab on 3 August; one seafarer was missing and pollution was unconfirmed.",
+      "language": "en",
+      "translation": "MINOAN PIONEER (IMO 9471630) was damaged 20 NM northeast of Al Khasab on 3 August; one seafarer was missing and pollution was unconfirmed.",
+      "translation_method": "human",
+      "claim_type": "observable_fact",
+      "speaker_actor_id": "IMO updated incident register",
+      "origin_source_id": "IW-001-SRC-015",
+      "origin_timestamp": null,
+      "publication_timestamp": null,
+      "original_context": "Analytic atom; statement content kept distinct from statement occurrence.",
+      "subject": "IMO updated incident register",
+      "predicate": "asserts or establishes",
+      "object": "distinct incident identity, location, damage, missing seafarer and pollution status",
+      "qualifiers": [
+        "as_of 2026-08-19T12:00:00Z"
+      ],
+      "geographic_scope": [
+        "Strait of Hormuz"
+      ],
+      "temporal_scope": {
+        "start": "2026-08-01T00:00:00Z",
+        "end": "2026-08-19T12:00:00Z"
+      },
+      "definition_refs": [
+        "CONTROLLED-GLOSSARY"
+      ],
+      "testability": {
+        "status": "partially_testable",
+        "method": "Inspect named origin and claim-specific evidence; preserve AIS and access limits."
+      },
+      "evidence_refs": [
+        "IW-001-EVD-014"
+      ],
+      "counter_evidence_refs": [],
+      "counter_evidence_absence_reason": "No claim-specific counter-evidence identified at cut-off; absence is not confirmation.",
+      "dependency_refs": [],
+      "assessment_id": "IW-001-ASM-014",
+      "revision_triggers": [
+        "new material evidence",
+        "source correction or withdrawal",
+        "dependency or temporal-scope change"
+      ]
+    },
+    {
+      "id": "IW-001-CLM-015",
+      "schema_version": "1.0.0",
+      "record_version": "1.0.0",
+      "created_at": "2026-08-19T12:00:00Z",
+      "updated_at": "2026-08-19T15:00:00Z",
+      "valid_from": "2026-08-19T12:00:00Z",
+      "valid_until": null,
+      "as_of": "2026-08-19T12:00:00Z",
+      "status": "approved",
+      "supersedes": null,
+      "provenance": {
+        "created_by": "Cognitive Logic IW research",
+        "method": "Manual OSINT review; deterministic structuring",
+        "sources": [],
+        "transformations": [
+          "Phase 3 formal methodological review"
+        ]
+      },
+      "responsible_actor": "Cognitive Logic IW author",
+      "review_required": true,
+      "review_due": "2026-09-19T12:00:00Z",
+      "content_hash": null,
+      "claim_id": "IW-001-CLM-015",
+      "event_id": "IW-001-E005",
+      "claim_text_original": "The actor responsible for the 3 August MINOAN PIONEER strike was established.",
+      "language": "en",
+      "translation": "The actor responsible for the 3 August MINOAN PIONEER strike was established.",
+      "translation_method": "human",
+      "claim_type": "inference",
+      "speaker_actor_id": "No authenticated attribution",
+      "origin_source_id": "IW-001-SRC-007",
+      "origin_timestamp": null,
+      "publication_timestamp": null,
+      "original_context": "Analytic atom; statement content kept distinct from statement occurrence.",
+      "subject": "No authenticated attribution",
+      "predicate": "asserts or establishes",
+      "object": "MINOAN PIONEER attack attribution",
+      "qualifiers": [
+        "as_of 2026-08-19T12:00:00Z"
+      ],
+      "geographic_scope": [
+        "Strait of Hormuz"
+      ],
+      "temporal_scope": {
+        "start": "2026-08-01T00:00:00Z",
+        "end": "2026-08-19T12:00:00Z"
+      },
+      "definition_refs": [
+        "CONTROLLED-GLOSSARY"
+      ],
+      "testability": {
+        "status": "partially_testable",
+        "method": "Inspect named origin and claim-specific evidence; preserve AIS and access limits."
+      },
+      "evidence_refs": [
+        "IW-001-EVD-015"
+      ],
+      "counter_evidence_refs": [],
+      "counter_evidence_absence_reason": "No claim-specific counter-evidence identified at cut-off; absence is not confirmation.",
+      "dependency_refs": [],
+      "assessment_id": "IW-001-ASM-015",
+      "revision_triggers": [
+        "new material evidence",
+        "source correction or withdrawal",
+        "dependency or temporal-scope change"
+      ]
+    },
+    {
+      "id": "IW-001-CLM-016",
+      "schema_version": "1.0.0",
+      "record_version": "1.0.0",
+      "created_at": "2026-08-19T12:00:00Z",
+      "updated_at": "2026-08-19T15:00:00Z",
+      "valid_from": "2026-08-19T12:00:00Z",
+      "valid_until": null,
+      "as_of": "2026-08-19T12:00:00Z",
+      "status": "approved",
+      "supersedes": null,
+      "provenance": {
+        "created_by": "Cognitive Logic IW research",
+        "method": "Manual OSINT review; deterministic structuring",
+        "sources": [],
+        "transformations": [
+          "Phase 3 formal methodological review"
+        ]
+      },
+      "responsible_actor": "Cognitive Logic IW author",
+      "review_required": true,
+      "review_due": "2026-09-19T12:00:00Z",
+      "content_hash": null,
+      "claim_id": "IW-001-CLM-016",
+      "event_id": "IW-001-E001",
+      "claim_text_original": "Maritime security risk remained elevated at the cut-off.",
+      "language": "en",
+      "translation": "Maritime security risk remained elevated at the cut-off.",
+      "translation_method": "human",
+      "claim_type": "inference",
+      "speaker_actor_id": "MARAD and incident reporting",
+      "origin_source_id": "IW-001-SRC-004",
+      "origin_timestamp": null,
+      "publication_timestamp": null,
+      "original_context": "Analytic atom; statement content kept distinct from statement occurrence.",
+      "subject": "MARAD and incident reporting",
+      "predicate": "asserts or establishes",
+      "object": "elevated risk",
+      "qualifiers": [
+        "as_of 2026-08-19T12:00:00Z"
+      ],
+      "geographic_scope": [
+        "Strait of Hormuz"
+      ],
+      "temporal_scope": {
+        "start": "2026-08-01T00:00:00Z",
+        "end": "2026-08-19T12:00:00Z"
+      },
+      "definition_refs": [
+        "CONTROLLED-GLOSSARY"
+      ],
+      "testability": {
+        "status": "partially_testable",
+        "method": "Inspect named origin and claim-specific evidence; preserve AIS and access limits."
+      },
+      "evidence_refs": [
+        "IW-001-EVD-016"
+      ],
+      "counter_evidence_refs": [],
+      "counter_evidence_absence_reason": "No claim-specific counter-evidence identified at cut-off; absence is not confirmation.",
+      "dependency_refs": [],
+      "assessment_id": "IW-001-ASM-016",
+      "revision_triggers": [
+        "new material evidence",
+        "source correction or withdrawal",
+        "dependency or temporal-scope change"
+      ]
+    },
+    {
+      "id": "IW-001-CLM-017",
+      "schema_version": "1.0.0",
+      "record_version": "1.0.0",
+      "created_at": "2026-08-19T12:00:00Z",
+      "updated_at": "2026-08-19T15:00:00Z",
+      "valid_from": "2026-08-19T12:00:00Z",
+      "valid_until": null,
+      "as_of": "2026-08-19T12:00:00Z",
+      "status": "approved",
+      "supersedes": null,
+      "provenance": {
+        "created_by": "Cognitive Logic IW research",
+        "method": "Manual OSINT review; deterministic structuring",
+        "sources": [],
+        "transformations": [
+          "Phase 3 formal methodological review"
+        ]
+      },
+      "responsible_actor": "Cognitive Logic IW author",
+      "review_required": true,
+      "review_due": "2026-09-19T12:00:00Z",
+      "content_hash": null,
+      "claim_id": "IW-001-CLM-017",
+      "event_id": "IW-001-E001",
+      "claim_text_original": "The disruption caused directly quantifiable energy consequences at cut-off.",
+      "language": "en",
+      "translation": "The disruption caused directly quantifiable energy consequences at cut-off.",
+      "translation_method": "human",
+      "claim_type": "inference",
+      "speaker_actor_id": "General reporting",
+      "origin_source_id": "IW-001-SRC-007",
+      "origin_timestamp": null,
+      "publication_timestamp": null,
+      "original_context": "Analytic atom; statement content kept distinct from statement occurrence.",
+      "subject": "General reporting",
+      "predicate": "asserts or establishes",
+      "object": "specific causal energy consequence",
+      "qualifiers": [
+        "as_of 2026-08-19T12:00:00Z"
+      ],
+      "geographic_scope": [
+        "Strait of Hormuz"
+      ],
+      "temporal_scope": {
+        "start": "2026-08-01T00:00:00Z",
+        "end": "2026-08-19T12:00:00Z"
+      },
+      "definition_refs": [
+        "CONTROLLED-GLOSSARY"
+      ],
+      "testability": {
+        "status": "partially_testable",
+        "method": "Inspect named origin and claim-specific evidence; preserve AIS and access limits."
+      },
+      "evidence_refs": [
+        "IW-001-EVD-017"
+      ],
+      "counter_evidence_refs": [],
+      "counter_evidence_absence_reason": "No claim-specific counter-evidence identified at cut-off; absence is not confirmation.",
+      "dependency_refs": [],
+      "assessment_id": "IW-001-ASM-017",
+      "revision_triggers": [
+        "new material evidence",
+        "source correction or withdrawal",
+        "dependency or temporal-scope change"
+      ]
+    },
+    {
+      "id": "IW-001-CLM-018",
+      "schema_version": "1.0.0",
+      "record_version": "1.0.0",
+      "created_at": "2026-08-19T12:00:00Z",
+      "updated_at": "2026-08-19T15:00:00Z",
+      "valid_from": "2026-08-19T12:00:00Z",
+      "valid_until": null,
+      "as_of": "2026-08-19T12:00:00Z",
+      "status": "approved",
+      "supersedes": null,
+      "provenance": {
+        "created_by": "Cognitive Logic IW research",
+        "method": "Manual OSINT review; deterministic structuring",
+        "sources": [],
+        "transformations": [
+          "Phase 3 formal methodological review"
+        ]
+      },
+      "responsible_actor": "Cognitive Logic IW author",
+      "review_required": true,
+      "review_due": "2026-09-19T12:00:00Z",
+      "content_hash": null,
+      "claim_id": "IW-001-CLM-018",
+      "event_id": "IW-001-E004",
+      "claim_text_original": "The actor responsible for the 17 August MINOAN DIGNITY incident was established.",
+      "language": "en",
+      "translation": "The actor responsible for the 17 August MINOAN DIGNITY incident was established.",
+      "translation_method": "human",
+      "claim_type": "inference",
+      "speaker_actor_id": "No authenticated attribution",
+      "origin_source_id": "IW-001-SRC-007",
+      "origin_timestamp": null,
+      "publication_timestamp": null,
+      "original_context": "Analytic atom; statement content kept distinct from statement occurrence.",
+      "subject": "No authenticated attribution",
+      "predicate": "asserts or establishes",
+      "object": "MINOAN DIGNITY attack attribution",
+      "qualifiers": [
+        "as_of 2026-08-19T12:00:00Z"
+      ],
+      "geographic_scope": [
+        "Strait of Hormuz"
+      ],
+      "temporal_scope": {
+        "start": "2026-08-01T00:00:00Z",
+        "end": "2026-08-19T12:00:00Z"
+      },
+      "definition_refs": [
+        "CONTROLLED-GLOSSARY"
+      ],
+      "testability": {
+        "status": "partially_testable",
+        "method": "Inspect named origin and claim-specific evidence; preserve AIS and access limits."
+      },
+      "evidence_refs": [
+        "IW-001-EVD-018"
+      ],
+      "counter_evidence_refs": [],
+      "counter_evidence_absence_reason": "No claim-specific counter-evidence identified at cut-off; absence is not confirmation.",
+      "dependency_refs": [],
+      "assessment_id": "IW-001-ASM-018",
+      "revision_triggers": [
+        "new material evidence",
+        "source correction or withdrawal",
+        "dependency or temporal-scope change"
+      ]
+    }
+  ]
+}

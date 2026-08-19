@@ -1,0 +1,12 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema", "$id": "https://cognitivelogic.it/schemas/international-watch/event-registry.schema.json", "title": "IW Event Registry", "type": "object",
+  "allOf": [{"$ref": "common.schema.json"}], "required": ["case_id", "event_id", "parent_event_id", "record_type", "title", "description", "temporal_scope", "time_precision", "locations", "actors", "related_claim_ids", "related_event_ids", "update_history"],
+  "properties": {
+    "case_id": {"type": "string", "pattern": "^IW-[0-9]{3,}$"}, "event_id": {"type": "string"}, "parent_event_id": {"type": ["string", "null"]},
+    "record_type": {"enum": ["dossier", "event", "sub_event", "snapshot"]}, "title": {"type": "string", "minLength": 1}, "description": {"type": "string"},
+    "temporal_scope": {"$ref": "#/$defs/scope"}, "time_precision": {"enum": ["exact", "day", "month", "year", "range", "unknown"]},
+    "locations": {"type": "array", "items": {"type": "object", "required": ["name"], "properties": {"name": {"type": "string"}, "coordinates": {"type": ["object", "null"]}}, "additionalProperties": false}},
+    "actors": {"type": "array", "items": {"type": "string"}}, "related_claim_ids": {"type": "array", "items": {"type": "string"}, "uniqueItems": true}, "related_event_ids": {"type": "array", "items": {"type": "string"}, "uniqueItems": true},
+    "update_history": {"type": "array", "items": {"type": "object", "required": ["at", "actor", "change"], "properties": {"at": {"type": "string", "format": "date-time"}, "actor": {"type": "string"}, "change": {"type": "string"}}, "additionalProperties": false}}
+  }, "$defs": {"scope": {"type": "object", "required": ["start", "end"], "properties": {"start": {"type": ["string", "null"], "format": "date-time"}, "end": {"type": ["string", "null"], "format": "date-time"}}, "additionalProperties": false}}, "unevaluatedProperties": false
+}

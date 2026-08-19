@@ -1,0 +1,98 @@
+{
+  "schema_version": "1.0.0",
+  "case_id": "IW-001",
+  "records": [
+    {
+      "id": "IW-001-NAR-001",
+      "schema_version": "1.0.0",
+      "record_version": "1.0.0",
+      "created_at": "2026-08-19T12:00:00Z",
+      "updated_at": "2026-08-19T15:00:00Z",
+      "valid_from": "2026-08-19T12:00:00Z",
+      "valid_until": null,
+      "as_of": "2026-08-19T12:00:00Z",
+      "status": "approved",
+      "supersedes": null,
+      "provenance": {
+        "created_by": "Cognitive Logic IW research",
+        "method": "Manual OSINT review; deterministic structuring",
+        "sources": [],
+        "transformations": [
+          "Phase 3 formal methodological review"
+        ]
+      },
+      "responsible_actor": "Cognitive Logic IW author",
+      "review_required": true,
+      "review_due": "2026-09-19T12:00:00Z",
+      "content_hash": null,
+      "comparison_id": "IW-001-NAR-001",
+      "event_id": "IW-001-E002",
+      "source_document_id": "IW-001-SRC-007",
+      "compared_document_ids": [
+        "IW-001-SRC-005",
+        "IW-001-SRC-006",
+        "IW-001-SRC-008"
+      ],
+      "headline": "Open/closed/control language across US, Iranian, regional and agency reporting",
+      "lead": "Comparison of observable attribution, modality and context.",
+      "claims_included": [
+        "IW-001-CLM-006",
+        "IW-001-CLM-008",
+        "IW-001-CLM-011"
+      ],
+      "claims_omitted": [
+        "No inspected Omani original statement"
+      ],
+      "actor_labels": [
+        "US President",
+        "Iran MFA",
+        "Iran FM",
+        "regional officials"
+      ],
+      "agency_assignment": [
+        "US narrative assigns operating status",
+        "Iranian narrative assigns conditions to US conduct",
+        "AP attributes negotiation details to anonymous regional officials"
+      ],
+      "certainty_markers": [
+        "remains",
+        "will not",
+        "very close"
+      ],
+      "evaluative_language": [],
+      "quotation_changes": [
+        "Derivative translations may normalize Persian wording"
+      ],
+      "quantifier_changes": [],
+      "modality_changes": [
+        "near agreement is not final agreement"
+      ],
+      "temporal_generalization": [
+        "weekly traffic data cannot establish conditions at every instant"
+      ],
+      "context_loss": [
+        "headlines using open may omit physical/formal/normal distinction"
+      ],
+      "headline_body_divergence": [
+        "Agency body qualifies limited traffic despite open-and-operating statement"
+      ],
+      "observable_transformations": [
+        {
+          "type": "statement_to_fact",
+          "source_segment": "Trump insisted the Strait remains open and operating",
+          "compared_segment": "Strait open",
+          "description": "Attribution can disappear in derivative headlines."
+        },
+        {
+          "type": "context_loss",
+          "source_segment": "95 Kpler-confirmed crossings under a dataset method",
+          "compared_segment": "traffic continues",
+          "description": "Method and limited coverage can disappear."
+        }
+      ],
+      "analyst_notes": [
+        "No intent classification; AP is not independent of Kpler or UKMTO for those facts."
+      ]
+    }
+  ]
+}

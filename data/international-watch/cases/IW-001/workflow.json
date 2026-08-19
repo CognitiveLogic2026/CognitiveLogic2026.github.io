@@ -1,0 +1,70 @@
+{
+  "schema_version": "1.0.0",
+  "case_id": "IW-001",
+  "records": [
+    {
+      "id": "IW-001-WF-001",
+      "schema_version": "1.0.0",
+      "record_version": "1.0.0",
+      "created_at": "2026-08-19T12:00:00Z",
+      "updated_at": "2026-08-19T15:00:00Z",
+      "valid_from": "2026-08-19T12:00:00Z",
+      "valid_until": null,
+      "as_of": "2026-08-19T12:00:00Z",
+      "status": "approved",
+      "supersedes": null,
+      "provenance": {
+        "created_by": "Cognitive Logic IW research",
+        "method": "Manual OSINT review; deterministic structuring",
+        "sources": [],
+        "transformations": [
+          "Phase 3 formal methodological review"
+        ]
+      },
+      "responsible_actor": "Cognitive Logic IW author",
+      "review_required": true,
+      "review_due": "2026-09-19T12:00:00Z",
+      "content_hash": null,
+      "workflow_id": "IW-001-WF-001",
+      "record_id": "IW-001",
+      "current_state": "approved",
+      "history": [
+        {
+          "from": null,
+          "to": "draft",
+          "at": "2026-08-19T12:00:00Z",
+          "actor": "Cognitive Logic IW author",
+          "role": "author",
+          "reason": "Created pilot."
+        },
+        {
+          "from": "draft",
+          "to": "in_review",
+          "at": "2026-08-19T12:00:00Z",
+          "actor": "Cognitive Logic IW author",
+          "role": "author",
+          "reason": "Submitted for formal review; no publication authorization."
+        },
+        {
+          "from": "in_review",
+          "to": "approved",
+          "at": "2026-08-19T15:00:00Z",
+          "actor": "Cognitive Logic — International Watch Methodology Review",
+          "role": "Codex-assisted technical and methodological review function",
+          "reason": "All Phase 3 methodological, structural, temporal and validation gates passed. IW-001 is approved methodologically; final organizational approval remains reserved to the human responsible officer of Cognitive Logic. No external certification or specialist legal review."
+        }
+      ],
+      "author": "Cognitive Logic IW author",
+      "human_reviewer": "Cognitive Logic — International Watch Methodology Review",
+      "publication_automatic": false,
+      "reopen_conditions": [
+        "new material evidence",
+        "source correction or withdrawal",
+        "dependency discovered",
+        "scope or definition change"
+      ],
+      "new_evidence_policy": "Return to in_review; create a versioned assessment and preserve history.",
+      "correction_policy": "Non-material patch; material correction creates a superseding record."
+    }
+  ]
+}

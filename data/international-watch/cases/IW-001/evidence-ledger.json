@@ -1,0 +1,1374 @@
+{
+  "schema_version": "1.0.0",
+  "case_id": "IW-001",
+  "records": [
+    {
+      "id": "IW-001-EVD-001",
+      "schema_version": "1.0.0",
+      "record_version": "1.0.0",
+      "created_at": "2026-08-19T12:00:00Z",
+      "updated_at": "2026-08-19T15:00:00Z",
+      "valid_from": "2026-08-19T12:00:00Z",
+      "valid_until": null,
+      "as_of": "2026-08-19T12:00:00Z",
+      "status": "approved",
+      "supersedes": null,
+      "provenance": {
+        "created_by": "Cognitive Logic IW research",
+        "method": "Manual OSINT review; deterministic structuring",
+        "sources": [],
+        "transformations": [
+          "Phase 3 formal methodological review"
+        ]
+      },
+      "responsible_actor": "Cognitive Logic IW author",
+      "review_required": true,
+      "review_due": "2026-09-19T12:00:00Z",
+      "content_hash": null,
+      "evidence_id": "IW-001-EVD-001",
+      "evidence_type": "documentary_or_analytic_record",
+      "description": "Evidence note for IW-001-CLM-001",
+      "producer": "Kpler dataset as reported by AP",
+      "collector": "Cognitive Logic IW author",
+      "custodian": "Cognitive Logic",
+      "capture_time": "2026-08-19T12:00:00Z",
+      "event_time": null,
+      "location": "Strait of Hormuz",
+      "original_uri": "https://apnews.com/article/iran-us-israel-lebanon-gaza-hormuz-august-18-2026-9c48af23b713709e8e170191fbc78c2a",
+      "archived_uri": null,
+      "archived_unavailability_reason": "No lawful local archive captured; URL and access time retained.",
+      "metadata_preserved": true,
+      "chain_of_custody": [
+        {
+          "actor": "Cognitive Logic IW author",
+          "action": "inspected source and recorded bounded note",
+          "at": "2026-08-19T12:00:00Z"
+        }
+      ],
+      "authentication_status": "partially_authenticated",
+      "independence_from_claimant": "unknown",
+      "coverage": "95 confirmed crossings; three on Sunday",
+      "completeness": "Claim-specific excerpt/metadata; not a complete copyrighted work.",
+      "resolution": "Textual reporting or structured incident listing.",
+      "verifiability": "Reinspect the linked page and upstream origin where accessible.",
+      "recency": "Current or identified historical material as of cut-off.",
+      "proximity_to_event": "Varies; derivative sources retain upstream dependency.",
+      "known_transformations": [
+        "English source or human analytic normalization"
+      ],
+      "technical_limitations": [
+        "AIS-off, spoofing, jamming, latency and coverage may affect traffic claims"
+      ],
+      "limitations": [
+        "Statement evidence does not establish statement content."
+      ],
+      "probative_value": [
+        {
+          "claim_id": "IW-001-CLM-001",
+          "establishes": "Limited support or contradiction within stated scope."
+        }
+      ],
+      "supports": [
+        "IW-001-CLM-001"
+      ],
+      "contradicts": [],
+      "does_not_establish": [
+        "Any broader condition outside temporal and definitional scope",
+        "Sovereignty or legal control unless expressly identified",
+        "Causal attribution without separate evidence"
+      ]
+    },
+    {
+      "id": "IW-001-EVD-002",
+      "schema_version": "1.0.0",
+      "record_version": "1.0.0",
+      "created_at": "2026-08-19T12:00:00Z",
+      "updated_at": "2026-08-19T15:00:00Z",
+      "valid_from": "2026-08-19T12:00:00Z",
+      "valid_until": null,
+      "as_of": "2026-08-19T12:00:00Z",
+      "status": "approved",
+      "supersedes": null,
+      "provenance": {
+        "created_by": "Cognitive Logic IW research",
+        "method": "Manual OSINT review; deterministic structuring",
+        "sources": [],
+        "transformations": [
+          "Phase 3 formal methodological review"
+        ]
+      },
+      "responsible_actor": "Cognitive Logic IW author",
+      "review_required": true,
+      "review_due": "2026-09-19T12:00:00Z",
+      "content_hash": null,
+      "evidence_id": "IW-001-EVD-002",
+      "evidence_type": "documentary_or_analytic_record",
+      "description": "Evidence note for IW-001-CLM-002",
+      "producer": "Kpler dataset as reported by AP",
+      "collector": "Cognitive Logic IW author",
+      "custodian": "Cognitive Logic",
+      "capture_time": "2026-08-19T12:00:00Z",
+      "event_time": null,
+      "location": "Strait of Hormuz",
+      "original_uri": "https://apnews.com/article/iran-us-israel-lebanon-gaza-hormuz-august-18-2026-9c48af23b713709e8e170191fbc78c2a",
+      "archived_uri": null,
+      "archived_unavailability_reason": "No lawful local archive captured; URL and access time retained.",
+      "metadata_preserved": true,
+      "chain_of_custody": [
+        {
+          "actor": "Cognitive Logic IW author",
+          "action": "inspected source and recorded bounded note",
+          "at": "2026-08-19T12:00:00Z"
+        }
+      ],
+      "authentication_status": "partially_authenticated",
+      "independence_from_claimant": "unknown",
+      "coverage": "95 crossings under Kpler method",
+      "completeness": "Claim-specific excerpt/metadata; not a complete copyrighted work.",
+      "resolution": "Textual reporting or structured incident listing.",
+      "verifiability": "Reinspect the linked page and upstream origin where accessible.",
+      "recency": "Current or identified historical material as of cut-off.",
+      "proximity_to_event": "Varies; derivative sources retain upstream dependency.",
+      "known_transformations": [
+        "English source or human analytic normalization"
+      ],
+      "technical_limitations": [
+        "AIS-off, spoofing, jamming, latency and coverage may affect traffic claims"
+      ],
+      "limitations": [
+        "Statement evidence does not establish statement content."
+      ],
+      "probative_value": [
+        {
+          "claim_id": "IW-001-CLM-002",
+          "establishes": "Limited support or contradiction within stated scope."
+        }
+      ],
+      "supports": [
+        "IW-001-CLM-002"
+      ],
+      "contradicts": [],
+      "does_not_establish": [
+        "Any broader condition outside temporal and definitional scope",
+        "Sovereignty or legal control unless expressly identified",
+        "Causal attribution without separate evidence"
+      ]
+    },
+    {
+      "id": "IW-001-EVD-003",
+      "schema_version": "1.0.0",
+      "record_version": "1.0.0",
+      "created_at": "2026-08-19T12:00:00Z",
+      "updated_at": "2026-08-19T15:00:00Z",
+      "valid_from": "2026-08-19T12:00:00Z",
+      "valid_until": null,
+      "as_of": "2026-08-19T12:00:00Z",
+      "status": "approved",
+      "supersedes": null,
+      "provenance": {
+        "created_by": "Cognitive Logic IW research",
+        "method": "Manual OSINT review; deterministic structuring",
+        "sources": [],
+        "transformations": [
+          "Phase 3 formal methodological review"
+        ]
+      },
+      "responsible_actor": "Cognitive Logic IW author",
+      "review_required": true,
+      "review_due": "2026-09-19T12:00:00Z",
+      "content_hash": null,
+      "evidence_id": "IW-001-EVD-003",
+      "evidence_type": "documentary_or_analytic_record",
+      "description": "Evidence note for IW-001-CLM-003",
+      "producer": "Cognitive Logic analysis",
+      "collector": "Cognitive Logic IW author",
+      "custodian": "Cognitive Logic",
+      "capture_time": "2026-08-19T12:00:00Z",
+      "event_time": null,
+      "location": "Strait of Hormuz",
+      "original_uri": "https://apnews.com/article/iran-us-israel-lebanon-gaza-hormuz-august-18-2026-9c48af23b713709e8e170191fbc78c2a",
+      "archived_uri": null,
+      "archived_unavailability_reason": "No lawful local archive captured; URL and access time retained.",
+      "metadata_preserved": true,
+      "chain_of_custody": [
+        {
+          "actor": "Cognitive Logic IW author",
+          "action": "inspected source and recorded bounded note",
+          "at": "2026-08-19T12:00:00Z"
+        }
+      ],
+      "authentication_status": "partially_authenticated",
+      "independence_from_claimant": "unknown",
+      "coverage": "tracked traffic is not total traffic",
+      "completeness": "Claim-specific excerpt/metadata; not a complete copyrighted work.",
+      "resolution": "Textual reporting or structured incident listing.",
+      "verifiability": "Reinspect the linked page and upstream origin where accessible.",
+      "recency": "Current or identified historical material as of cut-off.",
+      "proximity_to_event": "Varies; derivative sources retain upstream dependency.",
+      "known_transformations": [
+        "English source or human analytic normalization"
+      ],
+      "technical_limitations": [
+        "AIS-off, spoofing, jamming, latency and coverage may affect traffic claims"
+      ],
+      "limitations": [
+        "Statement evidence does not establish statement content."
+      ],
+      "probative_value": [
+        {
+          "claim_id": "IW-001-CLM-003",
+          "establishes": "tracked traffic is not total traffic"
+        }
+      ],
+      "supports": [
+        "IW-001-CLM-003"
+      ],
+      "contradicts": [],
+      "does_not_establish": [
+        "Any broader condition outside temporal and definitional scope",
+        "Sovereignty or legal control unless expressly identified",
+        "Causal attribution without separate evidence"
+      ]
+    },
+    {
+      "id": "IW-001-EVD-004",
+      "schema_version": "1.0.0",
+      "record_version": "1.0.0",
+      "created_at": "2026-08-19T12:00:00Z",
+      "updated_at": "2026-08-19T15:00:00Z",
+      "valid_from": "2026-08-19T12:00:00Z",
+      "valid_until": null,
+      "as_of": "2026-08-19T12:00:00Z",
+      "status": "approved",
+      "supersedes": null,
+      "provenance": {
+        "created_by": "Cognitive Logic IW research",
+        "method": "Manual OSINT review; deterministic structuring",
+        "sources": [],
+        "transformations": [
+          "Phase 3 formal methodological review"
+        ]
+      },
+      "responsible_actor": "Cognitive Logic IW author",
+      "review_required": true,
+      "review_due": "2026-09-19T12:00:00Z",
+      "content_hash": null,
+      "evidence_id": "IW-001-EVD-004",
+      "evidence_type": "documentary_or_analytic_record",
+      "description": "Evidence note for IW-001-CLM-004",
+      "producer": "Cognitive Logic analysis",
+      "collector": "Cognitive Logic IW author",
+      "custodian": "Cognitive Logic",
+      "capture_time": "2026-08-19T12:00:00Z",
+      "event_time": null,
+      "location": "Strait of Hormuz",
+      "original_uri": "https://apnews.com/article/iran-us-israel-lebanon-gaza-hormuz-august-18-2026-9c48af23b713709e8e170191fbc78c2a",
+      "archived_uri": null,
+      "archived_unavailability_reason": "No lawful local archive captured; URL and access time retained.",
+      "metadata_preserved": true,
+      "chain_of_custody": [
+        {
+          "actor": "Cognitive Logic IW author",
+          "action": "inspected source and recorded bounded note",
+          "at": "2026-08-19T12:00:00Z"
+        }
+      ],
+      "authentication_status": "partially_authenticated",
+      "independence_from_claimant": "unknown",
+      "coverage": "physical navigability for observed vessels",
+      "completeness": "Claim-specific excerpt/metadata; not a complete copyrighted work.",
+      "resolution": "Textual reporting or structured incident listing.",
+      "verifiability": "Reinspect the linked page and upstream origin where accessible.",
+      "recency": "Current or identified historical material as of cut-off.",
+      "proximity_to_event": "Varies; derivative sources retain upstream dependency.",
+      "known_transformations": [
+        "English source or human analytic normalization"
+      ],
+      "technical_limitations": [
+        "AIS-off, spoofing, jamming, latency and coverage may affect traffic claims"
+      ],
+      "limitations": [
+        "Statement evidence does not establish statement content."
+      ],
+      "probative_value": [
+        {
+          "claim_id": "IW-001-CLM-004",
+          "establishes": "Limited support or contradiction within stated scope."
+        }
+      ],
+      "supports": [
+        "IW-001-CLM-004"
+      ],
+      "contradicts": [],
+      "does_not_establish": [
+        "Any broader condition outside temporal and definitional scope",
+        "Sovereignty or legal control unless expressly identified",
+        "Causal attribution without separate evidence"
+      ]
+    },
+    {
+      "id": "IW-001-EVD-005",
+      "schema_version": "1.0.0",
+      "record_version": "1.0.0",
+      "created_at": "2026-08-19T12:00:00Z",
+      "updated_at": "2026-08-19T15:00:00Z",
+      "valid_from": "2026-08-19T12:00:00Z",
+      "valid_until": null,
+      "as_of": "2026-08-19T12:00:00Z",
+      "status": "approved",
+      "supersedes": null,
+      "provenance": {
+        "created_by": "Cognitive Logic IW research",
+        "method": "Manual OSINT review; deterministic structuring",
+        "sources": [],
+        "transformations": [
+          "Phase 3 formal methodological review"
+        ]
+      },
+      "responsible_actor": "Cognitive Logic IW author",
+      "review_required": true,
+      "review_due": "2026-09-19T12:00:00Z",
+      "content_hash": null,
+      "evidence_id": "IW-001-EVD-005",
+      "evidence_type": "documentary_or_analytic_record",
+      "description": "Evidence note for IW-001-CLM-005",
+      "producer": "No single origin",
+      "collector": "Cognitive Logic IW author",
+      "custodian": "Cognitive Logic",
+      "capture_time": "2026-08-19T12:00:00Z",
+      "event_time": null,
+      "location": "Strait of Hormuz",
+      "original_uri": "https://apnews.com/article/iran-us-israel-lebanon-gaza-hormuz-august-18-2026-9c48af23b713709e8e170191fbc78c2a",
+      "archived_uri": null,
+      "archived_unavailability_reason": "No lawful local archive captured; URL and access time retained.",
+      "metadata_preserved": true,
+      "chain_of_custody": [
+        {
+          "actor": "Cognitive Logic IW author",
+          "action": "inspected source and recorded bounded note",
+          "at": "2026-08-19T12:00:00Z"
+        }
+      ],
+      "authentication_status": "partially_authenticated",
+      "independence_from_claimant": "unknown",
+      "coverage": "normal unrestricted commercial passage",
+      "completeness": "Claim-specific excerpt/metadata; not a complete copyrighted work.",
+      "resolution": "Textual reporting or structured incident listing.",
+      "verifiability": "Reinspect the linked page and upstream origin where accessible.",
+      "recency": "Current or identified historical material as of cut-off.",
+      "proximity_to_event": "Varies; derivative sources retain upstream dependency.",
+      "known_transformations": [
+        "English source or human analytic normalization"
+      ],
+      "technical_limitations": [
+        "AIS-off, spoofing, jamming, latency and coverage may affect traffic claims"
+      ],
+      "limitations": [
+        "Statement evidence does not establish statement content."
+      ],
+      "probative_value": [
+        {
+          "claim_id": "IW-001-CLM-005",
+          "establishes": "Limited support or contradiction within stated scope."
+        }
+      ],
+      "supports": [],
+      "contradicts": [
+        "IW-001-CLM-005"
+      ],
+      "does_not_establish": [
+        "Any broader condition outside temporal and definitional scope",
+        "Sovereignty or legal control unless expressly identified",
+        "Causal attribution without separate evidence"
+      ]
+    },
+    {
+      "id": "IW-001-EVD-006",
+      "schema_version": "1.0.0",
+      "record_version": "1.0.0",
+      "created_at": "2026-08-19T12:00:00Z",
+      "updated_at": "2026-08-19T15:00:00Z",
+      "valid_from": "2026-08-19T12:00:00Z",
+      "valid_until": null,
+      "as_of": "2026-08-19T12:00:00Z",
+      "status": "approved",
+      "supersedes": null,
+      "provenance": {
+        "created_by": "Cognitive Logic IW research",
+        "method": "Manual OSINT review; deterministic structuring",
+        "sources": [],
+        "transformations": [
+          "Phase 3 formal methodological review"
+        ]
+      },
+      "responsible_actor": "Cognitive Logic IW author",
+      "review_required": true,
+      "review_due": "2026-09-19T12:00:00Z",
+      "content_hash": null,
+      "evidence_id": "IW-001-EVD-006",
+      "evidence_type": "documentary_or_analytic_record",
+      "description": "Evidence note for IW-001-CLM-006",
+      "producer": "US President as reported by AP",
+      "collector": "Cognitive Logic IW author",
+      "custodian": "Cognitive Logic",
+      "capture_time": "2026-08-19T12:00:00Z",
+      "event_time": null,
+      "location": "Strait of Hormuz",
+      "original_uri": "https://apnews.com/article/iran-us-israel-lebanon-gaza-hormuz-august-18-2026-9c48af23b713709e8e170191fbc78c2a",
+      "archived_uri": null,
+      "archived_unavailability_reason": "No lawful local archive captured; URL and access time retained.",
+      "metadata_preserved": true,
+      "chain_of_custody": [
+        {
+          "actor": "Cognitive Logic IW author",
+          "action": "inspected source and recorded bounded note",
+          "at": "2026-08-19T12:00:00Z"
+        }
+      ],
+      "authentication_status": "partially_authenticated",
+      "independence_from_claimant": "unknown",
+      "coverage": "statement was made",
+      "completeness": "Claim-specific excerpt/metadata; not a complete copyrighted work.",
+      "resolution": "Textual reporting or structured incident listing.",
+      "verifiability": "Reinspect the linked page and upstream origin where accessible.",
+      "recency": "Current or identified historical material as of cut-off.",
+      "proximity_to_event": "Varies; derivative sources retain upstream dependency.",
+      "known_transformations": [
+        "English source or human analytic normalization"
+      ],
+      "technical_limitations": [
+        "AIS-off, spoofing, jamming, latency and coverage may affect traffic claims"
+      ],
+      "limitations": [
+        "Statement evidence does not establish statement content."
+      ],
+      "probative_value": [
+        {
+          "claim_id": "IW-001-CLM-006",
+          "establishes": "statement was made"
+        }
+      ],
+      "supports": [
+        "IW-001-CLM-006"
+      ],
+      "contradicts": [],
+      "does_not_establish": [
+        "Any broader condition outside temporal and definitional scope",
+        "Sovereignty or legal control unless expressly identified",
+        "Causal attribution without separate evidence"
+      ]
+    },
+    {
+      "id": "IW-001-EVD-007",
+      "schema_version": "1.0.0",
+      "record_version": "1.0.0",
+      "created_at": "2026-08-19T12:00:00Z",
+      "updated_at": "2026-08-19T15:00:00Z",
+      "valid_from": "2026-08-19T12:00:00Z",
+      "valid_until": null,
+      "as_of": "2026-08-19T12:00:00Z",
+      "status": "approved",
+      "supersedes": null,
+      "provenance": {
+        "created_by": "Cognitive Logic IW research",
+        "method": "Manual OSINT review; deterministic structuring",
+        "sources": [],
+        "transformations": [
+          "Phase 3 formal methodological review"
+        ]
+      },
+      "responsible_actor": "Cognitive Logic IW author",
+      "review_required": true,
+      "review_due": "2026-09-19T12:00:00Z",
+      "content_hash": null,
+      "evidence_id": "IW-001-EVD-007",
+      "evidence_type": "documentary_or_analytic_record",
+      "description": "Evidence note for IW-001-CLM-007",
+      "producer": "US President as reported by AP",
+      "collector": "Cognitive Logic IW author",
+      "custodian": "Cognitive Logic",
+      "capture_time": "2026-08-19T12:00:00Z",
+      "event_time": null,
+      "location": "Strait of Hormuz",
+      "original_uri": "https://apnews.com/article/iran-us-israel-lebanon-gaza-hormuz-august-18-2026-9c48af23b713709e8e170191fbc78c2a",
+      "archived_uri": null,
+      "archived_unavailability_reason": "No lawful local archive captured; URL and access time retained.",
+      "metadata_preserved": true,
+      "chain_of_custody": [
+        {
+          "actor": "Cognitive Logic IW author",
+          "action": "inspected source and recorded bounded note",
+          "at": "2026-08-19T12:00:00Z"
+        }
+      ],
+      "authentication_status": "partially_authenticated",
+      "independence_from_claimant": "unknown",
+      "coverage": "normal commercial opening",
+      "completeness": "Claim-specific excerpt/metadata; not a complete copyrighted work.",
+      "resolution": "Textual reporting or structured incident listing.",
+      "verifiability": "Reinspect the linked page and upstream origin where accessible.",
+      "recency": "Current or identified historical material as of cut-off.",
+      "proximity_to_event": "Varies; derivative sources retain upstream dependency.",
+      "known_transformations": [
+        "English source or human analytic normalization"
+      ],
+      "technical_limitations": [
+        "AIS-off, spoofing, jamming, latency and coverage may affect traffic claims"
+      ],
+      "limitations": [
+        "Statement evidence does not establish statement content."
+      ],
+      "probative_value": [
+        {
+          "claim_id": "IW-001-CLM-007",
+          "establishes": "Limited support or contradiction within stated scope."
+        }
+      ],
+      "supports": [
+        "IW-001-CLM-007"
+      ],
+      "contradicts": [],
+      "does_not_establish": [
+        "Any broader condition outside temporal and definitional scope",
+        "Sovereignty or legal control unless expressly identified",
+        "Causal attribution without separate evidence"
+      ]
+    },
+    {
+      "id": "IW-001-EVD-008",
+      "schema_version": "1.0.0",
+      "record_version": "1.0.0",
+      "created_at": "2026-08-19T12:00:00Z",
+      "updated_at": "2026-08-19T15:00:00Z",
+      "valid_from": "2026-08-19T12:00:00Z",
+      "valid_until": null,
+      "as_of": "2026-08-19T12:00:00Z",
+      "status": "approved",
+      "supersedes": null,
+      "provenance": {
+        "created_by": "Cognitive Logic IW research",
+        "method": "Manual OSINT review; deterministic structuring",
+        "sources": [],
+        "transformations": [
+          "Phase 3 formal methodological review"
+        ]
+      },
+      "responsible_actor": "Cognitive Logic IW author",
+      "review_required": true,
+      "review_due": "2026-09-19T12:00:00Z",
+      "content_hash": null,
+      "evidence_id": "IW-001-EVD-008",
+      "evidence_type": "documentary_or_analytic_record",
+      "description": "Evidence note for IW-001-CLM-008",
+      "producer": "Iran MFA as carried by Tasnim",
+      "collector": "Cognitive Logic IW author",
+      "custodian": "Cognitive Logic",
+      "capture_time": "2026-08-19T12:00:00Z",
+      "event_time": null,
+      "location": "Strait of Hormuz",
+      "original_uri": "https://tasnimnews.ir/en/news/2026/08/03/3662859/iran-denies-us-talks-limits-oman-negotiations-to-hormuz",
+      "archived_uri": null,
+      "archived_unavailability_reason": "No lawful local archive captured; URL and access time retained.",
+      "metadata_preserved": true,
+      "chain_of_custody": [
+        {
+          "actor": "Cognitive Logic IW author",
+          "action": "inspected source and recorded bounded note",
+          "at": "2026-08-19T12:00:00Z"
+        }
+      ],
+      "authentication_status": "partially_authenticated",
+      "independence_from_claimant": "unknown",
+      "coverage": "conditional non-reopening position",
+      "completeness": "Claim-specific excerpt/metadata; not a complete copyrighted work.",
+      "resolution": "Textual reporting or structured incident listing.",
+      "verifiability": "Reinspect the linked page and upstream origin where accessible.",
+      "recency": "Current or identified historical material as of cut-off.",
+      "proximity_to_event": "Varies; derivative sources retain upstream dependency.",
+      "known_transformations": [
+        "English source or human analytic normalization"
+      ],
+      "technical_limitations": [
+        "AIS-off, spoofing, jamming, latency and coverage may affect traffic claims"
+      ],
+      "limitations": [
+        "Statement evidence does not establish statement content."
+      ],
+      "probative_value": [
+        {
+          "claim_id": "IW-001-CLM-008",
+          "establishes": "conditional non-reopening position"
+        }
+      ],
+      "supports": [
+        "IW-001-CLM-008"
+      ],
+      "contradicts": [],
+      "does_not_establish": [
+        "Any broader condition outside temporal and definitional scope",
+        "Sovereignty or legal control unless expressly identified",
+        "Causal attribution without separate evidence"
+      ]
+    },
+    {
+      "id": "IW-001-EVD-009",
+      "schema_version": "1.0.0",
+      "record_version": "1.0.0",
+      "created_at": "2026-08-19T12:00:00Z",
+      "updated_at": "2026-08-19T15:00:00Z",
+      "valid_from": "2026-08-19T12:00:00Z",
+      "valid_until": null,
+      "as_of": "2026-08-19T12:00:00Z",
+      "status": "approved",
+      "supersedes": null,
+      "provenance": {
+        "created_by": "Cognitive Logic IW research",
+        "method": "Manual OSINT review; deterministic structuring",
+        "sources": [],
+        "transformations": [
+          "Phase 3 formal methodological review"
+        ]
+      },
+      "responsible_actor": "Cognitive Logic IW author",
+      "review_required": true,
+      "review_due": "2026-09-19T12:00:00Z",
+      "content_hash": null,
+      "evidence_id": "IW-001-EVD-009",
+      "evidence_type": "documentary_or_analytic_record",
+      "description": "Evidence note for IW-001-CLM-009",
+      "producer": "Iranian claims reported in derivatives",
+      "collector": "Cognitive Logic IW author",
+      "custodian": "Cognitive Logic",
+      "capture_time": "2026-08-19T12:00:00Z",
+      "event_time": null,
+      "location": "Strait of Hormuz",
+      "original_uri": "https://apnews.com/article/iran-us-israel-lebanon-gaza-hormuz-august-18-2026-9c48af23b713709e8e170191fbc78c2a",
+      "archived_uri": null,
+      "archived_unavailability_reason": "No lawful local archive captured; URL and access time retained.",
+      "metadata_preserved": true,
+      "chain_of_custody": [
+        {
+          "actor": "Cognitive Logic IW author",
+          "action": "inspected source and recorded bounded note",
+          "at": "2026-08-19T12:00:00Z"
+        }
+      ],
+      "authentication_status": "partially_authenticated",
+      "independence_from_claimant": "unknown",
+      "coverage": "comprehensive operational control",
+      "completeness": "Claim-specific excerpt/metadata; not a complete copyrighted work.",
+      "resolution": "Textual reporting or structured incident listing.",
+      "verifiability": "Reinspect the linked page and upstream origin where accessible.",
+      "recency": "Current or identified historical material as of cut-off.",
+      "proximity_to_event": "Varies; derivative sources retain upstream dependency.",
+      "known_transformations": [
+        "English source or human analytic normalization"
+      ],
+      "technical_limitations": [
+        "AIS-off, spoofing, jamming, latency and coverage may affect traffic claims"
+      ],
+      "limitations": [
+        "Statement evidence does not establish statement content."
+      ],
+      "probative_value": [
+        {
+          "claim_id": "IW-001-CLM-009",
+          "establishes": "Limited support or contradiction within stated scope."
+        }
+      ],
+      "supports": [
+        "IW-001-CLM-009"
+      ],
+      "contradicts": [],
+      "does_not_establish": [
+        "Any broader condition outside temporal and definitional scope",
+        "Sovereignty or legal control unless expressly identified",
+        "Causal attribution without separate evidence"
+      ]
+    },
+    {
+      "id": "IW-001-EVD-010",
+      "schema_version": "1.0.0",
+      "record_version": "1.0.0",
+      "created_at": "2026-08-19T12:00:00Z",
+      "updated_at": "2026-08-19T15:00:00Z",
+      "valid_from": "2026-08-19T12:00:00Z",
+      "valid_until": null,
+      "as_of": "2026-08-19T12:00:00Z",
+      "status": "approved",
+      "supersedes": null,
+      "provenance": {
+        "created_by": "Cognitive Logic IW research",
+        "method": "Manual OSINT review; deterministic structuring",
+        "sources": [],
+        "transformations": [
+          "Phase 3 formal methodological review"
+        ]
+      },
+      "responsible_actor": "Cognitive Logic IW author",
+      "review_required": true,
+      "review_due": "2026-09-19T12:00:00Z",
+      "content_hash": null,
+      "evidence_id": "IW-001-EVD-010",
+      "evidence_type": "documentary_or_analytic_record",
+      "description": "Evidence note for IW-001-CLM-010",
+      "producer": "Iranian/derivative framing",
+      "collector": "Cognitive Logic IW author",
+      "custodian": "Cognitive Logic",
+      "capture_time": "2026-08-19T12:00:00Z",
+      "event_time": null,
+      "location": "Strait of Hormuz",
+      "original_uri": "https://apnews.com/article/iran-us-israel-lebanon-gaza-hormuz-august-18-2026-9c48af23b713709e8e170191fbc78c2a",
+      "archived_uri": null,
+      "archived_unavailability_reason": "No lawful local archive captured; URL and access time retained.",
+      "metadata_preserved": true,
+      "chain_of_custody": [
+        {
+          "actor": "Cognitive Logic IW author",
+          "action": "inspected source and recorded bounded note",
+          "at": "2026-08-19T12:00:00Z"
+        }
+      ],
+      "authentication_status": "partially_authenticated",
+      "independence_from_claimant": "unknown",
+      "coverage": "exclusive legal control",
+      "completeness": "Claim-specific excerpt/metadata; not a complete copyrighted work.",
+      "resolution": "Textual reporting or structured incident listing.",
+      "verifiability": "Reinspect the linked page and upstream origin where accessible.",
+      "recency": "Current or identified historical material as of cut-off.",
+      "proximity_to_event": "Varies; derivative sources retain upstream dependency.",
+      "known_transformations": [
+        "English source or human analytic normalization"
+      ],
+      "technical_limitations": [
+        "AIS-off, spoofing, jamming, latency and coverage may affect traffic claims"
+      ],
+      "limitations": [
+        "Statement evidence does not establish statement content."
+      ],
+      "probative_value": [
+        {
+          "claim_id": "IW-001-CLM-010",
+          "establishes": "Limited support or contradiction within stated scope."
+        }
+      ],
+      "supports": [],
+      "contradicts": [
+        "IW-001-CLM-010"
+      ],
+      "does_not_establish": [
+        "Any broader condition outside temporal and definitional scope",
+        "Sovereignty or legal control unless expressly identified",
+        "Causal attribution without separate evidence"
+      ]
+    },
+    {
+      "id": "IW-001-EVD-011",
+      "schema_version": "1.0.0",
+      "record_version": "1.0.0",
+      "created_at": "2026-08-19T12:00:00Z",
+      "updated_at": "2026-08-19T15:00:00Z",
+      "valid_from": "2026-08-19T12:00:00Z",
+      "valid_until": null,
+      "as_of": "2026-08-19T12:00:00Z",
+      "status": "approved",
+      "supersedes": null,
+      "provenance": {
+        "created_by": "Cognitive Logic IW research",
+        "method": "Manual OSINT review; deterministic structuring",
+        "sources": [],
+        "transformations": [
+          "Phase 3 formal methodological review"
+        ]
+      },
+      "responsible_actor": "Cognitive Logic IW author",
+      "review_required": true,
+      "review_due": "2026-09-19T12:00:00Z",
+      "content_hash": null,
+      "evidence_id": "IW-001-EVD-011",
+      "evidence_type": "documentary_or_analytic_record",
+      "description": "Evidence note for IW-001-CLM-011",
+      "producer": "Iran MFA/FM statements",
+      "collector": "Cognitive Logic IW author",
+      "custodian": "Cognitive Logic",
+      "capture_time": "2026-08-19T12:00:00Z",
+      "event_time": null,
+      "location": "Strait of Hormuz",
+      "original_uri": "https://www.aa.com.tr/en/middle-east/iran-says-very-close-to-agreement-with-oman-on-new-hormuz-corridor/4021894",
+      "archived_uri": null,
+      "archived_unavailability_reason": "No lawful local archive captured; URL and access time retained.",
+      "metadata_preserved": true,
+      "chain_of_custody": [
+        {
+          "actor": "Cognitive Logic IW author",
+          "action": "inspected source and recorded bounded note",
+          "at": "2026-08-19T12:00:00Z"
+        }
+      ],
+      "authentication_status": "partially_authenticated",
+      "independence_from_claimant": "unknown",
+      "coverage": "bilateral negotiation existed",
+      "completeness": "Claim-specific excerpt/metadata; not a complete copyrighted work.",
+      "resolution": "Textual reporting or structured incident listing.",
+      "verifiability": "Reinspect the linked page and upstream origin where accessible.",
+      "recency": "Current or identified historical material as of cut-off.",
+      "proximity_to_event": "Varies; derivative sources retain upstream dependency.",
+      "known_transformations": [
+        "English source or human analytic normalization"
+      ],
+      "technical_limitations": [
+        "AIS-off, spoofing, jamming, latency and coverage may affect traffic claims"
+      ],
+      "limitations": [
+        "Statement evidence does not establish statement content."
+      ],
+      "probative_value": [
+        {
+          "claim_id": "IW-001-CLM-011",
+          "establishes": "bilateral negotiation existed"
+        }
+      ],
+      "supports": [
+        "IW-001-CLM-011"
+      ],
+      "contradicts": [],
+      "does_not_establish": [
+        "Any broader condition outside temporal and definitional scope",
+        "Sovereignty or legal control unless expressly identified",
+        "Causal attribution without separate evidence"
+      ]
+    },
+    {
+      "id": "IW-001-EVD-012",
+      "schema_version": "1.0.0",
+      "record_version": "1.0.0",
+      "created_at": "2026-08-19T12:00:00Z",
+      "updated_at": "2026-08-19T15:00:00Z",
+      "valid_from": "2026-08-19T12:00:00Z",
+      "valid_until": null,
+      "as_of": "2026-08-19T12:00:00Z",
+      "status": "approved",
+      "supersedes": null,
+      "provenance": {
+        "created_by": "Cognitive Logic IW research",
+        "method": "Manual OSINT review; deterministic structuring",
+        "sources": [],
+        "transformations": [
+          "Phase 3 formal methodological review"
+        ]
+      },
+      "responsible_actor": "Cognitive Logic IW author",
+      "review_required": true,
+      "review_due": "2026-09-19T12:00:00Z",
+      "content_hash": null,
+      "evidence_id": "IW-001-EVD-012",
+      "evidence_type": "documentary_or_analytic_record",
+      "description": "Evidence note for IW-001-CLM-012",
+      "producer": "No identified publication",
+      "collector": "Cognitive Logic IW author",
+      "custodian": "Cognitive Logic",
+      "capture_time": "2026-08-19T12:00:00Z",
+      "event_time": null,
+      "location": "Strait of Hormuz",
+      "original_uri": "https://apnews.com/article/iran-us-israel-lebanon-gaza-hormuz-august-18-2026-9c48af23b713709e8e170191fbc78c2a",
+      "archived_uri": null,
+      "archived_unavailability_reason": "No lawful local archive captured; URL and access time retained.",
+      "metadata_preserved": true,
+      "chain_of_custody": [
+        {
+          "actor": "Cognitive Logic IW author",
+          "action": "inspected source and recorded bounded note",
+          "at": "2026-08-19T12:00:00Z"
+        }
+      ],
+      "authentication_status": "partially_authenticated",
+      "independence_from_claimant": "unknown",
+      "coverage": "published definitive agreement",
+      "completeness": "Claim-specific excerpt/metadata; not a complete copyrighted work.",
+      "resolution": "Textual reporting or structured incident listing.",
+      "verifiability": "Reinspect the linked page and upstream origin where accessible.",
+      "recency": "Current or identified historical material as of cut-off.",
+      "proximity_to_event": "Varies; derivative sources retain upstream dependency.",
+      "known_transformations": [
+        "English source or human analytic normalization"
+      ],
+      "technical_limitations": [
+        "AIS-off, spoofing, jamming, latency and coverage may affect traffic claims"
+      ],
+      "limitations": [
+        "Statement evidence does not establish statement content."
+      ],
+      "probative_value": [
+        {
+          "claim_id": "IW-001-CLM-012",
+          "establishes": "Limited support or contradiction within stated scope."
+        }
+      ],
+      "supports": [
+        "IW-001-CLM-012"
+      ],
+      "contradicts": [],
+      "does_not_establish": [
+        "Any broader condition outside temporal and definitional scope",
+        "Sovereignty or legal control unless expressly identified",
+        "Causal attribution without separate evidence"
+      ]
+    },
+    {
+      "id": "IW-001-EVD-013",
+      "schema_version": "1.0.0",
+      "record_version": "1.0.0",
+      "created_at": "2026-08-19T12:00:00Z",
+      "updated_at": "2026-08-19T15:00:00Z",
+      "valid_from": "2026-08-19T12:00:00Z",
+      "valid_until": null,
+      "as_of": "2026-08-19T12:00:00Z",
+      "status": "approved",
+      "supersedes": null,
+      "provenance": {
+        "created_by": "Cognitive Logic IW research",
+        "method": "Manual OSINT review; deterministic structuring",
+        "sources": [],
+        "transformations": [
+          "Phase 3 formal methodological review"
+        ]
+      },
+      "responsible_actor": "Cognitive Logic IW author",
+      "review_required": true,
+      "review_due": "2026-09-19T12:00:00Z",
+      "content_hash": null,
+      "evidence_id": "IW-001-EVD-013",
+      "evidence_type": "documentary_or_analytic_record",
+      "description": "Evidence note for IW-001-CLM-013",
+      "producer": "IMO updated incident register",
+      "collector": "Cognitive Logic IW author",
+      "custodian": "Cognitive Logic",
+      "capture_time": "2026-08-19T12:00:00Z",
+      "event_time": null,
+      "location": "Strait of Hormuz",
+      "original_uri": "https://www.imo.org/en/mediacentre/hottopics/pages/middle-east-highlighted-incidents.aspx",
+      "archived_uri": null,
+      "archived_unavailability_reason": "No lawful local archive captured; URL and access time retained.",
+      "metadata_preserved": true,
+      "chain_of_custody": [
+        {
+          "actor": "Cognitive Logic IW author",
+          "action": "inspected source and recorded bounded note",
+          "at": "2026-08-19T12:00:00Z"
+        }
+      ],
+      "authentication_status": "partially_authenticated",
+      "independence_from_claimant": "unknown",
+      "coverage": "incident identity, date, damage, fatality and no reported pollution",
+      "completeness": "Claim-specific excerpt/metadata; not a complete copyrighted work.",
+      "resolution": "Textual reporting or structured incident listing.",
+      "verifiability": "Reinspect the linked page and upstream origin where accessible.",
+      "recency": "Current or identified historical material as of cut-off.",
+      "proximity_to_event": "Varies; derivative sources retain upstream dependency.",
+      "known_transformations": [
+        "English source or human analytic normalization"
+      ],
+      "technical_limitations": [
+        "AIS-off, spoofing, jamming, latency and coverage may affect traffic claims"
+      ],
+      "limitations": [
+        "Statement evidence does not establish statement content."
+      ],
+      "probative_value": [
+        {
+          "claim_id": "IW-001-CLM-013",
+          "establishes": "incident identity, date, damage, fatality and no reported pollution"
+        }
+      ],
+      "supports": [
+        "IW-001-CLM-013"
+      ],
+      "contradicts": [],
+      "does_not_establish": [
+        "Any broader condition outside temporal and definitional scope",
+        "Sovereignty or legal control unless expressly identified",
+        "Causal attribution without separate evidence"
+      ]
+    },
+    {
+      "id": "IW-001-EVD-014",
+      "schema_version": "1.0.0",
+      "record_version": "1.0.0",
+      "created_at": "2026-08-19T12:00:00Z",
+      "updated_at": "2026-08-19T15:00:00Z",
+      "valid_from": "2026-08-19T12:00:00Z",
+      "valid_until": null,
+      "as_of": "2026-08-19T12:00:00Z",
+      "status": "approved",
+      "supersedes": null,
+      "provenance": {
+        "created_by": "Cognitive Logic IW research",
+        "method": "Manual OSINT review; deterministic structuring",
+        "sources": [],
+        "transformations": [
+          "Phase 3 formal methodological review"
+        ]
+      },
+      "responsible_actor": "Cognitive Logic IW author",
+      "review_required": true,
+      "review_due": "2026-09-19T12:00:00Z",
+      "content_hash": null,
+      "evidence_id": "IW-001-EVD-014",
+      "evidence_type": "documentary_or_analytic_record",
+      "description": "Evidence note for IW-001-CLM-014",
+      "producer": "IMO updated incident register",
+      "collector": "Cognitive Logic IW author",
+      "custodian": "Cognitive Logic",
+      "capture_time": "2026-08-19T12:00:00Z",
+      "event_time": null,
+      "location": "Strait of Hormuz",
+      "original_uri": "https://www.imo.org/en/mediacentre/hottopics/pages/middle-east-highlighted-incidents.aspx",
+      "archived_uri": null,
+      "archived_unavailability_reason": "No lawful local archive captured; URL and access time retained.",
+      "metadata_preserved": true,
+      "chain_of_custody": [
+        {
+          "actor": "Cognitive Logic IW author",
+          "action": "inspected source and recorded bounded note",
+          "at": "2026-08-19T12:00:00Z"
+        }
+      ],
+      "authentication_status": "partially_authenticated",
+      "independence_from_claimant": "unknown",
+      "coverage": "distinct incident identity, location, damage, missing seafarer and pollution status",
+      "completeness": "Claim-specific excerpt/metadata; not a complete copyrighted work.",
+      "resolution": "Textual reporting or structured incident listing.",
+      "verifiability": "Reinspect the linked page and upstream origin where accessible.",
+      "recency": "Current or identified historical material as of cut-off.",
+      "proximity_to_event": "Varies; derivative sources retain upstream dependency.",
+      "known_transformations": [
+        "English source or human analytic normalization"
+      ],
+      "technical_limitations": [
+        "AIS-off, spoofing, jamming, latency and coverage may affect traffic claims"
+      ],
+      "limitations": [
+        "Statement evidence does not establish statement content."
+      ],
+      "probative_value": [
+        {
+          "claim_id": "IW-001-CLM-014",
+          "establishes": "distinct incident identity, location, damage, missing seafarer and pollution status"
+        }
+      ],
+      "supports": [
+        "IW-001-CLM-014"
+      ],
+      "contradicts": [],
+      "does_not_establish": [
+        "Any broader condition outside temporal and definitional scope",
+        "Sovereignty or legal control unless expressly identified",
+        "Causal attribution without separate evidence"
+      ]
+    },
+    {
+      "id": "IW-001-EVD-015",
+      "schema_version": "1.0.0",
+      "record_version": "1.0.0",
+      "created_at": "2026-08-19T12:00:00Z",
+      "updated_at": "2026-08-19T15:00:00Z",
+      "valid_from": "2026-08-19T12:00:00Z",
+      "valid_until": null,
+      "as_of": "2026-08-19T12:00:00Z",
+      "status": "approved",
+      "supersedes": null,
+      "provenance": {
+        "created_by": "Cognitive Logic IW research",
+        "method": "Manual OSINT review; deterministic structuring",
+        "sources": [],
+        "transformations": [
+          "Phase 3 formal methodological review"
+        ]
+      },
+      "responsible_actor": "Cognitive Logic IW author",
+      "review_required": true,
+      "review_due": "2026-09-19T12:00:00Z",
+      "content_hash": null,
+      "evidence_id": "IW-001-EVD-015",
+      "evidence_type": "documentary_or_analytic_record",
+      "description": "Evidence note for IW-001-CLM-015",
+      "producer": "No authenticated attribution",
+      "collector": "Cognitive Logic IW author",
+      "custodian": "Cognitive Logic",
+      "capture_time": "2026-08-19T12:00:00Z",
+      "event_time": null,
+      "location": "Strait of Hormuz",
+      "original_uri": "https://apnews.com/article/iran-us-israel-lebanon-gaza-hormuz-august-18-2026-9c48af23b713709e8e170191fbc78c2a",
+      "archived_uri": null,
+      "archived_unavailability_reason": "No lawful local archive captured; URL and access time retained.",
+      "metadata_preserved": true,
+      "chain_of_custody": [
+        {
+          "actor": "Cognitive Logic IW author",
+          "action": "inspected source and recorded bounded note",
+          "at": "2026-08-19T12:00:00Z"
+        }
+      ],
+      "authentication_status": "partially_authenticated",
+      "independence_from_claimant": "unknown",
+      "coverage": "MINOAN PIONEER attack attribution",
+      "completeness": "Claim-specific excerpt/metadata; not a complete copyrighted work.",
+      "resolution": "Textual reporting or structured incident listing.",
+      "verifiability": "Reinspect the linked page and upstream origin where accessible.",
+      "recency": "Current or identified historical material as of cut-off.",
+      "proximity_to_event": "Varies; derivative sources retain upstream dependency.",
+      "known_transformations": [
+        "English source or human analytic normalization"
+      ],
+      "technical_limitations": [
+        "AIS-off, spoofing, jamming, latency and coverage may affect traffic claims"
+      ],
+      "limitations": [
+        "Statement evidence does not establish statement content."
+      ],
+      "probative_value": [
+        {
+          "claim_id": "IW-001-CLM-015",
+          "establishes": "Limited support or contradiction within stated scope."
+        }
+      ],
+      "supports": [
+        "IW-001-CLM-015"
+      ],
+      "contradicts": [],
+      "does_not_establish": [
+        "Any broader condition outside temporal and definitional scope",
+        "Sovereignty or legal control unless expressly identified",
+        "Causal attribution without separate evidence"
+      ]
+    },
+    {
+      "id": "IW-001-EVD-016",
+      "schema_version": "1.0.0",
+      "record_version": "1.0.0",
+      "created_at": "2026-08-19T12:00:00Z",
+      "updated_at": "2026-08-19T15:00:00Z",
+      "valid_from": "2026-08-19T12:00:00Z",
+      "valid_until": null,
+      "as_of": "2026-08-19T12:00:00Z",
+      "status": "approved",
+      "supersedes": null,
+      "provenance": {
+        "created_by": "Cognitive Logic IW research",
+        "method": "Manual OSINT review; deterministic structuring",
+        "sources": [],
+        "transformations": [
+          "Phase 3 formal methodological review"
+        ]
+      },
+      "responsible_actor": "Cognitive Logic IW author",
+      "review_required": true,
+      "review_due": "2026-09-19T12:00:00Z",
+      "content_hash": null,
+      "evidence_id": "IW-001-EVD-016",
+      "evidence_type": "documentary_or_analytic_record",
+      "description": "Evidence note for IW-001-CLM-016",
+      "producer": "MARAD and incident reporting",
+      "collector": "Cognitive Logic IW author",
+      "custodian": "Cognitive Logic",
+      "capture_time": "2026-08-19T12:00:00Z",
+      "event_time": null,
+      "location": "Strait of Hormuz",
+      "original_uri": "https://www.maritime.dot.gov/msci/2026-004-persian-gulf-strait-hormuz-and-gulf-oman-iranian-attacks-commercial-vessels",
+      "archived_uri": null,
+      "archived_unavailability_reason": "No lawful local archive captured; URL and access time retained.",
+      "metadata_preserved": true,
+      "chain_of_custody": [
+        {
+          "actor": "Cognitive Logic IW author",
+          "action": "inspected source and recorded bounded note",
+          "at": "2026-08-19T12:00:00Z"
+        }
+      ],
+      "authentication_status": "partially_authenticated",
+      "independence_from_claimant": "unknown",
+      "coverage": "elevated risk",
+      "completeness": "Claim-specific excerpt/metadata; not a complete copyrighted work.",
+      "resolution": "Textual reporting or structured incident listing.",
+      "verifiability": "Reinspect the linked page and upstream origin where accessible.",
+      "recency": "Current or identified historical material as of cut-off.",
+      "proximity_to_event": "Varies; derivative sources retain upstream dependency.",
+      "known_transformations": [
+        "English source or human analytic normalization"
+      ],
+      "technical_limitations": [
+        "AIS-off, spoofing, jamming, latency and coverage may affect traffic claims"
+      ],
+      "limitations": [
+        "Statement evidence does not establish statement content."
+      ],
+      "probative_value": [
+        {
+          "claim_id": "IW-001-CLM-016",
+          "establishes": "elevated risk"
+        }
+      ],
+      "supports": [
+        "IW-001-CLM-016"
+      ],
+      "contradicts": [],
+      "does_not_establish": [
+        "Any broader condition outside temporal and definitional scope",
+        "Sovereignty or legal control unless expressly identified",
+        "Causal attribution without separate evidence"
+      ]
+    },
+    {
+      "id": "IW-001-EVD-017",
+      "schema_version": "1.0.0",
+      "record_version": "1.0.0",
+      "created_at": "2026-08-19T12:00:00Z",
+      "updated_at": "2026-08-19T15:00:00Z",
+      "valid_from": "2026-08-19T12:00:00Z",
+      "valid_until": null,
+      "as_of": "2026-08-19T12:00:00Z",
+      "status": "approved",
+      "supersedes": null,
+      "provenance": {
+        "created_by": "Cognitive Logic IW research",
+        "method": "Manual OSINT review; deterministic structuring",
+        "sources": [],
+        "transformations": [
+          "Phase 3 formal methodological review"
+        ]
+      },
+      "responsible_actor": "Cognitive Logic IW author",
+      "review_required": true,
+      "review_due": "2026-09-19T12:00:00Z",
+      "content_hash": null,
+      "evidence_id": "IW-001-EVD-017",
+      "evidence_type": "documentary_or_analytic_record",
+      "description": "Evidence note for IW-001-CLM-017",
+      "producer": "General reporting",
+      "collector": "Cognitive Logic IW author",
+      "custodian": "Cognitive Logic",
+      "capture_time": "2026-08-19T12:00:00Z",
+      "event_time": null,
+      "location": "Strait of Hormuz",
+      "original_uri": "https://apnews.com/article/iran-us-israel-lebanon-gaza-hormuz-august-18-2026-9c48af23b713709e8e170191fbc78c2a",
+      "archived_uri": null,
+      "archived_unavailability_reason": "No lawful local archive captured; URL and access time retained.",
+      "metadata_preserved": true,
+      "chain_of_custody": [
+        {
+          "actor": "Cognitive Logic IW author",
+          "action": "inspected source and recorded bounded note",
+          "at": "2026-08-19T12:00:00Z"
+        }
+      ],
+      "authentication_status": "partially_authenticated",
+      "independence_from_claimant": "unknown",
+      "coverage": "specific causal energy consequence",
+      "completeness": "Claim-specific excerpt/metadata; not a complete copyrighted work.",
+      "resolution": "Textual reporting or structured incident listing.",
+      "verifiability": "Reinspect the linked page and upstream origin where accessible.",
+      "recency": "Current or identified historical material as of cut-off.",
+      "proximity_to_event": "Varies; derivative sources retain upstream dependency.",
+      "known_transformations": [
+        "English source or human analytic normalization"
+      ],
+      "technical_limitations": [
+        "AIS-off, spoofing, jamming, latency and coverage may affect traffic claims"
+      ],
+      "limitations": [
+        "Statement evidence does not establish statement content."
+      ],
+      "probative_value": [
+        {
+          "claim_id": "IW-001-CLM-017",
+          "establishes": "Limited support or contradiction within stated scope."
+        }
+      ],
+      "supports": [
+        "IW-001-CLM-017"
+      ],
+      "contradicts": [],
+      "does_not_establish": [
+        "Any broader condition outside temporal and definitional scope",
+        "Sovereignty or legal control unless expressly identified",
+        "Causal attribution without separate evidence"
+      ]
+    },
+    {
+      "id": "IW-001-EVD-018",
+      "schema_version": "1.0.0",
+      "record_version": "1.0.0",
+      "created_at": "2026-08-19T12:00:00Z",
+      "updated_at": "2026-08-19T15:00:00Z",
+      "valid_from": "2026-08-19T12:00:00Z",
+      "valid_until": null,
+      "as_of": "2026-08-19T12:00:00Z",
+      "status": "approved",
+      "supersedes": null,
+      "provenance": {
+        "created_by": "Cognitive Logic IW research",
+        "method": "Manual OSINT review; deterministic structuring",
+        "sources": [],
+        "transformations": [
+          "Phase 3 formal methodological review"
+        ]
+      },
+      "responsible_actor": "Cognitive Logic IW author",
+      "review_required": true,
+      "review_due": "2026-09-19T12:00:00Z",
+      "content_hash": null,
+      "evidence_id": "IW-001-EVD-018",
+      "evidence_type": "documentary_or_analytic_record",
+      "description": "Evidence note for IW-001-CLM-018",
+      "producer": "No authenticated attribution",
+      "collector": "Cognitive Logic IW author",
+      "custodian": "Cognitive Logic",
+      "capture_time": "2026-08-19T12:00:00Z",
+      "event_time": null,
+      "location": "Strait of Hormuz",
+      "original_uri": "https://apnews.com/article/iran-us-israel-lebanon-gaza-hormuz-august-18-2026-9c48af23b713709e8e170191fbc78c2a",
+      "archived_uri": null,
+      "archived_unavailability_reason": "No lawful local archive captured; URL and access time retained.",
+      "metadata_preserved": true,
+      "chain_of_custody": [
+        {
+          "actor": "Cognitive Logic IW author",
+          "action": "inspected source and recorded bounded note",
+          "at": "2026-08-19T12:00:00Z"
+        }
+      ],
+      "authentication_status": "partially_authenticated",
+      "independence_from_claimant": "unknown",
+      "coverage": "MINOAN DIGNITY attack attribution",
+      "completeness": "Claim-specific excerpt/metadata; not a complete copyrighted work.",
+      "resolution": "Textual reporting or structured incident listing.",
+      "verifiability": "Reinspect the linked page and upstream origin where accessible.",
+      "recency": "Current or identified historical material as of cut-off.",
+      "proximity_to_event": "Varies; derivative sources retain upstream dependency.",
+      "known_transformations": [
+        "English source or human analytic normalization"
+      ],
+      "technical_limitations": [
+        "AIS-off, spoofing, jamming, latency and coverage may affect traffic claims"
+      ],
+      "limitations": [
+        "Statement evidence does not establish statement content."
+      ],
+      "probative_value": [
+        {
+          "claim_id": "IW-001-CLM-018",
+          "establishes": "Limited support or contradiction within stated scope."
+        }
+      ],
+      "supports": [
+        "IW-001-CLM-018"
+      ],
+      "contradicts": [],
+      "does_not_establish": [
+        "Any broader condition outside temporal and definitional scope",
+        "Sovereignty or legal control unless expressly identified",
+        "Causal attribution without separate evidence"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://cognitivelogic.it/schemas/international-watch/common.schema.json",
+  "title": "International Watch common record",
+  "type": "object",
+  "required": ["id", "schema_version", "record_version", "created_at", "updated_at", "valid_from", "valid_until", "as_of", "status", "supersedes", "provenance", "responsible_actor", "review_required", "review_due"],
+  "properties": {
+    "id": {"type": "string", "minLength": 1},
+    "schema_version": {"const": "1.0.0"},
+    "record_version": {"type": "string", "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$"},
+    "created_at": {"type": "string", "format": "date-time"},
+    "updated_at": {"type": "string", "format": "date-time"},
+    "valid_from": {"type": "string", "format": "date-time"},
+    "valid_until": {"type": ["string", "null"], "format": "date-time"},
+    "as_of": {"type": "string", "format": "date-time"},
+    "status": {"enum": ["draft", "in_review", "approved", "published", "superseded", "withdrawn"]},
+    "supersedes": {"type": ["string", "null"]},
+    "provenance": {"type": "object", "required": ["created_by", "method", "sources"], "properties": {"created_by": {"type": "string"}, "method": {"type": "string"}, "sources": {"type": "array", "items": {"type": "string"}}, "transformations": {"type": "array", "items": {"type": "string"}}}, "additionalProperties": false},
+    "responsible_actor": {"type": "string", "minLength": 1},
+    "review_required": {"type": "boolean"},
+    "review_due": {"type": ["string", "null"], "format": "date-time"},
+    "content_hash": {"type": ["string", "null"], "pattern": "^sha256:[a-f0-9]{64}$"},
+    "integrity_ref": {"type": ["string", "null"]}
+  }
+}

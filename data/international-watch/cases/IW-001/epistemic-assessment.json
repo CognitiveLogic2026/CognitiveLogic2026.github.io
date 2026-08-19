@@ -1,0 +1,1326 @@
+{
+  "schema_version": "1.0.0",
+  "case_id": "IW-001",
+  "records": [
+    {
+      "id": "IW-001-ASM-001",
+      "schema_version": "1.0.0",
+      "record_version": "1.0.0",
+      "created_at": "2026-08-19T12:00:00Z",
+      "updated_at": "2026-08-19T15:00:00Z",
+      "valid_from": "2026-08-19T12:00:00Z",
+      "valid_until": null,
+      "as_of": "2026-08-19T12:00:00Z",
+      "status": "approved",
+      "supersedes": null,
+      "provenance": {
+        "created_by": "Cognitive Logic IW research",
+        "method": "Manual OSINT review; deterministic structuring",
+        "sources": [],
+        "transformations": [
+          "Phase 3 formal methodological review"
+        ]
+      },
+      "responsible_actor": "Cognitive Logic IW author",
+      "review_required": true,
+      "review_due": "2026-09-19T12:00:00Z",
+      "content_hash": null,
+      "assessment_id": "IW-001-ASM-001",
+      "claim_id": "IW-001-CLM-001",
+      "state": "PLAUSIBILE",
+      "state_definition_version": "1.0.0",
+      "reasoning_summary": "Assigned claim-specifically from inspected material; Kpler dataset as reported by AP; dependencies and scope limit generalization.",
+      "supporting_evidence": [
+        "IW-001-EVD-001"
+      ],
+      "contrary_evidence": [],
+      "independent_evidence_groups": [
+        {
+          "group_id": "IW-001-GRP-001",
+          "evidence_ids": [
+            "IW-001-EVD-001"
+          ],
+          "independence_basis": "Single identified evidentiary origin; derivatives are not additional groups."
+        }
+      ],
+      "unresolved_contradictions": [],
+      "scope": {
+        "geographic": [
+          "Strait of Hormuz"
+        ],
+        "temporal": {
+          "start": "2026-08-01T00:00:00Z",
+          "end": "2026-08-19T12:00:00Z"
+        },
+        "definitions": [
+          "Controlled glossary distinctions apply."
+        ]
+      },
+      "unknowns": [
+        "Unobserved or dark traffic",
+        "Unpublished diplomatic terms",
+        "Attribution where not authenticated"
+      ],
+      "limits": [
+        "Cut-off 12:00 UTC",
+        "Dynamic pages and inaccessible upstream material",
+        "No inference from URL count"
+      ],
+      "decision_rules_applied": [
+        "ES-PLA-1",
+        "republication-is-not-independent-corroboration"
+      ],
+      "excluded_evidence": [],
+      "reviewer": "Cognitive Logic — International Watch Methodology Review",
+      "previous_assessment": null,
+      "change_reason": "Phase 3 formal review confirmed the claim-specific state without homogenization."
+    },
+    {
+      "id": "IW-001-ASM-002",
+      "schema_version": "1.0.0",
+      "record_version": "1.0.0",
+      "created_at": "2026-08-19T12:00:00Z",
+      "updated_at": "2026-08-19T15:00:00Z",
+      "valid_from": "2026-08-19T12:00:00Z",
+      "valid_until": null,
+      "as_of": "2026-08-19T12:00:00Z",
+      "status": "approved",
+      "supersedes": null,
+      "provenance": {
+        "created_by": "Cognitive Logic IW research",
+        "method": "Manual OSINT review; deterministic structuring",
+        "sources": [],
+        "transformations": [
+          "Phase 3 formal methodological review"
+        ]
+      },
+      "responsible_actor": "Cognitive Logic IW author",
+      "review_required": true,
+      "review_due": "2026-09-19T12:00:00Z",
+      "content_hash": null,
+      "assessment_id": "IW-001-ASM-002",
+      "claim_id": "IW-001-CLM-002",
+      "state": "PLAUSIBILE",
+      "state_definition_version": "1.0.0",
+      "reasoning_summary": "Assigned claim-specifically from inspected material; Kpler dataset as reported by AP; dependencies and scope limit generalization.",
+      "supporting_evidence": [
+        "IW-001-EVD-002"
+      ],
+      "contrary_evidence": [],
+      "independent_evidence_groups": [
+        {
+          "group_id": "IW-001-GRP-002",
+          "evidence_ids": [
+            "IW-001-EVD-002"
+          ],
+          "independence_basis": "Single identified evidentiary origin; derivatives are not additional groups."
+        }
+      ],
+      "unresolved_contradictions": [],
+      "scope": {
+        "geographic": [
+          "Strait of Hormuz"
+        ],
+        "temporal": {
+          "start": "2026-08-01T00:00:00Z",
+          "end": "2026-08-19T12:00:00Z"
+        },
+        "definitions": [
+          "Controlled glossary distinctions apply."
+        ]
+      },
+      "unknowns": [
+        "Unobserved or dark traffic",
+        "Unpublished diplomatic terms",
+        "Attribution where not authenticated"
+      ],
+      "limits": [
+        "Cut-off 12:00 UTC",
+        "Dynamic pages and inaccessible upstream material",
+        "No inference from URL count"
+      ],
+      "decision_rules_applied": [
+        "ES-PLA-1",
+        "republication-is-not-independent-corroboration"
+      ],
+      "excluded_evidence": [],
+      "reviewer": "Cognitive Logic — International Watch Methodology Review",
+      "previous_assessment": null,
+      "change_reason": "Phase 3 formal review confirmed the claim-specific state without homogenization."
+    },
+    {
+      "id": "IW-001-ASM-003",
+      "schema_version": "1.0.0",
+      "record_version": "1.0.0",
+      "created_at": "2026-08-19T12:00:00Z",
+      "updated_at": "2026-08-19T15:00:00Z",
+      "valid_from": "2026-08-19T12:00:00Z",
+      "valid_until": null,
+      "as_of": "2026-08-19T12:00:00Z",
+      "status": "approved",
+      "supersedes": null,
+      "provenance": {
+        "created_by": "Cognitive Logic IW research",
+        "method": "Manual OSINT review; deterministic structuring",
+        "sources": [],
+        "transformations": [
+          "Phase 3 formal methodological review"
+        ]
+      },
+      "responsible_actor": "Cognitive Logic IW author",
+      "review_required": true,
+      "review_due": "2026-09-19T12:00:00Z",
+      "content_hash": null,
+      "assessment_id": "IW-001-ASM-003",
+      "claim_id": "IW-001-CLM-003",
+      "state": "ACCERTATO",
+      "state_definition_version": "1.0.0",
+      "reasoning_summary": "Assigned claim-specifically from inspected material; Cognitive Logic analysis; dependencies and scope limit generalization.",
+      "supporting_evidence": [
+        "IW-001-EVD-003"
+      ],
+      "contrary_evidence": [],
+      "independent_evidence_groups": [
+        {
+          "group_id": "IW-001-GRP-003",
+          "evidence_ids": [
+            "IW-001-EVD-003"
+          ],
+          "independence_basis": "Single identified evidentiary origin; derivatives are not additional groups."
+        }
+      ],
+      "unresolved_contradictions": [],
+      "scope": {
+        "geographic": [
+          "Strait of Hormuz"
+        ],
+        "temporal": {
+          "start": "2026-08-01T00:00:00Z",
+          "end": "2026-08-19T12:00:00Z"
+        },
+        "definitions": [
+          "Controlled glossary distinctions apply."
+        ]
+      },
+      "unknowns": [
+        "Unobserved or dark traffic",
+        "Unpublished diplomatic terms",
+        "Attribution where not authenticated"
+      ],
+      "limits": [
+        "Cut-off 12:00 UTC",
+        "Dynamic pages and inaccessible upstream material",
+        "No inference from URL count"
+      ],
+      "decision_rules_applied": [
+        "ES-ACC-1",
+        "republication-is-not-independent-corroboration"
+      ],
+      "excluded_evidence": [],
+      "reviewer": "Cognitive Logic — International Watch Methodology Review",
+      "previous_assessment": null,
+      "change_reason": "Phase 3 formal review confirmed the claim-specific state without homogenization."
+    },
+    {
+      "id": "IW-001-ASM-004",
+      "schema_version": "1.0.0",
+      "record_version": "1.0.0",
+      "created_at": "2026-08-19T12:00:00Z",
+      "updated_at": "2026-08-19T15:00:00Z",
+      "valid_from": "2026-08-19T12:00:00Z",
+      "valid_until": null,
+      "as_of": "2026-08-19T12:00:00Z",
+      "status": "approved",
+      "supersedes": null,
+      "provenance": {
+        "created_by": "Cognitive Logic IW research",
+        "method": "Manual OSINT review; deterministic structuring",
+        "sources": [],
+        "transformations": [
+          "Phase 3 formal methodological review"
+        ]
+      },
+      "responsible_actor": "Cognitive Logic IW author",
+      "review_required": true,
+      "review_due": "2026-09-19T12:00:00Z",
+      "content_hash": null,
+      "assessment_id": "IW-001-ASM-004",
+      "claim_id": "IW-001-CLM-004",
+      "state": "PLAUSIBILE",
+      "state_definition_version": "1.0.0",
+      "reasoning_summary": "Assigned claim-specifically from inspected material; Cognitive Logic analysis; dependencies and scope limit generalization.",
+      "supporting_evidence": [
+        "IW-001-EVD-004"
+      ],
+      "contrary_evidence": [],
+      "independent_evidence_groups": [
+        {
+          "group_id": "IW-001-GRP-004",
+          "evidence_ids": [
+            "IW-001-EVD-004"
+          ],
+          "independence_basis": "Single identified evidentiary origin; derivatives are not additional groups."
+        }
+      ],
+      "unresolved_contradictions": [],
+      "scope": {
+        "geographic": [
+          "Strait of Hormuz"
+        ],
+        "temporal": {
+          "start": "2026-08-01T00:00:00Z",
+          "end": "2026-08-19T12:00:00Z"
+        },
+        "definitions": [
+          "Controlled glossary distinctions apply."
+        ]
+      },
+      "unknowns": [
+        "Unobserved or dark traffic",
+        "Unpublished diplomatic terms",
+        "Attribution where not authenticated"
+      ],
+      "limits": [
+        "Cut-off 12:00 UTC",
+        "Dynamic pages and inaccessible upstream material",
+        "No inference from URL count"
+      ],
+      "decision_rules_applied": [
+        "ES-PLA-1",
+        "republication-is-not-independent-corroboration"
+      ],
+      "excluded_evidence": [],
+      "reviewer": "Cognitive Logic — International Watch Methodology Review",
+      "previous_assessment": null,
+      "change_reason": "Phase 3 formal review confirmed the claim-specific state without homogenization."
+    },
+    {
+      "id": "IW-001-ASM-005",
+      "schema_version": "1.0.0",
+      "record_version": "1.0.0",
+      "created_at": "2026-08-19T12:00:00Z",
+      "updated_at": "2026-08-19T15:00:00Z",
+      "valid_from": "2026-08-19T12:00:00Z",
+      "valid_until": null,
+      "as_of": "2026-08-19T12:00:00Z",
+      "status": "approved",
+      "supersedes": null,
+      "provenance": {
+        "created_by": "Cognitive Logic IW research",
+        "method": "Manual OSINT review; deterministic structuring",
+        "sources": [],
+        "transformations": [
+          "Phase 3 formal methodological review"
+        ]
+      },
+      "responsible_actor": "Cognitive Logic IW author",
+      "review_required": true,
+      "review_due": "2026-09-19T12:00:00Z",
+      "content_hash": null,
+      "assessment_id": "IW-001-ASM-005",
+      "claim_id": "IW-001-CLM-005",
+      "state": "CONTRADDETTO",
+      "state_definition_version": "1.0.0",
+      "reasoning_summary": "Assigned claim-specifically from inspected material; No single origin; dependencies and scope limit generalization.",
+      "supporting_evidence": [],
+      "contrary_evidence": [
+        "IW-001-EVD-005"
+      ],
+      "independent_evidence_groups": [
+        {
+          "group_id": "IW-001-GRP-005",
+          "evidence_ids": [
+            "IW-001-EVD-005"
+          ],
+          "independence_basis": "Single identified evidentiary origin; derivatives are not additional groups."
+        }
+      ],
+      "unresolved_contradictions": [
+        "IW-001-CON-001"
+      ],
+      "scope": {
+        "geographic": [
+          "Strait of Hormuz"
+        ],
+        "temporal": {
+          "start": "2026-08-01T00:00:00Z",
+          "end": "2026-08-19T12:00:00Z"
+        },
+        "definitions": [
+          "Controlled glossary distinctions apply."
+        ]
+      },
+      "unknowns": [
+        "Unobserved or dark traffic",
+        "Unpublished diplomatic terms",
+        "Attribution where not authenticated"
+      ],
+      "limits": [
+        "Cut-off 12:00 UTC",
+        "Dynamic pages and inaccessible upstream material",
+        "No inference from URL count"
+      ],
+      "decision_rules_applied": [
+        "ES-CTR-1",
+        "republication-is-not-independent-corroboration"
+      ],
+      "excluded_evidence": [],
+      "reviewer": "Cognitive Logic — International Watch Methodology Review",
+      "previous_assessment": null,
+      "change_reason": "Phase 3 formal review confirmed the claim-specific state without homogenization."
+    },
+    {
+      "id": "IW-001-ASM-006",
+      "schema_version": "1.0.0",
+      "record_version": "1.0.0",
+      "created_at": "2026-08-19T12:00:00Z",
+      "updated_at": "2026-08-19T15:00:00Z",
+      "valid_from": "2026-08-19T12:00:00Z",
+      "valid_until": null,
+      "as_of": "2026-08-19T12:00:00Z",
+      "status": "approved",
+      "supersedes": null,
+      "provenance": {
+        "created_by": "Cognitive Logic IW research",
+        "method": "Manual OSINT review; deterministic structuring",
+        "sources": [],
+        "transformations": [
+          "Phase 3 formal methodological review"
+        ]
+      },
+      "responsible_actor": "Cognitive Logic IW author",
+      "review_required": true,
+      "review_due": "2026-09-19T12:00:00Z",
+      "content_hash": null,
+      "assessment_id": "IW-001-ASM-006",
+      "claim_id": "IW-001-CLM-006",
+      "state": "ACCERTATO",
+      "state_definition_version": "1.0.0",
+      "reasoning_summary": "Assigned claim-specifically from inspected material; US President as reported by AP; dependencies and scope limit generalization.",
+      "supporting_evidence": [
+        "IW-001-EVD-006"
+      ],
+      "contrary_evidence": [],
+      "independent_evidence_groups": [
+        {
+          "group_id": "IW-001-GRP-006",
+          "evidence_ids": [
+            "IW-001-EVD-006"
+          ],
+          "independence_basis": "Single identified evidentiary origin; derivatives are not additional groups."
+        }
+      ],
+      "unresolved_contradictions": [],
+      "scope": {
+        "geographic": [
+          "Strait of Hormuz"
+        ],
+        "temporal": {
+          "start": "2026-08-01T00:00:00Z",
+          "end": "2026-08-19T12:00:00Z"
+        },
+        "definitions": [
+          "Controlled glossary distinctions apply."
+        ]
+      },
+      "unknowns": [
+        "Unobserved or dark traffic",
+        "Unpublished diplomatic terms",
+        "Attribution where not authenticated"
+      ],
+      "limits": [
+        "Cut-off 12:00 UTC",
+        "Dynamic pages and inaccessible upstream material",
+        "No inference from URL count"
+      ],
+      "decision_rules_applied": [
+        "ES-ACC-1",
+        "republication-is-not-independent-corroboration"
+      ],
+      "excluded_evidence": [],
+      "reviewer": "Cognitive Logic — International Watch Methodology Review",
+      "previous_assessment": null,
+      "change_reason": "Phase 3 formal review confirmed the claim-specific state without homogenization."
+    },
+    {
+      "id": "IW-001-ASM-007",
+      "schema_version": "1.0.0",
+      "record_version": "1.0.0",
+      "created_at": "2026-08-19T12:00:00Z",
+      "updated_at": "2026-08-19T15:00:00Z",
+      "valid_from": "2026-08-19T12:00:00Z",
+      "valid_until": null,
+      "as_of": "2026-08-19T12:00:00Z",
+      "status": "approved",
+      "supersedes": null,
+      "provenance": {
+        "created_by": "Cognitive Logic IW research",
+        "method": "Manual OSINT review; deterministic structuring",
+        "sources": [],
+        "transformations": [
+          "Phase 3 formal methodological review"
+        ]
+      },
+      "responsible_actor": "Cognitive Logic IW author",
+      "review_required": true,
+      "review_due": "2026-09-19T12:00:00Z",
+      "content_hash": null,
+      "assessment_id": "IW-001-ASM-007",
+      "claim_id": "IW-001-CLM-007",
+      "state": "CONTESTATO",
+      "state_definition_version": "1.0.0",
+      "reasoning_summary": "Assigned claim-specifically from inspected material; US President as reported by AP; dependencies and scope limit generalization.",
+      "supporting_evidence": [
+        "IW-001-EVD-007"
+      ],
+      "contrary_evidence": [],
+      "independent_evidence_groups": [
+        {
+          "group_id": "IW-001-GRP-007",
+          "evidence_ids": [
+            "IW-001-EVD-007"
+          ],
+          "independence_basis": "Single identified evidentiary origin; derivatives are not additional groups."
+        }
+      ],
+      "unresolved_contradictions": [
+        "IW-001-CON-001"
+      ],
+      "scope": {
+        "geographic": [
+          "Strait of Hormuz"
+        ],
+        "temporal": {
+          "start": "2026-08-01T00:00:00Z",
+          "end": "2026-08-19T12:00:00Z"
+        },
+        "definitions": [
+          "Controlled glossary distinctions apply."
+        ]
+      },
+      "unknowns": [
+        "Unobserved or dark traffic",
+        "Unpublished diplomatic terms",
+        "Attribution where not authenticated"
+      ],
+      "limits": [
+        "Cut-off 12:00 UTC",
+        "Dynamic pages and inaccessible upstream material",
+        "No inference from URL count"
+      ],
+      "decision_rules_applied": [
+        "ES-CON-1",
+        "republication-is-not-independent-corroboration"
+      ],
+      "excluded_evidence": [],
+      "reviewer": "Cognitive Logic — International Watch Methodology Review",
+      "previous_assessment": null,
+      "change_reason": "Phase 3 formal review confirmed the claim-specific state without homogenization."
+    },
+    {
+      "id": "IW-001-ASM-008",
+      "schema_version": "1.0.0",
+      "record_version": "1.0.0",
+      "created_at": "2026-08-19T12:00:00Z",
+      "updated_at": "2026-08-19T15:00:00Z",
+      "valid_from": "2026-08-19T12:00:00Z",
+      "valid_until": null,
+      "as_of": "2026-08-19T12:00:00Z",
+      "status": "approved",
+      "supersedes": null,
+      "provenance": {
+        "created_by": "Cognitive Logic IW research",
+        "method": "Manual OSINT review; deterministic structuring",
+        "sources": [],
+        "transformations": [
+          "Phase 3 formal methodological review"
+        ]
+      },
+      "responsible_actor": "Cognitive Logic IW author",
+      "review_required": true,
+      "review_due": "2026-09-19T12:00:00Z",
+      "content_hash": null,
+      "assessment_id": "IW-001-ASM-008",
+      "claim_id": "IW-001-CLM-008",
+      "state": "ACCERTATO",
+      "state_definition_version": "1.0.0",
+      "reasoning_summary": "Assigned claim-specifically from inspected material; Iran MFA as carried by Tasnim; dependencies and scope limit generalization.",
+      "supporting_evidence": [
+        "IW-001-EVD-008"
+      ],
+      "contrary_evidence": [],
+      "independent_evidence_groups": [
+        {
+          "group_id": "IW-001-GRP-008",
+          "evidence_ids": [
+            "IW-001-EVD-008"
+          ],
+          "independence_basis": "Single identified evidentiary origin; derivatives are not additional groups."
+        }
+      ],
+      "unresolved_contradictions": [
+        "IW-001-CON-001"
+      ],
+      "scope": {
+        "geographic": [
+          "Strait of Hormuz"
+        ],
+        "temporal": {
+          "start": "2026-08-01T00:00:00Z",
+          "end": "2026-08-19T12:00:00Z"
+        },
+        "definitions": [
+          "Controlled glossary distinctions apply."
+        ]
+      },
+      "unknowns": [
+        "Unobserved or dark traffic",
+        "Unpublished diplomatic terms",
+        "Attribution where not authenticated"
+      ],
+      "limits": [
+        "Cut-off 12:00 UTC",
+        "Dynamic pages and inaccessible upstream material",
+        "No inference from URL count"
+      ],
+      "decision_rules_applied": [
+        "ES-ACC-1",
+        "republication-is-not-independent-corroboration"
+      ],
+      "excluded_evidence": [],
+      "reviewer": "Cognitive Logic — International Watch Methodology Review",
+      "previous_assessment": null,
+      "change_reason": "Phase 3 formal review confirmed the claim-specific state without homogenization."
+    },
+    {
+      "id": "IW-001-ASM-009",
+      "schema_version": "1.0.0",
+      "record_version": "1.0.0",
+      "created_at": "2026-08-19T12:00:00Z",
+      "updated_at": "2026-08-19T15:00:00Z",
+      "valid_from": "2026-08-19T12:00:00Z",
+      "valid_until": null,
+      "as_of": "2026-08-19T12:00:00Z",
+      "status": "approved",
+      "supersedes": null,
+      "provenance": {
+        "created_by": "Cognitive Logic IW research",
+        "method": "Manual OSINT review; deterministic structuring",
+        "sources": [],
+        "transformations": [
+          "Phase 3 formal methodological review"
+        ]
+      },
+      "responsible_actor": "Cognitive Logic IW author",
+      "review_required": true,
+      "review_due": "2026-09-19T12:00:00Z",
+      "content_hash": null,
+      "assessment_id": "IW-001-ASM-009",
+      "claim_id": "IW-001-CLM-009",
+      "state": "NON_VERIFICATO",
+      "state_definition_version": "1.0.0",
+      "reasoning_summary": "Assigned claim-specifically from inspected material; Iranian claims reported in derivatives; dependencies and scope limit generalization.",
+      "supporting_evidence": [
+        "IW-001-EVD-009"
+      ],
+      "contrary_evidence": [],
+      "independent_evidence_groups": [
+        {
+          "group_id": "IW-001-GRP-009",
+          "evidence_ids": [
+            "IW-001-EVD-009"
+          ],
+          "independence_basis": "Single identified evidentiary origin; derivatives are not additional groups."
+        }
+      ],
+      "unresolved_contradictions": [],
+      "scope": {
+        "geographic": [
+          "Strait of Hormuz"
+        ],
+        "temporal": {
+          "start": "2026-08-01T00:00:00Z",
+          "end": "2026-08-19T12:00:00Z"
+        },
+        "definitions": [
+          "Controlled glossary distinctions apply."
+        ]
+      },
+      "unknowns": [
+        "Unobserved or dark traffic",
+        "Unpublished diplomatic terms",
+        "Attribution where not authenticated"
+      ],
+      "limits": [
+        "Cut-off 12:00 UTC",
+        "Dynamic pages and inaccessible upstream material",
+        "No inference from URL count"
+      ],
+      "decision_rules_applied": [
+        "ES-NV-1",
+        "republication-is-not-independent-corroboration"
+      ],
+      "excluded_evidence": [],
+      "reviewer": "Cognitive Logic — International Watch Methodology Review",
+      "previous_assessment": null,
+      "change_reason": "Phase 3 formal review confirmed the claim-specific state without homogenization."
+    },
+    {
+      "id": "IW-001-ASM-010",
+      "schema_version": "1.0.0",
+      "record_version": "1.0.0",
+      "created_at": "2026-08-19T12:00:00Z",
+      "updated_at": "2026-08-19T15:00:00Z",
+      "valid_from": "2026-08-19T12:00:00Z",
+      "valid_until": null,
+      "as_of": "2026-08-19T12:00:00Z",
+      "status": "approved",
+      "supersedes": null,
+      "provenance": {
+        "created_by": "Cognitive Logic IW research",
+        "method": "Manual OSINT review; deterministic structuring",
+        "sources": [],
+        "transformations": [
+          "Phase 3 formal methodological review"
+        ]
+      },
+      "responsible_actor": "Cognitive Logic IW author",
+      "review_required": true,
+      "review_due": "2026-09-19T12:00:00Z",
+      "content_hash": null,
+      "assessment_id": "IW-001-ASM-010",
+      "claim_id": "IW-001-CLM-010",
+      "state": "CONTRADDETTO",
+      "state_definition_version": "1.0.0",
+      "reasoning_summary": "Assigned claim-specifically from inspected material; Iranian/derivative framing; dependencies and scope limit generalization.",
+      "supporting_evidence": [],
+      "contrary_evidence": [
+        "IW-001-EVD-010"
+      ],
+      "independent_evidence_groups": [
+        {
+          "group_id": "IW-001-GRP-010",
+          "evidence_ids": [
+            "IW-001-EVD-010"
+          ],
+          "independence_basis": "Single identified evidentiary origin; derivatives are not additional groups."
+        }
+      ],
+      "unresolved_contradictions": [],
+      "scope": {
+        "geographic": [
+          "Strait of Hormuz"
+        ],
+        "temporal": {
+          "start": "2026-08-01T00:00:00Z",
+          "end": "2026-08-19T12:00:00Z"
+        },
+        "definitions": [
+          "Controlled glossary distinctions apply."
+        ]
+      },
+      "unknowns": [
+        "Unobserved or dark traffic",
+        "Unpublished diplomatic terms",
+        "Attribution where not authenticated"
+      ],
+      "limits": [
+        "Cut-off 12:00 UTC",
+        "Dynamic pages and inaccessible upstream material",
+        "No inference from URL count"
+      ],
+      "decision_rules_applied": [
+        "ES-CTR-1",
+        "republication-is-not-independent-corroboration"
+      ],
+      "excluded_evidence": [],
+      "reviewer": "Cognitive Logic — International Watch Methodology Review",
+      "previous_assessment": null,
+      "change_reason": "Phase 3 formal review confirmed the claim-specific state without homogenization."
+    },
+    {
+      "id": "IW-001-ASM-011",
+      "schema_version": "1.0.0",
+      "record_version": "1.0.0",
+      "created_at": "2026-08-19T12:00:00Z",
+      "updated_at": "2026-08-19T15:00:00Z",
+      "valid_from": "2026-08-19T12:00:00Z",
+      "valid_until": null,
+      "as_of": "2026-08-19T12:00:00Z",
+      "status": "approved",
+      "supersedes": null,
+      "provenance": {
+        "created_by": "Cognitive Logic IW research",
+        "method": "Manual OSINT review; deterministic structuring",
+        "sources": [],
+        "transformations": [
+          "Phase 3 formal methodological review"
+        ]
+      },
+      "responsible_actor": "Cognitive Logic IW author",
+      "review_required": true,
+      "review_due": "2026-09-19T12:00:00Z",
+      "content_hash": null,
+      "assessment_id": "IW-001-ASM-011",
+      "claim_id": "IW-001-CLM-011",
+      "state": "FORTEMENTE_CORROBORATO",
+      "state_definition_version": "1.0.0",
+      "reasoning_summary": "Assigned claim-specifically from inspected material; Iran MFA/FM statements; dependencies and scope limit generalization.",
+      "supporting_evidence": [
+        "IW-001-EVD-011"
+      ],
+      "contrary_evidence": [],
+      "independent_evidence_groups": [
+        {
+          "group_id": "IW-001-GRP-011",
+          "evidence_ids": [
+            "IW-001-EVD-011"
+          ],
+          "independence_basis": "Single identified evidentiary origin; derivatives are not additional groups."
+        }
+      ],
+      "unresolved_contradictions": [],
+      "scope": {
+        "geographic": [
+          "Strait of Hormuz"
+        ],
+        "temporal": {
+          "start": "2026-08-01T00:00:00Z",
+          "end": "2026-08-19T12:00:00Z"
+        },
+        "definitions": [
+          "Controlled glossary distinctions apply."
+        ]
+      },
+      "unknowns": [
+        "Unobserved or dark traffic",
+        "Unpublished diplomatic terms",
+        "Attribution where not authenticated"
+      ],
+      "limits": [
+        "Cut-off 12:00 UTC",
+        "Dynamic pages and inaccessible upstream material",
+        "No inference from URL count"
+      ],
+      "decision_rules_applied": [
+        "ES-FC-1",
+        "republication-is-not-independent-corroboration"
+      ],
+      "excluded_evidence": [],
+      "reviewer": "Cognitive Logic — International Watch Methodology Review",
+      "previous_assessment": null,
+      "change_reason": "Phase 3 formal review confirmed the claim-specific state without homogenization."
+    },
+    {
+      "id": "IW-001-ASM-012",
+      "schema_version": "1.0.0",
+      "record_version": "1.0.0",
+      "created_at": "2026-08-19T12:00:00Z",
+      "updated_at": "2026-08-19T15:00:00Z",
+      "valid_from": "2026-08-19T12:00:00Z",
+      "valid_until": null,
+      "as_of": "2026-08-19T12:00:00Z",
+      "status": "approved",
+      "supersedes": null,
+      "provenance": {
+        "created_by": "Cognitive Logic IW research",
+        "method": "Manual OSINT review; deterministic structuring",
+        "sources": [],
+        "transformations": [
+          "Phase 3 formal methodological review"
+        ]
+      },
+      "responsible_actor": "Cognitive Logic IW author",
+      "review_required": true,
+      "review_due": "2026-09-19T12:00:00Z",
+      "content_hash": null,
+      "assessment_id": "IW-001-ASM-012",
+      "claim_id": "IW-001-CLM-012",
+      "state": "NON_VERIFICATO",
+      "state_definition_version": "1.0.0",
+      "reasoning_summary": "Assigned claim-specifically from inspected material; No identified publication; dependencies and scope limit generalization.",
+      "supporting_evidence": [
+        "IW-001-EVD-012"
+      ],
+      "contrary_evidence": [],
+      "independent_evidence_groups": [
+        {
+          "group_id": "IW-001-GRP-012",
+          "evidence_ids": [
+            "IW-001-EVD-012"
+          ],
+          "independence_basis": "Single identified evidentiary origin; derivatives are not additional groups."
+        }
+      ],
+      "unresolved_contradictions": [],
+      "scope": {
+        "geographic": [
+          "Strait of Hormuz"
+        ],
+        "temporal": {
+          "start": "2026-08-01T00:00:00Z",
+          "end": "2026-08-19T12:00:00Z"
+        },
+        "definitions": [
+          "Controlled glossary distinctions apply."
+        ]
+      },
+      "unknowns": [
+        "Unobserved or dark traffic",
+        "Unpublished diplomatic terms",
+        "Attribution where not authenticated"
+      ],
+      "limits": [
+        "Cut-off 12:00 UTC",
+        "Dynamic pages and inaccessible upstream material",
+        "No inference from URL count"
+      ],
+      "decision_rules_applied": [
+        "ES-NV-1",
+        "republication-is-not-independent-corroboration"
+      ],
+      "excluded_evidence": [],
+      "reviewer": "Cognitive Logic — International Watch Methodology Review",
+      "previous_assessment": null,
+      "change_reason": "Phase 3 formal review confirmed the claim-specific state without homogenization."
+    },
+    {
+      "id": "IW-001-ASM-013",
+      "schema_version": "1.0.0",
+      "record_version": "1.0.0",
+      "created_at": "2026-08-19T12:00:00Z",
+      "updated_at": "2026-08-19T15:00:00Z",
+      "valid_from": "2026-08-19T12:00:00Z",
+      "valid_until": null,
+      "as_of": "2026-08-19T12:00:00Z",
+      "status": "approved",
+      "supersedes": null,
+      "provenance": {
+        "created_by": "Cognitive Logic IW research",
+        "method": "Manual OSINT review; deterministic structuring",
+        "sources": [],
+        "transformations": [
+          "Phase 3 formal methodological review"
+        ]
+      },
+      "responsible_actor": "Cognitive Logic IW author",
+      "review_required": true,
+      "review_due": "2026-09-19T12:00:00Z",
+      "content_hash": null,
+      "assessment_id": "IW-001-ASM-013",
+      "claim_id": "IW-001-CLM-013",
+      "state": "ACCERTATO",
+      "state_definition_version": "1.0.0",
+      "reasoning_summary": "Assigned claim-specifically from inspected material; IMO updated incident register; dependencies and scope limit generalization.",
+      "supporting_evidence": [
+        "IW-001-EVD-013"
+      ],
+      "contrary_evidence": [],
+      "independent_evidence_groups": [
+        {
+          "group_id": "IW-001-GRP-013",
+          "evidence_ids": [
+            "IW-001-EVD-013"
+          ],
+          "independence_basis": "Single identified evidentiary origin; derivatives are not additional groups."
+        }
+      ],
+      "unresolved_contradictions": [],
+      "scope": {
+        "geographic": [
+          "Strait of Hormuz"
+        ],
+        "temporal": {
+          "start": "2026-08-01T00:00:00Z",
+          "end": "2026-08-19T12:00:00Z"
+        },
+        "definitions": [
+          "Controlled glossary distinctions apply."
+        ]
+      },
+      "unknowns": [
+        "Unobserved or dark traffic",
+        "Unpublished diplomatic terms",
+        "Attribution where not authenticated"
+      ],
+      "limits": [
+        "Cut-off 12:00 UTC",
+        "Dynamic pages and inaccessible upstream material",
+        "No inference from URL count"
+      ],
+      "decision_rules_applied": [
+        "ES-ACC-1",
+        "republication-is-not-independent-corroboration"
+      ],
+      "excluded_evidence": [],
+      "reviewer": "Cognitive Logic — International Watch Methodology Review",
+      "previous_assessment": null,
+      "change_reason": "Phase 3 formal review confirmed the claim-specific state without homogenization."
+    },
+    {
+      "id": "IW-001-ASM-014",
+      "schema_version": "1.0.0",
+      "record_version": "1.0.0",
+      "created_at": "2026-08-19T12:00:00Z",
+      "updated_at": "2026-08-19T15:00:00Z",
+      "valid_from": "2026-08-19T12:00:00Z",
+      "valid_until": null,
+      "as_of": "2026-08-19T12:00:00Z",
+      "status": "approved",
+      "supersedes": null,
+      "provenance": {
+        "created_by": "Cognitive Logic IW research",
+        "method": "Manual OSINT review; deterministic structuring",
+        "sources": [],
+        "transformations": [
+          "Phase 3 formal methodological review"
+        ]
+      },
+      "responsible_actor": "Cognitive Logic IW author",
+      "review_required": true,
+      "review_due": "2026-09-19T12:00:00Z",
+      "content_hash": null,
+      "assessment_id": "IW-001-ASM-014",
+      "claim_id": "IW-001-CLM-014",
+      "state": "ACCERTATO",
+      "state_definition_version": "1.0.0",
+      "reasoning_summary": "Assigned claim-specifically from inspected material; IMO updated incident register; dependencies and scope limit generalization.",
+      "supporting_evidence": [
+        "IW-001-EVD-014"
+      ],
+      "contrary_evidence": [],
+      "independent_evidence_groups": [
+        {
+          "group_id": "IW-001-GRP-014",
+          "evidence_ids": [
+            "IW-001-EVD-014"
+          ],
+          "independence_basis": "Single identified evidentiary origin; derivatives are not additional groups."
+        }
+      ],
+      "unresolved_contradictions": [],
+      "scope": {
+        "geographic": [
+          "Strait of Hormuz"
+        ],
+        "temporal": {
+          "start": "2026-08-01T00:00:00Z",
+          "end": "2026-08-19T12:00:00Z"
+        },
+        "definitions": [
+          "Controlled glossary distinctions apply."
+        ]
+      },
+      "unknowns": [
+        "Unobserved or dark traffic",
+        "Unpublished diplomatic terms",
+        "Attribution where not authenticated"
+      ],
+      "limits": [
+        "Cut-off 12:00 UTC",
+        "Dynamic pages and inaccessible upstream material",
+        "No inference from URL count"
+      ],
+      "decision_rules_applied": [
+        "ES-ACC-1",
+        "republication-is-not-independent-corroboration"
+      ],
+      "excluded_evidence": [],
+      "reviewer": "Cognitive Logic — International Watch Methodology Review",
+      "previous_assessment": null,
+      "change_reason": "Phase 3 formal review confirmed the claim-specific state without homogenization."
+    },
+    {
+      "id": "IW-001-ASM-015",
+      "schema_version": "1.0.0",
+      "record_version": "1.0.0",
+      "created_at": "2026-08-19T12:00:00Z",
+      "updated_at": "2026-08-19T15:00:00Z",
+      "valid_from": "2026-08-19T12:00:00Z",
+      "valid_until": null,
+      "as_of": "2026-08-19T12:00:00Z",
+      "status": "approved",
+      "supersedes": null,
+      "provenance": {
+        "created_by": "Cognitive Logic IW research",
+        "method": "Manual OSINT review; deterministic structuring",
+        "sources": [],
+        "transformations": [
+          "Phase 3 formal methodological review"
+        ]
+      },
+      "responsible_actor": "Cognitive Logic IW author",
+      "review_required": true,
+      "review_due": "2026-09-19T12:00:00Z",
+      "content_hash": null,
+      "assessment_id": "IW-001-ASM-015",
+      "claim_id": "IW-001-CLM-015",
+      "state": "INDETERMINABILE",
+      "state_definition_version": "1.0.0",
+      "reasoning_summary": "NON DETERMINABILE CON LE EVIDENZE DISPONIBILI: Assigned claim-specifically from inspected material; No authenticated attribution; dependencies and scope limit generalization.",
+      "supporting_evidence": [
+        "IW-001-EVD-015"
+      ],
+      "contrary_evidence": [],
+      "independent_evidence_groups": [
+        {
+          "group_id": "IW-001-GRP-015",
+          "evidence_ids": [
+            "IW-001-EVD-015"
+          ],
+          "independence_basis": "Single identified evidentiary origin; derivatives are not additional groups."
+        }
+      ],
+      "unresolved_contradictions": [],
+      "scope": {
+        "geographic": [
+          "Strait of Hormuz"
+        ],
+        "temporal": {
+          "start": "2026-08-01T00:00:00Z",
+          "end": "2026-08-19T12:00:00Z"
+        },
+        "definitions": [
+          "Controlled glossary distinctions apply."
+        ]
+      },
+      "unknowns": [
+        "Unobserved or dark traffic",
+        "Unpublished diplomatic terms",
+        "Attribution where not authenticated"
+      ],
+      "limits": [
+        "Cut-off 12:00 UTC",
+        "Dynamic pages and inaccessible upstream material",
+        "No inference from URL count"
+      ],
+      "decision_rules_applied": [
+        "ES-IND-1",
+        "republication-is-not-independent-corroboration"
+      ],
+      "excluded_evidence": [],
+      "reviewer": "Cognitive Logic — International Watch Methodology Review",
+      "previous_assessment": null,
+      "change_reason": "Phase 3 formal review confirmed the claim-specific state without homogenization."
+    },
+    {
+      "id": "IW-001-ASM-016",
+      "schema_version": "1.0.0",
+      "record_version": "1.0.0",
+      "created_at": "2026-08-19T12:00:00Z",
+      "updated_at": "2026-08-19T15:00:00Z",
+      "valid_from": "2026-08-19T12:00:00Z",
+      "valid_until": null,
+      "as_of": "2026-08-19T12:00:00Z",
+      "status": "approved",
+      "supersedes": null,
+      "provenance": {
+        "created_by": "Cognitive Logic IW research",
+        "method": "Manual OSINT review; deterministic structuring",
+        "sources": [],
+        "transformations": [
+          "Phase 3 formal methodological review"
+        ]
+      },
+      "responsible_actor": "Cognitive Logic IW author",
+      "review_required": true,
+      "review_due": "2026-09-19T12:00:00Z",
+      "content_hash": null,
+      "assessment_id": "IW-001-ASM-016",
+      "claim_id": "IW-001-CLM-016",
+      "state": "FORTEMENTE_CORROBORATO",
+      "state_definition_version": "1.0.0",
+      "reasoning_summary": "Assigned claim-specifically from inspected material; MARAD and incident reporting; dependencies and scope limit generalization.",
+      "supporting_evidence": [
+        "IW-001-EVD-016"
+      ],
+      "contrary_evidence": [],
+      "independent_evidence_groups": [
+        {
+          "group_id": "IW-001-GRP-016",
+          "evidence_ids": [
+            "IW-001-EVD-016"
+          ],
+          "independence_basis": "Single identified evidentiary origin; derivatives are not additional groups."
+        }
+      ],
+      "unresolved_contradictions": [],
+      "scope": {
+        "geographic": [
+          "Strait of Hormuz"
+        ],
+        "temporal": {
+          "start": "2026-08-01T00:00:00Z",
+          "end": "2026-08-19T12:00:00Z"
+        },
+        "definitions": [
+          "Controlled glossary distinctions apply."
+        ]
+      },
+      "unknowns": [
+        "Unobserved or dark traffic",
+        "Unpublished diplomatic terms",
+        "Attribution where not authenticated"
+      ],
+      "limits": [
+        "Cut-off 12:00 UTC",
+        "Dynamic pages and inaccessible upstream material",
+        "No inference from URL count"
+      ],
+      "decision_rules_applied": [
+        "ES-FC-1",
+        "republication-is-not-independent-corroboration"
+      ],
+      "excluded_evidence": [],
+      "reviewer": "Cognitive Logic — International Watch Methodology Review",
+      "previous_assessment": null,
+      "change_reason": "Phase 3 formal review confirmed the claim-specific state without homogenization."
+    },
+    {
+      "id": "IW-001-ASM-017",
+      "schema_version": "1.0.0",
+      "record_version": "1.0.0",
+      "created_at": "2026-08-19T12:00:00Z",
+      "updated_at": "2026-08-19T15:00:00Z",
+      "valid_from": "2026-08-19T12:00:00Z",
+      "valid_until": null,
+      "as_of": "2026-08-19T12:00:00Z",
+      "status": "approved",
+      "supersedes": null,
+      "provenance": {
+        "created_by": "Cognitive Logic IW research",
+        "method": "Manual OSINT review; deterministic structuring",
+        "sources": [],
+        "transformations": [
+          "Phase 3 formal methodological review"
+        ]
+      },
+      "responsible_actor": "Cognitive Logic IW author",
+      "review_required": true,
+      "review_due": "2026-09-19T12:00:00Z",
+      "content_hash": null,
+      "assessment_id": "IW-001-ASM-017",
+      "claim_id": "IW-001-CLM-017",
+      "state": "INDETERMINABILE",
+      "state_definition_version": "1.0.0",
+      "reasoning_summary": "NON DETERMINABILE CON LE EVIDENZE DISPONIBILI: Assigned claim-specifically from inspected material; General reporting; dependencies and scope limit generalization.",
+      "supporting_evidence": [
+        "IW-001-EVD-017"
+      ],
+      "contrary_evidence": [],
+      "independent_evidence_groups": [
+        {
+          "group_id": "IW-001-GRP-017",
+          "evidence_ids": [
+            "IW-001-EVD-017"
+          ],
+          "independence_basis": "Single identified evidentiary origin; derivatives are not additional groups."
+        }
+      ],
+      "unresolved_contradictions": [],
+      "scope": {
+        "geographic": [
+          "Strait of Hormuz"
+        ],
+        "temporal": {
+          "start": "2026-08-01T00:00:00Z",
+          "end": "2026-08-19T12:00:00Z"
+        },
+        "definitions": [
+          "Controlled glossary distinctions apply."
+        ]
+      },
+      "unknowns": [
+        "Unobserved or dark traffic",
+        "Unpublished diplomatic terms",
+        "Attribution where not authenticated"
+      ],
+      "limits": [
+        "Cut-off 12:00 UTC",
+        "Dynamic pages and inaccessible upstream material",
+        "No inference from URL count"
+      ],
+      "decision_rules_applied": [
+        "ES-IND-1",
+        "republication-is-not-independent-corroboration"
+      ],
+      "excluded_evidence": [],
+      "reviewer": "Cognitive Logic — International Watch Methodology Review",
+      "previous_assessment": null,
+      "change_reason": "Phase 3 formal review confirmed the claim-specific state without homogenization."
+    },
+    {
+      "id": "IW-001-ASM-018",
+      "schema_version": "1.0.0",
+      "record_version": "1.0.0",
+      "created_at": "2026-08-19T12:00:00Z",
+      "updated_at": "2026-08-19T15:00:00Z",
+      "valid_from": "2026-08-19T12:00:00Z",
+      "valid_until": null,
+      "as_of": "2026-08-19T12:00:00Z",
+      "status": "approved",
+      "supersedes": null,
+      "provenance": {
+        "created_by": "Cognitive Logic IW research",
+        "method": "Manual OSINT review; deterministic structuring",
+        "sources": [],
+        "transformations": [
+          "Phase 3 formal methodological review"
+        ]
+      },
+      "responsible_actor": "Cognitive Logic IW author",
+      "review_required": true,
+      "review_due": "2026-09-19T12:00:00Z",
+      "content_hash": null,
+      "assessment_id": "IW-001-ASM-018",
+      "claim_id": "IW-001-CLM-018",
+      "state": "INDETERMINABILE",
+      "state_definition_version": "1.0.0",
+      "reasoning_summary": "NON DETERMINABILE CON LE EVIDENZE DISPONIBILI: Assigned claim-specifically from inspected material; No authenticated attribution; dependencies and scope limit generalization.",
+      "supporting_evidence": [
+        "IW-001-EVD-018"
+      ],
+      "contrary_evidence": [],
+      "independent_evidence_groups": [
+        {
+          "group_id": "IW-001-GRP-018",
+          "evidence_ids": [
+            "IW-001-EVD-018"
+          ],
+          "independence_basis": "Single identified evidentiary origin; derivatives are not additional groups."
+        }
+      ],
+      "unresolved_contradictions": [],
+      "scope": {
+        "geographic": [
+          "Strait of Hormuz"
+        ],
+        "temporal": {
+          "start": "2026-08-01T00:00:00Z",
+          "end": "2026-08-19T12:00:00Z"
+        },
+        "definitions": [
+          "Controlled glossary distinctions apply."
+        ]
+      },
+      "unknowns": [
+        "Unobserved or dark traffic",
+        "Unpublished diplomatic terms",
+        "Attribution where not authenticated"
+      ],
+      "limits": [
+        "Cut-off 12:00 UTC",
+        "Dynamic pages and inaccessible upstream material",
+        "No inference from URL count"
+      ],
+      "decision_rules_applied": [
+        "ES-IND-1",
+        "republication-is-not-independent-corroboration"
+      ],
+      "excluded_evidence": [],
+      "reviewer": "Cognitive Logic — International Watch Methodology Review",
+      "previous_assessment": null,
+      "change_reason": "Phase 3 formal review confirmed the claim-specific state without homogenization."
+    }
+  ]
+}

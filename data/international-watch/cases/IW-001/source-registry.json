@@ -1,0 +1,978 @@
+{
+  "schema_version": "1.0.0",
+  "case_id": "IW-001",
+  "records": [
+    {
+      "id": "IW-001-SRC-001",
+      "schema_version": "1.0.0",
+      "record_version": "1.0.0",
+      "created_at": "2026-08-19T12:00:00Z",
+      "updated_at": "2026-08-19T15:00:00Z",
+      "valid_from": "2026-08-19T12:00:00Z",
+      "valid_until": null,
+      "as_of": "2026-08-19T12:00:00Z",
+      "status": "approved",
+      "supersedes": null,
+      "provenance": {
+        "created_by": "Cognitive Logic IW research",
+        "method": "Manual OSINT review; deterministic structuring",
+        "sources": [],
+        "transformations": [
+          "Phase 3 formal methodological review"
+        ]
+      },
+      "responsible_actor": "Cognitive Logic IW author",
+      "review_required": true,
+      "review_due": "2026-09-19T12:00:00Z",
+      "content_hash": null,
+      "source_id": "IW-001-SRC-001",
+      "entity_id": "IMO",
+      "source_name": "IMO Middle East hub",
+      "jurisdiction": [
+        "international"
+      ],
+      "source_role": [
+        "publisher"
+      ],
+      "ownership_or_control": {
+        "known": false,
+        "description": "Not assessed beyond named publisher."
+      },
+      "primary_or_secondary": "primary",
+      "party_to_event": "unknown",
+      "access_mode": "open",
+      "language": [
+        "en"
+      ],
+      "publication_channel": "web",
+      "originator_of": [],
+      "repeats": [],
+      "derived_from": [],
+      "known_method": "Direct publication or explicitly identified derivative citation.",
+      "limitations": [
+        "No full copyrighted copy archived; metadata and short analytic notes only. Unknown publication/source-as-at values remain null rather than inferred."
+      ],
+      "identity_verification": {
+        "status": "verified",
+        "basis": "Official domain or publisher page; inaccessible origins remain unverified."
+      },
+      "archived_capture": null,
+      "original_uri": "https://www.imo.org/en/mediacentre/hottopics/pages/middle-east-strait-of-hormuz.aspx",
+      "archived_unavailability_reason": "No lawful archive captured during cut-off; dynamic/licensed or time constraint.",
+      "original_text_available": true,
+      "translation_trace": [],
+      "publication_timestamp": null,
+      "source_as_at": null,
+      "accessed_at": "2026-08-19T12:00:00Z"
+    },
+    {
+      "id": "IW-001-SRC-002",
+      "schema_version": "1.0.0",
+      "record_version": "1.0.0",
+      "created_at": "2026-08-19T12:00:00Z",
+      "updated_at": "2026-08-19T15:00:00Z",
+      "valid_from": "2026-08-19T12:00:00Z",
+      "valid_until": null,
+      "as_of": "2026-08-19T12:00:00Z",
+      "status": "approved",
+      "supersedes": null,
+      "provenance": {
+        "created_by": "Cognitive Logic IW research",
+        "method": "Manual OSINT review; deterministic structuring",
+        "sources": [],
+        "transformations": [
+          "Phase 3 formal methodological review"
+        ]
+      },
+      "responsible_actor": "Cognitive Logic IW author",
+      "review_required": true,
+      "review_due": "2026-09-19T12:00:00Z",
+      "content_hash": null,
+      "source_id": "IW-001-SRC-002",
+      "entity_id": "JMIC",
+      "source_name": "UKMTO/JMIC Update 079",
+      "jurisdiction": [
+        "international"
+      ],
+      "source_role": [
+        "publisher"
+      ],
+      "ownership_or_control": {
+        "known": false,
+        "description": "Not assessed beyond named publisher."
+      },
+      "primary_or_secondary": "primary",
+      "party_to_event": "unknown",
+      "access_mode": "open",
+      "language": [
+        "en"
+      ],
+      "publication_channel": "web",
+      "originator_of": [],
+      "repeats": [],
+      "derived_from": [],
+      "known_method": "Direct publication or explicitly identified derivative citation.",
+      "limitations": [
+        "No full copyrighted copy archived; metadata and short analytic notes only. Unknown publication/source-as-at values remain null rather than inferred."
+      ],
+      "identity_verification": {
+        "status": "verified",
+        "basis": "Official domain or publisher page; inaccessible origins remain unverified."
+      },
+      "archived_capture": null,
+      "original_uri": "https://www.ukmto.org/-/media/ukmto/products/update-079-jmic-advisory-note-02-august-1.pdf",
+      "archived_unavailability_reason": "No lawful archive captured during cut-off; dynamic/licensed or time constraint.",
+      "original_text_available": true,
+      "translation_trace": [],
+      "publication_timestamp": "2026-08-02T00:00:00Z",
+      "source_as_at": "2026-08-02T23:59:59Z",
+      "accessed_at": "2026-08-19T12:00:00Z"
+    },
+    {
+      "id": "IW-001-SRC-003",
+      "schema_version": "1.0.0",
+      "record_version": "1.0.0",
+      "created_at": "2026-08-19T12:00:00Z",
+      "updated_at": "2026-08-19T15:00:00Z",
+      "valid_from": "2026-08-19T12:00:00Z",
+      "valid_until": null,
+      "as_of": "2026-08-19T12:00:00Z",
+      "status": "approved",
+      "supersedes": null,
+      "provenance": {
+        "created_by": "Cognitive Logic IW research",
+        "method": "Manual OSINT review; deterministic structuring",
+        "sources": [],
+        "transformations": [
+          "Phase 3 formal methodological review"
+        ]
+      },
+      "responsible_actor": "Cognitive Logic IW author",
+      "review_required": true,
+      "review_due": "2026-09-19T12:00:00Z",
+      "content_hash": null,
+      "source_id": "IW-001-SRC-003",
+      "entity_id": "JMIC",
+      "source_name": "JMIC Advisory 009-26",
+      "jurisdiction": [
+        "international"
+      ],
+      "source_role": [
+        "publisher"
+      ],
+      "ownership_or_control": {
+        "known": false,
+        "description": "Not assessed beyond named publisher."
+      },
+      "primary_or_secondary": "primary",
+      "party_to_event": "unknown",
+      "access_mode": "open",
+      "language": [
+        "en"
+      ],
+      "publication_channel": "web",
+      "originator_of": [],
+      "repeats": [],
+      "derived_from": [],
+      "known_method": "Direct publication or explicitly identified derivative citation.",
+      "limitations": [
+        "No full copyrighted copy archived; metadata and short analytic notes only. Unknown publication/source-as-at values remain null rather than inferred."
+      ],
+      "identity_verification": {
+        "status": "verified",
+        "basis": "Official domain or publisher page; inaccessible origins remain unverified."
+      },
+      "archived_capture": null,
+      "original_uri": "https://wwwcdn.imo.org/localresources/en/MediaCentre/HotTopics/Documents/JMIC%20Advisory%20Note%2000926%20SoH%20open.pdf",
+      "archived_unavailability_reason": "No lawful archive captured during cut-off; dynamic/licensed or time constraint.",
+      "original_text_available": true,
+      "translation_trace": [],
+      "publication_timestamp": "2026-06-18T00:00:00Z",
+      "source_as_at": "2026-06-18T23:59:59Z",
+      "accessed_at": "2026-08-19T12:00:00Z"
+    },
+    {
+      "id": "IW-001-SRC-004",
+      "schema_version": "1.0.0",
+      "record_version": "1.0.0",
+      "created_at": "2026-08-19T12:00:00Z",
+      "updated_at": "2026-08-19T15:00:00Z",
+      "valid_from": "2026-08-19T12:00:00Z",
+      "valid_until": null,
+      "as_of": "2026-08-19T12:00:00Z",
+      "status": "approved",
+      "supersedes": null,
+      "provenance": {
+        "created_by": "Cognitive Logic IW research",
+        "method": "Manual OSINT review; deterministic structuring",
+        "sources": [],
+        "transformations": [
+          "Phase 3 formal methodological review"
+        ]
+      },
+      "responsible_actor": "Cognitive Logic IW author",
+      "review_required": true,
+      "review_due": "2026-09-19T12:00:00Z",
+      "content_hash": null,
+      "source_id": "IW-001-SRC-004",
+      "entity_id": "US MARAD",
+      "source_name": "US MARAD Advisory 2026-004",
+      "jurisdiction": [
+        "international"
+      ],
+      "source_role": [
+        "publisher"
+      ],
+      "ownership_or_control": {
+        "known": false,
+        "description": "Not assessed beyond named publisher."
+      },
+      "primary_or_secondary": "primary",
+      "party_to_event": "unknown",
+      "access_mode": "open",
+      "language": [
+        "en"
+      ],
+      "publication_channel": "web",
+      "originator_of": [],
+      "repeats": [],
+      "derived_from": [],
+      "known_method": "Direct publication or explicitly identified derivative citation.",
+      "limitations": [
+        "No full copyrighted copy archived; metadata and short analytic notes only. Unknown publication/source-as-at values remain null rather than inferred."
+      ],
+      "identity_verification": {
+        "status": "verified",
+        "basis": "Official domain or publisher page; inaccessible origins remain unverified."
+      },
+      "archived_capture": null,
+      "original_uri": "https://www.maritime.dot.gov/msci/2026-004-persian-gulf-strait-hormuz-and-gulf-oman-iranian-attacks-commercial-vessels",
+      "archived_unavailability_reason": "No lawful archive captured during cut-off; dynamic/licensed or time constraint.",
+      "original_text_available": true,
+      "translation_trace": [],
+      "publication_timestamp": null,
+      "source_as_at": null,
+      "accessed_at": "2026-08-19T12:00:00Z"
+    },
+    {
+      "id": "IW-001-SRC-005",
+      "schema_version": "1.0.0",
+      "record_version": "1.0.0",
+      "created_at": "2026-08-19T12:00:00Z",
+      "updated_at": "2026-08-19T15:00:00Z",
+      "valid_from": "2026-08-19T12:00:00Z",
+      "valid_until": null,
+      "as_of": "2026-08-19T12:00:00Z",
+      "status": "approved",
+      "supersedes": null,
+      "provenance": {
+        "created_by": "Cognitive Logic IW research",
+        "method": "Manual OSINT review; deterministic structuring",
+        "sources": [],
+        "transformations": [
+          "Phase 3 formal methodological review"
+        ]
+      },
+      "responsible_actor": "Cognitive Logic IW author",
+      "review_required": true,
+      "review_due": "2026-09-19T12:00:00Z",
+      "content_hash": null,
+      "source_id": "IW-001-SRC-005",
+      "entity_id": "Iran MFA",
+      "source_name": "Iran MFA statement via Tasnim",
+      "jurisdiction": [
+        "international"
+      ],
+      "source_role": [
+        "publisher",
+        "repeater"
+      ],
+      "ownership_or_control": {
+        "known": false,
+        "description": "Not assessed beyond named publisher."
+      },
+      "primary_or_secondary": "mixed",
+      "party_to_event": "unknown",
+      "access_mode": "open",
+      "language": [
+        "en"
+      ],
+      "publication_channel": "web",
+      "originator_of": [],
+      "repeats": [
+        "IW-001-SRC-010"
+      ],
+      "derived_from": [
+        "IW-001-SRC-010"
+      ],
+      "known_method": "Direct publication or explicitly identified derivative citation.",
+      "limitations": [
+        "No full copyrighted copy archived; metadata and short analytic notes only. Unknown publication/source-as-at values remain null rather than inferred."
+      ],
+      "identity_verification": {
+        "status": "verified",
+        "basis": "Official domain or publisher page; inaccessible origins remain unverified."
+      },
+      "archived_capture": null,
+      "original_uri": "https://tasnimnews.ir/en/news/2026/08/03/3662859/iran-denies-us-talks-limits-oman-negotiations-to-hormuz",
+      "archived_unavailability_reason": "No lawful archive captured during cut-off; dynamic/licensed or time constraint.",
+      "original_text_available": true,
+      "translation_trace": [],
+      "publication_timestamp": "2026-08-03T11:45:00Z",
+      "source_as_at": null,
+      "accessed_at": "2026-08-19T12:00:00Z"
+    },
+    {
+      "id": "IW-001-SRC-006",
+      "schema_version": "1.0.0",
+      "record_version": "1.0.0",
+      "created_at": "2026-08-19T12:00:00Z",
+      "updated_at": "2026-08-19T15:00:00Z",
+      "valid_from": "2026-08-19T12:00:00Z",
+      "valid_until": null,
+      "as_of": "2026-08-19T12:00:00Z",
+      "status": "approved",
+      "supersedes": null,
+      "provenance": {
+        "created_by": "Cognitive Logic IW research",
+        "method": "Manual OSINT review; deterministic structuring",
+        "sources": [],
+        "transformations": [
+          "Phase 3 formal methodological review"
+        ]
+      },
+      "responsible_actor": "Cognitive Logic IW author",
+      "review_required": true,
+      "review_due": "2026-09-19T12:00:00Z",
+      "content_hash": null,
+      "source_id": "IW-001-SRC-006",
+      "entity_id": "Anadolu",
+      "source_name": "Iran FM statement via Anadolu",
+      "jurisdiction": [
+        "international"
+      ],
+      "source_role": [
+        "publisher",
+        "repeater"
+      ],
+      "ownership_or_control": {
+        "known": false,
+        "description": "Not assessed beyond named publisher."
+      },
+      "primary_or_secondary": "secondary",
+      "party_to_event": "unknown",
+      "access_mode": "open",
+      "language": [
+        "en"
+      ],
+      "publication_channel": "web",
+      "originator_of": [],
+      "repeats": [
+        "IW-001-SRC-011"
+      ],
+      "derived_from": [
+        "IW-001-SRC-011"
+      ],
+      "known_method": "Direct publication or explicitly identified derivative citation.",
+      "limitations": [
+        "No full copyrighted copy archived; metadata and short analytic notes only. Unknown publication/source-as-at values remain null rather than inferred."
+      ],
+      "identity_verification": {
+        "status": "verified",
+        "basis": "Official domain or publisher page; inaccessible origins remain unverified."
+      },
+      "archived_capture": null,
+      "original_uri": "https://www.aa.com.tr/en/middle-east/iran-says-very-close-to-agreement-with-oman-on-new-hormuz-corridor/4021894",
+      "archived_unavailability_reason": "No lawful archive captured during cut-off; dynamic/licensed or time constraint.",
+      "original_text_available": true,
+      "translation_trace": [],
+      "publication_timestamp": "2026-08-08T00:00:00Z",
+      "source_as_at": null,
+      "accessed_at": "2026-08-19T12:00:00Z"
+    },
+    {
+      "id": "IW-001-SRC-007",
+      "schema_version": "1.0.0",
+      "record_version": "1.0.0",
+      "created_at": "2026-08-19T12:00:00Z",
+      "updated_at": "2026-08-19T15:00:00Z",
+      "valid_from": "2026-08-19T12:00:00Z",
+      "valid_until": null,
+      "as_of": "2026-08-19T12:00:00Z",
+      "status": "approved",
+      "supersedes": null,
+      "provenance": {
+        "created_by": "Cognitive Logic IW research",
+        "method": "Manual OSINT review; deterministic structuring",
+        "sources": [],
+        "transformations": [
+          "Phase 3 formal methodological review"
+        ]
+      },
+      "responsible_actor": "Cognitive Logic IW author",
+      "review_required": true,
+      "review_due": "2026-09-19T12:00:00Z",
+      "content_hash": null,
+      "source_id": "IW-001-SRC-007",
+      "entity_id": "Associated Press",
+      "source_name": "AP rolling report 18 August",
+      "jurisdiction": [
+        "international"
+      ],
+      "source_role": [
+        "publisher",
+        "repeater"
+      ],
+      "ownership_or_control": {
+        "known": false,
+        "description": "Not assessed beyond named publisher."
+      },
+      "primary_or_secondary": "secondary",
+      "party_to_event": "unknown",
+      "access_mode": "open",
+      "language": [
+        "en"
+      ],
+      "publication_channel": "web",
+      "originator_of": [],
+      "repeats": [
+        "IW-001-SRC-012",
+        "IW-001-SRC-013"
+      ],
+      "derived_from": [
+        "IW-001-SRC-012",
+        "IW-001-SRC-013"
+      ],
+      "known_method": "Direct publication or explicitly identified derivative citation.",
+      "limitations": [
+        "No full copyrighted copy archived; metadata and short analytic notes only. Unknown publication/source-as-at values remain null rather than inferred."
+      ],
+      "identity_verification": {
+        "status": "verified",
+        "basis": "Official domain or publisher page; inaccessible origins remain unverified."
+      },
+      "archived_capture": null,
+      "original_uri": "https://apnews.com/article/iran-us-israel-lebanon-gaza-hormuz-august-18-2026-9c48af23b713709e8e170191fbc78c2a",
+      "archived_unavailability_reason": "No lawful archive captured during cut-off; dynamic/licensed or time constraint.",
+      "original_text_available": true,
+      "translation_trace": [],
+      "publication_timestamp": "2026-08-18T08:20:03Z",
+      "source_as_at": "2026-08-18T23:59:59Z",
+      "accessed_at": "2026-08-19T12:00:00Z"
+    },
+    {
+      "id": "IW-001-SRC-008",
+      "schema_version": "1.0.0",
+      "record_version": "1.0.0",
+      "created_at": "2026-08-19T12:00:00Z",
+      "updated_at": "2026-08-19T15:00:00Z",
+      "valid_from": "2026-08-19T12:00:00Z",
+      "valid_until": null,
+      "as_of": "2026-08-19T12:00:00Z",
+      "status": "approved",
+      "supersedes": null,
+      "provenance": {
+        "created_by": "Cognitive Logic IW research",
+        "method": "Manual OSINT review; deterministic structuring",
+        "sources": [],
+        "transformations": [
+          "Phase 3 formal methodological review"
+        ]
+      },
+      "responsible_actor": "Cognitive Logic IW author",
+      "review_required": true,
+      "review_due": "2026-09-19T12:00:00Z",
+      "content_hash": null,
+      "source_id": "IW-001-SRC-008",
+      "entity_id": "Associated Press",
+      "source_name": "AP Oman/Iran report",
+      "jurisdiction": [
+        "international"
+      ],
+      "source_role": [
+        "publisher",
+        "repeater"
+      ],
+      "ownership_or_control": {
+        "known": false,
+        "description": "Not assessed beyond named publisher."
+      },
+      "primary_or_secondary": "secondary",
+      "party_to_event": "unknown",
+      "access_mode": "open",
+      "language": [
+        "en"
+      ],
+      "publication_channel": "web",
+      "originator_of": [],
+      "repeats": [
+        "IW-001-SRC-012"
+      ],
+      "derived_from": [
+        "IW-001-SRC-012"
+      ],
+      "known_method": "Direct publication or explicitly identified derivative citation.",
+      "limitations": [
+        "No full copyrighted copy archived; metadata and short analytic notes only. Unknown publication/source-as-at values remain null rather than inferred."
+      ],
+      "identity_verification": {
+        "status": "verified",
+        "basis": "Official domain or publisher page; inaccessible origins remain unverified."
+      },
+      "archived_capture": null,
+      "original_uri": "https://apnews.com/article/oman-iran-war-us-hormuz-a8298715a51159225d2f37a6d50ce682",
+      "archived_unavailability_reason": "No lawful archive captured during cut-off; dynamic/licensed or time constraint.",
+      "original_text_available": true,
+      "translation_trace": [],
+      "publication_timestamp": "2026-08-18T14:30:04Z",
+      "source_as_at": "2026-08-18T23:59:59Z",
+      "accessed_at": "2026-08-19T12:00:00Z"
+    },
+    {
+      "id": "IW-001-SRC-009",
+      "schema_version": "1.0.0",
+      "record_version": "1.0.0",
+      "created_at": "2026-08-19T12:00:00Z",
+      "updated_at": "2026-08-19T15:00:00Z",
+      "valid_from": "2026-08-19T12:00:00Z",
+      "valid_until": null,
+      "as_of": "2026-08-19T12:00:00Z",
+      "status": "approved",
+      "supersedes": null,
+      "provenance": {
+        "created_by": "Cognitive Logic IW research",
+        "method": "Manual OSINT review; deterministic structuring",
+        "sources": [],
+        "transformations": [
+          "Phase 3 formal methodological review"
+        ]
+      },
+      "responsible_actor": "Cognitive Logic IW author",
+      "review_required": true,
+      "review_due": "2026-09-19T12:00:00Z",
+      "content_hash": null,
+      "source_id": "IW-001-SRC-009",
+      "entity_id": "VesselFinder",
+      "source_name": "VesselFinder MINOAN DIGNITY",
+      "jurisdiction": [
+        "international"
+      ],
+      "source_role": [
+        "publisher",
+        "repeater"
+      ],
+      "ownership_or_control": {
+        "known": false,
+        "description": "Not assessed beyond named publisher."
+      },
+      "primary_or_secondary": "secondary",
+      "party_to_event": "unknown",
+      "access_mode": "open",
+      "language": [
+        "en"
+      ],
+      "publication_channel": "web",
+      "originator_of": [],
+      "repeats": [
+        "IW-001-SRC-014"
+      ],
+      "derived_from": [
+        "IW-001-SRC-014"
+      ],
+      "known_method": "Direct publication or explicitly identified derivative citation.",
+      "limitations": [
+        "No full copyrighted copy archived; metadata and short analytic notes only. Unknown publication/source-as-at values remain null rather than inferred."
+      ],
+      "identity_verification": {
+        "status": "verified",
+        "basis": "Official domain or publisher page; inaccessible origins remain unverified."
+      },
+      "archived_capture": null,
+      "original_uri": "https://www.vesselfinder.com/vessels/details/9294484",
+      "archived_unavailability_reason": "No lawful archive captured during cut-off; dynamic/licensed or time constraint.",
+      "original_text_available": true,
+      "translation_trace": [],
+      "publication_timestamp": null,
+      "source_as_at": null,
+      "accessed_at": "2026-08-19T12:00:00Z"
+    },
+    {
+      "id": "IW-001-SRC-010",
+      "schema_version": "1.0.0",
+      "record_version": "1.0.0",
+      "created_at": "2026-08-19T12:00:00Z",
+      "updated_at": "2026-08-19T15:00:00Z",
+      "valid_from": "2026-08-19T12:00:00Z",
+      "valid_until": null,
+      "as_of": "2026-08-19T12:00:00Z",
+      "status": "approved",
+      "supersedes": null,
+      "provenance": {
+        "created_by": "Cognitive Logic IW research",
+        "method": "Manual OSINT review; deterministic structuring",
+        "sources": [],
+        "transformations": [
+          "Phase 3 formal methodological review"
+        ]
+      },
+      "responsible_actor": "Cognitive Logic IW author",
+      "review_required": true,
+      "review_due": "2026-09-19T12:00:00Z",
+      "content_hash": null,
+      "source_id": "IW-001-SRC-010",
+      "entity_id": "Iran MFA",
+      "source_name": "Iran MFA press conference",
+      "jurisdiction": [
+        "international"
+      ],
+      "source_role": [
+        "publisher"
+      ],
+      "ownership_or_control": {
+        "known": false,
+        "description": "Not assessed beyond named publisher."
+      },
+      "primary_or_secondary": "primary",
+      "party_to_event": "unknown",
+      "access_mode": "unavailable",
+      "language": [
+        "en"
+      ],
+      "publication_channel": "web",
+      "originator_of": [],
+      "repeats": [],
+      "derived_from": [],
+      "known_method": "Direct publication or explicitly identified derivative citation.",
+      "limitations": [
+        "unavailable:original-not-inspected"
+      ],
+      "identity_verification": {
+        "status": "unverified",
+        "basis": "Official domain or publisher page; inaccessible origins remain unverified."
+      },
+      "archived_capture": null,
+      "original_uri": null,
+      "archived_unavailability_reason": "No lawful archive captured during cut-off; dynamic/licensed or time constraint.",
+      "original_text_available": false,
+      "translation_trace": [],
+      "publication_timestamp": null,
+      "source_as_at": null,
+      "accessed_at": "2026-08-19T12:00:00Z"
+    },
+    {
+      "id": "IW-001-SRC-011",
+      "schema_version": "1.0.0",
+      "record_version": "1.0.0",
+      "created_at": "2026-08-19T12:00:00Z",
+      "updated_at": "2026-08-19T15:00:00Z",
+      "valid_from": "2026-08-19T12:00:00Z",
+      "valid_until": null,
+      "as_of": "2026-08-19T12:00:00Z",
+      "status": "approved",
+      "supersedes": null,
+      "provenance": {
+        "created_by": "Cognitive Logic IW research",
+        "method": "Manual OSINT review; deterministic structuring",
+        "sources": [],
+        "transformations": [
+          "Phase 3 formal methodological review"
+        ]
+      },
+      "responsible_actor": "Cognitive Logic IW author",
+      "review_required": true,
+      "review_due": "2026-09-19T12:00:00Z",
+      "content_hash": null,
+      "source_id": "IW-001-SRC-011",
+      "entity_id": "IRNA",
+      "source_name": "IRNA report cited by Anadolu",
+      "jurisdiction": [
+        "international"
+      ],
+      "source_role": [
+        "publisher"
+      ],
+      "ownership_or_control": {
+        "known": false,
+        "description": "Not assessed beyond named publisher."
+      },
+      "primary_or_secondary": "primary",
+      "party_to_event": "unknown",
+      "access_mode": "unavailable",
+      "language": [
+        "en"
+      ],
+      "publication_channel": "web",
+      "originator_of": [],
+      "repeats": [],
+      "derived_from": [],
+      "known_method": "Direct publication or explicitly identified derivative citation.",
+      "limitations": [
+        "unavailable:original-not-inspected"
+      ],
+      "identity_verification": {
+        "status": "unverified",
+        "basis": "Official domain or publisher page; inaccessible origins remain unverified."
+      },
+      "archived_capture": null,
+      "original_uri": null,
+      "archived_unavailability_reason": "No lawful archive captured during cut-off; dynamic/licensed or time constraint.",
+      "original_text_available": false,
+      "translation_trace": [],
+      "publication_timestamp": null,
+      "source_as_at": null,
+      "accessed_at": "2026-08-19T12:00:00Z"
+    },
+    {
+      "id": "IW-001-SRC-012",
+      "schema_version": "1.0.0",
+      "record_version": "1.0.0",
+      "created_at": "2026-08-19T12:00:00Z",
+      "updated_at": "2026-08-19T15:00:00Z",
+      "valid_from": "2026-08-19T12:00:00Z",
+      "valid_until": null,
+      "as_of": "2026-08-19T12:00:00Z",
+      "status": "approved",
+      "supersedes": null,
+      "provenance": {
+        "created_by": "Cognitive Logic IW research",
+        "method": "Manual OSINT review; deterministic structuring",
+        "sources": [],
+        "transformations": [
+          "Phase 3 formal methodological review"
+        ]
+      },
+      "responsible_actor": "Cognitive Logic IW author",
+      "review_required": true,
+      "review_due": "2026-09-19T12:00:00Z",
+      "content_hash": null,
+      "source_id": "IW-001-SRC-012",
+      "entity_id": "UKMTO",
+      "source_name": "UKMTO incident report cited by AP",
+      "jurisdiction": [
+        "international"
+      ],
+      "source_role": [
+        "publisher"
+      ],
+      "ownership_or_control": {
+        "known": false,
+        "description": "Not assessed beyond named publisher."
+      },
+      "primary_or_secondary": "primary",
+      "party_to_event": "unknown",
+      "access_mode": "unavailable",
+      "language": [
+        "en"
+      ],
+      "publication_channel": "web",
+      "originator_of": [],
+      "repeats": [],
+      "derived_from": [],
+      "known_method": "Direct publication or explicitly identified derivative citation.",
+      "limitations": [
+        "unavailable:original-item-not-located"
+      ],
+      "identity_verification": {
+        "status": "unverified",
+        "basis": "Official domain or publisher page; inaccessible origins remain unverified."
+      },
+      "archived_capture": null,
+      "original_uri": null,
+      "archived_unavailability_reason": "No lawful archive captured during cut-off; dynamic/licensed or time constraint.",
+      "original_text_available": false,
+      "translation_trace": [],
+      "publication_timestamp": null,
+      "source_as_at": null,
+      "accessed_at": "2026-08-19T12:00:00Z"
+    },
+    {
+      "id": "IW-001-SRC-013",
+      "schema_version": "1.0.0",
+      "record_version": "1.0.0",
+      "created_at": "2026-08-19T12:00:00Z",
+      "updated_at": "2026-08-19T15:00:00Z",
+      "valid_from": "2026-08-19T12:00:00Z",
+      "valid_until": null,
+      "as_of": "2026-08-19T12:00:00Z",
+      "status": "approved",
+      "supersedes": null,
+      "provenance": {
+        "created_by": "Cognitive Logic IW research",
+        "method": "Manual OSINT review; deterministic structuring",
+        "sources": [],
+        "transformations": [
+          "Phase 3 formal methodological review"
+        ]
+      },
+      "responsible_actor": "Cognitive Logic IW author",
+      "review_required": true,
+      "review_due": "2026-09-19T12:00:00Z",
+      "content_hash": null,
+      "source_id": "IW-001-SRC-013",
+      "entity_id": "Kpler",
+      "source_name": "Kpler weekly crossing dataset cited by AP",
+      "jurisdiction": [
+        "international"
+      ],
+      "source_role": [
+        "publisher"
+      ],
+      "ownership_or_control": {
+        "known": false,
+        "description": "Not assessed beyond named publisher."
+      },
+      "primary_or_secondary": "primary",
+      "party_to_event": "unknown",
+      "access_mode": "unavailable",
+      "language": [
+        "en"
+      ],
+      "publication_channel": "web",
+      "originator_of": [],
+      "repeats": [],
+      "derived_from": [],
+      "known_method": "Direct publication or explicitly identified derivative citation.",
+      "limitations": [
+        "unavailable:licensed-dataset-not-inspected"
+      ],
+      "identity_verification": {
+        "status": "unverified",
+        "basis": "Official domain or publisher page; inaccessible origins remain unverified."
+      },
+      "archived_capture": null,
+      "original_uri": null,
+      "archived_unavailability_reason": "No lawful archive captured during cut-off; dynamic/licensed or time constraint.",
+      "original_text_available": false,
+      "translation_trace": [],
+      "publication_timestamp": null,
+      "source_as_at": null,
+      "accessed_at": "2026-08-19T12:00:00Z"
+    },
+    {
+      "id": "IW-001-SRC-014",
+      "schema_version": "1.0.0",
+      "record_version": "1.0.0",
+      "created_at": "2026-08-19T12:00:00Z",
+      "updated_at": "2026-08-19T15:00:00Z",
+      "valid_from": "2026-08-19T12:00:00Z",
+      "valid_until": null,
+      "as_of": "2026-08-19T12:00:00Z",
+      "status": "approved",
+      "supersedes": null,
+      "provenance": {
+        "created_by": "Cognitive Logic IW research",
+        "method": "Manual OSINT review; deterministic structuring",
+        "sources": [],
+        "transformations": [
+          "Phase 3 formal methodological review"
+        ]
+      },
+      "responsible_actor": "Cognitive Logic IW author",
+      "review_required": true,
+      "review_due": "2026-09-19T12:00:00Z",
+      "content_hash": null,
+      "source_id": "IW-001-SRC-014",
+      "entity_id": "AIS data providers",
+      "source_name": "AIS feed surfaced by VesselFinder",
+      "jurisdiction": [
+        "international"
+      ],
+      "source_role": [
+        "publisher"
+      ],
+      "ownership_or_control": {
+        "known": false,
+        "description": "Not assessed beyond named publisher."
+      },
+      "primary_or_secondary": "primary",
+      "party_to_event": "unknown",
+      "access_mode": "unavailable",
+      "language": [
+        "en"
+      ],
+      "publication_channel": "web",
+      "originator_of": [],
+      "repeats": [],
+      "derived_from": [],
+      "known_method": "Direct publication or explicitly identified derivative citation.",
+      "limitations": [
+        "unavailable:dynamic-licensed-feed"
+      ],
+      "identity_verification": {
+        "status": "unverified",
+        "basis": "Official domain or publisher page; inaccessible origins remain unverified."
+      },
+      "archived_capture": null,
+      "original_uri": null,
+      "archived_unavailability_reason": "No lawful archive captured during cut-off; dynamic/licensed or time constraint.",
+      "original_text_available": false,
+      "translation_trace": [],
+      "publication_timestamp": null,
+      "source_as_at": null,
+      "accessed_at": "2026-08-19T12:00:00Z"
+    },
+    {
+      "id": "IW-001-SRC-015",
+      "schema_version": "1.0.0",
+      "record_version": "1.0.0",
+      "created_at": "2026-08-19T12:00:00Z",
+      "updated_at": "2026-08-19T15:00:00Z",
+      "valid_from": "2026-08-19T12:00:00Z",
+      "valid_until": null,
+      "as_of": "2026-08-19T12:00:00Z",
+      "status": "approved",
+      "supersedes": null,
+      "provenance": {
+        "created_by": "Cognitive Logic IW research",
+        "method": "Manual OSINT review; deterministic structuring",
+        "sources": [],
+        "transformations": [
+          "Phase 3 formal methodological review"
+        ]
+      },
+      "responsible_actor": "Cognitive Logic IW author",
+      "review_required": true,
+      "review_due": "2026-09-19T12:00:00Z",
+      "content_hash": null,
+      "source_id": "IW-001-SRC-015",
+      "entity_id": "IMO",
+      "source_name": "IMO Highlighted (Confirmed) incidents — accessed 2026-08-19T14:23:40Z",
+      "jurisdiction": [
+        "international"
+      ],
+      "source_role": [
+        "publisher"
+      ],
+      "ownership_or_control": {
+        "known": false,
+        "description": "Not assessed beyond named publisher."
+      },
+      "primary_or_secondary": "primary",
+      "party_to_event": "unknown",
+      "access_mode": "open",
+      "language": [
+        "en"
+      ],
+      "publication_channel": "web",
+      "originator_of": [],
+      "repeats": [],
+      "derived_from": [],
+      "known_method": "Direct publication or explicitly identified derivative citation.",
+      "limitations": [
+        "No full copyrighted copy archived; metadata and short analytic notes only. Unknown publication/source-as-at values remain null rather than inferred."
+      ],
+      "identity_verification": {
+        "status": "verified",
+        "basis": "Official domain or publisher page; inaccessible origins remain unverified."
+      },
+      "archived_capture": null,
+      "original_uri": "https://www.imo.org/en/mediacentre/hottopics/pages/middle-east-highlighted-incidents.aspx",
+      "archived_unavailability_reason": "No lawful archive captured during cut-off; dynamic/licensed or time constraint.",
+      "original_text_available": true,
+      "translation_trace": [],
+      "publication_timestamp": null,
+      "source_as_at": "2026-08-19T23:59:59Z",
+      "accessed_at": "2026-08-19T14:23:40Z"
+    }
+  ]
+}
