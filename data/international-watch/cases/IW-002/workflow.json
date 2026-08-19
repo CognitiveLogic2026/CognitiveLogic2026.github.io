@@ -1,0 +1,81 @@
+{
+  "schema_version": "1.0.0",
+  "case_id": "IW-002",
+  "records": [
+    {
+      "id": "IW-002-WF-001",
+      "schema_version": "1.0.0",
+      "record_version": "1.0.0",
+      "created_at": "2026-08-19T21:23:05Z",
+      "updated_at": "2026-08-19T21:23:05Z",
+      "valid_from": "2026-08-19T21:23:05Z",
+      "valid_until": null,
+      "as_of": "2026-08-19T21:59:59Z",
+      "status": "approved",
+      "supersedes": null,
+      "provenance": {
+        "created_by": "Cognitive Logic IW author",
+        "method": "Manual public-source review and deterministic canonical structuring under DFV-002",
+        "sources": [
+          "IW-002"
+        ],
+        "transformations": [
+          "Approved editorial material normalized into International Watch 1.0.0 records"
+        ]
+      },
+      "responsible_actor": "Cognitive Logic IW author",
+      "review_required": true,
+      "review_due": "2026-11-19T21:59:59Z",
+      "content_hash": null,
+      "workflow_id": "IW-002-WF-001",
+      "record_id": "IW-002",
+      "current_state": "published",
+      "history": [
+        {
+          "from": null,
+          "to": "draft",
+        "at": "2026-08-19T21:23:05Z",
+          "actor": "Cognitive Logic IW author",
+          "role": "author",
+          "reason": "Prepared article, dossier and governed evidence model."
+        },
+        {
+          "from": "draft",
+          "to": "in_review",
+        "at": "2026-08-19T21:23:05Z",
+          "actor": "Cognitive Logic IW author",
+          "role": "author",
+          "reason": "Submitted the approved editorial material for human review."
+        },
+        {
+          "from": "in_review",
+          "to": "approved",
+          "at": "2026-08-19T21:23:05Z",
+          "actor": "Cognitive Logic designated human publication authority",
+          "role": "human publication authority",
+          "reason": "Human approval granted for article, epistemic outcome and dossier; local implementation remains not published pending a separate commit, push and deploy authorization."
+        },
+        {
+          "from": "approved",
+          "to": "published",
+          "at": "2026-08-19T21:28:54Z",
+          "actor": "Cognitive Logic designated human publication authority",
+          "role": "human publication authority",
+          "reason": "Final human publication authorization granted after canonical IW-002 validation completed with zero errors and zero warnings."
+        }
+      ],
+      "author": "Cognitive Logic IW author",
+      "human_reviewer": "Cognitive Logic designated human publication authority",
+      "publication_automatic": false,
+      "reopen_conditions": [
+        "new material evidence",
+        "source correction or withdrawal",
+        "dependency discovered",
+        "scope or definition change",
+        "project cancellation or commissioning"
+      ],
+      "new_evidence_policy": "Return the case to in_review, version affected records and preserve the previous assessment.",
+      "correction_policy": "Non-material corrections are versioned; material corrections create superseding records. Publication requires a separate explicit human authorization."
+    }
+  ]
+}

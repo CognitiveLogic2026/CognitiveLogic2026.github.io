@@ -1,0 +1,466 @@
+{
+  "schema_version": "1.0.0",
+  "case_id": "IW-002",
+  "records": [
+    {
+      "id": "IW-002",
+      "schema_version": "1.0.0",
+      "record_version": "1.0.0",
+      "created_at": "2026-08-19T21:23:05Z",
+      "updated_at": "2026-08-19T21:23:05Z",
+      "valid_from": "2026-08-19T21:23:05Z",
+      "valid_until": null,
+      "as_of": "2026-08-19T21:59:59Z",
+      "status": "approved",
+      "supersedes": null,
+      "provenance": {
+        "created_by": "Cognitive Logic IW author",
+        "method": "Manual public-source review and deterministic canonical structuring under DFV-002",
+        "sources": [],
+        "transformations": [
+          "Approved editorial material normalized into International Watch 1.0.0 records"
+        ]
+      },
+      "responsible_actor": "Cognitive Logic IW author",
+      "review_required": true,
+      "review_due": "2026-11-19T21:59:59Z",
+      "content_hash": null,
+      "case_id": "IW-002",
+      "event_id": "IW-002",
+      "parent_event_id": null,
+      "record_type": "dossier",
+      "title": "La nuova geografia dei data center AI in Europa",
+      "description": "Record governato del caso IW-002; distingue capacità operativa, pipeline, annunci, richieste di connessione e inferenze sulla sovranità.",
+      "temporal_scope": {
+        "start": "2019-01-01T00:00:00Z",
+        "end": "2026-08-19T21:59:59Z"
+      },
+      "time_precision": "range",
+      "locations": [
+        {
+          "name": "Europe",
+          "coordinates": null
+        }
+      ],
+      "actors": [
+        "European Commission",
+        "grid operators",
+        "data centre operators",
+        "cloud providers",
+        "local communities"
+      ],
+      "related_claim_ids": [
+        "IW-002-CLM-001",
+        "IW-002-CLM-002",
+        "IW-002-CLM-008",
+        "IW-002-CLM-017",
+        "IW-002-CLM-018",
+        "IW-002-CLM-003",
+        "IW-002-CLM-004",
+        "IW-002-CLM-005",
+        "IW-002-CLM-006",
+        "IW-002-CLM-007",
+        "IW-002-CLM-009",
+        "IW-002-CLM-010",
+        "IW-002-CLM-011",
+        "IW-002-CLM-012",
+        "IW-002-CLM-013",
+        "IW-002-CLM-014",
+        "IW-002-CLM-015",
+        "IW-002-CLM-016"
+      ],
+      "related_event_ids": [],
+      "update_history": [
+        {
+          "at": "2026-08-19T21:23:05Z",
+          "actor": "Cognitive Logic IW author",
+          "change": "Canonical IW-002 record created from human-approved material."
+        }
+      ]
+    },
+    {
+      "id": "IW-002-E001",
+      "schema_version": "1.0.0",
+      "record_version": "1.0.0",
+      "created_at": "2026-08-19T21:23:05Z",
+      "updated_at": "2026-08-19T21:23:05Z",
+      "valid_from": "2026-08-19T21:23:05Z",
+      "valid_until": null,
+      "as_of": "2026-08-19T21:59:59Z",
+      "status": "approved",
+      "supersedes": null,
+      "provenance": {
+        "created_by": "Cognitive Logic IW author",
+        "method": "Manual public-source review and deterministic canonical structuring under DFV-002",
+        "sources": [],
+        "transformations": [
+          "Approved editorial material normalized into International Watch 1.0.0 records"
+        ]
+      },
+      "responsible_actor": "Cognitive Logic IW author",
+      "review_required": true,
+      "review_due": "2026-11-19T21:59:59Z",
+      "content_hash": null,
+      "case_id": "IW-002",
+      "event_id": "IW-002-E001",
+      "parent_event_id": "IW-002",
+      "record_type": "event",
+      "title": "Diversificazione geografica e mercati emergenti",
+      "description": "Record governato del caso IW-002; distingue capacità operativa, pipeline, annunci, richieste di connessione e inferenze sulla sovranità.",
+      "temporal_scope": {
+        "start": "2019-01-01T00:00:00Z",
+        "end": "2026-08-19T21:59:59Z"
+      },
+      "time_precision": "range",
+      "locations": [
+        {
+          "name": "Europe",
+          "coordinates": null
+        }
+      ],
+      "actors": [
+        "European Commission",
+        "grid operators",
+        "data centre operators",
+        "cloud providers",
+        "local communities"
+      ],
+      "related_claim_ids": [
+        "IW-002-CLM-001",
+        "IW-002-CLM-002",
+        "IW-002-CLM-008",
+        "IW-002-CLM-017",
+        "IW-002-CLM-018"
+      ],
+      "related_event_ids": [],
+      "update_history": [
+        {
+          "at": "2026-08-19T21:23:05Z",
+          "actor": "Cognitive Logic IW author",
+          "change": "Canonical IW-002 record created from human-approved material."
+        }
+      ]
+    },
+    {
+      "id": "IW-002-E002",
+      "schema_version": "1.0.0",
+      "record_version": "1.0.0",
+      "created_at": "2026-08-19T21:23:05Z",
+      "updated_at": "2026-08-19T21:23:05Z",
+      "valid_from": "2026-08-19T21:23:05Z",
+      "valid_until": null,
+      "as_of": "2026-08-19T21:59:59Z",
+      "status": "approved",
+      "supersedes": null,
+      "provenance": {
+        "created_by": "Cognitive Logic IW author",
+        "method": "Manual public-source review and deterministic canonical structuring under DFV-002",
+        "sources": [],
+        "transformations": [
+          "Approved editorial material normalized into International Watch 1.0.0 records"
+        ]
+      },
+      "responsible_actor": "Cognitive Logic IW author",
+      "review_required": true,
+      "review_due": "2026-11-19T21:59:59Z",
+      "content_hash": null,
+      "case_id": "IW-002",
+      "event_id": "IW-002-E002",
+      "parent_event_id": "IW-002",
+      "record_type": "event",
+      "title": "Energia, rete e risorse territoriali",
+      "description": "Record governato del caso IW-002; distingue capacità operativa, pipeline, annunci, richieste di connessione e inferenze sulla sovranità.",
+      "temporal_scope": {
+        "start": "2019-01-01T00:00:00Z",
+        "end": "2026-08-19T21:59:59Z"
+      },
+      "time_precision": "range",
+      "locations": [
+        {
+          "name": "Europe",
+          "coordinates": null
+        }
+      ],
+      "actors": [
+        "European Commission",
+        "grid operators",
+        "data centre operators",
+        "cloud providers",
+        "local communities"
+      ],
+      "related_claim_ids": [
+        "IW-002-CLM-003",
+        "IW-002-CLM-004",
+        "IW-002-CLM-005",
+        "IW-002-CLM-006",
+        "IW-002-CLM-007"
+      ],
+      "related_event_ids": [],
+      "update_history": [
+        {
+          "at": "2026-08-19T21:23:05Z",
+          "actor": "Cognitive Logic IW author",
+          "change": "Canonical IW-002 record created from human-approved material."
+        }
+      ]
+    },
+    {
+      "id": "IW-002-E003",
+      "schema_version": "1.0.0",
+      "record_version": "1.0.0",
+      "created_at": "2026-08-19T21:23:05Z",
+      "updated_at": "2026-08-19T21:23:05Z",
+      "valid_from": "2026-08-19T21:23:05Z",
+      "valid_until": null,
+      "as_of": "2026-08-19T21:59:59Z",
+      "status": "approved",
+      "supersedes": null,
+      "provenance": {
+        "created_by": "Cognitive Logic IW author",
+        "method": "Manual public-source review and deterministic canonical structuring under DFV-002",
+        "sources": [],
+        "transformations": [
+          "Approved editorial material normalized into International Watch 1.0.0 records"
+        ]
+      },
+      "responsible_actor": "Cognitive Logic IW author",
+      "review_required": true,
+      "review_due": "2026-11-19T21:59:59Z",
+      "content_hash": null,
+      "case_id": "IW-002",
+      "event_id": "IW-002-E003",
+      "parent_event_id": "IW-002",
+      "record_type": "event",
+      "title": "Pipeline e vincoli infrastrutturali italiani",
+      "description": "Record governato del caso IW-002; distingue capacità operativa, pipeline, annunci, richieste di connessione e inferenze sulla sovranità.",
+      "temporal_scope": {
+        "start": "2019-01-01T00:00:00Z",
+        "end": "2026-08-19T21:59:59Z"
+      },
+      "time_precision": "range",
+      "locations": [
+        {
+          "name": "Italy",
+          "coordinates": null
+        }
+      ],
+      "actors": [
+        "European Commission",
+        "grid operators",
+        "data centre operators",
+        "cloud providers",
+        "local communities"
+      ],
+      "related_claim_ids": [
+        "IW-002-CLM-009",
+        "IW-002-CLM-010",
+        "IW-002-CLM-011",
+        "IW-002-CLM-012"
+      ],
+      "related_event_ids": [],
+      "update_history": [
+        {
+          "at": "2026-08-19T21:23:05Z",
+          "actor": "Cognitive Logic IW author",
+          "change": "Canonical IW-002 record created from human-approved material."
+        }
+      ]
+    },
+    {
+      "id": "IW-002-E004",
+      "schema_version": "1.0.0",
+      "record_version": "1.0.0",
+      "created_at": "2026-08-19T21:23:05Z",
+      "updated_at": "2026-08-19T21:23:05Z",
+      "valid_from": "2026-08-19T21:23:05Z",
+      "valid_until": null,
+      "as_of": "2026-08-19T21:59:59Z",
+      "status": "approved",
+      "supersedes": null,
+      "provenance": {
+        "created_by": "Cognitive Logic IW author",
+        "method": "Manual public-source review and deterministic canonical structuring under DFV-002",
+        "sources": [],
+        "transformations": [
+          "Approved editorial material normalized into International Watch 1.0.0 records"
+        ]
+      },
+      "responsible_actor": "Cognitive Logic IW author",
+      "review_required": true,
+      "review_due": "2026-11-19T21:59:59Z",
+      "content_hash": null,
+      "case_id": "IW-002",
+      "event_id": "IW-002-E004",
+      "parent_event_id": "IW-002",
+      "record_type": "event",
+      "title": "Controllo cloud, chip e sovranità infrastrutturale",
+      "description": "Record governato del caso IW-002; distingue capacità operativa, pipeline, annunci, richieste di connessione e inferenze sulla sovranità.",
+      "temporal_scope": {
+        "start": "2019-01-01T00:00:00Z",
+        "end": "2026-08-19T21:59:59Z"
+      },
+      "time_precision": "range",
+      "locations": [
+        {
+          "name": "European Union",
+          "coordinates": null
+        }
+      ],
+      "actors": [
+        "European Commission",
+        "grid operators",
+        "data centre operators",
+        "cloud providers",
+        "local communities"
+      ],
+      "related_claim_ids": [
+        "IW-002-CLM-013",
+        "IW-002-CLM-014"
+      ],
+      "related_event_ids": [],
+      "update_history": [
+        {
+          "at": "2026-08-19T21:23:05Z",
+          "actor": "Cognitive Logic IW author",
+          "change": "Canonical IW-002 record created from human-approved material."
+        }
+      ]
+    },
+    {
+      "id": "IW-002-E005",
+      "schema_version": "1.0.0",
+      "record_version": "1.0.0",
+      "created_at": "2026-08-19T21:23:05Z",
+      "updated_at": "2026-08-19T21:23:05Z",
+      "valid_from": "2026-08-19T21:23:05Z",
+      "valid_until": null,
+      "as_of": "2026-08-19T21:59:59Z",
+      "status": "approved",
+      "supersedes": null,
+      "provenance": {
+        "created_by": "Cognitive Logic IW author",
+        "method": "Manual public-source review and deterministic canonical structuring under DFV-002",
+        "sources": [],
+        "transformations": [
+          "Approved editorial material normalized into International Watch 1.0.0 records"
+        ]
+      },
+      "responsible_actor": "Cognitive Logic IW author",
+      "review_required": true,
+      "review_due": "2026-11-19T21:59:59Z",
+      "content_hash": null,
+      "case_id": "IW-002",
+      "event_id": "IW-002-E005",
+      "parent_event_id": "IW-002",
+      "record_type": "event",
+      "title": "AI Factories e AI Gigafactories europee",
+      "description": "Record governato del caso IW-002; distingue capacità operativa, pipeline, annunci, richieste di connessione e inferenze sulla sovranità.",
+      "temporal_scope": {
+        "start": "2019-01-01T00:00:00Z",
+        "end": "2026-08-19T21:59:59Z"
+      },
+      "time_precision": "range",
+      "locations": [
+        {
+          "name": "European Union",
+          "coordinates": null
+        }
+      ],
+      "actors": [
+        "European Commission",
+        "grid operators",
+        "data centre operators",
+        "cloud providers",
+        "local communities"
+      ],
+      "related_claim_ids": [
+        "IW-002-CLM-015",
+        "IW-002-CLM-016"
+      ],
+      "related_event_ids": [],
+      "update_history": [
+        {
+          "at": "2026-08-19T21:23:05Z",
+          "actor": "Cognitive Logic IW author",
+          "change": "Canonical IW-002 record created from human-approved material."
+        }
+      ]
+    },
+    {
+      "id": "IW-002-S001",
+      "schema_version": "1.0.0",
+      "record_version": "1.0.0",
+      "created_at": "2026-08-19T21:23:05Z",
+      "updated_at": "2026-08-19T21:23:05Z",
+      "valid_from": "2026-08-19T21:23:05Z",
+      "valid_until": null,
+      "as_of": "2026-08-19T21:59:59Z",
+      "status": "approved",
+      "supersedes": null,
+      "provenance": {
+        "created_by": "Cognitive Logic IW author",
+        "method": "Manual public-source review and deterministic canonical structuring under DFV-002",
+        "sources": [],
+        "transformations": [
+          "Approved editorial material normalized into International Watch 1.0.0 records"
+        ]
+      },
+      "responsible_actor": "Cognitive Logic IW author",
+      "review_required": true,
+      "review_due": "2026-11-19T21:59:59Z",
+      "content_hash": null,
+      "case_id": "IW-002",
+      "event_id": "IW-002-S001",
+      "parent_event_id": "IW-002",
+      "record_type": "snapshot",
+      "title": "Snapshot documentale al 19 agosto 2026",
+      "description": "Record governato del caso IW-002; distingue capacità operativa, pipeline, annunci, richieste di connessione e inferenze sulla sovranità.",
+      "temporal_scope": {
+        "start": "2019-01-01T00:00:00Z",
+        "end": "2026-08-19T21:59:59Z"
+      },
+      "time_precision": "range",
+      "locations": [
+        {
+          "name": "Europe",
+          "coordinates": null
+        }
+      ],
+      "actors": [
+        "European Commission",
+        "grid operators",
+        "data centre operators",
+        "cloud providers",
+        "local communities"
+      ],
+      "related_claim_ids": [
+        "IW-002-CLM-001",
+        "IW-002-CLM-002",
+        "IW-002-CLM-008",
+        "IW-002-CLM-017",
+        "IW-002-CLM-018",
+        "IW-002-CLM-003",
+        "IW-002-CLM-004",
+        "IW-002-CLM-005",
+        "IW-002-CLM-006",
+        "IW-002-CLM-007",
+        "IW-002-CLM-009",
+        "IW-002-CLM-010",
+        "IW-002-CLM-011",
+        "IW-002-CLM-012",
+        "IW-002-CLM-013",
+        "IW-002-CLM-014",
+        "IW-002-CLM-015",
+        "IW-002-CLM-016"
+      ],
+      "related_event_ids": [],
+      "update_history": [
+        {
+          "at": "2026-08-19T21:23:05Z",
+          "actor": "Cognitive Logic IW author",
+          "change": "Canonical IW-002 record created from human-approved material."
+        }
+      ]
+    }
+  ]
+}

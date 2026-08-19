@@ -1,0 +1,1377 @@
+{
+  "schema_version": "1.0.0",
+  "case_id": "IW-002",
+  "records": [
+    {
+      "id": "IW-002-CLM-001",
+      "schema_version": "1.0.0",
+      "record_version": "1.0.0",
+      "created_at": "2026-08-19T21:23:05Z",
+      "updated_at": "2026-08-19T21:23:05Z",
+      "valid_from": "2026-08-19T21:23:05Z",
+      "valid_until": null,
+      "as_of": "2026-08-19T21:59:59Z",
+      "status": "approved",
+      "supersedes": null,
+      "provenance": {
+        "created_by": "Cognitive Logic IW author",
+        "method": "Manual public-source review and deterministic canonical structuring under DFV-002",
+        "sources": [
+          "IW-002-SRC-001"
+        ],
+        "transformations": [
+          "Approved editorial material normalized into International Watch 1.0.0 records"
+        ]
+      },
+      "responsible_actor": "Cognitive Logic IW author",
+      "review_required": true,
+      "review_due": "2026-11-19T21:59:59Z",
+      "content_hash": null,
+      "claim_id": "IW-002-CLM-001",
+      "event_id": "IW-002-E001",
+      "claim_text_original": "I FLAP-D restano dominanti.",
+      "language": "it",
+      "translation": null,
+      "translation_method": "none",
+      "claim_type": "observable_fact",
+      "speaker_actor_id": "Cognitive Logic IW analysis",
+      "origin_source_id": "IW-002-SRC-001",
+      "origin_timestamp": null,
+      "publication_timestamp": null,
+      "original_context": "Claim atomico tratto dal claim ledger approvato; stato del progetto, limiti e natura della fonte restano separati dalla proposizione.",
+      "subject": "I",
+      "predicate": "sostiene o documenta",
+      "object": "I FLAP-D restano dominanti.",
+      "qualifiers": [
+        "stato progetto: operativo",
+        "limite: perimetri proprietari",
+        "cut-off 19 agosto 2026"
+      ],
+      "geographic_scope": [
+        "Europe"
+      ],
+      "temporal_scope": {
+        "start": "2019-01-01T00:00:00Z",
+        "end": "2026-08-19T21:59:59Z"
+      },
+      "definition_refs": [
+        "IW-002-GLOSSARY:operational-capacity-vs-pipeline",
+        "IW-002-GLOSSARY:location-vs-sovereignty"
+      ],
+      "testability": {
+        "status": "partially_testable",
+        "method": "Inspect approved origins, project state, evidence groups and disclosed limits; do not equate announcements or requests with operation."
+      },
+      "evidence_refs": [
+        "IW-002-EVD-001",
+        "IW-002-EVD-002"
+      ],
+      "counter_evidence_refs": [],
+      "counter_evidence_absence_reason": "No separate claim-specific counter-evidence record was approved; documented tensions and limiting evidence are retained in assessment limits and contradiction records, and absence is not confirmation.",
+      "dependency_refs": [
+        "IW-002-DEP-001"
+      ],
+      "assessment_id": "IW-002-ASM-001",
+      "revision_triggers": [
+        "new permit, financing, construction or commissioning evidence",
+        "source correction or withdrawal",
+        "new grid, water or operational data",
+        "change in ownership, cloud, chip or jurisdictional control"
+      ]
+    },
+    {
+      "id": "IW-002-CLM-002",
+      "schema_version": "1.0.0",
+      "record_version": "1.0.0",
+      "created_at": "2026-08-19T21:23:05Z",
+      "updated_at": "2026-08-19T21:23:05Z",
+      "valid_from": "2026-08-19T21:23:05Z",
+      "valid_until": null,
+      "as_of": "2026-08-19T21:59:59Z",
+      "status": "approved",
+      "supersedes": null,
+      "provenance": {
+        "created_by": "Cognitive Logic IW author",
+        "method": "Manual public-source review and deterministic canonical structuring under DFV-002",
+        "sources": [
+          "IW-002-SRC-001"
+        ],
+        "transformations": [
+          "Approved editorial material normalized into International Watch 1.0.0 records"
+        ]
+      },
+      "responsible_actor": "Cognitive Logic IW author",
+      "review_required": true,
+      "review_due": "2026-11-19T21:59:59Z",
+      "content_hash": null,
+      "claim_id": "IW-002-CLM-002",
+      "event_id": "IW-002-E001",
+      "claim_text_original": "La pipeline cresce nei mercati secondari.",
+      "language": "it",
+      "translation": null,
+      "translation_method": "none",
+      "claim_type": "observable_fact",
+      "speaker_actor_id": "Cognitive Logic IW analysis",
+      "origin_source_id": "IW-002-SRC-001",
+      "origin_timestamp": null,
+      "publication_timestamp": null,
+      "original_context": "Claim atomico tratto dal claim ledger approvato; stato del progetto, limiti e natura della fonte restano separati dalla proposizione.",
+      "subject": "La",
+      "predicate": "sostiene o documenta",
+      "object": "La pipeline cresce nei mercati secondari.",
+      "qualifiers": [
+        "stato progetto: mix",
+        "limite: pipeline non è capacità live",
+        "cut-off 19 agosto 2026"
+      ],
+      "geographic_scope": [
+        "Europe"
+      ],
+      "temporal_scope": {
+        "start": "2019-01-01T00:00:00Z",
+        "end": "2026-08-19T21:59:59Z"
+      },
+      "definition_refs": [
+        "IW-002-GLOSSARY:operational-capacity-vs-pipeline",
+        "IW-002-GLOSSARY:location-vs-sovereignty"
+      ],
+      "testability": {
+        "status": "partially_testable",
+        "method": "Inspect approved origins, project state, evidence groups and disclosed limits; do not equate announcements or requests with operation."
+      },
+      "evidence_refs": [
+        "IW-002-EVD-001",
+        "IW-002-EVD-009",
+        "IW-002-EVD-017"
+      ],
+      "counter_evidence_refs": [],
+      "counter_evidence_absence_reason": "No separate claim-specific counter-evidence record was approved; documented tensions and limiting evidence are retained in assessment limits and contradiction records, and absence is not confirmation.",
+      "dependency_refs": [
+        "IW-002-DEP-002",
+        "IW-002-DEP-003"
+      ],
+      "assessment_id": "IW-002-ASM-002",
+      "revision_triggers": [
+        "new permit, financing, construction or commissioning evidence",
+        "source correction or withdrawal",
+        "new grid, water or operational data",
+        "change in ownership, cloud, chip or jurisdictional control"
+      ]
+    },
+    {
+      "id": "IW-002-CLM-003",
+      "schema_version": "1.0.0",
+      "record_version": "1.0.0",
+      "created_at": "2026-08-19T21:23:05Z",
+      "updated_at": "2026-08-19T21:23:05Z",
+      "valid_from": "2026-08-19T21:23:05Z",
+      "valid_until": null,
+      "as_of": "2026-08-19T21:59:59Z",
+      "status": "approved",
+      "supersedes": null,
+      "provenance": {
+        "created_by": "Cognitive Logic IW author",
+        "method": "Manual public-source review and deterministic canonical structuring under DFV-002",
+        "sources": [
+          "IW-002-SRC-013"
+        ],
+        "transformations": [
+          "Approved editorial material normalized into International Watch 1.0.0 records"
+        ]
+      },
+      "responsible_actor": "Cognitive Logic IW author",
+      "review_required": true,
+      "review_due": "2026-11-19T21:59:59Z",
+      "content_hash": null,
+      "claim_id": "IW-002-CLM-003",
+      "event_id": "IW-002-E002",
+      "claim_text_original": "I tempi di rete influenzano la localizzazione.",
+      "language": "it",
+      "translation": null,
+      "translation_method": "none",
+      "claim_type": "statement",
+      "speaker_actor_id": "AWS",
+      "origin_source_id": "IW-002-SRC-013",
+      "origin_timestamp": "2026-02-03T00:00:00Z",
+      "publication_timestamp": "2026-02-03T00:00:00Z",
+      "original_context": "Claim atomico tratto dal claim ledger approvato; stato del progetto, limiti e natura della fonte restano separati dalla proposizione.",
+      "subject": "AWS",
+      "predicate": "sostiene o documenta",
+      "object": "I tempi di rete influenzano la localizzazione.",
+      "qualifiers": [
+        "stato progetto: non applicabile",
+        "limite: mancano medie effettive UE",
+        "cut-off 19 agosto 2026"
+      ],
+      "geographic_scope": [
+        "Europe"
+      ],
+      "temporal_scope": {
+        "start": "2019-01-01T00:00:00Z",
+        "end": "2026-08-19T21:59:59Z"
+      },
+      "definition_refs": [
+        "IW-002-GLOSSARY:operational-capacity-vs-pipeline",
+        "IW-002-GLOSSARY:location-vs-sovereignty"
+      ],
+      "testability": {
+        "status": "partially_testable",
+        "method": "Inspect approved origins, project state, evidence groups and disclosed limits; do not equate announcements or requests with operation."
+      },
+      "evidence_refs": [
+        "IW-002-EVD-013",
+        "IW-002-EVD-001",
+        "IW-002-EVD-004",
+        "IW-002-EVD-005"
+      ],
+      "counter_evidence_refs": [],
+      "counter_evidence_absence_reason": "No separate claim-specific counter-evidence record was approved; documented tensions and limiting evidence are retained in assessment limits and contradiction records, and absence is not confirmation.",
+      "dependency_refs": [
+        "IW-002-DEP-004",
+        "IW-002-DEP-005",
+        "IW-002-DEP-006"
+      ],
+      "assessment_id": "IW-002-ASM-003",
+      "revision_triggers": [
+        "new permit, financing, construction or commissioning evidence",
+        "source correction or withdrawal",
+        "new grid, water or operational data",
+        "change in ownership, cloud, chip or jurisdictional control"
+      ]
+    },
+    {
+      "id": "IW-002-CLM-004",
+      "schema_version": "1.0.0",
+      "record_version": "1.0.0",
+      "created_at": "2026-08-19T21:23:05Z",
+      "updated_at": "2026-08-19T21:23:05Z",
+      "valid_from": "2026-08-19T21:23:05Z",
+      "valid_until": null,
+      "as_of": "2026-08-19T21:59:59Z",
+      "status": "approved",
+      "supersedes": null,
+      "provenance": {
+        "created_by": "Cognitive Logic IW author",
+        "method": "Manual public-source review and deterministic canonical structuring under DFV-002",
+        "sources": [
+          "IW-002-SRC-013"
+        ],
+        "transformations": [
+          "Approved editorial material normalized into International Watch 1.0.0 records"
+        ]
+      },
+      "responsible_actor": "Cognitive Logic IW author",
+      "review_required": true,
+      "review_due": "2026-11-19T21:59:59Z",
+      "content_hash": null,
+      "claim_id": "IW-002-CLM-004",
+      "event_id": "IW-002-E002",
+      "claim_text_original": "Le connessioni possono richiedere sette-dieci anni.",
+      "language": "it",
+      "translation": null,
+      "translation_method": "none",
+      "claim_type": "statement",
+      "speaker_actor_id": "AWS; JLL",
+      "origin_source_id": "IW-002-SRC-013",
+      "origin_timestamp": "2026-02-03T00:00:00Z",
+      "publication_timestamp": "2026-02-03T00:00:00Z",
+      "original_context": "Claim atomico tratto dal claim ledger approvato; stato del progetto, limiti e natura della fonte restano separati dalla proposizione.",
+      "subject": "AWS; JLL",
+      "predicate": "sostiene o documenta",
+      "object": "Le connessioni possono richiedere sette-dieci anni.",
+      "qualifiers": [
+        "stato progetto: non applicabile",
+        "limite: estremi, non serie omogenea",
+        "cut-off 19 agosto 2026"
+      ],
+      "geographic_scope": [
+        "Europe"
+      ],
+      "temporal_scope": {
+        "start": "2019-01-01T00:00:00Z",
+        "end": "2026-08-19T21:59:59Z"
+      },
+      "definition_refs": [
+        "IW-002-GLOSSARY:operational-capacity-vs-pipeline",
+        "IW-002-GLOSSARY:location-vs-sovereignty"
+      ],
+      "testability": {
+        "status": "partially_testable",
+        "method": "Inspect approved origins, project state, evidence groups and disclosed limits; do not equate announcements or requests with operation."
+      },
+      "evidence_refs": [
+        "IW-002-EVD-013",
+        "IW-002-EVD-001"
+      ],
+      "counter_evidence_refs": [],
+      "counter_evidence_absence_reason": "No separate claim-specific counter-evidence record was approved; documented tensions and limiting evidence are retained in assessment limits and contradiction records, and absence is not confirmation.",
+      "dependency_refs": [],
+      "assessment_id": "IW-002-ASM-004",
+      "revision_triggers": [
+        "new permit, financing, construction or commissioning evidence",
+        "source correction or withdrawal",
+        "new grid, water or operational data",
+        "change in ownership, cloud, chip or jurisdictional control"
+      ]
+    },
+    {
+      "id": "IW-002-CLM-005",
+      "schema_version": "1.0.0",
+      "record_version": "1.0.0",
+      "created_at": "2026-08-19T21:23:05Z",
+      "updated_at": "2026-08-19T21:23:05Z",
+      "valid_from": "2026-08-19T21:23:05Z",
+      "valid_until": null,
+      "as_of": "2026-08-19T21:59:59Z",
+      "status": "approved",
+      "supersedes": null,
+      "provenance": {
+        "created_by": "Cognitive Logic IW author",
+        "method": "Manual public-source review and deterministic canonical structuring under DFV-002",
+        "sources": [
+          "IW-002-SRC-005"
+        ],
+        "transformations": [
+          "Approved editorial material normalized into International Watch 1.0.0 records"
+        ]
+      },
+      "responsible_actor": "Cognitive Logic IW author",
+      "review_required": true,
+      "review_due": "2026-11-19T21:59:59Z",
+      "content_hash": null,
+      "claim_id": "IW-002-CLM-005",
+      "event_id": "IW-002-E002",
+      "claim_text_original": "Dublino presenta limiti di rete per i data center.",
+      "language": "it",
+      "translation": null,
+      "translation_method": "none",
+      "claim_type": "observable_fact",
+      "speaker_actor_id": "Cognitive Logic IW analysis",
+      "origin_source_id": "IW-002-SRC-005",
+      "origin_timestamp": null,
+      "publication_timestamp": null,
+      "original_context": "Claim atomico tratto dal claim ledger approvato; stato del progetto, limiti e natura della fonte restano separati dalla proposizione.",
+      "subject": "Dublino",
+      "predicate": "sostiene o documenta",
+      "object": "Dublino presenta limiti di rete per i data center.",
+      "qualifiers": [
+        "stato progetto: connessioni selettive",
+        "limite: scope territoriale",
+        "cut-off 19 agosto 2026"
+      ],
+      "geographic_scope": [
+        "Europe"
+      ],
+      "temporal_scope": {
+        "start": "2019-01-01T00:00:00Z",
+        "end": "2026-08-19T21:59:59Z"
+      },
+      "definition_refs": [
+        "IW-002-GLOSSARY:operational-capacity-vs-pipeline",
+        "IW-002-GLOSSARY:location-vs-sovereignty"
+      ],
+      "testability": {
+        "status": "partially_testable",
+        "method": "Inspect approved origins, project state, evidence groups and disclosed limits; do not equate announcements or requests with operation."
+      },
+      "evidence_refs": [
+        "IW-002-EVD-005"
+      ],
+      "counter_evidence_refs": [],
+      "counter_evidence_absence_reason": "No separate claim-specific counter-evidence record was approved; documented tensions and limiting evidence are retained in assessment limits and contradiction records, and absence is not confirmation.",
+      "dependency_refs": [],
+      "assessment_id": "IW-002-ASM-005",
+      "revision_triggers": [
+        "new permit, financing, construction or commissioning evidence",
+        "source correction or withdrawal",
+        "new grid, water or operational data",
+        "change in ownership, cloud, chip or jurisdictional control"
+      ]
+    },
+    {
+      "id": "IW-002-CLM-006",
+      "schema_version": "1.0.0",
+      "record_version": "1.0.0",
+      "created_at": "2026-08-19T21:23:05Z",
+      "updated_at": "2026-08-19T21:23:05Z",
+      "valid_from": "2026-08-19T21:23:05Z",
+      "valid_until": null,
+      "as_of": "2026-08-19T21:59:59Z",
+      "status": "approved",
+      "supersedes": null,
+      "provenance": {
+        "created_by": "Cognitive Logic IW author",
+        "method": "Manual public-source review and deterministic canonical structuring under DFV-002",
+        "sources": [
+          "IW-002-SRC-003"
+        ],
+        "transformations": [
+          "Approved editorial material normalized into International Watch 1.0.0 records"
+        ]
+      },
+      "responsible_actor": "Cognitive Logic IW author",
+      "review_required": true,
+      "review_due": "2026-11-19T21:59:59Z",
+      "content_hash": null,
+      "claim_id": "IW-002-CLM-006",
+      "event_id": "IW-002-E002",
+      "claim_text_original": "L’uso elettrico dei centri focalizzati sull’AI triplicherà al 2030.",
+      "language": "it",
+      "translation": null,
+      "translation_method": "none",
+      "claim_type": "inference",
+      "speaker_actor_id": "Cognitive Logic IW analysis",
+      "origin_source_id": "IW-002-SRC-003",
+      "origin_timestamp": null,
+      "publication_timestamp": null,
+      "original_context": "Claim atomico tratto dal claim ledger approvato; stato del progetto, limiti e natura della fonte restano separati dalla proposizione.",
+      "subject": "L’uso",
+      "predicate": "sostiene o documenta",
+      "object": "L’uso elettrico dei centri focalizzati sull’AI triplicherà al 2030.",
+      "qualifiers": [
+        "stato progetto: previsione",
+        "limite: scenario",
+        "cut-off 19 agosto 2026"
+      ],
+      "geographic_scope": [
+        "Europe"
+      ],
+      "temporal_scope": {
+        "start": "2019-01-01T00:00:00Z",
+        "end": "2026-08-19T21:59:59Z"
+      },
+      "definition_refs": [
+        "IW-002-GLOSSARY:operational-capacity-vs-pipeline",
+        "IW-002-GLOSSARY:location-vs-sovereignty"
+      ],
+      "testability": {
+        "status": "partially_testable",
+        "method": "Inspect approved origins, project state, evidence groups and disclosed limits; do not equate announcements or requests with operation."
+      },
+      "evidence_refs": [
+        "IW-002-EVD-003"
+      ],
+      "counter_evidence_refs": [],
+      "counter_evidence_absence_reason": "No separate claim-specific counter-evidence record was approved; documented tensions and limiting evidence are retained in assessment limits and contradiction records, and absence is not confirmation.",
+      "dependency_refs": [],
+      "assessment_id": "IW-002-ASM-006",
+      "revision_triggers": [
+        "new permit, financing, construction or commissioning evidence",
+        "source correction or withdrawal",
+        "new grid, water or operational data",
+        "change in ownership, cloud, chip or jurisdictional control"
+      ]
+    },
+    {
+      "id": "IW-002-CLM-007",
+      "schema_version": "1.0.0",
+      "record_version": "1.0.0",
+      "created_at": "2026-08-19T21:23:05Z",
+      "updated_at": "2026-08-19T21:23:05Z",
+      "valid_from": "2026-08-19T21:23:05Z",
+      "valid_until": null,
+      "as_of": "2026-08-19T21:59:59Z",
+      "status": "approved",
+      "supersedes": null,
+      "provenance": {
+        "created_by": "Cognitive Logic IW author",
+        "method": "Manual public-source review and deterministic canonical structuring under DFV-002",
+        "sources": [
+          "IW-002-SRC-008"
+        ],
+        "transformations": [
+          "Approved editorial material normalized into International Watch 1.0.0 records"
+        ]
+      },
+      "responsible_actor": "Cognitive Logic IW author",
+      "review_required": true,
+      "review_due": "2026-11-19T21:59:59Z",
+      "content_hash": null,
+      "claim_id": "IW-002-CLM-007",
+      "event_id": "IW-002-E002",
+      "claim_text_original": "Acqua, energia e calore sono metriche rilevanti.",
+      "language": "it",
+      "translation": null,
+      "translation_method": "none",
+      "claim_type": "observable_fact",
+      "speaker_actor_id": "Cognitive Logic IW analysis",
+      "origin_source_id": "IW-002-SRC-008",
+      "origin_timestamp": "2024-03-14T00:00:00Z",
+      "publication_timestamp": "2024-03-14T00:00:00Z",
+      "original_context": "Claim atomico tratto dal claim ledger approvato; stato del progetto, limiti e natura della fonte restano separati dalla proposizione.",
+      "subject": "Acqua,",
+      "predicate": "sostiene o documenta",
+      "object": "Acqua, energia e calore sono metriche rilevanti.",
+      "qualifiers": [
+        "stato progetto: reporting",
+        "limite: dati pubblici aggregati",
+        "cut-off 19 agosto 2026"
+      ],
+      "geographic_scope": [
+        "European Union"
+      ],
+      "temporal_scope": {
+        "start": "2019-01-01T00:00:00Z",
+        "end": "2026-08-19T21:59:59Z"
+      },
+      "definition_refs": [
+        "IW-002-GLOSSARY:operational-capacity-vs-pipeline",
+        "IW-002-GLOSSARY:location-vs-sovereignty"
+      ],
+      "testability": {
+        "status": "partially_testable",
+        "method": "Inspect approved origins, project state, evidence groups and disclosed limits; do not equate announcements or requests with operation."
+      },
+      "evidence_refs": [
+        "IW-002-EVD-008"
+      ],
+      "counter_evidence_refs": [],
+      "counter_evidence_absence_reason": "No separate claim-specific counter-evidence record was approved; documented tensions and limiting evidence are retained in assessment limits and contradiction records, and absence is not confirmation.",
+      "dependency_refs": [],
+      "assessment_id": "IW-002-ASM-007",
+      "revision_triggers": [
+        "new permit, financing, construction or commissioning evidence",
+        "source correction or withdrawal",
+        "new grid, water or operational data",
+        "change in ownership, cloud, chip or jurisdictional control"
+      ]
+    },
+    {
+      "id": "IW-002-CLM-008",
+      "schema_version": "1.0.0",
+      "record_version": "1.0.0",
+      "created_at": "2026-08-19T21:23:05Z",
+      "updated_at": "2026-08-19T21:23:05Z",
+      "valid_from": "2026-08-19T21:23:05Z",
+      "valid_until": null,
+      "as_of": "2026-08-19T21:59:59Z",
+      "status": "approved",
+      "supersedes": null,
+      "provenance": {
+        "created_by": "Cognitive Logic IW author",
+        "method": "Manual public-source review and deterministic canonical structuring under DFV-002",
+        "sources": [
+          "IW-002-SRC-009"
+        ],
+        "transformations": [
+          "Approved editorial material normalized into International Watch 1.0.0 records"
+        ]
+      },
+      "responsible_actor": "Cognitive Logic IW author",
+      "review_required": true,
+      "review_due": "2026-11-19T21:59:59Z",
+      "content_hash": null,
+      "claim_id": "IW-002-CLM-008",
+      "event_id": "IW-002-E001",
+      "claim_text_original": "Non tutti i siti presentati come AI sono verificabilmente dedicati all’AI.",
+      "language": "it",
+      "translation": null,
+      "translation_method": "none",
+      "claim_type": "inference",
+      "speaker_actor_id": "Cognitive Logic IW analysis",
+      "origin_source_id": "IW-002-SRC-009",
+      "origin_timestamp": null,
+      "publication_timestamp": null,
+      "original_context": "Claim atomico tratto dal claim ledger approvato; stato del progetto, limiti e natura della fonte restano separati dalla proposizione.",
+      "subject": "Non",
+      "predicate": "sostiene o documenta",
+      "object": "Non tutti i siti presentati come AI sono verificabilmente dedicati all’AI.",
+      "qualifiers": [
+        "stato progetto: mix",
+        "limite: informazioni riservate",
+        "cut-off 19 agosto 2026"
+      ],
+      "geographic_scope": [
+        "Europe"
+      ],
+      "temporal_scope": {
+        "start": "2019-01-01T00:00:00Z",
+        "end": "2026-08-19T21:59:59Z"
+      },
+      "definition_refs": [
+        "IW-002-GLOSSARY:operational-capacity-vs-pipeline",
+        "IW-002-GLOSSARY:location-vs-sovereignty"
+      ],
+      "testability": {
+        "status": "partially_testable",
+        "method": "Inspect approved origins, project state, evidence groups and disclosed limits; do not equate announcements or requests with operation."
+      },
+      "evidence_refs": [
+        "IW-002-EVD-009",
+        "IW-002-EVD-016"
+      ],
+      "counter_evidence_refs": [],
+      "counter_evidence_absence_reason": "No separate claim-specific counter-evidence record was approved; documented tensions and limiting evidence are retained in assessment limits and contradiction records, and absence is not confirmation.",
+      "dependency_refs": [],
+      "assessment_id": "IW-002-ASM-008",
+      "revision_triggers": [
+        "new permit, financing, construction or commissioning evidence",
+        "source correction or withdrawal",
+        "new grid, water or operational data",
+        "change in ownership, cloud, chip or jurisdictional control"
+      ]
+    },
+    {
+      "id": "IW-002-CLM-009",
+      "schema_version": "1.0.0",
+      "record_version": "1.0.0",
+      "created_at": "2026-08-19T21:23:05Z",
+      "updated_at": "2026-08-19T21:23:05Z",
+      "valid_from": "2026-08-19T21:23:05Z",
+      "valid_until": null,
+      "as_of": "2026-08-19T21:59:59Z",
+      "status": "approved",
+      "supersedes": null,
+      "provenance": {
+        "created_by": "Cognitive Logic IW author",
+        "method": "Manual public-source review and deterministic canonical structuring under DFV-002",
+        "sources": [
+          "IW-002-SRC-006"
+        ],
+        "transformations": [
+          "Approved editorial material normalized into International Watch 1.0.0 records"
+        ]
+      },
+      "responsible_actor": "Cognitive Logic IW author",
+      "review_required": true,
+      "review_due": "2026-11-19T21:59:59Z",
+      "content_hash": null,
+      "claim_id": "IW-002-CLM-009",
+      "event_id": "IW-002-E003",
+      "claim_text_original": "L’Italia aveva circa 42 GW di richieste a marzo 2025.",
+      "language": "it",
+      "translation": null,
+      "translation_method": "none",
+      "claim_type": "observable_fact",
+      "speaker_actor_id": "Cognitive Logic IW analysis",
+      "origin_source_id": "IW-002-SRC-006",
+      "origin_timestamp": null,
+      "publication_timestamp": null,
+      "original_context": "Claim atomico tratto dal claim ledger approvato; stato del progetto, limiti e natura della fonte restano separati dalla proposizione.",
+      "subject": "L’Italia",
+      "predicate": "sostiene o documenta",
+      "object": "L’Italia aveva circa 42 GW di richieste a marzo 2025.",
+      "qualifiers": [
+        "stato progetto: richieste",
+        "limite: coda non bonificata",
+        "cut-off 19 agosto 2026"
+      ],
+      "geographic_scope": [
+        "Italy"
+      ],
+      "temporal_scope": {
+        "start": "2019-01-01T00:00:00Z",
+        "end": "2026-08-19T21:59:59Z"
+      },
+      "definition_refs": [
+        "IW-002-GLOSSARY:operational-capacity-vs-pipeline",
+        "IW-002-GLOSSARY:location-vs-sovereignty"
+      ],
+      "testability": {
+        "status": "partially_testable",
+        "method": "Inspect approved origins, project state, evidence groups and disclosed limits; do not equate announcements or requests with operation."
+      },
+      "evidence_refs": [
+        "IW-002-EVD-006",
+        "IW-002-EVD-007"
+      ],
+      "counter_evidence_refs": [],
+      "counter_evidence_absence_reason": "No separate claim-specific counter-evidence record was approved; documented tensions and limiting evidence are retained in assessment limits and contradiction records, and absence is not confirmation.",
+      "dependency_refs": [
+        "IW-002-DEP-007"
+      ],
+      "assessment_id": "IW-002-ASM-009",
+      "revision_triggers": [
+        "new permit, financing, construction or commissioning evidence",
+        "source correction or withdrawal",
+        "new grid, water or operational data",
+        "change in ownership, cloud, chip or jurisdictional control"
+      ]
+    },
+    {
+      "id": "IW-002-CLM-010",
+      "schema_version": "1.0.0",
+      "record_version": "1.0.0",
+      "created_at": "2026-08-19T21:23:05Z",
+      "updated_at": "2026-08-19T21:23:05Z",
+      "valid_from": "2026-08-19T21:23:05Z",
+      "valid_until": null,
+      "as_of": "2026-08-19T21:59:59Z",
+      "status": "approved",
+      "supersedes": null,
+      "provenance": {
+        "created_by": "Cognitive Logic IW author",
+        "method": "Manual public-source review and deterministic canonical structuring under DFV-002",
+        "sources": [
+          "IW-002-SRC-006"
+        ],
+        "transformations": [
+          "Approved editorial material normalized into International Watch 1.0.0 records"
+        ]
+      },
+      "responsible_actor": "Cognitive Logic IW author",
+      "review_required": true,
+      "review_due": "2026-11-19T21:59:59Z",
+      "content_hash": null,
+      "claim_id": "IW-002-CLM-010",
+      "event_id": "IW-002-E003",
+      "claim_text_original": "L’85% delle richieste italiane era nel Nord.",
+      "language": "it",
+      "translation": null,
+      "translation_method": "none",
+      "claim_type": "observable_fact",
+      "speaker_actor_id": "Cognitive Logic IW analysis",
+      "origin_source_id": "IW-002-SRC-006",
+      "origin_timestamp": null,
+      "publication_timestamp": null,
+      "original_context": "Claim atomico tratto dal claim ledger approvato; stato del progetto, limiti e natura della fonte restano separati dalla proposizione.",
+      "subject": "L’85%",
+      "predicate": "sostiene o documenta",
+      "object": "L’85% delle richieste italiane era nel Nord.",
+      "qualifiers": [
+        "stato progetto: richieste",
+        "limite: snapshot temporale",
+        "cut-off 19 agosto 2026"
+      ],
+      "geographic_scope": [
+        "Italy"
+      ],
+      "temporal_scope": {
+        "start": "2019-01-01T00:00:00Z",
+        "end": "2026-08-19T21:59:59Z"
+      },
+      "definition_refs": [
+        "IW-002-GLOSSARY:operational-capacity-vs-pipeline",
+        "IW-002-GLOSSARY:location-vs-sovereignty"
+      ],
+      "testability": {
+        "status": "partially_testable",
+        "method": "Inspect approved origins, project state, evidence groups and disclosed limits; do not equate announcements or requests with operation."
+      },
+      "evidence_refs": [
+        "IW-002-EVD-006"
+      ],
+      "counter_evidence_refs": [],
+      "counter_evidence_absence_reason": "No separate claim-specific counter-evidence record was approved; documented tensions and limiting evidence are retained in assessment limits and contradiction records, and absence is not confirmation.",
+      "dependency_refs": [],
+      "assessment_id": "IW-002-ASM-010",
+      "revision_triggers": [
+        "new permit, financing, construction or commissioning evidence",
+        "source correction or withdrawal",
+        "new grid, water or operational data",
+        "change in ownership, cloud, chip or jurisdictional control"
+      ]
+    },
+    {
+      "id": "IW-002-CLM-011",
+      "schema_version": "1.0.0",
+      "record_version": "1.0.0",
+      "created_at": "2026-08-19T21:23:05Z",
+      "updated_at": "2026-08-19T21:23:05Z",
+      "valid_from": "2026-08-19T21:23:05Z",
+      "valid_until": null,
+      "as_of": "2026-08-19T21:59:59Z",
+      "status": "approved",
+      "supersedes": null,
+      "provenance": {
+        "created_by": "Cognitive Logic IW author",
+        "method": "Manual public-source review and deterministic canonical structuring under DFV-002",
+        "sources": [
+          "IW-002-SRC-006"
+        ],
+        "transformations": [
+          "Approved editorial material normalized into International Watch 1.0.0 records"
+        ]
+      },
+      "responsible_actor": "Cognitive Logic IW author",
+      "review_required": true,
+      "review_due": "2026-11-19T21:59:59Z",
+      "content_hash": null,
+      "claim_id": "IW-002-CLM-011",
+      "event_id": "IW-002-E003",
+      "claim_text_original": "Il consumo italiano dei data center è atteso a 11 TWh nel 2030.",
+      "language": "it",
+      "translation": null,
+      "translation_method": "none",
+      "claim_type": "statement",
+      "speaker_actor_id": "Terna",
+      "origin_source_id": "IW-002-SRC-006",
+      "origin_timestamp": null,
+      "publication_timestamp": null,
+      "original_context": "Claim atomico tratto dal claim ledger approvato; stato del progetto, limiti e natura della fonte restano separati dalla proposizione.",
+      "subject": "Terna",
+      "predicate": "sostiene o documenta",
+      "object": "Il consumo italiano dei data center è atteso a 11 TWh nel 2030.",
+      "qualifiers": [
+        "stato progetto: previsione",
+        "limite: scenario",
+        "cut-off 19 agosto 2026"
+      ],
+      "geographic_scope": [
+        "Italy"
+      ],
+      "temporal_scope": {
+        "start": "2019-01-01T00:00:00Z",
+        "end": "2026-08-19T21:59:59Z"
+      },
+      "definition_refs": [
+        "IW-002-GLOSSARY:operational-capacity-vs-pipeline",
+        "IW-002-GLOSSARY:location-vs-sovereignty"
+      ],
+      "testability": {
+        "status": "partially_testable",
+        "method": "Inspect approved origins, project state, evidence groups and disclosed limits; do not equate announcements or requests with operation."
+      },
+      "evidence_refs": [
+        "IW-002-EVD-006"
+      ],
+      "counter_evidence_refs": [],
+      "counter_evidence_absence_reason": "No separate claim-specific counter-evidence record was approved; documented tensions and limiting evidence are retained in assessment limits and contradiction records, and absence is not confirmation.",
+      "dependency_refs": [],
+      "assessment_id": "IW-002-ASM-011",
+      "revision_triggers": [
+        "new permit, financing, construction or commissioning evidence",
+        "source correction or withdrawal",
+        "new grid, water or operational data",
+        "change in ownership, cloud, chip or jurisdictional control"
+      ]
+    },
+    {
+      "id": "IW-002-CLM-012",
+      "schema_version": "1.0.0",
+      "record_version": "1.0.0",
+      "created_at": "2026-08-19T21:23:05Z",
+      "updated_at": "2026-08-19T21:23:05Z",
+      "valid_from": "2026-08-19T21:23:05Z",
+      "valid_until": null,
+      "as_of": "2026-08-19T21:59:59Z",
+      "status": "approved",
+      "supersedes": null,
+      "provenance": {
+        "created_by": "Cognitive Logic IW author",
+        "method": "Manual public-source review and deterministic canonical structuring under DFV-002",
+        "sources": [
+          "IW-002-SRC-014"
+        ],
+        "transformations": [
+          "Approved editorial material normalized into International Watch 1.0.0 records"
+        ]
+      },
+      "responsible_actor": "Cognitive Logic IW author",
+      "review_required": true,
+      "review_due": "2026-11-19T21:59:59Z",
+      "content_hash": null,
+      "claim_id": "IW-002-CLM-012",
+      "event_id": "IW-002-E003",
+      "claim_text_original": "Procedure più rapide possono favorire l’Italia.",
+      "language": "it",
+      "translation": null,
+      "translation_method": "none",
+      "claim_type": "inference",
+      "speaker_actor_id": "Cognitive Logic IW analysis",
+      "origin_source_id": "IW-002-SRC-014",
+      "origin_timestamp": null,
+      "publication_timestamp": null,
+      "original_context": "Claim atomico tratto dal claim ledger approvato; stato del progetto, limiti e natura della fonte restano separati dalla proposizione.",
+      "subject": "Procedure",
+      "predicate": "sostiene o documenta",
+      "object": "Procedure più rapide possono favorire l’Italia.",
+      "qualifiers": [
+        "stato progetto: regime adottato",
+        "limite: nessuna valutazione ex post",
+        "cut-off 19 agosto 2026"
+      ],
+      "geographic_scope": [
+        "Italy"
+      ],
+      "temporal_scope": {
+        "start": "2019-01-01T00:00:00Z",
+        "end": "2026-08-19T21:59:59Z"
+      },
+      "definition_refs": [
+        "IW-002-GLOSSARY:operational-capacity-vs-pipeline",
+        "IW-002-GLOSSARY:location-vs-sovereignty"
+      ],
+      "testability": {
+        "status": "partially_testable",
+        "method": "Inspect approved origins, project state, evidence groups and disclosed limits; do not equate announcements or requests with operation."
+      },
+      "evidence_refs": [
+        "IW-002-EVD-014",
+        "IW-002-EVD-015"
+      ],
+      "counter_evidence_refs": [],
+      "counter_evidence_absence_reason": "No separate claim-specific counter-evidence record was approved; documented tensions and limiting evidence are retained in assessment limits and contradiction records, and absence is not confirmation.",
+      "dependency_refs": [
+        "IW-002-DEP-008"
+      ],
+      "assessment_id": "IW-002-ASM-012",
+      "revision_triggers": [
+        "new permit, financing, construction or commissioning evidence",
+        "source correction or withdrawal",
+        "new grid, water or operational data",
+        "change in ownership, cloud, chip or jurisdictional control"
+      ]
+    },
+    {
+      "id": "IW-002-CLM-013",
+      "schema_version": "1.0.0",
+      "record_version": "1.0.0",
+      "created_at": "2026-08-19T21:23:05Z",
+      "updated_at": "2026-08-19T21:23:05Z",
+      "valid_from": "2026-08-19T21:23:05Z",
+      "valid_until": null,
+      "as_of": "2026-08-19T21:59:59Z",
+      "status": "approved",
+      "supersedes": null,
+      "provenance": {
+        "created_by": "Cognitive Logic IW author",
+        "method": "Manual public-source review and deterministic canonical structuring under DFV-002",
+        "sources": [
+          "IW-002-SRC-011"
+        ],
+        "transformations": [
+          "Approved editorial material normalized into International Watch 1.0.0 records"
+        ]
+      },
+      "responsible_actor": "Cognitive Logic IW author",
+      "review_required": true,
+      "review_due": "2026-11-19T21:59:59Z",
+      "content_hash": null,
+      "claim_id": "IW-002-CLM-013",
+      "event_id": "IW-002-E004",
+      "claim_text_original": "Localizzare nell’UE non garantisce sovranità.",
+      "language": "it",
+      "translation": null,
+      "translation_method": "none",
+      "claim_type": "inference",
+      "speaker_actor_id": "Cognitive Logic IW analysis",
+      "origin_source_id": "IW-002-SRC-011",
+      "origin_timestamp": "2026-06-25T00:00:00Z",
+      "publication_timestamp": "2026-06-25T00:00:00Z",
+      "original_context": "Claim atomico tratto dal claim ledger approvato; stato del progetto, limiti e natura della fonte restano separati dalla proposizione.",
+      "subject": "Localizzare",
+      "predicate": "sostiene o documenta",
+      "object": "Localizzare nell’UE non garantisce sovranità.",
+      "qualifiers": [
+        "stato progetto: non applicabile",
+        "limite: sovranità multidimensionale",
+        "cut-off 19 agosto 2026"
+      ],
+      "geographic_scope": [
+        "European Union"
+      ],
+      "temporal_scope": {
+        "start": "2019-01-01T00:00:00Z",
+        "end": "2026-08-19T21:59:59Z"
+      },
+      "definition_refs": [
+        "IW-002-GLOSSARY:operational-capacity-vs-pipeline",
+        "IW-002-GLOSSARY:location-vs-sovereignty"
+      ],
+      "testability": {
+        "status": "partially_testable",
+        "method": "Inspect approved origins, project state, evidence groups and disclosed limits; do not equate announcements or requests with operation."
+      },
+      "evidence_refs": [
+        "IW-002-EVD-011",
+        "IW-002-EVD-012",
+        "IW-002-EVD-016"
+      ],
+      "counter_evidence_refs": [],
+      "counter_evidence_absence_reason": "No separate claim-specific counter-evidence record was approved; documented tensions and limiting evidence are retained in assessment limits and contradiction records, and absence is not confirmation.",
+      "dependency_refs": [
+        "IW-002-DEP-009",
+        "IW-002-DEP-010"
+      ],
+      "assessment_id": "IW-002-ASM-013",
+      "revision_triggers": [
+        "new permit, financing, construction or commissioning evidence",
+        "source correction or withdrawal",
+        "new grid, water or operational data",
+        "change in ownership, cloud, chip or jurisdictional control"
+      ]
+    },
+    {
+      "id": "IW-002-CLM-014",
+      "schema_version": "1.0.0",
+      "record_version": "1.0.0",
+      "created_at": "2026-08-19T21:23:05Z",
+      "updated_at": "2026-08-19T21:23:05Z",
+      "valid_from": "2026-08-19T21:23:05Z",
+      "valid_until": null,
+      "as_of": "2026-08-19T21:59:59Z",
+      "status": "approved",
+      "supersedes": null,
+      "provenance": {
+        "created_by": "Cognitive Logic IW author",
+        "method": "Manual public-source review and deterministic canonical structuring under DFV-002",
+        "sources": [
+          "IW-002-SRC-011"
+        ],
+        "transformations": [
+          "Approved editorial material normalized into International Watch 1.0.0 records"
+        ]
+      },
+      "responsible_actor": "Cognitive Logic IW author",
+      "review_required": true,
+      "review_due": "2026-11-19T21:59:59Z",
+      "content_hash": null,
+      "claim_id": "IW-002-CLM-014",
+      "event_id": "IW-002-E004",
+      "claim_text_original": "AWS e Azure hanno posizioni consolidate nell’UE.",
+      "language": "it",
+      "translation": null,
+      "translation_method": "none",
+      "claim_type": "observable_fact",
+      "speaker_actor_id": "Cognitive Logic IW analysis",
+      "origin_source_id": "IW-002-SRC-011",
+      "origin_timestamp": "2026-06-25T00:00:00Z",
+      "publication_timestamp": "2026-06-25T00:00:00Z",
+      "original_context": "Claim atomico tratto dal claim ledger approvato; stato del progetto, limiti e natura della fonte restano separati dalla proposizione.",
+      "subject": "AWS",
+      "predicate": "sostiene o documenta",
+      "object": "AWS e Azure hanno posizioni consolidate nell’UE.",
+      "qualifiers": [
+        "stato progetto: operativo",
+        "limite: valutazione preliminare",
+        "cut-off 19 agosto 2026"
+      ],
+      "geographic_scope": [
+        "European Union"
+      ],
+      "temporal_scope": {
+        "start": "2019-01-01T00:00:00Z",
+        "end": "2026-08-19T21:59:59Z"
+      },
+      "definition_refs": [
+        "IW-002-GLOSSARY:operational-capacity-vs-pipeline",
+        "IW-002-GLOSSARY:location-vs-sovereignty"
+      ],
+      "testability": {
+        "status": "partially_testable",
+        "method": "Inspect approved origins, project state, evidence groups and disclosed limits; do not equate announcements or requests with operation."
+      },
+      "evidence_refs": [
+        "IW-002-EVD-011"
+      ],
+      "counter_evidence_refs": [],
+      "counter_evidence_absence_reason": "No separate claim-specific counter-evidence record was approved; documented tensions and limiting evidence are retained in assessment limits and contradiction records, and absence is not confirmation.",
+      "dependency_refs": [],
+      "assessment_id": "IW-002-ASM-014",
+      "revision_triggers": [
+        "new permit, financing, construction or commissioning evidence",
+        "source correction or withdrawal",
+        "new grid, water or operational data",
+        "change in ownership, cloud, chip or jurisdictional control"
+      ]
+    },
+    {
+      "id": "IW-002-CLM-015",
+      "schema_version": "1.0.0",
+      "record_version": "1.0.0",
+      "created_at": "2026-08-19T21:23:05Z",
+      "updated_at": "2026-08-19T21:23:05Z",
+      "valid_from": "2026-08-19T21:23:05Z",
+      "valid_until": null,
+      "as_of": "2026-08-19T21:59:59Z",
+      "status": "approved",
+      "supersedes": null,
+      "provenance": {
+        "created_by": "Cognitive Logic IW author",
+        "method": "Manual public-source review and deterministic canonical structuring under DFV-002",
+        "sources": [
+          "IW-002-SRC-009"
+        ],
+        "transformations": [
+          "Approved editorial material normalized into International Watch 1.0.0 records"
+        ]
+      },
+      "responsible_actor": "Cognitive Logic IW author",
+      "review_required": true,
+      "review_due": "2026-11-19T21:59:59Z",
+      "content_hash": null,
+      "claim_id": "IW-002-CLM-015",
+      "event_id": "IW-002-E005",
+      "claim_text_original": "Le AI Factories distribuiscono capacità pubblica.",
+      "language": "it",
+      "translation": null,
+      "translation_method": "none",
+      "claim_type": "observable_fact",
+      "speaker_actor_id": "Cognitive Logic IW analysis",
+      "origin_source_id": "IW-002-SRC-009",
+      "origin_timestamp": null,
+      "publication_timestamp": null,
+      "original_context": "Claim atomico tratto dal claim ledger approvato; stato del progetto, limiti e natura della fonte restano separati dalla proposizione.",
+      "subject": "Le",
+      "predicate": "sostiene o documenta",
+      "object": "Le AI Factories distribuiscono capacità pubblica.",
+      "qualifiers": [
+        "stato progetto: selezionate/in sviluppo",
+        "limite: stato sito-specifico",
+        "cut-off 19 agosto 2026"
+      ],
+      "geographic_scope": [
+        "European Union"
+      ],
+      "temporal_scope": {
+        "start": "2019-01-01T00:00:00Z",
+        "end": "2026-08-19T21:59:59Z"
+      },
+      "definition_refs": [
+        "IW-002-GLOSSARY:operational-capacity-vs-pipeline",
+        "IW-002-GLOSSARY:location-vs-sovereignty"
+      ],
+      "testability": {
+        "status": "partially_testable",
+        "method": "Inspect approved origins, project state, evidence groups and disclosed limits; do not equate announcements or requests with operation."
+      },
+      "evidence_refs": [
+        "IW-002-EVD-009"
+      ],
+      "counter_evidence_refs": [],
+      "counter_evidence_absence_reason": "No separate claim-specific counter-evidence record was approved; documented tensions and limiting evidence are retained in assessment limits and contradiction records, and absence is not confirmation.",
+      "dependency_refs": [
+        "IW-002-DEP-003"
+      ],
+      "assessment_id": "IW-002-ASM-015",
+      "revision_triggers": [
+        "new permit, financing, construction or commissioning evidence",
+        "source correction or withdrawal",
+        "new grid, water or operational data",
+        "change in ownership, cloud, chip or jurisdictional control"
+      ]
+    },
+    {
+      "id": "IW-002-CLM-016",
+      "schema_version": "1.0.0",
+      "record_version": "1.0.0",
+      "created_at": "2026-08-19T21:23:05Z",
+      "updated_at": "2026-08-19T21:23:05Z",
+      "valid_from": "2026-08-19T21:23:05Z",
+      "valid_until": null,
+      "as_of": "2026-08-19T21:59:59Z",
+      "status": "approved",
+      "supersedes": null,
+      "provenance": {
+        "created_by": "Cognitive Logic IW author",
+        "method": "Manual public-source review and deterministic canonical structuring under DFV-002",
+        "sources": [
+          "IW-002-SRC-010"
+        ],
+        "transformations": [
+          "Approved editorial material normalized into International Watch 1.0.0 records"
+        ]
+      },
+      "responsible_actor": "Cognitive Logic IW author",
+      "review_required": true,
+      "review_due": "2026-11-19T21:59:59Z",
+      "content_hash": null,
+      "claim_id": "IW-002-CLM-016",
+      "event_id": "IW-002-E005",
+      "claim_text_original": "Le AI Gigafactories mobiliteranno oltre 30 miliardi di euro.",
+      "language": "it",
+      "translation": null,
+      "translation_method": "none",
+      "claim_type": "statement",
+      "speaker_actor_id": "Commissione europea",
+      "origin_source_id": "IW-002-SRC-010",
+      "origin_timestamp": "2026-07-30T00:00:00Z",
+      "publication_timestamp": "2026-07-30T00:00:00Z",
+      "original_context": "Claim atomico tratto dal claim ledger approvato; stato del progetto, limiti e natura della fonte restano separati dalla proposizione.",
+      "subject": "Commissione europea",
+      "predicate": "sostiene o documenta",
+      "object": "Le AI Gigafactories mobiliteranno oltre 30 miliardi di euro.",
+      "qualifiers": [
+        "stato progetto: call",
+        "limite: programma futuro",
+        "cut-off 19 agosto 2026"
+      ],
+      "geographic_scope": [
+        "European Union"
+      ],
+      "temporal_scope": {
+        "start": "2019-01-01T00:00:00Z",
+        "end": "2026-08-19T21:59:59Z"
+      },
+      "definition_refs": [
+        "IW-002-GLOSSARY:operational-capacity-vs-pipeline",
+        "IW-002-GLOSSARY:location-vs-sovereignty"
+      ],
+      "testability": {
+        "status": "partially_testable",
+        "method": "Inspect approved origins, project state, evidence groups and disclosed limits; do not equate announcements or requests with operation."
+      },
+      "evidence_refs": [
+        "IW-002-EVD-010"
+      ],
+      "counter_evidence_refs": [],
+      "counter_evidence_absence_reason": "No separate claim-specific counter-evidence record was approved; documented tensions and limiting evidence are retained in assessment limits and contradiction records, and absence is not confirmation.",
+      "dependency_refs": [],
+      "assessment_id": "IW-002-ASM-016",
+      "revision_triggers": [
+        "new permit, financing, construction or commissioning evidence",
+        "source correction or withdrawal",
+        "new grid, water or operational data",
+        "change in ownership, cloud, chip or jurisdictional control"
+      ]
+    },
+    {
+      "id": "IW-002-CLM-017",
+      "schema_version": "1.0.0",
+      "record_version": "1.0.0",
+      "created_at": "2026-08-19T21:23:05Z",
+      "updated_at": "2026-08-19T21:23:05Z",
+      "valid_from": "2026-08-19T21:23:05Z",
+      "valid_until": null,
+      "as_of": "2026-08-19T21:59:59Z",
+      "status": "approved",
+      "supersedes": null,
+      "provenance": {
+        "created_by": "Cognitive Logic IW author",
+        "method": "Manual public-source review and deterministic canonical structuring under DFV-002",
+        "sources": [
+          "IW-002-SRC-016"
+        ],
+        "transformations": [
+          "Approved editorial material normalized into International Watch 1.0.0 records"
+        ]
+      },
+      "responsible_actor": "Cognitive Logic IW author",
+      "review_required": true,
+      "review_due": "2026-11-19T21:59:59Z",
+      "content_hash": null,
+      "claim_id": "IW-002-CLM-017",
+      "event_id": "IW-002-E001",
+      "claim_text_original": "La Finlandia attira grandi progetti AI commerciali.",
+      "language": "it",
+      "translation": null,
+      "translation_method": "none",
+      "claim_type": "inference",
+      "speaker_actor_id": "Cognitive Logic IW analysis",
+      "origin_source_id": "IW-002-SRC-016",
+      "origin_timestamp": "2025-06-11T00:00:00Z",
+      "publication_timestamp": "2025-06-11T00:00:00Z",
+      "original_context": "Claim atomico tratto dal claim ledger approvato; stato del progetto, limiti e natura della fonte restano separati dalla proposizione.",
+      "subject": "La",
+      "predicate": "sostiene o documenta",
+      "object": "La Finlandia attira grandi progetti AI commerciali.",
+      "qualifiers": [
+        "stato progetto: annunciato/in costruzione dichiarata",
+        "limite: informazioni aziendali",
+        "cut-off 19 agosto 2026"
+      ],
+      "geographic_scope": [
+        "Europe"
+      ],
+      "temporal_scope": {
+        "start": "2019-01-01T00:00:00Z",
+        "end": "2026-08-19T21:59:59Z"
+      },
+      "definition_refs": [
+        "IW-002-GLOSSARY:operational-capacity-vs-pipeline",
+        "IW-002-GLOSSARY:location-vs-sovereignty"
+      ],
+      "testability": {
+        "status": "partially_testable",
+        "method": "Inspect approved origins, project state, evidence groups and disclosed limits; do not equate announcements or requests with operation."
+      },
+      "evidence_refs": [
+        "IW-002-EVD-016",
+        "IW-002-EVD-017"
+      ],
+      "counter_evidence_refs": [],
+      "counter_evidence_absence_reason": "No separate claim-specific counter-evidence record was approved; documented tensions and limiting evidence are retained in assessment limits and contradiction records, and absence is not confirmation.",
+      "dependency_refs": [
+        "IW-002-DEP-010"
+      ],
+      "assessment_id": "IW-002-ASM-017",
+      "revision_triggers": [
+        "new permit, financing, construction or commissioning evidence",
+        "source correction or withdrawal",
+        "new grid, water or operational data",
+        "change in ownership, cloud, chip or jurisdictional control"
+      ]
+    },
+    {
+      "id": "IW-002-CLM-018",
+      "schema_version": "1.0.0",
+      "record_version": "1.0.0",
+      "created_at": "2026-08-19T21:23:05Z",
+      "updated_at": "2026-08-19T21:23:05Z",
+      "valid_from": "2026-08-19T21:23:05Z",
+      "valid_until": null,
+      "as_of": "2026-08-19T21:59:59Z",
+      "status": "approved",
+      "supersedes": null,
+      "provenance": {
+        "created_by": "Cognitive Logic IW author",
+        "method": "Manual public-source review and deterministic canonical structuring under DFV-002",
+        "sources": [
+          "IW-002-SRC-001"
+        ],
+        "transformations": [
+          "Approved editorial material normalized into International Watch 1.0.0 records"
+        ]
+      },
+      "responsible_actor": "Cognitive Logic IW author",
+      "review_required": true,
+      "review_due": "2026-11-19T21:59:59Z",
+      "content_hash": null,
+      "claim_id": "IW-002-CLM-018",
+      "event_id": "IW-002-E001",
+      "claim_text_original": "La decentralizzazione può migliorare la resilienza.",
+      "language": "it",
+      "translation": null,
+      "translation_method": "none",
+      "claim_type": "inference",
+      "speaker_actor_id": "Cognitive Logic IW analysis",
+      "origin_source_id": "IW-002-SRC-001",
+      "origin_timestamp": null,
+      "publication_timestamp": null,
+      "original_context": "Claim atomico tratto dal claim ledger approvato; stato del progetto, limiti e natura della fonte restano separati dalla proposizione.",
+      "subject": "La",
+      "predicate": "sostiene o documenta",
+      "object": "La decentralizzazione può migliorare la resilienza.",
+      "qualifiers": [
+        "stato progetto: non applicabile",
+        "limite: mancano stress test comparabili",
+        "cut-off 19 agosto 2026"
+      ],
+      "geographic_scope": [
+        "Europe"
+      ],
+      "temporal_scope": {
+        "start": "2019-01-01T00:00:00Z",
+        "end": "2026-08-19T21:59:59Z"
+      },
+      "definition_refs": [
+        "IW-002-GLOSSARY:operational-capacity-vs-pipeline",
+        "IW-002-GLOSSARY:location-vs-sovereignty"
+      ],
+      "testability": {
+        "status": "partially_testable",
+        "method": "Inspect approved origins, project state, evidence groups and disclosed limits; do not equate announcements or requests with operation."
+      },
+      "evidence_refs": [
+        "IW-002-EVD-001",
+        "IW-002-EVD-004",
+        "IW-002-EVD-011",
+        "IW-002-EVD-012"
+      ],
+      "counter_evidence_refs": [],
+      "counter_evidence_absence_reason": "No separate claim-specific counter-evidence record was approved; documented tensions and limiting evidence are retained in assessment limits and contradiction records, and absence is not confirmation.",
+      "dependency_refs": [
+        "IW-002-DEP-005",
+        "IW-002-DEP-009"
+      ],
+      "assessment_id": "IW-002-ASM-018",
+      "revision_triggers": [
+        "new permit, financing, construction or commissioning evidence",
+        "source correction or withdrawal",
+        "new grid, water or operational data",
+        "change in ownership, cloud, chip or jurisdictional control"
+      ]
+    }
+  ]
+}

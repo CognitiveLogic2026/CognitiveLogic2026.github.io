@@ -1,0 +1,1451 @@
+{
+  "schema_version": "1.0.0",
+  "case_id": "IW-002",
+  "records": [
+    {
+      "id": "IW-002-EVD-001",
+      "schema_version": "1.0.0",
+      "record_version": "1.0.0",
+      "created_at": "2026-08-19T21:23:05Z",
+      "updated_at": "2026-08-19T21:23:05Z",
+      "valid_from": "2026-08-19T21:23:05Z",
+      "valid_until": null,
+      "as_of": "2026-08-19T21:59:59Z",
+      "status": "approved",
+      "supersedes": null,
+      "provenance": {
+        "created_by": "Cognitive Logic IW author",
+        "method": "Manual public-source review and deterministic canonical structuring under DFV-002",
+        "sources": [
+          "IW-002-SRC-001"
+        ],
+        "transformations": [
+          "Approved editorial material normalized into International Watch 1.0.0 records"
+        ]
+      },
+      "responsible_actor": "Cognitive Logic IW author",
+      "review_required": true,
+      "review_due": "2026-11-19T21:59:59Z",
+      "content_hash": null,
+      "evidence_id": "IW-002-EVD-001",
+      "evidence_type": "public_document_or_bounded_analytic_record",
+      "description": "FLAP-D capacity and Tier 2 forecast",
+      "producer": "JLL",
+      "collector": "Cognitive Logic IW author",
+      "custodian": "Cognitive Logic",
+      "capture_time": "2026-08-19T21:23:05Z",
+      "event_time": null,
+      "location": "Europe",
+      "original_uri": "https://www.jll.com/en-uk/insights/emea-data-centre-report",
+      "archived_uri": null,
+      "archived_unavailability_reason": "No copyrighted source copy archived; direct URL and access time retained.",
+      "metadata_preserved": true,
+      "chain_of_custody": [
+        {
+          "actor": "Cognitive Logic IW author",
+          "action": "Inspected approved public URL and recorded claim-bounded evidence note.",
+          "at": "2026-08-19T21:23:05Z"
+        }
+      ],
+      "authentication_status": "partially_authenticated",
+      "independence_from_claimant": "unknown",
+      "coverage": "FLAP-D capacity and Tier 2 forecast",
+      "completeness": "Bounded public document metadata and analytic extraction; not a complete local copyrighted copy.",
+      "resolution": "Document-level public evidence.",
+      "verifiability": "Reinspect the direct URL and compare the bounded claim against the source.",
+      "recency": "Available and reviewed at the IW-002 cut-off.",
+      "proximity_to_event": "Direct institutional/corporate publication or identified secondary analysis, as classified in the source registry.",
+      "known_transformations": [
+        "Italian editorial normalization where the source is in English"
+      ],
+      "technical_limitations": [
+        "Dynamic pages may change after the recorded access time."
+      ],
+      "limitations": [
+        "frequently repeated by trade press",
+        "A statement or forecast proves what was stated, not future realization."
+      ],
+      "probative_value": [
+        {
+          "claim_id": "IW-002-CLM-001",
+          "establishes": "Bounded support within the source scope; project announcements and forecasts remain qualified."
+        },
+        {
+          "claim_id": "IW-002-CLM-002",
+          "establishes": "Bounded support within the source scope; project announcements and forecasts remain qualified."
+        },
+        {
+          "claim_id": "IW-002-CLM-003",
+          "establishes": "Bounded support within the source scope; project announcements and forecasts remain qualified."
+        },
+        {
+          "claim_id": "IW-002-CLM-004",
+          "establishes": "Bounded support within the source scope; project announcements and forecasts remain qualified."
+        },
+        {
+          "claim_id": "IW-002-CLM-018",
+          "establishes": "Bounded support within the source scope; project announcements and forecasts remain qualified."
+        }
+      ],
+      "supports": [
+        "IW-002-CLM-001",
+        "IW-002-CLM-002",
+        "IW-002-CLM-003",
+        "IW-002-CLM-004",
+        "IW-002-CLM-018"
+      ],
+      "contradicts": [],
+      "does_not_establish": [
+        "Operational completion unless explicitly documented",
+        "Independent corroboration by downstream republication",
+        "AI-dedicated use where clients, accelerators or workloads are not disclosed",
+        "Full infrastructure sovereignty from European location alone"
+      ]
+    },
+    {
+      "id": "IW-002-EVD-002",
+      "schema_version": "1.0.0",
+      "record_version": "1.0.0",
+      "created_at": "2026-08-19T21:23:05Z",
+      "updated_at": "2026-08-19T21:23:05Z",
+      "valid_from": "2026-08-19T21:23:05Z",
+      "valid_until": null,
+      "as_of": "2026-08-19T21:59:59Z",
+      "status": "approved",
+      "supersedes": null,
+      "provenance": {
+        "created_by": "Cognitive Logic IW author",
+        "method": "Manual public-source review and deterministic canonical structuring under DFV-002",
+        "sources": [
+          "IW-002-SRC-002"
+        ],
+        "transformations": [
+          "Approved editorial material normalized into International Watch 1.0.0 records"
+        ]
+      },
+      "responsible_actor": "Cognitive Logic IW author",
+      "review_required": true,
+      "review_due": "2026-11-19T21:59:59Z",
+      "content_hash": null,
+      "evidence_id": "IW-002-EVD-002",
+      "evidence_type": "public_document_or_bounded_analytic_record",
+      "description": "FLAP-D take-up forecast",
+      "producer": "CBRE",
+      "collector": "Cognitive Logic IW author",
+      "custodian": "Cognitive Logic",
+      "capture_time": "2026-08-19T21:23:05Z",
+      "event_time": null,
+      "location": "Europe",
+      "original_uri": "https://www.cbre.pl/en-gb/insights/books/european-real-estate-market-outlook-mid-year-review-2025/data-centres",
+      "archived_uri": null,
+      "archived_unavailability_reason": "No copyrighted source copy archived; direct URL and access time retained.",
+      "metadata_preserved": true,
+      "chain_of_custody": [
+        {
+          "actor": "Cognitive Logic IW author",
+          "action": "Inspected approved public URL and recorded claim-bounded evidence note.",
+          "at": "2026-08-19T21:23:05Z"
+        }
+      ],
+      "authentication_status": "partially_authenticated",
+      "independence_from_claimant": "unknown",
+      "coverage": "FLAP-D take-up forecast",
+      "completeness": "Bounded public document metadata and analytic extraction; not a complete local copyrighted copy.",
+      "resolution": "Document-level public evidence.",
+      "verifiability": "Reinspect the direct URL and compare the bounded claim against the source.",
+      "recency": "Available and reviewed at the IW-002 cut-off.",
+      "proximity_to_event": "Direct institutional/corporate publication or identified secondary analysis, as classified in the source registry.",
+      "known_transformations": [
+        "Italian editorial normalization where the source is in English"
+      ],
+      "technical_limitations": [
+        "Dynamic pages may change after the recorded access time."
+      ],
+      "limitations": [
+        "independent organization; comparable commercial scope",
+        "A statement or forecast proves what was stated, not future realization."
+      ],
+      "probative_value": [
+        {
+          "claim_id": "IW-002-CLM-001",
+          "establishes": "Bounded support within the source scope; project announcements and forecasts remain qualified."
+        }
+      ],
+      "supports": [
+        "IW-002-CLM-001"
+      ],
+      "contradicts": [],
+      "does_not_establish": [
+        "Operational completion unless explicitly documented",
+        "Independent corroboration by downstream republication",
+        "AI-dedicated use where clients, accelerators or workloads are not disclosed",
+        "Full infrastructure sovereignty from European location alone"
+      ]
+    },
+    {
+      "id": "IW-002-EVD-003",
+      "schema_version": "1.0.0",
+      "record_version": "1.0.0",
+      "created_at": "2026-08-19T21:23:05Z",
+      "updated_at": "2026-08-19T21:23:05Z",
+      "valid_from": "2026-08-19T21:23:05Z",
+      "valid_until": null,
+      "as_of": "2026-08-19T21:59:59Z",
+      "status": "approved",
+      "supersedes": null,
+      "provenance": {
+        "created_by": "Cognitive Logic IW author",
+        "method": "Manual public-source review and deterministic canonical structuring under DFV-002",
+        "sources": [
+          "IW-002-SRC-003"
+        ],
+        "transformations": [
+          "Approved editorial material normalized into International Watch 1.0.0 records"
+        ]
+      },
+      "responsible_actor": "Cognitive Logic IW author",
+      "review_required": true,
+      "review_due": "2026-11-19T21:59:59Z",
+      "content_hash": null,
+      "evidence_id": "IW-002-EVD-003",
+      "evidence_type": "public_document_or_bounded_analytic_record",
+      "description": "electricity demand scenarios",
+      "producer": "International Energy Agency",
+      "collector": "Cognitive Logic IW author",
+      "custodian": "Cognitive Logic",
+      "capture_time": "2026-08-19T21:23:05Z",
+      "event_time": null,
+      "location": "Europe",
+      "original_uri": "https://www.iea.org/reports/energy-and-ai/executive-summary",
+      "archived_uri": null,
+      "archived_unavailability_reason": "No copyrighted source copy archived; direct URL and access time retained.",
+      "metadata_preserved": true,
+      "chain_of_custody": [
+        {
+          "actor": "Cognitive Logic IW author",
+          "action": "Inspected approved public URL and recorded claim-bounded evidence note.",
+          "at": "2026-08-19T21:23:05Z"
+        }
+      ],
+      "authentication_status": "partially_authenticated",
+      "independence_from_claimant": "unknown",
+      "coverage": "electricity demand scenarios",
+      "completeness": "Bounded public document metadata and analytic extraction; not a complete local copyrighted copy.",
+      "resolution": "Document-level public evidence.",
+      "verifiability": "Reinspect the direct URL and compare the bounded claim against the source.",
+      "recency": "Available and reviewed at the IW-002 cut-off.",
+      "proximity_to_event": "Direct institutional/corporate publication or identified secondary analysis, as classified in the source registry.",
+      "known_transformations": [
+        "Italian editorial normalization where the source is in English"
+      ],
+      "technical_limitations": [
+        "Dynamic pages may change after the recorded access time."
+      ],
+      "limitations": [
+        "origin for many journalistic summaries",
+        "A statement or forecast proves what was stated, not future realization."
+      ],
+      "probative_value": [
+        {
+          "claim_id": "IW-002-CLM-006",
+          "establishes": "Bounded support within the source scope; project announcements and forecasts remain qualified."
+        }
+      ],
+      "supports": [
+        "IW-002-CLM-006"
+      ],
+      "contradicts": [],
+      "does_not_establish": [
+        "Operational completion unless explicitly documented",
+        "Independent corroboration by downstream republication",
+        "AI-dedicated use where clients, accelerators or workloads are not disclosed",
+        "Full infrastructure sovereignty from European location alone"
+      ]
+    },
+    {
+      "id": "IW-002-EVD-004",
+      "schema_version": "1.0.0",
+      "record_version": "1.0.0",
+      "created_at": "2026-08-19T21:23:05Z",
+      "updated_at": "2026-08-19T21:23:05Z",
+      "valid_from": "2026-08-19T21:23:05Z",
+      "valid_until": null,
+      "as_of": "2026-08-19T21:59:59Z",
+      "status": "approved",
+      "supersedes": null,
+      "provenance": {
+        "created_by": "Cognitive Logic IW author",
+        "method": "Manual public-source review and deterministic canonical structuring under DFV-002",
+        "sources": [
+          "IW-002-SRC-004"
+        ],
+        "transformations": [
+          "Approved editorial material normalized into International Watch 1.0.0 records"
+        ]
+      },
+      "responsible_actor": "Cognitive Logic IW author",
+      "review_required": true,
+      "review_due": "2026-11-19T21:59:59Z",
+      "content_hash": null,
+      "evidence_id": "IW-002-EVD-004",
+      "evidence_type": "public_document_or_bounded_analytic_record",
+      "description": "European transmission-system analysis",
+      "producer": "ENTSO-E",
+      "collector": "Cognitive Logic IW author",
+      "custodian": "Cognitive Logic",
+      "capture_time": "2026-08-19T21:23:05Z",
+      "event_time": "2026-05-08T00:00:00Z",
+      "location": "Europe",
+      "original_uri": "https://www.entsoe.eu/news/2026/05/08/from-energy-demand-to-grid-support-entso-e-explores-data-centres-dual-role/",
+      "archived_uri": null,
+      "archived_unavailability_reason": "No copyrighted source copy archived; direct URL and access time retained.",
+      "metadata_preserved": true,
+      "chain_of_custody": [
+        {
+          "actor": "Cognitive Logic IW author",
+          "action": "Inspected approved public URL and recorded claim-bounded evidence note.",
+          "at": "2026-08-19T21:23:05Z"
+        }
+      ],
+      "authentication_status": "partially_authenticated",
+      "independence_from_claimant": "yes",
+      "coverage": "European transmission-system analysis",
+      "completeness": "Bounded public document metadata and analytic extraction; not a complete local copyrighted copy.",
+      "resolution": "Document-level public evidence.",
+      "verifiability": "Reinspect the direct URL and compare the bounded claim against the source.",
+      "recency": "Available and reviewed at the IW-002 cut-off.",
+      "proximity_to_event": "Direct institutional/corporate publication or identified secondary analysis, as classified in the source registry.",
+      "known_transformations": [
+        "Italian editorial normalization where the source is in English"
+      ],
+      "technical_limitations": [
+        "Dynamic pages may change after the recorded access time."
+      ],
+      "limitations": [
+        "independent of commercial property reports",
+        "A statement or forecast proves what was stated, not future realization."
+      ],
+      "probative_value": [
+        {
+          "claim_id": "IW-002-CLM-003",
+          "establishes": "Bounded support within the source scope; project announcements and forecasts remain qualified."
+        },
+        {
+          "claim_id": "IW-002-CLM-018",
+          "establishes": "Bounded support within the source scope; project announcements and forecasts remain qualified."
+        }
+      ],
+      "supports": [
+        "IW-002-CLM-003",
+        "IW-002-CLM-018"
+      ],
+      "contradicts": [],
+      "does_not_establish": [
+        "Operational completion unless explicitly documented",
+        "Independent corroboration by downstream republication",
+        "AI-dedicated use where clients, accelerators or workloads are not disclosed",
+        "Full infrastructure sovereignty from European location alone"
+      ]
+    },
+    {
+      "id": "IW-002-EVD-005",
+      "schema_version": "1.0.0",
+      "record_version": "1.0.0",
+      "created_at": "2026-08-19T21:23:05Z",
+      "updated_at": "2026-08-19T21:23:05Z",
+      "valid_from": "2026-08-19T21:23:05Z",
+      "valid_until": null,
+      "as_of": "2026-08-19T21:59:59Z",
+      "status": "approved",
+      "supersedes": null,
+      "provenance": {
+        "created_by": "Cognitive Logic IW author",
+        "method": "Manual public-source review and deterministic canonical structuring under DFV-002",
+        "sources": [
+          "IW-002-SRC-005"
+        ],
+        "transformations": [
+          "Approved editorial material normalized into International Watch 1.0.0 records"
+        ]
+      },
+      "responsible_actor": "Cognitive Logic IW author",
+      "review_required": true,
+      "review_due": "2026-11-19T21:59:59Z",
+      "content_hash": null,
+      "evidence_id": "IW-002-EVD-005",
+      "evidence_type": "public_document_or_bounded_analytic_record",
+      "description": "Irish grid constraints and connection criteria",
+      "producer": "EirGrid",
+      "collector": "Cognitive Logic IW author",
+      "custodian": "Cognitive Logic",
+      "capture_time": "2026-08-19T21:23:05Z",
+      "event_time": null,
+      "location": "Europe",
+      "original_uri": "https://cms.eirgrid.ie/sites/default/files/publications/Data-Centre-Constrained-Area-Overview-May-2026.pdf",
+      "archived_uri": null,
+      "archived_unavailability_reason": "No copyrighted source copy archived; direct URL and access time retained.",
+      "metadata_preserved": true,
+      "chain_of_custody": [
+        {
+          "actor": "Cognitive Logic IW author",
+          "action": "Inspected approved public URL and recorded claim-bounded evidence note.",
+          "at": "2026-08-19T21:23:05Z"
+        }
+      ],
+      "authentication_status": "partially_authenticated",
+      "independence_from_claimant": "yes",
+      "coverage": "Irish grid constraints and connection criteria",
+      "completeness": "Bounded public document metadata and analytic extraction; not a complete local copyrighted copy.",
+      "resolution": "Document-level public evidence.",
+      "verifiability": "Reinspect the direct URL and compare the bounded claim against the source.",
+      "recency": "Available and reviewed at the IW-002 cut-off.",
+      "proximity_to_event": "Direct institutional/corporate publication or identified secondary analysis, as classified in the source registry.",
+      "known_transformations": [
+        "Italian editorial normalization where the source is in English"
+      ],
+      "technical_limitations": [
+        "Dynamic pages may change after the recorded access time."
+      ],
+      "limitations": [
+        "origin for reporting on Dublin constraints",
+        "A statement or forecast proves what was stated, not future realization."
+      ],
+      "probative_value": [
+        {
+          "claim_id": "IW-002-CLM-003",
+          "establishes": "Bounded support within the source scope; project announcements and forecasts remain qualified."
+        },
+        {
+          "claim_id": "IW-002-CLM-005",
+          "establishes": "Bounded support within the source scope; project announcements and forecasts remain qualified."
+        }
+      ],
+      "supports": [
+        "IW-002-CLM-003",
+        "IW-002-CLM-005"
+      ],
+      "contradicts": [],
+      "does_not_establish": [
+        "Operational completion unless explicitly documented",
+        "Independent corroboration by downstream republication",
+        "AI-dedicated use where clients, accelerators or workloads are not disclosed",
+        "Full infrastructure sovereignty from European location alone"
+      ]
+    },
+    {
+      "id": "IW-002-EVD-006",
+      "schema_version": "1.0.0",
+      "record_version": "1.0.0",
+      "created_at": "2026-08-19T21:23:05Z",
+      "updated_at": "2026-08-19T21:23:05Z",
+      "valid_from": "2026-08-19T21:23:05Z",
+      "valid_until": null,
+      "as_of": "2026-08-19T21:59:59Z",
+      "status": "approved",
+      "supersedes": null,
+      "provenance": {
+        "created_by": "Cognitive Logic IW author",
+        "method": "Manual public-source review and deterministic canonical structuring under DFV-002",
+        "sources": [
+          "IW-002-SRC-006"
+        ],
+        "transformations": [
+          "Approved editorial material normalized into International Watch 1.0.0 records"
+        ]
+      },
+      "responsible_actor": "Cognitive Logic IW author",
+      "review_required": true,
+      "review_due": "2026-11-19T21:59:59Z",
+      "content_hash": null,
+      "evidence_id": "IW-002-EVD-006",
+      "evidence_type": "public_document_or_bounded_analytic_record",
+      "description": "Italian connection requests at March 2025",
+      "producer": "Terna / ARERA",
+      "collector": "Cognitive Logic IW author",
+      "custodian": "Cognitive Logic",
+      "capture_time": "2026-08-19T21:23:05Z",
+      "event_time": null,
+      "location": "Europe",
+      "original_uri": "https://www.arera.it/fileadmin/allegati/operatori/pds/25/Presentazione_della_consultazione_pubblica_sul_Piano_di_sviluppo_2025.pdf",
+      "archived_uri": null,
+      "archived_unavailability_reason": "No copyrighted source copy archived; direct URL and access time retained.",
+      "metadata_preserved": true,
+      "chain_of_custody": [
+        {
+          "actor": "Cognitive Logic IW author",
+          "action": "Inspected approved public URL and recorded claim-bounded evidence note.",
+          "at": "2026-08-19T21:23:05Z"
+        }
+      ],
+      "authentication_status": "partially_authenticated",
+      "independence_from_claimant": "yes",
+      "coverage": "Italian connection requests at March 2025",
+      "completeness": "Bounded public document metadata and analytic extraction; not a complete local copyrighted copy.",
+      "resolution": "Document-level public evidence.",
+      "verifiability": "Reinspect the direct URL and compare the bounded claim against the source.",
+      "recency": "Available and reviewed at the IW-002 cut-off.",
+      "proximity_to_event": "Direct institutional/corporate publication or identified secondary analysis, as classified in the source registry.",
+      "known_transformations": [
+        "Italian editorial normalization where the source is in English"
+      ],
+      "technical_limitations": [
+        "Dynamic pages may change after the recorded access time."
+      ],
+      "limitations": [
+        "origin for Italian pipeline figures",
+        "A statement or forecast proves what was stated, not future realization."
+      ],
+      "probative_value": [
+        {
+          "claim_id": "IW-002-CLM-009",
+          "establishes": "Bounded support within the source scope; project announcements and forecasts remain qualified."
+        },
+        {
+          "claim_id": "IW-002-CLM-010",
+          "establishes": "Bounded support within the source scope; project announcements and forecasts remain qualified."
+        },
+        {
+          "claim_id": "IW-002-CLM-011",
+          "establishes": "Bounded support within the source scope; project announcements and forecasts remain qualified."
+        }
+      ],
+      "supports": [
+        "IW-002-CLM-009",
+        "IW-002-CLM-010",
+        "IW-002-CLM-011"
+      ],
+      "contradicts": [],
+      "does_not_establish": [
+        "Operational completion unless explicitly documented",
+        "Independent corroboration by downstream republication",
+        "AI-dedicated use where clients, accelerators or workloads are not disclosed",
+        "Full infrastructure sovereignty from European location alone"
+      ]
+    },
+    {
+      "id": "IW-002-EVD-007",
+      "schema_version": "1.0.0",
+      "record_version": "1.0.0",
+      "created_at": "2026-08-19T21:23:05Z",
+      "updated_at": "2026-08-19T21:23:05Z",
+      "valid_from": "2026-08-19T21:23:05Z",
+      "valid_until": null,
+      "as_of": "2026-08-19T21:59:59Z",
+      "status": "approved",
+      "supersedes": null,
+      "provenance": {
+        "created_by": "Cognitive Logic IW author",
+        "method": "Manual public-source review and deterministic canonical structuring under DFV-002",
+        "sources": [
+          "IW-002-SRC-007"
+        ],
+        "transformations": [
+          "Approved editorial material normalized into International Watch 1.0.0 records"
+        ]
+      },
+      "responsible_actor": "Cognitive Logic IW author",
+      "review_required": true,
+      "review_due": "2026-11-19T21:59:59Z",
+      "content_hash": null,
+      "evidence_id": "IW-002-EVD-007",
+      "evidence_type": "public_document_or_bounded_analytic_record",
+      "description": "Italian requests above 50 GW at June 2025",
+      "producer": "Terna",
+      "collector": "Cognitive Logic IW author",
+      "custodian": "Cognitive Logic",
+      "capture_time": "2026-08-19T21:23:05Z",
+      "event_time": null,
+      "location": "Europe",
+      "original_uri": "https://lightbox.terna.it/en/insight/data-center-trasmission-grid",
+      "archived_uri": null,
+      "archived_unavailability_reason": "No copyrighted source copy archived; direct URL and access time retained.",
+      "metadata_preserved": true,
+      "chain_of_custody": [
+        {
+          "actor": "Cognitive Logic IW author",
+          "action": "Inspected approved public URL and recorded claim-bounded evidence note.",
+          "at": "2026-08-19T21:23:05Z"
+        }
+      ],
+      "authentication_status": "partially_authenticated",
+      "independence_from_claimant": "yes",
+      "coverage": "Italian requests above 50 GW at June 2025",
+      "completeness": "Bounded public document metadata and analytic extraction; not a complete local copyrighted copy.",
+      "resolution": "Document-level public evidence.",
+      "verifiability": "Reinspect the direct URL and compare the bounded claim against the source.",
+      "recency": "Available and reviewed at the IW-002 cut-off.",
+      "proximity_to_event": "Direct institutional/corporate publication or identified secondary analysis, as classified in the source registry.",
+      "known_transformations": [
+        "Italian editorial normalization where the source is in English"
+      ],
+      "technical_limitations": [
+        "Dynamic pages may change after the recorded access time."
+      ],
+      "limitations": [
+        "updates SRC-006 without turning requests into projects",
+        "A statement or forecast proves what was stated, not future realization."
+      ],
+      "probative_value": [
+        {
+          "claim_id": "IW-002-CLM-009",
+          "establishes": "Bounded support within the source scope; project announcements and forecasts remain qualified."
+        }
+      ],
+      "supports": [
+        "IW-002-CLM-009"
+      ],
+      "contradicts": [],
+      "does_not_establish": [
+        "Operational completion unless explicitly documented",
+        "Independent corroboration by downstream republication",
+        "AI-dedicated use where clients, accelerators or workloads are not disclosed",
+        "Full infrastructure sovereignty from European location alone"
+      ]
+    },
+    {
+      "id": "IW-002-EVD-008",
+      "schema_version": "1.0.0",
+      "record_version": "1.0.0",
+      "created_at": "2026-08-19T21:23:05Z",
+      "updated_at": "2026-08-19T21:23:05Z",
+      "valid_from": "2026-08-19T21:23:05Z",
+      "valid_until": null,
+      "as_of": "2026-08-19T21:59:59Z",
+      "status": "approved",
+      "supersedes": null,
+      "provenance": {
+        "created_by": "Cognitive Logic IW author",
+        "method": "Manual public-source review and deterministic canonical structuring under DFV-002",
+        "sources": [
+          "IW-002-SRC-008"
+        ],
+        "transformations": [
+          "Approved editorial material normalized into International Watch 1.0.0 records"
+        ]
+      },
+      "responsible_actor": "Cognitive Logic IW author",
+      "review_required": true,
+      "review_due": "2026-11-19T21:59:59Z",
+      "content_hash": null,
+      "evidence_id": "IW-002-EVD-008",
+      "evidence_type": "public_document_or_bounded_analytic_record",
+      "description": "energy, water and heat metrics",
+      "producer": "European Commission",
+      "collector": "Cognitive Logic IW author",
+      "custodian": "Cognitive Logic",
+      "capture_time": "2026-08-19T21:23:05Z",
+      "event_time": "2024-03-14T00:00:00Z",
+      "location": "Europe",
+      "original_uri": "https://eur-lex.europa.eu/eli/reg_del/2024/1364/oj?locale=eng",
+      "archived_uri": null,
+      "archived_unavailability_reason": "No copyrighted source copy archived; direct URL and access time retained.",
+      "metadata_preserved": true,
+      "chain_of_custody": [
+        {
+          "actor": "Cognitive Logic IW author",
+          "action": "Inspected approved public URL and recorded claim-bounded evidence note.",
+          "at": "2026-08-19T21:23:05Z"
+        }
+      ],
+      "authentication_status": "partially_authenticated",
+      "independence_from_claimant": "yes",
+      "coverage": "energy, water and heat metrics",
+      "completeness": "Bounded public document metadata and analytic extraction; not a complete local copyrighted copy.",
+      "resolution": "Document-level public evidence.",
+      "verifiability": "Reinspect the direct URL and compare the bounded claim against the source.",
+      "recency": "Available and reviewed at the IW-002 cut-off.",
+      "proximity_to_event": "Direct institutional/corporate publication or identified secondary analysis, as classified in the source registry.",
+      "known_transformations": [
+        "Italian editorial normalization where the source is in English"
+      ],
+      "technical_limitations": [
+        "Dynamic pages may change after the recorded access time."
+      ],
+      "limitations": [
+        "independent legal source",
+        "A statement or forecast proves what was stated, not future realization."
+      ],
+      "probative_value": [
+        {
+          "claim_id": "IW-002-CLM-007",
+          "establishes": "Bounded support within the source scope; project announcements and forecasts remain qualified."
+        }
+      ],
+      "supports": [
+        "IW-002-CLM-007"
+      ],
+      "contradicts": [],
+      "does_not_establish": [
+        "Operational completion unless explicitly documented",
+        "Independent corroboration by downstream republication",
+        "AI-dedicated use where clients, accelerators or workloads are not disclosed",
+        "Full infrastructure sovereignty from European location alone"
+      ]
+    },
+    {
+      "id": "IW-002-EVD-009",
+      "schema_version": "1.0.0",
+      "record_version": "1.0.0",
+      "created_at": "2026-08-19T21:23:05Z",
+      "updated_at": "2026-08-19T21:23:05Z",
+      "valid_from": "2026-08-19T21:23:05Z",
+      "valid_until": null,
+      "as_of": "2026-08-19T21:59:59Z",
+      "status": "approved",
+      "supersedes": null,
+      "provenance": {
+        "created_by": "Cognitive Logic IW author",
+        "method": "Manual public-source review and deterministic canonical structuring under DFV-002",
+        "sources": [
+          "IW-002-SRC-009"
+        ],
+        "transformations": [
+          "Approved editorial material normalized into International Watch 1.0.0 records"
+        ]
+      },
+      "responsible_actor": "Cognitive Logic IW author",
+      "review_required": true,
+      "review_due": "2026-11-19T21:59:59Z",
+      "content_hash": null,
+      "evidence_id": "IW-002-EVD-009",
+      "evidence_type": "public_document_or_bounded_analytic_record",
+      "description": "sites and programme status",
+      "producer": "European Commission / EuroHPC",
+      "collector": "Cognitive Logic IW author",
+      "custodian": "Cognitive Logic",
+      "capture_time": "2026-08-19T21:23:05Z",
+      "event_time": null,
+      "location": "Europe",
+      "original_uri": "https://digital-strategy.ec.europa.eu/en/policies/ai-factories",
+      "archived_uri": null,
+      "archived_unavailability_reason": "No copyrighted source copy archived; direct URL and access time retained.",
+      "metadata_preserved": true,
+      "chain_of_custody": [
+        {
+          "actor": "Cognitive Logic IW author",
+          "action": "Inspected approved public URL and recorded claim-bounded evidence note.",
+          "at": "2026-08-19T21:23:05Z"
+        }
+      ],
+      "authentication_status": "partially_authenticated",
+      "independence_from_claimant": "yes",
+      "coverage": "sites and programme status",
+      "completeness": "Bounded public document metadata and analytic extraction; not a complete local copyrighted copy.",
+      "resolution": "Document-level public evidence.",
+      "verifiability": "Reinspect the direct URL and compare the bounded claim against the source.",
+      "recency": "Available and reviewed at the IW-002 cut-off.",
+      "proximity_to_event": "Direct institutional/corporate publication or identified secondary analysis, as classified in the source registry.",
+      "known_transformations": [
+        "Italian editorial normalization where the source is in English"
+      ],
+      "technical_limitations": [
+        "Dynamic pages may change after the recorded access time."
+      ],
+      "limitations": [
+        "origin for media coverage",
+        "A statement or forecast proves what was stated, not future realization."
+      ],
+      "probative_value": [
+        {
+          "claim_id": "IW-002-CLM-002",
+          "establishes": "Bounded support within the source scope; project announcements and forecasts remain qualified."
+        },
+        {
+          "claim_id": "IW-002-CLM-008",
+          "establishes": "Bounded support within the source scope; project announcements and forecasts remain qualified."
+        },
+        {
+          "claim_id": "IW-002-CLM-015",
+          "establishes": "Bounded support within the source scope; project announcements and forecasts remain qualified."
+        }
+      ],
+      "supports": [
+        "IW-002-CLM-002",
+        "IW-002-CLM-008",
+        "IW-002-CLM-015"
+      ],
+      "contradicts": [],
+      "does_not_establish": [
+        "Operational completion unless explicitly documented",
+        "Independent corroboration by downstream republication",
+        "AI-dedicated use where clients, accelerators or workloads are not disclosed",
+        "Full infrastructure sovereignty from European location alone"
+      ]
+    },
+    {
+      "id": "IW-002-EVD-010",
+      "schema_version": "1.0.0",
+      "record_version": "1.0.0",
+      "created_at": "2026-08-19T21:23:05Z",
+      "updated_at": "2026-08-19T21:23:05Z",
+      "valid_from": "2026-08-19T21:23:05Z",
+      "valid_until": null,
+      "as_of": "2026-08-19T21:59:59Z",
+      "status": "approved",
+      "supersedes": null,
+      "provenance": {
+        "created_by": "Cognitive Logic IW author",
+        "method": "Manual public-source review and deterministic canonical structuring under DFV-002",
+        "sources": [
+          "IW-002-SRC-010"
+        ],
+        "transformations": [
+          "Approved editorial material normalized into International Watch 1.0.0 records"
+        ]
+      },
+      "responsible_actor": "Cognitive Logic IW author",
+      "review_required": true,
+      "review_due": "2026-11-19T21:59:59Z",
+      "content_hash": null,
+      "evidence_id": "IW-002-EVD-010",
+      "evidence_type": "public_document_or_bounded_analytic_record",
+      "description": "call and prospective resources",
+      "producer": "European Commission",
+      "collector": "Cognitive Logic IW author",
+      "custodian": "Cognitive Logic",
+      "capture_time": "2026-08-19T21:23:05Z",
+      "event_time": "2026-07-30T00:00:00Z",
+      "location": "Europe",
+      "original_uri": "https://digital-strategy.ec.europa.eu/en/news/eu-launches-ai-gigafactories-call-boost-europes-computing-capacity-and-unlock-more-eu30-billion",
+      "archived_uri": null,
+      "archived_unavailability_reason": "No copyrighted source copy archived; direct URL and access time retained.",
+      "metadata_preserved": true,
+      "chain_of_custody": [
+        {
+          "actor": "Cognitive Logic IW author",
+          "action": "Inspected approved public URL and recorded claim-bounded evidence note.",
+          "at": "2026-08-19T21:23:05Z"
+        }
+      ],
+      "authentication_status": "partially_authenticated",
+      "independence_from_claimant": "yes",
+      "coverage": "call and prospective resources",
+      "completeness": "Bounded public document metadata and analytic extraction; not a complete local copyrighted copy.",
+      "resolution": "Document-level public evidence.",
+      "verifiability": "Reinspect the direct URL and compare the bounded claim against the source.",
+      "recency": "Available and reviewed at the IW-002 cut-off.",
+      "proximity_to_event": "Direct institutional/corporate publication or identified secondary analysis, as classified in the source registry.",
+      "known_transformations": [
+        "Italian editorial normalization where the source is in English"
+      ],
+      "technical_limitations": [
+        "Dynamic pages may change after the recorded access time."
+      ],
+      "limitations": [
+        "AP and Le Monde reports depend on the call",
+        "A statement or forecast proves what was stated, not future realization."
+      ],
+      "probative_value": [
+        {
+          "claim_id": "IW-002-CLM-016",
+          "establishes": "Bounded support within the source scope; project announcements and forecasts remain qualified."
+        }
+      ],
+      "supports": [
+        "IW-002-CLM-016"
+      ],
+      "contradicts": [],
+      "does_not_establish": [
+        "Operational completion unless explicitly documented",
+        "Independent corroboration by downstream republication",
+        "AI-dedicated use where clients, accelerators or workloads are not disclosed",
+        "Full infrastructure sovereignty from European location alone"
+      ]
+    },
+    {
+      "id": "IW-002-EVD-011",
+      "schema_version": "1.0.0",
+      "record_version": "1.0.0",
+      "created_at": "2026-08-19T21:23:05Z",
+      "updated_at": "2026-08-19T21:23:05Z",
+      "valid_from": "2026-08-19T21:23:05Z",
+      "valid_until": null,
+      "as_of": "2026-08-19T21:59:59Z",
+      "status": "approved",
+      "supersedes": null,
+      "provenance": {
+        "created_by": "Cognitive Logic IW author",
+        "method": "Manual public-source review and deterministic canonical structuring under DFV-002",
+        "sources": [
+          "IW-002-SRC-011"
+        ],
+        "transformations": [
+          "Approved editorial material normalized into International Watch 1.0.0 records"
+        ]
+      },
+      "responsible_actor": "Cognitive Logic IW author",
+      "review_required": true,
+      "review_due": "2026-11-19T21:59:59Z",
+      "content_hash": null,
+      "evidence_id": "IW-002-EVD-011",
+      "evidence_type": "public_document_or_bounded_analytic_record",
+      "description": "preliminary cloud market position",
+      "producer": "European Commission",
+      "collector": "Cognitive Logic IW author",
+      "custodian": "Cognitive Logic",
+      "capture_time": "2026-08-19T21:23:05Z",
+      "event_time": "2026-06-25T00:00:00Z",
+      "location": "Europe",
+      "original_uri": "https://digital-markets-act.ec.europa.eu/commission-reaches-preliminary-position-amazons-and-microsofts-market-leading-cloud-services-should-2026-06-25_en",
+      "archived_uri": null,
+      "archived_unavailability_reason": "No copyrighted source copy archived; direct URL and access time retained.",
+      "metadata_preserved": true,
+      "chain_of_custody": [
+        {
+          "actor": "Cognitive Logic IW author",
+          "action": "Inspected approved public URL and recorded claim-bounded evidence note.",
+          "at": "2026-08-19T21:23:05Z"
+        }
+      ],
+      "authentication_status": "partially_authenticated",
+      "independence_from_claimant": "yes",
+      "coverage": "preliminary cloud market position",
+      "completeness": "Bounded public document metadata and analytic extraction; not a complete local copyrighted copy.",
+      "resolution": "Document-level public evidence.",
+      "verifiability": "Reinspect the direct URL and compare the bounded claim against the source.",
+      "recency": "Available and reviewed at the IW-002 cut-off.",
+      "proximity_to_event": "Direct institutional/corporate publication or identified secondary analysis, as classified in the source registry.",
+      "known_transformations": [
+        "Italian editorial normalization where the source is in English"
+      ],
+      "technical_limitations": [
+        "Dynamic pages may change after the recorded access time."
+      ],
+      "limitations": [
+        "not a final decision",
+        "A statement or forecast proves what was stated, not future realization."
+      ],
+      "probative_value": [
+        {
+          "claim_id": "IW-002-CLM-013",
+          "establishes": "Bounded support within the source scope; project announcements and forecasts remain qualified."
+        },
+        {
+          "claim_id": "IW-002-CLM-014",
+          "establishes": "Bounded support within the source scope; project announcements and forecasts remain qualified."
+        },
+        {
+          "claim_id": "IW-002-CLM-018",
+          "establishes": "Bounded support within the source scope; project announcements and forecasts remain qualified."
+        }
+      ],
+      "supports": [
+        "IW-002-CLM-013",
+        "IW-002-CLM-014",
+        "IW-002-CLM-018"
+      ],
+      "contradicts": [],
+      "does_not_establish": [
+        "Operational completion unless explicitly documented",
+        "Independent corroboration by downstream republication",
+        "AI-dedicated use where clients, accelerators or workloads are not disclosed",
+        "Full infrastructure sovereignty from European location alone"
+      ]
+    },
+    {
+      "id": "IW-002-EVD-012",
+      "schema_version": "1.0.0",
+      "record_version": "1.0.0",
+      "created_at": "2026-08-19T21:23:05Z",
+      "updated_at": "2026-08-19T21:23:05Z",
+      "valid_from": "2026-08-19T21:23:05Z",
+      "valid_until": null,
+      "as_of": "2026-08-19T21:59:59Z",
+      "status": "approved",
+      "supersedes": null,
+      "provenance": {
+        "created_by": "Cognitive Logic IW author",
+        "method": "Manual public-source review and deterministic canonical structuring under DFV-002",
+        "sources": [
+          "IW-002-SRC-012"
+        ],
+        "transformations": [
+          "Approved editorial material normalized into International Watch 1.0.0 records"
+        ]
+      },
+      "responsible_actor": "Cognitive Logic IW author",
+      "review_required": true,
+      "review_due": "2026-11-19T21:59:59Z",
+      "content_hash": null,
+      "evidence_id": "IW-002-EVD-012",
+      "evidence_type": "public_document_or_bounded_analytic_record",
+      "description": "semiconductor and technology dependencies",
+      "producer": "European Commission",
+      "collector": "Cognitive Logic IW author",
+      "custodian": "Cognitive Logic",
+      "capture_time": "2026-08-19T21:23:05Z",
+      "event_time": null,
+      "location": "Europe",
+      "original_uri": "https://digital-strategy.ec.europa.eu/en/policies/2026-state-digital-decade-package",
+      "archived_uri": null,
+      "archived_unavailability_reason": "No copyrighted source copy archived; direct URL and access time retained.",
+      "metadata_preserved": true,
+      "chain_of_custody": [
+        {
+          "actor": "Cognitive Logic IW author",
+          "action": "Inspected approved public URL and recorded claim-bounded evidence note.",
+          "at": "2026-08-19T21:23:05Z"
+        }
+      ],
+      "authentication_status": "partially_authenticated",
+      "independence_from_claimant": "yes",
+      "coverage": "semiconductor and technology dependencies",
+      "completeness": "Bounded public document metadata and analytic extraction; not a complete local copyrighted copy.",
+      "resolution": "Document-level public evidence.",
+      "verifiability": "Reinspect the direct URL and compare the bounded claim against the source.",
+      "recency": "Available and reviewed at the IW-002 cut-off.",
+      "proximity_to_event": "Direct institutional/corporate publication or identified secondary analysis, as classified in the source registry.",
+      "known_transformations": [
+        "Italian editorial normalization where the source is in English"
+      ],
+      "technical_limitations": [
+        "Dynamic pages may change after the recorded access time."
+      ],
+      "limitations": [
+        "supports sovereignty analysis",
+        "A statement or forecast proves what was stated, not future realization."
+      ],
+      "probative_value": [
+        {
+          "claim_id": "IW-002-CLM-013",
+          "establishes": "Bounded support within the source scope; project announcements and forecasts remain qualified."
+        },
+        {
+          "claim_id": "IW-002-CLM-018",
+          "establishes": "Bounded support within the source scope; project announcements and forecasts remain qualified."
+        }
+      ],
+      "supports": [
+        "IW-002-CLM-013",
+        "IW-002-CLM-018"
+      ],
+      "contradicts": [],
+      "does_not_establish": [
+        "Operational completion unless explicitly documented",
+        "Independent corroboration by downstream republication",
+        "AI-dedicated use where clients, accelerators or workloads are not disclosed",
+        "Full infrastructure sovereignty from European location alone"
+      ]
+    },
+    {
+      "id": "IW-002-EVD-013",
+      "schema_version": "1.0.0",
+      "record_version": "1.0.0",
+      "created_at": "2026-08-19T21:23:05Z",
+      "updated_at": "2026-08-19T21:23:05Z",
+      "valid_from": "2026-08-19T21:23:05Z",
+      "valid_until": null,
+      "as_of": "2026-08-19T21:59:59Z",
+      "status": "approved",
+      "supersedes": null,
+      "provenance": {
+        "created_by": "Cognitive Logic IW author",
+        "method": "Manual public-source review and deterministic canonical structuring under DFV-002",
+        "sources": [
+          "IW-002-SRC-013"
+        ],
+        "transformations": [
+          "Approved editorial material normalized into International Watch 1.0.0 records"
+        ]
+      },
+      "responsible_actor": "Cognitive Logic IW author",
+      "review_required": true,
+      "review_due": "2026-11-19T21:59:59Z",
+      "content_hash": null,
+      "evidence_id": "IW-002-EVD-013",
+      "evidence_type": "public_document_or_bounded_analytic_record",
+      "description": "AWS statement on connection time",
+      "producer": "Reuters",
+      "collector": "Cognitive Logic IW author",
+      "custodian": "Cognitive Logic",
+      "capture_time": "2026-08-19T21:23:05Z",
+      "event_time": "2026-02-03T00:00:00Z",
+      "location": "Europe",
+      "original_uri": "https://www.investing.com/news/stock-market-news/power-grid-delays-challenge-amazons-data-center-expansion-in-europe-4481490",
+      "archived_uri": null,
+      "archived_unavailability_reason": "No copyrighted source copy archived; direct URL and access time retained.",
+      "metadata_preserved": true,
+      "chain_of_custody": [
+        {
+          "actor": "Cognitive Logic IW author",
+          "action": "Inspected approved public URL and recorded claim-bounded evidence note.",
+          "at": "2026-08-19T21:23:05Z"
+        }
+      ],
+      "authentication_status": "partially_authenticated",
+      "independence_from_claimant": "no",
+      "coverage": "AWS statement on connection time",
+      "completeness": "Bounded public document metadata and analytic extraction; not a complete local copyrighted copy.",
+      "resolution": "Document-level public evidence.",
+      "verifiability": "Reinspect the direct URL and compare the bounded claim against the source.",
+      "recency": "Available and reviewed at the IW-002 cut-off.",
+      "proximity_to_event": "Direct institutional/corporate publication or identified secondary analysis, as classified in the source registry.",
+      "known_transformations": [
+        "Italian editorial normalization where the source is in English"
+      ],
+      "technical_limitations": [
+        "Dynamic pages may change after the recorded access time."
+      ],
+      "limitations": [
+        "later articles repeating it are not independent",
+        "A statement or forecast proves what was stated, not future realization."
+      ],
+      "probative_value": [
+        {
+          "claim_id": "IW-002-CLM-003",
+          "establishes": "Bounded support within the source scope; project announcements and forecasts remain qualified."
+        },
+        {
+          "claim_id": "IW-002-CLM-004",
+          "establishes": "Bounded support within the source scope; project announcements and forecasts remain qualified."
+        }
+      ],
+      "supports": [
+        "IW-002-CLM-003",
+        "IW-002-CLM-004"
+      ],
+      "contradicts": [],
+      "does_not_establish": [
+        "Operational completion unless explicitly documented",
+        "Independent corroboration by downstream republication",
+        "AI-dedicated use where clients, accelerators or workloads are not disclosed",
+        "Full infrastructure sovereignty from European location alone"
+      ]
+    },
+    {
+      "id": "IW-002-EVD-014",
+      "schema_version": "1.0.0",
+      "record_version": "1.0.0",
+      "created_at": "2026-08-19T21:23:05Z",
+      "updated_at": "2026-08-19T21:23:05Z",
+      "valid_from": "2026-08-19T21:23:05Z",
+      "valid_until": null,
+      "as_of": "2026-08-19T21:59:59Z",
+      "status": "approved",
+      "supersedes": null,
+      "provenance": {
+        "created_by": "Cognitive Logic IW author",
+        "method": "Manual public-source review and deterministic canonical structuring under DFV-002",
+        "sources": [
+          "IW-002-SRC-014"
+        ],
+        "transformations": [
+          "Approved editorial material normalized into International Watch 1.0.0 records"
+        ]
+      },
+      "responsible_actor": "Cognitive Logic IW author",
+      "review_required": true,
+      "review_due": "2026-11-19T21:59:59Z",
+      "content_hash": null,
+      "evidence_id": "IW-002-EVD-014",
+      "evidence_type": "public_document_or_bounded_analytic_record",
+      "description": "Italian policy objectives",
+      "producer": "MIMIT",
+      "collector": "Cognitive Logic IW author",
+      "custodian": "Cognitive Logic",
+      "capture_time": "2026-08-19T21:23:05Z",
+      "event_time": null,
+      "location": "Europe",
+      "original_uri": "https://www.mimit.gov.it/it/strategie/datacenter",
+      "archived_uri": null,
+      "archived_unavailability_reason": "No copyrighted source copy archived; direct URL and access time retained.",
+      "metadata_preserved": true,
+      "chain_of_custody": [
+        {
+          "actor": "Cognitive Logic IW author",
+          "action": "Inspected approved public URL and recorded claim-bounded evidence note.",
+          "at": "2026-08-19T21:23:05Z"
+        }
+      ],
+      "authentication_status": "partially_authenticated",
+      "independence_from_claimant": "yes",
+      "coverage": "Italian policy objectives",
+      "completeness": "Bounded public document metadata and analytic extraction; not a complete local copyrighted copy.",
+      "resolution": "Document-level public evidence.",
+      "verifiability": "Reinspect the direct URL and compare the bounded claim against the source.",
+      "recency": "Available and reviewed at the IW-002 cut-off.",
+      "proximity_to_event": "Direct institutional/corporate publication or identified secondary analysis, as classified in the source registry.",
+      "known_transformations": [
+        "Italian editorial normalization where the source is in English"
+      ],
+      "technical_limitations": [
+        "Dynamic pages may change after the recorded access time."
+      ],
+      "limitations": [
+        "attests intent, not outcomes",
+        "A statement or forecast proves what was stated, not future realization."
+      ],
+      "probative_value": [
+        {
+          "claim_id": "IW-002-CLM-012",
+          "establishes": "Bounded support within the source scope; project announcements and forecasts remain qualified."
+        }
+      ],
+      "supports": [
+        "IW-002-CLM-012"
+      ],
+      "contradicts": [],
+      "does_not_establish": [
+        "Operational completion unless explicitly documented",
+        "Independent corroboration by downstream republication",
+        "AI-dedicated use where clients, accelerators or workloads are not disclosed",
+        "Full infrastructure sovereignty from European location alone"
+      ]
+    },
+    {
+      "id": "IW-002-EVD-015",
+      "schema_version": "1.0.0",
+      "record_version": "1.0.0",
+      "created_at": "2026-08-19T21:23:05Z",
+      "updated_at": "2026-08-19T21:23:05Z",
+      "valid_from": "2026-08-19T21:23:05Z",
+      "valid_until": null,
+      "as_of": "2026-08-19T21:59:59Z",
+      "status": "approved",
+      "supersedes": null,
+      "provenance": {
+        "created_by": "Cognitive Logic IW author",
+        "method": "Manual public-source review and deterministic canonical structuring under DFV-002",
+        "sources": [
+          "IW-002-SRC-015"
+        ],
+        "transformations": [
+          "Approved editorial material normalized into International Watch 1.0.0 records"
+        ]
+      },
+      "responsible_actor": "Cognitive Logic IW author",
+      "review_required": true,
+      "review_due": "2026-11-19T21:59:59Z",
+      "content_hash": null,
+      "evidence_id": "IW-002-EVD-015",
+      "evidence_type": "public_document_or_bounded_analytic_record",
+      "description": "Italian authorization regime",
+      "producer": "MASE",
+      "collector": "Cognitive Logic IW author",
+      "custodian": "Cognitive Logic",
+      "capture_time": "2026-08-19T21:23:05Z",
+      "event_time": null,
+      "location": "Europe",
+      "original_uri": "https://va.mite.gov.it/it-IT/Comunicazione/DettaglioDirezione/6300",
+      "archived_uri": null,
+      "archived_unavailability_reason": "No copyrighted source copy archived; direct URL and access time retained.",
+      "metadata_preserved": true,
+      "chain_of_custody": [
+        {
+          "actor": "Cognitive Logic IW author",
+          "action": "Inspected approved public URL and recorded claim-bounded evidence note.",
+          "at": "2026-08-19T21:23:05Z"
+        }
+      ],
+      "authentication_status": "partially_authenticated",
+      "independence_from_claimant": "yes",
+      "coverage": "Italian authorization regime",
+      "completeness": "Bounded public document metadata and analytic extraction; not a complete local copyrighted copy.",
+      "resolution": "Document-level public evidence.",
+      "verifiability": "Reinspect the direct URL and compare the bounded claim against the source.",
+      "recency": "Available and reviewed at the IW-002 cut-off.",
+      "proximity_to_event": "Direct institutional/corporate publication or identified secondary analysis, as classified in the source registry.",
+      "known_transformations": [
+        "Italian editorial normalization where the source is in English"
+      ],
+      "technical_limitations": [
+        "Dynamic pages may change after the recorded access time."
+      ],
+      "limitations": [
+        "does not establish actual approval times",
+        "A statement or forecast proves what was stated, not future realization."
+      ],
+      "probative_value": [
+        {
+          "claim_id": "IW-002-CLM-012",
+          "establishes": "Bounded support within the source scope; project announcements and forecasts remain qualified."
+        }
+      ],
+      "supports": [
+        "IW-002-CLM-012"
+      ],
+      "contradicts": [],
+      "does_not_establish": [
+        "Operational completion unless explicitly documented",
+        "Independent corroboration by downstream republication",
+        "AI-dedicated use where clients, accelerators or workloads are not disclosed",
+        "Full infrastructure sovereignty from European location alone"
+      ]
+    },
+    {
+      "id": "IW-002-EVD-016",
+      "schema_version": "1.0.0",
+      "record_version": "1.0.0",
+      "created_at": "2026-08-19T21:23:05Z",
+      "updated_at": "2026-08-19T21:23:05Z",
+      "valid_from": "2026-08-19T21:23:05Z",
+      "valid_until": null,
+      "as_of": "2026-08-19T21:59:59Z",
+      "status": "approved",
+      "supersedes": null,
+      "provenance": {
+        "created_by": "Cognitive Logic IW author",
+        "method": "Manual public-source review and deterministic canonical structuring under DFV-002",
+        "sources": [
+          "IW-002-SRC-016"
+        ],
+        "transformations": [
+          "Approved editorial material normalized into International Watch 1.0.0 records"
+        ]
+      },
+      "responsible_actor": "Cognitive Logic IW author",
+      "review_required": true,
+      "review_due": "2026-11-19T21:59:59Z",
+      "content_hash": null,
+      "evidence_id": "IW-002-EVD-016",
+      "evidence_type": "public_document_or_bounded_analytic_record",
+      "description": "NVIDIA involvement and projects",
+      "producer": "NVIDIA",
+      "collector": "Cognitive Logic IW author",
+      "custodian": "Cognitive Logic",
+      "capture_time": "2026-08-19T21:23:05Z",
+      "event_time": "2025-06-11T00:00:00Z",
+      "location": "Europe",
+      "original_uri": "https://nvidianews.nvidia.com/news/europe-ai-infrastructure",
+      "archived_uri": null,
+      "archived_unavailability_reason": "No copyrighted source copy archived; direct URL and access time retained.",
+      "metadata_preserved": true,
+      "chain_of_custody": [
+        {
+          "actor": "Cognitive Logic IW author",
+          "action": "Inspected approved public URL and recorded claim-bounded evidence note.",
+          "at": "2026-08-19T21:23:05Z"
+        }
+      ],
+      "authentication_status": "partially_authenticated",
+      "independence_from_claimant": "no",
+      "coverage": "NVIDIA involvement and projects",
+      "completeness": "Bounded public document metadata and analytic extraction; not a complete local copyrighted copy.",
+      "resolution": "Document-level public evidence.",
+      "verifiability": "Reinspect the direct URL and compare the bounded claim against the source.",
+      "recency": "Available and reviewed at the IW-002 cut-off.",
+      "proximity_to_event": "Direct institutional/corporate publication or identified secondary analysis, as classified in the source registry.",
+      "known_transformations": [
+        "Italian editorial normalization where the source is in English"
+      ],
+      "technical_limitations": [
+        "Dynamic pages may change after the recorded access time."
+      ],
+      "limitations": [
+        "media repetitions are dependent",
+        "A statement or forecast proves what was stated, not future realization."
+      ],
+      "probative_value": [
+        {
+          "claim_id": "IW-002-CLM-008",
+          "establishes": "Bounded support within the source scope; project announcements and forecasts remain qualified."
+        },
+        {
+          "claim_id": "IW-002-CLM-013",
+          "establishes": "Bounded support within the source scope; project announcements and forecasts remain qualified."
+        },
+        {
+          "claim_id": "IW-002-CLM-017",
+          "establishes": "Bounded support within the source scope; project announcements and forecasts remain qualified."
+        }
+      ],
+      "supports": [
+        "IW-002-CLM-008",
+        "IW-002-CLM-013",
+        "IW-002-CLM-017"
+      ],
+      "contradicts": [],
+      "does_not_establish": [
+        "Operational completion unless explicitly documented",
+        "Independent corroboration by downstream republication",
+        "AI-dedicated use where clients, accelerators or workloads are not disclosed",
+        "Full infrastructure sovereignty from European location alone"
+      ]
+    },
+    {
+      "id": "IW-002-EVD-017",
+      "schema_version": "1.0.0",
+      "record_version": "1.0.0",
+      "created_at": "2026-08-19T21:23:05Z",
+      "updated_at": "2026-08-19T21:23:05Z",
+      "valid_from": "2026-08-19T21:23:05Z",
+      "valid_until": null,
+      "as_of": "2026-08-19T21:59:59Z",
+      "status": "approved",
+      "supersedes": null,
+      "provenance": {
+        "created_by": "Cognitive Logic IW author",
+        "method": "Manual public-source review and deterministic canonical structuring under DFV-002",
+        "sources": [
+          "IW-002-SRC-017"
+        ],
+        "transformations": [
+          "Approved editorial material normalized into International Watch 1.0.0 records"
+        ]
+      },
+      "responsible_actor": "Cognitive Logic IW author",
+      "review_required": true,
+      "review_due": "2026-11-19T21:59:59Z",
+      "content_hash": null,
+      "evidence_id": "IW-002-EVD-017",
+      "evidence_type": "public_document_or_bounded_analytic_record",
+      "description": "market trends",
+      "producer": "EUDCA",
+      "collector": "Cognitive Logic IW author",
+      "custodian": "Cognitive Logic",
+      "capture_time": "2026-08-19T21:23:05Z",
+      "event_time": null,
+      "location": "Europe",
+      "original_uri": "https://www.eudca.org/documents/content/ZlZXb4bRSRefaEVqya2I_Aoea?download=0",
+      "archived_uri": null,
+      "archived_unavailability_reason": "No copyrighted source copy archived; direct URL and access time retained.",
+      "metadata_preserved": true,
+      "chain_of_custody": [
+        {
+          "actor": "Cognitive Logic IW author",
+          "action": "Inspected approved public URL and recorded claim-bounded evidence note.",
+          "at": "2026-08-19T21:23:05Z"
+        }
+      ],
+      "authentication_status": "partially_authenticated",
+      "independence_from_claimant": "unknown",
+      "coverage": "market trends",
+      "completeness": "Bounded public document metadata and analytic extraction; not a complete local copyrighted copy.",
+      "resolution": "Document-level public evidence.",
+      "verifiability": "Reinspect the direct URL and compare the bounded claim against the source.",
+      "recency": "Available and reviewed at the IW-002 cut-off.",
+      "proximity_to_event": "Direct institutional/corporate publication or identified secondary analysis, as classified in the source registry.",
+      "known_transformations": [
+        "Italian editorial normalization where the source is in English"
+      ],
+      "technical_limitations": [
+        "Dynamic pages may change after the recorded access time."
+      ],
+      "limitations": [
+        "commercial/association perspective",
+        "A statement or forecast proves what was stated, not future realization."
+      ],
+      "probative_value": [
+        {
+          "claim_id": "IW-002-CLM-002",
+          "establishes": "Bounded support within the source scope; project announcements and forecasts remain qualified."
+        },
+        {
+          "claim_id": "IW-002-CLM-017",
+          "establishes": "Bounded support within the source scope; project announcements and forecasts remain qualified."
+        }
+      ],
+      "supports": [
+        "IW-002-CLM-002",
+        "IW-002-CLM-017"
+      ],
+      "contradicts": [],
+      "does_not_establish": [
+        "Operational completion unless explicitly documented",
+        "Independent corroboration by downstream republication",
+        "AI-dedicated use where clients, accelerators or workloads are not disclosed",
+        "Full infrastructure sovereignty from European location alone"
+      ]
+    }
+  ]
+}

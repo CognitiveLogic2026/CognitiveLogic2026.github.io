@@ -1,0 +1,1164 @@
+{
+  "schema_version": "1.0.0",
+  "case_id": "IW-002",
+  "records": [
+    {
+      "id": "IW-002-SRC-001",
+      "schema_version": "1.0.0",
+      "record_version": "1.0.0",
+      "created_at": "2026-08-19T21:23:05Z",
+      "updated_at": "2026-08-19T21:23:05Z",
+      "valid_from": "2026-08-19T21:23:05Z",
+      "valid_until": null,
+      "as_of": "2026-08-19T21:59:59Z",
+      "status": "approved",
+      "supersedes": null,
+      "provenance": {
+        "created_by": "Cognitive Logic IW author",
+        "method": "Manual public-source review and deterministic canonical structuring under DFV-002",
+        "sources": [],
+        "transformations": [
+          "Approved editorial material normalized into International Watch 1.0.0 records"
+        ]
+      },
+      "responsible_actor": "Cognitive Logic IW author",
+      "review_required": true,
+      "review_due": "2026-11-19T21:59:59Z",
+      "content_hash": null,
+      "source_id": "IW-002-SRC-001",
+      "entity_id": "JLL",
+      "source_name": "EMEA Year End Data Centre Report 2025",
+      "jurisdiction": [
+        "international"
+      ],
+      "source_role": [
+        "publisher",
+        "analyst"
+      ],
+      "ownership_or_control": {
+        "known": true,
+        "description": "real-estate and infrastructure advisory"
+      },
+      "primary_or_secondary": "secondary",
+      "party_to_event": "no",
+      "access_mode": "open",
+      "language": [
+        "en"
+      ],
+      "publication_channel": "web publication",
+      "originator_of": [
+        "IW-002-CLM-001",
+        "IW-002-CLM-002",
+        "IW-002-CLM-003",
+        "IW-002-CLM-004",
+        "IW-002-CLM-018"
+      ],
+      "repeats": [],
+      "derived_from": [],
+      "known_method": "secondary commercial research: FLAP-D capacity and Tier 2 forecast",
+      "limitations": [
+        "frequently repeated by trade press",
+        "Authority or publication status does not by itself establish claim content."
+      ],
+      "identity_verification": {
+        "status": "verified",
+        "basis": "Named organization and direct public URL retained in the approved bibliography."
+      },
+      "archived_capture": null,
+      "original_uri": "https://www.jll.com/en-uk/insights/emea-data-centre-report",
+      "archived_unavailability_reason": "No copyrighted source copy archived; direct URL, access time and bounded analytic note retained.",
+      "original_text_available": true,
+      "translation_trace": [],
+      "publication_timestamp": null,
+      "source_as_at": null,
+      "accessed_at": "2026-08-19T21:23:05Z"
+    },
+    {
+      "id": "IW-002-SRC-002",
+      "schema_version": "1.0.0",
+      "record_version": "1.0.0",
+      "created_at": "2026-08-19T21:23:05Z",
+      "updated_at": "2026-08-19T21:23:05Z",
+      "valid_from": "2026-08-19T21:23:05Z",
+      "valid_until": null,
+      "as_of": "2026-08-19T21:59:59Z",
+      "status": "approved",
+      "supersedes": null,
+      "provenance": {
+        "created_by": "Cognitive Logic IW author",
+        "method": "Manual public-source review and deterministic canonical structuring under DFV-002",
+        "sources": [],
+        "transformations": [
+          "Approved editorial material normalized into International Watch 1.0.0 records"
+        ]
+      },
+      "responsible_actor": "Cognitive Logic IW author",
+      "review_required": true,
+      "review_due": "2026-11-19T21:59:59Z",
+      "content_hash": null,
+      "source_id": "IW-002-SRC-002",
+      "entity_id": "CBRE",
+      "source_name": "European Real Estate Market Outlook — Data Centres",
+      "jurisdiction": [
+        "international"
+      ],
+      "source_role": [
+        "publisher",
+        "analyst"
+      ],
+      "ownership_or_control": {
+        "known": true,
+        "description": "real-estate advisory"
+      },
+      "primary_or_secondary": "secondary",
+      "party_to_event": "no",
+      "access_mode": "open",
+      "language": [
+        "en"
+      ],
+      "publication_channel": "web publication",
+      "originator_of": [
+        "IW-002-CLM-001"
+      ],
+      "repeats": [],
+      "derived_from": [],
+      "known_method": "secondary commercial research: FLAP-D take-up forecast",
+      "limitations": [
+        "independent organization; comparable commercial scope",
+        "Authority or publication status does not by itself establish claim content."
+      ],
+      "identity_verification": {
+        "status": "verified",
+        "basis": "Named organization and direct public URL retained in the approved bibliography."
+      },
+      "archived_capture": null,
+      "original_uri": "https://www.cbre.pl/en-gb/insights/books/european-real-estate-market-outlook-mid-year-review-2025/data-centres",
+      "archived_unavailability_reason": "No copyrighted source copy archived; direct URL, access time and bounded analytic note retained.",
+      "original_text_available": true,
+      "translation_trace": [],
+      "publication_timestamp": null,
+      "source_as_at": null,
+      "accessed_at": "2026-08-19T21:23:05Z"
+    },
+    {
+      "id": "IW-002-SRC-003",
+      "schema_version": "1.0.0",
+      "record_version": "1.0.0",
+      "created_at": "2026-08-19T21:23:05Z",
+      "updated_at": "2026-08-19T21:23:05Z",
+      "valid_from": "2026-08-19T21:23:05Z",
+      "valid_until": null,
+      "as_of": "2026-08-19T21:59:59Z",
+      "status": "approved",
+      "supersedes": null,
+      "provenance": {
+        "created_by": "Cognitive Logic IW author",
+        "method": "Manual public-source review and deterministic canonical structuring under DFV-002",
+        "sources": [],
+        "transformations": [
+          "Approved editorial material normalized into International Watch 1.0.0 records"
+        ]
+      },
+      "responsible_actor": "Cognitive Logic IW author",
+      "review_required": true,
+      "review_due": "2026-11-19T21:59:59Z",
+      "content_hash": null,
+      "source_id": "IW-002-SRC-003",
+      "entity_id": "International Energy Agency",
+      "source_name": "Energy and AI",
+      "jurisdiction": [
+        "international"
+      ],
+      "source_role": [
+        "publisher",
+        "analyst"
+      ],
+      "ownership_or_control": {
+        "known": true,
+        "description": "institutional energy mandate"
+      },
+      "primary_or_secondary": "secondary",
+      "party_to_event": "no",
+      "access_mode": "open",
+      "language": [
+        "en"
+      ],
+      "publication_channel": "web publication",
+      "originator_of": [
+        "IW-002-CLM-006"
+      ],
+      "repeats": [],
+      "derived_from": [],
+      "known_method": "intergovernmental technical model: electricity demand scenarios",
+      "limitations": [
+        "origin for many journalistic summaries",
+        "Authority or publication status does not by itself establish claim content."
+      ],
+      "identity_verification": {
+        "status": "verified",
+        "basis": "Named organization and direct public URL retained in the approved bibliography."
+      },
+      "archived_capture": null,
+      "original_uri": "https://www.iea.org/reports/energy-and-ai/executive-summary",
+      "archived_unavailability_reason": "No copyrighted source copy archived; direct URL, access time and bounded analytic note retained.",
+      "original_text_available": true,
+      "translation_trace": [],
+      "publication_timestamp": null,
+      "source_as_at": null,
+      "accessed_at": "2026-08-19T21:23:05Z"
+    },
+    {
+      "id": "IW-002-SRC-004",
+      "schema_version": "1.0.0",
+      "record_version": "1.0.0",
+      "created_at": "2026-08-19T21:23:05Z",
+      "updated_at": "2026-08-19T21:23:05Z",
+      "valid_from": "2026-08-19T21:23:05Z",
+      "valid_until": null,
+      "as_of": "2026-08-19T21:59:59Z",
+      "status": "approved",
+      "supersedes": null,
+      "provenance": {
+        "created_by": "Cognitive Logic IW author",
+        "method": "Manual public-source review and deterministic canonical structuring under DFV-002",
+        "sources": [],
+        "transformations": [
+          "Approved editorial material normalized into International Watch 1.0.0 records"
+        ]
+      },
+      "responsible_actor": "Cognitive Logic IW author",
+      "review_required": true,
+      "review_due": "2026-11-19T21:59:59Z",
+      "content_hash": null,
+      "source_id": "IW-002-SRC-004",
+      "entity_id": "ENTSO-E",
+      "source_name": "Data centres and the power system",
+      "jurisdiction": [
+        "international"
+      ],
+      "source_role": [
+        "publisher",
+        "originator"
+      ],
+      "ownership_or_control": {
+        "known": true,
+        "description": "represents European TSOs"
+      },
+      "primary_or_secondary": "primary",
+      "party_to_event": "yes",
+      "access_mode": "open",
+      "language": [
+        "en"
+      ],
+      "publication_channel": "web publication",
+      "originator_of": [
+        "IW-002-CLM-003",
+        "IW-002-CLM-018"
+      ],
+      "repeats": [],
+      "derived_from": [],
+      "known_method": "institutional technical: European transmission-system analysis",
+      "limitations": [
+        "independent of commercial property reports",
+        "Authority or publication status does not by itself establish claim content."
+      ],
+      "identity_verification": {
+        "status": "verified",
+        "basis": "Named organization and direct public URL retained in the approved bibliography."
+      },
+      "archived_capture": null,
+      "original_uri": "https://www.entsoe.eu/news/2026/05/08/from-energy-demand-to-grid-support-entso-e-explores-data-centres-dual-role/",
+      "archived_unavailability_reason": "No copyrighted source copy archived; direct URL, access time and bounded analytic note retained.",
+      "original_text_available": true,
+      "translation_trace": [],
+      "publication_timestamp": "2026-05-08T00:00:00Z",
+      "source_as_at": "2026-05-08T00:00:00Z",
+      "accessed_at": "2026-08-19T21:23:05Z"
+    },
+    {
+      "id": "IW-002-SRC-005",
+      "schema_version": "1.0.0",
+      "record_version": "1.0.0",
+      "created_at": "2026-08-19T21:23:05Z",
+      "updated_at": "2026-08-19T21:23:05Z",
+      "valid_from": "2026-08-19T21:23:05Z",
+      "valid_until": null,
+      "as_of": "2026-08-19T21:59:59Z",
+      "status": "approved",
+      "supersedes": null,
+      "provenance": {
+        "created_by": "Cognitive Logic IW author",
+        "method": "Manual public-source review and deterministic canonical structuring under DFV-002",
+        "sources": [],
+        "transformations": [
+          "Approved editorial material normalized into International Watch 1.0.0 records"
+        ]
+      },
+      "responsible_actor": "Cognitive Logic IW author",
+      "review_required": true,
+      "review_due": "2026-11-19T21:59:59Z",
+      "content_hash": null,
+      "source_id": "IW-002-SRC-005",
+      "entity_id": "EirGrid",
+      "source_name": "Data Centre Constrained Area Overview",
+      "jurisdiction": [
+        "international"
+      ],
+      "source_role": [
+        "publisher",
+        "originator"
+      ],
+      "ownership_or_control": {
+        "known": true,
+        "description": "system security and grid operation"
+      },
+      "primary_or_secondary": "primary",
+      "party_to_event": "yes",
+      "access_mode": "open",
+      "language": [
+        "en"
+      ],
+      "publication_channel": "web publication",
+      "originator_of": [
+        "IW-002-CLM-003",
+        "IW-002-CLM-005"
+      ],
+      "repeats": [],
+      "derived_from": [],
+      "known_method": "primary regulatory and operational: Irish grid constraints and connection criteria",
+      "limitations": [
+        "origin for reporting on Dublin constraints",
+        "Authority or publication status does not by itself establish claim content."
+      ],
+      "identity_verification": {
+        "status": "verified",
+        "basis": "Named organization and direct public URL retained in the approved bibliography."
+      },
+      "archived_capture": null,
+      "original_uri": "https://cms.eirgrid.ie/sites/default/files/publications/Data-Centre-Constrained-Area-Overview-May-2026.pdf",
+      "archived_unavailability_reason": "No copyrighted source copy archived; direct URL, access time and bounded analytic note retained.",
+      "original_text_available": true,
+      "translation_trace": [],
+      "publication_timestamp": null,
+      "source_as_at": null,
+      "accessed_at": "2026-08-19T21:23:05Z"
+    },
+    {
+      "id": "IW-002-SRC-006",
+      "schema_version": "1.0.0",
+      "record_version": "1.0.0",
+      "created_at": "2026-08-19T21:23:05Z",
+      "updated_at": "2026-08-19T21:23:05Z",
+      "valid_from": "2026-08-19T21:23:05Z",
+      "valid_until": null,
+      "as_of": "2026-08-19T21:59:59Z",
+      "status": "approved",
+      "supersedes": null,
+      "provenance": {
+        "created_by": "Cognitive Logic IW author",
+        "method": "Manual public-source review and deterministic canonical structuring under DFV-002",
+        "sources": [],
+        "transformations": [
+          "Approved editorial material normalized into International Watch 1.0.0 records"
+        ]
+      },
+      "responsible_actor": "Cognitive Logic IW author",
+      "review_required": true,
+      "review_due": "2026-11-19T21:59:59Z",
+      "content_hash": null,
+      "source_id": "IW-002-SRC-006",
+      "entity_id": "Terna / ARERA",
+      "source_name": "Piano di sviluppo 2025 — consultazione",
+      "jurisdiction": [
+        "international"
+      ],
+      "source_role": [
+        "publisher",
+        "originator"
+      ],
+      "ownership_or_control": {
+        "known": true,
+        "description": "grid planning and regulation"
+      },
+      "primary_or_secondary": "primary",
+      "party_to_event": "yes",
+      "access_mode": "open",
+      "language": [
+        "it"
+      ],
+      "publication_channel": "web publication",
+      "originator_of": [
+        "IW-002-CLM-009",
+        "IW-002-CLM-010",
+        "IW-002-CLM-011"
+      ],
+      "repeats": [],
+      "derived_from": [],
+      "known_method": "primary TSO: Italian connection requests at March 2025",
+      "limitations": [
+        "origin for Italian pipeline figures",
+        "Authority or publication status does not by itself establish claim content."
+      ],
+      "identity_verification": {
+        "status": "verified",
+        "basis": "Named organization and direct public URL retained in the approved bibliography."
+      },
+      "archived_capture": null,
+      "original_uri": "https://www.arera.it/fileadmin/allegati/operatori/pds/25/Presentazione_della_consultazione_pubblica_sul_Piano_di_sviluppo_2025.pdf",
+      "archived_unavailability_reason": "No copyrighted source copy archived; direct URL, access time and bounded analytic note retained.",
+      "original_text_available": true,
+      "translation_trace": [],
+      "publication_timestamp": null,
+      "source_as_at": null,
+      "accessed_at": "2026-08-19T21:23:05Z"
+    },
+    {
+      "id": "IW-002-SRC-007",
+      "schema_version": "1.0.0",
+      "record_version": "1.0.0",
+      "created_at": "2026-08-19T21:23:05Z",
+      "updated_at": "2026-08-19T21:23:05Z",
+      "valid_from": "2026-08-19T21:23:05Z",
+      "valid_until": null,
+      "as_of": "2026-08-19T21:59:59Z",
+      "status": "approved",
+      "supersedes": null,
+      "provenance": {
+        "created_by": "Cognitive Logic IW author",
+        "method": "Manual public-source review and deterministic canonical structuring under DFV-002",
+        "sources": [],
+        "transformations": [
+          "Approved editorial material normalized into International Watch 1.0.0 records"
+        ]
+      },
+      "responsible_actor": "Cognitive Logic IW author",
+      "review_required": true,
+      "review_due": "2026-11-19T21:59:59Z",
+      "content_hash": null,
+      "source_id": "IW-002-SRC-007",
+      "entity_id": "Terna",
+      "source_name": "Data centres and the future: the energy challenge facing Italy",
+      "jurisdiction": [
+        "international"
+      ],
+      "source_role": [
+        "publisher",
+        "originator"
+      ],
+      "ownership_or_control": {
+        "known": true,
+        "description": "grid planning"
+      },
+      "primary_or_secondary": "primary",
+      "party_to_event": "yes",
+      "access_mode": "open",
+      "language": [
+        "en"
+      ],
+      "publication_channel": "web publication",
+      "originator_of": [
+        "IW-002-CLM-009"
+      ],
+      "repeats": [],
+      "derived_from": [
+        "IW-002-SRC-006"
+      ],
+      "known_method": "primary institutional: Italian requests above 50 GW at June 2025",
+      "limitations": [
+        "updates SRC-006 without turning requests into projects",
+        "Authority or publication status does not by itself establish claim content."
+      ],
+      "identity_verification": {
+        "status": "verified",
+        "basis": "Named organization and direct public URL retained in the approved bibliography."
+      },
+      "archived_capture": null,
+      "original_uri": "https://lightbox.terna.it/en/insight/data-center-trasmission-grid",
+      "archived_unavailability_reason": "No copyrighted source copy archived; direct URL, access time and bounded analytic note retained.",
+      "original_text_available": true,
+      "translation_trace": [],
+      "publication_timestamp": null,
+      "source_as_at": null,
+      "accessed_at": "2026-08-19T21:23:05Z"
+    },
+    {
+      "id": "IW-002-SRC-008",
+      "schema_version": "1.0.0",
+      "record_version": "1.0.0",
+      "created_at": "2026-08-19T21:23:05Z",
+      "updated_at": "2026-08-19T21:23:05Z",
+      "valid_from": "2026-08-19T21:23:05Z",
+      "valid_until": null,
+      "as_of": "2026-08-19T21:59:59Z",
+      "status": "approved",
+      "supersedes": null,
+      "provenance": {
+        "created_by": "Cognitive Logic IW author",
+        "method": "Manual public-source review and deterministic canonical structuring under DFV-002",
+        "sources": [],
+        "transformations": [
+          "Approved editorial material normalized into International Watch 1.0.0 records"
+        ]
+      },
+      "responsible_actor": "Cognitive Logic IW author",
+      "review_required": true,
+      "review_due": "2026-11-19T21:59:59Z",
+      "content_hash": null,
+      "source_id": "IW-002-SRC-008",
+      "entity_id": "European Commission",
+      "source_name": "Commission Delegated Regulation (EU) 2024/1364",
+      "jurisdiction": [
+        "European Union"
+      ],
+      "source_role": [
+        "publisher",
+        "originator"
+      ],
+      "ownership_or_control": {
+        "known": true,
+        "description": "EU regulatory mandate"
+      },
+      "primary_or_secondary": "primary",
+      "party_to_event": "yes",
+      "access_mode": "open",
+      "language": [
+        "en"
+      ],
+      "publication_channel": "web publication",
+      "originator_of": [
+        "IW-002-CLM-007"
+      ],
+      "repeats": [],
+      "derived_from": [],
+      "known_method": "primary legislation: energy, water and heat metrics",
+      "limitations": [
+        "independent legal source",
+        "Authority or publication status does not by itself establish claim content."
+      ],
+      "identity_verification": {
+        "status": "verified",
+        "basis": "Named organization and direct public URL retained in the approved bibliography."
+      },
+      "archived_capture": null,
+      "original_uri": "https://eur-lex.europa.eu/eli/reg_del/2024/1364/oj?locale=eng",
+      "archived_unavailability_reason": "No copyrighted source copy archived; direct URL, access time and bounded analytic note retained.",
+      "original_text_available": true,
+      "translation_trace": [],
+      "publication_timestamp": "2024-03-14T00:00:00Z",
+      "source_as_at": "2024-03-14T00:00:00Z",
+      "accessed_at": "2026-08-19T21:23:05Z"
+    },
+    {
+      "id": "IW-002-SRC-009",
+      "schema_version": "1.0.0",
+      "record_version": "1.0.0",
+      "created_at": "2026-08-19T21:23:05Z",
+      "updated_at": "2026-08-19T21:23:05Z",
+      "valid_from": "2026-08-19T21:23:05Z",
+      "valid_until": null,
+      "as_of": "2026-08-19T21:59:59Z",
+      "status": "approved",
+      "supersedes": null,
+      "provenance": {
+        "created_by": "Cognitive Logic IW author",
+        "method": "Manual public-source review and deterministic canonical structuring under DFV-002",
+        "sources": [],
+        "transformations": [
+          "Approved editorial material normalized into International Watch 1.0.0 records"
+        ]
+      },
+      "responsible_actor": "Cognitive Logic IW author",
+      "review_required": true,
+      "review_due": "2026-11-19T21:59:59Z",
+      "content_hash": null,
+      "source_id": "IW-002-SRC-009",
+      "entity_id": "European Commission / EuroHPC",
+      "source_name": "AI Factories",
+      "jurisdiction": [
+        "European Union"
+      ],
+      "source_role": [
+        "publisher",
+        "originator"
+      ],
+      "ownership_or_control": {
+        "known": true,
+        "description": "programme implementation"
+      },
+      "primary_or_secondary": "primary",
+      "party_to_event": "yes",
+      "access_mode": "open",
+      "language": [
+        "en"
+      ],
+      "publication_channel": "web publication",
+      "originator_of": [
+        "IW-002-CLM-002",
+        "IW-002-CLM-008",
+        "IW-002-CLM-015"
+      ],
+      "repeats": [],
+      "derived_from": [],
+      "known_method": "primary institutional: sites and programme status",
+      "limitations": [
+        "origin for media coverage",
+        "Authority or publication status does not by itself establish claim content."
+      ],
+      "identity_verification": {
+        "status": "verified",
+        "basis": "Named organization and direct public URL retained in the approved bibliography."
+      },
+      "archived_capture": null,
+      "original_uri": "https://digital-strategy.ec.europa.eu/en/policies/ai-factories",
+      "archived_unavailability_reason": "No copyrighted source copy archived; direct URL, access time and bounded analytic note retained.",
+      "original_text_available": true,
+      "translation_trace": [],
+      "publication_timestamp": null,
+      "source_as_at": null,
+      "accessed_at": "2026-08-19T21:23:05Z"
+    },
+    {
+      "id": "IW-002-SRC-010",
+      "schema_version": "1.0.0",
+      "record_version": "1.0.0",
+      "created_at": "2026-08-19T21:23:05Z",
+      "updated_at": "2026-08-19T21:23:05Z",
+      "valid_from": "2026-08-19T21:23:05Z",
+      "valid_until": null,
+      "as_of": "2026-08-19T21:59:59Z",
+      "status": "approved",
+      "supersedes": null,
+      "provenance": {
+        "created_by": "Cognitive Logic IW author",
+        "method": "Manual public-source review and deterministic canonical structuring under DFV-002",
+        "sources": [],
+        "transformations": [
+          "Approved editorial material normalized into International Watch 1.0.0 records"
+        ]
+      },
+      "responsible_actor": "Cognitive Logic IW author",
+      "review_required": true,
+      "review_due": "2026-11-19T21:59:59Z",
+      "content_hash": null,
+      "source_id": "IW-002-SRC-010",
+      "entity_id": "European Commission",
+      "source_name": "EU launches AI Gigafactories call",
+      "jurisdiction": [
+        "European Union"
+      ],
+      "source_role": [
+        "publisher",
+        "originator"
+      ],
+      "ownership_or_control": {
+        "known": true,
+        "description": "EU industrial policy"
+      },
+      "primary_or_secondary": "primary",
+      "party_to_event": "yes",
+      "access_mode": "open",
+      "language": [
+        "en"
+      ],
+      "publication_channel": "web publication",
+      "originator_of": [
+        "IW-002-CLM-016"
+      ],
+      "repeats": [],
+      "derived_from": [],
+      "known_method": "primary announcement: call and prospective resources",
+      "limitations": [
+        "AP and Le Monde reports depend on the call",
+        "Authority or publication status does not by itself establish claim content."
+      ],
+      "identity_verification": {
+        "status": "verified",
+        "basis": "Named organization and direct public URL retained in the approved bibliography."
+      },
+      "archived_capture": null,
+      "original_uri": "https://digital-strategy.ec.europa.eu/en/news/eu-launches-ai-gigafactories-call-boost-europes-computing-capacity-and-unlock-more-eu30-billion",
+      "archived_unavailability_reason": "No copyrighted source copy archived; direct URL, access time and bounded analytic note retained.",
+      "original_text_available": true,
+      "translation_trace": [],
+      "publication_timestamp": "2026-07-30T00:00:00Z",
+      "source_as_at": "2026-07-30T00:00:00Z",
+      "accessed_at": "2026-08-19T21:23:05Z"
+    },
+    {
+      "id": "IW-002-SRC-011",
+      "schema_version": "1.0.0",
+      "record_version": "1.0.0",
+      "created_at": "2026-08-19T21:23:05Z",
+      "updated_at": "2026-08-19T21:23:05Z",
+      "valid_from": "2026-08-19T21:23:05Z",
+      "valid_until": null,
+      "as_of": "2026-08-19T21:59:59Z",
+      "status": "approved",
+      "supersedes": null,
+      "provenance": {
+        "created_by": "Cognitive Logic IW author",
+        "method": "Manual public-source review and deterministic canonical structuring under DFV-002",
+        "sources": [],
+        "transformations": [
+          "Approved editorial material normalized into International Watch 1.0.0 records"
+        ]
+      },
+      "responsible_actor": "Cognitive Logic IW author",
+      "review_required": true,
+      "review_due": "2026-11-19T21:59:59Z",
+      "content_hash": null,
+      "source_id": "IW-002-SRC-011",
+      "entity_id": "European Commission",
+      "source_name": "Preliminary DMA position on AWS and Azure",
+      "jurisdiction": [
+        "European Union"
+      ],
+      "source_role": [
+        "publisher",
+        "originator"
+      ],
+      "ownership_or_control": {
+        "known": true,
+        "description": "competition enforcement"
+      },
+      "primary_or_secondary": "primary",
+      "party_to_event": "yes",
+      "access_mode": "open",
+      "language": [
+        "en"
+      ],
+      "publication_channel": "web publication",
+      "originator_of": [
+        "IW-002-CLM-013",
+        "IW-002-CLM-014",
+        "IW-002-CLM-018"
+      ],
+      "repeats": [],
+      "derived_from": [],
+      "known_method": "primary institutional assessment: preliminary cloud market position",
+      "limitations": [
+        "not a final decision",
+        "Authority or publication status does not by itself establish claim content."
+      ],
+      "identity_verification": {
+        "status": "verified",
+        "basis": "Named organization and direct public URL retained in the approved bibliography."
+      },
+      "archived_capture": null,
+      "original_uri": "https://digital-markets-act.ec.europa.eu/commission-reaches-preliminary-position-amazons-and-microsofts-market-leading-cloud-services-should-2026-06-25_en",
+      "archived_unavailability_reason": "No copyrighted source copy archived; direct URL, access time and bounded analytic note retained.",
+      "original_text_available": true,
+      "translation_trace": [],
+      "publication_timestamp": "2026-06-25T00:00:00Z",
+      "source_as_at": "2026-06-25T00:00:00Z",
+      "accessed_at": "2026-08-19T21:23:05Z"
+    },
+    {
+      "id": "IW-002-SRC-012",
+      "schema_version": "1.0.0",
+      "record_version": "1.0.0",
+      "created_at": "2026-08-19T21:23:05Z",
+      "updated_at": "2026-08-19T21:23:05Z",
+      "valid_from": "2026-08-19T21:23:05Z",
+      "valid_until": null,
+      "as_of": "2026-08-19T21:59:59Z",
+      "status": "approved",
+      "supersedes": null,
+      "provenance": {
+        "created_by": "Cognitive Logic IW author",
+        "method": "Manual public-source review and deterministic canonical structuring under DFV-002",
+        "sources": [],
+        "transformations": [
+          "Approved editorial material normalized into International Watch 1.0.0 records"
+        ]
+      },
+      "responsible_actor": "Cognitive Logic IW author",
+      "review_required": true,
+      "review_due": "2026-11-19T21:59:59Z",
+      "content_hash": null,
+      "source_id": "IW-002-SRC-012",
+      "entity_id": "European Commission",
+      "source_name": "2026 State of the Digital Decade",
+      "jurisdiction": [
+        "European Union"
+      ],
+      "source_role": [
+        "publisher",
+        "originator"
+      ],
+      "ownership_or_control": {
+        "known": true,
+        "description": "EU digital-policy monitoring"
+      },
+      "primary_or_secondary": "primary",
+      "party_to_event": "yes",
+      "access_mode": "open",
+      "language": [
+        "en"
+      ],
+      "publication_channel": "web publication",
+      "originator_of": [
+        "IW-002-CLM-013",
+        "IW-002-CLM-018"
+      ],
+      "repeats": [],
+      "derived_from": [],
+      "known_method": "institutional report: semiconductor and technology dependencies",
+      "limitations": [
+        "supports sovereignty analysis",
+        "Authority or publication status does not by itself establish claim content."
+      ],
+      "identity_verification": {
+        "status": "verified",
+        "basis": "Named organization and direct public URL retained in the approved bibliography."
+      },
+      "archived_capture": null,
+      "original_uri": "https://digital-strategy.ec.europa.eu/en/policies/2026-state-digital-decade-package",
+      "archived_unavailability_reason": "No copyrighted source copy archived; direct URL, access time and bounded analytic note retained.",
+      "original_text_available": true,
+      "translation_trace": [],
+      "publication_timestamp": null,
+      "source_as_at": null,
+      "accessed_at": "2026-08-19T21:23:05Z"
+    },
+    {
+      "id": "IW-002-SRC-013",
+      "schema_version": "1.0.0",
+      "record_version": "1.0.0",
+      "created_at": "2026-08-19T21:23:05Z",
+      "updated_at": "2026-08-19T21:23:05Z",
+      "valid_from": "2026-08-19T21:23:05Z",
+      "valid_until": null,
+      "as_of": "2026-08-19T21:59:59Z",
+      "status": "approved",
+      "supersedes": null,
+      "provenance": {
+        "created_by": "Cognitive Logic IW author",
+        "method": "Manual public-source review and deterministic canonical structuring under DFV-002",
+        "sources": [],
+        "transformations": [
+          "Approved editorial material normalized into International Watch 1.0.0 records"
+        ]
+      },
+      "responsible_actor": "Cognitive Logic IW author",
+      "review_required": true,
+      "review_due": "2026-11-19T21:59:59Z",
+      "content_hash": null,
+      "source_id": "IW-002-SRC-013",
+      "entity_id": "Reuters",
+      "source_name": "Power grid delays challenge Amazon’s data center expansion",
+      "jurisdiction": [
+        "international"
+      ],
+      "source_role": [
+        "publisher",
+        "analyst"
+      ],
+      "ownership_or_control": {
+        "known": true,
+        "description": "news reporting"
+      },
+      "primary_or_secondary": "secondary",
+      "party_to_event": "no",
+      "access_mode": "open",
+      "language": [
+        "en"
+      ],
+      "publication_channel": "web publication",
+      "originator_of": [
+        "IW-002-CLM-003",
+        "IW-002-CLM-004"
+      ],
+      "repeats": [],
+      "derived_from": [],
+      "known_method": "secondary journalism with direct statement: AWS statement on connection time",
+      "limitations": [
+        "later articles repeating it are not independent",
+        "Authority or publication status does not by itself establish claim content."
+      ],
+      "identity_verification": {
+        "status": "verified",
+        "basis": "Named organization and direct public URL retained in the approved bibliography."
+      },
+      "archived_capture": null,
+      "original_uri": "https://www.investing.com/news/stock-market-news/power-grid-delays-challenge-amazons-data-center-expansion-in-europe-4481490",
+      "archived_unavailability_reason": "No copyrighted source copy archived; direct URL, access time and bounded analytic note retained.",
+      "original_text_available": true,
+      "translation_trace": [],
+      "publication_timestamp": "2026-02-03T00:00:00Z",
+      "source_as_at": "2026-02-03T00:00:00Z",
+      "accessed_at": "2026-08-19T21:23:05Z"
+    },
+    {
+      "id": "IW-002-SRC-014",
+      "schema_version": "1.0.0",
+      "record_version": "1.0.0",
+      "created_at": "2026-08-19T21:23:05Z",
+      "updated_at": "2026-08-19T21:23:05Z",
+      "valid_from": "2026-08-19T21:23:05Z",
+      "valid_until": null,
+      "as_of": "2026-08-19T21:59:59Z",
+      "status": "approved",
+      "supersedes": null,
+      "provenance": {
+        "created_by": "Cognitive Logic IW author",
+        "method": "Manual public-source review and deterministic canonical structuring under DFV-002",
+        "sources": [],
+        "transformations": [
+          "Approved editorial material normalized into International Watch 1.0.0 records"
+        ]
+      },
+      "responsible_actor": "Cognitive Logic IW author",
+      "review_required": true,
+      "review_due": "2026-11-19T21:59:59Z",
+      "content_hash": null,
+      "source_id": "IW-002-SRC-014",
+      "entity_id": "MIMIT",
+      "source_name": "Strategia per l’attrazione degli investimenti esteri nei data center",
+      "jurisdiction": [
+        "international"
+      ],
+      "source_role": [
+        "publisher",
+        "originator"
+      ],
+      "ownership_or_control": {
+        "known": true,
+        "description": "investment attraction"
+      },
+      "primary_or_secondary": "primary",
+      "party_to_event": "yes",
+      "access_mode": "open",
+      "language": [
+        "it"
+      ],
+      "publication_channel": "web publication",
+      "originator_of": [
+        "IW-002-CLM-012"
+      ],
+      "repeats": [],
+      "derived_from": [],
+      "known_method": "primary policy: Italian policy objectives",
+      "limitations": [
+        "attests intent, not outcomes",
+        "Authority or publication status does not by itself establish claim content."
+      ],
+      "identity_verification": {
+        "status": "verified",
+        "basis": "Named organization and direct public URL retained in the approved bibliography."
+      },
+      "archived_capture": null,
+      "original_uri": "https://www.mimit.gov.it/it/strategie/datacenter",
+      "archived_unavailability_reason": "No copyrighted source copy archived; direct URL, access time and bounded analytic note retained.",
+      "original_text_available": true,
+      "translation_trace": [],
+      "publication_timestamp": null,
+      "source_as_at": null,
+      "accessed_at": "2026-08-19T21:23:05Z"
+    },
+    {
+      "id": "IW-002-SRC-015",
+      "schema_version": "1.0.0",
+      "record_version": "1.0.0",
+      "created_at": "2026-08-19T21:23:05Z",
+      "updated_at": "2026-08-19T21:23:05Z",
+      "valid_from": "2026-08-19T21:23:05Z",
+      "valid_until": null,
+      "as_of": "2026-08-19T21:59:59Z",
+      "status": "approved",
+      "supersedes": null,
+      "provenance": {
+        "created_by": "Cognitive Logic IW author",
+        "method": "Manual public-source review and deterministic canonical structuring under DFV-002",
+        "sources": [],
+        "transformations": [
+          "Approved editorial material normalized into International Watch 1.0.0 records"
+        ]
+      },
+      "responsible_actor": "Cognitive Logic IW author",
+      "review_required": true,
+      "review_due": "2026-11-19T21:59:59Z",
+      "content_hash": null,
+      "source_id": "IW-002-SRC-015",
+      "entity_id": "MASE",
+      "source_name": "Indicazioni operative sul Procedimento Unico",
+      "jurisdiction": [
+        "international"
+      ],
+      "source_role": [
+        "publisher",
+        "originator"
+      ],
+      "ownership_or_control": {
+        "known": true,
+        "description": "administrative implementation"
+      },
+      "primary_or_secondary": "primary",
+      "party_to_event": "yes",
+      "access_mode": "open",
+      "language": [
+        "it"
+      ],
+      "publication_channel": "web publication",
+      "originator_of": [
+        "IW-002-CLM-012"
+      ],
+      "repeats": [],
+      "derived_from": [],
+      "known_method": "primary administrative: Italian authorization regime",
+      "limitations": [
+        "does not establish actual approval times",
+        "Authority or publication status does not by itself establish claim content."
+      ],
+      "identity_verification": {
+        "status": "verified",
+        "basis": "Named organization and direct public URL retained in the approved bibliography."
+      },
+      "archived_capture": null,
+      "original_uri": "https://va.mite.gov.it/it-IT/Comunicazione/DettaglioDirezione/6300",
+      "archived_unavailability_reason": "No copyrighted source copy archived; direct URL, access time and bounded analytic note retained.",
+      "original_text_available": true,
+      "translation_trace": [],
+      "publication_timestamp": null,
+      "source_as_at": null,
+      "accessed_at": "2026-08-19T21:23:05Z"
+    },
+    {
+      "id": "IW-002-SRC-016",
+      "schema_version": "1.0.0",
+      "record_version": "1.0.0",
+      "created_at": "2026-08-19T21:23:05Z",
+      "updated_at": "2026-08-19T21:23:05Z",
+      "valid_from": "2026-08-19T21:23:05Z",
+      "valid_until": null,
+      "as_of": "2026-08-19T21:59:59Z",
+      "status": "approved",
+      "supersedes": null,
+      "provenance": {
+        "created_by": "Cognitive Logic IW author",
+        "method": "Manual public-source review and deterministic canonical structuring under DFV-002",
+        "sources": [],
+        "transformations": [
+          "Approved editorial material normalized into International Watch 1.0.0 records"
+        ]
+      },
+      "responsible_actor": "Cognitive Logic IW author",
+      "review_required": true,
+      "review_due": "2026-11-19T21:59:59Z",
+      "content_hash": null,
+      "source_id": "IW-002-SRC-016",
+      "entity_id": "NVIDIA",
+      "source_name": "Europe Builds AI Infrastructure",
+      "jurisdiction": [
+        "international"
+      ],
+      "source_role": [
+        "publisher",
+        "originator"
+      ],
+      "ownership_or_control": {
+        "known": true,
+        "description": "direct accelerator and platform sales"
+      },
+      "primary_or_secondary": "primary",
+      "party_to_event": "yes",
+      "access_mode": "open",
+      "language": [
+        "en"
+      ],
+      "publication_channel": "web publication",
+      "originator_of": [
+        "IW-002-CLM-008",
+        "IW-002-CLM-013",
+        "IW-002-CLM-017"
+      ],
+      "repeats": [],
+      "derived_from": [],
+      "known_method": "primary corporate announcement: NVIDIA involvement and projects",
+      "limitations": [
+        "media repetitions are dependent",
+        "Authority or publication status does not by itself establish claim content."
+      ],
+      "identity_verification": {
+        "status": "verified",
+        "basis": "Named organization and direct public URL retained in the approved bibliography."
+      },
+      "archived_capture": null,
+      "original_uri": "https://nvidianews.nvidia.com/news/europe-ai-infrastructure",
+      "archived_unavailability_reason": "No copyrighted source copy archived; direct URL, access time and bounded analytic note retained.",
+      "original_text_available": true,
+      "translation_trace": [],
+      "publication_timestamp": "2025-06-11T00:00:00Z",
+      "source_as_at": "2025-06-11T00:00:00Z",
+      "accessed_at": "2026-08-19T21:23:05Z"
+    },
+    {
+      "id": "IW-002-SRC-017",
+      "schema_version": "1.0.0",
+      "record_version": "1.0.0",
+      "created_at": "2026-08-19T21:23:05Z",
+      "updated_at": "2026-08-19T21:23:05Z",
+      "valid_from": "2026-08-19T21:23:05Z",
+      "valid_until": null,
+      "as_of": "2026-08-19T21:59:59Z",
+      "status": "approved",
+      "supersedes": null,
+      "provenance": {
+        "created_by": "Cognitive Logic IW author",
+        "method": "Manual public-source review and deterministic canonical structuring under DFV-002",
+        "sources": [],
+        "transformations": [
+          "Approved editorial material normalized into International Watch 1.0.0 records"
+        ]
+      },
+      "responsible_actor": "Cognitive Logic IW author",
+      "review_required": true,
+      "review_due": "2026-11-19T21:59:59Z",
+      "content_hash": null,
+      "source_id": "IW-002-SRC-017",
+      "entity_id": "EUDCA",
+      "source_name": "State of European Data Centres 2026",
+      "jurisdiction": [
+        "international"
+      ],
+      "source_role": [
+        "publisher",
+        "analyst"
+      ],
+      "ownership_or_control": {
+        "known": true,
+        "description": "sector growth and representation"
+      },
+      "primary_or_secondary": "secondary",
+      "party_to_event": "no",
+      "access_mode": "open",
+      "language": [
+        "en"
+      ],
+      "publication_channel": "web publication",
+      "originator_of": [
+        "IW-002-CLM-002",
+        "IW-002-CLM-017"
+      ],
+      "repeats": [],
+      "derived_from": [],
+      "known_method": "secondary association report: market trends",
+      "limitations": [
+        "commercial/association perspective",
+        "Authority or publication status does not by itself establish claim content."
+      ],
+      "identity_verification": {
+        "status": "verified",
+        "basis": "Named organization and direct public URL retained in the approved bibliography."
+      },
+      "archived_capture": null,
+      "original_uri": "https://www.eudca.org/documents/content/ZlZXb4bRSRefaEVqya2I_Aoea?download=0",
+      "archived_unavailability_reason": "No copyrighted source copy archived; direct URL, access time and bounded analytic note retained.",
+      "original_text_available": true,
+      "translation_trace": [],
+      "publication_timestamp": null,
+      "source_as_at": null,
+      "accessed_at": "2026-08-19T21:23:05Z"
+    }
+  ]
+}

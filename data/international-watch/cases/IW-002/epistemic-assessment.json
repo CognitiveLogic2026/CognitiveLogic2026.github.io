@@ -1,0 +1,1522 @@
+{
+  "schema_version": "1.0.0",
+  "case_id": "IW-002",
+  "records": [
+    {
+      "id": "IW-002-ASM-001",
+      "schema_version": "1.0.0",
+      "record_version": "1.0.0",
+      "created_at": "2026-08-19T21:23:05Z",
+      "updated_at": "2026-08-19T21:23:05Z",
+      "valid_from": "2026-08-19T21:23:05Z",
+      "valid_until": null,
+      "as_of": "2026-08-19T21:59:59Z",
+      "status": "approved",
+      "supersedes": null,
+      "provenance": {
+        "created_by": "Cognitive Logic IW author",
+        "method": "Manual public-source review and deterministic canonical structuring under DFV-002",
+        "sources": [
+          "IW-002-EVD-001",
+          "IW-002-EVD-002"
+        ],
+        "transformations": [
+          "Approved editorial material normalized into International Watch 1.0.0 records"
+        ]
+      },
+      "responsible_actor": "Cognitive Logic IW author",
+      "review_required": true,
+      "review_due": "2026-11-19T21:59:59Z",
+      "content_hash": null,
+      "assessment_id": "IW-002-ASM-001",
+      "claim_id": "IW-002-CLM-001",
+      "state": "FORTEMENTE_CORROBORATO",
+      "state_definition_version": "1.0.0",
+      "reasoning_summary": "Technical state FORTEMENTE_CORROBORATO assigned only to this claim and scope. Evidence: fonti convergenti. Tension or limitation: pipeline emergente non smentisce il dominio. This is not the public composite outcome.",
+      "supporting_evidence": [
+        "IW-002-EVD-001",
+        "IW-002-EVD-002"
+      ],
+      "contrary_evidence": [],
+      "independent_evidence_groups": [
+        {
+          "group_id": "IW-002-GRP-001-A",
+          "evidence_ids": [
+            "IW-002-EVD-001"
+          ],
+          "independence_basis": "First identified evidentiary origin; not multiplied by downstream repetitions."
+        },
+        {
+          "group_id": "IW-002-GRP-001-B",
+          "evidence_ids": [
+            "IW-002-EVD-002"
+          ],
+          "independence_basis": "Additional approved origins retained as a separate group only where organizational collection is distinct; dependent edges remain excluded from independent counting."
+        }
+      ],
+      "unresolved_contradictions": [],
+      "scope": {
+        "geographic": [
+          "Europe"
+        ],
+        "temporal": {
+          "start": "2019-01-01T00:00:00Z",
+          "end": "2026-08-19T21:59:59Z"
+        },
+        "definitions": [
+          "Operational capacity is distinct from announcements, pipeline and connection requests.",
+          "European location is distinct from full-stack infrastructure sovereignty."
+        ]
+      },
+      "unknowns": [
+        "No claim-specific counter-evidence beyond the documented tensions and limitations was approved; absence is not confirmation.",
+        "Project-level contracts, clients, accelerators, water use or energisation may remain undisclosed."
+      ],
+      "limits": [
+        "perimetri proprietari",
+        "perimetri proprietari",
+        "pipeline emergente non smentisce il dominio",
+        "Cut-off 19 August 2026; later evidence is excluded."
+      ],
+      "decision_rules_applied": [
+        "ES-FC-1",
+        "authority-is-not-proof",
+        "republication-is-not-independent-corroboration",
+        "announcement-is-not-realization"
+      ],
+      "excluded_evidence": [],
+      "reviewer": "Cognitive Logic designated human publication authority",
+      "previous_assessment": null,
+      "change_reason": "Canonical reconstruction of the human-approved IW-002 claim ledger without changing the approved public outcome."
+    },
+    {
+      "id": "IW-002-ASM-002",
+      "schema_version": "1.0.0",
+      "record_version": "1.0.0",
+      "created_at": "2026-08-19T21:23:05Z",
+      "updated_at": "2026-08-19T21:23:05Z",
+      "valid_from": "2026-08-19T21:23:05Z",
+      "valid_until": null,
+      "as_of": "2026-08-19T21:59:59Z",
+      "status": "approved",
+      "supersedes": null,
+      "provenance": {
+        "created_by": "Cognitive Logic IW author",
+        "method": "Manual public-source review and deterministic canonical structuring under DFV-002",
+        "sources": [
+          "IW-002-EVD-001",
+          "IW-002-EVD-009",
+          "IW-002-EVD-017"
+        ],
+        "transformations": [
+          "Approved editorial material normalized into International Watch 1.0.0 records"
+        ]
+      },
+      "responsible_actor": "Cognitive Logic IW author",
+      "review_required": true,
+      "review_due": "2026-11-19T21:59:59Z",
+      "content_hash": null,
+      "assessment_id": "IW-002-ASM-002",
+      "claim_id": "IW-002-CLM-002",
+      "state": "FORTEMENTE_CORROBORATO",
+      "state_definition_version": "1.0.0",
+      "reasoning_summary": "Technical state FORTEMENTE_CORROBORATO assigned only to this claim and scope. Evidence: progetti ed EuroHPC. Tension or limitation: pochi dati operativi. This is not the public composite outcome.",
+      "supporting_evidence": [
+        "IW-002-EVD-001",
+        "IW-002-EVD-009",
+        "IW-002-EVD-017"
+      ],
+      "contrary_evidence": [],
+      "independent_evidence_groups": [
+        {
+          "group_id": "IW-002-GRP-002-A",
+          "evidence_ids": [
+            "IW-002-EVD-001"
+          ],
+          "independence_basis": "First identified evidentiary origin; not multiplied by downstream repetitions."
+        },
+        {
+          "group_id": "IW-002-GRP-002-B",
+          "evidence_ids": [
+            "IW-002-EVD-009",
+            "IW-002-EVD-017"
+          ],
+          "independence_basis": "Additional approved origins retained as a separate group only where organizational collection is distinct; dependent edges remain excluded from independent counting."
+        }
+      ],
+      "unresolved_contradictions": [],
+      "scope": {
+        "geographic": [
+          "Europe"
+        ],
+        "temporal": {
+          "start": "2019-01-01T00:00:00Z",
+          "end": "2026-08-19T21:59:59Z"
+        },
+        "definitions": [
+          "Operational capacity is distinct from announcements, pipeline and connection requests.",
+          "European location is distinct from full-stack infrastructure sovereignty."
+        ]
+      },
+      "unknowns": [
+        "No claim-specific counter-evidence beyond the documented tensions and limitations was approved; absence is not confirmation.",
+        "Project-level contracts, clients, accelerators, water use or energisation may remain undisclosed."
+      ],
+      "limits": [
+        "pipeline non è capacità live",
+        "riprese spesso dipendenti",
+        "pochi dati operativi",
+        "Cut-off 19 August 2026; later evidence is excluded."
+      ],
+      "decision_rules_applied": [
+        "ES-FC-1",
+        "authority-is-not-proof",
+        "republication-is-not-independent-corroboration",
+        "announcement-is-not-realization"
+      ],
+      "excluded_evidence": [],
+      "reviewer": "Cognitive Logic designated human publication authority",
+      "previous_assessment": null,
+      "change_reason": "Canonical reconstruction of the human-approved IW-002 claim ledger without changing the approved public outcome."
+    },
+    {
+      "id": "IW-002-ASM-003",
+      "schema_version": "1.0.0",
+      "record_version": "1.0.0",
+      "created_at": "2026-08-19T21:23:05Z",
+      "updated_at": "2026-08-19T21:23:05Z",
+      "valid_from": "2026-08-19T21:23:05Z",
+      "valid_until": null,
+      "as_of": "2026-08-19T21:59:59Z",
+      "status": "approved",
+      "supersedes": null,
+      "provenance": {
+        "created_by": "Cognitive Logic IW author",
+        "method": "Manual public-source review and deterministic canonical structuring under DFV-002",
+        "sources": [
+          "IW-002-EVD-013",
+          "IW-002-EVD-001",
+          "IW-002-EVD-004",
+          "IW-002-EVD-005"
+        ],
+        "transformations": [
+          "Approved editorial material normalized into International Watch 1.0.0 records"
+        ]
+      },
+      "responsible_actor": "Cognitive Logic IW author",
+      "review_required": true,
+      "review_due": "2026-11-19T21:59:59Z",
+      "content_hash": null,
+      "assessment_id": "IW-002-ASM-003",
+      "claim_id": "IW-002-CLM-003",
+      "state": "FORTEMENTE_CORROBORATO",
+      "state_definition_version": "1.0.0",
+      "reasoning_summary": "Technical state FORTEMENTE_CORROBORATO assigned only to this claim and scope. Evidence: JLL, ENTSO-E, EirGrid. Tension or limitation: nessuna serie UE omogenea. This is not the public composite outcome.",
+      "supporting_evidence": [
+        "IW-002-EVD-013",
+        "IW-002-EVD-001",
+        "IW-002-EVD-004",
+        "IW-002-EVD-005"
+      ],
+      "contrary_evidence": [],
+      "independent_evidence_groups": [
+        {
+          "group_id": "IW-002-GRP-003-A",
+          "evidence_ids": [
+            "IW-002-EVD-013"
+          ],
+          "independence_basis": "First identified evidentiary origin; not multiplied by downstream repetitions."
+        },
+        {
+          "group_id": "IW-002-GRP-003-B",
+          "evidence_ids": [
+            "IW-002-EVD-001",
+            "IW-002-EVD-004",
+            "IW-002-EVD-005"
+          ],
+          "independence_basis": "Additional approved origins retained as a separate group only where organizational collection is distinct; dependent edges remain excluded from independent counting."
+        }
+      ],
+      "unresolved_contradictions": [],
+      "scope": {
+        "geographic": [
+          "Europe"
+        ],
+        "temporal": {
+          "start": "2019-01-01T00:00:00Z",
+          "end": "2026-08-19T21:59:59Z"
+        },
+        "definitions": [
+          "Operational capacity is distinct from announcements, pipeline and connection requests.",
+          "European location is distinct from full-stack infrastructure sovereignty."
+        ]
+      },
+      "unknowns": [
+        "No claim-specific counter-evidence beyond the documented tensions and limitations was approved; absence is not confirmation.",
+        "Project-level contracts, clients, accelerators, water use or energisation may remain undisclosed."
+      ],
+      "limits": [
+        "mancano medie effettive UE",
+        "riprese Reuters non indipendenti",
+        "nessuna serie UE omogenea",
+        "Cut-off 19 August 2026; later evidence is excluded."
+      ],
+      "decision_rules_applied": [
+        "ES-FC-1",
+        "authority-is-not-proof",
+        "republication-is-not-independent-corroboration",
+        "announcement-is-not-realization"
+      ],
+      "excluded_evidence": [],
+      "reviewer": "Cognitive Logic designated human publication authority",
+      "previous_assessment": null,
+      "change_reason": "Canonical reconstruction of the human-approved IW-002 claim ledger without changing the approved public outcome."
+    },
+    {
+      "id": "IW-002-ASM-004",
+      "schema_version": "1.0.0",
+      "record_version": "1.0.0",
+      "created_at": "2026-08-19T21:23:05Z",
+      "updated_at": "2026-08-19T21:23:05Z",
+      "valid_from": "2026-08-19T21:23:05Z",
+      "valid_until": null,
+      "as_of": "2026-08-19T21:59:59Z",
+      "status": "approved",
+      "supersedes": null,
+      "provenance": {
+        "created_by": "Cognitive Logic IW author",
+        "method": "Manual public-source review and deterministic canonical structuring under DFV-002",
+        "sources": [
+          "IW-002-EVD-013",
+          "IW-002-EVD-001"
+        ],
+        "transformations": [
+          "Approved editorial material normalized into International Watch 1.0.0 records"
+        ]
+      },
+      "responsible_actor": "Cognitive Logic IW author",
+      "review_required": true,
+      "review_due": "2026-11-19T21:59:59Z",
+      "content_hash": null,
+      "assessment_id": "IW-002-ASM-004",
+      "claim_id": "IW-002-CLM-004",
+      "state": "PLAUSIBILE",
+      "state_definition_version": "1.0.0",
+      "reasoning_summary": "Technical state PLAUSIBILE assigned only to this claim and scope. Evidence: congestioni note. Tension or limitation: non è una media UE. This is not the public composite outcome.",
+      "supporting_evidence": [
+        "IW-002-EVD-013",
+        "IW-002-EVD-001"
+      ],
+      "contrary_evidence": [],
+      "independent_evidence_groups": [
+        {
+          "group_id": "IW-002-GRP-004-A",
+          "evidence_ids": [
+            "IW-002-EVD-013"
+          ],
+          "independence_basis": "First identified evidentiary origin; not multiplied by downstream repetitions."
+        },
+        {
+          "group_id": "IW-002-GRP-004-B",
+          "evidence_ids": [
+            "IW-002-EVD-001"
+          ],
+          "independence_basis": "Additional approved origins retained as a separate group only where organizational collection is distinct; dependent edges remain excluded from independent counting."
+        }
+      ],
+      "unresolved_contradictions": [],
+      "scope": {
+        "geographic": [
+          "Europe"
+        ],
+        "temporal": {
+          "start": "2019-01-01T00:00:00Z",
+          "end": "2026-08-19T21:59:59Z"
+        },
+        "definitions": [
+          "Operational capacity is distinct from announcements, pipeline and connection requests.",
+          "European location is distinct from full-stack infrastructure sovereignty."
+        ]
+      },
+      "unknowns": [
+        "No claim-specific counter-evidence beyond the documented tensions and limitations was approved; absence is not confirmation.",
+        "Project-level contracts, clients, accelerators, water use or energisation may remain undisclosed."
+      ],
+      "limits": [
+        "estremi, non serie omogenea",
+        "fonti distinte ma metriche non omogenee",
+        "non è una media UE",
+        "Cut-off 19 August 2026; later evidence is excluded."
+      ],
+      "decision_rules_applied": [
+        "ES-PLA-1",
+        "authority-is-not-proof",
+        "republication-is-not-independent-corroboration",
+        "announcement-is-not-realization"
+      ],
+      "excluded_evidence": [],
+      "reviewer": "Cognitive Logic designated human publication authority",
+      "previous_assessment": null,
+      "change_reason": "Canonical reconstruction of the human-approved IW-002 claim ledger without changing the approved public outcome."
+    },
+    {
+      "id": "IW-002-ASM-005",
+      "schema_version": "1.0.0",
+      "record_version": "1.0.0",
+      "created_at": "2026-08-19T21:23:05Z",
+      "updated_at": "2026-08-19T21:23:05Z",
+      "valid_from": "2026-08-19T21:23:05Z",
+      "valid_until": null,
+      "as_of": "2026-08-19T21:59:59Z",
+      "status": "approved",
+      "supersedes": null,
+      "provenance": {
+        "created_by": "Cognitive Logic IW author",
+        "method": "Manual public-source review and deterministic canonical structuring under DFV-002",
+        "sources": [
+          "IW-002-EVD-005"
+        ],
+        "transformations": [
+          "Approved editorial material normalized into International Watch 1.0.0 records"
+        ]
+      },
+      "responsible_actor": "Cognitive Logic IW author",
+      "review_required": true,
+      "review_due": "2026-11-19T21:59:59Z",
+      "content_hash": null,
+      "assessment_id": "IW-002-ASM-005",
+      "claim_id": "IW-002-CLM-005",
+      "state": "ACCERTATO",
+      "state_definition_version": "1.0.0",
+      "reasoning_summary": "Technical state ACCERTATO assigned only to this claim and scope. Evidence: IEA e cronache. Tension or limitation: non è una moratoria nazionale assoluta. This is not the public composite outcome.",
+      "supporting_evidence": [
+        "IW-002-EVD-005"
+      ],
+      "contrary_evidence": [],
+      "independent_evidence_groups": [
+        {
+          "group_id": "IW-002-GRP-005-A",
+          "evidence_ids": [
+            "IW-002-EVD-005"
+          ],
+          "independence_basis": "Single identified evidentiary origin; no claim of multiple-source corroboration."
+        }
+      ],
+      "unresolved_contradictions": [],
+      "scope": {
+        "geographic": [
+          "Europe"
+        ],
+        "temporal": {
+          "start": "2019-01-01T00:00:00Z",
+          "end": "2026-08-19T21:59:59Z"
+        },
+        "definitions": [
+          "Operational capacity is distinct from announcements, pipeline and connection requests.",
+          "European location is distinct from full-stack infrastructure sovereignty."
+        ]
+      },
+      "unknowns": [
+        "No claim-specific counter-evidence beyond the documented tensions and limitations was approved; absence is not confirmation.",
+        "Project-level contracts, clients, accelerators, water use or energisation may remain undisclosed."
+      ],
+      "limits": [
+        "scope territoriale",
+        "indipendente dalle riprese stampa",
+        "non è una moratoria nazionale assoluta",
+        "Cut-off 19 August 2026; later evidence is excluded."
+      ],
+      "decision_rules_applied": [
+        "ES-ACC-1",
+        "authority-is-not-proof",
+        "republication-is-not-independent-corroboration",
+        "announcement-is-not-realization"
+      ],
+      "excluded_evidence": [],
+      "reviewer": "Cognitive Logic designated human publication authority",
+      "previous_assessment": null,
+      "change_reason": "Canonical reconstruction of the human-approved IW-002 claim ledger without changing the approved public outcome."
+    },
+    {
+      "id": "IW-002-ASM-006",
+      "schema_version": "1.0.0",
+      "record_version": "1.0.0",
+      "created_at": "2026-08-19T21:23:05Z",
+      "updated_at": "2026-08-19T21:23:05Z",
+      "valid_from": "2026-08-19T21:23:05Z",
+      "valid_until": null,
+      "as_of": "2026-08-19T21:59:59Z",
+      "status": "approved",
+      "supersedes": null,
+      "provenance": {
+        "created_by": "Cognitive Logic IW author",
+        "method": "Manual public-source review and deterministic canonical structuring under DFV-002",
+        "sources": [
+          "IW-002-EVD-003"
+        ],
+        "transformations": [
+          "Approved editorial material normalized into International Watch 1.0.0 records"
+        ]
+      },
+      "responsible_actor": "Cognitive Logic IW author",
+      "review_required": true,
+      "review_due": "2026-11-19T21:59:59Z",
+      "content_hash": null,
+      "assessment_id": "IW-002-ASM-006",
+      "claim_id": "IW-002-CLM-006",
+      "state": "PLAUSIBILE",
+      "state_definition_version": "1.0.0",
+      "reasoning_summary": "Technical state PLAUSIBILE assigned only to this claim and scope. Evidence: altri scenari convergono. Tension or limitation: esito dipende da domanda ed efficienza. This is not the public composite outcome.",
+      "supporting_evidence": [
+        "IW-002-EVD-003"
+      ],
+      "contrary_evidence": [],
+      "independent_evidence_groups": [
+        {
+          "group_id": "IW-002-GRP-006-A",
+          "evidence_ids": [
+            "IW-002-EVD-003"
+          ],
+          "independence_basis": "Single identified evidentiary origin; no claim of multiple-source corroboration."
+        }
+      ],
+      "unresolved_contradictions": [],
+      "scope": {
+        "geographic": [
+          "Europe"
+        ],
+        "temporal": {
+          "start": "2019-01-01T00:00:00Z",
+          "end": "2026-08-19T21:59:59Z"
+        },
+        "definitions": [
+          "Operational capacity is distinct from announcements, pipeline and connection requests.",
+          "European location is distinct from full-stack infrastructure sovereignty."
+        ]
+      },
+      "unknowns": [
+        "No claim-specific counter-evidence beyond the documented tensions and limitations was approved; absence is not confirmation.",
+        "Project-level contracts, clients, accelerators, water use or energisation may remain undisclosed."
+      ],
+      "limits": [
+        "scenario",
+        "riprese stampa dipendenti",
+        "esito dipende da domanda ed efficienza",
+        "Cut-off 19 August 2026; later evidence is excluded."
+      ],
+      "decision_rules_applied": [
+        "ES-PLA-1",
+        "authority-is-not-proof",
+        "republication-is-not-independent-corroboration",
+        "announcement-is-not-realization"
+      ],
+      "excluded_evidence": [],
+      "reviewer": "Cognitive Logic designated human publication authority",
+      "previous_assessment": null,
+      "change_reason": "Canonical reconstruction of the human-approved IW-002 claim ledger without changing the approved public outcome."
+    },
+    {
+      "id": "IW-002-ASM-007",
+      "schema_version": "1.0.0",
+      "record_version": "1.0.0",
+      "created_at": "2026-08-19T21:23:05Z",
+      "updated_at": "2026-08-19T21:23:05Z",
+      "valid_from": "2026-08-19T21:23:05Z",
+      "valid_until": null,
+      "as_of": "2026-08-19T21:59:59Z",
+      "status": "approved",
+      "supersedes": null,
+      "provenance": {
+        "created_by": "Cognitive Logic IW author",
+        "method": "Manual public-source review and deterministic canonical structuring under DFV-002",
+        "sources": [
+          "IW-002-EVD-008"
+        ],
+        "transformations": [
+          "Approved editorial material normalized into International Watch 1.0.0 records"
+        ]
+      },
+      "responsible_actor": "Cognitive Logic IW author",
+      "review_required": true,
+      "review_due": "2026-11-19T21:59:59Z",
+      "content_hash": null,
+      "assessment_id": "IW-002-ASM-007",
+      "claim_id": "IW-002-CLM-007",
+      "state": "ACCERTATO",
+      "state_definition_version": "1.0.0",
+      "reasoning_summary": "Technical state ACCERTATO assigned only to this claim and scope. Evidence: non necessaria per esistenza normativa. Tension or limitation: nessuna. This is not the public composite outcome.",
+      "supporting_evidence": [
+        "IW-002-EVD-008"
+      ],
+      "contrary_evidence": [],
+      "independent_evidence_groups": [
+        {
+          "group_id": "IW-002-GRP-007-A",
+          "evidence_ids": [
+            "IW-002-EVD-008"
+          ],
+          "independence_basis": "Single identified evidentiary origin; no claim of multiple-source corroboration."
+        }
+      ],
+      "unresolved_contradictions": [],
+      "scope": {
+        "geographic": [
+          "European Union"
+        ],
+        "temporal": {
+          "start": "2019-01-01T00:00:00Z",
+          "end": "2026-08-19T21:59:59Z"
+        },
+        "definitions": [
+          "Operational capacity is distinct from announcements, pipeline and connection requests.",
+          "European location is distinct from full-stack infrastructure sovereignty."
+        ]
+      },
+      "unknowns": [
+        "No claim-specific counter-evidence beyond the documented tensions and limitations was approved; absence is not confirmation.",
+        "Project-level contracts, clients, accelerators, water use or energisation may remain undisclosed."
+      ],
+      "limits": [
+        "dati pubblici aggregati",
+        "nessuna",
+        "nessuna",
+        "Cut-off 19 August 2026; later evidence is excluded."
+      ],
+      "decision_rules_applied": [
+        "ES-ACC-1",
+        "authority-is-not-proof",
+        "republication-is-not-independent-corroboration",
+        "announcement-is-not-realization"
+      ],
+      "excluded_evidence": [],
+      "reviewer": "Cognitive Logic designated human publication authority",
+      "previous_assessment": null,
+      "change_reason": "Canonical reconstruction of the human-approved IW-002 claim ledger without changing the approved public outcome."
+    },
+    {
+      "id": "IW-002-ASM-008",
+      "schema_version": "1.0.0",
+      "record_version": "1.0.0",
+      "created_at": "2026-08-19T21:23:05Z",
+      "updated_at": "2026-08-19T21:23:05Z",
+      "valid_from": "2026-08-19T21:23:05Z",
+      "valid_until": null,
+      "as_of": "2026-08-19T21:59:59Z",
+      "status": "approved",
+      "supersedes": null,
+      "provenance": {
+        "created_by": "Cognitive Logic IW author",
+        "method": "Manual public-source review and deterministic canonical structuring under DFV-002",
+        "sources": [
+          "IW-002-EVD-009",
+          "IW-002-EVD-016"
+        ],
+        "transformations": [
+          "Approved editorial material normalized into International Watch 1.0.0 records"
+        ]
+      },
+      "responsible_actor": "Cognitive Logic IW author",
+      "review_required": true,
+      "review_due": "2026-11-19T21:59:59Z",
+      "content_hash": null,
+      "assessment_id": "IW-002-ASM-008",
+      "claim_id": "IW-002-CLM-008",
+      "state": "FORTEMENTE_CORROBORATO",
+      "state_definition_version": "1.0.0",
+      "reasoning_summary": "Technical state FORTEMENTE_CORROBORATO assigned only to this claim and scope. Evidence: AI Factories offrono casi chiaramente AI. Tension or limitation: contratti possono essere riservati. This is not the public composite outcome.",
+      "supporting_evidence": [
+        "IW-002-EVD-009",
+        "IW-002-EVD-016"
+      ],
+      "contrary_evidence": [],
+      "independent_evidence_groups": [
+        {
+          "group_id": "IW-002-GRP-008-A",
+          "evidence_ids": [
+            "IW-002-EVD-009"
+          ],
+          "independence_basis": "First identified evidentiary origin; not multiplied by downstream repetitions."
+        },
+        {
+          "group_id": "IW-002-GRP-008-B",
+          "evidence_ids": [
+            "IW-002-EVD-016"
+          ],
+          "independence_basis": "Additional approved origins retained as a separate group only where organizational collection is distinct; dependent edges remain excluded from independent counting."
+        }
+      ],
+      "unresolved_contradictions": [],
+      "scope": {
+        "geographic": [
+          "Europe"
+        ],
+        "temporal": {
+          "start": "2019-01-01T00:00:00Z",
+          "end": "2026-08-19T21:59:59Z"
+        },
+        "definitions": [
+          "Operational capacity is distinct from announcements, pipeline and connection requests.",
+          "European location is distinct from full-stack infrastructure sovereignty."
+        ]
+      },
+      "unknowns": [
+        "No claim-specific counter-evidence beyond the documented tensions and limitations was approved; absence is not confirmation.",
+        "Project-level contracts, clients, accelerators, water use or energisation may remain undisclosed."
+      ],
+      "limits": [
+        "informazioni riservate",
+        "annunci aziendali",
+        "contratti possono essere riservati",
+        "Cut-off 19 August 2026; later evidence is excluded."
+      ],
+      "decision_rules_applied": [
+        "ES-FC-1",
+        "authority-is-not-proof",
+        "republication-is-not-independent-corroboration",
+        "announcement-is-not-realization"
+      ],
+      "excluded_evidence": [],
+      "reviewer": "Cognitive Logic designated human publication authority",
+      "previous_assessment": null,
+      "change_reason": "Canonical reconstruction of the human-approved IW-002 claim ledger without changing the approved public outcome."
+    },
+    {
+      "id": "IW-002-ASM-009",
+      "schema_version": "1.0.0",
+      "record_version": "1.0.0",
+      "created_at": "2026-08-19T21:23:05Z",
+      "updated_at": "2026-08-19T21:23:05Z",
+      "valid_from": "2026-08-19T21:23:05Z",
+      "valid_until": null,
+      "as_of": "2026-08-19T21:59:59Z",
+      "status": "approved",
+      "supersedes": null,
+      "provenance": {
+        "created_by": "Cognitive Logic IW author",
+        "method": "Manual public-source review and deterministic canonical structuring under DFV-002",
+        "sources": [
+          "IW-002-EVD-006",
+          "IW-002-EVD-007"
+        ],
+        "transformations": [
+          "Approved editorial material normalized into International Watch 1.0.0 records"
+        ]
+      },
+      "responsible_actor": "Cognitive Logic IW author",
+      "review_required": true,
+      "review_due": "2026-11-19T21:59:59Z",
+      "content_hash": null,
+      "assessment_id": "IW-002-ASM-009",
+      "claim_id": "IW-002-CLM-009",
+      "state": "ACCERTATO",
+      "state_definition_version": "1.0.0",
+      "reasoning_summary": "Technical state ACCERTATO assigned only to this claim and scope. Evidence: oltre 50 GW a giugno. Tension or limitation: non equivale a costruzione. This is not the public composite outcome.",
+      "supporting_evidence": [
+        "IW-002-EVD-006",
+        "IW-002-EVD-007"
+      ],
+      "contrary_evidence": [],
+      "independent_evidence_groups": [
+        {
+          "group_id": "IW-002-GRP-009-A",
+          "evidence_ids": [
+            "IW-002-EVD-006"
+          ],
+          "independence_basis": "First identified evidentiary origin; not multiplied by downstream repetitions."
+        },
+        {
+          "group_id": "IW-002-GRP-009-B",
+          "evidence_ids": [
+            "IW-002-EVD-007"
+          ],
+          "independence_basis": "Additional approved origins retained as a separate group only where organizational collection is distinct; dependent edges remain excluded from independent counting."
+        }
+      ],
+      "unresolved_contradictions": [
+        "IW-002-CON-001"
+      ],
+      "scope": {
+        "geographic": [
+          "Italy"
+        ],
+        "temporal": {
+          "start": "2019-01-01T00:00:00Z",
+          "end": "2026-08-19T21:59:59Z"
+        },
+        "definitions": [
+          "Operational capacity is distinct from announcements, pipeline and connection requests.",
+          "European location is distinct from full-stack infrastructure sovereignty."
+        ]
+      },
+      "unknowns": [
+        "No claim-specific counter-evidence beyond the documented tensions and limitations was approved; absence is not confirmation.",
+        "Project-level contracts, clients, accelerators, water use or energisation may remain undisclosed."
+      ],
+      "limits": [
+        "coda non bonificata",
+        "riprese stampa dipendenti",
+        "non equivale a costruzione",
+        "Cut-off 19 August 2026; later evidence is excluded."
+      ],
+      "decision_rules_applied": [
+        "ES-ACC-1",
+        "authority-is-not-proof",
+        "republication-is-not-independent-corroboration",
+        "announcement-is-not-realization"
+      ],
+      "excluded_evidence": [],
+      "reviewer": "Cognitive Logic designated human publication authority",
+      "previous_assessment": null,
+      "change_reason": "Canonical reconstruction of the human-approved IW-002 claim ledger without changing the approved public outcome."
+    },
+    {
+      "id": "IW-002-ASM-010",
+      "schema_version": "1.0.0",
+      "record_version": "1.0.0",
+      "created_at": "2026-08-19T21:23:05Z",
+      "updated_at": "2026-08-19T21:23:05Z",
+      "valid_from": "2026-08-19T21:23:05Z",
+      "valid_until": null,
+      "as_of": "2026-08-19T21:59:59Z",
+      "status": "approved",
+      "supersedes": null,
+      "provenance": {
+        "created_by": "Cognitive Logic IW author",
+        "method": "Manual public-source review and deterministic canonical structuring under DFV-002",
+        "sources": [
+          "IW-002-EVD-006"
+        ],
+        "transformations": [
+          "Approved editorial material normalized into International Watch 1.0.0 records"
+        ]
+      },
+      "responsible_actor": "Cognitive Logic IW author",
+      "review_required": true,
+      "review_due": "2026-11-19T21:59:59Z",
+      "content_hash": null,
+      "assessment_id": "IW-002-ASM-010",
+      "claim_id": "IW-002-CLM-010",
+      "state": "ACCERTATO",
+      "state_definition_version": "1.0.0",
+      "reasoning_summary": "Technical state ACCERTATO assigned only to this claim and scope. Evidence: centralità di Milano. Tension or limitation: distribuzione può cambiare. This is not the public composite outcome.",
+      "supporting_evidence": [
+        "IW-002-EVD-006"
+      ],
+      "contrary_evidence": [],
+      "independent_evidence_groups": [
+        {
+          "group_id": "IW-002-GRP-010-A",
+          "evidence_ids": [
+            "IW-002-EVD-006"
+          ],
+          "independence_basis": "Single identified evidentiary origin; no claim of multiple-source corroboration."
+        }
+      ],
+      "unresolved_contradictions": [],
+      "scope": {
+        "geographic": [
+          "Italy"
+        ],
+        "temporal": {
+          "start": "2019-01-01T00:00:00Z",
+          "end": "2026-08-19T21:59:59Z"
+        },
+        "definitions": [
+          "Operational capacity is distinct from announcements, pipeline and connection requests.",
+          "European location is distinct from full-stack infrastructure sovereignty."
+        ]
+      },
+      "unknowns": [
+        "No claim-specific counter-evidence beyond the documented tensions and limitations was approved; absence is not confirmation.",
+        "Project-level contracts, clients, accelerators, water use or energisation may remain undisclosed."
+      ],
+      "limits": [
+        "snapshot temporale",
+        "nessuna",
+        "distribuzione può cambiare",
+        "Cut-off 19 August 2026; later evidence is excluded."
+      ],
+      "decision_rules_applied": [
+        "ES-ACC-1",
+        "authority-is-not-proof",
+        "republication-is-not-independent-corroboration",
+        "announcement-is-not-realization"
+      ],
+      "excluded_evidence": [],
+      "reviewer": "Cognitive Logic designated human publication authority",
+      "previous_assessment": null,
+      "change_reason": "Canonical reconstruction of the human-approved IW-002 claim ledger without changing the approved public outcome."
+    },
+    {
+      "id": "IW-002-ASM-011",
+      "schema_version": "1.0.0",
+      "record_version": "1.0.0",
+      "created_at": "2026-08-19T21:23:05Z",
+      "updated_at": "2026-08-19T21:23:05Z",
+      "valid_from": "2026-08-19T21:23:05Z",
+      "valid_until": null,
+      "as_of": "2026-08-19T21:59:59Z",
+      "status": "approved",
+      "supersedes": null,
+      "provenance": {
+        "created_by": "Cognitive Logic IW author",
+        "method": "Manual public-source review and deterministic canonical structuring under DFV-002",
+        "sources": [
+          "IW-002-EVD-006"
+        ],
+        "transformations": [
+          "Approved editorial material normalized into International Watch 1.0.0 records"
+        ]
+      },
+      "responsible_actor": "Cognitive Logic IW author",
+      "review_required": true,
+      "review_due": "2026-11-19T21:59:59Z",
+      "content_hash": null,
+      "assessment_id": "IW-002-ASM-011",
+      "claim_id": "IW-002-CLM-011",
+      "state": "PLAUSIBILE",
+      "state_definition_version": "1.0.0",
+      "reasoning_summary": "Technical state PLAUSIBILE assigned only to this claim and scope. Evidence: non applicabile. Tension or limitation: distanza dalla coda di connessione. This is not the public composite outcome.",
+      "supporting_evidence": [
+        "IW-002-EVD-006"
+      ],
+      "contrary_evidence": [],
+      "independent_evidence_groups": [
+        {
+          "group_id": "IW-002-GRP-011-A",
+          "evidence_ids": [
+            "IW-002-EVD-006"
+          ],
+          "independence_basis": "Single identified evidentiary origin; no claim of multiple-source corroboration."
+        }
+      ],
+      "unresolved_contradictions": [
+        "IW-002-CON-001"
+      ],
+      "scope": {
+        "geographic": [
+          "Italy"
+        ],
+        "temporal": {
+          "start": "2019-01-01T00:00:00Z",
+          "end": "2026-08-19T21:59:59Z"
+        },
+        "definitions": [
+          "Operational capacity is distinct from announcements, pipeline and connection requests.",
+          "European location is distinct from full-stack infrastructure sovereignty."
+        ]
+      },
+      "unknowns": [
+        "No claim-specific counter-evidence beyond the documented tensions and limitations was approved; absence is not confirmation.",
+        "Project-level contracts, clients, accelerators, water use or energisation may remain undisclosed."
+      ],
+      "limits": [
+        "scenario",
+        "nessuna",
+        "distanza dalla coda di connessione",
+        "Cut-off 19 August 2026; later evidence is excluded."
+      ],
+      "decision_rules_applied": [
+        "ES-PLA-1",
+        "authority-is-not-proof",
+        "republication-is-not-independent-corroboration",
+        "announcement-is-not-realization"
+      ],
+      "excluded_evidence": [],
+      "reviewer": "Cognitive Logic designated human publication authority",
+      "previous_assessment": null,
+      "change_reason": "Canonical reconstruction of the human-approved IW-002 claim ledger without changing the approved public outcome."
+    },
+    {
+      "id": "IW-002-ASM-012",
+      "schema_version": "1.0.0",
+      "record_version": "1.0.0",
+      "created_at": "2026-08-19T21:23:05Z",
+      "updated_at": "2026-08-19T21:23:05Z",
+      "valid_from": "2026-08-19T21:23:05Z",
+      "valid_until": null,
+      "as_of": "2026-08-19T21:59:59Z",
+      "status": "approved",
+      "supersedes": null,
+      "provenance": {
+        "created_by": "Cognitive Logic IW author",
+        "method": "Manual public-source review and deterministic canonical structuring under DFV-002",
+        "sources": [
+          "IW-002-EVD-014",
+          "IW-002-EVD-015"
+        ],
+        "transformations": [
+          "Approved editorial material normalized into International Watch 1.0.0 records"
+        ]
+      },
+      "responsible_actor": "Cognitive Logic IW author",
+      "review_required": true,
+      "review_due": "2026-11-19T21:59:59Z",
+      "content_hash": null,
+      "assessment_id": "IW-002-ASM-012",
+      "claim_id": "IW-002-CLM-012",
+      "state": "PLAUSIBILE",
+      "state_definition_version": "1.0.0",
+      "reasoning_summary": "Technical state PLAUSIBILE assigned only to this claim and scope. Evidence: effetti non ancora misurabili. Tension or limitation: mancano tempi effettivi. This is not the public composite outcome.",
+      "supporting_evidence": [
+        "IW-002-EVD-014",
+        "IW-002-EVD-015"
+      ],
+      "contrary_evidence": [],
+      "independent_evidence_groups": [
+        {
+          "group_id": "IW-002-GRP-012-A",
+          "evidence_ids": [
+            "IW-002-EVD-014"
+          ],
+          "independence_basis": "First identified evidentiary origin; not multiplied by downstream repetitions."
+        },
+        {
+          "group_id": "IW-002-GRP-012-B",
+          "evidence_ids": [
+            "IW-002-EVD-015"
+          ],
+          "independence_basis": "Additional approved origins retained as a separate group only where organizational collection is distinct; dependent edges remain excluded from independent counting."
+        }
+      ],
+      "unresolved_contradictions": [],
+      "scope": {
+        "geographic": [
+          "Italy"
+        ],
+        "temporal": {
+          "start": "2019-01-01T00:00:00Z",
+          "end": "2026-08-19T21:59:59Z"
+        },
+        "definitions": [
+          "Operational capacity is distinct from announcements, pipeline and connection requests.",
+          "European location is distinct from full-stack infrastructure sovereignty."
+        ]
+      },
+      "unknowns": [
+        "No claim-specific counter-evidence beyond the documented tensions and limitations was approved; absence is not confirmation.",
+        "Project-level contracts, clients, accelerators, water use or energisation may remain undisclosed."
+      ],
+      "limits": [
+        "nessuna valutazione ex post",
+        "nessuna",
+        "mancano tempi effettivi",
+        "Cut-off 19 August 2026; later evidence is excluded."
+      ],
+      "decision_rules_applied": [
+        "ES-PLA-1",
+        "authority-is-not-proof",
+        "republication-is-not-independent-corroboration",
+        "announcement-is-not-realization"
+      ],
+      "excluded_evidence": [],
+      "reviewer": "Cognitive Logic designated human publication authority",
+      "previous_assessment": null,
+      "change_reason": "Canonical reconstruction of the human-approved IW-002 claim ledger without changing the approved public outcome."
+    },
+    {
+      "id": "IW-002-ASM-013",
+      "schema_version": "1.0.0",
+      "record_version": "1.0.0",
+      "created_at": "2026-08-19T21:23:05Z",
+      "updated_at": "2026-08-19T21:23:05Z",
+      "valid_from": "2026-08-19T21:23:05Z",
+      "valid_until": null,
+      "as_of": "2026-08-19T21:59:59Z",
+      "status": "approved",
+      "supersedes": null,
+      "provenance": {
+        "created_by": "Cognitive Logic IW author",
+        "method": "Manual public-source review and deterministic canonical structuring under DFV-002",
+        "sources": [
+          "IW-002-EVD-011",
+          "IW-002-EVD-012",
+          "IW-002-EVD-016"
+        ],
+        "transformations": [
+          "Approved editorial material normalized into International Watch 1.0.0 records"
+        ]
+      },
+      "responsible_actor": "Cognitive Logic IW author",
+      "review_required": true,
+      "review_due": "2026-11-19T21:59:59Z",
+      "content_hash": null,
+      "assessment_id": "IW-002-ASM-013",
+      "claim_id": "IW-002-CLM-013",
+      "state": "FORTEMENTE_CORROBORATO",
+      "state_definition_version": "1.0.0",
+      "reasoning_summary": "Technical state FORTEMENTE_CORROBORATO assigned only to this claim and scope. Evidence: convergenza sulle dipendenze. Tension or limitation: localizzazione migliora comunque capacità fisica. This is not the public composite outcome.",
+      "supporting_evidence": [
+        "IW-002-EVD-011",
+        "IW-002-EVD-012",
+        "IW-002-EVD-016"
+      ],
+      "contrary_evidence": [],
+      "independent_evidence_groups": [
+        {
+          "group_id": "IW-002-GRP-013-A",
+          "evidence_ids": [
+            "IW-002-EVD-011"
+          ],
+          "independence_basis": "First identified evidentiary origin; not multiplied by downstream repetitions."
+        },
+        {
+          "group_id": "IW-002-GRP-013-B",
+          "evidence_ids": [
+            "IW-002-EVD-012",
+            "IW-002-EVD-016"
+          ],
+          "independence_basis": "Additional approved origins retained as a separate group only where organizational collection is distinct; dependent edges remain excluded from independent counting."
+        }
+      ],
+      "unresolved_contradictions": [],
+      "scope": {
+        "geographic": [
+          "European Union"
+        ],
+        "temporal": {
+          "start": "2019-01-01T00:00:00Z",
+          "end": "2026-08-19T21:59:59Z"
+        },
+        "definitions": [
+          "Operational capacity is distinct from announcements, pipeline and connection requests.",
+          "European location is distinct from full-stack infrastructure sovereignty."
+        ]
+      },
+      "unknowns": [
+        "No claim-specific counter-evidence beyond the documented tensions and limitations was approved; absence is not confirmation.",
+        "Project-level contracts, clients, accelerators, water use or energisation may remain undisclosed."
+      ],
+      "limits": [
+        "sovranità multidimensionale",
+        "fonti UE distinte",
+        "localizzazione migliora comunque capacità fisica",
+        "Cut-off 19 August 2026; later evidence is excluded."
+      ],
+      "decision_rules_applied": [
+        "ES-FC-1",
+        "authority-is-not-proof",
+        "republication-is-not-independent-corroboration",
+        "announcement-is-not-realization"
+      ],
+      "excluded_evidence": [],
+      "reviewer": "Cognitive Logic designated human publication authority",
+      "previous_assessment": null,
+      "change_reason": "Canonical reconstruction of the human-approved IW-002 claim ledger without changing the approved public outcome."
+    },
+    {
+      "id": "IW-002-ASM-014",
+      "schema_version": "1.0.0",
+      "record_version": "1.0.0",
+      "created_at": "2026-08-19T21:23:05Z",
+      "updated_at": "2026-08-19T21:23:05Z",
+      "valid_from": "2026-08-19T21:23:05Z",
+      "valid_until": null,
+      "as_of": "2026-08-19T21:59:59Z",
+      "status": "approved",
+      "supersedes": null,
+      "provenance": {
+        "created_by": "Cognitive Logic IW author",
+        "method": "Manual public-source review and deterministic canonical structuring under DFV-002",
+        "sources": [
+          "IW-002-EVD-011"
+        ],
+        "transformations": [
+          "Approved editorial material normalized into International Watch 1.0.0 records"
+        ]
+      },
+      "responsible_actor": "Cognitive Logic IW author",
+      "review_required": true,
+      "review_due": "2026-11-19T21:59:59Z",
+      "content_hash": null,
+      "assessment_id": "IW-002-ASM-014",
+      "claim_id": "IW-002-CLM-014",
+      "state": "ACCERTATO",
+      "state_definition_version": "1.0.0",
+      "reasoning_summary": "Technical state ACCERTATO assigned only to this claim and scope. Evidence: non richiesta per la valutazione. Tension or limitation: procedimento non definitivo. This is not the public composite outcome.",
+      "supporting_evidence": [
+        "IW-002-EVD-011"
+      ],
+      "contrary_evidence": [],
+      "independent_evidence_groups": [
+        {
+          "group_id": "IW-002-GRP-014-A",
+          "evidence_ids": [
+            "IW-002-EVD-011"
+          ],
+          "independence_basis": "Single identified evidentiary origin; no claim of multiple-source corroboration."
+        }
+      ],
+      "unresolved_contradictions": [],
+      "scope": {
+        "geographic": [
+          "European Union"
+        ],
+        "temporal": {
+          "start": "2019-01-01T00:00:00Z",
+          "end": "2026-08-19T21:59:59Z"
+        },
+        "definitions": [
+          "Operational capacity is distinct from announcements, pipeline and connection requests.",
+          "European location is distinct from full-stack infrastructure sovereignty."
+        ]
+      },
+      "unknowns": [
+        "No claim-specific counter-evidence beyond the documented tensions and limitations was approved; absence is not confirmation.",
+        "Project-level contracts, clients, accelerators, water use or energisation may remain undisclosed."
+      ],
+      "limits": [
+        "valutazione preliminare",
+        "nessuna",
+        "procedimento non definitivo",
+        "Cut-off 19 August 2026; later evidence is excluded."
+      ],
+      "decision_rules_applied": [
+        "ES-ACC-1",
+        "authority-is-not-proof",
+        "republication-is-not-independent-corroboration",
+        "announcement-is-not-realization"
+      ],
+      "excluded_evidence": [],
+      "reviewer": "Cognitive Logic designated human publication authority",
+      "previous_assessment": null,
+      "change_reason": "Canonical reconstruction of the human-approved IW-002 claim ledger without changing the approved public outcome."
+    },
+    {
+      "id": "IW-002-ASM-015",
+      "schema_version": "1.0.0",
+      "record_version": "1.0.0",
+      "created_at": "2026-08-19T21:23:05Z",
+      "updated_at": "2026-08-19T21:23:05Z",
+      "valid_from": "2026-08-19T21:23:05Z",
+      "valid_until": null,
+      "as_of": "2026-08-19T21:59:59Z",
+      "status": "approved",
+      "supersedes": null,
+      "provenance": {
+        "created_by": "Cognitive Logic IW author",
+        "method": "Manual public-source review and deterministic canonical structuring under DFV-002",
+        "sources": [
+          "IW-002-EVD-009"
+        ],
+        "transformations": [
+          "Approved editorial material normalized into International Watch 1.0.0 records"
+        ]
+      },
+      "responsible_actor": "Cognitive Logic IW author",
+      "review_required": true,
+      "review_due": "2026-11-19T21:59:59Z",
+      "content_hash": null,
+      "assessment_id": "IW-002-ASM-015",
+      "claim_id": "IW-002-CLM-015",
+      "state": "ACCERTATO",
+      "state_definition_version": "1.0.0",
+      "reasoning_summary": "Technical state ACCERTATO assigned only to this claim and scope. Evidence: documentazione pubblica. Tension or limitation: operatività variabile. This is not the public composite outcome.",
+      "supporting_evidence": [
+        "IW-002-EVD-009"
+      ],
+      "contrary_evidence": [],
+      "independent_evidence_groups": [
+        {
+          "group_id": "IW-002-GRP-015-A",
+          "evidence_ids": [
+            "IW-002-EVD-009"
+          ],
+          "independence_basis": "Single identified evidentiary origin; no claim of multiple-source corroboration."
+        }
+      ],
+      "unresolved_contradictions": [],
+      "scope": {
+        "geographic": [
+          "European Union"
+        ],
+        "temporal": {
+          "start": "2019-01-01T00:00:00Z",
+          "end": "2026-08-19T21:59:59Z"
+        },
+        "definitions": [
+          "Operational capacity is distinct from announcements, pipeline and connection requests.",
+          "European location is distinct from full-stack infrastructure sovereignty."
+        ]
+      },
+      "unknowns": [
+        "No claim-specific counter-evidence beyond the documented tensions and limitations was approved; absence is not confirmation.",
+        "Project-level contracts, clients, accelerators, water use or energisation may remain undisclosed."
+      ],
+      "limits": [
+        "stato sito-specifico",
+        "riprese stampa dipendenti",
+        "operatività variabile",
+        "Cut-off 19 August 2026; later evidence is excluded."
+      ],
+      "decision_rules_applied": [
+        "ES-ACC-1",
+        "authority-is-not-proof",
+        "republication-is-not-independent-corroboration",
+        "announcement-is-not-realization"
+      ],
+      "excluded_evidence": [],
+      "reviewer": "Cognitive Logic designated human publication authority",
+      "previous_assessment": null,
+      "change_reason": "Canonical reconstruction of the human-approved IW-002 claim ledger without changing the approved public outcome."
+    },
+    {
+      "id": "IW-002-ASM-016",
+      "schema_version": "1.0.0",
+      "record_version": "1.0.0",
+      "created_at": "2026-08-19T21:23:05Z",
+      "updated_at": "2026-08-19T21:23:05Z",
+      "valid_from": "2026-08-19T21:23:05Z",
+      "valid_until": null,
+      "as_of": "2026-08-19T21:59:59Z",
+      "status": "approved",
+      "supersedes": null,
+      "provenance": {
+        "created_by": "Cognitive Logic IW author",
+        "method": "Manual public-source review and deterministic canonical structuring under DFV-002",
+        "sources": [
+          "IW-002-EVD-010"
+        ],
+        "transformations": [
+          "Approved editorial material normalized into International Watch 1.0.0 records"
+        ]
+      },
+      "responsible_actor": "Cognitive Logic IW author",
+      "review_required": true,
+      "review_due": "2026-11-19T21:59:59Z",
+      "content_hash": null,
+      "assessment_id": "IW-002-ASM-016",
+      "claim_id": "IW-002-CLM-016",
+      "state": "PLAUSIBILE",
+      "state_definition_version": "1.0.0",
+      "reasoning_summary": "Technical state PLAUSIBILE assigned only to this claim and scope. Evidence: nessuna realizzazione ancora. Tension or limitation: capitale privato non tutto impegnato. This is not the public composite outcome.",
+      "supporting_evidence": [
+        "IW-002-EVD-010"
+      ],
+      "contrary_evidence": [],
+      "independent_evidence_groups": [
+        {
+          "group_id": "IW-002-GRP-016-A",
+          "evidence_ids": [
+            "IW-002-EVD-010"
+          ],
+          "independence_basis": "Single identified evidentiary origin; no claim of multiple-source corroboration."
+        }
+      ],
+      "unresolved_contradictions": [],
+      "scope": {
+        "geographic": [
+          "European Union"
+        ],
+        "temporal": {
+          "start": "2019-01-01T00:00:00Z",
+          "end": "2026-08-19T21:59:59Z"
+        },
+        "definitions": [
+          "Operational capacity is distinct from announcements, pipeline and connection requests.",
+          "European location is distinct from full-stack infrastructure sovereignty."
+        ]
+      },
+      "unknowns": [
+        "No claim-specific counter-evidence beyond the documented tensions and limitations was approved; absence is not confirmation.",
+        "Project-level contracts, clients, accelerators, water use or energisation may remain undisclosed."
+      ],
+      "limits": [
+        "programma futuro",
+        "AP e Le Monde dipendono dalla call",
+        "capitale privato non tutto impegnato",
+        "Cut-off 19 August 2026; later evidence is excluded."
+      ],
+      "decision_rules_applied": [
+        "ES-PLA-1",
+        "authority-is-not-proof",
+        "republication-is-not-independent-corroboration",
+        "announcement-is-not-realization"
+      ],
+      "excluded_evidence": [],
+      "reviewer": "Cognitive Logic designated human publication authority",
+      "previous_assessment": null,
+      "change_reason": "Canonical reconstruction of the human-approved IW-002 claim ledger without changing the approved public outcome."
+    },
+    {
+      "id": "IW-002-ASM-017",
+      "schema_version": "1.0.0",
+      "record_version": "1.0.0",
+      "created_at": "2026-08-19T21:23:05Z",
+      "updated_at": "2026-08-19T21:23:05Z",
+      "valid_from": "2026-08-19T21:23:05Z",
+      "valid_until": null,
+      "as_of": "2026-08-19T21:59:59Z",
+      "status": "approved",
+      "supersedes": null,
+      "provenance": {
+        "created_by": "Cognitive Logic IW author",
+        "method": "Manual public-source review and deterministic canonical structuring under DFV-002",
+        "sources": [
+          "IW-002-EVD-016",
+          "IW-002-EVD-017"
+        ],
+        "transformations": [
+          "Approved editorial material normalized into International Watch 1.0.0 records"
+        ]
+      },
+      "responsible_actor": "Cognitive Logic IW author",
+      "review_required": true,
+      "review_due": "2026-11-19T21:59:59Z",
+      "content_hash": null,
+      "assessment_id": "IW-002-ASM-017",
+      "claim_id": "IW-002-CLM-017",
+      "state": "PLAUSIBILE",
+      "state_definition_version": "1.0.0",
+      "reasoning_summary": "Technical state PLAUSIBILE assigned only to this claim and scope. Evidence: evidenza materiale parziale. Tension or limitation: permessi, clienti e fasi incompleti. This is not the public composite outcome.",
+      "supporting_evidence": [
+        "IW-002-EVD-016",
+        "IW-002-EVD-017"
+      ],
+      "contrary_evidence": [],
+      "independent_evidence_groups": [
+        {
+          "group_id": "IW-002-GRP-017-A",
+          "evidence_ids": [
+            "IW-002-EVD-016"
+          ],
+          "independence_basis": "First identified evidentiary origin; not multiplied by downstream repetitions."
+        },
+        {
+          "group_id": "IW-002-GRP-017-B",
+          "evidence_ids": [
+            "IW-002-EVD-017"
+          ],
+          "independence_basis": "Additional approved origins retained as a separate group only where organizational collection is distinct; dependent edges remain excluded from independent counting."
+        }
+      ],
+      "unresolved_contradictions": [],
+      "scope": {
+        "geographic": [
+          "Europe"
+        ],
+        "temporal": {
+          "start": "2019-01-01T00:00:00Z",
+          "end": "2026-08-19T21:59:59Z"
+        },
+        "definitions": [
+          "Operational capacity is distinct from announcements, pipeline and connection requests.",
+          "European location is distinct from full-stack infrastructure sovereignty."
+        ]
+      },
+      "unknowns": [
+        "No claim-specific counter-evidence beyond the documented tensions and limitations was approved; absence is not confirmation.",
+        "Project-level contracts, clients, accelerators, water use or energisation may remain undisclosed."
+      ],
+      "limits": [
+        "informazioni aziendali",
+        "riprese dipendenti",
+        "permessi, clienti e fasi incompleti",
+        "Cut-off 19 August 2026; later evidence is excluded."
+      ],
+      "decision_rules_applied": [
+        "ES-PLA-1",
+        "authority-is-not-proof",
+        "republication-is-not-independent-corroboration",
+        "announcement-is-not-realization"
+      ],
+      "excluded_evidence": [],
+      "reviewer": "Cognitive Logic designated human publication authority",
+      "previous_assessment": null,
+      "change_reason": "Canonical reconstruction of the human-approved IW-002 claim ledger without changing the approved public outcome."
+    },
+    {
+      "id": "IW-002-ASM-018",
+      "schema_version": "1.0.0",
+      "record_version": "1.0.0",
+      "created_at": "2026-08-19T21:23:05Z",
+      "updated_at": "2026-08-19T21:23:05Z",
+      "valid_from": "2026-08-19T21:23:05Z",
+      "valid_until": null,
+      "as_of": "2026-08-19T21:59:59Z",
+      "status": "approved",
+      "supersedes": null,
+      "provenance": {
+        "created_by": "Cognitive Logic IW author",
+        "method": "Manual public-source review and deterministic canonical structuring under DFV-002",
+        "sources": [
+          "IW-002-EVD-001",
+          "IW-002-EVD-004",
+          "IW-002-EVD-011",
+          "IW-002-EVD-012"
+        ],
+        "transformations": [
+          "Approved editorial material normalized into International Watch 1.0.0 records"
+        ]
+      },
+      "responsible_actor": "Cognitive Logic IW author",
+      "review_required": true,
+      "review_due": "2026-11-19T21:59:59Z",
+      "content_hash": null,
+      "assessment_id": "IW-002-ASM-018",
+      "claim_id": "IW-002-CLM-018",
+      "state": "PLAUSIBILE",
+      "state_definition_version": "1.0.0",
+      "reasoning_summary": "Technical state PLAUSIBILE assigned only to this claim and scope. Evidence: valida se le dipendenze non sono condivise. Tension or limitation: stessi cloud e chip possono conservare punti singoli. This is not the public composite outcome.",
+      "supporting_evidence": [
+        "IW-002-EVD-001",
+        "IW-002-EVD-004",
+        "IW-002-EVD-011",
+        "IW-002-EVD-012"
+      ],
+      "contrary_evidence": [],
+      "independent_evidence_groups": [
+        {
+          "group_id": "IW-002-GRP-018-A",
+          "evidence_ids": [
+            "IW-002-EVD-001"
+          ],
+          "independence_basis": "First identified evidentiary origin; not multiplied by downstream repetitions."
+        },
+        {
+          "group_id": "IW-002-GRP-018-B",
+          "evidence_ids": [
+            "IW-002-EVD-004",
+            "IW-002-EVD-011",
+            "IW-002-EVD-012"
+          ],
+          "independence_basis": "Additional approved origins retained as a separate group only where organizational collection is distinct; dependent edges remain excluded from independent counting."
+        }
+      ],
+      "unresolved_contradictions": [],
+      "scope": {
+        "geographic": [
+          "Europe"
+        ],
+        "temporal": {
+          "start": "2019-01-01T00:00:00Z",
+          "end": "2026-08-19T21:59:59Z"
+        },
+        "definitions": [
+          "Operational capacity is distinct from announcements, pipeline and connection requests.",
+          "European location is distinct from full-stack infrastructure sovereignty."
+        ]
+      },
+      "unknowns": [
+        "No claim-specific counter-evidence beyond the documented tensions and limitations was approved; absence is not confirmation.",
+        "Project-level contracts, clients, accelerators, water use or energisation may remain undisclosed."
+      ],
+      "limits": [
+        "mancano stress test comparabili",
+        "claim precedenti",
+        "stessi cloud e chip possono conservare punti singoli",
+        "Cut-off 19 August 2026; later evidence is excluded."
+      ],
+      "decision_rules_applied": [
+        "ES-PLA-1",
+        "authority-is-not-proof",
+        "republication-is-not-independent-corroboration",
+        "announcement-is-not-realization"
+      ],
+      "excluded_evidence": [],
+      "reviewer": "Cognitive Logic designated human publication authority",
+      "previous_assessment": null,
+      "change_reason": "Canonical reconstruction of the human-approved IW-002 claim ledger without changing the approved public outcome."
+    }
+  ]
+}

@@ -13,6 +13,10 @@
   "principle_reference": "DFV-002",
   "methodology_reference": "QEN Framework",
   "case_seed": "IW-001",
+  "published_cases": ["IW-002"],
+  "published_case_registry": {
+    "IW-002": "data/international-watch/cases/IW-002/dossier-manifest.json"
+  },
   "publication_allowed": false,
   "runtime_integration": false,
   "existing_registry_integration": false,
