@@ -832,13 +832,13 @@
       "evidence_id": "IW-003-EVD-010",
       "evidence_type": "public_document_or_bounded_analytic_record",
       "description": "I Balneari hanno vinto: nessun obbligo di gare pubbliche",
-      "producer": "Panorama, ripubblicato da TuttiQuotidiani",
+      "producer": "Panorama",
       "collector": "Cognitive Logic IW author assisted by Codex",
-      "custodian": "Panorama, ripubblicato da TuttiQuotidiani",
+      "custodian": "Panorama",
       "capture_time": "2026-08-20T12:00:00Z",
       "event_time": "2026-07-24T00:00:00Z",
       "location": "IT",
-      "original_uri": "https://tuttiquotidiani.it/it/news/i-balneari-hanno-vinto-per-la-corte-di-giustizia-ue-nessun-obbligo-di-gare-pubbliche",
+      "original_uri": "https://www.panorama.it/attualita/economia/i-balneari-hanno-vinto-per-la-corte-di-giustizia-ue-nessun-obbligo-di-gare-pubbliche",
       "archived_uri": null,
       "archived_unavailability_reason": "Nessuna copia locale archiviata; URL e metadati registrati.",
       "metadata_preserved": true,
@@ -864,13 +864,13 @@
         "Le pagine dinamiche possono cambiare."
       ],
       "limitations": [
-        "Ripubblicazione non indipendente; titolo e sintesi non modificano il dispositivo della Corte."
+        "Fonte editoriale, non prova normativa. Il precedente URL di ripubblicazione TuttiQuotidiani è risultato HTTP 404 il 20 agosto 2026 ed è stato sostituito con l'URL canonico Panorama accessibile."
       ],
       "probative_value": [],
       "supports": [],
       "contradicts": [],
       "does_not_establish": [
-        "Ripubblicazione non indipendente; titolo e sintesi non modificano il dispositivo della Corte.",
+        "Fonte editoriale, non prova normativa. Il precedente URL di ripubblicazione TuttiQuotidiani è risultato HTTP 404 il 20 agosto 2026 ed è stato sostituito con l'URL canonico Panorama accessibile.",
         "Intenzioni degli attori",
         "Conclusioni oltre lo scope del documento"
       ]

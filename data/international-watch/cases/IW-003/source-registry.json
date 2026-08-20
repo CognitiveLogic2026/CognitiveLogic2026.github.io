@@ -621,7 +621,7 @@
       "review_due": "2026-11-20T21:59:59Z",
       "content_hash": null,
       "source_id": "IW-003-SRC-010",
-      "entity_id": "Panorama, ripubblicato da TuttiQuotidiani",
+      "entity_id": "Panorama",
       "source_name": "I Balneari hanno vinto: nessun obbligo di gare pubbliche",
       "jurisdiction": [
         "IT"
@@ -632,7 +632,7 @@
       ],
       "ownership_or_control": {
         "known": true,
-        "description": "Panorama, ripubblicato da TuttiQuotidiani"
+        "description": "Panorama"
       },
       "primary_or_secondary": "secondary",
       "party_to_event": "no",
@@ -646,7 +646,7 @@
       "derived_from": [],
       "known_method": "Esempio documentato di trasformazione narrativa",
       "limitations": [
-        "Ripubblicazione non indipendente; titolo e sintesi non modificano il dispositivo della Corte.",
+        "Fonte editoriale, non prova normativa. Il precedente URL di ripubblicazione TuttiQuotidiani è risultato HTTP 404 il 20 agosto 2026 ed è stato sostituito con l'URL canonico Panorama accessibile.",
         "Autorevolezza o autenticità non equivalgono a verità sostanziale."
       ],
       "identity_verification": {
@@ -654,7 +654,7 @@
         "basis": "Identità e canale verificati; per SRC-008 è verificata l'esistenza tramite la decisione giudiziaria, non il testo integrale."
       },
       "archived_capture": null,
-      "original_uri": "https://tuttiquotidiani.it/it/news/i-balneari-hanno-vinto-per-la-corte-di-giustizia-ue-nessun-obbligo-di-gare-pubbliche",
+      "original_uri": "https://www.panorama.it/attualita/economia/i-balneari-hanno-vinto-per-la-corte-di-giustizia-ue-nessun-obbligo-di-gare-pubbliche",
       "archived_unavailability_reason": "Nessuna copia locale archiviata; URL, accesso e nota probatoria delimitata conservati.",
       "original_text_available": true,
       "translation_trace": [],

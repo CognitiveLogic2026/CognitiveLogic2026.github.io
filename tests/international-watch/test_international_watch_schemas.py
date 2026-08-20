@@ -94,11 +94,22 @@ class InternationalWatchSchemaTests(unittest.TestCase):
         for path in files:
             self.assertTrue(FORBIDDEN_KEYS.isdisjoint(set(walk_keys(load(path)))), path)
 
-    def test_iw_001_is_explicitly_non_conclusive_and_non_publishable(self):
+    def test_iw_001_records_prospective_human_publication_authorization(self):
         manifest = load(ROOT / "data" / "international-watch" / "manifest.json")
+        case = ROOT / "data" / "international-watch" / "cases" / "IW-001"
+        dossier_manifest = load(case / "dossier-manifest.json")
+        workflow = load(case / "workflow.json")["records"][0]
         assessment = load(EXAMPLE_DIR / PAIRS["epistemic-assessment"])
         self.assertEqual(manifest["case_seed"], "IW-001")
-        self.assertFalse(manifest["publication_allowed"])
+        self.assertTrue(manifest["publication_allowed"])
+        self.assertIn("IW-001", manifest["published_cases"])
+        self.assertEqual(dossier_manifest["status"], "published")
+        self.assertTrue(dossier_manifest["publication_allowed"])
+        self.assertEqual(dossier_manifest["authorized_by"], "Roberto Malini")
+        self.assertEqual(dossier_manifest["authorized_role"], "Founder and Editor-in-Chief")
+        self.assertGreater(dossier_manifest["authorized_at"], dossier_manifest["published_at"])
+        self.assertEqual(workflow["current_state"], "published")
+        self.assertEqual(workflow["history"][-1]["actor"], "Roberto Malini")
         self.assertEqual(assessment["state"], "INDETERMINABILE")
 
     def test_iw_003_records_human_publication_authorization(self):

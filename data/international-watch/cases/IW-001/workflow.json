@@ -7,7 +7,7 @@
       "schema_version": "1.0.0",
       "record_version": "1.0.0",
       "created_at": "2026-08-19T12:00:00Z",
-      "updated_at": "2026-08-19T15:00:00Z",
+      "updated_at": "2026-08-20T19:17:12Z",
       "valid_from": "2026-08-19T12:00:00Z",
       "valid_until": null,
       "as_of": "2026-08-19T12:00:00Z",
@@ -27,7 +27,7 @@
       "content_hash": null,
       "workflow_id": "IW-001-WF-001",
       "record_id": "IW-001",
-      "current_state": "approved",
+      "current_state": "published",
       "history": [
         {
           "from": null,
@@ -52,6 +52,14 @@
           "actor": "Cognitive Logic — International Watch Methodology Review",
           "role": "Codex-assisted technical and methodological review function",
           "reason": "All Phase 3 methodological, structural, temporal and validation gates passed. IW-001 is approved methodologically; final organizational approval remains reserved to the human responsible officer of Cognitive Logic. No external certification or specialist legal review."
+        },
+        {
+          "from": "approved",
+          "to": "published",
+          "at": "2026-08-20T19:17:12Z",
+          "actor": "Roberto Malini",
+          "role": "Founder and Editor-in-Chief",
+          "reason": "Prospective human authorization for publication and continued public availability of IW-001. The technical publication predates this authorization: GitHub Pages deployment run 32266168273 completed successfully at 2026-08-19T14:48:22Z; this event does not represent the authorization as retroactive."
         }
       ],
       "author": "Cognitive Logic IW author",
