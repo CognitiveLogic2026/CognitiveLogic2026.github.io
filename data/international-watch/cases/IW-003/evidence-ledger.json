@@ -945,6 +945,148 @@
         "Intenzioni degli attori",
         "Conclusioni oltre lo scope del documento"
       ]
+    },
+    {
+      "id": "IW-003-EVD-012",
+      "schema_version": "1.0.0",
+      "record_version": "1.0.0",
+      "created_at": "2026-08-20T12:00:00Z",
+      "updated_at": "2026-08-20T12:30:00Z",
+      "valid_from": "2026-08-20T12:00:00Z",
+      "valid_until": null,
+      "as_of": "2026-08-20T21:59:59Z",
+      "status": "approved",
+      "supersedes": null,
+      "provenance": {
+        "created_by": "Cognitive Logic IW author assisted by Codex",
+        "method": "DFV-002 and QEN International Watch manual source review; Codex-assisted structuring",
+        "sources": [
+          "IW-003-SRC-012"
+        ],
+        "transformations": [
+          "Claim-bounded Italian synthesis; no truth or trust score"
+        ]
+      },
+      "responsible_actor": "Cognitive Logic IW author",
+      "review_required": true,
+      "review_due": "2026-11-20T21:59:59Z",
+      "content_hash": null,
+      "evidence_id": "IW-003-EVD-012",
+      "evidence_type": "public_document_or_bounded_analytic_record",
+      "description": "Terracina mette a gara 86 concessioni balneari",
+      "producer": "Coste360 — Osservatorio",
+      "collector": "Cognitive Logic IW author assisted by Codex",
+      "custodian": "Coste360 — Osservatorio",
+      "capture_time": "2026-08-20T12:00:00Z",
+      "event_time": "2026-06-06T00:00:00Z",
+      "location": "IT",
+      "original_uri": "https://osservatorio.coste360.it/2026/06/06/terracina-mette-a-gara-86-concessioni-balneari-indennizzi-riconosciuti-con-tetto-provvisorio-di-100-000-e-e-perizie-a-carico-degli-uscenti/",
+      "archived_uri": null,
+      "archived_unavailability_reason": "Nessuna copia locale archiviata; URL e metadati registrati.",
+      "metadata_preserved": true,
+      "chain_of_custody": [
+        {
+          "actor": "Cognitive Logic IW author assisted by Codex",
+          "action": "Consultazione e sintesi probatoria delimitata.",
+          "at": "2026-08-20T12:00:00Z"
+        }
+      ],
+      "authentication_status": "authenticated",
+      "independence_from_claimant": "yes",
+      "coverage": "Ricostruzione giornalistica verticale di una procedura comunale e del trattamento provvisorio degli indennizzi",
+      "completeness": "Documento integrale accessibile via URL.",
+      "resolution": "Documento",
+      "verifiability": "Ricontrollare URL e passaggi citati.",
+      "recency": "Valutata al cut-off.",
+      "proximity_to_event": "Diretta per atto o pubblicazione; contestuale per fonti secondarie.",
+      "known_transformations": [
+        "Sintesi italiana"
+      ],
+      "technical_limitations": [
+        "Le pagine dinamiche possono cambiare."
+      ],
+      "limitations": [
+        "Fonte editoriale secondaria: non sostituisce gli atti originari, non prova la legittimità della procedura e non stabilisce criteri normativi."
+      ],
+      "probative_value": [],
+      "supports": [],
+      "contradicts": [],
+      "does_not_establish": [
+        "Fonte editoriale secondaria: non sostituisce gli atti originari, non prova la legittimità della procedura e non stabilisce criteri normativi.",
+        "Intenzioni degli attori",
+        "Conclusioni oltre lo scope del documento"
+      ]
+    },
+    {
+      "id": "IW-003-EVD-013",
+      "schema_version": "1.0.0",
+      "record_version": "1.0.0",
+      "created_at": "2026-08-20T12:00:00Z",
+      "updated_at": "2026-08-20T12:30:00Z",
+      "valid_from": "2026-08-20T12:00:00Z",
+      "valid_until": null,
+      "as_of": "2026-08-20T21:59:59Z",
+      "status": "approved",
+      "supersedes": null,
+      "provenance": {
+        "created_by": "Cognitive Logic IW author assisted by Codex",
+        "method": "DFV-002 and QEN International Watch manual source review; Codex-assisted structuring",
+        "sources": [
+          "IW-003-SRC-013"
+        ],
+        "transformations": [
+          "Claim-bounded Italian synthesis; no truth or trust score"
+        ]
+      },
+      "responsible_actor": "Cognitive Logic IW author",
+      "review_required": true,
+      "review_due": "2026-11-20T21:59:59Z",
+      "content_hash": null,
+      "evidence_id": "IW-003-EVD-013",
+      "evidence_type": "public_document_or_bounded_analytic_record",
+      "description": "Laigueglia indice la gara per 45 concessioni demaniali marittime",
+      "producer": "Coste360 — Osservatorio",
+      "collector": "Cognitive Logic IW author assisted by Codex",
+      "custodian": "Coste360 — Osservatorio",
+      "capture_time": "2026-08-20T12:00:00Z",
+      "event_time": "2026-05-16T00:00:00Z",
+      "location": "IT",
+      "original_uri": "https://osservatorio.coste360.it/2026/05/16/laigueglia-indice-la-gara-per-45-concessioni-demaniali-marittime/",
+      "archived_uri": null,
+      "archived_unavailability_reason": "Nessuna copia locale archiviata; URL e metadati registrati.",
+      "metadata_preserved": true,
+      "chain_of_custody": [
+        {
+          "actor": "Cognitive Logic IW author assisted by Codex",
+          "action": "Consultazione e sintesi probatoria delimitata.",
+          "at": "2026-08-20T12:00:00Z"
+        }
+      ],
+      "authentication_status": "authenticated",
+      "independence_from_claimant": "yes",
+      "coverage": "Ricostruzione giornalistica verticale di una procedura comunale e dell'esclusione degli indennizzi",
+      "completeness": "Documento integrale accessibile via URL.",
+      "resolution": "Documento",
+      "verifiability": "Ricontrollare URL e passaggi citati.",
+      "recency": "Valutata al cut-off.",
+      "proximity_to_event": "Diretta per atto o pubblicazione; contestuale per fonti secondarie.",
+      "known_transformations": [
+        "Sintesi italiana"
+      ],
+      "technical_limitations": [
+        "Le pagine dinamiche possono cambiare."
+      ],
+      "limitations": [
+        "Fonte editoriale secondaria: non sostituisce gli atti originari, non prova la legittimità della procedura e non stabilisce criteri normativi."
+      ],
+      "probative_value": [],
+      "supports": [],
+      "contradicts": [],
+      "does_not_establish": [
+        "Fonte editoriale secondaria: non sostituisce gli atti originari, non prova la legittimità della procedura e non stabilisce criteri normativi.",
+        "Intenzioni degli attori",
+        "Conclusioni oltre lo scope del documento"
+      ]
     }
   ]
 }

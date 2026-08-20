@@ -726,6 +726,136 @@
       "publication_timestamp": "2026-06-17T00:00:00Z",
       "source_as_at": "2026-06-17T00:00:00Z",
       "accessed_at": "2026-08-20T12:00:00Z"
+    },
+    {
+      "id": "IW-003-SRC-012",
+      "schema_version": "1.0.0",
+      "record_version": "1.0.0",
+      "created_at": "2026-08-20T12:00:00Z",
+      "updated_at": "2026-08-20T12:30:00Z",
+      "valid_from": "2026-08-20T12:00:00Z",
+      "valid_until": null,
+      "as_of": "2026-08-20T21:59:59Z",
+      "status": "approved",
+      "supersedes": null,
+      "provenance": {
+        "created_by": "Cognitive Logic IW author assisted by Codex",
+        "method": "DFV-002 and QEN International Watch manual source review; Codex-assisted structuring",
+        "sources": [],
+        "transformations": [
+          "Claim-bounded Italian synthesis; no truth or trust score"
+        ]
+      },
+      "responsible_actor": "Cognitive Logic IW author",
+      "review_required": true,
+      "review_due": "2026-11-20T21:59:59Z",
+      "content_hash": null,
+      "source_id": "IW-003-SRC-012",
+      "entity_id": "Coste360 — Osservatorio",
+      "source_name": "Terracina mette a gara 86 concessioni balneari",
+      "jurisdiction": [
+        "IT"
+      ],
+      "source_role": [
+        "publisher",
+        "originator"
+      ],
+      "ownership_or_control": {
+        "known": true,
+        "description": "Coste360 — Osservatorio"
+      },
+      "primary_or_secondary": "secondary",
+      "party_to_event": "no",
+      "access_mode": "open",
+      "language": [
+        "it"
+      ],
+      "publication_channel": "web publication",
+      "originator_of": [],
+      "repeats": [],
+      "derived_from": [],
+      "known_method": "Ricostruzione giornalistica verticale di una procedura comunale e del trattamento provvisorio degli indennizzi",
+      "limitations": [
+        "Fonte editoriale secondaria: non sostituisce gli atti originari, non prova la legittimità della procedura e non stabilisce criteri normativi.",
+        "Autorevolezza o autenticità non equivalgono a verità sostanziale."
+      ],
+      "identity_verification": {
+        "status": "verified",
+        "basis": "Identità e canale verificati; per SRC-008 è verificata l'esistenza tramite la decisione giudiziaria, non il testo integrale."
+      },
+      "archived_capture": null,
+      "original_uri": "https://osservatorio.coste360.it/2026/06/06/terracina-mette-a-gara-86-concessioni-balneari-indennizzi-riconosciuti-con-tetto-provvisorio-di-100-000-e-e-perizie-a-carico-degli-uscenti/",
+      "archived_unavailability_reason": "Nessuna copia locale archiviata; URL, accesso e nota probatoria delimitata conservati.",
+      "original_text_available": true,
+      "translation_trace": [],
+      "publication_timestamp": "2026-06-06T00:00:00Z",
+      "source_as_at": "2026-06-06T00:00:00Z",
+      "accessed_at": "2026-08-20T12:00:00Z"
+    },
+    {
+      "id": "IW-003-SRC-013",
+      "schema_version": "1.0.0",
+      "record_version": "1.0.0",
+      "created_at": "2026-08-20T12:00:00Z",
+      "updated_at": "2026-08-20T12:30:00Z",
+      "valid_from": "2026-08-20T12:00:00Z",
+      "valid_until": null,
+      "as_of": "2026-08-20T21:59:59Z",
+      "status": "approved",
+      "supersedes": null,
+      "provenance": {
+        "created_by": "Cognitive Logic IW author assisted by Codex",
+        "method": "DFV-002 and QEN International Watch manual source review; Codex-assisted structuring",
+        "sources": [],
+        "transformations": [
+          "Claim-bounded Italian synthesis; no truth or trust score"
+        ]
+      },
+      "responsible_actor": "Cognitive Logic IW author",
+      "review_required": true,
+      "review_due": "2026-11-20T21:59:59Z",
+      "content_hash": null,
+      "source_id": "IW-003-SRC-013",
+      "entity_id": "Coste360 — Osservatorio",
+      "source_name": "Laigueglia indice la gara per 45 concessioni demaniali marittime",
+      "jurisdiction": [
+        "IT"
+      ],
+      "source_role": [
+        "publisher",
+        "originator"
+      ],
+      "ownership_or_control": {
+        "known": true,
+        "description": "Coste360 — Osservatorio"
+      },
+      "primary_or_secondary": "secondary",
+      "party_to_event": "no",
+      "access_mode": "open",
+      "language": [
+        "it"
+      ],
+      "publication_channel": "web publication",
+      "originator_of": [],
+      "repeats": [],
+      "derived_from": [],
+      "known_method": "Ricostruzione giornalistica verticale di una procedura comunale e dell'esclusione degli indennizzi",
+      "limitations": [
+        "Fonte editoriale secondaria: non sostituisce gli atti originari, non prova la legittimità della procedura e non stabilisce criteri normativi.",
+        "Autorevolezza o autenticità non equivalgono a verità sostanziale."
+      ],
+      "identity_verification": {
+        "status": "verified",
+        "basis": "Identità e canale verificati; per SRC-008 è verificata l'esistenza tramite la decisione giudiziaria, non il testo integrale."
+      },
+      "archived_capture": null,
+      "original_uri": "https://osservatorio.coste360.it/2026/05/16/laigueglia-indice-la-gara-per-45-concessioni-demaniali-marittime/",
+      "archived_unavailability_reason": "Nessuna copia locale archiviata; URL, accesso e nota probatoria delimitata conservati.",
+      "original_text_available": true,
+      "translation_trace": [],
+      "publication_timestamp": "2026-05-16T00:00:00Z",
+      "source_as_at": "2026-05-16T00:00:00Z",
+      "accessed_at": "2026-08-20T12:00:00Z"
     }
   ]
 }

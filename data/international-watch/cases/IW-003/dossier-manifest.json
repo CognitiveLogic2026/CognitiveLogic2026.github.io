@@ -31,7 +31,7 @@
     "workflow.json",
     "dossier-manifest.json"
   ],
-  "source_count": 11,
+  "source_count": 13,
   "claim_count": 12,
   "local_evidence_files": [],
   "missing_local_file_reason": "Nessuna copia protetta archiviata; URL, timestamp e note probatorie delimitate conservati.",
