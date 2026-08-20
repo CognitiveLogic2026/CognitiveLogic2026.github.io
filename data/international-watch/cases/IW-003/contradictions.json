@@ -1,0 +1,102 @@
+{
+  "schema_version": "1.0.0",
+  "case_id": "IW-003",
+  "records": [
+    {
+      "id": "IW-003-CON-001",
+      "schema_version": "1.0.0",
+      "record_version": "1.0.0",
+      "created_at": "2026-08-20T12:00:00Z",
+      "updated_at": "2026-08-20T12:30:00Z",
+      "valid_from": "2026-08-20T12:00:00Z",
+      "valid_until": null,
+      "as_of": "2026-08-20T21:59:59Z",
+      "status": "approved",
+      "supersedes": null,
+      "provenance": {
+        "created_by": "Cognitive Logic IW author assisted by Codex",
+        "method": "DFV-002 and QEN International Watch manual source review; Codex-assisted structuring",
+        "sources": [
+          "IW-003-CLM-001",
+          "IW-003-CLM-004"
+        ],
+        "transformations": [
+          "Claim-bounded Italian synthesis; no truth or trust score"
+        ]
+      },
+      "responsible_actor": "Cognitive Logic IW author",
+      "review_required": true,
+      "review_due": "2026-11-20T21:59:59Z",
+      "content_hash": null,
+      "contradiction_id": "IW-003-CON-001",
+      "claim_a": "IW-003-CLM-001",
+      "claim_b": "IW-003-CLM-004",
+      "subject": "regime delle concessioni balneari",
+      "predicate": "applicabilità e selezione",
+      "object": "effetti dell'ordinanza C-574/25",
+      "definition": "Proposizioni allineate per Italia e cut-off.",
+      "temporal_scope": {
+        "start": "2026-07-10T00:00:00Z",
+        "end": "2026-08-20T21:59:59Z"
+      },
+      "place": "Italia/UE",
+      "qualifiers": [
+        "scope giuridico"
+      ],
+      "incompatibility": "Il claim di eliminazione generale è incompatibile con l'obbligo condizionato conservato dalla Corte.",
+      "extent": "total",
+      "definition_divergence_possible": false,
+      "resolution_evidence_needed": [
+        "Nuova decisione o modifica normativa materialmente pertinente"
+      ]
+    },
+    {
+      "id": "IW-003-CON-002",
+      "schema_version": "1.0.0",
+      "record_version": "1.0.0",
+      "created_at": "2026-08-20T12:00:00Z",
+      "updated_at": "2026-08-20T12:30:00Z",
+      "valid_from": "2026-08-20T12:00:00Z",
+      "valid_until": null,
+      "as_of": "2026-08-20T21:59:59Z",
+      "status": "approved",
+      "supersedes": null,
+      "provenance": {
+        "created_by": "Cognitive Logic IW author assisted by Codex",
+        "method": "DFV-002 and QEN International Watch manual source review; Codex-assisted structuring",
+        "sources": [
+          "IW-003-CLM-009",
+          "IW-003-CLM-005"
+        ],
+        "transformations": [
+          "Claim-bounded Italian synthesis; no truth or trust score"
+        ]
+      },
+      "responsible_actor": "Cognitive Logic IW author",
+      "review_required": true,
+      "review_due": "2026-11-20T21:59:59Z",
+      "content_hash": null,
+      "contradiction_id": "IW-003-CON-002",
+      "claim_a": "IW-003-CLM-009",
+      "claim_b": "IW-003-CLM-005",
+      "subject": "regime delle concessioni balneari",
+      "predicate": "applicabilità e selezione",
+      "object": "effetti dell'ordinanza C-574/25",
+      "definition": "Proposizioni allineate per Italia e cut-off.",
+      "temporal_scope": {
+        "start": "2026-07-10T00:00:00Z",
+        "end": "2026-08-20T21:59:59Z"
+      },
+      "place": "Italia/UE",
+      "qualifiers": [
+        "scope giuridico"
+      ],
+      "incompatibility": "L'esclusione dei titoli pre-2009 dopo proroga è incompatibile con il punto 2 del dispositivo.",
+      "extent": "total",
+      "definition_divergence_possible": false,
+      "resolution_evidence_needed": [
+        "Nuova decisione o modifica normativa materialmente pertinente"
+      ]
+    }
+  ]
+}

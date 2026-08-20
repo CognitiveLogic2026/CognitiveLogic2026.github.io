@@ -1,0 +1,950 @@
+{
+  "schema_version": "1.0.0",
+  "case_id": "IW-003",
+  "records": [
+    {
+      "id": "IW-003-EVD-001",
+      "schema_version": "1.0.0",
+      "record_version": "1.0.0",
+      "created_at": "2026-08-20T12:00:00Z",
+      "updated_at": "2026-08-20T12:30:00Z",
+      "valid_from": "2026-08-20T12:00:00Z",
+      "valid_until": null,
+      "as_of": "2026-08-20T21:59:59Z",
+      "status": "approved",
+      "supersedes": null,
+      "provenance": {
+        "created_by": "Cognitive Logic IW author assisted by Codex",
+        "method": "DFV-002 and QEN International Watch manual source review; Codex-assisted structuring",
+        "sources": [
+          "IW-003-SRC-001"
+        ],
+        "transformations": [
+          "Claim-bounded Italian synthesis; no truth or trust score"
+        ]
+      },
+      "responsible_actor": "Cognitive Logic IW author",
+      "review_required": true,
+      "review_due": "2026-11-20T21:59:59Z",
+      "content_hash": null,
+      "evidence_id": "IW-003-EVD-001",
+      "evidence_type": "public_document_or_bounded_analytic_record",
+      "description": "Ordinanza della Corte (Settima Sezione), 10 luglio 2026, C-574/25",
+      "producer": "Court of Justice of the European Union",
+      "collector": "Cognitive Logic IW author assisted by Codex",
+      "custodian": "Court of Justice of the European Union",
+      "capture_time": "2026-08-20T12:00:00Z",
+      "event_time": "2026-07-10T00:00:00Z",
+      "location": "EU",
+      "original_uri": "https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX%3A62025CO0574",
+      "archived_uri": null,
+      "archived_unavailability_reason": "Nessuna copia locale archiviata; URL e metadati registrati.",
+      "metadata_preserved": true,
+      "chain_of_custody": [
+        {
+          "actor": "Cognitive Logic IW author assisted by Codex",
+          "action": "Consultazione e sintesi probatoria delimitata.",
+          "at": "2026-08-20T12:00:00Z"
+        }
+      ],
+      "authentication_status": "authenticated",
+      "independence_from_claimant": "yes",
+      "coverage": "Decisione giudiziaria primaria; dispositivo e motivazione",
+      "completeness": "Documento integrale accessibile via URL.",
+      "resolution": "Documento",
+      "verifiability": "Ricontrollare URL e passaggi citati.",
+      "recency": "Valutata al cut-off.",
+      "proximity_to_event": "Diretta per atto o pubblicazione; contestuale per fonti secondarie.",
+      "known_transformations": [
+        "Sintesi italiana"
+      ],
+      "technical_limitations": [
+        "Le pagine dinamiche possono cambiare."
+      ],
+      "limitations": [
+        "Stabilisce interpretazioni di diritto UE nel perimetro deciso; non accerta la scarsità italiana."
+      ],
+      "probative_value": [
+        {
+          "claim_id": "IW-003-CLM-001",
+          "establishes": "Supporto o controevidenza delimitati secondo claim e scope."
+        },
+        {
+          "claim_id": "IW-003-CLM-002",
+          "establishes": "Supporto o controevidenza delimitati secondo claim e scope."
+        },
+        {
+          "claim_id": "IW-003-CLM-003",
+          "establishes": "Supporto o controevidenza delimitati secondo claim e scope."
+        },
+        {
+          "claim_id": "IW-003-CLM-004",
+          "establishes": "Supporto o controevidenza delimitati secondo claim e scope."
+        },
+        {
+          "claim_id": "IW-003-CLM-005",
+          "establishes": "Supporto o controevidenza delimitati secondo claim e scope."
+        },
+        {
+          "claim_id": "IW-003-CLM-007",
+          "establishes": "Supporto o controevidenza delimitati secondo claim e scope."
+        },
+        {
+          "claim_id": "IW-003-CLM-008",
+          "establishes": "Supporto o controevidenza delimitati secondo claim e scope."
+        },
+        {
+          "claim_id": "IW-003-CLM-009",
+          "establishes": "Supporto o controevidenza delimitati secondo claim e scope."
+        },
+        {
+          "claim_id": "IW-003-CLM-011",
+          "establishes": "Supporto o controevidenza delimitati secondo claim e scope."
+        }
+      ],
+      "supports": [
+        "IW-003-CLM-001",
+        "IW-003-CLM-002",
+        "IW-003-CLM-003",
+        "IW-003-CLM-004",
+        "IW-003-CLM-005",
+        "IW-003-CLM-007",
+        "IW-003-CLM-008",
+        "IW-003-CLM-009",
+        "IW-003-CLM-011"
+      ],
+      "contradicts": [],
+      "does_not_establish": [
+        "Stabilisce interpretazioni di diritto UE nel perimetro deciso; non accerta la scarsità italiana.",
+        "Intenzioni degli attori",
+        "Conclusioni oltre lo scope del documento"
+      ]
+    },
+    {
+      "id": "IW-003-EVD-002",
+      "schema_version": "1.0.0",
+      "record_version": "1.0.0",
+      "created_at": "2026-08-20T12:00:00Z",
+      "updated_at": "2026-08-20T12:30:00Z",
+      "valid_from": "2026-08-20T12:00:00Z",
+      "valid_until": null,
+      "as_of": "2026-08-20T21:59:59Z",
+      "status": "approved",
+      "supersedes": null,
+      "provenance": {
+        "created_by": "Cognitive Logic IW author assisted by Codex",
+        "method": "DFV-002 and QEN International Watch manual source review; Codex-assisted structuring",
+        "sources": [
+          "IW-003-SRC-002"
+        ],
+        "transformations": [
+          "Claim-bounded Italian synthesis; no truth or trust score"
+        ]
+      },
+      "responsible_actor": "Cognitive Logic IW author",
+      "review_required": true,
+      "review_due": "2026-11-20T21:59:59Z",
+      "content_hash": null,
+      "evidence_id": "IW-003-EVD-002",
+      "evidence_type": "public_document_or_bounded_analytic_record",
+      "description": "Direttiva 2006/123/CE relativa ai servizi nel mercato interno",
+      "producer": "European Parliament and Council",
+      "collector": "Cognitive Logic IW author assisted by Codex",
+      "custodian": "European Parliament and Council",
+      "capture_time": "2026-08-20T12:00:00Z",
+      "event_time": "2006-12-27T00:00:00Z",
+      "location": "EU",
+      "original_uri": "https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX%3A32006L0123",
+      "archived_uri": null,
+      "archived_unavailability_reason": "Nessuna copia locale archiviata; URL e metadati registrati.",
+      "metadata_preserved": true,
+      "chain_of_custody": [
+        {
+          "actor": "Cognitive Logic IW author assisted by Codex",
+          "action": "Consultazione e sintesi probatoria delimitata.",
+          "at": "2026-08-20T12:00:00Z"
+        }
+      ],
+      "authentication_status": "authenticated",
+      "independence_from_claimant": "yes",
+      "coverage": "Norma primaria, articolo 12",
+      "completeness": "Documento integrale accessibile via URL.",
+      "resolution": "Documento",
+      "verifiability": "Ricontrollare URL e passaggi citati.",
+      "recency": "Valutata al cut-off.",
+      "proximity_to_event": "Diretta per atto o pubblicazione; contestuale per fonti secondarie.",
+      "known_transformations": [
+        "Sintesi italiana"
+      ],
+      "technical_limitations": [
+        "Le pagine dinamiche possono cambiare."
+      ],
+      "limitations": [
+        "Definisce la condizione e la procedura; non misura la scarsità in un territorio."
+      ],
+      "probative_value": [
+        {
+          "claim_id": "IW-003-CLM-001",
+          "establishes": "Supporto o controevidenza delimitati secondo claim e scope."
+        },
+        {
+          "claim_id": "IW-003-CLM-004",
+          "establishes": "Supporto o controevidenza delimitati secondo claim e scope."
+        },
+        {
+          "claim_id": "IW-003-CLM-005",
+          "establishes": "Supporto o controevidenza delimitati secondo claim e scope."
+        },
+        {
+          "claim_id": "IW-003-CLM-012",
+          "establishes": "Supporto o controevidenza delimitati secondo claim e scope."
+        }
+      ],
+      "supports": [
+        "IW-003-CLM-001",
+        "IW-003-CLM-004",
+        "IW-003-CLM-005",
+        "IW-003-CLM-012"
+      ],
+      "contradicts": [],
+      "does_not_establish": [
+        "Definisce la condizione e la procedura; non misura la scarsità in un territorio.",
+        "Intenzioni degli attori",
+        "Conclusioni oltre lo scope del documento"
+      ]
+    },
+    {
+      "id": "IW-003-EVD-003",
+      "schema_version": "1.0.0",
+      "record_version": "1.0.0",
+      "created_at": "2026-08-20T12:00:00Z",
+      "updated_at": "2026-08-20T12:30:00Z",
+      "valid_from": "2026-08-20T12:00:00Z",
+      "valid_until": null,
+      "as_of": "2026-08-20T21:59:59Z",
+      "status": "approved",
+      "supersedes": null,
+      "provenance": {
+        "created_by": "Cognitive Logic IW author assisted by Codex",
+        "method": "DFV-002 and QEN International Watch manual source review; Codex-assisted structuring",
+        "sources": [
+          "IW-003-SRC-003"
+        ],
+        "transformations": [
+          "Claim-bounded Italian synthesis; no truth or trust score"
+        ]
+      },
+      "responsible_actor": "Cognitive Logic IW author",
+      "review_required": true,
+      "review_due": "2026-11-20T21:59:59Z",
+      "content_hash": null,
+      "evidence_id": "IW-003-EVD-003",
+      "evidence_type": "public_document_or_bounded_analytic_record",
+      "description": "Promoimpresa, cause riunite C-458/14 e C-67/15",
+      "producer": "Court of Justice of the European Union",
+      "collector": "Cognitive Logic IW author assisted by Codex",
+      "custodian": "Court of Justice of the European Union",
+      "capture_time": "2026-08-20T12:00:00Z",
+      "event_time": "2016-07-14T00:00:00Z",
+      "location": "EU",
+      "original_uri": "https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX%3A62014CJ0458",
+      "archived_uri": null,
+      "archived_unavailability_reason": "Nessuna copia locale archiviata; URL e metadati registrati.",
+      "metadata_preserved": true,
+      "chain_of_custody": [
+        {
+          "actor": "Cognitive Logic IW author assisted by Codex",
+          "action": "Consultazione e sintesi probatoria delimitata.",
+          "at": "2026-08-20T12:00:00Z"
+        }
+      ],
+      "authentication_status": "authenticated",
+      "independence_from_claimant": "yes",
+      "coverage": "Precedente giudiziario sulla scarsità e selezione",
+      "completeness": "Documento integrale accessibile via URL.",
+      "resolution": "Documento",
+      "verifiability": "Ricontrollare URL e passaggi citati.",
+      "recency": "Valutata al cut-off.",
+      "proximity_to_event": "Diretta per atto o pubblicazione; contestuale per fonti secondarie.",
+      "known_transformations": [
+        "Sintesi italiana"
+      ],
+      "technical_limitations": [
+        "Le pagine dinamiche possono cambiare."
+      ],
+      "limitations": [
+        "Non decide la scarsità di ogni costa italiana al cut-off."
+      ],
+      "probative_value": [
+        {
+          "claim_id": "IW-003-CLM-002",
+          "establishes": "Supporto o controevidenza delimitati secondo claim e scope."
+        },
+        {
+          "claim_id": "IW-003-CLM-004",
+          "establishes": "Supporto o controevidenza delimitati secondo claim e scope."
+        }
+      ],
+      "supports": [
+        "IW-003-CLM-002",
+        "IW-003-CLM-004"
+      ],
+      "contradicts": [],
+      "does_not_establish": [
+        "Non decide la scarsità di ogni costa italiana al cut-off.",
+        "Intenzioni degli attori",
+        "Conclusioni oltre lo scope del documento"
+      ]
+    },
+    {
+      "id": "IW-003-EVD-004",
+      "schema_version": "1.0.0",
+      "record_version": "1.0.0",
+      "created_at": "2026-08-20T12:00:00Z",
+      "updated_at": "2026-08-20T12:30:00Z",
+      "valid_from": "2026-08-20T12:00:00Z",
+      "valid_until": null,
+      "as_of": "2026-08-20T21:59:59Z",
+      "status": "approved",
+      "supersedes": null,
+      "provenance": {
+        "created_by": "Cognitive Logic IW author assisted by Codex",
+        "method": "DFV-002 and QEN International Watch manual source review; Codex-assisted structuring",
+        "sources": [
+          "IW-003-SRC-004"
+        ],
+        "transformations": [
+          "Claim-bounded Italian synthesis; no truth or trust score"
+        ]
+      },
+      "responsible_actor": "Cognitive Logic IW author",
+      "review_required": true,
+      "review_due": "2026-11-20T21:59:59Z",
+      "content_hash": null,
+      "evidence_id": "IW-003-EVD-004",
+      "evidence_type": "public_document_or_bounded_analytic_record",
+      "description": "Comune di Ginosa, C-348/22",
+      "producer": "Court of Justice of the European Union",
+      "collector": "Cognitive Logic IW author assisted by Codex",
+      "custodian": "Court of Justice of the European Union",
+      "capture_time": "2026-08-20T12:00:00Z",
+      "event_time": "2023-04-20T00:00:00Z",
+      "location": "EU",
+      "original_uri": "https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX%3A62022CJ0348",
+      "archived_uri": null,
+      "archived_unavailability_reason": "Nessuna copia locale archiviata; URL e metadati registrati.",
+      "metadata_preserved": true,
+      "chain_of_custody": [
+        {
+          "actor": "Cognitive Logic IW author assisted by Codex",
+          "action": "Consultazione e sintesi probatoria delimitata.",
+          "at": "2026-08-20T12:00:00Z"
+        }
+      ],
+      "authentication_status": "authenticated",
+      "independence_from_claimant": "yes",
+      "coverage": "Precedente su criteri, effetto diretto e autorità amministrative",
+      "completeness": "Documento integrale accessibile via URL.",
+      "resolution": "Documento",
+      "verifiability": "Ricontrollare URL e passaggi citati.",
+      "recency": "Valutata al cut-off.",
+      "proximity_to_event": "Diretta per atto o pubblicazione; contestuale per fonti secondarie.",
+      "known_transformations": [
+        "Sintesi italiana"
+      ],
+      "technical_limitations": [
+        "Le pagine dinamiche possono cambiare."
+      ],
+      "limitations": [
+        "Non convalida automaticamente la nota italiana del 2023."
+      ],
+      "probative_value": [
+        {
+          "claim_id": "IW-003-CLM-001",
+          "establishes": "Supporto o controevidenza delimitati secondo claim e scope."
+        },
+        {
+          "claim_id": "IW-003-CLM-002",
+          "establishes": "Supporto o controevidenza delimitati secondo claim e scope."
+        },
+        {
+          "claim_id": "IW-003-CLM-004",
+          "establishes": "Supporto o controevidenza delimitati secondo claim e scope."
+        },
+        {
+          "claim_id": "IW-003-CLM-005",
+          "establishes": "Supporto o controevidenza delimitati secondo claim e scope."
+        },
+        {
+          "claim_id": "IW-003-CLM-007",
+          "establishes": "Supporto o controevidenza delimitati secondo claim e scope."
+        },
+        {
+          "claim_id": "IW-003-CLM-009",
+          "establishes": "Supporto o controevidenza delimitati secondo claim e scope."
+        }
+      ],
+      "supports": [
+        "IW-003-CLM-001",
+        "IW-003-CLM-002",
+        "IW-003-CLM-004",
+        "IW-003-CLM-005",
+        "IW-003-CLM-007",
+        "IW-003-CLM-009"
+      ],
+      "contradicts": [],
+      "does_not_establish": [
+        "Non convalida automaticamente la nota italiana del 2023.",
+        "Intenzioni degli attori",
+        "Conclusioni oltre lo scope del documento"
+      ]
+    },
+    {
+      "id": "IW-003-EVD-005",
+      "schema_version": "1.0.0",
+      "record_version": "1.0.0",
+      "created_at": "2026-08-20T12:00:00Z",
+      "updated_at": "2026-08-20T12:30:00Z",
+      "valid_from": "2026-08-20T12:00:00Z",
+      "valid_until": null,
+      "as_of": "2026-08-20T21:59:59Z",
+      "status": "approved",
+      "supersedes": null,
+      "provenance": {
+        "created_by": "Cognitive Logic IW author assisted by Codex",
+        "method": "DFV-002 and QEN International Watch manual source review; Codex-assisted structuring",
+        "sources": [
+          "IW-003-SRC-005"
+        ],
+        "transformations": [
+          "Claim-bounded Italian synthesis; no truth or trust score"
+        ]
+      },
+      "responsible_actor": "Cognitive Logic IW author",
+      "review_required": true,
+      "review_due": "2026-11-20T21:59:59Z",
+      "content_hash": null,
+      "evidence_id": "IW-003-EVD-005",
+      "evidence_type": "public_document_or_bounded_analytic_record",
+      "description": "Società Italiana Imprese Balneari, C-598/22",
+      "producer": "Court of Justice of the European Union",
+      "collector": "Cognitive Logic IW author assisted by Codex",
+      "custodian": "Court of Justice of the European Union",
+      "capture_time": "2026-08-20T12:00:00Z",
+      "event_time": "2024-07-11T00:00:00Z",
+      "location": "EU",
+      "original_uri": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX%3A62022CJ0598",
+      "archived_uri": null,
+      "archived_unavailability_reason": "Nessuna copia locale archiviata; URL e metadati registrati.",
+      "metadata_preserved": true,
+      "chain_of_custody": [
+        {
+          "actor": "Cognitive Logic IW author assisted by Codex",
+          "action": "Consultazione e sintesi probatoria delimitata.",
+          "at": "2026-08-20T12:00:00Z"
+        }
+      ],
+      "authentication_status": "authenticated",
+      "independence_from_claimant": "yes",
+      "coverage": "Precedente su scadenza, rinnovo e opere non amovibili",
+      "completeness": "Documento integrale accessibile via URL.",
+      "resolution": "Documento",
+      "verifiability": "Ricontrollare URL e passaggi citati.",
+      "recency": "Valutata al cut-off.",
+      "proximity_to_event": "Diretta per atto o pubblicazione; contestuale per fonti secondarie.",
+      "known_transformations": [
+        "Sintesi italiana"
+      ],
+      "technical_limitations": [
+        "Le pagine dinamiche possono cambiare."
+      ],
+      "limitations": [
+        "Il suo oggetto principale non è una mappatura nazionale della scarsità."
+      ],
+      "probative_value": [
+        {
+          "claim_id": "IW-003-CLM-009",
+          "establishes": "Supporto o controevidenza delimitati secondo claim e scope."
+        }
+      ],
+      "supports": [
+        "IW-003-CLM-009"
+      ],
+      "contradicts": [],
+      "does_not_establish": [
+        "Il suo oggetto principale non è una mappatura nazionale della scarsità.",
+        "Intenzioni degli attori",
+        "Conclusioni oltre lo scope del documento"
+      ]
+    },
+    {
+      "id": "IW-003-EVD-006",
+      "schema_version": "1.0.0",
+      "record_version": "1.0.0",
+      "created_at": "2026-08-20T12:00:00Z",
+      "updated_at": "2026-08-20T12:30:00Z",
+      "valid_from": "2026-08-20T12:00:00Z",
+      "valid_until": null,
+      "as_of": "2026-08-20T21:59:59Z",
+      "status": "approved",
+      "supersedes": null,
+      "provenance": {
+        "created_by": "Cognitive Logic IW author assisted by Codex",
+        "method": "DFV-002 and QEN International Watch manual source review; Codex-assisted structuring",
+        "sources": [
+          "IW-003-SRC-006"
+        ],
+        "transformations": [
+          "Claim-bounded Italian synthesis; no truth or trust score"
+        ]
+      },
+      "responsible_actor": "Cognitive Logic IW author",
+      "review_required": true,
+      "review_due": "2026-11-20T21:59:59Z",
+      "content_hash": null,
+      "evidence_id": "IW-003-EVD-006",
+      "evidence_type": "public_document_or_bounded_analytic_record",
+      "description": "Decreto-legge 16 settembre 2024 n. 131, testo coordinato",
+      "producer": "Italian Republic — Gazzetta Ufficiale",
+      "collector": "Cognitive Logic IW author assisted by Codex",
+      "custodian": "Italian Republic — Gazzetta Ufficiale",
+      "capture_time": "2026-08-20T12:00:00Z",
+      "event_time": "2024-11-14T00:00:00Z",
+      "location": "IT",
+      "original_uri": "https://www.gazzettaufficiale.it/atto/serie_generale/caricaArticoloDefault/originario?atto.codiceRedazionale=24A06077&atto.dataPubblicazioneGazzetta=2024-11-14&atto.tipoProvvedimento=TESTO+COORDINATO+DEL+DECRETO-LEGGE",
+      "archived_uri": null,
+      "archived_unavailability_reason": "Nessuna copia locale archiviata; URL e metadati registrati.",
+      "metadata_preserved": true,
+      "chain_of_custody": [
+        {
+          "actor": "Cognitive Logic IW author assisted by Codex",
+          "action": "Consultazione e sintesi probatoria delimitata.",
+          "at": "2026-08-20T12:00:00Z"
+        }
+      ],
+      "authentication_status": "authenticated",
+      "independence_from_claimant": "no",
+      "coverage": "Normativa italiana vigente sulle procedure e scadenze",
+      "completeness": "Documento integrale accessibile via URL.",
+      "resolution": "Documento",
+      "verifiability": "Ricontrollare URL e passaggi citati.",
+      "recency": "Valutata al cut-off.",
+      "proximity_to_event": "Diretta per atto o pubblicazione; contestuale per fonti secondarie.",
+      "known_transformations": [
+        "Sintesi italiana"
+      ],
+      "technical_limitations": [
+        "Le pagine dinamiche possono cambiare."
+      ],
+      "limitations": [
+        "Non prova da sola la compatibilità di ogni applicazione concreta con il diritto UE."
+      ],
+      "probative_value": [
+        {
+          "claim_id": "IW-003-CLM-006",
+          "establishes": "Supporto o controevidenza delimitati secondo claim e scope."
+        },
+        {
+          "claim_id": "IW-003-CLM-010",
+          "establishes": "Supporto o controevidenza delimitati secondo claim e scope."
+        },
+        {
+          "claim_id": "IW-003-CLM-012",
+          "establishes": "Supporto o controevidenza delimitati secondo claim e scope."
+        }
+      ],
+      "supports": [
+        "IW-003-CLM-006",
+        "IW-003-CLM-010",
+        "IW-003-CLM-012"
+      ],
+      "contradicts": [],
+      "does_not_establish": [
+        "Non prova da sola la compatibilità di ogni applicazione concreta con il diritto UE.",
+        "Intenzioni degli attori",
+        "Conclusioni oltre lo scope del documento"
+      ]
+    },
+    {
+      "id": "IW-003-EVD-007",
+      "schema_version": "1.0.0",
+      "record_version": "1.0.0",
+      "created_at": "2026-08-20T12:00:00Z",
+      "updated_at": "2026-08-20T12:30:00Z",
+      "valid_from": "2026-08-20T12:00:00Z",
+      "valid_until": null,
+      "as_of": "2026-08-20T21:59:59Z",
+      "status": "approved",
+      "supersedes": null,
+      "provenance": {
+        "created_by": "Cognitive Logic IW author assisted by Codex",
+        "method": "DFV-002 and QEN International Watch manual source review; Codex-assisted structuring",
+        "sources": [
+          "IW-003-SRC-007"
+        ],
+        "transformations": [
+          "Claim-bounded Italian synthesis; no truth or trust score"
+        ]
+      },
+      "responsible_actor": "Cognitive Logic IW author",
+      "review_required": true,
+      "review_due": "2026-11-20T21:59:59Z",
+      "content_hash": null,
+      "evidence_id": "IW-003-EVD-007",
+      "evidence_type": "public_document_or_bounded_analytic_record",
+      "description": "Risposta della Commissione E-003631/2023 su INFR(2020)4118",
+      "producer": "European Commission via European Parliament",
+      "collector": "Cognitive Logic IW author assisted by Codex",
+      "custodian": "European Commission via European Parliament",
+      "capture_time": "2026-08-20T12:00:00Z",
+      "event_time": "2024-03-26T00:00:00Z",
+      "location": "EU",
+      "original_uri": "https://www.europarl.europa.eu/doceo/document/E-9-2023-003631-ASW_IT.html",
+      "archived_uri": null,
+      "archived_unavailability_reason": "Nessuna copia locale archiviata; URL e metadati registrati.",
+      "metadata_preserved": true,
+      "chain_of_custody": [
+        {
+          "actor": "Cognitive Logic IW author assisted by Codex",
+          "action": "Consultazione e sintesi probatoria delimitata.",
+          "at": "2026-08-20T12:00:00Z"
+        }
+      ],
+      "authentication_status": "authenticated",
+      "independence_from_claimant": "no",
+      "coverage": "Posizione istituzionale sulla valutazione effettiva, obiettiva e qualitativa",
+      "completeness": "Documento integrale accessibile via URL.",
+      "resolution": "Documento",
+      "verifiability": "Ricontrollare URL e passaggi citati.",
+      "recency": "Valutata al cut-off.",
+      "proximity_to_event": "Diretta per atto o pubblicazione; contestuale per fonti secondarie.",
+      "known_transformations": [
+        "Sintesi italiana"
+      ],
+      "technical_limitations": [
+        "Le pagine dinamiche possono cambiare."
+      ],
+      "limitations": [
+        "Non è una sentenza e non contiene il testo integrale del parere motivato."
+      ],
+      "probative_value": [
+        {
+          "claim_id": "IW-003-CLM-007",
+          "establishes": "Supporto o controevidenza delimitati secondo claim e scope."
+        },
+        {
+          "claim_id": "IW-003-CLM-011",
+          "establishes": "Supporto o controevidenza delimitati secondo claim e scope."
+        }
+      ],
+      "supports": [
+        "IW-003-CLM-007",
+        "IW-003-CLM-011"
+      ],
+      "contradicts": [],
+      "does_not_establish": [
+        "Non è una sentenza e non contiene il testo integrale del parere motivato.",
+        "Intenzioni degli attori",
+        "Conclusioni oltre lo scope del documento"
+      ]
+    },
+    {
+      "id": "IW-003-EVD-008",
+      "schema_version": "1.0.0",
+      "record_version": "1.0.0",
+      "created_at": "2026-08-20T12:00:00Z",
+      "updated_at": "2026-08-20T12:30:00Z",
+      "valid_from": "2026-08-20T12:00:00Z",
+      "valid_until": null,
+      "as_of": "2026-08-20T21:59:59Z",
+      "status": "approved",
+      "supersedes": null,
+      "provenance": {
+        "created_by": "Cognitive Logic IW author assisted by Codex",
+        "method": "DFV-002 and QEN International Watch manual source review; Codex-assisted structuring",
+        "sources": [
+          "IW-003-SRC-008"
+        ],
+        "transformations": [
+          "Claim-bounded Italian synthesis; no truth or trust score"
+        ]
+      },
+      "responsible_actor": "Cognitive Logic IW author",
+      "review_required": true,
+      "review_due": "2026-11-20T21:59:59Z",
+      "content_hash": null,
+      "evidence_id": "IW-003-EVD-008",
+      "evidence_type": "public_document_or_bounded_analytic_record",
+      "description": "Nota della Presidenza del Consiglio del 6 ottobre 2023",
+      "producer": "Presidenza del Consiglio dei ministri",
+      "collector": "Cognitive Logic IW author assisted by Codex",
+      "custodian": "Presidenza del Consiglio dei ministri",
+      "capture_time": "2026-08-20T12:00:00Z",
+      "event_time": "2023-10-06T00:00:00Z",
+      "location": "IT",
+      "original_uri": null,
+      "archived_uri": null,
+      "archived_unavailability_reason": "Testo integrale non reperito su canale ufficiale accessibile.",
+      "metadata_preserved": true,
+      "chain_of_custody": [
+        {
+          "actor": "Cognitive Logic IW author assisted by Codex",
+          "action": "Consultazione e sintesi probatoria delimitata.",
+          "at": "2026-08-20T12:00:00Z"
+        }
+      ],
+      "authentication_status": "partially_authenticated",
+      "independence_from_claimant": "no",
+      "coverage": "Atto nazionale richiamato dall'ordinanza C-574/25",
+      "completeness": "Solo esistenza e descrizione mediate da fonti giudiziarie ufficiali.",
+      "resolution": "Documento",
+      "verifiability": "Ricontrollare URL e passaggi citati.",
+      "recency": "Valutata al cut-off.",
+      "proximity_to_event": "Diretta per atto o pubblicazione; contestuale per fonti secondarie.",
+      "known_transformations": [
+        "Sintesi italiana"
+      ],
+      "technical_limitations": [
+        "Le pagine dinamiche possono cambiare."
+      ],
+      "limitations": [
+        "Testo ufficiale integrale non reperito nel perimetro; competenza, vincolatività e metodo restano da verificare dal giudice nazionale."
+      ],
+      "probative_value": [
+        {
+          "claim_id": "IW-003-CLM-008",
+          "establishes": "Supporto o controevidenza delimitati secondo claim e scope."
+        }
+      ],
+      "supports": [
+        "IW-003-CLM-008"
+      ],
+      "contradicts": [],
+      "does_not_establish": [
+        "Testo ufficiale integrale non reperito nel perimetro; competenza, vincolatività e metodo restano da verificare dal giudice nazionale.",
+        "Intenzioni degli attori",
+        "Conclusioni oltre lo scope del documento"
+      ]
+    },
+    {
+      "id": "IW-003-EVD-009",
+      "schema_version": "1.0.0",
+      "record_version": "1.0.0",
+      "created_at": "2026-08-20T12:00:00Z",
+      "updated_at": "2026-08-20T12:30:00Z",
+      "valid_from": "2026-08-20T12:00:00Z",
+      "valid_until": null,
+      "as_of": "2026-08-20T21:59:59Z",
+      "status": "approved",
+      "supersedes": null,
+      "provenance": {
+        "created_by": "Cognitive Logic IW author assisted by Codex",
+        "method": "DFV-002 and QEN International Watch manual source review; Codex-assisted structuring",
+        "sources": [
+          "IW-003-SRC-009"
+        ],
+        "transformations": [
+          "Claim-bounded Italian synthesis; no truth or trust score"
+        ]
+      },
+      "responsible_actor": "Cognitive Logic IW author",
+      "review_required": true,
+      "review_due": "2026-11-20T21:59:59Z",
+      "content_hash": null,
+      "evidence_id": "IW-003-EVD-009",
+      "evidence_type": "public_document_or_bounded_analytic_record",
+      "description": "Concessioni balneari in Emilia-Romagna",
+      "producer": "Coste360",
+      "collector": "Cognitive Logic IW author assisted by Codex",
+      "custodian": "Coste360",
+      "capture_time": "2026-08-20T12:00:00Z",
+      "event_time": null,
+      "location": "IT",
+      "original_uri": "https://www.coste360.it/concessioni-balneari/emilia-romagna",
+      "archived_uri": null,
+      "archived_unavailability_reason": "Nessuna copia locale archiviata; URL e metadati registrati.",
+      "metadata_preserved": true,
+      "chain_of_custody": [
+        {
+          "actor": "Cognitive Logic IW author assisted by Codex",
+          "action": "Consultazione e sintesi probatoria delimitata.",
+          "at": "2026-08-20T12:00:00Z"
+        }
+      ],
+      "authentication_status": "authenticated",
+      "independence_from_claimant": "yes",
+      "coverage": "Contesto territoriale su atti e distribuzione",
+      "completeness": "Documento integrale accessibile via URL.",
+      "resolution": "Documento",
+      "verifiability": "Ricontrollare URL e passaggi citati.",
+      "recency": "Valutata al cut-off.",
+      "proximity_to_event": "Diretta per atto o pubblicazione; contestuale per fonti secondarie.",
+      "known_transformations": [
+        "Sintesi italiana"
+      ],
+      "technical_limitations": [
+        "Le pagine dinamiche possono cambiare."
+      ],
+      "limitations": [
+        "Non è fonte giuridica e non dimostra scarsità o non scarsità; non distingue da sola costa balneabile, concedibile ed economicamente utilizzabile."
+      ],
+      "probative_value": [
+        {
+          "claim_id": "IW-003-CLM-011",
+          "establishes": "Supporto o controevidenza delimitati secondo claim e scope."
+        }
+      ],
+      "supports": [
+        "IW-003-CLM-011"
+      ],
+      "contradicts": [],
+      "does_not_establish": [
+        "Non è fonte giuridica e non dimostra scarsità o non scarsità; non distingue da sola costa balneabile, concedibile ed economicamente utilizzabile.",
+        "Intenzioni degli attori",
+        "Conclusioni oltre lo scope del documento"
+      ]
+    },
+    {
+      "id": "IW-003-EVD-010",
+      "schema_version": "1.0.0",
+      "record_version": "1.0.0",
+      "created_at": "2026-08-20T12:00:00Z",
+      "updated_at": "2026-08-20T12:30:00Z",
+      "valid_from": "2026-08-20T12:00:00Z",
+      "valid_until": null,
+      "as_of": "2026-08-20T21:59:59Z",
+      "status": "approved",
+      "supersedes": null,
+      "provenance": {
+        "created_by": "Cognitive Logic IW author assisted by Codex",
+        "method": "DFV-002 and QEN International Watch manual source review; Codex-assisted structuring",
+        "sources": [
+          "IW-003-SRC-010"
+        ],
+        "transformations": [
+          "Claim-bounded Italian synthesis; no truth or trust score"
+        ]
+      },
+      "responsible_actor": "Cognitive Logic IW author",
+      "review_required": true,
+      "review_due": "2026-11-20T21:59:59Z",
+      "content_hash": null,
+      "evidence_id": "IW-003-EVD-010",
+      "evidence_type": "public_document_or_bounded_analytic_record",
+      "description": "I Balneari hanno vinto: nessun obbligo di gare pubbliche",
+      "producer": "Panorama, ripubblicato da TuttiQuotidiani",
+      "collector": "Cognitive Logic IW author assisted by Codex",
+      "custodian": "Panorama, ripubblicato da TuttiQuotidiani",
+      "capture_time": "2026-08-20T12:00:00Z",
+      "event_time": "2026-07-24T00:00:00Z",
+      "location": "IT",
+      "original_uri": "https://tuttiquotidiani.it/it/news/i-balneari-hanno-vinto-per-la-corte-di-giustizia-ue-nessun-obbligo-di-gare-pubbliche",
+      "archived_uri": null,
+      "archived_unavailability_reason": "Nessuna copia locale archiviata; URL e metadati registrati.",
+      "metadata_preserved": true,
+      "chain_of_custody": [
+        {
+          "actor": "Cognitive Logic IW author assisted by Codex",
+          "action": "Consultazione e sintesi probatoria delimitata.",
+          "at": "2026-08-20T12:00:00Z"
+        }
+      ],
+      "authentication_status": "authenticated",
+      "independence_from_claimant": "yes",
+      "coverage": "Esempio documentato di trasformazione narrativa",
+      "completeness": "Documento integrale accessibile via URL.",
+      "resolution": "Documento",
+      "verifiability": "Ricontrollare URL e passaggi citati.",
+      "recency": "Valutata al cut-off.",
+      "proximity_to_event": "Diretta per atto o pubblicazione; contestuale per fonti secondarie.",
+      "known_transformations": [
+        "Sintesi italiana"
+      ],
+      "technical_limitations": [
+        "Le pagine dinamiche possono cambiare."
+      ],
+      "limitations": [
+        "Ripubblicazione non indipendente; titolo e sintesi non modificano il dispositivo della Corte."
+      ],
+      "probative_value": [],
+      "supports": [],
+      "contradicts": [],
+      "does_not_establish": [
+        "Ripubblicazione non indipendente; titolo e sintesi non modificano il dispositivo della Corte.",
+        "Intenzioni degli attori",
+        "Conclusioni oltre lo scope del documento"
+      ]
+    },
+    {
+      "id": "IW-003-EVD-011",
+      "schema_version": "1.0.0",
+      "record_version": "1.0.0",
+      "created_at": "2026-08-20T12:00:00Z",
+      "updated_at": "2026-08-20T12:30:00Z",
+      "valid_from": "2026-08-20T12:00:00Z",
+      "valid_until": null,
+      "as_of": "2026-08-20T21:59:59Z",
+      "status": "approved",
+      "supersedes": null,
+      "provenance": {
+        "created_by": "Cognitive Logic IW author assisted by Codex",
+        "method": "DFV-002 and QEN International Watch manual source review; Codex-assisted structuring",
+        "sources": [
+          "IW-003-SRC-011"
+        ],
+        "transformations": [
+          "Claim-bounded Italian synthesis; no truth or trust score"
+        ]
+      },
+      "responsible_actor": "Cognitive Logic IW author",
+      "review_required": true,
+      "review_due": "2026-11-20T21:59:59Z",
+      "content_hash": null,
+      "evidence_id": "IW-003-EVD-011",
+      "evidence_type": "public_document_or_bounded_analytic_record",
+      "description": "Caso 901/2026/LA su INFR(2020)4118",
+      "producer": "European Ombudsman",
+      "collector": "Cognitive Logic IW author assisted by Codex",
+      "custodian": "European Ombudsman",
+      "capture_time": "2026-08-20T12:00:00Z",
+      "event_time": "2026-06-17T00:00:00Z",
+      "location": "EU",
+      "original_uri": "https://www.ombudsman.europa.eu/it/opening-summary/it/227729",
+      "archived_uri": null,
+      "archived_unavailability_reason": "Nessuna copia locale archiviata; URL e metadati registrati.",
+      "metadata_preserved": true,
+      "chain_of_custody": [
+        {
+          "actor": "Cognitive Logic IW author assisted by Codex",
+          "action": "Consultazione e sintesi probatoria delimitata.",
+          "at": "2026-08-20T12:00:00Z"
+        }
+      ],
+      "authentication_status": "authenticated",
+      "independence_from_claimant": "yes",
+      "coverage": "Conferma istituzionale che un'indagine sulla gestione della procedura è aperta",
+      "completeness": "Documento integrale accessibile via URL.",
+      "resolution": "Documento",
+      "verifiability": "Ricontrollare URL e passaggi citati.",
+      "recency": "Valutata al cut-off.",
+      "proximity_to_event": "Diretta per atto o pubblicazione; contestuale per fonti secondarie.",
+      "known_transformations": [
+        "Sintesi italiana"
+      ],
+      "technical_limitations": [
+        "Le pagine dinamiche possono cambiare."
+      ],
+      "limitations": [
+        "Non decide il merito della scarsità o la validità delle proroghe."
+      ],
+      "probative_value": [],
+      "supports": [],
+      "contradicts": [],
+      "does_not_establish": [
+        "Non decide il merito della scarsità o la validità delle proroghe.",
+        "Intenzioni degli attori",
+        "Conclusioni oltre lo scope del documento"
+      ]
+    }
+  ]
+}

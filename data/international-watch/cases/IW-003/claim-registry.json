@@ -1,0 +1,923 @@
+{
+  "schema_version": "1.0.0",
+  "case_id": "IW-003",
+  "records": [
+    {
+      "id": "IW-003-CLM-001",
+      "schema_version": "1.0.0",
+      "record_version": "1.0.0",
+      "created_at": "2026-08-20T12:00:00Z",
+      "updated_at": "2026-08-20T12:30:00Z",
+      "valid_from": "2026-08-20T12:00:00Z",
+      "valid_until": null,
+      "as_of": "2026-08-20T21:59:59Z",
+      "status": "approved",
+      "supersedes": null,
+      "provenance": {
+        "created_by": "Cognitive Logic IW author assisted by Codex",
+        "method": "DFV-002 and QEN International Watch manual source review; Codex-assisted structuring",
+        "sources": [
+          "IW-003-SRC-001"
+        ],
+        "transformations": [
+          "Claim-bounded Italian synthesis; no truth or trust score"
+        ]
+      },
+      "responsible_actor": "Cognitive Logic IW author",
+      "review_required": true,
+      "review_due": "2026-11-20T21:59:59Z",
+      "content_hash": null,
+      "claim_id": "IW-003-CLM-001",
+      "event_id": "IW-003-E001",
+      "claim_text_original": "La decisione della Corte di giustizia UE del 10 luglio 2026 consente all'Italia di evitare le gare per le concessioni balneari.",
+      "language": "it",
+      "translation": null,
+      "translation_method": "none",
+      "claim_type": "interpretation",
+      "speaker_actor_id": null,
+      "origin_source_id": "IW-003-SRC-001",
+      "origin_timestamp": null,
+      "publication_timestamp": null,
+      "original_context": "Claim atomizzato per IW-003.",
+      "subject": "Corte UE",
+      "predicate": "consente",
+      "object": "all'Italia di evitare in generale le gare",
+      "qualifiers": [
+        "scope Italia",
+        "as_of 20 agosto 2026"
+      ],
+      "geographic_scope": [
+        "Italia",
+        "Unione europea"
+      ],
+      "temporal_scope": {
+        "start": "2006-12-27T00:00:00Z",
+        "end": "2026-08-20T21:59:59Z"
+      },
+      "definition_refs": [
+        "METHODOLOGY.md",
+        "EPISTEMIC-TAXONOMY.md"
+      ],
+      "testability": {
+        "status": "testable",
+        "method": "Confronto con testo normativo, dispositivo, motivazione e atti ufficiali."
+      },
+      "evidence_refs": [
+        "IW-003-EVD-001",
+        "IW-003-EVD-002",
+        "IW-003-EVD-004"
+      ],
+      "counter_evidence_refs": [
+        "IW-003-EVD-001",
+        "IW-003-EVD-002",
+        "IW-003-EVD-004"
+      ],
+      "counter_evidence_absence_reason": null,
+      "dependency_refs": [],
+      "assessment_id": "IW-003-ASM-001",
+      "revision_triggers": [
+        "nuova decisione giudiziaria",
+        "modifica normativa",
+        "atto competente sulla scarsità",
+        "nuovi dati territoriali verificabili"
+      ]
+    },
+    {
+      "id": "IW-003-CLM-002",
+      "schema_version": "1.0.0",
+      "record_version": "1.0.0",
+      "created_at": "2026-08-20T12:00:00Z",
+      "updated_at": "2026-08-20T12:30:00Z",
+      "valid_from": "2026-08-20T12:00:00Z",
+      "valid_until": null,
+      "as_of": "2026-08-20T21:59:59Z",
+      "status": "approved",
+      "supersedes": null,
+      "provenance": {
+        "created_by": "Cognitive Logic IW author assisted by Codex",
+        "method": "DFV-002 and QEN International Watch manual source review; Codex-assisted structuring",
+        "sources": [
+          "IW-003-SRC-001"
+        ],
+        "transformations": [
+          "Claim-bounded Italian synthesis; no truth or trust score"
+        ]
+      },
+      "responsible_actor": "Cognitive Logic IW author",
+      "review_required": true,
+      "review_due": "2026-11-20T21:59:59Z",
+      "content_hash": null,
+      "claim_id": "IW-003-CLM-002",
+      "event_id": "IW-003-E001",
+      "claim_text_original": "Le concessioni demaniali marittime turistico-ricreative descritte dalla Corte sono autorizzazioni ai sensi della direttiva 2006/123.",
+      "language": "it",
+      "translation": null,
+      "translation_method": "none",
+      "claim_type": "observable_fact",
+      "speaker_actor_id": null,
+      "origin_source_id": "IW-003-SRC-001",
+      "origin_timestamp": null,
+      "publication_timestamp": null,
+      "original_context": "Claim atomizzato per IW-003.",
+      "subject": "concessioni demaniali descritte",
+      "predicate": "rientrano",
+      "object": "nel regime delle autorizzazioni della direttiva 2006/123",
+      "qualifiers": [
+        "scope Italia",
+        "as_of 20 agosto 2026"
+      ],
+      "geographic_scope": [
+        "Italia",
+        "Unione europea"
+      ],
+      "temporal_scope": {
+        "start": "2006-12-27T00:00:00Z",
+        "end": "2026-08-20T21:59:59Z"
+      },
+      "definition_refs": [
+        "METHODOLOGY.md",
+        "EPISTEMIC-TAXONOMY.md"
+      ],
+      "testability": {
+        "status": "testable",
+        "method": "Confronto con testo normativo, dispositivo, motivazione e atti ufficiali."
+      },
+      "evidence_refs": [
+        "IW-003-EVD-001",
+        "IW-003-EVD-003",
+        "IW-003-EVD-004"
+      ],
+      "counter_evidence_refs": [],
+      "counter_evidence_absence_reason": "Nessuna controevidenza comparabile individuata; revisione obbligatoria su nuova evidenza.",
+      "dependency_refs": [],
+      "assessment_id": "IW-003-ASM-002",
+      "revision_triggers": [
+        "nuova decisione giudiziaria",
+        "modifica normativa",
+        "atto competente sulla scarsità",
+        "nuovi dati territoriali verificabili"
+      ]
+    },
+    {
+      "id": "IW-003-CLM-003",
+      "schema_version": "1.0.0",
+      "record_version": "1.0.0",
+      "created_at": "2026-08-20T12:00:00Z",
+      "updated_at": "2026-08-20T12:30:00Z",
+      "valid_from": "2026-08-20T12:00:00Z",
+      "valid_until": null,
+      "as_of": "2026-08-20T21:59:59Z",
+      "status": "approved",
+      "supersedes": null,
+      "provenance": {
+        "created_by": "Cognitive Logic IW author assisted by Codex",
+        "method": "DFV-002 and QEN International Watch manual source review; Codex-assisted structuring",
+        "sources": [
+          "IW-003-SRC-001"
+        ],
+        "transformations": [
+          "Claim-bounded Italian synthesis; no truth or trust score"
+        ]
+      },
+      "responsible_actor": "Cognitive Logic IW author",
+      "review_required": true,
+      "review_due": "2026-11-20T21:59:59Z",
+      "content_hash": null,
+      "claim_id": "IW-003-CLM-003",
+      "event_id": "IW-003-E001",
+      "claim_text_original": "Le concessioni descritte non sono concessioni di servizi quando l'autorità fissa solo condizioni generali e non procura servizi specifici.",
+      "language": "it",
+      "translation": null,
+      "translation_method": "none",
+      "claim_type": "observable_fact",
+      "speaker_actor_id": null,
+      "origin_source_id": "IW-003-SRC-001",
+      "origin_timestamp": null,
+      "publication_timestamp": null,
+      "original_context": "Claim atomizzato per IW-003.",
+      "subject": "concessioni descritte",
+      "predicate": "non sono",
+      "object": "concessioni di servizi ex direttiva 2014/23",
+      "qualifiers": [
+        "scope Italia",
+        "as_of 20 agosto 2026"
+      ],
+      "geographic_scope": [
+        "Italia",
+        "Unione europea"
+      ],
+      "temporal_scope": {
+        "start": "2006-12-27T00:00:00Z",
+        "end": "2026-08-20T21:59:59Z"
+      },
+      "definition_refs": [
+        "METHODOLOGY.md",
+        "EPISTEMIC-TAXONOMY.md"
+      ],
+      "testability": {
+        "status": "testable",
+        "method": "Confronto con testo normativo, dispositivo, motivazione e atti ufficiali."
+      },
+      "evidence_refs": [
+        "IW-003-EVD-001"
+      ],
+      "counter_evidence_refs": [],
+      "counter_evidence_absence_reason": "Nessuna controevidenza comparabile individuata; revisione obbligatoria su nuova evidenza.",
+      "dependency_refs": [],
+      "assessment_id": "IW-003-ASM-003",
+      "revision_triggers": [
+        "nuova decisione giudiziaria",
+        "modifica normativa",
+        "atto competente sulla scarsità",
+        "nuovi dati territoriali verificabili"
+      ]
+    },
+    {
+      "id": "IW-003-CLM-004",
+      "schema_version": "1.0.0",
+      "record_version": "1.0.0",
+      "created_at": "2026-08-20T12:00:00Z",
+      "updated_at": "2026-08-20T12:30:00Z",
+      "valid_from": "2026-08-20T12:00:00Z",
+      "valid_until": null,
+      "as_of": "2026-08-20T21:59:59Z",
+      "status": "approved",
+      "supersedes": null,
+      "provenance": {
+        "created_by": "Cognitive Logic IW author assisted by Codex",
+        "method": "DFV-002 and QEN International Watch manual source review; Codex-assisted structuring",
+        "sources": [
+          "IW-003-SRC-002"
+        ],
+        "transformations": [
+          "Claim-bounded Italian synthesis; no truth or trust score"
+        ]
+      },
+      "responsible_actor": "Cognitive Logic IW author",
+      "review_required": true,
+      "review_due": "2026-11-20T21:59:59Z",
+      "content_hash": null,
+      "claim_id": "IW-003-CLM-004",
+      "event_id": "IW-003-E002",
+      "claim_text_original": "Se la scarsità limita le autorizzazioni, l'articolo 12 impone una selezione imparziale e trasparente.",
+      "language": "it",
+      "translation": null,
+      "translation_method": "none",
+      "claim_type": "observable_fact",
+      "speaker_actor_id": null,
+      "origin_source_id": "IW-003-SRC-002",
+      "origin_timestamp": null,
+      "publication_timestamp": null,
+      "original_context": "Claim atomizzato per IW-003.",
+      "subject": "articolo 12",
+      "predicate": "impone",
+      "object": "selezione in presenza di scarsità limitante",
+      "qualifiers": [
+        "scope Italia",
+        "as_of 20 agosto 2026"
+      ],
+      "geographic_scope": [
+        "Italia",
+        "Unione europea"
+      ],
+      "temporal_scope": {
+        "start": "2006-12-27T00:00:00Z",
+        "end": "2026-08-20T21:59:59Z"
+      },
+      "definition_refs": [
+        "METHODOLOGY.md",
+        "EPISTEMIC-TAXONOMY.md"
+      ],
+      "testability": {
+        "status": "testable",
+        "method": "Confronto con testo normativo, dispositivo, motivazione e atti ufficiali."
+      },
+      "evidence_refs": [
+        "IW-003-EVD-001",
+        "IW-003-EVD-002",
+        "IW-003-EVD-003",
+        "IW-003-EVD-004"
+      ],
+      "counter_evidence_refs": [],
+      "counter_evidence_absence_reason": "Nessuna controevidenza comparabile individuata; revisione obbligatoria su nuova evidenza.",
+      "dependency_refs": [],
+      "assessment_id": "IW-003-ASM-004",
+      "revision_triggers": [
+        "nuova decisione giudiziaria",
+        "modifica normativa",
+        "atto competente sulla scarsità",
+        "nuovi dati territoriali verificabili"
+      ]
+    },
+    {
+      "id": "IW-003-CLM-005",
+      "schema_version": "1.0.0",
+      "record_version": "1.0.0",
+      "created_at": "2026-08-20T12:00:00Z",
+      "updated_at": "2026-08-20T12:30:00Z",
+      "valid_from": "2026-08-20T12:00:00Z",
+      "valid_until": null,
+      "as_of": "2026-08-20T21:59:59Z",
+      "status": "approved",
+      "supersedes": null,
+      "provenance": {
+        "created_by": "Cognitive Logic IW author assisted by Codex",
+        "method": "DFV-002 and QEN International Watch manual source review; Codex-assisted structuring",
+        "sources": [
+          "IW-003-SRC-001"
+        ],
+        "transformations": [
+          "Claim-bounded Italian synthesis; no truth or trust score"
+        ]
+      },
+      "responsible_actor": "Cognitive Logic IW author",
+      "review_required": true,
+      "review_due": "2026-11-20T21:59:59Z",
+      "content_hash": null,
+      "claim_id": "IW-003-CLM-005",
+      "event_id": "IW-003-E002",
+      "claim_text_original": "L'articolo 12 vieta sia il rinnovo automatico sia l'estensione automatica.",
+      "language": "it",
+      "translation": null,
+      "translation_method": "none",
+      "claim_type": "observable_fact",
+      "speaker_actor_id": null,
+      "origin_source_id": "IW-003-SRC-001",
+      "origin_timestamp": null,
+      "publication_timestamp": null,
+      "original_context": "Claim atomizzato per IW-003.",
+      "subject": "articolo 12",
+      "predicate": "vieta",
+      "object": "rinnovo ed estensione automatici",
+      "qualifiers": [
+        "scope Italia",
+        "as_of 20 agosto 2026"
+      ],
+      "geographic_scope": [
+        "Italia",
+        "Unione europea"
+      ],
+      "temporal_scope": {
+        "start": "2006-12-27T00:00:00Z",
+        "end": "2026-08-20T21:59:59Z"
+      },
+      "definition_refs": [
+        "METHODOLOGY.md",
+        "EPISTEMIC-TAXONOMY.md"
+      ],
+      "testability": {
+        "status": "testable",
+        "method": "Confronto con testo normativo, dispositivo, motivazione e atti ufficiali."
+      },
+      "evidence_refs": [
+        "IW-003-EVD-001",
+        "IW-003-EVD-002",
+        "IW-003-EVD-004"
+      ],
+      "counter_evidence_refs": [],
+      "counter_evidence_absence_reason": "Nessuna controevidenza comparabile individuata; revisione obbligatoria su nuova evidenza.",
+      "dependency_refs": [],
+      "assessment_id": "IW-003-ASM-005",
+      "revision_triggers": [
+        "nuova decisione giudiziaria",
+        "modifica normativa",
+        "atto competente sulla scarsità",
+        "nuovi dati territoriali verificabili"
+      ]
+    },
+    {
+      "id": "IW-003-CLM-006",
+      "schema_version": "1.0.0",
+      "record_version": "1.0.0",
+      "created_at": "2026-08-20T12:00:00Z",
+      "updated_at": "2026-08-20T12:30:00Z",
+      "valid_from": "2026-08-20T12:00:00Z",
+      "valid_until": null,
+      "as_of": "2026-08-20T21:59:59Z",
+      "status": "approved",
+      "supersedes": null,
+      "provenance": {
+        "created_by": "Cognitive Logic IW author assisted by Codex",
+        "method": "DFV-002 and QEN International Watch manual source review; Codex-assisted structuring",
+        "sources": [
+          "IW-003-SRC-006"
+        ],
+        "transformations": [
+          "Claim-bounded Italian synthesis; no truth or trust score"
+        ]
+      },
+      "responsible_actor": "Cognitive Logic IW author",
+      "review_required": true,
+      "review_due": "2026-11-20T21:59:59Z",
+      "content_hash": null,
+      "claim_id": "IW-003-CLM-006",
+      "event_id": "IW-003-E003",
+      "claim_text_original": "La continuità del rapporto è ammessa solo per il tempo strettamente necessario quando una procedura è già stata avviata.",
+      "language": "it",
+      "translation": null,
+      "translation_method": "none",
+      "claim_type": "observable_fact",
+      "speaker_actor_id": null,
+      "origin_source_id": "IW-003-SRC-006",
+      "origin_timestamp": null,
+      "publication_timestamp": null,
+      "original_context": "Claim atomizzato per IW-003.",
+      "subject": "legge italiana vigente",
+      "predicate": "ammette",
+      "object": "continuità strettamente necessaria dopo avvio procedura",
+      "qualifiers": [
+        "scope Italia",
+        "as_of 20 agosto 2026"
+      ],
+      "geographic_scope": [
+        "Italia",
+        "Unione europea"
+      ],
+      "temporal_scope": {
+        "start": "2006-12-27T00:00:00Z",
+        "end": "2026-08-20T21:59:59Z"
+      },
+      "definition_refs": [
+        "METHODOLOGY.md",
+        "EPISTEMIC-TAXONOMY.md"
+      ],
+      "testability": {
+        "status": "testable",
+        "method": "Confronto con testo normativo, dispositivo, motivazione e atti ufficiali."
+      },
+      "evidence_refs": [
+        "IW-003-EVD-006"
+      ],
+      "counter_evidence_refs": [],
+      "counter_evidence_absence_reason": "Nessuna controevidenza comparabile individuata; revisione obbligatoria su nuova evidenza.",
+      "dependency_refs": [],
+      "assessment_id": "IW-003-ASM-006",
+      "revision_triggers": [
+        "nuova decisione giudiziaria",
+        "modifica normativa",
+        "atto competente sulla scarsità",
+        "nuovi dati territoriali verificabili"
+      ]
+    },
+    {
+      "id": "IW-003-CLM-007",
+      "schema_version": "1.0.0",
+      "record_version": "1.0.0",
+      "created_at": "2026-08-20T12:00:00Z",
+      "updated_at": "2026-08-20T12:30:00Z",
+      "valid_from": "2026-08-20T12:00:00Z",
+      "valid_until": null,
+      "as_of": "2026-08-20T21:59:59Z",
+      "status": "approved",
+      "supersedes": null,
+      "provenance": {
+        "created_by": "Cognitive Logic IW author assisted by Codex",
+        "method": "DFV-002 and QEN International Watch manual source review; Codex-assisted structuring",
+        "sources": [
+          "IW-003-SRC-001"
+        ],
+        "transformations": [
+          "Claim-bounded Italian synthesis; no truth or trust score"
+        ]
+      },
+      "responsible_actor": "Cognitive Logic IW author",
+      "review_required": true,
+      "review_due": "2026-11-20T21:59:59Z",
+      "content_hash": null,
+      "claim_id": "IW-003-CLM-007",
+      "event_id": "IW-003-E002",
+      "claim_text_original": "La scarsità può essere valutata con approccio nazionale, locale o combinato, usando criteri obiettivi, trasparenti, proporzionati e non discriminatori.",
+      "language": "it",
+      "translation": null,
+      "translation_method": "none",
+      "claim_type": "observable_fact",
+      "speaker_actor_id": null,
+      "origin_source_id": "IW-003-SRC-001",
+      "origin_timestamp": null,
+      "publication_timestamp": null,
+      "original_context": "Claim atomizzato per IW-003.",
+      "subject": "autorità competente",
+      "predicate": "può valutare",
+      "object": "scarsità con approcci e criteri qualificati",
+      "qualifiers": [
+        "scope Italia",
+        "as_of 20 agosto 2026"
+      ],
+      "geographic_scope": [
+        "Italia",
+        "Unione europea"
+      ],
+      "temporal_scope": {
+        "start": "2006-12-27T00:00:00Z",
+        "end": "2026-08-20T21:59:59Z"
+      },
+      "definition_refs": [
+        "METHODOLOGY.md",
+        "EPISTEMIC-TAXONOMY.md"
+      ],
+      "testability": {
+        "status": "testable",
+        "method": "Confronto con testo normativo, dispositivo, motivazione e atti ufficiali."
+      },
+      "evidence_refs": [
+        "IW-003-EVD-001",
+        "IW-003-EVD-004",
+        "IW-003-EVD-007"
+      ],
+      "counter_evidence_refs": [],
+      "counter_evidence_absence_reason": "Nessuna controevidenza comparabile individuata; revisione obbligatoria su nuova evidenza.",
+      "dependency_refs": [],
+      "assessment_id": "IW-003-ASM-007",
+      "revision_triggers": [
+        "nuova decisione giudiziaria",
+        "modifica normativa",
+        "atto competente sulla scarsità",
+        "nuovi dati territoriali verificabili"
+      ]
+    },
+    {
+      "id": "IW-003-CLM-008",
+      "schema_version": "1.0.0",
+      "record_version": "1.0.0",
+      "created_at": "2026-08-20T12:00:00Z",
+      "updated_at": "2026-08-20T12:30:00Z",
+      "valid_from": "2026-08-20T12:00:00Z",
+      "valid_until": null,
+      "as_of": "2026-08-20T21:59:59Z",
+      "status": "approved",
+      "supersedes": null,
+      "provenance": {
+        "created_by": "Cognitive Logic IW author assisted by Codex",
+        "method": "DFV-002 and QEN International Watch manual source review; Codex-assisted structuring",
+        "sources": [
+          "IW-003-SRC-008"
+        ],
+        "transformations": [
+          "Claim-bounded Italian synthesis; no truth or trust score"
+        ]
+      },
+      "responsible_actor": "Cognitive Logic IW author",
+      "review_required": true,
+      "review_due": "2026-11-20T21:59:59Z",
+      "content_hash": null,
+      "claim_id": "IW-003-CLM-008",
+      "event_id": "IW-003-E003",
+      "claim_text_original": "La nota italiana del 6 ottobre 2023 accerta in modo vincolante la non scarsità per tutta Italia.",
+      "language": "it",
+      "translation": null,
+      "translation_method": "none",
+      "claim_type": "interpretation",
+      "speaker_actor_id": null,
+      "origin_source_id": "IW-003-SRC-008",
+      "origin_timestamp": null,
+      "publication_timestamp": null,
+      "original_context": "Claim atomizzato per IW-003.",
+      "subject": "nota del 6 ottobre 2023",
+      "predicate": "accerta in modo vincolante",
+      "object": "non scarsità nazionale",
+      "qualifiers": [
+        "scope Italia",
+        "as_of 20 agosto 2026"
+      ],
+      "geographic_scope": [
+        "Italia",
+        "Unione europea"
+      ],
+      "temporal_scope": {
+        "start": "2006-12-27T00:00:00Z",
+        "end": "2026-08-20T21:59:59Z"
+      },
+      "definition_refs": [
+        "METHODOLOGY.md",
+        "EPISTEMIC-TAXONOMY.md"
+      ],
+      "testability": {
+        "status": "partially_testable",
+        "method": "Confronto con testo normativo, dispositivo, motivazione e atti ufficiali."
+      },
+      "evidence_refs": [
+        "IW-003-EVD-001",
+        "IW-003-EVD-008"
+      ],
+      "counter_evidence_refs": [
+        "IW-003-EVD-001",
+        "IW-003-EVD-007"
+      ],
+      "counter_evidence_absence_reason": null,
+      "dependency_refs": [],
+      "assessment_id": "IW-003-ASM-008",
+      "revision_triggers": [
+        "nuova decisione giudiziaria",
+        "modifica normativa",
+        "atto competente sulla scarsità",
+        "nuovi dati territoriali verificabili"
+      ]
+    },
+    {
+      "id": "IW-003-CLM-009",
+      "schema_version": "1.0.0",
+      "record_version": "1.0.0",
+      "created_at": "2026-08-20T12:00:00Z",
+      "updated_at": "2026-08-20T12:30:00Z",
+      "valid_from": "2026-08-20T12:00:00Z",
+      "valid_until": null,
+      "as_of": "2026-08-20T21:59:59Z",
+      "status": "approved",
+      "supersedes": null,
+      "provenance": {
+        "created_by": "Cognitive Logic IW author assisted by Codex",
+        "method": "DFV-002 and QEN International Watch manual source review; Codex-assisted structuring",
+        "sources": [
+          "IW-003-SRC-010"
+        ],
+        "transformations": [
+          "Claim-bounded Italian synthesis; no truth or trust score"
+        ]
+      },
+      "responsible_actor": "Cognitive Logic IW author",
+      "review_required": true,
+      "review_due": "2026-11-20T21:59:59Z",
+      "content_hash": null,
+      "claim_id": "IW-003-CLM-009",
+      "event_id": "IW-003-E004",
+      "claim_text_original": "Le concessioni anteriori al 28 dicembre 2009 restano fuori dalla direttiva anche se successivamente rinnovate o prorogate.",
+      "language": "it",
+      "translation": null,
+      "translation_method": "none",
+      "claim_type": "interpretation",
+      "speaker_actor_id": null,
+      "origin_source_id": "IW-003-SRC-010",
+      "origin_timestamp": null,
+      "publication_timestamp": null,
+      "original_context": "Claim atomizzato per IW-003.",
+      "subject": "concessioni pre-2009",
+      "predicate": "restano fuori",
+      "object": "dalla direttiva dopo rinnovo o proroga",
+      "qualifiers": [
+        "scope Italia",
+        "as_of 20 agosto 2026"
+      ],
+      "geographic_scope": [
+        "Italia",
+        "Unione europea"
+      ],
+      "temporal_scope": {
+        "start": "2006-12-27T00:00:00Z",
+        "end": "2026-08-20T21:59:59Z"
+      },
+      "definition_refs": [
+        "METHODOLOGY.md",
+        "EPISTEMIC-TAXONOMY.md"
+      ],
+      "testability": {
+        "status": "testable",
+        "method": "Confronto con testo normativo, dispositivo, motivazione e atti ufficiali."
+      },
+      "evidence_refs": [
+        "IW-003-EVD-001",
+        "IW-003-EVD-004",
+        "IW-003-EVD-005"
+      ],
+      "counter_evidence_refs": [
+        "IW-003-EVD-001"
+      ],
+      "counter_evidence_absence_reason": null,
+      "dependency_refs": [],
+      "assessment_id": "IW-003-ASM-009",
+      "revision_triggers": [
+        "nuova decisione giudiziaria",
+        "modifica normativa",
+        "atto competente sulla scarsità",
+        "nuovi dati territoriali verificabili"
+      ]
+    },
+    {
+      "id": "IW-003-CLM-010",
+      "schema_version": "1.0.0",
+      "record_version": "1.0.0",
+      "created_at": "2026-08-20T12:00:00Z",
+      "updated_at": "2026-08-20T12:30:00Z",
+      "valid_from": "2026-08-20T12:00:00Z",
+      "valid_until": null,
+      "as_of": "2026-08-20T21:59:59Z",
+      "status": "approved",
+      "supersedes": null,
+      "provenance": {
+        "created_by": "Cognitive Logic IW author assisted by Codex",
+        "method": "DFV-002 and QEN International Watch manual source review; Codex-assisted structuring",
+        "sources": [
+          "IW-003-SRC-006"
+        ],
+        "transformations": [
+          "Claim-bounded Italian synthesis; no truth or trust score"
+        ]
+      },
+      "responsible_actor": "Cognitive Logic IW author",
+      "review_required": true,
+      "review_due": "2026-11-20T21:59:59Z",
+      "content_hash": null,
+      "claim_id": "IW-003-CLM-010",
+      "event_id": "IW-003-E003",
+      "claim_text_original": "Al cut-off le procedure italiane devono essere avviate entro il 30 giugno 2027 e i titoli proseguono fino al 30 settembre 2027, salvo differimento motivato non oltre il 31 marzo 2028.",
+      "language": "it",
+      "translation": null,
+      "translation_method": "none",
+      "claim_type": "observable_fact",
+      "speaker_actor_id": null,
+      "origin_source_id": "IW-003-SRC-006",
+      "origin_timestamp": null,
+      "publication_timestamp": null,
+      "original_context": "Claim atomizzato per IW-003.",
+      "subject": "normativa italiana",
+      "predicate": "stabilisce",
+      "object": "scadenze procedurali e transitorie",
+      "qualifiers": [
+        "scope Italia",
+        "as_of 20 agosto 2026"
+      ],
+      "geographic_scope": [
+        "Italia",
+        "Unione europea"
+      ],
+      "temporal_scope": {
+        "start": "2006-12-27T00:00:00Z",
+        "end": "2026-08-20T21:59:59Z"
+      },
+      "definition_refs": [
+        "METHODOLOGY.md",
+        "EPISTEMIC-TAXONOMY.md"
+      ],
+      "testability": {
+        "status": "testable",
+        "method": "Confronto con testo normativo, dispositivo, motivazione e atti ufficiali."
+      },
+      "evidence_refs": [
+        "IW-003-EVD-006"
+      ],
+      "counter_evidence_refs": [],
+      "counter_evidence_absence_reason": "Nessuna controevidenza comparabile individuata; revisione obbligatoria su nuova evidenza.",
+      "dependency_refs": [],
+      "assessment_id": "IW-003-ASM-010",
+      "revision_triggers": [
+        "nuova decisione giudiziaria",
+        "modifica normativa",
+        "atto competente sulla scarsità",
+        "nuovi dati territoriali verificabili"
+      ]
+    },
+    {
+      "id": "IW-003-CLM-011",
+      "schema_version": "1.0.0",
+      "record_version": "1.0.0",
+      "created_at": "2026-08-20T12:00:00Z",
+      "updated_at": "2026-08-20T12:30:00Z",
+      "valid_from": "2026-08-20T12:00:00Z",
+      "valid_until": null,
+      "as_of": "2026-08-20T21:59:59Z",
+      "status": "approved",
+      "supersedes": null,
+      "provenance": {
+        "created_by": "Cognitive Logic IW author assisted by Codex",
+        "method": "DFV-002 and QEN International Watch manual source review; Codex-assisted structuring",
+        "sources": [
+          "IW-003-SRC-010"
+        ],
+        "transformations": [
+          "Claim-bounded Italian synthesis; no truth or trust score"
+        ]
+      },
+      "responsible_actor": "Cognitive Logic IW author",
+      "review_required": true,
+      "review_due": "2026-11-20T21:59:59Z",
+      "content_hash": null,
+      "claim_id": "IW-003-CLM-011",
+      "event_id": "IW-003-E005",
+      "claim_text_original": "I chilometri totali o balneabili, da soli, dimostrano la non scarsità delle aree economicamente utilizzabili.",
+      "language": "it",
+      "translation": null,
+      "translation_method": "none",
+      "claim_type": "inference",
+      "speaker_actor_id": null,
+      "origin_source_id": "IW-003-SRC-010",
+      "origin_timestamp": null,
+      "publication_timestamp": null,
+      "original_context": "Claim atomizzato per IW-003.",
+      "subject": "chilometri di costa",
+      "predicate": "dimostrano da soli",
+      "object": "non scarsità",
+      "qualifiers": [
+        "scope Italia",
+        "as_of 20 agosto 2026"
+      ],
+      "geographic_scope": [
+        "Italia",
+        "Unione europea"
+      ],
+      "temporal_scope": {
+        "start": "2006-12-27T00:00:00Z",
+        "end": "2026-08-20T21:59:59Z"
+      },
+      "definition_refs": [
+        "METHODOLOGY.md",
+        "EPISTEMIC-TAXONOMY.md"
+      ],
+      "testability": {
+        "status": "testable",
+        "method": "Confronto con testo normativo, dispositivo, motivazione e atti ufficiali."
+      },
+      "evidence_refs": [
+        "IW-003-EVD-001",
+        "IW-003-EVD-007",
+        "IW-003-EVD-009"
+      ],
+      "counter_evidence_refs": [
+        "IW-003-EVD-001",
+        "IW-003-EVD-007"
+      ],
+      "counter_evidence_absence_reason": null,
+      "dependency_refs": [],
+      "assessment_id": "IW-003-ASM-011",
+      "revision_triggers": [
+        "nuova decisione giudiziaria",
+        "modifica normativa",
+        "atto competente sulla scarsità",
+        "nuovi dati territoriali verificabili"
+      ]
+    },
+    {
+      "id": "IW-003-CLM-012",
+      "schema_version": "1.0.0",
+      "record_version": "1.0.0",
+      "created_at": "2026-08-20T12:00:00Z",
+      "updated_at": "2026-08-20T12:30:00Z",
+      "valid_from": "2026-08-20T12:00:00Z",
+      "valid_until": null,
+      "as_of": "2026-08-20T21:59:59Z",
+      "status": "approved",
+      "supersedes": null,
+      "provenance": {
+        "created_by": "Cognitive Logic IW author assisted by Codex",
+        "method": "DFV-002 and QEN International Watch manual source review; Codex-assisted structuring",
+        "sources": [
+          "IW-003-SRC-010"
+        ],
+        "transformations": [
+          "Claim-bounded Italian synthesis; no truth or trust score"
+        ]
+      },
+      "responsible_actor": "Cognitive Logic IW author",
+      "review_required": true,
+      "review_due": "2026-11-20T21:59:59Z",
+      "content_hash": null,
+      "claim_id": "IW-003-CLM-012",
+      "event_id": "IW-003-E005",
+      "claim_text_original": "Il confronto con Spagna, Portogallo, Grecia e Francia prova che l'Italia può evitare le selezioni.",
+      "language": "it",
+      "translation": null,
+      "translation_method": "none",
+      "claim_type": "inference",
+      "speaker_actor_id": null,
+      "origin_source_id": "IW-003-SRC-010",
+      "origin_timestamp": null,
+      "publication_timestamp": null,
+      "original_context": "Claim atomizzato per IW-003.",
+      "subject": "confronto internazionale",
+      "predicate": "prova",
+      "object": "facoltà italiana di evitare selezioni",
+      "qualifiers": [
+        "scope Italia",
+        "as_of 20 agosto 2026"
+      ],
+      "geographic_scope": [
+        "Italia",
+        "Unione europea"
+      ],
+      "temporal_scope": {
+        "start": "2006-12-27T00:00:00Z",
+        "end": "2026-08-20T21:59:59Z"
+      },
+      "definition_refs": [
+        "METHODOLOGY.md",
+        "EPISTEMIC-TAXONOMY.md"
+      ],
+      "testability": {
+        "status": "partially_testable",
+        "method": "Confronto con testo normativo, dispositivo, motivazione e atti ufficiali."
+      },
+      "evidence_refs": [
+        "IW-003-EVD-002",
+        "IW-003-EVD-006"
+      ],
+      "counter_evidence_refs": [],
+      "counter_evidence_absence_reason": "Nessuna controevidenza comparabile individuata; revisione obbligatoria su nuova evidenza.",
+      "dependency_refs": [],
+      "assessment_id": "IW-003-ASM-012",
+      "revision_triggers": [
+        "nuova decisione giudiziaria",
+        "modifica normativa",
+        "atto competente sulla scarsità",
+        "nuovi dati territoriali verificabili"
+      ]
+    }
+  ]
+}

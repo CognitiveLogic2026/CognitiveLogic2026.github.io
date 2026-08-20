@@ -1,0 +1,731 @@
+{
+  "schema_version": "1.0.0",
+  "case_id": "IW-003",
+  "records": [
+    {
+      "id": "IW-003-SRC-001",
+      "schema_version": "1.0.0",
+      "record_version": "1.0.0",
+      "created_at": "2026-08-20T12:00:00Z",
+      "updated_at": "2026-08-20T12:30:00Z",
+      "valid_from": "2026-08-20T12:00:00Z",
+      "valid_until": null,
+      "as_of": "2026-08-20T21:59:59Z",
+      "status": "approved",
+      "supersedes": null,
+      "provenance": {
+        "created_by": "Cognitive Logic IW author assisted by Codex",
+        "method": "DFV-002 and QEN International Watch manual source review; Codex-assisted structuring",
+        "sources": [],
+        "transformations": [
+          "Claim-bounded Italian synthesis; no truth or trust score"
+        ]
+      },
+      "responsible_actor": "Cognitive Logic IW author",
+      "review_required": true,
+      "review_due": "2026-11-20T21:59:59Z",
+      "content_hash": null,
+      "source_id": "IW-003-SRC-001",
+      "entity_id": "Court of Justice of the European Union",
+      "source_name": "Ordinanza della Corte (Settima Sezione), 10 luglio 2026, C-574/25",
+      "jurisdiction": [
+        "EU"
+      ],
+      "source_role": [
+        "publisher",
+        "originator"
+      ],
+      "ownership_or_control": {
+        "known": true,
+        "description": "Court of Justice of the European Union"
+      },
+      "primary_or_secondary": "primary",
+      "party_to_event": "no",
+      "access_mode": "open",
+      "language": [
+        "en"
+      ],
+      "publication_channel": "official web publication",
+      "originator_of": [],
+      "repeats": [],
+      "derived_from": [],
+      "known_method": "Decisione giudiziaria primaria; dispositivo e motivazione",
+      "limitations": [
+        "Stabilisce interpretazioni di diritto UE nel perimetro deciso; non accerta la scarsità italiana.",
+        "Autorevolezza o autenticità non equivalgono a verità sostanziale."
+      ],
+      "identity_verification": {
+        "status": "verified",
+        "basis": "Identità e canale verificati; per SRC-008 è verificata l'esistenza tramite la decisione giudiziaria, non il testo integrale."
+      },
+      "archived_capture": null,
+      "original_uri": "https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX%3A62025CO0574",
+      "archived_unavailability_reason": "Nessuna copia locale archiviata; URL, accesso e nota probatoria delimitata conservati.",
+      "original_text_available": true,
+      "translation_trace": [
+        "Sintesi italiana redazionale"
+      ],
+      "publication_timestamp": "2026-07-10T00:00:00Z",
+      "source_as_at": "2026-07-10T00:00:00Z",
+      "accessed_at": "2026-08-20T12:00:00Z"
+    },
+    {
+      "id": "IW-003-SRC-002",
+      "schema_version": "1.0.0",
+      "record_version": "1.0.0",
+      "created_at": "2026-08-20T12:00:00Z",
+      "updated_at": "2026-08-20T12:30:00Z",
+      "valid_from": "2026-08-20T12:00:00Z",
+      "valid_until": null,
+      "as_of": "2026-08-20T21:59:59Z",
+      "status": "approved",
+      "supersedes": null,
+      "provenance": {
+        "created_by": "Cognitive Logic IW author assisted by Codex",
+        "method": "DFV-002 and QEN International Watch manual source review; Codex-assisted structuring",
+        "sources": [],
+        "transformations": [
+          "Claim-bounded Italian synthesis; no truth or trust score"
+        ]
+      },
+      "responsible_actor": "Cognitive Logic IW author",
+      "review_required": true,
+      "review_due": "2026-11-20T21:59:59Z",
+      "content_hash": null,
+      "source_id": "IW-003-SRC-002",
+      "entity_id": "European Parliament and Council",
+      "source_name": "Direttiva 2006/123/CE relativa ai servizi nel mercato interno",
+      "jurisdiction": [
+        "EU"
+      ],
+      "source_role": [
+        "publisher",
+        "originator"
+      ],
+      "ownership_or_control": {
+        "known": true,
+        "description": "European Parliament and Council"
+      },
+      "primary_or_secondary": "primary",
+      "party_to_event": "no",
+      "access_mode": "open",
+      "language": [
+        "en"
+      ],
+      "publication_channel": "official web publication",
+      "originator_of": [],
+      "repeats": [],
+      "derived_from": [],
+      "known_method": "Norma primaria, articolo 12",
+      "limitations": [
+        "Definisce la condizione e la procedura; non misura la scarsità in un territorio.",
+        "Autorevolezza o autenticità non equivalgono a verità sostanziale."
+      ],
+      "identity_verification": {
+        "status": "verified",
+        "basis": "Identità e canale verificati; per SRC-008 è verificata l'esistenza tramite la decisione giudiziaria, non il testo integrale."
+      },
+      "archived_capture": null,
+      "original_uri": "https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX%3A32006L0123",
+      "archived_unavailability_reason": "Nessuna copia locale archiviata; URL, accesso e nota probatoria delimitata conservati.",
+      "original_text_available": true,
+      "translation_trace": [
+        "Sintesi italiana redazionale"
+      ],
+      "publication_timestamp": "2006-12-27T00:00:00Z",
+      "source_as_at": "2006-12-27T00:00:00Z",
+      "accessed_at": "2026-08-20T12:00:00Z"
+    },
+    {
+      "id": "IW-003-SRC-003",
+      "schema_version": "1.0.0",
+      "record_version": "1.0.0",
+      "created_at": "2026-08-20T12:00:00Z",
+      "updated_at": "2026-08-20T12:30:00Z",
+      "valid_from": "2026-08-20T12:00:00Z",
+      "valid_until": null,
+      "as_of": "2026-08-20T21:59:59Z",
+      "status": "approved",
+      "supersedes": null,
+      "provenance": {
+        "created_by": "Cognitive Logic IW author assisted by Codex",
+        "method": "DFV-002 and QEN International Watch manual source review; Codex-assisted structuring",
+        "sources": [],
+        "transformations": [
+          "Claim-bounded Italian synthesis; no truth or trust score"
+        ]
+      },
+      "responsible_actor": "Cognitive Logic IW author",
+      "review_required": true,
+      "review_due": "2026-11-20T21:59:59Z",
+      "content_hash": null,
+      "source_id": "IW-003-SRC-003",
+      "entity_id": "Court of Justice of the European Union",
+      "source_name": "Promoimpresa, cause riunite C-458/14 e C-67/15",
+      "jurisdiction": [
+        "EU"
+      ],
+      "source_role": [
+        "publisher",
+        "originator"
+      ],
+      "ownership_or_control": {
+        "known": true,
+        "description": "Court of Justice of the European Union"
+      },
+      "primary_or_secondary": "primary",
+      "party_to_event": "no",
+      "access_mode": "open",
+      "language": [
+        "en"
+      ],
+      "publication_channel": "official web publication",
+      "originator_of": [],
+      "repeats": [],
+      "derived_from": [],
+      "known_method": "Precedente giudiziario sulla scarsità e selezione",
+      "limitations": [
+        "Non decide la scarsità di ogni costa italiana al cut-off.",
+        "Autorevolezza o autenticità non equivalgono a verità sostanziale."
+      ],
+      "identity_verification": {
+        "status": "verified",
+        "basis": "Identità e canale verificati; per SRC-008 è verificata l'esistenza tramite la decisione giudiziaria, non il testo integrale."
+      },
+      "archived_capture": null,
+      "original_uri": "https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX%3A62014CJ0458",
+      "archived_unavailability_reason": "Nessuna copia locale archiviata; URL, accesso e nota probatoria delimitata conservati.",
+      "original_text_available": true,
+      "translation_trace": [
+        "Sintesi italiana redazionale"
+      ],
+      "publication_timestamp": "2016-07-14T00:00:00Z",
+      "source_as_at": "2016-07-14T00:00:00Z",
+      "accessed_at": "2026-08-20T12:00:00Z"
+    },
+    {
+      "id": "IW-003-SRC-004",
+      "schema_version": "1.0.0",
+      "record_version": "1.0.0",
+      "created_at": "2026-08-20T12:00:00Z",
+      "updated_at": "2026-08-20T12:30:00Z",
+      "valid_from": "2026-08-20T12:00:00Z",
+      "valid_until": null,
+      "as_of": "2026-08-20T21:59:59Z",
+      "status": "approved",
+      "supersedes": null,
+      "provenance": {
+        "created_by": "Cognitive Logic IW author assisted by Codex",
+        "method": "DFV-002 and QEN International Watch manual source review; Codex-assisted structuring",
+        "sources": [],
+        "transformations": [
+          "Claim-bounded Italian synthesis; no truth or trust score"
+        ]
+      },
+      "responsible_actor": "Cognitive Logic IW author",
+      "review_required": true,
+      "review_due": "2026-11-20T21:59:59Z",
+      "content_hash": null,
+      "source_id": "IW-003-SRC-004",
+      "entity_id": "Court of Justice of the European Union",
+      "source_name": "Comune di Ginosa, C-348/22",
+      "jurisdiction": [
+        "EU"
+      ],
+      "source_role": [
+        "publisher",
+        "originator"
+      ],
+      "ownership_or_control": {
+        "known": true,
+        "description": "Court of Justice of the European Union"
+      },
+      "primary_or_secondary": "primary",
+      "party_to_event": "no",
+      "access_mode": "open",
+      "language": [
+        "en"
+      ],
+      "publication_channel": "official web publication",
+      "originator_of": [],
+      "repeats": [],
+      "derived_from": [],
+      "known_method": "Precedente su criteri, effetto diretto e autorità amministrative",
+      "limitations": [
+        "Non convalida automaticamente la nota italiana del 2023.",
+        "Autorevolezza o autenticità non equivalgono a verità sostanziale."
+      ],
+      "identity_verification": {
+        "status": "verified",
+        "basis": "Identità e canale verificati; per SRC-008 è verificata l'esistenza tramite la decisione giudiziaria, non il testo integrale."
+      },
+      "archived_capture": null,
+      "original_uri": "https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX%3A62022CJ0348",
+      "archived_unavailability_reason": "Nessuna copia locale archiviata; URL, accesso e nota probatoria delimitata conservati.",
+      "original_text_available": true,
+      "translation_trace": [
+        "Sintesi italiana redazionale"
+      ],
+      "publication_timestamp": "2023-04-20T00:00:00Z",
+      "source_as_at": "2023-04-20T00:00:00Z",
+      "accessed_at": "2026-08-20T12:00:00Z"
+    },
+    {
+      "id": "IW-003-SRC-005",
+      "schema_version": "1.0.0",
+      "record_version": "1.0.0",
+      "created_at": "2026-08-20T12:00:00Z",
+      "updated_at": "2026-08-20T12:30:00Z",
+      "valid_from": "2026-08-20T12:00:00Z",
+      "valid_until": null,
+      "as_of": "2026-08-20T21:59:59Z",
+      "status": "approved",
+      "supersedes": null,
+      "provenance": {
+        "created_by": "Cognitive Logic IW author assisted by Codex",
+        "method": "DFV-002 and QEN International Watch manual source review; Codex-assisted structuring",
+        "sources": [],
+        "transformations": [
+          "Claim-bounded Italian synthesis; no truth or trust score"
+        ]
+      },
+      "responsible_actor": "Cognitive Logic IW author",
+      "review_required": true,
+      "review_due": "2026-11-20T21:59:59Z",
+      "content_hash": null,
+      "source_id": "IW-003-SRC-005",
+      "entity_id": "Court of Justice of the European Union",
+      "source_name": "Società Italiana Imprese Balneari, C-598/22",
+      "jurisdiction": [
+        "EU"
+      ],
+      "source_role": [
+        "publisher",
+        "originator"
+      ],
+      "ownership_or_control": {
+        "known": true,
+        "description": "Court of Justice of the European Union"
+      },
+      "primary_or_secondary": "primary",
+      "party_to_event": "no",
+      "access_mode": "open",
+      "language": [
+        "en"
+      ],
+      "publication_channel": "official web publication",
+      "originator_of": [],
+      "repeats": [],
+      "derived_from": [],
+      "known_method": "Precedente su scadenza, rinnovo e opere non amovibili",
+      "limitations": [
+        "Il suo oggetto principale non è una mappatura nazionale della scarsità.",
+        "Autorevolezza o autenticità non equivalgono a verità sostanziale."
+      ],
+      "identity_verification": {
+        "status": "verified",
+        "basis": "Identità e canale verificati; per SRC-008 è verificata l'esistenza tramite la decisione giudiziaria, non il testo integrale."
+      },
+      "archived_capture": null,
+      "original_uri": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX%3A62022CJ0598",
+      "archived_unavailability_reason": "Nessuna copia locale archiviata; URL, accesso e nota probatoria delimitata conservati.",
+      "original_text_available": true,
+      "translation_trace": [
+        "Sintesi italiana redazionale"
+      ],
+      "publication_timestamp": "2024-07-11T00:00:00Z",
+      "source_as_at": "2024-07-11T00:00:00Z",
+      "accessed_at": "2026-08-20T12:00:00Z"
+    },
+    {
+      "id": "IW-003-SRC-006",
+      "schema_version": "1.0.0",
+      "record_version": "1.0.0",
+      "created_at": "2026-08-20T12:00:00Z",
+      "updated_at": "2026-08-20T12:30:00Z",
+      "valid_from": "2026-08-20T12:00:00Z",
+      "valid_until": null,
+      "as_of": "2026-08-20T21:59:59Z",
+      "status": "approved",
+      "supersedes": null,
+      "provenance": {
+        "created_by": "Cognitive Logic IW author assisted by Codex",
+        "method": "DFV-002 and QEN International Watch manual source review; Codex-assisted structuring",
+        "sources": [],
+        "transformations": [
+          "Claim-bounded Italian synthesis; no truth or trust score"
+        ]
+      },
+      "responsible_actor": "Cognitive Logic IW author",
+      "review_required": true,
+      "review_due": "2026-11-20T21:59:59Z",
+      "content_hash": null,
+      "source_id": "IW-003-SRC-006",
+      "entity_id": "Italian Republic — Gazzetta Ufficiale",
+      "source_name": "Decreto-legge 16 settembre 2024 n. 131, testo coordinato",
+      "jurisdiction": [
+        "IT"
+      ],
+      "source_role": [
+        "publisher",
+        "originator"
+      ],
+      "ownership_or_control": {
+        "known": true,
+        "description": "Italian Republic — Gazzetta Ufficiale"
+      },
+      "primary_or_secondary": "primary",
+      "party_to_event": "yes",
+      "access_mode": "open",
+      "language": [
+        "it"
+      ],
+      "publication_channel": "official web publication",
+      "originator_of": [],
+      "repeats": [],
+      "derived_from": [],
+      "known_method": "Normativa italiana vigente sulle procedure e scadenze",
+      "limitations": [
+        "Non prova da sola la compatibilità di ogni applicazione concreta con il diritto UE.",
+        "Autorevolezza o autenticità non equivalgono a verità sostanziale."
+      ],
+      "identity_verification": {
+        "status": "verified",
+        "basis": "Identità e canale verificati; per SRC-008 è verificata l'esistenza tramite la decisione giudiziaria, non il testo integrale."
+      },
+      "archived_capture": null,
+      "original_uri": "https://www.gazzettaufficiale.it/atto/serie_generale/caricaArticoloDefault/originario?atto.codiceRedazionale=24A06077&atto.dataPubblicazioneGazzetta=2024-11-14&atto.tipoProvvedimento=TESTO+COORDINATO+DEL+DECRETO-LEGGE",
+      "archived_unavailability_reason": "Nessuna copia locale archiviata; URL, accesso e nota probatoria delimitata conservati.",
+      "original_text_available": true,
+      "translation_trace": [],
+      "publication_timestamp": "2024-11-14T00:00:00Z",
+      "source_as_at": "2024-11-14T00:00:00Z",
+      "accessed_at": "2026-08-20T12:00:00Z"
+    },
+    {
+      "id": "IW-003-SRC-007",
+      "schema_version": "1.0.0",
+      "record_version": "1.0.0",
+      "created_at": "2026-08-20T12:00:00Z",
+      "updated_at": "2026-08-20T12:30:00Z",
+      "valid_from": "2026-08-20T12:00:00Z",
+      "valid_until": null,
+      "as_of": "2026-08-20T21:59:59Z",
+      "status": "approved",
+      "supersedes": null,
+      "provenance": {
+        "created_by": "Cognitive Logic IW author assisted by Codex",
+        "method": "DFV-002 and QEN International Watch manual source review; Codex-assisted structuring",
+        "sources": [],
+        "transformations": [
+          "Claim-bounded Italian synthesis; no truth or trust score"
+        ]
+      },
+      "responsible_actor": "Cognitive Logic IW author",
+      "review_required": true,
+      "review_due": "2026-11-20T21:59:59Z",
+      "content_hash": null,
+      "source_id": "IW-003-SRC-007",
+      "entity_id": "European Commission via European Parliament",
+      "source_name": "Risposta della Commissione E-003631/2023 su INFR(2020)4118",
+      "jurisdiction": [
+        "EU"
+      ],
+      "source_role": [
+        "publisher",
+        "originator"
+      ],
+      "ownership_or_control": {
+        "known": true,
+        "description": "European Commission via European Parliament"
+      },
+      "primary_or_secondary": "primary",
+      "party_to_event": "yes",
+      "access_mode": "open",
+      "language": [
+        "it"
+      ],
+      "publication_channel": "official web publication",
+      "originator_of": [],
+      "repeats": [],
+      "derived_from": [],
+      "known_method": "Posizione istituzionale sulla valutazione effettiva, obiettiva e qualitativa",
+      "limitations": [
+        "Non è una sentenza e non contiene il testo integrale del parere motivato.",
+        "Autorevolezza o autenticità non equivalgono a verità sostanziale."
+      ],
+      "identity_verification": {
+        "status": "verified",
+        "basis": "Identità e canale verificati; per SRC-008 è verificata l'esistenza tramite la decisione giudiziaria, non il testo integrale."
+      },
+      "archived_capture": null,
+      "original_uri": "https://www.europarl.europa.eu/doceo/document/E-9-2023-003631-ASW_IT.html",
+      "archived_unavailability_reason": "Nessuna copia locale archiviata; URL, accesso e nota probatoria delimitata conservati.",
+      "original_text_available": true,
+      "translation_trace": [],
+      "publication_timestamp": "2024-03-26T00:00:00Z",
+      "source_as_at": "2024-03-26T00:00:00Z",
+      "accessed_at": "2026-08-20T12:00:00Z"
+    },
+    {
+      "id": "IW-003-SRC-008",
+      "schema_version": "1.0.0",
+      "record_version": "1.0.0",
+      "created_at": "2026-08-20T12:00:00Z",
+      "updated_at": "2026-08-20T12:30:00Z",
+      "valid_from": "2026-08-20T12:00:00Z",
+      "valid_until": null,
+      "as_of": "2026-08-20T21:59:59Z",
+      "status": "approved",
+      "supersedes": null,
+      "provenance": {
+        "created_by": "Cognitive Logic IW author assisted by Codex",
+        "method": "DFV-002 and QEN International Watch manual source review; Codex-assisted structuring",
+        "sources": [],
+        "transformations": [
+          "Claim-bounded Italian synthesis; no truth or trust score"
+        ]
+      },
+      "responsible_actor": "Cognitive Logic IW author",
+      "review_required": true,
+      "review_due": "2026-11-20T21:59:59Z",
+      "content_hash": null,
+      "source_id": "IW-003-SRC-008",
+      "entity_id": "Presidenza del Consiglio dei ministri",
+      "source_name": "Nota della Presidenza del Consiglio del 6 ottobre 2023",
+      "jurisdiction": [
+        "IT"
+      ],
+      "source_role": [
+        "publisher",
+        "originator"
+      ],
+      "ownership_or_control": {
+        "known": true,
+        "description": "Presidenza del Consiglio dei ministri"
+      },
+      "primary_or_secondary": "primary",
+      "party_to_event": "yes",
+      "access_mode": "unavailable",
+      "language": [
+        "it"
+      ],
+      "publication_channel": "official web publication",
+      "originator_of": [],
+      "repeats": [],
+      "derived_from": [],
+      "known_method": "Atto nazionale richiamato dall'ordinanza C-574/25",
+      "limitations": [
+        "Testo ufficiale integrale non reperito nel perimetro; competenza, vincolatività e metodo restano da verificare dal giudice nazionale.",
+        "Autorevolezza o autenticità non equivalgono a verità sostanziale."
+      ],
+      "identity_verification": {
+        "status": "verified",
+        "basis": "Identità e canale verificati; per SRC-008 è verificata l'esistenza tramite la decisione giudiziaria, non il testo integrale."
+      },
+      "archived_capture": null,
+      "original_uri": null,
+      "archived_unavailability_reason": "Documento integrale non reperito su un canale ufficiale accessibile al cut-off.",
+      "original_text_available": false,
+      "translation_trace": [],
+      "publication_timestamp": "2023-10-06T00:00:00Z",
+      "source_as_at": "2023-10-06T00:00:00Z",
+      "accessed_at": "2026-08-20T12:00:00Z"
+    },
+    {
+      "id": "IW-003-SRC-009",
+      "schema_version": "1.0.0",
+      "record_version": "1.0.0",
+      "created_at": "2026-08-20T12:00:00Z",
+      "updated_at": "2026-08-20T12:30:00Z",
+      "valid_from": "2026-08-20T12:00:00Z",
+      "valid_until": null,
+      "as_of": "2026-08-20T21:59:59Z",
+      "status": "approved",
+      "supersedes": null,
+      "provenance": {
+        "created_by": "Cognitive Logic IW author assisted by Codex",
+        "method": "DFV-002 and QEN International Watch manual source review; Codex-assisted structuring",
+        "sources": [],
+        "transformations": [
+          "Claim-bounded Italian synthesis; no truth or trust score"
+        ]
+      },
+      "responsible_actor": "Cognitive Logic IW author",
+      "review_required": true,
+      "review_due": "2026-11-20T21:59:59Z",
+      "content_hash": null,
+      "source_id": "IW-003-SRC-009",
+      "entity_id": "Coste360",
+      "source_name": "Concessioni balneari in Emilia-Romagna",
+      "jurisdiction": [
+        "IT"
+      ],
+      "source_role": [
+        "publisher",
+        "originator"
+      ],
+      "ownership_or_control": {
+        "known": true,
+        "description": "Coste360"
+      },
+      "primary_or_secondary": "secondary",
+      "party_to_event": "no",
+      "access_mode": "open",
+      "language": [
+        "it"
+      ],
+      "publication_channel": "web publication",
+      "originator_of": [],
+      "repeats": [],
+      "derived_from": [],
+      "known_method": "Contesto territoriale su atti e distribuzione",
+      "limitations": [
+        "Non è fonte giuridica e non dimostra scarsità o non scarsità; non distingue da sola costa balneabile, concedibile ed economicamente utilizzabile.",
+        "Autorevolezza o autenticità non equivalgono a verità sostanziale."
+      ],
+      "identity_verification": {
+        "status": "verified",
+        "basis": "Identità e canale verificati; per SRC-008 è verificata l'esistenza tramite la decisione giudiziaria, non il testo integrale."
+      },
+      "archived_capture": null,
+      "original_uri": "https://www.coste360.it/concessioni-balneari/emilia-romagna",
+      "archived_unavailability_reason": "Nessuna copia locale archiviata; URL, accesso e nota probatoria delimitata conservati.",
+      "original_text_available": true,
+      "translation_trace": [],
+      "publication_timestamp": null,
+      "source_as_at": null,
+      "accessed_at": "2026-08-20T12:00:00Z"
+    },
+    {
+      "id": "IW-003-SRC-010",
+      "schema_version": "1.0.0",
+      "record_version": "1.0.0",
+      "created_at": "2026-08-20T12:00:00Z",
+      "updated_at": "2026-08-20T12:30:00Z",
+      "valid_from": "2026-08-20T12:00:00Z",
+      "valid_until": null,
+      "as_of": "2026-08-20T21:59:59Z",
+      "status": "approved",
+      "supersedes": null,
+      "provenance": {
+        "created_by": "Cognitive Logic IW author assisted by Codex",
+        "method": "DFV-002 and QEN International Watch manual source review; Codex-assisted structuring",
+        "sources": [],
+        "transformations": [
+          "Claim-bounded Italian synthesis; no truth or trust score"
+        ]
+      },
+      "responsible_actor": "Cognitive Logic IW author",
+      "review_required": true,
+      "review_due": "2026-11-20T21:59:59Z",
+      "content_hash": null,
+      "source_id": "IW-003-SRC-010",
+      "entity_id": "Panorama, ripubblicato da TuttiQuotidiani",
+      "source_name": "I Balneari hanno vinto: nessun obbligo di gare pubbliche",
+      "jurisdiction": [
+        "IT"
+      ],
+      "source_role": [
+        "publisher",
+        "originator"
+      ],
+      "ownership_or_control": {
+        "known": true,
+        "description": "Panorama, ripubblicato da TuttiQuotidiani"
+      },
+      "primary_or_secondary": "secondary",
+      "party_to_event": "no",
+      "access_mode": "open",
+      "language": [
+        "it"
+      ],
+      "publication_channel": "web publication",
+      "originator_of": [],
+      "repeats": [],
+      "derived_from": [],
+      "known_method": "Esempio documentato di trasformazione narrativa",
+      "limitations": [
+        "Ripubblicazione non indipendente; titolo e sintesi non modificano il dispositivo della Corte.",
+        "Autorevolezza o autenticità non equivalgono a verità sostanziale."
+      ],
+      "identity_verification": {
+        "status": "verified",
+        "basis": "Identità e canale verificati; per SRC-008 è verificata l'esistenza tramite la decisione giudiziaria, non il testo integrale."
+      },
+      "archived_capture": null,
+      "original_uri": "https://tuttiquotidiani.it/it/news/i-balneari-hanno-vinto-per-la-corte-di-giustizia-ue-nessun-obbligo-di-gare-pubbliche",
+      "archived_unavailability_reason": "Nessuna copia locale archiviata; URL, accesso e nota probatoria delimitata conservati.",
+      "original_text_available": true,
+      "translation_trace": [],
+      "publication_timestamp": "2026-07-24T00:00:00Z",
+      "source_as_at": "2026-07-24T00:00:00Z",
+      "accessed_at": "2026-08-20T12:00:00Z"
+    },
+    {
+      "id": "IW-003-SRC-011",
+      "schema_version": "1.0.0",
+      "record_version": "1.0.0",
+      "created_at": "2026-08-20T12:00:00Z",
+      "updated_at": "2026-08-20T12:30:00Z",
+      "valid_from": "2026-08-20T12:00:00Z",
+      "valid_until": null,
+      "as_of": "2026-08-20T21:59:59Z",
+      "status": "approved",
+      "supersedes": null,
+      "provenance": {
+        "created_by": "Cognitive Logic IW author assisted by Codex",
+        "method": "DFV-002 and QEN International Watch manual source review; Codex-assisted structuring",
+        "sources": [],
+        "transformations": [
+          "Claim-bounded Italian synthesis; no truth or trust score"
+        ]
+      },
+      "responsible_actor": "Cognitive Logic IW author",
+      "review_required": true,
+      "review_due": "2026-11-20T21:59:59Z",
+      "content_hash": null,
+      "source_id": "IW-003-SRC-011",
+      "entity_id": "European Ombudsman",
+      "source_name": "Caso 901/2026/LA su INFR(2020)4118",
+      "jurisdiction": [
+        "EU"
+      ],
+      "source_role": [
+        "publisher",
+        "originator"
+      ],
+      "ownership_or_control": {
+        "known": true,
+        "description": "European Ombudsman"
+      },
+      "primary_or_secondary": "primary",
+      "party_to_event": "no",
+      "access_mode": "open",
+      "language": [
+        "it"
+      ],
+      "publication_channel": "official web publication",
+      "originator_of": [],
+      "repeats": [],
+      "derived_from": [],
+      "known_method": "Conferma istituzionale che un'indagine sulla gestione della procedura è aperta",
+      "limitations": [
+        "Non decide il merito della scarsità o la validità delle proroghe.",
+        "Autorevolezza o autenticità non equivalgono a verità sostanziale."
+      ],
+      "identity_verification": {
+        "status": "verified",
+        "basis": "Identità e canale verificati; per SRC-008 è verificata l'esistenza tramite la decisione giudiziaria, non il testo integrale."
+      },
+      "archived_capture": null,
+      "original_uri": "https://www.ombudsman.europa.eu/it/opening-summary/it/227729",
+      "archived_unavailability_reason": "Nessuna copia locale archiviata; URL, accesso e nota probatoria delimitata conservati.",
+      "original_text_available": true,
+      "translation_trace": [],
+      "publication_timestamp": "2026-06-17T00:00:00Z",
+      "source_as_at": "2026-06-17T00:00:00Z",
+      "accessed_at": "2026-08-20T12:00:00Z"
+    }
+  ]
+}

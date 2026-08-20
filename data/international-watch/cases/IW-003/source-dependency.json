@@ -1,0 +1,294 @@
+{
+  "schema_version": "1.0.0",
+  "case_id": "IW-003",
+  "records": [
+    {
+      "id": "IW-003-DEP-001",
+      "schema_version": "1.0.0",
+      "record_version": "1.0.0",
+      "created_at": "2026-08-20T12:00:00Z",
+      "updated_at": "2026-08-20T12:30:00Z",
+      "valid_from": "2026-08-20T12:00:00Z",
+      "valid_until": null,
+      "as_of": "2026-08-20T21:59:59Z",
+      "status": "approved",
+      "supersedes": null,
+      "provenance": {
+        "created_by": "Cognitive Logic IW author assisted by Codex",
+        "method": "DFV-002 and QEN International Watch manual source review; Codex-assisted structuring",
+        "sources": [
+          "IW-003-SRC-010",
+          "IW-003-SRC-001"
+        ],
+        "transformations": [
+          "Claim-bounded Italian synthesis; no truth or trust score"
+        ]
+      },
+      "responsible_actor": "Cognitive Logic IW author",
+      "review_required": true,
+      "review_due": "2026-11-20T21:59:59Z",
+      "content_hash": null,
+      "node_id": "IW-003-SRC-010",
+      "node_type": "source",
+      "edge_id": "IW-003-DEP-001",
+      "edge_type": "summary",
+      "from": "IW-003-SRC-010",
+      "to": "IW-003-SRC-001",
+      "shared_origin_id": "IW-003-SRC-001",
+      "evidence_collection_independent": "no",
+      "organizationally_independent": "yes",
+      "ownership_independent": "yes",
+      "methodologically_independent": "no",
+      "shared_dataset": "unknown",
+      "shared_agency": "no",
+      "shared_statement": "yes",
+      "republication_or_translation": true,
+      "dependency_basis": [
+        "Titolo giornalistico interpreta l'ordinanza."
+      ],
+      "dependency_status": "dependent",
+      "unknown_dependency": false,
+      "counts_as_independent_corroboration": false
+    },
+    {
+      "id": "IW-003-DEP-002",
+      "schema_version": "1.0.0",
+      "record_version": "1.0.0",
+      "created_at": "2026-08-20T12:00:00Z",
+      "updated_at": "2026-08-20T12:30:00Z",
+      "valid_from": "2026-08-20T12:00:00Z",
+      "valid_until": null,
+      "as_of": "2026-08-20T21:59:59Z",
+      "status": "approved",
+      "supersedes": null,
+      "provenance": {
+        "created_by": "Cognitive Logic IW author assisted by Codex",
+        "method": "DFV-002 and QEN International Watch manual source review; Codex-assisted structuring",
+        "sources": [
+          "IW-003-SRC-001",
+          "IW-003-SRC-004"
+        ],
+        "transformations": [
+          "Claim-bounded Italian synthesis; no truth or trust score"
+        ]
+      },
+      "responsible_actor": "Cognitive Logic IW author",
+      "review_required": true,
+      "review_due": "2026-11-20T21:59:59Z",
+      "content_hash": null,
+      "node_id": "IW-003-SRC-001",
+      "node_type": "source",
+      "edge_id": "IW-003-DEP-002",
+      "edge_type": "uses_evidence",
+      "from": "IW-003-SRC-001",
+      "to": "IW-003-SRC-004",
+      "shared_origin_id": "IW-003-SRC-004",
+      "evidence_collection_independent": "no",
+      "organizationally_independent": "yes",
+      "ownership_independent": "yes",
+      "methodologically_independent": "no",
+      "shared_dataset": "unknown",
+      "shared_agency": "no",
+      "shared_statement": "yes",
+      "republication_or_translation": false,
+      "dependency_basis": [
+        "L'ordinanza richiama Ginosa."
+      ],
+      "dependency_status": "dependent",
+      "unknown_dependency": false,
+      "counts_as_independent_corroboration": false
+    },
+    {
+      "id": "IW-003-DEP-003",
+      "schema_version": "1.0.0",
+      "record_version": "1.0.0",
+      "created_at": "2026-08-20T12:00:00Z",
+      "updated_at": "2026-08-20T12:30:00Z",
+      "valid_from": "2026-08-20T12:00:00Z",
+      "valid_until": null,
+      "as_of": "2026-08-20T21:59:59Z",
+      "status": "approved",
+      "supersedes": null,
+      "provenance": {
+        "created_by": "Cognitive Logic IW author assisted by Codex",
+        "method": "DFV-002 and QEN International Watch manual source review; Codex-assisted structuring",
+        "sources": [
+          "IW-003-SRC-001",
+          "IW-003-SRC-003"
+        ],
+        "transformations": [
+          "Claim-bounded Italian synthesis; no truth or trust score"
+        ]
+      },
+      "responsible_actor": "Cognitive Logic IW author",
+      "review_required": true,
+      "review_due": "2026-11-20T21:59:59Z",
+      "content_hash": null,
+      "node_id": "IW-003-SRC-001",
+      "node_type": "source",
+      "edge_id": "IW-003-DEP-003",
+      "edge_type": "uses_evidence",
+      "from": "IW-003-SRC-001",
+      "to": "IW-003-SRC-003",
+      "shared_origin_id": "IW-003-SRC-003",
+      "evidence_collection_independent": "no",
+      "organizationally_independent": "yes",
+      "ownership_independent": "yes",
+      "methodologically_independent": "no",
+      "shared_dataset": "unknown",
+      "shared_agency": "no",
+      "shared_statement": "yes",
+      "republication_or_translation": false,
+      "dependency_basis": [
+        "L'ordinanza richiama Promoimpresa."
+      ],
+      "dependency_status": "dependent",
+      "unknown_dependency": false,
+      "counts_as_independent_corroboration": false
+    },
+    {
+      "id": "IW-003-DEP-004",
+      "schema_version": "1.0.0",
+      "record_version": "1.0.0",
+      "created_at": "2026-08-20T12:00:00Z",
+      "updated_at": "2026-08-20T12:30:00Z",
+      "valid_from": "2026-08-20T12:00:00Z",
+      "valid_until": null,
+      "as_of": "2026-08-20T21:59:59Z",
+      "status": "approved",
+      "supersedes": null,
+      "provenance": {
+        "created_by": "Cognitive Logic IW author assisted by Codex",
+        "method": "DFV-002 and QEN International Watch manual source review; Codex-assisted structuring",
+        "sources": [
+          "IW-003-SRC-001",
+          "IW-003-SRC-005"
+        ],
+        "transformations": [
+          "Claim-bounded Italian synthesis; no truth or trust score"
+        ]
+      },
+      "responsible_actor": "Cognitive Logic IW author",
+      "review_required": true,
+      "review_due": "2026-11-20T21:59:59Z",
+      "content_hash": null,
+      "node_id": "IW-003-SRC-001",
+      "node_type": "source",
+      "edge_id": "IW-003-DEP-004",
+      "edge_type": "uses_evidence",
+      "from": "IW-003-SRC-001",
+      "to": "IW-003-SRC-005",
+      "shared_origin_id": "IW-003-SRC-005",
+      "evidence_collection_independent": "no",
+      "organizationally_independent": "yes",
+      "ownership_independent": "yes",
+      "methodologically_independent": "no",
+      "shared_dataset": "unknown",
+      "shared_agency": "no",
+      "shared_statement": "yes",
+      "republication_or_translation": false,
+      "dependency_basis": [
+        "L'ordinanza richiama SIIB."
+      ],
+      "dependency_status": "dependent",
+      "unknown_dependency": false,
+      "counts_as_independent_corroboration": false
+    },
+    {
+      "id": "IW-003-DEP-005",
+      "schema_version": "1.0.0",
+      "record_version": "1.0.0",
+      "created_at": "2026-08-20T12:00:00Z",
+      "updated_at": "2026-08-20T12:30:00Z",
+      "valid_from": "2026-08-20T12:00:00Z",
+      "valid_until": null,
+      "as_of": "2026-08-20T21:59:59Z",
+      "status": "approved",
+      "supersedes": null,
+      "provenance": {
+        "created_by": "Cognitive Logic IW author assisted by Codex",
+        "method": "DFV-002 and QEN International Watch manual source review; Codex-assisted structuring",
+        "sources": [
+          "IW-003-SRC-008",
+          "IW-003-SRC-001"
+        ],
+        "transformations": [
+          "Claim-bounded Italian synthesis; no truth or trust score"
+        ]
+      },
+      "responsible_actor": "Cognitive Logic IW author",
+      "review_required": true,
+      "review_due": "2026-11-20T21:59:59Z",
+      "content_hash": null,
+      "node_id": "IW-003-SRC-008",
+      "node_type": "source",
+      "edge_id": "IW-003-DEP-005",
+      "edge_type": "possible_dependency",
+      "from": "IW-003-SRC-008",
+      "to": "IW-003-SRC-001",
+      "shared_origin_id": "IW-003-SRC-001",
+      "evidence_collection_independent": "no",
+      "organizationally_independent": "yes",
+      "ownership_independent": "yes",
+      "methodologically_independent": "no",
+      "shared_dataset": "unknown",
+      "shared_agency": "no",
+      "shared_statement": "yes",
+      "republication_or_translation": false,
+      "dependency_basis": [
+        "La nota è descritta nell'ordinanza; testo integrale non acquisito."
+      ],
+      "dependency_status": "dependent",
+      "unknown_dependency": true,
+      "counts_as_independent_corroboration": false
+    },
+    {
+      "id": "IW-003-DEP-006",
+      "schema_version": "1.0.0",
+      "record_version": "1.0.0",
+      "created_at": "2026-08-20T12:00:00Z",
+      "updated_at": "2026-08-20T12:30:00Z",
+      "valid_from": "2026-08-20T12:00:00Z",
+      "valid_until": null,
+      "as_of": "2026-08-20T21:59:59Z",
+      "status": "approved",
+      "supersedes": null,
+      "provenance": {
+        "created_by": "Cognitive Logic IW author assisted by Codex",
+        "method": "DFV-002 and QEN International Watch manual source review; Codex-assisted structuring",
+        "sources": [
+          "IW-003-SRC-009",
+          "IW-003-SRC-006"
+        ],
+        "transformations": [
+          "Claim-bounded Italian synthesis; no truth or trust score"
+        ]
+      },
+      "responsible_actor": "Cognitive Logic IW author",
+      "review_required": true,
+      "review_due": "2026-11-20T21:59:59Z",
+      "content_hash": null,
+      "node_id": "IW-003-SRC-009",
+      "node_type": "source",
+      "edge_id": "IW-003-DEP-006",
+      "edge_type": "independent_collection",
+      "from": "IW-003-SRC-009",
+      "to": "IW-003-SRC-006",
+      "shared_origin_id": null,
+      "evidence_collection_independent": "yes",
+      "organizationally_independent": "yes",
+      "ownership_independent": "yes",
+      "methodologically_independent": "yes",
+      "shared_dataset": "no",
+      "shared_agency": "no",
+      "shared_statement": "no",
+      "republication_or_translation": false,
+      "dependency_basis": [
+        "Dati territoriali distinti dalla fonte normativa."
+      ],
+      "dependency_status": "independent",
+      "unknown_dependency": false,
+      "counts_as_independent_corroboration": true
+    }
+  ]
+}

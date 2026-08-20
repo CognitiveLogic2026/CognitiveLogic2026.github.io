@@ -101,6 +101,21 @@ class InternationalWatchSchemaTests(unittest.TestCase):
         self.assertFalse(manifest["publication_allowed"])
         self.assertEqual(assessment["state"], "INDETERMINABILE")
 
+    def test_iw_003_records_human_publication_authorization(self):
+        case = ROOT / "data" / "international-watch" / "cases" / "IW-003"
+        manifest = load(case / "dossier-manifest.json")
+        workflow = load(case / "workflow.json")["records"][0]
+        claims = load(case / "claim-registry.json")["records"]
+        assessments = load(case / "epistemic-assessment.json")["records"]
+        self.assertEqual(manifest["status"], "published")
+        self.assertTrue(manifest["publication_allowed"])
+        self.assertIsNotNone(manifest["approved_at"])
+        self.assertIsNotNone(manifest["published_at"])
+        self.assertEqual(workflow["current_state"], "published")
+        self.assertTrue(all(record["status"] == "approved" for record in claims + assessments))
+        main = next(record for record in assessments if record["claim_id"] == "IW-003-CLM-001")
+        self.assertEqual(main["state"], "CONTRADDETTO")
+
 
 if __name__ == "__main__":
     unittest.main()
