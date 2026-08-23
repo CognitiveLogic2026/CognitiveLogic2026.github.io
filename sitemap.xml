@@ -51,6 +51,12 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://cognitivelogic.it/fuorimenu/</loc>
+    <lastmod>2026-08-24</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://cognitivelogic.it/ai.html</loc>
     <lastmod>2026-04-28</lastmod>
     <priority>0.7</priority>

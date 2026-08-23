@@ -7,7 +7,7 @@ const { spawnSync } = require("node:child_process");
 const root = path.resolve(__dirname, "..");
 const base = process.env.RESOURCE_TEST_BASE || "http://127.0.0.1:8765";
 const resources = JSON.parse(fs.readFileSync(path.join(root, "resources/data/resources.json"), "utf8"));
-const pages = ["/resources/", ...resources.map((resource) => resource.url), "/identity.html", "/identity_en.html", "/evide.html", "/trust.html", "/research.html", "/international-watch/"];
+const pages = ["/resources/", ...resources.map((resource) => resource.url), "/identity.html", "/identity_en.html", "/evide.html", "/trust.html", "/research.html", "/fuorimenu/", "/international-watch/"];
 
 const pngDimensions = (file) => {
   const buffer = fs.readFileSync(file);
