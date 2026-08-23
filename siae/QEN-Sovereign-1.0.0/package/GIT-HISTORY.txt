@@ -1,0 +1,32 @@
+af148ceb517af2d66f35c2ecc94ebcd725ae6c54 | 2026-08-23 09:53:15 +0200 | Roberto Bob Malini | Complete English commercial landing pages
+6761dde43c3bfe886034b97dd1226ee155f23b02 | 2026-08-23 09:46:52 +0200 | Roberto Bob Malini | Align commercial site for QEN Sovereign and Digital Presence
+7ef8a1b072b4262efbf154c416a95c61e3ebedca | 2026-08-13 17:16:03 +0200 | Roberto Bob Malini | feat(copilot): integrate governed case study retrieval
+e443a5468943d73dd0a0147f1f9cbf367bd3a489 | 2026-08-11 18:12:10 +0200 | Roberto Bob Malini | feat(manifesto): publish verifiable truth foundation
+8e6b9abbba2896bb0f06a04ab35a77eb16669ceb | 2026-08-10 00:45:10 +0200 | Codex | feat(copilot): add governed deterministic source retrieval
+c6d8ef57846c1dc8beb31909935bb5c907e46d58 | 2026-08-09 23:56:46 +0200 | Roberto Bob Malini | docs: add Bolkestein observatory and AGCM benchmark
+d356bf8c72290f3c180160712b334c8828e5885e | 2026-08-08 01:20:47 +0200 | Roberto Bob Malini | fix(commercial): finalize assessment funnel and indexing readiness
+af8b8e82571850ec30bf2b04110e7337c8aa6ea5 | 2026-08-06 23:21:04 +0200 | Roberto Bob Malini | refactor(validation): elevate EA-007 and EA-008 editorial structure
+9a2b748fd1f03b2726917b6e9b3c37fb79308762 | 2026-08-06 23:00:43 +0200 | Roberto Bob Malini | refactor(validation): elevate EA-005 and EA-006 editorial structure
+b2bfc32739a42be476eb50e22fc9f96ccf275722 | 2026-08-06 22:40:06 +0200 | Roberto Bob Malini | refactor(validation): elevate EA-003 and EA-004 editorial structure
+0c10115962791553ada2f8f7b4d11c4c3ceff8f4 | 2026-08-06 06:33:37 +0200 | Roberto Bob Malini | feat(validation): rebuild VR-001 executive validation report
+b9add6e3c819a9d3b236330497e699db363bb184 | 2026-07-30 15:20:48 +0200 | Roberto Bob Malini | docs(qen): add SA-001 Coste360 sovereign intelligence analysis
+e73486a056e8193b700c44fb97f5a893b7b9c282 | 2026-07-30 15:09:00 +0200 | Roberto Bob Malini | docs(qen): add VR-001 Coste360 validation report
+d328b4b2a87edcdb308c394f9c5709608043dc86 | 2026-07-30 15:01:58 +0200 | Roberto Bob Malini | docs(qen): add EA-008 Coste360 application architecture assessment
+4bae5ef4bbd89e7e654595b67be3eba1bb98fcc8 | 2026-07-30 14:55:45 +0200 | Roberto Bob Malini | docs(qen): add EA-007 Coste360 integration architecture assessment
+4cfd3f22fce1520aeb683faff5bb15d2cbed8a2b | 2026-07-30 14:48:50 +0200 | Roberto Bob Malini | docs(qen): add EA-006 Coste360 data architecture assessment
+1dc0f3263990970726f4a9dccf891cf416c2a6de | 2026-07-30 14:41:57 +0200 | Roberto Bob Malini | docs(qen): add EA-005 Coste360 information architecture assessment
+ef0b7a3de8e62a9019785d1dd5433257270340fc | 2026-07-30 06:19:34 +0200 | Roberto Bob Malini | docs(qen): add EA-004 Coste360 enterprise governance assessment
+32417638342a18b75569c2f156f8f2ec4c5ef59f | 2026-07-29 23:29:15 +0200 | Roberto Bob Malini | docs(qen): add EA-009 Coste360 validation evidence catalogue
+867170bbef0b68c3fd664bdb05b2e9a804cfaf57 | 2026-07-29 23:16:04 +0200 | Roberto Bob Malini | docs(qen): add EA-003 Coste360 platform capability assessment
+14ae829740b9c10d828020f3539840123b61c834 | 2026-07-29 16:37:36 +0200 | Roberto Bob Malini | docs(qen): add sovereign documentation index
+4a49a5df3710351c1e7eda961a73b2840e5c8279 | 2026-07-29 16:29:45 +0200 | Roberto Bob Malini | docs(qen): add sovereign documentation reference architecture
+36ad87f32fbf894347ec6823d0bfe4ff70f8d9fe | 2026-07-29 14:03:16 +0200 | Roberto Bob Malini | docs(qen): add sovereign governance model
+5a361fbc26a3d28474ccdb37c58078d6e86aaddb | 2026-07-29 13:54:14 +0200 | Roberto Bob Malini | docs(qen): add sovereign architecture overview
+9b8d425177388ec2b23192b2dffd146673bda05c | 2026-07-29 13:53:40 +0200 | Roberto Bob Malini | docs(qen): add sovereign architecture overview
+a72a9d30d6f7bf779d0f23fd56c1fc3029fce399 | 2026-07-29 13:43:59 +0200 | Roberto Bob Malini | docs(qen): add sovereign master registry baseline
+6f28bcd72f5805ac210669a7c6882b5be74a0bf0 | 2026-07-24 23:30:32 +0200 | Roberto Bob Malini | feat(runtime): migrate core agents to sovereign engine
+e7f73fcdb24f211c224d8ba304cdd0354b7649ba | 2026-07-24 23:22:33 +0200 | Roberto Bob Malini | feat(runtime): migrate compliance audit to sovereign engine
+51278c416e22029b0e9f75d7642115ca1b1720da | 2026-07-24 06:28:23 +0200 | Roberto Bob Malini | docs(architecture): record sovereign runtime phase 3 completion
+450e0ee24e832d813bb50047e441ff377221e81b | 2026-07-24 06:08:56 +0200 | Roberto Bob Malini | feat(runtime): add QEN sovereign intelligence engine
+29bed3a22bbbca3c01ff074e2b4f985a029f769c | 2026-07-23 17:08:23 +0200 | Roberto Bob Malini | docs(infrastructure): record Hetzner remediation and key rotation
+3e0328443869aff719474e00e18995e416ed09f0 | 2026-07-23 12:02:55 +0200 | Roberto Bob Malini | docs(architecture): establish QEN sovereign intelligence refactor

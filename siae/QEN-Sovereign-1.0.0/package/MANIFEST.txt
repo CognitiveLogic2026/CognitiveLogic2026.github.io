@@ -1,0 +1,66 @@
+QEN SOVEREIGN INTELLIGENCE
+SIAE TECHNICAL BASELINE MANIFEST
+
+Product: QEN Sovereign Intelligence
+Release: 1.0.0
+Engine identifier: qen-sovereign-1.0
+Owner: Cognitive Logic
+
+DESCRIPTION
+QEN Sovereign Intelligence is a sovereign, deterministic and
+evidence-driven intelligence architecture derived from the evolution
+of the QEN Framework.
+
+The system provides governed functions for:
+- QEN scoring
+- AI risk classification
+- entity assessment
+- compliance audit
+- territorial mapping
+- advisory assessment
+- governed Knowledge Graph evidence retrieval
+- provider-independent authoritative decision support
+
+ARCHITECTURAL PRINCIPLE
+Authoritative decisions derive from governed knowledge assets,
+proprietary rules, validated evidence and intelligible data.
+External AI providers are not authoritative decision authorities.
+
+RELATION TO QEN FRAMEWORK
+QEN Sovereign Intelligence represents an evolutionary software and
+governance development of the previously existing QEN Framework.
+
+The QEN Framework remains the methodological foundation.
+QEN Sovereign introduces an autonomous sovereign intelligence engine,
+provider-independent decision architecture, governed evidence
+retrieval and dedicated runtime integration.
+
+CORE SOFTWARE
+sovereign_engine.py
+main.py
+orchestrator.py
+graph.json
+
+VALIDATION
+tests/test_sovereign_engine.py
+tests/test_sovereign_classify_endpoint.py
+tests/test_copilot_sovereign_ui.py
+
+ARCHITECTURAL DOCUMENTATION
+qen-sovereign/documentation/QEN-SOVEREIGN-ARCHITECTURE-OVERVIEW.md
+qen-sovereign/documentation/QEN-SOVEREIGN-DOCUMENTATION-REFERENCE-ARCHITECTURE.md
+qen-sovereign/documentation/QEN-SOVEREIGN-GOVERNANCE-MODEL.md
+qen-sovereign/documentation/QEN-SOVEREIGN-MASTER-REGISTRY.md
+sovereign-intelligence-refactor-1.0/03-ADR-CLE-004-QEN-SOVEREIGN-INTELLIGENCE.md
+
+ORIGIN HISTORY
+2026-07-23 - Sovereign Intelligence architectural refactor established
+2026-07-24 - QEN Sovereign Intelligence Engine introduced
+2026-07-24 - Risk classification migrated
+2026-07-24 - Compliance audit migrated
+2026-07-24 - Core agents migrated
+2026-07-25 - Legacy provider dependencies removed
+2026-07-29 - Sovereign architecture and governance baseline formalized
+
+STATUS
+Operational software baseline.
