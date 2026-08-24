@@ -1,6 +1,13 @@
 {
   "articoli": [
     {
+      "titolo": "FuoriMenù riparte dai dati: cosa cambia e perché",
+      "url": "https://fuorimenu.substack.com/p/fuorimenu-riparte-dai-dati-cosa-cambia",
+      "data": "2026-08-24 06:51",
+      "estratto": "Esperienza, territorio e intelligenza artificiale: una nuova fase per raccontare la ristorazione attraverso dati, evidenze e responsabilità.",
+      "tag": "Fuorimenu"
+    },
+    {
       "titolo": "L’AI non sostituirà soltanto il lavoro. Ridisegnerà il valore.",
       "url": "https://fuorimenu.substack.com/p/lai-non-sostituira-soltanto-il-lavoro",
       "data": "2026-07-22 08:37",
@@ -61,13 +68,6 @@
       "url": "https://fuorimenu.substack.com/p/weekender-29-giugno-4-luglio",
       "data": "2026-07-04 16:32",
       "estratto": "Quattro tappe, una sola domanda di fondo: cosa resta quando togli l’etichetta, il segnale, la narrazione ufficiale?",
-      "tag": "Fuorimenu"
-    },
-    {
-      "titolo": "Un’etichetta non basta — perché un ristorante ha bisogno di un DID",
-      "url": "https://fuorimenu.substack.com/p/unetichetta-non-basta-perche-un-ristorante",
-      "data": "2026-07-04 07:01",
-      "estratto": "Come il QEN Code rende un claim di menu verificabile da agenti AI e sistemi di conformità.",
       "tag": "Fuorimenu"
     }
   ]
