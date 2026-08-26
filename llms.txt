@@ -1,15 +1,44 @@
 # Cognitive Logic
 
-Cognitive Logic è un osservatorio indipendente fondato da **Roberto Bob Malini**, AI Data Architect, che progetta infrastrutture computabili per l'etica dei sistemi AI sotto i framework normativi UE (EU AI Act, GDPR, DSA, EU Green Claims Directive). Il **QEN Framework** (Quantificazione Etica Naturale) è il suo sistema di scoring etico-territoriale, basato su metriche verificabili anziché dichiarazioni — `QEN = (Vs × 0.40) + (Va × 0.35) + (Vt × 0.25)`, scala 0–100 — con identità verificabile crittograficamente (DID).
+Cognitive Logic develops governance infrastructure for artificial intelligence,
+focused on measurable controls, verifiable evidence, decision traceability and
+human authority.
 
-## Per chi è pensato
+## Core architecture
 
-QEN è pensato per PMI e filiere (HoReCa, balneari, commercio di prossimità), enti pubblici e associazioni di categoria che devono dimostrare compliance EU AI Act/GDPR o rendicontare claim ambientali verificabili secondo la EU Green Claims Directive, e per sviluppatori di agenti autonomi che integrano etica computabile via API.
+QEN Framework is Cognitive Logic's computable governance framework for
+transforming rules, risks, controls and evidence into measurable and
+verifiable decision structures.
 
-## Chi sono
+Its methodological origin is QEN — Quantificazione Etica Naturale
+(Quantification of Ethical Naturalness), from which the framework evolved
+from ethical-territorial scoring into a broader AI governance architecture.
 
-- [Home](https://cognitivelogic.it/index.html): panoramica di Cognitive Logic e del QEN Framework.
-- [Identità & Founder](https://cognitivelogic.it/identity.html): Roberto Bob Malini, AI Data Architect, fondatore Cognitive Logic.
+QEN Sovereign is the sovereign AI governance infrastructure built on this
+evolution, designed for institutions, governments, enterprises and strategic
+systems requiring governed sources, verifiable evidence, decision
+traceability and human authority.
+
+Canonical resources:
+
+- QEN Framework: https://cognitivelogic.it/framework.html
+- QEN Sovereign: https://cognitivelogic.it/qen-sovereign/
+- QEN Sovereign English: https://cognitivelogic.it/qen-sovereign/en/
+
+## Primary audiences
+
+Cognitive Logic addresses enterprises, public institutions and organizations
+that need governable AI systems, verifiable evidence, measurable controls,
+regulatory readiness and accountable human decision-making.
+
+Vertical applications of the QEN Framework also include SMEs, HoReCa,
+territorial systems and regulated sectors where traceability, sustainability
+claims or compliance evidence must be measured and verified.
+
+## Identity
+
+- [Home](https://cognitivelogic.it/index.html): Cognitive Logic overview and current service architecture.
+- [Identity & Founder](https://cognitivelogic.it/identity.html): Cognitive Logic identity and founder information.
 
 ## QEN Framework
 
