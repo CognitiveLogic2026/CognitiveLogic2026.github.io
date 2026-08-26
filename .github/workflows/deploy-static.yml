@@ -12,6 +12,9 @@ on:
       - 'js/**'
       - 'img/**'
       - 'data/**'
+      - 'llms.txt'
+      - 'robots.txt'
+      - 'sitemap.xml'
   workflow_dispatch:
 
 jobs:
@@ -31,4 +34,14 @@ jobs:
             cd /app/cognitivelogic
             git fetch origin main
             git reset --hard origin/main
-            echo "Static files updated OK"
+
+            PUBLIC_ROOT="/var/www/cognitivelogic-public"
+            mkdir -p "$PUBLIC_ROOT"
+
+            # Machine-readable public discovery files.
+            # Keep this deployment deliberately explicit.
+            install -m 0644 llms.txt "$PUBLIC_ROOT/llms.txt"
+            install -m 0644 robots.txt "$PUBLIC_ROOT/robots.txt"
+            install -m 0644 sitemap.xml "$PUBLIC_ROOT/sitemap.xml"
+
+            echo "Machine-readable public files synchronized OK"
