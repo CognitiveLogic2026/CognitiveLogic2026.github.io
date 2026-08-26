@@ -1,0 +1,70 @@
+# Cognitive Logic — canonical website reference configuration
+# Canonical origin: https://cognitivelogic.it
+#
+# NOTE:
+# This is a repository reference configuration.
+# The active VPS configuration currently lives at:
+# /etc/nginx/sites-enabled/cognitivelogic
+
+server {
+    listen 443 ssl;
+    server_name cognitivelogic.it;
+
+    include /etc/nginx/snippets/security-deny.conf;
+
+    access_log /var/log/nginx/cognitivelogic_access.log;
+    error_log /var/log/nginx/cognitivelogic_error.log;
+
+    # Legacy public QEN URL retired in favour of canonical QEN Framework.
+    location = /qen.html {
+        return 301 https://cognitivelogic.it/framework.html;
+    }
+
+    location /banner.png {
+        root /var/www/cognitivelogic.it;
+        try_files $uri =404;
+    }
+
+    location /robertomalini/ {
+        root /var/www/cognitivelogic.it;
+        try_files $uri =404;
+        default_type application/json;
+        add_header Access-Control-Allow-Origin *;
+    }
+
+    location /.well-known/acme-challenge/ {
+        root /var/www/cognitivelogic.it;
+        try_files $uri =404;
+    }
+
+    location / {
+        root /var/www/cognitivelogic-public;
+        try_files $uri $uri.html $uri/ =404;
+    }
+
+    # TLS certificate directives are intentionally omitted from this
+    # repository reference where environment-specific values may differ.
+}
+
+server {
+    listen 443 ssl;
+    server_name www.cognitivelogic.it;
+
+    return 301 https://cognitivelogic.it$request_uri;
+
+    # TLS certificate directives omitted.
+}
+
+server {
+    listen 80;
+    server_name cognitivelogic.it www.cognitivelogic.it;
+
+    location /.well-known/acme-challenge/ {
+        root /var/www/cognitivelogic.it;
+        try_files $uri =404;
+    }
+
+    location / {
+        return 301 https://cognitivelogic.it$request_uri;
+    }
+}
