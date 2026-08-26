@@ -1,11 +1,13 @@
+71bddaf901a47160d46c91e87cf508778d916f58582b802a23577b77cd5cd782  siae/QEN-Sovereign-1.0.0/GIT-HISTORY.txt
+8d95526a1e7fe8ee4f1d3ab109d1c6d863df471bd98a6c4dfc02b015bae7b509  siae/QEN-Sovereign-1.0.0/MANIFEST.txt
 66f52833c7ceeac7a37d1179df6de3b05329b9d7f37cdf22e149692192c484b6  siae/QEN-Sovereign-1.0.0/package/docs/03-ADR-CLE-004-QEN-SOVEREIGN-INTELLIGENCE.md
 0344927d61eb306e2fae2fa8855a3739a5917650b8ed93c70bb867699511b063  siae/QEN-Sovereign-1.0.0/package/docs/QEN-SOVEREIGN-ARCHITECTURE-OVERVIEW.md
 4c0a436e330eb864a534066ea5a5539663935df14e9044bdc3132441a8b83f9d  siae/QEN-Sovereign-1.0.0/package/docs/QEN-SOVEREIGN-DOCUMENTATION-REFERENCE-ARCHITECTURE.md
 a993f1770a27c51f301d904d2e2fbc83af3503921ee09da7d7cfb2d9d44ab0b3  siae/QEN-Sovereign-1.0.0/package/docs/QEN-SOVEREIGN-GOVERNANCE-MODEL.md
 fec48083c29f1cf22df9a50ea6f9df263f1a622ff3fc564e9fbc44addb6570e2  siae/QEN-Sovereign-1.0.0/package/docs/QEN-SOVEREIGN-MASTER-REGISTRY.md
 71bddaf901a47160d46c91e87cf508778d916f58582b802a23577b77cd5cd782  siae/QEN-Sovereign-1.0.0/package/GIT-HISTORY.txt
-c543a2660447479995cde1b07ef306a722b5b74b29e15b7922d7d7b0e2ac91ef  siae/QEN-Sovereign-1.0.0/package/MANIFEST.txt
-d6fe36ac29179445fdcff10c10cd4511c5fcbed0b36ef7083c004fbacacd0e28  siae/QEN-Sovereign-1.0.0/package/SHA256SUMS.txt
+8d95526a1e7fe8ee4f1d3ab109d1c6d863df471bd98a6c4dfc02b015bae7b509  siae/QEN-Sovereign-1.0.0/package/MANIFEST.txt
+72708ab8109bdbea0a89e8508ae2b3f318eb34495326a51f9b0c0c2797ff127c  siae/QEN-Sovereign-1.0.0/package/SHA256SUMS.txt
 59fe15d66d4a71af1e5d4c2fa570500d285bd54f352beac0af75e0cd3160bc9c  siae/QEN-Sovereign-1.0.0/package/source/graph.json
 95d5468d580a3d118a5dd61aad7e232b1a6c35c18ccbca5aa2f4939b25d69d3d  siae/QEN-Sovereign-1.0.0/package/source/main.py
 533ca6d1158173c59f77b13af5b5c548d0d37ff982f54f97bbb3b12ed277d40d  siae/QEN-Sovereign-1.0.0/package/source/orchestrator.py
@@ -14,3 +16,5 @@ b09d241111e3b4c19eaefdf3ba4c3ee4cbc877351ea27fb901bdbf0c95b21be6  siae/QEN-Sover
 b19c50824a698d751ede7844104599c057406966b3c5170e861f2aeac980a286  siae/QEN-Sovereign-1.0.0/package/tests/test_copilot_sovereign_ui.py
 6f288a91cbe124f623b87f83b9efd3f21f0cee467326b009275643accfab02b4  siae/QEN-Sovereign-1.0.0/package/tests/test_sovereign_classify_endpoint.py
 5c7c77ab9cc1715745a393542694cb8d7ac2589ebe5ae9863898f33032e6d8bd  siae/QEN-Sovereign-1.0.0/package/tests/test_sovereign_engine.py
+d6fe36ac29179445fdcff10c10cd4511c5fcbed0b36ef7083c004fbacacd0e28  siae/QEN-Sovereign-1.0.0/SHA256SUMS.txt
+b09d241111e3b4c19eaefdf3ba4c3ee4cbc877351ea27fb901bdbf0c95b21be6  siae/QEN-Sovereign-1.0.0/TEST-RESULTS.txt

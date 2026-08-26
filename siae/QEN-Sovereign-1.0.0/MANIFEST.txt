@@ -47,11 +47,11 @@ tests/test_sovereign_classify_endpoint.py
 tests/test_copilot_sovereign_ui.py
 
 ARCHITECTURAL DOCUMENTATION
-qen-sovereign/documentation/QEN-SOVEREIGN-ARCHITECTURE-OVERVIEW.md
-qen-sovereign/documentation/QEN-SOVEREIGN-DOCUMENTATION-REFERENCE-ARCHITECTURE.md
-qen-sovereign/documentation/QEN-SOVEREIGN-GOVERNANCE-MODEL.md
-qen-sovereign/documentation/QEN-SOVEREIGN-MASTER-REGISTRY.md
-sovereign-intelligence-refactor-1.0/03-ADR-CLE-004-QEN-SOVEREIGN-INTELLIGENCE.md
+docs/QEN-SOVEREIGN-ARCHITECTURE-OVERVIEW.md
+docs/QEN-SOVEREIGN-DOCUMENTATION-REFERENCE-ARCHITECTURE.md
+docs/QEN-SOVEREIGN-GOVERNANCE-MODEL.md
+docs/QEN-SOVEREIGN-MASTER-REGISTRY.md
+docs/03-ADR-CLE-004-QEN-SOVEREIGN-INTELLIGENCE.md
 
 ORIGIN HISTORY
 2026-07-23 - Sovereign Intelligence architectural refactor established
