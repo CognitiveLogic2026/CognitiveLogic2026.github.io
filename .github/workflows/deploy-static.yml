@@ -15,6 +15,7 @@ on:
       - 'llms.txt'
       - 'robots.txt'
       - 'sitemap.xml'
+      - '.github/workflows/deploy-static.yml'
   workflow_dispatch:
 
 jobs:
