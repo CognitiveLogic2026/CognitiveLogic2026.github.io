@@ -45,4 +45,7 @@ jobs:
             install -m 0644 robots.txt "$PUBLIC_ROOT/robots.txt"
             install -m 0644 sitemap.xml "$PUBLIC_ROOT/sitemap.xml"
 
+            mkdir -p "$PUBLIC_ROOT/international-watch"
+            rsync -a --delete               international-watch/               "$PUBLIC_ROOT/international-watch/"
+
             echo "Machine-readable public files synchronized OK"
