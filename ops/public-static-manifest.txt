@@ -115,6 +115,7 @@ qen-sovereign/en/index.html
 qen-sovereign/index.html
 qen-widget.html
 research/ai-governance-matters/index.html
+research/europe-ai-readiness-gap-2026/index.html
 research.html
 resources/case-studies/index.html
 resources/documents/assessment-overview/index.html
