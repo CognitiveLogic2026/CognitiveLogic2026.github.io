@@ -47,7 +47,12 @@
   </url>
   <url>
     <loc>https://cognitivelogic.it/research.html</loc>
-    <lastmod>2026-08-12</lastmod>
+    <lastmod>2026-08-29</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://cognitivelogic.it/research/europe-ai-readiness-gap-2026/</loc>
+    <lastmod>2026-08-29</lastmod>
     <priority>0.7</priority>
   </url>
   <url>
