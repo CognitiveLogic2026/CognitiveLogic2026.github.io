@@ -15,6 +15,8 @@ on:
       - 'llms.txt'
       - 'robots.txt'
       - 'sitemap.xml'
+      - 'ops/deploy-existing-public.sh'
+      - 'ops/public-static-manifest.txt'
       - '.github/workflows/deploy-static.yml'
   workflow_dispatch:
 
@@ -39,13 +41,6 @@ jobs:
             PUBLIC_ROOT="/var/www/cognitivelogic-public"
             mkdir -p "$PUBLIC_ROOT"
 
-            # Machine-readable public discovery files.
-            # Keep this deployment deliberately explicit.
-            install -m 0644 llms.txt "$PUBLIC_ROOT/llms.txt"
-            install -m 0644 robots.txt "$PUBLIC_ROOT/robots.txt"
-            install -m 0644 sitemap.xml "$PUBLIC_ROOT/sitemap.xml"
-
-            mkdir -p "$PUBLIC_ROOT/international-watch"
-            rsync -a --delete               international-watch/               "$PUBLIC_ROOT/international-watch/"
-
-            echo "Machine-readable public files synchronized OK"
+            # Synchronize only explicitly authorized public files from the manifest.
+            # This prevents private repository content from being published accidentally.
+            bash ops/deploy-existing-public.sh "$PUBLIC_ROOT"
