@@ -1,6 +1,6 @@
 # Why Cognitive Logic
 
-Status: REVIEW DRAFT
+Status: APPROVED
 Version: 1.0
 Asset ID: EA-COM-004
 Programme: Commercial Evolution 1.0

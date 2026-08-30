@@ -1,6 +1,6 @@
 # Cognitive Logic Capability Statement
 
-Status: REVIEW DRAFT
+Status: APPROVED
 Version: 1.0
 Asset ID: EA-COM-002
 Programme: Commercial Evolution 1.0
