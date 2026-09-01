@@ -8,7 +8,7 @@ Date: 2026-08-09
 
 Authority: Cognitive Logic
 
-Canonical URL: https://cognitivelogic.it/resources/documents/bolkestein-egea-benchmark/
+Canonical URL: https://cognitivelogic.it/resources/documents/osservatorio-bolkestein/
 
 ## Natura e ambito
 
