@@ -109,6 +109,7 @@ qencode/index.html
 qen-compliance-auditor.html
 qen-horeca-auditor.html
 qen.html
+qen/index.html
 qen-live.html
 qen-prompt-generator.html
 qen-sovereign/en/index.html

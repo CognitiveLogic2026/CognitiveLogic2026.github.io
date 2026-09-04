@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>What is QEN? QEN Framework for Governable AI | Cognitive Logic</title>
+  <meta name="description" content="QEN is Cognitive Logic’s framework for organising sources, evidence, scoring and decision traceability while preserving human authority and provider independence." />
+  <meta name="robots" content="index,follow,max-image-preview:large" />
+  <meta name="author" content="Roberto Malini — Cognitive Logic" />
+  <link rel="canonical" href="https://cognitivelogic.it/qen/" />
+
+  <meta property="og:title" content="What is QEN? QEN Framework for Governable AI | Cognitive Logic" />
+  <meta property="og:description" content="QEN organises governed sources, verifiable evidence, contextual assessment and decision traceability while preserving human authority." />
+  <meta property="og:url" content="https://cognitivelogic.it/qen/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Cognitive Logic" />
+  <meta property="og:image" content="https://cognitivelogic.it/img/cognitive-logic-og.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="What is QEN? QEN Framework for Governable AI | Cognitive Logic" />
+  <meta name="twitter:description" content="QEN organises governed sources, verifiable evidence, contextual assessment and decision traceability while preserving human authority." />
+  <meta name="twitter:image" content="https://cognitivelogic.it/img/cognitive-logic-og.png" />
+
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  <link rel="icon" href="/favicon.ico" sizes="any" />
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+  <link rel="preload" href="/fonts/cormorant-garamond-normal.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href="/fonts/dm-mono-400.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="stylesheet" href="/css/fonts-local.css" />
+  <link rel="stylesheet" href="/css/style.css?v=3" />
+  <link rel="stylesheet" href="/css/home-it.css?v=1" />
+  <link rel="search" type="application/opensearchdescription+xml" title="Cognitive Logic" href="https://cognitivelogic.it/opensearchdescription.xml" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebPage",
+        "@id": "https://cognitivelogic.it/qen/#webpage",
+        "url": "https://cognitivelogic.it/qen/",
+        "name": "What is QEN?",
+        "description": "QEN is Cognitive Logic’s framework for organising sources, evidence, scoring and decision traceability while preserving human authority and provider independence.",
+        "inLanguage": "en",
+        "about": { "@id": "https://cognitivelogic.it/qen/#qen" },
+        "creator": { "@id": "https://cognitivelogic.it/#founder" },
+        "publisher": { "@id": "https://cognitivelogic.it/#organization" },
+        "isPartOf": { "@id": "https://cognitivelogic.it/#website" },
+        "breadcrumb": { "@id": "https://cognitivelogic.it/qen/#breadcrumb" }
+      },
+      {
+        "@type": "DefinedTerm",
+        "@id": "https://cognitivelogic.it/qen/#qen",
+        "name": "QEN",
+        "alternateName": "Quantificazione Etica Naturale",
+        "url": "https://cognitivelogic.it/qen/",
+        "description": "A framework for governed sources, evidence, contextual assessment and decision traceability."
+      },
+      {
+        "@type": "Organization",
+        "@id": "https://cognitivelogic.it/#organization",
+        "name": "Cognitive Logic",
+        "url": "https://cognitivelogic.it/",
+        "founder": { "@id": "https://cognitivelogic.it/#founder" }
+      },
+      {
+        "@type": "Person",
+        "@id": "https://cognitivelogic.it/#founder",
+        "name": "Roberto Bob Malini",
+        "sameAs": ["https://www.linkedin.com/in/robertobobmalini/"]
+      },
+      {
+        "@type": "BreadcrumbList",
+        "@id": "https://cognitivelogic.it/qen/#breadcrumb",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Cognitive Logic",
+            "item": "https://cognitivelogic.it/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "QEN",
+            "item": "https://cognitivelogic.it/qen/"
+          }
+        ]
+      }
+    ]
+  }
+  </script>
+
+  <style>
+    .qen-page { --qen-border: rgba(255,255,255,.14); }
+    .qen-wrap { max-width: 1120px; margin: 0 auto; padding-left: 1.25rem; padding-right: 1.25rem; }
+    .qen-breadcrumb { padding-top: 7rem; font-family: "DM Mono", monospace; font-size: .72rem; letter-spacing: .08em; text-transform: uppercase; }
+    .qen-breadcrumb ol { display: flex; flex-wrap: wrap; gap: .55rem; list-style: none; margin: 0; padding: 0; }
+    .qen-breadcrumb li + li::before { content: "/"; margin-right: .55rem; opacity: .45; }
+    .qen-hero { padding-top: 3rem; padding-bottom: clamp(4rem, 8vw, 7rem); }
+    .qen-eyebrow, .qen-kicker, .qen-step-number { font-family: "DM Mono", monospace; text-transform: uppercase; }
+    .qen-eyebrow { font-size: .72rem; letter-spacing: .18em; opacity: .68; margin-bottom: 1.25rem; }
+    .qen-hero h1 { max-width: 900px; }
+    .qen-lead { max-width: 880px; margin-top: 1.75rem; font-size: clamp(1.08rem, 1.7vw, 1.3rem); line-height: 1.75; }
+    .qen-origin { max-width: 880px; margin-top: 1.3rem; line-height: 1.75; opacity: .8; }
+    .qen-principle { margin-top: 2rem; padding-left: 1.2rem; border-left: 2px solid currentColor; font-family: "DM Mono", monospace; }
+    .qen-section { padding-top: clamp(3.5rem, 7vw, 6rem); padding-bottom: clamp(3.5rem, 7vw, 6rem); }
+    .qen-section-head { max-width: 820px; }
+    .qen-kicker { margin-bottom: 1rem; font-size: .72rem; letter-spacing: .16em; opacity: .62; }
+    .qen-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; margin-top: 2.25rem; }
+    .qen-card { border: 1px solid var(--qen-border); padding: 1.55rem; min-height: 190px; }
+    .qen-card p, .qen-section-head p { line-height: 1.72; opacity: .76; }
+    .qen-flow { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: .7rem; margin-top: 2.25rem; }
+    .qen-step { border-top: 1px solid var(--qen-border); padding-top: 1rem; font-size: .9rem; line-height: 1.55; }
+    .qen-step-number { display: block; margin-bottom: .5rem; font-size: .7rem; opacity: .55; }
+    .qen-compare { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; margin-top: 2.25rem; }
+    .qen-panel { border: 1px solid var(--qen-border); padding: clamp(1.5rem, 3vw, 2.3rem); }
+    .qen-limits { max-width: 860px; margin-top: 2rem; padding-left: 1.25rem; }
+    .qen-limits li { margin-bottom: .85rem; line-height: 1.65; }
+    .qen-links { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .8rem; margin-top: 2.25rem; }
+    .qen-links a { display: block; border: 1px solid var(--qen-border); padding: 1rem 1.15rem; }
+    .qen-cta-groups { display: grid; grid-template-columns: 1.4fr 1fr; gap: 1rem; margin-top: 2rem; }
+    .qen-cta { border: 1px solid var(--qen-border); padding: clamp(1.4rem, 3vw, 2.2rem); }
+    .qen-cta .btn-row { margin-top: 1.35rem; }
+    @media (max-width: 900px) {
+      .qen-grid, .qen-flow, .qen-compare, .qen-links, .qen-cta-groups { grid-template-columns: 1fr; }
+      .qen-breadcrumb { padding-top: 5.5rem; }
+      .qen-card { min-height: 0; }
+    }
+  </style>
+</head>
+<body class="qen-page">
+<a href="#main" class="skip-link">Skip to content</a>
+<div class="site-bg"></div>
+
+<header class="site-header">
+  <div class="container header-inner">
+    <a href="/" class="brand notranslate" translate="no" aria-label="Cognitive Logic — Home">
+      <span class="wordmark wordmark--nav"><span class="wm-top">Cognitive</span><span class="wm-bot">Logic</span></span>
+    </a>
+    <nav class="main-nav" aria-label="Main navigation">
+      <a href="/services.html">Services</a>
+      <a href="/assessment.html">Assessment</a>
+      <a href="/qen/" class="active" aria-current="page">What is QEN?</a>
+      <a href="/framework.html">QEN Framework</a>
+      <details class="nav-group">
+        <summary>Evidence</summary>
+        <div class="nav-group-menu">
+          <a href="/validation.html">Validation</a>
+          <a href="/trust.html">Trust Center</a>
+          <a href="/operational-record.html">Operational Record</a>
+          <a href="/resources/">Resources</a>
+        </div>
+      </details>
+      <a href="/qen-sovereign/">QEN Sovereign</a>
+      <a href="/research.html">Research</a>
+      <a href="/about.html">About</a>
+      <a href="/contact.html">Contact</a>
+    </nav>
+    <div class="header-end">
+      <a href="/copilot.html" class="btn btn-ghost">QEN Sovereign Copilot</a>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+  <nav class="qen-wrap qen-breadcrumb" aria-label="Breadcrumb">
+    <ol><li><a href="/">Cognitive Logic</a></li><li aria-current="page">QEN</li></ol>
+  </nav>
+
+  <section class="qen-wrap qen-hero">
+    <div class="qen-eyebrow">QEN Framework · Quantificazione Etica Naturale</div>
+    <h1>What is QEN?</h1>
+    <p class="qen-lead">QEN is the governance framework developed by Cognitive Logic to organise sources, evidence, scoring and decision traceability in contexts where AI-supported outcomes must remain understandable, reviewable and subject to human authority.</p>
+    <p class="qen-origin">In Italian, QEN stands for <strong>Quantificazione Etica Naturale</strong>. The original matrix measures social, environmental and territorial value. Its enterprise evolution applies the same evidence-based discipline to AI Governance and Knowledge Governance without turning a contextual score into a moral judgement about people.</p>
+    <p class="qen-principle">Governance before automation.</p>
+  </section>
+
+  <section class="qen-section" aria-labelledby="governable-decisions">
+    <div class="qen-wrap">
+      <div class="qen-section-head">
+        <p class="qen-kicker">Purpose</p>
+        <h2 id="governable-decisions">A framework for governable decisions</h2>
+        <p>QEN connects documented sources, explicit criteria, attributable evidence and human responsibility. Its purpose is not to make an AI system appear certain. Its purpose is to make the path from information to decision reconstructable.</p>
+      </div>
+      <div class="qen-grid">
+        <article class="qen-card"><h3>Governed sources</h3><p>Inputs have provenance, scope and authority.</p></article>
+        <article class="qen-card"><h3>Contextual assessment</h3><p>Criteria are declared and remain reviewable.</p></article>
+        <article class="qen-card"><h3>Verifiable evidence</h3><p>Outputs retain links to supporting records.</p></article>
+        <article class="qen-card"><h3>Decision traceability</h3><p>The reasoning path can be reconstructed.</p></article>
+        <article class="qen-card"><h3>Human authority</h3><p>Accountable people retain the final decision.</p></article>
+        <article class="qen-card"><h3>Provider independence</h3><p>Governance is not tied to one model, vendor or cloud.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <section class="qen-section" aria-labelledby="how-qen-works">
+    <div class="qen-wrap">
+      <div class="qen-section-head">
+        <p class="qen-kicker">Method</p>
+        <h2 id="how-qen-works">How QEN works</h2>
+        <p>QEN structures the path from authoritative input to a decision that remains reviewable, challengeable and accountable.</p>
+      </div>
+      <div class="qen-flow" role="list" aria-label="Six stages of the QEN method">
+        <div class="qen-step" role="listitem"><span class="qen-step-number">01 · Source</span>Identify authoritative and contextual inputs.</div>
+        <div class="qen-step" role="listitem"><span class="qen-step-number">02 · Structure</span>Extract and organise relevant attributes.</div>
+        <div class="qen-step" role="listitem"><span class="qen-step-number">03 · Assessment</span>Apply declared criteria and, where appropriate, contextual scoring.</div>
+        <div class="qen-step" role="listitem"><span class="qen-step-number">04 · Evidence</span>Preserve supporting records and relationships.</div>
+        <div class="qen-step" role="listitem"><span class="qen-step-number">05 · Decision</span>Present a result that can be reviewed and challenged.</div>
+        <div class="qen-step" role="listitem"><span class="qen-step-number">06 · Authority</span>Keep approval, accountability and final judgement human.</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="qen-section" aria-labelledby="framework-sovereign">
+    <div class="qen-wrap">
+      <div class="qen-section-head">
+        <p class="qen-kicker">Relationship</p>
+        <h2 id="framework-sovereign">QEN Framework and QEN Sovereign</h2>
+        <p>They are related, but they are not interchangeable names.</p>
+      </div>
+      <div class="qen-compare">
+        <article class="qen-panel">
+          <h3><a href="/framework.html">QEN Framework</a></h3>
+          <p>QEN Framework is the methodological foundation. It defines the method used to organise criteria, evidence, contextual assessment and decision traceability.</p>
+        </article>
+        <article class="qen-panel">
+          <h3><a href="/qen-sovereign/">QEN Sovereign</a></h3>
+          <p>QEN Sovereign is the governance infrastructure that operationalises governed knowledge, evidence, traceability, risk classification and human authority in enterprise and institutional contexts.</p>
+        </article>
+      </div>
+      <p class="qen-origin">QEN Framework defines the method. QEN Sovereign provides the governed environment in which the method can be documented, applied, validated and audited.</p>
+    </div>
+  </section>
+
+  <section class="qen-section" aria-labelledby="qen-limits">
+    <div class="qen-wrap">
+      <div class="qen-section-head">
+        <p class="qen-kicker">Limits</p>
+        <h2 id="qen-limits">What QEN does not claim</h2>
+      </div>
+      <ul class="qen-limits">
+        <li>A QEN score is contextual, not an absolute truth.</li>
+        <li>QEN does not assign moral worth to individuals.</li>
+        <li>QEN does not replace legal, compliance, professional or executive judgement.</li>
+        <li>QEN does not remove the need to verify sources, assumptions and limits.</li>
+        <li>QEN does not make governance dependent on a single AI provider.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="qen-section" aria-labelledby="qen-evidence">
+    <div class="qen-wrap">
+      <div class="qen-section-head">
+        <p class="qen-kicker">Evidence</p>
+        <h2 id="qen-evidence">Evidence before claims</h2>
+        <p>QEN follows a documentation-first and evidence-first approach. Architecture, governance decisions, validation activities and operational records are published as distinct artefacts so that claims can be examined rather than merely asserted.</p>
+      </div>
+      <div class="qen-links">
+        <a href="/operational-record.html">Review the Cognitive Logic Operational Record</a>
+        <a href="/resources/documents/qen-governance-model/">Read the QEN Sovereign Governance Model</a>
+        <a href="/resources/documents/qen-sovereign-architecture/">Examine the QEN Sovereign Architecture</a>
+        <a href="/validation.html">Explore QEN validation evidence</a>
+        <a href="/trust.html">Visit the Cognitive Logic Trust Center</a>
+        <a href="/resources/">Browse QEN documents and resources</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="qen-section" aria-labelledby="qen-developer">
+    <div class="qen-wrap">
+      <div class="qen-section-head">
+        <p class="qen-kicker">Origin and authorship</p>
+        <h2 id="qen-developer">Who developed QEN?</h2>
+        <p>QEN Framework was developed by Roberto Malini, founder of Cognitive Logic, from more than thirty-five years of operational experience in HoReCa and subsequent work in AI Data Architecture, Knowledge Architecture, AI Governance and Knowledge Governance.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="qen-section" aria-labelledby="qen-next-steps">
+    <div class="qen-wrap">
+      <div class="qen-section-head">
+        <p class="qen-kicker">Next steps</p>
+        <h2 id="qen-next-steps">Understand the method before choosing an implementation</h2>
+      </div>
+      <div class="qen-cta-groups">
+        <div class="qen-cta">
+          <h3>Informational path</h3>
+          <p>Continue with the method and the published evidence behind QEN.</p>
+          <div class="btn-row">
+            <a href="/framework.html" class="btn btn-primary">Explore the QEN Framework</a>
+            <a href="/operational-record.html" class="btn btn-ghost">Review QEN evidence</a>
+          </div>
+        </div>
+        <div class="qen-cta">
+          <h3>Commercial path</h3>
+          <p>Assess where governed sources, traceability and retained human authority are required.</p>
+          <div class="btn-row">
+            <a href="/contact.html" class="btn btn-ghost">Request a QEN Sovereign Assessment</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <div>
+      <div class="wordmark wordmark--footer notranslate" translate="no"><span class="wm-top">Cognitive</span><span class="wm-bot">Logic</span></div>
+      <div class="footer-sub">AI Governance Infrastructure — governed knowledge, verifiable evidence and accountable decisions.</div>
+      <div class="footer-copy mt-8">© 2026 Roberto Bob Malini — Cognitive Logic · <a href="/legal.html">Legal &amp; IP</a></div>
+    </div>
+    <div class="footer-links">
+      <a href="/qen/">What is QEN?</a>
+      <a href="/framework.html">QEN Framework</a>
+      <a href="/qen-sovereign/">QEN Sovereign</a>
+      <a href="/validation.html">Validation</a>
+      <a href="/trust.html">Trust Center</a>
+      <a href="/operational-record.html">Operational Record</a>
+      <a href="/resources/">Resources</a>
+      <a href="/research.html">Research</a>
+      <a href="/contact.html">Contact</a>
+      <a href="/privacy.html">Privacy</a>
+      <a href="/accessibilita.html">Accessibility</a>
+    </div>
+  </div>
+</footer>
+
+<script src="/js/cookie-banner.js"></script>
+</body>
+</html>
