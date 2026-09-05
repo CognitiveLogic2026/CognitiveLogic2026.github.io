@@ -27,7 +27,7 @@ INTERNAL_PREFIXES = (
     ".git/", ".github/", ".agents/", ".codex/", "tests/", "scripts/",
     "docs/", "documentation-audit/", "commercial-evolution-1.0/",
     "enterprise-platform-evolution-1.0/", "commercial-platform/",
-    "housekeeping-2026/", "qen-sovereign/", "qen-enterprise-assessment/",
+    "housekeeping-2026/", "qen-enterprise-assessment/",
     "qen-reconciliation/", "qen-bolkestein/", "qen-horeca-auditor/",
     "wizard-src/", "__pycache__/",
 )
@@ -151,7 +151,6 @@ def map_files(paths: list[str], repo: Path, sitemap_urls: list[str]) -> tuple[li
         if not relative or is_internal(relative):
             continue
         if relative == "sitemap.xml":
-            fallback = True
             continue
         suffix = PurePosixPath(relative).suffix.lower()
         if suffix == ".html":
@@ -174,7 +173,7 @@ def map_files(paths: list[str], repo: Path, sitemap_urls: list[str]) -> tuple[li
                 mapped.append(candidate)
             continue
         if suffix in PUBLIC_ASSET_SUFFIXES or relative in {"_headers", "robots.txt"}:
-            fallback = True
+            continue
     return deduplicate(mapped), fallback
 
 

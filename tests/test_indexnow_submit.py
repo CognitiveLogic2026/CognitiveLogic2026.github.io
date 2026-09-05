@@ -53,10 +53,10 @@ class IndexNowTests(unittest.TestCase):
             with self.subTest(url=url), self.assertRaises(ValueError):
                 indexnow.validate_url(url)
 
-    def test_public_asset_uses_sitemap_fallback_signal(self):
+    def test_public_asset_does_not_trigger_sitemap_fallback(self):
         mapped, fallback = indexnow.map_files(["css/style.css"], ROOT, self.urls)
         self.assertEqual(mapped, [])
-        self.assertTrue(fallback)
+        self.assertFalse(fallback)
 
     def test_internal_and_runtime_changes_are_ignored(self):
         mapped, fallback = indexnow.map_files(

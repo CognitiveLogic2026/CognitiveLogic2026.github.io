@@ -28,7 +28,10 @@ on:
       - "!commercial-evolution-1.0/**"
       - "!enterprise-platform-evolution-1.0/**"
       - "!commercial-platform/**"
-      - "!qen-*/**"
+      - "!qen-enterprise-assessment/**"
+      - "!qen-reconciliation/**"
+      - "!qen-bolkestein/**"
+      - "!qen-horeca-auditor/**"
       - "!wizard-src/**"
 
 permissions:
