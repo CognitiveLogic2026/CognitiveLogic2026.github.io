@@ -61,7 +61,7 @@
       "prohibited_use": ["modify_qen_configuration", "modify_qen_decisions", "present_as_public_authority", "provide_legal_advice"],
       "publication_status": "published",
       "enabled": true,
-      "sha256": "08102d9809b65c302e970b122fe35a4eca136fdc30f78a3f4f103ba48c33d426"
+      "sha256": "18ff02ad60292e6237c9016fd7216577e3b8c6caa3f05d6dd40aa8e6d483176d"
     },
     {
       "source_id": "AGCM-AS1930-NOTE-001",

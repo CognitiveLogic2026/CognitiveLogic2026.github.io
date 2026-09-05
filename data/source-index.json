@@ -1,7 +1,7 @@
 {
   "schema_version": "1.0",
   "registry_version": "2.0.0",
-  "registry_hash": "518864d1b1555554e7688069ade6954318e734af95dacb365e36096c627af52e",
+  "registry_hash": "a78cf50122f725ee7a2896b1517939574532703e1dce2dbadd6d8096f68a914b",
   "documents": [
     {
       "source_id": "DFV-002",
@@ -133,7 +133,7 @@
     },
     {
       "source_id": "OBS-BOLK-001",
-      "source_sha256": "08102d9809b65c302e970b122fe35a4eca136fdc30f78a3f4f103ba48c33d426",
+      "source_sha256": "18ff02ad60292e6237c9016fd7216577e3b8c6caa3f05d6dd40aa8e6d483176d",
       "metadata": {
         "title": "Osservatorio Bolkestein",
         "version": "1.0",
@@ -158,7 +158,7 @@
       "sections": [
         {
           "section": "OBS-001 — Osservatorio Bolkestein",
-          "text": "Version: 1.0\n\nStatus: Published\n\nDate: 2026-08-09\n\nAuthority: Cognitive Logic\n\nCanonical URL: https://cognitivelogic.it/resources/documents/bolkestein-egea-benchmark/"
+          "text": "Version: 1.0\n\nStatus: Published\n\nDate: 2026-08-09\n\nAuthority: Cognitive Logic\n\nCanonical URL: https://cognitivelogic.it/resources/documents/osservatorio-bolkestein/"
         },
         {
           "section": "Natura e ambito",
@@ -2044,5 +2044,5 @@
       ]
     }
   ],
-  "index_version": "442646da6de0800b9404f2f276879d554460215adfe575313a8b77a5673573ea"
+  "index_version": "2b51a60cb5a6fabc6241f7f65f06ae8022328b0d41f4f4d88eef06506553f426"
 }
