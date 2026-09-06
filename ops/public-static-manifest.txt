@@ -173,3 +173,4 @@ sitemap.xml
 trust.html
 validation.html
 whistleblowing.html
+img/og/consiglio-stato-6539-concessioni-balneari.png
