@@ -1,0 +1,778 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>From Data Governance to Evidence Governance | Cognitive Logic</title>
+
+  <meta name="description"
+        content="Why governed data alone cannot make AI-assisted decisions verifiable. Cognitive Logic examines evidence provenance, decision traceability and human authority.">
+
+  <meta name="author" content="Roberto Malini">
+  <meta name="robots" content="index,follow,max-image-preview:large">
+
+  <link rel="canonical"
+        href="https://cognitivelogic.it/research/data-governance-evidence-governance/">
+
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Cognitive Logic">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:title"
+        content="From Data Governance to Evidence Governance">
+  <meta property="og:description"
+        content="Why Verifiable AI requires more than governed data: provenance, evidence, decision traceability and human authority.">
+  <meta property="og:url"
+        content="https://cognitivelogic.it/research/data-governance-evidence-governance/">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title"
+        content="From Data Governance to Evidence Governance">
+  <meta name="twitter:description"
+        content="What evidence actually supported an AI-assisted decision, and can the organisation reconstruct it?">
+
+  <link rel="stylesheet" href="/css/fonts-local.css">
+  <link rel="stylesheet" href="/css/style.css">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ScholarlyArticle",
+    "headline": "From Data Governance to Evidence Governance",
+    "alternativeHeadline": "Why Verifiable AI Requires More Than Governed Data",
+    "description": "Why governed data alone cannot make AI-assisted decisions verifiable. Cognitive Logic examines evidence provenance, decision traceability and human authority.",
+    "inLanguage": "en",
+    "datePublished": "2026-09-07",
+    "dateModified": "2026-09-07",
+    "author": {
+      "@type": "Person",
+      "name": "Roberto Malini",
+      "url": "https://cognitivelogic.it/"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "Cognitive Logic",
+      "url": "https://cognitivelogic.it/"
+    },
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://cognitivelogic.it/research/data-governance-evidence-governance/"
+    },
+    "about": [
+      "Evidence Governance",
+      "Verifiable AI",
+      "AI Governance",
+      "Decision Traceability",
+      "Human Authority",
+      "Data Governance",
+      "Governed Sources",
+      "Provenance"
+    ],
+    "keywords": [
+      "Evidence Governance",
+      "Verifiable AI",
+      "AI Governance",
+      "Decision Traceability",
+      "AI Evidence Provenance",
+      "Governed Sources",
+      "Human Authority",
+      "RAG Governance"
+    ]
+  }
+  </script>
+
+  <style>
+    :root { color-scheme: dark; }
+
+    body {
+      margin: 0;
+      background:
+        radial-gradient(circle at 75% 10%, rgba(55, 105, 130, .18), transparent 34rem),
+        #071015;
+      color: #edf5f5;
+    }
+
+    .research-page {
+      width: min(100% - 40px, 980px);
+      margin: 0 auto;
+      padding: 42px 0 90px;
+    }
+
+    .research-nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 24px;
+      padding-bottom: 34px;
+      border-bottom: 1px solid rgba(255,255,255,.12);
+    }
+
+    .research-nav a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .brand {
+      font-weight: 700;
+      letter-spacing: .04em;
+    }
+
+    .back-link {
+      opacity: .72;
+      font-size: .94rem;
+    }
+
+    .article-header {
+      padding: 85px 0 55px;
+    }
+
+    .kicker {
+      margin: 0 0 24px;
+      text-transform: uppercase;
+      letter-spacing: .16em;
+      font-size: .78rem;
+      opacity: .67;
+    }
+
+    h1 {
+      max-width: 920px;
+      margin: 0;
+      font-size: clamp(3rem, 8vw, 6.8rem);
+      line-height: .94;
+      letter-spacing: -.055em;
+    }
+
+    .lead {
+      max-width: 790px;
+      margin: 34px 0 24px;
+      font-size: clamp(1.2rem, 2.4vw, 1.55rem);
+      line-height: 1.55;
+      opacity: .84;
+    }
+
+    .metadata {
+      margin-top: 30px;
+      font-size: .94rem;
+      opacity: .62;
+    }
+
+    article { max-width: 780px; }
+
+    article p,
+    article li {
+      font-size: 1.08rem;
+      line-height: 1.82;
+    }
+
+    article h2 {
+      margin: 65px 0 20px;
+      font-size: clamp(1.8rem, 4vw, 2.6rem);
+      line-height: 1.12;
+      letter-spacing: -.025em;
+    }
+
+    article h3 {
+      margin: 38px 0 12px;
+      font-size: 1.35rem;
+    }
+
+    article ul { padding-left: 24px; }
+
+    article a {
+      color: #bde7ef;
+      text-underline-offset: 4px;
+    }
+
+    blockquote {
+      margin: 38px 0;
+      padding: 6px 0 6px 25px;
+      border-left: 3px solid rgba(189,231,239,.55);
+      font-size: 1.25rem;
+      line-height: 1.6;
+    }
+
+    .principle {
+      margin: 55px 0;
+      padding: 30px;
+      border: 1px solid rgba(189,231,239,.28);
+      border-radius: 22px;
+      background: rgba(189,231,239,.055);
+    }
+
+    .principle strong {
+      display: block;
+      margin-bottom: 10px;
+      font-size: 1.35rem;
+    }
+
+    .principle p { margin: 0; }
+
+    .research-links {
+      margin-top: 70px;
+      padding-top: 38px;
+      border-top: 1px solid rgba(255,255,255,.14);
+    }
+
+    .research-card {
+      display: block;
+      margin: 15px 0;
+      padding: 22px;
+      border: 1px solid rgba(255,255,255,.13);
+      border-radius: 16px;
+      text-decoration: none;
+    }
+
+    .research-card strong {
+      display: block;
+      margin-bottom: 5px;
+    }
+
+    .research-card span { opacity: .68; }
+
+    footer {
+      margin-top: 80px;
+      padding-top: 30px;
+      border-top: 1px solid rgba(255,255,255,.12);
+      font-size: .88rem;
+      line-height: 1.8;
+      opacity: .66;
+    }
+
+    footer a { color: inherit; }
+
+    @media (max-width: 640px) {
+      .research-page {
+        width: min(100% - 28px, 980px);
+      }
+
+      .research-nav {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .article-header { padding-top: 58px; }
+      .principle { padding: 23px; }
+    }
+  </style>
+</head>
+
+<body>
+  <main class="research-page">
+
+    <nav class="research-nav" aria-label="Primary navigation">
+      <a class="brand" href="/">Cognitive Logic</a>
+      <a class="back-link" href="/qen/">Explore QEN</a>
+    </nav>
+
+    <header class="article-header">
+      <p class="kicker">Cognitive Logic Research · ED-037 · September 2026</p>
+
+      <h1>From Data Governance to Evidence Governance</h1>
+
+      <p class="lead">
+        Why Verifiable AI requires more than governed data.
+        As AI participates in organisational decisions, governance must preserve
+        not only what information may be used, but what evidence actually supported
+        a decision and whether that decision can later be reconstructed.
+      </p>
+
+      <p class="metadata">
+        Roberto Malini · Cognitive Logic · Research proposition
+      </p>
+    </header>
+
+    <article>
+
+      <p>
+        AI governance increasingly recognises that risk cannot be understood only
+        through model size, compute or model-level characteristics.
+      </p>
+
+      <p>
+        Training datasets, prompts, retrieval sources, documents supplied through
+        retrieval-augmented generation and information available during deployment
+        can materially influence what an AI system produces.
+      </p>
+
+      <p><strong>But governing data is not the same as governing evidence.</strong></p>
+
+      <p>
+        An organisation may know which repositories an AI system is authorised to
+        access and still be unable, months later, to reconstruct the evidence behind
+        a particular AI-assisted decision.
+      </p>
+
+      <blockquote>
+        What evidence actually supported this decision, and can the organisation
+        reconstruct it?
+      </blockquote>
+
+      <p>
+        Cognitive Logic uses <strong>Evidence Governance</strong> in this research
+        as an analytical concept for the governance layer connecting authorised
+        sources, provenance, evidence, system actions, human review and final
+        decision authority.
+      </p>
+
+      <p>
+        It does not replace data governance. It addresses what happens after data
+        becomes operational evidence inside a decision process.
+      </p>
+
+      <h2>Data governance is necessary — but not sufficient</h2>
+
+      <p>
+        Data governance remains fundamental. The EU AI Act establishes, for relevant
+        high-risk AI systems, requirements concerning data governance alongside
+        documentation, record-keeping, transparency and human oversight.
+      </p>
+
+      <p>
+        NIST takes a similarly broad approach. The AI Risk Management Framework
+        structures AI risk management through four functions:
+        <strong>Govern, Map, Measure and Manage</strong>, with governance operating
+        across the lifecycle rather than as a final compliance step.
+      </p>
+
+      <p>
+        These approaches establish an important baseline:
+        AI systems require governed information, documented processes and
+        accountable actors.
+      </p>
+
+      <p>
+        But once AI contributes to an operational decision, another problem appears.
+        Data governance can establish which information the system is permitted to
+        use. It does not automatically establish which evidence actually influenced
+        a particular result.
+      </p>
+
+      <p><strong>That distinction is the evidence gap.</strong></p>
+
+      <h2>The evidence gap</h2>
+
+      <p>
+        Imagine an organisation using an AI system connected to an approved RAG
+        repository. The repository is authorised, access controls exist, documents
+        are maintained and the retrieval architecture is documented.
+      </p>
+
+      <p>Six months later, a consequential decision is challenged.</p>
+
+      <p>The organisation now needs to answer different questions:</p>
+
+      <ul>
+        <li>Which documents did retrieval actually return?</li>
+        <li>Which versions existed at that moment?</li>
+        <li>Which evidence was available to the model?</li>
+        <li>What prompt or contextual information accompanied it?</li>
+        <li>Did another system transform that information?</li>
+        <li>Did a human accept, modify or reject the output?</li>
+        <li>Which evidence did the human use?</li>
+        <li>Who possessed authority for the final decision?</li>
+      </ul>
+
+      <p>
+        An inventory of approved datasets cannot by itself reconstruct this chain.
+        Neither can the statement that a human was “in the loop”.
+      </p>
+
+      <p>
+        The governance problem has moved from
+        <strong>data availability to decision reconstruction</strong>.
+      </p>
+
+      <h2>From governed sources to verifiable evidence</h2>
+
+      <div class="principle">
+        <strong>Governed Sources → Provenance → Verifiable Evidence → Decision Traceability → Human Authority</strong>
+        <p>
+          A governance chain for examining whether AI-supported decisions remain
+          sufficiently evidenced and reconstructable.
+        </p>
+      </div>
+
+      <h3>Governed Sources</h3>
+
+      <p>
+        A governed source is more than accessible information. Its identity,
+        provenance, status, authority and conditions of use are known and subject
+        to governance.
+      </p>
+
+      <p>
+        This principle is part of
+        <a href="/qen-sovereign/en/">QEN Sovereign</a>, where governed sources are
+        connected to verifiable evidence, decision traceability and human authority.
+      </p>
+
+      <h3>Provenance</h3>
+
+      <p>
+        Provenance addresses origins and transformations. The
+        <a href="https://www.w3.org/TR/prov-overview/"
+           rel="noopener noreferrer">W3C PROV model</a>
+        describes provenance through entities, activities and agents involved in
+        producing or influencing information.
+      </p>
+
+      <p>
+        This changes the question from “What information exists?” to:
+        “Where did it come from, what happened to it and which actors or processes
+        influenced it?”
+      </p>
+
+      <h3>Verifiable Evidence</h3>
+
+      <p>
+        A source does not automatically become useful evidence simply because an AI
+        system accessed it. Evidence must remain sufficiently connected to its
+        origin and use that an authorised reviewer can inspect it.
+      </p>
+
+      <p>
+        The practical question becomes:
+        <strong>Can we show what supported this result?</strong>
+      </p>
+
+      <h3>Decision Traceability</h3>
+
+      <p>
+        Traceability extends the evidence chain into the organisational decision.
+        The objective is not merely to retain logs, but to preserve enough
+        information to reconstruct the relevant path between source, evidence,
+        system interaction, output, human review and final action.
+      </p>
+
+      <h3>Human Authority</h3>
+
+      <p>
+        A human being present in the workflow does not automatically mean that
+        meaningful human authority exists.
+      </p>
+
+      <p>
+        The responsible person must possess both the organisational authority to
+        approve, reject, escalate or reverse the decision and sufficient evidence
+        to exercise that authority responsibly.
+      </p>
+
+      <h2>Explainability is not traceability</h2>
+
+      <p>
+        Explainability and traceability are related, but they are not interchangeable.
+      </p>
+
+      <p>
+        Explainability asks whether a result or system behaviour can be understood.
+        Traceability asks whether the organisation can reconstruct what actually
+        happened.
+      </p>
+
+      <div class="principle">
+        <strong>Explainability → Can we understand the result?</strong>
+        <p>
+          <strong>Traceability → Can we reconstruct the process?</strong><br>
+          <strong>Evidence Governance → Can we identify and review the evidence
+          connecting the process to the decision?</strong>
+        </p>
+      </div>
+
+      <h2>Regulation already points toward reconstructability</h2>
+
+      <p>
+        This research does not claim that traceability or documentation are absent
+        from existing regulation.
+      </p>
+
+      <p>
+        The EU AI Act already establishes requirements involving data governance,
+        record-keeping, transparency and human oversight for relevant high-risk AI
+        systems.
+      </p>
+
+      <p>
+        NIST similarly embeds documentation, monitoring, accountability and human
+        oversight throughout the AI Risk Management Framework and its Playbook.
+      </p>
+
+      <p>
+        The proposition here is more specific:
+        <strong>Evidence Governance asks how those components remain connected at
+        the level of an individual AI-assisted decision.</strong>
+      </p>
+
+      <h2>Why this matters for RAG</h2>
+
+      <p>
+        A RAG system may operate only against approved documents, yet important
+        governance questions remain.
+      </p>
+
+      <ul>
+        <li>Which documents were retrieved for this request?</li>
+        <li>Which chunks were used?</li>
+        <li>Were those documents current?</li>
+        <li>Did different versions coexist?</li>
+        <li>What did the model receive?</li>
+        <li>What evidence was surfaced to the human reviewer?</li>
+        <li>What survived in the decision record?</li>
+      </ul>
+
+      <p>
+        Data governance controls the informational perimeter.
+        Evidence Governance concerns the specific evidentiary path through that
+        perimeter.
+      </p>
+
+      <h2>Why this matters even more for agents</h2>
+
+      <p>
+        An AI agent may retrieve information, call external tools, transform records,
+        delegate to another agent, invoke APIs, trigger workflows and execute actions.
+      </p>
+
+      <p>
+        In these environments, governance cannot focus only on the base model.
+        The object that needs to remain governable is increasingly the
+        <strong>decision process itself</strong>.
+      </p>
+
+      <p>
+        Accountability eventually requires the organisation to understand:
+        <strong>what happened, based on what evidence, under whose authority.</strong>
+      </p>
+
+      <h2>Human oversight requires evidence</h2>
+
+      <p>
+        “Human in the loop” is often used as shorthand for accountability.
+        It is insufficient by itself.
+      </p>
+
+      <p>
+        A meaningful oversight architecture must establish what the reviewer can
+        see, whether the recommendation can be challenged or overridden, whether
+        intervention is recorded, how escalation works and who makes the final
+        decision.
+      </p>
+
+      <p>
+        Without reconstructable evidence, human review risks becoming procedural
+        confirmation rather than meaningful authority.
+      </p>
+
+      <p><strong>Human presence is not the same as human authority.</strong></p>
+
+      <h2>Evidence Governance as an analytical layer</h2>
+
+      <p>
+        Cognitive Logic uses <strong>Evidence Governance</strong> here as an
+        analytical concept. It is not presented as a new legal standard or
+        regulatory category.
+      </p>
+
+      <p>
+        Nor does it replace data governance, records management, provenance
+        standards, AI risk management, audit or legal obligations.
+      </p>
+
+      <p>
+        It identifies the layer concerned with preserving the relationship between:
+      </p>
+
+      <div class="principle">
+        <strong>Authorised sources → Evidence actually used → System actions → Human review → Final decision</strong>
+      </div>
+
+      <p>A proportionate Evidence Governance architecture may therefore address:</p>
+
+      <ul>
+        <li>source identity and authority;</li>
+        <li>provenance and versioning;</li>
+        <li>retrieval evidence;</li>
+        <li>relevant prompts or contextual inputs;</li>
+        <li>material workflow events;</li>
+        <li>human intervention and overrides;</li>
+        <li>decision ownership;</li>
+        <li>evidence retention;</li>
+        <li>reconstruction, audit and challenge.</li>
+      </ul>
+
+      <p>
+        Not every AI interaction warrants the same evidentiary depth. The required
+        level should depend on context, consequence and risk.
+      </p>
+
+      <h2>From trustworthy AI to Verifiable AI</h2>
+
+      <p>
+        Trustworthy AI remains an important objective. Consequential organisational
+        use, however, creates another question:
+      </p>
+
+      <blockquote>
+        Can the basis for trust be examined after the decision has been made?
+      </blockquote>
+
+      <p>
+        Verifiable AI approaches AI governance from this direction.
+      </p>
+
+      <p>
+        Where appropriate, sources should remain identifiable, evidence should
+        remain examinable, decision paths should remain reconstructable and human
+        responsibility should remain attributable.
+      </p>
+
+      <p>
+        This connects with Cognitive Logic's
+        <a href="/manifesto-verita-verificabile/">Manifesto della Verità Verificabile</a>
+        and its evidence-first approach to AI governance.
+      </p>
+
+      <h2>Governance before automation</h2>
+
+      <p>
+        AI changes the scale at which organisations can act. It also increases the
+        number of actions whose basis may later need to be examined.
+      </p>
+
+      <p>
+        Evidence cannot therefore be treated only as something collected after a
+        dispute, audit or incident.
+      </p>
+
+      <p>
+        The architecture needs to consider evidence requirements before automation
+        begins.
+      </p>
+
+      <ul>
+        <li>Which sources may be used?</li>
+        <li>Which provenance must survive?</li>
+        <li>Which events need to be recorded?</li>
+        <li>Which outputs require evidentiary support?</li>
+        <li>Which decisions remain human?</li>
+        <li>How will a contested result later be reconstructed?</li>
+      </ul>
+
+      <div class="principle">
+        <strong>Governance before automation.</strong>
+        <p>
+          Evidence requirements belong in the design of the decision process,
+          not only in the audit that follows it.
+        </p>
+      </div>
+
+      <h2>Research proposition</h2>
+
+      <p>Cognitive Logic proposes the following relationship:</p>
+
+      <div class="principle">
+        <strong>Governed Sources → Provenance → Verifiable Evidence → Decision Traceability → Human Authority</strong>
+      </div>
+
+      <p>
+        This should not be interpreted as a new legal standard. It is a governance
+        model for examining whether AI-supported organisational decisions remain
+        sufficiently evidenced and reconstructable to support review, challenge
+        and accountability.
+      </p>
+
+      <p><strong>Data Governance asks:</strong><br>
+        What information may the system use?
+      </p>
+
+      <p><strong>Evidence Governance asks:</strong><br>
+        What evidence actually supported this decision, and can we prove it?
+      </p>
+
+      <h2>About QEN</h2>
+
+      <p>
+        The <a href="/qen/">QEN Framework</a> is Cognitive Logic's governance
+        framework for structuring knowledge, evidence, responsibility and decision
+        control.
+      </p>
+
+      <p>
+        <a href="/qen-sovereign/en/">QEN Sovereign</a> applies these principles
+        through governed sources, verifiable evidence, decision traceability,
+        human authority and controlled technological dependencies.
+      </p>
+
+      <p>
+        The purpose is not to replace accountable human decision-makers. It is to
+        preserve the evidence and governance conditions that allow them to remain
+        accountable.
+      </p>
+
+      <h2>References</h2>
+
+      <ul>
+        <li>
+          <a href="https://www.nist.gov/itl/ai-risk-management-framework"
+             rel="noopener noreferrer">NIST — Artificial Intelligence Risk Management Framework</a>
+        </li>
+        <li>
+          <a href="https://airc.nist.gov/airmf-resources/playbook/"
+             rel="noopener noreferrer">NIST — AI RMF Playbook</a>
+        </li>
+        <li>
+          <a href="https://www.w3.org/TR/prov-overview/"
+             rel="noopener noreferrer">W3C — PROV Overview</a>
+        </li>
+        <li>
+          <a href="https://eur-lex.europa.eu/eli/reg/2024/1689/oj"
+             rel="noopener noreferrer">European Union — Regulation (EU) 2024/1689, Artificial Intelligence Act</a>
+        </li>
+        <li>
+          AI Policy Perspectives — AI Policy Primer #15, used as context for the
+          research question concerning the shift from compute governance toward
+          data governance.
+        </li>
+      </ul>
+
+      <section class="research-links" aria-labelledby="related-title">
+        <h2 id="related-title">Related resources</h2>
+
+        <a class="research-card" href="/qen/">
+          <strong>QEN Framework</strong>
+          <span>Governance framework for knowledge, evidence and decision control.</span>
+        </a>
+
+        <a class="research-card" href="/qen-sovereign/en/">
+          <strong>QEN Sovereign</strong>
+          <span>Sovereign AI Governance infrastructure.</span>
+        </a>
+
+        <a class="research-card" href="/trust.html">
+          <strong>Cognitive Logic Trust Center</strong>
+          <span>Evidence, provenance, transparency and decision governance.</span>
+        </a>
+
+        <a class="research-card" href="/manifesto-verita-verificabile/">
+          <strong>Manifesto della Verità Verificabile</strong>
+          <span>Identity, provenance and responsibility in autonomous systems.</span>
+        </a>
+
+        <a class="research-card" href="/validation.html">
+          <strong>QEN Validation Programme</strong>
+          <span>Evidence-first validation of AI governance.</span>
+        </a>
+      </section>
+
+    </article>
+
+    <footer>
+      <strong>Cognitive Logic Research — ED-037</strong><br>
+      Roberto Malini · 7 September 2026<br>
+      Evidence Governance is presented here as a Cognitive Logic analytical
+      proposition, not as an established legal or regulatory category.<br>
+      <a href="/">cognitivelogic.it</a>
+    </footer>
+
+  </main>
+</body>
+</html>
