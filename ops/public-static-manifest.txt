@@ -175,3 +175,5 @@ trust.html
 validation.html
 whistleblowing.html
 img/og/consiglio-stato-6539-concessioni-balneari.png
+research/industrial-cybersecurity-evidence-governance/index.html
+img/og/industrial-cybersecurity-evidence-governance.png
