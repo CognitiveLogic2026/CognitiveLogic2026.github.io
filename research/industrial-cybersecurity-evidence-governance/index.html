@@ -1,0 +1,416 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+
+  <title>Industrial Cybersecurity & Evidence Governance | Cognitive Logic</title>
+
+  <meta name="description" content="Industrial cybersecurity can detect threats and involve human experts. Evidence Governance asks the next question: who has authority to decide, intervene and remain accountable?">
+
+  <link rel="canonical" href="https://cognitivelogic.it/research/industrial-cybersecurity-evidence-governance/">
+
+  <meta name="robots" content="index,follow,max-image-preview:large">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Cognitive Logic">
+  <meta property="og:title" content="From Industrial Cybersecurity to Evidence Governance">
+  <meta property="og:description" content="Why human-in-the-loop is not yet human authority — and why industrial systems need evidence, decision traceability and accountable intervention.">
+  <meta property="og:url" content="https://cognitivelogic.it/research/industrial-cybersecurity-evidence-governance/">
+  <meta property="og:image" content="https://cognitivelogic.it/img/og/industrial-cybersecurity-evidence-governance.png">
+  <meta property="og:image:secure_url" content="https://cognitivelogic.it/img/og/industrial-cybersecurity-evidence-governance.png">
+  <meta property="og:image:type" content="image/png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Industrial cybersecurity, evidence governance and human authority in governed AI-supported decision systems.">
+
+  <!-- Twitter / X -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="From Industrial Cybersecurity to Evidence Governance">
+  <meta name="twitter:description" content="Why human-in-the-loop is not yet human authority.">
+  <meta name="twitter:image" content="https://cognitivelogic.it/img/og/industrial-cybersecurity-evidence-governance.png">
+  <meta name="twitter:image:alt" content="Industrial cybersecurity, evidence governance and human authority.">
+
+  <meta property="article:published_time" content="2026-09-09T15:00:00+02:00">
+  <meta property="article:author" content="Roberto Malini">
+  <meta property="article:section" content="Research">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ScholarlyArticle",
+    "headline": "From Industrial Cybersecurity to Evidence Governance: Why Human-in-the-Loop Is Not Yet Human Authority",
+    "description": "Industrial cybersecurity increasingly combines continuous monitoring, automated detection and human interpretation. Evidence Governance adds decision traceability, accountable authority and reconstructable evidence.",
+    "url": "https://cognitivelogic.it/research/industrial-cybersecurity-evidence-governance/",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://cognitivelogic.it/research/industrial-cybersecurity-evidence-governance/"
+    },
+    "image": "https://cognitivelogic.it/img/og/industrial-cybersecurity-evidence-governance.png",
+    "datePublished": "2026-09-09",
+    "dateModified": "2026-09-09",
+    "inLanguage": "en",
+    "author": {
+      "@type": "Person",
+      "name": "Roberto Malini"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "Cognitive Logic",
+      "url": "https://cognitivelogic.it/"
+    },
+    "about": [
+      "Evidence Governance",
+      "Industrial Cybersecurity",
+      "Human Authority",
+      "Decision Traceability",
+      "AI Governance",
+      "Operational Technology"
+    ],
+    "keywords": [
+      "evidence governance",
+      "industrial cybersecurity",
+      "human authority",
+      "human in the loop",
+      "decision traceability",
+      "OT security",
+      "AI governance",
+      "QEN Sovereign"
+    ]
+  }
+  </script>
+
+  <style>
+    :root {
+      --bg:#07151d;
+      --panel:#0d202b;
+      --text:#eef6f8;
+      --muted:#a9bbc3;
+      --line:#25404d;
+      --accent:#53d4c8;
+      --link:#79dcd3;
+    }
+
+    * { box-sizing:border-box; }
+
+    body {
+      margin:0;
+      font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+      background:var(--bg);
+      color:var(--text);
+      line-height:1.7;
+    }
+
+    main {
+      max-width:900px;
+      margin:0 auto;
+      padding:72px 24px 100px;
+    }
+
+    .eyebrow {
+      color:var(--accent);
+      text-transform:uppercase;
+      letter-spacing:.12em;
+      font-size:.78rem;
+      font-weight:700;
+    }
+
+    h1 {
+      font-size:clamp(2.2rem,6vw,4.6rem);
+      line-height:1.04;
+      margin:.4em 0 .35em;
+      letter-spacing:-.035em;
+    }
+
+    h2 {
+      margin-top:2.4em;
+      line-height:1.2;
+    }
+
+    p, li {
+      font-size:1.08rem;
+    }
+
+    .lead {
+      color:#d6e5e9;
+      font-size:1.3rem;
+    }
+
+    .thesis {
+      margin:36px 0;
+      padding:28px;
+      border-left:4px solid var(--accent);
+      background:var(--panel);
+      font-size:1.2rem;
+    }
+
+    .chain {
+      padding:26px;
+      margin:32px 0;
+      background:var(--panel);
+      border:1px solid var(--line);
+      text-align:center;
+      font-weight:700;
+      letter-spacing:.02em;
+    }
+
+    a {
+      color:var(--link);
+    }
+
+    .sources,
+    .related {
+      margin-top:48px;
+      padding-top:26px;
+      border-top:1px solid var(--line);
+    }
+
+    .note {
+      color:var(--muted);
+      font-size:.94rem;
+    }
+
+    nav {
+      margin-bottom:48px;
+    }
+  </style>
+</head>
+
+<body>
+<main>
+
+<nav>
+  <a href="/">Cognitive Logic</a>
+  &nbsp; / &nbsp;
+  <a href="/research/">Research</a>
+</nav>
+
+<div class="eyebrow">Research · Evidence Governance · Industrial Systems</div>
+
+<h1>From Industrial Cybersecurity to Evidence Governance</h1>
+
+<p class="lead">
+Why human-in-the-loop is not yet human authority.
+</p>
+
+<p>
+Industrial cybersecurity increasingly combines continuous monitoring,
+automated detection and expert human interpretation.
+This is an essential layer of operational resilience.
+But interpreting an alert is not the same as holding accountable authority
+over the decision that follows.
+</p>
+
+<div class="thesis">
+A governable system must not only detect what happened.
+It must preserve the evidence behind consequential decisions,
+identify who had authority to intervene, and make the path from
+observation to accountable action reconstructable.
+</div>
+
+<h2>Industrial cybersecurity already produces evidence</h2>
+
+<p>
+Modern industrial security architectures collect large amounts of operational
+evidence: assets, vulnerabilities, network events, anomalies, identities,
+access records and incident information.
+</p>
+
+<p>
+The Siemens <em>Cybersecurity for Industry — Whitepaper 2026</em>,
+for example, describes a defense-in-depth model spanning plant security,
+network security and system integrity. It combines technical controls,
+organizational measures, continuous monitoring and incident analysis.
+</p>
+
+<p>
+This establishes an important foundation: the system can observe,
+record and contextualize events across industrial environments.
+</p>
+
+<h2>Monitoring is not yet decision governance</h2>
+
+<p>
+Continuous monitoring can identify suspicious behavior and support
+countermeasures. But governance introduces a different question:
+what happens between detecting an event and authorizing a consequential action?
+</p>
+
+<p>
+An alert may be technically correct while the resulting decision remains
+poorly governed. The system therefore needs more than telemetry.
+It needs a traceable relationship between evidence, assessment,
+decision and accountable authority.
+</p>
+
+<h2>Human-in-the-loop is a functional role</h2>
+
+<p>
+Industrial cybersecurity increasingly uses human specialists to interpret
+automated alerts in operational context. This is valuable because industrial
+environments cannot always be understood through automated detection alone.
+</p>
+
+<p>
+Yet a human being present in the loop does not automatically establish:
+</p>
+
+<ul>
+  <li>who may approve a consequential action;</li>
+  <li>who may challenge an assessment;</li>
+  <li>who can stop or escalate a process;</li>
+  <li>which evidence is sufficient to justify intervention;</li>
+  <li>who remains accountable after the decision.</li>
+</ul>
+
+<h2>Human Authority is a governance property</h2>
+
+<p>
+Human Authority means that accountable people retain meaningful power
+over consequential decisions.
+It is therefore different from human observation, supervision or interpretation.
+</p>
+
+<p>
+Authority must be connected to evidence and must remain reconstructable:
+who knew what, on the basis of which records, under which criteria,
+with which unresolved uncertainty, and with what power to intervene.
+</p>
+
+<div class="chain">
+Signal → Evidence → Assessment → Decision → Authority → Accountability
+</div>
+
+<h2>From audit trails to decision traceability</h2>
+
+<p>
+Traditional audit trails are indispensable because they can establish
+who performed an action and when.
+Decision traceability asks an additional question:
+why was that action considered justified at that moment?
+</p>
+
+<p>
+This requires preserving the relationship between sources, observations,
+criteria, evidence, uncertainty, human intervention and final decision.
+</p>
+
+<p>
+The objective is not to create artificial certainty.
+It is to make consequential decisions reviewable and challengeable.
+</p>
+
+<h2>Evidence Governance for industrial environments</h2>
+
+<p>
+Evidence Governance extends the logic of operational monitoring into
+decision governance.
+The relevant object is no longer only the event log or security alert,
+but the complete evidentiary path supporting a decision.
+</p>
+
+<p>
+For industrial and critical-infrastructure contexts, this can connect:
+</p>
+
+<ul>
+  <li>OT and IT monitoring;</li>
+  <li>incident evidence;</li>
+  <li>risk assessment;</li>
+  <li>declared decision criteria;</li>
+  <li>human review and escalation;</li>
+  <li>decision traceability;</li>
+  <li>accountability and audit.</li>
+</ul>
+
+<h2>Where QEN Sovereign fits</h2>
+
+<p>
+<a href="/qen/">QEN</a> defines a governance path in which documented
+sources are structured and assessed, supporting evidence is preserved,
+decisions remain reviewable, and final authority remains human.
+</p>
+
+<p>
+<a href="/qen-sovereign/en/">QEN Sovereign</a> is one implementation
+model for this governance layer. It operationalizes governed knowledge,
+evidence, traceability, risk classification and human authority without
+making governance dependent on a single AI provider.
+</p>
+
+<p>
+This does not replace industrial cybersecurity frameworks.
+It addresses a complementary layer:
+the governance of the evidence and authority behind consequential decisions.
+</p>
+
+<h2>Cybersecurity protects systems. Evidence Governance protects decisions.</h2>
+
+<p>
+Industrial resilience increasingly depends on both.
+</p>
+
+<p>
+Security architectures must detect and mitigate threats.
+Governance architectures must make consequential decisions understandable,
+reviewable and attributable.
+</p>
+
+<p>
+The distinction becomes especially important as automated and AI-supported
+systems gain greater operational autonomy.
+</p>
+
+<div class="related">
+  <h2>Related Cognitive Logic research</h2>
+
+  <p>
+    <a href="/research/data-governance-evidence-governance/">
+      From Data Governance to Evidence Governance
+    </a>
+  </p>
+
+  <p>
+    <a href="/qen/">What is QEN?</a>
+  </p>
+
+  <p>
+    <a href="/qen-sovereign/en/">QEN Sovereign</a>
+  </p>
+
+  <p>
+    <a href="/validation.html">Validation</a>
+  </p>
+
+  <p>
+    <a href="/trust.html">Trust Center</a>
+  </p>
+</div>
+
+<div class="sources">
+  <h2>Sources and scope</h2>
+
+  <p>
+    Siemens AG, Digital Industries,
+    <em>Cybersecurity for Industry — Whitepaper 2026</em>.
+  </p>
+
+  <p>
+    European Union,
+    <a href="https://eur-lex.europa.eu/eli/dir/2022/2555/oj"
+       rel="noopener noreferrer">
+      Directive (EU) 2022/2555 — NIS2
+    </a>.
+  </p>
+
+  <p class="note">
+    Siemens is cited as an industrial cybersecurity source.
+    This article does not claim that Siemens endorses, validates,
+    or is affiliated with QEN or Cognitive Logic.
+  </p>
+</div>
+
+</main>
+</body>
+</html>
