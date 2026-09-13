@@ -46,9 +46,19 @@ def create_brief_blueprint(limiter=None) -> Blueprint:
 
         payload = request.get_json(silent=True) or {}
         email = payload.get("email", "")
+        consent = payload.get("consent") is True
+
+        if not consent:
+            return _json_error(
+                "Consent is required.",
+                400,
+            )
 
         try:
-            pending = create_pending_subscription(email)
+            pending = create_pending_subscription(
+                email,
+                source="brief-web",
+            )
         except ValueError:
             return jsonify({
                 "status": "ok",

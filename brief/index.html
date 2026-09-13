@@ -347,20 +347,125 @@
     </div>
 
     <div class="brief-subscribe" aria-labelledby="subscribe-title">
-      <h3 id="subscribe-title">Iscrizioni in preparazione</h3>
+      <h3 id="subscribe-title">Iscriviti a Cognitive Logic Brief</h3>
 
       <p>
-        Il sistema proprietario di iscrizione e conferma è in fase di attivazione.
-        Il modulo sarà disponibile qui prima dell'invio del numero zero.
+        Inserisci il tuo indirizzo email. Riceverai un messaggio di conferma
+        per completare l'iscrizione con double opt-in.
       </p>
 
-      <div class="brief-subscribe-status">
-        Double opt-in · Gestione autonoma dell'iscrizione · Disiscrizione disponibile
-      </div>
+      <form id="brief-subscribe-form" novalidate>
+        <label for="brief-email">Email</label>
+
+        <input
+          id="brief-email"
+          name="email"
+          type="email"
+          autocomplete="email"
+          inputmode="email"
+          required
+          placeholder="nome@azienda.it"
+        />
+
+        <label style="display:flex;gap:.7rem;align-items:flex-start;margin-top:1.2rem;">
+          <input
+            id="brief-consent"
+            type="checkbox"
+            required
+            style="width:auto;margin-top:.25rem;"
+          />
+          <span>
+            Ho letto la
+            <a href="/privacy.html">Privacy Policy</a>
+            e acconsento all'uso del mio indirizzo email per ricevere
+            Cognitive Logic Brief.
+          </span>
+        </label>
+
+        <button
+          id="brief-submit"
+          class="btn btn-primary"
+          type="submit"
+          style="margin-top:1.4rem;"
+        >
+          Iscriviti
+        </button>
+
+        <p
+          id="brief-subscribe-message"
+          class="brief-subscribe-status"
+          role="status"
+          aria-live="polite"
+        >
+          Double opt-in · Gestione autonoma dell'iscrizione · Disiscrizione disponibile
+        </p>
+      </form>
     </div>
   </section>
 
 </main>
+
+<script>
+(() => {
+  const form = document.getElementById("brief-subscribe-form");
+  const email = document.getElementById("brief-email");
+  const consent = document.getElementById("brief-consent");
+  const submit = document.getElementById("brief-submit");
+  const message = document.getElementById("brief-subscribe-message");
+
+  if (!form || !email || !consent || !submit || !message) {
+    return;
+  }
+
+  form.addEventListener("submit", async (event) => {
+    event.preventDefault();
+
+    if (!email.validity.valid) {
+      message.textContent = "Inserisci un indirizzo email valido.";
+      email.focus();
+      return;
+    }
+
+    if (!consent.checked) {
+      message.textContent = "Conferma di aver letto la Privacy Policy.";
+      consent.focus();
+      return;
+    }
+
+    submit.disabled = true;
+    submit.textContent = "Invio in corso…";
+    message.textContent = "Invio della richiesta di iscrizione…";
+
+    try {
+      const response = await fetch("/brief/subscribe", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          email: email.value.trim(),
+          consent: true
+        })
+      });
+
+      if (!response.ok) {
+        throw new Error("subscription_failed");
+      }
+
+      message.textContent =
+        "Controlla la tua email e conferma l'iscrizione entro 24 ore.";
+
+      form.reset();
+    } catch (error) {
+      message.textContent =
+        "Il servizio di iscrizione non è disponibile in questo momento. Riprova più tardi.";
+    } finally {
+      submit.disabled = false;
+      submit.textContent = "Iscriviti";
+    }
+  });
+})();
+</script>
 
 </body>
 </html>
