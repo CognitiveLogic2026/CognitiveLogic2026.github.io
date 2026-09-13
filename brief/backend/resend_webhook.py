@@ -15,6 +15,24 @@ def _required_env(name: str) -> str:
     return value
 
 
+def _update_known_subscriber(
+    email: str,
+    status: str,
+    *,
+    error: str | None = None,
+) -> bool:
+    try:
+        update_delivery_status(
+            email,
+            status,
+            error=error,
+        )
+    except ValueError:
+        return False
+
+    return True
+
+
 def verify_and_process_resend_webhook(
     raw_body: bytes,
     headers: dict[str, str],
@@ -47,15 +65,17 @@ def verify_and_process_resend_webhook(
         return "ignored"
 
     if event_type == "email.delivered":
-        update_delivery_status(email, "delivered")
+        if not _update_known_subscriber(email, "delivered"):
+            return "ignored"
         return "delivered"
 
     if event_type == "email.failed":
-        update_delivery_status(
+        if not _update_known_subscriber(
             email,
             "failed",
             error="Resend reported email.failed",
-        )
+        ):
+            return "ignored"
         return "failed"
 
     if event_type == "email.bounced":
@@ -63,26 +83,29 @@ def verify_and_process_resend_webhook(
         bounce_type = (bounce.get("type") or "").strip()
 
         if bounce_type == "Permanent":
-            update_delivery_status(
+            if not _update_known_subscriber(
                 email,
                 "hard_bounce",
                 error="Resend bounce: Permanent",
-            )
+            ):
+                return "ignored"
             return "hard_bounce"
 
         if bounce_type == "Transient":
-            update_delivery_status(
+            if not _update_known_subscriber(
                 email,
                 "soft_bounce",
                 error="Resend bounce: Transient",
-            )
+            ):
+                return "ignored"
             return "soft_bounce"
 
-        update_delivery_status(
+        if not _update_known_subscriber(
             email,
             "failed",
             error=f"Resend bounce: {bounce_type or 'Undetermined'}",
-        )
+        ):
+            return "ignored"
         return "failed"
 
     return "ignored"
