@@ -76,3 +76,47 @@ CREATE UNIQUE INDEX IF NOT EXISTS idx_subscribers_confirmation_token
 CREATE UNIQUE INDEX IF NOT EXISTS idx_subscribers_unsubscribe_token
     ON subscribers(unsubscribe_token_hash)
     WHERE unsubscribe_token_hash IS NOT NULL;
+
+CREATE TABLE IF NOT EXISTS brief_issue_deliveries (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+
+    subscriber_id INTEGER NOT NULL,
+    issue_slug TEXT NOT NULL,
+
+    created_at TEXT NOT NULL,
+    updated_at TEXT NOT NULL,
+
+    unsubscribe_token_hash TEXT NOT NULL UNIQUE,
+
+    resend_email_id TEXT UNIQUE,
+
+    delivery_status TEXT NOT NULL
+        CHECK (
+            delivery_status IN (
+                'pending',
+                'sent',
+                'delivered',
+                'soft_bounce',
+                'hard_bounce',
+                'failed'
+            )
+        ),
+
+    last_delivery_error TEXT,
+
+    sent_at TEXT,
+    delivered_at TEXT,
+    bounced_at TEXT,
+
+    FOREIGN KEY (subscriber_id)
+        REFERENCES subscribers(id)
+        ON DELETE CASCADE,
+
+    UNIQUE (subscriber_id, issue_slug)
+);
+
+CREATE INDEX IF NOT EXISTS idx_brief_issue_deliveries_status
+    ON brief_issue_deliveries(delivery_status);
+
+CREATE INDEX IF NOT EXISTS idx_brief_issue_deliveries_subscriber
+    ON brief_issue_deliveries(subscriber_id);

@@ -4,6 +4,7 @@ from collections.abc import Callable
 
 from flask import Blueprint, current_app, jsonify, redirect, request
 
+from .issue_deliveries import unsubscribe_issue_delivery
 from .resend_webhook import verify_and_process_resend_webhook
 
 from .subscribers import (
@@ -104,17 +105,29 @@ def create_brief_blueprint(limiter=None) -> Blueprint:
 
         return redirect("/brief/confirmed/", code=302)
 
-    @brief_bp.get("/brief/unsubscribe")
+    @brief_bp.route(
+        "/brief/unsubscribe",
+        methods=["GET", "POST"],
+    )
     def brief_unsubscribe():
         token = request.args.get("token", "")
 
         try:
             unsubscribe_subscription(token)
         except ValueError:
-            return _json_error(
-                "Invalid unsubscribe link.",
-                400,
-            )
+            try:
+                unsubscribe_issue_delivery(token)
+            except ValueError:
+                return _json_error(
+                    "Invalid unsubscribe link.",
+                    400,
+                )
+
+        if request.method == "POST":
+            return jsonify({
+                "status": "ok",
+                "message": "Subscription removed.",
+            }), 200
 
         return redirect("/brief/unsubscribed/", code=302)
 
