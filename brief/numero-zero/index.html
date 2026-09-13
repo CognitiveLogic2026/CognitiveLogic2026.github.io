@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Cognitive Logic Brief #0 — Decisioni, evidenze e governance</title>
+
+  <meta name="description"
+        content="Numero zero di Cognitive Logic Brief: quattro segnali su evidenze, agenti AI, concessioni e filiere per capire quali cambiamenti incidono davvero sulle decisioni." />
+
+  <meta name="author" content="Roberto Malini — Cognitive Logic" />
+  <meta name="robots" content="index,follow,max-image-preview:large" />
+
+  <link rel="canonical"
+        href="https://cognitivelogic.it/brief/numero-zero/" />
+  <link rel="alternate" hreflang="it"
+        href="https://cognitivelogic.it/brief/numero-zero/" />
+  <link rel="alternate" hreflang="x-default"
+        href="https://cognitivelogic.it/brief/numero-zero/" />
+
+  <meta property="og:type" content="article" />
+  <meta property="og:site_name" content="Cognitive Logic" />
+  <meta property="og:locale" content="it_IT" />
+  <meta property="og:title"
+        content="Non tutto ciò che cambia merita una decisione" />
+  <meta property="og:description"
+        content="Il numero zero di Cognitive Logic Brief: quattro segnali per distinguere il cambiamento rilevante dal rumore." />
+  <meta property="og:url"
+        content="https://cognitivelogic.it/brief/numero-zero/" />
+  <meta property="og:image"
+        content="https://cognitivelogic.it/img/cognitive-logic-og.png" />
+  <meta property="og:image:alt"
+        content="Cognitive Logic Brief Numero Zero — Decisioni, evidenze e governance" />
+
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title"
+        content="Non tutto ciò che cambia merita una decisione" />
+  <meta name="twitter:description"
+        content="Quattro segnali per distinguere il cambiamento rilevante dal rumore." />
+  <meta name="twitter:image"
+        content="https://cognitivelogic.it/img/cognitive-logic-og.png" />
+
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  <link rel="icon" href="/favicon.ico" sizes="any" />
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+
+  <link rel="preload"
+        href="/fonts/cormorant-garamond-normal.woff2"
+        as="font"
+        type="font/woff2"
+        crossorigin />
+  <link rel="preload"
+        href="/fonts/dm-mono-400.woff2"
+        as="font"
+        type="font/woff2"
+        crossorigin />
+
+  <link rel="stylesheet" href="/css/fonts-local.css" />
+  <link rel="stylesheet" href="/css/style.css?v=3" />
+  <link rel="stylesheet" href="/css/home-it.css?v=1" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Article",
+        "headline": "Cognitive Logic Brief — Numero Zero",
+        "alternativeHeadline": "Non tutto ciò che cambia merita una decisione",
+        "description": "Quattro segnali per capire quando un cambiamento modifica davvero evidenze, responsabilità e decisioni.",
+        "datePublished": "2026-09-13",
+        "dateModified": "2026-09-13",
+        "inLanguage": "it-IT",
+        "author": {
+          "@type": "Person",
+          "name": "Roberto Malini",
+          "url": "https://cognitivelogic.it/"
+        },
+        "publisher": {
+          "@type": "Organization",
+          "name": "Cognitive Logic",
+          "url": "https://cognitivelogic.it/"
+        },
+        "isPartOf": {
+          "@type": "Periodical",
+          "name": "Cognitive Logic Brief",
+          "url": "https://cognitivelogic.it/brief/"
+        },
+        "mainEntityOfPage": {
+          "@type": "WebPage",
+          "@id": "https://cognitivelogic.it/brief/numero-zero/"
+        },
+        "articleSection": "Cognitive Logic Brief",
+        "about": [
+          "Evidence Governance",
+          "AI agent governance",
+          "Public decision-making",
+          "Hospitality supply chains"
+        ]
+      },
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Cognitive Logic",
+            "item": "https://cognitivelogic.it/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Cognitive Logic Brief",
+            "item": "https://cognitivelogic.it/brief/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": "Numero Zero",
+            "item": "https://cognitivelogic.it/brief/numero-zero/"
+          }
+        ]
+      }
+    ]
+  }
+  </script>
+
+  <style>
+    .brief-issue {
+      width: min(100% - 40px, 920px);
+      margin: 0 auto;
+      padding-top: clamp(8rem, 13vw, 11rem);
+      padding-bottom: clamp(5rem, 9vw, 8rem);
+    }
+
+    .brief-breadcrumb,
+    .brief-issue-kicker,
+    .brief-issue-meta,
+    .brief-block-label {
+      font-family: "DM Mono", monospace;
+      text-transform: uppercase;
+    }
+
+    .brief-breadcrumb {
+      margin-bottom: 3rem;
+      font-size: .7rem;
+      letter-spacing: .1em;
+      opacity: .62;
+    }
+
+    .brief-breadcrumb a {
+      color: inherit;
+      text-underline-offset: 4px;
+    }
+
+    .brief-issue-kicker {
+      margin-bottom: 1.5rem;
+      font-size: .72rem;
+      letter-spacing: .18em;
+      opacity: .7;
+    }
+
+    .brief-issue h1 {
+      max-width: 900px;
+      margin-bottom: 1.4rem;
+    }
+
+    .brief-issue-headline {
+      max-width: 820px;
+      margin: 0;
+      font-size: clamp(1.7rem, 4vw, 3rem);
+      line-height: 1.15;
+    }
+
+    .brief-issue-dek {
+      max-width: 760px;
+      margin-top: 2rem;
+      font-size: clamp(1.05rem, 1.7vw, 1.3rem);
+      line-height: 1.7;
+      opacity: .8;
+    }
+
+    .brief-issue-meta {
+      margin-top: 2rem;
+      font-size: .7rem;
+      letter-spacing: .1em;
+      opacity: .6;
+    }
+
+    .brief-intro,
+    .brief-block,
+    .brief-question,
+    .brief-issue-cta {
+      max-width: 780px;
+    }
+
+    .brief-intro {
+      margin-top: clamp(4rem, 8vw, 7rem);
+    }
+
+    .brief-intro p,
+    .brief-block p,
+    .brief-question p,
+    .brief-issue-cta p {
+      font-size: 1.08rem;
+      line-height: 1.82;
+      opacity: .82;
+    }
+
+    .brief-block {
+      margin-top: clamp(4rem, 8vw, 6rem);
+      padding-top: 2.2rem;
+      border-top: 1px solid rgba(255,255,255,.14);
+    }
+
+    .brief-block-label {
+      margin-bottom: 1.2rem;
+      font-size: .7rem;
+      letter-spacing: .14em;
+      opacity: .62;
+    }
+
+    .brief-block h2 {
+      margin-bottom: 1.4rem;
+    }
+
+    .brief-block-link {
+      display: inline-block;
+      margin-top: 1rem;
+      color: inherit;
+      font-weight: 700;
+      text-underline-offset: 5px;
+    }
+
+    .brief-question {
+      margin-top: clamp(4rem, 8vw, 6rem);
+      padding: 2rem;
+      border: 1px solid rgba(255,255,255,.16);
+    }
+
+    .brief-question strong {
+      display: block;
+      font-size: clamp(1.25rem, 2.6vw, 1.8rem);
+      line-height: 1.4;
+    }
+
+    .brief-issue-cta {
+      margin-top: 3rem;
+      padding-top: 2.5rem;
+      border-top: 1px solid rgba(255,255,255,.14);
+    }
+
+    @media (max-width: 640px) {
+      .brief-issue {
+        width: min(100% - 28px, 920px);
+      }
+
+      .brief-question {
+        padding: 1.4rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<a href="#main" class="skip-link">Salta al contenuto</a>
+
+<div class="site-bg"></div>
+
+<header class="site-header">
+  <div class="container header-inner">
+
+    <a href="/" class="brand notranslate" translate="no"
+       aria-label="Cognitive Logic — Home">
+      <span class="wordmark wordmark--nav">
+        <span class="wm-top">Cognitive</span>
+        <span class="wm-bot">Logic</span>
+      </span>
+    </a>
+
+    <nav class="main-nav" aria-label="Navigazione principale">
+      <a href="/brief/" aria-current="page">Brief</a>
+      <a href="/research.html">Ricerca</a>
+      <a href="/international-watch/">International Watch</a>
+      <a href="/about.html">Chi siamo</a>
+    </nav>
+
+  </div>
+</header>
+
+<main id="main" class="brief-issue">
+
+  <nav class="brief-breadcrumb" aria-label="Breadcrumb">
+    <a href="/">Cognitive Logic</a>
+    <span aria-hidden="true"> › </span>
+    <a href="/brief/">Cognitive Logic Brief</a>
+    <span aria-hidden="true"> › </span>
+    <span aria-current="page">Numero Zero</span>
+  </nav>
+
+  <header>
+    <div class="brief-issue-kicker">
+      Cognitive Logic Brief · Numero Zero
+    </div>
+
+    <h1>Cognitive Logic Brief — Numero Zero</h1>
+
+    <p class="brief-issue-headline">
+      Non tutto ciò che cambia merita una decisione
+    </p>
+
+    <p class="brief-issue-dek">
+      Quattro segnali per capire quando un cambiamento modifica davvero
+      evidenze, responsabilità e decisioni.
+    </p>
+
+    <p class="brief-issue-meta">
+      13 settembre 2026 · 6 minuti di lettura
+    </p>
+  </header>
+
+  <section class="brief-intro" aria-labelledby="introduzione">
+    <h2 id="introduzione">Capire cosa cambia davvero</h2>
+
+    <p>
+      Ogni giorno arrivano nuovi dati, norme, incidenti, strumenti e
+      previsioni. Il problema non è trovarne altri. È capire quali cambiano
+      realmente una decisione.
+    </p>
+
+    <p>
+      È da questa domanda che nasce Cognitive Logic Brief: non una rassegna
+      delle notizie pubblicate da Cognitive Logic, ma una selezione di pochi
+      cambiamenti verificabili, osservati per ciò che modificano nelle
+      decisioni di imprese, professionisti, amministrazioni e territori.
+    </p>
+
+    <p>
+      In questo numero zero partiamo da quattro casi diversi — governance
+      dell’AI, sistemi agentici, concessioni balneari e filiere alimentari —
+      accomunati dalla stessa domanda: quale evidenza serve per decidere,
+      chi conserva l’autorità e cosa cambia concretamente dopo?
+    </p>
+  </section>
+
+  <article class="brief-block">
+    <div class="brief-block-label">01 · La lente</div>
+
+    <h2>Avere il dato non significa poter decidere</h2>
+
+    <p>
+      Governare i dati significa conoscerne origine, accessi e condizioni
+      d’uso. Quando quei dati sostengono raccomandazioni, classificazioni o
+      decisioni, questo non basta più.
+    </p>
+
+    <p>
+      Diventa necessario sapere quali evidenze hanno sostenuto un risultato,
+      se possono essere contestate e se sarà possibile ricostruire in seguito
+      perché una decisione sia stata presa. È il passaggio dalla Data
+      Governance alla Evidence Governance.
+    </p>
+
+    <a class="brief-block-link"
+       href="/research/data-governance-evidence-governance/">
+      Leggi: From Data Governance to Evidence Governance →
+    </a>
+  </article>
+
+  <article class="brief-block">
+    <div class="brief-block-label">02 · Il caso</div>
+
+    <h2>Quando un agente agisce, chi può ancora dire no?</h2>
+
+    <p>
+      La presenza di una persona nel processo non dimostra, da sola, che
+      quella persona conservi un’autorità effettiva. Quando un sistema può
+      concatenare azioni e coinvolgere infrastrutture di terzi, occorre
+      correlare evento, evidenza, soglia di materialità, autorità e decision
+      record.
+    </p>
+
+    <p>
+      La domanda non è soltanto se ci fosse un essere umano, ma chi potesse
+      fermare, contestare o autorizzare l’azione e sulla base di quali
+      evidenze.
+    </p>
+
+    <a class="brief-block-link"
+       href="/international-watch/distributed-ai-agent-incidents-governance/">
+      Consulta il caso verificato sugli agenti AI distribuiti →
+    </a>
+  </article>
+
+  <article class="brief-block">
+    <div class="brief-block-label">03 · Territori e decisioni pubbliche</div>
+
+    <h2>Una gara comincia prima del bando</h2>
+
+    <p>
+      La sentenza del Consiglio di Stato 6539/2026 ha riportato l’attenzione
+      sulle concessioni balneari e sul percorso verso il 2027. La conseguenza
+      operativa, però, precede la pubblicazione della gara.
+    </p>
+
+    <p>
+      Investimenti, valore della concessione, indennizzo dell’uscente,
+      criteri e caratteristiche del territorio richiedono evidenze costruite
+      e verificabili prima che diventino oggetto della procedura. Aspettare
+      il bando può significare iniziare quando informazioni decisive
+      avrebbero già dovuto essere organizzate.
+    </p>
+
+    <a class="brief-block-link"
+       href="/international-watch/concessioni-balneari-consiglio-stato-6539-2026/">
+      Verifica il quadro sulla sentenza 6539/2026 →
+    </a>
+  </article>
+
+  <article class="brief-block">
+    <div class="brief-block-label">04 · Dal verticale</div>
+
+    <h2>Il caldo non finisce quando termina l’emergenza</h2>
+
+    <p>
+      Un’anomalia climatica può apparire come un problema agricolo. Per un
+      ristorante diventa disponibilità, qualità, provenienza, prezzo e,
+      infine, menu.
+    </p>
+
+    <p>
+      Seguire soltanto il prezzo finale significa vedere la conseguenza
+      quando è già arrivata. Osservare ciò che accade nelle filiere permette
+      di capire prima quali acquisti, prodotti e promesse al cliente
+      potrebbero dover cambiare.
+    </p>
+
+    <a class="brief-block-link"
+       href="https://fuorimenu.substack.com/p/il-caldo-non-finisce-nei-campi-cosa"
+       rel="noopener noreferrer">
+      Leggi il caso completo su FuoriMenù →
+    </a>
+  </article>
+
+  <section class="brief-question" aria-labelledby="domanda-finale">
+    <div class="brief-block-label">Una domanda da portare con sé</div>
+
+    <strong id="domanda-finale">
+      Se questa informazione fosse sbagliata, sapremmo accorgercene
+      prima che diventi una decisione?
+    </strong>
+
+    <p>
+      Se la risposta non è chiara, il problema potrebbe non essere la
+      quantità dei dati, ma la qualità della catena di evidenze che porta
+      alla decisione.
+    </p>
+  </section>
+
+  <section class="brief-issue-cta" aria-labelledby="prossimo-brief">
+    <h2 id="prossimo-brief">Ricevi il prossimo Brief</h2>
+
+    <p>
+      Ogni due settimane, pochi sviluppi verificati e una domanda:
+      cosa cambia davvero?
+    </p>
+
+    <a href="/brief/#iscrizione" class="btn btn-primary">
+      Iscriviti a Cognitive Logic Brief
+    </a>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <div>
+      <div class="wordmark wordmark--footer">
+        <span class="wm-top">Cognitive</span>
+        <span class="wm-bot">Logic</span>
+      </div>
+
+      <div class="footer-copy">
+        © 2026 Roberto Bob Malini — Cognitive Logic ·
+        <a href="/legal.html">Legal &amp; IP</a>
+      </div>
+    </div>
+
+    <div class="footer-links">
+      <a href="/brief/">Cognitive Logic Brief</a>
+      <a href="/privacy.html">Privacy</a>
+      <a href="/contact.html">Contatti</a>
+    </div>
+  </div>
+</footer>
+
+<script src="/js/cookie-banner.js"></script>
+
+</body>
+</html>
