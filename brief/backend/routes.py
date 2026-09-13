@@ -2,7 +2,7 @@ from __future__ import annotations
 
 from collections.abc import Callable
 
-from flask import Blueprint, current_app, jsonify, request
+from flask import Blueprint, current_app, jsonify, redirect, request
 
 from .subscribers import (
     confirm_subscription,
@@ -90,10 +90,7 @@ def create_brief_blueprint(limiter=None) -> Blueprint:
                 400,
             )
 
-        return jsonify({
-            "status": "active",
-            "message": "Subscription confirmed.",
-        }), 200
+        return redirect("/brief/confirmed/", code=302)
 
     @brief_bp.get("/brief/unsubscribe")
     def brief_unsubscribe():
