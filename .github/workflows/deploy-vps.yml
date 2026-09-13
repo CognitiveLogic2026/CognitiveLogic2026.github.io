@@ -10,6 +10,7 @@ on:
     paths:
       - 'main.py'
       - 'orchestrator.py'
+      - 'brief/**'
       - 'requirements-flask.txt'
       - 'qen-reconciliation/**'
       - 'nginx/**'
@@ -136,6 +137,7 @@ jobs:
             [Service]
             Type=simple
             User=www-data
+            UMask=0077
             WorkingDirectory=/app/cognitivelogic
             EnvironmentFile=/etc/cognitivelogic/env
             ExecStart=/app/cognitivelogic/venv/bin/gunicorn main:app --bind 127.0.0.1:5000 --workers 2 --timeout 120
@@ -152,6 +154,10 @@ jobs:
             install -d -o www-data -g www-data -m 0700 /var/lib/cognitivelogic/brief
             install -d -o root -g root -m 0700 /var/backups/cognitivelogic
             install -d -o root -g root -m 0700 /var/backups/cognitivelogic/brief
+
+            # Initialize/migrate the proprietary Brief subscriber database.
+            # Run as the application user so ownership is correct by construction.
+            runuser -u www-data -- "$VENV/bin/python" "$REPO_DIR/brief/backend/init_db.py"
 
             # Assicura che www-data abbia accesso alle directory necessarie
             chown -R www-data:www-data /app/cognitivelogic
