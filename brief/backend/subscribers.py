@@ -194,3 +194,105 @@ def create_pending_subscription(
         confirmation_token=token,
         confirmation_expires_at=expires_s,
     )
+
+
+@dataclass(frozen=True)
+class ConfirmedSubscription:
+    email: str
+    unsubscribe_token: str
+    confirmed_at: str
+
+
+def parse_utc(value: str) -> datetime:
+    return datetime.fromisoformat(value.replace("Z", "+00:00")).astimezone(timezone.utc)
+
+
+def confirm_subscription(
+    confirmation_token: str,
+    *,
+    db_path: Path = DEFAULT_DB_PATH,
+) -> ConfirmedSubscription:
+    token = (confirmation_token or "").strip()
+
+    if not token:
+        raise ValueError("confirmation token is required")
+
+    token_hash = hash_token(token)
+    now = utc_now()
+    now_s = iso_utc(now)
+
+    unsubscribe_token = generate_token()
+    unsubscribe_token_hash = hash_token(unsubscribe_token)
+
+    conn = connect_db(Path(db_path))
+
+    try:
+        conn.execute("BEGIN IMMEDIATE")
+
+        row = conn.execute(
+            """
+            SELECT
+                id,
+                email,
+                status,
+                confirmation_expires_at
+            FROM subscribers
+            WHERE confirmation_token_hash = ?
+            """,
+            (token_hash,),
+        ).fetchone()
+
+        if row is None:
+            conn.rollback()
+            raise ValueError("invalid confirmation token")
+
+        subscriber_id, email, status, expires_at = row
+
+        if status != "pending":
+            conn.rollback()
+            raise ValueError("subscription is not pending")
+
+        if not expires_at:
+            conn.rollback()
+            raise ValueError("confirmation token has no expiry")
+
+        if parse_utc(expires_at) <= now:
+            conn.rollback()
+            raise ValueError("confirmation token expired")
+
+        conn.execute(
+            """
+            UPDATE subscribers
+            SET
+                status = 'active',
+                updated_at = ?,
+                confirmed_at = ?,
+                confirmation_token_hash = NULL,
+                confirmation_expires_at = NULL,
+                unsubscribe_token_hash = ?,
+                unsubscribed_at = NULL
+            WHERE id = ?
+            """,
+            (
+                now_s,
+                now_s,
+                unsubscribe_token_hash,
+                subscriber_id,
+            ),
+        )
+
+        conn.commit()
+
+    except Exception:
+        if conn.in_transaction:
+            conn.rollback()
+        raise
+
+    finally:
+        conn.close()
+
+    return ConfirmedSubscription(
+        email=email,
+        unsubscribe_token=unsubscribe_token,
+        confirmed_at=now_s,
+    )
