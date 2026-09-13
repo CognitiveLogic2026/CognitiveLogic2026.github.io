@@ -4,6 +4,8 @@ from collections.abc import Callable
 
 from flask import Blueprint, current_app, jsonify, redirect, request
 
+from .resend_webhook import verify_and_process_resend_webhook
+
 from .subscribers import (
     confirm_subscription,
     create_pending_subscription,
@@ -105,5 +107,37 @@ def create_brief_blueprint(limiter=None) -> Blueprint:
             )
 
         return redirect("/brief/unsubscribed/", code=302)
+
+
+    @brief_bp.post("/brief/webhook/resend")
+    def resend_webhook():
+        raw_body = request.get_data(cache=False)
+
+        headers = {
+            "svix-id": request.headers.get("svix-id", ""),
+            "svix-timestamp": request.headers.get("svix-timestamp", ""),
+            "svix-signature": request.headers.get("svix-signature", ""),
+        }
+
+        try:
+            result = verify_and_process_resend_webhook(
+                raw_body,
+                headers,
+            )
+        except ValueError:
+            return jsonify({
+                "status": "error",
+                "message": "Invalid webhook.",
+            }), 400
+        except RuntimeError:
+            return jsonify({
+                "status": "error",
+                "message": "Webhook unavailable.",
+            }), 503
+
+        return jsonify({
+            "status": "ok",
+            "result": result,
+        }), 200
 
     return brief_bp
