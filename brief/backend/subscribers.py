@@ -383,3 +383,88 @@ def unsubscribe_subscription(
         email=email,
         unsubscribed_at=now_s,
     )
+
+
+DELIVERY_STATUSES = frozenset({
+    "sent",
+    "delivered",
+    "soft_bounce",
+    "hard_bounce",
+    "failed",
+})
+
+
+def update_delivery_status(
+    email: str,
+    status: str,
+    *,
+    error: str | None = None,
+    db_path: Path | None = None,
+) -> None:
+    normalized = normalize_email(email)
+    delivery_status = (status or "").strip()
+
+    if delivery_status not in DELIVERY_STATUSES:
+        raise ValueError("unsupported delivery status")
+
+    now_s = iso_utc(utc_now())
+
+    safe_error = (error or "").strip() or None
+    if safe_error is not None:
+        safe_error = safe_error[:500]
+
+    sent_at = now_s if delivery_status == "sent" else None
+    bounce_at = (
+        now_s
+        if delivery_status in {"soft_bounce", "hard_bounce"}
+        else None
+    )
+
+    conn = connect_db(resolve_db_path(db_path))
+
+    try:
+        conn.execute("BEGIN IMMEDIATE")
+
+        row = conn.execute(
+            """
+            SELECT id
+            FROM subscribers
+            WHERE email = ?
+            """,
+            (normalized,),
+        ).fetchone()
+
+        if row is None:
+            conn.rollback()
+            raise ValueError("subscriber not found")
+
+        conn.execute(
+            """
+            UPDATE subscribers
+            SET
+                updated_at = ?,
+                last_email_sent_at = COALESCE(?, last_email_sent_at),
+                last_delivery_status = ?,
+                last_delivery_error = ?,
+                last_bounce_at = COALESCE(?, last_bounce_at)
+            WHERE id = ?
+            """,
+            (
+                now_s,
+                sent_at,
+                delivery_status,
+                safe_error,
+                bounce_at,
+                row[0],
+            ),
+        )
+
+        conn.commit()
+
+    except Exception:
+        if conn.in_transaction:
+            conn.rollback()
+        raise
+
+    finally:
+        conn.close()
