@@ -4,7 +4,7 @@ from collections.abc import Callable
 
 from flask import Blueprint, current_app, jsonify, request
 
-from subscribers import (
+from .subscribers import (
     confirm_subscription,
     create_pending_subscription,
     unsubscribe_subscription,

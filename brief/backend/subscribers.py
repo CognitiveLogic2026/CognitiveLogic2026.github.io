@@ -8,7 +8,7 @@ from dataclasses import dataclass
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
 
-from init_db import DEFAULT_DB_PATH, connect_db
+from .init_db import DEFAULT_DB_PATH, connect_db
 
 
 CONFIRMATION_TTL_HOURS = 24
