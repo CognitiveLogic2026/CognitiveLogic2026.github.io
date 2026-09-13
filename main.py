@@ -17,8 +17,10 @@ from sovereign_engine import ENGINE_VERSION
 from sovereign_engine import classify_risk as sovereign_classify_risk
 from sovereign_engine import score_entity as sovereign_score_entity
 from source_retrieval import knowledge_version, normalize_text, retrieve
+from brief.backend.resend_sender import send_confirmation_email
 
 app = Flask(__name__)
+app.config["BRIEF_CONFIRMATION_SENDER"] = send_confirmation_email
 
 limiter = Limiter(app=app, key_func=get_remote_address, default_limits=[], storage_uri=os.getenv("REDIS_URL", "memory://"))
 
