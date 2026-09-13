@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Cognitive Logic Brief — Decisioni, evidenze e governance</title>
+
+  <meta name="description" content="Cognitive Logic Brief seleziona ogni due settimane pochi cambiamenti verificati che possono incidere sulle decisioni di imprese, istituzioni e territori." />
+
+  <link rel="canonical" href="https://cognitivelogic.it/brief/">
+  <link rel="alternate" hreflang="it" href="https://cognitivelogic.it/brief/">
+  <link rel="alternate" hreflang="x-default" href="https://cognitivelogic.it/brief/">
+
+  <meta name="author" content="Roberto Malini — Cognitive Logic" />
+
+  <meta property="og:title" content="Cognitive Logic Brief — Decisioni, evidenze e governance" />
+  <meta property="og:description" content="Una selezione quindicinale dei cambiamenti verificati che meritano attenzione, con evidenze, conseguenze operative e collegamenti alle analisi complete." />
+  <meta property="og:url" content="https://cognitivelogic.it/brief/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="https://cognitivelogic.it/img/cognitive-logic-og.png">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Cognitive Logic Brief — Decisioni, evidenze e governance">
+  <meta name="twitter:description" content="Pochi cambiamenti verificati. Evidenze, conseguenze e decisioni che meritano attenzione.">
+  <meta name="twitter:image" content="https://cognitivelogic.it/img/cognitive-logic-og.png">
+
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Periodical",
+    "name": "Cognitive Logic Brief",
+    "alternateName": "Decisioni, evidenze e governance",
+    "url": "https://cognitivelogic.it/brief/",
+    "description": "Briefing quindicinale di Cognitive Logic che seleziona cambiamenti verificati rilevanti per le decisioni di imprese, istituzioni e territori.",
+    "publisher": {
+      "@type": "Organization",
+      "name": "Cognitive Logic",
+      "url": "https://cognitivelogic.it/"
+    },
+    "inLanguage": "it"
+  }
+  </script>
+
+  <link rel="preload" href="/fonts/cormorant-garamond-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/fonts/dm-mono-400.woff2" as="font" type="font/woff2" crossorigin>
+
+  <link rel="stylesheet" href="/css/fonts-local.css" />
+  <link rel="stylesheet" href="/css/style.css?v=3" />
+  <link rel="stylesheet" href="/css/home-it.css?v=1" />
+
+  <style>
+    .brief-hero {
+      min-height: 78vh;
+      display: grid;
+      grid-template-columns: minmax(240px, .7fr) minmax(0, 1.5fr);
+      gap: clamp(3rem, 7vw, 8rem);
+      align-items: center;
+      padding-top: clamp(7rem, 12vw, 11rem);
+      padding-bottom: clamp(4rem, 8vw, 7rem);
+    }
+
+    .brief-label,
+    .brief-kicker,
+    .brief-meta {
+      font-family: "DM Mono", monospace;
+      text-transform: uppercase;
+    }
+
+    .brief-label {
+      font-size: .72rem;
+      letter-spacing: .16em;
+      opacity: .62;
+      line-height: 1.9;
+    }
+
+    .brief-kicker {
+      font-size: .72rem;
+      letter-spacing: .18em;
+      margin-bottom: 1.4rem;
+      opacity: .7;
+    }
+
+    .brief-hero h1 {
+      max-width: 950px;
+    }
+
+    .brief-lead {
+      max-width: 780px;
+      font-size: clamp(1rem, 1.6vw, 1.25rem);
+      line-height: 1.75;
+      opacity: .8;
+      margin-top: 2rem;
+    }
+
+    .brief-principle {
+      margin-top: 2.2rem;
+      padding-left: 1.2rem;
+      border-left: 2px solid currentColor;
+      font-family: "DM Mono", monospace;
+      font-size: .9rem;
+      letter-spacing: .04em;
+    }
+
+    .brief-section {
+      padding-top: clamp(4rem, 8vw, 7rem);
+      padding-bottom: clamp(4rem, 8vw, 7rem);
+    }
+
+    .brief-copy {
+      max-width: 780px;
+    }
+
+    .brief-copy p {
+      line-height: 1.8;
+      opacity: .78;
+    }
+
+    .brief-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1rem;
+      margin-top: 2.5rem;
+    }
+
+    .brief-card {
+      padding: 1.8rem;
+      border: 1px solid rgba(255,255,255,.12);
+      min-height: 210px;
+    }
+
+    .brief-card h3 {
+      margin-bottom: .85rem;
+    }
+
+    .brief-card p {
+      opacity: .72;
+      line-height: 1.7;
+    }
+
+    .brief-meta {
+      font-size: .7rem;
+      letter-spacing: .12em;
+      opacity: .62;
+      margin-bottom: 1rem;
+    }
+
+    .brief-subscribe {
+      max-width: 780px;
+      margin-top: 2.5rem;
+      padding: 2rem;
+      border: 1px solid rgba(255,255,255,.16);
+    }
+
+    .brief-subscribe p {
+      line-height: 1.7;
+      opacity: .75;
+    }
+
+    .brief-subscribe-status {
+      margin-top: 1.4rem;
+      font-family: "DM Mono", monospace;
+      font-size: .75rem;
+      letter-spacing: .05em;
+      opacity: .62;
+    }
+
+    @media (max-width: 900px) {
+      .brief-hero,
+      .brief-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .brief-hero {
+        gap: 2rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<a href="#main" class="skip-link">Salta al contenuto</a>
+
+<div class="site-bg"></div>
+
+<header class="site-header">
+  <div class="container header-inner">
+
+    <a href="/" class="brand notranslate" translate="no" aria-label="Cognitive Logic — Home">
+      <span class="wordmark wordmark--nav">
+        <span class="wm-top">Cognitive</span>
+        <span class="wm-bot">Logic</span>
+      </span>
+    </a>
+
+    <nav class="main-nav" aria-label="Navigazione principale">
+      <a href="/services.html">Servizi</a>
+      <a href="/assessment.html">Assessment</a>
+      <a href="/framework.html">Metodo</a>
+
+      <details class="nav-group">
+        <summary>Evidenze</summary>
+        <div class="nav-group-menu">
+          <a href="/validation.html">Validation</a>
+          <a href="/case-studies/">Case Studies</a>
+          <a href="/trust.html">Trust Center</a>
+          <a href="/operational-record.html">Operational Record</a>
+        </div>
+      </details>
+
+      <a href="/research.html">Ricerca</a>
+      <a href="/about.html">Chi siamo</a>
+      <a href="/contact.html">Contatti</a>
+    </nav>
+
+    <div class="header-end">
+      <a href="/brief/" class="btn btn-ghost" aria-current="page">Brief</a>
+    </div>
+
+  </div>
+</header>
+
+<main id="main">
+
+  <section class="container brief-hero">
+
+    <div>
+      <div class="wordmark wordmark--hero" aria-label="Cognitive Logic">
+        <span class="wm-top">Cognitive</span>
+        <span class="wm-bot">Logic</span>
+      </div>
+
+      <div class="brief-label">
+        Briefing quindicinale<br>
+        Evidenze<br>
+        Conseguenze
+      </div>
+    </div>
+
+    <div>
+      <div class="brief-kicker">Cognitive Logic Brief</div>
+
+      <h1>
+        Decisioni, evidenze
+        <em>e governance.</em>
+      </h1>
+
+      <p class="brief-lead">
+        Cognitive Logic Brief seleziona pochi cambiamenti verificati che possono incidere
+        sulle decisioni di imprese, istituzioni e territori. Distingue fatti, evidenze,
+        interpretazioni e conseguenze operative e indirizza alle analisi complete.
+      </p>
+
+      <div class="brief-principle">
+        Data must be intelligible.
+      </div>
+    </div>
+
+  </section>
+
+  <section class="container brief-section">
+    <div class="brief-copy">
+      <div class="brief-kicker">Perché esiste</div>
+
+      <h2>Non accumulare notizie. Capire cosa richiede attenzione.</h2>
+
+      <p>
+        Ogni due settimane il Brief seleziona un numero limitato di segnali provenienti
+        dall'ecosistema Cognitive Logic. Il criterio non è la quantità di notizie,
+        ma la loro rilevanza per una decisione.
+      </p>
+
+      <p>
+        Le verifiche complete, i dossier, le analisi e gli strumenti rimangono nelle
+        rispettive pagine canoniche. Il Brief li seleziona, li rende leggibili nel loro
+        contesto e indica dove approfondire.
+      </p>
+    </div>
+
+    <div class="brief-grid">
+
+      <article class="brief-card">
+        <div class="brief-meta">01 · Evidenza</div>
+        <h3>Cosa sappiamo</h3>
+        <p>
+          Il fatto viene separato dalla fonte, dall'interpretazione e dal livello
+          di certezza disponibile.
+        </p>
+      </article>
+
+      <article class="brief-card">
+        <div class="brief-meta">02 · Conseguenza</div>
+        <h3>Perché conta</h3>
+        <p>
+          Ogni segnale viene letto rispetto alle decisioni che può modificare
+          per imprese, istituzioni, professionisti o territori.
+        </p>
+      </article>
+
+      <article class="brief-card">
+        <div class="brief-meta">03 · Fonte canonica</div>
+        <h3>Dove approfondire</h3>
+        <p>
+          Ogni sezione conduce normalmente a una sola destinazione principale:
+          analisi, osservatorio, ricerca o verticale pertinente.
+        </p>
+      </article>
+
+    </div>
+  </section>
+
+  <section class="container brief-section">
+    <div class="brief-copy">
+      <div class="brief-kicker">Architettura editoriale</div>
+
+      <h2>Una selezione trasversale, non una duplicazione.</h2>
+
+      <p>
+        CognitiveLogic.it rimane la fonte canonica. International Watch verifica eventi,
+        fonti ed evidenze. L'Osservatorio Bolkestein segue gare, concessioni, norme e
+        territori. FuoriMenù traduce i cambiamenti per HoReCa, filiere e territorio.
+        LinkedIn apre conversazioni e relazioni professionali.
+      </p>
+
+      <p>
+        Cognitive Logic Brief collega questi livelli quando più segnali concorrono
+        alla stessa domanda decisionale.
+      </p>
+    </div>
+  </section>
+
+  <section class="container brief-section" id="iscrizione">
+    <div class="brief-copy">
+      <div class="brief-kicker">Iscrizione</div>
+
+      <h2>Ricevi Cognitive Logic Brief.</h2>
+
+      <p>
+        Frequenza quindicinale. Pochi temi selezionati, collegamenti alle fonti
+        canoniche e nessuna rassegna stampa generalista.
+      </p>
+    </div>
+
+    <div class="brief-subscribe" aria-labelledby="subscribe-title">
+      <h3 id="subscribe-title">Iscrizioni in preparazione</h3>
+
+      <p>
+        Il sistema proprietario di iscrizione e conferma è in fase di attivazione.
+        Il modulo sarà disponibile qui prima dell'invio del numero zero.
+      </p>
+
+      <div class="brief-subscribe-status">
+        Double opt-in · Gestione autonoma dell'iscrizione · Disiscrizione disponibile
+      </div>
+    </div>
+  </section>
+
+</main>
+
+</body>
+</html>

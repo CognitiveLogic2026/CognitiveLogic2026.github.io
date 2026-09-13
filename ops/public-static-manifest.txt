@@ -178,3 +178,4 @@ img/og/consiglio-stato-6539-concessioni-balneari.png
 img/og/indennizzo-concessionario-uscente-perizia-asseverata.png
 research/industrial-cybersecurity-evidence-governance/index.html
 img/og/industrial-cybersecurity-evidence-governance.png
+brief/index.html
