@@ -43,12 +43,13 @@ jobs:
           SMTP_PASS: ${{ secrets.SMTP_PASS }}
           ALERT_EMAIL_FROM: ${{ secrets.ALERT_EMAIL_FROM }}
           ALERT_EMAIL_TO: ${{ secrets.ALERT_EMAIL_TO }}
+          RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
         with:
           host: ${{ secrets.VPS_HOST }}
           username: root
           key: ${{ secrets.VPS_SSH_KEY }}
           timeout: 120s
-          envs: ICEA_API_KEY,INFOCAMERE_API_KEY,SUPERVISOR_KEY,COGNITIVE_API_KEY,GOOGLE_PLACES_API_KEY,SMTP_HOST,SMTP_PORT,SMTP_USER,SMTP_PASS,ALERT_EMAIL_FROM,ALERT_EMAIL_TO
+          envs: ICEA_API_KEY,INFOCAMERE_API_KEY,SUPERVISOR_KEY,COGNITIVE_API_KEY,GOOGLE_PLACES_API_KEY,SMTP_HOST,SMTP_PORT,SMTP_USER,SMTP_PASS,ALERT_EMAIL_FROM,ALERT_EMAIL_TO,RESEND_API_KEY
           script: |
             set -e
             # accept-new: trusts first connection, rejects changed keys (blocks MITM)
@@ -106,6 +107,9 @@ jobs:
               SMTP_PASS             "${SMTP_PASS}" \
               ALERT_EMAIL_FROM      "${ALERT_EMAIL_FROM}" \
               ALERT_EMAIL_TO        "${ALERT_EMAIL_TO}" \
+              RESEND_API_KEY        "${RESEND_API_KEY}" \
+              BRIEF_FROM_EMAIL      "Cognitive Logic Brief <brief@brief.cognitivelogic.it>" \
+              BRIEF_PUBLIC_BASE_URL "https://cognitivelogic.it" \
               > /etc/cognitivelogic/env
             chmod 600 /etc/cognitivelogic/env
 
