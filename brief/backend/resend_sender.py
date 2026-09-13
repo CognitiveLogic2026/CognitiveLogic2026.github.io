@@ -5,6 +5,8 @@ from urllib.parse import urlencode
 
 import requests
 
+from .subscribers import update_delivery_status
+
 
 RESEND_API_URL = "https://api.resend.com/emails"
 DEFAULT_PUBLIC_BASE_URL = "https://cognitivelogic.it"
@@ -57,17 +59,33 @@ def send_confirmation_email(email: str, confirmation_token: str) -> None:
         ),
     }
 
-    response = requests.post(
-        RESEND_API_URL,
-        headers={
-            "Authorization": f"Bearer {api_key}",
-            "Content-Type": "application/json",
-        },
-        json=payload,
-        timeout=10,
-    )
+    try:
+        response = requests.post(
+            RESEND_API_URL,
+            headers={
+                "Authorization": f"Bearer {api_key}",
+                "Content-Type": "application/json",
+            },
+            json=payload,
+            timeout=10,
+        )
+    except requests.RequestException as exc:
+        error = f"Resend request failed: {exc.__class__.__name__}"
+        try:
+            update_delivery_status(email, "failed", error=error)
+        except Exception:
+            pass
+        raise RuntimeError(error) from exc
 
     if not 200 <= response.status_code < 300:
-        raise RuntimeError(
-            f"Resend delivery failed with HTTP {response.status_code}"
-        )
+        error = f"Resend delivery failed with HTTP {response.status_code}"
+        try:
+            update_delivery_status(email, "failed", error=error)
+        except Exception:
+            pass
+        raise RuntimeError(error)
+
+    try:
+        update_delivery_status(email, "sent")
+    except Exception:
+        pass
