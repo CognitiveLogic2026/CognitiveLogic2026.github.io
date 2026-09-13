@@ -11,9 +11,8 @@ from .subscribers import (
 )
 
 
-brief_bp = Blueprint("brief", __name__)
-
 CONFIRMATION_SENDER_CONFIG = "BRIEF_CONFIRMATION_SENDER"
+SUBSCRIBE_RATE_LIMIT = "5 per minute;20 per hour"
 
 
 def _json_error(message: str, status: int):
@@ -28,23 +27,49 @@ def _confirmation_sender() -> Callable[[str, str], None] | None:
     return sender if callable(sender) else None
 
 
-@brief_bp.post("/brief/subscribe")
-def brief_subscribe():
-    sender = _confirmation_sender()
+def create_brief_blueprint(limiter=None) -> Blueprint:
+    brief_bp = Blueprint("brief", __name__)
+    _lim = limiter.limit if limiter else lambda _rule: (lambda f: f)
 
-    if sender is None:
-        return _json_error(
-            "Subscription service is temporarily unavailable.",
-            503,
-        )
+    @brief_bp.post("/brief/subscribe")
+    @_lim(SUBSCRIBE_RATE_LIMIT)
+    def brief_subscribe():
+        sender = _confirmation_sender()
 
-    payload = request.get_json(silent=True) or {}
-    email = payload.get("email", "")
+        if sender is None:
+            return _json_error(
+                "Subscription service is temporarily unavailable.",
+                503,
+            )
 
-    try:
-        pending = create_pending_subscription(email)
-    except ValueError:
-        # Generic response: do not disclose whether an address is already active.
+        payload = request.get_json(silent=True) or {}
+        email = payload.get("email", "")
+
+        try:
+            pending = create_pending_subscription(email)
+        except ValueError:
+            return jsonify({
+                "status": "ok",
+                "message": (
+                    "If the address can be subscribed, "
+                    "confirmation instructions will be sent."
+                ),
+            }), 200
+
+        try:
+            sender(
+                pending.email,
+                pending.confirmation_token,
+            )
+        except Exception:
+            current_app.logger.exception(
+                "Brief confirmation delivery failed"
+            )
+            return _json_error(
+                "Subscription service is temporarily unavailable.",
+                503,
+            )
+
         return jsonify({
             "status": "ok",
             "message": (
@@ -53,60 +78,38 @@ def brief_subscribe():
             ),
         }), 200
 
-    try:
-        sender(
-            pending.email,
-            pending.confirmation_token,
-        )
-    except Exception:
-        current_app.logger.exception(
-            "Brief confirmation delivery failed"
-        )
-        return _json_error(
-            "Subscription service is temporarily unavailable.",
-            503,
-        )
+    @brief_bp.get("/brief/confirm")
+    def brief_confirm():
+        token = request.args.get("token", "")
 
-    return jsonify({
-        "status": "ok",
-        "message": (
-            "If the address can be subscribed, "
-            "confirmation instructions will be sent."
-        ),
-    }), 200
+        try:
+            confirm_subscription(token)
+        except ValueError:
+            return _json_error(
+                "Invalid or expired confirmation link.",
+                400,
+            )
 
+        return jsonify({
+            "status": "active",
+            "message": "Subscription confirmed.",
+        }), 200
 
-@brief_bp.get("/brief/confirm")
-def brief_confirm():
-    token = request.args.get("token", "")
+    @brief_bp.get("/brief/unsubscribe")
+    def brief_unsubscribe():
+        token = request.args.get("token", "")
 
-    try:
-        confirm_subscription(token)
-    except ValueError:
-        return _json_error(
-            "Invalid or expired confirmation link.",
-            400,
-        )
+        try:
+            unsubscribe_subscription(token)
+        except ValueError:
+            return _json_error(
+                "Invalid unsubscribe link.",
+                400,
+            )
 
-    return jsonify({
-        "status": "active",
-        "message": "Subscription confirmed.",
-    }), 200
+        return jsonify({
+            "status": "unsubscribed",
+            "message": "Subscription cancelled.",
+        }), 200
 
-
-@brief_bp.get("/brief/unsubscribe")
-def brief_unsubscribe():
-    token = request.args.get("token", "")
-
-    try:
-        unsubscribe_subscription(token)
-    except ValueError:
-        return _json_error(
-            "Invalid unsubscribe link.",
-            400,
-        )
-
-    return jsonify({
-        "status": "unsubscribed",
-        "message": "Subscription cancelled.",
-    }), 200
+    return brief_bp
