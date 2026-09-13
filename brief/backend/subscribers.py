@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import hashlib
+import os
 import secrets
 import sqlite3
 from dataclasses import dataclass
@@ -61,10 +62,18 @@ def generate_token() -> str:
     return secrets.token_urlsafe(32)
 
 
+def resolve_db_path(db_path: Path | None = None) -> Path:
+    if db_path is not None:
+        return Path(db_path)
+
+    override = os.getenv("BRIEF_DB_PATH")
+    return Path(override) if override else DEFAULT_DB_PATH
+
+
 def create_pending_subscription(
     email: str,
     *,
-    db_path: Path = DEFAULT_DB_PATH,
+    db_path: Path | None = None,
     source: str = DEFAULT_SOURCE,
     consent_version: str = CONSENT_VERSION,
 ) -> PendingSubscription:
@@ -77,7 +86,7 @@ def create_pending_subscription(
     token = generate_token()
     token_hash = hash_token(token)
 
-    conn = connect_db(Path(db_path))
+    conn = connect_db(resolve_db_path(db_path))
 
     try:
         conn.execute("BEGIN IMMEDIATE")
@@ -210,7 +219,7 @@ def parse_utc(value: str) -> datetime:
 def confirm_subscription(
     confirmation_token: str,
     *,
-    db_path: Path = DEFAULT_DB_PATH,
+    db_path: Path | None = None,
 ) -> ConfirmedSubscription:
     token = (confirmation_token or "").strip()
 
@@ -224,7 +233,7 @@ def confirm_subscription(
     unsubscribe_token = generate_token()
     unsubscribe_token_hash = hash_token(unsubscribe_token)
 
-    conn = connect_db(Path(db_path))
+    conn = connect_db(resolve_db_path(db_path))
 
     try:
         conn.execute("BEGIN IMMEDIATE")
@@ -307,7 +316,7 @@ class UnsubscribedSubscription:
 def unsubscribe_subscription(
     unsubscribe_token: str,
     *,
-    db_path: Path = DEFAULT_DB_PATH,
+    db_path: Path | None = None,
 ) -> UnsubscribedSubscription:
     token = (unsubscribe_token or "").strip()
 
@@ -317,7 +326,7 @@ def unsubscribe_subscription(
     token_hash = hash_token(token)
     now_s = iso_utc(utc_now())
 
-    conn = connect_db(Path(db_path))
+    conn = connect_db(resolve_db_path(db_path))
 
     try:
         conn.execute("BEGIN IMMEDIATE")
