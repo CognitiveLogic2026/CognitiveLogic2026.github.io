@@ -296,3 +296,81 @@ def confirm_subscription(
         unsubscribe_token=unsubscribe_token,
         confirmed_at=now_s,
     )
+
+
+@dataclass(frozen=True)
+class UnsubscribedSubscription:
+    email: str
+    unsubscribed_at: str
+
+
+def unsubscribe_subscription(
+    unsubscribe_token: str,
+    *,
+    db_path: Path = DEFAULT_DB_PATH,
+) -> UnsubscribedSubscription:
+    token = (unsubscribe_token or "").strip()
+
+    if not token:
+        raise ValueError("unsubscribe token is required")
+
+    token_hash = hash_token(token)
+    now_s = iso_utc(utc_now())
+
+    conn = connect_db(Path(db_path))
+
+    try:
+        conn.execute("BEGIN IMMEDIATE")
+
+        row = conn.execute(
+            """
+            SELECT
+                id,
+                email,
+                status
+            FROM subscribers
+            WHERE unsubscribe_token_hash = ?
+            """,
+            (token_hash,),
+        ).fetchone()
+
+        if row is None:
+            conn.rollback()
+            raise ValueError("invalid unsubscribe token")
+
+        subscriber_id, email, status = row
+
+        if status != "active":
+            conn.rollback()
+            raise ValueError("subscription is not active")
+
+        conn.execute(
+            """
+            UPDATE subscribers
+            SET
+                status = 'unsubscribed',
+                updated_at = ?,
+                unsubscribed_at = ?
+            WHERE id = ?
+            """,
+            (
+                now_s,
+                now_s,
+                subscriber_id,
+            ),
+        )
+
+        conn.commit()
+
+    except Exception:
+        if conn.in_transaction:
+            conn.rollback()
+        raise
+
+    finally:
+        conn.close()
+
+    return UnsubscribedSubscription(
+        email=email,
+        unsubscribed_at=now_s,
+    )
