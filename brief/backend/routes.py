@@ -104,9 +104,6 @@ def create_brief_blueprint(limiter=None) -> Blueprint:
                 400,
             )
 
-        return jsonify({
-            "status": "unsubscribed",
-            "message": "Subscription cancelled.",
-        }), 200
+        return redirect("/brief/unsubscribed/", code=302)
 
     return brief_bp
