@@ -68,6 +68,7 @@ img/cognitive-logic-og.png
 img/dfv-002-og.png
 img/logo-cognitivelogic.png
 img/logo-cognitivelogic.svg
+img/logo-cognitivelogic-email.png
 img/logo-qen.svg
 img/og/agcm-criteri-contestati.png
 img/og/coste360-case-study.png
