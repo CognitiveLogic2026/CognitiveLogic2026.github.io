@@ -1,0 +1,786 @@
+<!doctype html>
+<html lang="it">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Agente di IA e data breach: la prima notifica alla AEPD | Cognitive Logic</title>
+
+  <meta name="description" content="La AEPD spagnola documenta la prima breccia notificata attribuita a un agente di IA. Fatti verificati, responsabilità aperte e implicazioni di governance.">
+  <meta name="author" content="Roberto Bob Malini — Cognitive Logic">
+  <meta name="robots" content="index, follow">
+
+  <link rel="canonical" href="https://cognitivelogic.it/international-watch/agente-ia-data-breach-aepd/">
+
+  <meta property="og:type" content="article">
+  <meta property="og:locale" content="it_IT">
+  <meta property="og:site_name" content="Cognitive Logic">
+  <meta property="og:title" content="Il primo incidente notificato in cui un agente di IA esegue l’attacco">
+  <meta property="og:description" content="La prima breccia notificata alla AEPD attribuita a un agente di IA: fatti verificati, responsabilità aperte e implicazioni di governance.">
+  <meta property="og:url" content="https://cognitivelogic.it/international-watch/agente-ia-data-breach-aepd/">
+
+  <meta property="article:published_time" content="2026-09-16T09:00:00+02:00">
+  <meta property="article:modified_time" content="2026-09-16T09:00:00+02:00">
+  <meta property="article:section" content="International Watch">
+  <meta property="article:tag" content="AI Governance">
+  <meta property="article:tag" content="Agentic AI">
+  <meta property="article:tag" content="Data Protection">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Il primo incidente notificato in cui un agente di IA esegue l’attacco">
+  <meta name="twitter:description" content="La AEPD documenta la prima breccia notificata attribuita a un agente di IA.">
+
+  <style>
+    :root {
+      --ink: #153f48;
+      --accent: #16889a;
+      --text: #24363a;
+      --muted: #60757a;
+      --surface: #f1f7f8;
+      --border: #d5e3e6;
+      --white: #ffffff;
+      --max-width: 920px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      background: var(--white);
+      color: var(--text);
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 18px;
+      line-height: 1.65;
+    }
+
+    a {
+      color: #087f91;
+      text-decoration-thickness: 1px;
+      text-underline-offset: 3px;
+    }
+
+    a:hover,
+    a:focus {
+      color: var(--ink);
+    }
+
+    .skip-link {
+      position: absolute;
+      left: -9999px;
+      top: 0;
+      z-index: 100;
+      padding: 0.8rem 1rem;
+      background: var(--ink);
+      color: var(--white);
+    }
+
+    .skip-link:focus {
+      left: 1rem;
+      top: 1rem;
+    }
+
+    .site-header {
+      border-bottom: 1px solid var(--border);
+      background: var(--white);
+    }
+
+    .header-inner,
+    .footer-inner,
+    .article {
+      width: min(calc(100% - 2rem), var(--max-width));
+      margin-inline: auto;
+    }
+
+    .header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 2rem;
+      padding: 1.2rem 0;
+    }
+
+    .brand {
+      color: var(--ink);
+      font-size: 1.15rem;
+      font-weight: 800;
+      text-decoration: none;
+      letter-spacing: 0.02em;
+    }
+
+    .site-nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      font-size: 0.9rem;
+    }
+
+    .site-nav a {
+      color: var(--ink);
+      text-decoration: none;
+    }
+
+    .site-nav a:hover,
+    .site-nav a:focus {
+      text-decoration: underline;
+    }
+
+    .article {
+      padding: 4rem 0 5rem;
+    }
+
+    .breadcrumb {
+      margin-bottom: 2rem;
+      color: var(--muted);
+      font-size: 0.85rem;
+    }
+
+    .breadcrumb a {
+      color: var(--muted);
+    }
+
+    .kicker {
+      margin: 0 0 1rem;
+      color: var(--accent);
+      font-size: 0.84rem;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    h1,
+    h2,
+    h3 {
+      color: var(--ink);
+      line-height: 1.18;
+    }
+
+    h1 {
+      max-width: 850px;
+      margin: 0;
+      font-size: clamp(2.3rem, 6vw, 4.4rem);
+      letter-spacing: -0.035em;
+    }
+
+    h2 {
+      margin: 3.2rem 0 1rem;
+      font-size: clamp(1.65rem, 4vw, 2.3rem);
+      letter-spacing: -0.02em;
+    }
+
+    h3 {
+      margin: 2rem 0 0.6rem;
+      font-size: 1.25rem;
+    }
+
+    .lead {
+      max-width: 820px;
+      margin: 1.8rem 0;
+      color: #426268;
+      font-size: clamp(1.18rem, 2.5vw, 1.45rem);
+      line-height: 1.5;
+    }
+
+    .article-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem 1.5rem;
+      margin: 2rem 0 3rem;
+      color: var(--muted);
+      font-size: 0.88rem;
+    }
+
+    .status-panel {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1px;
+      margin: 2.5rem 0;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      background: var(--border);
+    }
+
+    .status-item {
+      padding: 1.1rem;
+      background: var(--surface);
+    }
+
+    .status-item strong {
+      display: block;
+      margin-bottom: 0.2rem;
+      color: var(--ink);
+      font-size: 0.78rem;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+
+    .status-item span {
+      font-size: 0.95rem;
+    }
+
+    .chain {
+      margin: 2rem 0;
+      padding: 1.4rem;
+      border-left: 5px solid var(--accent);
+      background: var(--surface);
+      color: var(--ink);
+      font-weight: 750;
+      line-height: 1.7;
+    }
+
+    .epistemic {
+      margin: 2rem 0;
+      padding: 1.4rem;
+      border: 1px solid var(--border);
+      background: #fbfdfd;
+    }
+
+    .epistemic strong {
+      color: var(--ink);
+    }
+
+    ul {
+      padding-left: 1.35rem;
+    }
+
+    li + li {
+      margin-top: 0.55rem;
+    }
+
+    .conclusion {
+      margin-top: 3rem;
+      padding: 1.7rem;
+      background: var(--ink);
+      color: var(--white);
+    }
+
+    .conclusion h2 {
+      margin-top: 0;
+      color: var(--white);
+    }
+
+    .conclusion p:last-child {
+      margin-bottom: 0;
+      font-weight: 700;
+    }
+
+    .sources {
+      margin-top: 4rem;
+      padding-top: 2rem;
+      border-top: 1px solid var(--border);
+    }
+
+    .sources li {
+      overflow-wrap: anywhere;
+    }
+
+    .site-footer {
+      border-top: 1px solid var(--border);
+      background: var(--surface);
+    }
+
+    .footer-inner {
+      padding: 2rem 0;
+      color: var(--muted);
+      font-size: 0.85rem;
+    }
+
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.8rem 1.2rem;
+      margin-bottom: 1rem;
+    }
+
+    @media (max-width: 720px) {
+      body {
+        font-size: 17px;
+      }
+
+      .header-inner {
+        display: block;
+      }
+
+      .site-nav {
+        margin-top: 1rem;
+      }
+
+      .article {
+        padding-top: 2.5rem;
+      }
+
+      .status-panel {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "NewsArticle",
+        "@id": "https://cognitivelogic.it/international-watch/agente-ia-data-breach-aepd/#article",
+        "mainEntityOfPage": {
+          "@type": "WebPage",
+          "@id": "https://cognitivelogic.it/international-watch/agente-ia-data-breach-aepd/"
+        },
+        "headline": "Il primo incidente notificato in cui un agente di IA esegue l’attacco",
+        "description": "La AEPD spagnola documenta la prima breccia notificata attribuita a un agente di IA. Fatti verificati, responsabilità aperte e implicazioni di governance.",
+        "datePublished": "2026-09-16T09:00:00+02:00",
+        "dateModified": "2026-09-16T09:00:00+02:00",
+        "inLanguage": "it-IT",
+        "articleSection": "International Watch",
+        "keywords": [
+          "AI Governance",
+          "Agentic AI",
+          "AEPD",
+          "Data breach",
+          "Accountability",
+          "QEN Framework"
+        ],
+        "author": {
+          "@type": "Person",
+          "name": "Roberto Bob Malini",
+          "url": "https://cognitivelogic.it/about.html"
+        },
+        "publisher": {
+          "@type": "Organization",
+          "name": "Cognitive Logic",
+          "url": "https://cognitivelogic.it/"
+        },
+        "citation": [
+          "https://www.aepd.es/prensa-y-comunicacion/blog/primera-notiviacion-brecha-datos-personales-causada-por-ataque-ejecutado-mediante-agente-ia",
+          "https://www.aepd.es/guias/orientaciones-ia-agentica.pdf",
+          "https://www.reuters.com/business/spanish-data-watchdog-publicises-first-ai-agent-linked-data-breach-report-2026-09-15/"
+        ]
+      },
+      {
+        "@type": "BreadcrumbList",
+        "@id": "https://cognitivelogic.it/international-watch/agente-ia-data-breach-aepd/#breadcrumb",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Cognitive Logic",
+            "item": "https://cognitivelogic.it/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "International Watch",
+            "item": "https://cognitivelogic.it/international-watch/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": "Agente di IA e data breach",
+            "item": "https://cognitivelogic.it/international-watch/agente-ia-data-breach-aepd/"
+          }
+        ]
+      }
+    ]
+  }
+  </script>
+</head>
+
+<body>
+  <a class="skip-link" href="#contenuto">Vai al contenuto</a>
+
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="brand" href="https://cognitivelogic.it/">Cognitive Logic</a>
+
+      <nav class="site-nav" aria-label="Navigazione principale">
+        <a href="https://cognitivelogic.it/services.html">Servizi</a>
+        <a href="https://cognitivelogic.it/assessment.html">Assessment</a>
+        <a href="https://cognitivelogic.it/qen/">QEN</a>
+        <a href="https://cognitivelogic.it/research.html">Ricerca</a>
+        <a href="https://cognitivelogic.it/international-watch/" aria-current="page">International Watch</a>
+        <a href="https://cognitivelogic.it/contact.html">Contatti</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="contenuto">
+    <article class="article">
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="https://cognitivelogic.it/">Cognitive Logic</a>
+        <span aria-hidden="true"> / </span>
+        <a href="https://cognitivelogic.it/international-watch/">International Watch</a>
+        <span aria-hidden="true"> / </span>
+        <span>Agente di IA e data breach</span>
+      </nav>
+
+      <header>
+        <p class="kicker">International Watch · AI Governance · Agentic AI</p>
+
+        <h1>Il primo incidente notificato in cui un agente di IA esegue l’attacco</h1>
+
+        <p class="lead">
+          La AEPD spagnola ha ricevuto la prima notifica di una violazione
+          di dati personali attribuita all’azione operativa di un agente di IA.
+          Il punto non è riconoscere una responsabilità giuridica alla macchina,
+          ma dimostrare chi le abbia assegnato obiettivi, strumenti, accessi e
+          margini di autonomia.
+        </p>
+
+        <div class="article-meta">
+          <span>16 settembre 2026</span>
+          <span>Roberto Bob Malini</span>
+          <span>Cognitive Logic International Watch</span>
+        </div>
+
+        <div class="status-panel" aria-label="Classificazione editoriale">
+          <div class="status-item">
+            <strong>Stato epistemico</strong>
+            <span>Notifica verificata · istruttoria aperta</span>
+          </div>
+
+          <div class="status-item">
+            <strong>Formato</strong>
+            <span>Concise International Watch item</span>
+          </div>
+
+          <div class="status-item">
+            <strong>Giurisdizione</strong>
+            <span>Spagna · Unione europea</span>
+          </div>
+
+          <div class="status-item">
+            <strong>Tema</strong>
+            <span>IA agentica · data breach · accountability</span>
+          </div>
+        </div>
+      </header>
+
+      <section>
+        <h2>Un evento operativo, non più soltanto un rischio teorico</h2>
+
+        <p>
+          Il 14 settembre 2026 l’<a
+          href="https://www.aepd.es/prensa-y-comunicacion/blog/primera-notiviacion-brecha-datos-personales-causada-por-ataque-ejecutado-mediante-agente-ia"
+          rel="noopener noreferrer"
+          target="_blank"
+          >Agencia Española de Protección de Datos</a> ha reso pubblica
+          la prima notifica ricevuta di una violazione di dati personali nella
+          quale l’attacco sarebbe stato eseguito mediante un agente di
+          intelligenza artificiale.
+        </p>
+
+        <p>
+          L’autorità non ha annunciato una sanzione né concluso
+          l’accertamento. Ha documentato l’esistenza di una notifica formale e
+          l’avvio dell’analisi del caso.
+        </p>
+
+        <p>
+          Secondo la ricostruzione pubblicata dalla AEPD, un soggetto terzo
+          avrebbe utilizzato un agente basato su un noto modello linguistico
+          per concatenare più fasi dell’azione offensiva con un intervento
+          umano limitato.
+        </p>
+
+        <p>L’agente avrebbe:</p>
+
+        <ul>
+          <li>individuato autonomamente vulnerabilità;</li>
+          <li>ottenuto accesso al sistema interessato;</li>
+          <li>modificato dati personali;</li>
+          <li>consultato informazioni di fatturazione;</li>
+          <li>concatenato diverse fasi dell’attacco.</li>
+        </ul>
+
+        <p>
+          La AEPD precisa che non vi sono indicazioni, allo stato, di una
+          compromissione del modello sottostante o dell’infrastruttura del
+          fornitore. Non risulta inoltre che il sistema fosse stato
+          originariamente progettato per finalità malevole.
+        </p>
+
+        <p>
+          <a
+          href="https://www.reuters.com/business/spanish-data-watchdog-publicises-first-ai-agent-linked-data-breach-report-2026-09-15/"
+          rel="noopener noreferrer"
+          target="_blank"
+          >Reuters ha confermato il 15 settembre</a> il contenuto essenziale
+          della comunicazione dell’autorità spagnola.
+        </p>
+      </section>
+
+      <section>
+        <h2>Che cosa è verificato e che cosa resta aperto</h2>
+
+        <h3>Fatti verificati</h3>
+
+        <ul>
+          <li>
+            La AEPD ha ricevuto una notifica formale di violazione di dati
+            personali.
+          </li>
+          <li>
+            Nella notifica l’attacco è attribuito all’impiego di un agente di
+            IA da parte di un soggetto terzo.
+          </li>
+          <li>
+            L’agente avrebbe svolto più fasi operative, dalla ricerca delle
+            vulnerabilità all’accesso e alla modifica dei dati.
+          </li>
+          <li>
+            L’autorità considera rilevante il limitato intervento umano
+            nell’esecuzione delle attività.
+          </li>
+          <li>L’esame della violazione è ancora in corso.</li>
+        </ul>
+
+        <h3>Elementi non ancora accertati</h3>
+
+        <ul>
+          <li>
+            l’identità dell’organizzazione colpita e del modello utilizzato;
+          </li>
+          <li>
+            la configurazione tecnica dell’agente e il livello effettivo di
+            autonomia;
+          </li>
+          <li>
+            il numero degli interessati e le categorie di dati coinvolte;
+          </li>
+          <li>l’attribuzione definitiva delle responsabilità;</li>
+          <li>
+            l’esistenza di violazioni del GDPR, dell’AI Act o di altre norme
+            applicabili.
+          </li>
+        </ul>
+
+        <div class="epistemic">
+          <strong>Valutazione epistemica.</strong>
+          È verificata la notifica e la descrizione preliminare pubblicata
+          dall’autorità. Non è ancora disponibile una decisione conclusiva.
+          Le formulazioni “avrebbe” e “secondo la notifica” delimitano ciò che
+          l’istruttoria deve ancora dimostrare.
+        </div>
+      </section>
+
+      <section>
+        <h2>L’autonomia tecnica non trasferisce la responsabilità alla macchina</h2>
+
+        <p>
+          Il caso non trasforma l’agente in un soggetto giuridico responsabile.
+          L’autonomia operativa descrive il modo in cui il sistema esegue
+          azioni; non elimina le responsabilità delle persone e delle
+          organizzazioni che hanno definito finalità, configurazione,
+          strumenti, credenziali, limiti e supervisione.
+        </p>
+
+        <p>
+          Le
+          <a
+          href="https://www.aepd.es/guias/orientaciones-ia-agentica.pdf"
+          rel="noopener noreferrer"
+          target="_blank"
+          >linee guida della AEPD sull’Intelligenza Artificiale agentica</a>
+          avevano già chiarito che l’interazione tra modello, memoria, motori
+          di pianificazione, strumenti e servizi esterni amplia la superficie
+          di attacco.
+        </p>
+
+        <p>
+          Questa interazione può inoltre generare nuove vulnerabilità o
+          amplificare quelle esistenti. L’incidente notificato porta tale
+          impostazione dal piano preventivo a quello operativo.
+        </p>
+      </section>
+
+      <section>
+        <h2>La questione decisiva: ricostruire la catena dell’azione</h2>
+
+        <div class="chain">
+          mandato → configurazione → modello → strumenti concessi → azioni
+          autonome → accessi → dati coinvolti → rilevamento → notifica →
+          responsabilità
+        </div>
+
+        <p>
+          Quando un agente può interrogare servizi, richiamare strumenti,
+          conservare memoria e modificare sistemi esterni, il solo log finale
+          non è sufficiente.
+        </p>
+
+        <p>
+          Per comprendere e governare l’incidente occorre collegare l’identità
+          dell’agente alla versione del modello, alle istruzioni ricevute, alle
+          autorizzazioni disponibili, agli strumenti invocati e alle singole
+          azioni eseguite.
+        </p>
+
+        <p>
+          È il problema affrontato dal
+          <a href="https://cognitivelogic.it/qen/">QEN Framework</a>:
+          rendere ricostruibile il percorso che collega fonti, criteri,
+          evidenze, decisioni e autorità umana.
+        </p>
+
+        <p>
+          Nel caso degli agenti, la tracciabilità deve estendersi oltre
+          l’output e comprendere l’intera sequenza operativa.
+        </p>
+      </section>
+
+      <section>
+        <h2>Che cosa devono verificare oggi le organizzazioni</h2>
+
+        <ul>
+          <li>
+            <strong>Inventario degli agenti:</strong> quali sistemi possono
+            operare autonomamente e su quali ambienti.
+          </li>
+          <li>
+            <strong>Identità e autorizzazioni:</strong> credenziali, privilegi,
+            API, strumenti e dati accessibili a ciascun agente.
+          </li>
+          <li>
+            <strong>Limiti operativi:</strong> azioni vietate, soglie,
+            ambienti esclusi e condizioni di arresto.
+          </li>
+          <li>
+            <strong>Registrazione degli eventi:</strong> istruzioni, piani,
+            chiamate agli strumenti, output, errori, modifiche e interventi
+            umani.
+          </li>
+          <li>
+            <strong>Correlazione dei segnali:</strong> capacità di aggregare
+            eventi distribuiti che, considerati singolarmente, potrebbero
+            apparire non materiali.
+          </li>
+          <li>
+            <strong>Escalation e notifica:</strong> criteri per classificare
+            l’incidente, informare DPO, CISO, terzi e autorità e preservare le
+            evidenze.
+          </li>
+          <li>
+            <strong>Decisione di ripresa:</strong> responsabilità e prove
+            necessarie prima di riattivare l’agente o rilasciare una nuova
+            versione.
+          </li>
+        </ul>
+
+        <p>
+          Un
+          <a href="https://cognitivelogic.it/assessment.html"
+          >AI Governance Assessment</a> può stabilire se ruoli, controlli,
+          evidenze e processi di escalation siano adeguati al rischio.
+        </p>
+
+        <p>
+          Il servizio Cognitive Logic di
+          <a href="https://cognitivelogic.it/resources/documents/cs-008-explainability-decision-traceability/"
+          >Explainability &amp; Decision Traceability</a> affronta invece la
+          capacità di ricostruire fonti, passaggi, verifiche e responsabilità
+          quando un’azione supportata dall’IA deve essere spiegata, contestata
+          o sottoposta ad audit.
+        </p>
+      </section>
+
+      <section>
+        <h2>Perché il caso supera la soglia dell’International Watch</h2>
+
+        <p>
+          Non siamo davanti a una nuova legge o a una decisione sanzionatoria.
+          Siamo però davanti a un evento ufficialmente notificato che modifica
+          il quadro operativo della governance: un agente avrebbe partecipato
+          direttamente all’esecuzione di una violazione di dati, svolgendo più
+          fasi con supervisione umana limitata.
+        </p>
+
+        <p>
+          Per l’<a href="https://cognitivelogic.it/international-watch/"
+          >International Watch di Cognitive Logic</a>, il valore del caso non
+          sta nella forza evocativa della formula “attacco autonomo”, ma nella
+          possibilità di distinguere il fatto verificato, le attribuzioni
+          ancora aperte e le conseguenze concrete per controllo,
+          documentazione e responsabilità.
+        </p>
+      </section>
+
+      <section class="conclusion">
+        <h2>Conclusione</h2>
+
+        <p>
+          L’agente di IA non diventa responsabile perché agisce con maggiore
+          autonomia. Più cresce la sua capacità di concatenare decisioni e
+          operazioni, più aumenta l’obbligo umano e organizzativo di dimostrare
+          chi gli abbia assegnato l’obiettivo, quali capacità gli abbia
+          concesso, quali limiti abbia imposto e come abbia sorvegliato le
+          conseguenze.
+        </p>
+
+        <p>
+          La governance comincia dove l’automazione conserva memoria,
+          identità, limiti ed evidenze sufficienti per essere fermata,
+          ricostruita e attribuita.
+        </p>
+      </section>
+
+      <section class="sources">
+        <h2>Fonti</h2>
+
+        <ol>
+          <li>
+            <a
+            href="https://www.aepd.es/prensa-y-comunicacion/blog/primera-notiviacion-brecha-datos-personales-causada-por-ataque-ejecutado-mediante-agente-ia"
+            rel="noopener noreferrer"
+            target="_blank"
+            >AEPD, “Primera notificación de una brecha de datos personales
+            causada por un ataque ejecutado mediante un agente de IA”</a>,
+            14 settembre 2026.
+          </li>
+
+          <li>
+            <a
+            href="https://www.aepd.es/guias/orientaciones-ia-agentica.pdf"
+            rel="noopener noreferrer"
+            target="_blank"
+            >AEPD, “Inteligencia Artificial Agéntica desde la perspectiva de
+            protección de datos”</a>, versione 1.2, febbraio 2026.
+          </li>
+
+          <li>
+            <a
+            href="https://www.reuters.com/business/spanish-data-watchdog-publicises-first-ai-agent-linked-data-breach-report-2026-09-15/"
+            rel="noopener noreferrer"
+            target="_blank"
+            >Reuters, “Spanish data watchdog publicises first AI agent-linked
+            data breach report”</a>, 15 settembre 2026.
+          </li>
+        </ol>
+      </section>
+    </article>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <nav class="footer-links" aria-label="Collegamenti nel footer">
+        <a href="https://cognitivelogic.it/">Cognitive Logic</a>
+        <a href="https://cognitivelogic.it/international-watch/">International Watch</a>
+        <a href="https://cognitivelogic.it/qen/">QEN Framework</a>
+        <a href="https://cognitivelogic.it/research.html">Ricerca</a>
+        <a href="https://cognitivelogic.it/privacy.html">Privacy</a>
+        <a href="https://cognitivelogic.it/accessibility.html">Accessibilità</a>
+      </nav>
+
+      <p>
+        © 2026 Roberto Bob Malini — Cognitive Logic.<br>
+        International Watch distingue fonti, evidenze, attribuzioni, stato
+        epistemico e limiti delle informazioni disponibili.
+      </p>
+    </div>
+  </footer>
+</body>
+</html>
