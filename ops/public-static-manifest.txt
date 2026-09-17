@@ -186,3 +186,5 @@ brief/unsubscribed/index.html
 brief/numero-zero/index.html
 img/og/cognitive-logic-brief-numero-zero.png
 signature/index.html
+img/brief-zero-hero.webp
+img/og/cognitive-logic-brief-numero-zero-linkedin.webp
