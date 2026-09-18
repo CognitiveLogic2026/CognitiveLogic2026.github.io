@@ -188,3 +188,5 @@ img/og/cognitive-logic-brief-numero-zero.png
 signature/index.html
 img/brief-zero-hero.webp
 img/og/cognitive-logic-brief-numero-zero-linkedin.webp
+resources/documents/12-domande-governance-ai/index.html
+resources/downloads/cognitive-logic-12-domande-governance-ai-compilabile.pdf
