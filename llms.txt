@@ -65,6 +65,16 @@ Endpoint API HTTPS esposti su `api.cognitivelogic.it`, documentati integralmente
 - [QEN HoReCa Auditor](https://cognitivelogic.it/qen-horeca-auditor.html): audit sostenibilità per il settore HoReCa.
 - [QEN Balneare Auditor](https://cognitivelogic.it/qen-balneare-auditor.html): audit compliance Bolkestein 2027 per stabilimenti balneari e ambulanti.
 
+## Editorial system
+
+- [Cognitive Logic Brief](https://cognitivelogic.it/brief/): publication hub for decision-relevant changes, evidence and governance.
+- [Brief — Numero zero](https://cognitivelogic.it/brief/numero-zero/): "Non tutto ciò che cambia merita una decisione".
+- [12 domande sulla governance dell'AI](https://cognitivelogic.it/resources/documents/12-domande-governance-ai/): operational self-assessment covering purpose, accountability, data, human control, traceability and incident management.
+- [International Watch](https://cognitivelogic.it/international-watch/): verified events, sources, evidence and epistemic assessment.
+- [Agentic AI and data breach — AEPD](https://cognitivelogic.it/international-watch/agente-ia-data-breach-aepd/): verified analysis separating confirmed facts, open elements and QEN operational consequences.
+- [Osservatorio Bolkestein](https://cognitivelogic.it/resources/documents/osservatorio-bolkestein/): documentary observatory on concessions, tenders, territories and administrative evidence.
+- [FuoriMenù](https://cognitivelogic.it/fuorimenu/): operational analysis of restaurants, food supply chains, territories and technologies changing HoReCa work.
+
 ## Editoriale — Fuorimenu
 
 - [Fuorimenu (Substack)](https://fuorimenu.substack.com): osservatorio editoriale su etica del cibo, HoReCa, accountability istituzionale e policy AI.
