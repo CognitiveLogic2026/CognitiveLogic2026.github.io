@@ -1,0 +1,365 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>International Watch Evidence Verification Methodology | Cognitive Logic</title>
+  <meta name="description" content="IW-EVM 1.0: a reproducible method for evaluating, documenting and communicating evidence. Published on Zenodo with a persistent DOI.">
+  <meta name="author" content="Roberto Malini">
+  <meta name="citation_title" content="International Watch Evidence Verification Methodology">
+  <meta name="citation_author" content="Roberto Malini">
+  <meta name="citation_publication_date" content="2026-09-19">
+  <meta name="citation_doi" content="10.5281/zenodo.22850822">
+  <meta name="citation_publisher" content="Cognitive Logic">
+  <link rel="canonical" href="https://cognitivelogic.it/research/international-watch-evidence-verification-methodology/">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="International Watch Evidence Verification Methodology">
+  <meta property="og:description" content="Version 1.0 of the reproducible evidence-verification methodology developed by Cognitive Logic.">
+  <meta property="og:url" content="https://cognitivelogic.it/research/international-watch-evidence-verification-methodology/">
+  <meta property="article:published_time" content="2026-09-19">
+  <meta property="article:modified_time" content="2026-09-20">
+  <meta name="twitter:card" content="summary">
+  <link rel="stylesheet" href="/css/fonts-local.css">
+  <link rel="stylesheet" href="/css/style.css">
+  <style>
+    :root { color-scheme: dark; }
+
+    body {
+      margin: 0;
+      background:
+        radial-gradient(circle at 75% 10%, rgba(55, 105, 130, .18), transparent 34rem),
+        #071015;
+      color: #edf5f5;
+    }
+
+    .research-page {
+      width: min(100% - 40px, 980px);
+      margin: 0 auto;
+      padding: 42px 0 90px;
+    }
+
+    .research-nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 24px;
+      padding-bottom: 34px;
+      border-bottom: 1px solid rgba(255,255,255,.12);
+    }
+
+    .research-nav a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .brand {
+      font-weight: 700;
+      letter-spacing: .04em;
+    }
+
+    .back-link {
+      opacity: .72;
+      font-size: .94rem;
+    }
+
+    .article-header {
+      padding: 85px 0 55px;
+    }
+
+    .kicker {
+      margin: 0 0 24px;
+      text-transform: uppercase;
+      letter-spacing: .16em;
+      font-size: .78rem;
+      opacity: .67;
+    }
+
+    h1 {
+      max-width: 920px;
+      margin: 0;
+      font-size: clamp(3rem, 8vw, 6.8rem);
+      line-height: .94;
+      letter-spacing: -.055em;
+    }
+
+    .lead {
+      max-width: 790px;
+      margin: 34px 0 24px;
+      font-size: clamp(1.2rem, 2.4vw, 1.55rem);
+      line-height: 1.55;
+      opacity: .84;
+    }
+
+    .metadata {
+      margin-top: 30px;
+      font-size: .94rem;
+      opacity: .62;
+    }
+
+    article { max-width: 780px; }
+
+    article p,
+    article li {
+      font-size: 1.08rem;
+      line-height: 1.82;
+    }
+
+    article h2 {
+      margin: 65px 0 20px;
+      font-size: clamp(1.8rem, 4vw, 2.6rem);
+      line-height: 1.12;
+      letter-spacing: -.025em;
+    }
+
+    article h3 {
+      margin: 38px 0 12px;
+      font-size: 1.35rem;
+    }
+
+    article ul { padding-left: 24px; }
+
+    article a {
+      color: #bde7ef;
+      text-underline-offset: 4px;
+    }
+
+    blockquote {
+      margin: 38px 0;
+      padding: 6px 0 6px 25px;
+      border-left: 3px solid rgba(189,231,239,.55);
+      font-size: 1.25rem;
+      line-height: 1.6;
+    }
+
+    .principle {
+      margin: 55px 0;
+      padding: 30px;
+      border: 1px solid rgba(189,231,239,.28);
+      border-radius: 22px;
+      background: rgba(189,231,239,.055);
+    }
+
+    .principle strong {
+      display: block;
+      margin-bottom: 10px;
+      font-size: 1.35rem;
+    }
+
+    .principle p { margin: 0; }
+
+    .research-links {
+      margin-top: 70px;
+      padding-top: 38px;
+      border-top: 1px solid rgba(255,255,255,.14);
+    }
+
+    .research-card {
+      display: block;
+      margin: 15px 0;
+      padding: 22px;
+      border: 1px solid rgba(255,255,255,.13);
+      border-radius: 16px;
+      text-decoration: none;
+    }
+
+    .research-card strong {
+      display: block;
+      margin-bottom: 5px;
+    }
+
+    .research-card span { opacity: .68; }
+
+    footer {
+      margin-top: 80px;
+      padding-top: 30px;
+      border-top: 1px solid rgba(255,255,255,.12);
+      font-size: .88rem;
+      line-height: 1.8;
+      opacity: .66;
+    }
+
+    footer a { color: inherit; }
+
+    @media (max-width: 640px) {
+      .research-page {
+        width: min(100% - 28px, 980px);
+      }
+
+      .research-nav {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .article-header { padding-top: 58px; }
+      .principle { padding: 23px; }
+    }
+  </style>
+  <script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "Report",
+  "name": "International Watch Evidence Verification Methodology",
+  "alternateName": "IW-EVM 1.0",
+  "headline": "International Watch Evidence Verification Methodology",
+  "description": "A reproducible method for evaluating, documenting and communicating evidence used in research reports, assessments, dossiers and decision briefs.",
+  "url": "https://cognitivelogic.it/research/international-watch-evidence-verification-methodology/",
+  "mainEntityOfPage": "https://cognitivelogic.it/research/international-watch-evidence-verification-methodology/",
+  "sameAs": "https://doi.org/10.5281/zenodo.22850822",
+  "identifier": [
+    {
+      "@type": "PropertyValue",
+      "propertyID": "DOI",
+      "value": "10.5281/zenodo.22850822",
+      "url": "https://doi.org/10.5281/zenodo.22850822"
+    },
+    {
+      "@type": "PropertyValue",
+      "propertyID": "Concept DOI",
+      "value": "10.5281/zenodo.22850821",
+      "url": "https://doi.org/10.5281/zenodo.22850821"
+    }
+  ],
+  "version": "1.0",
+  "datePublished": "2026-09-19",
+  "dateModified": "2026-09-20",
+  "inLanguage": "en",
+  "license": "https://creativecommons.org/licenses/by/4.0/",
+  "author": {
+    "@type": "Person",
+    "name": "Roberto Malini",
+    "url": "https://cognitivelogic.it/about.html"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Cognitive Logic",
+    "url": "https://cognitivelogic.it/"
+  },
+  "isPartOf": {
+    "@type": "CreativeWorkSeries",
+    "name": "International Watch",
+    "url": "https://cognitivelogic.it/international-watch/"
+  },
+  "keywords": [
+    "evidence verification",
+    "evidence governance",
+    "source provenance",
+    "decision traceability",
+    "audit trail",
+    "human authority",
+    "AI governance"
+  ]
+}</script>
+</head>
+<body>
+  <main class="research-page">
+    <nav class="research-nav" aria-label="Research navigation">
+      <a href="/">Cognitive Logic</a>
+      <a href="/research.html">Research</a>
+      <a href="/international-watch/">International Watch</a>
+    </nav>
+
+    <header class="article-header">
+      <p class="eyebrow">Cognitive Logic Research · IW-EVM</p>
+      <h1>International Watch Evidence Verification Methodology</h1>
+      <p class="lead">
+        A reproducible method for evaluating, documenting and communicating
+        evidence used in research reports, assessments, dossiers and decision briefs.
+      </p>
+      <p><strong>Roberto Malini · Version 1.0 · 19 September 2026</strong></p>
+    </header>
+
+    <article>
+      <section class="principle">
+        <h2>Persistent identifiers</h2>
+        <p>
+          <strong>Version DOI:</strong>
+          <a href="https://doi.org/10.5281/zenodo.22850822"
+             rel="external">10.5281/zenodo.22850822</a>
+        </p>
+        <p>
+          <strong>DOI for all versions:</strong>
+          <a href="https://doi.org/10.5281/zenodo.22850821"
+             rel="external">10.5281/zenodo.22850821</a>
+        </p>
+        <p>
+          The version DOI identifies this exact release. The concept DOI always
+          resolves to the most recent published version.
+        </p>
+      </section>
+
+      <h2>Purpose</h2>
+      <p>
+        IW-EVM establishes a controlled path from a bounded claim to an auditable
+        conclusion. It keeps claims, evidence, interpretation and operational
+        recommendations distinct so that each passage can be reviewed independently.
+      </p>
+
+      <h2>Verification dimensions</h2>
+      <ul>
+        <li>source provenance and authenticity;</li>
+        <li>relevance and temporal validity;</li>
+        <li>triangulation and management of conflicting evidence;</li>
+        <li>confidence assessment and explicit limitations;</li>
+        <li>decision records and reconstructable audit trails;</li>
+        <li>preservation of human authority and accountability.</li>
+      </ul>
+
+      <h2>Deposited research package</h2>
+      <p>
+        The Zenodo record contains the publication PDF, an editable DOCX version,
+        citation and licensing information, a machine-readable JSON Schema,
+        a synthetic demonstration dataset, repository metadata and SHA-256
+        integrity checksums.
+      </p>
+
+      <h2>Relationship to Cognitive Logic research</h2>
+      <p>
+        IW-EVM is the operational evidence-verification methodology used by
+        International Watch. It complements Cognitive Logic research on Evidence
+        Governance, decision traceability, QEN Framework and QEN Sovereign, but
+        it does not replace or redefine those separate works.
+      </p>
+
+      <h2>Recommended citation</h2>
+      <p>
+        Malini, R. (2026). <em>International Watch Evidence Verification
+        Methodology</em> (Version 1.0). Cognitive Logic.
+        <a href="https://doi.org/10.5281/zenodo.22850822">
+          https://doi.org/10.5281/zenodo.22850822
+        </a>
+      </p>
+
+      <p>
+        IW-EVM supports evidence governance and accountable decision-making.
+        It does not constitute legal advice, statutory certification,
+        accredited audit or peer review.
+      </p>
+
+      <section class="research-links" aria-label="Related resources">
+        <a class="research-card" href="https://doi.org/10.5281/zenodo.22850822">
+          <strong>Zenodo record</strong>
+          <span>Access the deposited publication and supporting files.</span>
+        </a>
+        <a class="research-card" href="/international-watch/">
+          <strong>International Watch</strong>
+          <span>Research reports and evidence-led analysis.</span>
+        </a>
+        <a class="research-card" href="/research/data-governance-evidence-governance/">
+          <strong>Evidence Governance</strong>
+          <span>Governed sources, provenance and decision traceability.</span>
+        </a>
+        <a class="research-card" href="/framework_en.html">
+          <strong>QEN Framework</strong>
+          <span>Cognitive Logic governance and verification framework.</span>
+        </a>
+      </section>
+    </article>
+
+    <footer>
+      <strong>Cognitive Logic Research — IW-EVM 1.0</strong><br>
+      Roberto Malini · 19 September 2026<br>
+      Licensed under Creative Commons Attribution 4.0 International.<br>
+      <a href="https://doi.org/10.5281/zenodo.22850822">DOI 10.5281/zenodo.22850822</a>
+    </footer>
+  </main>
+</body>
+</html>
