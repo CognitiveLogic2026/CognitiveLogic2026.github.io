@@ -192,3 +192,4 @@ resources/documents/12-domande-governance-ai/index.html
 resources/downloads/cognitive-logic-12-domande-governance-ai-compilabile.pdf
 international-watch/agricoltura-circolare-istat-53-7-claim-verificabile/index.html
 international-watch/agricoltura-circolare-istat-53-7-claim-verificabile/og-agricoltura-circolare-istat-53-7.png
+research/international-watch-evidence-verification-methodology/index.html
