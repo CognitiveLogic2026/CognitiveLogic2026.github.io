@@ -6,55 +6,280 @@
 
   <title>AI e apprendimento: dalla performance assistita alla competenza verificabile | Cognitive Logic</title>
 
-  <meta name="description" content="L’AI può migliorare il risultato di uno studente senza dimostrare automaticamente un apprendimento migliore. Un modello per distinguere performance assistita, competenza trattenuta ed evidenza dell’apprendimento.">
+  <meta name="description"
+        content="L’AI può migliorare il risultato di uno studente senza dimostrare automaticamente un apprendimento migliore. Un modello per distinguere performance assistita, competenza trattenuta ed evidenza dell’apprendimento.">
 
-  <link rel="canonical" href="https://cognitivelogic.it/research/ai-assisted-performance-evidence-of-learning/">
+  <meta name="author" content="Roberto Malini">
+  <meta name="robots" content="index,follow,max-image-preview:large">
+
+  <link rel="canonical"
+        href="https://cognitivelogic.it/research/ai-assisted-performance-evidence-of-learning/">
 
   <meta property="og:type" content="article">
-  <meta property="og:title" content="L’AI migliora il risultato. Ma come sappiamo se migliora l’apprendimento?">
-  <meta property="og:description" content="Dalla performance assistita alla competenza verificabile: come distinguere ciò che l’AI migliora da ciò che lo studente realmente apprende.">
-  <meta property="og:url" content="https://cognitivelogic.it/research/ai-assisted-performance-evidence-of-learning/">
   <meta property="og:site_name" content="Cognitive Logic">
+  <meta property="og:locale" content="it_IT">
+  <meta property="og:title"
+        content="L’AI migliora il risultato. Ma come sappiamo se migliora l’apprendimento?">
+  <meta property="og:description"
+        content="Dalla performance assistita alla competenza verificabile: come distinguere ciò che l’AI migliora da ciò che lo studente realmente apprende.">
+  <meta property="og:url"
+        content="https://cognitivelogic.it/research/ai-assisted-performance-evidence-of-learning/">
 
-  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title"
+        content="L’AI migliora il risultato. Ma come sappiamo se migliora l’apprendimento?">
+  <meta name="twitter:description"
+        content="Performance assistita, competenza trattenuta ed evidenza dell’apprendimento nell’era dell’AI generativa.">
+
+  <link rel="stylesheet" href="/css/fonts-local.css">
+  <link rel="stylesheet" href="/css/style.css">
 
   <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "ScholarlyArticle",
-    "headline": "L’AI migliora il risultato. Ma come sappiamo se migliora l’apprendimento?",
-    "description": "Dalla performance assistita alla competenza verificabile: un modello per distinguere risultato assistito, competenza trattenuta ed evidenza dell’apprendimento.",
-    "author": {
-      "@type": "Person",
-      "name": "Roberto Malini"
-    },
-    "publisher": {
-      "@type": "Organization",
-      "name": "Cognitive Logic",
-      "url": "https://cognitivelogic.it/"
-    },
-    "datePublished": "2026-09-23",
-    "dateModified": "2026-09-23",
-    "inLanguage": "it-IT",
-    "mainEntityOfPage": "https://cognitivelogic.it/research/ai-assisted-performance-evidence-of-learning/"
-  }
+{
+  "@context": "https://schema.org",
+  "@type": "ScholarlyArticle",
+  "headline": "L’AI migliora il risultato. Ma come sappiamo se migliora l’apprendimento?",
+  "alternativeHeadline": "Dalla performance assistita alla competenza verificabile",
+  "description": "L’AI può migliorare il risultato di uno studente senza dimostrare automaticamente un apprendimento migliore. Un modello per distinguere performance assistita, competenza trattenuta ed evidenza dell’apprendimento.",
+  "inLanguage": "it-IT",
+  "datePublished": "2026-09-23",
+  "dateModified": "2026-09-23",
+  "author": {
+    "@type": "Person",
+    "name": "Roberto Malini",
+    "url": "https://cognitivelogic.it/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Cognitive Logic",
+    "url": "https://cognitivelogic.it/"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://cognitivelogic.it/research/ai-assisted-performance-evidence-of-learning/"
+  },
+  "about": [
+    "Artificial Intelligence in Education",
+    "Evidence of Learning",
+    "AI-assisted performance",
+    "Retained Competence",
+    "Cognitive Offloading",
+    "Evidence Governance",
+    "Human Capability"
+  ],
+  "keywords": [
+    "AI learning",
+    "Generative AI education",
+    "AI-assisted performance",
+    "Evidence of Learning",
+    "Retained Competence",
+    "Cognitive Offloading",
+    "Evidence Governance",
+    "Human Capability"
+  ]
+}
   </script>
 
-  <link rel="stylesheet" href="/style.css">
+  <style>
+    :root { color-scheme: dark; }
+
+    body {
+      margin: 0;
+      background:
+        radial-gradient(circle at 75% 10%, rgba(55, 105, 130, .18), transparent 34rem),
+        #071015;
+      color: #edf5f5;
+    }
+
+    .research-page {
+      width: min(100% - 40px, 980px);
+      margin: 0 auto;
+      padding: 42px 0 90px;
+    }
+
+    .research-nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 24px;
+      padding-bottom: 34px;
+      border-bottom: 1px solid rgba(255,255,255,.12);
+    }
+
+    .research-nav a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .brand {
+      font-weight: 700;
+      letter-spacing: .04em;
+    }
+
+    .back-link {
+      opacity: .72;
+      font-size: .94rem;
+    }
+
+    .article-header {
+      padding: 85px 0 55px;
+    }
+
+    .kicker {
+      margin: 0 0 24px;
+      text-transform: uppercase;
+      letter-spacing: .16em;
+      font-size: .78rem;
+      opacity: .67;
+    }
+
+    h1 {
+      max-width: 920px;
+      margin: 0;
+      font-size: clamp(3rem, 8vw, 6.8rem);
+      line-height: .94;
+      letter-spacing: -.055em;
+    }
+
+    .lead {
+      max-width: 790px;
+      margin: 34px 0 24px;
+      font-size: clamp(1.2rem, 2.4vw, 1.55rem);
+      line-height: 1.55;
+      opacity: .84;
+    }
+
+    .metadata {
+      margin-top: 30px;
+      font-size: .94rem;
+      opacity: .62;
+    }
+
+    article { max-width: 780px; }
+
+    article p,
+    article li {
+      font-size: 1.08rem;
+      line-height: 1.82;
+    }
+
+    article h2 {
+      margin: 65px 0 20px;
+      font-size: clamp(1.8rem, 4vw, 2.6rem);
+      line-height: 1.12;
+      letter-spacing: -.025em;
+    }
+
+    article h3 {
+      margin: 38px 0 12px;
+      font-size: 1.35rem;
+    }
+
+    article ul { padding-left: 24px; }
+
+    article a {
+      color: #bde7ef;
+      text-underline-offset: 4px;
+    }
+
+    blockquote {
+      margin: 38px 0;
+      padding: 6px 0 6px 25px;
+      border-left: 3px solid rgba(189,231,239,.55);
+      font-size: 1.25rem;
+      line-height: 1.6;
+    }
+
+    .principle {
+      margin: 55px 0;
+      padding: 30px;
+      border: 1px solid rgba(189,231,239,.28);
+      border-radius: 22px;
+      background: rgba(189,231,239,.055);
+    }
+
+    .principle strong {
+      display: block;
+      margin-bottom: 10px;
+      font-size: 1.35rem;
+    }
+
+    .principle p { margin: 0; }
+
+    .research-links {
+      margin-top: 70px;
+      padding-top: 38px;
+      border-top: 1px solid rgba(255,255,255,.14);
+    }
+
+    .research-card {
+      display: block;
+      margin: 15px 0;
+      padding: 22px;
+      border: 1px solid rgba(255,255,255,.13);
+      border-radius: 16px;
+      text-decoration: none;
+    }
+
+    .research-card strong {
+      display: block;
+      margin-bottom: 5px;
+    }
+
+    .research-card span { opacity: .68; }
+
+    footer {
+      margin-top: 80px;
+      padding-top: 30px;
+      border-top: 1px solid rgba(255,255,255,.12);
+      font-size: .88rem;
+      line-height: 1.8;
+      opacity: .66;
+    }
+
+    footer a { color: inherit; }
+
+    @media (max-width: 640px) {
+      .research-page {
+        width: min(100% - 28px, 980px);
+      }
+
+      .research-nav {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .article-header { padding-top: 58px; }
+      .principle { padding: 23px; }
+    }
+  </style>
 </head>
 
 <body>
+  <main class="research-page">
 
-<header>
-  <nav>
-    <a href="/">Cognitive Logic</a>
-    <a href="/research.html">Research</a>
-  </nav>
-</header>
+    <nav class="research-nav" aria-label="Navigazione Research">
+      <a class="brand" href="/">Cognitive Logic</a>
+      <a class="back-link" href="/research.html">Torna a Research</a>
+    </nav>
 
-<main>
+    <header class="article-header">
+      <p class="kicker">Cognitive Logic Research · 23 settembre 2026</p>
 
-<article>
+      <h1>L’AI migliora il risultato. Ma come sappiamo se migliora l’apprendimento?</h1>
+
+      <p class="lead">
+        Con l’intelligenza artificiale generativa, osservare soltanto l’output
+        dello studente non basta più. Serve distinguere performance assistita,
+        competenza trattenuta ed evidenza dell’apprendimento.
+      </p>
+
+      <p class="metadata">
+        Roberto Malini · Cognitive Logic · Research proposition
+      </p>
+    </header>
+
+    <article>
 
 <p><strong>Cognitive Logic Research · 23 settembre 2026</strong></p>
 
@@ -122,6 +347,14 @@ Ed è proprio questa divergenza che deve diventare osservabile.
 </p>
 
 <h2>Dall’output alla catena dell’apprendimento</h2>
+
+<div class="principle">
+  <strong>AI-assisted performance → Independent performance → Retained competence → Transfer → Evidence of learning</strong>
+  <p>
+    Un percorso di verifica per distinguere la qualità del risultato assistito
+    dalla competenza effettivamente acquisita e attribuibile alla persona.
+  </p>
+</div>
 
 <p>Cognitive Logic propone di distinguere cinque livelli:</p>
 
@@ -311,17 +544,44 @@ Serviranno nuove evidenze.
   </li>
 </ul>
 
-<p>
-<a href="/research.html">← Torna a Cognitive Logic Research</a>
-</p>
 
-</article>
 
-</main>
+      <div class="research-links">
+        <h2>Ricerca collegata</h2>
 
-<footer>
-  <p>Cognitive Logic · AI Governance Infrastructure</p>
-</footer>
+        <a class="research-card"
+           href="/research/data-governance-evidence-governance/">
+          <strong>From Data Governance to Evidence Governance</strong>
+          <span>
+            Dalle fonti governate alle evidenze ricostruibili,
+            alla decision traceability e alla human authority.
+          </span>
+        </a>
 
+        <a class="research-card"
+           href="/research/international-watch-evidence-verification-methodology/">
+          <strong>International Watch Evidence Verification Methodology</strong>
+          <span>
+            Un metodo riproducibile per distinguere fonte, evidenza,
+            interpretazione, limite e conclusione.
+          </span>
+        </a>
+
+        <a class="research-card" href="/research.html">
+          <strong>Cognitive Logic Research</strong>
+          <span>Torna alla pagina principale della ricerca.</span>
+        </a>
+      </div>
+
+    </article>
+
+    <footer>
+      Cognitive Logic · AI Governance Infrastructure<br>
+      Research proposition · Roberto Malini · 2026<br>
+      <a href="/research.html">Research</a> ·
+      <a href="/legal.html">Legal &amp; IP</a>
+    </footer>
+
+  </main>
 </body>
 </html>
