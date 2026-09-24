@@ -186,6 +186,7 @@ brief/confirmed/index.html
 brief/unsubscribed/index.html
 brief/numero-zero/index.html
 brief/dal-dato-alla-decisione/index.html
+img/og/cognitive-logic-brief-1-dal-dato-alla-decisione.png
 img/og/cognitive-logic-brief-numero-zero.png
 signature/index.html
 img/brief-zero-hero.webp
