@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Cognitive Logic Brief #1 — Dal dato alla decisione</title>
+
+  <meta name="description" content="Dal dato alla decisione: tre casi mostrano come statistiche, AI industriale ed evidenze amministrative richiedano una catena verificabile." />
+
+  <meta name="author" content="Roberto Malini — Cognitive Logic" />
+  <meta name="robots" content="index,follow,max-image-preview:large" />
+
+  <link rel="canonical" href="https://cognitivelogic.it/brief/dal-dato-alla-decisione/" />
+  <link rel="alternate" hreflang="it" href="https://cognitivelogic.it/brief/dal-dato-alla-decisione/" />
+  <link rel="alternate" hreflang="x-default" href="https://cognitivelogic.it/brief/dal-dato-alla-decisione/" />
+
+  <meta property="og:type" content="article" />
+  <meta property="og:site_name" content="Cognitive Logic" />
+  <meta property="og:locale" content="it_IT" />
+  <meta property="og:title" content="Dal dato alla decisione: quando un’informazione diventa evidenza" />
+  <meta property="og:description" content="Un dato può essere corretto. Ma possiamo ricostruire la catena che porta dall’informazione alla decisione?" />
+  <meta property="og:url" content="https://cognitivelogic.it/brief/dal-dato-alla-decisione/" />
+  <meta property="og:image"
+        content="https://cognitivelogic.it/img/og/cognitive-logic-brief-numero-zero-linkedin.webp" />
+  <meta property="og:image:alt"
+        content="Tracce informative disordinate convergono in un percorso verificabile fatto di fonti, evidenze e decisioni" />
+
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Dal dato alla decisione: quando un’informazione diventa evidenza" />
+  <meta name="twitter:description" content="Tre settori diversi mostrano lo stesso problema: su quali basi abbiamo deciso?" />
+  <meta name="twitter:image"
+        content="https://cognitivelogic.it/img/og/cognitive-logic-brief-numero-zero-linkedin.webp" />
+
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  <link rel="icon" href="/favicon.ico" sizes="any" />
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+
+  <link rel="preload"
+        href="/fonts/cormorant-garamond-normal.woff2"
+        as="font"
+        type="font/woff2"
+        crossorigin />
+  <link rel="preload"
+        href="/fonts/dm-mono-400.woff2"
+        as="font"
+        type="font/woff2"
+        crossorigin />
+
+  <link rel="stylesheet" href="/css/fonts-local.css" />
+  <link rel="stylesheet" href="/css/style.css?v=3" />
+  <link rel="stylesheet" href="/css/home-it.css?v=1" />
+
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Article",
+      "headline": "Dal dato alla decisione: quando un’informazione diventa evidenza",
+      "alternativeHeadline": "Cognitive Logic Brief #1",
+      "description": "Tre casi mostrano come un dato diventa interpretazione, raccomandazione e decisione.",
+      "image": "https://cognitivelogic.it/img/og/cognitive-logic-brief-numero-zero-linkedin.webp",
+      "datePublished": "2026-09-24",
+      "dateModified": "2026-09-24",
+      "inLanguage": "it-IT",
+      "author": {
+        "@type": "Person",
+        "name": "Roberto Malini",
+        "url": "https://cognitivelogic.it/"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Cognitive Logic",
+        "url": "https://cognitivelogic.it/"
+      },
+      "isPartOf": {
+        "@type": "Periodical",
+        "name": "Cognitive Logic Brief",
+        "url": "https://cognitivelogic.it/brief/"
+      },
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://cognitivelogic.it/brief/dal-dato-alla-decisione/"
+      },
+      "articleSection": "Cognitive Logic Brief",
+      "about": [
+        "Evidence Governance",
+        "Decision traceability",
+        "Artificial intelligence governance",
+        "Public decision-making"
+      ]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Cognitive Logic",
+          "item": "https://cognitivelogic.it/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Cognitive Logic Brief",
+          "item": "https://cognitivelogic.it/brief/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Dal dato alla decisione",
+          "item": "https://cognitivelogic.it/brief/dal-dato-alla-decisione/"
+        }
+      ]
+    }
+  ]
+}
+</script>
+
+  <style>
+    .brief-issue {
+      width: min(100% - 40px, 920px);
+      margin: 0 auto;
+      padding-top: clamp(8rem, 13vw, 11rem);
+      padding-bottom: clamp(5rem, 9vw, 8rem);
+    }
+
+    .brief-breadcrumb,
+    .brief-issue-kicker,
+    .brief-issue-meta,
+    .brief-block-label {
+      font-family: "DM Mono", monospace;
+      text-transform: uppercase;
+    }
+
+    .brief-breadcrumb {
+      margin-bottom: 3rem;
+      font-size: .7rem;
+      letter-spacing: .1em;
+      opacity: .62;
+    }
+
+    .brief-breadcrumb a {
+      color: inherit;
+      text-underline-offset: 4px;
+    }
+
+    .brief-issue-kicker {
+      margin-bottom: 1.5rem;
+      font-size: .72rem;
+      letter-spacing: .18em;
+      opacity: .7;
+    }
+
+    .brief-issue h1 {
+      max-width: 900px;
+      margin-bottom: 1.4rem;
+    }
+
+    .brief-issue-headline {
+      max-width: 820px;
+      margin: 0;
+      font-size: clamp(1.7rem, 4vw, 3rem);
+      line-height: 1.15;
+    }
+
+    .brief-issue-dek {
+      max-width: 760px;
+      margin-top: 2rem;
+      font-size: clamp(1.05rem, 1.7vw, 1.3rem);
+      line-height: 1.7;
+      opacity: .8;
+    }
+
+    .brief-issue-meta {
+      margin-top: 2rem;
+      font-size: .7rem;
+      letter-spacing: .1em;
+      opacity: .6;
+    }
+
+    .brief-intro,
+    .brief-block,
+    .brief-question,
+    .brief-issue-cta {
+      max-width: 780px;
+    }
+
+    .brief-intro {
+      margin-top: clamp(4rem, 8vw, 7rem);
+    }
+
+    .brief-intro p,
+    .brief-block p,
+    .brief-question p,
+    .brief-issue-cta p {
+      font-size: 1.08rem;
+      line-height: 1.82;
+      opacity: .82;
+    }
+
+    .brief-block {
+      margin-top: clamp(4rem, 8vw, 6rem);
+      padding-top: 2.2rem;
+      border-top: 1px solid rgba(255,255,255,.14);
+    }
+
+    .brief-block-label {
+      margin-bottom: 1.2rem;
+      font-size: .7rem;
+      letter-spacing: .14em;
+      opacity: .62;
+    }
+
+    .brief-block h2 {
+      margin-bottom: 1.4rem;
+    }
+
+    .brief-block-link {
+      display: inline-block;
+      margin-top: 1rem;
+      color: inherit;
+      font-weight: 700;
+      text-underline-offset: 5px;
+    }
+
+    .brief-question {
+      margin-top: clamp(4rem, 8vw, 6rem);
+      padding: 2rem;
+      border: 1px solid rgba(255,255,255,.16);
+    }
+
+    .brief-question strong {
+      display: block;
+      font-size: clamp(1.25rem, 2.6vw, 1.8rem);
+      line-height: 1.4;
+    }
+
+    .brief-issue-cta {
+      margin-top: 3rem;
+      padding-top: 2.5rem;
+      border-top: 1px solid rgba(255,255,255,.14);
+    }
+
+
+    .brief-issue-hero {
+      margin: clamp(2.5rem, 6vw, 4.5rem) 0 0;
+    }
+
+    .brief-issue-hero img {
+      display: block;
+      width: 100%;
+      height: auto;
+      border-radius: 2px;
+    }
+
+    @media (max-width: 640px) {
+      .brief-issue {
+        width: min(100% - 28px, 920px);
+      }
+
+      .brief-question {
+        padding: 1.4rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<a href="#main" class="skip-link">Salta al contenuto</a>
+
+<div class="site-bg"></div>
+
+<header class="site-header">
+  <div class="container header-inner">
+
+    <a href="/" class="brand notranslate" translate="no"
+       aria-label="Cognitive Logic — Home">
+      <span class="wordmark wordmark--nav">
+        <span class="wm-top">Cognitive</span>
+        <span class="wm-bot">Logic</span>
+      </span>
+    </a>
+
+    <nav class="main-nav" aria-label="Navigazione principale">
+      <a href="/brief/" aria-current="page">Brief</a>
+      <a href="/research.html">Ricerca</a>
+      <a href="/international-watch/">International Watch</a>
+      <a href="/about.html">Chi siamo</a>
+    </nav>
+
+  </div>
+</header>
+
+<main id="main" class="brief-issue">
+
+  <nav class="brief-breadcrumb" aria-label="Breadcrumb">
+    <a href="/">Cognitive Logic</a>
+    <span aria-hidden="true"> › </span>
+    <a href="/brief/">Cognitive Logic Brief</a>
+    <span aria-hidden="true"> › </span>
+    <span aria-current="page">Brief #1</span>
+  </nav>
+
+  <header>
+    <div class="brief-issue-kicker">
+      Cognitive Logic Brief · #1
+    </div>
+
+    <h1>Cognitive Logic Brief — #1</h1>
+
+    <p class="brief-issue-headline">
+      Dal dato alla decisione: quando un’informazione diventa evidenza
+    </p>
+
+    <p class="brief-issue-dek">
+      Tre settori diversi mostrano lo stesso problema:
+      possiamo ricostruire la catena che porta dall’informazione alla decisione?
+    </p>
+
+    <p class="brief-issue-meta">
+      24 settembre 2026 · 6 minuti di lettura
+    </p>
+  </header>
+
+  <section class="brief-intro" aria-labelledby="introduzione">
+    <h2 id="introduzione">Quando una fonte non basta</h2>
+
+    <p>
+      Un dato può essere corretto. Una fonte può essere autorevole.
+      Una procedura può essere formalmente documentata.
+      Eppure, nessuna di queste condizioni garantisce da sola che la
+      decisione successiva sia verificabile.
+    </p>
+
+    <p>
+      Il problema emerge nel passaggio tra <strong>ciò che una fonte dimostra</strong>
+      e <strong>ciò che qualcuno decide di affermare, raccomandare o fare
+      sulla base di quella fonte</strong>.
+    </p>
+
+    <p>
+      Una statistica sull’agricoltura, una raccomandazione prodotta
+      dall’intelligenza artificiale in fabbrica e una valutazione economica
+      all’interno di una procedura amministrativa sembrano casi molto diversi.
+      La domanda, però, è la stessa:
+      <strong>possiamo ricostruire la catena che porta dall’informazione
+      alla decisione?</strong>
+    </p>
+  </section>
+
+  <article class="brief-block">
+    <div class="brief-block-label">01 · Dal dato al claim</div>
+
+    <h2>Quando il dato non coincide con ciò che affermiamo</h2>
+
+    <p>
+      Il 53,7% rilevato da ISTAT può essere statisticamente corretto nel
+      perimetro definito dalla rilevazione. Quando quel numero viene
+      trasformato nell’affermazione secondo cui più della metà delle aziende
+      agricole sarebbe “circolare”, cambia la natura del claim.
+    </p>
+
+    <p>
+      Non basta più verificare il numero. Occorre ricostruire:
+      <strong>fonte → metodo → dato → interpretazione → claim</strong>.
+      L’autorevolezza della fonte originaria non si trasferisce automaticamente
+      alle affermazioni costruite successivamente sul dato.
+    </p>
+
+    <a class="brief-block-link"
+       href="/international-watch/agricoltura-circolare-istat-53-7-claim-verificabile/">
+      International Watch — verifica il caso ISTAT →
+    </a>
+  </article>
+
+  <article class="brief-block">
+    <div class="brief-block-label">02 · Dalla raccomandazione all’azione</div>
+
+    <h2>Quando l’AI entra nella decisione industriale</h2>
+
+    <p>
+      In ambito industriale, sistemi AI-based possono contribuire alla
+      manutenzione predittiva, alla pianificazione e alla formulazione di
+      raccomandazioni operative. La qualità della previsione, però, è soltanto
+      una parte del problema.
+    </p>
+
+    <p>
+      Se una raccomandazione influenza una decisione reale, occorre poter
+      ricostruire quali dati siano stati utilizzati, quale sistema abbia
+      prodotto il risultato, quali controlli siano intervenuti e quale persona
+      avesse l’autorità di confermare, modificare o interrompere l’azione.
+    </p>
+
+    <p>
+      La catena diventa:
+      <strong>fonte → dato → elaborazione → raccomandazione → decisione →
+      azione → responsabilità</strong>.
+    </p>
+
+    <p>
+      Non si tratta di chiedere all’AI di essere infallibile.
+      Si tratta di poter comprendere perché una determinata azione sia stata
+      intrapresa e chi ne mantenga l’autorità.
+    </p>
+
+    <a class="brief-block-link"
+       href="https://www.innovationpost.it/tecnologie/industrial-it/perche-quando-lai-decide-in-fabbrica-servono-evidenze-verificabili/"
+       rel="noopener noreferrer">
+      Innovation Post — Perché quando l’AI decide in fabbrica servono evidenze verificabili →
+    </a>
+  </article>
+
+  <article class="brief-block">
+    <div class="brief-block-label">03 · Evidenza e decisione pubblica</div>
+
+    <h2>Quando l’evidenza entra nella procedura amministrativa</h2>
+
+    <p>
+      Nelle procedure relative alle concessioni demaniali, la determinazione
+      dell’indennizzo del concessionario uscente può richiedere valutazioni
+      economiche e documentazione tecnica, inclusa la perizia asseverata nei
+      casi previsti.
+    </p>
+
+    <p>
+      Qui l’evidenza non serve soltanto a descrivere una situazione:
+      entra nella costruzione della decisione amministrativa.
+    </p>
+
+    <p>
+      Diventano centrali quattro domande:
+      <strong>chi ha prodotto la valutazione? Su quali elementi documentali?
+      Secondo quali criteri? Quali passaggi consentono a un soggetto terzo
+      di ricostruire il risultato?</strong>
+    </p>
+
+    <p>
+      Il caso è specialistico, ma il principio è generale: più un’evidenza
+      incide su una decisione, maggiore diventa l’esigenza di conservarne
+      provenienza, metodo e responsabilità.
+    </p>
+
+    <a class="brief-block-link"
+       href="/international-watch/indennizzo-concessionario-uscente-perizia-asseverata/">
+      Osservatorio Bolkestein — indennizzo e perizia asseverata →
+    </a>
+  </article>
+
+  <article class="brief-block">
+    <div class="brief-block-label">04 · La lente comune</div>
+
+    <h2>Tre settori, lo stesso problema</h2>
+
+    <p>
+      Agricoltura, AI industriale e concessioni demaniali sembrano avere poco
+      in comune. Eppure mostrano tre momenti della stessa trasformazione.
+    </p>
+
+    <p>
+      <strong>
+        Un dato diventa interpretazione.<br>
+        Un’interpretazione può diventare raccomandazione.<br>
+        Una raccomandazione o una valutazione può diventare decisione.
+      </strong>
+    </p>
+
+    <p>
+      A ogni passaggio aumenta la distanza dalla fonte originaria.
+      Ed è proprio in quella distanza che diventa necessario conservare
+      l’evidenza. Non per accumulare documenti, ma per poter rispondere,
+      anche successivamente, a una domanda molto semplice.
+    </p>
+  </article>
+
+  <section class="brief-question" aria-labelledby="domanda-finale">
+    <div class="brief-block-label">Una domanda da portare con sé</div>
+
+    <strong id="domanda-finale">
+      Su quali basi abbiamo deciso?
+    </strong>
+
+    <p>
+      Se non possiamo ricostruire fonti, trasformazioni, controlli e
+      responsabilità, possedere il dato originario potrebbe non essere
+      sufficiente a rendere verificabile la decisione.
+    </p>
+  </section>
+
+  <article class="brief-block">
+    <div class="brief-block-label">Strumento operativo</div>
+
+    <h2>12 domande per capire se un’organizzazione governa davvero l’AI</h2>
+
+    <p>
+      Se domani un cliente, un dipendente, un’autorità o un partner chiedesse
+      perché un sistema AI ha prodotto un determinato risultato,
+      l’organizzazione saprebbe ricostruire dati in ingresso, versione dello
+      strumento, output prodotto, controllo svolto e decisione finale?
+    </p>
+
+    <p>
+      La checklist Cognitive Logic permette una prima autovalutazione di
+      responsabilità, dati, controlli, evidenze, tracciabilità e autorità umana.
+    </p>
+
+    <a class="brief-block-link"
+       href="/resources/documents/12-domande-governance-ai/">
+      Apri la checklist — 12 domande sulla governance dell’AI →
+    </a>
+  </article>
+
+  <section class="brief-issue-cta" aria-labelledby="prossimo-brief">
+    <h2 id="prossimo-brief">Ricevi il prossimo Brief</h2>
+
+    <p>
+      Ogni due settimane, pochi sviluppi verificati per capire
+      quali decisioni richiedono attenzione.
+    </p>
+
+    <a href="/brief/#iscrizione" class="btn btn-primary">
+      Iscriviti a Cognitive Logic Brief
+    </a>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <div>
+      <div class="wordmark wordmark--footer">
+        <span class="wm-top">Cognitive</span>
+        <span class="wm-bot">Logic</span>
+      </div>
+
+      <div class="footer-copy">
+        © 2026 Roberto Bob Malini — Cognitive Logic ·
+        <a href="/legal.html">Legal &amp; IP</a>
+      </div>
+    </div>
+
+    <div class="footer-links">
+      <a href="/brief/">Cognitive Logic Brief</a>
+      <a href="/privacy.html">Privacy</a>
+      <a href="/contact.html">Contatti</a>
+    </div>
+  </div>
+</footer>
+
+<script src="/js/cookie-banner.js"></script>
+
+</body>
+</html>

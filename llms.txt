@@ -69,6 +69,7 @@ Endpoint API HTTPS esposti su `api.cognitivelogic.it`, documentati integralmente
 
 - [Cognitive Logic Brief](https://cognitivelogic.it/brief/): publication hub for decision-relevant changes, evidence and governance.
 - [Brief — Numero zero](https://cognitivelogic.it/brief/numero-zero/): "Non tutto ciò che cambia merita una decisione".
+- [Brief #1 — Dal dato alla decisione](https://cognitivelogic.it/brief/dal-dato-alla-decisione/): evidence, interpretation and decision traceability across statistical claims, industrial AI and public decision-making.
 - [12 domande sulla governance dell'AI](https://cognitivelogic.it/resources/documents/12-domande-governance-ai/): operational self-assessment covering purpose, accountability, data, human control, traceability and incident management.
 - [International Watch](https://cognitivelogic.it/international-watch/): verified events, sources, evidence and epistemic assessment.
 - [Agentic AI and data breach — AEPD](https://cognitivelogic.it/international-watch/agente-ia-data-breach-aepd/): verified analysis separating confirmed facts, open elements and QEN operational consequences.
