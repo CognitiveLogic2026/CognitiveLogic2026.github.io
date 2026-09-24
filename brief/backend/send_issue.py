@@ -45,6 +45,23 @@ NUMBER_ZERO = IssueContent(
 )
 
 
+BRIEF_ONE = IssueContent(
+    slug="dal-dato-alla-decisione",
+    subject=(
+        "Cognitive Logic Brief #1 — "
+        "Dal dato alla decisione"
+    ),
+    preview=(
+        "Quando un’informazione diventa evidenza: "
+        "tre casi e una verifica operativa."
+    ),
+    canonical_url=(
+        "https://cognitivelogic.it/brief/"
+        "dal-dato-alla-decisione/"
+    ),
+)
+
+
 def build_unsubscribe_url(token: str) -> str:
     base_url = os.getenv(
         "BRIEF_PUBLIC_BASE_URL",
@@ -329,16 +346,297 @@ Disiscriviti
     return subject, text, html_body
 
 
-def send_number_zero(
+
+def render_brief_one(
+    unsubscribe_url: str,
+    *,
+    test: bool = False,
+) -> tuple[str, str, str]:
+    subject = BRIEF_ONE.subject
+    if test:
+        subject = f"[TEST] {subject}"
+
+    preview = BRIEF_ONE.preview
+    canonical = BRIEF_ONE.canonical_url
+    safe_unsubscribe = html.escape(
+        unsubscribe_url,
+        quote=True,
+    )
+
+    text = f"""Cognitive Logic Brief — #1
+
+Dal dato alla decisione: quando un’informazione diventa evidenza
+
+{preview}
+
+Un dato può essere corretto. Una fonte può essere autorevole.
+Ma la decisione successiva è davvero ricostruibile?
+
+01 · DAL DATO AL CLAIM
+
+Il 53,7% rilevato da ISTAT può essere corretto nel perimetro
+della rilevazione. Quando diventa un claim sulla "circolarità"
+delle aziende agricole, però, occorre ricostruire:
+
+fonte → metodo → dato → interpretazione → claim
+
+02 · DALLA RACCOMANDAZIONE ALL'AZIONE
+
+In fabbrica una raccomandazione AI può influenzare una decisione
+operativa. Non basta valutarne la qualità predittiva: servono dati,
+controlli, autorità umana e responsabilità ricostruibili.
+
+03 · EVIDENZA E DECISIONE PUBBLICA
+
+Nelle procedure sulle concessioni demaniali, una valutazione
+economica può entrare direttamente nella costruzione della
+decisione amministrativa. Provenienza, metodo e responsabilità
+diventano quindi parte dell'evidenza.
+
+LA DOMANDA
+
+Su quali basi abbiamo deciso?
+
+STRUMENTO OPERATIVO
+
+12 domande per capire se un'organizzazione governa davvero l'AI:
+https://cognitivelogic.it/resources/documents/12-domande-governance-ai/
+
+Leggi Cognitive Logic Brief #1:
+{canonical}
+
+Disiscriviti:
+{unsubscribe_url}
+
+Cognitive Logic
+Data must be intelligible.
+"""
+
+    html_body = f"""<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width">
+<title>{html.escape(subject)}</title>
+</head>
+
+<body style="margin:0;background:#071015;color:#edf5f5;
+font-family:Arial,Helvetica,sans-serif;">
+
+<div style="display:none;max-height:0;overflow:hidden;
+opacity:0;color:transparent;">
+{html.escape(preview)}
+</div>
+
+<table role="presentation" width="100%" cellspacing="0"
+cellpadding="0" border="0" style="background:#071015;">
+<tr>
+<td align="center" style="padding:32px 16px;">
+
+<table role="presentation" width="100%" cellspacing="0"
+cellpadding="0" border="0"
+style="max-width:680px;background:#0b1720;
+border:1px solid #233744;">
+
+<tr>
+<td style="padding:38px 34px 28px;">
+
+<p style="margin:0 0 18px;color:#9fcbd4;
+font-size:12px;letter-spacing:2px;text-transform:uppercase;">
+Cognitive Logic Brief · #1
+</p>
+
+<h1 style="margin:0;color:#ffffff;font-family:Georgia,serif;
+font-size:42px;line-height:1.08;font-weight:normal;">
+Dal dato alla decisione
+</h1>
+
+<p style="margin:18px 0 0;color:#ffffff;
+font-family:Georgia,serif;font-size:26px;line-height:1.35;">
+Quando un’informazione diventa evidenza
+</p>
+
+<p style="margin:24px 0 0;color:#b8c5cb;
+font-size:18px;line-height:1.65;">
+Tre settori diversi mostrano lo stesso problema:
+possiamo ricostruire la catena che porta
+dall’informazione alla decisione?
+</p>
+
+</td>
+</tr>
+
+<tr>
+<td style="padding:0 34px 30px;">
+
+<img
+src="https://cognitivelogic.it/img/og/cognitive-logic-brief-1-dal-dato-alla-decisione.png"
+width="612"
+alt="Cognitive Logic Brief #1 — Dal dato alla decisione"
+style="display:block;width:100%;height:auto;border:0;">
+
+</td>
+</tr>
+
+<tr>
+<td style="padding:8px 34px 38px;color:#d7e0e3;
+font-size:16px;line-height:1.75;">
+
+<p>
+Un dato può essere corretto. Una fonte può essere autorevole.
+Una procedura può essere documentata. Ma nessuna di queste
+condizioni garantisce, da sola, che la decisione successiva
+sia verificabile.
+</p>
+
+<h2 style="margin:42px 0 8px;color:#9fcbd4;
+font-size:12px;letter-spacing:2px;text-transform:uppercase;">
+01 · Dal dato al claim
+</h2>
+
+<h3 style="margin:0 0 14px;color:#ffffff;
+font-family:Georgia,serif;font-size:27px;font-weight:normal;">
+Quando il dato non coincide con ciò che affermiamo
+</h3>
+
+<p>
+Il 53,7% rilevato da ISTAT può essere corretto nel perimetro
+della rilevazione. Quando diventa un claim sulla “circolarità”
+delle aziende agricole, occorre ricostruire fonte, metodo,
+dato, interpretazione e affermazione finale.
+</p>
+
+<h2 style="margin:42px 0 8px;color:#9fcbd4;
+font-size:12px;letter-spacing:2px;text-transform:uppercase;">
+02 · Dalla raccomandazione all’azione
+</h2>
+
+<h3 style="margin:0 0 14px;color:#ffffff;
+font-family:Georgia,serif;font-size:27px;font-weight:normal;">
+Quando l’AI entra nella decisione industriale
+</h3>
+
+<p>
+Una raccomandazione AI può influenzare una decisione operativa.
+Non basta valutarne la qualità predittiva: occorre sapere quali
+dati siano stati usati, quali controlli siano intervenuti e chi
+conservi l’autorità di confermare, modificare o interrompere
+l’azione.
+</p>
+
+<h2 style="margin:42px 0 8px;color:#9fcbd4;
+font-size:12px;letter-spacing:2px;text-transform:uppercase;">
+03 · Evidenza e decisione pubblica
+</h2>
+
+<h3 style="margin:0 0 14px;color:#ffffff;
+font-family:Georgia,serif;font-size:27px;font-weight:normal;">
+Quando l’evidenza entra nella procedura amministrativa
+</h3>
+
+<p>
+Nelle procedure relative alle concessioni demaniali una
+valutazione economica può entrare direttamente nella costruzione
+della decisione amministrativa. Provenienza, metodo e
+responsabilità diventano quindi parte dell’evidenza.
+</p>
+
+<table role="presentation" width="100%" cellspacing="0"
+cellpadding="0" border="0"
+style="margin-top:42px;border:1px solid #34505f;">
+<tr>
+<td style="padding:24px;">
+
+<p style="margin:0 0 10px;color:#9fcbd4;
+font-size:12px;letter-spacing:2px;text-transform:uppercase;">
+Una domanda da portare con sé
+</p>
+
+<p style="margin:0;color:#ffffff;font-family:Georgia,serif;
+font-size:27px;line-height:1.4;">
+Su quali basi abbiamo deciso?
+</p>
+
+</td>
+</tr>
+</table>
+
+<h2 style="margin:42px 0 8px;color:#9fcbd4;
+font-size:12px;letter-spacing:2px;text-transform:uppercase;">
+Strumento operativo
+</h2>
+
+<h3 style="margin:0 0 14px;color:#ffffff;
+font-family:Georgia,serif;font-size:27px;font-weight:normal;">
+12 domande per capire se un’organizzazione governa davvero l’AI
+</h3>
+
+<p>
+Una checklist per verificare responsabilità, dati, controlli,
+evidenze, tracciabilità e autorità umana.
+</p>
+
+<p>
+<a
+href="https://cognitivelogic.it/resources/documents/12-domande-governance-ai/"
+style="color:#a9dce5;">
+Apri la checklist →
+</a>
+</p>
+
+<p style="margin:42px 0 0;text-align:center;">
+
+<a href="{canonical}"
+style="display:inline-block;padding:14px 22px;
+background:#dceef1;color:#071015;text-decoration:none;
+font-weight:bold;">
+Leggi Cognitive Logic Brief #1
+</a>
+
+</p>
+
+</td>
+</tr>
+
+<tr>
+<td style="padding:28px 34px;border-top:1px solid #233744;
+color:#85969e;font-size:12px;line-height:1.7;">
+
+Cognitive Logic · Data must be intelligible.<br>
+Ricevi questa email perché hai confermato l’iscrizione
+a Cognitive Logic Brief.<br>
+
+<a href="{safe_unsubscribe}" style="color:#a9c5cc;">
+Disiscriviti
+</a>
+
+</td>
+</tr>
+
+</table>
+</td>
+</tr>
+</table>
+
+</body>
+</html>
+"""
+
+    return subject, text, html_body
+
+
+def send_issue(
     email: str,
+    issue: IssueContent,
+    renderer,
     *,
     test: bool,
     db_path: Path | None = None,
 ) -> str:
     issue_slug = (
-        "numero-zero-test"
+        f"{issue.slug}-test"
         if test
-        else NUMBER_ZERO.slug
+        else issue.slug
     )
 
     delivery = create_issue_delivery(
@@ -351,7 +649,7 @@ def send_number_zero(
         delivery.unsubscribe_token
     )
 
-    subject, text, html_body = render_number_zero(
+    subject, text, html_body = renderer(
         unsubscribe_url,
         test=test,
     )
@@ -434,6 +732,37 @@ def send_number_zero(
         raise
 
 
+def send_number_zero(
+    email: str,
+    *,
+    test: bool,
+    db_path: Path | None = None,
+) -> str:
+    return send_issue(
+        email,
+        NUMBER_ZERO,
+        render_number_zero,
+        test=test,
+        db_path=db_path,
+    )
+
+
+def send_brief_one(
+    email: str,
+    *,
+    test: bool,
+    db_path: Path | None = None,
+) -> str:
+    return send_issue(
+        email,
+        BRIEF_ONE,
+        render_brief_one,
+        test=test,
+        db_path=db_path,
+    )
+
+
+
 def main() -> int:
     parser = argparse.ArgumentParser(
         description=(
@@ -443,6 +772,15 @@ def main() -> int:
     )
 
     parser.add_argument("--email", required=True)
+    parser.add_argument(
+        "--issue",
+        choices=("numero-zero", "brief-1"),
+        default="numero-zero",
+        help=(
+            "Issue to preview or send. "
+            "Default: numero-zero."
+        ),
+    )
     parser.add_argument(
         "--test",
         action="store_true",
@@ -456,14 +794,22 @@ def main() -> int:
 
     args = parser.parse_args()
 
+    if args.issue == "brief-1":
+        renderer = render_brief_one
+        sender = send_brief_one
+    else:
+        renderer = render_number_zero
+        sender = send_number_zero
+
     if not args.confirm_send:
-        subject, text, html_body = render_number_zero(
+        subject, text, html_body = renderer(
             "https://cognitivelogic.it/brief/unsubscribe"
             "?token=PREVIEW_ONLY",
             test=args.test,
         )
 
         print("MODE: PREVIEW")
+        print("ISSUE:", args.issue)
         print("RECIPIENT:", args.email)
         print("SUBJECT:", subject)
         print("TEXT LENGTH:", len(text))
@@ -471,12 +817,13 @@ def main() -> int:
         print("NO EMAIL SENT")
         return 0
 
-    resend_email_id = send_number_zero(
+    resend_email_id = sender(
         args.email,
         test=args.test,
     )
 
     print("MODE: SENT")
+    print("ISSUE:", args.issue)
     print("RECIPIENT:", args.email)
     print("RESEND EMAIL ID:", resend_email_id)
     return 0
