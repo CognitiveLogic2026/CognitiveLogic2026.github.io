@@ -1,6 +1,13 @@
 {
   "articoli": [
     {
+      "titolo": "Il dato non decide: come hotel e ristoranti passano dai numeri alle scelte",
+      "url": "https://fuorimenu.substack.com/p/il-dato-non-decide-come-hotel-e-ristoranti",
+      "data": "2026-09-25 16:37",
+      "estratto": "Dashboard, KPI, previsioni e sistemi di AI possono dirci molto. Ma per un hotel o un ristorante la domanda decisiva viene dopo: come siamo passati da quei dati a questa decisione?",
+      "tag": "Fuorimenu"
+    },
+    {
       "titolo": "Green non basta: cosa deve poter dimostrare un hotel quando parla di sostenibilità",
       "url": "https://fuorimenu.substack.com/p/green-non-basta-cosa-deve-poter-dimostrare",
       "data": "2026-09-15 06:57",
@@ -61,13 +68,6 @@
       "url": "https://fuorimenu.substack.com/p/lai-non-sostituira-soltanto-il-lavoro",
       "data": "2026-07-22 08:37",
       "estratto": "Riflessioni a partire da un articolo di Michele Colonna pubblicato su “IA e Dintorni”.",
-      "tag": "Fuorimenu"
-    },
-    {
-      "titolo": "Governare l’Intelligenza Artificiale prima che diventi invisibile",
-      "url": "https://fuorimenu.substack.com/p/governare-lintelligenza-artificiale",
-      "data": "2026-07-20 06:13",
-      "estratto": "La proposta di Demis Hassabis riapre il dibattito sulla Frontier AI e mostra perché il futuro dell’Intelligenza Artificiale dipenderà sempre più dalla governance, dalla trasparenza e dalla fiducia.",
       "tag": "Fuorimenu"
     }
   ]
