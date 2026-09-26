@@ -41,6 +41,7 @@ css/fuorimenu.css
 css/home-en.css
 css/home-it.css
 css/style.css
+data/fuorimenu.json
 demo.html
 digital-presence/en/index.html
 digital-presence/index.html
