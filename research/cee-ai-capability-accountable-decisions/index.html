@@ -1,0 +1,556 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>CEE AI Adoption: From Capability to Accountable Decisions | Cognitive Logic</title>
+
+  <meta name="description"
+        content="CEE AI adoption is accelerating. This research examines the operational layer between AI capability and accountable decisions: sources, inference, evidence and human authority.">
+
+  <meta name="author" content="Roberto Malini">
+  <meta name="robots" content="index,follow,max-image-preview:large">
+
+  <link rel="canonical"
+        href="https://cognitivelogic.it/research/cee-ai-capability-accountable-decisions/">
+
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Cognitive Logic">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:title"
+        content="From AI Capability to Accountable Decisions">
+  <meta property="og:description"
+        content="Investment, compute, skills and regulatory certainty can accelerate AI adoption. But deployment at scale creates another requirement: verifiable decisions.">
+  <meta property="og:url"
+        content="https://cognitivelogic.it/research/cee-ai-capability-accountable-decisions/">
+  <meta property="og:image"
+        content="https://cognitivelogic.it/img/og/cee-ai-capability-accountable-decisions.png">
+  <meta property="og:image:alt"
+        content="From AI capability to accountable decisions in Central and Eastern Europe">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title"
+        content="From AI Capability to Accountable Decisions">
+  <meta name="twitter:description"
+        content="The operational layer between AI capability and accountable decisions in Central and Eastern Europe.">
+  <meta name="twitter:image"
+        content="https://cognitivelogic.it/img/og/cee-ai-capability-accountable-decisions.png">
+
+  <link rel="stylesheet" href="/css/fonts-local.css">
+  <link rel="stylesheet" href="/css/style.css">
+
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ScholarlyArticle",
+  "headline": "From AI Capability to Accountable Decisions",
+  "alternativeHeadline": "The Missing Operational Layer in CEE AI Adoption",
+  "description": "CEE AI adoption is accelerating. This research examines the operational layer between AI capability and accountable decisions: sources, inference, evidence and human authority.",
+  "inLanguage": "en",
+  "datePublished": "2026-09-26",
+  "dateModified": "2026-09-26",
+  "image": "https://cognitivelogic.it/img/og/cee-ai-capability-accountable-decisions.png",
+  "author": {
+    "@type": "Person",
+    "name": "Roberto Malini",
+    "url": "https://cognitivelogic.it/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Cognitive Logic",
+    "url": "https://cognitivelogic.it/"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://cognitivelogic.it/research/cee-ai-capability-accountable-decisions/"
+  },
+  "about": [
+    "Central and Eastern Europe",
+    "Artificial Intelligence",
+    "AI Governance",
+    "AI Adoption",
+    "Evidence Governance",
+    "Decision Traceability",
+    "Human Authority",
+    "CEE AI Challenger 2026"
+  ],
+  "keywords": [
+    "CEE AI adoption",
+    "AI governance",
+    "accountable AI",
+    "Evidence Governance",
+    "decision traceability",
+    "human authority",
+    "Central and Eastern Europe",
+    "CEE AI Challenger 2026"
+  ]
+}
+</script>
+
+  <style>
+    :root { color-scheme: dark; }
+
+    body {
+      margin: 0;
+      background:
+        radial-gradient(circle at 75% 10%, rgba(55, 105, 130, .18), transparent 34rem),
+        #071015;
+      color: #edf5f5;
+    }
+
+    .research-page {
+      width: min(100% - 40px, 980px);
+      margin: 0 auto;
+      padding: 42px 0 90px;
+    }
+
+    .research-nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 24px;
+      padding-bottom: 34px;
+      border-bottom: 1px solid rgba(255,255,255,.12);
+    }
+
+    .research-nav a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .brand {
+      font-weight: 700;
+      letter-spacing: .04em;
+    }
+
+    .back-link {
+      opacity: .72;
+      font-size: .94rem;
+    }
+
+    .article-header {
+      padding: 85px 0 55px;
+    }
+
+    .kicker {
+      margin: 0 0 24px;
+      text-transform: uppercase;
+      letter-spacing: .16em;
+      font-size: .78rem;
+      opacity: .67;
+    }
+
+    h1 {
+      max-width: 920px;
+      margin: 0;
+      font-size: clamp(3rem, 8vw, 6.8rem);
+      line-height: .94;
+      letter-spacing: -.055em;
+    }
+
+    .lead {
+      max-width: 790px;
+      margin: 34px 0 24px;
+      font-size: clamp(1.2rem, 2.4vw, 1.55rem);
+      line-height: 1.55;
+      opacity: .84;
+    }
+
+    .metadata {
+      margin-top: 30px;
+      font-size: .94rem;
+      opacity: .62;
+    }
+
+    article { max-width: 780px; }
+
+    article p,
+    article li {
+      font-size: 1.08rem;
+      line-height: 1.82;
+    }
+
+    article h2 {
+      margin: 65px 0 20px;
+      font-size: clamp(1.8rem, 4vw, 2.6rem);
+      line-height: 1.12;
+      letter-spacing: -.025em;
+    }
+
+    article h3 {
+      margin: 38px 0 12px;
+      font-size: 1.35rem;
+    }
+
+    article ul { padding-left: 24px; }
+
+    article a {
+      color: #bde7ef;
+      text-underline-offset: 4px;
+    }
+
+    blockquote {
+      margin: 38px 0;
+      padding: 6px 0 6px 25px;
+      border-left: 3px solid rgba(189,231,239,.55);
+      font-size: 1.25rem;
+      line-height: 1.6;
+    }
+
+    .principle {
+      margin: 55px 0;
+      padding: 30px;
+      border: 1px solid rgba(189,231,239,.28);
+      border-radius: 22px;
+      background: rgba(189,231,239,.055);
+    }
+
+    .principle strong {
+      display: block;
+      margin-bottom: 10px;
+      font-size: 1.35rem;
+    }
+
+    .principle p { margin: 0; }
+
+    .research-links {
+      margin-top: 70px;
+      padding-top: 38px;
+      border-top: 1px solid rgba(255,255,255,.14);
+    }
+
+    .research-card {
+      display: block;
+      margin: 15px 0;
+      padding: 22px;
+      border: 1px solid rgba(255,255,255,.13);
+      border-radius: 16px;
+      text-decoration: none;
+    }
+
+    .research-card strong {
+      display: block;
+      margin-bottom: 5px;
+    }
+
+    .research-card span { opacity: .68; }
+
+    footer {
+      margin-top: 80px;
+      padding-top: 30px;
+      border-top: 1px solid rgba(255,255,255,.12);
+      font-size: .88rem;
+      line-height: 1.8;
+      opacity: .66;
+    }
+
+    footer a { color: inherit; }
+
+    @media (max-width: 640px) {
+      .research-page {
+        width: min(100% - 28px, 980px);
+      }
+
+      .research-nav {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .article-header { padding-top: 58px; }
+      .principle { padding: 23px; }
+    }
+  </style>
+</head>
+
+<body>
+  <main class="research-page">
+
+    <nav class="research-nav" aria-label="Research navigation">
+      <a class="brand" href="/">Cognitive Logic</a>
+      <a class="back-link" href="/research.html">Back to Research</a>
+    </nav>
+
+    <header class="article-header">
+      <p class="kicker">Cognitive Logic Research · 26 September 2026</p>
+
+      <h1>From AI Capability to Accountable Decisions</h1>
+
+      <p class="lead">
+        Investment, compute, skills and regulatory certainty can accelerate AI adoption.
+        But deployment at scale creates another requirement: the ability to reconstruct
+        how an AI-assisted decision was reached.
+      </p>
+
+      <p class="metadata">
+        Roberto Malini · Cognitive Logic · Research proposition
+      </p>
+    </header>
+
+    <article>
+
+<p>
+Central and Eastern Europe is entering a different phase of the AI debate.
+The question is no longer only how artificial intelligence should be regulated.
+It is increasingly how AI can be deployed across companies, public administrations
+and industrial systems at sufficient scale to produce measurable economic value.
+</p>
+
+<h2>From rules to capability</h2>
+
+<p>
+The <strong>CEE AI Challenger 2026</strong> report captures this transition.
+Developed by the CEE Digital Coalition following consultations involving public
+administration, business, academia, technology companies and experts across the region,
+the report identifies structural requirements for stronger AI development and adoption:
+capital, computing infrastructure, skills, faster deployment and greater regulatory coherence.
+</p>
+
+<div class="principle">
+  <strong>RULES → CAPABILITY</strong>
+  <p>
+    Regulation establishes conditions. The next challenge is building the capacity
+    required to deploy AI productively across organisations and economies.
+  </p>
+</div>
+
+<p>
+It is an important shift. But once capability becomes deployment, another question appears:
+<strong>how do we know why an AI-assisted decision was made?</strong>
+</p>
+
+<h2>Adoption is not the final measure</h2>
+
+<p>
+According to figures cited by the CEE Digital Coalition, in 2025 AI was used by
+20% of EU enterprises employing at least ten people. Adoption was 8.4% in Poland
+and 5.2% in Romania, compared with 42% in Denmark and 37.8% in Finland.
+</p>
+
+<p>
+Closing that gap matters. But access to AI tools does not by itself constitute
+transformation. What ultimately matters is whether AI improves productivity,
+quality, business processes and the ability to create higher-value products and services.
+</p>
+
+<p>
+When AI moves from experimentation into operational processes, neither access nor
+output is sufficient to establish whether a system is being used responsibly.
+</p>
+
+<p>An organisation may know that an AI system produced a recommendation. It may even
+know that the recommendation improved an economic indicator. That does not necessarily
+tell the organisation:</p>
+
+<ul>
+  <li>which sources supported the conclusion;</li>
+  <li>which information was excluded;</li>
+  <li>what the system inferred rather than retrieved;</li>
+  <li>where uncertainty entered the process;</li>
+  <li>which model or provider participated;</li>
+  <li>whether a human reviewed the conclusion;</li>
+  <li>who ultimately authorised the resulting action.</li>
+</ul>
+
+<p>
+These are not questions about AI adoption. They are questions about
+<strong>decision evidence</strong>.
+</p>
+
+<h2>Compliance documentation and decision evidence are not the same thing</h2>
+
+<p>
+The CEE AI Challenger addresses regulatory fragmentation and calls for more consistent
+implementation of European rules, avoidance of national gold-plating, stronger coordination
+among authorities, regulatory sandboxes and greater legal certainty at the intersection
+of AI and data protection.
+</p>
+
+<p>
+These conditions can reduce uncertainty for organisations deploying AI. Yet regulatory
+documentation and evidence of an individual decision solve different problems.
+</p>
+
+<blockquote>
+<p><strong>Compliance documentation asks:</strong><br>
+Was the system governed according to the applicable requirements?</p>
+
+<p><strong>Decision evidence asks:</strong><br>
+Can we reconstruct why this particular conclusion entered this particular decision?</p>
+</blockquote>
+
+<p>
+A policy may be documented. A model may be classified. A provider may be approved.
+But a specific decision can still be difficult to reconstruct.
+</p>
+
+<h2>The evidence chain</h2>
+
+<p>
+A practical governance layer therefore needs to preserve more than the final AI output.
+A minimal evidence chain can be represented as:
+</p>
+
+<div class="principle">
+  <strong>SOURCE → INFERENCE → EVIDENCE → HUMAN AUTHORITY → DECISION</strong>
+  <p>
+    A reconstructable chain connecting information, machine inference,
+    evidence, human responsibility and the resulting action.
+  </p>
+</div>
+
+<p><strong>Source</strong> — What information entered the reasoning process?</p>
+
+<p><strong>Inference</strong> — What did the AI derive from that information rather than retrieve directly?</p>
+
+<p><strong>Evidence</strong> — Which elements were considered sufficiently reliable and relevant to support action?</p>
+
+<p><strong>Human authority</strong> — Who had the authority to accept, reject or modify the AI-assisted conclusion?</p>
+
+<p><strong>Decision</strong> — What action was ultimately taken?</p>
+
+<p>
+This does not require every organisation to preserve every token generated by every model.
+It requires identifying what must remain reconstructable when an AI output becomes consequential.
+</p>
+
+<h2>An industrial example</h2>
+
+<p>
+Consider a manufacturing company using an AI system to recommend preventive maintenance.
+The model identifies an abnormal pattern and recommends stopping a production line.
+</p>
+
+<p>
+The recommendation may be correct. But governance begins with questions beyond accuracy:
+What sensor data supported the conclusion? Were maintenance records included?
+Did the model infer equipment deterioration or identify a previously documented failure pattern?
+What confidence or uncertainty accompanied the recommendation? Did an engineer validate it?
+Who authorised the shutdown? What happened afterwards?
+</p>
+
+<p>
+If only the final recommendation — <strong>stop the line</strong> — survives,
+the organisation possesses an output.
+</p>
+
+<p>
+If the chain connecting data, inference, validation and authority survives,
+the organisation possesses <strong>decision evidence</strong>.
+</p>
+
+<h2>From capability to accountable capability</h2>
+
+<p>
+The CEE AI Challenger argues that Central and Eastern Europe should not attempt simply
+to reproduce Silicon Valley. The region can instead combine its industrial base,
+engineering expertise and technology ecosystem with AI, developing specialised applications
+in manufacturing, energy, logistics and other sectors.
+</p>
+
+<p>
+That creates an additional opportunity. CEE countries do not necessarily have to introduce
+evidence governance after AI systems have already become deeply embedded in organisational
+processes. They can incorporate it while adoption is accelerating.
+</p>
+
+<div class="principle">
+  <strong>RULES → CAPABILITY → DEPLOYMENT → EVIDENCE → ACCOUNTABLE DECISIONS</strong>
+  <p>
+    Evidence governance does not replace investment, compute, skills or regulatory certainty.
+    It makes the resulting capability more governable.
+  </p>
+</div>
+
+<h2>Five operational questions</h2>
+
+<p>
+Before an organisation moves an AI application from experimentation into a consequential
+process, five questions can provide a useful minimum test:
+</p>
+
+<ol>
+  <li>Can we identify the sources behind a consequential AI conclusion?</li>
+  <li>Can we distinguish retrieved information from machine inference?</li>
+  <li>Can uncertainty, limitations or conflicting evidence remain visible?</li>
+  <li>Is the point of human authority identifiable?</li>
+  <li>Can the organisation reconstruct the decision afterwards without depending exclusively on the AI provider?</li>
+</ol>
+
+<p>
+If the answer to these questions is no, the organisation may have AI capability
+without yet having <strong>accountable AI capability</strong>.
+</p>
+
+<h2>A possible CEE advantage</h2>
+
+<p>
+The current CEE discussion is strongly oriented toward accelerating adoption.
+The CEE AI Challenger initiative brings together organisations across Central and Eastern
+Europe and explicitly seeks greater regional coordination.
+</p>
+
+<p>
+This creates a useful policy window. Evidence governance does not need to become another
+layer of bureaucracy imposed after deployment. Designed correctly, it can become part
+of the infrastructure that makes deployment trustworthy, portable and auditable across
+organisations and jurisdictions.
+</p>
+
+<blockquote>
+<p>
+<strong>How quickly can Central and Eastern Europe adopt AI while preserving the evidence
+required to understand and govern the decisions it influences?</strong>
+</p>
+</blockquote>
+
+<p>
+Adoption and accountability do not have to compete. They can be designed together.
+</p>
+
+<hr>
+
+<h2>Primary sources</h2>
+
+<ul>
+  <li>
+    <a href="https://www.ceedigital.org/" rel="noopener">
+      CEE Digital Coalition
+    </a> — <em>CEE AI Challenger 2026</em>, September 2026.
+  </li>
+  <li>
+    <a href="https://www.ceedigital.org/news/CEEAIChallenger-2026-Central-and-Eastern-Europes-digital-industry-presents-its-AI-roadmap.html"
+       rel="noopener">
+      CEE Digital Coalition — Central and Eastern Europe’s digital industry presents its AI roadmap
+    </a>.
+  </li>
+  <li>
+    <a href="https://cyfrowapolska.org/en/central-and-eastern-europes-digital-industry-presents-its-ai-roadmap-a-common-fund-more-deployment-and-fewer-barriers/"
+       rel="noopener">
+      Digital Poland Association — Central and Eastern Europe’s digital industry presents its AI roadmap
+    </a>.
+  </li>
+</ul>
+
+<div class="research-links">
+  <h2>Related Cognitive Logic research</h2>
+  <ul>
+    <li><a href="/research/europe-ai-readiness-gap-2026/">Europe’s AI Readiness Gap 2026</a></li>
+    <li><a href="/research/data-governance-evidence-governance/">Data Governance vs Evidence Governance</a></li>
+    <li><a href="/research/industrial-cybersecurity-evidence-governance/">Industrial Cybersecurity &amp; Evidence Governance</a></li>
+    <li><a href="/international-watch/distributed-ai-agent-incidents-governance/">Distributed AI Agent Incidents &amp; Governance</a></li>
+  </ul>
+</div>
+
+    </article>
+
+    <footer>
+      Cognitive Logic · AI Governance Infrastructure<br>
+      Research proposition · Roberto Malini · 2026<br>
+      <a href="/research.html">Research</a> ·
+      <a href="/legal.html">Legal &amp; IP</a>
+    </footer>
+
+  </main>
+</body>
+</html>
