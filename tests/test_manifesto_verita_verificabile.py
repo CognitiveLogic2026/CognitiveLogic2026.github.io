@@ -16,6 +16,7 @@ class ManifestoParser(HTMLParser):
         self.ids = set()
         self.links = []
         self.meta = []
+        self.text_parts = []
 
     def handle_starttag(self, tag, attrs):
         values = dict(attrs)
@@ -28,11 +29,15 @@ class ManifestoParser(HTMLParser):
         if tag == "meta":
             self.meta.append(values)
 
+    def handle_data(self, data):
+        self.text_parts.append(data)
+
 
 def test_manifesto_page_metadata_accessibility_and_structure():
     html = PAGE.read_text(encoding="utf-8")
     parser = ManifestoParser()
     parser.feed(html)
+    visible_text = " ".join(" ".join(parser.text_parts).split())
     assert parser.h1 == 1
     assert "main" in parser.ids
     assert any(href == "#main" and "skip-link" in classes for href, classes in parser.links)
@@ -43,7 +48,7 @@ def test_manifesto_page_metadata_accessibility_and_structure():
     assert "DFV-002" in html and "Testo fondativo vigente" in html
     assert "Le dodici tesi della verità verificabile" in html
     assert "Verificabilità = Identità + Provenienza + Evidenze + Metodo + Contesto + Tempo + Limiti" in html
-    assert "QEN Sovereign non è l’autorità della verità" in html
+    assert "QEN Sovereign non è l’autorità della verità" in visible_text
 
 
 def test_manifesto_structured_data_and_required_internal_links():
