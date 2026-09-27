@@ -205,3 +205,4 @@ validation.html
 whistleblowing.html
 international-watch/concessioni-balneari-2027-prima-del-bando/index.html
 international-watch/rimini-27-concessioni-38-domande/index.html
+img/og/og-rimini-27-concessioni-38-domande.png
