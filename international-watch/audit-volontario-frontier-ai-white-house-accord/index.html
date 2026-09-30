@@ -30,296 +30,8 @@
   <meta name="twitter:description" content="Google, Anthropic, Meta, OpenAI, xAI e Nvidia adottano controlli interni, audit esterni e supervisione dei board. Analisi QEN dell’accordo volontario statunitense.">
   <meta name="twitter:image" content="https://cognitivelogic.it/img/cognitive-logic-og.png">
   <meta name="twitter:image:alt" content="Cognitive Logic">
-
-  <style>
-    :root {
-      --ink: #153f48;
-      --accent: #16889a;
-      --text: #24363a;
-      --muted: #60757a;
-      --surface: #f1f7f8;
-      --border: #d5e3e6;
-      --white: #ffffff;
-      --max-width: 920px;
-    }
-
-    * {
-      box-sizing: border-box;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
-
-    body {
-      margin: 0;
-      background: var(--white);
-      color: var(--text);
-      font-family: Arial, Helvetica, sans-serif;
-      font-size: 18px;
-      line-height: 1.65;
-    }
-
-    a {
-      color: #087f91;
-      text-decoration-thickness: 1px;
-      text-underline-offset: 3px;
-    }
-
-    a:hover,
-    a:focus {
-      color: var(--ink);
-    }
-
-    .skip-link {
-      position: absolute;
-      left: -9999px;
-      top: 0;
-      z-index: 100;
-      padding: 0.8rem 1rem;
-      background: var(--ink);
-      color: var(--white);
-    }
-
-    .skip-link:focus {
-      left: 1rem;
-      top: 1rem;
-    }
-
-    .site-header {
-      border-bottom: 1px solid var(--border);
-      background: var(--white);
-    }
-
-    .header-inner,
-    .footer-inner,
-    .article {
-      width: min(calc(100% - 2rem), var(--max-width));
-      margin-inline: auto;
-    }
-
-    .header-inner {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 2rem;
-      padding: 1.2rem 0;
-    }
-
-    .brand {
-      color: var(--ink);
-      font-size: 1.15rem;
-      font-weight: 800;
-      text-decoration: none;
-      letter-spacing: 0.02em;
-    }
-
-    .site-nav {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 1rem;
-      font-size: 0.9rem;
-    }
-
-    .site-nav a {
-      color: var(--ink);
-      text-decoration: none;
-    }
-
-    .site-nav a:hover,
-    .site-nav a:focus {
-      text-decoration: underline;
-    }
-
-    .article {
-      padding: 4rem 0 5rem;
-    }
-
-    .breadcrumb {
-      margin-bottom: 2rem;
-      color: var(--muted);
-      font-size: 0.85rem;
-    }
-
-    .breadcrumb a {
-      color: var(--muted);
-    }
-
-    .kicker {
-      margin: 0 0 1rem;
-      color: var(--accent);
-      font-size: 0.84rem;
-      font-weight: 800;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-    }
-
-    h1,
-    h2,
-    h3 {
-      color: var(--ink);
-      line-height: 1.18;
-    }
-
-    h1 {
-      max-width: 850px;
-      margin: 0;
-      font-size: clamp(2.3rem, 6vw, 4.4rem);
-      letter-spacing: -0.035em;
-    }
-
-    h2 {
-      margin: 3.2rem 0 1rem;
-      font-size: clamp(1.65rem, 4vw, 2.3rem);
-      letter-spacing: -0.02em;
-    }
-
-    h3 {
-      margin: 2rem 0 0.6rem;
-      font-size: 1.25rem;
-    }
-
-    .lead {
-      max-width: 820px;
-      margin: 1.8rem 0;
-      color: #426268;
-      font-size: clamp(1.18rem, 2.5vw, 1.45rem);
-      line-height: 1.5;
-    }
-
-    .article-meta {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.6rem 1.5rem;
-      margin: 2rem 0 3rem;
-      color: var(--muted);
-      font-size: 0.88rem;
-    }
-
-    .status-panel {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 1px;
-      margin: 2.5rem 0;
-      overflow: hidden;
-      border: 1px solid var(--border);
-      background: var(--border);
-    }
-
-    .status-item {
-      padding: 1.1rem;
-      background: var(--surface);
-    }
-
-    .status-item strong {
-      display: block;
-      margin-bottom: 0.2rem;
-      color: var(--ink);
-      font-size: 0.78rem;
-      letter-spacing: 0.05em;
-      text-transform: uppercase;
-    }
-
-    .status-item span {
-      font-size: 0.95rem;
-    }
-
-    .chain {
-      margin: 2rem 0;
-      padding: 1.4rem;
-      border-left: 5px solid var(--accent);
-      background: var(--surface);
-      color: var(--ink);
-      font-weight: 750;
-      line-height: 1.7;
-    }
-
-    .epistemic {
-      margin: 2rem 0;
-      padding: 1.4rem;
-      border: 1px solid var(--border);
-      background: #fbfdfd;
-    }
-
-    .epistemic strong {
-      color: var(--ink);
-    }
-
-    ul {
-      padding-left: 1.35rem;
-    }
-
-    li + li {
-      margin-top: 0.55rem;
-    }
-
-    .conclusion {
-      margin-top: 3rem;
-      padding: 1.7rem;
-      background: var(--ink);
-      color: var(--white);
-    }
-
-    .conclusion h2 {
-      margin-top: 0;
-      color: var(--white);
-    }
-
-    .conclusion p:last-child {
-      margin-bottom: 0;
-      font-weight: 700;
-    }
-
-    .sources {
-      margin-top: 4rem;
-      padding-top: 2rem;
-      border-top: 1px solid var(--border);
-    }
-
-    .sources li {
-      overflow-wrap: anywhere;
-    }
-
-    .site-footer {
-      border-top: 1px solid var(--border);
-      background: var(--surface);
-    }
-
-    .footer-inner {
-      padding: 2rem 0;
-      color: var(--muted);
-      font-size: 0.85rem;
-    }
-
-    .footer-links {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.8rem 1.2rem;
-      margin-bottom: 1rem;
-    }
-
-    @media (max-width: 720px) {
-      body {
-        font-size: 17px;
-      }
-
-      .header-inner {
-        display: block;
-      }
-
-      .site-nav {
-        margin-top: 1rem;
-      }
-
-      .article {
-        padding-top: 2.5rem;
-      }
-
-      .status-panel {
-        grid-template-columns: 1fr;
-      }
-    }
-  </style>
+<link rel="stylesheet" href="/css/fonts-local.css">
+<link rel="stylesheet" href="/css/style.css?v=3">
 
   <script type="application/ld+json">
 {
@@ -397,26 +109,28 @@
   </script>
 </head>
 <body>
-  <a class="skip-link" href="#contenuto">Vai al contenuto</a>
+<a class="skip-link" href="#main">Salta al contenuto</a>
+<div class="site-bg"></div>
+<header class="site-header">
+<div class="container header-inner">
 
-  <header class="site-header">
-    <div class="header-inner">
-      <a class="brand" href="https://cognitivelogic.it/">Cognitive Logic</a>
+<a href="/" class="brand" aria-label="Cognitive Logic — Home">
+<span class="wordmark wordmark--nav">
+<span class="wm-top">Cognitive</span>
+<span class="wm-bot">Logic</span>
+</span>
+</a>
 
-      <nav class="site-nav" aria-label="Navigazione principale">
-        <a href="https://cognitivelogic.it/services.html">Servizi</a>
-        <a href="https://cognitivelogic.it/assessment.html">Assessment</a>
-        <a href="https://cognitivelogic.it/qen/">QEN</a>
-        <a href="https://cognitivelogic.it/research.html">Ricerca</a>
-        <a href="https://cognitivelogic.it/international-watch/" aria-current="page">International Watch</a>
-        <a href="https://cognitivelogic.it/contact.html">Contatti</a>
-      </nav>
-    </div>
-  </header>
+<nav class="main-nav" aria-label="Navigazione principale">
+<a href="/international-watch/" aria-current="page">International Watch</a>
+<a href="/resources/documents/osservatorio-bolkestein/">Osservatorio Bolkestein</a>
+</nav>
 
-  <main id="contenuto">
-    <article class="article">
-      <nav class="breadcrumb" aria-label="Breadcrumb">
+</div>
+</header>
+<main id="main">
+<article class="container stack-lg" style="max-width:920px;margin:0 auto;padding:56px 24px 72px;">
+      <nav class="text-sm text-muted" aria-label="Breadcrumb">
         <a href="https://cognitivelogic.it/">Cognitive Logic</a>
         <span aria-hidden="true"> / </span>
         <a href="https://cognitivelogic.it/international-watch/">International Watch</a>
@@ -424,31 +138,31 @@
         <span>Audit volontario per la Frontier AI</span>
       </nav>
 
-      <header>
+      <header class="stack-md">
         <p class="kicker">International Watch · AI Governance · Frontier AI</p>
         <h1>Un audit volontario può governare la Frontier AI?</h1>
         <p class="lead">Sei aziende centrali dell’IA avanzata adottano una struttura comune di controlli, verifiche esterne e supervisione dei board. L’accordo è formalmente sottoscritto, ma non giuridicamente vincolante.</p>
-        <div class="article-meta">
+        <div class="text-sm text-muted mt-4">
           <time datetime="2026-09-30">30 settembre 2026</time>
           <span>Cognitive Logic</span>
           <span>7 minuti di lettura</span>
         </div>
-        <div class="status-panel" aria-label="Classificazione editoriale">
-          <div class="status-item"><strong>Stato epistemico</strong><span>Impegno sottoscritto · contenuto riportato da fonti giornalistiche</span></div>
-          <div class="status-item"><strong>Natura</strong><span>Accordo volontario · non giuridicamente vincolante</span></div>
-          <div class="status-item"><strong>Giurisdizione primaria</strong><span>Stati Uniti · effetti internazionali</span></div>
-          <div class="status-item"><strong>Formato</strong><span>Analisi QEN · audit e assurance</span></div>
+        <div class="grid grid-2 mt-4" aria-label="Classificazione editoriale">
+          <div class="panel stack-sm"><p class="kicker">Stato epistemico</p><p>Impegno sottoscritto · contenuto riportato da fonti giornalistiche</p></div>
+          <div class="panel stack-sm"><p class="kicker">Natura</p><p>Accordo volontario · non giuridicamente vincolante</p></div>
+          <div class="panel stack-sm"><p class="kicker">Giurisdizione primaria</p><p>Stati Uniti · effetti internazionali</p></div>
+          <div class="panel stack-sm"><p class="kicker">Formato</p><p>Analisi QEN · audit e assurance</p></div>
         </div>
       </header>
 
-      <section>
+      <section class="stack-md">
         <h2>Un impegno comune per i modelli di frontiera</h2>
         <p>Il 29 settembre 2026 Google, Anthropic, Meta, OpenAI, xAI e Nvidia hanno sottoscritto con il presidente statunitense Donald Trump il <strong>“Joint Commitment on Frontier Responsibilities”</strong>. Il documento propone una struttura comune per controllare i rischi dei modelli di IA avanzata.</p>
         <p>Il presidente ha reso pubblico il documento attraverso Truth Social. <a href="https://www.reuters.com/world/us/trump-releases-ai-accord-with-tech-executives-2026-09-29/" target="_blank" rel="noopener noreferrer">Reuters ne riporta il contenuto</a>; <a href="https://apnews.com/article/c6dd26d8e67270db543c37ac3762acd9" target="_blank" rel="noopener noreferrer">Associated Press documenta la natura volontaria e le revisioni interne ed esterne</a>. Sono fonti giornalistiche che riportano e corroborano il contenuto e le dichiarazioni sull’accordo, non fonti primarie del documento. Il resoconto Reuters sull’<a href="https://www.reuters.com/legal/government/trump-host-zuckerberg-anthropics-amodei-other-ai-titans-tuesday-2026-09-29/" target="_blank" rel="noopener noreferrer">incontro alla Casa Bianca</a> colloca l’iniziativa nel confronto tra innovazione e supervisione.</p>
         <p>La sottoscrizione è un fatto distinto dall’efficacia giuridica. L’accordo non introduce una nuova legge federale, né rende l’audit un obbligo legale. La sua portata immediata è l’assunzione pubblica di impegni organizzativi da parte delle aziende firmatarie.</p>
       </section>
 
-      <section>
+      <section class="stack-md">
         <h2>I quattro livelli di governance</h2>
         <p>La struttura riportata dalle fonti giornalistiche si articola in quattro livelli. Ogni livello ha una funzione diversa: controllare il sistema, verificare il funzionamento dei controlli, sottoporli a valutazione indipendente e attribuire la supervisione al consiglio di amministrazione.</p>
         <ol>
@@ -460,16 +174,16 @@
         <p>Il richiamo agli accessi tecnici trova un confronto operativo nella <a href="/international-watch/agente-ia-data-breach-aepd/">governance degli incidenti agentici e della notifica di un data breach</a>: il controllo deve poter ricostruire azioni, accessi e responsabilità, oltre a rilevare un’anomalia.</p>
       </section>
 
-      <section>
+      <section class="stack-md">
         <h2>Cosa è stato realmente adottato</h2>
-        <div class="epistemic">
+        <div class="panel mt-4">
           <p><strong>Fatto:</strong> esiste un documento sottoscritto; sei aziende hanno assunto impegni comuni su controlli interni, verifiche esterne e supervisione del board. Le partecipanti intendono incontrarsi periodicamente per sviluppare standard e buone pratiche.</p>
           <p><strong>Limite:</strong> l’accordo è volontario, non produce direttamente obblighi legali e non prevede sanzioni. Non istituisce ancora un regolatore o un organismo pubblico di certificazione.</p>
         </div>
         <p>La possibilità di tradurre in futuro questi passaggi in leggi o regolamenti resta distinta dalla loro adozione attuale. Anche la prospettiva di standard comuni richiede un successivo lavoro di definizione: l’impegno a elaborarli non equivale alla disponibilità di uno standard già applicabile.</p>
       </section>
 
-      <section>
+      <section class="stack-md">
         <h2>Le lacune operative</h2>
         <p>Nel documento, per come riportato dalle fonti, non sono definiti in modo verificabile gli elementi necessari a confrontare l’attuazione tra aziende:</p>
         <ul>
@@ -486,17 +200,17 @@
         <p>Si tratta di limiti documentali e operativi, non di prove che le aziende siano prive di procedure proprie o non intendano attuare gli impegni. Il punto è ciò che il documento comune permette oggi di verificare dall’esterno.</p>
       </section>
 
-      <section>
+      <section class="stack-md">
         <h2>Un audit non coincide con l’assurance</h2>
         <p>Dichiarare che un audit è stato svolto informa sull’esistenza di una verifica. Per sostenere un giudizio di affidabilità occorre dimostrarne perimetro, metodo, evidenze, indipendenza, risultati e limiti, poi documentare rimedi e decisione finale.</p>
         <p>In questa lettura, l’<em>assurance</em> è la possibilità di fondare una fiducia motivata su verifiche ricostruibili. Un rapporto privo di perimetro o di evidenze accessibili al valutatore non permette di stabilire quali rischi siano stati esaminati e quali siano rimasti fuori.</p>
-        <div class="chain" aria-label="Catena QEN di governance">
+        <div class="formula-block mt-4" aria-label="Catena QEN di governance">
           rischio → controllo → monitoraggio → evidenza → verifica esterna → rapporto → supervisione del board → correzione → decisione di rilascio
         </div>
         <p>La decisione di rilascio conclude qui la catena analitica QEN: non è presentata come una procedura di autorizzazione già definita dall’accordo. Il collegamento tra <a href="/international-watch/distributed-ai-agent-incidents-governance/">incidenti distribuiti e release integrity</a> mostra perché gli esiti del monitoraggio devono raggiungere chi decide se distribuire, limitare o fermare un sistema.</p>
       </section>
 
-      <section>
+      <section class="stack-md">
         <h2>La lettura QEN</h2>
         <p>Nel quadro <a href="/qen/">QEN</a>, una verifica credibile dovrebbe permettere di ricostruire almeno:</p>
         <ul>
@@ -511,15 +225,15 @@
           <li>le eventuali limitazioni alla distribuzione;</li>
           <li>le informazioni comunicate agli stakeholder.</li>
         </ul>
-        <div class="epistemic">
+        <div class="panel mt-4">
           <p><strong>Il valore dell’audit non risiede nella sua esistenza formale, ma nella catena verificabile che collega evidenza, giudizio, rimedio e decisione.</strong></p>
         </div>
         <p>Per un’organizzazione che acquista o utilizza questi modelli, un <a href="/assessment.html">AI Governance Assessment</a> può partire da domande concrete: quale versione è stata valutata, con quali limiti e quali condizioni di utilizzo? L’adesione del fornitore all’accordo è un’informazione utile, ma non risponde da sola a queste domande.</p>
       </section>
 
-      <section>
+      <section class="stack-md">
         <h2>Fatto e inferenza</h2>
-        <div class="epistemic" aria-label="Fatto, inferenza e limite dell’inferenza">
+        <div class="panel mt-4" aria-label="Fatto, inferenza e limite dell’inferenza">
           <p><strong>Fatto:</strong> le aziende hanno sottoscritto una struttura comune di governance.</p>
           <p><strong>Inferenza:</strong> l’accordo potrebbe diventare uno standard di mercato per assurance, procurement e responsabilità dei consigli di amministrazione.</p>
           <p><strong>Limite dell’inferenza:</strong> senza criteri comuni, due aziende potrebbero dichiararsi conformi applicando test, soglie e procedure sostanzialmente differenti.</p>
@@ -527,19 +241,19 @@
         <p>Questa possibile evoluzione è una lettura analitica, non un esito già osservato. La comparabilità dipenderà dagli standard che saranno effettivamente elaborati e dall’evidenza della loro applicazione.</p>
       </section>
 
-      <section>
+      <section class="stack-md">
         <h2>Giurisdizioni e stakeholder</h2>
         <p><strong>Giurisdizione primaria:</strong> Stati Uniti. Gli effetti possono estendersi a livello internazionale per la distribuzione globale dei modelli, senza che l’accordo sostituisca le regole applicabili nelle diverse giurisdizioni.</p>
         <p><strong>Stakeholder:</strong> laboratori di frontiera, consigli di amministrazione, auditor, valutatori, fornitori cloud, clienti enterprise e pubblici, autorità, investitori e soggetti esposti agli incidenti. Per ciascuno cambia la domanda di evidenza: un board deve conoscere le carenze e i rimedi; un cliente deve comprendere il perimetro della verifica e le limitazioni rilevanti per il proprio impiego.</p>
       </section>
 
-      <section class="conclusion">
+      <section class="panel stack-md">
         <h2>Un’architettura da rendere verificabile</h2>
         <p>L’accordo introduce l’architettura di un sistema di assurance: controlli, verifica interna, valutazione esterna e supervisione del board. Il suo carattere volontario non cancella il valore di questa struttura, ma rende decisiva la documentazione della sua attuazione.</p>
         <p>La credibilità dipenderà da criteri comuni, indipendenza dei verificatori, accesso alle evidenze e conseguenze documentate degli esiti negativi.</p>
       </section>
 
-      <section class="sources">
+      <section class="stack-md">
         <h2>Fonti e documenti</h2>
         <p>Documento di riferimento: “Joint Commitment on Frontier Responsibilities”, reso pubblico dal presidente attraverso Truth Social il 29 settembre 2026. Le fonti elencate sono giornalistiche e non vengono presentate come fonti primarie. Consultazione: 30 settembre 2026.</p>
         <ol>
@@ -549,25 +263,26 @@
         </ol>
       </section>
     </article>
-  </main>
+</main>
+<footer class="site-footer">
+<div class="container footer-inner">
 
-  <footer class="site-footer">
-    <div class="footer-inner">
-      <nav class="footer-links" aria-label="Collegamenti nel footer">
-        <a href="https://cognitivelogic.it/">Cognitive Logic</a>
-        <a href="https://cognitivelogic.it/international-watch/">International Watch</a>
-        <a href="https://cognitivelogic.it/qen/">QEN Framework</a>
-        <a href="https://cognitivelogic.it/research.html">Ricerca</a>
-        <a href="https://cognitivelogic.it/privacy.html">Privacy</a>
-        <a href="https://cognitivelogic.it/accessibilita.html">Accessibilità</a>
-      </nav>
+<div class="wordmark wordmark--footer">
+<span class="wm-top">Cognitive</span>
+<span class="wm-bot">Logic</span>
+</div>
 
-      <p>
-        © 2026 Roberto Bob Malini — Cognitive Logic.<br>
-        International Watch distingue fonti, evidenze, attribuzioni, stato
-        epistemico e limiti delle informazioni disponibili.
-      </p>
-    </div>
-  </footer>
+<div class="footer-copy">
+International Watch · Evidence-based monitoring and governance analysis
+</div>
+
+<div class="footer-links">
+<a href="/international-watch/">International Watch</a>
+<a href="/framework.html">QEN Framework</a>
+<a href="/qen-sovereign/">QEN Sovereign</a>
+</div>
+
+</div>
+</footer>
 </body>
 </html>
