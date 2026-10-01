@@ -1,0 +1,660 @@
+<!doctype html>
+<html lang="it">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Digital Overtourism: AI, Tourism Recommendations and Destination Visibility | Cognitive Logic</title>
+
+  <meta name="description" content="Can generative AI amplify already-visible tourism destinations? Cognitive Logic examines evidence of popularity bias, destination concentration and digital overtourism.">
+
+  <meta name="author" content="Roberto Malini">
+  <meta name="robots" content="index,follow,max-image-preview:large">
+
+  <link rel="canonical" href="https://cognitivelogic.it/research/digital-overtourism-ai-travel-recommendations/">
+
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Cognitive Logic">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:title" content="Digital Overtourism: AI, Tourism Recommendations and Destination Visibility | Cognitive Logic">
+  <meta property="og:description" content="Can generative AI amplify already-visible tourism destinations? Cognitive Logic examines evidence of popularity bias, destination concentration and digital overtourism.">
+  <meta property="og:url" content="https://cognitivelogic.it/research/digital-overtourism-ai-travel-recommendations/">
+  <meta property="og:image" content="https://cognitivelogic.it/img/og/digital-overtourism-ai-travel-recommendations.png">
+  <meta property="og:image:alt" content="Digital Overtourism: AI, tourism recommendations and destination visibility">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Digital Overtourism: AI, Tourism Recommendations and Destination Visibility | Cognitive Logic">
+  <meta name="twitter:description" content="Can generative AI amplify already-visible tourism destinations? Cognitive Logic examines evidence of popularity bias, destination concentration and digital overtourism.">
+  <meta name="twitter:image" content="https://cognitivelogic.it/img/og/digital-overtourism-ai-travel-recommendations.png">
+
+  <link rel="stylesheet" href="/css/fonts-local.css">
+  <link rel="stylesheet" href="/css/style.css">
+
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ScholarlyArticle",
+  "headline": "Digital Overtourism: When AI Concentrates Visibility Before Tourists Arrive",
+  "description": "Can generative AI amplify already-visible tourism destinations? Cognitive Logic examines evidence of popularity bias, destination concentration and digital overtourism.",
+  "inLanguage": "en",
+  "datePublished": "2026-10-01",
+  "dateModified": "2026-10-01",
+  "image": "https://cognitivelogic.it/img/og/digital-overtourism-ai-travel-recommendations.png",
+  "author": {
+    "@type": "Person",
+    "name": "Roberto Malini"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Cognitive Logic",
+    "url": "https://cognitivelogic.it/"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://cognitivelogic.it/research/digital-overtourism-ai-travel-recommendations/"
+  },
+  "about": [
+    "Digital Overtourism",
+    "Generative AI",
+    "Tourism Recommendation Systems",
+    "Popularity Bias",
+    "Territorial Representation",
+    "Evidence Governance"
+  ]
+}
+</script>
+
+  <style>
+    :root { color-scheme: dark; }
+
+    body {
+      margin: 0;
+      background:
+        radial-gradient(circle at 75% 10%, rgba(55, 105, 130, .18), transparent 34rem),
+        #071015;
+      color: #edf5f5;
+    }
+
+    .research-page {
+      width: min(100% - 40px, 980px);
+      margin: 0 auto;
+      padding: 42px 0 90px;
+    }
+
+    .research-nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 24px;
+      padding-bottom: 34px;
+      border-bottom: 1px solid rgba(255,255,255,.12);
+    }
+
+    .research-nav a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .brand {
+      font-weight: 700;
+      letter-spacing: .04em;
+    }
+
+    .back-link {
+      opacity: .72;
+      font-size: .94rem;
+    }
+
+    .article-header {
+      padding: 85px 0 55px;
+    }
+
+    .kicker {
+      margin: 0 0 24px;
+      text-transform: uppercase;
+      letter-spacing: .16em;
+      font-size: .78rem;
+      opacity: .67;
+    }
+
+    h1 {
+      max-width: 920px;
+      margin: 0;
+      font-size: clamp(3rem, 8vw, 6.8rem);
+      line-height: .94;
+      letter-spacing: -.055em;
+    }
+
+    .lead {
+      max-width: 790px;
+      margin: 34px 0 24px;
+      font-size: clamp(1.2rem, 2.4vw, 1.55rem);
+      line-height: 1.55;
+      opacity: .84;
+    }
+
+    .metadata {
+      margin-top: 30px;
+      font-size: .94rem;
+      opacity: .62;
+    }
+
+    article { max-width: 780px; }
+
+    article p,
+    article li {
+      font-size: 1.08rem;
+      line-height: 1.82;
+    }
+
+    article h2 {
+      margin: 65px 0 20px;
+      font-size: clamp(1.8rem, 4vw, 2.6rem);
+      line-height: 1.12;
+      letter-spacing: -.025em;
+    }
+
+    article h3 {
+      margin: 38px 0 12px;
+      font-size: 1.35rem;
+    }
+
+    article ul { padding-left: 24px; }
+
+    article a {
+      color: #bde7ef;
+      text-underline-offset: 4px;
+    }
+
+    blockquote {
+      margin: 38px 0;
+      padding: 6px 0 6px 25px;
+      border-left: 3px solid rgba(189,231,239,.55);
+      font-size: 1.25rem;
+      line-height: 1.6;
+    }
+
+    .principle {
+      margin: 55px 0;
+      padding: 30px;
+      border: 1px solid rgba(189,231,239,.28);
+      border-radius: 22px;
+      background: rgba(189,231,239,.055);
+    }
+
+    .principle strong {
+      display: block;
+      margin-bottom: 10px;
+      font-size: 1.35rem;
+    }
+
+    .principle p { margin: 0; }
+
+    .research-links {
+      margin-top: 70px;
+      padding-top: 38px;
+      border-top: 1px solid rgba(255,255,255,.14);
+    }
+
+    .research-card {
+      display: block;
+      margin: 15px 0;
+      padding: 22px;
+      border: 1px solid rgba(255,255,255,.13);
+      border-radius: 16px;
+      text-decoration: none;
+    }
+
+    .research-card strong {
+      display: block;
+      margin-bottom: 5px;
+    }
+
+    .research-card span { opacity: .68; }
+
+    footer {
+      margin-top: 80px;
+      padding-top: 30px;
+      border-top: 1px solid rgba(255,255,255,.12);
+      font-size: .88rem;
+      line-height: 1.8;
+      opacity: .66;
+    }
+
+    footer a { color: inherit; }
+
+    @media (max-width: 640px) {
+      .research-page {
+        width: min(100% - 28px, 980px);
+      }
+
+      .research-nav {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .article-header { padding-top: 58px; }
+      .principle { padding: 23px; }
+    }
+  </style>
+</head>
+
+<body>
+  
+<main>
+  <article class="container">
+
+    <header class="article-header">
+      <p class="eyebrow">Cognitive Logic Research</p>
+
+      <h1>Digital Overtourism: When AI Concentrates Visibility Before Tourists Arrive</h1>
+
+      <p class="lead">
+        Are generative AI systems broadening the discovery of destinations,
+        or mainly amplifying places that are already highly visible online?
+      </p>
+
+      <p class="article-meta">
+        Cognitive Logic Research · October 2026
+      </p>
+    </header>
+
+    <section>
+      <h2>The claim</h2>
+
+      <p>
+        Generative AI and tourism recommendation systems may amplify existing
+        digital visibility by repeatedly recommending destinations, attractions
+        and businesses that are already strongly represented online.
+      </p>
+
+      <p>
+        If this happens systematically, AI could concentrate attention before
+        a physical journey even begins.
+      </p>
+
+      <p>
+        This does not mean that AI has been demonstrated to cause physical
+        overtourism. The claim requires a longer evidence chain:
+      </p>
+
+      <p>
+        <strong>
+          digital representation → algorithmic selection → recommendation →
+          exposure → intention → choice → travel → territorial pressure
+        </strong>
+      </p>
+
+      <p>
+        Each stage must be measured separately.
+      </p>
+    </section>
+
+    <section>
+      <h2>What is digital overtourism?</h2>
+
+      <p>
+        Digital overtourism can be defined operationally as the systematic
+        concentration of destination visibility inside digital recommendation
+        environments, narrowing the range of places that travellers encounter
+        before making a decision.
+      </p>
+
+      <p>
+        Traditional overtourism is observed on the territory through congestion,
+        visitor pressure, infrastructure stress and effects on residents.
+      </p>
+
+      <p>
+        Digital overtourism happens earlier. It concerns the distribution of
+        attention in the pre-travel phase.
+      </p>
+    </section>
+
+    <section>
+      <h2>Evidence of concentration</h2>
+
+      <p>
+        Research published in 2026 in <em>Current Issues in Tourism</em>
+        explicitly examined the concept of digital overtourism by analysing
+        hundreds of destination recommendations generated by multiple AI systems.
+      </p>
+
+      <p>
+        The study found that apparently diverse recommendation outputs could
+        still converge repeatedly on a relatively narrow group of destinations.
+      </p>
+
+      <p>
+        This distinction is important: the number of different places mentioned
+        at least once is not the same as the effective diversity of exposure.
+      </p>
+
+      <p>
+        Source:
+        <a href="https://doi.org/10.1080/13683500.2026.2654066"
+           rel="noopener noreferrer">
+          Current Issues in Tourism, 2026
+        </a>.
+      </p>
+    </section>
+
+    <section>
+      <h2>Popularity bias did not begin with generative AI</h2>
+
+      <p>
+        Tourism recommender-system research has documented popularity bias for
+        years. Better-known destinations and points of interest tend to have
+        stronger visibility signals and therefore a greater probability of being
+        recommended.
+      </p>
+
+      <p>
+        Less represented places can consequently remain underexposed even when
+        they may be relevant to the traveller.
+      </p>
+
+      <p>
+        A review of fairness in tourism recommendation systems describes
+        popularity and exposure as material factors affecting which destinations
+        and providers enter recommendation results.
+      </p>
+
+      <p>
+        Source:
+        <a href="https://doi.org/10.3389/fdata.2023.1168692"
+           rel="noopener noreferrer">
+          Frontiers in Big Data, 2023
+        </a>.
+      </p>
+    </section>
+
+    <section>
+      <h2>Generative AI changes the interface</h2>
+
+      <p>
+        A traditional search engine ranks documents.
+      </p>
+
+      <p>
+        Generative AI constructs an answer.
+      </p>
+
+      <p>
+        It selects which destinations to name, which ones to omit and which
+        places to associate with concepts such as authenticity, sustainability,
+        culture, affordability or tranquillity.
+      </p>
+
+      <p>
+        This makes the distribution of representation itself a relevant object
+        of measurement.
+      </p>
+    </section>
+
+    <section>
+      <h2>Apparent diversity can hide systemic concentration</h2>
+
+      <p>
+        A single AI response may list ten different destinations and appear
+        highly diverse.
+      </p>
+
+      <p>
+        Across hundreds or thousands of prompts, however, the same destinations
+        may recur disproportionately.
+      </p>
+
+      <p>
+        The correct unit of analysis is therefore not only the individual answer,
+        but the distribution produced by the system across repeated queries.
+      </p>
+    </section>
+
+    <section>
+      <h2>A possible visibility feedback loop</h2>
+
+      <p>
+        The central governance question concerns a potential recursive cycle:
+      </p>
+
+      <p>
+        <strong>
+          visibility → recommendation → attention → experience →
+          new content → greater visibility
+        </strong>
+      </p>
+
+      <p>
+        A destination that already has more reviews, guides, indexed pages,
+        structured information and editorial coverage may become easier for
+        recommendation systems to recognise and reproduce.
+      </p>
+
+      <p>
+        No intentional bias is required for this effect to exist.
+      </p>
+
+      <p>
+        Unequal information environments may be sufficient.
+      </p>
+    </section>
+
+    <section>
+      <h2>AI can also support dispersion</h2>
+
+      <p>
+        The effect is not necessarily one-directional.
+      </p>
+
+      <p>
+        Tourism recommendation systems can also be designed to suggest less
+        congested areas, alternative itineraries, different time windows or
+        underrepresented destinations.
+      </p>
+
+      <p>
+        AI may therefore amplify concentration or help redistribute demand.
+      </p>
+
+      <p>
+        The outcome depends on data, ranking objectives, recommendation design
+        and whether territorial indicators are incorporated into the system.
+      </p>
+    </section>
+
+    <section>
+      <h2>The question for destinations</h2>
+
+      <p>
+        For a destination management organisation, the useful question is no
+        longer simply:
+      </p>
+
+      <blockquote>
+        Are we visible in AI systems?
+      </blockquote>
+
+      <p>
+        A more informative question is:
+      </p>
+
+      <blockquote>
+        How is our territory represented compared with other destinations, and
+        which parts of it remain systematically invisible?
+      </blockquote>
+    </section>
+
+    <section>
+      <h2>What should be measured?</h2>
+
+      <h3>1. Recommendation frequency</h3>
+
+      <p>
+        How often does each destination, municipality, attraction or operator
+        appear?
+      </p>
+
+      <h3>2. Effective diversity</h3>
+
+      <p>
+        How many places receive a meaningful share of total exposure?
+      </p>
+
+      <h3>3. Geographic concentration</h3>
+
+      <p>
+        How are recommendations distributed spatially across the territory?
+      </p>
+
+      <h3>4. Prompt sensitivity</h3>
+
+      <p>
+        Does the geography change when users ask about culture, nature,
+        gastronomy, sustainability, authenticity, affordability or less crowded
+        locations?
+      </p>
+
+      <h3>5. Evidence representation</h3>
+
+      <p>
+        Which institutional pages, datasets, structured content and authoritative
+        sources make parts of the territory easier for AI systems to interpret?
+      </p>
+    </section>
+
+    <section>
+      <h2>From digital presence to territorial representation</h2>
+
+      <p>
+        A destination can have strong overall digital visibility while still
+        having highly concentrated AI representation.
+      </p>
+
+      <p>
+        A region may be reduced to three famous towns. An island may be
+        represented mainly through one coastal area. A city may be compressed
+        into its historic centre.
+      </p>
+
+      <p>
+        The problem is therefore different from traditional SEO.
+      </p>
+
+      <p>
+        It concerns the distribution of machine-mediated territorial
+        representation.
+      </p>
+    </section>
+
+    <section>
+      <h2>Evidence governance</h2>
+
+      <p>
+        Digital overtourism can be examined through four governance dimensions:
+      </p>
+
+      <p>
+        <strong>Representation.</strong>
+        Which places enter the information environment?
+      </p>
+
+      <p>
+        <strong>Evidence.</strong>
+        Which verifiable sources support their representation?
+      </p>
+
+      <p>
+        <strong>Distribution.</strong>
+        How is attention distributed among territories and operators?
+      </p>
+
+      <p>
+        <strong>Accountability.</strong>
+        Can the resulting concentration be measured and audited?
+      </p>
+    </section>
+
+    <section>
+      <h2>Epistemic assessment</h2>
+
+      <p>
+        The original claim is best classified as
+        <strong>partially verified</strong>.
+      </p>
+
+      <p>
+        Current evidence supports the existence of popularity bias, recurrent
+        destination concentration and unequal representation in tourism
+        recommendation environments.
+      </p>
+
+      <p>
+        Recent research also explicitly identifies concentrated pre-travel AI
+        recommendation patterns as digital overtourism.
+      </p>
+
+      <p>
+        What has not been established in general is a direct causal relationship:
+      </p>
+
+      <p>
+        <strong>
+          AI recommendation → increase in physical overtourism
+        </strong>
+      </p>
+
+      <p>
+        Demonstrating that relationship would require longitudinal evidence
+        connecting algorithmic exposure to travel intentions, bookings, visitor
+        movements and measurable territorial pressure.
+      </p>
+    </section>
+
+    <section>
+      <h2>The question before the journey</h2>
+
+      <p>
+        Overtourism is normally measured after visitors arrive.
+      </p>
+
+      <p>
+        AI makes it necessary to observe an earlier stage.
+      </p>
+
+      <p>
+        Before the flight. Before the booking. Before the itinerary.
+      </p>
+
+      <p>
+        At the moment when a traveller asks:
+      </p>
+
+      <blockquote>
+        Where should I go?
+      </blockquote>
+
+      <p>
+        If recommendation systems repeatedly converge on the same places,
+        tourism concentration may have an informational component that precedes
+        its physical manifestation.
+      </p>
+
+      <p>
+        Measuring that layer means moving beyond visitor counts and asking a new
+        question:
+      </p>
+
+      <p>
+        <strong>
+          Which territories do algorithms make imaginable before the journey
+          begins?
+        </strong>
+      </p>
+    </section>
+
+  </article>
+</main>
+
+</body>
+</html>
