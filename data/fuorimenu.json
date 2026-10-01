@@ -1,6 +1,13 @@
 {
   "articoli": [
     {
+      "titolo": "Prima dei turisti arrivano gli algoritmi",
+      "url": "https://fuorimenu.substack.com/p/prima-dei-turisti-arrivano-gli-algoritmi",
+      "data": "2026-10-01 06:44",
+      "estratto": "L’AI può concentrare la visibilità di destinazioni, ristoranti e luoghi prima ancora che inizi il viaggio",
+      "tag": "Fuorimenu"
+    },
+    {
       "titolo": "Rimini, 38 domande per 27 concessioni: il dato non basta a raccontare come cambierà la spiaggia",
       "url": "https://fuorimenu.substack.com/p/rimini-38-domande-per-27-concessioni",
       "data": "2026-09-28 09:57",
@@ -61,13 +68,6 @@
       "url": "https://fuorimenu.substack.com/p/il-chatbot-del-tuo-hotel-o-ristorante",
       "data": "2026-08-28 17:23",
       "estratto": "Chatbot e assistenti AI stanno entrando nell’ospitalità. La vera sfida non è solo automatizzare il servizio, ma garantire trasparenza, informazioni affidabili e responsabilità umana.",
-      "tag": "Fuorimenu"
-    },
-    {
-      "titolo": "FuoriMenù riparte dai dati: cosa cambia e perché",
-      "url": "https://fuorimenu.substack.com/p/fuorimenu-riparte-dai-dati-cosa-cambia",
-      "data": "2026-08-24 06:51",
-      "estratto": "Esperienza, territorio e intelligenza artificiale: una nuova fase per raccontare la ristorazione attraverso dati, evidenze e responsabilità.",
       "tag": "Fuorimenu"
     }
   ]
