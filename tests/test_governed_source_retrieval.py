@@ -395,3 +395,31 @@ def test_cs_008_explicit_identifier_is_strictly_scoped():
         "https://cognitivelogic.it/resources/documents/"
         "cs-008-explainability-decision-traceability/"
     )
+
+
+def test_cs_008_documentary_response_uses_substantive_executive_summary():
+    result = retrieve("Explain CS-008")
+    assert result["retrieval_status"] == "ready"
+
+    source = result["sources"][0]
+
+    assert source["source_id"] == "CS-008"
+    assert source["summary_section"] == "1. Executive Summary"
+    assert "decisioni" in source["summary_excerpt"].lower()
+    assert len(source["summary_excerpt"]) > len(source["excerpt"])
+
+    with patch("main.check_duplicate", return_value=None), patch("main.save_pilot"):
+        response = app.test_client().post(
+            "/copilot-analyze",
+            json={"description": "Explain CS-008"},
+            headers={"Origin": "https://cognitivelogic.it"},
+        )
+
+    payload = response.get_json()
+
+    assert response.status_code == 200
+    assert payload["interaction_mode"] == "documentary"
+    assert payload["summary"] == source["summary_excerpt"]
+    assert "Executive Summary" in payload["explanation"]
+
+    limiter.reset()

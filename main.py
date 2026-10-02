@@ -216,10 +216,11 @@ def _documentary_response(retrieval: dict) -> dict:
             "restino esaminabili, contestualizzati e accompagnati dai propri limiti."
         )
     else:
-        summary = primary["excerpt"]
+        summary = primary.get("summary_excerpt") or primary["excerpt"]
+        summary_section = primary.get("summary_section") or primary["section"]
         explanation = (
             f"La fonte governata «{primary['title']}», nella sezione "
-            f"«{primary['section']}», fornisce il contesto documentale riportato "
+            f"«{summary_section}», fornisce il contesto documentale riportato "
             "nella sintesi. Consultare il collegamento canonico per il testo e il "
             "contesto completi."
         )

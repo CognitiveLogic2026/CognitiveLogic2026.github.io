@@ -138,6 +138,31 @@ def _sections(markdown: str) -> list[dict[str, str]]:
     return sections
 
 
+def _preferred_summary_section(sections: list[dict[str, str]]) -> dict[str, str] | None:
+    """Return the first substantive editorial summary section, when available."""
+    preferred = (
+        "executive summary",
+        "summary",
+        "sintesi",
+        "abstract",
+    )
+
+    for section in sections:
+        heading = normalize_text(section.get("section", ""))
+        body = re.sub(r"\s+", " ", section.get("text", "")).strip()
+
+        if any(
+            heading == candidate or heading.endswith(" " + candidate)
+            for candidate in preferred
+        ) and len(body) >= 80:
+            return {
+                "section": section["section"],
+                "text": body,
+            }
+
+    return None
+
+
 def build_index(
     registry_path: Path = REGISTRY_PATH,
     destination: Path = INDEX_PATH,
@@ -290,12 +315,25 @@ def retrieve(query: str, *, limit: int = 5, minimum_score: float = 0.25) -> dict
             if score < minimum_score:
                 continue
             excerpt = re.sub(r"\s+", " ", section["text"]).strip()[:360]
+            preferred_summary = _preferred_summary_section(document["sections"])
+            summary_excerpt = (
+                preferred_summary["text"][:700]
+                if preferred_summary
+                else excerpt
+            )
+            summary_section = (
+                preferred_summary["section"]
+                if preferred_summary
+                else section["section"]
+            )
             matches.append({
                 "source_id": document["source_id"], "title": meta["title"],
                 "canonical_url": meta["canonical_url"], "category": meta["category"],
                 "authority": meta["authority"], "author": meta["authority"], "date": meta["date"],
                 "source_class": meta["source_class"], "confidence": meta["confidence"],
                 "section": section["section"], "excerpt": excerpt,
+                "summary_excerpt": summary_excerpt,
+                "summary_section": summary_section,
                 "relevance_score": round(score, 3), "_rank_score": rank_score,
                 "warnings": document["warnings"],
                 "evidence_labels": meta.get("evidence_labels", []),
