@@ -596,3 +596,23 @@ def test_digital_overtourism_documentary_api():
     assert payload["sources"][0]["source_id"] == "RESEARCH-OVERTOURISM-001"
 
     limiter.reset()
+
+
+def test_digital_overtourism_explanatory_query_avoids_metadata_only_section():
+    result = retrieve("Explain digital overtourism")
+
+    assert result["retrieval_status"] == "ready"
+    assert result["sources"][0]["source_id"] == "RESEARCH-OVERTOURISM-001"
+    assert result["sources"][0]["section"] not in {
+        "Canonical publication",
+        "Canonical resources",
+        "Source identity",
+    }
+
+
+def test_digital_overtourism_causal_query_prefers_claims_boundary():
+    result = retrieve("Does generative AI cause physical overtourism?")
+
+    assert result["retrieval_status"] == "ready"
+    assert result["sources"][0]["source_id"] == "RESEARCH-OVERTOURISM-001"
+    assert result["sources"][0]["section"] == "Claims boundary"

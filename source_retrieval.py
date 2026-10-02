@@ -313,9 +313,54 @@ def retrieve(query: str, *, limit: int = 5, minimum_score: float = 0.25) -> dict
                 else 0.35 if exact_term else 0.0
             )
             scope_adjustment = 0.65 if scoped_ids else 0.0
+
+            non_substantive_sections = {
+                "canonical publication",
+                "canonical resources",
+                "source identity",
+            }
+            documentary_metadata_intent = bool(
+                query_terms & {"canonical", "url", "citation", "source"}
+            )
+            section_quality_adjustment = (
+                -0.45
+                if section_heading in non_substantive_sections
+                and not documentary_metadata_intent
+                else 0.0
+            )
+
+            causal_intent = bool(
+                query_terms
+                & {
+                    "cause",
+                    "causes",
+                    "causal",
+                    "causality",
+                    "causation",
+                    "prove",
+                    "proves",
+                    "proven",
+                    "establish",
+                    "established",
+                    "verify",
+                    "verified",
+                }
+            )
+
+            claims_boundary_bonus = (
+                0.55
+                if causal_intent and section_heading == "claims boundary"
+                else 0.0
+            )
+
             rank_score = (
                 raw / max(6, len(query_terms) * 4)
-                + authority_bonus + official_bonus + exact_bonus + scope_adjustment
+                + authority_bonus
+                + official_bonus
+                + exact_bonus
+                + scope_adjustment
+                + section_quality_adjustment
+                + claims_boundary_bonus
             )
             score = min(1.0, rank_score)
             if score < minimum_score:
