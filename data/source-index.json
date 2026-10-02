@@ -1,7 +1,7 @@
 {
   "schema_version": "1.0",
   "registry_version": "2.0.0",
-  "registry_hash": "c35c705d2aa25feca5d3b4a10cdfc91b841cb6be9607c87a82019f83b4d5fdd4",
+  "registry_hash": "63811ad80b43805006a40169ec48da6f3a0519670dc3de95276465b8ef5dcb10",
   "documents": [
     {
       "source_id": "DFV-002",
@@ -2396,7 +2396,147 @@
           "text": "https://cognitivelogic.it/research/ai-governance-matters/"
         }
       ]
+    },
+    {
+      "source_id": "RESEARCH-OVERTOURISM-001",
+      "source_sha256": "42e83b1eb28bf8749e591ff5a56a0cab87c3ea1e13a132f9bad427d0f8306d69",
+      "metadata": {
+        "title": "Digital Overtourism: When AI Concentrates Visibility Before Tourists Arrive",
+        "version": "1.0",
+        "canonical_url": "https://cognitivelogic.it/research/digital-overtourism-ai-travel-recommendations/",
+        "category": "risorsa editoriale",
+        "authority": "Roberto Malini / Cognitive Logic",
+        "date": "2026-10-01",
+        "status": "published",
+        "source_class": "primary",
+        "confidence": "high",
+        "scope": "Digital overtourism, generative AI tourism recommendations, popularity bias, destination concentration, territorial representation and evidence governance",
+        "language": "en",
+        "publication_status": "published"
+      },
+      "search_terms": [
+        "digital overtourism",
+        "AI tourism recommendations",
+        "AI travel recommendations",
+        "tourism recommendation systems",
+        "destination visibility",
+        "destination concentration",
+        "popularity bias tourism",
+        "territorial representation",
+        "recommendation frequency",
+        "effective diversity",
+        "geographic concentration",
+        "prompt sensitivity",
+        "evidence representation",
+        "algorithmic tourism visibility"
+      ],
+      "warnings": [
+        "The claim linking AI recommendation to physical overtourism is only partially verified.",
+        "No general causal relationship between AI recommendations and physical overtourism is established."
+      ],
+      "sections": [
+        {
+          "section": "Source identity",
+          "text": "- Source ID: RESEARCH-OVERTOURISM-001\n- Author: Roberto Malini\n- Publisher: Cognitive Logic\n- Publication date: 2026-10-01\n- Language: English\n- Canonical: https://cognitivelogic.it/research/digital-overtourism-ai-travel-recommendations/"
+        },
+        {
+          "section": "Executive Summary",
+          "text": "Digital overtourism describes the systematic concentration of destination visibility inside digital recommendation environments before a physical journey begins.\n\nGenerative AI and tourism recommendation systems may repeatedly amplify destinations, attractions and operators that are already strongly represented online.\n\nCurrent evidence supports the existence of popularity bias, recurrent destination concentration and unequal representation in tourism recommendation environments.\n\nHowever, a general causal relationship between AI recommendations and increased physical overtourism has not been established.\n\nThe evidence chain must therefore remain explicit:\n\ndigital representation → algorithmic selection → recommendation → exposure → intention → choice → travel → territorial pressure.\n\nEach stage requires separate measurement."
+        },
+        {
+          "section": "The claim",
+          "text": "Generative AI and tourism recommendation systems may amplify existing digital visibility by repeatedly recommending destinations, attractions and businesses that are already strongly represented online.\n\nIf this occurs systematically, AI may concentrate attention before a physical journey begins.\n\nThis does not establish that AI causes physical overtourism."
+        },
+        {
+          "section": "Operational definition",
+          "text": "Digital overtourism is the systematic concentration of destination visibility inside digital recommendation environments, narrowing the range of places travellers encounter before making a decision.\n\nTraditional overtourism concerns physical pressure on territories.\n\nDigital overtourism concerns the distribution of attention during the pre-travel phase."
+        },
+        {
+          "section": "Evidence of concentration",
+          "text": "Research in tourism recommendation environments indicates that apparently diverse recommendation outputs may repeatedly converge on a relatively narrow set of destinations.\n\nThe number of distinct destinations mentioned at least once is not equivalent to effective diversity of exposure.\n\nSystem-level distribution across repeated prompts is therefore a more relevant measure than diversity inside a single answer."
+        },
+        {
+          "section": "Popularity bias",
+          "text": "Popularity bias in tourism recommendation systems predates generative AI.\n\nDestinations and points of interest with stronger visibility signals may have a higher probability of being recommended.\n\nLess represented places may consequently remain underexposed even when relevant to travellers."
+        },
+        {
+          "section": "Generative AI and representation",
+          "text": "Traditional search engines rank documents.\n\nGenerative AI constructs answers and decides which destinations to name, omit or associate with concepts such as:\n\n- authenticity;\n- sustainability;\n- culture;\n- affordability;\n- tranquillity.\n\nThe distribution of representation therefore becomes a measurable governance object."
+        },
+        {
+          "section": "Visibility feedback loop",
+          "text": "A possible recursive cycle is:\n\nvisibility → recommendation → attention → experience → new content → greater visibility.\n\nDestinations with more reviews, guides, indexed pages, structured information and editorial coverage may become easier for recommendation systems to recognise and reproduce.\n\nThis effect does not require intentional bias.\n\nUnequal information environments may be sufficient."
+        },
+        {
+          "section": "AI and demand dispersion",
+          "text": "AI recommendation systems may also support dispersion.\n\nThey can be designed to suggest:\n\n- less congested areas;\n- alternative itineraries;\n- different time windows;\n- underrepresented destinations.\n\nAI may therefore amplify concentration or support redistribution.\n\nThe outcome depends on:\n\n- data;\n- ranking objectives;\n- recommendation design;\n- territorial indicators incorporated into the system."
+        },
+        {
+          "section": "What destinations should measure",
+          "text": "Relevant measurements include:"
+        },
+        {
+          "section": "Recommendation frequency",
+          "text": "How often each destination, municipality, attraction or operator appears."
+        },
+        {
+          "section": "Effective diversity",
+          "text": "How many places receive a meaningful share of total exposure."
+        },
+        {
+          "section": "Geographic concentration",
+          "text": "How recommendations are spatially distributed across the territory."
+        },
+        {
+          "section": "Prompt sensitivity",
+          "text": "Whether destination representation changes across different user intents."
+        },
+        {
+          "section": "Evidence representation",
+          "text": "Which institutional pages, datasets, structured content and authoritative sources make parts of a territory easier for AI systems to interpret."
+        },
+        {
+          "section": "Evidence governance",
+          "text": "Digital overtourism can be examined through four governance dimensions:"
+        },
+        {
+          "section": "Representation",
+          "text": "Which places enter the information environment."
+        },
+        {
+          "section": "Evidence",
+          "text": "Which verifiable sources support their representation."
+        },
+        {
+          "section": "Distribution",
+          "text": "How attention is distributed among territories and operators."
+        },
+        {
+          "section": "Accountability",
+          "text": "Whether resulting concentration can be measured and audited."
+        },
+        {
+          "section": "Claims boundary",
+          "text": "The central claim is classified as partially verified.\n\nCurrent evidence supports:\n\n- popularity bias;\n- recurrent destination concentration;\n- unequal representation;\n- concentrated pre-travel recommendation patterns.\n\nCurrent evidence does not generally establish:\n\nAI recommendation → increase in physical overtourism.\n\nDemonstrating that relationship would require longitudinal evidence connecting:\n\n- algorithmic exposure;\n- travel intentions;\n- bookings;\n- visitor movements;\n- measurable territorial pressure."
+        },
+        {
+          "section": "Human and institutional interpretation",
+          "text": "Recommendation concentration should not be interpreted as proof of physical tourism pressure without additional evidence.\n\nDestination managers, public authorities and tourism organizations retain responsibility for interpreting digital visibility metrics in territorial context."
+        },
+        {
+          "section": "Research references",
+          "text": "Current Issues in Tourism, 2026:\n\nDOI 10.1080/13683500.2026.2654066\n\nFrontiers in Big Data, 2023:\n\nDOI 10.3389/fdata.2023.1168692"
+        },
+        {
+          "section": "Limitations",
+          "text": "This source evaluates digital representation and recommendation concentration.\n\nIt does not establish a universal causal relationship between generative AI recommendations and physical overtourism.\n\nIt does not constitute:\n\n- destination certification;\n- causal impact assessment;\n- regulatory determination;\n- legal advice;\n- proof that algorithmic visibility directly produces visitor pressure."
+        },
+        {
+          "section": "Canonical publication",
+          "text": "https://cognitivelogic.it/research/digital-overtourism-ai-travel-recommendations/"
+        }
+      ]
     }
   ],
-  "index_version": "f6d183396931ca9bec1dd76357370c6c963b79c77106a38922131182cbe461a6"
+  "index_version": "0d427eddfbb3c26bbc73ef78992f42ba058d589cfc8cc92bfcecc249359a0baf"
 }

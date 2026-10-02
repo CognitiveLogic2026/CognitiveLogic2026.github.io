@@ -527,3 +527,72 @@ def test_ai_governance_matters_documentary_api():
     )
 
     limiter.reset()
+
+
+def test_digital_overtourism_explicit_query_is_strictly_scoped():
+    result = retrieve("Explain digital overtourism")
+
+    assert result["retrieval_status"] == "ready"
+    assert [source["source_id"] for source in result["sources"]] == [
+        "RESEARCH-OVERTOURISM-001"
+    ]
+    assert result["sources"][0]["canonical_url"] == (
+        "https://cognitivelogic.it/research/"
+        "digital-overtourism-ai-travel-recommendations/"
+    )
+
+
+def test_digital_overtourism_uses_substantive_summary():
+    result = retrieve(
+        "Can AI travel recommendations amplify destination concentration?"
+    )
+
+    source = next(
+        item
+        for item in result["sources"]
+        if item["source_id"] == "RESEARCH-OVERTOURISM-001"
+    )
+
+    assert source["summary_section"] == "Executive Summary"
+    assert "Digital overtourism describes" in source["summary_excerpt"]
+    assert "causal relationship" in source["summary_excerpt"]
+
+
+def test_digital_overtourism_preserves_causal_boundary():
+    result = retrieve("Does generative AI cause physical overtourism?")
+
+    source = next(
+        item
+        for item in result["sources"]
+        if item["source_id"] == "RESEARCH-OVERTOURISM-001"
+    )
+
+    assert source["source_id"] == "RESEARCH-OVERTOURISM-001"
+
+    text = (
+        source["summary_excerpt"] + " " +
+        source["excerpt"] + " " +
+        " ".join(source["warnings"])
+    ).lower()
+
+    assert "causal relationship" in text
+    assert "not" in text
+
+
+def test_digital_overtourism_documentary_api():
+    with patch("main.check_duplicate", return_value=None), patch("main.save_pilot"):
+        response = app.test_client().post(
+            "/copilot-analyze",
+            json={"description": "Explain digital overtourism"},
+            headers={"Origin": "https://cognitivelogic.it"},
+        )
+
+    payload = response.get_json()
+
+    assert response.status_code == 200
+    assert payload["interaction_mode"] == "documentary"
+    assert payload["retrieval_status"] == "ready"
+    assert payload["response_mode"] == "sovereign"
+    assert payload["sources"][0]["source_id"] == "RESEARCH-OVERTOURISM-001"
+
+    limiter.reset()

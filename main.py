@@ -177,6 +177,7 @@ _DOCUMENTARY_REFERENCES = (
     "dfv 002", "hva 001", "coste360", "egea", "agcm", "ea 009", "cs 010",
     "cs 008", "iw evm", "international watch evidence verification methodology",
     "ai governance matters", "why ai governance matters more than ai performance",
+    "digital overtourism", "ai travel recommendations",
 )
 
 

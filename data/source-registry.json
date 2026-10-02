@@ -1098,6 +1098,53 @@
         "Cognitive Logic research and architectural perspective.",
         "Does not constitute legal advice, regulatory certification, accredited audit or technical safety certification."
       ]
+    },
+    {
+      "source_id": "RESEARCH-OVERTOURISM-001",
+      "title": "Digital Overtourism: When AI Concentrates Visibility Before Tourists Arrive",
+      "version": "1.0",
+      "source_path": "qen-sovereign/knowledge-sources/RESEARCH-OVERTOURISM-001.md",
+      "canonical_url": "https://cognitivelogic.it/research/digital-overtourism-ai-travel-recommendations/",
+      "category": "risorsa editoriale",
+      "authority": "Roberto Malini / Cognitive Logic",
+      "date": "2026-10-01",
+      "status": "published",
+      "source_class": "primary",
+      "confidence": "high",
+      "scope": "Digital overtourism, generative AI tourism recommendations, popularity bias, destination concentration, territorial representation and evidence governance",
+      "language": "en",
+      "search_terms": [
+        "digital overtourism",
+        "AI tourism recommendations",
+        "AI travel recommendations",
+        "tourism recommendation systems",
+        "destination visibility",
+        "destination concentration",
+        "popularity bias tourism",
+        "territorial representation",
+        "recommendation frequency",
+        "effective diversity",
+        "geographic concentration",
+        "prompt sensitivity",
+        "evidence representation",
+        "algorithmic tourism visibility"
+      ],
+      "allowed_use": [
+        "informational_retrieval",
+        "citation",
+        "documentary_response"
+      ],
+      "prohibited_use": [
+        "modify_qen_configuration",
+        "modify_qen_decisions"
+      ],
+      "publication_status": "published",
+      "enabled": true,
+      "sha256": "42e83b1eb28bf8749e591ff5a56a0cab87c3ea1e13a132f9bad427d0f8306d69",
+      "warnings": [
+        "The claim linking AI recommendation to physical overtourism is only partially verified.",
+        "No general causal relationship between AI recommendations and physical overtourism is established."
+      ]
     }
   ]
 }

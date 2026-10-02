@@ -33,6 +33,8 @@ _SOURCE_SCOPES = {
     "international watch evidence verification methodology": {"RESEARCH-IWEVM-001"},
     "ai governance matters": {"RESEARCH-AIGOV-001"},
     "why ai governance matters more than ai performance": {"RESEARCH-AIGOV-001"},
+    "digital overtourism": {"RESEARCH-OVERTOURISM-001"},
+    "ai travel recommendations": {"RESEARCH-OVERTOURISM-001"},
 }
 
 REQUIRED_FIELDS = {
