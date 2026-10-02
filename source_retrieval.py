@@ -31,6 +31,8 @@ _SOURCE_SCOPES = {
     "cs 008": {"CS-008"},
     "iw evm": {"RESEARCH-IWEVM-001"},
     "international watch evidence verification methodology": {"RESEARCH-IWEVM-001"},
+    "ai governance matters": {"RESEARCH-AIGOV-001"},
+    "why ai governance matters more than ai performance": {"RESEARCH-AIGOV-001"},
 }
 
 REQUIRED_FIELDS = {

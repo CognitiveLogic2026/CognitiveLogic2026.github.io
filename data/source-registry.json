@@ -1052,6 +1052,52 @@
         "Methodology supports evidence governance and accountable decision-making.",
         "Does not constitute legal advice, statutory certification, accredited audit or peer review."
       ]
+    },
+    {
+      "source_id": "RESEARCH-AIGOV-001",
+      "title": "Why AI Governance Matters More Than AI Performance",
+      "version": "1.0",
+      "source_path": "qen-sovereign/knowledge-sources/RESEARCH-AIGOV-001.md",
+      "canonical_url": "https://cognitivelogic.it/research/ai-governance-matters/",
+      "category": "risorsa editoriale",
+      "authority": "Roberto Malini / Cognitive Logic",
+      "date": "2026-07-20",
+      "status": "published",
+      "source_class": "primary",
+      "confidence": "high",
+      "scope": "AI Governance, agentic AI, explainability, semantic identity, knowledge governance, decision traceability and human oversight",
+      "language": "en",
+      "search_terms": [
+        "AI Governance Matters",
+        "Why AI Governance Matters More Than AI Performance",
+        "AI governance",
+        "agentic AI governance",
+        "AI agents governance",
+        "decision traceability",
+        "semantic identity",
+        "knowledge governance",
+        "human oversight",
+        "human authority",
+        "governed AI",
+        "trustworthy AI agents",
+        "model performance governance"
+      ],
+      "allowed_use": [
+        "informational_retrieval",
+        "citation",
+        "documentary_response"
+      ],
+      "prohibited_use": [
+        "modify_qen_configuration",
+        "modify_qen_decisions"
+      ],
+      "publication_status": "published",
+      "enabled": true,
+      "sha256": "0e59fecffb9d833ddccd3676a4432000c510fc10c2c26ebbb91b1888b7d21298",
+      "warnings": [
+        "Cognitive Logic research and architectural perspective.",
+        "Does not constitute legal advice, regulatory certification, accredited audit or technical safety certification."
+      ]
     }
   ]
 }

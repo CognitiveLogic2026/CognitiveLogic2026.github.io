@@ -1,7 +1,7 @@
 {
   "schema_version": "1.0",
   "registry_version": "2.0.0",
-  "registry_hash": "3056786df191e1ef82b9956196ca99525a87ad84fb8997b31970ce1ddaa68063",
+  "registry_hash": "c35c705d2aa25feca5d3b4a10cdfc91b841cb6be9607c87a82019f83b4d5fdd4",
   "documents": [
     {
       "source_id": "DFV-002",
@@ -2305,7 +2305,98 @@
           "text": "Cognitive Logic canonical publication:\n\nhttps://cognitivelogic.it/research/international-watch-evidence-verification-methodology/\n\nVersion DOI:\n\nhttps://doi.org/10.5281/zenodo.22850822\n\nConcept DOI:\n\nhttps://doi.org/10.5281/zenodo.22850821"
         }
       ]
+    },
+    {
+      "source_id": "RESEARCH-AIGOV-001",
+      "source_sha256": "0e59fecffb9d833ddccd3676a4432000c510fc10c2c26ebbb91b1888b7d21298",
+      "metadata": {
+        "title": "Why AI Governance Matters More Than AI Performance",
+        "version": "1.0",
+        "canonical_url": "https://cognitivelogic.it/research/ai-governance-matters/",
+        "category": "risorsa editoriale",
+        "authority": "Roberto Malini / Cognitive Logic",
+        "date": "2026-07-20",
+        "status": "published",
+        "source_class": "primary",
+        "confidence": "high",
+        "scope": "AI Governance, agentic AI, explainability, semantic identity, knowledge governance, decision traceability and human oversight",
+        "language": "en",
+        "publication_status": "published"
+      },
+      "search_terms": [
+        "AI Governance Matters",
+        "Why AI Governance Matters More Than AI Performance",
+        "AI governance",
+        "agentic AI governance",
+        "AI agents governance",
+        "decision traceability",
+        "semantic identity",
+        "knowledge governance",
+        "human oversight",
+        "human authority",
+        "governed AI",
+        "trustworthy AI agents",
+        "model performance governance"
+      ],
+      "warnings": [
+        "Cognitive Logic research and architectural perspective.",
+        "Does not constitute legal advice, regulatory certification, accredited audit or technical safety certification."
+      ],
+      "sections": [
+        {
+          "section": "Source identity",
+          "text": "- Source ID: RESEARCH-AIGOV-001\n- Author: Roberto Malini\n- Publisher: Cognitive Logic\n- Publication date: 2026-07-20\n- Language: English\n- Series: Cognitive Logic AI Governance Series · Vol. 1\n- Canonical: https://cognitivelogic.it/research/ai-governance-matters/"
+        },
+        {
+          "section": "Executive Summary",
+          "text": "Trustworthy AI systems require more than model performance.\n\nAs artificial intelligence moves toward autonomous and semi-autonomous agents, organizations need governance structures that make actions, evidence, responsibilities and decisions intelligible, attributable and reviewable.\n\nAI Governance therefore depends on explainability, decision traceability, semantic identity, governed knowledge structures and human oversight.\n\nThe central question is not only what an AI system can do, but whether its actions remain understandable, attributable and governable."
+        },
+        {
+          "section": "From model performance to system governance",
+          "text": "Capability, accuracy, speed, scale and benchmark performance remain relevant measures of AI systems, but they are not sufficient for agentic systems.\n\nA technically powerful system may still be difficult to audit, operationally unsafe or impossible to explain.\n\nGovernance requires that AI actions remain:\n\n- intelligible;\n- attributable;\n- governable;\n- reviewable."
+        },
+        {
+          "section": "Agentic AI governance",
+          "text": "AI agents may:\n\n- interpret broad objectives;\n- choose tools;\n- retrieve external information;\n- delegate subtasks;\n- generate intermediate decisions.\n\nThis creates governance requirements including:\n\n- clear identity for agents and system components;\n- documented authority;\n- operational boundaries;\n- traceable evidence;\n- traceable actions and decisions;\n- human oversight for consequential operations;\n- explainable relationships between inputs and outcomes;\n- monitoring of dependencies and external tools."
+        },
+        {
+          "section": "Explainability and decision traceability",
+          "text": "Explainability alone is not sufficient when it only produces a plausible narrative about an AI output.\n\nGoverned decision traceability requires the ability to reconstruct:\n\n- which evidence was used;\n- which rules were applied;\n- which component performed an action;\n- who had authority to approve, reject or override an outcome.\n\nA generated explanation is not equivalent to a governed decision trace."
+        },
+        {
+          "section": "Knowledge architecture",
+          "text": "Knowledge graphs, semantic models and governed information structures can connect:\n\n- identities;\n- evidence;\n- policies;\n- decisions;\n- organizational responsibilities.\n\nA governed knowledge architecture makes AI-supported decisions understandable, reviewable and verifiable."
+        },
+        {
+          "section": "Semantic identity",
+          "text": "Autonomous components should possess a recognizable semantic identity defining:\n\n- what the component is;\n- what it is authorized to do;\n- which evidence it may access;\n- which governance rules apply.\n\nSemantic identity supports accountability in multi-agent environments.\n\nWithout clear identity and authority, multi-agent systems may become opaque chains of actions without clear ownership or responsibility."
+        },
+        {
+          "section": "Human authority",
+          "text": "AI governance must preserve meaningful human responsibility.\n\nConsequential operations require human oversight and clear authority to approve, reject or override AI-supported outcomes.\n\nAutonomy does not remove organizational accountability."
+        },
+        {
+          "section": "Cognitive Logic approach",
+          "text": "Cognitive Logic describes AI Governance, Knowledge Governance, Explainable AI, Semantic Identity and Decision Traceability as interconnected governance capabilities.\n\nWithin the QEN Framework, knowledge is treated as governed infrastructure supporting:\n\n- evidence-based reasoning;\n- transparent decisions;\n- accountable AI systems."
+        },
+        {
+          "section": "Claims boundary",
+          "text": "This source argues that AI governance requires more than performance metrics and that trustworthy agentic systems require governance, traceability, identity, evidence and human oversight.\n\nIt does not establish that these elements alone guarantee trustworthy AI.\n\nIt does not provide a statutory compliance certification, legal determination or technical safety guarantee."
+        },
+        {
+          "section": "Limitations",
+          "text": "This publication is a Cognitive Logic research article presenting an architectural and governance perspective.\n\nIt does not constitute:\n\n- legal advice;\n- regulatory certification;\n- accredited audit;\n- technical safety certification;\n- empirical proof that governance controls eliminate AI risk."
+        },
+        {
+          "section": "Related Cognitive Logic resources",
+          "text": "QEN Sovereign:\n\nhttps://cognitivelogic.it/qen-sovereign/en/\n\nExplainability & Decision Traceability — CS-008:\n\nhttps://cognitivelogic.it/resources/documents/cs-008-explainability-decision-traceability/\n\nQEN Framework:\n\nhttps://cognitivelogic.it/framework.html"
+        },
+        {
+          "section": "Canonical publication",
+          "text": "https://cognitivelogic.it/research/ai-governance-matters/"
+        }
+      ]
     }
   ],
-  "index_version": "9927f3e76e3a2d5165c28ad326b37d8f14262be320cd73b7df34fd3f0bf34894"
+  "index_version": "f6d183396931ca9bec1dd76357370c6c963b79c77106a38922131182cbe461a6"
 }

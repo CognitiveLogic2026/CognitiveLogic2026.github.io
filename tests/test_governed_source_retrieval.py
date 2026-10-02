@@ -475,3 +475,55 @@ def test_iw_evm_documentary_api_preserves_governed_source():
     )
 
     limiter.reset()
+
+
+def test_ai_governance_matters_explicit_title_is_strictly_scoped():
+    result = retrieve("Explain AI Governance Matters")
+
+    assert result["retrieval_status"] == "ready"
+    assert [source["source_id"] for source in result["sources"]] == [
+        "RESEARCH-AIGOV-001"
+    ]
+    assert result["sources"][0]["canonical_url"] == (
+        "https://cognitivelogic.it/research/ai-governance-matters/"
+    )
+
+
+def test_ai_governance_matters_uses_executive_summary():
+    result = retrieve(
+        "Why does AI governance matter more than model performance?"
+    )
+
+    source = next(
+        item
+        for item in result["sources"]
+        if item["source_id"] == "RESEARCH-AIGOV-001"
+    )
+
+    assert source["summary_section"] == "Executive Summary"
+    assert "Trustworthy AI systems require more than model performance" in (
+        source["summary_excerpt"]
+    )
+    assert "human oversight" in source["summary_excerpt"]
+
+
+def test_ai_governance_matters_documentary_api():
+    with patch("main.check_duplicate", return_value=None), patch("main.save_pilot"):
+        response = app.test_client().post(
+            "/copilot-analyze",
+            json={"description": "Explain AI Governance Matters"},
+            headers={"Origin": "https://cognitivelogic.it"},
+        )
+
+    payload = response.get_json()
+
+    assert response.status_code == 200
+    assert payload["interaction_mode"] == "documentary"
+    assert payload["retrieval_status"] == "ready"
+    assert payload["response_mode"] == "sovereign"
+    assert payload["sources"][0]["source_id"] == "RESEARCH-AIGOV-001"
+    assert payload["sources"][0]["canonical_url"] == (
+        "https://cognitivelogic.it/research/ai-governance-matters/"
+    )
+
+    limiter.reset()
