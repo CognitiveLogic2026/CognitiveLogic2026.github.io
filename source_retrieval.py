@@ -29,6 +29,8 @@ _SOURCE_SCOPES = {
     "ea 009": {"EA-009", "CASE-COSTE360-001"},
     "cs 010": {"CS-010", "CASE-COASTAL-001"},
     "cs 008": {"CS-008"},
+    "iw evm": {"RESEARCH-IWEVM-001"},
+    "international watch evidence verification methodology": {"RESEARCH-IWEVM-001"},
 }
 
 REQUIRED_FIELDS = {

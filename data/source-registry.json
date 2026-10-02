@@ -1005,6 +1005,53 @@
         "Cognitive Logic service specification; informational use only.",
         "Does not replace legal, regulatory or professional advice."
       ]
+    },
+    {
+      "source_id": "RESEARCH-IWEVM-001",
+      "title": "International Watch Evidence Verification Methodology",
+      "version": "1.0",
+      "source_path": "qen-sovereign/knowledge-sources/RESEARCH-IWEVM-001.md",
+      "canonical_url": "https://cognitivelogic.it/research/international-watch-evidence-verification-methodology/",
+      "category": "risorsa editoriale",
+      "authority": "Roberto Malini / Cognitive Logic",
+      "date": "2026-09-19",
+      "status": "published",
+      "source_class": "primary",
+      "confidence": "high",
+      "scope": "Evidence verification, evidence governance, source provenance, claims boundary, decision traceability, audit trail and human authority",
+      "language": "en",
+      "search_terms": [
+        "IW-EVM",
+        "IW EVM",
+        "International Watch Evidence Verification Methodology",
+        "evidence verification",
+        "evidence governance",
+        "source provenance",
+        "claims boundary",
+        "claim boundary",
+        "decision traceability",
+        "audit trail",
+        "human authority",
+        "confidence assessment",
+        "evidence triangulation",
+        "10.5281/zenodo.22850822"
+      ],
+      "allowed_use": [
+        "informational_retrieval",
+        "citation",
+        "documentary_response"
+      ],
+      "prohibited_use": [
+        "modify_qen_configuration",
+        "modify_qen_decisions"
+      ],
+      "publication_status": "published",
+      "enabled": true,
+      "sha256": "bd39d0f3d7baf99450acf6579704fda45f274865070af6eced6b5bb857161a43",
+      "warnings": [
+        "Methodology supports evidence governance and accountable decision-making.",
+        "Does not constitute legal advice, statutory certification, accredited audit or peer review."
+      ]
     }
   ]
 }

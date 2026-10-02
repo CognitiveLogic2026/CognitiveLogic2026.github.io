@@ -423,3 +423,55 @@ def test_cs_008_documentary_response_uses_substantive_executive_summary():
     assert "Executive Summary" in payload["explanation"]
 
     limiter.reset()
+
+
+def test_iw_evm_explicit_identifier_is_strictly_scoped():
+    result = retrieve("Explain IW-EVM")
+
+    assert result["retrieval_status"] == "ready"
+    assert [source["source_id"] for source in result["sources"]] == [
+        "RESEARCH-IWEVM-001"
+    ]
+    assert result["sources"][0]["canonical_url"] == (
+        "https://cognitivelogic.it/research/"
+        "international-watch-evidence-verification-methodology/"
+    )
+
+
+def test_iw_evm_uses_substantive_executive_summary():
+    result = retrieve(
+        "What is the International Watch Evidence Verification Methodology?"
+    )
+
+    source = next(
+        item
+        for item in result["sources"]
+        if item["source_id"] == "RESEARCH-IWEVM-001"
+    )
+
+    assert source["summary_section"] == "Executive Summary"
+    assert "bounded claim" in source["summary_excerpt"]
+    assert "auditable conclusion" in source["summary_excerpt"]
+
+
+def test_iw_evm_documentary_api_preserves_governed_source():
+    with patch("main.check_duplicate", return_value=None), patch("main.save_pilot"):
+        response = app.test_client().post(
+            "/copilot-analyze",
+            json={"description": "Explain IW-EVM"},
+            headers={"Origin": "https://cognitivelogic.it"},
+        )
+
+    payload = response.get_json()
+
+    assert response.status_code == 200
+    assert payload["interaction_mode"] == "documentary"
+    assert payload["retrieval_status"] == "ready"
+    assert payload["response_mode"] == "sovereign"
+    assert payload["sources"][0]["source_id"] == "RESEARCH-IWEVM-001"
+    assert payload["sources"][0]["canonical_url"] == (
+        "https://cognitivelogic.it/research/"
+        "international-watch-evidence-verification-methodology/"
+    )
+
+    limiter.reset()

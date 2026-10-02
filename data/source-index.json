@@ -1,7 +1,7 @@
 {
   "schema_version": "1.0",
   "registry_version": "2.0.0",
-  "registry_hash": "bcd7310361680e5189c1226f1e67d4cce4c73eac681fec090848eeb86dd003bf",
+  "registry_hash": "3056786df191e1ef82b9956196ca99525a87ad84fb8997b31970ce1ddaa68063",
   "documents": [
     {
       "source_id": "DFV-002",
@@ -2209,7 +2209,103 @@
           "text": "The Explainability & Decision Traceability service is an integral component of the Cognitive Logic Enterprise Service Catalogue and is designed according to the principles of the Cognitive Logic Sovereign Intelligence Architecture.\n\nThe service supports executive governance by establishing structured methodologies for explainability, decision accountability and organizational traceability, enabling organizations to govern AI-supported decisions through measurable, transparent and evidence-based practices.\n\nThe methodology is technology-independent and does not rely on external AI providers as decision sources. Strategic assessments and recommendations are generated exclusively through the Cognitive Logic Sovereign Intelligence Architecture by combining the QEN Sovereign Engine, Governance Engine, Knowledge Graph, EVIDE, proprietary algorithms, intelligible data and verifiable evidence.\n\nThe service is designed to integrate consistently with other Enterprise Services, strengthening organizational governance, regulatory readiness, decision transparency and continuous governance improvement.\n\nThis specification represents the authoritative architectural baseline for CS-008 within the Commercial Evolution 1.0 programme and shall be maintained in alignment with future approved architectural decisions."
         }
       ]
+    },
+    {
+      "source_id": "RESEARCH-IWEVM-001",
+      "source_sha256": "bd39d0f3d7baf99450acf6579704fda45f274865070af6eced6b5bb857161a43",
+      "metadata": {
+        "title": "International Watch Evidence Verification Methodology",
+        "version": "1.0",
+        "canonical_url": "https://cognitivelogic.it/research/international-watch-evidence-verification-methodology/",
+        "category": "risorsa editoriale",
+        "authority": "Roberto Malini / Cognitive Logic",
+        "date": "2026-09-19",
+        "status": "published",
+        "source_class": "primary",
+        "confidence": "high",
+        "scope": "Evidence verification, evidence governance, source provenance, claims boundary, decision traceability, audit trail and human authority",
+        "language": "en",
+        "publication_status": "published"
+      },
+      "search_terms": [
+        "IW-EVM",
+        "IW EVM",
+        "International Watch Evidence Verification Methodology",
+        "evidence verification",
+        "evidence governance",
+        "source provenance",
+        "claims boundary",
+        "claim boundary",
+        "decision traceability",
+        "audit trail",
+        "human authority",
+        "confidence assessment",
+        "evidence triangulation",
+        "10.5281/zenodo.22850822"
+      ],
+      "warnings": [
+        "Methodology supports evidence governance and accountable decision-making.",
+        "Does not constitute legal advice, statutory certification, accredited audit or peer review."
+      ],
+      "sections": [
+        {
+          "section": "Source identity",
+          "text": "- Source ID: RESEARCH-IWEVM-001\n- Short name: IW-EVM 1.0\n- Author: Roberto Malini\n- Publisher: Cognitive Logic\n- Publication date: 2026-09-19\n- Version: 1.0\n- Language: English\n- Version DOI: 10.5281/zenodo.22850822\n- Concept DOI: 10.5281/zenodo.22850821\n- Canonical: https://cognitivelogic.it/research/international-watch-evidence-verification-methodology/"
+        },
+        {
+          "section": "Executive Summary",
+          "text": "International Watch Evidence Verification Methodology (IW-EVM) establishes a reproducible and controlled path from a bounded claim to an auditable conclusion.\n\nThe methodology keeps claims, evidence, interpretation and operational recommendations distinct so that each passage can be reviewed independently.\n\nIW-EVM supports evidence governance by requiring source provenance, relevance and temporal validity, triangulation, explicit confidence and limitations, reconstructable decision records and preservation of human authority.\n\nIts purpose is not to declare absolute truth, but to make the evidentiary path behind a conclusion inspectable, bounded and auditable."
+        },
+        {
+          "section": "Purpose",
+          "text": "IW-EVM establishes a controlled path from a bounded claim to an auditable conclusion.\n\nIt separates:\n\n- claims;\n- evidence;\n- interpretation;\n- operational recommendations.\n\nThis separation allows each component to be examined independently."
+        },
+        {
+          "section": "Verification dimensions",
+          "text": "The methodology evaluates:\n\n- source provenance and authenticity;\n- relevance and temporal validity;\n- triangulation and management of conflicting evidence;\n- confidence assessment;\n- explicit limitations;\n- decision records;\n- reconstructable audit trails;\n- preservation of human authority;\n- accountability."
+        },
+        {
+          "section": "Claims boundary",
+          "text": "A conclusion must not exceed what the available evidence actually establishes.\n\nAuthoritative provenance alone does not guarantee that a downstream claim is adequately supported.\n\nClaims must remain bounded by:\n\n- the scope of the underlying source;\n- the period covered by the evidence;\n- methodological limitations;\n- unresolved conflicts;\n- the confidence justified by the available evidence."
+        },
+        {
+          "section": "Evidence and provenance",
+          "text": "Evidence should remain connected to its source, context and verification status.\n\nRelevant properties include:\n\n- origin;\n- authenticity;\n- publication or observation date;\n- methodological scope;\n- authority;\n- relevance;\n- limitations;\n- integrity."
+        },
+        {
+          "section": "Decision traceability",
+          "text": "IW-EVM supports reconstructable decision records and audit trails.\n\nA reviewer should be able to determine:\n\n- which claim was evaluated;\n- which evidence was considered;\n- how evidence was interpreted;\n- what limitations were known;\n- how confidence was assessed;\n- which conclusion was reached;\n- which human authority retained responsibility."
+        },
+        {
+          "section": "Human authority",
+          "text": "IW-EVM preserves human authority and accountability.\n\nThe methodology supports analysis and evidence verification but does not transfer final decision authority to an automated system."
+        },
+        {
+          "section": "Deposited research package",
+          "text": "The deposited Zenodo research package contains:\n\n- publication PDF;\n- editable DOCX version;\n- citation and licensing information;\n- machine-readable JSON Schema;\n- synthetic demonstration dataset;\n- repository metadata;\n- SHA-256 integrity checksums."
+        },
+        {
+          "section": "Relationship to Cognitive Logic",
+          "text": "IW-EVM is the operational evidence-verification methodology used by International Watch.\n\nIt complements Cognitive Logic work on:\n\n- Evidence Governance;\n- Decision Traceability;\n- QEN Framework;\n- QEN Sovereign.\n\nIt does not replace or redefine those separate works."
+        },
+        {
+          "section": "Persistent identifiers",
+          "text": "Version DOI:\n\n10.5281/zenodo.22850822\n\nConcept DOI:\n\n10.5281/zenodo.22850821\n\nThe version DOI identifies this exact release.\n\nThe concept DOI resolves to the latest published version."
+        },
+        {
+          "section": "Recommended citation",
+          "text": "Malini, R. (2026). International Watch Evidence Verification Methodology (Version 1.0). Cognitive Logic. DOI: 10.5281/zenodo.22850822."
+        },
+        {
+          "section": "Limitations",
+          "text": "IW-EVM supports evidence governance and accountable decision-making.\n\nIt does not constitute:\n\n- legal advice;\n- statutory certification;\n- accredited audit;\n- peer review.\n\nThe methodology does not certify the truth of a claim. It structures the process through which evidence, interpretation, uncertainty and decision responsibility can be examined."
+        },
+        {
+          "section": "Canonical resources",
+          "text": "Cognitive Logic canonical publication:\n\nhttps://cognitivelogic.it/research/international-watch-evidence-verification-methodology/\n\nVersion DOI:\n\nhttps://doi.org/10.5281/zenodo.22850822\n\nConcept DOI:\n\nhttps://doi.org/10.5281/zenodo.22850821"
+        }
+      ]
     }
   ],
-  "index_version": "5737cb2846e376b2adf56250dc4b2fe62021330b5a469416fe91cd725ae80ea9"
+  "index_version": "9927f3e76e3a2d5165c28ad326b37d8f14262be320cd73b7df34fd3f0bf34894"
 }
