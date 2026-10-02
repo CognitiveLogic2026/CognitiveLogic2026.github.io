@@ -28,6 +28,7 @@ _SOURCE_SCOPES = {
     "agcm": {"CASE-AGCM-001", "AGCM-AS1930-NOTE-001"},
     "ea 009": {"EA-009", "CASE-COSTE360-001"},
     "cs 010": {"CS-010", "CASE-COASTAL-001"},
+    "cs 008": {"CS-008"},
 }
 
 REQUIRED_FIELDS = {

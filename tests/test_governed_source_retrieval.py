@@ -385,3 +385,13 @@ def test_explicit_assessment_requests_remain_compliance(query):
     assert payload["response_mode"] == "sovereign"
     assert payload["retrieval_status"] == "ready"
     limiter.reset()
+
+
+def test_cs_008_explicit_identifier_is_strictly_scoped():
+    result = retrieve("Explain CS-008")
+    assert result["retrieval_status"] == "ready"
+    assert [source["source_id"] for source in result["sources"]] == ["CS-008"]
+    assert result["sources"][0]["canonical_url"] == (
+        "https://cognitivelogic.it/resources/documents/"
+        "cs-008-explainability-decision-traceability/"
+    )
