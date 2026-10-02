@@ -616,3 +616,52 @@ def test_digital_overtourism_causal_query_prefers_claims_boundary():
     assert result["retrieval_status"] == "ready"
     assert result["sources"][0]["source_id"] == "RESEARCH-OVERTOURISM-001"
     assert result["sources"][0]["section"] == "Claims boundary"
+
+
+def test_overtourism_causal_question_routes_to_documentary_mode():
+    with patch("main.check_duplicate", return_value=None), patch("main.save_pilot"):
+        response = app.test_client().post(
+            "/copilot-analyze",
+            json={
+                "description": "Does generative AI cause physical overtourism?"
+            },
+            headers={"Origin": "https://cognitivelogic.it"},
+        )
+
+    payload = response.get_json()
+
+    assert response.status_code == 200
+    assert payload["interaction_mode"] == "documentary"
+    assert payload["response_mode"] == "sovereign"
+    assert payload["sources"][0]["source_id"] == "RESEARCH-OVERTOURISM-001"
+    assert payload["sources"][0]["section"] == "Claims boundary"
+
+    assert "qen_score" not in payload
+    assert "risk_level" not in payload
+    assert "eu_classification" not in payload
+    assert "decision" not in payload
+
+    limiter.reset()
+
+
+def test_explicit_compliance_intent_still_uses_compliance_mode():
+    with patch("main.check_duplicate", return_value=None), patch("main.save_pilot"):
+        response = app.test_client().post(
+            "/copilot-analyze",
+            json={
+                "description": (
+                    "Perform a compliance assessment of an AI system "
+                    "used for automated customer decisions"
+                )
+            },
+            headers={"Origin": "https://cognitivelogic.it"},
+        )
+
+    payload = response.get_json()
+
+    assert response.status_code == 200
+    assert payload["interaction_mode"] == "compliance"
+    assert "qen_score" in payload
+    assert "risk_level" in payload
+
+    limiter.reset()

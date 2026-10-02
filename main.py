@@ -180,6 +180,24 @@ _DOCUMENTARY_REFERENCES = (
     "digital overtourism", "ai travel recommendations",
 )
 
+_EPISTEMIC_DOCUMENTARY_TERMS = (
+    "cause",
+    "causes",
+    "causal",
+    "causality",
+    "causation",
+    "proven",
+    "prove",
+    "proof",
+    "evidence",
+    "verified",
+    "verify",
+    "establish",
+    "established",
+    "support",
+    "supports",
+)
+
 
 def _documentary_intent(query: str, retrieval: dict) -> bool:
     """Classify only explicit source questions with a relevant governed result."""
@@ -200,7 +218,33 @@ def _documentary_intent(query: str, retrieval: dict) -> bool:
         re.search(rf"(?<![a-z0-9]){re.escape(reference)}(?![a-z0-9])", normalized)
         for reference in _DOCUMENTARY_REFERENCES
     )
-    return documentary_form or referenced_id or referenced_document
+
+    primary = sources[0]
+    epistemic_question = (
+        primary.get("category") == "risorsa editoriale"
+        and any(
+            re.search(
+                rf"(?<![a-z0-9]){re.escape(term)}(?![a-z0-9])",
+                normalized,
+            )
+            for term in _EPISTEMIC_DOCUMENTARY_TERMS
+        )
+        and (
+            normalized.startswith("does ")
+            or normalized.startswith("is ")
+            or normalized.startswith("can ")
+            or normalized.startswith("has ")
+            or normalized.startswith("what evidence ")
+            or normalized.startswith("which evidence ")
+        )
+    )
+
+    return (
+        documentary_form
+        or referenced_id
+        or referenced_document
+        or epistemic_question
+    )
 
 
 def _documentary_response(retrieval: dict) -> dict:
