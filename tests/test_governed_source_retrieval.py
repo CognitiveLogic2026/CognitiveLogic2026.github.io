@@ -665,3 +665,52 @@ def test_explicit_compliance_intent_still_uses_compliance_mode():
     assert "risk_level" in payload
 
     limiter.reset()
+
+
+def test_overtourism_documentary_metadata_does_not_leak_from_supporting_sources():
+    with patch("main.check_duplicate", return_value=None), patch("main.save_pilot"):
+        response = app.test_client().post(
+            "/copilot-analyze",
+            json={
+                "description": "Does generative AI cause physical overtourism?"
+            },
+            headers={"Origin": "https://cognitivelogic.it"},
+        )
+
+    payload = response.get_json()
+
+    assert response.status_code == 200
+    assert payload["interaction_mode"] == "documentary"
+    assert payload["sources"][0]["source_id"] == "RESEARCH-OVERTOURISM-001"
+
+    assert payload["evidence_classes"] == []
+    assert payload["source_limitations"] == []
+    assert payload["human_decision_authority"] == (
+        "Autorità umana competente; QEN non assume la decisione finale."
+    )
+
+    limiter.reset()
+
+
+def test_case_study_documentary_metadata_remains_primary_source_specific():
+    with patch("main.check_duplicate", return_value=None), patch("main.save_pilot"):
+        response = app.test_client().post(
+            "/copilot-analyze",
+            json={"description": "Explain HVA-001"},
+            headers={"Origin": "https://cognitivelogic.it"},
+        )
+
+    payload = response.get_json()
+
+    assert response.status_code == 200
+    assert payload["interaction_mode"] == "documentary"
+    assert payload["sources"][0]["source_id"] == "CASE-HVA-001"
+
+    assert "PUBLIC EVIDENCE" in payload["evidence_classes"]
+    assert "HUMAN DECISION REQUIRED" in payload["evidence_classes"]
+    assert payload["source_limitations"]
+    assert payload["human_decision_authority"] == (
+        "Organizzazione che adotta e governa il processo AI"
+    )
+
+    limiter.reset()

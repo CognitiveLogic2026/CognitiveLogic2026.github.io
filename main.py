@@ -272,19 +272,20 @@ def _documentary_response(retrieval: dict) -> dict:
             "contesto completi."
         )
     warnings = primary.get("warnings") or []
-    evidence_classes = sorted({
-        label
-        for source in retrieval["sources"]
-        for label in source.get("evidence_labels", [])
-    })
-    source_limitations = [
-        source["limitations"] for source in retrieval["sources"]
-        if source.get("limitations")
-    ]
-    human_authorities = [
-        source["final_human_authority"] for source in retrieval["sources"]
-        if source.get("final_human_authority")
-    ]
+    # Top-level documentary metadata must describe the primary
+    # governed source that grounds the answer. Supporting retrieval
+    # sources remain available in `sources`, but must not leak their
+    # evidence labels, limitations or human authority into the primary
+    # response contract.
+    evidence_classes = sorted(primary.get("evidence_labels") or [])
+
+    source_limitations = (
+        [primary["limitations"]]
+        if primary.get("limitations")
+        else []
+    )
+
+    primary_human_authority = primary.get("final_human_authority") or ""
     limitations = (
         "Risposta informativa circoscritta alle fonti governate recuperate; non "
         "dichiara né certifica la verità e non sostituisce il documento canonico"
@@ -298,7 +299,7 @@ def _documentary_response(retrieval: dict) -> dict:
         "limitations": limitations,
         "source_limitations": source_limitations,
         "evidence_classes": evidence_classes,
-        "human_decision_authority": human_authorities[0] if human_authorities else (
+        "human_decision_authority": primary_human_authority or (
             "Autorità umana competente; QEN non assume la decisione finale."
         ),
         "sources": retrieval["sources"],
