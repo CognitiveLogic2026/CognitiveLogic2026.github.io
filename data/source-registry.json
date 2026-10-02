@@ -1145,6 +1145,56 @@
         "The claim linking AI recommendation to physical overtourism is only partially verified.",
         "No general causal relationship between AI recommendations and physical overtourism is established."
       ]
+    },
+    {
+      "source_id": "RESEARCH-AIREADINESS-001",
+      "title": "Europe's AI Readiness Gap 2026",
+      "version": "1.0",
+      "source_path": "qen-sovereign/knowledge-sources/RESEARCH-AIREADINESS-001.md",
+      "canonical_url": "https://cognitivelogic.it/research/europe-ai-readiness-gap-2026/",
+      "category": "risorsa editoriale",
+      "authority": "Roberto Malini / Cognitive Logic",
+      "date": "2026-08-29",
+      "status": "published",
+      "source_class": "primary",
+      "confidence": "high",
+      "scope": "EU-27 AI readiness, enterprise AI adoption, generative AI adoption, digital foundations, skills, institutional capacity and governance readiness",
+      "language": "en",
+      "search_terms": [
+        "Europe AI readiness gap",
+        "Europe's AI Readiness Gap 2026",
+        "ED-010",
+        "European AI readiness",
+        "EU AI readiness",
+        "alignment gap",
+        "enterprise AI adoption",
+        "social AI adoption",
+        "digital foundations",
+        "human institutional capacity",
+        "governance sovereignty readiness",
+        "Italy AI readiness",
+        "Italy alignment gap",
+        "AI readiness SMEs",
+        "Digital Decade",
+        "EU-27 AI adoption"
+      ],
+      "allowed_use": [
+        "informational_retrieval",
+        "citation",
+        "documentary_response"
+      ],
+      "prohibited_use": [
+        "modify_qen_configuration",
+        "modify_qen_decisions"
+      ],
+      "publication_status": "published",
+      "enabled": true,
+      "sha256": "aecea605e1d90800430eb1f007d65da7d5cc15dbd6f1f711bb29a45218683ed3",
+      "warnings": [
+        "Cognitive Logic country archetypes are analytical interpretations, not official EU classifications.",
+        "No synthetic numerical governance or AI-readiness score is assigned.",
+        "Values from different reference years should not be treated as directly comparable without context."
+      ]
     }
   ]
 }

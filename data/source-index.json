@@ -1,7 +1,7 @@
 {
   "schema_version": "1.0",
   "registry_version": "2.0.0",
-  "registry_hash": "63811ad80b43805006a40169ec48da6f3a0519670dc3de95276465b8ef5dcb10",
+  "registry_hash": "19e7a132983fc9d951dddc8153af6bb174b5a2b3da0a89cc460895b07e110a03",
   "documents": [
     {
       "source_id": "DFV-002",
@@ -2536,7 +2536,182 @@
           "text": "https://cognitivelogic.it/research/digital-overtourism-ai-travel-recommendations/"
         }
       ]
+    },
+    {
+      "source_id": "RESEARCH-AIREADINESS-001",
+      "source_sha256": "aecea605e1d90800430eb1f007d65da7d5cc15dbd6f1f711bb29a45218683ed3",
+      "metadata": {
+        "title": "Europe's AI Readiness Gap 2026",
+        "version": "1.0",
+        "canonical_url": "https://cognitivelogic.it/research/europe-ai-readiness-gap-2026/",
+        "category": "risorsa editoriale",
+        "authority": "Roberto Malini / Cognitive Logic",
+        "date": "2026-08-29",
+        "status": "published",
+        "source_class": "primary",
+        "confidence": "high",
+        "scope": "EU-27 AI readiness, enterprise AI adoption, generative AI adoption, digital foundations, skills, institutional capacity and governance readiness",
+        "language": "en",
+        "publication_status": "published"
+      },
+      "search_terms": [
+        "Europe AI readiness gap",
+        "Europe's AI Readiness Gap 2026",
+        "ED-010",
+        "European AI readiness",
+        "EU AI readiness",
+        "alignment gap",
+        "enterprise AI adoption",
+        "social AI adoption",
+        "digital foundations",
+        "human institutional capacity",
+        "governance sovereignty readiness",
+        "Italy AI readiness",
+        "Italy alignment gap",
+        "AI readiness SMEs",
+        "Digital Decade",
+        "EU-27 AI adoption"
+      ],
+      "warnings": [
+        "Cognitive Logic country archetypes are analytical interpretations, not official EU classifications.",
+        "No synthetic numerical governance or AI-readiness score is assigned.",
+        "Values from different reference years should not be treated as directly comparable without context."
+      ],
+      "sections": [
+        {
+          "section": "Source identity",
+          "text": "- Source ID: RESEARCH-AIREADINESS-001\n- Research code: ED-010\n- Author: Roberto Malini\n- Publisher: Cognitive Logic\n- Publication date: 2026-08-29\n- Scope: EU-27\n- Language: English\n- Canonical: https://cognitivelogic.it/research/europe-ai-readiness-gap-2026/"
+        },
+        {
+          "section": "Executive Summary",
+          "text": "Europe does not have one AI gap. It has an alignment gap.\n\nAI adoption, digital infrastructure, skills, institutions and governance are advancing at different speeds across the EU-27.\n\nStrong infrastructure does not automatically produce enterprise AI adoption. High individual use of generative AI does not necessarily indicate organisational readiness, and mature digital public services do not eliminate shortages in skills, interoperability or governance capacity.\n\nAI readiness should therefore be examined across separate dimensions rather than collapsed into a single synthetic score.\n\nThe framework considers:\n\n- Enterprise AI Adoption;\n- Social AI Adoption;\n- Digital Foundations;\n- Human & Institutional Capacity;\n- Governance & Sovereignty Readiness.\n\nThe research does not assign a synthetic numerical governance score."
+        },
+        {
+          "section": "EU baseline",
+          "text": "In 2025, 20.0% of EU enterprises with at least 10 employees used artificial intelligence technologies.\n\nAt individual level, 32.7% of people aged 16–74 in the EU used generative AI tools.\n\nIn 2025, 52.7% of EU enterprises used paid cloud services.\n\nThese indicators describe different dimensions of readiness and should not be interpreted as a single league table.\n\nA country may be advanced in cloud infrastructure while remaining weaker in enterprise AI adoption, skills or social adoption."
+        },
+        {
+          "section": "European AI Readiness dimensions",
+          "text": "Cognitive Logic analyses readiness through five separate dimensions."
+        },
+        {
+          "section": "Enterprise AI Adoption",
+          "text": "Organisational use of AI technologies."
+        },
+        {
+          "section": "Social AI Adoption",
+          "text": "Use of generative AI by individuals."
+        },
+        {
+          "section": "Digital Foundations",
+          "text": "Cloud, data analytics, connectivity and compute capacity."
+        },
+        {
+          "section": "Human & Institutional Capacity",
+          "text": "Digital skills, ICT specialists, public services and interoperability."
+        },
+        {
+          "section": "Governance & Sovereignty Readiness",
+          "text": "Governance capacity, strategic dependencies, cybersecurity, data control and human accountability.\n\nNo synthetic governance score is assigned.\n\nGovernance evidence is interpreted from official European Commission country reports and related institutional sources."
+        },
+        {
+          "section": "Recurring European patterns",
+          "text": "The EU-27 comparison identifies four recurring profiles."
+        },
+        {
+          "section": "Frontrunners",
+          "text": "Countries combining high adoption, strong foundations and mature institutional capacity while retaining specific vulnerabilities."
+        },
+        {
+          "section": "Execution-gap countries",
+          "text": "Countries with significant digital assets that do not fully convert those assets into enterprise adoption or organisational execution."
+        },
+        {
+          "section": "Human-capacity gap countries",
+          "text": "Countries where infrastructure or technology progress is constrained by skills and specialist availability."
+        },
+        {
+          "section": "Structural-gap countries",
+          "text": "Countries with simultaneous weaknesses across adoption, skills, enterprise digitalisation and institutional capacity.\n\nThese archetypes are Cognitive Logic interpretations and are not official European Union classifications."
+        },
+        {
+          "section": "Italy — human-capacity and alignment gap",
+          "text": "Italy's 2026 profile is not consistent with a uniformly digitally weak country.\n\nOfficial European evidence indicates progress in:\n\n- FTTP deployment;\n- SME digitalisation;\n- cloud;\n- AI;\n- data analytics;\n- semiconductors;\n- high-performance computing;\n- quantum technologies;\n- digital public services.\n\nPersistent weaknesses remain in:\n\n- basic digital skills;\n- ICT specialist availability;\n- parts of rural connectivity.\n\nItaly's central challenge is increasingly one of alignment.\n\nDigital assets and infrastructure are improving faster than the capacity of people and organisations to convert them into widespread, governed and productive AI use."
+        },
+        {
+          "section": "Italian paradox",
+          "text": "Three signals illustrate the mismatch."
+        },
+        {
+          "section": "Cloud capacity",
+          "text": "In 2025, 75.6% of Italian enterprises used paid cloud services."
+        },
+        {
+          "section": "Individual GenAI use",
+          "text": "19.9% of Italians aged 16–74 used generative AI tools, compared with 32.7% across the EU."
+        },
+        {
+          "section": "Human capacity",
+          "text": "European Commission reporting continues to identify shortages of ICT specialists and below-average digital skills as structural weaknesses.\n\nThe research therefore describes Italy's constraint as increasingly related to alignment and execution rather than infrastructure alone."
+        },
+        {
+          "section": "AI readiness for SMEs",
+          "text": "For smaller organisations, AI readiness is not equivalent to purchasing access to an AI tool.\n\nOrganisational readiness includes the ability to answer questions such as:\n\n- Which AI systems are in use?\n- Which data and sources do they depend on?\n- Who owns the relevant process?\n- Which decisions remain human?\n- What evidence is retained?\n- How can an output or decision be reconstructed and reviewed?"
+        },
+        {
+          "section": "Selected European benchmarks",
+          "text": "The framework compares Italy with different types of benchmark rather than producing a single ranking."
+        },
+        {
+          "section": "Denmark",
+          "text": "Adoption benchmark."
+        },
+        {
+          "section": "Finland",
+          "text": "Balanced frontier benchmark."
+        },
+        {
+          "section": "France",
+          "text": "Asset-to-execution benchmark."
+        },
+        {
+          "section": "Spain",
+          "text": "Southern execution benchmark."
+        },
+        {
+          "section": "Poland",
+          "text": "Structural-gap benchmark.\n\nThese benchmark labels are analytical interpretations by Cognitive Logic, not official EU classifications."
+        },
+        {
+          "section": "Governed AI readiness",
+          "text": "Digital maturity is not treated as a linear sequence in which infrastructure automatically produces adoption and adoption automatically produces effective governance.\n\nThe research frames readiness as an alignment across:\n\ntechnology → data → skills → organisations → institutions → governance.\n\nAI readiness emerges when these layers advance together rather than as isolated indicators.\n\nThe relevant question is therefore not only whether an organisation or country uses AI, but whether it can understand, control, document and verify how AI is being used."
+        },
+        {
+          "section": "Claims boundary",
+          "text": "The research supports the conclusion that AI readiness is multidimensional and that different European countries exhibit different combinations of adoption, infrastructure, skills, institutional capacity and governance readiness.\n\nIt does not establish a universal causal model in which one dimension automatically produces another.\n\nIt does not assign a synthetic numerical governance score.\n\nIt does not present Cognitive Logic country archetypes as official EU classifications.\n\nIt does not treat values from different years as directly interchangeable.\n\nIt does not claim greater precision than the underlying official evidence supports."
+        },
+        {
+          "section": "Methodology and source-quality rules",
+          "text": "The analysis covers the 27 EU Member States and uses official evidence available through August 2026.\n\nSource-quality rules include:\n\n- exact values explicitly published by Eurostat or the European Commission are treated as exact;\n- values visually extracted from official charts are treated as approximations;\n- country archetypes are Cognitive Logic interpretations;\n- values from different years remain associated with their reference year;\n- no synthetic numerical governance score is assigned.\n\nReadiness should not be made artificially precise when the underlying evidence does not support that precision."
+        },
+        {
+          "section": "Primary sources",
+          "text": "Eurostat — Use of artificial intelligence in enterprises, 2025.\n\nEurostat — Generative AI use by individuals, 2025.\n\nEurostat — Cloud computing in enterprises, 2025.\n\nEuropean Commission — Digital Decade 2026 Country Reports.\n\nEuropean Commission — State of the Digital Decade 2026."
+        },
+        {
+          "section": "Research status",
+          "text": "This publication is based on the EU-27 dataset developed under Cognitive Logic Research ED-010.\n\nThe dataset and classifications are maintained as a living research asset and may be updated when new official data become available."
+        },
+        {
+          "section": "Limitations",
+          "text": "This source is a Cognitive Logic research framework based on official European evidence.\n\nIt does not constitute:\n\n- an official EU ranking;\n- an official EU classification;\n- a statutory readiness assessment;\n- a compliance certification;\n- a legal determination;\n- a synthetic QEN score."
+        },
+        {
+          "section": "Canonical publication",
+          "text": "https://cognitivelogic.it/research/europe-ai-readiness-gap-2026/"
+        }
+      ]
     }
   ],
-  "index_version": "0d427eddfbb3c26bbc73ef78992f42ba058d589cfc8cc92bfcecc249359a0baf"
+  "index_version": "ab322a0ca61cf322a8663863b50b5ad2f8c8de00a74a7529bb5c0fbd9c3e5108"
 }

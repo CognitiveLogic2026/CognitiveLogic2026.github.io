@@ -714,3 +714,67 @@ def test_case_study_documentary_metadata_remains_primary_source_specific():
     )
 
     limiter.reset()
+
+
+def test_ai_readiness_explicit_title_is_strictly_scoped():
+    result = retrieve("Explain Europe's AI Readiness Gap 2026")
+
+    assert result["retrieval_status"] == "ready"
+    assert [source["source_id"] for source in result["sources"]] == [
+        "RESEARCH-AIREADINESS-001"
+    ]
+    assert result["sources"][0]["canonical_url"] == (
+        "https://cognitivelogic.it/research/europe-ai-readiness-gap-2026/"
+    )
+
+
+def test_ai_readiness_uses_substantive_executive_summary():
+    result = retrieve("What is Europe's AI alignment gap?")
+
+    source = next(
+        item
+        for item in result["sources"]
+        if item["source_id"] == "RESEARCH-AIREADINESS-001"
+    )
+
+    assert source["summary_section"] == "Executive Summary"
+    assert "Europe does not have one AI gap" in source["summary_excerpt"]
+    assert "alignment gap" in source["summary_excerpt"]
+
+
+def test_ai_readiness_preserves_no_synthetic_score_boundary():
+    result = retrieve("Does ED-010 assign a synthetic AI readiness score?")
+
+    source = next(
+        item
+        for item in result["sources"]
+        if item["source_id"] == "RESEARCH-AIREADINESS-001"
+    )
+
+    text = (
+        source["summary_excerpt"] + " " +
+        source["excerpt"] + " " +
+        " ".join(source["warnings"])
+    ).lower()
+
+    assert "synthetic" in text
+    assert "score" in text
+
+
+def test_ai_readiness_documentary_api():
+    with patch("main.check_duplicate", return_value=None), patch("main.save_pilot"):
+        response = app.test_client().post(
+            "/copilot-analyze",
+            json={"description": "Explain Europe's AI Readiness Gap 2026"},
+            headers={"Origin": "https://cognitivelogic.it"},
+        )
+
+    payload = response.get_json()
+
+    assert response.status_code == 200
+    assert payload["interaction_mode"] == "documentary"
+    assert payload["retrieval_status"] == "ready"
+    assert payload["response_mode"] == "sovereign"
+    assert payload["sources"][0]["source_id"] == "RESEARCH-AIREADINESS-001"
+
+    limiter.reset()

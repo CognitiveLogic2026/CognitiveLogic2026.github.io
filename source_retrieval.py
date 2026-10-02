@@ -35,6 +35,9 @@ _SOURCE_SCOPES = {
     "why ai governance matters more than ai performance": {"RESEARCH-AIGOV-001"},
     "digital overtourism": {"RESEARCH-OVERTOURISM-001"},
     "ai travel recommendations": {"RESEARCH-OVERTOURISM-001"},
+    "europe ai readiness gap": {"RESEARCH-AIREADINESS-001"},
+    "europe s ai readiness gap 2026": {"RESEARCH-AIREADINESS-001"},
+    "ed 010": {"RESEARCH-AIREADINESS-001"},
 }
 
 REQUIRED_FIELDS = {

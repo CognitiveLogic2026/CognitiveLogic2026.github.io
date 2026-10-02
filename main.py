@@ -178,6 +178,7 @@ _DOCUMENTARY_REFERENCES = (
     "cs 008", "iw evm", "international watch evidence verification methodology",
     "ai governance matters", "why ai governance matters more than ai performance",
     "digital overtourism", "ai travel recommendations",
+    "europe ai readiness gap", "europe s ai readiness gap 2026", "ed 010",
 )
 
 _EPISTEMIC_DOCUMENTARY_TERMS = (
