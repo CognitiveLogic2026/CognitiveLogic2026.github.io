@@ -778,3 +778,66 @@ def test_ai_readiness_documentary_api():
     assert payload["sources"][0]["source_id"] == "RESEARCH-AIREADINESS-001"
 
     limiter.reset()
+
+
+def test_cee_accountability_explicit_title_is_strictly_scoped():
+    result = retrieve("Explain From AI Capability to Accountable Decisions")
+
+    assert result["retrieval_status"] == "ready"
+    assert [source["source_id"] for source in result["sources"]] == [
+        "RESEARCH-CEE-ACCOUNTABILITY-001"
+    ]
+
+
+def test_cee_accountability_uses_executive_summary():
+    result = retrieve("What is accountable AI capability?")
+
+    source = next(
+        x for x in result["sources"]
+        if x["source_id"] == "RESEARCH-CEE-ACCOUNTABILITY-001"
+    )
+
+    assert source["summary_section"] == "Executive Summary"
+    assert "AI capability does not automatically create accountable AI capability" in (
+        source["summary_excerpt"]
+    )
+
+
+def test_cee_accountability_preserves_evidence_chain():
+    result = retrieve(
+        "What is the evidence chain for an AI-assisted decision?"
+    )
+
+    source = next(
+        x for x in result["sources"]
+        if x["source_id"] == "RESEARCH-CEE-ACCOUNTABILITY-001"
+    )
+
+    text = (source["excerpt"] + " " + source["summary_excerpt"]).lower()
+
+    assert "source" in text
+    assert "inference" in text
+    assert "evidence" in text
+    assert "human authority" in text
+
+
+def test_cee_accountability_documentary_api():
+    with patch("main.check_duplicate", return_value=None), patch("main.save_pilot"):
+        response = app.test_client().post(
+            "/copilot-analyze",
+            json={
+                "description": "Explain From AI Capability to Accountable Decisions"
+            },
+            headers={"Origin": "https://cognitivelogic.it"},
+        )
+
+    payload = response.get_json()
+
+    assert response.status_code == 200
+    assert payload["interaction_mode"] == "documentary"
+    assert payload["sources"][0]["source_id"] == (
+        "RESEARCH-CEE-ACCOUNTABILITY-001"
+    )
+    assert "qen_score" not in payload
+
+    limiter.reset()

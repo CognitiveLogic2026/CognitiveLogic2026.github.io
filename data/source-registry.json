@@ -1195,6 +1195,51 @@
         "No synthetic numerical governance or AI-readiness score is assigned.",
         "Values from different reference years should not be treated as directly comparable without context."
       ]
+    },
+    {
+      "source_id": "RESEARCH-CEE-ACCOUNTABILITY-001",
+      "title": "From AI Capability to Accountable Decisions",
+      "version": "1.0",
+      "source_path": "qen-sovereign/knowledge-sources/RESEARCH-CEE-ACCOUNTABILITY-001.md",
+      "canonical_url": "https://cognitivelogic.it/research/cee-ai-capability-accountable-decisions/",
+      "category": "risorsa editoriale",
+      "authority": "Roberto Malini / Cognitive Logic",
+      "date": "2026-09-26",
+      "status": "published",
+      "source_class": "primary",
+      "confidence": "high",
+      "scope": "CEE AI adoption, accountable AI capability, evidence governance, decision evidence, inference, decision traceability and human authority",
+      "language": "en",
+      "search_terms": [
+        "CEE AI adoption",
+        "CEE AI Challenger",
+        "From AI Capability to Accountable Decisions",
+        "accountable AI capability",
+        "decision evidence",
+        "AI capability",
+        "evidence chain",
+        "source inference evidence human authority decision",
+        "human authority",
+        "decision traceability",
+        "CEE AI governance",
+        "Central Eastern Europe AI"
+      ],
+      "allowed_use": [
+        "informational_retrieval",
+        "citation",
+        "documentary_response"
+      ],
+      "prohibited_use": [
+        "modify_qen_configuration",
+        "modify_qen_decisions"
+      ],
+      "publication_status": "published",
+      "enabled": true,
+      "sha256": "bc70859e0efe60102e33914a00616a56a19dbf53afd5d7cc08a29f8b44e0e4fc",
+      "warnings": [
+        "Cognitive Logic research proposition based on public CEE AI adoption and policy sources.",
+        "Evidence governance does not by itself establish legal compliance, safety or successful AI deployment."
+      ]
     }
   ]
 }

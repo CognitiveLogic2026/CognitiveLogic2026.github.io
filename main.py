@@ -179,6 +179,8 @@ _DOCUMENTARY_REFERENCES = (
     "ai governance matters", "why ai governance matters more than ai performance",
     "digital overtourism", "ai travel recommendations",
     "europe ai readiness gap", "europe s ai readiness gap 2026", "ed 010",
+    "cee ai challenger", "accountable ai capability",
+    "from ai capability to accountable decisions",
 )
 
 _EPISTEMIC_DOCUMENTARY_TERMS = (

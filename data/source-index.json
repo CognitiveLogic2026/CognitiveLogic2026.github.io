@@ -1,7 +1,7 @@
 {
   "schema_version": "1.0",
   "registry_version": "2.0.0",
-  "registry_hash": "19e7a132983fc9d951dddc8153af6bb174b5a2b3da0a89cc460895b07e110a03",
+  "registry_hash": "17df158a58f8af7510000888a99d706c0a981c1fff351d57efd06d57ebb772e4",
   "documents": [
     {
       "source_id": "DFV-002",
@@ -2711,7 +2711,125 @@
           "text": "https://cognitivelogic.it/research/europe-ai-readiness-gap-2026/"
         }
       ]
+    },
+    {
+      "source_id": "RESEARCH-CEE-ACCOUNTABILITY-001",
+      "source_sha256": "bc70859e0efe60102e33914a00616a56a19dbf53afd5d7cc08a29f8b44e0e4fc",
+      "metadata": {
+        "title": "From AI Capability to Accountable Decisions",
+        "version": "1.0",
+        "canonical_url": "https://cognitivelogic.it/research/cee-ai-capability-accountable-decisions/",
+        "category": "risorsa editoriale",
+        "authority": "Roberto Malini / Cognitive Logic",
+        "date": "2026-09-26",
+        "status": "published",
+        "source_class": "primary",
+        "confidence": "high",
+        "scope": "CEE AI adoption, accountable AI capability, evidence governance, decision evidence, inference, decision traceability and human authority",
+        "language": "en",
+        "publication_status": "published"
+      },
+      "search_terms": [
+        "CEE AI adoption",
+        "CEE AI Challenger",
+        "From AI Capability to Accountable Decisions",
+        "accountable AI capability",
+        "decision evidence",
+        "AI capability",
+        "evidence chain",
+        "source inference evidence human authority decision",
+        "human authority",
+        "decision traceability",
+        "CEE AI governance",
+        "Central Eastern Europe AI"
+      ],
+      "warnings": [
+        "Cognitive Logic research proposition based on public CEE AI adoption and policy sources.",
+        "Evidence governance does not by itself establish legal compliance, safety or successful AI deployment."
+      ],
+      "sections": [
+        {
+          "section": "Source identity",
+          "text": "- Source ID: RESEARCH-CEE-ACCOUNTABILITY-001\n- Author: Roberto Malini\n- Publisher: Cognitive Logic\n- Publication date: 2026-09-26\n- Scope: Central and Eastern Europe\n- Language: English\n- Canonical: https://cognitivelogic.it/research/cee-ai-capability-accountable-decisions/"
+        },
+        {
+          "section": "Executive Summary",
+          "text": "AI capability does not automatically create accountable AI capability.\n\nInvestment, compute, skills and regulatory certainty can accelerate AI adoption across Central and Eastern Europe, but consequential AI deployment creates an additional requirement: organisations must be able to reconstruct how an AI-assisted decision was reached.\n\nThe operational layer between AI capability and accountable decisions includes:\n\n- governed sources;\n- distinction between retrieved information and machine inference;\n- visible uncertainty and limitations;\n- decision evidence;\n- identifiable human authority;\n- reconstructable decisions.\n\nThe central evidence chain is:\n\nSOURCE → INFERENCE → EVIDENCE → HUMAN AUTHORITY → DECISION.\n\nEvidence governance does not replace investment, compute, skills or regulatory certainty. It makes deployed capability more governable."
+        },
+        {
+          "section": "From rules to capability",
+          "text": "The CEE AI Challenger 2026 identifies structural requirements for stronger AI development and adoption, including:\n\n- capital;\n- computing infrastructure;\n- skills;\n- faster deployment;\n- regulatory coherence.\n\nRegulation establishes conditions.\n\nThe next challenge is building organisational and economic capability to deploy AI productively."
+        },
+        {
+          "section": "Adoption is not the final measure",
+          "text": "AI adoption alone does not establish transformation or accountable use.\n\nWhen AI enters operational processes, organisations need to understand:\n\n- which sources supported a conclusion;\n- which information was excluded;\n- what the system inferred rather than retrieved;\n- where uncertainty entered the process;\n- which model or provider participated;\n- whether a human reviewed the conclusion;\n- who authorised the resulting action.\n\nThese are questions about decision evidence rather than adoption alone."
+        },
+        {
+          "section": "Compliance documentation and decision evidence",
+          "text": "Compliance documentation and decision evidence solve different problems.\n\nCompliance documentation asks:\n\nWas the system governed according to applicable requirements?\n\nDecision evidence asks:\n\nCan the organisation reconstruct why a particular conclusion entered a particular decision?\n\nA policy may be documented, a model classified and a provider approved while an individual decision remains difficult to reconstruct."
+        },
+        {
+          "section": "Evidence chain",
+          "text": "A minimal evidence chain is:\n\nSOURCE → INFERENCE → EVIDENCE → HUMAN AUTHORITY → DECISION."
+        },
+        {
+          "section": "Source",
+          "text": "What information entered the reasoning process."
+        },
+        {
+          "section": "Inference",
+          "text": "What the AI derived rather than retrieved directly."
+        },
+        {
+          "section": "Evidence",
+          "text": "Which elements were considered sufficiently reliable and relevant to support action."
+        },
+        {
+          "section": "Human authority",
+          "text": "Who had authority to accept, reject or modify the AI-assisted conclusion."
+        },
+        {
+          "section": "Decision",
+          "text": "What action was ultimately taken.\n\nThe objective is not to preserve every token generated by every model.\n\nThe objective is to preserve what must remain reconstructable when an AI output becomes consequential."
+        },
+        {
+          "section": "Accountable AI capability",
+          "text": "An organisation may possess AI capability without yet possessing accountable AI capability.\n\nA useful operational minimum is whether the organisation can answer five questions:\n\n1. Can it identify the sources behind a consequential AI conclusion?\n2. Can it distinguish retrieved information from machine inference?\n3. Can uncertainty, limitations or conflicting evidence remain visible?\n4. Is the point of human authority identifiable?\n5. Can the decision be reconstructed afterwards without depending exclusively on the AI provider?"
+        },
+        {
+          "section": "Industrial example",
+          "text": "In an AI-supported preventive-maintenance process, the final recommendation alone is an output.\n\nDecision evidence requires preserving the chain connecting:\n\n- sensor data;\n- maintenance records;\n- inference;\n- uncertainty;\n- validation;\n- human authority;\n- resulting action."
+        },
+        {
+          "section": "CEE adoption and accountability",
+          "text": "Central and Eastern Europe is seeking faster AI adoption across industry, public administration and other sectors.\n\nThe research proposition is that evidence governance can be incorporated while adoption is accelerating rather than added only after AI becomes deeply embedded in organisational processes.\n\nThe progression is:\n\nRULES → CAPABILITY → DEPLOYMENT → EVIDENCE → ACCOUNTABLE DECISIONS.\n\nAdoption and accountability do not have to compete."
+        },
+        {
+          "section": "Claims boundary",
+          "text": "This source argues that AI deployment creates governance requirements beyond adoption and capability.\n\nIt does not claim that evidence governance alone guarantees safe, lawful or successful AI deployment.\n\nIt does not claim that compliance documentation is unnecessary.\n\nIt distinguishes compliance documentation from evidence relating to an individual AI-assisted decision.\n\nIt does not certify organisations, providers, models or jurisdictions as accountable.\n\nIt does not establish that all AI decisions require identical levels of evidence preservation."
+        },
+        {
+          "section": "Human authority",
+          "text": "Human authority remains part of the decision chain.\n\nFor consequential AI-assisted decisions, an identifiable human authority should retain the ability and responsibility to accept, reject, modify or authorise the resulting action."
+        },
+        {
+          "section": "Relationship to Cognitive Logic",
+          "text": "This research connects AI adoption with:\n\n- Evidence Governance;\n- Decision Traceability;\n- governed sources;\n- provider-independent reconstruction;\n- human authority.\n\nIt complements QEN Sovereign and CS-008 Explainability & Decision Traceability."
+        },
+        {
+          "section": "Primary sources",
+          "text": "CEE Digital Coalition — CEE AI Challenger 2026.\n\nCEE Digital Coalition — Central and Eastern Europe’s digital industry presents its AI roadmap.\n\nDigital Poland Association — Central and Eastern Europe’s digital industry presents its AI roadmap."
+        },
+        {
+          "section": "Limitations",
+          "text": "This publication is a Cognitive Logic research proposition interpreting developments in CEE AI adoption and governance.\n\nIt does not constitute:\n\n- legal advice;\n- regulatory certification;\n- an accredited audit;\n- an official CEE institutional classification;\n- proof that evidence governance eliminates AI risk."
+        },
+        {
+          "section": "Canonical publication",
+          "text": "https://cognitivelogic.it/research/cee-ai-capability-accountable-decisions/"
+        }
+      ]
     }
   ],
-  "index_version": "ab322a0ca61cf322a8663863b50b5ad2f8c8de00a74a7529bb5c0fbd9c3e5108"
+  "index_version": "bccc512c27a1b34ca2cd18e54f9b83b2623b958bdbc6374d02b6eff9a5367297"
 }
