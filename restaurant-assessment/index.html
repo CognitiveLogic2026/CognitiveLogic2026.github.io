@@ -202,9 +202,103 @@ button{
   line-height:1.7;
 }
 
+.results{
+  color:var(--text);
+  background:var(--bg-panel);
+  border:1px solid var(--line-soft);
+  border-radius:12px;
+  padding:clamp(1.5rem,4vw,3rem);
+}
+
+.results .score{
+  color:var(--gold-soft);
+  font-family:"DM Mono",monospace;
+  font-weight:500;
+}
+
+.results h2{
+  color:var(--text);
+  margin-top:2.5rem;
+}
+
+.results strong{
+  color:var(--text);
+}
+
+.results p{
+  color:var(--text-soft);
+}
+
+.evidence-status{
+  margin-top:2rem;
+}
+
+.evidence-flow{
+  display:grid;
+  grid-template-columns:1fr auto 1fr auto 1fr auto 1fr;
+  gap:.7rem;
+  align-items:stretch;
+  margin-top:1.3rem;
+}
+
+.evidence-stage{
+  min-width:0;
+  padding:1rem;
+  border:1px solid var(--line-soft);
+  background:var(--bg-soft);
+}
+
+.evidence-stage.active{
+  border-color:var(--gold);
+}
+
+.evidence-stage span{
+  display:block;
+  font-family:"DM Mono",monospace;
+  font-size:.6rem;
+  letter-spacing:.08em;
+  color:var(--muted);
+}
+
+.evidence-stage strong{
+  display:block;
+  margin:.4rem 0;
+  font-size:1.4rem;
+  color:var(--gold-soft);
+}
+
+.evidence-stage small{
+  color:var(--muted);
+}
+
+.evidence-arrow{
+  align-self:center;
+  color:var(--gold-soft);
+}
+
+.evidence-explain{
+  margin-top:1.3rem;
+  font-size:.82rem;
+}
+
+.results .btn{
+  display:inline-flex;
+  margin-top:1rem;
+  text-decoration:none;
+}
+
 @media(max-width:700px){
   .business-grid{grid-template-columns:1fr}
   .result-grid{grid-template-columns:1fr}
+
+  .evidence-flow{
+    grid-template-columns:1fr;
+  }
+
+  .evidence-arrow{
+    transform:rotate(90deg);
+    justify-self:center;
+  }
 }
 </style>
 </head>
@@ -289,18 +383,52 @@ Preliminary Restaurant Opportunity Map
 </div>
 
 <div style="margin-top:1rem">
-<strong>Evidence Coverage:</strong>
+<strong>Declared Information Coverage:</strong>
 <span id="evidenceCoverage">0</span>%
 </div>
 
 <p id="profileText"></p>
 
-<div class="notice">
-<strong>Evidence status</strong><br>
-DECLARED → OBSERVABLE → DOCUMENTED → VERIFIED<br><br>
-Questa autovalutazione produce informazioni <strong>DECLARED</strong>.
-Il passaggio ai livelli successivi richiede osservazione, documentazione
-e verifica separata.
+<div class="notice evidence-status">
+<strong>Stato delle evidenze</strong>
+
+<div class="evidence-flow">
+  <div class="evidence-stage active">
+    <span>DECLARED</span>
+    <strong id="declaredStage">0%</strong>
+    <small>informazioni fornite</small>
+  </div>
+
+  <div class="evidence-arrow">→</div>
+
+  <div class="evidence-stage">
+    <span>OBSERVABLE</span>
+    <strong>—</strong>
+    <small>da osservare</small>
+  </div>
+
+  <div class="evidence-arrow">→</div>
+
+  <div class="evidence-stage">
+    <span>DOCUMENTED</span>
+    <strong>—</strong>
+    <small>da documentare</small>
+  </div>
+
+  <div class="evidence-arrow">→</div>
+
+  <div class="evidence-stage">
+    <span>VERIFIED</span>
+    <strong>—</strong>
+    <small>da verificare</small>
+  </div>
+</div>
+
+<p class="evidence-explain">
+Il livello DECLARED indica soltanto quante informazioni sono state
+fornite nell'autovalutazione. Non indica che tali informazioni siano
+state osservate, documentate o verificate.
+</p>
 </div>
 
 <div id="dimensionResults" class="result-grid"></div>
@@ -317,8 +445,8 @@ professionale Cognitive Logic.
 </p>
 
 <p>
-<a href="../contact.html" class="btn btn-primary">
-Richiedi l'Assessment professionale
+<a href="/contact.html" class="btn btn-primary">
+Approfondisci con un Assessment professionale
 </a>
 </p>
 
@@ -469,6 +597,7 @@ document.getElementById("assessmentForm").addEventListener("submit",e=>{
 
  document.getElementById("totalScore").textContent=total;
  document.getElementById("evidenceCoverage").textContent=evidenceCoverage;
+ document.getElementById("declaredStage").textContent=evidenceCoverage + "%";
 
  let profile;
 
