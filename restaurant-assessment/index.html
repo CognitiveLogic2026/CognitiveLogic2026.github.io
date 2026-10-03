@@ -301,6 +301,84 @@ button{
   }
 }
 </style>
+
+<style id="restaurant-assessment-v2">
+.priority-card{
+  margin:1rem 0;
+  padding:1.15rem 1.25rem;
+  border:1px solid rgba(127,127,127,.25);
+  border-radius:10px;
+}
+.priority-card h3{
+  margin:0 0 .8rem;
+}
+.priority-card p{
+  margin:.45rem 0;
+}
+.priority-state{
+  margin-top:.8rem !important;
+  font-size:.9rem;
+}
+.priority-state strong{
+  letter-spacing:.05em;
+}
+.horeca-qualification{
+  margin-top:2.5rem;
+  padding-top:2rem;
+  border-top:1px solid rgba(127,127,127,.25);
+}
+.horeca-qualification h2{
+  margin-bottom:.5rem;
+}
+.horeca-form-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:1rem;
+  margin:1.5rem 0;
+}
+.horeca-form-grid .full{
+  grid-column:1 / -1;
+}
+.horeca-form-grid label{
+  display:block;
+  font-weight:600;
+}
+.horeca-form-grid input,
+.horeca-form-grid textarea{
+  width:100%;
+  box-sizing:border-box;
+  margin-top:.4rem;
+  padding:.8rem;
+  font:inherit;
+}
+.horeca-form-grid textarea{
+  min-height:110px;
+  resize:vertical;
+}
+.result-context{
+  margin:1rem 0 1.5rem;
+  padding:1rem;
+  border-left:3px solid currentColor;
+}
+.qualification-note{
+  font-size:.88rem;
+  opacity:.8;
+}
+@media(max-width:700px){
+  .horeca-form-grid{
+    grid-template-columns:1fr;
+  }
+  .horeca-form-grid .full{
+    grid-column:auto;
+  }
+}
+@media print{
+  .horeca-qualification{
+    display:none !important;
+  }
+}
+</style>
+
 </head>
 
 <body>
@@ -434,6 +512,8 @@ state osservate, documentate o verificate.
 <div id="dimensionResults" class="result-grid"></div>
 
 <h2>Priorità preliminari</h2>
+<div id="operationalPriorities"></div>
+
 <div id="priorities"></div>
 
 <p class="disclaimer">
@@ -444,11 +524,79 @@ successivamente sottoposte a verifica documentale nell'Assessment
 professionale Cognitive Logic.
 </p>
 
-<p>
-<a href="/contact.html" class="btn btn-primary">
-Approfondisci con un Assessment professionale
-</a>
-</p>
+
+<section class="horeca-qualification" id="horecaQualification">
+  <p class="kicker">QUALIFICAZIONE HORECA</p>
+
+  <h2>Approfondisci i risultati</h2>
+
+  <p>
+    Se vuoi verificare le priorità emerse, puoi preparare una richiesta
+    già contestualizzata sui risultati di questa autovalutazione.
+  </p>
+
+  <div class="result-context">
+    <strong>Contesto che verrà riportato nella richiesta</strong>
+    <div id="qualificationContext">
+      Opportunity Score: — · Priorità: —
+    </div>
+  </div>
+
+  <form id="horecaQualificationForm">
+    <div class="horeca-form-grid">
+
+      <label>
+        Nome del locale
+        <input
+          id="restaurantName"
+          name="restaurantName"
+          type="text"
+          autocomplete="organization"
+          required>
+      </label>
+
+      <label>
+        Email
+        <input
+          id="restaurantEmail"
+          name="restaurantEmail"
+          type="email"
+          autocomplete="email"
+          required>
+      </label>
+
+      <label class="full">
+        Sito o presenza digitale principale
+        <input
+          id="restaurantWebsite"
+          name="restaurantWebsite"
+          type="url"
+          inputmode="url"
+          placeholder="https://">
+      </label>
+
+      <label class="full">
+        Qual è il problema che vorresti capire meglio?
+        <textarea
+          id="restaurantProblem"
+          name="restaurantProblem"
+          required></textarea>
+      </label>
+
+    </div>
+
+    <button type="submit" class="btn btn-primary">
+      Prepara la richiesta
+    </button>
+
+    <p class="qualification-note">
+      Il pulsante apre il programma email del dispositivo con i dati
+      inseriti e il contesto dell'Assessment. Nessun dato viene inviato
+      o memorizzato dal sito.
+    </p>
+  </form>
+</section>
+
 
 </section>
 
@@ -649,6 +797,302 @@ document.getElementById("assessmentForm").addEventListener("submit",e=>{
  document.getElementById("results")
    .scrollIntoView({behavior:"smooth"});
 });
+</script>
+
+
+<script id="restaurant-operational-layer">
+(function(){
+
+  const PRIORITY_CONTENT = {
+    "VISIBILITY": {
+      why:
+        "Se il locale non è facilmente individuabile nei punti in cui il cliente cerca, una parte della domanda potenziale può non raggiungere l'offerta.",
+      verify:
+        "Osservare sito, presenza nei motori di ricerca, Google Business Profile e coerenza delle informazioni pubbliche."
+    },
+
+    "REPRESENTATION": {
+      why:
+        "Essere trovati non basta se la presenza digitale non permette di comprendere con chiarezza identità, proposta, caratteristiche e elementi distintivi del locale.",
+      verify:
+        "Confrontare sito e principali profili pubblici con offerta reale, menu, servizi, posizionamento e informazioni essenziali."
+    },
+
+    "CONVERSION": {
+      why:
+        "Una buona visibilità può non trasformarsi in domanda se il percorso tra ricerca, scelta, prenotazione o contatto presenta attriti.",
+      verify:
+        "Osservare sito, Google Business Profile, sistemi di prenotazione e principali call to action ricostruendo il percorso reale del cliente."
+    },
+
+    "DATA & AI READINESS": {
+      why:
+        "Informazioni frammentate o poco strutturate possono limitare automazione, analisi e leggibilità dell'attività da parte dei sistemi digitali e AI.",
+      verify:
+        "Mappare dove risiedono dati e informazioni operative e verificare struttura, aggiornamento, responsabilità e riutilizzabilità."
+    },
+
+    "EVIDENCE & COMPLIANCE": {
+      why:
+        "Dichiarazioni e informazioni rilevanti richiedono fonti, documenti o responsabilità identificabili quando devono essere controllate o dimostrate.",
+      verify:
+        "Individuare le principali dichiarazioni pubbliche e operative e ricostruire per ciascuna fonte, documento, responsabile e data di aggiornamento."
+    }
+  };
+
+  function normalizeName(name){
+    return (name || "")
+      .replace(/\s+/g," ")
+      .trim()
+      .toUpperCase();
+  }
+
+  function extractPriorities(){
+    /*
+      Leggiamo le priorità già prodotte dal motore esistente.
+      Non ricalcoliamo lo score: manteniamo la sua logica attuale.
+    */
+    const heading = Array.from(document.querySelectorAll("h2"))
+      .find(el => /priorità preliminari/i.test(el.textContent));
+
+    if(!heading) return [];
+
+    const candidates = [];
+    let el = heading.nextElementSibling;
+
+    while(el && !el.matches(".horeca-qualification")){
+      const text = (el.innerText || el.textContent || "").trim();
+
+      const matches = text.match(
+        /(?:^|\n)\s*[123]\.\s*(Visibility|Representation|Conversion|Data\s*&\s*AI\s*Readiness|Evidence\s*&\s*Compliance)/gi
+      );
+
+      if(matches){
+        matches.forEach(m => {
+          const clean = m.replace(/(?:^|\n)\s*[123]\.\s*/,"").trim();
+          if(!candidates.includes(clean)) candidates.push(clean);
+        });
+      }
+
+      el = el.nextElementSibling;
+    }
+
+    return candidates.slice(0,3);
+  }
+
+  function fallbackFromVisibleScores(){
+    const labels = [
+      "VISIBILITY",
+      "REPRESENTATION",
+      "CONVERSION",
+      "DATA & AI READINESS",
+      "EVIDENCE & COMPLIANCE"
+    ];
+
+    const bodyText = document.body.innerText;
+    const found = [];
+
+    labels.forEach(label => {
+      const escaped = label.replace(/[.*+?^${}()|[\]\\]/g,"\\$&");
+      const re = new RegExp(
+        escaped + "\\\\s*([0-9]{1,3})\\\\s*\\\\/\\\\s*100",
+        "i"
+      );
+      const m = bodyText.match(re);
+      if(m){
+        found.push({
+          name:label,
+          score:Number(m[1])
+        });
+      }
+    });
+
+    return found
+      .sort((a,b) => a.score - b.score)
+      .slice(0,3)
+      .map(x => x.name);
+  }
+
+  function getOpportunityScore(){
+    const scoreEl = document.getElementById("totalScore");
+    if(scoreEl){
+      const n = parseInt(scoreEl.textContent,10);
+      if(Number.isFinite(n)) return n;
+    }
+    return null;
+  }
+
+  function renderOperationalPriorities(){
+    const target = document.getElementById("operationalPriorities");
+    if(!target) return [];
+
+    let priorities = extractPriorities();
+
+    if(!priorities.length){
+      priorities = fallbackFromVisibleScores();
+    }
+
+    if(!priorities.length) return [];
+
+    target.innerHTML = "";
+
+    priorities.forEach((rawName,index) => {
+      const key = normalizeName(rawName);
+      const content = PRIORITY_CONTENT[key] || {
+        why:
+          "L'area merita un approfondimento prima di assumere decisioni operative.",
+        verify:
+          "Raccogliere evidenze osservabili e documentazione pertinente."
+      };
+
+      const card = document.createElement("div");
+      card.className = "priority-card";
+
+      card.innerHTML = `
+        <h3>${index + 1}. ${rawName}</h3>
+        <p>
+          <strong>Segnale rilevato:</strong>
+          dalle risposte fornite questa area emerge tra quelle con maggiore necessità di approfondimento.
+        </p>
+        <p>
+          <strong>Perché conta:</strong>
+          ${content.why}
+        </p>
+        <p>
+          <strong>Prima verifica:</strong>
+          ${content.verify}
+        </p>
+        <p class="priority-state">
+          <strong>Stato dell'evidenza:</strong>
+          DECLARED — da osservare.
+        </p>
+      `;
+
+      target.appendChild(card);
+    });
+
+    /*
+      Nascondiamo eventuale vecchio rendering testuale delle priorità,
+      lasciando intatto il motore e i dati.
+    */
+    let el = target.nextElementSibling;
+
+    while(el && !el.matches(".horeca-qualification")){
+      const text = (el.innerText || "").trim();
+
+      if(
+        /^[123]\.\s*/.test(text) ||
+        /Area da approfondire:/i.test(text)
+      ){
+        el.style.display = "none";
+      }
+
+      el = el.nextElementSibling;
+    }
+
+    return priorities;
+  }
+
+  function updateQualificationContext(priorities){
+    const score = getOpportunityScore();
+    const target = document.getElementById("qualificationContext");
+
+    if(!target) return;
+
+    const scoreText =
+      score === null ? "—" : score + "/100";
+
+    const priorityText =
+      priorities.length ? priorities.join(" · ") : "—";
+
+    target.textContent =
+      "Opportunity Score: " + scoreText +
+      " · Priorità: " + priorityText;
+  }
+
+  function setupQualification(priorities){
+    const form = document.getElementById("horecaQualificationForm");
+    if(!form) return;
+
+    form.addEventListener("submit", function(e){
+      e.preventDefault();
+
+      if(!form.reportValidity()) return;
+
+      const score = getOpportunityScore();
+
+      const name =
+        document.getElementById("restaurantName").value.trim();
+
+      const email =
+        document.getElementById("restaurantEmail").value.trim();
+
+      const website =
+        document.getElementById("restaurantWebsite").value.trim();
+
+      const problem =
+        document.getElementById("restaurantProblem").value.trim();
+
+      const subject =
+        "Restaurant Assessment — richiesta qualificazione — " + name;
+
+      const body = [
+        "Richiesta di qualificazione Restaurant Assessment",
+        "",
+        "Locale: " + name,
+        "Email: " + email,
+        "Sito / presenza digitale: " + (website || "non indicato"),
+        "",
+        "Opportunity Score: " +
+          (score === null ? "non disponibile" : score + "/100"),
+        "",
+        "Priorità preliminari:",
+        ...(priorities.length
+          ? priorities.map((p,i) => (i+1) + ". " + p)
+          : ["non disponibili"]),
+        "",
+        "Problema da approfondire:",
+        problem,
+        "",
+        "Stato delle informazioni:",
+        "DECLARED — risultati derivati dall'autovalutazione; da sottoporre a osservazione e verifica.",
+        "",
+        "Richiedo una prima qualificazione del caso."
+      ].join("\n");
+
+      window.location.href =
+        "mailto:info@cognitivelogic.it" +
+        "?subject=" + encodeURIComponent(subject) +
+        "&body=" + encodeURIComponent(body);
+    });
+  }
+
+  function refreshOperationalLayer(){
+    const priorities = renderOperationalPriorities();
+    updateQualificationContext(priorities);
+    setupQualification(priorities);
+  }
+
+  /*
+    Il risultato viene generato client-side.
+    Attendiamo il submit del questionario e poi aggiorniamo il layer.
+  */
+  const assessmentForms = document.querySelectorAll("form");
+
+  assessmentForms.forEach(form => {
+    if(form.id !== "horecaQualificationForm"){
+      form.addEventListener("submit", function(){
+        setTimeout(refreshOperationalLayer, 50);
+      });
+    }
+  });
+
+  /*
+    Supporta anche risultati già visibili / refresh pagina.
+  */
+  setTimeout(refreshOperationalLayer, 100);
+
+})();
 </script>
 
 </body>
