@@ -379,6 +379,24 @@ button{
 }
 </style>
 
+
+<style id="restaurant-final-ux">
+.restaurant-request-btn{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  min-height:48px;
+  padding:.85rem 1.35rem;
+  border:1px solid #111;
+  border-radius:4px;
+  background:#111;
+  color:#fff;
+  font-weight:700;
+  cursor:pointer;
+}
+.restaurant-request-btn:hover{background:#333}
+</style>
+
 </head>
 
 <body>
@@ -449,6 +467,11 @@ placeholder="https://">
 </form>
 
 <section id="results" class="results" aria-live="polite">
+
+<div class="result-brand">
+  <strong>Cognitive Logic</strong>
+  <span>Restaurant Assessment · Bologna</span>
+</div>
 
 <p class="assessment-label">
 Preliminary Restaurant Opportunity Map
@@ -585,7 +608,7 @@ professionale Cognitive Logic.
 
     </div>
 
-    <button type="submit" class="btn btn-primary">
+    <button type="submit" class="btn btn-primary restaurant-request-btn">
       Prepara la richiesta
     </button>
 
@@ -1097,3 +1120,28 @@ document.getElementById("assessmentForm").addEventListener("submit",e=>{
 
 </body>
 </html>
+
+<style id="restaurant-result-brand-style">
+.result-brand{
+  display:flex;
+  justify-content:space-between;
+  gap:1rem;
+  padding-bottom:1rem;
+  margin-bottom:1.5rem;
+  border-bottom:1px solid #ddd;
+}
+.result-brand strong{
+  font-size:1rem;
+}
+.result-brand span{
+  font-family:monospace;
+  font-size:.72rem;
+  text-transform:uppercase;
+  letter-spacing:.08em;
+}
+@media(max-width:700px){
+  .result-brand{
+    flex-direction:column;
+  }
+}
+</style>
