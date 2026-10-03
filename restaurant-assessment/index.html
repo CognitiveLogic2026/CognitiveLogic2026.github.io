@@ -285,9 +285,23 @@ Preliminary Restaurant Opportunity Map
 <div>
 <span id="totalScore" class="score">0</span>
 <span>/100</span>
+<span> Opportunity Score</span>
+</div>
+
+<div style="margin-top:1rem">
+<strong>Evidence Coverage:</strong>
+<span id="evidenceCoverage">0</span>%
 </div>
 
 <p id="profileText"></p>
+
+<div class="notice">
+<strong>Evidence status</strong><br>
+DECLARED → OBSERVABLE → DOCUMENTED → VERIFIED<br><br>
+Questa autovalutazione produce informazioni <strong>DECLARED</strong>.
+Il passaggio ai livelli successivi richiede osservazione, documentazione
+e verifica separata.
+</div>
 
 <div id="dimensionResults" class="result-grid"></div>
 
@@ -367,10 +381,10 @@ const dimensions = [
 ];
 
 const labels = [
- ["Non so",0],
- ["No",0],
- ["Parzialmente",50],
- ["Sì",100]
+ ["Non so","unknown"],
+ ["No","0"],
+ ["Parzialmente","50"],
+ ["Sì","100"]
 ];
 
 const container = document.getElementById("questions");
@@ -413,32 +427,57 @@ document.getElementById("assessmentForm").addEventListener("submit",e=>{
  e.preventDefault();
 
  const dimensionScores={};
+ let knownAnswers=0;
+ let totalAnswers=0;
 
  dimensions.forEach(d=>{
-   const values=d.questions.map((q,qi)=>{
+   const values=[];
+
+   d.questions.forEach((q,qi)=>{
+     totalAnswers++;
+
      const selected=document.querySelector(
        `input[name="${d.id}_${qi}"]:checked`
      );
-     return Number(selected.value);
+
+     if(selected.value !== "unknown"){
+       knownAnswers++;
+       values.push(Number(selected.value));
+     }
    });
 
-   dimensionScores[d.id]=
-     Math.round(values.reduce((a,b)=>a+b,0)/values.length);
+   dimensionScores[d.id] =
+     values.length
+       ? Math.round(values.reduce((a,b)=>a+b,0)/values.length)
+       : null;
  });
 
- const total=Math.round(
+ const scoredDimensions =
    Object.values(dimensionScores)
-   .reduce((a,b)=>a+b,0)/dimensions.length
- );
+   .filter(v=>v !== null);
+
+ const total =
+   scoredDimensions.length
+     ? Math.round(
+         scoredDimensions.reduce((a,b)=>a+b,0) /
+         scoredDimensions.length
+       )
+     : 0;
+
+ const evidenceCoverage =
+   Math.round((knownAnswers/totalAnswers)*100);
 
  document.getElementById("totalScore").textContent=total;
+ document.getElementById("evidenceCoverage").textContent=evidenceCoverage;
 
  let profile;
 
- if(total<40)
+ if(evidenceCoverage < 50)
+   profile="La copertura informativa è ancora limitata. Prima di interpretare il punteggio servono ulteriori informazioni.";
+ else if(total<40)
    profile="Sono emerse diverse aree che meritano verifica prioritaria.";
  else if(total<70)
-   profile="La base digitale è presente, ma alcune aree possono limitare opportunità e controllo.";
+   profile="La base dichiarata è presente, ma alcune aree possono limitare opportunità e controllo.";
  else
    profile="La base dichiarata appare strutturata. Il passo successivo è verificare le evidenze che sostengono le risposte.";
 
@@ -451,12 +490,17 @@ document.getElementById("assessmentForm").addEventListener("submit",e=>{
    resultBox.innerHTML+=`
    <div class="result-item">
      <div class="result-name">${d.name}</div>
-     <div class="result-value">${dimensionScores[d.id]}/100</div>
+     <div class="result-value">${
+       dimensionScores[d.id] === null
+         ? "N/D"
+         : dimensionScores[d.id] + "/100"
+     }</div>
    </div>
    `;
  });
 
  const ordered=[...dimensions]
+   .filter(d=>dimensionScores[d.id] !== null)
    .sort((a,b)=>dimensionScores[a.id]-dimensionScores[b.id])
    .slice(0,3);
 
