@@ -7,6 +7,7 @@ import os
 import hmac
 import json
 import re
+import importlib.util
 from pathlib import Path
 import requests as _requests
 from datetime import datetime, timezone, timedelta, UTC
@@ -37,6 +38,23 @@ def _key_ok(provided: str | None, env_var: str = "COGNITIVE_API_KEY") -> bool:
     """Timing-safe API key comparison."""
     expected = os.getenv(env_var, "")
     return bool(expected) and hmac.compare_digest(provided or "", expected)
+
+def _load_horeca_engine():
+    """Load the canonical HoReCa scoring engine without duplicating formulas."""
+    module_path = Path(__file__).resolve().parent / "qen-horeca-auditor" / "main.py"
+    spec = importlib.util.spec_from_file_location(
+        "cognitivelogic_qen_horeca_engine",
+        module_path,
+    )
+    if spec is None or spec.loader is None:
+        raise RuntimeError("HoReCa engine unavailable")
+    module = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(module)
+    return module
+
+
+_HORECA_ENGINE = _load_horeca_engine()
+
 
 def _qen(vs: float, va: float, vt: float) -> float:
     return round(vs * 0.40 + va * 0.35 + vt * 0.25, 2)
@@ -373,42 +391,92 @@ def analyze():
 def audit_horeca():
     if not _key_ok(request.headers.get("X-API-Key")):
         return jsonify({"error": "Unauthorized"}), 403
+
     data = request.json or {}
-    nome     = (data.get("azienda_nome") or "Azienda HoReCa").strip()
-    coperti  = data.get("coperti", 0)
-    qen      = data.get("qen_score_finale", 0)
-    mods     = data.get("moduli_dettagliati", {})
-    status   = data.get("status_conformita", "")
-    audit_id = data.get("qen_audit_id") or "qen-" + datetime.now(UTC).strftime("%Y%m%d%H%M%S")
+
+    # The persistence endpoint accepts raw assessment data only.
+    # Client-computed QEN scores and module scores are not authoritative.
+    raw = data.get("assessment")
+    if not isinstance(raw, dict):
+        return jsonify({
+            "error": "Invalid assessment payload",
+            "detail": "Expected raw assessment data in 'assessment'.",
+        }), 400
+
+    try:
+        req = _HORECA_ENGINE.QENAuditRequest(**raw)
+        result = _HORECA_ENGINE.compute_qen_audit(req)
+    except Exception as exc:
+        return jsonify({
+            "error": "Invalid assessment payload",
+            "detail": str(exc),
+        }), 400
+
+    nome = result["azienda_nome"]
+    qen = result["qen_score_finale"]
+    mods = result["moduli_dettagliati"]
+    status = result["status_conformita"]
+    audit_id = result["qen_audit_id"]
+
+    coperti = raw.get("risorse", {}).get("numero_coperti_mese", 0)
 
     def ms(key):
         return mods.get(key, {}).get("score", 0) or 0
 
     vs = round((ms("sociale") + ms("governance")) / 2, 1)
-    va = round((ms("imballaggi") + ms("risorse") + ms("qualita") + ms("rifiuti")) / 4, 1)
+    va = round(
+        (
+            ms("imballaggi")
+            + ms("risorse")
+            + ms("qualita")
+            + ms("rifiuti")
+        ) / 4,
+        1,
+    )
     vt = round((ms("logistica") + ms("territorio")) / 2, 1)
 
     score_data = {
-        "qen_score": qen, "vs": vs, "va": va, "vt": vt,
-        "status": status, "settore": "HoReCa",
-        "coperti": coperti, "moduli": mods, "audit_id": audit_id,
+        "qen_score": qen,
+        "vs": vs,
+        "va": va,
+        "vt": vt,
+        "status": status,
+        "settore": "HoReCa",
+        "coperti": coperti,
+        "moduli": mods,
+        "audit_id": audit_id,
+        "source": "server-recalculated",
     }
+
     save_pilot(nome, score_data)
 
     evide_entry = _evide_append(
-        entry_type="COMPLIANCE_AUDIT", agent="cognitivelogic-api", operator_id=nome,
-        input_obj={"coperti": coperti, "moduli_dettagliati": mods},
+        entry_type="COMPLIANCE_AUDIT",
+        agent="cognitivelogic-api",
+        operator_id=nome,
+        input_obj={"assessment": raw},
         output_obj=score_data,
-        qen_score=qen, verdict=_verdict_for_qen(qen),
+        qen_score=qen,
+        verdict=_verdict_for_qen(qen),
     )
+
     new_node = {
-        "id": nome, "type": "EntitaPilota", "label": nome,
+        "id": nome,
+        "type": "EntitaPilota",
+        "label": nome,
         "settore": "HoReCa",
-        "qen_score": {"vs": vs, "va": va, "vt": vt, "totale": qen},
+        "qen_score": {
+            "vs": vs,
+            "va": va,
+            "vt": vt,
+            "totale": qen,
+        },
         "evide_id": evide_entry["id"],
         "stato": "AUDIT_COMPLETATO",
+        "score_source": "server-recalculated",
         "timestamp": datetime.now(UTC).strftime("%Y-%m-%dT%H:%M:%SZ"),
     }
+
     try:
         with open(GRAPH_PATH, "r") as f:
             g = json.load(f)
@@ -420,7 +488,15 @@ def audit_horeca():
     except Exception:
         pass
 
-    return jsonify({"status": "saved", "audit_id": audit_id, "node": new_node}), 200
+    return jsonify({
+        "status": "saved",
+        "audit_id": audit_id,
+        "qen_score_finale": qen,
+        "status_conformita": status,
+        "moduli_dettagliati": mods,
+        "node": new_node,
+    }), 200
+
 
 @app.route("/audit/balneare", methods=["POST"])
 def audit_balneare():

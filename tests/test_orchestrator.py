@@ -351,51 +351,153 @@ class TestPlacesBatchQen:
 # ── audit/horeca & audit/balneare — auth ─────────────────────────────────────
 
 class TestAuditAuth:
-    _horeca_payload = {
-        "azienda_nome": "Trattoria Test",
-        "coperti": 60,
-        "qen_score_finale": 72.5,
-        "moduli_dettagliati": {
-            "sociale": {"score": 70}, "governance": {"score": 75},
-            "imballaggi": {"score": 80}, "risorse": {"score": 65},
-            "qualita": {"score": 70}, "rifiuti": {"score": 60},
-            "logistica": {"score": 75}, "territorio": {"score": 80},
-        },
-        "status_conformita": "CONFORME",
+    _horeca_raw_payload = {
+        "assessment": {
+            "azienda_nome": "Trattoria Test",
+            "logistica": {
+                "distanza_fornitore_km": 50,
+                "tipologia_mezzo": "camion",
+                "certificazione_fornitore": True,
+                "num_fornitori_localizzati": 85,
+            },
+            "imballaggi": {
+                "peso_plastica_monouso_kg": 5,
+                "percentuale_materiale_riciclato": 40,
+                "certificazione_compostabilita_en13432": True,
+                "volumen_contenitori_eco": 100,
+            },
+            "risorse": {
+                "kwh_consumati_mese": 100,
+                "percentuale_energia_rinnovabile": 60,
+                "litri_acqua_consumati_mese": 1000,
+                "numero_coperti_mese": 60,
+            },
+            "qualita": {
+                "numero_certificazioni_iso_ecolabel": 2,
+                "indice_specie_autoctone": 60,
+                "coefficiente_stagionalita": "in_stagione",
+                "lista_ingredienti_protetti": ["Prodotto A"],
+            },
+            "sociale": {
+                "ore_extra_percentuale": 10,
+                "gender_pay_gap_percentuale": 5,
+                "ore_formazione_anno_dipendente": 45,
+                "tasso_turnover_annuale": 10,
+                "numero_dipendenti_categorie_protette": 1,
+            },
+            "rifiuti": {
+                "scarto_organico_kg_mese": 5,
+                "numero_coperti_mese": 60,
+                "percentuale_cibo_donato": 10,
+                "percentuale_raccolta_differenziata": 95,
+                "tracciabilita_oli_esausti": True,
+            },
+            "governance": {
+                "dati_qen_pubblici_qrcode": True,
+                "audit_esterni_presenti": True,
+                "firma_codice_etico": True,
+                "giorni_da_ultimo_aggiornamento": 10,
+            },
+            "territorio": {
+                "percentuale_acquisti_locali": 70,
+                "ore_volontariato_aziendale_anno": 120,
+                "progetti_inclusione_attivi": 2,
+                "ingredienti_biodiversita_culturale": ["Prodotto B"],
+            },
+        }
     }
+
     _balneare_payload = {
         "azienda_nome": "Lido Test",
         "tipo": "balneare",
         "qen_score_finale": 68.0,
-        "scores": {"m1": 70, "m2": 65, "m3": 75, "m4": 60, "m5": 80, "m6": 55},
+        "scores": {
+            "m1": 70,
+            "m2": 65,
+            "m3": 75,
+            "m4": 60,
+            "m5": 80,
+            "m6": 55,
+        },
     }
 
     def test_horeca_no_key_returns_403(self):
-        resp = client.post("/audit/horeca", json=self._horeca_payload)
+        resp = client.post(
+            "/audit/horeca",
+            json=self._horeca_raw_payload,
+        )
         assert resp.status_code == 403
 
     def test_horeca_wrong_key_returns_403(self):
-        resp = client.post("/audit/horeca", json=self._horeca_payload,
-                           headers={"X-API-Key": "wrong"})
+        resp = client.post(
+            "/audit/horeca",
+            json=self._horeca_raw_payload,
+            headers={"X-API-Key": "wrong"},
+        )
         assert resp.status_code == 403
 
-    def test_horeca_correct_key_returns_200(self):
-        with patch("main.save_pilot"), \
-             patch("main._evide_append", return_value={"id": "evide-test"}):
-            resp = client.post("/audit/horeca", json=self._horeca_payload,
-                               headers={"X-API-Key": "test-key-ci"})
+    def test_horeca_legacy_client_score_payload_is_rejected(self):
+        resp = client.post(
+            "/audit/horeca",
+            json={
+                "azienda_nome": "Manipulated",
+                "qen_score_finale": 100,
+                "moduli_dettagliati": {
+                    "logistica": {"score": 100},
+                },
+            },
+            headers={"X-API-Key": "test-key-ci"},
+        )
+        assert resp.status_code == 400
+
+    def test_horeca_invalid_raw_payload_returns_400(self):
+        resp = client.post(
+            "/audit/horeca",
+            json={"assessment": {"azienda_nome": "Incomplete"}},
+            headers={"X-API-Key": "test-key-ci"},
+        )
+        assert resp.status_code == 400
+
+    def test_horeca_correct_key_recalculates_and_saves(self):
+        with patch("main.save_pilot") as mock_save,              patch(
+                 "main._evide_append",
+                 return_value={"id": "evide-test"},
+             ):
+            resp = client.post(
+                "/audit/horeca",
+                json=self._horeca_raw_payload,
+                headers={"X-API-Key": "test-key-ci"},
+            )
+
         assert resp.status_code == 200
-        assert resp.get_json()["status"] == "saved"
+
+        data = resp.get_json()
+        assert data["status"] == "saved"
+        assert data["qen_score_finale"] != 0
+        assert data["node"]["score_source"] == "server-recalculated"
+
+        saved = mock_save.call_args.args[1]
+        assert saved["source"] == "server-recalculated"
+        assert saved["qen_score"] == data["qen_score_finale"]
 
     def test_balneare_no_key_returns_403(self):
-        resp = client.post("/audit/balneare", json=self._balneare_payload)
+        resp = client.post(
+            "/audit/balneare",
+            json=self._balneare_payload,
+        )
         assert resp.status_code == 403
 
     def test_balneare_correct_key_returns_200(self):
-        with patch("main.save_pilot"), \
-             patch("main._evide_append", return_value={"id": "evide-test"}):
-            resp = client.post("/audit/balneare", json=self._balneare_payload,
-                               headers={"X-API-Key": "test-key-ci"})
+        with patch("main.save_pilot"),              patch(
+                 "main._evide_append",
+                 return_value={"id": "evide-test"},
+             ):
+            resp = client.post(
+                "/audit/balneare",
+                json=self._balneare_payload,
+                headers={"X-API-Key": "test-key-ci"},
+            )
+
         assert resp.status_code == 200
         assert resp.get_json()["status"] == "saved"
 
