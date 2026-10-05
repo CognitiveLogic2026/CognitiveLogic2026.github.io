@@ -1033,9 +1033,19 @@ document.getElementById("assessmentForm").addEventListener("submit",e=>{
       " · Priorità: " + priorityText;
   }
 
+  let qualificationPriorities = [];
+
   function setupQualification(priorities){
     const form = document.getElementById("horecaQualificationForm");
     if(!form) return;
+
+    qualificationPriorities = Array.isArray(priorities)
+      ? [...priorities]
+      : [];
+
+    if(form.dataset.qualificationHandlerBound === "true") return;
+
+    form.dataset.qualificationHandlerBound = "true";
 
     form.addEventListener("submit", function(e){
       e.preventDefault();
@@ -1070,8 +1080,8 @@ document.getElementById("assessmentForm").addEventListener("submit",e=>{
           (score === null ? "non disponibile" : score + "/100"),
         "",
         "Priorità preliminari:",
-        ...(priorities.length
-          ? priorities.map((p,i) => (i+1) + ". " + p)
+        ...(qualificationPriorities.length
+          ? qualificationPriorities.map((p,i) => (i+1) + ". " + p)
           : ["non disponibili"]),
         "",
         "Problema da approfondire:",
