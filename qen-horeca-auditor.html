@@ -1160,24 +1160,69 @@
 
     renderResults(lastResult);
 
-    // Salva nodo nel knowledge graph QEN
-    fetch('https://api.cognitivelogic.it/audit/horeca', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        azienda_nome:       lastResult.azienda_nome,
-        coperti:            coperti,
-        qen_score_finale:   lastResult.qen_score_finale,
-        status_conformita:  lastResult.status_conformita,
-        moduli_dettagliati: lastResult.moduli_dettagliati,
-        qen_audit_id:       lastResult.qen_audit_id,
-      })
-    }).then(r => {
-      if (r.ok) {
-        const badge = document.getElementById('graphSavedBadge');
-        if (badge) badge.style.display = 'inline-block';
+    /*
+      La pagina pubblica esegue l'autovalutazione localmente.
+      La persistenza QEN/EVIDE richiede un canale server-side autenticato:
+      nessuna API key viene esposta nel browser.
+    */
+    lastResult.persistence_payload = {
+      assessment: {
+        azienda_nome: nome,
+        logistica: {
+          distanza_fornitore_km: gn('m1_distanza'),
+          tipologia_mezzo: gv('m1_mezzo'),
+          certificazione_fornitore: gb('m1_certificazione'),
+          num_fornitori_localizzati: gn('m1_fornitori_localizzati'),
+        },
+        imballaggi: {
+          peso_plastica_monouso_kg: gn('m2_plastica'),
+          percentuale_materiale_riciclato: gn('m2_riciclato'),
+          certificazione_compostabilita_en13432: gb('m2_compostabilita'),
+          volumen_contenitori_eco: gn('m2_contenitori'),
+        },
+        risorse: {
+          kwh_consumati_mese: gn('m3_kwh'),
+          percentuale_energia_rinnovabile: gn('m3_rinnovabile'),
+          litri_acqua_consumati_mese: gn('m3_litri'),
+          numero_coperti_mese: coperti,
+        },
+        qualita: {
+          numero_certificazioni_iso_ecolabel: gi('m4_certificazioni'),
+          indice_specie_autoctone: gn('m4_specie'),
+          coefficiente_stagionalita: gv('m4_stagionalita'),
+          lista_ingredienti_protetti: gls('m4_ingredienti'),
+        },
+        sociale: {
+          ore_extra_percentuale: gn('m5_ore_extra'),
+          gender_pay_gap_percentuale: gn('m5_pay_gap'),
+          ore_formazione_anno_dipendente: gn('m5_formazione'),
+          tasso_turnover_annuale: gn('m5_turnover'),
+          numero_dipendenti_categorie_protette: gi('m5_cat_protette'),
+        },
+        rifiuti: {
+          scarto_organico_kg_mese: gn('m6_scarto'),
+          numero_coperti_mese: coperti,
+          percentuale_cibo_donato: gn('m6_donato'),
+          percentuale_raccolta_differenziata: gn('m6_differenziata'),
+          tracciabilita_oli_esausti: gb('m6_oli'),
+        },
+        governance: {
+          dati_qen_pubblici_qrcode: gb('m7_qrcode'),
+          audit_esterni_presenti: gb('m7_audit'),
+          firma_codice_etico: gb('m7_codice'),
+          giorni_da_ultimo_aggiornamento: gi('m7_giorni'),
+        },
+        territorio: {
+          percentuale_acquisti_locali: gn('m8_acquisti_locali'),
+          ore_volontariato_aziendale_anno: gn('m8_volontariato'),
+          progetti_inclusione_attivi: gi('m8_progetti'),
+          ingredienti_biodiversita_culturale: gls('m8_ingredienti_cultura'),
+        },
       }
-    }).catch(() => {});
+    };
+
+    const badge = document.getElementById('graphSavedBadge');
+    if (badge) badge.style.display = 'none';
   }
 
   // ── Result renderer ──────────────────────────────────────────────
