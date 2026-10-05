@@ -777,24 +777,70 @@ function runAudit() {
   lastResult = { scores, qen: Math.round(qen * 10) / 10, qen_audit_id: auditId };
   renderResult(lastResult);
 
-  // Salva nodo nel knowledge graph QEN
+  /*
+    La pagina pubblica calcola il risultato localmente.
+    La persistenza QEN/EVIDE richiede un canale server-side autenticato:
+    nessuna API key viene esposta nel browser.
+  */
   const nome = (document.getElementById('azienda_nome') || {}).value || 'Operatore Balneare';
-  fetch('https://api.cognitivelogic.it/audit/balneare', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({
-      azienda_nome:     nome.trim(),
-      tipo:             currentTipo,
-      qen_score_finale: lastResult.qen,
-      scores:           lastResult.scores,
-      qen_audit_id:     auditId,
-    })
-  }).then(r => {
-    if (r.ok) {
-      const badge = document.getElementById('graphSavedBadge');
-      if (badge) badge.style.display = 'inline-block';
+
+  lastResult.persistence_payload = {
+    assessment: {
+      azienda_nome: nome.trim(),
+      tipo: currentTipo,
+
+      m1: {
+        concessione_regolare: document.getElementById('m1_concessione_regolare').checked,
+        bolkestein_ready: document.getElementById('m1_bolkestein_ready').checked,
+        no_sanzioni: document.getElementById('m1_no_sanzioni').checked,
+      },
+
+      m2: {
+        plastica_kg: parseFloat(document.getElementById('m2_plastica').value) || 0,
+        raccolta_differenziata_percentuale: parseFloat(document.getElementById('m2_differenziata').value) || 0,
+        bandiera_blu: document.getElementById('m2_bandiera_blu').checked,
+        no_plastica_monouso: document.getElementById('m2_no_plastica_monouso').checked,
+        pulizia_spiaggia: document.getElementById('m2_pulizia_spiaggia').checked,
+      },
+
+      m3: {
+        bagnini: parseInt(document.getElementById('m3_bagnini').value) || 0,
+        accessibile_balneare: document.getElementById('m3_accessibile_balneare').checked,
+        defibrillatore: document.getElementById('m3_defibrillatore').checked,
+        servizi_extra: document.getElementById('m3_servizi_extra').checked,
+
+        anni_attivita: parseInt(document.getElementById('m3_anni_attivita').value) || 0,
+        soddisfazione: parseFloat(document.getElementById('m3_soddisfazione').value) || 0,
+        accessibile_amb: document.getElementById('m3_accessibile_amb').checked,
+        prezzi_fissi: document.getElementById('m3_prezzi_fissi').checked,
+      },
+
+      m4: {
+        fornitori_locali_percentuale: parseFloat(document.getElementById('m4_fornitori_locali').value) || 0,
+        haccp: document.getElementById('m4_haccp').checked,
+        tracciabilita: document.getElementById('m4_tracciabilita').checked,
+        bio: document.getElementById('m4_bio').checked,
+      },
+
+      m5: {
+        ccnl: document.getElementById('m5_ccnl').value,
+        formazione_ore: parseFloat(document.getElementById('m5_formazione').value) || 0,
+        turnover_percentuale: parseFloat(document.getElementById('m5_turnover').value) || 0,
+        alloggio: document.getElementById('m5_alloggio').checked,
+        categorie_protette: document.getElementById('m5_cat_protette').checked,
+      },
+
+      m6: {
+        sito_web: document.getElementById('m6_sito_web').checked,
+        social: document.getElementById('m6_social').checked,
+        recensioni: parseFloat(document.getElementById('m6_recensioni').value) || 0,
+        qr_code: document.getElementById('m6_qr_code').checked,
+      },
     }
-  }).catch(() => {});
+  };
+
+  const badge = document.getElementById('graphSavedBadge');
+  if (badge) badge.style.display = 'none';
 }
 
 function fillClass(s) {
