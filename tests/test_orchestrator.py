@@ -407,18 +407,48 @@ class TestAuditAuth:
         }
     }
 
-    _balneare_payload = {
-        "azienda_nome": "Lido Test",
-        "tipo": "balneare",
-        "qen_score_finale": 68.0,
-        "scores": {
-            "m1": 70,
-            "m2": 65,
-            "m3": 75,
-            "m4": 60,
-            "m5": 80,
-            "m6": 55,
-        },
+    _balneare_raw_payload = {
+        "assessment": {
+            "azienda_nome": "Lido Test",
+            "tipo": "balneare",
+            "m1": {
+                "concessione_regolare": True,
+                "bolkestein_ready": True,
+                "no_sanzioni": True,
+            },
+            "m2": {
+                "plastica_kg": 5,
+                "raccolta_differenziata_percentuale": 85,
+                "bandiera_blu": False,
+                "no_plastica_monouso": True,
+                "pulizia_spiaggia": True,
+            },
+            "m3": {
+                "bagnini": 2,
+                "accessibile_balneare": True,
+                "defibrillatore": True,
+                "servizi_extra": True,
+            },
+            "m4": {
+                "fornitori_locali_percentuale": 70,
+                "haccp": True,
+                "tracciabilita": True,
+                "bio": False,
+            },
+            "m5": {
+                "ccnl": "turismo",
+                "formazione_ore": 30,
+                "turnover_percentuale": 25,
+                "alloggio": False,
+                "categorie_protette": True,
+            },
+            "m6": {
+                "sito_web": True,
+                "social": True,
+                "recensioni": 4.2,
+                "qr_code": True,
+            },
+        }
     }
 
     def test_horeca_no_key_returns_403(self):
@@ -483,23 +513,99 @@ class TestAuditAuth:
     def test_balneare_no_key_returns_403(self):
         resp = client.post(
             "/audit/balneare",
-            json=self._balneare_payload,
+            json=self._balneare_raw_payload,
         )
         assert resp.status_code == 403
 
-    def test_balneare_correct_key_returns_200(self):
+    def test_balneare_legacy_client_score_payload_is_rejected(self):
+        resp = client.post(
+            "/audit/balneare",
+            json={
+                "azienda_nome": "Manipulated Lido",
+                "tipo": "balneare",
+                "qen_score_finale": 100,
+                "scores": {
+                    "m1": 100,
+                    "m2": 100,
+                    "m3": 100,
+                    "m4": 100,
+                    "m5": 100,
+                    "m6": 100,
+                },
+            },
+            headers={"X-API-Key": "test-key-ci"},
+        )
+        assert resp.status_code == 400
+
+    def test_balneare_invalid_raw_payload_returns_400(self):
+        payload = {
+            "assessment": {
+                **self._balneare_raw_payload["assessment"],
+                "m6": {
+                    **self._balneare_raw_payload["assessment"]["m6"],
+                    "recensioni": 8,
+                },
+            }
+        }
+
+        resp = client.post(
+            "/audit/balneare",
+            json=payload,
+            headers={"X-API-Key": "test-key-ci"},
+        )
+        assert resp.status_code == 400
+
+    def test_balneare_correct_key_recalculates_and_saves(self):
+        with patch("main.save_pilot") as mock_save,              patch(
+                 "main._evide_append",
+                 return_value={"id": "evide-test"},
+             ):
+            resp = client.post(
+                "/audit/balneare",
+                json=self._balneare_raw_payload,
+                headers={"X-API-Key": "test-key-ci"},
+            )
+
+        assert resp.status_code == 200
+
+        data = resp.get_json()
+        assert data["status"] == "saved"
+        assert data["qen_score_finale"] > 0
+        assert data["node"]["score_source"] == "server-recalculated"
+
+        saved = mock_save.call_args.args[1]
+        assert saved["source"] == "server-recalculated"
+        assert saved["qen_score"] == data["qen_score_finale"]
+        assert saved["scores"] == data["scores"]
+
+    def test_balneare_ambulante_uses_alternate_m3_branch(self):
+        payload = {
+            "assessment": {
+                **self._balneare_raw_payload["assessment"],
+                "tipo": "ambulante_food",
+                "m3": {
+                    "anni_attivita": 6,
+                    "soddisfazione": 5,
+                    "accessibile_amb": True,
+                    "prezzi_fissi": True,
+                },
+            }
+        }
+
         with patch("main.save_pilot"),              patch(
                  "main._evide_append",
                  return_value={"id": "evide-test"},
              ):
             resp = client.post(
                 "/audit/balneare",
-                json=self._balneare_payload,
+                json=payload,
                 headers={"X-API-Key": "test-key-ci"},
             )
 
         assert resp.status_code == 200
-        assert resp.get_json()["status"] == "saved"
+        data = resp.get_json()
+        assert data["scores"]["m3"] == 100
+        assert data["node"]["tipo"] == "ambulante_food"
 
 
 # ── legacy QEN route backed by sovereign engine ──────────────────────────────

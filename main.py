@@ -56,6 +56,23 @@ def _load_horeca_engine():
 _HORECA_ENGINE = _load_horeca_engine()
 
 
+def _load_balneare_engine():
+    """Load the canonical Balneare scoring engine without duplicating formulas."""
+    module_path = Path(__file__).resolve().parent / "qen-balneare-auditor" / "main.py"
+    spec = importlib.util.spec_from_file_location(
+        "cognitivelogic_qen_balneare_engine",
+        module_path,
+    )
+    if spec is None or spec.loader is None:
+        raise RuntimeError("Balneare engine unavailable")
+    module = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(module)
+    return module
+
+
+_BALNEARE_ENGINE = _load_balneare_engine()
+
+
 def _qen(vs: float, va: float, vt: float) -> float:
     return round(vs * 0.40 + va * 0.35 + vt * 0.25, 2)
 
@@ -502,44 +519,91 @@ def audit_horeca():
 def audit_balneare():
     if not _key_ok(request.headers.get("X-API-Key")):
         return jsonify({"error": "Unauthorized"}), 403
-    data     = request.json or {}
-    nome     = (data.get("azienda_nome") or "Operatore Balneare").strip()
-    tipo     = data.get("tipo", "balneare")
-    qen      = data.get("qen_score_finale", 0)
-    scores   = data.get("scores", {})
-    audit_id = data.get("qen_audit_id") or "qen-bal-" + datetime.now(UTC).strftime("%Y%m%d%H%M%S")
+
+    data = request.json or {}
+
+    # Persistence accepts raw assessment data only.
+    # Client-computed module scores and QEN totals are not authoritative.
+    raw = data.get("assessment")
+    if not isinstance(raw, dict):
+        return jsonify({
+            "error": "Invalid assessment payload",
+            "detail": "Expected raw assessment data in 'assessment'.",
+        }), 400
+
+    try:
+        req = _BALNEARE_ENGINE.BalneareAuditRequest(**raw)
+        result = _BALNEARE_ENGINE.compute_balneare_audit(req)
+    except Exception as exc:
+        return jsonify({
+            "error": "Invalid assessment payload",
+            "detail": str(exc),
+        }), 400
+
+    nome = result["azienda_nome"]
+    tipo = result["tipo"]
+    qen = result["qen_score_finale"]
+    scores = result["scores"]
+
+    audit_id = (
+        "qen-bal-"
+        + datetime.now(UTC).strftime("%Y%m%d%H%M%S%f")
+    )
 
     def sc(key):
         return scores.get(key, 0) or 0
 
-    # M1 Concessione/Bolkestein + M4 Filiera + M6 Digitale → Territoriale
+    # M1 concessione + M4 filiera + M6 digitale -> territoriale
     vt = round((sc("m1") + sc("m4") + sc("m6")) / 3, 1)
-    # M2 Sostenibilità → Ambientale
+
+    # M2 sostenibilita -> ambientale
     va = round(sc("m2"), 1)
-    # M5 Lavoro + M3 Servizi/Accessibilità → Sociale
+
+    # M5 lavoro + M3 servizi/accessibilita -> sociale
     vs = round((sc("m5") + sc("m3")) / 2, 1)
 
     score_data = {
-        "qen_score": qen, "vs": vs, "va": va, "vt": vt,
-        "settore": "Balneare", "tipo": tipo,
-        "scores": scores, "audit_id": audit_id,
+        "qen_score": qen,
+        "vs": vs,
+        "va": va,
+        "vt": vt,
+        "settore": "Balneare",
+        "tipo": tipo,
+        "scores": scores,
+        "audit_id": audit_id,
+        "source": "server-recalculated",
     }
+
     save_pilot(nome, score_data)
 
     evide_entry = _evide_append(
-        entry_type="COMPLIANCE_AUDIT", agent="cognitivelogic-api", operator_id=nome,
-        input_obj={"tipo": tipo, "scores": scores},
+        entry_type="COMPLIANCE_AUDIT",
+        agent="cognitivelogic-api",
+        operator_id=nome,
+        input_obj={"assessment": raw},
         output_obj=score_data,
-        qen_score=qen, verdict=_verdict_for_qen(qen),
+        qen_score=qen,
+        verdict=_verdict_for_qen(qen),
     )
+
     new_node = {
-        "id": nome, "type": "EntitaPilota", "label": nome,
-        "settore": "Balneare", "tipo": tipo,
-        "qen_score": {"vs": vs, "va": va, "vt": vt, "totale": qen},
+        "id": nome,
+        "type": "EntitaPilota",
+        "label": nome,
+        "settore": "Balneare",
+        "tipo": tipo,
+        "qen_score": {
+            "vs": vs,
+            "va": va,
+            "vt": vt,
+            "totale": qen,
+        },
         "evide_id": evide_entry["id"],
         "stato": "AUDIT_COMPLETATO",
+        "score_source": "server-recalculated",
         "timestamp": datetime.now(UTC).strftime("%Y-%m-%dT%H:%M:%SZ"),
     }
+
     try:
         with open(GRAPH_PATH, "r") as f:
             g = json.load(f)
@@ -551,7 +615,14 @@ def audit_balneare():
     except Exception:
         pass
 
-    return jsonify({"status": "saved", "audit_id": audit_id, "node": new_node}), 200
+    return jsonify({
+        "status": "saved",
+        "audit_id": audit_id,
+        "qen_score_finale": qen,
+        "scores": scores,
+        "node": new_node,
+    }), 200
+
 
 @app.route("/admin/add-client", methods=["POST"])
 def admin_add_client():
