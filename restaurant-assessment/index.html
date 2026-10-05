@@ -1,0 +1,1157 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
+<title>Restaurant Assessment Bologna — Cognitive Logic</title>
+
+<meta name="description"
+content="Assessment preliminare per ristoranti: presenza digitale, conversione, dati, AI readiness e verificabilità delle evidenze.">
+
+<meta name="robots" content="noindex,nofollow">
+
+<link rel="stylesheet" href="../css/fonts-local.css">
+<link rel="stylesheet" href="../css/style.css?v=3">
+
+<style>
+.assessment-wrap{
+  max-width:960px;
+  margin:0 auto;
+  padding:7rem 2rem 5rem;
+}
+
+.assessment-label{
+  font-family:"DM Mono",monospace;
+  text-transform:uppercase;
+  letter-spacing:.18em;
+  font-size:.65rem;
+  color:var(--gold-soft);
+}
+
+.assessment-wrap h1{
+  font-family:"Cormorant Garamond",serif;
+  font-size:clamp(2.6rem,6vw,5rem);
+  line-height:1;
+  margin:.8rem 0 1.5rem;
+}
+
+.lead{
+  max-width:720px;
+  line-height:1.8;
+  color:var(--text-soft);
+}
+
+.notice{
+  margin:2rem 0;
+  padding:1.2rem;
+  border:1px solid var(--line-soft);
+  background:var(--bg-soft);
+  font-size:.78rem;
+  line-height:1.7;
+}
+
+.assessment-form{
+  margin-top:3rem;
+}
+
+.business-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:1rem;
+  margin-bottom:3rem;
+}
+
+.field label{
+  display:block;
+  font-family:"DM Mono",monospace;
+  font-size:.62rem;
+  text-transform:uppercase;
+  letter-spacing:.12em;
+  color:var(--muted);
+  margin-bottom:.4rem;
+}
+
+.field input,
+.field select{
+  width:100%;
+  box-sizing:border-box;
+  padding:.85rem;
+  background:var(--bg-soft);
+  color:var(--text);
+  border:1px solid var(--line-soft);
+}
+
+.dimension{
+  border-top:1px solid var(--line-soft);
+  padding:2.4rem 0;
+}
+
+.dimension-id{
+  font-family:"DM Mono",monospace;
+  color:var(--gold-soft);
+  font-size:.62rem;
+  letter-spacing:.15em;
+  text-transform:uppercase;
+}
+
+.dimension h2{
+  font-family:"Cormorant Garamond",serif;
+  font-size:2rem;
+  margin:.4rem 0;
+}
+
+.dimension-desc{
+  color:var(--text-soft);
+  font-size:.8rem;
+  line-height:1.7;
+  margin-bottom:1.4rem;
+}
+
+.question{
+  margin:1.3rem 0;
+}
+
+.question p{
+  font-size:.82rem;
+  margin-bottom:.6rem;
+}
+
+.answers{
+  display:flex;
+  flex-wrap:wrap;
+  gap:.5rem;
+}
+
+.answers label{
+  border:1px solid var(--line-soft);
+  padding:.55rem .8rem;
+  cursor:pointer;
+  font-family:"DM Mono",monospace;
+  font-size:.65rem;
+}
+
+.answers input{
+  margin-right:.35rem;
+}
+
+.actions{
+  padding:2rem 0;
+}
+
+button{
+  padding:.9rem 1.4rem;
+  cursor:pointer;
+  border:1px solid var(--gold);
+  background:var(--gold);
+  color:#070d1a;
+  font-family:"DM Mono",monospace;
+  text-transform:uppercase;
+  letter-spacing:.08em;
+}
+
+.results{
+  display:none;
+  margin-top:3rem;
+  border:1px solid var(--line-soft);
+  padding:2rem;
+  background:var(--bg-soft);
+}
+
+.score{
+  font-family:"Cormorant Garamond",serif;
+  font-size:4rem;
+  color:var(--gold-soft);
+}
+
+.result-grid{
+  display:grid;
+  grid-template-columns:repeat(5,1fr);
+  gap:1px;
+  background:var(--line-soft);
+  margin:2rem 0;
+}
+
+.result-item{
+  background:var(--bg-panel);
+  padding:1rem;
+}
+
+.result-name{
+  font-family:"DM Mono",monospace;
+  font-size:.58rem;
+  text-transform:uppercase;
+  color:var(--muted);
+}
+
+.result-value{
+  font-family:"Cormorant Garamond",serif;
+  font-size:1.7rem;
+  margin-top:.3rem;
+}
+
+.priority{
+  padding:.7rem 0;
+  border-bottom:1px solid var(--line-soft);
+}
+
+.disclaimer{
+  margin-top:2rem;
+  font-size:.7rem;
+  color:var(--muted);
+  line-height:1.7;
+}
+
+.results{
+  color:var(--text);
+  background:var(--bg-panel);
+  border:1px solid var(--line-soft);
+  border-radius:12px;
+  padding:clamp(1.5rem,4vw,3rem);
+}
+
+.results .score{
+  color:var(--gold-soft);
+  font-family:"DM Mono",monospace;
+  font-weight:500;
+}
+
+.results h2{
+  color:var(--text);
+  margin-top:2.5rem;
+}
+
+.results strong{
+  color:var(--text);
+}
+
+.results p{
+  color:var(--text-soft);
+}
+
+.evidence-status{
+  margin-top:2rem;
+}
+
+.evidence-flow{
+  display:grid;
+  grid-template-columns:1fr auto 1fr auto 1fr auto 1fr;
+  gap:.7rem;
+  align-items:stretch;
+  margin-top:1.3rem;
+}
+
+.evidence-stage{
+  min-width:0;
+  padding:1rem;
+  border:1px solid var(--line-soft);
+  background:var(--bg-soft);
+}
+
+.evidence-stage.active{
+  border-color:var(--gold);
+}
+
+.evidence-stage span{
+  display:block;
+  font-family:"DM Mono",monospace;
+  font-size:.6rem;
+  letter-spacing:.08em;
+  color:var(--muted);
+}
+
+.evidence-stage strong{
+  display:block;
+  margin:.4rem 0;
+  font-size:1.4rem;
+  color:var(--gold-soft);
+}
+
+.evidence-stage small{
+  color:var(--muted);
+}
+
+.evidence-arrow{
+  align-self:center;
+  color:var(--gold-soft);
+}
+
+.evidence-explain{
+  margin-top:1.3rem;
+  font-size:.82rem;
+}
+
+.results .btn{
+  display:inline-flex;
+  margin-top:1rem;
+  text-decoration:none;
+}
+
+@media(max-width:700px){
+  .business-grid{grid-template-columns:1fr}
+  .result-grid{grid-template-columns:1fr}
+
+  .evidence-flow{
+    grid-template-columns:1fr;
+  }
+
+  .evidence-arrow{
+    transform:rotate(90deg);
+    justify-self:center;
+  }
+}
+</style>
+
+<style id="restaurant-assessment-v2">
+.priority-card{
+  margin:1rem 0;
+  padding:1.15rem 1.25rem;
+  border:1px solid rgba(127,127,127,.25);
+  border-radius:10px;
+}
+.priority-card h3{
+  margin:0 0 .8rem;
+}
+.priority-card p{
+  margin:.45rem 0;
+}
+.priority-state{
+  margin-top:.8rem !important;
+  font-size:.9rem;
+}
+.priority-state strong{
+  letter-spacing:.05em;
+}
+.horeca-qualification{
+  margin-top:2.5rem;
+  padding-top:2rem;
+  border-top:1px solid rgba(127,127,127,.25);
+}
+.horeca-qualification h2{
+  margin-bottom:.5rem;
+}
+.horeca-form-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:1rem;
+  margin:1.5rem 0;
+}
+.horeca-form-grid .full{
+  grid-column:1 / -1;
+}
+.horeca-form-grid label{
+  display:block;
+  font-weight:600;
+}
+.horeca-form-grid input,
+.horeca-form-grid textarea{
+  width:100%;
+  box-sizing:border-box;
+  margin-top:.4rem;
+  padding:.8rem;
+  font:inherit;
+}
+.horeca-form-grid textarea{
+  min-height:110px;
+  resize:vertical;
+}
+.result-context{
+  margin:1rem 0 1.5rem;
+  padding:1rem;
+  border-left:3px solid currentColor;
+}
+.qualification-note{
+  font-size:.88rem;
+  opacity:.8;
+}
+@media(max-width:700px){
+  .horeca-form-grid{
+    grid-template-columns:1fr;
+  }
+  .horeca-form-grid .full{
+    grid-column:auto;
+  }
+}
+@media print{
+  .horeca-qualification{
+    display:none !important;
+  }
+}
+</style>
+
+
+<style id="restaurant-final-ux">
+.restaurant-request-btn{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  min-height:48px;
+  padding:.85rem 1.35rem;
+  border:1px solid #111;
+  border-radius:4px;
+  background:#111;
+  color:#fff;
+  font-weight:700;
+  cursor:pointer;
+}
+.restaurant-request-btn:hover{background:#333}
+</style>
+
+</head>
+
+<body>
+
+<main class="assessment-wrap">
+
+<p class="assessment-label">
+Cognitive Logic · Restaurant Assessment · Bologna
+</p>
+
+<h1>
+Dove sta perdendo opportunità il tuo ristorante?
+</h1>
+
+<p class="lead">
+Una prima autovalutazione della presenza digitale, del percorso cliente,
+dell'uso dei dati, della preparazione all'intelligenza artificiale e della
+verificabilità delle informazioni utilizzate dall'impresa.
+</p>
+
+<div class="notice">
+<strong>Assessment preliminare.</strong>
+Le risposte sono dichiarate dall'impresa e non vengono considerate
+automaticamente evidenze verificate. Il risultato non costituisce audit,
+certificazione o verifica di conformità.
+</div>
+
+<form id="assessmentForm" class="assessment-form">
+
+<div class="business-grid">
+
+<div class="field">
+<label for="businessName">Nome attività</label>
+<input id="businessName" name="businessName" type="text">
+</div>
+
+<div class="field">
+<label for="website">Sito web</label>
+<input id="website" name="website" type="url"
+placeholder="https://">
+</div>
+
+<div class="field">
+<label for="type">Tipologia</label>
+<select id="type" name="type">
+<option value="">Seleziona</option>
+<option>Ristorante</option>
+<option>Trattoria / Osteria</option>
+<option>Pizzeria</option>
+<option>Bar / Bistrot</option>
+<option>Altro HoReCa</option>
+</select>
+</div>
+
+<div class="field">
+<label for="city">Località</label>
+<input id="city" name="city" type="text" value="Bologna">
+</div>
+
+</div>
+
+<div id="questions"></div>
+
+<div class="actions">
+<button type="submit">Genera Opportunity Map</button>
+</div>
+
+</form>
+
+<section id="results" class="results" aria-live="polite">
+
+<div class="result-brand">
+  <strong>Cognitive Logic</strong>
+  <span>Restaurant Assessment · Bologna</span>
+</div>
+
+<p class="assessment-label">
+Preliminary Restaurant Opportunity Map
+</p>
+
+<div>
+<span id="totalScore" class="score">0</span>
+<span>/100</span>
+<span> Opportunity Score</span>
+</div>
+
+<div style="margin-top:1rem">
+<strong>Declared Information Coverage:</strong>
+<span id="evidenceCoverage">0</span>%
+</div>
+
+<p id="profileText"></p>
+
+<div class="notice evidence-status">
+<strong>Stato delle evidenze</strong>
+
+<div class="evidence-flow">
+  <div class="evidence-stage active">
+    <span>DECLARED</span>
+    <strong id="declaredStage">0%</strong>
+    <small>informazioni fornite</small>
+  </div>
+
+  <div class="evidence-arrow">→</div>
+
+  <div class="evidence-stage">
+    <span>OBSERVABLE</span>
+    <strong>—</strong>
+    <small>da osservare</small>
+  </div>
+
+  <div class="evidence-arrow">→</div>
+
+  <div class="evidence-stage">
+    <span>DOCUMENTED</span>
+    <strong>—</strong>
+    <small>da documentare</small>
+  </div>
+
+  <div class="evidence-arrow">→</div>
+
+  <div class="evidence-stage">
+    <span>VERIFIED</span>
+    <strong>—</strong>
+    <small>da verificare</small>
+  </div>
+</div>
+
+<p class="evidence-explain">
+Il livello DECLARED indica soltanto quante informazioni sono state
+fornite nell'autovalutazione. Non indica che tali informazioni siano
+state osservate, documentate o verificate.
+</p>
+</div>
+
+<div id="dimensionResults" class="result-grid"></div>
+
+<h2>Priorità preliminari</h2>
+<div id="operationalPriorities"></div>
+
+<div id="priorities"></div>
+
+<p class="disclaimer">
+Il punteggio deriva esclusivamente dalle risposte fornite in questa
+autovalutazione. Non dimostra conformità, sostenibilità, performance,
+qualità o altri claim dell'impresa. Le informazioni possono essere
+successivamente sottoposte a verifica documentale nell'Assessment
+professionale Cognitive Logic.
+</p>
+
+
+<section class="horeca-qualification" id="horecaQualification">
+  <p class="kicker">QUALIFICAZIONE HORECA</p>
+
+  <h2>Approfondisci i risultati</h2>
+
+  <p>
+    Se vuoi verificare le priorità emerse, puoi preparare una richiesta
+    già contestualizzata sui risultati di questa autovalutazione.
+  </p>
+
+  <div class="result-context">
+    <strong>Contesto che verrà riportato nella richiesta</strong>
+    <div id="qualificationContext">
+      Opportunity Score: — · Priorità: —
+    </div>
+  </div>
+
+  <form id="horecaQualificationForm">
+    <div class="horeca-form-grid">
+
+      <label>
+        Nome del locale
+        <input
+          id="restaurantName"
+          name="restaurantName"
+          type="text"
+          autocomplete="organization"
+          required>
+      </label>
+
+      <label>
+        Email
+        <input
+          id="restaurantEmail"
+          name="restaurantEmail"
+          type="email"
+          autocomplete="email"
+          required>
+      </label>
+
+      <label class="full">
+        Sito o presenza digitale principale
+        <input
+          id="restaurantWebsite"
+          name="restaurantWebsite"
+          type="url"
+          inputmode="url"
+          placeholder="https://">
+      </label>
+
+      <label class="full">
+        Qual è il problema che vorresti capire meglio?
+        <textarea
+          id="restaurantProblem"
+          name="restaurantProblem"
+          required></textarea>
+      </label>
+
+    </div>
+
+    <button type="submit" class="btn btn-primary restaurant-request-btn">
+      Prepara la richiesta
+    </button>
+
+    <p class="qualification-note">
+      Il pulsante apre il programma email del dispositivo con i dati
+      inseriti e il contesto dell'Assessment. Nessun dato viene inviato
+      o memorizzato dal sito.
+    </p>
+  </form>
+</section>
+
+
+</section>
+
+</main>
+
+<script>
+const dimensions = [
+{
+ id:"visibility",
+ name:"Visibility",
+ description:"Quanto facilmente il ristorante può essere trovato e identificato online.",
+ questions:[
+  "Il ristorante dispone di un sito web aggiornato?",
+  "Orari, indirizzo e contatti sono coerenti nei principali canali digitali?",
+  "Menu e informazioni essenziali sono facilmente reperibili online?"
+ ]
+},
+{
+ id:"representation",
+ name:"Representation",
+ description:"Quanto la presenza digitale rappresenta realmente identità, offerta e caratteristiche del locale.",
+ questions:[
+  "Il sito spiega chiaramente cosa distingue il ristorante?",
+  "Menu, servizi e proposta sono descritti in modo aggiornato?",
+  "Le informazioni pubblicate corrispondono all'esperienza effettivamente offerta?"
+ ]
+},
+{
+ id:"conversion",
+ name:"Conversion",
+ description:"Quanto è semplice trasformare una visita digitale in prenotazione, contatto o altra azione utile.",
+ questions:[
+  "È evidente come prenotare o contattare il ristorante?",
+  "Il percorso di prenotazione funziona bene anche da smartphone?",
+  "Le principali call-to-action sono chiare e facilmente raggiungibili?"
+ ]
+},
+{
+ id:"data",
+ name:"Data & AI Readiness",
+ description:"Quanto dati, strumenti e processi digitali sono organizzati per supportare decisioni e automazioni.",
+ questions:[
+  "Prenotazioni, clienti o vendite producono dati utilizzabili dall'impresa?",
+  "È chiaro chi può accedere ai dati e per quali finalità?",
+  "Gli strumenti digitali o AI utilizzati hanno una funzione aziendale definita?"
+ ]
+},
+{
+ id:"evidence",
+ name:"Evidence & Compliance",
+ description:"Quanto dichiarazioni e informazioni rilevanti possono essere ricondotte a fonti o documenti.",
+ questions:[
+  "I claim su ingredienti, origine o sostenibilità possono essere documentati?",
+  "Privacy, cookie e informative digitali vengono mantenuti aggiornati?",
+  "Esiste un responsabile per verificare informazioni e dichiarazioni pubblicate?"
+ ]
+}
+];
+
+const labels = [
+ ["Non so","unknown"],
+ ["No","0"],
+ ["Parzialmente","50"],
+ ["Sì","100"]
+];
+
+const container = document.getElementById("questions");
+
+dimensions.forEach((d,di)=>{
+ const section=document.createElement("section");
+ section.className="dimension";
+
+ let html=`
+ <div class="dimension-id">Area ${di+1}</div>
+ <h2>${d.name}</h2>
+ <p class="dimension-desc">${d.description}</p>
+ `;
+
+ d.questions.forEach((q,qi)=>{
+   const name=`${d.id}_${qi}`;
+   html+=`
+   <div class="question">
+   <p>${q}</p>
+   <div class="answers">
+   ${labels.map(([label,value])=>`
+     <label>
+       <input type="radio"
+       name="${name}"
+       value="${value}"
+       required>
+       ${label}
+     </label>
+   `).join("")}
+   </div>
+   </div>
+   `;
+ });
+
+ section.innerHTML=html;
+ container.appendChild(section);
+});
+
+document.getElementById("assessmentForm").addEventListener("submit",e=>{
+ e.preventDefault();
+
+ const dimensionScores={};
+ let knownAnswers=0;
+ let totalAnswers=0;
+
+ dimensions.forEach(d=>{
+   const values=[];
+
+   d.questions.forEach((q,qi)=>{
+     totalAnswers++;
+
+     const selected=document.querySelector(
+       `input[name="${d.id}_${qi}"]:checked`
+     );
+
+     if(selected.value !== "unknown"){
+       knownAnswers++;
+       values.push(Number(selected.value));
+     }
+   });
+
+   dimensionScores[d.id] =
+     values.length
+       ? Math.round(values.reduce((a,b)=>a+b,0)/values.length)
+       : null;
+ });
+
+ const scoredDimensions =
+   Object.values(dimensionScores)
+   .filter(v=>v !== null);
+
+ const total =
+   scoredDimensions.length
+     ? Math.round(
+         scoredDimensions.reduce((a,b)=>a+b,0) /
+         scoredDimensions.length
+       )
+     : 0;
+
+ const evidenceCoverage =
+   Math.round((knownAnswers/totalAnswers)*100);
+
+ document.getElementById("totalScore").textContent=total;
+ document.getElementById("evidenceCoverage").textContent=evidenceCoverage;
+ document.getElementById("declaredStage").textContent=evidenceCoverage + "%";
+
+ let profile;
+
+ if(evidenceCoverage < 50)
+   profile="La copertura informativa è ancora limitata. Prima di interpretare il punteggio servono ulteriori informazioni.";
+ else if(total<40)
+   profile="Sono emerse diverse aree che meritano verifica prioritaria.";
+ else if(total<70)
+   profile="La base dichiarata è presente, ma alcune aree possono limitare opportunità e controllo.";
+ else
+   profile="La base dichiarata appare strutturata. Il passo successivo è verificare le evidenze che sostengono le risposte.";
+
+ document.getElementById("profileText").textContent=profile;
+
+ const resultBox=document.getElementById("dimensionResults");
+ resultBox.innerHTML="";
+
+ dimensions.forEach(d=>{
+   resultBox.innerHTML+=`
+   <div class="result-item">
+     <div class="result-name">${d.name}</div>
+     <div class="result-value">${
+       dimensionScores[d.id] === null
+         ? "N/D"
+         : dimensionScores[d.id] + "/100"
+     }</div>
+   </div>
+   `;
+ });
+
+ const ordered=[...dimensions]
+   .filter(d=>dimensionScores[d.id] !== null)
+   .sort((a,b)=>dimensionScores[a.id]-dimensionScores[b.id])
+   .slice(0,3);
+
+ const priorities=document.getElementById("priorities");
+ priorities.innerHTML="";
+
+ ordered.forEach((d,i)=>{
+   priorities.innerHTML+=`
+   <div class="priority">
+   <strong>${i+1}. ${d.name}</strong><br>
+   Area da approfondire: ${d.description}
+   </div>
+   `;
+ });
+
+ document.getElementById("results").style.display="block";
+ document.getElementById("results")
+   .scrollIntoView({behavior:"smooth"});
+});
+</script>
+
+
+<script id="restaurant-operational-layer">
+(function(){
+
+  const PRIORITY_CONTENT = {
+    "VISIBILITY": {
+      why:
+        "Se il locale non è facilmente individuabile nei punti in cui il cliente cerca, una parte della domanda potenziale può non raggiungere l'offerta.",
+      verify:
+        "Osservare sito, presenza nei motori di ricerca, Google Business Profile e coerenza delle informazioni pubbliche."
+    },
+
+    "REPRESENTATION": {
+      why:
+        "Essere trovati non basta se la presenza digitale non permette di comprendere con chiarezza identità, proposta, caratteristiche e elementi distintivi del locale.",
+      verify:
+        "Confrontare sito e principali profili pubblici con offerta reale, menu, servizi, posizionamento e informazioni essenziali."
+    },
+
+    "CONVERSION": {
+      why:
+        "Una buona visibilità può non trasformarsi in domanda se il percorso tra ricerca, scelta, prenotazione o contatto presenta attriti.",
+      verify:
+        "Osservare sito, Google Business Profile, sistemi di prenotazione e principali call to action ricostruendo il percorso reale del cliente."
+    },
+
+    "DATA & AI READINESS": {
+      why:
+        "Informazioni frammentate o poco strutturate possono limitare automazione, analisi e leggibilità dell'attività da parte dei sistemi digitali e AI.",
+      verify:
+        "Mappare dove risiedono dati e informazioni operative e verificare struttura, aggiornamento, responsabilità e riutilizzabilità."
+    },
+
+    "EVIDENCE & COMPLIANCE": {
+      why:
+        "Dichiarazioni e informazioni rilevanti richiedono fonti, documenti o responsabilità identificabili quando devono essere controllate o dimostrate.",
+      verify:
+        "Individuare le principali dichiarazioni pubbliche e operative e ricostruire per ciascuna fonte, documento, responsabile e data di aggiornamento."
+    }
+  };
+
+  function normalizeName(name){
+    return (name || "")
+      .replace(/\s+/g," ")
+      .trim()
+      .toUpperCase();
+  }
+
+  function extractPriorities(){
+    /*
+      Leggiamo le priorità già prodotte dal motore esistente.
+      Non ricalcoliamo lo score: manteniamo la sua logica attuale.
+    */
+    const heading = Array.from(document.querySelectorAll("h2"))
+      .find(el => /priorità preliminari/i.test(el.textContent));
+
+    if(!heading) return [];
+
+    const candidates = [];
+    let el = heading.nextElementSibling;
+
+    while(el && !el.matches(".horeca-qualification")){
+      const text = (el.innerText || el.textContent || "").trim();
+
+      const matches = text.match(
+        /(?:^|\n)\s*[123]\.\s*(Visibility|Representation|Conversion|Data\s*&\s*AI\s*Readiness|Evidence\s*&\s*Compliance)/gi
+      );
+
+      if(matches){
+        matches.forEach(m => {
+          const clean = m.replace(/(?:^|\n)\s*[123]\.\s*/,"").trim();
+          if(!candidates.includes(clean)) candidates.push(clean);
+        });
+      }
+
+      el = el.nextElementSibling;
+    }
+
+    return candidates.slice(0,3);
+  }
+
+  function fallbackFromVisibleScores(){
+    const labels = [
+      "VISIBILITY",
+      "REPRESENTATION",
+      "CONVERSION",
+      "DATA & AI READINESS",
+      "EVIDENCE & COMPLIANCE"
+    ];
+
+    const bodyText = document.body.innerText;
+    const found = [];
+
+    labels.forEach(label => {
+      const escaped = label.replace(/[.*+?^${}()|[\]\\]/g,"\\$&");
+      const re = new RegExp(
+        escaped + "\\\\s*([0-9]{1,3})\\\\s*\\\\/\\\\s*100",
+        "i"
+      );
+      const m = bodyText.match(re);
+      if(m){
+        found.push({
+          name:label,
+          score:Number(m[1])
+        });
+      }
+    });
+
+    return found
+      .sort((a,b) => a.score - b.score)
+      .slice(0,3)
+      .map(x => x.name);
+  }
+
+  function getOpportunityScore(){
+    const scoreEl = document.getElementById("totalScore");
+    if(scoreEl){
+      const n = parseInt(scoreEl.textContent,10);
+      if(Number.isFinite(n)) return n;
+    }
+    return null;
+  }
+
+  function renderOperationalPriorities(){
+    const target = document.getElementById("operationalPriorities");
+    if(!target) return [];
+
+    let priorities = extractPriorities();
+
+    if(!priorities.length){
+      priorities = fallbackFromVisibleScores();
+    }
+
+    if(!priorities.length) return [];
+
+    target.innerHTML = "";
+
+    priorities.forEach((rawName,index) => {
+      const key = normalizeName(rawName);
+      const content = PRIORITY_CONTENT[key] || {
+        why:
+          "L'area merita un approfondimento prima di assumere decisioni operative.",
+        verify:
+          "Raccogliere evidenze osservabili e documentazione pertinente."
+      };
+
+      const card = document.createElement("div");
+      card.className = "priority-card";
+
+      card.innerHTML = `
+        <h3>${index + 1}. ${rawName}</h3>
+        <p>
+          <strong>Segnale rilevato:</strong>
+          dalle risposte fornite questa area emerge tra quelle con maggiore necessità di approfondimento.
+        </p>
+        <p>
+          <strong>Perché conta:</strong>
+          ${content.why}
+        </p>
+        <p>
+          <strong>Prima verifica:</strong>
+          ${content.verify}
+        </p>
+        <p class="priority-state">
+          <strong>Stato dell'evidenza:</strong>
+          DECLARED — da osservare.
+        </p>
+      `;
+
+      target.appendChild(card);
+    });
+
+    /*
+      Nascondiamo eventuale vecchio rendering testuale delle priorità,
+      lasciando intatto il motore e i dati.
+    */
+    let el = target.nextElementSibling;
+
+    while(el && !el.matches(".horeca-qualification")){
+      const text = (el.innerText || "").trim();
+
+      if(
+        /^[123]\.\s*/.test(text) ||
+        /Area da approfondire:/i.test(text)
+      ){
+        el.style.display = "none";
+      }
+
+      el = el.nextElementSibling;
+    }
+
+    return priorities;
+  }
+
+  function updateQualificationContext(priorities){
+    const score = getOpportunityScore();
+    const target = document.getElementById("qualificationContext");
+
+    if(!target) return;
+
+    const scoreText =
+      score === null ? "—" : score + "/100";
+
+    const priorityText =
+      priorities.length ? priorities.join(" · ") : "—";
+
+    target.textContent =
+      "Opportunity Score: " + scoreText +
+      " · Priorità: " + priorityText;
+  }
+
+  let qualificationPriorities = [];
+
+  function setupQualification(priorities){
+    const form = document.getElementById("horecaQualificationForm");
+    if(!form) return;
+
+    qualificationPriorities = Array.isArray(priorities)
+      ? [...priorities]
+      : [];
+
+    if(form.dataset.qualificationHandlerBound === "true") return;
+
+    form.dataset.qualificationHandlerBound = "true";
+
+    form.addEventListener("submit", function(e){
+      e.preventDefault();
+
+      if(!form.reportValidity()) return;
+
+      const score = getOpportunityScore();
+
+      const name =
+        document.getElementById("restaurantName").value.trim();
+
+      const email =
+        document.getElementById("restaurantEmail").value.trim();
+
+      const website =
+        document.getElementById("restaurantWebsite").value.trim();
+
+      const problem =
+        document.getElementById("restaurantProblem").value.trim();
+
+      const subject =
+        "Restaurant Assessment — richiesta qualificazione — " + name;
+
+      const body = [
+        "Richiesta di qualificazione Restaurant Assessment",
+        "",
+        "Locale: " + name,
+        "Email: " + email,
+        "Sito / presenza digitale: " + (website || "non indicato"),
+        "",
+        "Opportunity Score: " +
+          (score === null ? "non disponibile" : score + "/100"),
+        "",
+        "Priorità preliminari:",
+        ...(qualificationPriorities.length
+          ? qualificationPriorities.map((p,i) => (i+1) + ". " + p)
+          : ["non disponibili"]),
+        "",
+        "Problema da approfondire:",
+        problem,
+        "",
+        "Stato delle informazioni:",
+        "DECLARED — risultati derivati dall'autovalutazione; da sottoporre a osservazione e verifica.",
+        "",
+        "Richiedo una prima qualificazione del caso."
+      ].join("\n");
+
+      window.location.href =
+        "mailto:info@cognitivelogic.it" +
+        "?subject=" + encodeURIComponent(subject) +
+        "&body=" + encodeURIComponent(body);
+    });
+  }
+
+  function refreshOperationalLayer(){
+    const priorities = renderOperationalPriorities();
+    updateQualificationContext(priorities);
+    setupQualification(priorities);
+  }
+
+  /*
+    Il risultato viene generato client-side.
+    Attendiamo il submit del questionario e poi aggiorniamo il layer.
+  */
+  const assessmentForms = document.querySelectorAll("form");
+
+  assessmentForms.forEach(form => {
+    if(form.id !== "horecaQualificationForm"){
+      form.addEventListener("submit", function(){
+        setTimeout(refreshOperationalLayer, 50);
+      });
+    }
+  });
+
+  /*
+    Supporta anche risultati già visibili / refresh pagina.
+  */
+  setTimeout(refreshOperationalLayer, 100);
+
+})();
+</script>
+
+</body>
+</html>
+
+<style id="restaurant-result-brand-style">
+.result-brand{
+  display:flex;
+  justify-content:space-between;
+  gap:1rem;
+  padding-bottom:1rem;
+  margin-bottom:1.5rem;
+  border-bottom:1px solid #ddd;
+}
+.result-brand strong{
+  font-size:1rem;
+}
+.result-brand span{
+  font-family:monospace;
+  font-size:.72rem;
+  text-transform:uppercase;
+  letter-spacing:.08em;
+}
+@media(max-width:700px){
+  .result-brand{
+    flex-direction:column;
+  }
+}
+</style>
