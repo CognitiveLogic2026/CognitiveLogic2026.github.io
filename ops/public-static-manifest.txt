@@ -208,3 +208,4 @@ international-watch/rimini-27-concessioni-38-domande/index.html
 img/og/og-rimini-27-concessioni-38-domande.png
 research/digital-overtourism-ai-travel-recommendations/index.html
 img/og/digital-overtourism-ai-travel-recommendations.png
+restaurant-assessment/index.html
