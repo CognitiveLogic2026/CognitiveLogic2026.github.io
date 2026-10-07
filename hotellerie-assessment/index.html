@@ -1,0 +1,1159 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
+<title>Hotellerie Assessment Bologna — Cognitive Logic</title>
+<link rel="canonical" href="https://cognitivelogic.it/hotellerie-assessment/">
+
+<meta name="description"
+content="Assessment preliminare per hotel: distribuzione, percorso ospite, dati, AI readiness e verificabilità delle evidenze.">
+
+<meta name="robots" content="index,follow">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Hotellerie Assessment Bologna — Cognitive Logic">
+<meta property="og:description" content="Autovalutazione preliminare per hotel su distribuzione, percorso ospite, dati, AI ed evidenze verificabili.">
+<meta property="og:url" content="https://cognitivelogic.it/hotellerie-assessment/">
+<meta property="og:image" content="https://cognitivelogic.it/img/cognitive-logic-og.png">
+<meta name="twitter:card" content="summary_large_image">
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"WebApplication",
+  "name":"Hotellerie Assessment Bologna",
+  "url":"https://cognitivelogic.it/hotellerie-assessment/",
+  "applicationCategory":"BusinessApplication",
+  "operatingSystem":"Web",
+  "provider":{"@type":"Organization","name":"Cognitive Logic","url":"https://cognitivelogic.it/"},
+  "description":"Autovalutazione preliminare per hotel su distribuzione, percorso ospite, dati, AI ed evidenze verificabili.",
+  "inLanguage":"it"
+}
+</script>
+
+<link rel="stylesheet" href="../css/fonts-local.css">
+<link rel="stylesheet" href="../css/style.css?v=3">
+
+<style>
+.assessment-wrap{
+  max-width:960px;
+  margin:0 auto;
+  padding:7rem 2rem 5rem;
+}
+
+.assessment-label{
+  font-family:"DM Mono",monospace;
+  text-transform:uppercase;
+  letter-spacing:.18em;
+  font-size:.65rem;
+  color:var(--gold-soft);
+}
+
+.assessment-wrap h1{
+  font-family:"Cormorant Garamond",serif;
+  font-size:clamp(2.6rem,6vw,5rem);
+  line-height:1;
+  margin:.8rem 0 1.5rem;
+}
+
+.lead{
+  max-width:720px;
+  line-height:1.8;
+  color:var(--text-soft);
+}
+
+.notice{
+  margin:2rem 0;
+  padding:1.2rem;
+  border:1px solid var(--line-soft);
+  background:var(--bg-soft);
+  font-size:.78rem;
+  line-height:1.7;
+}
+
+.assessment-form{
+  margin-top:3rem;
+}
+
+.business-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:1rem;
+  margin-bottom:3rem;
+}
+
+.field label{
+  display:block;
+  font-family:"DM Mono",monospace;
+  font-size:.62rem;
+  text-transform:uppercase;
+  letter-spacing:.12em;
+  color:var(--muted);
+  margin-bottom:.4rem;
+}
+
+.field input,
+.field select{
+  width:100%;
+  box-sizing:border-box;
+  padding:.85rem;
+  background:var(--bg-soft);
+  color:var(--text);
+  border:1px solid var(--line-soft);
+}
+
+.dimension{
+  border-top:1px solid var(--line-soft);
+  padding:2.4rem 0;
+}
+
+.dimension-id{
+  font-family:"DM Mono",monospace;
+  color:var(--gold-soft);
+  font-size:.62rem;
+  letter-spacing:.15em;
+  text-transform:uppercase;
+}
+
+.dimension h2{
+  font-family:"Cormorant Garamond",serif;
+  font-size:2rem;
+  margin:.4rem 0;
+}
+
+.dimension-desc{
+  color:var(--text-soft);
+  font-size:.8rem;
+  line-height:1.7;
+  margin-bottom:1.4rem;
+}
+
+.question{
+  margin:1.3rem 0;
+}
+
+.question p{
+  font-size:.82rem;
+  margin-bottom:.6rem;
+}
+
+.answers{
+  display:flex;
+  flex-wrap:wrap;
+  gap:.5rem;
+}
+
+.answers label{
+  border:1px solid var(--line-soft);
+  padding:.55rem .8rem;
+  cursor:pointer;
+  font-family:"DM Mono",monospace;
+  font-size:.65rem;
+}
+
+.answers input{
+  margin-right:.35rem;
+}
+
+.actions{
+  padding:2rem 0;
+}
+
+button{
+  padding:.9rem 1.4rem;
+  cursor:pointer;
+  border:1px solid var(--gold);
+  background:var(--gold);
+  color:#070d1a;
+  font-family:"DM Mono",monospace;
+  text-transform:uppercase;
+  letter-spacing:.08em;
+}
+
+.results{
+  display:none;
+  margin-top:3rem;
+  border:1px solid var(--line-soft);
+  padding:2rem;
+  background:var(--bg-soft);
+}
+
+.score{
+  font-family:"Cormorant Garamond",serif;
+  font-size:4rem;
+  color:var(--gold-soft);
+}
+
+.result-grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:1px;
+  background:var(--line-soft);
+  margin:2rem 0;
+}
+
+.result-item{
+  background:var(--bg-panel);
+  padding:1rem;
+}
+
+.result-name{
+  font-family:"DM Mono",monospace;
+  font-size:.58rem;
+  text-transform:uppercase;
+  color:var(--muted);
+}
+
+.result-value{
+  font-family:"Cormorant Garamond",serif;
+  font-size:1.7rem;
+  margin-top:.3rem;
+}
+
+.priority{
+  padding:.7rem 0;
+  border-bottom:1px solid var(--line-soft);
+}
+
+.disclaimer{
+  margin-top:2rem;
+  font-size:.7rem;
+  color:var(--muted);
+  line-height:1.7;
+}
+
+.results{
+  color:var(--text);
+  background:var(--bg-panel);
+  border:1px solid var(--line-soft);
+  border-radius:12px;
+  padding:clamp(1.5rem,4vw,3rem);
+}
+
+.results .score{
+  color:var(--gold-soft);
+  font-family:"DM Mono",monospace;
+  font-weight:500;
+}
+
+.results h2{
+  color:var(--text);
+  margin-top:2.5rem;
+}
+
+.results strong{
+  color:var(--text);
+}
+
+.results p{
+  color:var(--text-soft);
+}
+
+.evidence-status{
+  margin-top:2rem;
+}
+
+.evidence-flow{
+  display:grid;
+  grid-template-columns:1fr auto 1fr auto 1fr auto 1fr;
+  gap:.7rem;
+  align-items:stretch;
+  margin-top:1.3rem;
+}
+
+.evidence-stage{
+  min-width:0;
+  padding:1rem;
+  border:1px solid var(--line-soft);
+  background:var(--bg-soft);
+}
+
+.evidence-stage.active{
+  border-color:var(--gold);
+}
+
+.evidence-stage span{
+  display:block;
+  font-family:"DM Mono",monospace;
+  font-size:.6rem;
+  letter-spacing:.08em;
+  color:var(--muted);
+}
+
+.evidence-stage strong{
+  display:block;
+  margin:.4rem 0;
+  font-size:1.4rem;
+  color:var(--gold-soft);
+}
+
+.evidence-stage small{
+  color:var(--muted);
+}
+
+.evidence-arrow{
+  align-self:center;
+  color:var(--gold-soft);
+}
+
+.evidence-explain{
+  margin-top:1.3rem;
+  font-size:.82rem;
+}
+
+.results .btn{
+  display:inline-flex;
+  margin-top:1rem;
+  text-decoration:none;
+}
+
+@media(max-width:700px){
+  .business-grid{grid-template-columns:1fr}
+  .result-grid{grid-template-columns:1fr}
+
+  .evidence-flow{
+    grid-template-columns:1fr;
+  }
+
+  .evidence-arrow{
+    transform:rotate(90deg);
+    justify-self:center;
+  }
+}
+</style>
+
+<style id="hotellerie-assessment-v2">
+.priority-card{
+  margin:1rem 0;
+  padding:1.15rem 1.25rem;
+  border:1px solid rgba(127,127,127,.25);
+  border-radius:10px;
+}
+.priority-card h3{
+  margin:0 0 .8rem;
+}
+.priority-card p{
+  margin:.45rem 0;
+}
+.priority-state{
+  margin-top:.8rem !important;
+  font-size:.9rem;
+}
+.priority-state strong{
+  letter-spacing:.05em;
+}
+.hotellerie-qualification{
+  margin-top:2.5rem;
+  padding-top:2rem;
+  border-top:1px solid rgba(127,127,127,.25);
+}
+.hotellerie-qualification h2{
+  margin-bottom:.5rem;
+}
+.hotellerie-form-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:1rem;
+  margin:1.5rem 0;
+}
+.hotellerie-form-grid .full{
+  grid-column:1 / -1;
+}
+.hotellerie-form-grid label{
+  display:block;
+  font-weight:600;
+}
+.hotellerie-form-grid input,
+.hotellerie-form-grid textarea{
+  width:100%;
+  box-sizing:border-box;
+  margin-top:.4rem;
+  padding:.8rem;
+  font:inherit;
+}
+.hotellerie-form-grid textarea{
+  min-height:110px;
+  resize:vertical;
+}
+.result-context{
+  margin:1rem 0 1.5rem;
+  padding:1rem;
+  border-left:3px solid currentColor;
+}
+.qualification-note{
+  font-size:.88rem;
+  opacity:.8;
+}
+@media(max-width:700px){
+  .hotellerie-form-grid{
+    grid-template-columns:1fr;
+  }
+  .hotellerie-form-grid .full{
+    grid-column:auto;
+  }
+}
+@media print{
+  .hotellerie-qualification{
+    display:none !important;
+  }
+}
+</style>
+
+
+<style id="hotellerie-final-ux">
+.hotellerie-request-btn{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  min-height:48px;
+  padding:.85rem 1.35rem;
+  border:1px solid #111;
+  border-radius:4px;
+  background:#111;
+  color:#fff;
+  font-weight:700;
+  cursor:pointer;
+}
+.hotellerie-request-btn:hover{background:#333}
+</style>
+
+<style id="hotellerie-result-brand-style">
+.result-brand{
+  display:flex;
+  justify-content:space-between;
+  gap:1rem;
+  padding-bottom:1rem;
+  margin-bottom:1.5rem;
+  border-bottom:1px solid #ddd;
+}
+.result-brand strong{
+  font-size:1rem;
+}
+.result-brand span{
+  font-family:monospace;
+  font-size:.72rem;
+  text-transform:uppercase;
+  letter-spacing:.08em;
+}
+@media(max-width:700px){
+  .result-brand{
+    flex-direction:column;
+  }
+}
+</style>
+
+</head>
+
+<body>
+
+<main class="assessment-wrap">
+
+<p class="assessment-label">
+Cognitive Logic · Hotellerie Assessment · Bologna
+</p>
+
+<h1>
+Dove sta perdendo opportunità il tuo hotel?
+</h1>
+
+<p class="lead">
+Una prima autovalutazione della distribuzione digitale, del percorso ospite,
+dell'uso dei dati, della preparazione all'intelligenza artificiale e della
+verificabilità delle informazioni utilizzate dalla struttura.
+</p>
+
+<div class="notice">
+<strong>Assessment preliminare.</strong>
+Le risposte sono dichiarate dall'impresa e non vengono considerate
+automaticamente evidenze verificate. Il risultato non costituisce audit,
+certificazione o verifica di conformità.
+</div>
+
+<form id="assessmentForm" class="assessment-form">
+
+<div class="business-grid">
+
+<div class="field">
+<label for="businessName">Nome struttura</label>
+<input id="businessName" name="businessName" type="text">
+</div>
+
+<div class="field">
+<label for="website">Sito web</label>
+<input id="website" name="website" type="url"
+placeholder="https://">
+</div>
+
+<div class="field">
+<label for="type">Tipologia</label>
+<select id="type" name="type">
+<option value="">Seleziona</option>
+<option>Hotel indipendente</option>
+<option>Boutique hotel</option>
+<option>Hotel di catena o gruppo</option>
+<option>Residence / aparthotel</option>
+<option>Altra struttura ricettiva</option>
+</select>
+</div>
+
+<div class="field">
+<label for="city">Località</label>
+<input id="city" name="city" type="text" value="Bologna">
+</div>
+
+</div>
+
+<div id="questions"></div>
+
+<div class="actions">
+<button type="submit">Genera Opportunity Map</button>
+</div>
+
+</form>
+
+<section id="results" class="results" aria-live="polite">
+
+<div class="result-brand">
+  <strong>Cognitive Logic</strong>
+  <span>Hotellerie Assessment · Bologna</span>
+</div>
+
+<p class="assessment-label">
+Preliminary Hotellerie Opportunity Map
+</p>
+
+<div>
+<span id="totalScore" class="score">0</span>
+<span>/100</span>
+<span> Opportunity Score</span>
+</div>
+
+<div style="margin-top:1rem">
+<strong>Declared Information Coverage:</strong>
+<span id="evidenceCoverage">0</span>%
+</div>
+
+<p id="profileText"></p>
+
+<div class="notice evidence-status">
+<strong>Stato delle evidenze</strong>
+
+<div class="evidence-flow">
+  <div class="evidence-stage active">
+    <span>DECLARED</span>
+    <strong id="declaredStage">0%</strong>
+    <small>informazioni fornite</small>
+  </div>
+
+  <div class="evidence-arrow">→</div>
+
+  <div class="evidence-stage">
+    <span>OBSERVABLE</span>
+    <strong>—</strong>
+    <small>da osservare</small>
+  </div>
+
+  <div class="evidence-arrow">→</div>
+
+  <div class="evidence-stage">
+    <span>DOCUMENTED</span>
+    <strong>—</strong>
+    <small>da documentare</small>
+  </div>
+
+  <div class="evidence-arrow">→</div>
+
+  <div class="evidence-stage">
+    <span>VERIFIED</span>
+    <strong>—</strong>
+    <small>da verificare</small>
+  </div>
+</div>
+
+<p class="evidence-explain">
+Il livello DECLARED indica soltanto quante informazioni sono state
+fornite nell'autovalutazione. Non indica che tali informazioni siano
+state osservate, documentate o verificate.
+</p>
+</div>
+
+<div id="dimensionResults" class="result-grid"></div>
+
+<h2>Priorità preliminari</h2>
+<div id="operationalPriorities"></div>
+
+<div id="priorities"></div>
+
+<p class="disclaimer">
+Il punteggio deriva esclusivamente dalle risposte fornite in questa
+autovalutazione. Non dimostra conformità, sostenibilità, performance,
+qualità o altri claim della struttura. Le informazioni possono essere
+successivamente sottoposte a verifica documentale nell'Assessment
+professionale Cognitive Logic.
+</p>
+
+
+<section class="hotellerie-qualification" id="hotellerieQualification">
+  <p class="kicker">QUALIFICAZIONE HOTELLERIE</p>
+
+  <h2>Approfondisci i risultati</h2>
+
+  <p>
+    Se vuoi verificare le priorità emerse, puoi preparare una richiesta
+    già contestualizzata sui risultati di questa autovalutazione.
+  </p>
+
+  <div class="result-context">
+    <strong>Contesto che verrà riportato nella richiesta</strong>
+    <div id="qualificationContext">
+      Opportunity Score: — · Priorità: —
+    </div>
+  </div>
+
+  <form id="hotellerieQualificationForm">
+    <div class="hotellerie-form-grid">
+
+      <label>
+        Nome della struttura
+        <input
+          id="hotelName"
+          name="hotelName"
+          type="text"
+          autocomplete="organization"
+          required>
+      </label>
+
+      <label>
+        Email
+        <input
+          id="hotelEmail"
+          name="hotelEmail"
+          type="email"
+          autocomplete="email"
+          required>
+      </label>
+
+      <label class="full">
+        Sito o presenza digitale principale
+        <input
+          id="hotelWebsite"
+          name="hotelWebsite"
+          type="url"
+          inputmode="url"
+          placeholder="https://">
+      </label>
+
+      <label class="full">
+        Qual è il problema che vorresti capire meglio?
+        <textarea
+          id="hotelProblem"
+          name="hotelProblem"
+          required></textarea>
+      </label>
+
+    </div>
+
+    <button type="submit" class="btn btn-primary hotellerie-request-btn">
+      Prepara la richiesta
+    </button>
+
+    <p class="qualification-note">
+      Il pulsante apre il programma email del dispositivo con i dati
+      inseriti e il contesto dell'Assessment. Nessun dato viene inviato
+      o memorizzato dal sito.
+    </p>
+  </form>
+</section>
+
+
+</section>
+
+</main>
+
+<script>
+const dimensions = [
+{
+ id:"distribution",
+ name:"Distribution & Presence",
+ description:"Quanto la struttura governa presenza, canali di vendita e informazioni pubbliche.",
+ questions:[
+  "Sito, schede e principali canali riportano servizi, contatti e condizioni aggiornati?",
+  "È chiaro chi aggiorna disponibilità, tariffe e contenuti sui diversi canali di distribuzione?",
+  "Le informazioni pubbliche permettono di distinguere camere, servizi, eventi e altre esperienze offerte?"
+ ]
+},
+{
+ id:"journey",
+ name:"Guest Journey & Operations",
+ description:"Quanto il percorso dell'ospite collega prenotazione, soggiorno, servizi e relazione successiva.",
+ questions:[
+  "Il percorso da ricerca a prenotazione è semplice anche da smartphone e sui canali diretti?",
+  "PMS, booking engine o altri gestionali rendono disponibili dati utili alle funzioni responsabili?",
+  "Recensioni, richieste e segnalazioni degli ospiti vengono usate per migliorare decisioni e processi?"
+ ]
+},
+{
+ id:"data",
+ name:"Data & AI Readiness",
+ description:"Quanto dati e strumenti AI hanno finalità, responsabilità e controllo definiti.",
+ questions:[
+  "È chiaro quali dati vengono raccolti, dove risiedono e chi può utilizzarli?",
+  "Gli strumenti di automazione o AI eventualmente usati hanno una funzione aziendale definita?",
+  "Le decisioni o comunicazioni supportate dall'AI prevedono controllo umano e possibilità di correzione?"
+ ]
+},
+{
+ id:"evidence",
+ name:"Evidence & Responsibility",
+ description:"Quanto informazioni e dichiarazioni possono essere ricondotte a fonti, documenti e responsabili.",
+ questions:[
+  "Privacy, sicurezza e informative digitali hanno responsabili e aggiornamenti riconoscibili?",
+  "Le informazioni su accessibilità e servizi dedicati corrispondono a procedure o riscontri disponibili?",
+  "I claim su sostenibilità, territorio o qualità possono essere collegati a documenti e criteri verificabili?"
+ ]
+}
+];
+
+const labels = [
+ ["Non so","unknown"],
+ ["No","0"],
+ ["Parzialmente","50"],
+ ["Sì","100"]
+];
+
+const container = document.getElementById("questions");
+
+dimensions.forEach((d,di)=>{
+ const section=document.createElement("section");
+ section.className="dimension";
+
+ let html=`
+ <div class="dimension-id">Area ${di+1}</div>
+ <h2>${d.name}</h2>
+ <p class="dimension-desc">${d.description}</p>
+ `;
+
+ d.questions.forEach((q,qi)=>{
+   const name=`${d.id}_${qi}`;
+   html+=`
+   <div class="question">
+   <p>${q}</p>
+   <div class="answers">
+   ${labels.map(([label,value])=>`
+     <label>
+       <input type="radio"
+       name="${name}"
+       value="${value}"
+       required>
+       ${label}
+     </label>
+   `).join("")}
+   </div>
+   </div>
+   `;
+ });
+
+ section.innerHTML=html;
+ container.appendChild(section);
+});
+
+document.getElementById("assessmentForm").addEventListener("submit",e=>{
+ e.preventDefault();
+
+ const dimensionScores={};
+ let knownAnswers=0;
+ let totalAnswers=0;
+
+ dimensions.forEach(d=>{
+   const values=[];
+
+   d.questions.forEach((q,qi)=>{
+     totalAnswers++;
+
+     const selected=document.querySelector(
+       `input[name="${d.id}_${qi}"]:checked`
+     );
+
+     if(selected.value !== "unknown"){
+       knownAnswers++;
+       values.push(Number(selected.value));
+     }
+   });
+
+   dimensionScores[d.id] =
+     values.length
+       ? Math.round(values.reduce((a,b)=>a+b,0)/values.length)
+       : null;
+ });
+
+ const scoredDimensions =
+   Object.values(dimensionScores)
+   .filter(v=>v !== null);
+
+ const total =
+   scoredDimensions.length
+     ? Math.round(
+         scoredDimensions.reduce((a,b)=>a+b,0) /
+         scoredDimensions.length
+       )
+     : 0;
+
+ const evidenceCoverage =
+   Math.round((knownAnswers/totalAnswers)*100);
+
+ document.getElementById("totalScore").textContent=total;
+ document.getElementById("evidenceCoverage").textContent=evidenceCoverage;
+ document.getElementById("declaredStage").textContent=evidenceCoverage + "%";
+
+ let profile;
+
+ if(evidenceCoverage < 50)
+   profile="La copertura informativa è ancora limitata. Prima di interpretare il punteggio servono ulteriori informazioni.";
+ else if(total<40)
+   profile="Sono emerse diverse aree che meritano verifica prioritaria.";
+ else if(total<70)
+   profile="La base dichiarata è presente, ma alcune aree possono limitare opportunità e controllo.";
+ else
+   profile="La base dichiarata appare strutturata. Il passo successivo è verificare le evidenze che sostengono le risposte.";
+
+ document.getElementById("profileText").textContent=profile;
+
+ const resultBox=document.getElementById("dimensionResults");
+ resultBox.innerHTML="";
+
+ dimensions.forEach(d=>{
+   resultBox.innerHTML+=`
+   <div class="result-item">
+     <div class="result-name">${d.name}</div>
+     <div class="result-value">${
+       dimensionScores[d.id] === null
+         ? "N/D"
+         : dimensionScores[d.id] + "/100"
+     }</div>
+   </div>
+   `;
+ });
+
+ const ordered=[...dimensions]
+   .filter(d=>dimensionScores[d.id] !== null)
+   .sort((a,b)=>dimensionScores[a.id]-dimensionScores[b.id])
+   .slice(0,3);
+
+ const priorities=document.getElementById("priorities");
+ priorities.innerHTML="";
+
+ ordered.forEach((d,i)=>{
+   priorities.innerHTML+=`
+   <div class="priority">
+   <strong>${i+1}. ${d.name}</strong><br>
+   Area da approfondire: ${d.description}
+   </div>
+   `;
+ });
+
+ document.getElementById("results").style.display="block";
+ document.getElementById("results")
+   .scrollIntoView({behavior:"smooth"});
+});
+</script>
+
+
+<script id="hotellerie-operational-layer">
+(function(){
+
+  const PRIORITY_CONTENT = {
+    "DISTRIBUTION & PRESENCE": {
+      why:
+        "Informazioni incoerenti tra sito, portali e canali diretti possono ridurre comprensione, fiducia e capacità di prenotare.",
+      verify:
+        "Confrontare sito, profili, booking engine e principali OTA verificando responsabilità, aggiornamenti e coerenza."
+    },
+
+    "GUEST JOURNEY & OPERATIONS": {
+      why:
+        "Attriti tra ricerca, prenotazione, soggiorno e relazione successiva possono disperdere opportunità e informazioni utili.",
+      verify:
+        "Ricostruire il percorso dell'ospite e osservare passaggi, richieste, sistemi coinvolti e punti di responsabilità."
+    },
+
+    "DATA & AI READINESS": {
+      why:
+        "Dati frammentati e strumenti privi di finalità o controllo limitano analisi, automazione e qualità delle decisioni.",
+      verify:
+        "Mappare dati, gestionali, accessi, finalità e controlli umani per gli strumenti digitali e AI effettivamente utilizzati."
+    },
+
+    "EVIDENCE & RESPONSIBILITY": {
+      why:
+        "Privacy, accessibilità, sostenibilità e qualità richiedono fonti e responsabilità riconoscibili quando devono essere dimostrate.",
+      verify:
+        "Associare a ogni dichiarazione rilevante una fonte, un documento, un responsabile e una data di aggiornamento."
+    }
+  };
+
+  function normalizeName(name){
+    return (name || "")
+      .replace(/\s+/g," ")
+      .trim()
+      .toUpperCase();
+  }
+
+  function extractPriorities(){
+    /*
+      Leggiamo le priorità già prodotte dal motore esistente.
+      Non ricalcoliamo lo score: manteniamo la sua logica attuale.
+    */
+    const heading = Array.from(document.querySelectorAll("h2"))
+      .find(el => /priorità preliminari/i.test(el.textContent));
+
+    if(!heading) return [];
+
+    const candidates = [];
+    let el = heading.nextElementSibling;
+
+    while(el && !el.matches(".hotellerie-qualification")){
+      const text = (el.innerText || el.textContent || "").trim();
+
+      const matches = text.match(
+        /(?:^|\n)\s*[123]\.\s*(Distribution\s*&\s*Presence|Guest\s*Journey\s*&\s*Operations|Data\s*&\s*AI\s*Readiness|Evidence\s*&\s*Responsibility)/gi
+      );
+
+      if(matches){
+        matches.forEach(m => {
+          const clean = m.replace(/(?:^|\n)\s*[123]\.\s*/,"").trim();
+          if(!candidates.includes(clean)) candidates.push(clean);
+        });
+      }
+
+      el = el.nextElementSibling;
+    }
+
+    return candidates.slice(0,3);
+  }
+
+  function fallbackFromVisibleScores(){
+    const labels = [
+      "DISTRIBUTION & PRESENCE",
+      "GUEST JOURNEY & OPERATIONS",
+      "DATA & AI READINESS",
+      "EVIDENCE & RESPONSIBILITY"
+    ];
+
+    const bodyText = document.body.innerText;
+    const found = [];
+
+    labels.forEach(label => {
+      const escaped = label.replace(/[.*+?^${}()|[\]\\]/g,"\\$&");
+      const re = new RegExp(
+        escaped + "\\\\s*([0-9]{1,3})\\\\s*\\\\/\\\\s*100",
+        "i"
+      );
+      const m = bodyText.match(re);
+      if(m){
+        found.push({
+          name:label,
+          score:Number(m[1])
+        });
+      }
+    });
+
+    return found
+      .sort((a,b) => a.score - b.score)
+      .slice(0,3)
+      .map(x => x.name);
+  }
+
+  function getOpportunityScore(){
+    const scoreEl = document.getElementById("totalScore");
+    if(scoreEl){
+      const n = parseInt(scoreEl.textContent,10);
+      if(Number.isFinite(n)) return n;
+    }
+    return null;
+  }
+
+  function renderOperationalPriorities(){
+    const target = document.getElementById("operationalPriorities");
+    if(!target) return [];
+
+    let priorities = extractPriorities();
+
+    if(!priorities.length){
+      priorities = fallbackFromVisibleScores();
+    }
+
+    if(!priorities.length) return [];
+
+    target.innerHTML = "";
+
+    priorities.forEach((rawName,index) => {
+      const key = normalizeName(rawName);
+      const content = PRIORITY_CONTENT[key] || {
+        why:
+          "L'area merita un approfondimento prima di assumere decisioni operative.",
+        verify:
+          "Raccogliere evidenze osservabili e documentazione pertinente."
+      };
+
+      const card = document.createElement("div");
+      card.className = "priority-card";
+
+      card.innerHTML = `
+        <h3>${index + 1}. ${rawName}</h3>
+        <p>
+          <strong>Segnale rilevato:</strong>
+          dalle risposte fornite questa area emerge tra quelle con maggiore necessità di approfondimento.
+        </p>
+        <p>
+          <strong>Perché conta:</strong>
+          ${content.why}
+        </p>
+        <p>
+          <strong>Prima verifica:</strong>
+          ${content.verify}
+        </p>
+        <p class="priority-state">
+          <strong>Stato dell'evidenza:</strong>
+          DECLARED — da osservare.
+        </p>
+      `;
+
+      target.appendChild(card);
+    });
+
+    /*
+      Nascondiamo eventuale vecchio rendering testuale delle priorità,
+      lasciando intatto il motore e i dati.
+    */
+    let el = target.nextElementSibling;
+
+    while(el && !el.matches(".hotellerie-qualification")){
+      const text = (el.innerText || "").trim();
+
+      if(
+        /^[123]\.\s*/.test(text) ||
+        /Area da approfondire:/i.test(text)
+      ){
+        el.style.display = "none";
+      }
+
+      el = el.nextElementSibling;
+    }
+
+    return priorities;
+  }
+
+  function updateQualificationContext(priorities){
+    const score = getOpportunityScore();
+    const target = document.getElementById("qualificationContext");
+
+    if(!target) return;
+
+    const scoreText =
+      score === null ? "—" : score + "/100";
+
+    const priorityText =
+      priorities.length ? priorities.join(" · ") : "—";
+
+    target.textContent =
+      "Opportunity Score: " + scoreText +
+      " · Priorità: " + priorityText;
+  }
+
+  let qualificationPriorities = [];
+
+  function setupQualification(priorities){
+    const form = document.getElementById("hotellerieQualificationForm");
+    if(!form) return;
+
+    qualificationPriorities = Array.isArray(priorities)
+      ? [...priorities]
+      : [];
+
+    if(form.dataset.qualificationHandlerBound === "true") return;
+
+    form.dataset.qualificationHandlerBound = "true";
+
+    form.addEventListener("submit", function(e){
+      e.preventDefault();
+
+      if(!form.reportValidity()) return;
+
+      const score = getOpportunityScore();
+
+      const name =
+        document.getElementById("hotelName").value.trim();
+
+      const email =
+        document.getElementById("hotelEmail").value.trim();
+
+      const website =
+        document.getElementById("hotelWebsite").value.trim();
+
+      const problem =
+        document.getElementById("hotelProblem").value.trim();
+
+      const subject =
+        "Hotellerie Assessment — richiesta qualificazione — " + name;
+
+      const body = [
+        "Richiesta di qualificazione Hotellerie Assessment",
+        "",
+        "Struttura: " + name,
+        "Email: " + email,
+        "Sito / presenza digitale: " + (website || "non indicato"),
+        "",
+        "Opportunity Score: " +
+          (score === null ? "non disponibile" : score + "/100"),
+        "",
+        "Priorità preliminari:",
+        ...(qualificationPriorities.length
+          ? qualificationPriorities.map((p,i) => (i+1) + ". " + p)
+          : ["non disponibili"]),
+        "",
+        "Problema da approfondire:",
+        problem,
+        "",
+        "Stato delle informazioni:",
+        "DECLARED — risultati derivati dall'autovalutazione; da sottoporre a osservazione e verifica.",
+        "",
+        "Richiedo una prima qualificazione del caso."
+      ].join("\n");
+
+      window.location.href =
+        "mailto:info@cognitivelogic.it" +
+        "?subject=" + encodeURIComponent(subject) +
+        "&body=" + encodeURIComponent(body);
+    });
+  }
+
+  function refreshOperationalLayer(){
+    const priorities = renderOperationalPriorities();
+    updateQualificationContext(priorities);
+    setupQualification(priorities);
+  }
+
+  /*
+    Il risultato viene generato client-side.
+    Attendiamo il submit del questionario e poi aggiorniamo il layer.
+  */
+  const assessmentForms = document.querySelectorAll("form");
+
+  assessmentForms.forEach(form => {
+    if(form.id !== "hotellerieQualificationForm"){
+      form.addEventListener("submit", function(){
+        setTimeout(refreshOperationalLayer, 50);
+      });
+    }
+  });
+
+  /*
+    Supporta anche risultati già visibili / refresh pagina.
+  */
+  setTimeout(refreshOperationalLayer, 100);
+
+})();
+</script>
+
+</body>
+</html>
