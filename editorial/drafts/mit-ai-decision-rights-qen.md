@@ -41,8 +41,7 @@ https://mitsloan.mit.edu/ideas-made-to-matter/a-framework-determining-when-ai-ca
 MIT CISR:
 https://cisr.mit.edu/publication/2026_0601_AIDecisionMatrix_SebastianWeillHaskampVomBrocke
 
-The precise terminology and research claims must be checked
-against the primary publication before release.
+The MIT CISR research distinguishes routine, consequential, exploratory and strategic decisions using ambiguity and risk. It also addresses framing, acting, learning, human accountability and organizational controls. The QEN proposal therefore does not claim that these governance elements are absent from MIT's work.
 
 ## The evidence-to-decision question
 

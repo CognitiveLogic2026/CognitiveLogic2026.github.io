@@ -212,3 +212,4 @@ restaurant-assessment/index.html
 international-watch/concessioni-balneari-anci-standard-evidenze/index.html
 img/og/anci-concessioni-standard-evidenze.png
 hotellerie-assessment/index.html
+international-watch/ai-decision-rights-verifiable-evidence/index.html
