@@ -129,6 +129,6 @@ sources, rights, proportionality and context.
 
 Protocol defined.
 
-Case selection: **PENDING EXPLICIT APPROVAL**.
+Case selection: **APPROVED — Municipality of Rimini, 27 northern shading-only concessions**.
 
-Evidence collection: **NOT STARTED**.
+Evidence collection: **STARTED — primary-source baseline recorded**.
