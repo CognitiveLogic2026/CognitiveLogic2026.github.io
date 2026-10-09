@@ -4,11 +4,11 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 
-<title>Restaurant Assessment Bologna — Cognitive Logic</title>
+<title>Valutazione gratuita per ristoranti — Cognitive Logic</title>
 <link rel="canonical" href="https://cognitivelogic.it/restaurant-assessment/">
 
 <meta name="description"
-content="Assessment preliminare per ristoranti: presenza digitale, conversione, dati, AI readiness e verificabilità delle evidenze.">
+content="Prima autovalutazione gratuita: 15 domande per individuare priorità su presenza digitale, prenotazioni, dati e strumenti del tuo ristorante.">
 
 <meta name="robots" content="index,follow">
 
@@ -398,6 +398,48 @@ button{
 .restaurant-request-btn:hover{background:#333}
 </style>
 
+<style id="restaurant-result-brand-style">
+.result-brand{
+  display:flex;
+  justify-content:space-between;
+  gap:1rem;
+  padding-bottom:1rem;
+  margin-bottom:1.5rem;
+  border-bottom:1px solid #ddd;
+}
+.result-brand strong{
+  font-size:1rem;
+}
+.result-brand span{
+  font-family:monospace;
+  font-size:.72rem;
+  text-transform:uppercase;
+  letter-spacing:.08em;
+}
+@media(max-width:700px){
+  .result-brand{
+    flex-direction:column;
+  }
+}
+</style>
+
+
+<style id="restaurant-commercial-layer">
+.assessment-wrap{padding-top:3rem}
+.hero-action{margin:1.8rem 0}
+.hero-action .btn{white-space:normal;text-align:center;max-width:100%}
+.hero-detail{font-size:.85rem;margin-top:.8rem;color:var(--text-soft)}
+.benefit-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1rem;margin:2rem 0}
+.benefit-grid>div{padding:1.2rem;border:1px solid var(--line-soft);border-radius:10px;background:var(--bg-panel)}
+.benefit-grid p{font-size:.9rem;margin:.6rem 0 0}
+.assessment-form{scroll-margin-top:2rem}
+.assessment-form>h2{font-size:2rem}
+.question p{font-size:1rem}
+.answers label{font-size:.85rem;min-height:44px;display:inline-flex;align-items:center}
+.qualification-note a{text-decoration:underline}
+@media(max-width:700px){.benefit-grid{grid-template-columns:1fr}.assessment-wrap{padding:2rem 1.2rem}.hero-action .btn{width:100%}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style>
 </head>
 
 <body>
@@ -409,23 +451,37 @@ Cognitive Logic · Restaurant Assessment · Bologna
 </p>
 
 <h1>
-Dove sta perdendo opportunità il tuo ristorante?
+Il tuo ristorante funziona davvero come potrebbe?
 </h1>
 
 <p class="lead">
-Una prima autovalutazione della presenza digitale, del percorso cliente,
-dell'uso dei dati, della preparazione all'intelligenza artificiale e della
-verificabilità delle informazioni utilizzate dall'impresa.
+I clienti trovano informazioni aggiornate e riescono a prenotare facilmente?
+I dati che raccogli ti aiutano a decidere dove investire?
+Scopri da dove iniziare con una prima autovalutazione gratuita.
 </p>
 
+<div class="hero-action">
+  <a class="btn btn-primary" href="#assessmentForm" id="startAssessment">Scopri le opportunità del tuo ristorante</a>
+  <p class="hero-detail">15 domande · Risultato immediato · Nessuna email richiesta per vedere i risultati</p>
+</div>
+
+<div class="benefit-grid" aria-label="Cosa ottieni dalla valutazione">
+  <div><strong>Individua le aree da migliorare</strong><p>Presenza online, informazioni sul locale, prenotazioni, dati e dichiarazioni pubbliche.</p></div>
+  <div><strong>Scegli da dove iniziare</strong><p>Una mappa con punteggi e fino a tre priorità da approfondire, in base alle tue risposte.</p></div>
+  <div><strong>Capisci cosa verificare</strong><p>Per ogni priorità, una prima verifica prima di decidere un investimento.</p></div>
+</div>
+
 <div class="notice">
-<strong>Assessment preliminare.</strong>
+<strong>Come leggere il risultato.</strong>
 Le risposte sono dichiarate dall'impresa e non vengono considerate
 automaticamente evidenze verificate. Il risultato non costituisce audit,
 certificazione o verifica di conformità.
 </div>
 
-<form id="assessmentForm" class="assessment-form">
+<form id="assessmentForm" class="assessment-form" aria-labelledby="assessmentTitle">
+<h2 id="assessmentTitle" tabindex="-1">Inizia la tua valutazione gratuita</h2>
+<p>Rispondi in base alla situazione attuale. Se un'informazione manca, scegli “Non so”. I dati del locale qui sotto sono facoltativi.</p>
+<p id="assessmentProgress" class="hero-detail" aria-live="polite">0 di 15 domande completate</p>
 
 <div class="business-grid">
 
@@ -462,12 +518,12 @@ placeholder="https://">
 <div id="questions"></div>
 
 <div class="actions">
-<button type="submit">Genera Opportunity Map</button>
+<button type="submit">Vedi le priorità del tuo ristorante</button>
 </div>
 
 </form>
 
-<section id="results" class="results" aria-live="polite">
+<section id="results" class="results" aria-live="polite" aria-label="Risultati della valutazione">
 
 <div class="result-brand">
   <strong>Cognitive Logic</strong>
@@ -475,7 +531,7 @@ placeholder="https://">
 </div>
 
 <p class="assessment-label">
-Preliminary Restaurant Opportunity Map
+La mappa delle opportunità del tuo ristorante
 </p>
 
 <div>
@@ -490,6 +546,7 @@ Preliminary Restaurant Opportunity Map
 </div>
 
 <p id="profileText"></p>
+<p class="hero-detail">Un punteggio più alto indica una base dichiarata più strutturata, non maggiori ricavi o più opportunità. Leggilo insieme alla copertura delle informazioni: “Non so” indica un dato mancante.</p>
 
 <div class="notice evidence-status">
 <strong>Stato delle evidenze</strong>
@@ -552,11 +609,12 @@ professionale Cognitive Logic.
 <section class="horeca-qualification" id="horecaQualification">
   <p class="kicker">QUALIFICAZIONE HORECA</p>
 
-  <h2>Approfondisci i risultati</h2>
+  <h2>Quale priorità vuoi verificare per prima?</h2>
 
   <p>
-    Se vuoi verificare le priorità emerse, puoi preparare una richiesta
-    già contestualizzata sui risultati di questa autovalutazione.
+    Descrivi il problema e prepara una richiesta via email. Riceveremo il contesto
+    della tua autovalutazione per valutare quali informazioni approfondire e
+    l'eventuale perimetro di un assessment professionale.
   </p>
 
   <div class="result-context">
@@ -610,13 +668,14 @@ professionale Cognitive Logic.
     </div>
 
     <button type="submit" class="btn btn-primary restaurant-request-btn">
-      Prepara la richiesta
+      Prepara la richiesta via email
     </button>
 
     <p class="qualification-note">
       Il pulsante apre il programma email del dispositivo con i dati
       inseriti e il contesto dell'Assessment. Nessun dato viene inviato
-      o memorizzato dal sito.
+      o memorizzato dal sito. La richiesta parte solo quando invii l'email.
+      <a href="/privacy.html">Informativa privacy</a>.
     </p>
   </form>
 </section>
@@ -687,6 +746,13 @@ const labels = [
  ["Sì","100"]
 ];
 
+const areaLabels = {
+ visibility:"Farsi trovare online",
+ representation:"Presentare bene il locale",
+ conversion:"Facilitare prenotazioni e contatti",
+ data:"Usare dati e strumenti digitali",
+ evidence:"Documentare le informazioni"
+};
 const container = document.getElementById("questions");
 
 dimensions.forEach((d,di)=>{
@@ -695,7 +761,7 @@ dimensions.forEach((d,di)=>{
 
  let html=`
  <div class="dimension-id">Area ${di+1}</div>
- <h2>${d.name}</h2>
+ <h2>${areaLabels[d.id]}</h2>
  <p class="dimension-desc">${d.description}</p>
  `;
 
@@ -872,69 +938,10 @@ document.getElementById("assessmentForm").addEventListener("submit",e=>{
   }
 
   function extractPriorities(){
-    /*
-      Leggiamo le priorità già prodotte dal motore esistente.
-      Non ricalcoliamo lo score: manteniamo la sua logica attuale.
-    */
-    const heading = Array.from(document.querySelectorAll("h2"))
-      .find(el => /priorità preliminari/i.test(el.textContent));
-
-    if(!heading) return [];
-
-    const candidates = [];
-    let el = heading.nextElementSibling;
-
-    while(el && !el.matches(".horeca-qualification")){
-      const text = (el.innerText || el.textContent || "").trim();
-
-      const matches = text.match(
-        /(?:^|\n)\s*[123]\.\s*(Visibility|Representation|Conversion|Data\s*&\s*AI\s*Readiness|Evidence\s*&\s*Compliance)/gi
-      );
-
-      if(matches){
-        matches.forEach(m => {
-          const clean = m.replace(/(?:^|\n)\s*[123]\.\s*/,"").trim();
-          if(!candidates.includes(clean)) candidates.push(clean);
-        });
-      }
-
-      el = el.nextElementSibling;
-    }
-
-    return candidates.slice(0,3);
-  }
-
-  function fallbackFromVisibleScores(){
-    const labels = [
-      "VISIBILITY",
-      "REPRESENTATION",
-      "CONVERSION",
-      "DATA & AI READINESS",
-      "EVIDENCE & COMPLIANCE"
-    ];
-
-    const bodyText = document.body.innerText;
-    const found = [];
-
-    labels.forEach(label => {
-      const escaped = label.replace(/[.*+?^${}()|[\]\\]/g,"\\$&");
-      const re = new RegExp(
-        escaped + "\\\\s*([0-9]{1,3})\\\\s*\\\\/\\\\s*100",
-        "i"
-      );
-      const m = bodyText.match(re);
-      if(m){
-        found.push({
-          name:label,
-          score:Number(m[1])
-        });
-      }
-    });
-
-    return found
-      .sort((a,b) => a.score - b.score)
-      .slice(0,3)
-      .map(x => x.name);
+    // Read only the current engine output, never previously rendered cards.
+    return Array.from(document.querySelectorAll("#priorities .priority strong"))
+      .map(el => el.textContent.replace(/^[123]\.\s*/, "").trim())
+      .slice(0,3);
   }
 
   function getOpportunityScore(){
@@ -952,13 +959,8 @@ document.getElementById("assessmentForm").addEventListener("submit",e=>{
 
     let priorities = extractPriorities();
 
-    if(!priorities.length){
-      priorities = fallbackFromVisibleScores();
-    }
-
-    if(!priorities.length) return [];
-
     target.innerHTML = "";
+    if(!priorities.length) return [];
 
     priorities.forEach((rawName,index) => {
       const key = normalizeName(rawName);
@@ -1094,6 +1096,7 @@ document.getElementById("assessmentForm").addEventListener("submit",e=>{
         "Richiedo una prima qualificazione del caso."
       ].join("\n");
 
+      document.dispatchEvent(new CustomEvent("restaurant-assessment:request-prepared"));
       window.location.href =
         "mailto:info@cognitivelogic.it" +
         "?subject=" + encodeURIComponent(subject) +
@@ -1129,30 +1132,34 @@ document.getElementById("assessmentForm").addEventListener("submit",e=>{
 })();
 </script>
 
+<script id="restaurant-funnel-events">
+(function(){
+  // Integration hook only: no cookies, storage, network requests or personal data.
+  const allowed = new Set(["page_view", "assessment_start", "assessment_complete", "request_prepared"]);
+  const emitted = new Set();
+  function emit(name){
+    if(!allowed.has(name) || emitted.has(name)) return;
+    emitted.add(name);
+    document.dispatchEvent(new CustomEvent("cognitive-logic:funnel", {
+      detail:{page:"restaurant-assessment", version:"commercial-v1", event:name}
+    }));
+  }
+  const form = document.getElementById("assessmentForm");
+  document.getElementById("startAssessment").addEventListener("click",function(){
+    document.getElementById("assessmentTitle").focus({preventScroll:true});
+  });
+  form.addEventListener("change",function(event){
+    if(!event.target.matches('input[type="radio"]')) return;
+    emit("assessment_start");
+    const count = form.querySelectorAll('input[type="radio"]:checked').length;
+    document.getElementById("assessmentProgress").textContent = count + " di 15 domande completate";
+  });
+  form.addEventListener("submit",function(){
+    if(form.checkValidity() && document.getElementById("results").style.display === "block") emit("assessment_complete");
+  });
+  document.addEventListener("restaurant-assessment:request-prepared",function(){emit("request_prepared");});
+  emit("page_view");
+})();
+</script>
 </body>
 </html>
-
-<style id="restaurant-result-brand-style">
-.result-brand{
-  display:flex;
-  justify-content:space-between;
-  gap:1rem;
-  padding-bottom:1rem;
-  margin-bottom:1.5rem;
-  border-bottom:1px solid #ddd;
-}
-.result-brand strong{
-  font-size:1rem;
-}
-.result-brand span{
-  font-family:monospace;
-  font-size:.72rem;
-  text-transform:uppercase;
-  letter-spacing:.08em;
-}
-@media(max-width:700px){
-  .result-brand{
-    flex-direction:column;
-  }
-}
-</style>
