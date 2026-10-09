@@ -1,9 +1,9 @@
 # QEN Sovereign
 ## Tourism Evidence Assessment
 
-**Status:** RESEARCH DRAFT  
-**Date:** 9 October 2026  
-**Owner:** Cognitive Logic — Roberto Malini  
+**Status:** RESEARCH DRAFT
+**Date:** 9 October 2026
+**Owner:** Cognitive Logic — Roberto Malini
 **Publication status:** Internal research; not approved for publication.
 
 ## Purpose
