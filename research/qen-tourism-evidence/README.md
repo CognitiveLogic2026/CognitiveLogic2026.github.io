@@ -92,7 +92,8 @@ The dossier currently contains:
 - `claims-register.csv`: claims and their assessment state;
 - `evidence-register.csv`: evidence objects and verification status;
 - `source-policy.md`: hierarchy and treatment of sources;
-- `pilot-template.md`: structure for a future controlled pilot.
+- `pilot-template.md`: structure for a future controlled pilot;
+- `pilot-01-protocol.md`: protocol and controls for the first pilot.
 
 The registers contain headers only. No organisation has been assessed and
 no score has been assigned.
