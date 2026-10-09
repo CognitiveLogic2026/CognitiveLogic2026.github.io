@@ -110,3 +110,8 @@ This is a methodological research artefact. It is not:
 - an automated eligibility decision;
 - proof of regulatory compliance;
 - authorisation to publish or contact assessed organisations.
+
+## Criteria-analysis records
+
+- [Pilot 01 criteria and evidence analysis](pilot-01-criteria-analysis.md)
+- [Pilot 01 source manifest](pilot-01-source-manifest.csv)

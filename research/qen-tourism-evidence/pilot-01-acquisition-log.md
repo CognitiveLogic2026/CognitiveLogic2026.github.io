@@ -111,3 +111,23 @@ Still DOCUMENTED but not fully verified from the complete tender text:
 
 This acquisition log remains internal. It does not authorise publication,
 ranking, outreach or legal conclusions.
+
+## 9 October 2026 — criteria and evidence architecture
+
+Acquired and hash-verified:
+
+- Allegato B — Disciplinare di gara;
+- Allegato H — Modello offerta tecnica.
+
+Recorded findings:
+
+- 90 technical points and 10 economic points;
+- technical exclusion threshold of 45 points;
+- 26 discretionary and 64 tabular technical points;
+- six technical criterion families;
+- documented economic-contribution formula;
+- financial-plan coherence requirements;
+- distinction between narrative responses, commitments and declarations.
+
+Four evidence records were added: EV-RIM-014 through EV-RIM-017.
+No new claim and no QEN score were created.
