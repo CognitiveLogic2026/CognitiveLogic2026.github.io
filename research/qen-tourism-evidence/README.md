@@ -94,7 +94,8 @@ The dossier currently contains:
 - `source-policy.md`: hierarchy and treatment of sources;
 - `pilot-template.md`: structure for a future controlled pilot;
 - `pilot-01-protocol.md`: protocol and controls for the first pilot;
-- `pilot-01-rimini-case.md`: selected case and verified baseline.
+- `pilot-01-rimini-case.md`: selected case and verified baseline;
+- `pilot-01-acquisition-log.md`: primary-document acquisition status.
 
 The registers contain headers only. No organisation has been assessed and
 no score has been assigned.

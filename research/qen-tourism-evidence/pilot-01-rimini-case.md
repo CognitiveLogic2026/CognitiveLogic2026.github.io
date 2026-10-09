@@ -99,3 +99,19 @@ Without initiating outreach, the next documentary targets are:
 
 No public ranking, operator assessment, automated score or legal
 conclusion is authorised by this case selection.
+
+## Second acquisition pass — 9 October 2026
+
+The official procurement portal confirms procedure reference G12664,
+open-procedure classification, an aggregate value of EUR 986,545.60 and
+the portal state `In aggiudicazione`.
+
+The transparency section records determination no. 2321 of
+11 September 2026 appointing the commission and publishes curricula and
+conflict-of-interest declarations.
+
+The lot page enumerates 27 individual lots with separate CIG identifiers
+and base amounts.
+
+No evaluation minutes or award acts were recorded in the pages reviewed
+during this acquisition pass.
