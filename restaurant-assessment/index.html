@@ -132,8 +132,15 @@ content="Prima autovalutazione gratuita: 15 domande per individuare priorità su
   font-size:.65rem;
 }
 
-.answers input{
-  margin-right:.35rem;
+.answers input[type="radio"]{
+  appearance:auto;
+  -webkit-appearance:radio;
+  flex:0 0 1rem;
+  width:1rem;
+  height:1rem;
+  min-width:1rem;
+  margin:0;
+  accent-color:var(--gold);
 }
 
 .actions{
@@ -435,7 +442,23 @@ button{
 .assessment-form{scroll-margin-top:2rem}
 .assessment-form>h2{font-size:2rem}
 .question p{font-size:1rem}
-.answers label{font-size:.85rem;min-height:44px;display:inline-flex;align-items:center}
+.answers{
+  display:grid;
+  grid-template-columns:repeat(4,minmax(0,1fr));
+}
+.answers label{
+  min-width:0;
+  min-height:44px;
+  display:flex;
+  align-items:center;
+  gap:.55rem;
+  padding:.65rem .75rem;
+  font-size:.78rem;
+  line-height:1.25;
+  overflow-wrap:anywhere;
+}
+@media(max-width:800px){.answers{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:420px){.answers{grid-template-columns:1fr}}
 .qualification-note a{text-decoration:underline}
 @media(max-width:700px){.benefit-grid{grid-template-columns:1fr}.assessment-wrap{padding:2rem 1.2rem}.hero-action .btn{width:100%}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
