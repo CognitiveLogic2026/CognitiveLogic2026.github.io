@@ -115,3 +115,12 @@ This is a methodological research artefact. It is not:
 
 - [Pilot 01 criteria and evidence analysis](pilot-01-criteria-analysis.md)
 - [Pilot 01 source manifest](pilot-01-source-manifest.csv)
+
+## Comparative case 02 — Riccione
+
+- [Riccione clarification baseline](case-02-riccione-baseline.md)
+- [Riccione evidence register](case-02-riccione-evidence.csv)
+- [Riccione source manifest](case-02-source-manifest.csv)
+
+Riccione is the second comparable case. It has not been scored or
+included in a municipal ranking.
