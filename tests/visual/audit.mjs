@@ -61,7 +61,31 @@ try {
           bodyWidth: document.body.scrollWidth
         }));
 
-        const overflow = Math.max(
+
+        if (path === '/digital-presence/' && width === 390) {
+          const offenders = await page.evaluate(() => {
+            return [...document.querySelectorAll('body *')]
+              .map(el => {
+                const r = el.getBoundingClientRect();
+                const cs = getComputedStyle(el);
+                return {
+                  tag: el.tagName,
+                  className: String(el.className).slice(0, 100),
+                  text: (el.textContent || '').trim().slice(0, 65),
+                  left: Math.round(r.left),
+                  right: Math.round(r.right),
+                  width: Math.round(r.width),
+                  display: cs.display
+                };
+              })
+              .filter(x => x.right > 392 || x.left < -2)
+              .slice(0, 30);
+          });
+          console.log('DIGITAL_PRESENCE_OFFENDERS',
+            JSON.stringify(offenders, null, 2));
+        }
+
+const overflow = Math.max(
           layout.documentWidth,
           layout.bodyWidth
         ) > layout.viewport + 2;
