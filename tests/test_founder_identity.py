@@ -55,3 +55,18 @@ def test_public_aliases_are_present_and_not_indexed():
         assert f'<link rel="canonical" href="{canonical}">' in html
         assert f'url={target}' in html
         assert f'href="{target}"' in html
+
+
+def test_founder_page_lists_verified_doi_and_external_publications():
+    html = (ROOT / "about.html").read_text(encoding="utf-8")
+    for value in (
+        "https://doi.org/10.5281/zenodo.22850822",
+        "https://doi.org/10.5281/zenodo.22850821",
+        "https://www.innovationpost.it/tecnologie/industrial-it/perche-quando-lai-decide-in-fabbrica-servono-evidenze-verificabili/",
+        "https://www.italiaatavola.net/horeca/2026/9/25/hotel-ristoranti-anche-dato-corretto-puo-portare-decisioni-sbagliate/121545/",
+        "https://rivista.camminodiritto.it/articolo.asp?id=11970",
+    ):
+        assert value in html
+    assert "Tech Policy Press" not in html
+    assert "European Law Blog" not in html
+    assert "id=11964" not in html
