@@ -154,6 +154,30 @@
       margin-bottom: .35rem;
     }
 
+    /* Digital Presence: mobile layout containment */
+    .dp-hero > div {
+      min-width: 0;
+    }
+
+    @media (max-width: 560px) {
+      .dp-hero h1,
+      .dp-lead,
+      .dp-kicker {
+        overflow-wrap: anywhere;
+      }
+
+      .dp-hero .hero-ctas,
+      .dp-hero .hero-ctas .btn {
+        max-width: 100%;
+        min-width: 0;
+      }
+
+      .dp-hero .hero-ctas .btn {
+        white-space: normal;
+        text-align: center;
+      }
+    }
+
     @media (max-width: 900px) {
       .dp-hero {
         grid-template-columns: 1fr;
