@@ -62,6 +62,8 @@ def test_founder_page_lists_verified_doi_and_external_publications():
     for value in (
         "https://doi.org/10.5281/zenodo.22850822",
         "https://doi.org/10.5281/zenodo.22850821",
+        "/research/tenerife-tourism-intelligence-evidence/",
+        "/research/tenerife-tourism-intelligence-evidence/es/",
         "https://www.innovationpost.it/tecnologie/industrial-it/perche-quando-lai-decide-in-fabbrica-servono-evidenze-verificabili/",
         "https://www.italiaatavola.net/horeca/2026/9/25/hotel-ristoranti-anche-dato-corretto-puo-portare-decisioni-sbagliate/121545/",
         "https://rivista.camminodiritto.it/articolo.asp?id=11970",
