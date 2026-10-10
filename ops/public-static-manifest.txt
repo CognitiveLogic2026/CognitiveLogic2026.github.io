@@ -214,3 +214,4 @@ img/og/anci-concessioni-standard-evidenze.png
 hotellerie-assessment/index.html
 international-watch/ai-decision-rights-verifiable-evidence/index.html
 downloads/QEN-Sovereign-analisi-affitti-2026.pdf
+downloads/qen-sovereign-continuita-conoscenza-pmi-familiari.pdf
