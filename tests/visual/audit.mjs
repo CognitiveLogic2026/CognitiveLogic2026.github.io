@@ -51,7 +51,7 @@ try {
 
       try {
         const response = await page.goto(base + path, {
-          waitUntil: 'networkidle',
+          waitUntil: 'domcontentloaded',
           timeout: 30000
         });
 
