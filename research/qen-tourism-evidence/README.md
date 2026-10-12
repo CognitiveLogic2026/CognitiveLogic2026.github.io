@@ -147,3 +147,8 @@ criteria analysis pending. No ranking or score assigned.
 - `case-03-albenga-criteria-register.csv` — source-faithful register of
   all verified PUD 19 and PUD 34 criteria and maximum points; both
   architectures total 100 points. Source numbering anomalies are retained.
+
+- `case-03-albenga-qen-mapping.csv` and
+  `case-03-albenga-qen-mapping-note.md` — interpretive classification of
+  all 49 criteria across Social, Environmental and Territorial axes.
+  Official points are not converted into QEN weights or rankings.
