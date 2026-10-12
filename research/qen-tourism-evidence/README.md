@@ -152,3 +152,8 @@ criteria analysis pending. No ranking or score assigned.
   `case-03-albenga-qen-mapping-note.md` — interpretive classification of
   all 49 criteria across Social, Environmental and Territorial axes.
   Official points are not converted into QEN weights or rankings.
+
+- `three-case-design-comparison.csv` and
+  `three-case-design-comparison.md` — internal design-level comparison of
+  Rimini, Riccione and Albenga. Evidence maturity remains
+  dimension-specific; no municipal or operator ranking is assigned.
