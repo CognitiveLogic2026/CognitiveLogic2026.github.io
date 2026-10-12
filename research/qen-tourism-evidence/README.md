@@ -139,3 +139,7 @@ Files:
 
 Current state: documents acquired and integrity-checked; human
 criteria analysis pending. No ranking or score assigned.
+
+- `case-03-albenga-comparative-analysis.md` — controlled comparison of
+  Albenga with the Rimini and Riccione evidence baselines; no numerical
+  ranking assigned.
