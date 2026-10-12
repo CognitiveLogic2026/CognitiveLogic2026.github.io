@@ -143,3 +143,7 @@ criteria analysis pending. No ranking or score assigned.
 - `case-03-albenga-comparative-analysis.md` — controlled comparison of
   Albenga with the Rimini and Riccione evidence baselines; no numerical
   ranking assigned.
+
+- `case-03-albenga-criteria-register.csv` — source-faithful register of
+  all verified PUD 19 and PUD 34 criteria and maximum points; both
+  architectures total 100 points. Source numbering anomalies are retained.

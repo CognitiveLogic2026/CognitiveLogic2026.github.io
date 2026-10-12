@@ -3,7 +3,7 @@
 **Case ID:** ALBENGA-CDM-2026-P19-P34
 **Programme:** QEN Tourism Evidence Assessment
 **Analysis date:** 12 October 2026
-**Status:** PRIMARY DOCUMENTS ACQUIRED — COMPARATIVE INTERPRETATION
+**Status:** PRIMARY CRITERIA AND SCORING ARCHITECTURE RECONSTRUCTED
 **Ranking status:** NOT SCORED
 **Publication status:** Internal research; not approved for publication.
 
@@ -96,8 +96,8 @@ in the research dossier:
 - 26 discretionary and 64 tabular technical points.
 
 Albenga confirms the use of weighted comparative criteria and commissioner
-evaluation, but the complete criterion-by-criterion point structure has not
-yet been reconstructed in the structured evidence register.
+evaluation. The criterion-by-criterion point structure has now been
+reconstructed in `case-03-albenga-criteria-register.csv`.
 
 Albenga therefore cannot yet be placed above or below Rimini in a numerical
 ranking.
@@ -149,8 +149,8 @@ compliance remains separate from merit assessment.
 
 The following elements remain incomplete:
 
-1. complete transcription of every criterion and maximum score;
-2. verification of the definitive category for PUD 19;
+1. verification of the definitive category for PUD 19;
+2. human review of duplicated or irregular source numbering;
 3. structured comparison of duration ceilings;
 4. subsequent clarifications, admissions, exclusions and awards;
 5. evidence concerning actual bidders or submitted offers.
@@ -160,12 +160,12 @@ The following elements remain incomplete:
 - Document provenance: **DOCUMENTED**
 - Document integrity: **VERIFIED**
 - Extracted procedural features: **VERIFIED WITH STATED LIMITS**
-- Complete scoring reconstruction: **PENDING**
+- Complete scoring reconstruction: **COMPLETED FROM PRIMARY TABLES**
 - Legal conclusion: **NOT PRODUCED**
 - Numerical ranking: **NOT ASSIGNED**
 
 ## Next controlled step
 
-Reconstruct every Albenga criterion, subcriterion and maximum point in a
-structured register before considering a public benchmark update or any
-numerical comparison.
+Conduct human review of the source numbering anomalies and map the verified
+criteria to QEN dimensions without changing QEN weights. No operator or
+municipality performance ranking may be inferred from the available data.

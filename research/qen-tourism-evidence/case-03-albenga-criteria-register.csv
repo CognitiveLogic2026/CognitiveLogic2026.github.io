@@ -1,0 +1,50 @@
+register_id,lot,section,source_code,criterion,max_points,scoring_mode,evidence_state,qen_mapping_status,limitations
+ALB-P19-A01,PUD-19,A.1,A.01.01,"Adeguamento, risanamento, rifacimento o sostituzione delle strutture",15,commissioner_coefficient,VERIFIED,NOT_ASSIGNED,Merit criterion; no bidder performance reviewed.
+ALB-P19-A02,PUD-19,A.1,A.01.02,"Sostenibilità ambientale, materiali, dotazioni e qualità architettonica",6,commissioner_coefficient,VERIFIED,NOT_ASSIGNED,QEN mapping requires separate interpretive review.
+ALB-P19-A03,PUD-19,A.1,A.01.03,"Salvaguardia del paesaggio, ecosistemi e beni culturali o ambientali",5,commissioner_coefficient,VERIFIED,NOT_ASSIGNED,No assessment of submitted projects.
+ALB-P19-A04,PUD-19,A.1,A.01.04,Investimenti di rilevante interesse pubblico e sviluppo territoriale,15,commissioner_coefficient,VERIFIED,NOT_ASSIGNED,May include a contribution and feasibility project.
+ALB-P19-A05,PUD-19,A.1,A.01.05,Tempo di presentazione allo SUAP della progettazione,1,fixed_threshold,VERIFIED,NOT_ASSIGNED,Published time bands; no offer evaluated.
+ALB-P19-A06,PUD-19,A.1,A.01.06,Tempo di esecuzione degli interventi dopo autorizzazione,2,fixed_threshold,VERIFIED,NOT_ASSIGNED,Published time bands; no offer evaluated.
+ALB-P19-A07,PUD-19,A.1,A.01.07,Superamento delle barriere architettoniche,3,commissioner_coefficient,VERIFIED,NOT_ASSIGNED,Detailed evidence requirements require tender-rule review.
+ALB-P19-A08,PUD-19,A.2,A.02.01,"Partecipazione a opere pubbliche, difesa costiera e ripascimento",6,commissioner_coefficient,VERIFIED,NOT_ASSIGNED,Commitment criterion; implementation not verified.
+ALB-P19-A09,PUD-19,A.2,A.02.02,Tempo di presentazione dei progetti di difesa e ripascimento,1,fixed_threshold,VERIFIED,NOT_ASSIGNED,Published time bands; no offer evaluated.
+ALB-P19-A10,PUD-19,A.2,A.02.03,Tempo di realizzazione delle opere di difesa e ripascimento,2,fixed_threshold,VERIFIED,NOT_ASSIGNED,Published time bands; no offer evaluated.
+ALB-P19-A11,PUD-19,A.2,A.02.04,Decoro e pulizia annuale di spiagge libere o foci limitrofe,8,commissioner_coefficient,VERIFIED,NOT_ASSIGNED,Commitment does not prove later implementation.
+ALB-P19-B01,PUD-19,B,B.01,Risorse strumentali e tecnologiche disponibili all’utenza,2,commissioner_coefficient,VERIFIED,NOT_ASSIGNED,Examples are non-exhaustive.
+ALB-P19-B02,PUD-19,B,B.02,Gestione sostenibile dei rifiuti e incremento del riciclo,2,commissioner_coefficient,VERIFIED,NOT_ASSIGNED,"Proposed measures, not measured outcomes."
+ALB-P19-B03,PUD-19,B,B.03,Promozione turistica e sviluppo del territorio,5,commissioner_coefficient,VERIFIED,NOT_ASSIGNED,Events must be agreed with the municipality.
+ALB-P19-B04,PUD-19,B,B.04,Innovazione tecnologica degli investimenti proposti,6,commissioner_coefficient,VERIFIED,NOT_ASSIGNED,No technology proposal assessed.
+ALB-P19-B05,PUD-19,B,B.05,Utilizzo gratuito dell’attività per categorie sociali,5,commissioner_coefficient,VERIFIED,NOT_ASSIGNED,Beneficiaries and operating terms require agreement.
+ALB-P19-C01,PUD-19,C,C.01,Certificazione della parità di genere,2,documentary_or_tabular,VERIFIED,NOT_ASSIGNED,Certificate existence must be checked per bidder.
+ALB-P19-C02,PUD-19,C,C.02,Impresa a prevalente o totale partecipazione giovanile,3,documentary_or_tabular,VERIFIED,NOT_ASSIGNED,Eligibility evidence not reviewed.
+ALB-P19-C03,PUD-19,C,C.03,Esperienza tecnica e professionale pertinente,5,commissioner_coefficient,VERIFIED,NOT_ASSIGNED,No bidder experience assessed.
+ALB-P19-C04,PUD-19,C,C.04,Certificazioni di qualità dei processi e della sicurezza,2,fixed_documentary_points,VERIFIED,NOT_ASSIGNED,Two one-point certificate categories are published.
+ALB-P19-C05,PUD-19,C,C.06,Piano occupazionale e impiego di manodopera temporanea,4,commissioner_coefficient,VERIFIED,NOT_ASSIGNED,Source numbering moves from C.04 to C.06.
+ALB-P34-A01,PUD-34,A.1,A.01.01,"Adeguamento, risanamento, rifacimento o sostituzione delle strutture",5,commissioner_coefficient,VERIFIED,NOT_ASSIGNED,Merit criterion; no bidder performance reviewed.
+ALB-P34-A02,PUD-34,A.1,A.01.02.01,Tipologie costruttive aderenti agli strumenti regionali e comunali,4,commissioner_coefficient,VERIFIED,NOT_ASSIGNED,Registered from the source subcriterion.
+ALB-P34-A03,PUD-34,A.1,A1.2.2,"Tipologia di arredo, contesto, uniformità e innovazione",4,commissioner_coefficient,VERIFIED,NOT_ASSIGNED,Source code reproduced without silent correction.
+ALB-P34-A04,PUD-34,A.1,A.01.03,"Sostenibilità ambientale, materiali, dotazioni e qualità architettonica",5,commissioner_coefficient,VERIFIED,NOT_ASSIGNED,QEN mapping requires separate interpretive review.
+ALB-P34-A05,PUD-34,A.1,A.01.04,"Salvaguardia del paesaggio, ecosistemi e beni culturali o ambientali",5,commissioner_coefficient,VERIFIED,NOT_ASSIGNED,No assessment of submitted projects.
+ALB-P34-A06,PUD-34,A.1,A.01.05,Investimenti di rilevante interesse pubblico e sviluppo territoriale,15,commissioner_coefficient,VERIFIED,NOT_ASSIGNED,May include a contribution and feasibility project.
+ALB-P34-A07,PUD-34,A.1,A.01.06,Tempo di presentazione allo SUAP della progettazione,1,fixed_threshold,VERIFIED,NOT_ASSIGNED,Published time bands; no offer evaluated.
+ALB-P34-A08,PUD-34,A.1,A.01.07,Tempo di esecuzione degli interventi dopo autorizzazione,2,fixed_threshold,VERIFIED,NOT_ASSIGNED,Published time bands; no offer evaluated.
+ALB-P34-A09,PUD-34,A.1,A.1.8,"Accessibilità, superamento delle barriere e fruizione del mare",5,commissioner_coefficient,VERIFIED,NOT_ASSIGNED,Source code reproduced without silent correction.
+ALB-P34-A10,PUD-34,A.2,A.02.01,"Partecipazione a opere pubbliche, difesa costiera e ripascimento",6,commissioner_coefficient,VERIFIED,NOT_ASSIGNED,Commitment criterion; implementation not verified.
+ALB-P34-A11,PUD-34,A.2,A.02.02,Tempo di presentazione dei progetti di difesa e ripascimento,1,fixed_threshold,VERIFIED,NOT_ASSIGNED,Published time bands; no offer evaluated.
+ALB-P34-A12,PUD-34,A.2,A.02.03,Tempo di realizzazione delle opere di difesa e ripascimento,2,fixed_threshold,VERIFIED,NOT_ASSIGNED,Published time bands; no offer evaluated.
+ALB-P34-A13,PUD-34,A.2,A.02.04,"Decoro, pulizia e possibile estensione del servizio di salvataggio",6,commissioner_coefficient,VERIFIED,NOT_ASSIGNED,Commitment does not prove later implementation.
+ALB-P34-A14,PUD-34,A.2,A.02.05,"Docce, servizi igienici e spogliatoi su spiagge libere",5,commissioner_coefficient,VERIFIED,NOT_ASSIGNED,Areas are to be identified by the municipality.
+ALB-P34-B01,PUD-34,B,B.01,Apertura per servizio elioterapico fuori stagione,2,fixed_threshold,VERIFIED,NOT_ASSIGNED,Published opening-period bands.
+ALB-P34-B02,PUD-34,B,B.02,Apertura fuori stagione delle attività secondarie,1,commissioner_coefficient,VERIFIED,NOT_ASSIGNED,Activity and duration must be specified.
+ALB-P34-B03,PUD-34,B,B.03,Risorse strumentali e tecnologiche disponibili all’utenza,1,commissioner_coefficient,VERIFIED,NOT_ASSIGNED,Source later reuses code B.03.
+ALB-P34-B04,PUD-34,B,B.02.01,Riduzione e gestione dei rifiuti e incremento del riciclo,1,commissioner_coefficient,VERIFIED,NOT_ASSIGNED,Source reuses B.02 after B.03.
+ALB-P34-B05,PUD-34,B,B.02.02,Uso efficiente dell’acqua e gestione degli scarichi,1,commissioner_coefficient,VERIFIED,NOT_ASSIGNED,Source reuses B.02 after B.03.
+ALB-P34-B06,PUD-34,B,B.03,Promozione turistica e sviluppo del territorio,5,commissioner_coefficient,VERIFIED,NOT_ASSIGNED,Duplicate source code retained explicitly.
+ALB-P34-B07,PUD-34,B,B.04,Innovazione tecnologica degli investimenti proposti,2,commissioner_coefficient,VERIFIED,NOT_ASSIGNED,No technology proposal assessed.
+ALB-P34-B08,PUD-34,B,B.05,Utilizzo gratuito delle attività per categorie sociali,4,commissioner_coefficient,VERIFIED,NOT_ASSIGNED,Beneficiaries and terms require agreement.
+ALB-P34-B09,PUD-34,B,B.06,Nuove attività compatibili di natura sociosanitaria,5,commissioner_coefficient,VERIFIED,NOT_ASSIGNED,Compatibility requires administrative assessment.
+ALB-P34-C01,PUD-34,C,C.01,Certificazione della parità di genere,1,documentary_or_tabular,VERIFIED,NOT_ASSIGNED,Certificate existence must be checked per bidder.
+ALB-P34-C02,PUD-34,C,C.02,Impresa a prevalente o totale partecipazione giovanile,2,documentary_or_tabular,VERIFIED,NOT_ASSIGNED,Eligibility evidence not reviewed.
+ALB-P34-C03,PUD-34,C,C.03,Esperienza tecnica pertinente alla destinazione sociosanitaria,4,commissioner_coefficient,VERIFIED,NOT_ASSIGNED,No bidder experience assessed.
+ALB-P34-C04,PUD-34,C,C.04,Certificazioni di qualità dei processi e della sicurezza,2,fixed_documentary_points,VERIFIED,NOT_ASSIGNED,Two one-point certificate categories are published.
+ALB-P34-C05,PUD-34,C,C.05,Piano occupazionale e impiego di manodopera temporanea,3,commissioner_coefficient,VERIFIED,NOT_ASSIGNED,No employment plan assessed.
