@@ -219,3 +219,4 @@ downloads/QEN-Sovereign-analisi-affitti-2026.pdf
 downloads/qen-sovereign-continuita-conoscenza-pmi-familiari.pdf
 downloads/qen-sovereign-visitengland-turismo-sostenibile-2026.pdf
 resources/documents/tender-evidence-verifiability-benchmark/index.html
+international-watch/uk-ai-safety-autonomia-evidenze/index.html
