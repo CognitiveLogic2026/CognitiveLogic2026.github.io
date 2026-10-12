@@ -124,3 +124,18 @@ This is a methodological research artefact. It is not:
 
 Riccione is the second comparable case. It has not been scored or
 included in a municipal ranking.
+
+## Case 03 — Albenga
+
+Primary-document acquisition for two comparative procedures:
+
+- PUD 19 — children’s carousel;
+- PUD 34 — Rada del Gabbiano.
+
+Files:
+
+- [Albenga source manifest](case-03-albenga-source-manifest.csv)
+- [Albenga acquisition log](case-03-albenga-acquisition-log.md)
+
+Current state: documents acquired and integrity-checked; human
+criteria analysis pending. No ranking or score assigned.
