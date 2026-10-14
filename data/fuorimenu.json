@@ -1,6 +1,13 @@
 {
   "articoli": [
     {
+      "titolo": "L’hotel non ha bisogno di più AI. Deve sapere quali decisioni sta delegando.",
+      "url": "https://fuorimenu.substack.com/p/lhotel-non-ha-bisogno-di-piu-ai-deve",
+      "data": "2026-10-14 05:45",
+      "estratto": "La giornata di un albergatore comincia molto prima che il primo ospite scenda a fare colazione.",
+      "tag": "Fuorimenu"
+    },
+    {
       "titolo": "Prima dei turisti arrivano gli algoritmi",
       "url": "https://fuorimenu.substack.com/p/prima-dei-turisti-arrivano-gli-algoritmi",
       "data": "2026-10-01 06:44",
@@ -61,13 +68,6 @@
       "url": "https://fuorimenu.substack.com/p/il-guardiano-che-non-guardava-se",
       "data": "2026-08-31 06:48",
       "estratto": "Due casi AGID mostrano perché digitalizzare non basta: servono trasparenza, responsabilità, evidenze verificabili e governance prima dell’automazione.",
-      "tag": "Fuorimenu"
-    },
-    {
-      "titolo": "Il chatbot del tuo hotel o ristorante usa l’AI? Cosa deve sapere il cliente",
-      "url": "https://fuorimenu.substack.com/p/il-chatbot-del-tuo-hotel-o-ristorante",
-      "data": "2026-08-28 17:23",
-      "estratto": "Chatbot e assistenti AI stanno entrando nell’ospitalità. La vera sfida non è solo automatizzare il servizio, ma garantire trasparenza, informazioni affidabili e responsabilità umana.",
       "tag": "Fuorimenu"
     }
   ]
