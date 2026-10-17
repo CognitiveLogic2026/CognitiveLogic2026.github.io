@@ -24,6 +24,9 @@
   const isHospitality =
     /fuorimenu|restaurant|hotellerie|ristorazione|horeca|hospitality|turismo|coastal|balneari|bolkestein|concessioni-balneari/.test(path);
 
+  const isBolkestein =
+    /bolkestein|concessioni-balneari|coastal-governance/.test(path);
+
   const isAssessment =
     /assessment|services\.html|discovery\.html/.test(path);
 
@@ -43,7 +46,8 @@
     assessment: "Explore our assessments",
     restaurant: "Restaurant assessment",
     hotel: "Hotel assessment",
-    contact: "Contact Cognitive Logic"
+    contact: "Contact Cognitive Logic",
+    documentary: "Request a documentary review"
   } : {
     share: "Condividi questa pagina",
     intro: "Condividi questo contenuto con colleghi e lettori.",
@@ -57,7 +61,8 @@
     assessment: "Scopri gli assessment",
     restaurant: "Assessment ristorazione",
     hotel: "Assessment hotellerie",
-    contact: "Contatta Cognitive Logic"
+    contact: "Contatta Cognitive Logic",
+    documentary: "Richiedi una verifica documentale"
   };
 
   const canonical = document.querySelector('link[rel="canonical"]');
@@ -183,7 +188,11 @@
   }
 
   // CTA commerciali soltanto su contenuti pertinenti.
-  if (isHospitality && !isFuori && !isAssessment) {
+  if (isBolkestein) {
+    addBlock(t.assessment, [
+      [t.documentary, "/contact.html"]
+    ]);
+  } else if (isHospitality && !isFuori && !isAssessment) {
     addBlock(t.assessment, [
       [t.restaurant, "/restaurant-assessment/"],
       [t.hotel, "/hotellerie-assessment/"]
