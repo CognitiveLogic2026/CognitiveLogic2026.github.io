@@ -226,3 +226,5 @@ img/og/caio-cto-governance-ai.png
 international-watch/index.html
 css/global-cta.css
 js/global-cta.js
+brief/manifesto-del-linguaggio/index.html
+img/og/cognitive-logic-brief-manifesto-linguaggio.png
