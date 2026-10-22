@@ -1,0 +1,15 @@
+{
+  "identifier": "QEN-2026-0004",
+  "title": "Hotellerie Assessment Bologna",
+  "slug": "hotellerie-bologna",
+  "url": "https://cognitivelogic.it/qencode/hotellerie-bologna/",
+  "assessment_url": "https://cognitivelogic.it/hotellerie-assessment/",
+  "version": "1.0",
+  "created_at": "2026-10-22T22:00:02.263336+00:00",
+  "sha256": "1f945f17fa55a84bf6bba4502e4d4ed1e281d1a876b305aca0086a2029127c54",
+  "hash_target": "hotellerie-assessment/index.html",
+  "hash_algorithm": "SHA-256",
+  "hash_scope": "File HTML locale alla registrazione",
+  "verification_limit": "L'hash identifica una versione del file, non certifica la correttezza dei contenuti.",
+  "qr_code": "qen-code.png"
+}

@@ -1,0 +1,15 @@
+{
+  "identifier": "QEN-2026-0002",
+  "title": "Assessment Balneari 2027",
+  "slug": "balneari-2027",
+  "url": "https://cognitivelogic.it/qencode/balneari-2027/",
+  "assessment_url": "https://cognitivelogic.it/balneari-assessment/",
+  "version": "1.0",
+  "created_at": "2026-10-22T22:00:02.263336+00:00",
+  "sha256": "40847d72fd740dc68f773c73706b9b53dfab20575692a9467d9b61a643ea92e0",
+  "hash_target": "balneari-assessment/index.html",
+  "hash_algorithm": "SHA-256",
+  "hash_scope": "File HTML locale alla registrazione",
+  "verification_limit": "L'hash identifica una versione del file, non certifica la correttezza dei contenuti.",
+  "qr_code": "qen-code.png"
+}

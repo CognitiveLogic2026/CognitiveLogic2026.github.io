@@ -7,5 +7,35 @@
     "interpretation": "The strategic challenge is not choosing between speed and regulation, but designing intelligible, explainable and verifiable data architectures where compliance becomes an intrinsic property of AI systems rather than an external constraint.",
     "created_at": "2026-07-15T05:05:02+00:00",
     "sha256": "c80603713051fb962f160d6965de79e686f483cf3da02a9c61d4ce847fd91690"
+  },
+  {
+    "identifier": "QEN-2026-0002",
+    "title": "Assessment Balneari 2027",
+    "slug": "balneari-2027",
+    "url": "https://cognitivelogic.it/qencode/balneari-2027/",
+    "assessment_url": "https://cognitivelogic.it/balneari-assessment/",
+    "created_at": "2026-10-22T22:00:02.263336+00:00",
+    "sha256": "40847d72fd740dc68f773c73706b9b53dfab20575692a9467d9b61a643ea92e0",
+    "hash_target": "balneari-assessment/index.html"
+  },
+  {
+    "identifier": "QEN-2026-0003",
+    "title": "Restaurant Assessment Bologna",
+    "slug": "restaurant-bologna",
+    "url": "https://cognitivelogic.it/qencode/restaurant-bologna/",
+    "assessment_url": "https://cognitivelogic.it/restaurant-assessment/",
+    "created_at": "2026-10-22T22:00:02.263336+00:00",
+    "sha256": "4fbee5215484c3bacdd0183500f460615fb39dd110f1a3c0b6bce66ce4c54567",
+    "hash_target": "restaurant-assessment/index.html"
+  },
+  {
+    "identifier": "QEN-2026-0004",
+    "title": "Hotellerie Assessment Bologna",
+    "slug": "hotellerie-bologna",
+    "url": "https://cognitivelogic.it/qencode/hotellerie-bologna/",
+    "assessment_url": "https://cognitivelogic.it/hotellerie-assessment/",
+    "created_at": "2026-10-22T22:00:02.263336+00:00",
+    "sha256": "1f945f17fa55a84bf6bba4502e4d4ed1e281d1a876b305aca0086a2029127c54",
+    "hash_target": "hotellerie-assessment/index.html"
   }
 ]
