@@ -1,0 +1,1196 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
+<title>Assessment Balneari 2027 | Cognitive Logic</title>
+<link rel="canonical" href="https://cognitivelogic.it/balneari-assessment/">
+
+<meta name="description"
+content="Assessment gratuito per concessionari balneari: 15 domande per valutare preparazione documentale, investimenti, evidenze economiche, procedure e rischi.">
+
+<meta name="robots" content="index,follow">
+
+<link rel="stylesheet" href="../css/fonts-local.css">
+<link rel="stylesheet" href="../css/style.css?v=3">
+
+<style>
+.assessment-wrap{
+  max-width:960px;
+  margin:0 auto;
+  padding:7rem 2rem 5rem;
+}
+
+.assessment-label{
+  font-family:"DM Mono",monospace;
+  text-transform:uppercase;
+  letter-spacing:.18em;
+  font-size:.65rem;
+  color:var(--gold-soft);
+}
+
+.assessment-wrap h1{
+  font-family:"Cormorant Garamond",serif;
+  font-size:clamp(2.6rem,6vw,5rem);
+  line-height:1;
+  margin:.8rem 0 1.5rem;
+}
+
+.lead{
+  max-width:720px;
+  line-height:1.8;
+  color:var(--text-soft);
+}
+
+.notice{
+  margin:2rem 0;
+  padding:1.2rem;
+  border:1px solid var(--line-soft);
+  background:var(--bg-soft);
+  font-size:.78rem;
+  line-height:1.7;
+}
+
+.assessment-form{
+  margin-top:3rem;
+}
+
+.business-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:1rem;
+  margin-bottom:3rem;
+}
+
+.field label{
+  display:block;
+  font-family:"DM Mono",monospace;
+  font-size:.62rem;
+  text-transform:uppercase;
+  letter-spacing:.12em;
+  color:var(--muted);
+  margin-bottom:.4rem;
+}
+
+.field input,
+.field select{
+  width:100%;
+  box-sizing:border-box;
+  padding:.85rem;
+  background:var(--bg-soft);
+  color:var(--text);
+  border:1px solid var(--line-soft);
+}
+
+.dimension{
+  border-top:1px solid var(--line-soft);
+  padding:2.4rem 0;
+}
+
+.dimension-id{
+  font-family:"DM Mono",monospace;
+  color:var(--gold-soft);
+  font-size:.62rem;
+  letter-spacing:.15em;
+  text-transform:uppercase;
+}
+
+.dimension h2{
+  font-family:"Cormorant Garamond",serif;
+  font-size:2rem;
+  margin:.4rem 0;
+}
+
+.dimension-desc{
+  color:var(--text-soft);
+  font-size:.8rem;
+  line-height:1.7;
+  margin-bottom:1.4rem;
+}
+
+.question{
+  margin:1.3rem 0;
+}
+
+.question p{
+  font-size:.82rem;
+  margin-bottom:.6rem;
+}
+
+.answers{
+  display:flex;
+  flex-wrap:wrap;
+  gap:.5rem;
+}
+
+.answers label{
+  border:1px solid var(--line-soft);
+  padding:.55rem .8rem;
+  cursor:pointer;
+  font-family:"DM Mono",monospace;
+  font-size:.65rem;
+}
+
+.answers input[type="radio"]{
+  appearance:none;
+  -webkit-appearance:none;
+  flex:0 0 1rem;
+  width:1rem;
+  height:1rem;
+  min-width:1rem;
+  min-height:1rem;
+  margin:0;
+  padding:0;
+  align-self:center;
+  border:1.5px solid var(--muted);
+  border-radius:50%;
+  background:transparent;
+  box-shadow:none;
+}
+.answers input[type="radio"]:checked{
+  border-color:var(--gold-soft);
+  background:var(--gold);
+  box-shadow:inset 0 0 0 3px var(--bg-panel);
+}
+
+.actions{
+  padding:2rem 0;
+}
+
+button{
+  padding:.9rem 1.4rem;
+  cursor:pointer;
+  border:1px solid var(--gold);
+  background:var(--gold);
+  color:#070d1a;
+  font-family:"DM Mono",monospace;
+  text-transform:uppercase;
+  letter-spacing:.08em;
+}
+
+.results{
+  display:none;
+  margin-top:3rem;
+  border:1px solid var(--line-soft);
+  padding:2rem;
+  background:var(--bg-soft);
+}
+
+.score{
+  font-family:"Cormorant Garamond",serif;
+  font-size:4rem;
+  color:var(--gold-soft);
+}
+
+.result-grid{
+  display:grid;
+  grid-template-columns:repeat(5,1fr);
+  gap:1px;
+  background:var(--line-soft);
+  margin:2rem 0;
+}
+
+.result-item{
+  background:var(--bg-panel);
+  padding:1rem;
+}
+
+.result-name{
+  font-family:"DM Mono",monospace;
+  font-size:.58rem;
+  text-transform:uppercase;
+  color:var(--muted);
+}
+
+.result-value{
+  font-family:"Cormorant Garamond",serif;
+  font-size:1.7rem;
+  margin-top:.3rem;
+}
+
+.priority{
+  padding:.7rem 0;
+  border-bottom:1px solid var(--line-soft);
+}
+
+.disclaimer{
+  margin-top:2rem;
+  font-size:.7rem;
+  color:var(--muted);
+  line-height:1.7;
+}
+
+.results{
+  color:var(--text);
+  background:var(--bg-panel);
+  border:1px solid var(--line-soft);
+  border-radius:12px;
+  padding:clamp(1.5rem,4vw,3rem);
+}
+
+.results .score{
+  color:var(--gold-soft);
+  font-family:"DM Mono",monospace;
+  font-weight:500;
+}
+
+.results h2{
+  color:var(--text);
+  margin-top:2.5rem;
+}
+
+.results strong{
+  color:var(--text);
+}
+
+.results p{
+  color:var(--text-soft);
+}
+
+.evidence-status{
+  margin-top:2rem;
+}
+
+.evidence-flow{
+  display:grid;
+  grid-template-columns:1fr auto 1fr auto 1fr auto 1fr;
+  gap:.7rem;
+  align-items:stretch;
+  margin-top:1.3rem;
+}
+
+.evidence-stage{
+  min-width:0;
+  padding:1rem;
+  border:1px solid var(--line-soft);
+  background:var(--bg-soft);
+}
+
+.evidence-stage.active{
+  border-color:var(--gold);
+}
+
+.evidence-stage span{
+  display:block;
+  font-family:"DM Mono",monospace;
+  font-size:.6rem;
+  letter-spacing:.08em;
+  color:var(--muted);
+}
+
+.evidence-stage strong{
+  display:block;
+  margin:.4rem 0;
+  font-size:1.4rem;
+  color:var(--gold-soft);
+}
+
+.evidence-stage small{
+  color:var(--muted);
+}
+
+.evidence-arrow{
+  align-self:center;
+  color:var(--gold-soft);
+}
+
+.evidence-explain{
+  margin-top:1.3rem;
+  font-size:.82rem;
+}
+
+.results .btn{
+  display:inline-flex;
+  margin-top:1rem;
+  text-decoration:none;
+}
+
+@media(max-width:700px){
+  .business-grid{grid-template-columns:1fr}
+  .result-grid{grid-template-columns:1fr}
+
+  .evidence-flow{
+    grid-template-columns:1fr;
+  }
+
+  .evidence-arrow{
+    transform:rotate(90deg);
+    justify-self:center;
+  }
+}
+</style>
+
+<style id="restaurant-assessment-v2">
+.priority-card{
+  margin:1rem 0;
+  padding:1.15rem 1.25rem;
+  border:1px solid rgba(127,127,127,.25);
+  border-radius:10px;
+}
+.priority-card h3{
+  margin:0 0 .8rem;
+}
+.priority-card p{
+  margin:.45rem 0;
+}
+.priority-state{
+  margin-top:.8rem !important;
+  font-size:.9rem;
+}
+.priority-state strong{
+  letter-spacing:.05em;
+}
+.horeca-qualification{
+  margin-top:2.5rem;
+  padding-top:2rem;
+  border-top:1px solid rgba(127,127,127,.25);
+}
+.horeca-qualification h2{
+  margin-bottom:.5rem;
+}
+.horeca-form-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:1rem;
+  margin:1.5rem 0;
+}
+.horeca-form-grid .full{
+  grid-column:1 / -1;
+}
+.horeca-form-grid label{
+  display:block;
+  font-weight:600;
+}
+.horeca-form-grid input,
+.horeca-form-grid textarea{
+  width:100%;
+  box-sizing:border-box;
+  margin-top:.4rem;
+  padding:.8rem;
+  font:inherit;
+}
+.horeca-form-grid textarea{
+  min-height:110px;
+  resize:vertical;
+}
+.result-context{
+  margin:1rem 0 1.5rem;
+  padding:1rem;
+  border-left:3px solid currentColor;
+}
+.qualification-note{
+  font-size:.88rem;
+  opacity:.8;
+}
+@media(max-width:700px){
+  .horeca-form-grid{
+    grid-template-columns:1fr;
+  }
+  .horeca-form-grid .full{
+    grid-column:auto;
+  }
+}
+@media print{
+  .horeca-qualification{
+    display:none !important;
+  }
+}
+</style>
+
+
+<style id="restaurant-final-ux">
+.restaurant-request-btn{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  min-height:48px;
+  padding:.85rem 1.35rem;
+  border:1px solid #111;
+  border-radius:4px;
+  background:#111;
+  color:#fff;
+  font-weight:700;
+  cursor:pointer;
+}
+.restaurant-request-btn:hover{background:#333}
+</style>
+
+<style id="restaurant-result-brand-style">
+.result-brand{
+  display:flex;
+  justify-content:space-between;
+  gap:1rem;
+  padding-bottom:1rem;
+  margin-bottom:1.5rem;
+  border-bottom:1px solid #ddd;
+}
+.result-brand strong{
+  font-size:1rem;
+}
+.result-brand span{
+  font-family:monospace;
+  font-size:.72rem;
+  text-transform:uppercase;
+  letter-spacing:.08em;
+}
+@media(max-width:700px){
+  .result-brand{
+    flex-direction:column;
+  }
+}
+</style>
+
+
+<style id="restaurant-commercial-layer">
+.assessment-wrap{padding-top:3rem}
+.hero-action{margin:1.8rem 0}
+.hero-action .btn{white-space:normal;text-align:center;max-width:100%}
+.hero-detail{font-size:.85rem;margin-top:.8rem;color:var(--text-soft)}
+.benefit-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1rem;margin:2rem 0}
+.benefit-grid>div{padding:1.2rem;border:1px solid var(--line-soft);border-radius:10px;background:var(--bg-panel)}
+.benefit-grid p{font-size:.9rem;margin:.6rem 0 0}
+.assessment-form{scroll-margin-top:2rem}
+.assessment-form>h2{font-size:2rem}
+.question p{font-size:1rem}
+.answers{
+  display:grid;
+  grid-template-columns:repeat(4,minmax(0,1fr));
+}
+.answers label{
+  min-width:0;
+  min-height:44px;
+  display:flex;
+  align-items:center;
+  gap:.55rem;
+  padding:.65rem .75rem;
+  font-size:.78rem;
+  line-height:1.25;
+  overflow-wrap:anywhere;
+}
+@media(max-width:1050px){.answers{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:420px){.answers{grid-template-columns:1fr}}
+.qualification-note a{text-decoration:underline}
+@media(max-width:700px){.benefit-grid{grid-template-columns:1fr}.assessment-wrap{padding:2rem 1.2rem}.hero-action .btn{width:100%}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style>
+<meta property="og:type" content="website">
+<meta property="og:title" content="Assessment Balneari 2027 | Cognitive Logic">
+<meta property="og:description" content="15 domande per verificare la preparazione documentale della concessione balneare, individuare le criticità e definire le priorità operative.">
+<meta property="og:url" content="https://cognitivelogic.it/balneari-assessment/">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Assessment Balneari 2027 | Cognitive Logic">
+<meta name="twitter:description" content="Quanto è documentata la preparazione della tua impresa balneare? Verificalo con 15 domande.">
+</head>
+
+<body>
+
+<main class="assessment-wrap">
+
+<p class="assessment-label">
+Cognitive Logic · Assessment Balneari · Italia
+</p>
+
+<h1>
+La tua concessione è pronta per le prossime procedure?
+</h1>
+
+<p class="lead">
+I clienti trovano informazioni aggiornate e riescono a prenotare facilmente?
+I dati che raccogli ti aiutano a decidere dove investire?
+Scopri da dove iniziare con una prima autovalutazione gratuita.
+</p>
+
+<div class="hero-action">
+  <a class="btn btn-primary" href="#assessmentForm" id="startAssessment">Verifica la tua preparazione documentale</a>
+  <p class="hero-detail">15 domande · Risultato immediato · Nessuna email richiesta per vedere i risultati</p>
+</div>
+
+<div class="benefit-grid" aria-label="Cosa ottieni dalla valutazione">
+  <div><strong>Individua le criticità documentali</strong><p>Concessione, investimenti, evidenze economiche, procedure e rischi documentali.</p></div>
+  <div><strong>Scegli da dove iniziare</strong><p>Una mappa con punteggi e fino a tre priorità da approfondire, in base alle tue risposte.</p></div>
+  <div><strong>Capisci cosa verificare</strong><p>Per ogni priorità, una prima verifica prima di decidere un investimento.</p></div>
+</div>
+
+<div class="notice">
+<strong>Come leggere il risultato.</strong>
+Le risposte sono dichiarate dall'impresa e non vengono considerate
+automaticamente evidenze verificate. Il risultato non costituisce audit,
+certificazione o verifica di conformità.
+</div>
+
+<form id="assessmentForm" class="assessment-form" aria-labelledby="assessmentTitle">
+<h2 id="assessmentTitle" tabindex="-1">Inizia la tua valutazione gratuita</h2>
+<p>Rispondi in base alla situazione attuale. Se un'informazione manca, scegli “Non so”. I dati dello stabilimento qui sotto sono facoltativi.</p>
+<p id="assessmentProgress" class="hero-detail" aria-live="polite">0 di 15 domande completate</p>
+
+<div class="business-grid">
+
+<div class="field">
+<label for="businessName">Nome dello stabilimento</label>
+<input id="businessName" name="businessName" type="text">
+</div>
+
+<div class="field">
+<label for="website">Sito web</label>
+<input id="website" name="website" type="url"
+placeholder="https://">
+</div>
+
+<div class="field">
+<label for="type">Tipologia</label>
+<select id="type" name="type">
+<option value="">Seleziona</option>
+<option>Stabilimento balneare</option>
+<option>Concessionario con più stabilimenti</option>
+<option>Impresa familiare balneare</option>
+<option>Società di gestione</option>
+<option>Altra attività concessionaria</option>
+</select>
+</div>
+
+<div class="field">
+<label for="city">Località</label>
+<input id="city" name="city" type="text" value="" placeholder="Comune e località">
+</div>
+
+</div>
+
+<div id="questions"></div>
+
+<div class="actions">
+<button type="submit">Scopri le tue priorità documentali</button>
+</div>
+
+</form>
+
+<section id="results" class="results" aria-live="polite" aria-label="Risultati della valutazione">
+
+<div class="result-brand">
+  <strong>Cognitive Logic</strong>
+  <span>Assessment Balneari · Italia</span>
+</div>
+
+<p class="assessment-label">
+La tua preparazione documentale preliminare
+</p>
+
+<div>
+<span id="totalScore" class="score">0</span>
+<span>/100</span>
+<span> Indice preliminare di preparazione documentale</span>
+</div>
+
+<div style="margin-top:1rem">
+<strong>Declared Information Coverage:</strong>
+<span id="evidenceCoverage">0</span>%
+</div>
+
+<p id="profileText"></p>
+<p class="hero-detail">Un punteggio più alto indica una base dichiarata più strutturata, non maggiori ricavi o più opportunità. Leggilo insieme alla copertura delle informazioni: “Non so” indica un dato mancante.</p>
+
+<div class="notice evidence-status">
+<strong>Stato delle evidenze</strong>
+
+<div class="evidence-flow">
+  <div class="evidence-stage active">
+    <span>DECLARED</span>
+    <strong id="declaredStage">0%</strong>
+    <small>informazioni fornite</small>
+  </div>
+
+  <div class="evidence-arrow">→</div>
+
+  <div class="evidence-stage">
+    <span>OBSERVABLE</span>
+    <strong>—</strong>
+    <small>da osservare</small>
+  </div>
+
+  <div class="evidence-arrow">→</div>
+
+  <div class="evidence-stage">
+    <span>DOCUMENTED</span>
+    <strong>—</strong>
+    <small>da documentare</small>
+  </div>
+
+  <div class="evidence-arrow">→</div>
+
+  <div class="evidence-stage">
+    <span>VERIFIED</span>
+    <strong>—</strong>
+    <small>da verificare</small>
+  </div>
+</div>
+
+<p class="evidence-explain">
+Il livello DECLARED indica soltanto quante informazioni sono state
+fornite nell'autovalutazione. Non indica che tali informazioni siano
+state osservate, documentate o verificate.
+</p>
+</div>
+
+<div id="dimensionResults" class="result-grid"></div>
+
+<h2>Priorità preliminari</h2>
+<div id="operationalPriorities"></div>
+
+<div id="priorities"></div>
+
+<p class="disclaimer">
+Il punteggio deriva esclusivamente dalle risposte fornite in questa
+autovalutazione. Non dimostra conformità, sostenibilità, performance,
+qualità o altri claim dell'impresa. Le informazioni possono essere
+successivamente sottoposte a verifica documentale nell'Assessment
+professionale Cognitive Logic.
+</p>
+
+
+<section class="horeca-qualification" id="horecaQualification">
+  <p class="kicker">APPROFONDIMENTO BALNEARI</p>
+
+  <h2>Quale criticità della tua concessione vuoi approfondire?</h2>
+
+  <p>
+    Descrivi il problema e prepara una richiesta via email. Riceveremo il contesto
+    della tua autovalutazione per valutare quali informazioni approfondire e
+    l'eventuale perimetro di un assessment professionale.
+  </p>
+
+  <div class="result-context">
+    <strong>Contesto che verrà riportato nella richiesta</strong>
+    <div id="qualificationContext">
+      Indice preliminare di preparazione documentale: — · Priorità: —
+    </div>
+  </div>
+
+  <form id="horecaQualificationForm">
+    <div class="horeca-form-grid">
+
+      <label>
+        Nome dello stabilimento
+        <input
+          id="restaurantName"
+          name="restaurantName"
+          type="text"
+          autocomplete="organization"
+          required>
+      </label>
+
+      <label>
+        Email
+        <input
+          id="restaurantEmail"
+          name="restaurantEmail"
+          type="email"
+          autocomplete="email"
+          required>
+      </label>
+
+      <label class="full">
+        Sito o presenza digitale principale
+        <input
+          id="restaurantWebsite"
+          name="restaurantWebsite"
+          type="url"
+          inputmode="url"
+          placeholder="https://">
+      </label>
+
+      <label class="full">
+        Qual è il problema che vorresti capire meglio?
+        <textarea
+          id="restaurantProblem"
+          name="restaurantProblem"
+          required></textarea>
+      </label>
+
+    </div>
+
+    <button type="submit" class="btn btn-primary restaurant-request-btn">
+      Prepara la richiesta via email
+    </button>
+
+    <p class="qualification-note">
+      Il pulsante apre il programma email del dispositivo con i dati
+      inseriti e il contesto dell'Assessment. Nessun dato viene inviato
+      o memorizzato dal sito. La richiesta parte solo quando invii l'email.
+      <a href="/privacy.html">Informativa privacy</a>.
+    </p>
+  </form>
+</section>
+
+
+</section>
+
+</main>
+
+<script>
+const dimensions = [
+  {
+    "id": "visibility",
+    "name": "Concessione e documentazione",
+    "description": "Disponibilità e organizzazione degli atti relativi alla concessione.",
+    "questions": [
+      "Il titolo concessorio e gli eventuali atti successivi sono disponibili in un archivio aggiornato?",
+      "Canoni, pagamenti e principali adempimenti amministrativi sono documentati?",
+      "Le comunicazioni e gli atti dell'ente concedente sono raccolti con date e riferimenti verificabili?"
+    ]
+  },
+  {
+    "id": "representation",
+    "name": "Investimenti e beni",
+    "description": "Tracciabilità degli investimenti e consistenza dei beni aziendali.",
+    "questions": [
+      "Gli investimenti effettuati sono supportati da fatture, contratti o altra documentazione?",
+      "Esiste un inventario aggiornato di strutture, attrezzature e beni pertinenti all'attività?",
+      "Sono disponibili valutazioni tecniche o documenti utili a ricostruire consistenza e valore degli investimenti?"
+    ]
+  },
+  {
+    "id": "conversion",
+    "name": "Evidenze economiche",
+    "description": "Organizzazione delle informazioni economiche e della continuità aziendale.",
+    "questions": [
+      "Ricavi, costi e risultati dell'attività sono ricostruibili attraverso documenti aggiornati?",
+      "Sono documentabili occupazione, servizi e principali attività svolte sul territorio?",
+      "Esiste una valutazione economica degli scenari di continuità o cambiamento della concessione?"
+    ]
+  },
+  {
+    "id": "data",
+    "name": "Preparazione alle procedure",
+    "description": "Capacità di individuare requisiti e predisporre evidenze pertinenti.",
+    "questions": [
+      "L'impresa segue gli atti ufficiali relativi alle procedure del proprio Comune?",
+      "Esiste un archivio organizzato dei documenti potenzialmente necessari per una procedura competitiva?",
+      "È stato individuato chi verifica requisiti, scadenze e documentazione prima della presentazione?"
+    ]
+  },
+  {
+    "id": "evidence",
+    "name": "Rischi e verificabilità",
+    "description": "Identificazione dei rischi e verifica delle informazioni dichiarate.",
+    "questions": [
+      "Sono stati individuati i principali rischi amministrativi, economici e operativi legati alla concessione?",
+      "Le dichiarazioni su sostenibilità, accessibilità e servizi sono supportate da evidenze?",
+      "Esiste una procedura per controllare provenienza, aggiornamento e attendibilità dei documenti rilevanti?"
+    ]
+  }
+];
+
+const labels = [
+ ["Non so","unknown"],
+ ["No","0"],
+ ["Parzialmente","50"],
+ ["Sì","100"]
+];
+
+const areaLabels = {
+  "visibility": "Concessione e documentazione",
+  "representation": "Investimenti e beni",
+  "conversion": "Evidenze economiche",
+  "data": "Preparazione alle procedure",
+  "evidence": "Rischi e verificabilità"
+};
+const container = document.getElementById("questions");
+
+dimensions.forEach((d,di)=>{
+ const section=document.createElement("section");
+ section.className="dimension";
+
+ let html=`
+ <div class="dimension-id">Area ${di+1}</div>
+ <h2>${areaLabels[d.id]}</h2>
+ <p class="dimension-desc">${d.description}</p>
+ `;
+
+ d.questions.forEach((q,qi)=>{
+   const name=`${d.id}_${qi}`;
+   html+=`
+   <div class="question">
+   <p>${q}</p>
+   <div class="answers">
+   ${labels.map(([label,value])=>`
+     <label>
+       <input type="radio"
+       name="${name}"
+       value="${value}"
+       required>
+       ${label}
+     </label>
+   `).join("")}
+   </div>
+   </div>
+   `;
+ });
+
+ section.innerHTML=html;
+ container.appendChild(section);
+});
+
+document.getElementById("assessmentForm").addEventListener("submit",e=>{
+ e.preventDefault();
+
+ const dimensionScores={};
+ let knownAnswers=0;
+ let totalAnswers=0;
+
+ dimensions.forEach(d=>{
+   const values=[];
+
+   d.questions.forEach((q,qi)=>{
+     totalAnswers++;
+
+     const selected=document.querySelector(
+       `input[name="${d.id}_${qi}"]:checked`
+     );
+
+     if(selected.value !== "unknown"){
+       knownAnswers++;
+       values.push(Number(selected.value));
+     }
+   });
+
+   dimensionScores[d.id] =
+     values.length
+       ? Math.round(values.reduce((a,b)=>a+b,0)/values.length)
+       : null;
+ });
+
+ const scoredDimensions =
+   Object.values(dimensionScores)
+   .filter(v=>v !== null);
+
+ const total =
+   scoredDimensions.length
+     ? Math.round(
+         scoredDimensions.reduce((a,b)=>a+b,0) /
+         scoredDimensions.length
+       )
+     : null;
+
+ const evidenceCoverage =
+   Math.round((knownAnswers/totalAnswers)*100);
+
+ document.getElementById("totalScore").textContent =
+   total === null || knownAnswers < 8 ? "N/D" : total;
+ document.getElementById("evidenceCoverage").textContent=evidenceCoverage;
+ document.getElementById("declaredStage").textContent=evidenceCoverage + "%";
+
+ let profile;
+
+ if(evidenceCoverage < 50)
+   profile="La copertura informativa è ancora limitata. Prima di interpretare il punteggio servono ulteriori informazioni.";
+ else if(total<40)
+   profile="Sono emerse diverse aree che meritano verifica prioritaria.";
+ else if(total<70)
+   profile="La base dichiarata è presente, ma alcune aree possono limitare opportunità e controllo.";
+ else
+   profile="La base dichiarata appare strutturata. Il passo successivo è verificare le evidenze che sostengono le risposte.";
+
+ document.getElementById("profileText").textContent=profile;
+
+ const resultBox=document.getElementById("dimensionResults");
+ resultBox.innerHTML="";
+
+ dimensions.forEach(d=>{
+   resultBox.innerHTML+=`
+   <div class="result-item">
+     <div class="result-name">${d.name}</div>
+     <div class="result-value">${
+       dimensionScores[d.id] === null
+         ? "N/D"
+         : dimensionScores[d.id] + "/100"
+     }</div>
+   </div>
+   `;
+ });
+
+ const ordered = knownAnswers < 8
+   ? []
+   : [...dimensions]
+       .filter(d=>dimensionScores[d.id] !== null)
+       .sort((a,b)=>dimensionScores[a.id]-dimensionScores[b.id])
+       .slice(0,3);
+
+ const priorities=document.getElementById("priorities");
+ priorities.innerHTML="";
+
+ ordered.forEach((d,i)=>{
+   priorities.innerHTML+=`
+   <div class="priority">
+   <strong>${i+1}. ${d.name}</strong><br>
+   Area da approfondire: ${d.description}
+   </div>
+   `;
+ });
+
+ document.getElementById("results").style.display="block";
+ document.getElementById("results")
+   .scrollIntoView({behavior:"smooth"});
+});
+</script>
+
+
+<script id="restaurant-operational-layer">
+(function(){
+
+  const PRIORITY_CONTENT = {
+  "CONCESSIONE E DOCUMENTAZIONE": {
+    "why": "La ricostruzione degli atti è necessaria per comprendere la posizione amministrativa dell'impresa.",
+    "verify": "Raccogliere titolo concessorio, atti successivi, comunicazioni ufficiali e documentazione dei pagamenti."
+  },
+  "INVESTIMENTI E BENI": {
+    "why": "La disponibilità di documenti sugli investimenti consente una ricostruzione più attendibile della consistenza aziendale.",
+    "verify": "Confrontare inventari, fatture, contratti e valutazioni tecniche disponibili."
+  },
+  "EVIDENZE ECONOMICHE": {
+    "why": "Una base economica documentata permette di valutare scenari aziendali senza affidarsi a sole dichiarazioni.",
+    "verify": "Raccogliere dati contabili, documenti occupazionali e informazioni sui servizi effettivamente erogati."
+  },
+  "PREPARAZIONE ALLE PROCEDURE": {
+    "why": "Requisiti e scadenze dipendono dagli atti ufficiali della procedura concretamente applicabile.",
+    "verify": "Consultare gli atti dell'ente concedente e predisporre una matrice documentale aggiornata."
+  },
+  "RISCHI E VERIFICABILITÀ": {
+    "why": "Informazioni non verificabili e rischi non identificati possono rendere meno solide le decisioni aziendali.",
+    "verify": "Identificare rischi, responsabili, fonti documentali e verifiche ancora necessarie."
+  }
+};
+
+
+  function normalizeName(name){
+    return (name || "")
+      .replace(/\s+/g," ")
+      .trim()
+      .toUpperCase();
+  }
+
+  function extractPriorities(){
+    // Read only the current engine output, never previously rendered cards.
+    return Array.from(document.querySelectorAll("#priorities .priority strong"))
+      .map(el => el.textContent.replace(/^[123]\.\s*/, "").trim())
+      .slice(0,3);
+  }
+
+  function getOpportunityScore(){
+    const scoreEl = document.getElementById("totalScore");
+    if(scoreEl){
+      const n = parseInt(scoreEl.textContent,10);
+      if(Number.isFinite(n)) return n;
+    }
+    return null;
+  }
+
+  function renderOperationalPriorities(){
+    const target = document.getElementById("operationalPriorities");
+    if(!target) return [];
+
+    let priorities = extractPriorities();
+
+    target.innerHTML = "";
+    if(!priorities.length) return [];
+
+    priorities.forEach((rawName,index) => {
+      const key = normalizeName(rawName);
+      const content = PRIORITY_CONTENT[key] || {
+        why:
+          "L'area merita un approfondimento prima di assumere decisioni operative.",
+        verify:
+          "Raccogliere evidenze osservabili e documentazione pertinente."
+      };
+
+      const card = document.createElement("div");
+      card.className = "priority-card";
+
+      card.innerHTML = `
+        <h3>${index + 1}. ${rawName}</h3>
+        <p>
+          <strong>Segnale rilevato:</strong>
+          dalle risposte fornite questa area emerge tra quelle con maggiore necessità di approfondimento.
+        </p>
+        <p>
+          <strong>Perché conta:</strong>
+          ${content.why}
+        </p>
+        <p>
+          <strong>Prima verifica:</strong>
+          ${content.verify}
+        </p>
+        <p class="priority-state">
+          <strong>Stato dell'evidenza:</strong>
+          DECLARED — da osservare.
+        </p>
+      `;
+
+      target.appendChild(card);
+    });
+
+    /*
+      Nascondiamo eventuale vecchio rendering testuale delle priorità,
+      lasciando intatto il motore e i dati.
+    */
+    let el = target.nextElementSibling;
+
+    while(el && !el.matches(".horeca-qualification")){
+      const text = (el.innerText || "").trim();
+
+      if(
+        /^[123]\.\s*/.test(text) ||
+        /Area da approfondire:/i.test(text)
+      ){
+        el.style.display = "none";
+      }
+
+      el = el.nextElementSibling;
+    }
+
+    return priorities;
+  }
+
+  function updateQualificationContext(priorities){
+    const score = getOpportunityScore();
+    const target = document.getElementById("qualificationContext");
+
+    if(!target) return;
+
+    const scoreText =
+      score === null ? "—" : score + "/100";
+
+    const priorityText =
+      priorities.length ? priorities.join(" · ") : "—";
+
+    target.textContent =
+      "Indice preliminare di preparazione documentale: " + scoreText +
+      " · Priorità: " + priorityText;
+  }
+
+  let qualificationPriorities = [];
+
+  function setupQualification(priorities){
+    const form = document.getElementById("horecaQualificationForm");
+    if(!form) return;
+
+    qualificationPriorities = Array.isArray(priorities)
+      ? [...priorities]
+      : [];
+
+    if(form.dataset.qualificationHandlerBound === "true") return;
+
+    form.dataset.qualificationHandlerBound = "true";
+
+    form.addEventListener("submit", function(e){
+      e.preventDefault();
+
+      if(!form.reportValidity()) return;
+
+      const score = getOpportunityScore();
+
+      const name =
+        document.getElementById("restaurantName").value.trim();
+
+      const email =
+        document.getElementById("restaurantEmail").value.trim();
+
+      const website =
+        document.getElementById("restaurantWebsite").value.trim();
+
+      const problem =
+        document.getElementById("restaurantProblem").value.trim();
+
+      const subject =
+        "Assessment Balneari — richiesta qualificazione — " + name;
+
+      const body = [
+        "Richiesta di qualificazione Assessment Balneari",
+        "",
+        "Stabilimento: " + name,
+        "Email: " + email,
+        "Sito / presenza digitale: " + (website || "non indicato"),
+        "",
+        "Indice preliminare di preparazione documentale: " +
+          (score === null ? "non disponibile" : score + "/100"),
+        "",
+        "Priorità preliminari:",
+        ...(qualificationPriorities.length
+          ? qualificationPriorities.map((p,i) => (i+1) + ". " + p)
+          : ["non disponibili"]),
+        "",
+        "Problema da approfondire:",
+        problem,
+        "",
+        "Stato delle informazioni:",
+        "DECLARED — risultati derivati dall'autovalutazione; da sottoporre a osservazione e verifica.",
+        "",
+        "Richiedo un approfondimento preliminare del caso."
+      ].join("\n");
+
+      document.dispatchEvent(new CustomEvent("balneari-assessment:request-prepared"));
+      window.location.href =
+        "mailto:info@cognitivelogic.it" +
+        "?subject=" + encodeURIComponent(subject) +
+        "&body=" + encodeURIComponent(body);
+    });
+  }
+
+  function refreshOperationalLayer(){
+    const priorities = renderOperationalPriorities();
+    updateQualificationContext(priorities);
+    setupQualification(priorities);
+  }
+
+  /*
+    Il risultato viene generato client-side.
+    Attendiamo il submit del questionario e poi aggiorniamo il layer.
+  */
+  const assessmentForms = document.querySelectorAll("form");
+
+  assessmentForms.forEach(form => {
+    if(form.id !== "horecaQualificationForm"){
+      form.addEventListener("submit", function(){
+        setTimeout(refreshOperationalLayer, 50);
+      });
+    }
+  });
+
+  /*
+    Supporta anche risultati già visibili / refresh pagina.
+  */
+  setTimeout(refreshOperationalLayer, 100);
+
+})();
+</script>
+
+<script id="restaurant-funnel-events">
+(function(){
+  // Integration hook only: no cookies, storage, network requests or personal data.
+  const allowed = new Set(["page_view", "assessment_start", "assessment_complete", "request_prepared"]);
+  const emitted = new Set();
+  function emit(name){
+    if(!allowed.has(name) || emitted.has(name)) return;
+    emitted.add(name);
+    document.dispatchEvent(new CustomEvent("cognitive-logic:funnel", {
+      detail:{page:"balneari-assessment", version:"commercial-v1", event:name}
+    }));
+  }
+  const form = document.getElementById("assessmentForm");
+  document.getElementById("startAssessment").addEventListener("click",function(){
+    document.getElementById("assessmentTitle").focus({preventScroll:true});
+  });
+  form.addEventListener("change",function(event){
+    if(!event.target.matches('input[type="radio"]')) return;
+    emit("assessment_start");
+    const count = form.querySelectorAll('input[type="radio"]:checked').length;
+    document.getElementById("assessmentProgress").textContent = count + " di 15 domande completate";
+  });
+  form.addEventListener("submit",function(){
+    if(form.checkValidity() && document.getElementById("results").style.display === "block") emit("assessment_complete");
+  });
+  document.addEventListener("balneari-assessment:request-prepared",function(){emit("request_prepared");});
+  emit("page_view");
+})();
+</script>
+</body>
+</html>
