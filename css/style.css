@@ -342,3 +342,19 @@ textarea { min-height: 140px; resize: vertical; }
   .card, .panel { color: #111; border-color: #bbb; background: #fff; box-shadow: none; break-inside: avoid; }
   h1,h2,h3,h4,p { color: #111; }
 }
+
+
+/* Cognitive Logic | Official header logo */
+.site-header .cl-header-logo {
+  display: block;
+  width: 150px;
+  height: auto;
+  max-width: 100%;
+  object-fit: contain;
+}
+
+@media (max-width: 768px) {
+  .site-header .cl-header-logo {
+    width: 125px;
+  }
+}
