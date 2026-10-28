@@ -490,6 +490,17 @@ button{
  line-height:1.5;
 }
 #decisionMemory input {margin-right:.4rem}
+#decisionMemory input:focus-visible,
+#decisionMemory .dm-clear:focus-visible {
+ outline:3px solid #f7f9fc;
+ outline-offset:4px;
+}
+#decisionMemory .dm-clear {
+ min-height:44px;
+ margin-top:.5rem;
+ white-space:normal;
+}
+
 #decisionMemoryFeedback {margin:1rem 0}
 </style>
 </head>
@@ -681,6 +692,7 @@ Non modificano l'Opportunity Score.
 <label><input type="radio" name="dm_supplier" value="partial"> Solo parzialmente</label>
 <label><input type="radio" name="dm_supplier" value="no"> No, dipende dalla memoria delle persone</label>
 <label><input type="radio" name="dm_supplier" value="unknown"> Non so</label>
+<button type="button" class="dm-clear" data-dm-clear="supplier" aria-label="Cancella risposta: fornitori">Cancella risposta</button>
 </fieldset>
 
 <fieldset>
@@ -689,6 +701,7 @@ Non modificano l'Opportunity Score.
 <label><input type="radio" name="dm_menu" value="partial"> Solo parzialmente</label>
 <label><input type="radio" name="dm_menu" value="no"> No, dipende dalla memoria delle persone</label>
 <label><input type="radio" name="dm_menu" value="unknown"> Non so</label>
+<button type="button" class="dm-clear" data-dm-clear="menu" aria-label="Cancella risposta: menu">Cancella risposta</button>
 </fieldset>
 
 <fieldset>
@@ -697,6 +710,7 @@ Non modificano l'Opportunity Score.
 <label><input type="radio" name="dm_shifts" value="partial"> Solo parzialmente</label>
 <label><input type="radio" name="dm_shifts" value="no"> No, dipende dalla memoria delle persone</label>
 <label><input type="radio" name="dm_shifts" value="unknown"> Non so</label>
+<button type="button" class="dm-clear" data-dm-clear="shifts" aria-label="Cancella risposta: turni">Cancella risposta</button>
 </fieldset>
 
 <p id="decisionMemoryFeedback" class="notice"
@@ -1331,6 +1345,15 @@ function update(){
 }
 
 section.addEventListener("change",update);
+section.querySelectorAll("[data-dm-clear]").forEach(button=>{
+ button.addEventListener("click",()=>{
+   const name = "dm_" + button.dataset.dmClear;
+   section.querySelectorAll('input[name="' + name + '"]')
+     .forEach(input=>{ input.checked=false; });
+   update();
+ });
+});
+
 
 window.cognitiveLogicDecisionMemoryEmailLines = function(){
  const consent = document.getElementById(
