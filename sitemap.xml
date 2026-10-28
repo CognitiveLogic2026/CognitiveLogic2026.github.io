@@ -612,4 +612,11 @@
     <loc>https://cognitivelogic.it/brief/manifesto-del-linguaggio/</loc>
     <lastmod>2026-10-18</lastmod>
   </url>
+
+  <url>
+    <loc>https://cognitivelogic.it/international-watch/nist-agent-identity-mandato-evidenze/</loc>
+    <lastmod>2026-10-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
 </urlset>
