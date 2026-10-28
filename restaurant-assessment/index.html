@@ -474,6 +474,35 @@ button{
 @media(max-width:700px){.benefit-grid{grid-template-columns:1fr}.assessment-wrap{padding:2rem 1.2rem}.hero-action .btn{width:100%}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
 </style>
+
+<style id="decision-memory-style">
+#decisionMemory {margin-top:2rem}
+#decisionMemory fieldset {
+ border:1px solid #999;
+ border-radius:8px;
+ padding:1rem;
+ margin:1rem 0;
+}
+#decisionMemory legend {font-weight:600;padding:0 .3rem}
+#decisionMemory fieldset label {
+ display:block;
+ margin:.65rem 0;
+ line-height:1.5;
+}
+#decisionMemory input {margin-right:.4rem}
+#decisionMemory input:focus-visible,
+#decisionMemory .dm-clear:focus-visible {
+ outline:3px solid #f7f9fc;
+ outline-offset:4px;
+}
+#decisionMemory .dm-clear {
+ min-height:44px;
+ margin-top:.5rem;
+ white-space:normal;
+}
+
+#decisionMemoryFeedback {margin:1rem 0}
+</style>
 </head>
 
 <body>
@@ -640,6 +669,67 @@ professionale Cognitive Logic.
 </p>
 
 
+
+<section id="decisionMemory" class="horeca-qualification"
+         aria-labelledby="decisionMemoryTitle">
+
+<p class="kicker">DECISION MEMORY · FACOLTATIVO</p>
+
+<h2 id="decisionMemoryTitle">
+Se domani mancasse chi prende le decisioni,
+il ristorante saprebbe continuare?
+</h2>
+
+<p>
+Tre domande sulla continuità delle conoscenze operative.
+Le risposte sono dichiarazioni dell'impresa, non evidenze verificate.
+Non modificano l'Opportunity Score.
+</p>
+
+<fieldset>
+<legend>1. Quando cambiate un fornitore, rimane documentato perché è stato scelto quello nuovo?</legend>
+<label><input type="radio" name="dm_supplier" value="yes"> Sì, con informazioni consultabili</label>
+<label><input type="radio" name="dm_supplier" value="partial"> Solo parzialmente</label>
+<label><input type="radio" name="dm_supplier" value="no"> No, dipende dalla memoria delle persone</label>
+<label><input type="radio" name="dm_supplier" value="unknown"> Non so</label>
+<button type="button" class="dm-clear" data-dm-clear="supplier" aria-label="Cancella risposta: fornitori">Cancella risposta</button>
+</fieldset>
+
+<fieldset>
+<legend>2. Se cambia il responsabile di cucina, un'altra persona può ricostruire le ragioni delle modifiche al menu?</legend>
+<label><input type="radio" name="dm_menu" value="yes"> Sì, con informazioni consultabili</label>
+<label><input type="radio" name="dm_menu" value="partial"> Solo parzialmente</label>
+<label><input type="radio" name="dm_menu" value="no"> No, dipende dalla memoria delle persone</label>
+<label><input type="radio" name="dm_menu" value="unknown"> Non so</label>
+<button type="button" class="dm-clear" data-dm-clear="menu" aria-label="Cancella risposta: menu">Cancella risposta</button>
+</fieldset>
+
+<fieldset>
+<legend>3. Le decisioni sui turni possono essere spiegate attraverso criteri e informazioni disponibili?</legend>
+<label><input type="radio" name="dm_shifts" value="yes"> Sì, con informazioni consultabili</label>
+<label><input type="radio" name="dm_shifts" value="partial"> Solo parzialmente</label>
+<label><input type="radio" name="dm_shifts" value="no"> No, dipende dalla memoria delle persone</label>
+<label><input type="radio" name="dm_shifts" value="unknown"> Non so</label>
+<button type="button" class="dm-clear" data-dm-clear="shifts" aria-label="Cancella risposta: turni">Cancella risposta</button>
+</fieldset>
+
+<p id="decisionMemoryFeedback" class="notice"
+   role="status" aria-live="polite">
+Puoi rispondere a una o più domande oppure proseguire senza rispondere.
+</p>
+
+<label>
+<input id="decisionMemoryIncludeEmail" type="checkbox">
+Includi le risposte Decision Memory nella richiesta email.
+</label>
+
+<p class="qualification-note">
+Nessuna risposta viene inviata o memorizzata dal sito.
+L'inclusione nella bozza email richiede una scelta esplicita.
+</p>
+
+</section>
+
 <section class="horeca-qualification" id="horecaQualification">
   <p class="kicker">QUALIFICAZIONE HORECA</p>
 
@@ -701,7 +791,7 @@ professionale Cognitive Logic.
 
     </div>
 
-    <button type="submit" class="btn btn-primary restaurant-request-btn">
+    <button type="submit" class="btn restaurant-request-btn">
       Prepara la richiesta via email
     </button>
 
@@ -1123,6 +1213,9 @@ document.getElementById("assessmentForm").addEventListener("submit",e=>{
         "",
         "Problema da approfondire:",
         problem,
+        ...(typeof window.cognitiveLogicDecisionMemoryEmailLines === "function"
+          ? window.cognitiveLogicDecisionMemoryEmailLines()
+          : []),
         "",
         "Stato delle informazioni:",
         "DECLARED — risultati derivati dall'autovalutazione; da sottoporre a osservazione e verifica.",
@@ -1193,6 +1286,93 @@ document.getElementById("assessmentForm").addEventListener("submit",e=>{
   });
   document.addEventListener("restaurant-assessment:request-prepared",function(){emit("request_prepared");});
   emit("page_view");
+})();
+</script>
+
+<script id="decision-memory-layer">
+(function(){
+"use strict";
+
+const ids = ["supplier","menu","shifts"];
+
+const names = {
+ supplier:"Fornitori",
+ menu:"Menu",
+ shifts:"Turni"
+};
+
+const labels = {
+ yes:"Sì, con informazioni consultabili",
+ partial:"Solo parzialmente",
+ no:"Dipende dalla memoria delle persone",
+ unknown:"Non so"
+};
+
+const section = document.getElementById("decisionMemory");
+const feedback = document.getElementById("decisionMemoryFeedback");
+
+if(!section || !feedback) return;
+
+function selections(){
+ return ids.map(id=>{
+   const selected = section.querySelector(
+     'input[name="dm_' + id + '"]:checked'
+   );
+   return selected ? {id,value:selected.value} : null;
+ }).filter(Boolean);
+}
+
+function update(){
+ const values = selections().map(x=>x.value);
+
+ if(!values.length){
+   feedback.textContent =
+     "Puoi rispondere a una o più domande oppure proseguire senza rispondere.";
+ } else if(values.includes("no")){
+   feedback.textContent =
+     "DECLARED — Almeno una decisione potrebbe dipendere da conoscenze non documentate. Occorre verificarne la ricostruibilità.";
+ } else if(
+   values.includes("partial") ||
+   values.includes("unknown") ||
+   values.length < ids.length
+ ){
+   feedback.textContent =
+     "DECLARED — Le informazioni sono incomplete o parziali. Serve un approfondimento.";
+ } else {
+   feedback.textContent =
+     "DECLARED — Le risposte indicano informazioni consultabili. La loro accessibilità e ricostruibilità restano da verificare.";
+ }
+}
+
+section.addEventListener("change",update);
+section.querySelectorAll("[data-dm-clear]").forEach(button=>{
+ button.addEventListener("click",()=>{
+   const name = "dm_" + button.dataset.dmClear;
+   section.querySelectorAll('input[name="' + name + '"]')
+     .forEach(input=>{ input.checked=false; });
+   update();
+ });
+});
+
+
+window.cognitiveLogicDecisionMemoryEmailLines = function(){
+ const consent = document.getElementById(
+   "decisionMemoryIncludeEmail"
+ );
+
+ if(!consent || !consent.checked) return [];
+
+ const selected = selections();
+
+ return [
+   "",
+   "Decision Memory (DECLARED — non verificato):",
+   ...(selected.length
+     ? selected.map(x=>names[x.id]+": "+labels[x.value])
+     : ["nessuna risposta fornita"])
+ ];
+};
+
 })();
 </script>
 </body>
