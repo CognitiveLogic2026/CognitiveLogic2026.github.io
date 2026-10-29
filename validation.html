@@ -85,6 +85,22 @@
 
   <meta property="og:site_name" content="Cognitive Logic">
   <meta property="og:locale" content="it_IT">
+
+  <!-- PR 183: keep long editorial heading within the desktop hero column. -->
+  <style>
+    @media (min-width: 1024px) {
+      .validation-page .validation-hero .hero-left,
+      .validation-page .validation-hero .hero-right {
+        min-width: 0;
+      }
+      .validation-page .validation-hero h1 {
+        max-width: 100%;
+        font-size: clamp(2.35rem, 3.25vw, 3.25rem);
+        line-height: 1.08;
+        overflow-wrap: break-word;
+      }
+    }
+  </style>
 </head>
 
 <body class="validation-page">
