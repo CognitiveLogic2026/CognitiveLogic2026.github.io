@@ -228,3 +228,4 @@ css/global-cta.css
 js/global-cta.js
 brief/manifesto-del-linguaggio/index.html
 img/og/cognitive-logic-brief-manifesto-linguaggio.png
+international-watch/hti-5-health-ai-evidence/index.html
