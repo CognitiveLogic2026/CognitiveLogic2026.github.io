@@ -65,6 +65,21 @@ Endpoint API HTTPS esposti su `api.cognitivelogic.it`, documentati integralmente
 - [QEN HoReCa Auditor](https://cognitivelogic.it/qen-horeca-auditor.html): audit sostenibilità per il settore HoReCa.
 - [QEN Balneare Auditor](https://cognitivelogic.it/qen-balneare-auditor.html): audit compliance Bolkestein 2027 per stabilimenti balneari e ambulanti.
 
+## Evidence, status and validation limits
+
+QEN Sovereign is a proprietary methodology and governance infrastructure, not
+an independently certified standard. Methodological descriptions, editorial
+analyses, source evidence, interpretations and unresolved questions must be
+distinguished. The scientific validation programme is ongoing; publication of
+an analysis does not establish independent validation or certification.
+
+- [QEN validation programme](https://cognitivelogic.it/validation.html): current scope and limitations of validation.
+- [International Watch](https://cognitivelogic.it/international-watch/): editorial analyses with sources, claims, evidential limits and updates.
+- [Bolkestein, EU courts and tenders](https://cognitivelogic.it/international-watch/bolkestein-spiagge-corte-ue-gare/): documentary analysis of coastal concessions.
+- [AI decision rights and verifiable evidence](https://cognitivelogic.it/international-watch/ai-decision-rights-verifiable-evidence/): responsibility and traceability of AI-assisted decisions.
+- [EU AI Act evidence systems](https://cognitivelogic.it/international-watch/ai-act-en-18286-sistema-evidenze/): regulatory and evidentiary analysis.
+- [OpenAI disclosure and governance](https://cognitivelogic.it/international-watch/openai-disclosure-disallineamento-governance/): analytical dossier and documented limits.
+
 ## Editorial system
 
 - [Cognitive Logic Brief](https://cognitivelogic.it/brief/): publication hub for decision-relevant changes, evidence and governance.
