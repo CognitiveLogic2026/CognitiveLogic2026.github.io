@@ -1,5 +1,7 @@
 # HTI-5 editorial review
-Status: draft. No human approval or publication recorded.
+Status: editorial publication approved by Roberto Malini on 30 October 2026.
+Approval source: explicit instruction in the project conversation: “Approvo e procediamo”.
+Approval scope: publication of the International Watch editorial article. No formal epistemic assessment or independent human review is inferred. Deployment remains subject to verification.
 
 ## Scope
 English International Watch article based on the HTI-5 QEN analysis developed through VPS captures. Adds the article, one index card and one sitemap entry. No QEN weights, schemas, engine or formal claim assessments change.
@@ -23,8 +25,8 @@ PDF locators: 1 (DATES), 26–27 (DSI and ONC burden position), 53–54 (mainten
 ## Validation
 Local HTML nesting, H1, JSON-LD, canonical, metadata, XML sitemap and index linkage checked. Shared template styles and official logo preserved. No browser visual QA or complete repository test suite run locally. GitHub CI is separate.
 
-## Before publication
-Human editorial review remains required by the project's master prompt and docs/international-watch/HUMAN-WORKFLOW.md. Resolve the editorial draft banner, index label and JSON-LD status consistently when approval is recorded. Publication dates should reflect actual publication, not the research date. Do not merge while this remains a draft.
+## Publication approval
+The user has explicitly approved publication. The draft banner, index label and JSON-LD status have been updated consistently, with 30 October 2026 as the publication date. Historical CFR and independent verification limits remain explicit; approval does not close those research gaps.
 
 ## Reuse
 After publication, reuse the real public URL as the main DID YOU KNOW? deep dive, alongside the Reuters Institute, New York companion AI and UK pension stories. No newsletter or social post sent.
