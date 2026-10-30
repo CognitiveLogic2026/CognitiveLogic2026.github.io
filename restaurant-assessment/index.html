@@ -555,7 +555,7 @@ certificazione o verifica di conformità.
 
 <div class="field">
 <label for="website">Sito web</label>
-<input id="website" name="website" type="url"
+<input id="website" name="website" type="text" inputmode="url"
 placeholder="https://">
 </div>
 
@@ -579,6 +579,11 @@ placeholder="https://">
 </div>
 
 <div id="questions"></div>
+
+<div id="assessmentErrors" class="notice" role="alert" tabindex="-1" hidden>
+<p id="assessmentErrorText"></p>
+<button id="assessmentFirstMissing" type="button">Vai alla prima domanda da completare</button>
+</div>
 
 <div class="actions">
 <button type="submit">Vedi le priorità del tuo ristorante</button>
@@ -913,8 +918,53 @@ dimensions.forEach((d,di)=>{
  container.appendChild(section);
 });
 
-document.getElementById("assessmentForm").addEventListener("submit",e=>{
+const assessmentForm = document.getElementById("assessmentForm");
+const assessmentErrors = document.getElementById("assessmentErrors");
+const assessmentErrorText = document.getElementById("assessmentErrorText");
+let firstMissingAnswer = null;
+
+function missingAssessmentAnswers(){
+ return dimensions.flatMap(d => d.questions.map((q,qi) => {
+   const name = d.id + "_" + qi;
+   return assessmentForm.querySelector('input[name="' + name + '"]:checked')
+     ? null
+     : assessmentForm.querySelector('input[name="' + name + '"]');
+ })).filter(Boolean);
+}
+
+function showAssessmentErrors(missing){
+ firstMissingAnswer = missing[0] || null;
+ assessmentErrors.hidden = missing.length === 0;
+ assessmentErrorText.textContent = missing.length
+   ? (missing.length === 1
+       ? "Manca una risposta."
+       : "Mancano " + missing.length + " risposte.") +
+     " Completa tutte le 15 domande; se non hai l'informazione, scegli Non so."
+   : "";
+}
+
+document.getElementById("assessmentFirstMissing").addEventListener("click",()=>{
+ if(firstMissingAnswer){
+   firstMissingAnswer.focus();
+   firstMissingAnswer.scrollIntoView({block:"center"});
+ }
+});
+
+assessmentForm.addEventListener("change",()=>{
+ if(!assessmentErrors.hidden) showAssessmentErrors(missingAssessmentAnswers());
+});
+
+assessmentForm.addEventListener("submit",e=>{
  e.preventDefault();
+
+ const missing = missingAssessmentAnswers();
+ showAssessmentErrors(missing);
+ if(missing.length){
+   e.stopImmediatePropagation();
+   assessmentErrors.focus();
+   assessmentErrors.scrollIntoView({block:"center"});
+   return;
+ }
 
  const dimensionScores={};
  let knownAnswers=0;
@@ -1011,6 +1061,8 @@ document.getElementById("assessmentForm").addEventListener("submit",e=>{
  document.getElementById("results")
    .scrollIntoView({behavior:"smooth"});
 });
+// Enable custom validation only after its submit handler is installed.
+assessmentForm.noValidate = true;
 </script>
 
 
