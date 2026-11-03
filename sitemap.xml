@@ -620,4 +620,7 @@
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
+  <url>
+    <loc>https://cognitivelogic.it/balneari-assessment/</loc>
+  </url>
 </urlset>
