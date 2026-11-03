@@ -197,3 +197,7 @@ jobs:
             echo "=== ports listening ==="
             ss -tlnp | grep -E "(8001|5000)" || echo "WARN: ports not found"
             echo "Deploy completato"
+
+concurrency:
+  group: cognitive-logic-vps-deploy
+  cancel-in-progress: false

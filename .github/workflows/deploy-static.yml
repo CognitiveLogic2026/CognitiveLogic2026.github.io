@@ -44,3 +44,7 @@ jobs:
             # Synchronize only explicitly authorized public files from the manifest.
             # This prevents private repository content from being published accidentally.
             bash ops/deploy-existing-public.sh "$PUBLIC_ROOT"
+
+concurrency:
+  group: cognitive-logic-vps-deploy
+  cancel-in-progress: false
