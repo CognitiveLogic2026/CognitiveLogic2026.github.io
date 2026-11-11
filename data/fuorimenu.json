@@ -1,6 +1,13 @@
 {
   "articoli": [
     {
+      "titolo": "L’intelligenza artificiale cambia il menu. Chi risponde se il ristorante perde soldi?",
+      "url": "https://fuorimenu.substack.com/p/lintelligenza-artificiale-cambia",
+      "data": "2026-11-10 07:57",
+      "estratto": "L’AI suggerisce di cambiare menu, prezzi e fornitori. Il ristoratore approva, ma i margini peggiorano. Chi può ricostruire le ragioni della decisione?",
+      "tag": "Fuorimenu"
+    },
+    {
       "titolo": "Dissalazione a La Palma: chi riceverà l’acqua di Tazacorte?",
       "url": "https://fuorimenu.substack.com/p/dissalazione-a-la-palma-chi-ricevera",
       "data": "2026-11-08 08:18",
@@ -61,13 +68,6 @@
       "url": "https://fuorimenu.substack.com/p/il-dato-non-decide-come-hotel-e-ristoranti",
       "data": "2026-09-25 16:37",
       "estratto": "Dashboard, KPI, previsioni e sistemi di AI possono dirci molto. Ma per un hotel o un ristorante la domanda decisiva viene dopo: come siamo passati da quei dati a questa decisione?",
-      "tag": "Fuorimenu"
-    },
-    {
-      "titolo": "Green non basta: cosa deve poter dimostrare un hotel quando parla di sostenibilità",
-      "url": "https://fuorimenu.substack.com/p/green-non-basta-cosa-deve-poter-dimostrare",
-      "data": "2026-09-15 06:57",
-      "estratto": "Dal 27 settembre 2026 cambiano le regole sul greenwashing. Per hotel e ristoranti, ogni claim di sostenibilità deve poter essere sostenuto da evidenze verificabili.",
       "tag": "Fuorimenu"
     }
   ]
