@@ -1,6 +1,7 @@
 import json
 import re
 from pathlib import Path
+from html.parser import HTMLParser
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -12,7 +13,16 @@ def page():
 
 def test_fuorimenu_metadata_and_structured_data():
     html = page()
-    assert '<html lang="it">' in html
+    class RootParser(HTMLParser):
+        lang = None
+
+        def handle_starttag(self, tag, attrs):
+            if tag == "html":
+                self.lang = dict(attrs).get("lang")
+
+    parser = RootParser()
+    parser.feed(html)
+    assert parser.lang == "it"
     assert '<link rel="canonical" href="https://cognitivelogic.it/fuorimenu/">' in html
     assert '<meta property="og:url" content="https://cognitivelogic.it/fuorimenu/">' in html
     assert '<meta name="twitter:card" content="summary_large_image">' in html

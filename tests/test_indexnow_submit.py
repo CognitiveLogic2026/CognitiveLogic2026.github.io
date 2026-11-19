@@ -22,9 +22,9 @@ class IndexNowTests(unittest.TestCase):
         self.assertRegex(indexnow.KEY, re.compile(r"^[A-Za-z0-9-]{8,128}$"))
         self.assertEqual((ROOT / f"{indexnow.KEY}.txt").read_text(), indexnow.KEY + "\n")
 
-    def test_ten_file_mappings(self):
+    def test_current_file_mappings(self):
         paths = [
-            "index.html", "services.html", "framework.html", "academia/index.html",
+            "index.html", "qen/index.html", "framework.html", "academia/index.html",
             "resources/index.html", "resources/research-notes/index.html",
             "resources/documents/coste360-ea-001/index.html", "case-studies/index.html",
             "case-studies/coste360/index.html", "international-watch/index.html",
@@ -39,7 +39,7 @@ class IndexNowTests(unittest.TestCase):
 
     def test_legacy_noindex_and_404_excluded(self):
         mapped, fallback = indexnow.map_files(
-            ["case-studies.html", "privacy.html", "404.html"], ROOT, self.urls
+            ["case-studies.html", "privacy.html", "404.html", "services.html"], ROOT, self.urls
         )
         self.assertFalse(fallback)
         self.assertEqual(mapped, [])

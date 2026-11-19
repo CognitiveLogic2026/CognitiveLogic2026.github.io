@@ -58,7 +58,13 @@ def test_manifesto_structured_data_and_required_internal_links():
     data = json.loads(block.group(1))
     assert data["@type"] == "Article"
     assert data["mainEntityOfPage"] == CANONICAL
-    for target in ("/identity.html#manifesto", "/trust.html", "/framework.html", "/operational-record.html", "/resources/"):
+    parser = ManifestoParser()
+    parser.feed(html)
+    assert not any(
+        href.split("#", 1)[0] == "/identity.html"
+        for href, _ in parser.links
+    )
+    for target in ("/trust.html", "/framework.html", "/operational-record.html", "/resources/"):
         assert f'href="{target}"' in html
 
 
