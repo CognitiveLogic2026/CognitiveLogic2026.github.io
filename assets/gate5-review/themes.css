@@ -121,3 +121,72 @@ html[data-cl-theme] .watch-card {
     min-height: 44px;
   }
 }
+
+/* Official brand placement across thematic entrances */
+html[data-cl-theme] .site-header .header-inner {
+  width: min(calc(100% - 6rem), 78rem);
+  margin-inline: auto;
+  min-height: 5.35rem;
+  gap: .5rem 1.5rem;
+}
+html[data-cl-theme] .site-header .brand {
+  display: inline-flex;
+  flex: 0 0 auto;
+  align-items: center;
+  min-height: 44px;
+  margin: 0;
+  padding: 0;
+}
+html[data-cl-theme] .site-header .cl-official-logo--nav {
+  display: block;
+  width: 9rem !important;
+  height: auto !important;
+  max-width: 100%;
+  object-fit: contain;
+}
+html[data-cl-theme] .site-footer .cl-official-logo--footer {
+  width: 9rem !important;
+  height: auto !important;
+}
+html[data-cl-theme="watch"] .watch-hero {
+  display: block;
+  min-height: auto;
+}
+html[data-cl-theme="watch"] .watch-hero-left {
+  display: none;
+}
+html[data-cl-theme="watch"] .watch-hero-right {
+  width: min(calc(100% - 6rem), 78rem);
+  margin-inline: auto;
+  padding: clamp(3rem, 6vw, 5rem) 0;
+}
+@media (max-width: 64rem) {
+  html[data-cl-theme] .site-header .header-inner,
+  html[data-cl-theme="watch"] .watch-hero-right {
+    width: min(calc(100% - 3.25rem), 78rem);
+  }
+  html[data-cl-theme] .site-header .header-inner {
+    flex-wrap: wrap;
+    padding-block: .75rem;
+  }
+  html[data-cl-theme] .site-header .main-nav {
+    order: 3;
+    flex: 1 0 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    min-width: 0;
+    white-space: normal;
+  }
+}
+@media (max-width: 46rem) {
+  html[data-cl-theme] .site-header .cl-official-logo--nav {
+    width: 8rem !important;
+  }
+}
+@media (max-width: 28rem) {
+  html[data-cl-theme] .site-header .header-inner,
+  html[data-cl-theme="watch"] .watch-hero-right {
+    width: calc(100% - 2rem);
+  }
+}

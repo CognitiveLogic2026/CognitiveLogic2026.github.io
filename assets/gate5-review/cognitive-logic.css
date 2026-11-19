@@ -140,3 +140,21 @@ h1, h2, h3, .large-number { font-family: var(--serif); font-weight: 400; }
 }
 .related .related-list a { color: var(--section); }
 .related .related-list { border-top: 2px solid var(--section); }
+
+/* Official brand placement */
+.cl-site-brand {
+  display: inline-flex;
+  flex: 0 0 auto;
+  align-items: center;
+  min-height: 44px;
+  text-decoration: none;
+}
+.cl-site-brand img {
+  display: block;
+  width: 9rem;
+  height: auto;
+  object-fit: contain;
+}
+@media (max-width: 46rem) {
+  .cl-site-brand img { width: 8rem; }
+}
