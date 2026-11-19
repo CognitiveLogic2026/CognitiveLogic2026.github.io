@@ -31,7 +31,6 @@ case-studies/hva-001/index.html
 case-studies/index.html
 case-studies/itutorgroup-screening/index.html
 case-studies/leeds-xylo-core/index.html
-competitive-analysis.html
 contact.html
 cookie_en.html
 cookie.html
@@ -46,7 +45,6 @@ data/fuorimenu.json
 demo.html
 digital-presence/en/index.html
 digital-presence/index.html
-discovery.html
 eci-assessment.html
 ecosystem_en.html
 ecosystem.html
@@ -155,7 +153,6 @@ resources/documents/capability-statement/index.html
 resources/documents/concessioni-balneari-criteri-agcm/index.html
 resources/documents/coste360-ea-001/index.html
 resources/documents/coste360-ea-002/index.html
-resources/documents/coste360-ea-003/index.html
 resources/documents/coste360-ea-004/index.html
 resources/documents/coste360-ea-005/index.html
 resources/documents/coste360-ea-006/index.html
@@ -229,3 +226,6 @@ js/global-cta.js
 brief/manifesto-del-linguaggio/index.html
 img/og/cognitive-logic-brief-manifesto-linguaggio.png
 international-watch/hti-5-health-ai-evidence/index.html
+assets/gate5-review/cognitive-logic.css
+assets/gate5-review/themes.css
+horeca/index.html

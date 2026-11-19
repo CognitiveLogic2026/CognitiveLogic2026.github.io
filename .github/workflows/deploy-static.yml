@@ -32,18 +32,20 @@ jobs:
           key: ${{ secrets.VPS_SSH_KEY }}
           timeout: 60s
           script: |
-            set -e
-            export GIT_SSH_COMMAND="ssh -i /root/.ssh/github_deploy -o StrictHostKeyChecking=no"
-            cd /app/cognitivelogic
-            git fetch origin main
-            git reset --hard origin/main
-
-            PUBLIC_ROOT="/var/www/cognitivelogic-public"
-            mkdir -p "$PUBLIC_ROOT"
-
-            # Synchronize only explicitly authorized public files from the manifest.
-            # This prevents private repository content from being published accidentally.
-            bash ops/deploy-existing-public.sh "$PUBLIC_ROOT"
+            set -eu
+            RELEASE_SHA='${{ github.sha }}'
+            case "$RELEASE_SHA" in ''|*[!0-9a-f]*) exit 1 ;; esac
+            [ "${#RELEASE_SHA}" -eq 40 ]
+            REPO_URL=https://github.com/CognitiveLogic2026/CognitiveLogic2026.github.io.git
+            PUBLIC_ROOT=/var/www/cognitivelogic-public
+            WORK="$(mktemp -d /root/cognitive-editorial-staging/static-release.XXXXXXXX)"
+            trap 'rm -rf -- "$WORK"' EXIT
+            git init --quiet --template= "$WORK/source"
+            git -C "$WORK/source" -c core.hooksPath=/dev/null fetch --quiet --depth=1 --no-tags "$REPO_URL" "$RELEASE_SHA"
+            git -C "$WORK/source" -c core.hooksPath=/dev/null checkout --quiet --detach FETCH_HEAD
+            [ "$(git -C "$WORK/source" rev-parse HEAD)" = "$RELEASE_SHA" ]
+            [ -d "$PUBLIC_ROOT" ] && [ ! -L "$PUBLIC_ROOT" ]
+            bash "$WORK/source/ops/deploy-existing-public.sh" "$PUBLIC_ROOT"
 
 concurrency:
   group: cognitive-logic-vps-deploy

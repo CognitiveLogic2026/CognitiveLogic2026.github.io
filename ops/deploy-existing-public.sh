@@ -4,7 +4,7 @@ set -euo pipefail
 PUBLIC_ROOT="${1:-/var/www/cognitivelogic-public}"
 MANIFEST="ops/public-static-manifest.txt"
 
-cd /app/cognitivelogic
+cd -- "$(dirname -- "${BASH_SOURCE[0]}")/.."
 
 [ -f "$MANIFEST" ] || {
     echo "ERROR: missing $MANIFEST"
@@ -33,6 +33,6 @@ do
 done < "$MANIFEST"
 
 mkdir -p "$PUBLIC_ROOT/international-watch"
-rsync -a --delete international-watch/ "$PUBLIC_ROOT/international-watch/"
+rsync -a --delete --exclude='*.bak*' international-watch/ "$PUBLIC_ROOT/international-watch/"
 
 echo "Static synchronization completed: $updated manifest files."
