@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>The AI Data Center Boom: What Can We Actually Verify? | Cognitive Logic Brief #2</title>
+
+  <meta name="description" content="An evidence-based comparison of data center employment, electricity demand and strategic control across the United States, Italy and Europe." />
+
+  <meta name="author" content="Roberto Bob Malini — Cognitive Logic" />
+  <meta name="robots" content="index,follow,max-image-preview:large" />
+
+  <link rel="canonical" href="https://cognitivelogic.it/brief/ai-data-center-boom-evidence/" />
+  <link rel="alternate" hreflang="en-US" href="https://cognitivelogic.it/brief/ai-data-center-boom-evidence/" />
+  <link rel="alternate" hreflang="x-default" href="https://cognitivelogic.it/brief/ai-data-center-boom-evidence/" />
+
+  <meta property="og:type" content="article" />
+  <meta property="og:site_name" content="Cognitive Logic" />
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:title" content="The AI Data Center Boom: What Can We Actually Verify?" />
+  <meta property="og:description" content="An evidence-based comparison of data center employment, electricity demand and strategic control across the United States, Italy and Europe." />
+  <meta property="og:url" content="https://cognitivelogic.it/brief/ai-data-center-boom-evidence/" />
+
+
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="The AI Data Center Boom: What Can We Actually Verify?" />
+  <meta name="twitter:description" content="An evidence-based comparison of data center employment, electricity demand and strategic control across the United States, Italy and Europe." />
+
+
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  <link rel="icon" href="/favicon.ico" sizes="any" />
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+
+  <link rel="preload"
+        href="/fonts/cormorant-garamond-normal.woff2"
+        as="font"
+        type="font/woff2"
+        crossorigin />
+  <link rel="preload"
+        href="/fonts/dm-mono-400.woff2"
+        as="font"
+        type="font/woff2"
+        crossorigin />
+
+  <link rel="stylesheet" href="/css/fonts-local.css" />
+  <link rel="stylesheet" href="/css/style.css?v=3" />
+  <link rel="stylesheet" href="/css/home-it.css?v=1" />
+
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Article",
+      "headline": "The AI Data Center Boom: What Can We Actually Verify?",
+      "alternativeHeadline": "Cognitive Logic Brief #2",
+      "description": "An evidence-based comparison of data center employment, electricity demand and strategic control across the United States, Italy and Europe.",
+      "inLanguage": "en-US",
+      "author": {
+        "@type": "Person",
+        "@id": "https://cognitivelogic.it/#founder",
+        "name": "Roberto Bob Malini"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Cognitive Logic",
+        "url": "https://cognitivelogic.it/"
+      },
+      "isPartOf": {
+        "@type": "Periodical",
+        "name": "Cognitive Logic Brief",
+        "url": "https://cognitivelogic.it/brief/"
+      },
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://cognitivelogic.it/brief/ai-data-center-boom-evidence/"
+      },
+      "articleSection": "Cognitive Logic Brief",
+      "about": [
+        "AI infrastructure",
+        "Data centers",
+        "Evidence governance",
+        "Energy infrastructure",
+        "Employment"
+      ],
+      "datePublished": "2026-11-25",
+      "dateModified": "2026-11-25"
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Cognitive Logic",
+          "item": "https://cognitivelogic.it/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Cognitive Logic Brief",
+          "item": "https://cognitivelogic.it/brief/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Brief #2",
+          "item": "https://cognitivelogic.it/brief/ai-data-center-boom-evidence/"
+        }
+      ]
+    }
+  ]
+}
+</script>
+
+  <style>
+    .brief-issue {
+      width: min(100% - 40px, 920px);
+      margin: 0 auto;
+      padding-top: clamp(8rem, 13vw, 11rem);
+      padding-bottom: clamp(5rem, 9vw, 8rem);
+    }
+
+    .brief-breadcrumb,
+    .brief-issue-kicker,
+    .brief-issue-meta,
+    .brief-block-label {
+      font-family: "DM Mono", monospace;
+      text-transform: uppercase;
+    }
+
+    .brief-breadcrumb {
+      margin-bottom: 3rem;
+      font-size: .7rem;
+      letter-spacing: .1em;
+      opacity: .62;
+    }
+
+    .brief-breadcrumb a {
+      color: inherit;
+      text-underline-offset: 4px;
+    }
+
+    .brief-issue-kicker {
+      margin-bottom: 1.5rem;
+      font-size: .72rem;
+      letter-spacing: .18em;
+      opacity: .7;
+    }
+
+    .brief-issue h1 {
+      max-width: 900px;
+      margin-bottom: 1.4rem;
+    }
+
+    .brief-issue-headline {
+      max-width: 820px;
+      margin: 0;
+      font-size: clamp(1.7rem, 4vw, 3rem);
+      line-height: 1.15;
+    }
+
+    .brief-issue-dek {
+      max-width: 760px;
+      margin-top: 2rem;
+      font-size: clamp(1.05rem, 1.7vw, 1.3rem);
+      line-height: 1.7;
+      opacity: .8;
+    }
+
+    .brief-issue-meta {
+      margin-top: 2rem;
+      font-size: .7rem;
+      letter-spacing: .1em;
+      opacity: .6;
+    }
+
+    .brief-intro,
+    .brief-block,
+    .brief-question,
+    .brief-issue-cta {
+      max-width: 780px;
+    }
+
+    .brief-intro {
+      margin-top: clamp(4rem, 8vw, 7rem);
+    }
+
+    .brief-intro p,
+    .brief-block p,
+    .brief-question p,
+    .brief-issue-cta p {
+      font-size: 1.08rem;
+      line-height: 1.82;
+      opacity: .82;
+    }
+
+    .brief-block {
+      margin-top: clamp(4rem, 8vw, 6rem);
+      padding-top: 2.2rem;
+      border-top: 1px solid rgba(255,255,255,.14);
+    }
+
+    .brief-block-label {
+      margin-bottom: 1.2rem;
+      font-size: .7rem;
+      letter-spacing: .14em;
+      opacity: .62;
+    }
+
+    .brief-block h2 {
+      margin-bottom: 1.4rem;
+    }
+
+    .brief-block-link {
+      display: inline-block;
+      margin-top: 1rem;
+      color: inherit;
+      font-weight: 700;
+      text-underline-offset: 5px;
+    }
+
+    .brief-question {
+      margin-top: clamp(4rem, 8vw, 6rem);
+      padding: 2rem;
+      border: 1px solid rgba(255,255,255,.16);
+    }
+
+    .brief-question strong {
+      display: block;
+      font-size: clamp(1.25rem, 2.6vw, 1.8rem);
+      line-height: 1.4;
+    }
+
+    .brief-issue-cta {
+      margin-top: 3rem;
+      padding-top: 2.5rem;
+      border-top: 1px solid rgba(255,255,255,.14);
+    }
+
+
+    .brief-issue-hero {
+      margin: clamp(2.5rem, 6vw, 4.5rem) 0 0;
+    }
+
+    .brief-issue-hero img {
+      display: block;
+      width: 100%;
+      height: auto;
+      border-radius: 2px;
+    }
+
+    @media (max-width: 640px) {
+      .brief-issue {
+        width: min(100% - 28px, 920px);
+      }
+
+      .brief-question {
+        padding: 1.4rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<a href="#main" class="skip-link">Skip to content</a>
+
+<div class="site-bg"></div>
+
+<header class="site-header">
+  <div class="container header-inner">
+
+    <a href="/" class="brand notranslate" translate="no"
+       aria-label="Cognitive Logic — Home">
+      <img class="cl-official-logo cl-official-logo--nav" src="/img/logo-cognitivelogic.png" alt="Cognitive Logic" style="display:block;width:150px;max-width:100%;height:auto;object-fit:contain">
+    </a>
+
+    <nav class="main-nav" aria-label="Main navigation">
+      <a href="/brief/" aria-current="page">Brief</a>
+      <a href="/research.html">Research</a>
+      <a href="/international-watch/">International Watch</a>
+      <a href="/about.html">About</a>
+    </nav>
+
+  </div>
+</header>
+
+
+<main id="main" class="brief-issue">
+
+<nav class="brief-breadcrumb" aria-label="Breadcrumb">
+  <a href="/">Cognitive Logic</a> ›
+  <a href="/brief/">Cognitive Logic Brief</a> ›
+  <span aria-current="page">Brief #2</span>
+</nav>
+
+<header>
+  <div class="brief-issue-kicker">
+    Cognitive Logic Brief · #2
+  </div>
+
+  <h1>The AI Data Center Boom: What Can We Actually Verify?</h1>
+
+  <p class="brief-issue-dek">
+    Beyond investment announcements, electricity requests
+    and employment promises: three perspectives on the
+    infrastructure behind artificial intelligence.
+  </p>
+
+  <p class="brief-issue-meta">
+    November 25, 2026 · Infrastructure · Evidence Governance
+  </p>
+</header>
+
+<section class="brief-intro">
+  <h2>From announcements to evidence</h2>
+
+  <p>
+    Artificial intelligence is usually discussed in terms
+    of what machines can do. Increasingly, however, its
+    future depends on electricity, land, construction,
+    water, skilled workers and control over critical
+    infrastructure.
+  </p>
+
+  <p>
+    Investment announcements suggest growth. Grid
+    connection requests suggest demand. New facilities
+    suggest technological progress.
+  </p>
+
+  <p>
+    But these indicators do not necessarily measure
+    the outcomes they are used to describe.
+  </p>
+
+  <p>
+    Methodological note: the US employment evidence
+    concerns data centers generally, not exclusively
+    facilities dedicated to artificial intelligence.
+
+  </p>
+</section>
+
+<article class="brief-block">
+  <div class="brief-block-label">01 · United States</div>
+
+  <h2>What happens when construction ends?</h2>
+
+  <p>
+    Data centers can generate significant employment
+    during construction. Their long-term operating
+    requirements represent a different economic question.
+  </p>
+
+  <p>
+    A Virginia legislative review describes a representative
+    250,000-square-foot data center with approximately
+    50 full-time workers, including contractors.
+    Industry representatives reported around 1,500
+    workers at peak construction.
+  </p>
+
+  <p>
+    These figures are illustrative, not a national
+    employment ratio or a matched record of workers
+    moving from construction to permanent employment.
+  </p>
+
+  <p>
+    Washington State's preliminary 2026 review of urban
+    data center tax preferences identified nearly 300 reported
+    construction and trade jobs associated with refurbishment
+    projects in 2023 and 2024, alongside 53 reported
+    new family-wage positions.
+  </p>
+
+  <p>
+    The employment requirements had not yet been
+    independently verified. Actual wages were not
+    collected in the annual reports.
+  </p>
+
+  <p>
+    Construction activity, permanent employment,
+    local wages and public revenue must be evaluated
+    separately.
+  </p>
+
+  <a class="brief-block-link"
+     href="https://vegabol.eu/stories/ai-data-center-jobs-public-records">
+    VEGABÒL — What do public records actually show? →
+  </a>
+
+  <p>
+    Primary sources:
+    <a href="https://rga.lis.virginia.gov/Published/2025/RD206/PDF">
+      Virginia legislative review
+    </a> ·
+    <a href="https://leg.wa.gov/jlarc/taxReports/2026/data/1/report.html">
+      Washington State preliminary review
+    </a>
+  </p>
+</article>
+
+<article class="brief-block">
+  <div class="brief-block-label">02 · Italy</div>
+
+  <h2>A grid request is not a data center</h2>
+
+  <p>
+    Requests for electricity connections indicate
+    potential demand. They do not establish that
+    corresponding facilities have been authorized,
+    financed, constructed or brought into operation.
+  </p>
+
+  <p>
+    A credible assessment must distinguish requested
+    capacity, approved connections, projects under
+    construction, energized infrastructure and actual
+    electricity consumption.
+  </p>
+
+  <p>
+    The relevant question is how much requested capacity
+    will become operational, when, under what conditions
+    and at whose expense.
+  </p>
+
+  <a class="brief-block-link"
+     href="/international-watch/data-center-italia-rete-elettrica-capacita-reale/">
+    International Watch — Italian data center infrastructure →
+  </a>
+</article>
+
+<article class="brief-block">
+  <div class="brief-block-label">03 · Europe</div>
+
+  <h2>Location is not control</h2>
+
+  <p>
+    A data center located in Europe may provide
+    employment, computing capacity and local investment.
+    Physical location alone, however, cannot establish
+    technological sovereignty.
+  </p>
+
+  <p>
+    Ownership, advanced computing hardware, software
+    dependencies, contractual arrangements, operational
+    authority and legal jurisdiction must be examined
+    separately.
+  </p>
+
+  <p>
+    International partnerships can contribute to
+    European computing capacity without necessarily
+    undermining strategic autonomy.
+  </p>
+
+  <p>
+    The question requires evidence about control
+    and dependencies, not geography alone.
+  </p>
+
+  <a class="brief-block-link"
+     href="/international-watch/iw-002-data-center-ai-europa/">
+    International Watch — European AI infrastructure →
+  </a>
+</article>
+
+<article class="brief-block">
+  <div class="brief-block-label">04 · The common evidence gap</div>
+
+  <h2>What does each indicator actually measure?</h2>
+
+  <p><strong>Investment announcements:</strong>
+    declared commitments, not necessarily actual expenditure.</p>
+
+  <p><strong>Construction employment:</strong>
+    building activity, not necessarily permanent local jobs.</p>
+
+  <p><strong>Grid connection requests:</strong>
+    potential demand, not operational capacity.</p>
+
+  <p><strong>Tax incentives:</strong>
+    public support, not necessarily net economic benefit.</p>
+
+  <p><strong>Facility location:</strong>
+    geographic presence, not necessarily strategic control.</p>
+
+  <p>
+    The problem arises when an indicator is used
+    to support a conclusion that exceeds what
+    the underlying evidence can demonstrate.
+  </p>
+</article>
+
+<article class="brief-block">
+  <div class="brief-block-label">05 · Decision intelligence</div>
+
+  <h2>What should public authorities measure?</h2>
+
+  <p>
+    Actual capital expenditure, permanent employment,
+    local wages, contractor participation, operational
+    electricity capacity, water consumption, fiscal
+    outcomes and critical technology dependencies.
+  </p>
+
+  <p>
+    These measurements would not automatically establish
+    whether a project is beneficial or harmful.
+    They would make that judgment more transparent
+    and accountable.
+  </p>
+</article>
+
+<section class="brief-question">
+  <div class="brief-block-label">
+    The Cognitive Logic perspective
+  </div>
+
+  <strong>
+    What can an independent observer actually verify?
+  </strong>
+
+  <p>
+    A promise is not an outcome.
+    A request is not an operational facility.
+    A location is not proof of control.
+  </p>
+
+  <p>
+    The real measure of the AI infrastructure boom
+    will not be the scale of its announcements,
+    but the quality of its documented outcomes.
+  </p>
+</section>
+
+<section class="brief-issue-cta">
+  <h2>Receive the next Brief</h2>
+
+  <p>
+    Independent research and evidence-based
+    editorial analysis.
+  </p>
+
+  <a href="https://cognitivelogicbrief.substack.com/subscribe"
+     class="btn btn-primary"
+     rel="noopener noreferrer">
+    Subscribe to Cognitive Logic Brief
+  </a>
+</section>
+
+</main>
+
+
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <div>
+      <img class="cl-official-logo cl-official-logo--footer" src="/img/logo-cognitivelogic.png" alt="Cognitive Logic" style="display:block;width:170px;max-width:100%;height:auto;object-fit:contain">
+
+      <div class="footer-copy">
+        © 2026 Roberto Bob Malini — Cognitive Logic ·
+
+      </div>
+    </div>
+
+    <div class="footer-links">
+      <a href="/brief/">Cognitive Logic Brief</a>
+      <a href="/privacy.html">Privacy</a>
+      <a href="/contact.html">Contact</a>
+    </div>
+  </div>
+</footer>
+
+<script src="/js/cookie-banner.js"></script>
+
+</body>
+</html>
