@@ -1,6 +1,13 @@
 {
   "articoli": [
     {
+      "titolo": "L’AI ti trova l’hotel. Chi le dà il permesso di pagare?",
+      "url": "https://fuorimenu.substack.com/p/lai-ti-trova-lhotel-chi-le-da-il",
+      "data": "2026-11-26 11:36",
+      "estratto": "AI Travel Booking: perché la prossima frontiera del turismo digitale non è l’autonomia degli algoritmi, ma la fiducia nelle transazioni.",
+      "tag": "Fuorimenu"
+    },
+    {
       "titolo": "Quante prenotazioni recupera davvero un assistente AI al telefono del ristorante?",
       "url": "https://fuorimenu.substack.com/p/quante-prenotazioni-recupera-davvero",
       "data": "2026-11-22 08:28",
@@ -61,13 +68,6 @@
       "url": "https://fuorimenu.substack.com/p/lhotel-non-ha-bisogno-di-piu-ai-deve",
       "data": "2026-10-14 05:45",
       "estratto": "La giornata di un albergatore comincia molto prima che il primo ospite scenda a fare colazione.",
-      "tag": "Fuorimenu"
-    },
-    {
-      "titolo": "Prima dei turisti arrivano gli algoritmi",
-      "url": "https://fuorimenu.substack.com/p/prima-dei-turisti-arrivano-gli-algoritmi",
-      "data": "2026-10-01 06:44",
-      "estratto": "L’AI può concentrare la visibilità di destinazioni, ristoranti e luoghi prima ancora che inizi il viaggio",
       "tag": "Fuorimenu"
     }
   ]
