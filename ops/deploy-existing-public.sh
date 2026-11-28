@@ -52,6 +52,12 @@ rsync -a --delete --exclude='*.bak*' international-watch/ "$PUBLIC_ROOT/internat
 while IFS= read -r rel
 do
     rm -f -- "$PUBLIC_ROOT/$rel"
+    if [[ "$rel" == */index.html ]]; then
+        retired_directory="$PUBLIC_ROOT/${rel%/index.html}"
+        if [ -d "$retired_directory" ] && [ ! -L "$retired_directory" ]; then
+            rmdir --ignore-fail-on-non-empty -- "$retired_directory"
+        fi
+    fi
 done < "$RETIRED"
 
 echo "Static synchronization completed: $updated manifest files."
