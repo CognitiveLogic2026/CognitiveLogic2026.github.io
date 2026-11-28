@@ -203,12 +203,6 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://cognitivelogic.it/coste360.html</loc>
-    <lastmod>2026-08-12</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
     <loc>https://cognitivelogic.it/trust.html</loc>
   </url>
 
@@ -243,37 +237,7 @@
   <url>
     <loc>https://cognitivelogic.it/resources/graph/</loc>
   </url>
-  <url>
-    <loc>https://cognitivelogic.it/resources/documents/coste360-ea-001/</loc>
-  </url>
-  <url>
-    <loc>https://cognitivelogic.it/resources/documents/coste360-ea-002/</loc>
-  </url>
   
-  <url>
-    <loc>https://cognitivelogic.it/resources/documents/coste360-ea-004/</loc>
-  </url>
-  <url>
-    <loc>https://cognitivelogic.it/resources/documents/coste360-ea-005/</loc>
-  </url>
-  <url>
-    <loc>https://cognitivelogic.it/resources/documents/coste360-ea-006/</loc>
-  </url>
-  <url>
-    <loc>https://cognitivelogic.it/resources/documents/coste360-ea-007/</loc>
-  </url>
-  <url>
-    <loc>https://cognitivelogic.it/resources/documents/coste360-ea-008/</loc>
-  </url>
-  <url>
-    <loc>https://cognitivelogic.it/resources/documents/coste360-ea-009/</loc>
-  </url>
-  <url>
-    <loc>https://cognitivelogic.it/resources/documents/coste360-vr-001-validation-report/</loc>
-  </url>
-  <url>
-    <loc>https://cognitivelogic.it/resources/documents/coste360-sa-001/</loc>
-  </url>
   <url>
     <loc>https://cognitivelogic.it/resources/documents/bolkestein-egea-benchmark/</loc>
   </url>
@@ -360,7 +324,6 @@
   <url><loc>https://cognitivelogic.it/case-studies/</loc><lastmod>2026-08-12</lastmod></url>
   <url><loc>https://cognitivelogic.it/case-studies/cognitive-logic/</loc><lastmod>2026-08-12</lastmod></url>
   <url><loc>https://cognitivelogic.it/case-studies/external/</loc><lastmod>2026-08-12</lastmod></url>
-  <url><loc>https://cognitivelogic.it/case-studies/coste360/</loc><lastmod>2026-08-12</lastmod></url>
   <url><loc>https://cognitivelogic.it/case-studies/hva-001/</loc><lastmod>2026-08-12</lastmod></url>
   <url><loc>https://cognitivelogic.it/case-studies/egea-qen/</loc><lastmod>2026-08-12</lastmod></url>
   <url><loc>https://cognitivelogic.it/case-studies/agcm-criteri-contestati/</loc><lastmod>2026-08-12</lastmod></url>

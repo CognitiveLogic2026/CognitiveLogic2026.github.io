@@ -23,7 +23,6 @@ case-studies/agcm-criteri-contestati/index.html
 case-studies/case-studies.css
 case-studies/coastal-governance/index.html
 case-studies/cognitive-logic/index.html
-case-studies/coste360/index.html
 case-studies/egea-qen/index.html
 case-studies/external/index.html
 case-studies.html
@@ -35,7 +34,6 @@ contact.html
 cookie_en.html
 cookie.html
 copilot.html
-coste360.html
 css/fonts-local.css
 css/fuorimenu.css
 css/home-en.css
@@ -83,7 +81,6 @@ img/og/cognitive-logic-brief-1-dal-dato-alla-decisione.png
 img/og/cognitive-logic-brief-numero-zero-linkedin.webp
 img/og/cognitive-logic-brief-numero-zero.png
 img/og/consiglio-stato-6539-concessioni-balneari.png
-img/og/coste360-case-study.png
 img/og/egea-qen-benchmark.png
 img/og/hva-001-hospitality-ai-governance.png
 img/og/indennizzo-concessionario-uscente-perizia-asseverata.png
@@ -151,16 +148,6 @@ resources/documents/assessment-overview/index.html
 resources/documents/bolkestein-egea-benchmark/index.html
 resources/documents/capability-statement/index.html
 resources/documents/concessioni-balneari-criteri-agcm/index.html
-resources/documents/coste360-ea-001/index.html
-resources/documents/coste360-ea-002/index.html
-resources/documents/coste360-ea-004/index.html
-resources/documents/coste360-ea-005/index.html
-resources/documents/coste360-ea-006/index.html
-resources/documents/coste360-ea-007/index.html
-resources/documents/coste360-ea-008/index.html
-resources/documents/coste360-ea-009/index.html
-resources/documents/coste360-sa-001/index.html
-resources/documents/coste360-vr-001-validation-report/index.html
 resources/documents/cs-001-ai-governance-assessment-readiness/index.html
 resources/documents/cs-002-executive-discovery/index.html
 resources/documents/cs-003-governance-vision-workshop/index.html
