@@ -11,6 +11,20 @@ cd -- "$(dirname -- "${BASH_SOURCE[0]}")/.."
     exit 1
 }
 
+RETIRED="ops/retired-public-files.txt"
+
+while IFS= read -r rel
+do
+    [[ "$rel" =~ ^(coste360\.html|case-studies/coste360/index\.html|img/og/coste360-case-study\.png|resources/documents/coste360-[a-z0-9-]+/index\.html)$ ]] || {
+        echo "ERROR: invalid retired public path: $rel"
+        exit 1
+    }
+    if [ -e "$rel" ] || git ls-files --error-unmatch "$rel" >/dev/null 2>&1; then
+        echo "ERROR: retired public file is still in the repository: $rel"
+        exit 1
+    fi
+done < "$RETIRED"
+
 updated=0
 
 while IFS= read -r rel
@@ -34,5 +48,10 @@ done < "$MANIFEST"
 
 mkdir -p "$PUBLIC_ROOT/international-watch"
 rsync -a --delete --exclude='*.bak*' international-watch/ "$PUBLIC_ROOT/international-watch/"
+
+while IFS= read -r rel
+do
+    rm -f -- "$PUBLIC_ROOT/$rel"
+done < "$RETIRED"
 
 echo "Static synchronization completed: $updated manifest files."
