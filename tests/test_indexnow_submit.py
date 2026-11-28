@@ -26,8 +26,7 @@ class IndexNowTests(unittest.TestCase):
         paths = [
             "index.html", "qen/index.html", "framework.html", "academia/index.html",
             "resources/index.html", "resources/research-notes/index.html",
-            "resources/documents/coste360-ea-001/index.html", "case-studies/index.html",
-            "case-studies/coste360/index.html", "international-watch/index.html",
+            "case-studies/index.html", "international-watch/index.html",
             "international-watch/frontier-ai-governance-demis-hassabis/index.html",
             "manifesto-verita-verificabile/index.html",
         ]
@@ -36,6 +35,17 @@ class IndexNowTests(unittest.TestCase):
         self.assertEqual(len(mapped), len(paths))
         self.assertIn("https://cognitivelogic.it/", mapped)
         self.assertIn("https://cognitivelogic.it/manifesto-verita-verificabile/", mapped)
+
+    def test_retired_coste360_pages_are_excluded(self):
+        paths = [
+            "coste360.html",
+            "case-studies/coste360/index.html",
+            "resources/documents/coste360-ea-001/index.html",
+        ]
+        mapped, fallback = indexnow.map_files(paths, ROOT, self.urls)
+        self.assertEqual(mapped, [])
+        self.assertFalse(fallback)
+        self.assertFalse(any("coste360" in url for url in self.urls))
 
     def test_legacy_noindex_and_404_excluded(self):
         mapped, fallback = indexnow.map_files(
